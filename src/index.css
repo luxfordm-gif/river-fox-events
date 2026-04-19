@@ -315,37 +315,38 @@
   .form-wrap {
     background: hsl(var(--surface-alt));
     border: 1px solid hsl(var(--ink) / 0.08);
-    padding: 40px;
-    border-radius: 10px;
+    padding: 36px;
+    border-radius: 14px;
     box-shadow: 0 30px 80px -20px rgba(24,27,24,0.22), 0 8px 24px -10px rgba(24,27,24,0.10);
   }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 20px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; }
   .form-row {
     background: hsl(var(--background));
-    border: 1px solid hsl(var(--ink) / 0.10);
-    border-radius: 8px;
-    padding: 12px 16px 10px;
+    border: 1.5px solid hsl(var(--ink) / 0.12);
+    border-radius: 10px;
+    padding: 10px 16px 10px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+    gap: 2px;
+    transition: border-color .25s ease, box-shadow .25s ease, background .25s ease, transform .2s ease;
     cursor: text;
+    position: relative;
   }
   .form-row.full { grid-column: 1 / -1; }
   .form-row .lbl {
     font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: hsl(var(--ink-soft));
-    font-weight: 500;
+    font-weight: 600;
   }
   .form-row input,
   .form-row select,
   .form-row textarea {
     border: none;
     background: transparent;
-    font-size: 15.5px;
+    font-size: 15px;
     font-weight: 500;
     font-family: var(--font-sans);
     color: hsl(var(--ink));
@@ -355,16 +356,44 @@
     letter-spacing: -0.005em;
     cursor: inherit;
   }
-  .form-row select { cursor: pointer; }
+  .form-row select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%235A6059' stroke-width='1.4' d='M1 1l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0 center; padding-right: 18px; }
   .form-row textarea { resize: vertical; min-height: 96px; cursor: text; }
   .form-row input::placeholder,
   .form-row textarea::placeholder { color: hsl(var(--ink-faint)); font-weight: 400; }
-  .form-row:hover { border-color: hsl(var(--ink) / 0.22); }
+  .form-row:hover { border-color: hsl(var(--ink) / 0.28); background: hsl(var(--surface-alt)); }
   .form-row:focus-within {
     border-color: hsl(var(--accent));
-    box-shadow: 0 0 0 3px hsl(var(--accent) / 0.12);
+    box-shadow: 0 0 0 3px hsl(var(--accent) / 0.14);
     background: hsl(var(--surface-alt));
   }
+
+  /* Experience cards — clickable hover */
+  .exp-card { display: block; text-decoration: none; color: inherit; cursor: pointer; }
+  .exp-card .exp-img-wrap { position: relative; overflow: hidden; }
+  .exp-card .exp-img-wrap img {
+    transition: transform 1.1s cubic-bezier(.2,.7,.2,1);
+  }
+  .exp-card:hover .exp-img-wrap img { transform: scale(1.06); }
+  .exp-card .exp-img-wrap::after {
+    content: "";
+    position: absolute; inset: 0; z-index: 3;
+    background: linear-gradient(180deg, transparent 55%, hsl(var(--ink) / 0.55) 100%);
+    opacity: 0;
+    transition: opacity .5s ease;
+    pointer-events: none;
+  }
+  .exp-card:hover .exp-img-wrap::after { opacity: 1; }
+  .exp-card .exp-cta {
+    position: absolute; left: 22px; bottom: 18px; z-index: 4;
+    color: hsl(var(--background));
+    font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px;
+    transform: translateY(8px); opacity: 0;
+    transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .5s ease;
+  }
+  .exp-card:hover .exp-cta { transform: translateY(0); opacity: 1; }
+  .exp-card .exp-title { transition: color .3s ease; }
+  .exp-card:hover .exp-title { color: hsl(var(--accent)); }
 
   /* FAQ */
   .faq-item {
