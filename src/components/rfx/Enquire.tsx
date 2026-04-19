@@ -25,9 +25,9 @@ const Enquire = () => {
   return (
     <section id="enquire" className="rfx-section dark" aria-labelledby="enquire-heading">
       <div className="container-rfx">
-        <div className="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-12 md:gap-16 items-start rfx-md-stack">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start rfx-md-stack">
           {/* Left: heading + checklist */}
-          <div className="pt-2">
+          <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-start">
             <h2
               id="enquire-heading"
               className="font-serif-rf"
