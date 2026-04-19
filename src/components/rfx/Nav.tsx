@@ -59,12 +59,12 @@ const Nav = () => {
                   : "opacity-0 -translate-y-1 pointer-events-none"
               }`}
             >
-              <div className="min-w-[220px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--ink)/0.22)] rounded-sm py-3">
+              <div className="min-w-[240px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--ink)/0.22)] rounded-2xl py-3 px-1">
                 {SERVICES.map((s) => (
                   <a
                     key={s.label}
                     href={s.href}
-                    className="block px-5 py-2.5 text-[13px] text-ink hover:bg-ink/5 no-underline"
+                    className="no-underline-fx block px-5 py-2.5 text-[13px] text-ink hover:font-semibold hover:underline underline-offset-4 decoration-ink/60"
                   >
                     {s.label}
                   </a>
@@ -74,7 +74,7 @@ const Nav = () => {
           </div>
           <a href="#about">About</a>
         </div>
-        <a href="#top" className="flex flex-col items-center gap-1 no-underline" aria-label="River Fox Events — home">
+        <a href="#top" className="no-underline-fx flex flex-col items-center gap-1" aria-label="River Fox Events — home">
           <span className="text-[15px] font-medium tracking-[0.22em] leading-none">
             RIVER&nbsp;FOX&nbsp;EVENTS
           </span>
