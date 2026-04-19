@@ -37,7 +37,7 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
   const n = useCountUp(stat.value, visible);
   return (
     <div
-      className="flex flex-col"
+      className="flex-col flex items-center justify-center"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(12px)",
