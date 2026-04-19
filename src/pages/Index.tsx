@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Nav from "@/components/rfx/Nav";
 import Hero from "@/components/rfx/Hero";
 import Ticker from "@/components/rfx/Ticker";
-import Approach from "@/components/rfx/Approach";
+import InstagramFollow from "@/components/rfx/InstagramFollow";
 import Experiences from "@/components/rfx/Experiences";
 import RevealWord from "@/components/rfx/RevealWord";
 import About from "@/components/rfx/About";
