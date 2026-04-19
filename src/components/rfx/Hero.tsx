@@ -20,10 +20,10 @@ const Hero = () => {
 
           <h1
             id="hero-heading"
-            className="font-serif-rf max-w-[16ch] mx-auto"
+            className="font-serif-rf max-w-[16ch] mx-auto break-words"
             style={{
-              fontSize: "clamp(48px, 9vw, 152px)",
-              lineHeight: 1.01,
+              fontSize: "clamp(36px, 9vw, 152px)",
+              lineHeight: 1.05,
               fontWeight: 300,
               letterSpacing: "-0.035em",
             }}
