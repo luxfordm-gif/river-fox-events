@@ -87,19 +87,12 @@ const CPPricing = () => {
               }}
             >
               {i === 1 && (
-                <>
-                  {/* Constant subtle shimmer stroke around the popular card */}
-                  <span
-                    aria-hidden="true"
-                    className="rfx-shimmer-stroke pointer-events-none absolute inset-0"
-                  />
-                  <div
-                    className="absolute top-4 right-4 font-mono-rf text-[10px] tracking-[0.24em] uppercase text-accent-warm z-[2]"
-                    style={{ fontWeight: 700 }}
-                  >
-                    Most popular
-                  </div>
-                </>
+                <div
+                  className="absolute top-4 right-4 font-mono-rf text-[10px] tracking-[0.24em] uppercase text-accent-warm z-[2]"
+                  style={{ fontWeight: 700 }}
+                >
+                  Most popular
+                </div>
               )}
               <div
                 className="font-serif-rf overflow-hidden"
