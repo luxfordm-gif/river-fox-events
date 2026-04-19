@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import studioImg from "@/assets/studio.jpg";
+import { useImageParallax } from "@/hooks/useImageParallax";
 
 interface Stat {
   value: number;
