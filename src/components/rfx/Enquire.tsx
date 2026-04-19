@@ -28,18 +28,12 @@ const Enquire = () => {
         <div className="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-12 md:gap-16 items-start rfx-md-stack">
           {/* Left: heading + checklist */}
           <div className="pt-2">
-            <div
-              className="eyebrow mb-7"
-              style={{ color: "hsl(var(--on-deep-soft))" }}
-            >
-              (05) — Enquire
-            </div>
             <h2
               id="enquire-heading"
               className="font-serif-rf"
               style={{
                 fontSize: "clamp(44px, 5.6vw, 92px)",
-                lineHeight: 0.98,
+                lineHeight: 1.0,
                 fontWeight: 300,
                 letterSpacing: "-0.028em",
               }}
@@ -57,15 +51,15 @@ const Enquire = () => {
               not a template, a proper bespoke proposal.
             </p>
 
-            <ul className="mt-10 space-y-3 max-w-[460px]">
+            <ul className="mt-8 max-w-[460px]">
               {CHECKLIST.map((c) => (
                 <li
                   key={c}
-                  className="flex items-baseline gap-3 text-[14.5px]"
+                  className="flex items-baseline gap-3 text-[14.5px] py-1"
                   style={{ color: "hsl(var(--on-deep))" }}
                 >
                   <span
-                    className="inline-block w-6 font-mono-rf text-xs"
+                    className="inline-block w-5 font-mono-rf text-xs"
                     style={{ color: "hsl(var(--accent-warm))" }}
                   >
                     —
@@ -76,7 +70,7 @@ const Enquire = () => {
             </ul>
 
             <div
-              className="mt-10 p-5 max-w-[460px]"
+              className="mt-10 p-5 max-w-[460px] rounded-sm"
               style={{
                 border: "1px solid hsl(var(--accent-warm) / 0.55)",
                 color: "hsl(var(--on-deep))",
@@ -97,11 +91,11 @@ const Enquire = () => {
 
           {/* Right: form */}
           <form className="form-wrap" onSubmit={onSubmit}>
-            <div className="flex justify-between items-baseline mb-5">
-              <div className="eyebrow">Enquiry form</div>
-              <div className="font-mono-rf text-[10px] tracking-[0.22em] text-ink-soft">
-                Rf — 05
-              </div>
+            <div className="mb-6">
+              <div className="eyebrow mb-2">Enquiry form</div>
+              <p className="text-[13px] text-ink-soft">
+                Every field is bespoke to you — no templates.
+              </p>
             </div>
             <div className="form-grid">
               <label className="form-row">
@@ -147,7 +141,7 @@ const Enquire = () => {
                 />
               </label>
             </div>
-            <div className="flex justify-between items-center mt-6 gap-4 flex-wrap">
+            <div className="flex justify-between items-center mt-7 gap-4 flex-wrap">
               <span className="font-mono-rf text-[10.5px] tracking-[0.14em] text-ink-soft">
                 Replied to personally, within 48 hours.
               </span>

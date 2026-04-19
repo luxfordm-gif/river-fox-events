@@ -8,15 +8,15 @@ const Hero = () => {
   return (
     <section id="top" className="pt-[152px] pb-24 md:pb-32" aria-labelledby="hero-heading">
       <div className="container-rfx">
-        <div className="max-w-[1320px] mx-auto mb-16 md:mb-20">
+        <div className="mb-16 md:mb-20">
           <h1
             id="hero-heading"
-            className="font-serif-rf text-left"
+            className="font-serif-rf text-left max-w-[18ch]"
             style={{
-              fontSize: "clamp(56px, 10vw, 168px)",
-              lineHeight: 0.88,
+              fontSize: "clamp(48px, 9vw, 152px)",
+              lineHeight: 0.92,
               fontWeight: 300,
-              letterSpacing: "-0.04em",
+              letterSpacing: "-0.035em",
             }}
           >
             <span className="word-reveal in">
@@ -32,9 +32,9 @@ const Hero = () => {
           </h1>
 
           <div
-            className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12 md:mt-14 items-end fade-up"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mt-12 md:mt-14 items-end fade-up"
           >
-            <p className="text-[17px] leading-[1.55] text-ink-soft max-w-[520px]">
+            <p className="text-[16.5px] leading-[1.6] text-ink-soft max-w-[480px]">
               Children's parties, milestone moments and corporate events
               across Surrey — created around your vision, delivered with calm.
             </p>
@@ -42,7 +42,7 @@ const Hero = () => {
               <a href="#enquire" className="btn-solid-rf accent">
                 Start planning <span>→</span>
               </a>
-              <a href="#work" className="btn-link-rf">
+              <a href="#experiences" className="btn-link-rf">
                 See our work <span className="arr">→</span>
               </a>
             </div>
@@ -55,7 +55,7 @@ const Hero = () => {
             className="relative md:pt-16"
             style={{ transform: `translateY(${y * 0.04}px)` }}
           >
-            <div className="ph ph-warm overflow-hidden" style={{ aspectRatio: "4/5" }}>
+            <div className="ph ph-warm overflow-hidden rounded-sm" style={{ aspectRatio: "4/5" }}>
               <img
                 src={heroMain}
                 alt="Beautifully styled children's party tablescape with pastel balloon installation, Surrey garden"
@@ -63,15 +63,13 @@ const Hero = () => {
                 width={1024}
                 height={1280}
               />
-              <span className="ph-num">01 / 24</span>
-              <span className="ph-label">cobham · garden</span>
             </div>
           </div>
           <div
             className="relative"
             style={{ transform: `translateY(${y * -0.055}px)` }}
           >
-            <div className="ph overflow-hidden" style={{ aspectRatio: "3/4" }}>
+            <div className="ph overflow-hidden rounded-sm" style={{ aspectRatio: "3/4" }}>
               <img
                 src={heroSide}
                 alt="Elegant milestone celebration installation with floral arch and candles"
@@ -80,15 +78,13 @@ const Hero = () => {
                 width={1024}
                 height={1408}
               />
-              <span className="ph-num">02 / 24</span>
-              <span className="ph-label">milestone · install</span>
             </div>
           </div>
           <div
             className="relative md:pt-32"
             style={{ transform: `translateY(${y * 0.025}px)` }}
           >
-            <div className="ph ph-blush overflow-hidden" style={{ aspectRatio: "4/5" }}>
+            <div className="ph ph-blush overflow-hidden rounded-sm" style={{ aspectRatio: "4/5" }}>
               <img
                 src={heroSmall}
                 alt="Detail of a styled cake on a vintage cake stand with pastel ribbons and peonies"
@@ -97,8 +93,6 @@ const Hero = () => {
                 width={1024}
                 height={1280}
               />
-              <span className="ph-num">03 / 24</span>
-              <span className="ph-label">detail · blush</span>
             </div>
           </div>
         </div>

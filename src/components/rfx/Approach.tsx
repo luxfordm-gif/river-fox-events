@@ -1,4 +1,4 @@
-import studioImg from "@/assets/studio.jpg";
+import lauraImg from "@/assets/laura-portrait.jpg";
 
 /** Editorial split — image left, copy right (Giardino style). */
 const Approach = () => {
@@ -8,19 +8,17 @@ const Approach = () => {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12 md:gap-20 items-center rfx-md-stack">
           <div className="relative fade-up">
             <div
-              className="ph ph-warm overflow-hidden"
+              className="ph ph-warm overflow-hidden rounded-sm"
               style={{ aspectRatio: "4/5" }}
             >
               <img
-                src={studioImg}
-                alt="River Fox Events studio — moodboard, fabric swatches and sketches in warm earth tones"
+                src={lauraImg}
+                alt="Laura, founder of River Fox Events, beside a styled tablescape in her Surrey studio"
                 className="absolute inset-0 w-full h-full object-cover z-[2]"
                 loading="lazy"
                 width={1024}
                 height={1280}
               />
-              <span className="ph-num">pl. 04</span>
-              <span className="ph-label">studio · cobham</span>
             </div>
           </div>
 
@@ -31,7 +29,7 @@ const Approach = () => {
               className="font-serif-rf"
               style={{
                 fontSize: "clamp(40px, 5.4vw, 84px)",
-                lineHeight: 1.02,
+                lineHeight: 1.04,
                 fontWeight: 300,
                 letterSpacing: "-0.025em",
               }}

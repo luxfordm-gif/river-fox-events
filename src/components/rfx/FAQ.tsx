@@ -38,13 +38,12 @@ const FAQ = () => {
     <section id="faq" className="rfx-section white" aria-labelledby="faq-heading">
       <div className="container-rfx">
         <div className="text-center mb-14">
-          <div className="eyebrow mb-7">(04) — FAQ</div>
           <h2
             id="faq-heading"
             className="font-serif-rf"
             style={{
               fontSize: "clamp(40px, 5.4vw, 84px)",
-              lineHeight: 1.02,
+              lineHeight: 1.04,
               fontWeight: 300,
               letterSpacing: "-0.025em",
             }}

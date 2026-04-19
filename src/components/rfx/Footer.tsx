@@ -4,43 +4,6 @@ const Footer = () => {
   const y = useScrollY();
   return (
     <footer className="relative overflow-hidden bg-surface-deep text-on-deep">
-      {/* Marquee strip */}
-      <div className="border-b" style={{ borderColor: "hsl(var(--on-deep) / 0.15)" }}>
-        <div className="overflow-hidden">
-          <div
-            className="flex whitespace-nowrap py-9"
-            style={{
-              animation: "rfx-marq 60s linear infinite",
-              fontFamily: "var(--font-serif)",
-              fontSize: "clamp(48px, 7vw, 110px)",
-              fontWeight: 300,
-              letterSpacing: "-0.03em",
-              lineHeight: 1,
-            }}
-          >
-            {Array.from({ length: 8 }).map((_, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-12 pr-12"
-              >
-                Luxury event styling{" "}
-                <em
-                  className="italic font-light"
-                  style={{ color: "hsl(var(--accent-warm))" }}
-                >
-                  across Surrey
-                </em>{" "}
-                <span
-                  className="font-mono-rf text-[0.16em] tracking-[0.22em] uppercase"
-                  style={{ color: "hsl(var(--on-deep-soft))" }}
-                >
-                  ✳ RF
-                </span>
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
 
       <div className="relative pt-24 pb-9 overflow-hidden">
         {/* Big watermark */}

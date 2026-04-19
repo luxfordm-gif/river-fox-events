@@ -4,7 +4,6 @@ import expCorporate from "@/assets/exp-corporate.jpg";
 
 const ITEMS = [
   {
-    n: "(i)",
     title: "Children's Party Styling",
     body:
       "Immersive themed parties designed to feel magical for children — and completely effortless for you.",
@@ -13,7 +12,6 @@ const ITEMS = [
     tone: "",
   },
   {
-    n: "(ii)",
     title: "Milestone Celebrations",
     body:
       "Statement styling for 21sts, 40ths, 70ths, baby showers and anniversaries. Life's biggest moments, honoured properly.",
@@ -22,7 +20,6 @@ const ITEMS = [
     tone: "ph-warm",
   },
   {
-    n: "(iii)",
     title: "Corporate & Brand Styling",
     body:
       "Design-led installations for launches, openings and activations. Trusted by P&G, The Range, Foxhills and more.",
@@ -38,13 +35,13 @@ const Experiences = () => {
       <div className="container-rfx">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-14 md:mb-16 items-end rfx-md-stack">
           <div>
-            <div className="eyebrow mb-6">(01) — Signature Experiences</div>
+            <div className="eyebrow mb-6">— Signature Experiences</div>
             <h2
               id="exp-heading"
               className="font-serif-rf fade-up"
               style={{
                 fontSize: "clamp(40px, 5.4vw, 84px)",
-                lineHeight: 1.02,
+                lineHeight: 1.04,
                 fontWeight: 300,
                 letterSpacing: "-0.025em",
               }}
@@ -67,7 +64,7 @@ const Experiences = () => {
               className={`rfx-svc-card flex flex-col gap-4 px-7 ${i > 0 ? "md:border-l" : ""} border-ink/10`}
             >
               <div
-                className={`ph overflow-hidden ${it.tone} fade-up`}
+                className={`ph overflow-hidden rounded-sm ${it.tone} fade-up`}
                 style={{ aspectRatio: "4/5" }}
               >
                 <img
@@ -78,19 +75,12 @@ const Experiences = () => {
                   width={1024}
                   height={1280}
                 />
-                <span className="ph-num">pl. 0{i + 5}</span>
-                <span className="ph-label">{it.title.toLowerCase()}</span>
-              </div>
-              <div className="mt-2">
-                <span className="font-mono-rf text-[10px] tracking-[0.2em] uppercase text-ink-soft">
-                  {it.n}
-                </span>
               </div>
               <h3
-                className="font-serif-rf -mt-1"
+                className="font-serif-rf mt-4"
                 style={{
                   fontSize: 30,
-                  lineHeight: 1.08,
+                  lineHeight: 1.12,
                   fontWeight: 300,
                   letterSpacing: "-0.02em",
                 }}

@@ -25,15 +25,12 @@ const Process = () => {
       <div className="container-rfx">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end mb-16 rfx-md-stack">
           <div>
-            <div className="eyebrow mb-7" style={{ color: "hsl(var(--on-deep-soft))" }}>
-              (02) — How it works
-            </div>
             <h2
               id="process-heading"
               className="font-serif-rf"
               style={{
                 fontSize: "clamp(40px, 5.4vw, 84px)",
-                lineHeight: 1.02,
+                lineHeight: 1.04,
                 fontWeight: 300,
                 letterSpacing: "-0.025em",
               }}
@@ -62,7 +59,7 @@ const Process = () => {
                 style={{
                   fontSize: 30,
                   fontWeight: 400,
-                  lineHeight: 1.08,
+                  lineHeight: 1.12,
                   letterSpacing: "-0.018em",
                 }}
               >
