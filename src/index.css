@@ -402,7 +402,7 @@
   .exp-card .exp-img-wrap::after {
     content: "";
     position: absolute; inset: 0; z-index: 3;
-    background: linear-gradient(180deg, transparent 55%, hsl(var(--ink) / 0.55) 100%);
+    background: linear-gradient(180deg, hsl(var(--ink) / 0) 35%, hsl(var(--ink) / 0.55) 65%, hsl(var(--ink) / 0.9) 100%);
     opacity: 0;
     transition: opacity .5s ease;
     pointer-events: none;
