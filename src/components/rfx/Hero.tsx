@@ -13,7 +13,7 @@ const Hero = () => {
           <div className="flex items-center gap-3 fade-up in mb-10">
             <span className="h-px w-10 bg-ink/30" aria-hidden="true" />
             <span className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft">
-              Surrey · Est. 2017
+              Est. 2017
             </span>
             <span className="h-px w-10 bg-ink/30" aria-hidden="true" />
           </div>
