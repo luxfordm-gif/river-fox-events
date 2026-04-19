@@ -510,15 +510,29 @@
   .rfx-section.warm { background: hsl(var(--surface-warm)); }
   .rfx-section.blush { background: hsl(var(--surface-blush)); }
   @media (max-width: 760px) {
-    .rfx-section { padding: 80px 0; }
+    .rfx-section { padding: 64px 0; }
+    /* Tighten Instagram block on mobile — remove top/bottom hairlines, reduce padding ~20% */
+    .rfx-instagram { padding: 52px 0; }
+    .rfx-instagram .rfx-instagram-inner {
+      border-top: 0 !important;
+      border-bottom: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    /* Reduce dark Enquire section bottom padding so the gap before footer feels right */
+    .rfx-enquire { padding-bottom: 48px; }
+    /* Form fields wider — remove form-wrap inner padding & give fields more room */
+    .rfx-enquire .form-wrap { padding: 22px; border-radius: 12px; }
+    /* Service cards: reduce image height ~20% on mobile */
+    .rfx-svc-img { aspect-ratio: 5/5 !important; }
   }
 
   /* Responsive grid stacking helper */
   @media (max-width: 760px) {
-    .rfx-md-stack { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .rfx-md-stack { grid-template-columns: 1fr !important; gap: 24px !important; }
     .rfx-md-full { grid-column: 1 / -1 !important; }
     .rfx-md-static { position: static !important; }
-    .form-grid { grid-template-columns: 1fr !important; }
+    .form-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
     .rfx-mosaic { grid-template-columns: 1fr !important; grid-auto-rows: auto !important; }
     .rfx-mosaic > div { grid-column: 1 / -1 !important; grid-row: auto !important; transform: none !important; }
     .rfx-svc-card { padding: 0 !important; border-left: none !important; }

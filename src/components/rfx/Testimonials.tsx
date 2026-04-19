@@ -30,12 +30,12 @@ const Testimonials = () => {
       aria-labelledby="kindness-heading"
     >
       <div className="container-rfx">
-        <div className="text-center mb-14">
+        <div className="text-center mb-8 md:mb-10">
           <h2
             id="kindness-heading"
             className="font-serif-rf"
             style={{
-              fontSize: "clamp(40px, 5.4vw, 84px)",
+              fontSize: "clamp(44px, 5.6vw, 88px)",
               lineHeight: 1.04,
               fontWeight: 300,
               letterSpacing: "-0.025em",
@@ -43,13 +43,9 @@ const Testimonials = () => {
           >
             Kind <em className="italic font-light text-accent-warm">words.</em>
           </h2>
-          <p className="text-[15.5px] leading-[1.6] text-ink-soft max-w-[480px] mx-auto mt-6">
-            Every quote is genuine — from clients who trusted us with their
-            most important celebrations.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-6 sm:px-12 md:px-20 lg:px-0">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-2 sm:px-8 md:px-16 lg:px-0">
           {QUOTES.map((t, i) => (
             <figure key={i} className="tcard fade-up">
               <Stars />

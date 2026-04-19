@@ -36,12 +36,12 @@ const Experiences = () => {
   return (
     <section id="experiences" className="rfx-section white" aria-labelledby="exp-heading">
       <div className="container-rfx">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-14 md:mb-16 items-end rfx-md-stack">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-12 mb-10 md:mb-16 items-end rfx-md-stack">
           <h2
             id="exp-heading"
-            className="font-serif-rf fade-up m-0"
+            className="font-serif-rf fade-up m-0 text-center md:text-left"
             style={{
-              fontSize: "clamp(40px, 5.4vw, 84px)",
+              fontSize: "clamp(44px, 5.6vw, 88px)",
               lineHeight: 1.06,
               fontWeight: 300,
               letterSpacing: "-0.025em",
@@ -50,22 +50,22 @@ const Experiences = () => {
             Our signature{" "}
             <em className="italic font-light text-accent-warm">experiences.</em>
           </h2>
-          <p className="text-[15.5px] leading-[1.6] text-ink-soft max-w-[440px] pb-3">
+          <p className="text-[15.5px] leading-[1.6] text-ink-soft max-w-[440px] pb-3 text-center md:text-left mx-auto md:mx-0">
             Three considered services, each fully bespoke. We work with a small
             number of clients each month so every event receives Laura's
             personal attention from concept to install.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 border-t border-ink/20 pt-12 rfx-md-stack">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 border-t border-ink/20 pt-8 md:pt-12 rfx-md-stack">
           {ITEMS.map((it, i) => (
             <a
               key={i}
               href={it.href}
-              className={`exp-card rfx-svc-card flex flex-col gap-4 px-7 ${i > 0 ? "md:border-l" : ""} border-ink/10`}
+              className={`exp-card rfx-svc-card flex flex-col gap-2 md:gap-4 px-7 ${i > 0 ? "md:border-l" : ""} border-ink/10`}
             >
               <div
-                className={`exp-img-wrap ph rounded-sm ${it.tone} fade-up`}
+                className={`exp-img-wrap ph rounded-sm ${it.tone} fade-up rfx-svc-img`}
                 style={{ aspectRatio: "4/5" }}
               >
                 <img
@@ -81,7 +81,7 @@ const Experiences = () => {
                 </span>
               </div>
               <h3
-                className="font-serif-rf exp-title mt-4"
+                className="font-serif-rf exp-title mt-3 md:mt-4"
                 style={{
                   fontSize: 30,
                   lineHeight: 1.18,

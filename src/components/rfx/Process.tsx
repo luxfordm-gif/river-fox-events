@@ -23,12 +23,12 @@ const Process = () => {
   return (
     <section id="process" className="rfx-section dark" aria-labelledby="process-heading">
       <div className="container-rfx">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end mb-16 rfx-md-stack">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-12 items-end mb-8 md:mb-16 rfx-md-stack">
           <h2
             id="process-heading"
-            className="font-serif-rf m-0"
+            className="font-serif-rf m-0 text-center md:text-left"
             style={{
-              fontSize: "clamp(40px, 5.4vw, 84px)",
+              fontSize: "clamp(44px, 5.6vw, 88px)",
               lineHeight: 1.06,
               fontWeight: 300,
               letterSpacing: "-0.025em",
@@ -37,13 +37,13 @@ const Process = () => {
             How it{" "}
             <em className="italic font-light text-accent-warm">works.</em>
           </h2>
-          <p className="text-[15.5px] leading-[1.6] max-w-[440px] m-0 pb-3" style={{ color: "hsl(var(--on-deep-soft))" }}>
+          <p className="text-[15.5px] leading-[1.6] max-w-[440px] m-0 pb-3 text-center md:text-left mx-auto md:mx-0" style={{ color: "hsl(var(--on-deep-soft))" }}>
             From first message to final installation — everything handled. You
             just enjoy the day.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 border-t pt-10" style={{ borderColor: "hsl(var(--on-deep) / 0.18)" }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 border-t pt-8 md:pt-10" style={{ borderColor: "hsl(var(--on-deep) / 0.18)" }}>
           {STEPS.map((s) => (
             <div key={s.n} className="pr-3 fade-up">
               <div

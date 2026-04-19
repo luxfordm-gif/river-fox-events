@@ -88,24 +88,27 @@ const Nav = () => {
           </a>
         </div>
 
-        {/* Mobile toggle */}
+        {/* Mobile toggle — refined "menu / close" label */}
         <button
           type="button"
-          aria-label="Open menu"
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((s) => !s)}
-          className="md:hidden absolute right-5 top-1/2 -translate-y-1/2 w-9 h-9 grid place-items-center"
+          className="md:hidden absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-2 px-3 h-9 font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink"
         >
-          <span
-            className={`block w-5 h-px bg-ink transition-transform duration-300 ${
-              open ? "translate-y-[3px] rotate-45" : "-translate-y-1"
-            }`}
-          />
-          <span
-            className={`block w-5 h-px bg-ink transition-transform duration-300 ${
-              open ? "-translate-y-[3px] -rotate-45" : "translate-y-1"
-            }`}
-          />
+          <span className="relative inline-block w-4 h-4" aria-hidden="true">
+            <span
+              className={`absolute left-0 right-0 top-1/2 h-px bg-ink transition-transform duration-300 ${
+                open ? "rotate-45" : "-translate-y-[3px]"
+              }`}
+            />
+            <span
+              className={`absolute left-0 right-0 top-1/2 h-px bg-ink transition-transform duration-300 ${
+                open ? "-rotate-45" : "translate-y-[3px]"
+              }`}
+            />
+          </span>
+          {open ? "Close" : "Menu"}
         </button>
       </nav>
 
@@ -122,7 +125,6 @@ const Nav = () => {
             { href: "#experiences", label: "Milestones" },
             { href: "#experiences", label: "Corporate" },
             { href: "#about", label: "About" },
-            { href: "#enquire", label: "Start planning" },
           ].map((l, i) => (
             <a
               key={l.label}
@@ -138,6 +140,20 @@ const Nav = () => {
               {l.label}
             </a>
           ))}
+
+          <a
+            href="#enquire"
+            onClick={() => setOpen(false)}
+            className="btn-solid-rf accent mt-8 self-start"
+            style={{
+              opacity: open ? 1 : 0,
+              transform: open ? "translateY(0)" : "translateY(20px)",
+              transition: `opacity .5s ease 360ms, transform .5s ease 360ms`,
+            }}
+          >
+            Start planning <span>→</span>
+          </a>
+
           <div className="hairline mt-10" />
           <p className="text-sm text-ink-soft mt-8 leading-relaxed">
             hello@riverfoxevents.co.uk
