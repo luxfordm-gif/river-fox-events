@@ -6,10 +6,10 @@ import { useScrollY } from "@/hooks/useRiverFox";
 const Hero = () => {
   const y = useScrollY();
   return (
-    <section id="top" className="pt-[152px] pb-12 md:pb-16" aria-labelledby="hero-heading">
+    <section id="top" className="pt-[124px] md:pt-[152px] pb-12 md:pb-16" aria-labelledby="hero-heading">
       <div className="container-rfx">
         {/* Centered editorial intro */}
-        <div className="mb-20 md:mb-24 flex flex-col items-center text-center">
+        <div className="mb-14 md:mb-24 flex flex-col items-center text-center">
           <div className="flex items-center gap-3 fade-up in mb-10">
             <span className="h-px w-10 bg-ink/30" aria-hidden="true" />
             <span className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft">
@@ -20,9 +20,9 @@ const Hero = () => {
 
           <h1
             id="hero-heading"
-            className="font-serif-rf max-w-[16ch] mx-auto break-words"
+            className="font-serif-rf max-w-[14ch] md:max-w-[22ch] mx-auto break-words"
             style={{
-              fontSize: "clamp(36px, 9vw, 152px)",
+              fontSize: "clamp(40px, 8.4vw, 152px)",
               lineHeight: 1.05,
               fontWeight: 300,
               letterSpacing: "-0.035em",
@@ -40,7 +40,7 @@ const Hero = () => {
             </span>
           </h1>
 
-          <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-10 fade-up in">
+          <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-6 md:mt-10 fade-up in text-center">
             Children's parties, milestone moments and corporate events
             across Surrey — created around your vision, delivered with calm.
           </p>
