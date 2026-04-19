@@ -37,22 +37,20 @@ const Experiences = () => {
     <section id="experiences" className="rfx-section white" aria-labelledby="exp-heading">
       <div className="container-rfx">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-14 md:mb-16 items-end rfx-md-stack">
-          <div>
-            <h2
-              id="exp-heading"
-              className="font-serif-rf fade-up"
-              style={{
-                fontSize: "clamp(40px, 5.4vw, 84px)",
-                lineHeight: 1.06,
-                fontWeight: 300,
-                letterSpacing: "-0.025em",
-              }}
-            >
-              Our signature{" "}
-              <em className="italic font-light text-accent-warm">experiences.</em>
-            </h2>
-          </div>
-          <p className="text-[15.5px] leading-[1.6] text-ink-soft max-w-[440px]">
+          <h2
+            id="exp-heading"
+            className="font-serif-rf fade-up m-0"
+            style={{
+              fontSize: "clamp(40px, 5.4vw, 84px)",
+              lineHeight: 1.06,
+              fontWeight: 300,
+              letterSpacing: "-0.025em",
+            }}
+          >
+            Our signature{" "}
+            <em className="italic font-light text-accent-warm">experiences.</em>
+          </h2>
+          <p className="text-[15.5px] leading-[1.6] text-ink-soft max-w-[440px] pb-3">
             Three considered services, each fully bespoke. We work with a small
             number of clients each month so every event receives Laura's
             personal attention from concept to install.
