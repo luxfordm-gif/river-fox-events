@@ -55,11 +55,26 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* 3-image editorial strip */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.35fr_0.9fr] gap-4 md:gap-5">
+        {/* Mobile: single full-bleed image. Tablet/Desktop: 3-image editorial strip with parallax */}
+        <div className="md:hidden -mx-5">
+          <div className="ph ph-warm overflow-hidden" style={{ aspectRatio: "4/5" }}>
+            <img
+              src={heroMain}
+              alt="Beautifully styled children's party tablescape with pastel balloon installation, Surrey garden"
+              className="absolute inset-0 w-full h-full object-cover z-[2]"
+              width={1024}
+              height={1280}
+            />
+          </div>
+        </div>
+
+        <div className="hidden md:grid grid-cols-[1fr_1.35fr_0.9fr] gap-4 md:gap-5">
           <div
             className="relative md:pt-16"
-            style={{ transform: `translateY(${y * 0.04}px)` }}
+            style={{
+              transform: `translateY(${y * -0.08}px)`,
+              willChange: "transform",
+            }}
           >
             <div className="ph ph-warm overflow-hidden rounded-sm" style={{ aspectRatio: "4/5" }}>
               <img
@@ -73,7 +88,10 @@ const Hero = () => {
           </div>
           <div
             className="relative"
-            style={{ transform: `translateY(${y * -0.055}px)` }}
+            style={{
+              transform: `translateY(${y * 0.06}px)`,
+              willChange: "transform",
+            }}
           >
             <div className="ph overflow-hidden rounded-sm" style={{ aspectRatio: "3/4" }}>
               <img
@@ -88,7 +106,10 @@ const Hero = () => {
           </div>
           <div
             className="relative md:pt-32"
-            style={{ transform: `translateY(${y * 0.025}px)` }}
+            style={{
+              transform: `translateY(${y * -0.1}px)`,
+              willChange: "transform",
+            }}
           >
             <div className="ph ph-blush overflow-hidden rounded-sm" style={{ aspectRatio: "4/5" }}>
               <img
