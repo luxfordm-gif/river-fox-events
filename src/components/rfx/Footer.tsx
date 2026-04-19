@@ -91,7 +91,7 @@ const Footer = () => {
               <h2
                 className="font-serif-rf max-w-[900px] text-center md:text-left"
                 style={{
-                  fontSize: "clamp(40px, 5.6vw, 96px)",
+                  fontSize: "clamp(52px, 5.6vw, 96px)",
                   lineHeight: 1.0,
                   fontWeight: 300,
                   letterSpacing: "-0.028em",

@@ -155,7 +155,21 @@ const Nav = () => {
           </a>
 
           <div className="hairline mt-10" />
-          <p className="text-sm text-ink-soft mt-8 leading-relaxed">
+          <a
+            href="https://instagram.com/riverfoxevents"
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => setOpen(false)}
+            className="mt-8 font-mono-rf text-[11px] tracking-[0.22em] uppercase text-ink no-underline inline-flex items-center gap-2 self-start"
+            style={{
+              opacity: open ? 1 : 0,
+              transform: open ? "translateY(0)" : "translateY(20px)",
+              transition: `opacity .5s ease 420ms, transform .5s ease 420ms`,
+            }}
+          >
+            Follow us on Instagram <span aria-hidden>→</span>
+          </a>
+          <p className="text-sm text-ink-soft mt-6 leading-relaxed">
             hello@riverfoxevents.co.uk
             <br />
             Based in Surrey · Replied within 48 hours.
