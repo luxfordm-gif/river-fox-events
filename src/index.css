@@ -544,13 +544,11 @@
     /* CPReveal: always put image first on mobile, reduce image height ~40% + soften shadow */
     .cp-reveal-img-wrap { order: -1 !important; aspect-ratio: 25/18 !important; }
     .cp-reveal-img-wrap > div { box-shadow: 0 12px 24px -16px hsl(var(--ink) / 0.18) !important; }
-    /* CPIncluded: 2-column grid with last item centred across both cols */
-    #cp-included .grid > div:nth-child(5) {
-      grid-column: 1 / -1;
-      max-width: 50%;
-      margin-left: auto;
-      margin-right: auto;
-    }
+
+    /* Mobile body-copy bump: bump 16px paragraphs to 17.5px for readability.
+       Small/meta text (13–15px) stays as-is intentionally. */
+    .rfx-body-bump,
+    .text-\[16px\] { font-size: 17.5px !important; line-height: 1.65 !important; }
   }
 
   /* Hero scroll-down cue — soft bouncing chevron */
