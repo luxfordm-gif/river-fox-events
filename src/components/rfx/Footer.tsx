@@ -84,28 +84,23 @@ const Footer = () => {
         <div className="container-rfx relative">
           {/* CTA stripe */}
           <div
-            className="pb-16 mb-16 border-b"
+            className="pb-16 mb-16 border-b text-center"
             style={{ borderColor: "hsl(var(--on-deep) / 0.15)" }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-end rfx-md-stack">
-              <h2
-                className="font-serif-rf max-w-[900px] text-center md:text-left"
-                style={{
-                  fontSize: "clamp(52px, 5.6vw, 96px)",
-                  lineHeight: 1.0,
-                  fontWeight: 300,
-                  letterSpacing: "-0.028em",
-                }}
-              >
-                Ready to begin?{" "}
-                <em className="italic font-light" style={{ color: "hsl(var(--on-deep) / 0.55)" }}>
-                  Let's design your celebration.
-                </em>
-              </h2>
-              <a href="#enquire" className="btn-solid-rf accent self-center md:self-end mx-auto md:mx-0">
-                Start an enquiry <span>→</span>
-              </a>
-            </div>
+            <h2
+              className="font-serif-rf max-w-[1100px] mx-auto"
+              style={{
+                fontSize: "clamp(52px, 5.6vw, 96px)",
+                lineHeight: 1.0,
+                fontWeight: 300,
+                letterSpacing: "-0.028em",
+              }}
+            >
+              Ready to begin?{" "}
+              <em className="italic font-light" style={{ color: "hsl(var(--on-deep) / 0.55)" }}>
+                Let's design your celebration.
+              </em>
+            </h2>
           </div>
 
           {/* Footer columns */}

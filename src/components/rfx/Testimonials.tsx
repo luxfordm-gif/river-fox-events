@@ -26,10 +26,11 @@ const Testimonials = () => {
   return (
     <section
       id="kindness"
-      className="rfx-section blush"
+      className="rfx-section"
       aria-labelledby="kindness-heading"
     >
       <div className="container-rfx">
+        <div className="hairline mb-12 md:mb-16" aria-hidden="true" />
         <div className="text-center mb-8 md:mb-10">
           <h2
             id="kindness-heading"
@@ -49,7 +50,7 @@ const Testimonials = () => {
           {QUOTES.map((t, i) => (
             <figure key={i} className="tcard fade-up">
               <Stars />
-              <blockquote className="tcard-quote font-thin text-zinc-600">{t.q}</blockquote>
+              <blockquote className="tcard-quote font-thin text-ink-soft">{t.q}</blockquote>
               <figcaption className="tcard-meta">
                 <span className="name">{t.a}</span>
                 <span>{t.loc}</span>
