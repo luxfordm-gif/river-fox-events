@@ -13,7 +13,8 @@ const CPHero = () => {
   return (
     <section
       id="top"
-      className="relative w-full h-screen min-h-[680px] overflow-hidden"
+      className="relative w-screen overflow-hidden -mt-px"
+      style={{ height: "100dvh", minHeight: "100vh" }}
       aria-labelledby="cp-hero-heading"
     >
       {/* Full-bleed image */}
