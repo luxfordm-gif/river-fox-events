@@ -9,7 +9,7 @@ const ITEMS = [
       "Immersive themed parties designed to feel magical for children — and completely effortless for you.",
     img: expChildren,
     alt: "Whimsical immersive children's party setup with pastel balloon arch and themed installation",
-    href: "#enquire",
+    href: "/childrens-parties",
     tone: "",
   },
   {
