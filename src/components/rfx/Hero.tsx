@@ -14,7 +14,7 @@ const Hero = () => {
             className="font-serif-rf text-left max-w-[18ch]"
             style={{
               fontSize: "clamp(48px, 9vw, 152px)",
-              lineHeight: 0.96,
+              lineHeight: 1.01,
               fontWeight: 300,
               letterSpacing: "-0.035em",
             }}
