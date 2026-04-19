@@ -23,7 +23,7 @@ const Enquire = () => {
   };
 
   return (
-    <section id="enquire" className="rfx-section dark" aria-labelledby="enquire-heading">
+    <section id="enquire" className="rfx-section dark rfx-enquire" aria-labelledby="enquire-heading">
       <div className="container-rfx">
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start rfx-md-stack">
           {/* Left: heading + checklist */}
@@ -51,15 +51,15 @@ const Enquire = () => {
               not a template, a proper bespoke proposal.
             </p>
 
-            <ul className="mt-7 max-w-[460px] space-y-1">
+            <ul className="mt-7 max-w-[460px] w-full space-y-1.5 mx-auto lg:mx-0">
               {CHECKLIST.map((c) => (
                 <li
                   key={c}
-                  className="flex items-center gap-3 text-[14.5px] leading-[1.3]"
+                  className="flex items-center justify-center lg:justify-start gap-3 text-[14.5px] leading-[1.3]"
                   style={{ color: "hsl(var(--on-deep))" }}
                 >
                   <span
-                    className="inline-block w-3 h-px"
+                    className="inline-block w-3 h-px shrink-0"
                     style={{ background: "hsl(var(--accent-warm))" }}
                     aria-hidden="true"
                   />
@@ -69,7 +69,7 @@ const Enquire = () => {
             </ul>
 
             <div
-              className="mt-9 p-5 max-w-[460px] rounded-md"
+              className="mt-9 p-5 max-w-[460px] w-full rounded-md text-center lg:text-left mx-auto lg:mx-0"
               style={{
                 border: "1px solid hsl(var(--accent-warm) / 0.55)",
                 color: "hsl(var(--on-deep))",
