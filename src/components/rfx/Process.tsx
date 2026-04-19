@@ -24,22 +24,20 @@ const Process = () => {
     <section id="process" className="rfx-section dark" aria-labelledby="process-heading">
       <div className="container-rfx">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end mb-16 rfx-md-stack">
-          <div>
-            <h2
-              id="process-heading"
-              className="font-serif-rf"
-              style={{
-                fontSize: "clamp(40px, 5.4vw, 84px)",
-                lineHeight: 1.06,
-                fontWeight: 300,
-                letterSpacing: "-0.025em",
-              }}
-            >
-              How it{" "}
-              <em className="italic font-light text-accent-warm">works.</em>
-            </h2>
-          </div>
-          <p className="text-[15.5px] leading-[1.6] max-w-[440px]" style={{ color: "hsl(var(--on-deep-soft))" }}>
+          <h2
+            id="process-heading"
+            className="font-serif-rf m-0"
+            style={{
+              fontSize: "clamp(40px, 5.4vw, 84px)",
+              lineHeight: 1.06,
+              fontWeight: 300,
+              letterSpacing: "-0.025em",
+            }}
+          >
+            How it{" "}
+            <em className="italic font-light text-accent-warm">works.</em>
+          </h2>
+          <p className="text-[15.5px] leading-[1.6] max-w-[440px] m-0 pb-2" style={{ color: "hsl(var(--on-deep-soft))" }}>
             From first message to final installation — everything handled. You
             just enjoy the day.
           </p>
