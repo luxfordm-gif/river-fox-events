@@ -93,13 +93,16 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-12 md:gap-20 items-start rfx-md-stack">
           <div className="md:sticky md:top-24 fade-up rfx-md-static">
             <div
-              className="ph ph-warm overflow-hidden rounded-sm"
+              ref={studioWrap}
+              className="ph ph-warm overflow-hidden rounded-sm relative"
               style={{ aspectRatio: "5/6" }}
             >
               <img
+                ref={studioImgRef}
                 src={studioImg}
                 alt="Laura's studio in Surrey — moodboards, fabric and sketches"
-                className="absolute inset-0 w-full h-full object-cover z-[2]"
+                className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
+                style={{ transform: "translate3d(0,0,0) scale(1.14)" }}
                 loading="lazy"
                 width={1024}
                 height={1280}
