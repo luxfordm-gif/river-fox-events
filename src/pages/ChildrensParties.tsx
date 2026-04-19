@@ -8,6 +8,7 @@ import CPReveal from "@/components/rfx/CPReveal";
 import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
+import CPIncluded from "@/components/rfx/CPIncluded";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 
 import imgCelebrations from "@/assets/cp-celebrations.jpg";
@@ -195,6 +196,11 @@ const ChildrensParties = () => {
             Every River Fox Events party is built from scratch around your
             vision — no packages, no templates.
           </p>
+          <div className="!mt-8">
+            <a href="#enquire" className="btn-solid-rf accent">
+              Book your party now <span>→</span>
+            </a>
+          </div>
         </CPReveal>
 
         <CPReveal
@@ -252,27 +258,8 @@ const ChildrensParties = () => {
           </p>
         </CPReveal>
 
-        <CPReveal
-          id="cp-included"
-          imageSide="left"
-          image={imgIncluded}
-          alt="Beautifully styled cake on a vintage stand beneath a sculptural pastel balloon arrangement"
-          tone="ph-blush"
-          label="What's included"
-          headline={
-            <>
-              Everything handled.{" "}
-              <em className="italic font-light text-accent-warm">
-                Nothing left to chance.
-              </em>
-            </>
-          }
-        >
-          <DetailRows rows={INCLUDED} />
-          <p className="italic text-ink !mt-6">
-            All handled seamlessly, so you can enjoy every moment.
-          </p>
-        </CPReveal>
+        <CPIncluded />
+
 
         <CPPricing />
 
