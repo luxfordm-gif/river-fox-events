@@ -98,7 +98,7 @@ const Footer = () => {
                 }}
               >
                 Ready to begin?{" "}
-                <em className="italic font-light" style={{ color: "hsl(var(--accent-warm))" }}>
+                <em className="italic font-light" style={{ color: "hsl(var(--on-deep) / 0.55)" }}>
                   Let's design your celebration.
                 </em>
               </h2>
