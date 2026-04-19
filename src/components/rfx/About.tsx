@@ -64,9 +64,12 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
 };
 
 const About = () => {
+const About = () => {
   const statsRef = useRef<HTMLDivElement>(null);
   const [statsVisible, setStatsVisible] = useState(false);
-
+  const studioWrap = useRef<HTMLDivElement>(null);
+  const studioImgRef = useRef<HTMLImageElement>(null);
+  useImageParallax(studioWrap, studioImgRef, { intensity: 8, scale: 1.14 });
   useEffect(() => {
     const el = statsRef.current;
     if (!el) return;
