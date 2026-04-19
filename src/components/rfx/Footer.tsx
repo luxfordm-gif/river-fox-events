@@ -43,6 +43,10 @@ const Footer = () => {
               transform: `translateY(${Math.min(80, y * 0.025)}px) translateX(${revealed ? 0 : -40}px)`,
               opacity: revealed ? 1 : 0,
               transition: "opacity 1.6s ease, transform 1.8s cubic-bezier(.2,.7,.2,1)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 18%, rgba(0,0,0,0.55) 38%, #000 60%)",
+              maskImage:
+                "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 18%, rgba(0,0,0,0.55) 38%, #000 60%)",
             }}
           >
             River&nbsp;
