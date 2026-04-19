@@ -144,10 +144,15 @@ const CPPricing = () => {
           ))}
         </div>
 
-        <p className="text-center text-[13.5px] text-ink-soft mt-12 max-w-[560px] mx-auto fade-up">
-          All events are individually quoted following a discovery call — so the
-          proposal reflects exactly what you have in mind.
-        </p>
+        <div className="text-center mt-12 fade-up flex flex-col items-center gap-6">
+          <a href="#enquire" className="btn-solid-rf accent">
+            Book your event <span>→</span>
+          </a>
+          <p className="text-[13.5px] text-ink-soft max-w-[560px] mx-auto">
+            All events are individually quoted following a discovery call — so the
+            proposal reflects exactly what you have in mind.
+          </p>
+        </div>
       </div>
     </section>
   );
