@@ -125,7 +125,6 @@ const Nav = () => {
             { href: "#experiences", label: "Milestones" },
             { href: "#experiences", label: "Corporate" },
             { href: "#about", label: "About" },
-            { href: "#enquire", label: "Start planning" },
           ].map((l, i) => (
             <a
               key={l.label}
@@ -141,6 +140,20 @@ const Nav = () => {
               {l.label}
             </a>
           ))}
+
+          <a
+            href="#enquire"
+            onClick={() => setOpen(false)}
+            className="btn-solid-rf accent mt-8 self-start"
+            style={{
+              opacity: open ? 1 : 0,
+              transform: open ? "translateY(0)" : "translateY(20px)",
+              transition: `opacity .5s ease 360ms, transform .5s ease 360ms`,
+            }}
+          >
+            Start planning <span>→</span>
+          </a>
+
           <div className="hairline mt-10" />
           <p className="text-sm text-ink-soft mt-8 leading-relaxed">
             hello@riverfoxevents.co.uk
