@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 const SERVICES = [
   { href: "#experiences", label: "Children's parties" },
@@ -43,14 +44,14 @@ const Nav = () => {
               aria-expanded={servicesOpen}
             >
               Services
-              <span
-                className={`text-[10px] transition-transform duration-300 ${
+              <ChevronDown
+                size={12}
+                strokeWidth={1.25}
+                aria-hidden="true"
+                className={`transition-transform duration-300 opacity-70 mt-px ${
                   servicesOpen ? "rotate-180" : ""
                 }`}
-                aria-hidden="true"
-              >
-                ▾
-              </span>
+              />
             </button>
             <div
               className={`absolute left-0 top-full pt-4 transition-all duration-300 ${
