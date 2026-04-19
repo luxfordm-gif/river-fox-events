@@ -551,4 +551,34 @@
     0%, 100% { transform: translateY(0); opacity: 0.8; }
     50% { transform: translateY(8px); opacity: 1; }
   }
+
+  /* Shimmer stroke — constant, very subtle animated border for the popular pricing card */
+  .rfx-shimmer-stroke {
+    border-radius: 8px;
+    padding: 1.5px;
+    background: linear-gradient(
+      120deg,
+      hsl(var(--accent) / 0) 0%,
+      hsl(var(--accent) / 0) 30%,
+      hsl(var(--accent-warm) / 0.55) 48%,
+      hsl(var(--accent) / 0.7) 52%,
+      hsl(var(--accent) / 0) 70%,
+      hsl(var(--accent) / 0) 100%
+    );
+    background-size: 250% 100%;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: rfx-shimmer-sweep 5.5s linear infinite;
+    opacity: 0.85;
+  }
+  @keyframes rfx-shimmer-sweep {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -100% 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rfx-shimmer-stroke { animation: none; opacity: 0.4; }
+  }
 }
