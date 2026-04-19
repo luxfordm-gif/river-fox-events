@@ -26,22 +26,22 @@ const CPHero = () => {
         height={1080}
       />
 
-      {/* Overlay — darker top for nav legibility, deep bottom for headline */}
+      {/* Overlay — even, slightly darker for centred copy legibility */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, hsl(var(--ink) / 0.55) 0%, hsl(var(--ink) / 0.18) 28%, hsl(var(--ink) / 0.18) 50%, hsl(var(--ink) / 0.55) 78%, hsl(var(--ink) / 0.85) 100%)",
+            "linear-gradient(180deg, hsl(var(--ink) / 0.30) 0%, hsl(var(--ink) / 0.42) 50%, hsl(var(--ink) / 0.55) 100%)",
         }}
       />
 
-      {/* Headline — lower half */}
-      <div className="relative z-[2] h-full w-full flex flex-col items-center justify-end pb-[18vh] md:pb-[14vh] px-6">
+      {/* Headline — dead centre */}
+      <div className="relative z-[2] h-full w-full flex flex-col items-center justify-center px-6 text-center">
         <h1
           id="cp-hero-heading"
-          className="font-serif-rf text-center mx-auto"
+          className="font-serif-rf mx-auto"
           style={{
-            fontSize: "clamp(64px, 10vw, 148px)",
+            fontSize: "clamp(56px, 9vw, 132px)",
             lineHeight: 0.96,
             fontWeight: 400,
             letterSpacing: "-0.04em",
@@ -66,9 +66,20 @@ const CPHero = () => {
             </span>
           </span>
         </h1>
+
+        <p
+          className="word-reveal in delay-2 mt-8 md:mt-10 max-w-[44ch] mx-auto text-[15px] md:text-[17px] leading-[1.6]"
+          style={{
+            color: "hsl(var(--background) / 0.9)",
+            textWrap: "pretty",
+          }}
+        >
+          Immersive, beautifully designed children's parties across Surrey —
+          every detail considered, nothing left to chance.
+        </p>
       </div>
 
-      {/* Animated scroll cue — larger, centred */}
+      {/* Animated scroll cue */}
       <a
         href="#cp-celebrations"
         aria-label="Scroll to next section"
