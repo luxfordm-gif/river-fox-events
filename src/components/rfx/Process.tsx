@@ -47,7 +47,7 @@ const Process = () => {
           {STEPS.map((s) => (
             <div key={s.n} className="pr-3 fade-up">
               <div
-                className="font-mono-rf text-[11px] tracking-[0.22em] mb-6 font-medium"
+                className="font-mono-rf text-[11px] tracking-[0.22em] mb-3 font-medium"
                 style={{ color: "hsl(var(--accent-warm))" }}
               >
                 {s.n} /
