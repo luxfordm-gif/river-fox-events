@@ -1,0 +1,169 @@
+import { useState } from "react";
+import { toast } from "sonner";
+
+const CHECKLIST = [
+  "Events from £600",
+  "Response within 48 hours",
+  "Limited monthly availability",
+  "Surrey, London & surrounding areas",
+];
+
+const Enquire = () => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    // No backend yet — friendly placeholder.
+    setTimeout(() => {
+      setSubmitting(false);
+      toast.success("Thank you — Laura will reply personally within 48 hours.");
+      (e.target as HTMLFormElement).reset();
+    }, 600);
+  };
+
+  return (
+    <section id="enquire" className="rfx-section dark" aria-labelledby="enquire-heading">
+      <div className="container-rfx">
+        <div className="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-12 md:gap-16 items-start rfx-md-stack">
+          {/* Left: heading + checklist */}
+          <div className="pt-2">
+            <div
+              className="eyebrow mb-7"
+              style={{ color: "hsl(var(--on-deep-soft))" }}
+            >
+              (05) — Enquire
+            </div>
+            <h2
+              id="enquire-heading"
+              className="font-serif-rf"
+              style={{
+                fontSize: "clamp(44px, 5.6vw, 92px)",
+                lineHeight: 0.98,
+                fontWeight: 300,
+                letterSpacing: "-0.028em",
+              }}
+            >
+              Let's make something{" "}
+              <em className="italic font-light text-accent-warm">
+                worth remembering.
+              </em>
+            </h2>
+            <p
+              className="text-[15.5px] leading-[1.7] max-w-[460px] mt-7"
+              style={{ color: "hsl(var(--on-deep-soft))" }}
+            >
+              Share your vision and I'll respond personally within 48 hours —
+              not a template, a proper bespoke proposal.
+            </p>
+
+            <ul className="mt-10 space-y-3 max-w-[460px]">
+              {CHECKLIST.map((c) => (
+                <li
+                  key={c}
+                  className="flex items-baseline gap-3 text-[14.5px]"
+                  style={{ color: "hsl(var(--on-deep))" }}
+                >
+                  <span
+                    className="inline-block w-6 font-mono-rf text-xs"
+                    style={{ color: "hsl(var(--accent-warm))" }}
+                  >
+                    —
+                  </span>
+                  {c}
+                </li>
+              ))}
+            </ul>
+
+            <div
+              className="mt-10 p-5 max-w-[460px]"
+              style={{
+                border: "1px solid hsl(var(--accent-warm) / 0.55)",
+                color: "hsl(var(--on-deep))",
+              }}
+            >
+              <div
+                className="font-mono-rf text-[10px] tracking-[0.22em] uppercase mb-2"
+                style={{ color: "hsl(var(--accent-warm))" }}
+              >
+                — Limited availability
+              </div>
+              <p className="text-[13.5px] leading-[1.6]">
+                To give every celebration the attention it deserves, we work
+                with a limited number of clients each month.
+              </p>
+            </div>
+          </div>
+
+          {/* Right: form */}
+          <form className="form-wrap" onSubmit={onSubmit}>
+            <div className="flex justify-between items-baseline mb-5">
+              <div className="eyebrow">Enquiry form</div>
+              <div className="font-mono-rf text-[10px] tracking-[0.22em] text-ink-soft">
+                Rf — 05
+              </div>
+            </div>
+            <div className="form-grid">
+              <label className="form-row">
+                <span className="lbl">Name</span>
+                <input type="text" name="name" placeholder="Your full name" required />
+              </label>
+              <label className="form-row">
+                <span className="lbl">Email</span>
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+              <label className="form-row">
+                <span className="lbl">Event date</span>
+                <input type="date" name="date" />
+              </label>
+              <label className="form-row">
+                <span className="lbl">Event type</span>
+                <select name="type" defaultValue="Children's party">
+                  <option>Children's party</option>
+                  <option>Milestone celebration</option>
+                  <option>Corporate event</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label className="form-row full">
+                <span className="lbl">Venue / location</span>
+                <input type="text" name="venue" placeholder="Cobham, at home" />
+              </label>
+              <label className="form-row full">
+                <span className="lbl">Approximate budget</span>
+                <select name="budget" defaultValue="£600 – £1,200">
+                  <option>£600 – £1,200</option>
+                  <option>£1,200 – £2,500</option>
+                  <option>£2,500 – £5,000</option>
+                  <option>£5,000+</option>
+                </select>
+              </label>
+              <label className="form-row full">
+                <span className="lbl">Tell me about your vision</span>
+                <textarea
+                  name="vision"
+                  rows={4}
+                  placeholder="A few notes, colours, ideas, or a Pinterest link…"
+                />
+              </label>
+            </div>
+            <div className="flex justify-between items-center mt-6 gap-4 flex-wrap">
+              <span className="font-mono-rf text-[10.5px] tracking-[0.14em] text-ink-soft">
+                Replied to personally, within 48 hours.
+              </span>
+              <button
+                type="submit"
+                disabled={submitting}
+                className="btn-solid-rf accent disabled:opacity-60"
+              >
+                {submitting ? "Sending…" : "Send enquiry"} <span>→</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Enquire;
