@@ -79,6 +79,7 @@
     font-family: var(--font-sans);
     font-size: 15px;
     line-height: 1.55;
+    overflow-x: hidden;
   }
   ::selection {
     background: hsl(var(--ink));
@@ -498,9 +499,9 @@
   }
   .rfx-nav a:not(.btn-solid-rf):not(.no-underline-fx):hover::after { transform: scaleX(1); }
   @media (max-width: 760px) {
-    .rfx-nav { padding: 16px 22px; grid-template-columns: auto 1fr auto; }
+    .rfx-nav { padding: 16px 22px; grid-template-columns: 1fr auto; }
     .rfx-nav .nav-left { display: none; }
-    .rfx-nav .nav-right { gap: 18px; font-size: 12px; }
+    .rfx-nav .nav-right { display: none; }
   }
 
   .rfx-section { padding: 120px 0; }
