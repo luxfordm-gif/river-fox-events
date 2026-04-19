@@ -104,9 +104,11 @@ const CPReveal = ({
         }}
       >
         <img
+          ref={imgRef}
           src={image}
           alt={alt}
-          className="absolute inset-0 w-full h-full object-cover z-[2]"
+          className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
+          style={{ transform: "translate3d(0,0,0) scale(1.18)" }}
           loading="lazy"
           width={1280}
           height={1600}
