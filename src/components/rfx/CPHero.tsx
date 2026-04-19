@@ -96,7 +96,7 @@ const CPHero = () => {
         </h1>
 
         <p
-          className="word-reveal in delay-2 mt-2 md:mt-3 max-w-[44ch] mx-auto text-[15px] md:text-[17px] leading-[1.6]"
+          className="word-reveal in delay-2 mt-3 md:mt-3 max-w-[44ch] mx-auto text-[17px] md:text-[17px] leading-[1.6]"
           style={{
             color: "hsl(var(--background) / 0.9)",
             textWrap: "pretty",
@@ -111,7 +111,7 @@ const CPHero = () => {
       <a
         href="#cp-celebrations"
         aria-label="Scroll to next section"
-        className={`absolute left-1/2 -translate-x-1/2 bottom-8 z-[3] flex flex-col items-center gap-3 transition-opacity duration-500 ${
+        className={`absolute left-1/2 -translate-x-1/2 bottom-20 md:bottom-8 z-[3] flex flex-col items-center gap-3 transition-opacity duration-500 ${
           scrolled ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
         style={{ color: "hsl(var(--background) / 0.95)" }}
