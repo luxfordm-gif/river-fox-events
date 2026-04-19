@@ -64,7 +64,6 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
 };
 
 const About = () => {
-const About = () => {
   const statsRef = useRef<HTMLDivElement>(null);
   const [statsVisible, setStatsVisible] = useState(false);
   const studioWrap = useRef<HTMLDivElement>(null);
