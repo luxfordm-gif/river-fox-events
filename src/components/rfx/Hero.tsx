@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import heroMain from "@/assets/hero-1.jpg";
 import heroSide from "@/assets/hero-2.jpg";
 import heroSmall from "@/assets/hero-3.jpg";
 import { useScrollY } from "@/hooks/useRiverFox";
+import { useImageParallax } from "@/hooks/useImageParallax";
 
 const MOBILE_SLIDES = [
   { src: heroMain, alt: "Beautifully styled children's party tablescape with pastel balloon installation, Surrey garden" },
@@ -13,6 +14,16 @@ const MOBILE_SLIDES = [
 const Hero = () => {
   const y = useScrollY();
   const [slide, setSlide] = useState(0);
+
+  const wrap1 = useRef<HTMLDivElement>(null);
+  const img1 = useRef<HTMLImageElement>(null);
+  const wrap2 = useRef<HTMLDivElement>(null);
+  const img2 = useRef<HTMLImageElement>(null);
+  const wrap3 = useRef<HTMLDivElement>(null);
+  const img3 = useRef<HTMLImageElement>(null);
+  useImageParallax(wrap1, img1, { intensity: 6, scale: 1.12 });
+  useImageParallax(wrap2, img2, { intensity: 6, scale: 1.12 });
+  useImageParallax(wrap3, img3, { intensity: 6, scale: 1.12 });
 
   useEffect(() => {
     const id = window.setInterval(() => {
@@ -105,11 +116,13 @@ const Hero = () => {
               willChange: "transform",
             }}
           >
-            <div className="ph ph-warm overflow-hidden rounded-sm" style={{ aspectRatio: "4/5" }}>
+            <div ref={wrap1} className="ph ph-warm overflow-hidden rounded-sm relative" style={{ aspectRatio: "4/5" }}>
               <img
+                ref={img1}
                 src={heroMain}
                 alt="Beautifully styled children's party tablescape with pastel balloon installation, Surrey garden"
-                className="absolute inset-0 w-full h-full object-cover z-[2]"
+                className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
+                style={{ transform: "translate3d(0,0,0) scale(1.12)" }}
                 width={1024}
                 height={1280}
               />
@@ -122,11 +135,13 @@ const Hero = () => {
               willChange: "transform",
             }}
           >
-            <div className="ph overflow-hidden rounded-sm" style={{ aspectRatio: "3/4" }}>
+            <div ref={wrap2} className="ph overflow-hidden rounded-sm relative" style={{ aspectRatio: "3/4" }}>
               <img
+                ref={img2}
                 src={heroSide}
                 alt="Elegant milestone celebration installation with floral arch and candles"
-                className="absolute inset-0 w-full h-full object-cover z-[2]"
+                className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
+                style={{ transform: "translate3d(0,0,0) scale(1.12)" }}
                 loading="lazy"
                 width={1024}
                 height={1408}
@@ -140,11 +155,13 @@ const Hero = () => {
               willChange: "transform",
             }}
           >
-            <div className="ph ph-blush overflow-hidden rounded-sm" style={{ aspectRatio: "4/5" }}>
+            <div ref={wrap3} className="ph ph-blush overflow-hidden rounded-sm relative" style={{ aspectRatio: "4/5" }}>
               <img
+                ref={img3}
                 src={heroSmall}
                 alt="Detail of a styled cake on a vintage cake stand with pastel ribbons and peonies"
-                className="absolute inset-0 w-full h-full object-cover z-[2]"
+                className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
+                style={{ transform: "translate3d(0,0,0) scale(1.12)" }}
                 loading="lazy"
                 width={1024}
                 height={1280}
