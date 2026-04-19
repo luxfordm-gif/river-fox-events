@@ -512,10 +512,11 @@
   .rfx-section.white { background: hsl(var(--surface-alt)); }
   .rfx-section.warm { background: hsl(var(--surface-warm)); }
   .rfx-section.blush { background: hsl(var(--surface-blush)); }
+  /* Instagram section — reduced height (was 120px / 48px) */
+  .rfx-instagram { padding: 60px 0; }
   @media (max-width: 760px) {
     .rfx-section { padding: 56px 0; }
-    /* Tighten Instagram block on mobile — remove top/bottom hairlines, reduce padding ~20% */
-    .rfx-instagram { padding: 48px 0; }
+    .rfx-instagram { padding: 28px 0; }
     .rfx-instagram .rfx-instagram-inner {
       border-top: 0 !important;
       border-bottom: 0 !important;

@@ -9,7 +9,7 @@ const InstagramFollow = () => {
       aria-labelledby="instagram-heading"
     >
       <div className="container-rfx">
-        <div className="border-t border-b border-ink/15 py-20 md:py-28 fade-up rfx-instagram-inner">
+        <div className="border-t border-b border-ink/15 py-10 md:py-14 fade-up rfx-instagram-inner">
           <div className="flex flex-col items-center text-center max-w-[680px] mx-auto">
             <div className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-7 inline-flex items-center gap-3">
               <span className="h-px w-8 bg-ink/30" aria-hidden="true" />
