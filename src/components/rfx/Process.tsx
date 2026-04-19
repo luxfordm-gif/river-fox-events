@@ -30,7 +30,7 @@ const Process = () => {
               className="font-serif-rf"
               style={{
                 fontSize: "clamp(40px, 5.4vw, 84px)",
-                lineHeight: 1.04,
+                lineHeight: 1.06,
                 fontWeight: 300,
                 letterSpacing: "-0.025em",
               }}
