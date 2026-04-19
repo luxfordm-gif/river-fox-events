@@ -61,9 +61,12 @@ const CPReveal = ({
           transform: visible ? "scale(1)" : "scale(0.78)",
           opacity: visible ? 1 : 0,
           transition:
-            "transform 1.4s cubic-bezier(.22,.7,.2,1), opacity 1.1s ease",
+            "transform 1.4s cubic-bezier(.22,.7,.2,1), opacity 1.1s ease, box-shadow 1.4s ease",
           transformOrigin: "center center",
           willChange: "transform, opacity",
+          boxShadow: visible
+            ? "0 30px 70px -28px hsl(var(--ink) / 0.32), 0 12px 28px -14px hsl(var(--ink) / 0.16)"
+            : "0 0 0 hsl(var(--ink) / 0)",
         }}
       >
         <img
@@ -106,7 +109,10 @@ const CPReveal = ({
       >
         {headline}
       </h2>
-      <div className="mt-7 text-[16px] leading-[1.7] text-ink-soft max-w-[520px] space-y-5">
+      <div
+        className="mt-7 text-[16px] leading-[1.7] text-ink-soft max-w-[520px] space-y-5"
+        style={{ textWrap: "pretty" }}
+      >
         {children}
       </div>
     </div>
