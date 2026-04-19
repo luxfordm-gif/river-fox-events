@@ -89,7 +89,7 @@ const Footer = () => {
           >
             <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-end rfx-md-stack">
               <h2
-                className="font-serif-rf max-w-[900px]"
+                className="font-serif-rf max-w-[900px] text-center md:text-left"
                 style={{
                   fontSize: "clamp(40px, 5.6vw, 96px)",
                   lineHeight: 1.0,
@@ -102,7 +102,7 @@ const Footer = () => {
                   Let's design your celebration.
                 </em>
               </h2>
-              <a href="#enquire" className="btn-solid-rf accent self-end">
+              <a href="#enquire" className="btn-solid-rf accent self-center md:self-end mx-auto md:mx-0">
                 Start an enquiry <span>→</span>
               </a>
             </div>
