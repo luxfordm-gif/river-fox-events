@@ -37,7 +37,7 @@ const Process = () => {
             How it{" "}
             <em className="italic font-light text-accent-warm">works.</em>
           </h2>
-          <p className="text-[15.5px] leading-[1.6] max-w-[440px] m-0 pb-2" style={{ color: "hsl(var(--on-deep-soft))" }}>
+          <p className="text-[15.5px] leading-[1.6] max-w-[440px] m-0 pb-3" style={{ color: "hsl(var(--on-deep-soft))" }}>
             From first message to final installation — everything handled. You
             just enjoy the day.
           </p>
