@@ -6,15 +6,24 @@ const CPHero = () => {
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
     let raf = 0;
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
+      if (reduceMotion) return;
       if (raf) return;
       raf = window.requestAnimationFrame(() => {
         const y = window.scrollY;
+        const vh = window.innerHeight || 1;
+        // Progress 0 → 1 as the user scrolls one viewport height
+        const p = Math.min(1, Math.max(0, y / vh));
         if (imgRef.current) {
-          // Slow parallax — image moves up at ~35% of scroll speed inside the clip
-          imgRef.current.style.transform = `translate3d(0, ${y * 0.35}px, 0) scale(1.15)`;
+          // Zoom out from 1.28 → 1.05 while parallaxing upward.
+          const scale = 1.28 - p * 0.23;
+          const translate = y * 0.35;
+          imgRef.current.style.transform = `translate3d(0, ${translate}px, 0) scale(${scale})`;
         }
         raf = 0;
       });
