@@ -21,7 +21,7 @@ const Ticker = () => {
       <div className="container-rfx py-6 md:py-7">
         <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 md:gap-10 items-center">
           <div className="font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink-soft whitespace-nowrap">
-            — We deliver across
+            We deliver across
           </div>
           <div className="overflow-hidden relative">
             <div
