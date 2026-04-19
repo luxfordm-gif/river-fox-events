@@ -53,7 +53,7 @@ const CPReveal = ({
 
   const imageBlock = (
     <div
-      className="relative w-full cp-reveal-img-wrap"
+      className={`relative w-full cp-reveal-img-wrap ${hideImageOnMobile ? "hidden md:block" : ""}`}
       style={{ aspectRatio: "4/5" }}
     >
       {/* Inner zoom-out reveal: starts small (centred), expands to fill */}
