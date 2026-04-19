@@ -5,12 +5,14 @@ interface CPRevealProps {
   imageSide: "left" | "right";
   image: string;
   alt: string;
-  label: string;
+  label?: string;
   headline: ReactNode;
   children: ReactNode;
   /** Optional subtle tone class on the image placeholder (ph-warm, ph-blush) */
   tone?: string;
   id?: string;
+  /** Hide image on mobile (used for the first section to avoid duplication with hero) */
+  hideImageOnMobile?: boolean;
 }
 
 /**
@@ -22,11 +24,11 @@ const CPReveal = ({
   imageSide,
   image,
   alt,
-  label,
   headline,
   children,
   tone = "ph-warm",
   id,
+  hideImageOnMobile = false,
 }: CPRevealProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
