@@ -18,10 +18,10 @@ export function useScrollY() {
   return y;
 }
 
-/** Apply `.in` to `.fade-up` elements when they enter the viewport. */
+/** Apply `.in` to `.fade-up` elements when they are well inside the viewport. */
 export function useFadeUp() {
   useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>(".fade-up:not(.in)");
+    const observed = new WeakSet<Element>();
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -31,10 +31,41 @@ export function useFadeUp() {
           }
         });
       },
-      { rootMargin: "-6% 0px -6% 0px", threshold: 0.08 }
+      // Trigger only once the element is ~18% inside the viewport from the bottom.
+      { rootMargin: "0px 0px -18% 0px", threshold: 0.18 }
     );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+
+    const observeAll = () => {
+      document.querySelectorAll<HTMLElement>(".fade-up:not(.in)").forEach((el) => {
+        if (!observed.has(el)) {
+          observed.add(el);
+          io.observe(el);
+        }
+      });
+    };
+
+    observeAll();
+    // Re-scan after layout settles (covers late-mounted children).
+    const t1 = window.setTimeout(observeAll, 250);
+    const t2 = window.setTimeout(observeAll, 1200);
+
+    // Safety net: anything still hidden after 4s gets shown so content
+    // can never end up permanently invisible (e.g. observer edge cases).
+    const safety = window.setTimeout(() => {
+      document.querySelectorAll<HTMLElement>(".fade-up:not(.in)").forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add("in");
+        }
+      });
+    }, 4000);
+
+    return () => {
+      io.disconnect();
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+      window.clearTimeout(safety);
+    };
   }, []);
 }
 
