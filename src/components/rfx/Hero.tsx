@@ -29,7 +29,7 @@ const Hero = () => {
             }}
           >
             <span className="word-reveal in">
-              <span>Immersive&nbsp;celebrations,</span>
+              <span>Immersive celebrations,</span>
             </span>
             <br />
             <span className="word-reveal in delay-1">
