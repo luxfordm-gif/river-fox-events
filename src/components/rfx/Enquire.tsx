@@ -55,7 +55,7 @@ const Enquire = () => {
               {CHECKLIST.map((c) => (
                 <li
                   key={c}
-                  className="flex items-center gap-3 text-[14.5px] leading-[1.45]"
+                  className="flex items-center gap-3 text-[14.5px] leading-[1.3]"
                   style={{ color: "hsl(var(--on-deep))" }}
                 >
                   <span
