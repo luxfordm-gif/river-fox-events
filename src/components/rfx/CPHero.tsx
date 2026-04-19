@@ -49,7 +49,7 @@ const CPHero = () => {
         src={heroImg}
         alt="Beautifully styled outdoor children's birthday celebration in Surrey with peach balloon installation, peonies and a dressed cake table"
         className="absolute inset-0 w-full h-full object-cover will-change-transform"
-        style={{ transform: "translate3d(0, 0, 0) scale(1.15)" }}
+        style={{ transform: "translate3d(0, 0, 0) scale(1.28)" }}
         width={1920}
         height={1080}
       />
