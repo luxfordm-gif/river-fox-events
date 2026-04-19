@@ -64,7 +64,7 @@ const Nav = () => {
                   <a
                     key={s.label}
                     href={s.href}
-                    className="no-underline-fx block px-5 py-2.5 text-[13px] text-ink hover:font-semibold hover:underline underline-offset-4 decoration-ink/60"
+                    className="no-underline-fx block px-5 py-2.5 text-[13px] text-ink hover:underline underline-offset-4 decoration-ink/60"
                   >
                     {s.label}
                   </a>
