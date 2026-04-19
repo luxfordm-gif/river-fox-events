@@ -20,12 +20,12 @@ const Hero = () => {
 
           <h1
             id="hero-heading"
-            className="font-serif-rf max-w-[16ch] md:max-w-none mx-auto break-words"
+            className="font-serif-rf max-w-[14ch] md:max-w-none mx-auto break-words text-pretty"
             style={{
-              fontSize: "clamp(44px, 7.6vw, 132px)",
-              lineHeight: 1.04,
-              fontWeight: 300,
-              letterSpacing: "-0.035em",
+              fontSize: "clamp(60px, 10vw, 132px)",
+              lineHeight: 1.02,
+              fontWeight: 400,
+              letterSpacing: "-0.038em",
             }}
           >
             <span className="word-reveal in">
@@ -35,7 +35,7 @@ const Hero = () => {
             <span className="word-reveal in delay-1">
               <span>
                 thoughtfully{" "}
-                <em className="italic font-light text-accent-warm">designed.</em>
+                <em className="italic font-normal text-accent-warm">designed.</em>
               </span>
             </span>
           </h1>
