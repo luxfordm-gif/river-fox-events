@@ -81,11 +81,11 @@ const Index = () => {
         <Hero />
         <Ticker />
         <Experiences />
-        <Approach />
-        <RevealWord lines={["Every detail, <em>considered.</em>"]} />
         <About />
+        <RevealWord lines={["Calm to plan, <em>unforgettable</em> on the day."]} />
         <Process />
         <Testimonials />
+        <InstagramFollow />
         <FAQ />
         <Enquire />
       </main>
