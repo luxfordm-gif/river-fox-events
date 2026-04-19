@@ -5,12 +5,14 @@ interface CPRevealProps {
   imageSide: "left" | "right";
   image: string;
   alt: string;
-  label: string;
+  label?: string;
   headline: ReactNode;
   children: ReactNode;
   /** Optional subtle tone class on the image placeholder (ph-warm, ph-blush) */
   tone?: string;
   id?: string;
+  /** Hide image on mobile (used for the first section to avoid duplication with hero) */
+  hideImageOnMobile?: boolean;
 }
 
 /**
@@ -22,11 +24,11 @@ const CPReveal = ({
   imageSide,
   image,
   alt,
-  label,
   headline,
   children,
   tone = "ph-warm",
   id,
+  hideImageOnMobile = false,
 }: CPRevealProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -51,7 +53,7 @@ const CPReveal = ({
 
   const imageBlock = (
     <div
-      className="relative w-full"
+      className={`relative w-full cp-reveal-img-wrap ${hideImageOnMobile ? "hidden md:block" : ""}`}
       style={{ aspectRatio: "4/5" }}
     >
       {/* Inner zoom-out reveal: starts small (centred), expands to fill */}
@@ -65,7 +67,7 @@ const CPReveal = ({
           transformOrigin: "center center",
           willChange: "transform, opacity",
           boxShadow: visible
-            ? "0 40px 80px -30px hsl(var(--ink) / 0.45), 0 18px 36px -16px hsl(var(--ink) / 0.22)"
+            ? "0 22px 44px -22px hsl(var(--ink) / 0.22), 0 10px 22px -12px hsl(var(--ink) / 0.12)"
             : "0 0 0 hsl(var(--ink) / 0)",
         }}
       >
@@ -91,12 +93,6 @@ const CPReveal = ({
           "opacity 1.1s cubic-bezier(.22,.7,.2,1) 180ms, transform 1.1s cubic-bezier(.22,.7,.2,1) 180ms",
       }}
     >
-      <div
-        className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-3"
-        style={{ fontWeight: 600 }}
-      >
-        {label}
-      </div>
       <h2
         className="font-serif-rf"
         style={{

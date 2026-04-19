@@ -66,15 +66,15 @@ const CPPricing = () => {
 
         <div
           ref={ref}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 border-t border-ink/15"
+          className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-ink/15"
         >
           {TIERS.map((t, i) => (
             <div
               key={t.label}
-              className={`relative py-10 md:py-14 px-2 md:px-10 ${
-                i > 0 ? "md:border-l border-ink/15" : ""
+              className={`relative py-10 md:py-14 px-6 md:px-10 ${
+                i > 0 ? "border-t md:border-t-0 md:border-l border-ink/15" : ""
               } ${
-                i === 1 ? "md:bg-[hsl(var(--surface-alt)/0.6)]" : ""
+                i === 1 ? "bg-[hsl(var(--surface-alt)/0.55)] md:bg-[hsl(var(--surface-alt)/0.6)]" : ""
               }`}
               style={{
                 opacity: visible ? 1 : 0,
@@ -116,7 +116,7 @@ const CPPricing = () => {
                 </span>
               </div>
               <div
-                className="font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink-soft mt-4"
+                className="font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink-soft mt-1.5"
                 style={{
                   opacity: visible ? 1 : 0,
                   transform: visible ? "translateX(0)" : "translateX(-12px)",
@@ -127,6 +127,7 @@ const CPPricing = () => {
               >
                 {t.label}
               </div>
+              <div className="mt-5 h-px w-10 bg-accent-warm/60" aria-hidden="true" />
               <p
                 className="text-[14.5px] leading-[1.7] text-ink-soft mt-5 max-w-[320px]"
                 style={{

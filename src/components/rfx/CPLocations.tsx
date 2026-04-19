@@ -16,16 +16,11 @@ const CPLocations = () => {
     <section
       id="locations"
       className="rfx-section white"
+      style={{ paddingTop: "72px", paddingBottom: "72px" }}
       aria-labelledby="cp-locations-heading"
     >
       <div className="container-rfx">
         <div className="flex flex-col items-center text-center max-w-[760px] mx-auto fade-up">
-          <div
-            className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-3"
-            style={{ fontWeight: 600 }}
-          >
-            Locations
-          </div>
           <h2
             id="cp-locations-heading"
             className="font-serif-rf"

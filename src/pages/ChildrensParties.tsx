@@ -155,7 +155,7 @@ const ChildrensParties = () => {
           image={imgCelebrations}
           alt="Pastel balloon arch over a beautifully styled cake table at a Surrey children's birthday party"
           tone="ph-warm"
-          label="Children's celebrations"
+          hideImageOnMobile
           headline={
             <>
               Your child's birthday is more than a party.{" "}
@@ -187,7 +187,6 @@ const ChildrensParties = () => {
           image={imgOccasions}
           alt="Elegant first birthday tablescape with cream linens, candles and a soft pastel balloon cluster"
           tone="ph-blush"
-          label="Occasions"
           headline={
             <>
               Every milestone,{" "}
@@ -206,7 +205,6 @@ const ChildrensParties = () => {
           image={imgThemes}
           alt="Whimsical fairy garden party styling with hanging florals, soft draped fabric and dappled natural light"
           tone="ph-warm"
-          label="Popular themes"
           headline={
             <>
               Whatever the vision,{" "}
