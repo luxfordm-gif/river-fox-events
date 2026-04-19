@@ -21,17 +21,10 @@ const Hero = () => {
     return () => window.clearInterval(id);
   }, []);
   return (
-    <section id="top" className="pt-[124px] md:pt-[152px] pb-12 md:pb-16" aria-labelledby="hero-heading">
+    <section id="top" className="pt-[96px] md:pt-[124px] pb-12 md:pb-16" aria-labelledby="hero-heading">
       <div className="container-rfx">
         {/* Centered editorial intro */}
-        <div className="mb-14 md:mb-24 flex flex-col items-center text-center">
-          <div className="flex items-center gap-3 fade-up in mb-10">
-            <span className="h-px w-10 bg-ink/30" aria-hidden="true" />
-            <span className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft">
-              Est. 2017
-            </span>
-            <span className="h-px w-10 bg-ink/30" aria-hidden="true" />
-          </div>
+        <div className="mb-10 md:mb-14 flex flex-col items-center text-center">
 
           <h1
             id="hero-heading"
@@ -106,9 +99,9 @@ const Hero = () => {
 
         <div className="hidden md:grid grid-cols-[1fr_1.35fr_0.9fr] gap-4 md:gap-5 items-start">
           <div
-            className="relative md:pt-20"
+            className="relative md:pt-16"
             style={{
-              transform: `translateY(${y * -0.06}px)`,
+              transform: `translateY(${y * -0.05}px)`,
               willChange: "transform",
             }}
           >
@@ -123,9 +116,9 @@ const Hero = () => {
             </div>
           </div>
           <div
-            className="relative md:pt-4"
+            className="relative md:pt-10"
             style={{
-              transform: `translateY(${y * -0.12}px)`,
+              transform: `translateY(${y * -0.05}px)`,
               willChange: "transform",
             }}
           >
@@ -141,9 +134,9 @@ const Hero = () => {
             </div>
           </div>
           <div
-            className="relative md:pt-28"
+            className="relative md:pt-24"
             style={{
-              transform: `translateY(${y * -0.09}px)`,
+              transform: `translateY(${y * -0.05}px)`,
               willChange: "transform",
             }}
           >
