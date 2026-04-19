@@ -1,38 +1,60 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 /**
- * Subtle full-screen fade between routes.
- * Renders an overlay that fades to opacity 1 briefly on each pathname change,
- * then fades back out. Pointer-events are disabled so it never blocks input.
+ * Subtle fade-in on each route change.
+ *
+ * Strategy: keep a full-screen overlay above the page. When the pathname
+ * changes, snap the overlay to opacity 1 with NO transition (covering the
+ * incoming page instantly), then on the next frame transition it back to 0.
+ * This gives a clean fade-in of the new page with no flash from the old
+ * content showing first.
  */
 const PageTransition = () => {
   const { pathname } = useLocation();
-  const [active, setActive] = useState(false);
-  const [firstMount, setFirstMount] = useState(true);
+  const ref = useRef<HTMLDivElement>(null);
+  const firstMount = useRef(true);
+  const [, force] = useState(0);
 
   useEffect(() => {
-    if (firstMount) {
-      setFirstMount(false);
+    const el = ref.current;
+    if (!el) return;
+
+    if (firstMount.current) {
+      firstMount.current = false;
+      // Initial load — keep hidden, no animation
+      el.style.transition = "none";
+      el.style.opacity = "0";
       return;
     }
-    setActive(true);
-    // Scroll to top on route change so the new page reveals from the top
-    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-    const t = window.setTimeout(() => setActive(false), 280);
-    return () => window.clearTimeout(t);
-  }, [pathname, firstMount]);
+
+    // 1. Snap to fully covered (no transition) so the new page is hidden
+    el.style.transition = "none";
+    el.style.opacity = "1";
+    // Force layout flush
+    void el.offsetHeight;
+    // Reset scroll while overlay covers everything
+    window.scrollTo(0, 0);
+
+    // 2. On next frame, animate the overlay back out to reveal the new page
+    const raf = window.requestAnimationFrame(() => {
+      el.style.transition = "opacity .38s ease-out";
+      el.style.opacity = "0";
+    });
+    return () => window.cancelAnimationFrame(raf);
+  }, [pathname]);
+
+  // Subscribe to pathname so the effect runs
+  void force;
 
   return (
     <div
+      ref={ref}
       aria-hidden="true"
       className="fixed inset-0 z-[200] pointer-events-none"
       style={{
         background: "hsl(var(--background))",
-        opacity: active ? 1 : 0,
-        transition: active
-          ? "opacity .22s ease-out"
-          : "opacity .42s ease-in .04s",
+        opacity: 0,
       }}
     />
   );
