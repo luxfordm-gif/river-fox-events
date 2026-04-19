@@ -51,7 +51,7 @@ const CPReveal = ({
 
   const imageBlock = (
     <div
-      className="relative w-full"
+      className="relative w-full cp-reveal-img-wrap"
       style={{ aspectRatio: "4/5" }}
     >
       {/* Inner zoom-out reveal: starts small (centred), expands to fill */}
@@ -65,7 +65,7 @@ const CPReveal = ({
           transformOrigin: "center center",
           willChange: "transform, opacity",
           boxShadow: visible
-            ? "0 40px 80px -30px hsl(var(--ink) / 0.45), 0 18px 36px -16px hsl(var(--ink) / 0.22)"
+            ? "0 22px 44px -22px hsl(var(--ink) / 0.22), 0 10px 22px -12px hsl(var(--ink) / 0.12)"
             : "0 0 0 hsl(var(--ink) / 0)",
         }}
       >
@@ -91,12 +91,6 @@ const CPReveal = ({
           "opacity 1.1s cubic-bezier(.22,.7,.2,1) 180ms, transform 1.1s cubic-bezier(.22,.7,.2,1) 180ms",
       }}
     >
-      <div
-        className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-3"
-        style={{ fontWeight: 600 }}
-      >
-        {label}
-      </div>
       <h2
         className="font-serif-rf"
         style={{
