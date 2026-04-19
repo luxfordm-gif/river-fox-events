@@ -14,7 +14,6 @@ import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import imgCelebrations from "@/assets/cp-celebrations.jpg";
 import imgOccasions from "@/assets/cp-occasions.jpg";
 import imgThemes from "@/assets/cp-themes.jpg";
-import imgIncluded from "@/assets/cp-included.jpg";
 
 const OCCASIONS = [
   {
