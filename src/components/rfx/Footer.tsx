@@ -96,7 +96,8 @@ const Footer = () => {
                 letterSpacing: "-0.028em",
               }}
             >
-              Ready to begin?{" "}
+              Ready to begin?
+              <br />
               <em className="italic font-light" style={{ color: "hsl(var(--on-deep) / 0.55)" }}>
                 Let's design your celebration.
               </em>
