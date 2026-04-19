@@ -8,10 +8,19 @@ const Hero = () => {
   return (
     <section id="top" className="pt-[152px] pb-24 md:pb-32" aria-labelledby="hero-heading">
       <div className="container-rfx">
-        <div className="mb-16 md:mb-20">
+        {/* Centered editorial intro */}
+        <div className="mb-20 md:mb-24 flex flex-col items-center text-center">
+          <div className="flex items-center gap-3 fade-up in mb-10">
+            <span className="h-px w-10 bg-ink/30" aria-hidden="true" />
+            <span className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft">
+              Surrey · Est. 2017
+            </span>
+            <span className="h-px w-10 bg-ink/30" aria-hidden="true" />
+          </div>
+
           <h1
             id="hero-heading"
-            className="font-serif-rf text-left max-w-[18ch]"
+            className="font-serif-rf max-w-[16ch] mx-auto"
             style={{
               fontSize: "clamp(48px, 9vw, 152px)",
               lineHeight: 1.01,
@@ -31,21 +40,18 @@ const Hero = () => {
             </span>
           </h1>
 
-          <div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mt-12 md:mt-14 items-end fade-up"
-          >
-            <p className="text-[16.5px] leading-[1.6] text-ink-soft max-w-[480px]">
-              Children's parties, milestone moments and corporate events
-              across Surrey — created around your vision, delivered with calm.
-            </p>
-            <div className="flex md:justify-end items-center gap-5 flex-wrap">
-              <a href="#enquire" className="btn-solid-rf accent">
-                Start planning <span>→</span>
-              </a>
-              <a href="#experiences" className="btn-link-rf">
-                See our work <span className="arr">→</span>
-              </a>
-            </div>
+          <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-10 fade-up in">
+            Children's parties, milestone moments and corporate events
+            across Surrey — created around your vision, delivered with calm.
+          </p>
+
+          <div className="flex items-center justify-center gap-5 flex-wrap mt-10 fade-up in">
+            <a href="#enquire" className="btn-solid-rf accent">
+              Start planning <span>→</span>
+            </a>
+            <a href="#experiences" className="btn-link-rf">
+              See our work <span className="arr">→</span>
+            </a>
           </div>
         </div>
 

@@ -85,7 +85,7 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="rfx-section" aria-labelledby="about-heading">
+    <section id="about" className="rfx-section warm" aria-labelledby="about-heading">
       <div className="container-rfx">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-12 md:gap-20 items-start rfx-md-stack">
           <div className="md:sticky md:top-24 fade-up rfx-md-static">
@@ -105,6 +105,10 @@ const About = () => {
           </div>
 
           <div className="fade-up">
+            <div className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-6">
+              Meet Laura · Founder
+            </div>
+
             <h2
               id="about-heading"
               className="font-serif-rf"
@@ -128,10 +132,11 @@ const About = () => {
                 those feelings become the memories they keep.
               </p>
               <p>
-                Every event I take on receives my full personal attention, from
-                the first conversation to the moment your guests walk in. I work
-                with a deliberately small number of clients each month. Not as a
-                sales tactic — because it's the only way to do this properly.
+                There are no packages here. No options off a shelf. Every
+                celebration is built from scratch — around your child, your
+                space, your vision — and I personally design and deliver each
+                one. It's why we keep our client list deliberately small. And
+                it's why the results look the way they do.
               </p>
               <p>
                 Based in Surrey. Working across the county and into London for
