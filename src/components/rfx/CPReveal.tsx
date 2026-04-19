@@ -88,16 +88,20 @@ const CPReveal = ({
           "opacity 1.1s cubic-bezier(.22,.7,.2,1) 180ms, transform 1.1s cubic-bezier(.22,.7,.2,1) 180ms",
       }}
     >
-      <div className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-6">
+      <div
+        className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-3"
+        style={{ fontWeight: 600 }}
+      >
         {label}
       </div>
       <h2
         className="font-serif-rf"
         style={{
           fontSize: "clamp(38px, 4.6vw, 64px)",
-          lineHeight: 1.05,
-          fontWeight: 300,
+          lineHeight: 1.0,
+          fontWeight: 400,
           letterSpacing: "-0.025em",
+          textWrap: "balance",
         }}
       >
         {headline}

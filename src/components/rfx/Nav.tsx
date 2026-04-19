@@ -31,7 +31,7 @@ const Nav = () => {
     <>
       <nav className="rfx-nav">
         <div className="rfx-nav-row nav-left">
-          <a href="#top">Home</a>
+          <a href="/">Home</a>
           <div
             className="relative"
             onMouseEnter={handleEnter}
@@ -75,7 +75,7 @@ const Nav = () => {
           </div>
           <a href="#about">About</a>
         </div>
-        <a href="#top" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto" aria-label="River Fox Events — home">
+        <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto" aria-label="River Fox Events — home">
           <span className="text-[15px] font-medium tracking-[0.22em] leading-none">
             RIVER&nbsp;FOX&nbsp;EVENTS
           </span>

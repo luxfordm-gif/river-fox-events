@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
-import Testimonials from "@/components/rfx/Testimonials";
 import Enquire from "@/components/rfx/Enquire";
 import CPHero from "@/components/rfx/CPHero";
 import CPReveal from "@/components/rfx/CPReveal";
@@ -234,12 +233,15 @@ const ChildrensParties = () => {
           }
         >
           <p>Some of the most popular themes Laura creates across Surrey.</p>
-          <ul className="flex flex-wrap gap-2 max-w-[560px] !mt-6">
-            {THEMES.map((t) => (
+          <ul className="!mt-7 grid grid-cols-2 gap-x-8 max-w-[520px] border-t border-ink/15">
+            {THEMES.map((t, i) => (
               <li
                 key={t}
-                className="font-mono-rf text-[11px] tracking-[0.16em] uppercase text-ink border border-ink/15 rounded-full px-3.5 py-1.5"
+                className="flex items-baseline gap-3 py-2.5 border-b border-ink/15 font-serif-rf text-[17px] font-light tracking-[-0.012em] text-ink"
               >
+                <span className="font-mono-rf text-[10px] tracking-[0.18em] text-ink-soft">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 {t}
               </li>
             ))}
@@ -281,8 +283,6 @@ const ChildrensParties = () => {
         <ChildrensFAQ />
 
         <CPLocations />
-
-        <Testimonials />
 
         <Enquire />
       </main>
