@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+
 const STEPS = [
   {
     n: "01",
@@ -20,6 +22,27 @@ const STEPS = [
 ];
 
 const Process = () => {
+  const stepsRef = useRef<HTMLDivElement>(null);
+  const [stepsIn, setStepsIn] = useState(false);
+
+  useEffect(() => {
+    const el = stepsRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setStepsIn(true);
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section id="process" className="rfx-section dark" aria-labelledby="process-heading">
       <div className="container-rfx">
@@ -43,14 +66,34 @@ const Process = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 border-t pt-8 md:pt-10" style={{ borderColor: "hsl(var(--on-deep) / 0.18)" }}>
-          {STEPS.map((s) => (
-            <div key={s.n} className="pr-3 fade-up">
+        <div
+          ref={stepsRef}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 border-t pt-8 md:pt-10"
+          style={{ borderColor: "hsl(var(--on-deep) / 0.18)" }}
+        >
+          {STEPS.map((s, i) => (
+            <div
+              key={s.n}
+              className="pr-3"
+              style={{
+                opacity: stepsIn ? 1 : 0,
+                transform: stepsIn ? "translateX(0)" : "translateX(-32px)",
+                transition: `opacity .9s cubic-bezier(.22,.7,.2,1) ${i * 180}ms, transform .9s cubic-bezier(.22,.7,.2,1) ${i * 180}ms`,
+              }}
+            >
               <div
-                className="font-mono-rf text-[11px] tracking-[0.22em] mb-3 font-medium"
-                style={{ color: "hsl(var(--accent-warm))" }}
+                className="font-mono-rf text-[11px] tracking-[0.22em] mb-3 font-medium overflow-hidden inline-block"
               >
-                {s.n} /
+                <span
+                  className="inline-block"
+                  style={{
+                    color: "hsl(var(--accent-warm))",
+                    transform: stepsIn ? "translateX(0)" : "translateX(-110%)",
+                    transition: `transform 1s cubic-bezier(.22,.7,.2,1) ${i * 180 + 80}ms`,
+                  }}
+                >
+                  {s.n} /
+                </span>
               </div>
               <h3
                 className="font-serif-rf mb-4"
