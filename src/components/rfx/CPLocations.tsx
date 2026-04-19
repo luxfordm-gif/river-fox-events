@@ -44,12 +44,15 @@ const CPLocations = () => {
               arrive and break down once the day is done.
             </p>
 
-            <ul className="mt-8 flex flex-wrap gap-x-2 gap-y-2 max-w-[520px]">
-              {AREAS.map((a) => (
+            <ul className="mt-8 grid grid-cols-2 gap-x-8 max-w-[480px] border-t border-ink/15">
+              {AREAS.map((a, i) => (
                 <li
                   key={a}
-                  className="font-mono-rf text-[11px] tracking-[0.18em] uppercase text-ink border border-ink/15 rounded-full px-3.5 py-1.5"
+                  className="flex items-baseline gap-3 py-3 border-b border-ink/15 font-serif-rf text-[18px] font-light tracking-[-0.012em] text-ink"
                 >
+                  <span className="font-mono-rf text-[10px] tracking-[0.18em] text-ink-soft">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   {a}
                 </li>
               ))}

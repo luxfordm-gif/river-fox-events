@@ -541,4 +541,14 @@
     .rfx-mosaic > div { grid-column: 1 / -1 !important; grid-row: auto !important; transform: none !important; }
     .rfx-svc-card { padding: 0 !important; border-left: none !important; }
   }
+
+  /* Hero scroll-down cue — soft bouncing chevron */
+  .rfx-scroll-cue {
+    display: inline-flex;
+    animation: rfx-scroll-bounce 2.2s cubic-bezier(.5, 0, .5, 1) infinite;
+  }
+  @keyframes rfx-scroll-bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.8; }
+    50% { transform: translateY(8px); opacity: 1; }
+  }
 }
