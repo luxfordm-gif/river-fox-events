@@ -16,6 +16,12 @@ const QUOTES = [
   },
 ];
 
+const Stars = () => (
+  <span className="tcard-stars" aria-label="Five stars">
+    {"★ ★ ★ ★ ★"}
+  </span>
+);
+
 const Testimonials = () => {
   return (
     <section
@@ -25,13 +31,12 @@ const Testimonials = () => {
     >
       <div className="container-rfx">
         <div className="text-center mb-14">
-          <div className="eyebrow mb-7">(03) — Kind Words</div>
           <h2
             id="kindness-heading"
             className="font-serif-rf"
             style={{
               fontSize: "clamp(40px, 5.4vw, 84px)",
-              lineHeight: 1.02,
+              lineHeight: 1.04,
               fontWeight: 300,
               letterSpacing: "-0.025em",
             }}
@@ -47,9 +52,10 @@ const Testimonials = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {QUOTES.map((t, i) => (
             <figure key={i} className="tcard fade-up">
-              <blockquote className="tcard-quote">&ldquo;{t.q}&rdquo;</blockquote>
+              <Stars />
+              <blockquote className="tcard-quote">{t.q}</blockquote>
               <figcaption className="tcard-meta">
-                <span>— {t.a}</span>
+                <span className="name">{t.a}</span>
                 <span>{t.loc}</span>
               </figcaption>
             </figure>

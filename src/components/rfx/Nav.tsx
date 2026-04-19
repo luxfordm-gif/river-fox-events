@@ -1,18 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const NAV_LINKS = [
-  { href: "#experiences", label: "Experiences" },
-  { href: "#work", label: "Approach" },
-  { href: "#about", label: "Studio" },
-];
-const NAV_LINKS_RIGHT = [
-  { href: "#process", label: "How it works" },
-  { href: "#kindness", label: "Kind words" },
-  { href: "#enquire", label: "Enquire" },
+const SERVICES = [
+  { href: "#experiences", label: "Children's parties" },
+  { href: "#experiences", label: "Milestones" },
+  { href: "#experiences", label: "Corporate" },
 ];
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const closeTimer = useRef<number | null>(null);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -21,15 +18,61 @@ const Nav = () => {
     };
   }, [open]);
 
+  const handleEnter = () => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    setServicesOpen(true);
+  };
+  const handleLeave = () => {
+    closeTimer.current = window.setTimeout(() => setServicesOpen(false), 140);
+  };
+
   return (
     <>
       <nav className="rfx-nav">
         <div className="rfx-nav-row nav-left">
-          {NAV_LINKS.map((l) => (
-            <a key={l.href} href={l.href}>
-              {l.label}
-            </a>
-          ))}
+          <a href="#top">Home</a>
+          <div
+            className="relative"
+            onMouseEnter={handleEnter}
+            onMouseLeave={handleLeave}
+          >
+            <button
+              type="button"
+              className="inline-flex items-center gap-1.5 bg-transparent border-0 p-0 cursor-pointer text-[13px] text-inherit"
+              aria-haspopup="true"
+              aria-expanded={servicesOpen}
+            >
+              Services
+              <span
+                className={`text-[10px] transition-transform duration-300 ${
+                  servicesOpen ? "rotate-180" : ""
+                }`}
+                aria-hidden="true"
+              >
+                ▾
+              </span>
+            </button>
+            <div
+              className={`absolute left-0 top-full pt-4 transition-all duration-300 ${
+                servicesOpen
+                  ? "opacity-100 translate-y-0 pointer-events-auto"
+                  : "opacity-0 -translate-y-1 pointer-events-none"
+              }`}
+            >
+              <div className="min-w-[220px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--ink)/0.22)] rounded-sm py-3">
+                {SERVICES.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    className="block px-5 py-2.5 text-[13px] text-ink hover:bg-ink/5 no-underline"
+                  >
+                    {s.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+          <a href="#about">About</a>
         </div>
         <a href="#top" className="flex flex-col items-center gap-1 no-underline" aria-label="River Fox Events — home">
           <span className="text-[15px] font-medium tracking-[0.22em] leading-none">
@@ -40,11 +83,9 @@ const Nav = () => {
           </span>
         </a>
         <div className="rfx-nav-row nav-right justify-end">
-          {NAV_LINKS_RIGHT.map((l) => (
-            <a key={l.href} href={l.href}>
-              {l.label}
-            </a>
-          ))}
+          <a href="#enquire" className="btn-solid-rf accent !py-2 !px-4 !text-[12px]">
+            Start planning <span>→</span>
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -75,9 +116,16 @@ const Nav = () => {
         }`}
       >
         <div className="container-rfx pt-28 pb-12 flex flex-col gap-2">
-          {[...NAV_LINKS, ...NAV_LINKS_RIGHT].map((l, i) => (
+          {[
+            { href: "#top", label: "Home" },
+            { href: "#experiences", label: "Children's parties" },
+            { href: "#experiences", label: "Milestones" },
+            { href: "#experiences", label: "Corporate" },
+            { href: "#about", label: "About" },
+            { href: "#enquire", label: "Start planning" },
+          ].map((l, i) => (
             <a
-              key={l.href}
+              key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
               className="font-serif-rf text-[40px] leading-tight py-2 text-ink no-underline"
