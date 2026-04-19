@@ -79,7 +79,7 @@ const Enquire = () => {
                 className="font-mono-rf text-[10px] tracking-[0.22em] uppercase mb-2"
                 style={{ color: "hsl(var(--accent-warm))" }}
               >
-                — Limited availability
+                Limited availability
               </div>
               <p className="text-[13.5px] leading-[1.6]">
                 To give every celebration the attention it deserves, we work
