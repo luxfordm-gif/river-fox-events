@@ -32,7 +32,7 @@ const Enquire = () => {
               id="enquire-heading"
               className="font-serif-rf"
               style={{
-                fontSize: "clamp(44px, 5.6vw, 92px)",
+                fontSize: "clamp(52px, 5.6vw, 92px)",
                 lineHeight: 0.96,
                 fontWeight: 300,
                 letterSpacing: "-0.03em",
@@ -59,7 +59,7 @@ const Enquire = () => {
                   style={{ color: "hsl(var(--on-deep))" }}
                 >
                   <span
-                    className="inline-block w-3 h-px shrink-0"
+                    className="hidden lg:inline-block w-3 h-px shrink-0"
                     style={{ background: "hsl(var(--accent-warm))" }}
                     aria-hidden="true"
                   />
@@ -90,13 +90,14 @@ const Enquire = () => {
 
           {/* Right: form */}
           <form className="form-wrap" onSubmit={onSubmit}>
-            <div className="mb-5">
+            <div className="mb-5 text-center lg:text-left">
               <h3
-                className="font-serif-rf text-primary text-2xl"
+                className="font-serif-rf text-primary"
                 style={{
-                  lineHeight: 1.2,
+                  fontSize: "clamp(26px, 3vw, 34px)",
+                  lineHeight: 1.18,
                   fontWeight: 400,
-                  letterSpacing: "-0.015em",
+                  letterSpacing: "-0.018em",
                 }}
               >
                 Tell me about your celebration
@@ -149,7 +150,7 @@ const Enquire = () => {
                 />
               </label>
             </div>
-            <div className="flex justify-between items-center mt-6 gap-4 flex-wrap">
+            <div className="flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center mt-6 gap-4 flex-wrap text-center">
               <span className="font-mono-rf text-[10.5px] tracking-[0.14em] text-ink-soft">
                 Replied to personally, within 48 hours.
               </span>

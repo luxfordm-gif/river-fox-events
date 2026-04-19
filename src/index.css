@@ -510,9 +510,9 @@
   .rfx-section.warm { background: hsl(var(--surface-warm)); }
   .rfx-section.blush { background: hsl(var(--surface-blush)); }
   @media (max-width: 760px) {
-    .rfx-section { padding: 64px 0; }
+    .rfx-section { padding: 56px 0; }
     /* Tighten Instagram block on mobile — remove top/bottom hairlines, reduce padding ~20% */
-    .rfx-instagram { padding: 52px 0; }
+    .rfx-instagram { padding: 48px 0; }
     .rfx-instagram .rfx-instagram-inner {
       border-top: 0 !important;
       border-bottom: 0 !important;
@@ -520,9 +520,9 @@
       padding-bottom: 0 !important;
     }
     /* Reduce dark Enquire section bottom padding so the gap before footer feels right */
-    .rfx-enquire { padding-bottom: 48px; }
+    .rfx-enquire { padding-bottom: 40px; }
     /* Form fields wider — remove form-wrap inner padding & give fields more room */
-    .rfx-enquire .form-wrap { padding: 22px; border-radius: 12px; }
+    .rfx-enquire .form-wrap { padding: 20px; border-radius: 12px; }
     /* Service cards: reduce image height ~20% on mobile */
     .rfx-svc-img { aspect-ratio: 5/5 !important; }
   }

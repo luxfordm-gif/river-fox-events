@@ -20,10 +20,10 @@ const Hero = () => {
 
           <h1
             id="hero-heading"
-            className="font-serif-rf max-w-[14ch] md:max-w-[22ch] mx-auto break-words"
+            className="font-serif-rf max-w-[16ch] md:max-w-none mx-auto break-words"
             style={{
-              fontSize: "clamp(40px, 8.4vw, 152px)",
-              lineHeight: 1.05,
+              fontSize: "clamp(44px, 7.6vw, 132px)",
+              lineHeight: 1.04,
               fontWeight: 300,
               letterSpacing: "-0.035em",
             }}
@@ -68,11 +68,11 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hidden md:grid grid-cols-[1fr_1.35fr_0.9fr] gap-4 md:gap-5">
+        <div className="hidden md:grid grid-cols-[1fr_1.35fr_0.9fr] gap-4 md:gap-5 items-start">
           <div
-            className="relative md:pt-16"
+            className="relative md:pt-20"
             style={{
-              transform: `translateY(${y * -0.08}px)`,
+              transform: `translateY(${y * -0.06}px)`,
               willChange: "transform",
             }}
           >
@@ -87,9 +87,9 @@ const Hero = () => {
             </div>
           </div>
           <div
-            className="relative"
+            className="relative md:pt-4"
             style={{
-              transform: `translateY(${y * 0.06}px)`,
+              transform: `translateY(${y * -0.12}px)`,
               willChange: "transform",
             }}
           >
@@ -105,9 +105,9 @@ const Hero = () => {
             </div>
           </div>
           <div
-            className="relative md:pt-32"
+            className="relative md:pt-28"
             style={{
-              transform: `translateY(${y * -0.1}px)`,
+              transform: `translateY(${y * -0.09}px)`,
               willChange: "transform",
             }}
           >
