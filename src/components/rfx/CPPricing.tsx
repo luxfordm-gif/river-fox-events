@@ -71,10 +71,10 @@ const CPPricing = () => {
           {TIERS.map((t, i) => (
             <div
               key={t.label}
-              className={`py-10 md:py-14 px-2 md:px-10 ${
+              className={`relative py-10 md:py-14 px-2 md:px-10 ${
                 i > 0 ? "md:border-l border-ink/15" : ""
               } ${
-                i === 1 ? "md:bg-[hsl(var(--surface-alt)/0.6)] relative" : ""
+                i === 1 ? "md:bg-[hsl(var(--surface-alt)/0.6)]" : ""
               }`}
               style={{
                 opacity: visible ? 1 : 0,
@@ -87,12 +87,19 @@ const CPPricing = () => {
               }}
             >
               {i === 1 && (
-                <div
-                  className="absolute top-4 right-4 font-mono-rf text-[10px] tracking-[0.24em] uppercase text-accent-warm"
-                  style={{ fontWeight: 600 }}
-                >
-                  Most popular
-                </div>
+                <>
+                  {/* Constant subtle shimmer stroke around the popular card */}
+                  <span
+                    aria-hidden="true"
+                    className="rfx-shimmer-stroke pointer-events-none absolute inset-0"
+                  />
+                  <div
+                    className="absolute top-4 right-4 font-mono-rf text-[10px] tracking-[0.24em] uppercase text-accent-warm z-[2]"
+                    style={{ fontWeight: 700 }}
+                  >
+                    Most popular
+                  </div>
+                </>
               )}
               <div
                 className="font-serif-rf overflow-hidden"

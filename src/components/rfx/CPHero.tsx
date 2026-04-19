@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import heroImg from "@/assets/cp-celebrations.jpg";
+import heroImg from "@/assets/cp-hero-frame.jpg";
 
 const CPHero = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -13,87 +13,101 @@ const CPHero = () => {
   return (
     <section
       id="top"
-      className="relative w-full h-screen min-h-[640px] overflow-hidden"
+      className="relative w-full bg-background overflow-hidden pt-[110px] md:pt-[120px]"
       aria-labelledby="cp-hero-heading"
     >
-      {/* Full-bleed image */}
-      <img
-        src={heroImg}
-        alt="Beautifully styled children's birthday celebration with pastel balloon arch, peonies and a dressed cake table in Surrey"
-        className="absolute inset-0 w-full h-full object-cover"
-        width={1920}
-        height={1080}
-      />
-      {/* Readability gradient */}
-      <div
-        className="absolute inset-0 z-[1] pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(180deg, hsl(var(--ink) / 0.42) 0%, hsl(var(--ink) / 0.18) 38%, hsl(var(--ink) / 0.22) 62%, hsl(var(--ink) / 0.62) 100%)",
-        }}
-      />
+      <div className="container-rfx relative">
+        {/* Top-left framed copy */}
+        <div className="grid grid-cols-12 gap-6 md:gap-10 relative z-[3]">
+          <div className="col-span-12 md:col-span-5 lg:col-span-4 flex flex-col">
+            <div
+              className="font-mono-rf text-[10.5px] tracking-[0.3em] uppercase text-ink-soft mb-5 fade-up in"
+              style={{ fontWeight: 600 }}
+            >
+              Children's Party Styling · Surrey
+            </div>
+            <h1
+              id="cp-hero-heading"
+              className="font-serif-rf"
+              style={{
+                fontSize: "clamp(38px, 4.6vw, 64px)",
+                lineHeight: 0.98,
+                fontWeight: 400,
+                letterSpacing: "-0.03em",
+                textWrap: "balance",
+                color: "hsl(var(--ink))",
+              }}
+            >
+              <span className="word-reveal in">
+                <span>Magical for children.</span>
+              </span>
+              <br />
+              <span className="word-reveal in delay-1">
+                <span>
+                  Effortless for{" "}
+                  <em
+                    className="italic font-normal text-accent-warm"
+                  >
+                    parents.
+                  </em>
+                </span>
+              </span>
+            </h1>
 
-      {/* Centered content */}
-      <div className="relative z-[2] h-full w-full flex items-center justify-center px-6">
-        <div className="flex flex-col items-center text-center max-w-[1100px] mx-auto">
-          <div
-            className="font-mono-rf text-[10.5px] tracking-[0.3em] uppercase mb-7 fade-up in"
-            style={{ color: "hsl(var(--background) / 0.85)" }}
-          >
-            Children's Party Styling · Surrey
+            <p
+              className="text-[15.5px] leading-[1.65] mt-6 fade-up in text-ink-soft max-w-[420px]"
+              style={{ textWrap: "pretty" }}
+            >
+              Immersive, beautifully designed children's parties across Surrey —
+              every detail considered, nothing left to chance.
+            </p>
+
+            <div className="flex items-center gap-5 flex-wrap mt-8 fade-up in">
+              <a href="#enquire" className="btn-solid-rf accent">
+                Start planning <span>→</span>
+              </a>
+              <a href="#how-it-works" className="btn-link-rf">
+                See how it works <span className="arr">↓</span>
+              </a>
+            </div>
           </div>
 
-          <h1
-            id="cp-hero-heading"
-            className="font-serif-rf mx-auto"
-            style={{
-              fontSize: "clamp(54px, 8.4vw, 116px)",
-              lineHeight: 0.98,
-              fontWeight: 400,
-              letterSpacing: "-0.038em",
-              color: "hsl(var(--background))",
-              textWrap: "balance",
-            }}
-          >
-            <span className="word-reveal in">
-              <span>Magical for children.</span>
-            </span>
-            <br />
-            <span className="word-reveal in delay-1">
-              <span>
-                Effortless for{" "}
-                <em
-                  className="italic font-normal"
-                  style={{ color: "hsl(var(--accent))" }}
-                >
-                  parents.
-                </em>
-              </span>
-            </span>
-          </h1>
-
-          <p
-            className="text-[16.5px] leading-[1.65] max-w-[560px] mt-7 md:mt-9 fade-up in"
-            style={{
-              color: "hsl(var(--background) / 0.88)",
-              textWrap: "balance",
-            }}
-          >
-            Immersive, beautifully designed children's parties across Surrey —
-            every detail considered, nothing left to chance.
-          </p>
-
-          <div className="flex items-center justify-center gap-5 flex-wrap mt-9 fade-up in">
-            <a href="#enquire" className="btn-solid-rf accent">
-              Start planning <span>→</span>
-            </a>
-            <a
-              href="#how-it-works"
-              className="btn-link-rf"
-              style={{ color: "hsl(var(--background))" }}
+          {/* Image — central / right */}
+          <div className="col-span-12 md:col-span-7 lg:col-span-8 relative">
+            <div
+              className="relative overflow-hidden rounded-sm"
+              style={{
+                aspectRatio: "5/4",
+                boxShadow:
+                  "0 30px 80px -30px hsl(var(--ink) / 0.35), 0 10px 30px -15px hsl(var(--ink) / 0.18)",
+              }}
             >
-              See how it works <span className="arr">↓</span>
-            </a>
+              <img
+                src={heroImg}
+                alt="Joyful child laughing at a beautifully styled outdoor birthday party in Surrey, with peach balloon installation and a floral cake table"
+                className="absolute inset-0 w-full h-full object-cover"
+                width={1920}
+                height={1080}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Oversized wordmark — Luffu-style framing under the image */}
+        <div
+          className="relative -mt-[6vw] md:-mt-[7vw] pointer-events-none select-none fade-up in"
+          aria-hidden="true"
+        >
+          <div
+            className="font-serif-rf leading-[0.85] text-ink"
+            style={{
+              fontSize: "clamp(110px, 19vw, 320px)",
+              fontWeight: 300,
+              letterSpacing: "-0.05em",
+              fontStyle: "italic",
+            }}
+          >
+            River Fox
           </div>
         </div>
       </div>
@@ -102,14 +116,14 @@ const CPHero = () => {
       <a
         href="#cp-celebrations"
         aria-label="Scroll to next section"
-        className={`absolute left-1/2 -translate-x-1/2 bottom-8 z-[3] flex flex-col items-center gap-2 transition-opacity duration-500 ${
+        className={`absolute right-6 md:right-12 bottom-8 z-[3] flex flex-col items-center gap-2 transition-opacity duration-500 ${
           scrolled ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
-        style={{ color: "hsl(var(--background) / 0.9)" }}
+        style={{ color: "hsl(var(--ink) / 0.7)" }}
       >
         <span
           className="font-mono-rf text-[9.5px] tracking-[0.3em] uppercase"
-          style={{ color: "hsl(var(--background) / 0.75)" }}
+          style={{ color: "hsl(var(--ink-soft))" }}
         >
           Scroll
         </span>
