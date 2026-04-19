@@ -113,7 +113,7 @@ const CPReveal = ({
         {headline}
       </h2>
       <div
-        className="mt-7 text-[18px] md:text-[16px] leading-[1.7] text-ink-soft max-w-[520px] space-y-5"
+        className="mt-7 text-[16px] leading-[1.7] text-ink-soft max-w-[520px] space-y-5"
         style={{ textWrap: "pretty" }}
       >
         {children}
