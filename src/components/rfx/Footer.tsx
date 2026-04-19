@@ -31,22 +31,22 @@ const Footer = () => {
         <div
           ref={watermarkRef}
           aria-hidden="true"
-          className="absolute left-0 right-0 -bottom-32 pointer-events-none flex items-end justify-center"
+          className="absolute left-0 right-0 bottom-0 pointer-events-none flex items-end justify-center"
         >
           <div
             className="font-serif-rf whitespace-nowrap relative"
             style={{
-              fontSize: "clamp(280px, 50vw, 880px)",
+              fontSize: "clamp(220px, 42vw, 720px)",
               lineHeight: 0.78,
               letterSpacing: "-0.05em",
-              color: "hsl(var(--on-deep) / 0.10)",
-              transform: `translateY(${Math.min(80, y * 0.025)}px) translateX(${revealed ? 0 : -40}px)`,
+              color: "hsl(var(--on-deep) / 0.12)",
+              transform: `translateY(${Math.min(60, y * 0.02)}px) translateX(${revealed ? 0 : -40}px)`,
               opacity: revealed ? 1 : 0,
               transition: "opacity 1.6s ease, transform 1.8s cubic-bezier(.2,.7,.2,1)",
               WebkitMaskImage:
-                "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 18%, rgba(0,0,0,0.55) 38%, #000 60%)",
+                "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 25%, rgba(0,0,0,0.7) 55%, #000 80%)",
               maskImage:
-                "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 18%, rgba(0,0,0,0.55) 38%, #000 60%)",
+                "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 25%, rgba(0,0,0,0.7) 55%, #000 80%)",
             }}
           >
             River&nbsp;
