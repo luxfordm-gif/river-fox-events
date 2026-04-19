@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useImageParallax } from "@/hooks/useImageParallax";
 
 interface CPRevealProps {
   /** "left" => image on left column. "right" => image on right column. */
