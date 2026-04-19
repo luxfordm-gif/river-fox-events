@@ -34,6 +34,64 @@ const ITEMS = [
   },
 ];
 
+interface ExpItem {
+  title: string;
+  body: string;
+  img: string;
+  alt: string;
+  href: string;
+  tone: string;
+}
+
+const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
+  const wrap = useRef<HTMLDivElement>(null);
+  const img = useRef<HTMLImageElement>(null);
+  useImageParallax(wrap, img, { intensity: 7, scale: 1.14 });
+  return (
+    <a
+      href={it.href}
+      className={`exp-card rfx-svc-card flex flex-col gap-2 md:gap-4 px-7 ${i > 0 ? "md:border-l" : ""} border-ink/10`}
+    >
+      <div
+        ref={wrap}
+        className={`exp-img-wrap ph rounded-sm ${it.tone} fade-up rfx-svc-img relative overflow-hidden`}
+        style={{ aspectRatio: "4/5" }}
+      >
+        <img
+          ref={img}
+          src={it.img}
+          alt={it.alt}
+          className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
+          style={{ transform: "translate3d(0,0,0) scale(1.14)" }}
+          loading="lazy"
+          width={1024}
+          height={1280}
+        />
+        <span className="exp-cta">
+          Discover <span aria-hidden>→</span>
+        </span>
+      </div>
+      <h3
+        className="font-serif-rf exp-title mt-3 md:mt-4"
+        style={{
+          fontSize: 30,
+          lineHeight: 1.18,
+          fontWeight: 300,
+          letterSpacing: "-0.02em",
+        }}
+      >
+        {it.title}
+      </h3>
+      <p className="text-[14.5px] leading-[1.65] text-ink-soft max-w-[360px]">
+        {it.body}
+      </p>
+      <span className="btn-link-rf self-start mt-2">
+        Enquire <span className="arr">→</span>
+      </span>
+    </a>
+  );
+};
+
 const Experiences = () => {
   return (
     <section id="experiences" className="rfx-section white" aria-labelledby="exp-heading">
