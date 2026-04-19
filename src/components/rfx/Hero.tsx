@@ -6,7 +6,7 @@ import { useScrollY } from "@/hooks/useRiverFox";
 const Hero = () => {
   const y = useScrollY();
   return (
-    <section id="top" className="pt-[152px] pb-24 md:pb-32" aria-labelledby="hero-heading">
+    <section id="top" className="pt-[152px] pb-12 md:pb-16" aria-labelledby="hero-heading">
       <div className="container-rfx">
         {/* Centered editorial intro */}
         <div className="mb-20 md:mb-24 flex flex-col items-center text-center">
