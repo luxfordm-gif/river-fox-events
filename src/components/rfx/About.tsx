@@ -1,19 +1,96 @@
+import { useEffect, useRef, useState } from "react";
 import studioImg from "@/assets/studio.jpg";
 
-const STATS = [
-  { n: "400+", l: "Events" },
-  { n: "8", l: "Years" },
-  { n: "Surrey", l: "& Beyond" },
+interface Stat {
+  value: number;
+  display: (n: number) => string;
+  label: string;
+}
+
+const STATS: Stat[] = [
+  { value: 400, display: (n) => `${n}+`, label: "Events styled" },
+  { value: 8, display: (n) => `${n}`, label: "Years in Surrey" },
+  { value: 100, display: (n) => `${n}%`, label: "Bespoke designs" },
 ];
 
+/** Animates a number from 0 to `value` over `duration` ms once visible. */
+const useCountUp = (value: number, visible: boolean, duration = 1600) => {
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    if (!visible) return;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / duration);
+      // ease-out cubic
+      const eased = 1 - Math.pow(1 - p, 3);
+      setN(Math.round(eased * value));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [visible, value, duration]);
+  return n;
+};
+
+const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; delay: number }) => {
+  const n = useCountUp(stat.value, visible);
+  return (
+    <div
+      className="flex flex-col"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(12px)",
+        transition: `opacity .8s ease ${delay}ms, transform .8s ease ${delay}ms`,
+      }}
+    >
+      <div
+        className="font-serif-rf tabular-nums"
+        style={{
+          fontSize: "clamp(44px, 5.5vw, 68px)",
+          lineHeight: 1,
+          fontWeight: 300,
+          letterSpacing: "-0.022em",
+        }}
+      >
+        {stat.display(n)}
+      </div>
+      <div className="font-mono-rf text-[10px] tracking-[0.22em] uppercase text-ink-soft mt-3">
+        {stat.label}
+      </div>
+    </div>
+  );
+};
+
 const About = () => {
+  const statsRef = useRef<HTMLDivElement>(null);
+  const [statsVisible, setStatsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = statsRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setStatsVisible(true);
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section id="about" className="rfx-section" aria-labelledby="about-heading">
       <div className="container-rfx">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-12 md:gap-20 items-start rfx-md-stack">
           <div className="md:sticky md:top-24 fade-up rfx-md-static">
             <div
-              className="ph ph-warm overflow-hidden"
+              className="ph ph-warm overflow-hidden rounded-sm"
               style={{ aspectRatio: "5/6" }}
             >
               <img
@@ -24,19 +101,16 @@ const About = () => {
                 width={1024}
                 height={1280}
               />
-              <span className="ph-num">pl. 13</span>
-              <span className="ph-label">the old stables · cobham</span>
             </div>
           </div>
 
           <div className="fade-up">
-            <div className="eyebrow mb-7">— The studio</div>
             <h2
               id="about-heading"
               className="font-serif-rf"
               style={{
                 fontSize: "clamp(40px, 5.6vw, 84px)",
-                lineHeight: 1.02,
+                lineHeight: 1.04,
                 fontWeight: 300,
                 letterSpacing: "-0.028em",
               }}
@@ -65,24 +139,12 @@ const About = () => {
               </p>
             </div>
 
-            <div className="mt-12 grid grid-cols-3 gap-4 border-t border-ink/20 pt-8 max-w-[560px]">
-              {STATS.map((s) => (
-                <div key={s.l}>
-                  <div
-                    className="font-serif-rf"
-                    style={{
-                      fontSize: "clamp(32px, 4vw, 52px)",
-                      lineHeight: 1,
-                      fontWeight: 300,
-                      letterSpacing: "-0.02em",
-                    }}
-                  >
-                    {s.n}
-                  </div>
-                  <div className="font-mono-rf text-[10px] tracking-[0.2em] uppercase text-ink-soft mt-2">
-                    {s.l}
-                  </div>
-                </div>
+            <div
+              ref={statsRef}
+              className="mt-12 grid grid-cols-3 gap-6 border-t border-ink/20 pt-8 max-w-[560px]"
+            >
+              {STATS.map((s, i) => (
+                <StatItem key={s.label} stat={s} visible={statsVisible} delay={i * 140} />
               ))}
             </div>
           </div>

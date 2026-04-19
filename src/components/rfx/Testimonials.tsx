@@ -18,7 +18,7 @@ const QUOTES = [
 
 const Stars = () => (
   <span className="tcard-stars" aria-label="Five stars">
-    {"★ ★ ★ ★ ★"}
+    {"★★★★★"}
   </span>
 );
 

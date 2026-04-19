@@ -1,32 +1,81 @@
+import { useEffect, useRef, useState } from "react";
 import { useScrollY } from "@/hooks/useRiverFox";
 
 const Footer = () => {
   const y = useScrollY();
+  const watermarkRef = useRef<HTMLDivElement>(null);
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    const el = watermarkRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setRevealed(true);
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <footer className="relative overflow-hidden bg-surface-deep text-on-deep">
-
       <div className="relative pt-24 pb-9 overflow-hidden">
-        {/* Big watermark */}
+        {/* Big watermark — slow drift, parallax, masked sheen */}
         <div
+          ref={watermarkRef}
           aria-hidden="true"
-          className="absolute left-0 right-0 -bottom-32 pointer-events-none flex items-end justify-center opacity-[0.09]"
+          className="absolute left-0 right-0 -bottom-32 pointer-events-none flex items-end justify-center"
         >
           <div
-            className="font-serif-rf whitespace-nowrap"
+            className="font-serif-rf whitespace-nowrap relative"
             style={{
               fontSize: "clamp(280px, 50vw, 880px)",
               lineHeight: 0.78,
               letterSpacing: "-0.05em",
-              color: "hsl(var(--on-deep))",
-              transform: `translateY(${Math.min(80, y * 0.025)}px)`,
+              color: "hsl(var(--on-deep) / 0.10)",
+              transform: `translateY(${Math.min(80, y * 0.025)}px) translateX(${revealed ? 0 : -40}px)`,
+              opacity: revealed ? 1 : 0,
+              transition: "opacity 1.6s ease, transform 1.8s cubic-bezier(.2,.7,.2,1)",
             }}
           >
             River&nbsp;
-            <em className="italic" style={{ color: "hsl(var(--accent-warm))" }}>
+            <em
+              className="italic"
+              style={{
+                color: "hsl(var(--accent-warm) / 0.22)",
+              }}
+            >
               Fox
             </em>
+            {/* Animated sheen sweep */}
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(100deg, transparent 35%, hsl(var(--accent-warm) / 0.18) 50%, transparent 65%)",
+                backgroundSize: "200% 100%",
+                animation: revealed ? "rfx-sheen 6s ease-in-out infinite" : undefined,
+                mixBlendMode: "screen",
+              }}
+            />
           </div>
         </div>
+
+        <style>{`
+          @keyframes rfx-sheen {
+            0%   { background-position: 200% 0; }
+            55%  { background-position: -100% 0; }
+            100% { background-position: -100% 0; }
+          }
+        `}</style>
 
         <div className="container-rfx relative">
           {/* CTA stripe */}
@@ -34,18 +83,12 @@ const Footer = () => {
             className="pb-16 mb-16 border-b"
             style={{ borderColor: "hsl(var(--on-deep) / 0.15)" }}
           >
-            <div
-              className="eyebrow mb-6"
-              style={{ color: "hsl(var(--on-deep-soft))" }}
-            >
-              — Next chapter
-            </div>
             <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-end rfx-md-stack">
               <h2
                 className="font-serif-rf max-w-[900px]"
                 style={{
                   fontSize: "clamp(40px, 5.6vw, 96px)",
-                  lineHeight: 0.98,
+                  lineHeight: 1.0,
                   fontWeight: 300,
                   letterSpacing: "-0.028em",
                 }}

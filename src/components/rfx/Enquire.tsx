@@ -33,9 +33,9 @@ const Enquire = () => {
               className="font-serif-rf"
               style={{
                 fontSize: "clamp(44px, 5.6vw, 92px)",
-                lineHeight: 1.0,
+                lineHeight: 0.96,
                 fontWeight: 300,
-                letterSpacing: "-0.028em",
+                letterSpacing: "-0.03em",
               }}
             >
               Let's make something{" "}
@@ -51,26 +51,25 @@ const Enquire = () => {
               not a template, a proper bespoke proposal.
             </p>
 
-            <ul className="mt-8 max-w-[460px]">
+            <ul className="mt-7 max-w-[460px] space-y-1">
               {CHECKLIST.map((c) => (
                 <li
                   key={c}
-                  className="flex items-baseline gap-3 text-[14.5px] py-1"
+                  className="flex items-center gap-3 text-[14.5px] leading-[1.45]"
                   style={{ color: "hsl(var(--on-deep))" }}
                 >
                   <span
-                    className="inline-block w-5 font-mono-rf text-xs"
-                    style={{ color: "hsl(var(--accent-warm))" }}
-                  >
-                    —
-                  </span>
+                    className="inline-block w-3 h-px"
+                    style={{ background: "hsl(var(--accent-warm))" }}
+                    aria-hidden="true"
+                  />
                   {c}
                 </li>
               ))}
             </ul>
 
             <div
-              className="mt-10 p-5 max-w-[460px] rounded-sm"
+              className="mt-9 p-5 max-w-[460px] rounded-md"
               style={{
                 border: "1px solid hsl(var(--accent-warm) / 0.55)",
                 color: "hsl(var(--on-deep))",
@@ -91,9 +90,19 @@ const Enquire = () => {
 
           {/* Right: form */}
           <form className="form-wrap" onSubmit={onSubmit}>
-            <div className="mb-6">
-              <div className="eyebrow mb-2">Enquiry form</div>
-              <p className="text-[13px] text-ink-soft">
+            <div className="mb-5">
+              <h3
+                className="font-serif-rf"
+                style={{
+                  fontSize: 22,
+                  lineHeight: 1.2,
+                  fontWeight: 400,
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                Tell me about your celebration
+              </h3>
+              <p className="text-[13px] text-ink-soft mt-1">
                 Every field is bespoke to you — no templates.
               </p>
             </div>
@@ -121,7 +130,7 @@ const Enquire = () => {
               </label>
               <label className="form-row full">
                 <span className="lbl">Venue / location</span>
-                <input type="text" name="venue" placeholder="Cobham, at home" />
+                <input type="text" name="venue" placeholder="e.g. at home in Cobham" />
               </label>
               <label className="form-row full">
                 <span className="lbl">Approximate budget</span>
@@ -141,7 +150,7 @@ const Enquire = () => {
                 />
               </label>
             </div>
-            <div className="flex justify-between items-center mt-7 gap-4 flex-wrap">
+            <div className="flex justify-between items-center mt-6 gap-4 flex-wrap">
               <span className="font-mono-rf text-[10.5px] tracking-[0.14em] text-ink-soft">
                 Replied to personally, within 48 hours.
               </span>

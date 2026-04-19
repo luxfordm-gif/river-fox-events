@@ -9,6 +9,7 @@ const ITEMS = [
       "Immersive themed parties designed to feel magical for children — and completely effortless for you.",
     img: expChildren,
     alt: "Whimsical immersive children's party setup with pastel balloon arch and themed installation",
+    href: "#enquire",
     tone: "",
   },
   {
@@ -16,7 +17,8 @@ const ITEMS = [
     body:
       "Statement styling for 21sts, 40ths, 70ths, baby showers and anniversaries. Life's biggest moments, honoured properly.",
     img: expMilestone,
-    alt: "Sophisticated milestone celebration tablescape with candles and lush floral runner",
+    alt: "Anniversary celebration with round tables, balloon centerpieces and a glittering shimmer wall backdrop",
+    href: "#enquire",
     tone: "ph-warm",
   },
   {
@@ -24,7 +26,8 @@ const ITEMS = [
     body:
       "Design-led installations for launches, openings and activations. Trusted by P&G, The Range, Foxhills and more.",
     img: expCorporate,
-    alt: "Corporate brand activation styling with elegant floral wall installation",
+    alt: "Corporate brand launch with tall floral arrangement, branded backdrop and champagne reception",
+    href: "#enquire",
     tone: "ph-blush",
   },
 ];
@@ -35,13 +38,12 @@ const Experiences = () => {
       <div className="container-rfx">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-14 md:mb-16 items-end rfx-md-stack">
           <div>
-            <div className="eyebrow mb-6">— Signature Experiences</div>
             <h2
               id="exp-heading"
               className="font-serif-rf fade-up"
               style={{
                 fontSize: "clamp(40px, 5.4vw, 84px)",
-                lineHeight: 1.04,
+                lineHeight: 1.06,
                 fontWeight: 300,
                 letterSpacing: "-0.025em",
               }}
@@ -59,12 +61,13 @@ const Experiences = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 border-t border-ink/20 pt-12 rfx-md-stack">
           {ITEMS.map((it, i) => (
-            <article
+            <a
               key={i}
-              className={`rfx-svc-card flex flex-col gap-4 px-7 ${i > 0 ? "md:border-l" : ""} border-ink/10`}
+              href={it.href}
+              className={`exp-card rfx-svc-card flex flex-col gap-4 px-7 ${i > 0 ? "md:border-l" : ""} border-ink/10`}
             >
               <div
-                className={`ph overflow-hidden rounded-sm ${it.tone} fade-up`}
+                className={`exp-img-wrap ph rounded-sm ${it.tone} fade-up`}
                 style={{ aspectRatio: "4/5" }}
               >
                 <img
@@ -75,12 +78,15 @@ const Experiences = () => {
                   width={1024}
                   height={1280}
                 />
+                <span className="exp-cta">
+                  Discover <span aria-hidden>→</span>
+                </span>
               </div>
               <h3
-                className="font-serif-rf mt-4"
+                className="font-serif-rf exp-title mt-4"
                 style={{
                   fontSize: 30,
-                  lineHeight: 1.12,
+                  lineHeight: 1.18,
                   fontWeight: 300,
                   letterSpacing: "-0.02em",
                 }}
@@ -90,10 +96,10 @@ const Experiences = () => {
               <p className="text-[14.5px] leading-[1.65] text-ink-soft max-w-[360px]">
                 {it.body}
               </p>
-              <a href="#enquire" className="btn-link-rf self-start mt-2">
+              <span className="btn-link-rf self-start mt-2">
                 Enquire <span className="arr">→</span>
-              </a>
-            </article>
+              </span>
+            </a>
           ))}
         </div>
       </div>

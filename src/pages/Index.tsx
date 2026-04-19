@@ -82,7 +82,7 @@ const Index = () => {
         <Ticker />
         <Experiences />
         <Approach />
-        <RevealWord lines={["Every detail,", "<em>considered.</em>"]} />
+        <RevealWord lines={["Every detail, <em>considered.</em>"]} />
         <About />
         <Process />
         <Testimonials />

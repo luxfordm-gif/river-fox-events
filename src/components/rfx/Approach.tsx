@@ -13,7 +13,7 @@ const Approach = () => {
             >
               <img
                 src={lauraImg}
-                alt="Laura, founder of River Fox Events, beside a styled tablescape in her Surrey studio"
+                alt="Laura, founder of River Fox Events, hand-assembling a pastel balloon garland in her Surrey studio"
                 className="absolute inset-0 w-full h-full object-cover z-[2]"
                 loading="lazy"
                 width={1024}
@@ -23,13 +23,12 @@ const Approach = () => {
           </div>
 
           <div className="fade-up">
-            <div className="eyebrow mb-7">— Our approach</div>
             <h2
               id="approach-heading"
               className="font-serif-rf"
               style={{
                 fontSize: "clamp(40px, 5.4vw, 84px)",
-                lineHeight: 1.04,
+                lineHeight: 1.06,
                 fontWeight: 300,
                 letterSpacing: "-0.025em",
               }}
