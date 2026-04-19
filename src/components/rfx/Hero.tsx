@@ -116,11 +116,13 @@ const Hero = () => {
               willChange: "transform",
             }}
           >
-            <div className="ph ph-warm overflow-hidden rounded-sm" style={{ aspectRatio: "4/5" }}>
+            <div ref={wrap1} className="ph ph-warm overflow-hidden rounded-sm relative" style={{ aspectRatio: "4/5" }}>
               <img
+                ref={img1}
                 src={heroMain}
                 alt="Beautifully styled children's party tablescape with pastel balloon installation, Surrey garden"
-                className="absolute inset-0 w-full h-full object-cover z-[2]"
+                className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
+                style={{ transform: "translate3d(0,0,0) scale(1.12)" }}
                 width={1024}
                 height={1280}
               />
@@ -133,11 +135,13 @@ const Hero = () => {
               willChange: "transform",
             }}
           >
-            <div className="ph overflow-hidden rounded-sm" style={{ aspectRatio: "3/4" }}>
+            <div ref={wrap2} className="ph overflow-hidden rounded-sm relative" style={{ aspectRatio: "3/4" }}>
               <img
+                ref={img2}
                 src={heroSide}
                 alt="Elegant milestone celebration installation with floral arch and candles"
-                className="absolute inset-0 w-full h-full object-cover z-[2]"
+                className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
+                style={{ transform: "translate3d(0,0,0) scale(1.12)" }}
                 loading="lazy"
                 width={1024}
                 height={1408}
@@ -151,11 +155,13 @@ const Hero = () => {
               willChange: "transform",
             }}
           >
-            <div className="ph ph-blush overflow-hidden rounded-sm" style={{ aspectRatio: "4/5" }}>
+            <div ref={wrap3} className="ph ph-blush overflow-hidden rounded-sm relative" style={{ aspectRatio: "4/5" }}>
               <img
+                ref={img3}
                 src={heroSmall}
                 alt="Detail of a styled cake on a vintage cake stand with pastel ribbons and peonies"
-                className="absolute inset-0 w-full h-full object-cover z-[2]"
+                className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
+                style={{ transform: "translate3d(0,0,0) scale(1.12)" }}
                 loading="lazy"
                 width={1024}
                 height={1280}
