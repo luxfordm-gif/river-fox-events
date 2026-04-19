@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const SERVICES = [
-  { href: "#experiences", label: "Children's parties" },
-  { href: "#experiences", label: "Milestones" },
-  { href: "#experiences", label: "Corporate" },
+  { href: "/childrens-parties", label: "Children's parties" },
+  { href: "/#experiences", label: "Milestones" },
+  { href: "/#experiences", label: "Corporate" },
 ];
 
 const Nav = () => {
