@@ -98,7 +98,7 @@ const CPIncluded = () => {
 
         <div
           ref={ref}
-          className="mt-14 md:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-6"
+          className="mt-14 md:mt-20 grid grid-cols-2 lg:grid-cols-5 gap-y-10 gap-x-6 md:gap-6"
         >
           {ITEMS.map(({ Icon, label, body }, i) => (
             <div
