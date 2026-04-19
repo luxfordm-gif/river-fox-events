@@ -1,6 +1,8 @@
+import { useRef } from "react";
 import expChildren from "@/assets/exp-children.jpg";
 import expMilestone from "@/assets/exp-milestone.jpg";
 import expCorporate from "@/assets/exp-corporate.jpg";
+import { useImageParallax } from "@/hooks/useImageParallax";
 
 const ITEMS = [
   {
