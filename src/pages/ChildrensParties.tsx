@@ -45,28 +45,7 @@ const THEMES = [
   "Vintage tea party",
 ];
 
-const INCLUDED = [
-  {
-    label: "Theme & palette",
-    value: "Bespoke design concept built around your vision",
-  },
-  {
-    label: "Balloon installations",
-    value: "Statement sculptural arrangements",
-  },
-  {
-    label: "Backdrops & signage",
-    value: "Personalised to your celebration",
-  },
-  {
-    label: "Cake & party tables",
-    value: "Fully styled and dressed",
-  },
-  {
-    label: "Setup & breakdown",
-    value: "Fully managed, start to finish",
-  },
-];
+
 
 const DetailRows = ({
   rows,
