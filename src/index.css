@@ -24,7 +24,7 @@
     --on-deep: 47 22% 89%;             /* rf-on-deep #E9E6DD */
     --on-deep-soft: 71 4% 58%;         /* rf-on-deep-soft #97998F */
 
-    --accent: 14 42% 42%;              /* terracotta clay — primary CTA */
+    --accent: 18 78% 66%;              /* warm peach — primary CTA */
     --accent-warm: 36 52% 52%;         /* brighter antique gold — italic highlights */
     --accent-soft: 38 32% 72%;         /* soft champagne */
 
@@ -224,8 +224,8 @@
     border-radius: 6px;
   }
   .btn-solid-rf:hover { background: #000; gap: 18px; }
-  .btn-solid-rf.accent { background: hsl(var(--accent)); color: hsl(var(--background)); }
-  .btn-solid-rf.accent:hover { background: hsl(14 46% 34%); }
+  .btn-solid-rf.accent { background: hsl(var(--accent)); color: hsl(100 8% 10%); }
+  .btn-solid-rf.accent:hover { background: hsl(16 84% 60%); color: hsl(var(--background)); }
 
   .btn-ghost-rf {
     font-family: var(--font-sans);
