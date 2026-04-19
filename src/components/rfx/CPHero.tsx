@@ -1,13 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/cp-hero-frame.jpg";
 
 const CPHero = () => {
   const [scrolled, setScrolled] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let raf = 0;
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      if (raf) return;
+      raf = window.requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (imgRef.current) {
+          // Slow parallax — image moves up at ~35% of scroll speed inside the clip
+          imgRef.current.style.transform = `translate3d(0, ${y * 0.35}px, 0) scale(1.15)`;
+        }
+        raf = 0;
+      });
+    };
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) window.cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
@@ -17,11 +34,13 @@ const CPHero = () => {
       style={{ height: "100dvh", minHeight: "100vh" }}
       aria-labelledby="cp-hero-heading"
     >
-      {/* Full-bleed image */}
+      {/* Full-bleed image with parallax */}
       <img
+        ref={imgRef}
         src={heroImg}
         alt="Beautifully styled outdoor children's birthday celebration in Surrey with peach balloon installation, peonies and a dressed cake table"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover will-change-transform"
+        style={{ transform: "translate3d(0, 0, 0) scale(1.15)" }}
         width={1920}
         height={1080}
       />

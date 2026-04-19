@@ -31,6 +31,7 @@ const CPReveal = ({
   hideImageOnMobile = false,
 }: CPRevealProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -49,6 +50,37 @@ const CPReveal = ({
     );
     io.observe(el);
     return () => io.disconnect();
+  }, []);
+
+  // Parallax — translate the inner <img> upward inside its clipped wrapper as
+  // the section scrolls through the viewport. Uses rAF + transform for 60fps.
+  useEffect(() => {
+    const wrap = sectionRef.current;
+    const img = imgRef.current;
+    if (!wrap || !img) return;
+    let raf = 0;
+    const update = () => {
+      const rect = wrap.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      // Progress: -1 (section just below viewport) → 0 (centred) → 1 (above viewport)
+      const progress = (rect.top + rect.height / 2 - vh / 2) / (vh / 2 + rect.height / 2);
+      const clamped = Math.max(-1, Math.min(1, progress));
+      // Move up to ~12% of image height across the scroll range
+      img.style.transform = `translate3d(0, ${clamped * -10}%, 0) scale(1.18)`;
+      raf = 0;
+    };
+    const onScroll = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) window.cancelAnimationFrame(raf);
+    };
   }, []);
 
   const imageBlock = (
@@ -72,9 +104,11 @@ const CPReveal = ({
         }}
       >
         <img
+          ref={imgRef}
           src={image}
           alt={alt}
-          className="absolute inset-0 w-full h-full object-cover z-[2]"
+          className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
+          style={{ transform: "translate3d(0,0,0) scale(1.18)" }}
           loading="lazy"
           width={1280}
           height={1600}
