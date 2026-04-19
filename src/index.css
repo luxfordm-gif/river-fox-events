@@ -24,9 +24,9 @@
     --on-deep: 47 22% 89%;             /* rf-on-deep #E9E6DD */
     --on-deep-soft: 71 4% 58%;         /* rf-on-deep-soft #97998F */
 
-    --accent: 130 18% 28%;             /* deep moss #3A5440 */
-    --accent-warm: 36 28% 44%;         /* antique brass / olive gold #8E7B4E */
-    --accent-soft: 38 24% 68%;         /* soft champagne */
+    --accent: 14 42% 42%;              /* terracotta clay — primary CTA */
+    --accent-warm: 36 52% 52%;         /* brighter antique gold — italic highlights */
+    --accent-soft: 38 32% 72%;         /* soft champagne */
 
     --hair: 100 8% 10% / 0.10;
     --hair-strong: 100 8% 10% / 0.22;
@@ -42,23 +42,23 @@
     --secondary-foreground: 100 8% 10%;
     --muted: 47 22% 88%;
     --muted-foreground: 100 4% 36%;
-    --accent-bg: 130 20% 30%;
+    --accent-bg: 14 42% 42%;
     --accent-foreground: 47 22% 92%;
     --destructive: 0 70% 45%;
     --destructive-foreground: 47 22% 92%;
     --border: 100 8% 10% / 0.12;
     --input: 100 8% 10% / 0.12;
-    --ring: 130 20% 30%;
+    --ring: 14 42% 42%;
     --radius: 0.5rem;
 
     --sidebar-background: 45 36% 98%;
     --sidebar-foreground: 100 8% 10%;
-    --sidebar-primary: 130 20% 30%;
+    --sidebar-primary: 14 42% 42%;
     --sidebar-primary-foreground: 47 22% 92%;
     --sidebar-accent: 38 56% 88%;
     --sidebar-accent-foreground: 100 8% 10%;
     --sidebar-border: 100 8% 10% / 0.12;
-    --sidebar-ring: 130 20% 30%;
+    --sidebar-ring: 14 42% 42%;
 
     /* Type families */
     --font-serif: "Fraunces", Georgia, serif;
@@ -198,7 +198,7 @@
   }
   .btn-solid-rf:hover { background: #000; gap: 18px; }
   .btn-solid-rf.accent { background: hsl(var(--accent)); color: hsl(var(--background)); }
-  .btn-solid-rf.accent:hover { background: hsl(130 22% 22%); }
+  .btn-solid-rf.accent:hover { background: hsl(14 46% 34%); }
 
   .btn-ghost-rf {
     font-family: var(--font-sans);
