@@ -92,9 +92,8 @@ const Enquire = () => {
           <form className="form-wrap" onSubmit={onSubmit}>
             <div className="mb-5">
               <h3
-                className="font-serif-rf"
+                className="font-serif-rf text-primary text-2xl"
                 style={{
-                  fontSize: 22,
                   lineHeight: 1.2,
                   fontWeight: 400,
                   letterSpacing: "-0.015em",
