@@ -68,7 +68,7 @@ const CPHero = () => {
         </h1>
 
         <p
-          className="word-reveal in delay-2 mt-8 md:mt-10 max-w-[44ch] mx-auto text-[15px] md:text-[17px] leading-[1.6]"
+          className="word-reveal in delay-2 mt-2 md:mt-3 max-w-[44ch] mx-auto text-[15px] md:text-[17px] leading-[1.6]"
           style={{
             color: "hsl(var(--background) / 0.9)",
             textWrap: "pretty",
