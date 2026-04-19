@@ -49,7 +49,7 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-6 sm:px-12 md:px-20 lg:px-0">
           {QUOTES.map((t, i) => (
             <figure key={i} className="tcard fade-up">
               <Stars />
