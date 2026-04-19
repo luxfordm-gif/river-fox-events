@@ -1,4 +1,9 @@
-import { useState } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const FAQS = [
   {
@@ -32,8 +37,6 @@ const FAQS = [
 ];
 
 const FAQ = () => {
-  const [open, setOpen] = useState<number>(0);
-
   return (
     <section id="faq" className="rfx-section white" aria-labelledby="faq-heading">
       <div className="container-rfx">
@@ -63,33 +66,36 @@ const FAQ = () => {
         </div>
 
         <div className="max-w-[980px] mx-auto">
-          {FAQS.map((it, i) => (
-            <div
-              key={i}
-              className={`faq-item ${open === i ? "open" : ""}`}
-              onClick={() => setOpen(open === i ? -1 : i)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  setOpen(open === i ? -1 : i);
-                }
-              }}
-              aria-expanded={open === i}
-            >
-              <div className="faq-head">
-                <span className="font-mono-rf text-[11px] tracking-[0.22em] text-ink-soft">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="q">{it.q}</span>
-                <span className="faq-plus">+</span>
-              </div>
-              <div className="faq-body">
-                <p>{it.a}</p>
-              </div>
-            </div>
-          ))}
+          <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
+            {FAQS.map((it, i) => (
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className="faq-rf-item border-t border-ink/20 last:border-b last:border-ink/20"
+              >
+                <AccordionTrigger className="faq-rf-trigger group hover:no-underline py-7 [&>svg]:hidden">
+                  <div className="grid grid-cols-[60px_1fr_40px] items-baseline gap-6 w-full text-left max-md:grid-cols-[40px_1fr_32px] max-md:gap-3.5">
+                    <span className="font-mono-rf text-[11px] tracking-[0.22em] text-ink-soft">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-serif-rf font-light text-ink leading-[1.25] tracking-[-0.018em] text-[clamp(20px,2.4vw,30px)]">
+                      {it.q}
+                    </span>
+                    <span className="faq-rf-plus inline-flex items-center justify-center text-[22px] font-light text-ink transition-transform duration-500 ease-out">
+                      +
+                    </span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="faq-rf-content overflow-hidden text-base">
+                  <div className="grid grid-cols-[60px_1fr_40px] gap-6 max-md:grid-cols-[40px_1fr_32px] max-md:gap-3.5">
+                    <p className="col-start-2 text-[15px] leading-[1.7] text-ink-soft max-w-[680px] pt-2 pb-4">
+                      {it.a}
+                    </p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>
