@@ -53,7 +53,7 @@ const Testimonials = () => {
           {QUOTES.map((t, i) => (
             <figure key={i} className="tcard fade-up">
               <Stars />
-              <blockquote className="tcard-quote">{t.q}</blockquote>
+              <blockquote className="tcard-quote font-thin text-zinc-600">{t.q}</blockquote>
               <figcaption className="tcard-meta">
                 <span className="name">{t.a}</span>
                 <span>{t.loc}</span>
