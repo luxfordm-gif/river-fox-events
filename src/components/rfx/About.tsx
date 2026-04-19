@@ -45,7 +45,7 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
       }}
     >
       <div
-        className="font-serif-rf tabular-nums"
+        className="font-serif-rf tabular-nums text-center"
         style={{
           fontSize: "clamp(44px, 5.5vw, 68px)",
           lineHeight: 1,
@@ -55,7 +55,7 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
       >
         {stat.display(n)}
       </div>
-      <div className="font-mono-rf text-[10px] tracking-[0.22em] uppercase text-ink-soft mt-3">
+      <div className="font-mono-rf text-[10px] tracking-[0.22em] uppercase text-ink-soft mt-3 text-center">
         {stat.label}
       </div>
     </div>
