@@ -161,6 +161,26 @@
   .word-reveal.delay-2 > span { transition-delay: .24s; }
   .word-reveal.delay-3 > span { transition-delay: .36s; }
 
+  /* RevealWord — per-word masked slide-up */
+  .word-reveal-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding-bottom: 0.18em;
+  }
+  .word-reveal-inner {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 1.1s cubic-bezier(.22,.7,.1,1);
+    will-change: transform;
+  }
+  .word-reveal-inner.in { transform: translateY(0); }
+  .word-reveal-inner.em {
+    font-style: italic;
+    color: hsl(var(--accent-warm));
+  }
+  .word-gap { display: inline-block; width: 0.28em; }
+
   /* Buttons */
   .btn-link-rf {
     font-family: var(--font-sans);
