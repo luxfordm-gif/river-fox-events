@@ -80,8 +80,8 @@ const Index = () => {
       <main>
         <Hero />
         <Ticker />
-        <Approach />
         <Experiences />
+        <Approach />
         <RevealWord lines={["Every detail,", "<em>considered.</em>"]} />
         <About />
         <Process />
