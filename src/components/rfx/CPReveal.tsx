@@ -51,7 +51,7 @@ const CPReveal = ({
 
   const imageBlock = (
     <div
-      className="relative w-full overflow-hidden"
+      className="relative w-full"
       style={{ aspectRatio: "4/5" }}
     >
       {/* Inner zoom-out reveal: starts small (centred), expands to fill */}
@@ -65,7 +65,7 @@ const CPReveal = ({
           transformOrigin: "center center",
           willChange: "transform, opacity",
           boxShadow: visible
-            ? "0 30px 70px -28px hsl(var(--ink) / 0.32), 0 12px 28px -14px hsl(var(--ink) / 0.16)"
+            ? "0 40px 80px -30px hsl(var(--ink) / 0.45), 0 18px 36px -16px hsl(var(--ink) / 0.22)"
             : "0 0 0 hsl(var(--ink) / 0)",
         }}
       >

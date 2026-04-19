@@ -19,60 +19,50 @@ const CPLocations = () => {
       aria-labelledby="cp-locations-heading"
     >
       <div className="container-rfx">
-        <div className="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-12 md:gap-20 items-center rfx-md-stack">
-          <div className="fade-up">
-            <div className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-6">
-              Where we work
-            </div>
-            <h2
-              id="cp-locations-heading"
-              className="font-serif-rf"
-              style={{
-                fontSize: "clamp(40px, 5vw, 72px)",
-                lineHeight: 1.04,
-                fontWeight: 300,
-                letterSpacing: "-0.025em",
-              }}
-            >
-              Surrey, with{" "}
-              <em className="italic font-light text-accent-warm">love.</em>
-            </h2>
-            <p className="mt-7 text-[16px] leading-[1.7] text-ink-soft max-w-[480px]">
-              Based in Surrey and travelling across the county and into London
-              for clients who care about the difference that detail makes.
-              Wherever the celebration, we come to you — set up before guests
-              arrive and break down once the day is done.
-            </p>
-
-            <ul className="mt-8 grid grid-cols-2 gap-x-8 max-w-[480px] border-t border-ink/15">
-              {AREAS.map((a, i) => (
-                <li
-                  key={a}
-                  className="flex items-baseline gap-3 py-3 border-b border-ink/15 font-serif-rf text-[18px] font-light tracking-[-0.012em] text-ink"
-                >
-                  <span className="font-mono-rf text-[10px] tracking-[0.18em] text-ink-soft">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  {a}
-                </li>
-              ))}
-            </ul>
+        <div className="flex flex-col items-center text-center max-w-[760px] mx-auto fade-up">
+          <div
+            className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-3"
+            style={{ fontWeight: 600 }}
+          >
+            Locations
           </div>
+          <h2
+            id="cp-locations-heading"
+            className="font-serif-rf"
+            style={{
+              fontSize: "clamp(40px, 5vw, 72px)",
+              lineHeight: 1.0,
+              fontWeight: 400,
+              letterSpacing: "-0.025em",
+              textWrap: "balance",
+            }}
+          >
+            Areas we{" "}
+            <em className="italic font-light text-accent-warm">cover.</em>
+          </h2>
+          <p
+            className="mt-6 text-[16px] leading-[1.7] text-ink-soft max-w-[560px]"
+            style={{ textWrap: "pretty" }}
+          >
+            Based in Surrey and travelling across the county and into London for
+            clients who care about the difference that detail makes. Wherever
+            the celebration, we come to you — set up before guests arrive and
+            broken down once the day is done.
+          </p>
 
-          <div className="fade-up">
-            <div
-              className="ph ph-blush relative overflow-hidden rounded-sm"
-              style={{ aspectRatio: "4/3" }}
-            >
-              <iframe
-                title="River Fox Events — Surrey service area"
-                src="https://www.google.com/maps?q=Surrey,%20England&z=10&output=embed"
-                className="absolute inset-0 w-full h-full z-[2] border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-          </div>
+          <ul className="mt-12 grid grid-cols-2 sm:grid-cols-2 gap-x-12 w-full max-w-[520px] border-t border-ink/15">
+            {AREAS.map((a, i) => (
+              <li
+                key={a}
+                className="flex items-baseline gap-3 py-3 border-b border-ink/15 font-serif-rf text-[18px] font-light tracking-[-0.012em] text-ink"
+              >
+                <span className="font-mono-rf text-[10px] tracking-[0.18em] text-ink-soft">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {a}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
