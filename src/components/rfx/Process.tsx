@@ -23,13 +23,13 @@ const Process = () => {
   return (
     <section id="process" className="rfx-section dark" aria-labelledby="process-heading">
       <div className="container-rfx">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-12 items-end mb-8 md:mb-16 rfx-md-stack">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-12 items-end mb-6 md:mb-16 rfx-md-stack">
           <h2
             id="process-heading"
             className="font-serif-rf m-0 text-center md:text-left"
             style={{
-              fontSize: "clamp(44px, 5.6vw, 88px)",
-              lineHeight: 1.06,
+              fontSize: "clamp(54px, 5.6vw, 88px)",
+              lineHeight: 1.04,
               fontWeight: 300,
               letterSpacing: "-0.025em",
             }}

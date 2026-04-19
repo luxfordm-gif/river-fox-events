@@ -113,8 +113,8 @@ const About = () => {
               id="about-heading"
               className="font-serif-rf"
               style={{
-                fontSize: "clamp(40px, 5.6vw, 84px)",
-                lineHeight: 1.04,
+                fontSize: "clamp(48px, 5.6vw, 84px)",
+                lineHeight: 1.02,
                 fontWeight: 300,
                 letterSpacing: "-0.028em",
               }}

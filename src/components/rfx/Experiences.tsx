@@ -36,13 +36,13 @@ const Experiences = () => {
   return (
     <section id="experiences" className="rfx-section white" aria-labelledby="exp-heading">
       <div className="container-rfx">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-12 mb-10 md:mb-16 items-end rfx-md-stack">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-12 mb-10 md:mb-16 items-end rfx-md-stack">
           <h2
             id="exp-heading"
             className="font-serif-rf fade-up m-0 text-center md:text-left"
             style={{
-              fontSize: "clamp(44px, 5.6vw, 88px)",
-              lineHeight: 1.06,
+              fontSize: "clamp(54px, 5.6vw, 88px)",
+              lineHeight: 1.04,
               fontWeight: 300,
               letterSpacing: "-0.025em",
             }}
@@ -57,7 +57,7 @@ const Experiences = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 border-t border-ink/20 pt-8 md:pt-12 rfx-md-stack">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-0 border-t border-ink/20 pt-8 md:pt-12 rfx-md-stack">
           {ITEMS.map((it, i) => (
             <a
               key={i}

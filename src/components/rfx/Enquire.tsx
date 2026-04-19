@@ -32,7 +32,7 @@ const Enquire = () => {
               id="enquire-heading"
               className="font-serif-rf"
               style={{
-                fontSize: "clamp(44px, 5.6vw, 92px)",
+                fontSize: "clamp(52px, 5.6vw, 92px)",
                 lineHeight: 0.96,
                 fontWeight: 300,
                 letterSpacing: "-0.03em",
