@@ -66,7 +66,7 @@ const CPPricing = () => {
 
         <div
           ref={ref}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 border-t border-ink/15"
+          className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-ink/15"
         >
           {TIERS.map((t, i) => (
             <div
