@@ -34,7 +34,7 @@ const FAQS = [
 
 const ChildrensFAQ = () => {
   return (
-    <section id="faq" className="rfx-section white" aria-labelledby="cp-faq-heading">
+    <section id="faq" className="rfx-section white" style={{ paddingBottom: "48px" }} aria-labelledby="cp-faq-heading">
       <div className="container-rfx">
         <div className="text-center mb-14">
           <h2
