@@ -514,6 +514,11 @@
   }
 
   .rfx-section { padding: 120px 0; }
+  /* Children's Parties alternating reveal sections — tighter, fixed desktop rhythm */
+  @media (min-width: 761px) {
+    .cp-reveal-section { padding: 100px 0 !important; }
+    .cp-reveal-section + .cp-reveal-section { padding-top: 30px !important; }
+  }
   .rfx-section.dark { background: hsl(var(--surface-deep)); color: hsl(var(--on-deep)); }
   .rfx-section.white { background: hsl(var(--surface-alt)); }
   .rfx-section.warm { background: hsl(var(--surface-warm)); }
