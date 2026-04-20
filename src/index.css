@@ -590,6 +590,45 @@
     .text-\[16px\] { font-size: 17.5px !important; line-height: 1.65 !important; }
   }
 
+  /* ============================================================
+     LAPTOP BREAKPOINT (768px – 1366px)
+     15" MacBook viewport (~1280px) was rendering oversized.
+     Scale down typography, tighten section padding, push content
+     inward with larger horizontal margins, cap hero to 85vh so the
+     editorial image strip below is always partially visible.
+     Mobile (<768px) and wide desktop (>1366px) are NOT affected.
+     ============================================================ */
+  @media (min-width: 768px) and (max-width: 1366px) {
+    /* Wider horizontal margins — push content inward to ~8% each side */
+    .container-rfx { padding: 0 8vw; }
+
+    /* Reduce section padding so every section hints at the next */
+    .rfx-section { padding: 80px 0; }
+    .cp-reveal-section { padding: 70px 0 !important; }
+    .cp-reveal-section + .cp-reveal-section { padding-top: 24px !important; }
+    .cp-reveal-section:has(+ .cp-reveal-section) { padding-bottom: 24px !important; }
+
+    /* Hero — cap at 85vh so the image strip below peeks through */
+    .rfx-hero {
+      min-height: auto;
+      max-height: 85vh;
+      padding-top: 110px;
+      padding-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    /* Hero headline cap: 72px on laptop */
+    .rfx-hero h1#hero-heading { font-size: clamp(48px, 6vw, 72px) !important; }
+
+    /* RevealWord quote — capped at 64px */
+    .reveal-word { padding: 90px 0; }
+    .reveal-word h3 { font-size: clamp(44px, 5.4vw, 64px) !important; }
+
+    /* All other section headlines scale down proportionally */
+    h2.font-serif-rf { font-size: clamp(40px, 4.6vw, 60px) !important; }
+  }
+
   /* Hero scroll-down cue — soft bouncing chevron */
   .rfx-scroll-cue {
     display: inline-flex;
