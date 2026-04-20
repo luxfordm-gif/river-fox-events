@@ -539,8 +539,9 @@
   .rfx-section.white { background: hsl(var(--surface-alt)); }
   .rfx-section.warm { background: hsl(var(--surface-warm)); }
   .rfx-section.blush { background: hsl(var(--surface-blush)); }
-  /* Instagram section — reduced height (was 120px / 48px) */
-  .rfx-instagram { padding: 60px 0; }
+  /* Instagram section — slightly tighter top gap so the divider sits closer to the section above */
+  .rfx-instagram { padding: 44px 0 56px; }
+  .rfx-instagram .rfx-instagram-inner { padding-top: 40px; padding-bottom: 40px; }
   @media (max-width: 760px) {
     .rfx-section { padding: 56px 0; }
     .rfx-instagram { padding: 28px 0; }
