@@ -55,7 +55,13 @@ const ScrollStrip = () => {
       const containerWidth = section.clientWidth;
       const maxTranslate = Math.max(0, trackWidth - containerWidth);
 
-      const x = reduceMotion ? 0 : -progress * maxTranslate;
+      // Slow the horizontal travel on mobile so it feels controlled on touch
+      // devices (a small vertical flick was scrubbing the strip too quickly).
+      // Desktop keeps the full 1:1 mapping.
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+      const speed = isMobile ? 0.55 : 1;
+
+      const x = reduceMotion ? 0 : -progress * maxTranslate * speed;
       track.style.transform = `translate3d(${x}px, 0, 0)`;
     };
 
