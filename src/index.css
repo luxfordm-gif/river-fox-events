@@ -514,6 +514,14 @@
   }
 
   .rfx-section { padding: 120px 0; }
+  /* Children's Parties alternating reveal sections — tighter, fixed desktop rhythm.
+     First section keeps full 100px top; subsequent ones tighten so the gap
+     between consecutive reveals stays ≤60px on large monitors. */
+  @media (min-width: 761px) {
+    .cp-reveal-section { padding: 100px 0 !important; }
+    .cp-reveal-section + .cp-reveal-section { padding-top: 30px !important; }
+    .cp-reveal-section:has(+ .cp-reveal-section) { padding-bottom: 30px !important; }
+  }
   /* Children's Parties alternating reveal sections — tighter, fixed desktop rhythm */
   @media (min-width: 761px) {
     .cp-reveal-section { padding: 100px 0 !important; }
