@@ -63,8 +63,8 @@ const CPHero = () => {
         }}
       />
 
-      {/* Headline — dead centre */}
-      <div className="relative z-[2] h-full w-full flex flex-col items-center justify-center px-6 text-center">
+      {/* Headline — centred horizontally, upper-centre vertically on mobile */}
+      <div className="relative z-[2] h-full w-full flex flex-col items-center justify-center md:justify-center px-6 text-center pt-[18vh] md:pt-0 pb-[22vh] md:pb-0">
         <h1
           id="cp-hero-heading"
           className="font-serif-rf mx-auto"
