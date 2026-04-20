@@ -43,103 +43,10 @@ const Hero = () => {
             </a>
           </div>
         </div>
-
-        {/* Mobile: fading carousel of 3 images. Tablet/Desktop: 3-image editorial strip with parallax */}
-        <div className="md:hidden -mx-5">
-          <div className="ph ph-warm overflow-hidden relative" style={{ aspectRatio: "4/5" }}>
-            {MOBILE_SLIDES.map((s, i) => (
-              <img
-                key={i}
-                src={s.src}
-                alt={s.alt}
-                className="absolute inset-0 w-full h-full object-cover z-[2] transition-opacity duration-[1400ms] ease-in-out"
-                style={{ opacity: slide === i ? 1 : 0 }}
-                width={1024}
-                height={1280}
-                loading={i === 0 ? "eager" : "lazy"}
-              />
-            ))}
-            {/* slide indicators */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[3] flex gap-2">
-              {MOBILE_SLIDES.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  aria-label={`Show image ${i + 1}`}
-                  onClick={() => setSlide(i)}
-                  className="h-[3px] rounded-full transition-all duration-500"
-                  style={{
-                    width: slide === i ? 28 : 14,
-                    background: slide === i ? "hsl(var(--background))" : "hsl(var(--background) / 0.5)",
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="hidden md:grid grid-cols-[1fr_1.35fr_0.9fr] gap-4 md:gap-5 items-start">
-          <div
-            className="relative md:pt-16"
-            style={{
-              transform: `translateY(${y * -0.05}px)`,
-              willChange: "transform",
-            }}
-          >
-            <div ref={wrap1} className="ph ph-warm overflow-hidden rounded-sm relative" style={{ aspectRatio: "4/5" }}>
-              <img
-                ref={img1}
-                src={heroMain}
-                alt="Beautifully styled children's party tablescape with pastel balloon installation, Surrey garden"
-                className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
-                style={{ transform: "translate3d(0,0,0) scale(1.12)" }}
-                width={1024}
-                height={1280}
-              />
-            </div>
-          </div>
-          <div
-            className="relative md:pt-10"
-            style={{
-              transform: `translateY(${y * -0.05}px)`,
-              willChange: "transform",
-            }}
-          >
-            <div ref={wrap2} className="ph overflow-hidden rounded-sm relative" style={{ aspectRatio: "3/4" }}>
-              <img
-                ref={img2}
-                src={heroSide}
-                alt="Elegant milestone celebration installation with floral arch and candles"
-                className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
-                style={{ transform: "translate3d(0,0,0) scale(1.12)" }}
-                loading="lazy"
-                width={1024}
-                height={1408}
-              />
-            </div>
-          </div>
-          <div
-            className="relative md:pt-24"
-            style={{
-              transform: `translateY(${y * -0.05}px)`,
-              willChange: "transform",
-            }}
-          >
-            <div ref={wrap3} className="ph ph-blush overflow-hidden rounded-sm relative" style={{ aspectRatio: "4/5" }}>
-              <img
-                ref={img3}
-                src={heroSmall}
-                alt="Detail of a styled cake on a vintage cake stand with pastel ribbons and peonies"
-                className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
-                style={{ transform: "translate3d(0,0,0) scale(1.12)" }}
-                loading="lazy"
-                width={1024}
-                height={1280}
-              />
-            </div>
-          </div>
-        </div>
       </div>
+
+      {/* Scroll-driven horizontal image strip (replaces previous collage) */}
+      <ScrollStrip />
     </section>
   );
 };
