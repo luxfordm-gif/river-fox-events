@@ -59,7 +59,7 @@ const ScrollStrip = () => {
       // devices (a small vertical flick was scrubbing the strip too quickly).
       // Desktop keeps the full 1:1 mapping.
       const isMobile = window.matchMedia("(max-width: 767px)").matches;
-      const speed = isMobile ? 0.55 : 1;
+      const speed = isMobile ? 0.35 : 1;
 
       const x = reduceMotion ? 0 : -progress * maxTranslate * speed;
       track.style.transform = `translate3d(${x}px, 0, 0)`;
