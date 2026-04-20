@@ -97,7 +97,7 @@ const ScrollStrip = () => {
     <section
       ref={sectionRef}
       aria-label="River Fox Events imagery"
-      className="overflow-hidden py-[20px] md:py-[40px]"
+      className="md:hidden overflow-hidden py-[20px]"
       style={{ background: "hsl(var(--linen))" }}
     >
       <div

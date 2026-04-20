@@ -1,8 +1,9 @@
 import ScrollStrip from "@/components/rfx/ScrollStrip";
+import HeroEditorial from "@/components/rfx/HeroEditorial";
 
 const Hero = () => {
   return (
-    <section id="top" className="pt-[96px] md:pt-[124px] pb-12 md:pb-16" aria-labelledby="hero-heading">
+    <section id="top" className="rfx-hero pt-[96px] md:pt-[124px] pb-12 md:pb-16" aria-labelledby="hero-heading">
       <div className="container-rfx">
         {/* Centered editorial intro */}
         <div className="mb-10 md:mb-14 flex flex-col items-center text-center">
@@ -45,8 +46,9 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll-driven horizontal image strip (replaces previous collage) */}
+      {/* Mobile: scroll-driven horizontal slideshow. Laptop/desktop: editorial 3-image layout with subtle parallax. */}
       <ScrollStrip />
+      <HeroEditorial />
     </section>
   );
 };
