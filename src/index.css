@@ -528,8 +528,20 @@
     .rfx-enquire { padding-bottom: 40px; }
     /* Form fields wider — remove form-wrap inner padding & give fields more room */
     .rfx-enquire .form-wrap { padding: 20px; border-radius: 12px; }
-    /* Service cards: reduce image height ~20% on mobile */
-    .rfx-svc-img { aspect-ratio: 5/5 !important; }
+    /* Service cards: cap image height at 220px on mobile so title + body stay visible */
+    .rfx-svc-img {
+      aspect-ratio: auto !important;
+      height: 220px !important;
+    }
+    /* About founder image: cap at 280px on mobile, crop neatly */
+    .rfx-about-img {
+      aspect-ratio: auto !important;
+      height: 280px !important;
+    }
+    /* Tighten gap between Testimonials and Instagram on mobile */
+    #kindness.rfx-section { padding-bottom: 28px; }
+    /* Instagram: tighter top/bottom padding on mobile */
+    .rfx-instagram { padding: 16px 0 32px !important; }
   }
 
   /* Responsive grid stacking helper */
