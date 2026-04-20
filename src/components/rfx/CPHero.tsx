@@ -64,7 +64,7 @@ const CPHero = () => {
       />
 
       {/* Headline — centred horizontally, upper-centre vertically on mobile */}
-      <div className="relative z-[2] h-full w-full flex flex-col items-center justify-center md:justify-center px-6 text-center pt-[18vh] md:pt-0 pb-[22vh] md:pb-0">
+      <div className="relative z-[2] h-full w-full flex flex-col items-center justify-center md:justify-center px-6 text-center pt-[calc(18vh-12px)] md:pt-0 pb-[calc(22vh+12px)] md:pb-0">
         <h1
           id="cp-hero-heading"
           className="font-serif-rf mx-auto"
@@ -111,7 +111,7 @@ const CPHero = () => {
       <a
         href="#cp-celebrations"
         aria-label="Scroll to next section"
-        className={`absolute left-1/2 -translate-x-1/2 bottom-10 md:bottom-10 z-[3] flex flex-col items-center gap-3 transition-opacity duration-500 ${
+        className={`absolute left-1/2 -translate-x-1/2 bottom-[70px] md:bottom-10 z-[3] flex flex-col items-center gap-3 transition-opacity duration-500 ${
           scrolled ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
         style={{ color: "hsl(var(--background) / 0.95)" }}
