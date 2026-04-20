@@ -38,7 +38,7 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
   const n = useCountUp(stat.value, visible);
   return (
     <div
-      className="flex-col flex items-center justify-start"
+      className="flex min-w-0 flex-col items-center justify-start self-baseline"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(12px)",
@@ -49,14 +49,26 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
         className="font-serif-rf tabular-nums text-center"
         style={{
           fontSize: "clamp(44px, 5.5vw, 68px)",
-          lineHeight: 1,
+          lineHeight: 0.9,
           fontWeight: 300,
           letterSpacing: "-0.022em",
+          minHeight: "clamp(44px, 5.5vw, 68px)",
+          paddingBottom: 0,
+          display: "flex",
+          alignItems: "flex-end",
+          justifyContent: "center",
         }}
       >
         {stat.display(n)}
       </div>
-      <div className="font-mono-rf text-[8.5px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.22em] uppercase text-ink-soft mt-3 text-center whitespace-nowrap">
+      <div
+        className="font-mono-rf mt-3 text-center whitespace-nowrap uppercase text-ink-soft"
+        style={{
+          fontSize: "clamp(6.5px, 1.8vw, 10px)",
+          lineHeight: 1.1,
+          letterSpacing: "clamp(0.08em, 0.18vw, 0.18em)",
+        }}
+      >
         {stat.label}
       </div>
     </div>
@@ -159,6 +171,7 @@ const About = () => {
             <div
               ref={statsRef}
               className="mt-12 grid grid-cols-3 gap-3 sm:gap-6 items-baseline border-t border-ink/20 pt-8 max-w-[560px]"
+              style={{ alignItems: "baseline" }}
             >
               {STATS.map((s, i) => (
                 <StatItem key={s.label} stat={s} visible={statsVisible} delay={i * 140} />
