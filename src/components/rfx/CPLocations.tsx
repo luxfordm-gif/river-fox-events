@@ -58,6 +58,19 @@ const CPLocations = () => {
               </li>
             ))}
           </ul>
+
+          <div className="mt-14 w-full overflow-hidden rounded-sm border border-ink/15 shadow-[0_22px_44px_-22px_hsl(var(--ink)/0.18)]">
+            <div className="relative w-full" style={{ aspectRatio: "16/10" }}>
+              <iframe
+                title="Map of Surrey areas covered by River Fox Events"
+                src="https://www.google.com/maps?q=Cobham,Surrey,UK&z=10&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 w-full h-full border-0 grayscale-[0.15]"
+                allowFullScreen
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
