@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import studioImg from "@/assets/studio.jpg";
+import studioImg from "@/assets/studio.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
 
 interface Stat {
@@ -97,13 +97,19 @@ const About = () => {
               className="ph ph-warm overflow-hidden rounded-sm relative rfx-about-img"
               style={{ aspectRatio: "5/6" }}
             >
+              {/*
+                SEO REMINDER: Alt text must describe the image accurately and
+                include "River Fox Events" + Surrey/service keywords where
+                relevant. Never leave empty or generic alt text.
+              */}
               <img
                 ref={studioImgRef}
                 src={studioImg}
-                alt="Laura's studio in Surrey — moodboards, fabric and sketches"
+                alt="Laura, founder of River Fox Events, styling a balloon installation in her Surrey studio with moodboards, fabric and sketches"
                 className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
                 style={{ transform: "translate3d(0,0,0) scale(1.14)" }}
                 loading="lazy"
+                decoding="async"
                 width={1024}
                 height={1280}
               />

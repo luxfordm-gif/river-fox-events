@@ -1,20 +1,24 @@
 import { useEffect, useRef } from "react";
-import hero1 from "@/assets/hero-1.jpg";
-import hero2 from "@/assets/hero-2.jpg";
-import hero3 from "@/assets/hero-3.jpg";
-import expChildren from "@/assets/exp-children.jpg";
-import expMilestone from "@/assets/exp-milestone.jpg";
-import expCorporate from "@/assets/exp-corporate.jpg";
-import cpCelebrations from "@/assets/cp-celebrations.jpg";
+import hero1 from "@/assets/hero-1.webp";
+import hero2 from "@/assets/hero-2.webp";
+import hero3 from "@/assets/hero-3.webp";
+import expChildren from "@/assets/exp-children.webp";
+import expMilestone from "@/assets/exp-milestone.webp";
+import expCorporate from "@/assets/exp-corporate.webp";
+import cpCelebrations from "@/assets/cp-celebrations.webp";
 
+// SEO REMINDER: every image in this strip must have descriptive alt text
+// that names the styling shown (theme, palette, props) plus the Surrey town
+// where relevant. Never empty, never "image"/"photo". Update alt strings
+// here whenever the source imagery changes.
 const STRIP_IMAGES = [
-  { src: hero1, alt: "Styled children's party tablescape with pastel balloons" },
-  { src: expMilestone, alt: "Milestone celebration with floral arch and candles" },
-  { src: hero2, alt: "Elegant tablescape detail with peonies and ribbons" },
-  { src: expChildren, alt: "Children's party styling with bespoke signage" },
-  { src: hero3, alt: "Detail of styled cake on a vintage cake stand" },
-  { src: expCorporate, alt: "Corporate brand event styling detail" },
-  { src: cpCelebrations, alt: "Celebration styling with balloons and bespoke details" },
+  { src: hero1, alt: "Pastel children's party tablescape with balloon installation in Cobham Surrey by River Fox Events" },
+  { src: expMilestone, alt: "Milestone celebration styling in Surrey by River Fox Events — floral arch and candlelit cake table" },
+  { src: hero2, alt: "Editorial tablescape detail with peonies and silk ribbons for a Weybridge celebration by River Fox Events" },
+  { src: expChildren, alt: "Immersive children's birthday party styling in Esher Surrey — bespoke signage and themed installation by River Fox Events" },
+  { src: hero3, alt: "Vintage cake stand styled with florals for a Surrey children's party by River Fox Events" },
+  { src: expCorporate, alt: "Corporate brand event styling in Surrey by River Fox Events — branded backdrop and sculptural florals" },
+  { src: cpCelebrations, alt: "Organic balloon arch in blush and sage for a children's party in Oxshott Surrey by River Fox Events" },
 ];
 
 /**
@@ -120,6 +124,8 @@ const ScrollStrip = () => {
               alt={img.alt}
               className="absolute inset-0 w-full h-full object-cover"
               loading={i === 0 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "auto"}
+              decoding="async"
               width={1024}
               height={1280}
             />

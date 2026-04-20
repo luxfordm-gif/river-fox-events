@@ -11,9 +11,9 @@ import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import CPIncluded from "@/components/rfx/CPIncluded";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 
-import imgCelebrations from "@/assets/cp-celebrations.jpg";
-import imgOccasions from "@/assets/cp-occasions.jpg";
-import imgThemes from "@/assets/cp-themes.jpg";
+import imgCelebrations from "@/assets/cp-celebrations.webp";
+import imgOccasions from "@/assets/cp-occasions.webp";
+import imgThemes from "@/assets/cp-themes.webp";
 
 const OCCASIONS = [
   {
@@ -153,7 +153,7 @@ const ChildrensParties = () => {
           id="cp-celebrations"
           imageSide="right"
           image={imgCelebrations}
-          alt="Pastel balloon arch over a beautifully styled cake table at a Surrey children's birthday party"
+          alt="Immersive children's birthday party styling in Cobham Surrey by River Fox Events — pastel balloon arch and styled cake tablescape"
           tone="ph-warm"
           hideImageOnMobile
           headline={
@@ -180,7 +180,7 @@ const ChildrensParties = () => {
           id="cp-occasions"
           imageSide="left"
           image={imgOccasions}
-          alt="Elegant first birthday tablescape with cream linens, candles and a soft pastel balloon cluster"
+          alt="First birthday party styling in Surrey by River Fox Events — elegant cream linen tablescape with candles and pastel balloon cluster"
           tone="ph-blush"
           headline={
             <>
@@ -198,7 +198,7 @@ const ChildrensParties = () => {
           id="cp-themes"
           imageSide="right"
           image={imgThemes}
-          alt="Whimsical fairy garden party styling with hanging florals, soft draped fabric and dappled natural light"
+          alt="Whimsical fairy garden themed children's party styling in Weybridge Surrey by River Fox Events — hanging florals, draped fabric and dappled light"
           tone="ph-warm"
           headline={
             <>

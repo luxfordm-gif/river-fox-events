@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import expChildren from "@/assets/exp-children.jpg";
-import expMilestone from "@/assets/exp-milestone.jpg";
-import expCorporate from "@/assets/exp-corporate.jpg";
+import expChildren from "@/assets/exp-children.webp";
+import expMilestone from "@/assets/exp-milestone.webp";
+import expCorporate from "@/assets/exp-corporate.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
 
 const ITEMS = [
@@ -10,7 +10,7 @@ const ITEMS = [
     body:
       "Immersive themed parties designed to feel magical for children — and completely effortless for you.",
     img: expChildren,
-    alt: "Whimsical immersive children's party setup with pastel balloon arch and themed installation",
+    alt: "Children's party styling in Surrey by River Fox Events — whimsical pastel balloon arch and themed installation for a birthday celebration",
     href: "/childrens-parties",
     tone: "",
   },
@@ -19,7 +19,7 @@ const ITEMS = [
     body:
       "Statement styling for 21sts, 40ths, 70ths, baby showers and anniversaries. Life's biggest moments, honoured properly.",
     img: expMilestone,
-    alt: "Anniversary celebration with round tables, balloon centerpieces and a glittering shimmer wall backdrop",
+    alt: "Milestone celebration styling in Surrey by River Fox Events — round tables, balloon centrepieces and a shimmer wall backdrop for an anniversary",
     href: "#enquire",
     tone: "ph-warm",
   },
@@ -28,7 +28,7 @@ const ITEMS = [
     body:
       "Design-led installations for launches, openings and activations. Trusted by P&G, The Range, Foxhills and more.",
     img: expCorporate,
-    alt: "Corporate brand launch with tall floral arrangement, branded backdrop and champagne reception",
+    alt: "Corporate event styling in Surrey by River Fox Events — tall floral arrangement, branded backdrop and champagne reception for a brand launch",
     href: "#enquire",
     tone: "ph-blush",
   },
@@ -57,6 +57,11 @@ const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
         className={`exp-img-wrap ph rounded-sm ${it.tone} fade-up rfx-svc-img relative overflow-hidden`}
         style={{ aspectRatio: "4/5" }}
       >
+        {/*
+          SEO REMINDER: Alt text on each card describes the specific service +
+          Surrey location and includes "River Fox Events". Update the ITEMS
+          alt strings above when changing imagery — never leave generic alt.
+        */}
         <img
           ref={img}
           src={it.img}
@@ -64,6 +69,7 @@ const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
           className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
           style={{ transform: "translate3d(0,0,0) scale(1.14)" }}
           loading="lazy"
+          decoding="async"
           width={1024}
           height={1280}
         />

@@ -76,6 +76,11 @@ const CPReveal = ({
             : "0 0 0 hsl(var(--ink) / 0)",
         }}
       >
+        {/*
+          SEO REMINDER: The `alt` prop passed to <CPReveal> must describe the
+          exact image (theme, palette, location) and include "River Fox Events"
+          plus relevant Surrey town keywords. Never empty, never generic.
+        */}
         <img
           ref={imgRef}
           src={image}
@@ -83,6 +88,7 @@ const CPReveal = ({
           className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
           style={{ transform: "translate3d(0,0,0) scale(1.18)" }}
           loading="lazy"
+          decoding="async"
           width={1280}
           height={1600}
         />
