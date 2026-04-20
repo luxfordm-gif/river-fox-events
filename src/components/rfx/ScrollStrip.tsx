@@ -55,11 +55,11 @@ const ScrollStrip = () => {
       const containerWidth = section.clientWidth;
       const maxTranslate = Math.max(0, trackWidth - containerWidth);
 
-      // Slow the horizontal travel on mobile so it feels controlled on touch
-      // devices (a small vertical flick was scrubbing the strip too quickly).
-      // Desktop keeps the full 1:1 mapping.
+      // Slow the horizontal travel on both desktop and mobile so the strip
+      // feels deliberate and cinematic — the user should scroll through the
+      // full section height to traverse from the first image to the last.
       const isMobile = window.matchMedia("(max-width: 767px)").matches;
-      const speed = isMobile ? 0.35 : 1;
+      const speed = isMobile ? 0.35 : 0.55;
 
       const x = reduceMotion ? 0 : -progress * maxTranslate * speed;
       track.style.transform = `translate3d(${x}px, 0, 0)`;
@@ -112,7 +112,7 @@ const ScrollStrip = () => {
           :root { --strip-h: 260px; --strip-item-w: 68vw; }
           @media (min-width: 768px) {
             :root {
-              --strip-h: 520px;
+              --strip-h: 480px;
               /* 3.5 images visible with a partial 4th peeking in.
                  Account for 16px (gap-4) gaps between items. */
               --strip-item-w: calc((100vw - (3 * 16px)) / 3.5);

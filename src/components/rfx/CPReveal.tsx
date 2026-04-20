@@ -65,10 +65,10 @@ const CPReveal = ({
       <div
         className={`absolute inset-0 ph ${tone} overflow-hidden rounded-sm`}
         style={{
-          transform: visible ? "scale(1)" : "scale(0.78)",
-          opacity: visible ? 1 : 0,
+          transform: visible ? "scale(1)" : "scale(0.92)",
+          opacity: visible ? 1 : 0.2,
           transition:
-            "transform 1.4s cubic-bezier(.22,.7,.2,1), opacity 1.1s ease, box-shadow 1.4s ease",
+            "transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
           transformOrigin: "center center",
           willChange: "transform, opacity",
           boxShadow: visible
@@ -100,10 +100,10 @@ const CPReveal = ({
     <div
       className="flex flex-col justify-center"
       style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(28px)",
+        opacity: visible ? 1 : 0.2,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
         transition:
-          "opacity 1.1s cubic-bezier(.22,.7,.2,1) 180ms, transform 1.1s cubic-bezier(.22,.7,.2,1) 180ms",
+          "opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 180ms, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 180ms",
       }}
     >
       <h2
