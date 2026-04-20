@@ -83,7 +83,7 @@ const ScrollStrip = () => {
     <section
       ref={sectionRef}
       aria-label="River Fox Events imagery"
-      className="overflow-hidden"
+      className="overflow-hidden py-16 md:py-24"
       style={{ background: "hsl(var(--linen))" }}
     >
       <div
@@ -96,7 +96,7 @@ const ScrollStrip = () => {
       >
         <style>{`
           :root { --strip-h: 260px; }
-          @media (min-width: 768px) { :root { --strip-h: 420px; } }
+          @media (min-width: 768px) { :root { --strip-h: 520px; } }
         `}</style>
         {STRIP_IMAGES.map((img, i) => (
           <div

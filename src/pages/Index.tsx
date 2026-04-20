@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Nav from "@/components/rfx/Nav";
 import Hero from "@/components/rfx/Hero";
-import Ticker from "@/components/rfx/Ticker";
 import InstagramFollow from "@/components/rfx/InstagramFollow";
 import Experiences from "@/components/rfx/Experiences";
 import RevealWord from "@/components/rfx/RevealWord";
@@ -79,7 +78,6 @@ const Index = () => {
       <Nav />
       <main>
         <Hero />
-        <Ticker />
         <Experiences />
         <About />
         <RevealWord lines={["Calm to plan, <em>unforgettable</em> on the day."]} />
