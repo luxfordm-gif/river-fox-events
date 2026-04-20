@@ -38,7 +38,7 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
   const n = useCountUp(stat.value, visible);
   return (
     <div
-      className="flex-col flex items-center justify-center"
+      className="flex-col flex items-center justify-start"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(12px)",
@@ -56,7 +56,7 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
       >
         {stat.display(n)}
       </div>
-      <div className="font-mono-rf text-[10px] tracking-[0.22em] uppercase text-ink-soft mt-3 text-center">
+      <div className="font-mono-rf text-[8.5px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.22em] uppercase text-ink-soft mt-3 text-center whitespace-nowrap">
         {stat.label}
       </div>
     </div>
@@ -158,7 +158,7 @@ const About = () => {
 
             <div
               ref={statsRef}
-              className="mt-12 grid grid-cols-3 gap-6 border-t border-ink/20 pt-8 max-w-[560px]"
+              className="mt-12 grid grid-cols-3 gap-3 sm:gap-6 items-baseline border-t border-ink/20 pt-8 max-w-[560px]"
             >
               {STATS.map((s, i) => (
                 <StatItem key={s.label} stat={s} visible={statsVisible} delay={i * 140} />
