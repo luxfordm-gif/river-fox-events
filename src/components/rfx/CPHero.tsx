@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import heroImg from "@/assets/cp-hero-frame.jpg";
+import heroImg from "@/assets/cp-hero-frame.webp";
 
 const CPHero = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -43,13 +43,22 @@ const CPHero = () => {
       style={{ height: "100dvh", minHeight: "100vh" }}
       aria-labelledby="cp-hero-heading"
     >
-      {/* Full-bleed image with parallax */}
+      {/*
+        Full-bleed hero image with parallax.
+        SEO REMINDER: Every <img> on the site MUST have descriptive alt text
+        that names what is shown and includes "River Fox Events" plus the
+        relevant service + Surrey location. Never use empty alt, "image",
+        or "photo". Above-the-fold images use loading="eager" + fetchpriority="high".
+      */}
       <img
         ref={imgRef}
         src={heroImg}
-        alt="Beautifully styled outdoor children's birthday celebration in Surrey with peach balloon installation, peonies and a dressed cake table"
+        alt="Luxury children's birthday party styling by River Fox Events Surrey — peach balloon installation, peonies and dressed cake table at a Cobham celebration"
         className="absolute inset-0 w-full h-full object-cover will-change-transform"
         style={{ transform: "translate3d(0, 0, 0) scale(1.28)" }}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
         width={1920}
         height={1080}
       />
