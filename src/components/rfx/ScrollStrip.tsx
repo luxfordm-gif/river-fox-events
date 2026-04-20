@@ -55,11 +55,11 @@ const ScrollStrip = () => {
       const containerWidth = section.clientWidth;
       const maxTranslate = Math.max(0, trackWidth - containerWidth);
 
-      // Slow the horizontal travel on both desktop and mobile so the strip
-      // feels deliberate and cinematic — the user should scroll through the
-      // full section height to traverse from the first image to the last.
+      // Slow the horizontal travel further on both desktop and mobile so the
+      // strip feels deliberate and cinematic — the user should scroll through
+      // well over the full section height to traverse from first to last image.
       const isMobile = window.matchMedia("(max-width: 767px)").matches;
-      const speed = isMobile ? 0.35 : 0.55;
+      const speed = isMobile ? 0.22 : 0.32;
 
       const x = reduceMotion ? 0 : -progress * maxTranslate * speed;
       track.style.transform = `translate3d(${x}px, 0, 0)`;
