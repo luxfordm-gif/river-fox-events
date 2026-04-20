@@ -111,7 +111,7 @@ const CPHero = () => {
       <a
         href="#cp-celebrations"
         aria-label="Scroll to next section"
-        className={`absolute left-1/2 -translate-x-1/2 bottom-20 md:bottom-8 z-[3] flex flex-col items-center gap-3 transition-opacity duration-500 ${
+        className={`absolute left-1/2 -translate-x-1/2 bottom-10 md:bottom-10 z-[3] flex flex-col items-center gap-3 transition-opacity duration-500 ${
           scrolled ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
         style={{ color: "hsl(var(--background) / 0.95)" }}
