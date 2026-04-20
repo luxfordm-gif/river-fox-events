@@ -112,7 +112,7 @@ const ScrollStrip = () => {
           :root { --strip-h: 260px; --strip-item-w: 68vw; }
           @media (min-width: 768px) {
             :root {
-              --strip-h: 520px;
+              --strip-h: 480px;
               /* 3.5 images visible with a partial 4th peeking in.
                  Account for 16px (gap-4) gaps between items. */
               --strip-item-w: calc((100vw - (3 * 16px)) / 3.5);
