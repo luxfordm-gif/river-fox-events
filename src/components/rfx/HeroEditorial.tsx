@@ -101,10 +101,9 @@ const HeroEditorial = () => {
     <section
       ref={sectionRef}
       aria-label="River Fox Events imagery"
-      className="hidden md:block overflow-hidden"
-      style={{ background: "hsl(var(--linen, var(--surface-warm)))" }}
+      className="hidden md:block overflow-hidden bg-transparent"
     >
-      <div className="container-rfx" style={{ paddingTop: 16, paddingBottom: 16 }}>
+      <div className="container-rfx" style={{ paddingTop: 0, paddingBottom: 0 }}>
         <div
           className="flex items-center justify-center"
           style={{ gap: 12, height: "clamp(380px, 48vw, 560px)" }}
