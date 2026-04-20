@@ -4,6 +4,8 @@ import hero2 from "@/assets/hero-2.jpg";
 import hero3 from "@/assets/hero-3.jpg";
 import expChildren from "@/assets/exp-children.jpg";
 import expMilestone from "@/assets/exp-milestone.jpg";
+import expCorporate from "@/assets/exp-corporate.jpg";
+import cpCelebrations from "@/assets/cp-celebrations.jpg";
 
 const STRIP_IMAGES = [
   { src: hero1, alt: "Styled children's party tablescape with pastel balloons" },
@@ -11,6 +13,8 @@ const STRIP_IMAGES = [
   { src: hero2, alt: "Elegant tablescape detail with peonies and ribbons" },
   { src: expChildren, alt: "Children's party styling with bespoke signage" },
   { src: hero3, alt: "Detail of styled cake on a vintage cake stand" },
+  { src: expCorporate, alt: "Corporate brand event styling detail" },
+  { src: cpCelebrations, alt: "Celebration styling with balloons and bespoke details" },
 ];
 
 /**
@@ -83,7 +87,7 @@ const ScrollStrip = () => {
     <section
       ref={sectionRef}
       aria-label="River Fox Events imagery"
-      className="overflow-hidden py-16 md:py-24"
+      className="overflow-hidden py-[20px] md:py-[40px]"
       style={{ background: "hsl(var(--linen))" }}
     >
       <div
@@ -95,14 +99,21 @@ const ScrollStrip = () => {
         }}
       >
         <style>{`
-          :root { --strip-h: 260px; }
-          @media (min-width: 768px) { :root { --strip-h: 520px; } }
+          :root { --strip-h: 260px; --strip-item-w: 68vw; }
+          @media (min-width: 768px) {
+            :root {
+              --strip-h: 520px;
+              /* 3.5 images visible with a partial 4th peeking in.
+                 Account for 16px (gap-4) gaps between items. */
+              --strip-item-w: calc((100vw - (3 * 16px)) / 3.5);
+            }
+          }
         `}</style>
         {STRIP_IMAGES.map((img, i) => (
           <div
             key={i}
             className="relative flex-none h-full overflow-hidden ph ph-warm"
-            style={{ aspectRatio: "4/5" }}
+            style={{ width: "var(--strip-item-w)" }}
           >
             <img
               src={img.src}
