@@ -174,11 +174,6 @@ const ChildrensParties = () => {
             Every River Fox Events party is built from scratch around your
             vision — no packages, no templates.
           </p>
-          <div className="!mt-8">
-            <a href="#enquire" className="btn-solid-rf accent">
-              Book your party now <span>→</span>
-            </a>
-          </div>
         </CPReveal>
 
         <CPReveal
