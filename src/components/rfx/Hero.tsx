@@ -1,36 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import heroMain from "@/assets/hero-1.jpg";
-import heroSide from "@/assets/hero-2.jpg";
-import heroSmall from "@/assets/hero-3.jpg";
-import { useScrollY } from "@/hooks/useRiverFox";
-import { useImageParallax } from "@/hooks/useImageParallax";
-
-const MOBILE_SLIDES = [
-  { src: heroMain, alt: "Beautifully styled children's party tablescape with pastel balloon installation, Surrey garden" },
-  { src: heroSide, alt: "Elegant milestone celebration installation with floral arch and candles" },
-  { src: heroSmall, alt: "Detail of a styled cake on a vintage cake stand with pastel ribbons and peonies" },
-];
+import ScrollStrip from "@/components/rfx/ScrollStrip";
 
 const Hero = () => {
-  const y = useScrollY();
-  const [slide, setSlide] = useState(0);
-
-  const wrap1 = useRef<HTMLDivElement>(null);
-  const img1 = useRef<HTMLImageElement>(null);
-  const wrap2 = useRef<HTMLDivElement>(null);
-  const img2 = useRef<HTMLImageElement>(null);
-  const wrap3 = useRef<HTMLDivElement>(null);
-  const img3 = useRef<HTMLImageElement>(null);
-  useImageParallax(wrap1, img1, { intensity: 6, scale: 1.12 });
-  useImageParallax(wrap2, img2, { intensity: 6, scale: 1.12 });
-  useImageParallax(wrap3, img3, { intensity: 6, scale: 1.12 });
-
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      setSlide((s) => (s + 1) % MOBILE_SLIDES.length);
-    }, 4200);
-    return () => window.clearInterval(id);
-  }, []);
   return (
     <section id="top" className="pt-[96px] md:pt-[124px] pb-12 md:pb-16" aria-labelledby="hero-heading">
       <div className="container-rfx">
