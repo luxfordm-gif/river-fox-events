@@ -1,35 +1,126 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  Palette,
-  Sparkles,
-  Image as ImageIcon,
-  Cake,
-  Wrench,
-} from "lucide-react";
+
+type IconProps = { size?: number; strokeWidth?: number };
+
+// Custom inline icons — refined, hand-crafted line work for a more premium,
+// editorial feel than off-the-shelf lucide glyphs.
+const BalloonIcon = ({ size = 26, strokeWidth = 1.4 }: IconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 3c3.6 0 6.2 2.6 6.2 6.2 0 3.7-2.8 6.6-6.2 6.6S5.8 12.9 5.8 9.2C5.8 5.6 8.4 3 12 3Z" />
+    <path d="M11 15.6 12 18l1-2.4" />
+    <path d="M12 18c-.4.6-.6 1.2-.2 1.8.4.5.4 1 0 1.6" />
+    <path d="M9.6 6.2c-.9.7-1.5 1.7-1.7 2.9" />
+  </svg>
+);
+
+const SparkleStarIcon = ({ size = 26, strokeWidth = 1.4 }: IconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 3 13.6 9 19.5 10.4 14.6 14 16 20 12 16.6 8 20 9.4 14 4.5 10.4 10.4 9Z" />
+  </svg>
+);
+
+const ArchwayIcon = ({ size = 26, strokeWidth = 1.4 }: IconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M4 21V10a8 8 0 0 1 16 0v11" />
+    <path d="M4 21h16" />
+    <path d="M8 21v-7a4 4 0 0 1 8 0v7" />
+  </svg>
+);
+
+const CakeStandIcon = ({ size = 26, strokeWidth = 1.4 }: IconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 3v2" />
+    <circle cx="12" cy="3" r="0.6" fill="currentColor" stroke="none" />
+    <path d="M7 9h10v3a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9Z" />
+    <path d="M10 17h4" />
+    <path d="M12 14v3" />
+    <path d="M6 20h12" />
+    <path d="M8 17l-2 3" />
+    <path d="M16 17l2 3" />
+  </svg>
+);
+
+const HandHeartIcon = ({ size = 26, strokeWidth = 1.4 }: IconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M11.5 9.5c-.7-1.4-2.6-1.6-3.6-.4-.9 1-.7 2.5.3 3.4l3.3 3 3.3-3c1-.9 1.2-2.4.3-3.4-1-1.2-2.9-1-3.6.4Z" />
+    <path d="M3 14v4a3 3 0 0 0 3 3h9l5-3-1.4-1.4a2 2 0 0 0-2.7-.1L13 18" />
+    <path d="M3 14h2l3 3" />
+  </svg>
+);
 
 const ITEMS = [
   {
-    Icon: Palette,
+    Icon: BalloonIcon,
     label: "Theme & palette",
     body: "Bespoke design concept built around your vision.",
   },
   {
-    Icon: Sparkles,
+    Icon: SparkleStarIcon,
     label: "Balloon installations",
     body: "Statement sculptural arrangements, hand-built on site.",
   },
   {
-    Icon: ImageIcon,
+    Icon: ArchwayIcon,
     label: "Backdrops & signage",
     body: "Personalised pieces designed for your celebration.",
   },
   {
-    Icon: Cake,
+    Icon: CakeStandIcon,
     label: "Cake & party tables",
     body: "Fully styled and dressed, down to the last detail.",
   },
   {
-    Icon: Wrench,
+    Icon: HandHeartIcon,
     label: "Setup & breakdown",
     body: "Fully managed, start to finish — nothing for you to lift.",
   },
