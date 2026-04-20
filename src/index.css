@@ -484,6 +484,11 @@
     background: hsl(var(--background) / 0.82);
     backdrop-filter: blur(18px) saturate(1.05);
     -webkit-backdrop-filter: blur(18px) saturate(1.05);
+    /* Force a dedicated compositor layer to prevent banded gradient artifacts
+       on initial paint (Chrome backdrop-filter + sibling fixed overlay bug). */
+    transform: translate3d(0, 0, 0);
+    will-change: background-color;
+    isolation: isolate;
   }
   .rfx-nav.scrolled {
     background: hsl(var(--background) / 0.94);
