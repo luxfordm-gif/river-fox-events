@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Instagram } from "lucide-react";
 import { useScrollY } from "@/hooks/useRiverFox";
 
 const Footer = () => {
@@ -102,6 +103,11 @@ const Footer = () => {
                 Let's design your celebration.
               </em>
             </h2>
+            <div className="mt-10 flex items-center justify-center">
+              <a href="#enquire" className="btn-solid-rf accent">
+                Start planning <span>→</span>
+              </a>
+            </div>
           </div>
 
           {/* Footer columns */}
@@ -160,11 +166,23 @@ const Footer = () => {
           </div>
 
           <div
-            className="pt-6 border-t flex justify-between gap-3 flex-wrap text-[11px] font-mono-rf tracking-[0.08em]"
+            className="pt-6 border-t grid grid-cols-3 items-center gap-3 text-[11px] font-mono-rf tracking-[0.08em]"
             style={{ borderColor: "hsl(var(--on-deep) / 0.15)", color: "hsl(var(--on-deep-soft))" }}
           >
-            <div>© {new Date().getFullYear()} River Fox Events</div>
-            <div>Surrey · Luxury event styling</div>
+            <div className="text-left">© {new Date().getFullYear()} River Fox Events</div>
+            <div className="flex justify-center">
+              <a
+                href="https://instagram.com/riverfoxevents"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram — @riverfoxevents"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-full border transition-opacity hover:opacity-100 opacity-85"
+                style={{ borderColor: "hsl(var(--on-deep) / 0.25)", color: "hsl(var(--on-deep))" }}
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+            </div>
+            <div className="text-right">Surrey · Luxury event styling</div>
           </div>
         </div>
       </div>
