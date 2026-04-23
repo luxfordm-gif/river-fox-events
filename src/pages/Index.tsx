@@ -31,7 +31,7 @@ const Index = () => {
     };
 
     const desc =
-      "Bespoke children's party styling, milestone celebrations and corporate events across Surrey. River Fox Events — immersive, considered design from £600. Based in Surrey, serving Cobham, Weybridge, Esher, Oxshott and beyond.";
+      "Bespoke children's party styling, milestone celebrations and corporate events across Surrey. River Fox Events — immersive, considered design from £460. Based in Surrey, serving Cobham, Weybridge, Esher, Oxshott and beyond.";
     setMeta("description", desc);
     setMeta("og:title", "Children's Party Stylist Surrey | River Fox Events", "property");
     setMeta("og:description", desc, "property");

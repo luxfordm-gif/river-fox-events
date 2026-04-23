@@ -20,7 +20,7 @@ const FAQS = [
   },
   {
     q: "How much does children's party styling cost in Surrey?",
-    a: "Our parties start from £600 for an intimate single focal point. Full room styling typically sits between £1,200 and £2,500, with large-scale transformations from £2,500+. Every event is individually quoted following a discovery call so the proposal reflects exactly what you want.",
+    a: "Our parties start from £460 for an intimate single focal point. Full room styling typically sits between £1,200 and £2,500, with large-scale transformations from £2,500+. Every event is individually quoted following a discovery call so the proposal reflects exactly what you want.",
   },
   {
     q: "What happens on the day?",
