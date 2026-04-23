@@ -2,9 +2,8 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 const CHECKLIST = [
-  "Events from £600",
+  "Events from £460",
   "Response within 48 hours",
-  "Limited monthly availability",
   "Surrey, London & surrounding areas",
 ];
 
@@ -27,7 +26,7 @@ const Enquire = () => {
       <div className="container-rfx">
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start rfx-md-stack">
           {/* Left: heading + checklist */}
-          <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-start">
+          <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:h-full">
             <h2
               id="enquire-heading"
               className="font-serif-rf"
@@ -69,7 +68,7 @@ const Enquire = () => {
             </ul>
 
             <div
-              className="mt-9 p-5 max-w-[460px] w-full rounded-md text-center lg:text-left mx-auto lg:mx-0"
+              className="mt-9 lg:mt-auto p-5 max-w-[460px] w-full rounded-md text-center lg:text-left mx-auto lg:mx-0"
               style={{
                 border: "1px solid hsl(var(--accent-warm) / 0.55)",
                 color: "hsl(var(--on-deep))",
@@ -134,8 +133,9 @@ const Enquire = () => {
               </label>
               <label className="form-row full">
                 <span className="lbl">Approximate budget</span>
-                <select name="budget" defaultValue="£600 – £1,200">
-                  <option>£600 – £1,200</option>
+                <select name="budget" defaultValue="£800 – £1,200">
+                  <option>£460 – £800</option>
+                  <option>£800 – £1,200</option>
                   <option>£1,200 – £2,500</option>
                   <option>£2,500 – £5,000</option>
                   <option>£5,000+</option>

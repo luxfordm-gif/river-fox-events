@@ -12,7 +12,7 @@ const FAQS = [
   },
   {
     q: "How much does event styling cost?",
-    a: "Our events start from £600. Full room transformations and premium installations typically range from £1,200 to £3,500+. Every event is bespoke, so we'll always give you a clear proposal before anything is confirmed.",
+    a: "Our events start from £460. Full room transformations and premium installations typically range from £1,200 to £3,500+. Every event is bespoke, so we'll always give you a clear proposal before anything is confirmed.",
   },
   {
     q: "How far in advance should I book?",

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const TIERS = [
   {
-    price: "From £600",
+    price: "From £460",
     label: "Intimate",
     body: "A single styled focal point — cake table, balloon installation or backdrop. Perfect for smaller, considered celebrations at home.",
   },
@@ -60,7 +60,7 @@ const CPPricing = () => {
             }}
           >
             Beautifully styled celebrations{" "}
-            <em className="italic font-light text-accent-warm">from £600.</em>
+            <em className="italic font-light text-accent-warm">from £460.</em>
           </h2>
         </div>
 
