@@ -156,6 +156,7 @@ const ChildrensParties = () => {
           alt="Children's birthday party styling in Surrey by River Fox Events — bespoke pastel balloon installation with organic textures and soft floral accents"
           tone="ph-warm"
           hideImageOnMobile
+          imageScale={1.07}
           headline={
             <>
               Your child's birthday is more than a party.{" "}
