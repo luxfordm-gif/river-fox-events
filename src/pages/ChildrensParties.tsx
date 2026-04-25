@@ -153,7 +153,7 @@ const ChildrensParties = () => {
           id="cp-celebrations"
           imageSide="right"
           image={imgCelebrations}
-          alt="Immersive children's birthday party styling in Cobham Surrey by River Fox Events — pastel balloon arch and styled cake tablescape"
+          alt="Children's birthday party styling in Surrey by River Fox Events — bespoke pastel balloon installation with organic textures and soft floral accents"
           tone="ph-warm"
           hideImageOnMobile
           headline={
