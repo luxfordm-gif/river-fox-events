@@ -18,7 +18,7 @@ const STRIP_IMAGES = [
   { src: expChildren, alt: "Sage green dinosaur themed children's birthday party styling in Surrey by River Fox Events — personalised name sign and balloon installation" },
   { src: hero3, alt: "Luxury event styling detail in Surrey by River Fox Events — bespoke decor and elegant floral accents" },
   { src: expCorporate, alt: "Corporate gala event styling in Surrey by River Fox Events — navy blue gold cream balloon garland and branded backdrop" },
-  { src: cpCelebrations, alt: "Organic balloon arch in blush and sage for a children's party in Oxshott Surrey by River Fox Events" },
+  { src: cpCelebrations, alt: "Children's birthday party styling in Surrey by River Fox Events — bespoke pastel balloon installation with organic textures and soft floral accents" },
 ];
 
 /**
