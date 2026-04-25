@@ -26,32 +26,75 @@ export function useImageParallax(
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (reduceMotion) {
-      img.style.transform = `translate3d(0,0,0) scale(${scale})`;
-      return;
-    }
 
+    let translatePct = 0;
+    let currentScale = scale;
+    let targetScale = scale;
     let raf = 0;
-    const update = () => {
+
+    const apply = () => {
+      img.style.transform = `translate3d(0, ${translatePct}%, 0) scale(${currentScale})`;
+    };
+
+    const readHoverZoom = () => {
+      const v = parseFloat(
+        getComputedStyle(wrap).getPropertyValue("--hover-zoom").trim() || "1"
+      );
+      return isNaN(v) ? 1 : v;
+    };
+
+    const updateScroll = () => {
       const rect = wrap.getBoundingClientRect();
       const vh = window.innerHeight || 1;
-      // -1 (just below viewport) → 0 (centred) → 1 (just above viewport)
       const progress =
         (rect.top + rect.height / 2 - vh / 2) / (vh / 2 + rect.height / 2);
       const clamped = Math.max(-1, Math.min(1, progress));
-      img.style.transform = `translate3d(0, ${clamped * -intensity}%, 0) scale(${scale})`;
+      translatePct = reduceMotion ? 0 : clamped * -intensity;
+      apply();
       raf = 0;
     };
+
+    const tickScale = () => {
+      // Smoothly ease currentScale toward targetScale
+      const diff = targetScale - currentScale;
+      if (Math.abs(diff) < 0.0005) {
+        currentScale = targetScale;
+        apply();
+        return;
+      }
+      currentScale += diff * 0.08;
+      apply();
+      requestAnimationFrame(tickScale);
+    };
+
+    const onEnter = () => {
+      targetScale = scale * readHoverZoom();
+      requestAnimationFrame(tickScale);
+    };
+    const onLeave = () => {
+      targetScale = scale;
+      requestAnimationFrame(tickScale);
+    };
+
     const onScroll = () => {
       if (raf) return;
-      raf = window.requestAnimationFrame(update);
+      raf = window.requestAnimationFrame(updateScroll);
     };
-    update();
+
+    updateScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+
+    // Hover lives on the closest .exp-card if present, else the wrapper itself
+    const hoverTarget = wrap.closest<HTMLElement>(".exp-card") || wrap;
+    hoverTarget.addEventListener("mouseenter", onEnter);
+    hoverTarget.addEventListener("mouseleave", onLeave);
+
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      hoverTarget.removeEventListener("mouseenter", onEnter);
+      hoverTarget.removeEventListener("mouseleave", onLeave);
       if (raf) window.cancelAnimationFrame(raf);
     };
   }, [wrapRef, imgRef, intensity, scale]);
