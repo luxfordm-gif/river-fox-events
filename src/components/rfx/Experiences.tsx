@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import expChildren from "@/assets/dinosaur-childrens-party-styling-surrey.webp";
-import expMilestone from "@/assets/exp-milestone.webp";
+import expMilestone from "@/assets/christening-blessing-styling-surrey.webp";
 import expCorporate from "@/assets/corporate-gala-styling-surrey.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
 
@@ -17,9 +17,9 @@ const ITEMS = [
   {
     title: "Milestone Celebrations",
     body:
-      "Statement styling for 21sts, 40ths, 70ths, baby showers and anniversaries. Life's biggest moments, honoured properly.",
+      "Statement styling for christenings, 21sts, 40ths, 70ths, baby showers and anniversaries. Life's biggest moments, honoured properly.",
     img: expMilestone,
-    alt: "Milestone celebration styling in Surrey by River Fox Events — round tables, balloon centrepieces and a shimmer wall backdrop for an anniversary",
+    alt: "Christening blessing ceremony styling in Surrey by River Fox Events — pink gold champagne and pearl balloon installation with floral arch and pink backdrop",
     href: "#enquire",
     tone: "ph-warm",
   },

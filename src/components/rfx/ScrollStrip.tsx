@@ -3,7 +3,7 @@ import hero1 from "@/assets/hero-1.webp";
 import hero2 from "@/assets/hero-2.webp";
 import hero3 from "@/assets/hero-3.webp";
 import expChildren from "@/assets/dinosaur-childrens-party-styling-surrey.webp";
-import expMilestone from "@/assets/exp-milestone.webp";
+import expMilestone from "@/assets/christening-blessing-styling-surrey.webp";
 import expCorporate from "@/assets/corporate-gala-styling-surrey.webp";
 import cpCelebrations from "@/assets/cp-celebrations.webp";
 
@@ -13,7 +13,7 @@ import cpCelebrations from "@/assets/cp-celebrations.webp";
 // here whenever the source imagery changes.
 const STRIP_IMAGES = [
   { src: hero1, alt: "Pastel children's party tablescape with balloon installation in Cobham Surrey by River Fox Events" },
-  { src: expMilestone, alt: "Milestone celebration styling in Surrey by River Fox Events — floral arch and candlelit cake table" },
+  { src: expMilestone, alt: "Christening blessing ceremony styling in Surrey by River Fox Events — pink gold and champagne balloon installation with floral arch" },
   { src: hero2, alt: "Editorial tablescape detail with peonies and silk ribbons for a Weybridge celebration by River Fox Events" },
   { src: expChildren, alt: "Sage green dinosaur themed children's birthday party styling in Surrey by River Fox Events — personalised name sign and balloon installation" },
   { src: hero3, alt: "Vintage cake stand styled with florals for a Surrey children's party by River Fox Events" },
