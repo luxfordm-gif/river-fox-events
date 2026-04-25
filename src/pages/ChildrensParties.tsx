@@ -198,7 +198,7 @@ const ChildrensParties = () => {
           id="cp-themes"
           imageSide="right"
           image={imgThemes}
-          alt="Whimsical fairy garden themed children's party styling in Weybridge Surrey by River Fox Events — hanging florals, draped fabric and dappled light"
+          alt="Sage green dinosaur themed children's birthday party styling in Surrey by River Fox Events — personalised Ayaan name sign, balloon garland, dinosaur cut-outs, wooden crates and lush tropical foliage"
           tone="ph-warm"
           headline={
             <>
