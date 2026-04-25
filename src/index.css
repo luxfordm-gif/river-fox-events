@@ -718,3 +718,9 @@
     .rfx-shimmer-stroke { animation: none; opacity: 0.4; }
   }
 }
+
+/* Nudge the cp-occasions image so the illuminated "40" sits centered in frame */
+#cp-occasions img {
+  object-position: calc(50% + 20px) center;
+}
+
