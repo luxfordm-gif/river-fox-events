@@ -61,7 +61,7 @@ const CPReveal = ({
 
   const imageBlock = (
     <div
-      className={`relative w-full cp-reveal-img-wrap ${hideImageOnMobile ? "hidden md:block" : ""}`}
+      className={`relative w-full cp-reveal-img-wrap md:sticky md:top-24 md:self-start ${hideImageOnMobile ? "hidden md:block" : ""}`}
       style={{ aspectRatio: "4/5" }}
     >
       {/* Inner zoom-out reveal: starts small (centred), expands to fill */}
@@ -138,7 +138,7 @@ const CPReveal = ({
       aria-labelledby={id ? `${id}-h` : undefined}
     >
       <div className="container-rfx">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 items-center rfx-md-stack">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 items-start rfx-md-stack">
           {imageSide === "left" ? (
             <>
               {imageBlock}
