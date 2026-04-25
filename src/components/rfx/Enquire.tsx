@@ -133,7 +133,7 @@ const Enquire = () => {
               </label>
               <label className="form-row full">
                 <span className="lbl">Approximate budget</span>
-                <select name="budget" defaultValue="£800 – £1,200">
+                <select name="budget" defaultValue="£460 – £800">
                   <option>£460 – £800</option>
                   <option>£800 – £1,200</option>
                   <option>£1,200 – £2,500</option>
