@@ -52,19 +52,31 @@ const HeroEditorial = () => {
     if (!section) return;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    // Cached layout — measured outside the scroll handler to prevent
+    // forced reflows on every scroll frame.
+    let cachedTop = 0;
+    let cachedHeight = 0;
+    let cachedVH = window.innerHeight || 1;
+
+    const measure = () => {
+      const rect = section.getBoundingClientRect();
+      cachedTop = rect.top + window.scrollY;
+      cachedHeight = rect.height;
+      cachedVH = window.innerHeight || 1;
+    };
+
     const update = () => {
       rafRef.current = 0;
-      const rect = section.getBoundingClientRect();
-      const vh = window.innerHeight || 1;
-      // -1 (just below viewport) → 0 (centred) → 1 (just above)
+      const top = cachedTop - window.scrollY;
       const progress =
-        (rect.top + rect.height / 2 - vh / 2) / (vh / 2 + rect.height / 2);
+        (top + cachedHeight / 2 - cachedVH / 2) /
+        (cachedVH / 2 + cachedHeight / 2);
       const clamped = Math.max(-1, Math.min(1, progress));
 
       imgRefs.current.forEach((img, i) => {
         if (!img) return;
-        const speed = IMAGES[i].speed; // fraction of 30px max travel
-        const y = reduceMotion ? 0 : clamped * -30 * speed * 3.3; // ~30px max
+        const speed = IMAGES[i].speed;
+        const y = reduceMotion ? 0 : clamped * -30 * speed * 3.3;
         img.style.transform = `translate3d(0, ${y}px, 0) scale(1.06)`;
       });
     };
@@ -75,24 +87,33 @@ const HeroEditorial = () => {
       rafRef.current = window.requestAnimationFrame(update);
     };
 
+    const onResize = () => {
+      measure();
+      onScroll();
+    };
+
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
           visibleRef.current = e.isIntersecting;
-          if (e.isIntersecting) update();
+          if (e.isIntersecting) {
+            measure();
+            update();
+          }
         }
       },
       { threshold: 0, rootMargin: "100px 0px 100px 0px" }
     );
     io.observe(section);
 
+    measure();
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize);
     return () => {
       io.disconnect();
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
       if (rafRef.current) window.cancelAnimationFrame(rafRef.current);
     };
   }, []);
