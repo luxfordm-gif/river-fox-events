@@ -406,18 +406,24 @@
 
   /* Experience cards — clickable hover */
   .exp-card { display: block; text-decoration: none; color: inherit; cursor: pointer; }
-  .exp-card .exp-img-wrap { position: relative; overflow: hidden; }
+  .exp-card .exp-img-wrap {
+    position: relative;
+    overflow: hidden;
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center center;
+  }
   .exp-card .exp-img-wrap img {
     transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  .exp-card:hover .exp-img-wrap img { transform: scale(1.12); }
+  .exp-card:hover .exp-img-wrap { transform: scale(1.04); }
   .exp-card .exp-img-wrap::after {
     content: "";
     position: absolute; inset: 0; z-index: 3;
-    background: linear-gradient(180deg, hsl(var(--ink) / 0) 35%, hsl(var(--ink) / 0.55) 65%, hsl(var(--ink) / 0.9) 100%);
+    background: linear-gradient(180deg, hsl(20 15% 12% / 0) 40%, hsl(20 15% 12% / 0.45) 75%, hsl(20 15% 12% / 0.78) 100%);
     opacity: 0;
     transition: opacity .5s ease;
     pointer-events: none;
+    mix-blend-mode: multiply;
   }
   .exp-card:hover .exp-img-wrap::after { opacity: 1; }
   .exp-card .exp-cta {
