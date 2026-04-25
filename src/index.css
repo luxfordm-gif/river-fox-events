@@ -539,6 +539,28 @@
   .rfx-section.white { background: hsl(var(--surface-alt)); }
   .rfx-section.warm { background: hsl(var(--surface-warm)); }
   .rfx-section.blush { background: hsl(var(--surface-blush)); }
+
+  /* Subtle drifting gradient — used on the About section. Layered over the
+     warm base so the underlying tone is preserved if motion is reduced. */
+  #about.rfx-section.warm {
+    position: relative;
+    background:
+      radial-gradient(ellipse 70% 55% at 18% 22%, hsl(var(--surface-blush) / 0.55), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 82% 78%, hsl(var(--accent) / 0.18), transparent 65%),
+      radial-gradient(ellipse 55% 45% at 50% 50%, hsl(var(--accent-soft) / 0.16), transparent 70%),
+      hsl(var(--surface-warm));
+    background-size: 180% 180%, 180% 180%, 200% 200%, 100% 100%;
+    background-position: 0% 0%, 100% 100%, 50% 50%, 0 0;
+    animation: rfx-about-drift 28s ease-in-out infinite alternate;
+  }
+  @keyframes rfx-about-drift {
+    0%   { background-position: 0% 0%, 100% 100%, 50% 50%, 0 0; }
+    50%  { background-position: 30% 20%, 70% 80%, 60% 40%, 0 0; }
+    100% { background-position: 60% 40%, 40% 60%, 40% 60%, 0 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #about.rfx-section.warm { animation: none; }
+  }
   /* Instagram section — slightly tighter top gap so the divider sits closer to the section above */
   .rfx-instagram { padding: 44px 0 56px; }
   .rfx-instagram .rfx-instagram-inner { padding-top: 40px; padding-bottom: 40px; }
