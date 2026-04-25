@@ -31,6 +31,7 @@ const ITEMS = [
     alt: "Corporate event styling in Surrey by River Fox Events — tall floral arrangement, branded backdrop and champagne reception for a brand launch",
     href: "#enquire",
     tone: "ph-blush",
+    extraZoom: 1.05,
   },
 ];
 
@@ -41,12 +42,14 @@ interface ExpItem {
   alt: string;
   href: string;
   tone: string;
+  extraZoom?: number;
 }
 
 const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
   const wrap = useRef<HTMLDivElement>(null);
   const img = useRef<HTMLImageElement>(null);
-  useImageParallax(wrap, img, { intensity: 7, scale: 1.14 });
+  const baseScale = 1.14 * (it.extraZoom ?? 1);
+  useImageParallax(wrap, img, { intensity: 7, scale: baseScale });
   return (
     <a
       href={it.href}
@@ -67,7 +70,7 @@ const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
           src={it.img}
           alt={it.alt}
           className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
-          style={{ transform: "translate3d(0,0,0) scale(1.14)" }}
+          style={{ transform: `translate3d(0,0,0) scale(${baseScale})` }}
           loading="lazy"
           decoding="async"
           width={1024}
