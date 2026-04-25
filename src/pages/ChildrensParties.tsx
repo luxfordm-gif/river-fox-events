@@ -13,7 +13,7 @@ import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 
 import imgCelebrations from "@/assets/cp-celebrations.webp";
 import imgOccasions from "@/assets/cp-occasions.webp";
-import imgThemes from "@/assets/cp-themes.webp";
+import imgThemes from "@/assets/dinosaur-themed-birthday-party-surrey.webp";
 
 const OCCASIONS = [
   {

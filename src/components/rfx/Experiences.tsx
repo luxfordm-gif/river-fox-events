@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import expChildren from "@/assets/exp-children.webp";
+import expChildren from "@/assets/dinosaur-childrens-party-styling-surrey.webp";
 import expMilestone from "@/assets/exp-milestone.webp";
 import expCorporate from "@/assets/exp-corporate.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
