@@ -31,6 +31,7 @@ const ITEMS = [
     alt: "Corporate event styling in Surrey by River Fox Events — tall floral arrangement, branded backdrop and champagne reception for a brand launch",
     href: "#enquire",
     tone: "ph-blush",
+    extraZoom: 1.05,
   },
 ];
 
@@ -41,6 +42,7 @@ interface ExpItem {
   alt: string;
   href: string;
   tone: string;
+  extraZoom?: number;
 }
 
 const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
