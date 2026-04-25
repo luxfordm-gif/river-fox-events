@@ -637,6 +637,14 @@
     }
     .cp-reveal-img-wrap > div { box-shadow: 0 12px 24px -16px hsl(var(--ink) / 0.18) !important; }
 
+    /* Mobile-only: soften corner radius on in-page images from 22px → 18px */
+    .cp-reveal-img-wrap > div,
+    .exp-img-wrap,
+    .rfx-about-img,
+    .rfx-rounded-img {
+      border-radius: 18px !important;
+    }
+
     /* Mobile body-copy bump: bump 16px paragraphs to 17.5px for readability.
        Small/meta text (13–15px) stays as-is intentionally. */
     .rfx-body-bump,
