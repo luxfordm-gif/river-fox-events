@@ -12,7 +12,7 @@ import CPIncluded from "@/components/rfx/CPIncluded";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 
 import imgCelebrations from "@/assets/cp-celebrations.webp";
-import imgOccasions from "@/assets/cp-occasions.webp";
+import imgOccasions from "@/assets/luxury-party-styling-occasions-surrey.webp";
 import imgThemes from "@/assets/dinosaur-themed-birthday-party-surrey.webp";
 
 const OCCASIONS = [
