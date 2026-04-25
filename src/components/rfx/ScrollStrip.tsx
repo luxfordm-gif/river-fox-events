@@ -17,7 +17,7 @@ const STRIP_IMAGES = [
   { src: hero2, alt: "Editorial tablescape detail with peonies and silk ribbons for a Weybridge celebration by River Fox Events" },
   { src: expChildren, alt: "Sage green dinosaur themed children's birthday party styling in Surrey by River Fox Events — personalised name sign and balloon installation" },
   { src: hero3, alt: "Vintage cake stand styled with florals for a Surrey children's party by River Fox Events" },
-  { src: expCorporate, alt: "Corporate brand event styling in Surrey by River Fox Events — branded backdrop and sculptural florals" },
+  { src: expCorporate, alt: "Milestone 40th birthday styling in Surrey by River Fox Events — illuminated 40 marquee sign with pink and rose gold balloons" },
   { src: cpCelebrations, alt: "Organic balloon arch in blush and sage for a children's party in Oxshott Surrey by River Fox Events" },
 ];
 

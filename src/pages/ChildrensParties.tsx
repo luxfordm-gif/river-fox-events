@@ -180,7 +180,7 @@ const ChildrensParties = () => {
           id="cp-occasions"
           imageSide="left"
           image={imgOccasions}
-          alt="Luxury milestone birthday party styling in Surrey by River Fox Events — illuminated 40 sign with pink and gold balloon arch"
+          alt="Luxury occasions party styling in Surrey by River Fox Events — blush, ivory and gold balloon arch with PREHNRIF branded backdrop and champagne reception"
           tone="ph-blush"
           headline={
             <>
