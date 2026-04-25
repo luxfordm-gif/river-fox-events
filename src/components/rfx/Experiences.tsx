@@ -10,7 +10,7 @@ const ITEMS = [
     body:
       "Immersive themed parties designed to feel magical for children — and completely effortless for you.",
     img: expChildren,
-    alt: "Children's party styling in Surrey by River Fox Events — whimsical pastel balloon arch and themed installation for a birthday celebration",
+    alt: "Sage green dinosaur themed children's birthday party styling in Surrey by River Fox Events — personalised Ayaan name sign, balloon garland and tropical foliage",
     href: "/childrens-parties",
     tone: "",
   },

@@ -15,7 +15,7 @@ const STRIP_IMAGES = [
   { src: hero1, alt: "Pastel children's party tablescape with balloon installation in Cobham Surrey by River Fox Events" },
   { src: expMilestone, alt: "Milestone celebration styling in Surrey by River Fox Events — floral arch and candlelit cake table" },
   { src: hero2, alt: "Editorial tablescape detail with peonies and silk ribbons for a Weybridge celebration by River Fox Events" },
-  { src: expChildren, alt: "Immersive children's birthday party styling in Esher Surrey — bespoke signage and themed installation by River Fox Events" },
+  { src: expChildren, alt: "Sage green dinosaur themed children's birthday party styling in Surrey by River Fox Events — personalised name sign and balloon installation" },
   { src: hero3, alt: "Vintage cake stand styled with florals for a Surrey children's party by River Fox Events" },
   { src: expCorporate, alt: "Corporate brand event styling in Surrey by River Fox Events — branded backdrop and sculptural florals" },
   { src: cpCelebrations, alt: "Organic balloon arch in blush and sage for a children's party in Oxshott Surrey by River Fox Events" },
