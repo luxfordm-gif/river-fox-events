@@ -119,7 +119,7 @@ const Experiences = () => {
             Our signature{" "}
             <em className="italic font-light text-accent-warm">experiences.</em>
           </h2>
-          <p className="text-[15.5px] leading-[1.6] text-ink-soft max-w-[440px] pb-3 text-center md:text-left mx-auto md:mx-0">
+          <p className="text-[15.5px] leading-[1.6] text-ink-soft pb-3 text-center md:text-left mx-auto md:mx-0">
             Three considered services, each fully bespoke. We work with a small
             number of clients each month so every event receives Laura's
             personal attention from concept to install.
