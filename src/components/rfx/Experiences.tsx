@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import expChildren from "@/assets/dinosaur-childrens-party-styling-surrey.webp";
 import expMilestone from "@/assets/exp-milestone.webp";
-import expCorporate from "@/assets/exp-corporate.webp";
+import expCorporate from "@/assets/corporate-event-styling-surrey.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
 
 const ITEMS = [
@@ -31,7 +31,7 @@ const ITEMS = [
     alt: "Corporate event styling in Surrey by River Fox Events — tall floral arrangement, branded backdrop and champagne reception for a brand launch",
     href: "#enquire",
     tone: "ph-blush",
-    extraZoom: 1.05,
+    extraZoom: 1.10,
   },
 ];
 

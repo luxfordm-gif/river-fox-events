@@ -4,7 +4,7 @@ import hero2 from "@/assets/hero-2.webp";
 import hero3 from "@/assets/hero-3.webp";
 import expChildren from "@/assets/dinosaur-childrens-party-styling-surrey.webp";
 import expMilestone from "@/assets/exp-milestone.webp";
-import expCorporate from "@/assets/exp-corporate.webp";
+import expCorporate from "@/assets/corporate-event-styling-surrey.webp";
 import cpCelebrations from "@/assets/cp-celebrations.webp";
 
 // SEO REMINDER: every image in this strip must have descriptive alt text
