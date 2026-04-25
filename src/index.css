@@ -543,26 +543,50 @@
   .rfx-section.warm { background: hsl(var(--surface-warm)); }
   .rfx-section.blush { background: hsl(var(--surface-blush)); }
 
-  /* Subtle drifting gradient — used on the About section. Layered over the
-     warm base so the underlying tone is preserved if motion is reduced. */
+  /* Subtle drifting gradient — used on the About section. Two large soft
+     blobs slowly translate across the warm base for visible-but-gentle motion. */
   #about.rfx-section.warm {
     position: relative;
-    background:
-      radial-gradient(ellipse 70% 55% at 18% 22%, hsl(var(--surface-blush) / 0.55), transparent 60%),
-      radial-gradient(ellipse 60% 50% at 82% 78%, hsl(var(--accent) / 0.18), transparent 65%),
-      radial-gradient(ellipse 55% 45% at 50% 50%, hsl(var(--accent-soft) / 0.16), transparent 70%),
-      hsl(var(--surface-warm));
-    background-size: 180% 180%, 180% 180%, 200% 200%, 100% 100%;
-    background-position: 0% 0%, 100% 100%, 50% 50%, 0 0;
-    animation: rfx-about-drift 28s ease-in-out infinite alternate;
+    overflow: hidden;
+    background: hsl(var(--surface-warm));
+    isolation: isolate;
   }
-  @keyframes rfx-about-drift {
-    0%   { background-position: 0% 0%, 100% 100%, 50% 50%, 0 0; }
-    50%  { background-position: 30% 20%, 70% 80%, 60% 40%, 0 0; }
-    100% { background-position: 60% 40%, 40% 60%, 40% 60%, 0 0; }
+  #about.rfx-section.warm::before,
+  #about.rfx-section.warm::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(80px);
+    will-change: transform;
+  }
+  #about.rfx-section.warm::before {
+    width: 70vw; height: 70vw;
+    top: -20vw; left: -15vw;
+    background: radial-gradient(circle, hsl(var(--surface-blush) / 0.85), hsl(var(--surface-blush) / 0) 70%);
+    animation: rfx-about-blob-a 22s ease-in-out infinite alternate;
+  }
+  #about.rfx-section.warm::after {
+    width: 65vw; height: 65vw;
+    bottom: -25vw; right: -15vw;
+    background: radial-gradient(circle, hsl(var(--accent) / 0.45), hsl(var(--accent) / 0) 70%);
+    animation: rfx-about-blob-b 26s ease-in-out infinite alternate;
+  }
+  #about.rfx-section.warm > * { position: relative; z-index: 1; }
+  @keyframes rfx-about-blob-a {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(15vw, 8vw, 0) scale(1.15); }
+    100% { transform: translate3d(30vw, -4vw, 0) scale(0.95); }
+  }
+  @keyframes rfx-about-blob-b {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(-12vw, -10vw, 0) scale(1.1); }
+    100% { transform: translate3d(-25vw, 6vw, 0) scale(0.9); }
   }
   @media (prefers-reduced-motion: reduce) {
-    #about.rfx-section.warm { animation: none; }
+    #about.rfx-section.warm::before,
+    #about.rfx-section.warm::after { animation: none; }
   }
   /* Instagram section — slightly tighter top gap so the divider sits closer to the section above */
   .rfx-instagram { padding: 44px 0 56px; }
