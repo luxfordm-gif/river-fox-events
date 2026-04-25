@@ -70,7 +70,7 @@ const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
           src={it.img}
           alt={it.alt}
           className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
-          style={{ transform: "translate3d(0,0,0) scale(1.14)" }}
+          style={{ transform: `translate3d(0,0,0) scale(${baseScale})` }}
           loading="lazy"
           decoding="async"
           width={1024}
