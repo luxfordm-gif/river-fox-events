@@ -35,7 +35,7 @@ const IMAGES = [
   },
   {
     src: hero3,
-    alt: "Vintage cake stand styled with florals for a Surrey children's party by River Fox Events",
+    alt: "Luxury event styling detail in Surrey by River Fox Events — bespoke decor and elegant floral accents",
     height: 78,
     speed: 0.18,
   },
