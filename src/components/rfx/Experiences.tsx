@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import expChildren from "@/assets/dinosaur-childrens-party-styling-surrey.webp";
 import expMilestone from "@/assets/exp-milestone.webp";
-import expCorporate from "@/assets/corporate-event-styling-surrey.webp";
+import expCorporate from "@/assets/corporate-gala-styling-surrey.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
 
 const ITEMS = [
@@ -28,7 +28,7 @@ const ITEMS = [
     body:
       "Design-led installations for launches, openings and activations. Trusted by P&G, The Range, Foxhills and more.",
     img: expCorporate,
-    alt: "Milestone 40th birthday party styling in Surrey by River Fox Events — illuminated 40 marquee sign with pink, rose gold and blush balloon installation",
+    alt: "Corporate gala event styling in Surrey by River Fox Events — navy gold and cream balloon installation with branded backdrop for Children in Need gala dinner",
     href: "#enquire",
     tone: "ph-blush",
   },
