@@ -14,6 +14,8 @@ interface CPRevealProps {
   id?: string;
   /** Hide image on mobile (used for the first section to avoid duplication with hero) */
   hideImageOnMobile?: boolean;
+  /** Override the parallax overscale on the image (default 1.18). Lower = less zoomed in. */
+  imageScale?: number;
 }
 
 /**
@@ -30,6 +32,7 @@ const CPReveal = ({
   tone = "ph-warm",
   id,
   hideImageOnMobile = false,
+  imageScale = 1.18,
 }: CPRevealProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -54,7 +57,7 @@ const CPReveal = ({
   }, []);
 
   // Parallax — translate the inner <img> upward inside its clipped wrapper.
-  useImageParallax(sectionRef, imgRef, { intensity: 10, scale: 1.18 });
+  useImageParallax(sectionRef, imgRef, { intensity: 10, scale: imageScale });
 
   const imageBlock = (
     <div
@@ -86,7 +89,7 @@ const CPReveal = ({
           src={image}
           alt={alt}
           className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
-          style={{ transform: "translate3d(0,0,0) scale(1.18)" }}
+          style={{ transform: `translate3d(0,0,0) scale(${imageScale})` }}
           loading="lazy"
           decoding="async"
           width={1280}
