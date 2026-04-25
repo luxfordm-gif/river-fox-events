@@ -57,7 +57,7 @@ const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
     >
       <div
         ref={wrap}
-        className={`exp-img-wrap ph rounded-sm ${it.tone} fade-up rfx-svc-img relative overflow-hidden`}
+        className={`exp-img-wrap ph rounded-[22px] ${it.tone} fade-up rfx-svc-img relative overflow-hidden`}
         style={{ aspectRatio: "4/5" }}
       >
         {/*

@@ -66,7 +66,7 @@ const CPReveal = ({
     >
       {/* Inner zoom-out reveal: starts small (centred), expands to fill */}
       <div
-        className={`absolute inset-0 ph ${tone} overflow-hidden rounded-sm`}
+        className={`absolute inset-0 ph ${tone} overflow-hidden rounded-[22px]`}
         style={{
           transform: visible ? "scale(1)" : "scale(0.92)",
           opacity: visible ? 1 : 0.2,

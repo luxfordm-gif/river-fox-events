@@ -604,10 +604,10 @@
     .rfx-enquire { padding-bottom: 40px; }
     /* Form fields wider — remove form-wrap inner padding & give fields more room */
     .rfx-enquire .form-wrap { padding: 20px; border-radius: 12px; }
-    /* Service cards: cap image height at 220px on mobile so title + body stay visible */
+    /* Service cards: cap image height on mobile so title + body stay visible */
     .rfx-svc-img {
       aspect-ratio: auto !important;
-      height: 220px !important;
+      height: 268px !important;
     }
     /* About founder image: cap at 280px on mobile, crop neatly */
     .rfx-about-img {
@@ -629,8 +629,12 @@
     .rfx-mosaic { grid-template-columns: 1fr !important; grid-auto-rows: auto !important; }
     .rfx-mosaic > div { grid-column: 1 / -1 !important; grid-row: auto !important; transform: none !important; }
     .rfx-svc-card { padding: 0 !important; border-left: none !important; }
-    /* CPReveal: always put image first on mobile, reduce image height ~40% + soften shadow */
-    .cp-reveal-img-wrap { order: -1 !important; aspect-ratio: 25/18 !important; }
+    /* CPReveal: always put image first on mobile, reduce image height + soften shadow */
+    .cp-reveal-img-wrap {
+      order: -1 !important;
+      aspect-ratio: auto !important;
+      height: calc((100vw - 48px) * 18 / 25 + 48px) !important;
+    }
     .cp-reveal-img-wrap > div { box-shadow: 0 12px 24px -16px hsl(var(--ink) / 0.18) !important; }
 
     /* Mobile body-copy bump: bump 16px paragraphs to 17.5px for readability.
