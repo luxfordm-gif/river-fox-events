@@ -192,7 +192,17 @@ const ChildrensParties = () => {
             </>
           }
         >
-          <DetailRows rows={OCCASIONS} />
+          <p>
+            From first birthdays and christenings to milestone celebrations and
+            seasonal gatherings, every occasion deserves to feel considered. I
+            design styling that reflects the moment — whether that's a quiet
+            family christening, a big themed birthday or a Christmas dinner at
+            home.
+          </p>
+          <p>
+            No two events are ever the same. Every detail is shaped around you,
+            your guests and the feeling you want the day to hold.
+          </p>
         </CPReveal>
 
         <CPReveal
