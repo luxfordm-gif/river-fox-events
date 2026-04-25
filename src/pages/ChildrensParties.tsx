@@ -12,7 +12,7 @@ import CPIncluded from "@/components/rfx/CPIncluded";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 
 import imgCelebrations from "@/assets/cp-celebrations.webp";
-import imgOccasions from "@/assets/cp-occasions.webp";
+import imgOccasions from "@/assets/luxury-party-styling-occasions-surrey.webp";
 import imgThemes from "@/assets/dinosaur-themed-birthday-party-surrey.webp";
 
 const OCCASIONS = [
@@ -180,7 +180,7 @@ const ChildrensParties = () => {
           id="cp-occasions"
           imageSide="left"
           image={imgOccasions}
-          alt="First birthday party styling in Surrey by River Fox Events — elegant cream linen tablescape with candles and pastel balloon cluster"
+          alt="Luxury milestone birthday party styling in Surrey by River Fox Events — illuminated 40 sign with pink and gold balloon arch"
           tone="ph-blush"
           headline={
             <>
