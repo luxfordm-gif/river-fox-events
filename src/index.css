@@ -409,13 +409,10 @@
   .exp-card .exp-img-wrap {
     position: relative;
     overflow: hidden;
-    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transform-origin: center center;
+    --hover-zoom: 1;
+    transition: --hover-zoom 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  .exp-card .exp-img-wrap img {
-    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  .exp-card:hover .exp-img-wrap { transform: scale(1.04); }
+  .exp-card:hover .exp-img-wrap { --hover-zoom: 1.12; }
   .exp-card .exp-img-wrap::after {
     content: "";
     position: absolute; inset: 0; z-index: 3;
