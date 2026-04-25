@@ -543,16 +543,16 @@
   .rfx-section.warm { background: hsl(var(--surface-warm)); }
   .rfx-section.blush { background: hsl(var(--surface-blush)); }
 
-  /* Subtle drifting gradient — used on the About section. Two large soft
-     blobs slowly translate across the warm base for visible-but-gentle motion. */
-  #about.rfx-section.warm {
+  /* Subtle drifting gradient — applied to every warm/pink section.
+     Two large soft blobs slowly translate across the warm base for
+     visible-but-gentle motion. */
+  .rfx-section.warm {
     position: relative;
     overflow: hidden;
-    background: hsl(var(--surface-warm));
     isolation: isolate;
   }
-  #about.rfx-section.warm::before,
-  #about.rfx-section.warm::after {
+  .rfx-section.warm::before,
+  .rfx-section.warm::after {
     content: "";
     position: absolute;
     z-index: 0;
@@ -561,19 +561,19 @@
     filter: blur(80px);
     will-change: transform;
   }
-  #about.rfx-section.warm::before {
+  .rfx-section.warm::before {
     width: 70vw; height: 70vw;
     top: -20vw; left: -15vw;
     background: radial-gradient(circle, hsl(var(--surface-blush) / 0.85), hsl(var(--surface-blush) / 0) 70%);
     animation: rfx-about-blob-a 22s ease-in-out infinite alternate;
   }
-  #about.rfx-section.warm::after {
+  .rfx-section.warm::after {
     width: 65vw; height: 65vw;
     bottom: -25vw; right: -15vw;
     background: radial-gradient(circle, hsl(var(--accent) / 0.45), hsl(var(--accent) / 0) 70%);
     animation: rfx-about-blob-b 26s ease-in-out infinite alternate;
   }
-  #about.rfx-section.warm > * { position: relative; z-index: 1; }
+  .rfx-section.warm > * { position: relative; z-index: 1; }
   @keyframes rfx-about-blob-a {
     0%   { transform: translate3d(0, 0, 0) scale(1); }
     50%  { transform: translate3d(15vw, 8vw, 0) scale(1.15); }
@@ -585,8 +585,8 @@
     100% { transform: translate3d(-25vw, 6vw, 0) scale(0.9); }
   }
   @media (prefers-reduced-motion: reduce) {
-    #about.rfx-section.warm::before,
-    #about.rfx-section.warm::after { animation: none; }
+    .rfx-section.warm::before,
+    .rfx-section.warm::after { animation: none; }
   }
   /* Instagram section — slightly tighter top gap so the divider sits closer to the section above */
   .rfx-instagram { padding: 44px 0 56px; }
