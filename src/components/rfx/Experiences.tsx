@@ -48,7 +48,8 @@ interface ExpItem {
 const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
   const wrap = useRef<HTMLDivElement>(null);
   const img = useRef<HTMLImageElement>(null);
-  useImageParallax(wrap, img, { intensity: 7, scale: 1.14 });
+  const baseScale = 1.14 * (it.extraZoom ?? 1);
+  useImageParallax(wrap, img, { intensity: 7, scale: baseScale });
   return (
     <a
       href={it.href}
