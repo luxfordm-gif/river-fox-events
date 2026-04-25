@@ -31,7 +31,7 @@ const ITEMS = [
     alt: "Corporate event styling in Surrey by River Fox Events — tall floral arrangement, branded backdrop and champagne reception for a brand launch",
     href: "#enquire",
     tone: "ph-blush",
-    extraZoom: 1.05,
+    extraZoom: 1.10,
   },
 ];
 
