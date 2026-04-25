@@ -101,7 +101,7 @@ const CPReveal = ({
 
   const contentBlock = (
     <div
-      className="flex flex-col justify-center"
+      className="flex flex-col justify-center md:self-stretch md:min-h-[calc((50vw-80px)*5/4)] md:max-h-[80vh]"
       style={{
         opacity: visible ? 1 : 0.2,
         transform: visible ? "translateY(0)" : "translateY(20px)",
