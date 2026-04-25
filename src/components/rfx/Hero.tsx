@@ -1,10 +1,16 @@
 import ScrollStrip from "@/components/rfx/ScrollStrip";
 import HeroEditorial from "@/components/rfx/HeroEditorial";
+import leafShadow from "@/assets/hero-leaf-shadow.png";
 
 const Hero = () => {
   return (
-    <section id="top" className="rfx-hero pt-[96px] md:pt-[124px] pb-4 md:pb-6" aria-labelledby="hero-heading">
-      <div className="container-rfx">
+    <section id="top" className="rfx-hero pt-[96px] md:pt-[124px] pb-4 md:pb-6 relative overflow-hidden" aria-labelledby="hero-heading">
+      <div
+        aria-hidden
+        className="rfx-hero-leaf"
+        style={{ backgroundImage: `url(${leafShadow})` }}
+      />
+      <div className="container-rfx relative z-[1]">
         {/* Centered editorial intro */}
         <div className="mb-10 md:mb-14 flex flex-col items-center text-center">
 
