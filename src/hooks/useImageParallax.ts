@@ -32,6 +32,13 @@ export function useImageParallax(
     let targetScale = scale;
     let raf = 0;
 
+    // Cached layout (read only on resize / when wrapper enters viewport),
+    // never inside the scroll handler — avoids forced reflows.
+    let cachedTop = 0;
+    let cachedHeight = 0;
+    let cachedVH = window.innerHeight || 1;
+    let inView = false;
+
     const apply = () => {
       img.style.transform = `translate3d(0, ${translatePct}%, 0) scale(${currentScale})`;
     };
@@ -43,19 +50,26 @@ export function useImageParallax(
       return isNaN(v) ? 1 : v;
     };
 
-    const updateScroll = () => {
+    const measure = () => {
       const rect = wrap.getBoundingClientRect();
-      const vh = window.innerHeight || 1;
+      cachedTop = rect.top + window.scrollY;
+      cachedHeight = rect.height;
+      cachedVH = window.innerHeight || 1;
+    };
+
+    const updateScroll = () => {
+      raf = 0;
+      // Use cached layout + current scrollY (no layout read per frame).
+      const top = cachedTop - window.scrollY;
       const progress =
-        (rect.top + rect.height / 2 - vh / 2) / (vh / 2 + rect.height / 2);
+        (top + cachedHeight / 2 - cachedVH / 2) /
+        (cachedVH / 2 + cachedHeight / 2);
       const clamped = Math.max(-1, Math.min(1, progress));
       translatePct = reduceMotion ? 0 : clamped * -intensity;
       apply();
-      raf = 0;
     };
 
     const tickScale = () => {
-      // Smoothly ease currentScale toward targetScale
       const diff = targetScale - currentScale;
       if (Math.abs(diff) < 0.0005) {
         currentScale = targetScale;
@@ -77,22 +91,44 @@ export function useImageParallax(
     };
 
     const onScroll = () => {
+      if (!inView) return;
       if (raf) return;
       raf = window.requestAnimationFrame(updateScroll);
     };
 
+    const onResize = () => {
+      measure();
+      onScroll();
+    };
+
+    // Only listen to scroll while wrapper is near the viewport.
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          inView = e.isIntersecting;
+          if (e.isIntersecting) {
+            measure();
+            updateScroll();
+          }
+        }
+      },
+      { rootMargin: "200px 0px 200px 0px" }
+    );
+    io.observe(wrap);
+
+    measure();
     updateScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize);
 
-    // Hover lives on the closest .exp-card if present, else the wrapper itself
     const hoverTarget = wrap.closest<HTMLElement>(".exp-card") || wrap;
     hoverTarget.addEventListener("mouseenter", onEnter);
     hoverTarget.addEventListener("mouseleave", onLeave);
 
     return () => {
+      io.disconnect();
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
       hoverTarget.removeEventListener("mouseenter", onEnter);
       hoverTarget.removeEventListener("mouseleave", onLeave);
       if (raf) window.cancelAnimationFrame(raf);

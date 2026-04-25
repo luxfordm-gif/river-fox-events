@@ -41,27 +41,33 @@ const ScrollStrip = () => {
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const update = () => {
-      rafRef.current = 0;
-      const rect = section.getBoundingClientRect();
-      const vh = window.innerHeight || 1;
-      // progress: 0 when section top hits bottom of viewport,
-      // 1 when section bottom leaves top of viewport.
-      const total = rect.height + vh;
-      const raw = (vh - rect.top) / total;
-      const progress = Math.max(0, Math.min(1, raw));
+    // Cached layout — measured on resize / IntersectionObserver entry only,
+    // never per scroll frame, to avoid forced reflows.
+    let cachedTop = 0;
+    let cachedHeight = 0;
+    let cachedVH = window.innerHeight || 1;
+    let cachedMaxTranslate = 0;
+    let cachedSpeed = 0.26;
 
+    const measure = () => {
+      const rect = section.getBoundingClientRect();
+      cachedTop = rect.top + window.scrollY;
+      cachedHeight = rect.height;
+      cachedVH = window.innerHeight || 1;
       const trackWidth = track.scrollWidth;
       const containerWidth = section.clientWidth;
-      const maxTranslate = Math.max(0, trackWidth - containerWidth);
-
-      // Slow the horizontal travel further on both desktop and mobile so the
-      // strip feels deliberate and cinematic — especially on wide desktop
-      // monitors where the imagery should drift rather than race.
+      cachedMaxTranslate = Math.max(0, trackWidth - containerWidth);
       const isMobile = window.matchMedia("(max-width: 767px)").matches;
-      const speed = isMobile ? 0.22 : 0.26;
+      cachedSpeed = isMobile ? 0.22 : 0.26;
+    };
 
-      const x = reduceMotion ? 0 : -progress * maxTranslate * speed;
+    const update = () => {
+      rafRef.current = 0;
+      const top = cachedTop - window.scrollY;
+      const total = cachedHeight + cachedVH;
+      const raw = (cachedVH - top) / total;
+      const progress = Math.max(0, Math.min(1, raw));
+      const x = reduceMotion ? 0 : -progress * cachedMaxTranslate * cachedSpeed;
       track.style.transform = `translate3d(${x}px, 0, 0)`;
     };
 
@@ -71,24 +77,33 @@ const ScrollStrip = () => {
       rafRef.current = window.requestAnimationFrame(update);
     };
 
+    const onResize = () => {
+      measure();
+      onScroll();
+    };
+
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
           visibleRef.current = e.isIntersecting;
-          if (e.isIntersecting) update();
+          if (e.isIntersecting) {
+            measure();
+            update();
+          }
         }
       },
       { threshold: 0, rootMargin: "100px 0px 100px 0px" }
     );
     io.observe(section);
 
+    measure();
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize);
     return () => {
       io.disconnect();
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
       if (rafRef.current) window.cancelAnimationFrame(rafRef.current);
     };
   }, []);
