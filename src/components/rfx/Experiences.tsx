@@ -28,10 +28,9 @@ const ITEMS = [
     body:
       "Design-led installations for launches, openings and activations. Trusted by P&G, The Range, Foxhills and more.",
     img: expCorporate,
-    alt: "Corporate event styling in Surrey by River Fox Events — tall floral arrangement, branded backdrop and champagne reception for a brand launch",
+    alt: "Milestone 40th birthday party styling in Surrey by River Fox Events — illuminated 40 marquee sign with pink, rose gold and blush balloon installation",
     href: "#enquire",
     tone: "ph-blush",
-    extraZoom: 1.10,
   },
 ];
 
