@@ -31,6 +31,7 @@ const ITEMS = [
     alt: "Corporate gala event styling in Surrey by River Fox Events — navy gold and cream balloon installation with branded backdrop for Children in Need gala dinner",
     href: "#enquire",
     tone: "ph-blush",
+    extraZoom: 1.25,
   },
 ];
 
