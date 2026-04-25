@@ -683,6 +683,33 @@
     display: inline-flex;
     animation: rfx-scroll-bounce 2.2s cubic-bezier(.5, 0, .5, 1) infinite;
   }
+
+  /* Hero — soft leaf shadow overlay (top-left), gently swaying */
+  .rfx-hero-leaf {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 55% auto;
+    opacity: 0.18;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    transform-origin: 10% 0%;
+    animation: rfx-leaf-sway 11s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  @keyframes rfx-leaf-sway {
+    0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+    50%  { transform: translate3d(8px, 4px, 0) rotate(0.6deg) scale(1.02); }
+    100% { transform: translate3d(-6px, 8px, 0) rotate(-0.5deg) scale(1.01); }
+  }
+  @media (max-width: 760px) {
+    .rfx-hero-leaf { background-size: 90% auto; opacity: 0.14; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rfx-hero-leaf { animation: none; }
+  }
   @keyframes rfx-scroll-bounce {
     0%, 100% { transform: translateY(0); opacity: 0.8; }
     50% { transform: translateY(8px); opacity: 1; }
