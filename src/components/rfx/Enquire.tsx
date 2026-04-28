@@ -107,7 +107,7 @@ const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) =
               >
                 Tell me about your celebration
               </h3>
-              <p className="text-[13px] text-ink-soft mt-1">
+              <p className="hidden lg:block text-[13px] text-ink-soft mt-1">
                 Every field is bespoke to you — no templates.
               </p>
             </div>
@@ -158,7 +158,7 @@ const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) =
             </div>
             <div className="flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center mt-6 gap-4 flex-wrap text-center">
               <span className="font-mono-rf text-[10.5px] tracking-[0.14em] text-ink-soft">
-                Replied to personally, within 48 hr.
+                Reply within 48 hrs.
               </span>
               <button
                 type="submit"

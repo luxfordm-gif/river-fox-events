@@ -30,7 +30,7 @@ const Hero = () => {
             </span>
           </h1>
 
-          <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-6 md:mt-10 fade-up in text-center">
+          <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-1 md:mt-10 fade-up in text-center">
             Children's parties, milestone moments and corporate events
             across Surrey — created around your vision, delivered with calm.
           </p>

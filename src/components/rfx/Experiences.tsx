@@ -123,7 +123,7 @@ const Experiences = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[56px] md:gap-0 border-t border-ink/20 pt-8 md:pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[56px] md:gap-0 md:border-t md:border-ink/20 pt-0 md:pt-12">
           {ITEMS.map((it, i) => (
             <ExpCard key={i} it={it} i={i} />
           ))}

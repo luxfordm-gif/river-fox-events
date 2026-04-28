@@ -30,7 +30,7 @@ const Testimonials = () => {
       aria-labelledby="kindness-heading"
     >
       <div className="container-rfx">
-        <div className="hairline mb-12 md:mb-16" aria-hidden="true" />
+        <div className="hairline mb-12 md:mb-16 hidden md:block" aria-hidden="true" />
         <div className="text-center mb-8 md:mb-10">
           <h2
             id="kindness-heading"

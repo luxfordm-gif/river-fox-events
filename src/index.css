@@ -442,11 +442,8 @@
   /* Tap feedback for touchscreens — slight image press + brief darken */
   .exp-card { transition: transform .25s cubic-bezier(.2,.7,.2,1); }
   .exp-card:active { transform: scale(0.985); }
-  /* On touch devices the hover-only title color change is invisible —
-     underline the title so the card visibly reads as "tap me." */
-  @media (hover: none) and (pointer: coarse) {
-    .exp-card .exp-title { text-decoration: underline; text-decoration-color: hsl(var(--ink) / 0.18); text-underline-offset: 4px; }
-  }
+  /* Tappability cue on mobile is provided by the bolder Discover link
+     under each card's body copy. */
 
   /* FAQ — smooth radix accordion */
   .faq-rf-trigger[data-state="open"] .faq-rf-plus {
