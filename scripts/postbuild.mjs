@@ -102,7 +102,7 @@ async function writeSitemap(SITE, ROUTES) {
   const entries = ROUTES.filter((r) => !r.noindex)
     .map(
       (r) =>
-        `  <url>\n    <loc>${SITE.url}${r.path === "/" ? "/" : r.path}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${r.changefreq || "monthly"}</changefreq>\n    <priority>${r.priority ?? 0.7}</priority>\n  </url>`
+        `  <url>\n    <loc>${SITE.url}${r.path === "/" ? "/" : (r.path.endsWith("/") ? r.path : r.path + "/")}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${r.changefreq || "monthly"}</changefreq>\n    <priority>${r.priority ?? 0.7}</priority>\n  </url>`
     )
     .join("\n");
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries}\n</urlset>\n`;
@@ -118,8 +118,13 @@ async function main() {
   const { SITE, ROUTES } = await loadRoutes();
   const baseHtml = await fs.readFile(path.join(DIST, "index.html"), "utf8");
 
+  // Netlify serves /<route>/ (with trailing slash) for prerendered routes,
+  // and 301-redirects /<route> → /<route>/. Keep canonicals + sitemap in sync
+  // with the actual served URL by always appending the trailing slash.
+  const canonicalPath = (p) => (p === "/" ? "/" : p.endsWith("/") ? p : p + "/");
+
   for (const route of ROUTES) {
-    const absUrl = SITE.url + (route.path === "/" ? "/" : route.path);
+    const absUrl = SITE.url + canonicalPath(route.path);
     const ogImageAbs = SITE.url + (route.ogImage || SITE.defaultOgImage);
     const headFragment = buildHeadTags({ SITE, route, absUrl, ogImageAbs });
     const routeHtml = injectIntoHead(baseHtml, headFragment);
