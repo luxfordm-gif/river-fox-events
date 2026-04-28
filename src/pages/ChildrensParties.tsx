@@ -96,6 +96,7 @@ const ChildrensParties = () => {
     const desc =
       "Bespoke children's party styling across Surrey. Immersive themed parties, balloon installations and full-room transformations from £460 — designed and delivered personally by Laura at River Fox Events.";
     setMeta("description", desc);
+    const ogImage = window.location.origin + "/social-share.jpg";
     setMeta(
       "og:title",
       "Children's Party Stylist Surrey | River Fox Events",
@@ -103,6 +104,12 @@ const ChildrensParties = () => {
     );
     setMeta("og:description", desc, "property");
     setMeta("og:type", "website", "property");
+    setMeta("og:image", ogImage, "property");
+    setMeta("og:url", window.location.origin + window.location.pathname, "property");
+    setMeta("twitter:card", "summary_large_image");
+    setMeta("twitter:title", "Children's Party Stylist Surrey | River Fox Events");
+    setMeta("twitter:description", desc);
+    setMeta("twitter:image", ogImage);
 
     let link = document.querySelector(
       'link[rel="canonical"]'
@@ -131,6 +138,7 @@ const ChildrensParties = () => {
         name: "River Fox Events",
         areaServed: ["Surrey", "Cobham", "Weybridge", "Esher", "Oxshott", "London"],
         email: "hello@riverfoxevents.co.uk",
+        telephone: "+44 7872 114191",
         url: window.location.origin,
       },
       areaServed: "Surrey, England",

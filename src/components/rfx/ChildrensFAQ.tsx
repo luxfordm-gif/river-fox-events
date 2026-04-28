@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -36,6 +37,33 @@ const DEFAULT_FAQS: FAQ[] = [
 ];
 
 const ChildrensFAQ = ({ faqs = DEFAULT_FAQS, headingId = "cp-faq-heading" }: ChildrensFAQProps = {}) => {
+  // Inject FAQPage JSON-LD scoped to this section so search engines can pick up
+  // the Q&A as a rich result. We dedupe per headingId so multiple FAQ blocks
+  // don't collide.
+  useEffect(() => {
+    const id = `rfx-jsonld-faq-${headingId}`;
+    let script = document.getElementById(id) as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement("script");
+      script.id = id;
+      script.type = "application/ld+json";
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    });
+    return () => {
+      const el = document.getElementById(id);
+      if (el) el.remove();
+    };
+  }, [faqs, headingId]);
+
   return (
     <section id="faq" className="rfx-section white" style={{ paddingBottom: "48px" }} aria-labelledby={headingId}>
       <div className="container-rfx">

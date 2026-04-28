@@ -205,6 +205,7 @@ const CorporateAndBrand = () => {
     const desc =
       "Design-led corporate event styling and brand installations across Surrey and London. Product launches, retail openings, office events. Trusted by P&G, The Range and more.";
     setMeta("description", desc);
+    const ogImage = window.location.origin + "/social-share.jpg";
     setMeta(
       "og:title",
       "Corporate Event Styling Surrey London | River Fox Events",
@@ -212,6 +213,12 @@ const CorporateAndBrand = () => {
     );
     setMeta("og:description", desc, "property");
     setMeta("og:type", "website", "property");
+    setMeta("og:image", ogImage, "property");
+    setMeta("og:url", window.location.origin + window.location.pathname, "property");
+    setMeta("twitter:card", "summary_large_image");
+    setMeta("twitter:title", "Corporate Event Styling Surrey London | River Fox Events");
+    setMeta("twitter:description", desc);
+    setMeta("twitter:image", ogImage);
 
     let link = document.querySelector(
       'link[rel="canonical"]'
@@ -240,6 +247,7 @@ const CorporateAndBrand = () => {
         name: "River Fox Events",
         areaServed: ["Surrey", "London", "Cobham", "Weybridge"],
         email: "hello@riverfoxevents.co.uk",
+        telephone: "+44 7872 114191",
         url: window.location.origin,
       },
       areaServed: "Surrey and London, England",

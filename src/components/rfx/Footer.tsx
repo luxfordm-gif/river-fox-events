@@ -157,10 +157,13 @@ const Footer = () => {
                 <a href="mailto:hello@riverfoxevents.co.uk" className="hover:opacity-100 opacity-85 block">
                   hello@riverfoxevents.co.uk
                 </a>
+                <a href="tel:+447872114191" className="hover:opacity-100 opacity-85 block">
+                  07872 114191
+                </a>
                 <a href="https://instagram.com/riverfoxevents" target="_blank" rel="noreferrer" className="hover:opacity-100 opacity-85 block">
                   @riverfoxevents
                 </a>
-                <span className="block">Surrey & beyond</span>
+                <span className="block">15 Apsley Rd, Horley RH6 9RX</span>
               </div>
             </div>
           </div>

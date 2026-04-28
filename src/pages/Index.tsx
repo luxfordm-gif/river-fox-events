@@ -18,7 +18,8 @@ const Index = () => {
 
   // SEO + structured data
   useEffect(() => {
-    document.title = "Children's Party Stylist Surrey | River Fox Events";
+    const title = "Luxury Event Styling Surrey | Children's Parties, Milestones & Brand | River Fox Events";
+    document.title = title;
 
     const setMeta = (name: string, content: string, attr: "name" | "property" = "name") => {
       let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
@@ -31,11 +32,18 @@ const Index = () => {
     };
 
     const desc =
-      "Bespoke children's party styling, milestone celebrations and corporate events across Surrey. River Fox Events — immersive, considered design from £460. Based in Surrey, serving Cobham, Weybridge, Esher, Oxshott and beyond.";
+      "Bespoke event styling across Surrey — children's parties, milestone celebrations and corporate brand installations. Personally designed and delivered by Laura. From £600.";
+    const ogImage = window.location.origin + "/social-share.jpg";
     setMeta("description", desc);
-    setMeta("og:title", "Children's Party Stylist Surrey | River Fox Events", "property");
+    setMeta("og:title", title, "property");
     setMeta("og:description", desc, "property");
     setMeta("og:type", "website", "property");
+    setMeta("og:image", ogImage, "property");
+    setMeta("og:url", window.location.origin + "/", "property");
+    setMeta("twitter:card", "summary_large_image");
+    setMeta("twitter:title", title);
+    setMeta("twitter:description", desc);
+    setMeta("twitter:image", ogImage);
 
     // Canonical
     let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -61,10 +69,15 @@ const Index = () => {
       name: "River Fox Events",
       description: desc,
       url: window.location.origin,
+      image: ogImage,
       email: "hello@riverfoxevents.co.uk",
-      areaServed: ["Surrey", "Cobham", "Weybridge", "Esher", "Oxshott", "London"],
+      telephone: "+44 7872 114191",
+      areaServed: ["Surrey", "London", "Cobham", "Weybridge", "Esher", "Oxshott", "Reigate", "Horley"],
       address: {
         "@type": "PostalAddress",
+        streetAddress: "15 Apsley Rd",
+        addressLocality: "Horley",
+        postalCode: "RH6 9RX",
         addressRegion: "Surrey",
         addressCountry: "GB",
       },
