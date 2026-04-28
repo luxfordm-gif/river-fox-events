@@ -5,7 +5,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const FAQS = [
+type FAQ = { q: string; a: string };
+type ChildrensFAQProps = { faqs?: FAQ[]; headingId?: string };
+
+const DEFAULT_FAQS: FAQ[] = [
   {
     q: "How far in advance should I book?",
     a: "We recommend enquiring at least 6–8 weeks ahead for children's parties. Popular dates — particularly weekends in school holidays — book up quickly. If your date is sooner, do still get in touch; we'll always tell you honestly whether we can do it justice in the time available.",
@@ -32,13 +35,13 @@ const FAQS = [
   },
 ];
 
-const ChildrensFAQ = () => {
+const ChildrensFAQ = ({ faqs = DEFAULT_FAQS, headingId = "cp-faq-heading" }: ChildrensFAQProps = {}) => {
   return (
-    <section id="faq" className="rfx-section white" style={{ paddingBottom: "48px" }} aria-labelledby="cp-faq-heading">
+    <section id="faq" className="rfx-section white" style={{ paddingBottom: "48px" }} aria-labelledby={headingId}>
       <div className="container-rfx">
         <div className="text-center mb-14">
           <h2
-            id="cp-faq-heading"
+            id={headingId}
             className="font-serif-rf"
             style={{
               fontSize: "clamp(40px, 5.4vw, 84px)",
@@ -63,7 +66,7 @@ const ChildrensFAQ = () => {
 
         <div className="max-w-[980px] mx-auto">
           <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
-            {FAQS.map((it, i) => (
+            {faqs.map((it, i) => (
               <AccordionItem
                 key={i}
                 value={`item-${i}`}

@@ -1,6 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
-const STEPS = [
+type ProcessStep = { n: string; title: string; body: string };
+
+type ProcessProps = {
+  steps?: ProcessStep[];
+  intro?: ReactNode;
+};
+
+const DEFAULT_STEPS: ProcessStep[] = [
   {
     n: "01",
     title: "Share your vision",
@@ -21,7 +28,14 @@ const STEPS = [
   },
 ];
 
-const Process = () => {
+const DEFAULT_INTRO: ReactNode = (
+  <>
+    From first message to final installation — everything handled. You just
+    enjoy the day.
+  </>
+);
+
+const Process = ({ steps = DEFAULT_STEPS, intro = DEFAULT_INTRO }: ProcessProps = {}) => {
   const stepsRef = useRef<HTMLDivElement>(null);
   const [stepsIn, setStepsIn] = useState(false);
 
@@ -61,8 +75,7 @@ const Process = () => {
             <em className="italic font-light text-accent-warm">works.</em>
           </h2>
           <p className="text-[15.5px] leading-[1.6] max-w-[440px] m-0 pb-3 text-center md:text-left mx-auto md:mx-0" style={{ color: "hsl(var(--on-deep-soft))" }}>
-            From first message to final installation — everything handled. You
-            just enjoy the day.
+            {intro}
           </p>
         </div>
 
@@ -71,7 +84,7 @@ const Process = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 border-t pt-8 md:pt-10"
           style={{ borderColor: "hsl(var(--on-deep) / 0.18)" }}
         >
-          {STEPS.map((s, i) => (
+          {steps.map((s, i) => (
             <div
               key={s.n}
               className="pr-3"

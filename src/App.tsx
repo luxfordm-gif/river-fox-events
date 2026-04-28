@@ -7,6 +7,8 @@ import PageTransition from "@/components/PageTransition";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import Index from "./pages/Index.tsx";
 import ChildrensParties from "./pages/ChildrensParties.tsx";
+import Milestones from "./pages/Milestones.tsx";
+import CorporateAndBrand from "./pages/CorporateAndBrand.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -20,6 +22,8 @@ const AppShell = () => {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/childrens-parties" element={<ChildrensParties />} />
+        <Route path="/milestone-celebrations" element={<Milestones />} />
+        <Route path="/corporate-brand-styling" element={<CorporateAndBrand />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

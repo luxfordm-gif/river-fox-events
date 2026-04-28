@@ -1,4 +1,13 @@
-const AREAS = [
+import { ReactNode } from "react";
+
+type CPLocationsProps = {
+  areas?: string[];
+  intro?: ReactNode;
+  mapQuery?: string;
+  mapTitle?: string;
+};
+
+const DEFAULT_AREAS = [
   "Cobham",
   "Weybridge",
   "Esher",
@@ -11,7 +20,21 @@ const AREAS = [
   "Woking",
 ];
 
-const CPLocations = () => {
+const DEFAULT_INTRO: ReactNode = (
+  <>
+    Based in Surrey and travelling across the county and into London for
+    clients who care about the difference that detail makes. Wherever the
+    celebration, we come to you — set up before guests arrive and broken down
+    once the day is done.
+  </>
+);
+
+const CPLocations = ({
+  areas = DEFAULT_AREAS,
+  intro = DEFAULT_INTRO,
+  mapQuery = "Surrey,England,UK&z=9",
+  mapTitle = "Map of Surrey, England — areas covered by River Fox Events",
+}: CPLocationsProps = {}) => {
   return (
     <section
       id="locations"
@@ -41,14 +64,11 @@ const CPLocations = () => {
               className="mt-6 text-[16px] leading-[1.7] text-ink-soft max-w-[520px]"
               style={{ textWrap: "pretty" }}
             >
-              Based in Surrey and travelling across the county and into London
-              for clients who care about the difference that detail makes.
-              Wherever the celebration, we come to you — set up before guests
-              arrive and broken down once the day is done.
+              {intro}
             </p>
 
             <ul className="mt-10 grid grid-cols-2 gap-x-12 w-full max-w-[520px] border-t border-ink/15">
-              {AREAS.map((a, i) => (
+              {areas.map((a, i) => (
                 <li
                   key={a}
                   className="flex items-baseline gap-3 py-3 border-b border-ink/15 font-serif-rf text-[18px] font-light tracking-[-0.012em] text-ink"
@@ -66,8 +86,8 @@ const CPLocations = () => {
           <div className="w-full overflow-hidden rounded-sm border border-ink/15 shadow-[0_22px_44px_-22px_hsl(var(--ink)/0.18)] fade-up">
             <div className="relative w-full" style={{ aspectRatio: "4/5" }}>
               <iframe
-                title="Map of Surrey, England — areas covered by River Fox Events"
-                src="https://www.google.com/maps?q=Surrey,England,UK&z=9&output=embed"
+                title={mapTitle}
+                src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="absolute inset-0 w-full h-full border-0 grayscale-[0.15]"

@@ -1,6 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
-const TIERS = [
+type PricingTier = { price: string; label: string; body: string };
+
+type CPPricingProps = {
+  tiers?: PricingTier[];
+  heading?: ReactNode;
+  ctaLabel?: string;
+  footnote?: string;
+};
+
+const DEFAULT_TIERS: PricingTier[] = [
   {
     price: "From £460",
     label: "Intimate",
@@ -18,7 +27,22 @@ const TIERS = [
   },
 ];
 
-const CPPricing = () => {
+const DEFAULT_HEADING: ReactNode = (
+  <>
+    Beautifully styled celebrations{" "}
+    <em className="italic font-light text-accent-warm">from £460.</em>
+  </>
+);
+
+const DEFAULT_FOOTNOTE =
+  "All events are individually quoted following a discovery call — so the proposal reflects exactly what you have in mind.";
+
+const CPPricing = ({
+  tiers = DEFAULT_TIERS,
+  heading = DEFAULT_HEADING,
+  ctaLabel = "Book your event",
+  footnote = DEFAULT_FOOTNOTE,
+}: CPPricingProps = {}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -59,8 +83,7 @@ const CPPricing = () => {
               textWrap: "balance",
             }}
           >
-            Beautifully styled celebrations{" "}
-            <em className="italic font-light text-accent-warm">from £460.</em>
+            {heading}
           </h2>
         </div>
 
@@ -68,7 +91,7 @@ const CPPricing = () => {
           ref={ref}
           className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-ink/15"
         >
-          {TIERS.map((t, i) => (
+          {tiers.map((t, i) => (
             <div
               key={t.label}
               className={`relative py-10 md:py-14 px-6 md:px-10 ${
@@ -86,7 +109,7 @@ const CPPricing = () => {
                 }ms, transform 1.1s cubic-bezier(.22,.7,.2,1) ${i * 180}ms`,
               }}
             >
-              {i === 1 && (
+              {i === 1 && tiers.length === 3 && (
                 <div
                   className="absolute top-4 right-4 font-mono-rf text-[10px] tracking-[0.24em] uppercase text-accent-warm z-[2]"
                   style={{ fontWeight: 700 }}
@@ -146,11 +169,10 @@ const CPPricing = () => {
 
         <div className="text-center mt-12 fade-up flex flex-col items-center gap-6">
           <a href="#enquire" className="btn-solid-rf accent">
-            Book your event <span>→</span>
+            {ctaLabel} <span>→</span>
           </a>
           <p className="text-[13.5px] text-ink-soft max-w-[560px] mx-auto">
-            All events are individually quoted following a discovery call — so the
-            proposal reflects exactly what you have in mind.
+            {footnote}
           </p>
         </div>
       </div>

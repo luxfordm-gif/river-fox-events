@@ -7,7 +7,11 @@ const CHECKLIST = [
   "Surrey, London & surrounding areas",
 ];
 
-const Enquire = () => {
+type EnquireProps = {
+  defaultEventType?: "Children's party" | "Milestone celebration" | "Corporate event" | "Other";
+};
+
+const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) => {
   const [submitting, setSubmitting] = useState(false);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -120,7 +124,7 @@ const Enquire = () => {
               </label>
               <label className="form-row">
                 <span className="lbl">Event type</span>
-                <select name="type" defaultValue="Children's party">
+                <select name="type" defaultValue={defaultEventType}>
                   <option>Children's party</option>
                   <option>Milestone celebration</option>
                   <option>Corporate event</option>

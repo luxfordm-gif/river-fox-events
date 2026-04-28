@@ -1,6 +1,22 @@
-import { useEffect, useRef, useState } from "react";
+import { ComponentType, ReactNode, useEffect, useRef, useState } from "react";
 
 type IconProps = { size?: number; strokeWidth?: number };
+
+export type IncludedIconKey =
+  | "balloon"
+  | "sparkle"
+  | "archway"
+  | "cake"
+  | "heart"
+  | "palette"
+  | "badge"
+  | "megaphone";
+
+export type IncludedItem = {
+  icon: IncludedIconKey;
+  label: string;
+  body: string;
+};
 
 // Custom inline icons — refined, hand-crafted line work for a more premium,
 // editorial feel than off-the-shelf lucide glyphs.
@@ -98,35 +114,139 @@ const HandHeartIcon = ({ size = 26, strokeWidth = 1.4 }: IconProps) => (
   </svg>
 );
 
-const ITEMS = [
+const PaletteIcon = ({ size = 26, strokeWidth = 1.4 }: IconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 3.5c-4.7 0-8.5 3.6-8.5 8 0 3.6 2.7 6 6 6 1.3 0 2-.6 2-1.6 0-.8-.6-1.2-.6-2 0-1 .8-1.6 1.8-1.6h2.7c2.7 0 4.6-1.7 4.6-4.4 0-2.6-2.4-4.4-8-4.4Z" />
+    <circle cx="7.5" cy="9.2" r="0.9" fill="currentColor" stroke="none" />
+    <circle cx="11" cy="6.8" r="0.9" fill="currentColor" stroke="none" />
+    <circle cx="15.4" cy="7.4" r="0.9" fill="currentColor" stroke="none" />
+    <circle cx="17.2" cy="11" r="0.9" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+const BadgeIcon = ({ size = 26, strokeWidth = 1.4 }: IconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 3 14.4 5.4 17.8 5.2 18 8.6 20.4 11 18 13.4 17.8 16.8 14.4 16.6 12 19 9.6 16.6 6.2 16.8 6 13.4 3.6 11 6 8.6 6.2 5.2 9.6 5.4Z" />
+    <path d="M9.4 11.4 11.2 13.2 14.6 9.8" />
+  </svg>
+);
+
+const MegaphoneIcon = ({ size = 26, strokeWidth = 1.4 }: IconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M3.5 10.4v3.2a1.4 1.4 0 0 0 1.4 1.4h2.5l9.6 4.6V4.4l-9.6 4.6H4.9a1.4 1.4 0 0 0-1.4 1.4Z" />
+    <path d="M19.6 8.4a4 4 0 0 1 0 7.2" />
+    <path d="M9 15v3.4a1.6 1.6 0 0 0 3.2 0V15" />
+  </svg>
+);
+
+const ICON_REGISTRY: Record<IncludedIconKey, ComponentType<IconProps>> = {
+  balloon: BalloonIcon,
+  sparkle: SparkleStarIcon,
+  archway: ArchwayIcon,
+  cake: CakeStandIcon,
+  heart: HandHeartIcon,
+  palette: PaletteIcon,
+  badge: BadgeIcon,
+  megaphone: MegaphoneIcon,
+};
+
+const DEFAULT_ITEMS: IncludedItem[] = [
   {
-    Icon: BalloonIcon,
+    icon: "balloon",
     label: "Theme & palette",
     body: "Bespoke design concept built around your vision.",
   },
   {
-    Icon: SparkleStarIcon,
+    icon: "sparkle",
     label: "Balloon installations",
     body: "Statement sculptural arrangements, hand-built on site.",
   },
   {
-    Icon: ArchwayIcon,
+    icon: "archway",
     label: "Backdrops & signage",
     body: "Personalised pieces designed for your celebration.",
   },
   {
-    Icon: CakeStandIcon,
+    icon: "cake",
     label: "Cake & party tables",
     body: "Fully styled and dressed, down to the last detail.",
   },
   {
-    Icon: HandHeartIcon,
+    icon: "heart",
     label: "Setup & breakdown",
     body: "Fully managed, start to finish — nothing for you to lift.",
   },
 ];
 
-const CPIncluded = () => {
+type CPIncludedProps = {
+  items?: IncludedItem[];
+  eyebrow?: string;
+  heading?: ReactNode;
+  intro?: ReactNode;
+  outro?: ReactNode;
+  headingId?: string;
+  sectionId?: string;
+};
+
+const DEFAULT_HEADING: ReactNode = (
+  <>
+    Everything handled.{" "}
+    <em className="italic font-light text-accent-warm">
+      Nothing left to chance.
+    </em>
+  </>
+);
+
+const DEFAULT_INTRO: ReactNode = (
+  <>
+    Every River Fox party is fully managed, so you can be entirely present on
+    the day.
+  </>
+);
+
+const DEFAULT_OUTRO: ReactNode = (
+  <>All handled seamlessly, so you can enjoy every moment.</>
+);
+
+const CPIncluded = ({
+  items = DEFAULT_ITEMS,
+  eyebrow = "What's included",
+  heading = DEFAULT_HEADING,
+  intro = DEFAULT_INTRO,
+  outro = DEFAULT_OUTRO,
+  headingId = "cp-included-heading",
+  sectionId = "cp-included",
+}: CPIncludedProps = {}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -150,9 +270,9 @@ const CPIncluded = () => {
 
   return (
     <section
-      id="cp-included"
+      id={sectionId}
       className="rfx-section white"
-      aria-labelledby="cp-included-heading"
+      aria-labelledby={headingId}
     >
       <div className="container-rfx">
         <div className="text-center max-w-[760px] mx-auto">
@@ -160,10 +280,10 @@ const CPIncluded = () => {
             className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-3"
             style={{ fontWeight: 600 }}
           >
-            What's included
+            {eyebrow}
           </div>
           <h2
-            id="cp-included-heading"
+            id={headingId}
             className="font-serif-rf"
             style={{
               fontSize: "clamp(38px, 4.6vw, 64px)",
@@ -173,25 +293,25 @@ const CPIncluded = () => {
               textWrap: "balance",
             }}
           >
-            Everything handled.{" "}
-            <em className="italic font-light text-accent-warm">
-              Nothing left to chance.
-            </em>
+            {heading}
           </h2>
           <p
             className="text-[16px] leading-[1.7] text-ink-soft mt-6 max-w-[520px] mx-auto"
             style={{ textWrap: "pretty" }}
           >
-            Every River Fox party is fully managed, so you can be entirely
-            present on the day.
+            {intro}
           </p>
         </div>
 
         <div
           ref={ref}
-          className="mt-14 md:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-6"
+          className={`mt-14 md:mt-20 grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-6 ${
+            items.length >= 5 ? "lg:grid-cols-5" : items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
+          }`}
         >
-          {ITEMS.map(({ Icon, label, body }, i) => (
+          {items.map(({ icon, label, body }, i) => {
+            const Icon = ICON_REGISTRY[icon];
+            return (
             <div
               key={label}
               className="flex flex-col items-center text-center px-4"
@@ -233,7 +353,8 @@ const CPIncluded = () => {
                 {body}
               </p>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         <p
@@ -246,7 +367,7 @@ const CPIncluded = () => {
             textWrap: "pretty",
           }}
         >
-          All handled seamlessly, so you can enjoy every moment.
+          {outro}
         </p>
       </div>
     </section>

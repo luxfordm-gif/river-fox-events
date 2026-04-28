@@ -3,8 +3,8 @@ import { ChevronDown } from "lucide-react";
 
 const SERVICES = [
   { href: "/childrens-parties", label: "Children's parties" },
-  { href: "/#experiences", label: "Milestones" },
-  { href: "/#experiences", label: "Corporate" },
+  { href: "/milestone-celebrations", label: "Milestone celebrations" },
+  { href: "/corporate-brand-styling", label: "Corporate & brand" },
 ];
 
 const Nav = () => {
@@ -75,7 +75,7 @@ const Nav = () => {
           </div>
           <a href="#about">About</a>
         </div>
-        <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto" aria-label="River Fox Events — home">
+        <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto md:pt-2" aria-label="River Fox Events — home">
           <span className="text-[15px] font-medium tracking-[0.22em] leading-none">
             RIVER&nbsp;FOX&nbsp;EVENTS
           </span>
@@ -123,8 +123,8 @@ const Nav = () => {
           {[
             { href: "/", label: "Home" },
             { href: "/childrens-parties", label: "Children's parties" },
-            { href: "/#experiences", label: "Milestones" },
-            { href: "/#experiences", label: "Corporate" },
+            { href: "/milestone-celebrations", label: "Milestone celebrations" },
+            { href: "/corporate-brand-styling", label: "Corporate & brand" },
             { href: "/#about", label: "About" },
           ].map((l, i) => (
             <a

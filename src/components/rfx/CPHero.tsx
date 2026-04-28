@@ -1,7 +1,39 @@
-import { useEffect, useRef, useState } from "react";
-import heroImg from "@/assets/cp-hero-frame.webp";
+import { ReactNode, useEffect, useRef, useState } from "react";
+import defaultHeroImg from "@/assets/cp-hero-frame.webp";
 
-const CPHero = () => {
+type CPHeroProps = {
+  image?: string;
+  imageAlt?: string;
+  lines?: ReactNode[];
+  sub?: ReactNode;
+  scrollTarget?: string;
+  headingId?: string;
+};
+
+const DEFAULT_LINES: ReactNode[] = [
+  <>Magical for children.</>,
+  <>
+    Effortless for{" "}
+    <em
+      className="italic font-normal"
+      style={{ color: "hsl(var(--accent))" }}
+    >
+      parents.
+    </em>
+  </>,
+];
+
+const DEFAULT_SUB =
+  "Immersive, beautifully designed children's parties across Surrey — every detail considered, nothing left to chance.";
+
+const CPHero = ({
+  image = defaultHeroImg,
+  imageAlt = "Luxury children's birthday party styling by River Fox Events Surrey — peach balloon installation, peonies and dressed cake table at a Cobham celebration",
+  lines = DEFAULT_LINES,
+  sub = DEFAULT_SUB,
+  scrollTarget = "#cp-celebrations",
+  headingId = "cp-hero-heading",
+}: CPHeroProps = {}) => {
   const [scrolled, setScrolled] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -41,7 +73,7 @@ const CPHero = () => {
       id="top"
       className="relative w-screen overflow-hidden -mt-px"
       style={{ height: "100dvh", minHeight: "100vh" }}
-      aria-labelledby="cp-hero-heading"
+      aria-labelledby={headingId}
     >
       {/*
         Full-bleed hero image with parallax.
@@ -52,8 +84,8 @@ const CPHero = () => {
       */}
       <img
         ref={imgRef}
-        src={heroImg}
-        alt="Luxury children's birthday party styling by River Fox Events Surrey — peach balloon installation, peonies and dressed cake table at a Cobham celebration"
+        src={image}
+        alt={imageAlt}
         className="absolute inset-0 w-full h-full object-cover will-change-transform"
         style={{ transform: "translate3d(0, 0, 0) scale(1.28)" }}
         loading="eager"
@@ -75,7 +107,7 @@ const CPHero = () => {
       {/* Headline — centred horizontally, upper-centre vertically on mobile */}
       <div className="relative z-[2] h-full w-full flex flex-col items-center justify-center md:justify-center px-6 text-center pt-[calc(18vh-12px)] md:pt-0 pb-[calc(22vh+12px)] md:pb-0">
         <h1
-          id="cp-hero-heading"
+          id={headingId}
           className="font-serif-rf mx-auto"
           style={{
             fontSize: "clamp(56px, 9vw, 132px)",
@@ -87,38 +119,31 @@ const CPHero = () => {
             maxWidth: "16ch",
           }}
         >
-          <span className="word-reveal in">
-            <span>Magical for children.</span>
-          </span>
-          <br />
-          <span className="word-reveal in delay-1">
-            <span>
-              Effortless for{" "}
-              <em
-                className="italic font-normal"
-                style={{ color: "hsl(var(--accent))" }}
-              >
-                parents.
-              </em>
+          {lines.map((line, i) => (
+            <span
+              key={i}
+              className={`word-reveal in${i > 0 ? ` delay-${i}` : ""}`}
+            >
+              <span>{line}</span>
+              {i < lines.length - 1 && <br />}
             </span>
-          </span>
+          ))}
         </h1>
 
         <p
-          className="word-reveal in delay-2 mt-3 md:mt-3 max-w-[44ch] mx-auto text-[17px] md:text-[17px] leading-[1.6]"
+          className={`word-reveal in delay-${lines.length} mt-3 md:mt-3 max-w-[44ch] mx-auto text-[17px] md:text-[17px] leading-[1.6]`}
           style={{
             color: "hsl(var(--background) / 0.9)",
             textWrap: "pretty",
           }}
         >
-          Immersive, beautifully designed children's parties across Surrey —
-          every detail considered, nothing left to chance.
+          {sub}
         </p>
       </div>
 
       {/* Animated scroll cue */}
       <a
-        href="#cp-celebrations"
+        href={scrollTarget}
         aria-label="Scroll to next section"
         className={`absolute left-1/2 -translate-x-1/2 bottom-[70px] md:bottom-10 z-[3] flex flex-col items-center gap-3 transition-opacity duration-500 ${
           scrolled ? "opacity-0 pointer-events-none" : "opacity-100"
