@@ -37,7 +37,7 @@ const Hero = () => {
 
           <div className="flex items-center justify-center gap-5 flex-wrap mt-10 fade-up in">
             <a href="#enquire" className="btn-solid-rf accent">
-              Start planning <span>→</span>
+              Start planning <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
             </a>
           </div>
         </div>

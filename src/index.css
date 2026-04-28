@@ -437,11 +437,9 @@
   /* Tap feedback for touchscreens — slight image press + brief darken */
   .exp-card { transition: transform .25s cubic-bezier(.2,.7,.2,1); }
   .exp-card:active { transform: scale(0.985); }
-  /* On touch devices the hover-only overlay + Discover CTA are invisible —
-     reveal them by default so the card visibly reads as "tap me." */
+  /* On touch devices the hover-only title color change is invisible —
+     underline the title so the card visibly reads as "tap me." */
   @media (hover: none) and (pointer: coarse) {
-    .exp-card .exp-img-wrap::after { opacity: 0.6; }
-    .exp-card .exp-cta { transform: translateY(0); opacity: 1; }
     .exp-card .exp-title { text-decoration: underline; text-decoration-color: hsl(var(--ink) / 0.18); text-underline-offset: 4px; }
   }
 
@@ -531,7 +529,7 @@
   }
   .rfx-nav a:not(.btn-solid-rf):not(.no-underline-fx):hover::after { transform: scaleX(1); }
   @media (max-width: 760px) {
-    .rfx-nav { padding: 16px 22px; grid-template-columns: 1fr auto; }
+    .rfx-nav { padding: 22px 22px 18px; grid-template-columns: 1fr auto; }
     .rfx-nav .nav-left { display: none; }
     .rfx-nav .nav-right { display: none; }
   }

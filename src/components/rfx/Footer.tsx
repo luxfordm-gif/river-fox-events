@@ -126,7 +126,7 @@ const Footer = () => {
                 className="text-[13.5px] leading-[1.7] max-w-[360px] mt-7"
                 style={{ color: "hsl(var(--on-deep-soft))" }}
               >
-                Luxury event styling across Surrey's finest occasions.
+                Luxury event styling across Surrey's finest occasions. Formerly known as Lollipop Balloons.
               </p>
             </div>
             <div>

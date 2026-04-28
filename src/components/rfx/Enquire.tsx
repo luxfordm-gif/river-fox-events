@@ -58,7 +58,9 @@ const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) =
               {CHECKLIST.map((c) => (
                 <li
                   key={c}
-                  className="flex items-center justify-center lg:justify-start gap-3 text-[14.5px] leading-[1.3]"
+                  className={`flex items-center justify-center lg:justify-start gap-3 text-[14.5px] leading-[1.3] ${
+                    c === "Response within 48 hours" ? "hidden lg:flex" : ""
+                  }`}
                   style={{ color: "hsl(var(--on-deep))" }}
                 >
                   <span
@@ -156,7 +158,7 @@ const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) =
             </div>
             <div className="flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center mt-6 gap-4 flex-wrap text-center">
               <span className="font-mono-rf text-[10.5px] tracking-[0.14em] text-ink-soft">
-                Replied to personally, within 48 hours.
+                Replied to personally, within 48 hr.
               </span>
               <button
                 type="submit"

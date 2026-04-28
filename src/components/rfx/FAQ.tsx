@@ -66,7 +66,7 @@ const FAQ = () => {
         </div>
 
         <div className="max-w-[980px] mx-auto">
-          <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
+          <Accordion type="single" collapsible className="w-full">
             {FAQS.map((it, i) => (
               <AccordionItem
                 key={i}

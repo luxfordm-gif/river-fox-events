@@ -79,7 +79,7 @@ const Nav = () => {
           <span className="text-[15px] font-medium tracking-[0.22em] leading-none">
             RIVER&nbsp;FOX&nbsp;EVENTS
           </span>
-          <span className="font-mono-rf text-[9px] tracking-[0.3em] uppercase text-ink-soft">
+          <span className="font-mono-rf text-[9.2px] tracking-[0.3em] uppercase text-ink-soft">
             Surrey
           </span>
         </a>
@@ -95,9 +95,9 @@ const Nav = () => {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((s) => !s)}
-          className="md:hidden absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-2 px-3 h-9 font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink"
+          className="md:hidden absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-3 px-3 h-9 font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink"
         >
-          <span className="relative inline-block w-4 h-4" aria-hidden="true">
+          <span className="relative inline-block w-4 h-4 -mt-[2px]" aria-hidden="true">
             <span
               className={`absolute left-0 right-0 top-1/2 h-px bg-ink transition-transform duration-300 ${
                 open ? "rotate-45" : "-translate-y-[3px]"
