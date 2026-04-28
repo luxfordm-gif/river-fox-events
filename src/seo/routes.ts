@@ -20,8 +20,7 @@ export type RouteSEO = {
 
 export const SITE = {
   name: "River Fox Events",
-  // Production URL — update once domain is connected.
-  url: "https://river-fox-events.netlify.app",
+  url: "https://riverfoxevents.co.uk",
   defaultOgImage: "/social-share.jpg",
   twitterHandle: "",
 };
