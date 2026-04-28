@@ -236,8 +236,8 @@
     border-radius: 6px;
   }
   .btn-solid-rf:hover { background: #000; gap: 18px; }
-  .btn-solid-rf.accent { background: hsl(var(--accent-warm)); color: hsl(120 6% 12%); }
-  .btn-solid-rf.accent:hover { background: hsl(12 40% 56%); color: #fff; }
+  .btn-solid-rf.accent { background: hsl(var(--accent)); color: hsl(120 6% 18%); }
+  .btn-solid-rf.accent:hover { background: hsl(12 55% 70%); color: hsl(120 6% 14%); }
 
   .btn-ghost-rf {
     font-family: var(--font-sans);
@@ -311,7 +311,7 @@
   .tcard-stars {
     display: inline-flex;
     gap: 6px;
-    color: hsl(var(--ink-soft));
+    color: hsl(var(--accent-warm));
     font-size: 20px;
     letter-spacing: 0.04em;
     line-height: 1;
@@ -604,7 +604,7 @@
   .rfx-instagram { padding: 44px 0 56px; }
   .rfx-instagram .rfx-instagram-inner { padding-top: 40px; padding-bottom: 40px; }
   @media (max-width: 760px) {
-    .rfx-section { padding: 48px 0; }
+    .rfx-section { padding: 56px 0; }
     .rfx-instagram { padding: 28px 0; }
     .rfx-instagram .rfx-instagram-inner {
       border-top: 0 !important;

@@ -94,6 +94,9 @@ const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
       <p className="text-[14.5px] leading-[1.65] text-ink-soft max-w-[360px]">
         {it.body}
       </p>
+      <span className="btn-link-rf self-start mt-2">
+        Enquire <span className="arr">→</span>
+      </span>
     </a>
   );
 };
@@ -113,7 +116,8 @@ const Experiences = () => {
               letterSpacing: "-0.025em",
             }}
           >
-            Our signature experiences.
+            Our signature{" "}
+            <em className="italic font-light text-accent-warm">experiences.</em>
           </h2>
           <p className="text-[15.5px] leading-[1.6] text-ink-soft pb-3 text-center md:text-left mx-auto md:mx-0">
             Three considered services, each fully bespoke. We work with a small

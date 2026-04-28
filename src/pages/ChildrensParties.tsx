@@ -94,7 +94,7 @@ const ChildrensParties = () => {
     };
 
     const desc =
-      "Bespoke children's party styling across Surrey. Immersive themed parties, balloon installations and full-room transformations from £600 — designed and delivered personally by Laura at River Fox Events.";
+      "Bespoke children's party styling across Surrey. Immersive themed parties, balloon installations and full-room transformations from £460 — designed and delivered personally by Laura at River Fox Events.";
     setMeta("description", desc);
     const ogImage = window.location.origin + "/social-share.jpg";
     setMeta(

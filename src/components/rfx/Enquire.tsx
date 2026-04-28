@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 const CHECKLIST = [
-  "Events from £600",
+  "Events from £460",
   "Response within 48 hours",
   "Surrey, London & surrounding areas",
 ];
@@ -137,8 +137,8 @@ const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) =
               </label>
               <label className="form-row full">
                 <span className="lbl">Approximate budget</span>
-                <select name="budget" defaultValue="£600 – £1,000">
-                  <option>£600 – £1,000</option>
+                <select name="budget" defaultValue="£460 – £800">
+                  <option>£460 – £800</option>
                   <option>£800 – £1,200</option>
                   <option>£1,200 – £2,500</option>
                   <option>£2,500 – £5,000</option>

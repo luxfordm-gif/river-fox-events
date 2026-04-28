@@ -71,7 +71,8 @@ const Process = ({ steps = DEFAULT_STEPS, intro = DEFAULT_INTRO }: ProcessProps 
               letterSpacing: "-0.025em",
             }}
           >
-            How it works.
+            How it{" "}
+            <em className="italic font-light text-accent-warm">works.</em>
           </h2>
           <p className="text-[15.5px] leading-[1.6] max-w-[440px] m-0 pb-3 text-center md:text-left mx-auto md:mx-0" style={{ color: "hsl(var(--on-deep-soft))" }}>
             {intro}
