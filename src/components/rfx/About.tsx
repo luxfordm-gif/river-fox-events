@@ -143,10 +143,7 @@ const About = () => {
                 letterSpacing: "-0.028em",
               }}
             >
-              Personally designed.{" "}
-              <em className="italic font-light text-accent-warm">
-                Personally delivered.
-              </em>
+              Personally designed. Personally delivered.
             </h2>
 
             <div className="mt-8 space-y-5 text-[16px] leading-[1.7] text-ink-soft max-w-[560px]">

@@ -236,8 +236,8 @@
     border-radius: 6px;
   }
   .btn-solid-rf:hover { background: #000; gap: 18px; }
-  .btn-solid-rf.accent { background: hsl(var(--accent)); color: hsl(120 6% 18%); }
-  .btn-solid-rf.accent:hover { background: hsl(12 55% 70%); color: hsl(120 6% 14%); }
+  .btn-solid-rf.accent { background: hsl(var(--accent-warm)); color: hsl(120 6% 12%); }
+  .btn-solid-rf.accent:hover { background: hsl(12 40% 56%); color: #fff; }
 
   .btn-ghost-rf {
     font-family: var(--font-sans);
@@ -311,7 +311,7 @@
   .tcard-stars {
     display: inline-flex;
     gap: 6px;
-    color: hsl(var(--accent-warm));
+    color: hsl(var(--ink-soft));
     font-size: 20px;
     letter-spacing: 0.04em;
     line-height: 1;
@@ -434,6 +434,16 @@
   .exp-card:hover .exp-cta { transform: translateY(0); opacity: 1; }
   .exp-card .exp-title { transition: color .3s ease; }
   .exp-card:hover .exp-title { color: hsl(var(--accent)); }
+  /* Tap feedback for touchscreens — slight image press + brief darken */
+  .exp-card { transition: transform .25s cubic-bezier(.2,.7,.2,1); }
+  .exp-card:active { transform: scale(0.985); }
+  /* On touch devices the hover-only overlay + Discover CTA are invisible —
+     reveal them by default so the card visibly reads as "tap me." */
+  @media (hover: none) and (pointer: coarse) {
+    .exp-card .exp-img-wrap::after { opacity: 0.6; }
+    .exp-card .exp-cta { transform: translateY(0); opacity: 1; }
+    .exp-card .exp-title { text-decoration: underline; text-decoration-color: hsl(var(--ink) / 0.18); text-underline-offset: 4px; }
+  }
 
   /* FAQ — smooth radix accordion */
   .faq-rf-trigger[data-state="open"] .faq-rf-plus {
@@ -594,7 +604,7 @@
   .rfx-instagram { padding: 44px 0 56px; }
   .rfx-instagram .rfx-instagram-inner { padding-top: 40px; padding-bottom: 40px; }
   @media (max-width: 760px) {
-    .rfx-section { padding: 56px 0; }
+    .rfx-section { padding: 48px 0; }
     .rfx-instagram { padding: 28px 0; }
     .rfx-instagram .rfx-instagram-inner {
       border-top: 0 !important;

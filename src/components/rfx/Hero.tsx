@@ -39,9 +39,6 @@ const Hero = () => {
             <a href="#enquire" className="btn-solid-rf accent">
               Start planning <span>→</span>
             </a>
-            <a href="#experiences" className="btn-link-rf">
-              See our work <span className="arr">→</span>
-            </a>
           </div>
         </div>
       </div>

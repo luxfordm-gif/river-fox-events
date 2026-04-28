@@ -27,8 +27,7 @@ const InstagramFollow = () => {
                 letterSpacing: "-0.028em",
               }}
             >
-              Follow along on{" "}
-              <em className="italic font-light text-accent-warm">Instagram.</em>
+              Follow along on Instagram.
             </h2>
 
             <p className="text-[16px] leading-[1.7] text-ink-soft mt-7 max-w-[480px]">

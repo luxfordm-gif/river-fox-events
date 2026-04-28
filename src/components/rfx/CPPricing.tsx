@@ -11,7 +11,7 @@ type CPPricingProps = {
 
 const DEFAULT_TIERS: PricingTier[] = [
   {
-    price: "From £460",
+    price: "From £600",
     label: "Intimate",
     body: "A single styled focal point — cake table, balloon installation or backdrop. Perfect for smaller, considered celebrations at home.",
   },
@@ -30,7 +30,7 @@ const DEFAULT_TIERS: PricingTier[] = [
 const DEFAULT_HEADING: ReactNode = (
   <>
     Beautifully styled celebrations{" "}
-    <em className="italic font-light text-accent-warm">from £460.</em>
+    <em className="italic font-light text-accent-warm">from £600.</em>
   </>
 );
 

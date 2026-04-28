@@ -24,7 +24,7 @@ const DEFAULT_FAQS: FAQ[] = [
   },
   {
     q: "How much does children's party styling cost in Surrey?",
-    a: "Our parties start from £460 for an intimate single focal point. Full room styling typically sits between £1,200 and £2,500, with large-scale transformations from £2,500+. Every event is individually quoted following a discovery call so the proposal reflects exactly what you want.",
+    a: "Our parties start from £600 for an intimate single focal point. Full room styling typically sits between £1,200 and £2,500, with large-scale transformations from £2,500+. Every event is individually quoted following a discovery call so the proposal reflects exactly what you want.",
   },
   {
     q: "What happens on the day?",
@@ -93,7 +93,7 @@ const ChildrensFAQ = ({ faqs = DEFAULT_FAQS, headingId = "cp-faq-heading" }: Chi
         </div>
 
         <div className="max-w-[980px] mx-auto">
-          <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
+          <Accordion type="single" collapsible className="w-full">
             {faqs.map((it, i) => (
               <AccordionItem
                 key={i}

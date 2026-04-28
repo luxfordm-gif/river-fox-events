@@ -42,7 +42,7 @@ const Testimonials = () => {
               letterSpacing: "-0.025em",
             }}
           >
-            Kind <em className="italic font-light text-accent-warm">words.</em>
+            Kind words.
           </h2>
         </div>
 

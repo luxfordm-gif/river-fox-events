@@ -16,7 +16,7 @@ const STRIP_IMAGES = [
   { src: expMilestone, alt: "Christening blessing ceremony styling in Surrey by River Fox Events — pink gold and champagne balloon installation with floral arch" },
   { src: hero2, alt: "Editorial tablescape detail with peonies and silk ribbons for a Weybridge celebration by River Fox Events" },
   { src: expChildren, alt: "Sage green dinosaur themed children's birthday party styling in Surrey by River Fox Events — personalised name sign and balloon installation" },
-  { src: hero3, alt: "Luxury event styling detail in Surrey by River Fox Events — bespoke decor and elegant floral accents" },
+  { src: hero3, alt: "A close-up of a Surrey celebration — peach roses, silk ribbons and candlelight on a dressed table, styled by River Fox Events" },
   { src: expCorporate, alt: "Corporate gala event styling in Surrey by River Fox Events — navy blue gold cream balloon garland and branded backdrop" },
   { src: cpCelebrations, alt: "Children's birthday party styling in Surrey by River Fox Events — bespoke pastel balloon installation with organic textures and soft floral accents" },
 ];

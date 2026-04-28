@@ -20,7 +20,7 @@ const ITEMS = [
       "Statement styling for christenings, 21sts, 40ths, 70ths, baby showers and anniversaries. Life's biggest moments, honoured properly.",
     img: expMilestone,
     alt: "Christening blessing ceremony styling in Surrey by River Fox Events — pink gold champagne and pearl balloon installation with floral arch and pink backdrop",
-    href: "#enquire",
+    href: "/milestone-celebrations",
     tone: "ph-warm",
   },
   {
@@ -29,7 +29,7 @@ const ITEMS = [
       "Design-led installations for launches, openings and activations. Trusted by P&G, The Range, Foxhills and more.",
     img: expCorporate,
     alt: "Corporate gala event styling in Surrey by River Fox Events — navy gold and cream balloon installation with branded backdrop for Children in Need gala dinner",
-    href: "#enquire",
+    href: "/corporate-brand-styling",
     tone: "ph-blush",
     extraZoom: 1.25,
   },
@@ -94,9 +94,6 @@ const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
       <p className="text-[14.5px] leading-[1.65] text-ink-soft max-w-[360px]">
         {it.body}
       </p>
-      <span className="btn-link-rf self-start mt-2">
-        Enquire <span className="arr">→</span>
-      </span>
     </a>
   );
 };
@@ -116,8 +113,7 @@ const Experiences = () => {
               letterSpacing: "-0.025em",
             }}
           >
-            Our signature{" "}
-            <em className="italic font-light text-accent-warm">experiences.</em>
+            Our signature experiences.
           </h2>
           <p className="text-[15.5px] leading-[1.6] text-ink-soft pb-3 text-center md:text-left mx-auto md:mx-0">
             Three considered services, each fully bespoke. We work with a small

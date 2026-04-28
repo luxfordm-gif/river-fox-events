@@ -15,7 +15,12 @@ export function useSmoothScroll() {
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (reduceMotion) return;
+    // Lenis fights native momentum scrolling on touchscreens — feels "off"
+    // on phones/tablets. Use the OS scroll there.
+    const isTouch = window.matchMedia(
+      "(pointer: coarse) and (max-width: 1024px)"
+    ).matches;
+    if (reduceMotion || isTouch) return;
 
     const lenis = new Lenis({
       duration: 1.4,

@@ -38,7 +38,7 @@ export const ROUTES: RouteSEO[] = [
     path: "/childrens-parties",
     title: "Children's Party Stylist Surrey | River Fox Events",
     description:
-      "Bespoke children's party styling across Surrey. Immersive themed parties, balloon installations and full-room transformations from £460 — designed and delivered personally by Laura at River Fox Events.",
+      "Bespoke children's party styling across Surrey. Immersive themed parties, balloon installations and full-room transformations from £600 — designed and delivered personally by Laura at River Fox Events.",
     priority: 0.9,
     changefreq: "monthly",
   },

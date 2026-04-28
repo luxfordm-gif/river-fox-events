@@ -12,7 +12,7 @@ const FAQS = [
   },
   {
     q: "How much does event styling cost?",
-    a: "Our events start from £460. Full room transformations and premium installations typically range from £1,200 to £3,500+. Every event is bespoke, so we'll always give you a clear proposal before anything is confirmed.",
+    a: "Our events start from £600. Full room transformations and premium installations typically range from £1,200 to £3,500+. Every event is bespoke, so we'll always give you a clear proposal before anything is confirmed.",
   },
   {
     q: "How far in advance should I book?",
@@ -51,8 +51,7 @@ const FAQ = () => {
               letterSpacing: "-0.025em",
             }}
           >
-            Questions{" "}
-            <em className="italic font-light text-accent-warm">answered.</em>
+            Questions answered.
           </h2>
           <p className="text-[15.5px] leading-[1.6] text-ink-soft max-w-[520px] mx-auto mt-6">
             If you don't see what you need here, just ask —{" "}
@@ -66,7 +65,7 @@ const FAQ = () => {
         </div>
 
         <div className="max-w-[980px] mx-auto">
-          <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
+          <Accordion type="single" collapsible className="w-full">
             {FAQS.map((it, i) => (
               <AccordionItem
                 key={i}

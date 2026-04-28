@@ -35,7 +35,7 @@ const IMAGES = [
   },
   {
     src: hero3,
-    alt: "Luxury event styling detail in Surrey by River Fox Events — bespoke decor and elegant floral accents",
+    alt: "A close-up of a Surrey celebration — peach roses, silk ribbons and candlelight on a dressed table, styled by River Fox Events",
     height: 78,
     speed: 0.18,
   },
