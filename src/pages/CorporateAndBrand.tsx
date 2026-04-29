@@ -480,6 +480,8 @@ const CorporateAndBrand = () => {
             "Guildford",
             "Woking",
             "Reigate",
+            "Horsham",
+            "Crawley",
             "Richmond",
             "Wimbledon",
             "Central London",

@@ -111,7 +111,7 @@ const Footer = () => {
           </div>
 
           {/* Footer columns */}
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-16 rfx-md-stack">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-12 mb-16 rfx-md-stack">
             <div>
               <div className="text-[22px] font-medium tracking-[0.22em] leading-none">
                 RIVER&nbsp;FOX
@@ -137,6 +137,14 @@ const Footer = () => {
                 <a href="#experiences" className="opacity-85 hover:opacity-100 block">Children's Parties</a>
                 <a href="#experiences" className="opacity-85 hover:opacity-100 block">Milestones</a>
                 <a href="#experiences" className="opacity-85 hover:opacity-100 block">Corporate</a>
+              </div>
+            </div>
+            <div>
+              <div className="eyebrow font-semibold mb-4" style={{ color: "hsl(var(--on-deep))" }}>
+                Locations
+              </div>
+              <div className="text-[13.5px] leading-loose">
+                <a href="/party-styling-oxted/" className="opacity-85 hover:opacity-100 block">Oxted</a>
               </div>
             </div>
             <div>

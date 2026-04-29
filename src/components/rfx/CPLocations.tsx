@@ -5,7 +5,16 @@ type CPLocationsProps = {
   intro?: ReactNode;
   mapQuery?: string;
   mapTitle?: string;
+  eyebrow?: string;
+  heading?: ReactNode;
 };
+
+const DEFAULT_HEADING: ReactNode = (
+  <>
+    Areas we{" "}
+    <em className="italic font-light text-accent-warm">cover.</em>
+  </>
+);
 
 const DEFAULT_AREAS = [
   "Cobham",
@@ -16,6 +25,7 @@ const DEFAULT_AREAS = [
   "Reigate",
   "Farnham",
   "Horsham",
+  "Crawley",
   "Camberley",
   "Woking",
 ];
@@ -34,6 +44,8 @@ const CPLocations = ({
   intro = DEFAULT_INTRO,
   mapQuery = "Surrey,England,UK&z=9",
   mapTitle = "Map of Surrey, England — areas covered by River Fox Events",
+  eyebrow,
+  heading = DEFAULT_HEADING,
 }: CPLocationsProps = {}) => {
   return (
     <section
@@ -46,6 +58,14 @@ const CPLocations = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left — copy + areas list */}
           <div className="flex flex-col items-start text-left fade-up">
+            {eyebrow && (
+              <div
+                className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-4"
+                style={{ fontWeight: 600 }}
+              >
+                {eyebrow}
+              </div>
+            )}
             <h2
               id="cp-locations-heading"
               className="font-serif-rf"
@@ -57,8 +77,7 @@ const CPLocations = ({
                 textWrap: "balance",
               }}
             >
-              Areas we{" "}
-              <em className="italic font-light text-accent-warm">cover.</em>
+              {heading}
             </h2>
             <p
               className="mt-6 text-[16px] leading-[1.7] text-ink-soft max-w-[520px]"

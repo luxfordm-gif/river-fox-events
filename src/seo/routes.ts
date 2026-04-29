@@ -58,6 +58,14 @@ export const ROUTES: RouteSEO[] = [
     priority: 0.8,
     changefreq: "monthly",
   },
+  {
+    path: "/party-styling-oxted",
+    title: "Party Stylist Oxted Surrey | River Fox Events",
+    description:
+      "Looking for a party stylist in Oxted? Immersive, bespoke celebrations from £460 — children's parties, milestone moments and corporate events across East Surrey. Every detail handled. Nothing left to chance.",
+    priority: 0.7,
+    changefreq: "monthly",
+  },
 ];
 
 export const findRoute = (path: string): RouteSEO | undefined =>
