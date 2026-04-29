@@ -65,7 +65,7 @@ const Process = ({ steps = DEFAULT_STEPS, intro = DEFAULT_INTRO }: ProcessProps 
             id="process-heading"
             className="font-serif-rf m-0 text-center md:text-left"
             style={{
-              fontSize: "clamp(54px, 5.6vw, 88px)",
+              fontSize: "clamp(48px, 4.2vw, 76px)",
               lineHeight: 1.04,
               fontWeight: 300,
               letterSpacing: "-0.025em",

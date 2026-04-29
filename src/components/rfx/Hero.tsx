@@ -12,7 +12,7 @@ const Hero = () => {
             id="hero-heading"
             className="font-serif-rf max-w-[14ch] md:max-w-none mx-auto break-words text-pretty"
             style={{
-              fontSize: "clamp(60px, 10vw, 132px)",
+              fontSize: "clamp(56px, 7vw, 120px)",
               lineHeight: 1.02,
               fontWeight: 400,
               letterSpacing: "-0.038em",

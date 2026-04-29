@@ -45,7 +45,7 @@ const LocationGallery = ({
                 id={`${id}-heading`}
                 className="font-serif-rf"
                 style={{
-                  fontSize: "clamp(40px, 5vw, 72px)",
+                  fontSize: "clamp(36px, 3.8vw, 60px)",
                   lineHeight: 1.0,
                   fontWeight: 400,
                   letterSpacing: "-0.025em",

@@ -110,7 +110,7 @@ const CPHero = ({
           id={headingId}
           className="font-serif-rf mx-auto"
           style={{
-            fontSize: "clamp(56px, 9vw, 132px)",
+            fontSize: "clamp(52px, 6.5vw, 110px)",
             lineHeight: 0.96,
             fontWeight: 400,
             letterSpacing: "-0.04em",

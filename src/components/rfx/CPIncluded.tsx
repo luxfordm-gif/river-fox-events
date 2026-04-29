@@ -286,7 +286,7 @@ const CPIncluded = ({
             id={headingId}
             className="font-serif-rf"
             style={{
-              fontSize: "clamp(38px, 4.6vw, 64px)",
+              fontSize: "clamp(34px, 3.4vw, 56px)",
               lineHeight: 1.0,
               fontWeight: 400,
               letterSpacing: "-0.025em",

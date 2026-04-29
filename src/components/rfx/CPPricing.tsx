@@ -76,7 +76,7 @@ const CPPricing = ({
             id="cp-pricing-heading"
             className="font-serif-rf fade-up max-w-[20ch] mx-auto"
             style={{
-              fontSize: "clamp(44px, 5.4vw, 84px)",
+              fontSize: "clamp(40px, 4vw, 72px)",
               lineHeight: 1.0,
               fontWeight: 300,
               letterSpacing: "-0.028em",
@@ -120,7 +120,7 @@ const CPPricing = ({
               <div
                 className="font-serif-rf overflow-hidden"
                 style={{
-                  fontSize: "clamp(34px, 3.6vw, 48px)",
+                  fontSize: "clamp(32px, 2.8vw, 44px)",
                   lineHeight: 1,
                   fontWeight: 300,
                   letterSpacing: "-0.022em",

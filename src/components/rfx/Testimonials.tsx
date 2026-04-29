@@ -49,7 +49,7 @@ const Testimonials = ({
             id="kindness-heading"
             className="font-serif-rf"
             style={{
-              fontSize: "clamp(44px, 5.6vw, 88px)",
+              fontSize: "clamp(40px, 4.2vw, 76px)",
               lineHeight: 1.04,
               fontWeight: 300,
               letterSpacing: "-0.025em",

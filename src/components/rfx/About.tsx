@@ -48,11 +48,11 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
       <div
         className="font-serif-rf tabular-nums text-center"
         style={{
-          fontSize: "clamp(44px, 5.5vw, 68px)",
+          fontSize: "clamp(40px, 4.2vw, 60px)",
           lineHeight: 0.9,
           fontWeight: 300,
           letterSpacing: "-0.022em",
-          minHeight: "clamp(44px, 5.5vw, 68px)",
+          minHeight: "clamp(40px, 4.2vw, 60px)",
           paddingBottom: 0,
           display: "flex",
           alignItems: "flex-end",
@@ -137,7 +137,7 @@ const About = () => {
               id="about-heading"
               className="font-serif-rf"
               style={{
-                fontSize: "clamp(48px, 5.6vw, 84px)",
+                fontSize: "clamp(44px, 4.2vw, 72px)",
                 lineHeight: 1.02,
                 fontWeight: 300,
                 letterSpacing: "-0.028em",

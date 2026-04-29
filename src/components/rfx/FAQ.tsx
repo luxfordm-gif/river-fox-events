@@ -45,7 +45,7 @@ const FAQ = () => {
             id="faq-heading"
             className="font-serif-rf"
             style={{
-              fontSize: "clamp(40px, 5.4vw, 84px)",
+              fontSize: "clamp(36px, 4vw, 72px)",
               lineHeight: 1.06,
               fontWeight: 300,
               letterSpacing: "-0.025em",
