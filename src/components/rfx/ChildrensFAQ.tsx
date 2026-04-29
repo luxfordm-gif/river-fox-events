@@ -7,7 +7,14 @@ import {
 } from "@/components/ui/accordion";
 
 type FAQ = { q: string; a: string };
-type ChildrensFAQProps = { faqs?: FAQ[]; headingId?: string };
+type ChildrensFAQProps = {
+  faqs?: FAQ[];
+  headingId?: string;
+  /** Item to open by default. Pass `false` to start with all closed. */
+  defaultOpen?: string | false;
+  paddingTop?: string;
+  paddingBottom?: string;
+};
 
 const DEFAULT_FAQS: FAQ[] = [
   {
@@ -36,7 +43,13 @@ const DEFAULT_FAQS: FAQ[] = [
   },
 ];
 
-const ChildrensFAQ = ({ faqs = DEFAULT_FAQS, headingId = "cp-faq-heading" }: ChildrensFAQProps = {}) => {
+const ChildrensFAQ = ({
+  faqs = DEFAULT_FAQS,
+  headingId = "cp-faq-heading",
+  defaultOpen = "item-0",
+  paddingTop,
+  paddingBottom = "48px",
+}: ChildrensFAQProps = {}) => {
   // Inject FAQPage JSON-LD scoped to this section so search engines can pick up
   // the Q&A as a rich result. We dedupe per headingId so multiple FAQ blocks
   // don't collide.
@@ -65,7 +78,12 @@ const ChildrensFAQ = ({ faqs = DEFAULT_FAQS, headingId = "cp-faq-heading" }: Chi
   }, [faqs, headingId]);
 
   return (
-    <section id="faq" className="rfx-section white" style={{ paddingBottom: "48px" }} aria-labelledby={headingId}>
+    <section
+      id="faq"
+      className="rfx-section white"
+      style={{ paddingTop, paddingBottom }}
+      aria-labelledby={headingId}
+    >
       <div className="container-rfx">
         <div className="text-center mb-14">
           <h2
@@ -93,7 +111,12 @@ const ChildrensFAQ = ({ faqs = DEFAULT_FAQS, headingId = "cp-faq-heading" }: Chi
         </div>
 
         <div className="max-w-[980px] mx-auto">
-          <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
+          <Accordion
+            type="single"
+            collapsible
+            defaultValue={defaultOpen === false ? undefined : defaultOpen}
+            className="w-full"
+          >
             {faqs.map((it, i) => (
               <AccordionItem
                 key={i}

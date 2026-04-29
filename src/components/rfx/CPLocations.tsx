@@ -7,6 +7,8 @@ type CPLocationsProps = {
   mapTitle?: string;
   eyebrow?: string;
   heading?: ReactNode;
+  paddingTop?: string;
+  paddingBottom?: string;
 };
 
 const DEFAULT_HEADING: ReactNode = (
@@ -46,12 +48,14 @@ const CPLocations = ({
   mapTitle = "Map of Surrey, England — areas covered by River Fox Events",
   eyebrow,
   heading = DEFAULT_HEADING,
+  paddingTop = "48px",
+  paddingBottom = "72px",
 }: CPLocationsProps = {}) => {
   return (
     <section
       id="locations"
       className="rfx-section white"
-      style={{ paddingTop: "48px", paddingBottom: "72px" }}
+      style={{ paddingTop, paddingBottom }}
       aria-labelledby="cp-locations-heading"
     >
       <div className="container-rfx">

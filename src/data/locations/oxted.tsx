@@ -1,4 +1,7 @@
 import type { LocationConfig } from "./types";
+import imgWhatWeDo from "@/assets/cp-celebrations.webp";
+import imgOccasions from "@/assets/luxury-party-styling-occasions-surrey.webp";
+import imgThemes from "@/assets/dinosaur-themed-birthday-party-surrey.webp";
 
 const oxted: LocationConfig = {
   slug: "oxted",
@@ -27,7 +30,11 @@ const oxted: LocationConfig = {
     ),
   },
   whatWeDo: {
-    eyebrow: "Event styling in Oxted",
+    image: imgWhatWeDo,
+    imageAlt:
+      "Bespoke event styling in Oxted by River Fox Events — pastel balloon installation with organic textures and soft floral accents",
+    imageSide: "right",
+    tone: "ph-warm",
     headline: (
       <>
         Your celebration,{" "}
@@ -52,10 +59,13 @@ const oxted: LocationConfig = {
         </p>
       </>
     ),
-    tone: "white",
   },
   occasions: {
-    eyebrow: "What people celebrate in Oxted",
+    image: imgOccasions,
+    imageAlt:
+      "Elegant birthday party styling in Oxted by River Fox Events — ivory, gold and soft blush balloon installation with floral accents",
+    imageSide: "left",
+    tone: "ph-blush",
     headline: (
       <>
         Every occasion,{" "}
@@ -64,37 +74,30 @@ const oxted: LocationConfig = {
         </em>
       </>
     ),
-    rows: [
-      {
-        label: "Children's birthdays",
-        value:
-          "From intimate first birthdays to big themed celebrations, styled to feel magical from the moment guests arrive.",
-      },
-      {
-        label: "Christenings & naming days",
-        value:
-          "Elegant, soft and completely bespoke styling for one of life's most meaningful milestones.",
-      },
-      {
-        label: "Milestone birthdays",
-        value:
-          "21sts, 30ths, 40ths, 50ths and beyond — styled with the elegance the occasion deserves.",
-      },
-      {
-        label: "Baby showers",
-        value:
-          "Beautiful, considered installations for one of life's most joyful moments.",
-      },
-      {
-        label: "Corporate events",
-        value:
-          "Brand-aligned installations for launches, openings and activations across East Surrey.",
-      },
-    ],
-    tone: "warm",
+    body: (
+      <>
+        <p>
+          From first birthdays and christenings to milestone moments and
+          corporate launches — every celebration in Oxted is shaped around the
+          people, the venue and the feeling you want the day to hold.
+        </p>
+        <p>
+          Children's birthdays styled to feel magical the moment guests arrive.
+          Christenings and naming days handled with elegance and softness.
+          21sts, 30ths, 40ths, 50ths and beyond — milestone birthdays styled
+          with the elegance the occasion deserves. Beautifully considered baby
+          showers. And brand-aligned corporate installations for launches,
+          openings and activations across East Surrey.
+        </p>
+      </>
+    ),
   },
   themes: {
-    eyebrow: "Brought to life in Oxted",
+    image: imgThemes,
+    imageAlt:
+      "Sage green dinosaur themed children's birthday party styling in Oxted by River Fox Events — personalised name sign, balloon garland, dinosaur cut-outs and lush foliage",
+    imageSide: "right",
+    tone: "ph-warm",
     headline: (
       <>
         Whatever the vision,{" "}
@@ -103,12 +106,15 @@ const oxted: LocationConfig = {
     ),
     body: (
       <>
-        From fairy gardens and jungle adventures to elegant florals and branded
-        corporate installs — every River Fox Events celebration is completely
-        bespoke. Bring your inspiration and we'll design around it.
+        <p>
+          From fairy gardens and jungle adventures to elegant florals and
+          branded corporate installs — every River Fox Events celebration is
+          completely bespoke. Bring your inspiration and we'll design around
+          it.
+        </p>
       </>
     ),
-    themePills: [
+    themesList: [
       "Fairy garden",
       "Jungle",
       "Princess",
@@ -124,7 +130,6 @@ const oxted: LocationConfig = {
       "Branded corporate",
       "Seasonal",
     ],
-    tone: "white",
   },
   included: {
     eyebrow: "The full River Fox experience",

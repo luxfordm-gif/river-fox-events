@@ -5,6 +5,7 @@ import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
 import Enquire from "@/components/rfx/Enquire";
 import CPHero from "@/components/rfx/CPHero";
+import CPReveal from "@/components/rfx/CPReveal";
 import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
 import CPIncluded from "@/components/rfx/CPIncluded";
@@ -12,105 +13,24 @@ import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import Testimonials from "@/components/rfx/Testimonials";
 import NotFound from "./NotFound";
 import { findLocation } from "@/data/locations";
-import type {
-  DetailRow,
-  LocationConfig,
-  LocationCopyBlock,
-} from "@/data/locations/types";
+import type { LocationConfig } from "@/data/locations/types";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 
-const DetailRows = ({ rows }: { rows: DetailRow[] }) => (
-  <ul className="mt-2 border-t border-ink/15">
-    {rows.map((r) => (
+const ThemesNumberedList = ({ themes }: { themes: string[] }) => (
+  <ul className="!mt-7 grid grid-cols-2 gap-x-8 max-w-[520px] border-t border-ink/15">
+    {themes.map((t, i) => (
       <li
-        key={r.label}
-        className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-1 md:gap-8 py-5 border-b border-ink/15"
+        key={t}
+        className="flex items-baseline gap-3 py-2.5 border-b border-ink/15 font-serif-rf text-[17px] font-light tracking-[-0.012em] text-ink"
       >
-        <span className="font-serif-rf text-[18px] md:text-[20px] font-light leading-[1.25] tracking-[-0.012em] text-ink">
-          {r.label}
+        <span className="font-mono-rf text-[10px] tracking-[0.18em] text-ink-soft">
+          {String(i + 1).padStart(2, "0")}
         </span>
-        <span className="text-[14.5px] leading-[1.6] text-ink-soft md:text-right">
-          {r.value}
-        </span>
+        {t}
       </li>
     ))}
   </ul>
 );
-
-const ThemePills = ({ pills }: { pills: string[] }) => (
-  <ul className="mt-8 flex flex-wrap gap-2.5 max-w-[720px]">
-    {pills.map((p) => (
-      <li
-        key={p}
-        className="px-4 py-2 rounded-full border border-ink/20 bg-[hsl(var(--surface-warm)/0.5)] font-serif-rf text-[15px] font-light tracking-[-0.01em] text-ink"
-      >
-        {p}
-      </li>
-    ))}
-  </ul>
-);
-
-const toneClass = (tone?: LocationCopyBlock["tone"]) => {
-  if (tone === "warm") return "rfx-section warm";
-  if (tone === "blush") return "rfx-section";
-  return "rfx-section white";
-};
-
-const CopyBlock = ({
-  block,
-  sectionId,
-}: {
-  block: LocationCopyBlock;
-  sectionId: string;
-}) => {
-  const headingId = `${sectionId}-heading`;
-  return (
-    <section
-      id={sectionId}
-      className={toneClass(block.tone)}
-      aria-labelledby={headingId}
-    >
-      <div className="container-rfx">
-        <div className="max-w-[820px] fade-up">
-          <div
-            className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-4"
-            style={{ fontWeight: 600 }}
-          >
-            {block.eyebrow}
-          </div>
-          <h2
-            id={headingId}
-            className="font-serif-rf"
-            style={{
-              fontSize: "clamp(40px, 5vw, 72px)",
-              lineHeight: 1.0,
-              fontWeight: 400,
-              letterSpacing: "-0.025em",
-              textWrap: "balance",
-            }}
-          >
-            {block.headline}
-          </h2>
-          {block.body && (
-            <div
-              className="mt-7 text-[16px] leading-[1.7] text-ink-soft space-y-4 max-w-[640px]"
-              style={{ textWrap: "pretty" }}
-            >
-              {block.body}
-            </div>
-          )}
-          {block.rows && <DetailRows rows={block.rows} />}
-          {block.themePills && <ThemePills pills={block.themePills} />}
-          {block.closingLine && (
-            <p className="mt-8 italic text-ink font-serif-rf text-[18px] leading-[1.5] max-w-[640px]">
-              {block.closingLine}
-            </p>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-};
 
 const useLocationSEO = (loc: LocationConfig) => {
   useEffect(() => {
@@ -202,8 +122,15 @@ const LocationPage = () => {
   const slug = pathname.replace(/\/$/, "").replace(/^\/party-styling-/, "");
   const loc = findLocation(slug);
 
-  // Hooks must run unconditionally — call with a stable fallback then short-circuit render.
-  useLocationSEO(loc ?? ({ slug: "missing", seoTitle: "", seoDescription: "", jsonLdAreaServed: [] } as unknown as LocationConfig));
+  useLocationSEO(
+    loc ??
+      ({
+        slug: "missing",
+        seoTitle: "",
+        seoDescription: "",
+        jsonLdAreaServed: [],
+      } as unknown as LocationConfig)
+  );
 
   if (!loc) return <NotFound />;
 
@@ -222,9 +149,41 @@ const LocationPage = () => {
           scrollTarget="#loc-what-we-do"
         />
 
-        <CopyBlock block={loc.whatWeDo} sectionId="loc-what-we-do" />
-        <CopyBlock block={loc.occasions} sectionId="loc-occasions" />
-        <CopyBlock block={loc.themes} sectionId="loc-themes" />
+        <CPReveal
+          id="loc-what-we-do"
+          imageSide={loc.whatWeDo.imageSide}
+          image={loc.whatWeDo.image}
+          alt={loc.whatWeDo.imageAlt}
+          tone={loc.whatWeDo.tone}
+          headline={loc.whatWeDo.headline}
+        >
+          {loc.whatWeDo.body}
+        </CPReveal>
+
+        <CPReveal
+          id="loc-occasions"
+          imageSide={loc.occasions.imageSide}
+          image={loc.occasions.image}
+          alt={loc.occasions.imageAlt}
+          tone={loc.occasions.tone}
+          headline={loc.occasions.headline}
+        >
+          {loc.occasions.body}
+        </CPReveal>
+
+        <CPReveal
+          id="loc-themes"
+          imageSide={loc.themes.imageSide}
+          image={loc.themes.image}
+          alt={loc.themes.imageAlt}
+          tone={loc.themes.tone}
+          headline={loc.themes.headline}
+        >
+          {loc.themes.body}
+          {loc.themes.themesList && (
+            <ThemesNumberedList themes={loc.themes.themesList} />
+          )}
+        </CPReveal>
 
         <CPIncluded
           eyebrow={loc.included.eyebrow}
@@ -249,9 +208,11 @@ const LocationPage = () => {
         <ChildrensFAQ
           faqs={loc.faqs}
           headingId={`loc-${loc.slug}-faq-heading`}
+          defaultOpen={false}
+          paddingBottom="120px"
         />
 
-        <Testimonials />
+        <Testimonials noDivider paddingTop="32px" paddingBottom="64px" />
 
         <CPLocations
           eyebrow={loc.nearby.eyebrow}
@@ -260,6 +221,7 @@ const LocationPage = () => {
           areas={loc.nearby.areas}
           mapQuery={loc.nearby.mapQuery}
           mapTitle={loc.nearby.mapTitle}
+          paddingTop="120px"
         />
 
         <Enquire />

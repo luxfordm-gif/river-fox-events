@@ -1,16 +1,16 @@
 import type { ReactNode } from "react";
 import type { IncludedItem } from "@/components/rfx/CPIncluded";
 
-export type DetailRow = { label: string; value: string };
-
-export type LocationCopyBlock = {
-  eyebrow: string;
+export type LocationRevealSection = {
   headline: ReactNode;
-  body?: ReactNode;
-  rows?: DetailRow[];
-  themePills?: string[];
-  closingLine?: ReactNode;
-  tone?: "white" | "warm" | "blush";
+  body: ReactNode;
+  /** When set, renders a 2-column numbered serif list inside the content area. */
+  themesList?: string[];
+  image: string;
+  imageAlt: string;
+  imageSide: "left" | "right";
+  /** ph-warm or ph-blush — subtle background tint on the image card. */
+  tone?: string;
 };
 
 export type PricingTier = { price: string; label: string; body: string };
@@ -28,9 +28,9 @@ export type LocationConfig = {
     image?: string;
     imageAlt?: string;
   };
-  whatWeDo: LocationCopyBlock;
-  occasions: LocationCopyBlock;
-  themes: LocationCopyBlock;
+  whatWeDo: LocationRevealSection;
+  occasions: LocationRevealSection;
+  themes: LocationRevealSection;
   included: {
     eyebrow: string;
     heading: ReactNode;
