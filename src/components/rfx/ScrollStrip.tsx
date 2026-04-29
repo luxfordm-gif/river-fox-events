@@ -12,13 +12,13 @@ import cpCelebrations from "@/assets/cp-celebrations.webp";
 // where relevant. Never empty, never "image"/"photo". Update alt strings
 // here whenever the source imagery changes.
 const STRIP_IMAGES = [
-  { src: hero1, alt: "Pastel children's party tablescape with balloon installation in Cobham Surrey by River Fox Events" },
-  { src: expMilestone, alt: "Christening blessing ceremony styling in Surrey by River Fox Events — pink gold and champagne balloon installation with floral arch" },
-  { src: hero2, alt: "Editorial tablescape detail with peonies and silk ribbons for a Weybridge celebration by River Fox Events" },
-  { src: expChildren, alt: "Sage green dinosaur themed children's birthday party styling in Surrey by River Fox Events — personalised name sign and balloon installation" },
-  { src: hero3, alt: "A close-up of a Surrey celebration — peach roses, silk ribbons and candlelight on a dressed table, styled by River Fox Events" },
-  { src: expCorporate, alt: "Corporate gala event styling in Surrey by River Fox Events — navy blue gold cream balloon garland and branded backdrop" },
-  { src: cpCelebrations, alt: "Children's birthday party styling in Surrey by River Fox Events — bespoke pastel balloon installation with organic textures and soft floral accents" },
+  { src: hero1, alt: "Pastel children's party tablescape with balloon installation in Cobham Surrey by River Fox Events", aspect: "900 / 1125" },
+  { src: expMilestone, alt: "Christening blessing ceremony styling in Surrey by River Fox Events — pink gold and champagne balloon installation with floral arch", aspect: "820 / 1093" },
+  { src: hero2, alt: "Editorial tablescape detail with peonies and silk ribbons for a Weybridge celebration by River Fox Events", aspect: "900 / 1237" },
+  { src: expChildren, alt: "Sage green dinosaur themed children's birthday party styling in Surrey by River Fox Events — personalised name sign and balloon installation", aspect: "820 / 1089" },
+  { src: hero3, alt: "A close-up of a Surrey celebration — peach roses, silk ribbons and candlelight on a dressed table, styled by River Fox Events", aspect: "900 / 1195" },
+  { src: expCorporate, alt: "Corporate gala event styling in Surrey by River Fox Events — navy blue gold cream balloon garland and branded backdrop", aspect: "820 / 1093" },
+  { src: cpCelebrations, alt: "Children's birthday party styling in Surrey by River Fox Events — bespoke pastel balloon installation with organic textures and soft floral accents", aspect: "1468 / 1920" },
 ];
 
 /**
@@ -112,7 +112,7 @@ const ScrollStrip = () => {
     <section
       ref={sectionRef}
       aria-label="River Fox Events imagery"
-      className="md:hidden overflow-hidden py-[20px]"
+      className="lg:hidden overflow-hidden py-[20px]"
       style={{ background: "hsl(var(--linen))" }}
     >
       <div
@@ -120,15 +120,13 @@ const ScrollStrip = () => {
         className="flex gap-3 md:gap-4 will-change-transform"
         style={{
           transform: "translate3d(0, 0, 0)",
-          height: "var(--strip-h, 260px)",
         }}
       >
         <style>{`
-          :root { --strip-h: 260px; --strip-item-w: 68vw; }
+          :root { --strip-item-w: 48vw; }
           @media (min-width: 768px) {
             :root {
-              --strip-h: 528px;
-              /* 3.5 images visible with a partial 4th peeking in.
+              /* 3 images visible with a partial 4th peeking in.
                  Account for 16px (gap-4) gaps between items. */
               --strip-item-w: calc((100vw - (3 * 16px)) / 3.5);
             }
@@ -137,8 +135,8 @@ const ScrollStrip = () => {
         {STRIP_IMAGES.map((img, i) => (
           <div
             key={i}
-            className="relative flex-none h-full overflow-hidden ph ph-warm rounded-[22px] rfx-rounded-img"
-            style={{ width: "var(--strip-item-w)" }}
+            className="relative flex-none overflow-hidden ph ph-warm rounded-[22px] rfx-rounded-img"
+            style={{ width: "var(--strip-item-w)", aspectRatio: img.aspect }}
           >
             <img
               src={img.src}

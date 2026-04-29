@@ -6,14 +6,9 @@ import hero3 from "@/assets/hero-3.webp";
 /**
  * Three-image editorial layout for laptop + desktop.
  *
- * Layout:
- *   - Three images side by side, 12px gaps.
- *   - Centre image is tallest; left and right are slightly shorter.
- *   - All three are vertically centred so shorter images stagger
- *     symmetrically within the centre image's height.
- *   - Each image has a subtle parallax tied to vertical scroll. The centre
- *     image moves at a slower rate than the side images for layered depth.
- *   - Total parallax travel is capped at ~30px and uses a smooth ease.
+ * Wrappers use the source images' native 4:5 aspect ratio so nothing
+ * gets cropped. Centre column is wider (and therefore taller) than the
+ * side columns to preserve the staggered editorial feel.
  *
  * SEO REMINDER: keep alt strings descriptive — theme, palette, Surrey
  * town and "River Fox Events" must always be present.
@@ -22,21 +17,22 @@ const IMAGES = [
   {
     src: hero1,
     alt: "Pastel children's party tablescape with balloon installation in Cobham Surrey by River Fox Events",
-    // side image — shorter
-    height: 78,
+    widthPct: 30,
+    aspect: "900 / 1125",
     speed: 0.18,
   },
   {
     src: hero2,
     alt: "Editorial tablescape detail with peonies and silk ribbons for a Weybridge celebration by River Fox Events",
-    // centre image — tallest
-    height: 100,
+    widthPct: 36,
+    aspect: "900 / 1237",
     speed: 0.08,
   },
   {
     src: hero3,
     alt: "A close-up of a Surrey celebration — peach roses, silk ribbons and candlelight on a dressed table, styled by River Fox Events",
-    height: 78,
+    widthPct: 30,
+    aspect: "900 / 1195",
     speed: 0.18,
   },
 ];
@@ -77,7 +73,7 @@ const HeroEditorial = () => {
         if (!img) return;
         const speed = IMAGES[i].speed;
         const y = reduceMotion ? 0 : clamped * -30 * speed * 3.3;
-        img.style.transform = `translate3d(0, ${y}px, 0) scale(1.06)`;
+        img.style.transform = `translate3d(0, ${y}px, 0) scale(1.02)`;
       });
     };
 
@@ -122,18 +118,18 @@ const HeroEditorial = () => {
     <section
       ref={sectionRef}
       aria-label="River Fox Events imagery"
-      className="hidden md:block overflow-hidden bg-transparent"
+      className="hidden lg:block overflow-hidden bg-transparent"
     >
-      <div className="container-rfx" style={{ paddingTop: 0, paddingBottom: 0 }}>
+      <div className="rfx-hero-edl-track">
         <div
           className="flex items-center justify-center"
-          style={{ gap: 12, height: "clamp(380px, 48vw, 560px)" }}
+          style={{ gap: 12 }}
         >
           {IMAGES.map((img, i) => (
             <div
               key={i}
-              className="relative flex-1 overflow-hidden ph ph-warm rounded-[22px] rfx-rounded-img"
-              style={{ height: `${img.height}%` }}
+              className="relative overflow-hidden ph ph-warm rounded-[22px] rfx-rounded-img"
+              style={{ width: `${img.widthPct}%`, aspectRatio: img.aspect }}
             >
               <img
                 ref={(el) => (imgRefs.current[i] = el)}
@@ -141,7 +137,7 @@ const HeroEditorial = () => {
                 alt={img.alt}
                 className="absolute inset-0 w-full h-full object-cover will-change-transform"
                 style={{
-                  transform: "translate3d(0,0,0) scale(1.06)",
+                  transform: "translate3d(0,0,0) scale(1.02)",
                   transition: "transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                 }}
                 loading={i === 1 ? "eager" : "lazy"}

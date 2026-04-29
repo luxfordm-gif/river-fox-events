@@ -91,7 +91,7 @@ const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
       <p className="text-[14.5px] leading-[1.65] text-ink-soft max-w-[360px]">
         {it.body}
       </p>
-      <span className="btn-link-rf self-start mt-2" style={{ fontWeight: 600 }}>
+      <span className="btn-link-rf self-start mt-auto pt-4 md:pt-6" style={{ fontWeight: 600 }}>
         Discover <span className="arr">→</span>
       </span>
     </a>

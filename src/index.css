@@ -108,6 +108,26 @@
   @media (max-width: 960px) { .container-rfx { padding: 0 32px; } }
   @media (max-width: 640px) { .container-rfx { padding: 0 20px; } }
 
+  /* HeroEditorial track: full-bleed below 1440px so images breathe on
+     small/medium desktops; matches container-rfx spacing at 1440+ so
+     wide viewports keep the cream side margins consistent with the rest
+     of the page. */
+  .rfx-hero-edl-track {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  @media (min-width: 1440px) {
+    .rfx-hero-edl-track {
+      max-width: 1440px;
+      padding: 0 56px;
+    }
+    /* Wider viewports get more breathing room below the editorial row
+       so the cream background reads as space, not a hairline edge.
+       Element+class selector to outrank Tailwind's .md\:pb-6 utility. */
+    section.rfx-hero { padding-bottom: 72px; }
+  }
+
   .font-serif-rf {
     font-family: var(--font-serif);
     font-weight: 300;
@@ -534,7 +554,30 @@
   /* Tighter rhythm on small/medium desktops (between mobile and ≥1440 large
      desktop). Keeps generous 120px breathing room only on big monitors. */
   @media (min-width: 761px) and (max-width: 1439px) {
-    .rfx-section { padding: 80px 0; }
+    .rfx-section { padding: 96px 0; }
+  }
+
+  /* CPReveal + About sticky images — desktop default. Aspect-ratio keeps a
+     portrait shape from the column width, then max-height caps the image so
+     the whole section fits roughly inside the viewport on small/medium
+     laptops (subtracting nav + a bit of breathing space). This makes the
+     sticky behaviour actually work — without the cap, the image is taller
+     than the viewport and "sticky" only kicks in once you've scrolled past
+     the bottom. min-height stops the image collapsing on unusually short
+     windows. The mobile override below replaces these with width-based
+     calcs. */
+  @media (min-width: 761px) {
+    .cp-reveal-img-wrap {
+      aspect-ratio: 4 / 5;
+      width: 100%;
+      max-height: calc(100vh - 160px);
+      min-height: 420px;
+    }
+    .rfx-about-img {
+      width: 100%;
+      max-height: calc(100vh - 160px);
+      min-height: 420px;
+    }
   }
   /* Children's Parties alternating reveal sections — tighter, fixed desktop rhythm.
      First section keeps full 100px top; subsequent ones tighten so the gap
@@ -680,15 +723,13 @@
     .cp-reveal-section + .cp-reveal-section { padding-top: 24px !important; }
     .cp-reveal-section:has(+ .cp-reveal-section) { padding-bottom: 24px !important; }
 
-    /* Hero — cap at 85vh so the image strip below peeks through */
+    /* Hero — grow naturally so the editorial image row is fully visible
+       (was capped at 85vh for the "peek-through" effect; that clipped
+       the image row when images are sized to their natural aspect). */
     .rfx-hero {
       min-height: auto;
-      max-height: 85vh;
       padding-top: 110px;
       padding-bottom: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
     /* Hero headline cap: 72px on laptop */
     .rfx-hero h1#hero-heading { font-size: clamp(48px, 6vw, 72px) !important; }
