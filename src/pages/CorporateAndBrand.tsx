@@ -246,7 +246,7 @@ const CorporateAndBrand = () => {
         "@type": "LocalBusiness",
         name: "River Fox Events",
         areaServed: ["Surrey", "London", "Cobham", "Weybridge"],
-        email: "hello@riverfoxevents.co.uk",
+        email: "Riverfoxevents@gmail.com",
         telephone: "+44 7872 114191",
         url: window.location.origin,
       },

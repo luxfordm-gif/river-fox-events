@@ -26,6 +26,24 @@
   </head>
 
   <body>
+    <!--
+      Static form for Netlify's build-time form detection. The real form is
+      rendered by React (src/components/rfx/Enquire.tsx) and POSTs to "/" with
+      these same field names. Netlify needs to see this in the static HTML to
+      register the form and route submissions to Forms → Notifications.
+    -->
+    <form name="enquire" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="date" name="date" />
+      <input type="text" name="type" />
+      <input type="text" name="venue" />
+      <input type="text" name="budget" />
+      <textarea name="vision"></textarea>
+      <input type="text" name="page" />
+      <input type="text" name="bot-field" />
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

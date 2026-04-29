@@ -311,10 +311,16 @@ const CPIncluded = ({
         >
           {items.map(({ icon, label, body }, i) => {
             const Icon = ICON_REGISTRY[icon];
+            // When the count is odd, the last item is orphaned in the 2-col
+            // sm/md layout. Span both columns so it sits centred.
+            const isOrphanInTwoCol =
+              items.length % 2 === 1 && i === items.length - 1;
             return (
             <div
               key={label}
-              className="flex flex-col items-center text-center px-4"
+              className={`flex flex-col items-center text-center px-4 ${
+                isOrphanInTwoCol ? "sm:col-span-2 lg:col-span-1" : ""
+              }`}
               style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(24px)",

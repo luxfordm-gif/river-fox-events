@@ -734,4 +734,11 @@
   @media (prefers-reduced-motion: reduce) {
     .rfx-shimmer-stroke { animation: none; opacity: 0.4; }
   }
+
+  /* Location pages — tighter mobile rhythm. Scoped via .rfx-tight-mobile on
+     the page root so it doesn't affect other pages. */
+  @media (max-width: 760px) {
+    .rfx-tight-mobile .rfx-section { padding: 64px 0; }
+    .rfx-tight-mobile .cp-reveal-section + .cp-reveal-section { padding-top: 24px; }
+  }
 }

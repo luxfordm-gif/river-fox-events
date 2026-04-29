@@ -30,7 +30,14 @@ export type LocationConfig = {
   };
   whatWeDo: LocationRevealSection;
   occasions: LocationRevealSection;
-  themes: LocationRevealSection;
+  gallery: {
+    eyebrow?: string;
+    heading?: ReactNode;
+    intro?: ReactNode;
+    mainImage: string;
+    mainImageAlt: string;
+    images: { src: string; alt: string }[];
+  };
   included: {
     eyebrow: string;
     heading: ReactNode;

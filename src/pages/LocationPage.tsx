@@ -10,27 +10,11 @@ import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
 import CPIncluded from "@/components/rfx/CPIncluded";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
-import Testimonials from "@/components/rfx/Testimonials";
+import LocationGallery from "@/components/rfx/LocationGallery";
 import NotFound from "./NotFound";
 import { findLocation } from "@/data/locations";
 import type { LocationConfig } from "@/data/locations/types";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
-
-const ThemesNumberedList = ({ themes }: { themes: string[] }) => (
-  <ul className="!mt-7 grid grid-cols-2 gap-x-8 max-w-[520px] border-t border-ink/15">
-    {themes.map((t, i) => (
-      <li
-        key={t}
-        className="flex items-baseline gap-3 py-2.5 border-b border-ink/15 font-serif-rf text-[17px] font-light tracking-[-0.012em] text-ink"
-      >
-        <span className="font-mono-rf text-[10px] tracking-[0.18em] text-ink-soft">
-          {String(i + 1).padStart(2, "0")}
-        </span>
-        {t}
-      </li>
-    ))}
-  </ul>
-);
 
 const useLocationSEO = (loc: LocationConfig) => {
   useEffect(() => {
@@ -95,7 +79,7 @@ const useLocationSEO = (loc: LocationConfig) => {
         "@type": "LocalBusiness",
         name: "River Fox Events",
         areaServed: loc.jsonLdAreaServed,
-        email: "hello@riverfoxevents.co.uk",
+        email: "Riverfoxevents@gmail.com",
         telephone: "+44 7872 114191",
         url: window.location.origin,
       },
@@ -135,7 +119,7 @@ const LocationPage = () => {
   if (!loc) return <NotFound />;
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground rfx-tight-mobile">
       <Nav />
       <main>
         <CPHero
@@ -171,19 +155,15 @@ const LocationPage = () => {
           {loc.occasions.body}
         </CPReveal>
 
-        <CPReveal
-          id="loc-themes"
-          imageSide={loc.themes.imageSide}
-          image={loc.themes.image}
-          alt={loc.themes.imageAlt}
-          tone={loc.themes.tone}
-          headline={loc.themes.headline}
-        >
-          {loc.themes.body}
-          {loc.themes.themesList && (
-            <ThemesNumberedList themes={loc.themes.themesList} />
-          )}
-        </CPReveal>
+        <LocationGallery
+          id="loc-gallery"
+          eyebrow={loc.gallery.eyebrow}
+          heading={loc.gallery.heading}
+          intro={loc.gallery.intro}
+          mainImage={loc.gallery.mainImage}
+          mainImageAlt={loc.gallery.mainImageAlt}
+          images={loc.gallery.images}
+        />
 
         <CPIncluded
           eyebrow={loc.included.eyebrow}
@@ -209,10 +189,8 @@ const LocationPage = () => {
           faqs={loc.faqs}
           headingId={`loc-${loc.slug}-faq-heading`}
           defaultOpen={false}
-          paddingBottom="120px"
+          paddingBottom="64px"
         />
-
-        <Testimonials noDivider paddingTop="32px" paddingBottom="64px" />
 
         <CPLocations
           eyebrow={loc.nearby.eyebrow}
@@ -221,7 +199,6 @@ const LocationPage = () => {
           areas={loc.nearby.areas}
           mapQuery={loc.nearby.mapQuery}
           mapTitle={loc.nearby.mapTitle}
-          paddingTop="120px"
         />
 
         <Enquire />

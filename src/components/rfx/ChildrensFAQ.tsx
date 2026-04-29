@@ -102,10 +102,10 @@ const ChildrensFAQ = ({
           <p className="text-[15.5px] leading-[1.6] text-ink-soft max-w-[520px] mx-auto mt-6">
             Anything else on your mind?{" "}
             <a
-              href="mailto:hello@riverfoxevents.co.uk"
+              href="mailto:Riverfoxevents@gmail.com"
               className="text-ink underline-offset-4 underline decoration-ink/30 hover:decoration-ink"
             >
-              hello@riverfoxevents.co.uk
+              Riverfoxevents@gmail.com
             </a>
           </p>
         </div>

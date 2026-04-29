@@ -70,7 +70,7 @@ const Index = () => {
       description: desc,
       url: window.location.origin,
       image: ogImage,
-      email: "hello@riverfoxevents.co.uk",
+      email: "Riverfoxevents@gmail.com",
       telephone: "+44 7872 114191",
       areaServed: ["Surrey", "London", "Cobham", "Weybridge", "Esher", "Oxshott", "Reigate", "Horley"],
       address: {

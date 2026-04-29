@@ -162,8 +162,8 @@ const Footer = () => {
                 Correspond
               </div>
               <div className="text-[13.5px] leading-loose" style={{ color: "hsl(var(--on-deep-soft))" }}>
-                <a href="mailto:hello@riverfoxevents.co.uk" className="hover:opacity-100 opacity-85 block">
-                  hello@riverfoxevents.co.uk
+                <a href="mailto:Riverfoxevents@gmail.com" className="hover:opacity-100 opacity-85 block">
+                  Riverfoxevents@gmail.com
                 </a>
                 <a href="tel:+447872114191" className="hover:opacity-100 opacity-85 block">
                   07872 114191

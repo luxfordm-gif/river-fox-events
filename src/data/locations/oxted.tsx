@@ -1,7 +1,11 @@
 import type { LocationConfig } from "./types";
 import imgWhatWeDo from "@/assets/cp-celebrations.webp";
 import imgOccasions from "@/assets/luxury-party-styling-occasions-surrey.webp";
-import imgThemes from "@/assets/dinosaur-themed-birthday-party-surrey.webp";
+import imgGalleryMain from "@/assets/dinosaur-themed-birthday-party-surrey.webp";
+import imgGallery1 from "@/assets/christening-blessing-styling-surrey.webp";
+import imgGallery2 from "@/assets/corporate-gala-styling-surrey.webp";
+import imgGallery3 from "@/assets/cp-included.webp";
+import imgGallery4 from "@/assets/hero-2.webp";
 
 const oxted: LocationConfig = {
   slug: "oxted",
@@ -24,8 +28,8 @@ const oxted: LocationConfig = {
     ],
     sub: (
       <>
-        The celebration you've been imagining, brought to life in Oxted.
-        Personally designed, installed and managed — you simply enjoy the day.
+        Celebrations brought to life in Oxted — personally designed, installed
+        and managed.
       </>
     ),
   },
@@ -46,16 +50,9 @@ const oxted: LocationConfig = {
     body: (
       <>
         <p>
-          I work with families and businesses across Oxted, Limpsfield, Hurst
-          Green and the surrounding villages to create celebrations that feel
-          genuinely special — the kind that guests photograph, talk about, and
-          remember long after the day is done.
-        </p>
-        <p>
-          Every River Fox Events installation is designed from scratch around
-          your vision. Everything is handled — the concept, the styling, the
-          setup, and the full breakdown once the day is over. You simply walk
-          into a finished space and enjoy every moment of it.
+          We work with families and businesses across Oxted, Limpsfield, Hurst
+          Green and the surrounding villages — designing celebrations from
+          scratch around your vision, then handling every detail on the day.
         </p>
       </>
     ),
@@ -77,58 +74,47 @@ const oxted: LocationConfig = {
     body: (
       <>
         <p>
-          From first birthdays and christenings to milestone moments and
-          corporate launches — every celebration in Oxted is shaped around the
-          people, the venue and the feeling you want the day to hold.
-        </p>
-        <p>
-          Children's birthdays styled to feel magical the moment guests arrive.
-          Christenings and naming days handled with elegance and softness.
-          21sts, 30ths, 40ths, 50ths and beyond — milestone birthdays styled
-          with the elegance the occasion deserves. Beautifully considered baby
-          showers. And brand-aligned corporate installations for launches,
-          openings and activations across East Surrey.
+          Children's birthdays, christenings, milestone moments, baby showers
+          and corporate events across East Surrey — every Oxted celebration
+          shaped around the people, the venue and the feeling of the day.
         </p>
       </>
     ),
   },
-  themes: {
-    image: imgThemes,
-    imageAlt:
-      "Sage green dinosaur themed children's birthday party styling in Oxted by River Fox Events — personalised name sign, balloon garland, dinosaur cut-outs and lush foliage",
-    imageSide: "right",
-    tone: "ph-warm",
-    headline: (
+  gallery: {
+    eyebrow: "Through our lens",
+    heading: (
       <>
-        Whatever the vision,{" "}
-        <em className="italic font-light text-accent-warm">we can build it.</em>
+        A glimpse of recent{" "}
+        <em className="italic font-light text-accent-warm">celebrations.</em>
       </>
     ),
-    body: (
+    intro: (
       <>
-        <p>
-          From fairy gardens and jungle adventures to elegant florals and
-          branded corporate installs — every River Fox Events celebration is
-          completely bespoke. Bring your inspiration and we'll design around
-          it.
-        </p>
+        Every River Fox Events celebration is completely bespoke — bring your
+        inspiration and we'll design around it.
       </>
     ),
-    themesList: [
-      "Fairy garden",
-      "Jungle",
-      "Princess",
-      "Barbie",
-      "Enchanted forest",
-      "Under the sea",
-      "Safari",
-      "Boho floral",
-      "Frozen",
-      "Woodland",
-      "Superhero",
-      "Vintage tea party",
-      "Branded corporate",
-      "Seasonal",
+    mainImage: imgGalleryMain,
+    mainImageAlt:
+      "Sage green dinosaur themed children's birthday party styling in Oxted by River Fox Events — personalised name sign, balloon garland and lush foliage",
+    images: [
+      {
+        src: imgGallery1,
+        alt: "Christening styling in Oxted Surrey by River Fox Events — soft ivory and blush balloon installation with floral accents",
+      },
+      {
+        src: imgGallery2,
+        alt: "Corporate gala styling in Surrey by River Fox Events — elegant tablescape with statement floral centrepiece",
+      },
+      {
+        src: imgGallery3,
+        alt: "Children's party styling in Surrey by River Fox Events — fully styled cake table with personalised signage",
+      },
+      {
+        src: imgGallery4,
+        alt: "Bespoke celebration styling in Surrey by River Fox Events — sculptural balloon installation and dressed party space",
+      },
     ],
   },
   included: {

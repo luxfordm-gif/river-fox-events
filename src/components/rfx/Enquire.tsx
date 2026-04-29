@@ -14,15 +14,31 @@ type EnquireProps = {
 const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) => {
   const [submitting, setSubmitting] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
     setSubmitting(true);
-    // No backend yet — friendly placeholder.
-    setTimeout(() => {
-      setSubmitting(false);
+    try {
+      const data = new FormData(form);
+      // Stamp the page the enquiry came from so Laura knows which page Mark
+      // is looking at when reading the email.
+      data.set("page", window.location.pathname);
+      const body = new URLSearchParams(
+        Array.from(data.entries()).map(([k, v]) => [k, String(v)])
+      ).toString();
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+      if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
       toast.success("Thank you — Laura will reply personally within 48 hours.");
-      (e.target as HTMLFormElement).reset();
-    }, 600);
+      form.reset();
+    } catch (err) {
+      toast.error("Sorry — something went wrong. Please email Riverfoxevents@gmail.com directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -93,8 +109,23 @@ const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) =
             </div>
           </div>
 
-          {/* Right: form */}
-          <form className="form-wrap" onSubmit={onSubmit}>
+          {/* Right: form — wired to Netlify Forms (see index.html for build-time
+              detection of field names; submissions are emailed via Forms →
+              Notifications in the Netlify dashboard). */}
+          <form
+            className="form-wrap"
+            name="enquire"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={onSubmit}
+          >
+            <input type="hidden" name="form-name" value="enquire" />
+            <p className="hidden" aria-hidden="true">
+              <label>
+                Don't fill this out: <input name="bot-field" />
+              </label>
+            </p>
             <div className="mb-5 text-center lg:text-left">
               <h3
                 className="font-serif-rf text-primary"

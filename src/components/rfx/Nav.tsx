@@ -171,7 +171,7 @@ const Nav = () => {
             Follow us on Instagram <span aria-hidden>→</span>
           </a>
           <p className="text-sm text-ink-soft mt-6 leading-relaxed">
-            hello@riverfoxevents.co.uk
+            Riverfoxevents@gmail.com
             <br />
             Based in Surrey · Replied within 48 hours.
           </p>
