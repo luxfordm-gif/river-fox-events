@@ -119,7 +119,7 @@ const LocationPage = () => {
   if (!loc) return <NotFound />;
 
   return (
-    <div className="min-h-screen bg-background text-foreground rfx-tight-mobile">
+    <div className="min-h-screen bg-background text-foreground rfx-tight-mobile nav-solid">
       <Nav />
       <main>
         <CPHero

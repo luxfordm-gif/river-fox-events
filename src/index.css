@@ -504,7 +504,8 @@
     will-change: background-color;
     isolation: isolate;
   }
-  .rfx-nav.scrolled {
+  .rfx-nav.scrolled,
+  .nav-solid .rfx-nav {
     background: hsl(var(--background) / 0.82);
     backdrop-filter: blur(20px) saturate(1.08);
     -webkit-backdrop-filter: blur(20px) saturate(1.08);
@@ -530,6 +531,11 @@
   }
 
   .rfx-section { padding: 120px 0; }
+  /* Tighter rhythm on small/medium desktops (between mobile and ≥1440 large
+     desktop). Keeps generous 120px breathing room only on big monitors. */
+  @media (min-width: 761px) and (max-width: 1439px) {
+    .rfx-section { padding: 80px 0; }
+  }
   /* Children's Parties alternating reveal sections — tighter, fixed desktop rhythm.
      First section keeps full 100px top; subsequent ones tighten so the gap
      between consecutive reveals stays ≤60px on large monitors. */
