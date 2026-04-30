@@ -12,7 +12,7 @@ const oxted: LocationConfig = {
   cityName: "Oxted",
   seoTitle: "Party Stylist Oxted Surrey | River Fox Events",
   seoDescription:
-    "Looking for a party stylist in Oxted? Immersive, bespoke celebrations from £460 — children's parties, milestone moments and corporate events across East Surrey. Every detail handled. Nothing left to chance.",
+    "Oxted party stylist — bespoke children's parties, milestones and corporate events across East Surrey from £460. Every detail personally handled by Laura.",
   hero: {
     lines: [
       <>Your Oxted party stylist.</>,

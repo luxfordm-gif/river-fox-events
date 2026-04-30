@@ -10,6 +10,14 @@ import CPLocations from "@/components/rfx/CPLocations";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import CPIncluded, { type IncludedItem } from "@/components/rfx/CPIncluded";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
+import { findRoute } from "@/seo/routes";
+import {
+  applyMeta,
+  breadcrumbSchema,
+  removeJsonLd,
+  serviceSchema,
+  upsertJsonLd,
+} from "@/seo/headTags";
 
 import imgHero from "@/assets/corporate-gala-styling-surrey.webp";
 import imgIntro from "@/assets/corporate-event-styling-surrey.webp";
@@ -92,7 +100,7 @@ const INCLUDED_ITEMS: IncludedItem[] = [
 
 const TIERS = [
   {
-    price: "From £600",
+    price: "From £460",
     label: "Single zone",
     body: "A focused single installation — entrance display, photo moment or branded backdrop for one zone.",
   },
@@ -183,81 +191,28 @@ const CorporateAndBrand = () => {
   useNavScroll();
 
   useEffect(() => {
-    document.title =
-      "Corporate Event Styling Surrey London | River Fox Events";
+    const route = findRoute("/corporate-brand-styling")!;
+    applyMeta(route);
 
-    const setMeta = (
-      name: string,
-      content: string,
-      attr: "name" | "property" = "name"
-    ) => {
-      let el = document.querySelector(
-        `meta[${attr}="${name}"]`
-      ) as HTMLMetaElement | null;
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    const desc =
-      "Design-led corporate event styling and brand installations across Surrey and London. Product launches, retail openings, office events. Trusted by P&G, The Range and more.";
-    setMeta("description", desc);
-    const ogImage = window.location.origin + "/social-share.jpg";
-    setMeta(
-      "og:title",
-      "Corporate Event Styling Surrey London | River Fox Events",
-      "property"
-    );
-    setMeta("og:description", desc, "property");
-    setMeta("og:type", "website", "property");
-    setMeta("og:image", ogImage, "property");
-    setMeta("og:url", window.location.origin + window.location.pathname, "property");
-    setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", "Corporate Event Styling Surrey London | River Fox Events");
-    setMeta("twitter:description", desc);
-    setMeta("twitter:image", ogImage);
-
-    let link = document.querySelector(
-      'link[rel="canonical"]'
-    ) as HTMLLinkElement | null;
-    if (!link) {
-      link = document.createElement("link");
-      link.rel = "canonical";
-      document.head.appendChild(link);
-    }
-    link.href = window.location.origin + window.location.pathname;
-
-    const ldId = "rfx-jsonld-corporate";
-    let script = document.getElementById(ldId) as HTMLScriptElement | null;
-    if (!script) {
-      script = document.createElement("script");
-      script.id = ldId;
-      script.type = "application/ld+json";
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Service",
-      serviceType: "Corporate Event Styling and Brand Installations",
-      provider: {
-        "@type": "LocalBusiness",
-        name: "River Fox Events",
+    const serviceId = "rfx-jsonld-corporate";
+    upsertJsonLd(
+      serviceId,
+      serviceSchema({
+        serviceType: "Corporate Event Styling and Brand Installations",
+        description: route.description,
         areaServed: ["Surrey", "London", "Cobham", "Weybridge"],
-        email: "Riverfoxevents@gmail.com",
-        telephone: "+44 7872 114191",
-        url: window.location.origin,
-      },
-      areaServed: "Surrey and London, England",
-      description: desc,
-      offers: {
-        "@type": "AggregateOffer",
-        lowPrice: "600",
-        priceCurrency: "GBP",
-      },
-    });
+        lowPrice: "460",
+      })
+    );
+
+    const breadcrumbId = "rfx-jsonld-corporate-breadcrumbs";
+    const breadcrumbs = breadcrumbSchema(route.path);
+    if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
+
+    return () => {
+      removeJsonLd(serviceId);
+      removeJsonLd(breadcrumbId);
+    };
   }, []);
 
   return (
@@ -451,7 +406,7 @@ const CorporateAndBrand = () => {
           heading={
             <>
               Professional installs{" "}
-              <em className="italic font-light text-accent-warm">from £600.</em>
+              <em className="italic font-light text-accent-warm">from £460.</em>
             </>
           }
           ctaLabel="Share your brief"

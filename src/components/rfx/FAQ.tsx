@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { removeJsonLd, upsertJsonLd } from "@/seo/headTags";
 
 const FAQS = [
   {
@@ -37,6 +39,20 @@ const FAQS = [
 ];
 
 const FAQ = () => {
+  useEffect(() => {
+    const id = "rfx-jsonld-faq-home";
+    upsertJsonLd(id, {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: FAQS.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    });
+    return () => removeJsonLd(id);
+  }, []);
+
   return (
     <section id="faq" className="rfx-section white" aria-labelledby="faq-heading">
       <div className="container-rfx">

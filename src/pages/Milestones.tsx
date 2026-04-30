@@ -10,6 +10,14 @@ import CPLocations from "@/components/rfx/CPLocations";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import CPIncluded, { type IncludedItem } from "@/components/rfx/CPIncluded";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
+import { findRoute } from "@/seo/routes";
+import {
+  applyMeta,
+  breadcrumbSchema,
+  removeJsonLd,
+  serviceSchema,
+  upsertJsonLd,
+} from "@/seo/headTags";
 
 import imgHero from "@/assets/hero-2.webp";
 import imgIntro from "@/assets/luxury-party-styling-occasions-surrey.webp";
@@ -84,7 +92,7 @@ const INCLUDED_ITEMS: IncludedItem[] = [
 
 const TIERS = [
   {
-    price: "From £600",
+    price: "From £460",
     label: "Intimate",
     body: "Intimate celebrations with a single styled focal point — cake table, statement installation or backdrop.",
   },
@@ -115,7 +123,7 @@ const FAQS = [
   },
   {
     q: "How much does milestone celebration styling cost in Surrey?",
-    a: "Milestone celebrations start from £600 for an intimate single focal point. Full room styling typically sits between £1,200 and £2,500, with large-scale transformations from £2,500+. Every event is individually quoted following a discovery call.",
+    a: "Milestone celebrations start from £460 for an intimate single focal point. Full room styling typically sits between £1,200 and £2,500, with large-scale transformations from £2,500+. Every event is individually quoted following a discovery call.",
   },
   {
     q: "What happens on the day?",
@@ -154,81 +162,28 @@ const Milestones = () => {
   useNavScroll();
 
   useEffect(() => {
-    document.title =
-      "Milestone Celebration Styling Surrey | River Fox Events";
+    const route = findRoute("/milestone-celebrations")!;
+    applyMeta(route);
 
-    const setMeta = (
-      name: string,
-      content: string,
-      attr: "name" | "property" = "name"
-    ) => {
-      let el = document.querySelector(
-        `meta[${attr}="${name}"]`
-      ) as HTMLMetaElement | null;
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    const desc =
-      "Bespoke milestone celebration styling across Surrey. 21sts, 30ths, 40ths, 50ths, 70ths, baby showers and anniversaries — personally designed by Laura. From £600.";
-    setMeta("description", desc);
-    const ogImage = window.location.origin + "/social-share.jpg";
-    setMeta(
-      "og:title",
-      "Milestone Celebration Styling Surrey | River Fox Events",
-      "property"
-    );
-    setMeta("og:description", desc, "property");
-    setMeta("og:type", "website", "property");
-    setMeta("og:image", ogImage, "property");
-    setMeta("og:url", window.location.origin + window.location.pathname, "property");
-    setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", "Milestone Celebration Styling Surrey | River Fox Events");
-    setMeta("twitter:description", desc);
-    setMeta("twitter:image", ogImage);
-
-    let link = document.querySelector(
-      'link[rel="canonical"]'
-    ) as HTMLLinkElement | null;
-    if (!link) {
-      link = document.createElement("link");
-      link.rel = "canonical";
-      document.head.appendChild(link);
-    }
-    link.href = window.location.origin + window.location.pathname;
-
-    const ldId = "rfx-jsonld-milestones";
-    let script = document.getElementById(ldId) as HTMLScriptElement | null;
-    if (!script) {
-      script = document.createElement("script");
-      script.id = ldId;
-      script.type = "application/ld+json";
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Service",
-      serviceType: "Milestone Celebration Styling",
-      provider: {
-        "@type": "LocalBusiness",
-        name: "River Fox Events",
+    const serviceId = "rfx-jsonld-milestones";
+    upsertJsonLd(
+      serviceId,
+      serviceSchema({
+        serviceType: "Milestone Celebration Styling",
+        description: route.description,
         areaServed: ["Surrey", "Cobham", "Weybridge", "Esher", "Oxshott", "London"],
-        email: "Riverfoxevents@gmail.com",
-        telephone: "+44 7872 114191",
-        url: window.location.origin,
-      },
-      areaServed: "Surrey, England",
-      description: desc,
-      offers: {
-        "@type": "AggregateOffer",
-        lowPrice: "600",
-        priceCurrency: "GBP",
-      },
-    });
+        lowPrice: "460",
+      })
+    );
+
+    const breadcrumbId = "rfx-jsonld-milestones-breadcrumbs";
+    const breadcrumbs = breadcrumbSchema(route.path);
+    if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
+
+    return () => {
+      removeJsonLd(serviceId);
+      removeJsonLd(breadcrumbId);
+    };
   }, []);
 
   return (
@@ -350,7 +305,7 @@ const Milestones = () => {
           heading={
             <>
               Beautifully styled milestone celebrations{" "}
-              <em className="italic font-light text-accent-warm">from £600.</em>
+              <em className="italic font-light text-accent-warm">from £460.</em>
             </>
           }
           ctaLabel="Plan your celebration"

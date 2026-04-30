@@ -15,86 +15,44 @@ import NotFound from "./NotFound";
 import { findLocation } from "@/data/locations";
 import type { LocationConfig } from "@/data/locations/types";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
+import { findRoute } from "@/seo/routes";
+import {
+  applyMeta,
+  breadcrumbSchema,
+  removeJsonLd,
+  serviceSchema,
+  upsertJsonLd,
+} from "@/seo/headTags";
 
 const useLocationSEO = (loc: LocationConfig) => {
   useEffect(() => {
-    document.title = loc.seoTitle;
+    const path = `/party-styling-${loc.slug}`;
+    const route = findRoute(path);
 
-    const setMeta = (
-      name: string,
-      content: string,
-      attr: "name" | "property" = "name"
-    ) => {
-      let el = document.querySelector(
-        `meta[${attr}="${name}"]`
-      ) as HTMLMetaElement | null;
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    const desc = loc.seoDescription;
-    setMeta("description", desc);
-    const ogImage = window.location.origin + "/social-share.jpg";
-    setMeta("og:title", loc.seoTitle, "property");
-    setMeta("og:description", desc, "property");
-    setMeta("og:type", "website", "property");
-    setMeta("og:image", ogImage, "property");
-    setMeta(
-      "og:url",
-      window.location.origin + window.location.pathname,
-      "property"
-    );
-    setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", loc.seoTitle);
-    setMeta("twitter:description", desc);
-    setMeta("twitter:image", ogImage);
-
-    let link = document.querySelector(
-      'link[rel="canonical"]'
-    ) as HTMLLinkElement | null;
-    if (!link) {
-      link = document.createElement("link");
-      link.rel = "canonical";
-      document.head.appendChild(link);
-    }
-    link.href = window.location.origin + window.location.pathname;
-
-    const ldId = `rfx-jsonld-loc-${loc.slug}`;
-    let script = document.getElementById(ldId) as HTMLScriptElement | null;
-    if (!script) {
-      script = document.createElement("script");
-      script.id = ldId;
-      script.type = "application/ld+json";
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Service",
-      serviceType: "Event Styling",
-      provider: {
-        "@type": "LocalBusiness",
-        name: "River Fox Events",
-        areaServed: loc.jsonLdAreaServed,
-        email: "Riverfoxevents@gmail.com",
-        telephone: "+44 7872 114191",
-        url: window.location.origin,
-      },
-      areaServed: loc.jsonLdAreaServed.join(", "),
-      description: desc,
-      offers: {
-        "@type": "AggregateOffer",
-        lowPrice: "460",
-        priceCurrency: "GBP",
-      },
+    applyMeta({
+      title: loc.seoTitle,
+      description: loc.seoDescription,
+      path,
     });
 
+    const serviceId = `rfx-jsonld-loc-${loc.slug}`;
+    upsertJsonLd(
+      serviceId,
+      serviceSchema({
+        serviceType: "Event Styling",
+        description: loc.seoDescription,
+        areaServed: loc.jsonLdAreaServed,
+        lowPrice: "460",
+      })
+    );
+
+    const breadcrumbId = `rfx-jsonld-loc-${loc.slug}-breadcrumbs`;
+    const breadcrumbs = route ? breadcrumbSchema(path) : null;
+    if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
+
     return () => {
-      const el = document.getElementById(ldId);
-      if (el) el.remove();
+      removeJsonLd(serviceId);
+      removeJsonLd(breadcrumbId);
     };
   }, [loc]);
 };

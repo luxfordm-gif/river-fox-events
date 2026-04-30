@@ -2,16 +2,18 @@
  * Single source of truth for per-route SEO metadata.
  * Consumed by:
  *  - Page components (client-side <head> updates after hydration)
- *  - scripts/inject-meta.mjs (build-time per-route static HTML)
- *  - scripts/generate-sitemap.mjs (sitemap.xml)
+ *  - scripts/postbuild.mjs (build-time per-route static HTML + sitemap)
  *
- * IMPORTANT: keep "path" matching the React Router path exactly.
+ * IMPORTANT: keep "path" matching the React Router path exactly. Description
+ * strings should sit at 150–160 chars and front-load keyword + location.
  */
 
 export type RouteSEO = {
   path: string;
   title: string;
   description: string;
+  /** Visible breadcrumb name (used in BreadcrumbList JSON-LD). Omit for "/". */
+  breadcrumbName?: string;
   ogImage?: string;
   changefreq?: "daily" | "weekly" | "monthly" | "yearly";
   priority?: number;
@@ -25,12 +27,37 @@ export const SITE = {
   twitterHandle: "",
 };
 
+/**
+ * Shared LocalBusiness fields. Used as the `provider` block in every Service
+ * schema and as the standalone LocalBusiness on the homepage. Defined once so
+ * the data stays consistent across pages.
+ */
+export const BUSINESS = {
+  "@type": "LocalBusiness" as const,
+  name: "River Fox Events",
+  url: SITE.url,
+  image: SITE.url + SITE.defaultOgImage,
+  email: "Riverfoxevents@gmail.com",
+  telephone: "+44 7872 114191",
+  priceRange: "££-£££",
+  address: {
+    "@type": "PostalAddress" as const,
+    streetAddress: "15 Apsley Rd",
+    addressLocality: "Horley",
+    addressRegion: "Surrey",
+    postalCode: "RH6 9RX",
+    addressCountry: "GB",
+  },
+  openingHours: "Mo-Fr 09:00-17:00",
+  sameAs: ["https://instagram.com/riverfoxevents"],
+};
+
 export const ROUTES: RouteSEO[] = [
   {
     path: "/",
     title: "Luxury Event Styling Surrey | Children's Parties, Milestones & Brand | River Fox Events",
     description:
-      "Bespoke event styling across Surrey — children's parties, milestone celebrations and corporate brand installations. Personally designed and delivered by Laura. From £600.",
+      "Surrey event stylist for children's parties, milestone celebrations and corporate brand activations across Surrey and London. From £460, designed by Laura.",
     priority: 1.0,
     changefreq: "monthly",
   },
@@ -38,7 +65,8 @@ export const ROUTES: RouteSEO[] = [
     path: "/childrens-parties",
     title: "Children's Party Stylist Surrey | River Fox Events",
     description:
-      "Bespoke children's party styling across Surrey. Immersive themed parties, balloon installations and full-room transformations from £460 — designed and delivered personally by Laura at River Fox Events.",
+      "Surrey children's party stylist — bespoke themed parties, balloon installations and full-room transformations from £460, personally designed by Laura.",
+    breadcrumbName: "Children's Parties",
     priority: 0.9,
     changefreq: "monthly",
   },
@@ -46,7 +74,8 @@ export const ROUTES: RouteSEO[] = [
     path: "/milestone-celebrations",
     title: "Milestone Celebration Styling Surrey | River Fox Events",
     description:
-      "Bespoke milestone celebration styling across Surrey. 21sts, 30ths, 40ths, 50ths, 70ths, baby showers and anniversaries — personally designed by Laura. From £600.",
+      "Surrey milestone celebration stylist — 21sts, 30ths, 40ths, 50ths, 70ths, baby showers and anniversaries. Bespoke styling from £460, designed by Laura.",
+    breadcrumbName: "Milestone Celebrations",
     priority: 0.9,
     changefreq: "monthly",
   },
@@ -54,7 +83,8 @@ export const ROUTES: RouteSEO[] = [
     path: "/corporate-brand-styling",
     title: "Corporate Event Styling Surrey London | River Fox Events",
     description:
-      "Design-led corporate event styling and brand installations across Surrey and London. Product launches, retail openings, office events. Trusted by P&G, The Range and more.",
+      "Corporate event styling across Surrey and London — brand activations, product launches, retail openings and office events. Trusted by P&G, The Range and more.",
+    breadcrumbName: "Corporate & Brand Styling",
     priority: 0.8,
     changefreq: "monthly",
   },
@@ -62,7 +92,8 @@ export const ROUTES: RouteSEO[] = [
     path: "/party-styling-oxted",
     title: "Party Stylist Oxted Surrey | River Fox Events",
     description:
-      "Looking for a party stylist in Oxted? Immersive, bespoke celebrations from £460 — children's parties, milestone moments and corporate events across East Surrey. Every detail handled. Nothing left to chance.",
+      "Oxted party stylist — bespoke children's parties, milestones and corporate events across East Surrey from £460. Every detail personally handled by Laura.",
+    breadcrumbName: "Party Styling Oxted",
     priority: 0.7,
     changefreq: "monthly",
   },

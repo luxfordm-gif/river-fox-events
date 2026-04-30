@@ -11,79 +11,25 @@ import FAQ from "@/components/rfx/FAQ";
 import Enquire from "@/components/rfx/Enquire";
 import Footer from "@/components/rfx/Footer";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
+import { findRoute } from "@/seo/routes";
+import {
+  applyMeta,
+  localBusinessSchema,
+  removeJsonLd,
+  upsertJsonLd,
+} from "@/seo/headTags";
 
 const Index = () => {
   useFadeUp();
   useNavScroll();
 
-  // SEO + structured data
   useEffect(() => {
-    const title = "Luxury Event Styling Surrey | Children's Parties, Milestones & Brand | River Fox Events";
-    document.title = title;
+    const route = findRoute("/")!;
+    applyMeta(route);
 
-    const setMeta = (name: string, content: string, attr: "name" | "property" = "name") => {
-      let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    const desc =
-      "Bespoke event styling across Surrey — children's parties, milestone celebrations and corporate brand installations. Personally designed and delivered by Laura. From £600.";
-    const ogImage = window.location.origin + "/social-share.jpg";
-    setMeta("description", desc);
-    setMeta("og:title", title, "property");
-    setMeta("og:description", desc, "property");
-    setMeta("og:type", "website", "property");
-    setMeta("og:image", ogImage, "property");
-    setMeta("og:url", window.location.origin + "/", "property");
-    setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", title);
-    setMeta("twitter:description", desc);
-    setMeta("twitter:image", ogImage);
-
-    // Canonical
-    let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (!link) {
-      link = document.createElement("link");
-      link.rel = "canonical";
-      document.head.appendChild(link);
-    }
-    link.href = window.location.origin + window.location.pathname;
-
-    // JSON-LD: LocalBusiness
     const ldId = "rfx-jsonld";
-    let script = document.getElementById(ldId) as HTMLScriptElement | null;
-    if (!script) {
-      script = document.createElement("script");
-      script.id = ldId;
-      script.type = "application/ld+json";
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      name: "River Fox Events",
-      description: desc,
-      url: window.location.origin,
-      image: ogImage,
-      email: "Riverfoxevents@gmail.com",
-      telephone: "+44 7872 114191",
-      areaServed: ["Surrey", "London", "Cobham", "Weybridge", "Esher", "Oxshott", "Reigate", "Horley"],
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "15 Apsley Rd",
-        addressLocality: "Horley",
-        postalCode: "RH6 9RX",
-        addressRegion: "Surrey",
-        addressCountry: "GB",
-      },
-      priceRange: "££",
-      sameAs: ["https://instagram.com/riverfoxevents"],
-    });
+    upsertJsonLd(ldId, localBusinessSchema(route.description));
+    return () => removeJsonLd(ldId);
   }, []);
 
   return (

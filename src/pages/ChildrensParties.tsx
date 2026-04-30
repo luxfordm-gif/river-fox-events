@@ -10,6 +10,14 @@ import CPLocations from "@/components/rfx/CPLocations";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import CPIncluded from "@/components/rfx/CPIncluded";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
+import { findRoute } from "@/seo/routes";
+import {
+  applyMeta,
+  breadcrumbSchema,
+  removeJsonLd,
+  serviceSchema,
+  upsertJsonLd,
+} from "@/seo/headTags";
 
 import imgCelebrations from "@/assets/cp-celebrations.webp";
 import imgOccasions from "@/assets/luxury-party-styling-occasions-surrey.webp";
@@ -74,88 +82,49 @@ const ChildrensParties = () => {
   useNavScroll();
 
   useEffect(() => {
-    document.title =
-      "Children's Party Stylist Surrey | River Fox Events";
+    const route = findRoute("/childrens-parties")!;
+    applyMeta(route);
 
-    const setMeta = (
-      name: string,
-      content: string,
-      attr: "name" | "property" = "name"
-    ) => {
-      let el = document.querySelector(
-        `meta[${attr}="${name}"]`
-      ) as HTMLMetaElement | null;
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    const desc =
-      "Bespoke children's party styling across Surrey. Immersive themed parties, balloon installations and full-room transformations from £460 — designed and delivered personally by Laura at River Fox Events.";
-    setMeta("description", desc);
-    const ogImage = window.location.origin + "/social-share.jpg";
-    setMeta(
-      "og:title",
-      "Children's Party Stylist Surrey | River Fox Events",
-      "property"
-    );
-    setMeta("og:description", desc, "property");
-    setMeta("og:type", "website", "property");
-    setMeta("og:image", ogImage, "property");
-    setMeta("og:url", window.location.origin + window.location.pathname, "property");
-    setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", "Children's Party Stylist Surrey | River Fox Events");
-    setMeta("twitter:description", desc);
-    setMeta("twitter:image", ogImage);
-
-    let link = document.querySelector(
-      'link[rel="canonical"]'
-    ) as HTMLLinkElement | null;
-    if (!link) {
-      link = document.createElement("link");
-      link.rel = "canonical";
-      document.head.appendChild(link);
-    }
-    link.href = window.location.origin + window.location.pathname;
-
-    const ldId = "rfx-jsonld-cp";
-    let script = document.getElementById(ldId) as HTMLScriptElement | null;
-    if (!script) {
-      script = document.createElement("script");
-      script.id = ldId;
-      script.type = "application/ld+json";
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Service",
-      serviceType: "Children's Party Styling",
-      provider: {
-        "@type": "LocalBusiness",
-        name: "River Fox Events",
+    const serviceId = "rfx-jsonld-cp";
+    upsertJsonLd(
+      serviceId,
+      serviceSchema({
+        serviceType: "Children's Party Styling",
+        description: route.description,
         areaServed: ["Surrey", "Cobham", "Weybridge", "Esher", "Oxshott", "London"],
-        email: "Riverfoxevents@gmail.com",
-        telephone: "+44 7872 114191",
-        url: window.location.origin,
-      },
-      areaServed: "Surrey, England",
-      description: desc,
-      offers: {
-        "@type": "AggregateOffer",
-        lowPrice: "600",
-        priceCurrency: "GBP",
-      },
-    });
+        lowPrice: "460",
+      })
+    );
+
+    const breadcrumbId = "rfx-jsonld-cp-breadcrumbs";
+    const breadcrumbs = breadcrumbSchema(route.path);
+    if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
+
+    return () => {
+      removeJsonLd(serviceId);
+      removeJsonLd(breadcrumbId);
+    };
   }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground nav-solid">
       <Nav />
       <main>
-        <CPHero />
+        <CPHero
+          lines={[
+            <>Children's party stylist,</>,
+            <>
+              based in{" "}
+              <em
+                className="italic font-normal"
+                style={{ color: "hsl(var(--accent))" }}
+              >
+                Surrey.
+              </em>
+            </>,
+          ]}
+          sub="Immersive, beautifully designed children's parties across Surrey — every detail considered, nothing left to chance."
+        />
 
         <CPReveal
           id="cp-celebrations"
