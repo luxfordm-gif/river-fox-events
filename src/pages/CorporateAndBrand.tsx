@@ -15,7 +15,7 @@ import {
   applyMeta,
   breadcrumbSchema,
   removeJsonLd,
-  serviceSchema,
+  routeServiceSchema,
   upsertJsonLd,
 } from "@/seo/headTags";
 
@@ -194,18 +194,11 @@ const CorporateAndBrand = () => {
     const route = findRoute("/corporate-brand-styling")!;
     applyMeta(route);
 
-    const serviceId = "rfx-jsonld-corporate";
-    upsertJsonLd(
-      serviceId,
-      serviceSchema({
-        serviceType: "Corporate Event Styling and Brand Installations",
-        description: route.description,
-        areaServed: ["Surrey", "London", "Cobham", "Weybridge"],
-        lowPrice: "460",
-      })
-    );
+    const serviceId = "rfx-jsonld-svc-corporate-brand-styling";
+    const svc = routeServiceSchema(route);
+    if (svc) upsertJsonLd(serviceId, svc);
 
-    const breadcrumbId = "rfx-jsonld-corporate-breadcrumbs";
+    const breadcrumbId = "rfx-jsonld-bc-corporate-brand-styling";
     const breadcrumbs = breadcrumbSchema(route.path);
     if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
 

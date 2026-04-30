@@ -14,6 +14,13 @@ export type RouteSEO = {
   description: string;
   /** Visible breadcrumb name (used in BreadcrumbList JSON-LD). Omit for "/". */
   breadcrumbName?: string;
+  /** Service schema config. When set, postbuild emits a Service JSON-LD
+   *  block with the shared BUSINESS as `provider`. */
+  service?: {
+    serviceType: string;
+    areaServed: string | string[];
+    lowPrice?: string;
+  };
   ogImage?: string;
   changefreq?: "daily" | "weekly" | "monthly" | "yearly";
   priority?: number;
@@ -55,7 +62,7 @@ export const BUSINESS = {
 export const ROUTES: RouteSEO[] = [
   {
     path: "/",
-    title: "Luxury Event Styling Surrey | Children's Parties, Milestones & Brand | River Fox Events",
+    title: "Luxury Event Stylist Surrey | River Fox Events",
     description:
       "Surrey event stylist for children's parties, milestone celebrations and corporate brand activations across Surrey and London. From £460, designed by Laura.",
     priority: 1.0,
@@ -67,6 +74,11 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Surrey children's party stylist — bespoke themed parties, balloon installations and full-room transformations from £460, personally designed by Laura.",
     breadcrumbName: "Children's Parties",
+    service: {
+      serviceType: "Children's Party Styling",
+      areaServed: ["Surrey", "Cobham", "Weybridge", "Esher", "Oxshott", "London"],
+      lowPrice: "460",
+    },
     priority: 0.9,
     changefreq: "monthly",
   },
@@ -76,6 +88,11 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Surrey milestone celebration stylist — 21sts, 30ths, 40ths, 50ths, 70ths, baby showers and anniversaries. Bespoke styling from £460, designed by Laura.",
     breadcrumbName: "Milestone Celebrations",
+    service: {
+      serviceType: "Milestone Celebration Styling",
+      areaServed: ["Surrey", "Cobham", "Weybridge", "Esher", "Oxshott", "London"],
+      lowPrice: "460",
+    },
     priority: 0.9,
     changefreq: "monthly",
   },
@@ -85,6 +102,11 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Corporate event styling across Surrey and London — brand activations, product launches, retail openings and office events. Trusted by P&G, The Range and more.",
     breadcrumbName: "Corporate & Brand Styling",
+    service: {
+      serviceType: "Corporate Event Styling and Brand Installations",
+      areaServed: ["Surrey", "London", "Cobham", "Weybridge"],
+      lowPrice: "460",
+    },
     priority: 0.8,
     changefreq: "monthly",
   },
@@ -94,6 +116,11 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Oxted party stylist — bespoke children's parties, milestones and corporate events across East Surrey from £460. Every detail personally handled by Laura.",
     breadcrumbName: "Party Styling Oxted",
+    service: {
+      serviceType: "Event Styling",
+      areaServed: ["Oxted", "Limpsfield", "Hurst Green", "Tandridge", "Godstone", "Caterham", "Surrey"],
+      lowPrice: "460",
+    },
     priority: 0.7,
     changefreq: "monthly",
   },

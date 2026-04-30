@@ -20,6 +20,7 @@ import {
   applyMeta,
   breadcrumbSchema,
   removeJsonLd,
+  routeServiceSchema,
   serviceSchema,
   upsertJsonLd,
 } from "@/seo/headTags";
@@ -35,18 +36,18 @@ const useLocationSEO = (loc: LocationConfig) => {
       path,
     });
 
-    const serviceId = `rfx-jsonld-loc-${loc.slug}`;
-    upsertJsonLd(
-      serviceId,
-      serviceSchema({
-        serviceType: "Event Styling",
-        description: loc.seoDescription,
-        areaServed: loc.jsonLdAreaServed,
-        lowPrice: "460",
-      })
-    );
+    const serviceId = `rfx-jsonld-svc-party-styling-${loc.slug}`;
+    const svc = route
+      ? routeServiceSchema(route)
+      : serviceSchema({
+          serviceType: "Event Styling",
+          description: loc.seoDescription,
+          areaServed: loc.jsonLdAreaServed,
+          lowPrice: "460",
+        });
+    if (svc) upsertJsonLd(serviceId, svc);
 
-    const breadcrumbId = `rfx-jsonld-loc-${loc.slug}-breadcrumbs`;
+    const breadcrumbId = `rfx-jsonld-bc-party-styling-${loc.slug}`;
     const breadcrumbs = route ? breadcrumbSchema(path) : null;
     if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
 

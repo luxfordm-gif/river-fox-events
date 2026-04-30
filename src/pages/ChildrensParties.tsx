@@ -15,7 +15,7 @@ import {
   applyMeta,
   breadcrumbSchema,
   removeJsonLd,
-  serviceSchema,
+  routeServiceSchema,
   upsertJsonLd,
 } from "@/seo/headTags";
 
@@ -85,18 +85,11 @@ const ChildrensParties = () => {
     const route = findRoute("/childrens-parties")!;
     applyMeta(route);
 
-    const serviceId = "rfx-jsonld-cp";
-    upsertJsonLd(
-      serviceId,
-      serviceSchema({
-        serviceType: "Children's Party Styling",
-        description: route.description,
-        areaServed: ["Surrey", "Cobham", "Weybridge", "Esher", "Oxshott", "London"],
-        lowPrice: "460",
-      })
-    );
+    const serviceId = "rfx-jsonld-svc-childrens-parties";
+    const svc = routeServiceSchema(route);
+    if (svc) upsertJsonLd(serviceId, svc);
 
-    const breadcrumbId = "rfx-jsonld-cp-breadcrumbs";
+    const breadcrumbId = "rfx-jsonld-bc-childrens-parties";
     const breadcrumbs = breadcrumbSchema(route.path);
     if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
 

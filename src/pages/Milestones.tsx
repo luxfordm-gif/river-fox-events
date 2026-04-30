@@ -15,7 +15,7 @@ import {
   applyMeta,
   breadcrumbSchema,
   removeJsonLd,
-  serviceSchema,
+  routeServiceSchema,
   upsertJsonLd,
 } from "@/seo/headTags";
 
@@ -165,18 +165,11 @@ const Milestones = () => {
     const route = findRoute("/milestone-celebrations")!;
     applyMeta(route);
 
-    const serviceId = "rfx-jsonld-milestones";
-    upsertJsonLd(
-      serviceId,
-      serviceSchema({
-        serviceType: "Milestone Celebration Styling",
-        description: route.description,
-        areaServed: ["Surrey", "Cobham", "Weybridge", "Esher", "Oxshott", "London"],
-        lowPrice: "460",
-      })
-    );
+    const serviceId = "rfx-jsonld-svc-milestone-celebrations";
+    const svc = routeServiceSchema(route);
+    if (svc) upsertJsonLd(serviceId, svc);
 
-    const breadcrumbId = "rfx-jsonld-milestones-breadcrumbs";
+    const breadcrumbId = "rfx-jsonld-bc-milestone-celebrations";
     const breadcrumbs = breadcrumbSchema(route.path);
     if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
 

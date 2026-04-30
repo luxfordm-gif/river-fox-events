@@ -128,6 +128,17 @@ export const serviceSchema = (params: {
     : {}),
 });
 
+/** Build a Service schema directly from a RouteSEO entry. */
+export const routeServiceSchema = (route: RouteSEO): SchemaJson | null => {
+  if (!route.service) return null;
+  return serviceSchema({
+    serviceType: route.service.serviceType,
+    description: route.description,
+    areaServed: route.service.areaServed,
+    lowPrice: route.service.lowPrice,
+  });
+};
+
 export const localBusinessSchema = (description: string): SchemaJson => ({
   "@context": "https://schema.org",
   ...BUSINESS,
