@@ -134,9 +134,9 @@ const Footer = () => {
                 Experiences
               </div>
               <div className="text-[13.5px] leading-loose">
-                <a href="#experiences" className="opacity-85 hover:opacity-100 block">Children's Parties</a>
-                <a href="#experiences" className="opacity-85 hover:opacity-100 block">Milestones</a>
-                <a href="#experiences" className="opacity-85 hover:opacity-100 block">Corporate</a>
+                <a href="/childrens-parties/" className="opacity-85 hover:opacity-100 block">Children's Parties</a>
+                <a href="/milestone-celebrations/" className="opacity-85 hover:opacity-100 block">Milestones</a>
+                <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate</a>
               </div>
             </div>
             <div>
