@@ -182,6 +182,10 @@ const renderJsonLd = (blocks) =>
 function injectIntoHead(html, headFragment, jsonLdFragment) {
   // Strip the existing default <title>, <meta name="description">, robots,
   // canonical, og:*, twitter:* tags so the route-specific ones don't clash.
+  // JSON-LD scripts are deliberately left alone — React useEffects emit them
+  // during prerender, so the captured DOM already has the right schemas
+  // (LocalBusiness/Service/BreadcrumbList/FAQPage). Postbuild only adds
+  // schemas if the prerendered HTML is missing them (matched by id).
   const stripPatterns = [
     /<title>[\s\S]*?<\/title>\s*/i,
     /<meta\s+name=["']description["'][^>]*>\s*/gi,
@@ -189,13 +193,23 @@ function injectIntoHead(html, headFragment, jsonLdFragment) {
     /<link\s+rel=["']canonical["'][^>]*>\s*/gi,
     /<meta\s+property=["']og:[^"']+["'][^>]*>\s*/gi,
     /<meta\s+name=["']twitter:[^"']+["'][^>]*>\s*/gi,
-    /<script[^>]*type=["']application\/ld\+json["'][\s\S]*?<\/script>\s*/gi,
   ];
   let out = html;
   for (const re of stripPatterns) out = out.replace(re, "");
-  // Insert just before </head>.
-  const fragment = jsonLdFragment
-    ? `${headFragment}\n    ${jsonLdFragment}`
+
+  // Only emit JSON-LD blocks the prerendered HTML doesn't already have.
+  const missingJsonLd = jsonLdFragment
+    .split("\n")
+    .filter((line) => {
+      const idMatch = line.match(/id="([^"]+)"/);
+      if (!idMatch) return false;
+      const idTag = `id="${idMatch[1]}"`;
+      return !out.includes(idTag);
+    })
+    .join("\n    ");
+
+  const fragment = missingJsonLd
+    ? `${headFragment}\n    ${missingJsonLd}`
     : headFragment;
   return out.replace(/<\/head>/i, `    ${fragment}\n  </head>`);
 }

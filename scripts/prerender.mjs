@@ -48,26 +48,30 @@ async function loadRoutes() {
   return eval("(" + routesMatch[1] + ")");
 }
 
-function serveDist() {
+async function serveDist() {
+  // Snapshot the freshly built index.html shell once. Every route is served
+  // this same in-memory copy — never read from disk — so writing the
+  // prerendered homepage back to dist/index.html doesn't leak its schemas
+  // into the next routes' DOM.
+  const shell = await fs.readFile(path.join(DIST, "index.html"));
+
   return new Promise((resolve) => {
     const server = http.createServer(async (req, res) => {
       try {
         const urlPath = decodeURIComponent((req.url || "/").split("?")[0]);
-        let filePath = path.join(DIST, urlPath);
+        const ext = path.extname(urlPath).toLowerCase();
 
-        // SPA-style fallback: directories serve index.html, unknown paths fall
-        // back to dist/index.html so the client-side router can take over.
-        try {
-          const stat = await fs.stat(filePath);
-          if (stat.isDirectory()) filePath = path.join(filePath, "index.html");
-        } catch {
-          if (path.extname(urlPath) === "") {
-            filePath = path.join(DIST, "index.html");
-          }
+        // SPA convention: any path without an extension is a route — always
+        // serve the empty shell so the React app boots clean and the
+        // client-side router takes over. Paths with extensions resolve to
+        // the actual built asset on disk.
+        if (!ext) {
+          res.writeHead(200, { "Content-Type": MIME[".html"] });
+          res.end(shell);
+          return;
         }
 
-        const data = await fs.readFile(filePath);
-        const ext = path.extname(filePath).toLowerCase();
+        const data = await fs.readFile(path.join(DIST, urlPath));
         res.writeHead(200, { "Content-Type": MIME[ext] || "application/octet-stream" });
         res.end(data);
       } catch (err) {
