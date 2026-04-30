@@ -100,7 +100,7 @@ export const ROUTES: RouteSEO[] = [
     path: "/corporate-brand-styling",
     title: "Corporate Event Styling Surrey London | River Fox Events",
     description:
-      "Corporate event styling across Surrey and London — brand activations, product launches, retail openings and office events. Trusted by P&G, The Range and more.",
+      "Corporate event stylist across Surrey and London — bespoke brand installations, product launches, retail openings and office events from £460, by Laura.",
     breadcrumbName: "Corporate & Brand Styling",
     service: {
       serviceType: "Corporate Event Styling and Brand Installations",

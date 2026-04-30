@@ -189,17 +189,18 @@ const Milestones = () => {
           headingId="ms-hero-heading"
           scrollTarget="#ms-intro"
           lines={[
-            <>Life's most significant moments,</>,
+            <>Milestone celebration stylist,</>,
             <>
+              based in{" "}
               <em
                 className="italic font-normal"
                 style={{ color: "hsl(var(--accent))" }}
               >
-                honoured properly.
+                Surrey.
               </em>
             </>,
           ]}
-          sub="Elegant, bespoke styling for milestone birthdays, baby showers and anniversaries across Surrey."
+          sub="Elegant, bespoke styling for milestone birthdays, baby showers and anniversaries — life's most significant moments, honoured properly."
         />
 
         <CPReveal
@@ -261,9 +262,9 @@ const Milestones = () => {
           tone="ph-warm"
           headline={
             <>
-              Everything handled.{" "}
+              Fully managed,{" "}
               <em className="italic font-light text-accent-warm">
-                Nothing left to chance.
+                end to end.
               </em>
             </>
           }

@@ -136,7 +136,10 @@ const ChildrensFAQ = ({
                     </span>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="faq-rf-content overflow-hidden text-base">
+                <AccordionContent
+                  className="faq-rf-content overflow-hidden text-base"
+                  forceMount
+                >
                   <div className="grid grid-cols-[60px_1fr_40px] gap-6 max-md:grid-cols-[40px_1fr_32px] max-md:gap-3.5">
                     <p className="col-start-2 text-[15px] leading-[1.7] text-ink-soft max-w-[680px] pt-2 pb-4">
                       {it.a}
