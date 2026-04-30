@@ -124,6 +124,62 @@ export const ROUTES: RouteSEO[] = [
     priority: 0.7,
     changefreq: "monthly",
   },
+  {
+    path: "/party-styling-cobham",
+    title: "Party Stylist Cobham Surrey | River Fox Events",
+    description:
+      "Cobham party stylist — bespoke children's parties, milestones and corporate events across Surrey from £460. Every detail personally handled by Laura.",
+    breadcrumbName: "Party Styling Cobham",
+    service: {
+      serviceType: "Event Styling",
+      areaServed: ["Cobham", "Oxshott", "Stoke d'Abernon", "Downside", "Effingham", "Surrey"],
+      lowPrice: "460",
+    },
+    priority: 0.7,
+    changefreq: "monthly",
+  },
+  {
+    path: "/party-styling-weybridge",
+    title: "Party Stylist Weybridge Surrey | River Fox Events",
+    description:
+      "Weybridge party stylist — bespoke children's parties, milestones and corporate events across Surrey from £460. Every detail personally handled by Laura.",
+    breadcrumbName: "Party Styling Weybridge",
+    service: {
+      serviceType: "Event Styling",
+      areaServed: ["Weybridge", "Walton-on-Thames", "Hersham", "Oatlands", "Whiteley Village", "Surrey"],
+      lowPrice: "460",
+    },
+    priority: 0.7,
+    changefreq: "monthly",
+  },
+  {
+    path: "/party-styling-esher",
+    title: "Party Stylist Esher Surrey | River Fox Events",
+    description:
+      "Esher party stylist — bespoke children's parties, milestones and corporate events across Surrey from £460. Every detail personally handled by Laura.",
+    breadcrumbName: "Party Styling Esher",
+    service: {
+      serviceType: "Event Styling",
+      areaServed: ["Esher", "Claygate", "Hinchley Wood", "Long Ditton", "Thames Ditton", "Surrey"],
+      lowPrice: "460",
+    },
+    priority: 0.7,
+    changefreq: "monthly",
+  },
+  {
+    path: "/party-styling-reigate",
+    title: "Party Stylist Reigate Surrey | River Fox Events",
+    description:
+      "Reigate party stylist — bespoke children's parties, milestones and corporate events across Surrey from £460. Every detail personally handled by Laura.",
+    breadcrumbName: "Party Styling Reigate",
+    service: {
+      serviceType: "Event Styling",
+      areaServed: ["Reigate", "Redhill", "Banstead", "Tadworth", "Betchworth", "Surrey"],
+      lowPrice: "460",
+    },
+    priority: 0.7,
+    changefreq: "monthly",
+  },
 ];
 
 export const findRoute = (path: string): RouteSEO | undefined =>

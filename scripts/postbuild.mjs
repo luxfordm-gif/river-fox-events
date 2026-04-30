@@ -179,6 +179,29 @@ const renderJsonLd = (blocks) =>
     )
     .join("\n    ");
 
+/**
+ * Find every <img loading="eager"> in the prerendered HTML and emit a
+ * <link rel="preload" as="image"> for each. This pulls the LCP candidate
+ * forward into the document head so the browser can start fetching it
+ * before the React bundle has even parsed.
+ */
+function buildHeroPreloads(html) {
+  const seen = new Set();
+  const out = [];
+  const re = /<img\b[^>]*loading=["']eager["'][^>]*>/gi;
+  for (const match of html.matchAll(re)) {
+    const tag = match[0];
+    const src = tag.match(/\bsrc=["']([^"']+)["']/)?.[1];
+    if (!src || seen.has(src)) continue;
+    seen.add(src);
+    const fp = /\bfetchpriority=["']high["']/i.test(tag)
+      ? ` fetchpriority="high"`
+      : "";
+    out.push(`<link rel="preload" as="image" href="${src}"${fp} />`);
+  }
+  return out.join("\n    ");
+}
+
 function injectIntoHead(html, headFragment, jsonLdFragment) {
   // Strip the existing default <title>, <meta name="description">, robots,
   // canonical, og:*, twitter:* tags so the route-specific ones don't clash.
@@ -191,10 +214,12 @@ function injectIntoHead(html, headFragment, jsonLdFragment) {
     /<meta\s+name=["']description["'][^>]*>\s*/gi,
     /<meta\s+name=["']robots["'][^>]*>\s*/gi,
     /<link\s+rel=["']canonical["'][^>]*>\s*/gi,
+    /<link\s+rel=["']preload["'][^>]*as=["']image["'][^>]*>\s*/gi,
     /<meta\s+property=["']og:[^"']+["'][^>]*>\s*/gi,
     /<meta\s+name=["']twitter:[^"']+["'][^>]*>\s*/gi,
   ];
   let out = html;
+  const heroPreloads = buildHeroPreloads(out);
   for (const re of stripPatterns) out = out.replace(re, "");
 
   // Only emit JSON-LD blocks the prerendered HTML doesn't already have.
@@ -208,9 +233,10 @@ function injectIntoHead(html, headFragment, jsonLdFragment) {
     })
     .join("\n    ");
 
-  const fragment = missingJsonLd
-    ? `${headFragment}\n    ${missingJsonLd}`
-    : headFragment;
+  const parts = [headFragment];
+  if (heroPreloads) parts.push(heroPreloads);
+  if (missingJsonLd) parts.push(missingJsonLd);
+  const fragment = parts.join("\n    ");
   return out.replace(/<\/head>/i, `    ${fragment}\n  </head>`);
 }
 
