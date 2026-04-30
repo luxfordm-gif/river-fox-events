@@ -46,7 +46,7 @@ const DEFAULT_FAQS: FAQ[] = [
 const ChildrensFAQ = ({
   faqs = DEFAULT_FAQS,
   headingId = "cp-faq-heading",
-  defaultOpen = "item-0",
+  defaultOpen = false,
   paddingTop,
   paddingBottom = "48px",
 }: ChildrensFAQProps = {}) => {
