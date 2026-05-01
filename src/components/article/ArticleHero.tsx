@@ -35,8 +35,8 @@ const ArticleHero = ({
     <header className="container-rfx pt-24 md:pt-32 pb-10 md:pb-12 text-center">
       <a
         href="/journal/"
-        className="inline-block font-mono-rf text-[10.5px] tracking-[0.28em] uppercase transition-colors"
-        style={{ color: "hsl(var(--accent-warm))", fontWeight: 600 }}
+        className="inline-block font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink hover:opacity-70 transition-opacity"
+        style={{ fontWeight: 600 }}
       >
         Journal
       </a>
