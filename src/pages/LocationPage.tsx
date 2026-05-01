@@ -95,10 +95,15 @@ const LocationPage = () => {
                 id={`loc-${loc.slug}-hero-heading`}
                 className="font-serif-rf max-w-[14ch] md:max-w-none mx-auto break-words text-pretty"
                 style={{
-                  fontSize: "clamp(56px, 7vw, 120px)",
-                  lineHeight: 1.02,
+                  // Smaller than the homepage h1 (which clamps to 120px).
+                  // Location titles like "Your Walton-on-Thames party
+                  // stylist." run ~16em wide in Fraunces, so a 120px max
+                  // overflows the 1440px container. 80px keeps every
+                  // location's first line on one row at desktop.
+                  fontSize: "clamp(40px, 5.5vw, 80px)",
+                  lineHeight: 1.04,
                   fontWeight: 400,
-                  letterSpacing: "-0.038em",
+                  letterSpacing: "-0.032em",
                 }}
               >
                 {loc.hero.lines.map((line, i) => (
