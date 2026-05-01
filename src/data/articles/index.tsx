@@ -2,10 +2,12 @@ import type { Article, ArticleSummary } from "./types";
 import LollipopRebrandBody from "./lollipop-balloons-to-river-fox-events";
 import BeyondTheBalloonArchBody from "./beyond-the-balloon-arch";
 import FromDesignToDeliveryBody from "./from-design-to-delivery";
+import ChildrensPartyThemes2026Body from "./childrens-party-themes-2026";
 
 import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
 import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
 import designToDeliveryCard from "@/assets/journal/from-design-to-delivery/dinosaur-party-styling-surrey-finished.webp";
+import childrensThemesCard from "@/assets/jungle-themed-childrens-party-styling-surrey.webp";
 
 /**
  * Master list of articles. Order = newest first.
@@ -20,6 +22,23 @@ import designToDeliveryCard from "@/assets/journal/from-design-to-delivery/dinos
  */
 export const ARTICLES: Article[] = [
   {
+    slug: "childrens-party-themes-2026",
+    title: "Six children's party themes shaping 2026",
+    subtitle:
+      "From Chateaucore to charm-bracelet stations — the briefs landing in our Surrey studio right now.",
+    teaser:
+      "Themes are still everything for a 4th or 6th — but the version of \"themed\" parents are asking for in 2026 is grown-up and personal. Here's the brief-bag.",
+    metaDescription:
+      "Six children's party themes Surrey parents are asking for in 2026 — Chateaucore, Bluey done well, soft maximalism, charm-bracelet stations, woodland and Toy Story 5. From Laura at River Fox Events.",
+    publishedAt: "2026-05-01",
+    readMinutes: 6,
+    relatedSlugs: ["from-design-to-delivery", "beyond-the-balloon-arch", "lollipop-balloons-to-river-fox-events"],
+    cardImage: childrensThemesCard,
+    ogImage: "/og/childrens-party-themes-2026.webp",
+    category: "Trends",
+    Body: ChildrensPartyThemes2026Body,
+  },
+  {
     slug: "from-design-to-delivery",
     title: "From design to delivery",
     subtitle:
@@ -30,7 +49,7 @@ export const ARTICLES: Article[] = [
       "Behind the scenes of a Surrey children's party — from concept render to finished install. Laura on how design, sourcing and delivery come together at River Fox Events.",
     publishedAt: "2026-05-01",
     readMinutes: 6,
-    relatedSlugs: ["beyond-the-balloon-arch", "lollipop-balloons-to-river-fox-events"],
+    relatedSlugs: ["childrens-party-themes-2026", "beyond-the-balloon-arch", "lollipop-balloons-to-river-fox-events"],
     cardImage: designToDeliveryCard,
     ogImage: "/og/from-design-to-delivery.webp",
     category: "Behind the scenes",
@@ -47,7 +66,7 @@ export const ARTICLES: Article[] = [
       "The balloon arch is no longer the headline. A note from Laura on layered tablescapes, ceiling drapery and the 2026 trends shaping Surrey celebrations.",
     publishedAt: "2026-05-01",
     readMinutes: 5,
-    relatedSlugs: ["from-design-to-delivery", "lollipop-balloons-to-river-fox-events"],
+    relatedSlugs: ["childrens-party-themes-2026", "from-design-to-delivery", "lollipop-balloons-to-river-fox-events"],
     cardImage: beyondTheArchCard,
     ogImage: "/og/beyond-the-balloon-arch.webp",
     category: "Trends",
