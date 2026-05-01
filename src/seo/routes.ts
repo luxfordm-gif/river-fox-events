@@ -252,6 +252,17 @@ export const ROUTES: RouteSEO[] = [
     priority: 0.6,
     changefreq: "yearly",
   },
+  {
+    // Transitional landing page for redirects from the old Lollipop
+    // Balloons domain. noindex so it doesn't compete with the homepage
+    // in search; still prerendered so visitors land on real content.
+    path: "/welcome",
+    title:
+      "Welcome to River Fox Events | Formerly Lollipop Balloons",
+    description:
+      "Lollipop Balloons is now River Fox Events. Same designer, same Surrey studio, new name reflecting the wider work we now do.",
+    noindex: true,
+  },
 ];
 
 export const findRoute = (path: string): RouteSEO | undefined =>

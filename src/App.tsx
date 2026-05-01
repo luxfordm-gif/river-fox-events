@@ -11,6 +11,7 @@ import Milestones from "./pages/Milestones.tsx";
 import CorporateAndBrand from "./pages/CorporateAndBrand.tsx";
 import LocationPage from "./pages/LocationPage.tsx";
 import Article from "./pages/Article.tsx";
+import Welcome from "./pages/Welcome.tsx";
 import { LOCATIONS } from "./data/locations";
 import { ARTICLES } from "./data/articles";
 import NotFound from "./pages/NotFound.tsx";
@@ -42,6 +43,7 @@ const AppShell = () => {
             element={<Article />}
           />
         ))}
+        <Route path="/welcome" element={<Welcome />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

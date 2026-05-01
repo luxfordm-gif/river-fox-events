@@ -136,7 +136,10 @@ async function main() {
 
   try {
     for (const route of ROUTES) {
-      if (route.noindex) continue;
+      // Prerender every route — even noindex ones. noindex stops a page
+      // from appearing in search; it doesn't mean we shouldn't serve a
+      // fast pre-rendered HTML to actual visitors (e.g. people redirected
+      // here from an old domain).
       const html = await renderRoute(browser, baseUrl, route);
       await writeRouteHtml(route, html);
       console.log(`✓ prerendered ${route.path.padEnd(30)} (${(html.length / 1024).toFixed(1)} kB)`);
