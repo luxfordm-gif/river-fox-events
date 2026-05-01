@@ -78,7 +78,7 @@ const Welcome = () => {
 
         <section className="container-rfx pb-12 md:pb-16">
           <div
-            className="max-w-[680px] mx-auto px-6 font-serif-rf text-ink space-y-6"
+            className="max-w-[680px] mx-auto px-6 font-serif-rf text-ink text-center space-y-6"
             style={{ fontSize: "18px", lineHeight: 1.7 }}
           >
             <p>
