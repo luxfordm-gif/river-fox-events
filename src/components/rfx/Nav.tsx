@@ -170,6 +170,18 @@ const Nav = () => {
           >
             Follow us on Instagram <span aria-hidden>→</span>
           </a>
+          <a
+            href="/journal"
+            onClick={() => setOpen(false)}
+            className="mt-3 font-mono-rf text-[11px] tracking-[0.22em] uppercase text-ink no-underline inline-flex items-center gap-2 self-start"
+            style={{
+              opacity: open ? 1 : 0,
+              transform: open ? "translateY(0)" : "translateY(20px)",
+              transition: `opacity .5s ease 480ms, transform .5s ease 480ms`,
+            }}
+          >
+            Read the journal <span aria-hidden>→</span>
+          </a>
           <p className="text-sm text-ink-soft mt-6 leading-relaxed">
             Riverfoxevents@gmail.com
             <br />
