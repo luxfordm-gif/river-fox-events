@@ -93,13 +93,18 @@ const LocationPage = () => {
             <div className="mb-10 md:mb-14 flex flex-col items-center text-center">
               <h1
                 id={`loc-${loc.slug}-hero-heading`}
-                className="font-serif-rf max-w-[14ch] md:max-w-none mx-auto break-words text-pretty"
+                className="font-serif-rf max-w-[20ch] md:max-w-none mx-auto break-words text-pretty"
                 style={{
                   // Smaller than the homepage h1 (which clamps to 120px).
                   // Location titles like "Your Walton-on-Thames party
                   // stylist." run ~16em wide in Fraunces, so a 120px max
                   // overflows the 1440px container. 80px keeps every
                   // location's first line on one row at desktop.
+                  //
+                  // Mobile max-w bumped from 14ch to 20ch so longer town
+                  // names ("Oxshott", "Walton-on-Thames") aren't forced
+                  // into a narrow column — gives the h1 more breathing
+                  // room across the typical phone viewport.
                   fontSize: "clamp(40px, 5.5vw, 80px)",
                   lineHeight: 1.04,
                   fontWeight: 400,
