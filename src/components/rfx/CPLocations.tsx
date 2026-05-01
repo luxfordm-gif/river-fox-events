@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { LOCATIONS } from "@/data/locations";
 
 type CPLocationsProps = {
   areas?: string[];
@@ -9,7 +10,16 @@ type CPLocationsProps = {
   heading?: ReactNode;
   paddingTop?: string;
   paddingBottom?: string;
+  /** Slug of the current location page, if any. We'll skip linking the
+   *  current city to itself — every other matching area gets a link. */
+  currentSlug?: string;
 };
+
+// Town name → location-page slug. Used to convert plain area names in the
+// bullet list into internal links wherever we have a dedicated page —
+// boosts cross-linking between every service page, every location page
+// and every other location page that shares a town.
+const SLUG_BY_CITY = new Map(LOCATIONS.map((l) => [l.cityName, l.slug]));
 
 const DEFAULT_HEADING: ReactNode = (
   <>
@@ -50,6 +60,7 @@ const CPLocations = ({
   heading = DEFAULT_HEADING,
   paddingTop = "48px",
   paddingBottom = "72px",
+  currentSlug,
 }: CPLocationsProps = {}) => {
   return (
     <section
@@ -91,17 +102,30 @@ const CPLocations = ({
             </p>
 
             <ul className="mt-10 grid grid-cols-2 gap-x-12 w-full max-w-[520px] border-t border-ink/15">
-              {areas.map((a, i) => (
-                <li
-                  key={a}
-                  className="flex items-baseline gap-3 py-3 border-b border-ink/15 font-serif-rf text-[18px] font-light tracking-[-0.012em] text-ink"
-                >
-                  <span className="font-mono-rf text-[10px] tracking-[0.18em] text-ink-soft">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  {a}
-                </li>
-              ))}
+              {areas.map((a, i) => {
+                const slug = SLUG_BY_CITY.get(a);
+                const link = slug && slug !== currentSlug;
+                return (
+                  <li
+                    key={a}
+                    className="flex items-baseline gap-3 py-3 border-b border-ink/15 font-serif-rf text-[18px] font-light tracking-[-0.012em] text-ink"
+                  >
+                    <span className="font-mono-rf text-[10px] tracking-[0.18em] text-ink-soft">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {link ? (
+                      <a
+                        href={`/party-styling-${slug}/`}
+                        className="text-ink hover:underline underline-offset-4 decoration-ink/40"
+                      >
+                        {a}
+                      </a>
+                    ) : (
+                      a
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

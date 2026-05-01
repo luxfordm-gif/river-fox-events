@@ -175,6 +175,7 @@ const LocationPage = () => {
           areas={loc.nearby.areas}
           mapQuery={loc.nearby.mapQuery}
           mapTitle={loc.nearby.mapTitle}
+          currentSlug={loc.slug}
         />
 
         <Enquire />
