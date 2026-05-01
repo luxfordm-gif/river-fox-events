@@ -4,8 +4,8 @@ import ArticlePullQuote from "@/components/article/ArticlePullQuote";
 import ArticleCta from "@/components/article/ArticleCta";
 import ArticleTLDR from "@/components/article/ArticleTLDR";
 
-import imgLead from "@/assets/hero-2.webp";
-import imgStudio from "@/assets/studio.webp";
+import imgLead from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
+import imgCards from "@/assets/river-fox-events-business-cards-surrey.webp";
 
 /**
  * First-article body for the Lollipop Balloons → River Fox Events rebrand.
@@ -61,8 +61,8 @@ const LollipopRebrandArticle = () => (
 
     <ArticleImage
       src={imgLead}
-      alt="Editorial tablescape detail with peonies and silk ribbons for a Surrey celebration by River Fox Events"
-      caption="A recent celebration. Same hands behind it — under a new name."
+      alt="River Fox Events branded hoodie in cream, photographed outside the Surrey studio"
+      caption="The new identity, on the back of a hoodie outside the studio."
     />
 
     <ArticleProse>
@@ -125,9 +125,9 @@ const LollipopRebrandArticle = () => (
     </ArticleProse>
 
     <ArticleImage
-      src={imgStudio}
-      alt="Laura, founder of River Fox Events (formerly Lollipop Balloons), styling a balloon installation in her Surrey studio"
-      caption="The studio looks the same. The signage will catch up soon."
+      src={imgCards}
+      alt="River Fox Events business cards in cream with the new brand identity, photographed on travertine"
+      caption="The new identity, on paper. Cards going out to recent enquiries."
     />
 
     <ArticleCta variant="inline" label="Plan your celebration" />

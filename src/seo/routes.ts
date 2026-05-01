@@ -245,6 +245,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Journal | River Fox Events",
     description:
       "Notes from the studio — event styling trends, behind-the-scenes from Surrey celebrations, and the thinking behind the rooms we style.",
+    ogImage: "/og/beyond-the-balloon-arch.webp",
     priority: 0.7,
     changefreq: "weekly",
   },
@@ -254,6 +255,7 @@ export const ROUTES: RouteSEO[] = [
       "Beyond the Balloon Arch: 2026 Surrey Event Styling Trends | River Fox Events",
     description:
       "The balloon arch is no longer the headline. A note from Laura on layered tablescapes, ceiling drapery and the 2026 trends shaping Surrey celebrations.",
+    ogImage: "/og/beyond-the-balloon-arch.webp",
     priority: 0.6,
     changefreq: "monthly",
   },
@@ -263,6 +265,7 @@ export const ROUTES: RouteSEO[] = [
       "Lollipop Balloons is now River Fox Events | River Fox Events",
     description:
       "Lollipop Balloons is now River Fox Events. Same designer (Laura), same Surrey studio, new name reflecting the wider work we now do.",
+    ogImage: "/og/lollipop-balloons-to-river-fox-events.webp",
     // No breadcrumbName here — Article.tsx injects a 3-level
     // BreadcrumbList (Home → Journal → article) at runtime, which
     // postbuild leaves alone.
