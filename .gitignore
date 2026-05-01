@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Puppeteer Chrome download (used by scripts/prerender.mjs at build time)
+.puppeteer-cache
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,0 +1,14 @@
+# Netlify configuration. The build command itself is set in Netlify's UI
+# (`npm run build`); this file's role is to expose the Puppeteer cache to
+# Netlify's persistent build cache so we don't re-download Chrome (~150 MB)
+# on every deploy.
+#
+# `npm run build` runs:
+#   1. `npx puppeteer browsers install chrome` (no-op if cached)
+#   2. `vite build`
+#   3. `scripts/prerender.mjs` — needs Chrome
+#   4. `scripts/postbuild.mjs`
+
+[build.environment]
+  # Tell Puppeteer where to put the Chrome binary so Netlify can cache it.
+  PUPPETEER_CACHE_DIR = "/opt/build/repo/.puppeteer-cache"
