@@ -4,7 +4,6 @@ import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
 import Enquire from "@/components/rfx/Enquire";
-import CPHero from "@/components/rfx/CPHero";
 import CPReveal from "@/components/rfx/CPReveal";
 import CPLocations from "@/components/rfx/CPLocations";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
@@ -80,15 +79,49 @@ const LocationPage = () => {
     <div className="min-h-screen bg-background text-foreground rfx-tight-mobile nav-solid">
       <Nav />
       <main>
-        <CPHero
-          compact
-          lines={loc.hero.lines}
-          image={loc.hero.image}
-          imageAlt={
-            loc.hero.imageAlt ??
-            `Luxury event styling in ${loc.cityName} by River Fox Events — bespoke balloon installation and dressed celebration space`
-          }
-        />
+        {/* Flat coloured-bg hero — signals "child page" with a calm peach
+            surface instead of the full-bleed image used on top-level
+            service pages. h1 + italic sub copy, centred. */}
+        <section
+          id="top"
+          className="text-center"
+          style={{
+            background: "hsl(var(--surface-warm))",
+            paddingTop: "clamp(96px, 13vh, 160px)",
+            paddingBottom: "clamp(72px, 11vh, 128px)",
+          }}
+          aria-labelledby={`loc-${loc.slug}-hero-heading`}
+        >
+          <div className="container-rfx">
+            <h1
+              id={`loc-${loc.slug}-hero-heading`}
+              className="font-serif-rf max-w-[18ch] mx-auto"
+              style={{
+                fontSize: "clamp(44px, 5.5vw, 88px)",
+                lineHeight: 1.02,
+                fontWeight: 500,
+                letterSpacing: "-0.032em",
+                color: "hsl(var(--ink))",
+                textWrap: "balance",
+              }}
+            >
+              {loc.hero.lines.map((line, i) => (
+                <span key={i}>
+                  {line}
+                  {i < loc.hero.lines.length - 1 && <br />}
+                </span>
+              ))}
+            </h1>
+            {loc.hero.sub && (
+              <p
+                className="mt-7 md:mt-9 max-w-[46ch] mx-auto text-[18px] md:text-[20px] leading-[1.5] text-ink-soft font-serif-rf font-light italic"
+                style={{ textWrap: "pretty" }}
+              >
+                {loc.hero.sub}
+              </p>
+            )}
+          </div>
+        </section>
 
         {/* Centred intro block (no image) — first thing under the hero. */}
         <section id="loc-what-we-do" className="rfx-section white">

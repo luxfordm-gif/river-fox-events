@@ -76,10 +76,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
         <>Your {cityName} party stylist.</>,
         <>
           Every detail,{" "}
-          <em
-            className="italic font-normal"
-            style={{ color: "hsl(var(--accent))" }}
-          >
+          <em className="italic font-normal text-accent-warm">
             personally handled.
           </em>
         </>,
