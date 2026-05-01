@@ -231,48 +231,47 @@ const CorporateAndBrand = () => {
           sub="Design-led event styling for launches, openings, office celebrations and brand activations — installations that elevate your brand. Trusted by leading brands."
         />
 
+        {/* No background modifier on the section — the page-default
+            cream sits behind the boxed logo grid. paddingTop tightened
+            from 96 → 40 so the grid sits closer to the hero above. */}
         <section
           id="cb-trust"
           aria-labelledby="cb-trust-heading"
           className="rfx-section"
-          style={{ paddingTop: "96px", paddingBottom: "96px" }}
+          style={{ paddingTop: "40px", paddingBottom: "96px" }}
         >
           <div className="container-rfx text-center">
             <h2
               id="cb-trust-heading"
               className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft"
-              style={{ fontWeight: 600, marginBottom: "48px" }}
+              style={{ fontWeight: 600, marginBottom: "32px" }}
             >
               Trusted by
             </h2>
-            <ul className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-8 gap-y-12 md:gap-y-14 list-none p-0 m-0">
+            <ul className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 list-none p-0 m-0">
               {TRUST_LOGOS.map((name) => (
-                <li
-                  key={name}
-                  className="flex items-center justify-center"
-                >
-                  <span
-                    className="text-ink text-center"
+                <li key={name} className="flex">
+                  <div
+                    className="flex items-center justify-center w-full px-4 py-7 rounded-[10px] transition-colors hover:bg-[hsl(var(--surface-warm)/0.4)]"
                     style={{
-                      fontFamily: "var(--font-sans)",
-                      fontSize: "clamp(12px, 1.15vw, 16px)",
-                      fontWeight: 600,
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase",
-                      lineHeight: 1.25,
-                      opacity: 0.4,
-                      transition: "opacity 0.3s ease",
-                      cursor: "default",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLSpanElement).style.opacity = "1";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLSpanElement).style.opacity = "0.4";
+                      border: "1px solid hsl(var(--accent-warm) / 0.35)",
                     }}
                   >
-                    {name}
-                  </span>
+                    <span
+                      className="text-ink text-center"
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        fontSize: "clamp(12px, 1.05vw, 15px)",
+                        fontWeight: 600,
+                        letterSpacing: "0.06em",
+                        textTransform: "uppercase",
+                        lineHeight: 1.25,
+                        opacity: 0.72,
+                      }}
+                    >
+                      {name}
+                    </span>
+                  </div>
                 </li>
               ))}
             </ul>
