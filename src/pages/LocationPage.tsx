@@ -10,7 +10,7 @@ import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import ServicesCards from "@/components/rfx/ServicesCards";
 import LocationGallery from "@/components/rfx/LocationGallery";
 import ScrollStrip from "@/components/rfx/ScrollStrip";
-import HeroEditorial from "@/components/rfx/HeroEditorial";
+import LocationHeroFan from "@/components/rfx/LocationHeroFan";
 import NotFound from "./NotFound";
 import { findLocation } from "@/data/locations";
 import type { LocationConfig } from "@/data/locations/types";
@@ -135,8 +135,12 @@ const LocationPage = () => {
             </div>
           </div>
 
-          <ScrollStrip />
-          <HeroEditorial />
+          {/* Mobile-only carousel — wrapper class hides it from md up so
+              tablets and desktops see the LocationHeroFan instead. */}
+          <div className="md:hidden">
+            <ScrollStrip />
+          </div>
+          <LocationHeroFan />
         </section>
 
         {/* Two 50/50 storytelling reveals first — let the page breathe
