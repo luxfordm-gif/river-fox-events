@@ -123,31 +123,17 @@ const LocationPage = () => {
           </div>
         </section>
 
-        {/* Centred intro block (no image) — first thing under the hero. */}
-        <section id="loc-what-we-do" className="rfx-section white">
-          <div className="container-rfx">
-            <div className="max-w-[680px] mx-auto md:text-center">
-              <h2
-                className="font-serif-rf"
-                style={{
-                  fontSize: "clamp(34px, 3.4vw, 56px)",
-                  lineHeight: 1.0,
-                  fontWeight: 400,
-                  letterSpacing: "-0.025em",
-                  textWrap: "balance",
-                }}
-              >
-                {loc.whatWeDo.headline}
-              </h2>
-              <div
-                className="mt-3 md:mt-7 text-[16px] leading-[1.7] text-ink-soft space-y-5"
-                style={{ textWrap: "pretty" }}
-              >
-                {loc.whatWeDo.body}
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* 50/50 image + copy — first content section under the hero. */}
+        <CPReveal
+          id="loc-what-we-do"
+          imageSide={loc.whatWeDo.imageSide}
+          image={loc.whatWeDo.image}
+          alt={loc.whatWeDo.imageAlt}
+          tone={loc.whatWeDo.tone}
+          headline={loc.whatWeDo.headline}
+        >
+          {loc.whatWeDo.body}
+        </CPReveal>
 
         <CPReveal
           id="loc-occasions"

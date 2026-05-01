@@ -73,7 +73,7 @@ const Nav = () => {
               </div>
             </div>
           </div>
-          <a href="#about">About</a>
+          <a href="/#about">About</a>
         </div>
         <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto md:pt-2" aria-label="River Fox Events — home">
           <span className="text-[15px] font-medium tracking-[0.22em] leading-none">
