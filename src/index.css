@@ -76,6 +76,13 @@
        site-wide smooth scrolling for a slower, premium feel. */
     scroll-behavior: auto;
   }
+  /* Mobile/tablet: Lenis is off (see useSmoothScroll), so anchor jumps use
+     native browser scrolling. Without padding the fixed nav covers the top
+     of the destination section. Matches the -80px offset Lenis uses on
+     desktop. */
+  @media (pointer: coarse) and (max-width: 1024px) {
+    html { scroll-padding-top: 80px; }
+  }
   /* Lenis smooth-scroll baseline styles */
   html.lenis, html.lenis body { height: auto; }
   .lenis.lenis-smooth { scroll-behavior: auto !important; }
