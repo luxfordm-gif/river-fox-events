@@ -38,9 +38,9 @@ const dorking = makeLocation({
   uniqueWhatWeDoLead:
     "Dorking sits at the foot of the Surrey Hills — a market town with the Box Hill horizon on one side and Denbies Wine Estate on the other. A slower, scenic part of Surrey that lends itself to garden-focused, country-feel celebrations.",
   uniqueOccasionsLead:
-    "Dorking celebrations often run against that Surrey Hills backdrop — vineyard-style milestones in the area around Denbies, country-house events at venues like Wotton House, and bespoke gatherings at private homes across the RH4 and RH5 postcodes.",
+    "Dorking celebrations often run against that Surrey Hills backdrop — vineyard-style milestones in the area around Denbies, country-house events at venues like Wotton House, and bespoke gatherings at private homes across Dorking and the wider Surrey Hills.",
   uniquePresenceAnswer:
-    "Yes — Dorking, Westcott, Brockham, Mickleham and the wider RH4/RH5 area are part of our regular Surrey coverage. Notable venues in the area include Denbies Wine Estate and Wotton House, with Beaverbrook a short hop towards Leatherhead.",
+    "Yes — Dorking, Westcott, Brockham, Mickleham and the wider Surrey Hills are part of our regular Surrey coverage. Notable venues in the area include Denbies Wine Estate and Wotton House, with Beaverbrook a short hop towards Leatherhead.",
   uniqueExtraFaq: {
     q: "Are venues like Denbies Wine Estate or Wotton House within your area?",
     a: "Yes — both sit within our Dorking patch, along with Beaverbrook just up the road. If your celebration is at a country-house or vineyard venue around Dorking, share the venue in your enquiry and we'll come back with how we'd approach the install.",

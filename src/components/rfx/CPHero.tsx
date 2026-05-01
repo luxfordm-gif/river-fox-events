@@ -8,6 +8,10 @@ type CPHeroProps = {
   sub?: ReactNode;
   scrollTarget?: string;
   headingId?: string;
+  /** Compact (≈50dvh) hero used on child pages — hides the sub copy and
+   *  the scroll cue, and uses a tighter h1 size. Signals visually that
+   *  this is a sub-page rather than a top-level service page. */
+  compact?: boolean;
 };
 
 const DEFAULT_LINES: ReactNode[] = [
@@ -33,6 +37,7 @@ const CPHero = ({
   sub = DEFAULT_SUB,
   scrollTarget = "#cp-celebrations",
   headingId = "cp-hero-heading",
+  compact = false,
 }: CPHeroProps = {}) => {
   const [scrolled, setScrolled] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -72,7 +77,10 @@ const CPHero = ({
     <section
       id="top"
       className="relative w-screen overflow-hidden -mt-px"
-      style={{ height: "100dvh", minHeight: "100vh" }}
+      style={{
+        height: compact ? "50dvh" : "100dvh",
+        minHeight: compact ? "320px" : "100vh",
+      }}
       aria-labelledby={headingId}
     >
       {/*
@@ -104,14 +112,23 @@ const CPHero = ({
         }}
       />
 
-      {/* Headline — centred horizontally, upper-centre vertically on mobile */}
-      <div className="relative z-[2] h-full w-full flex flex-col items-center justify-center md:justify-center px-6 text-center pt-[calc(18vh-12px)] md:pt-0 pb-[calc(22vh+12px)] md:pb-0">
+      {/* Headline — centred horizontally, upper-centre vertically on mobile.
+          Compact mode skips the off-centre padding and the sub copy. */}
+      <div
+        className={
+          compact
+            ? "relative z-[2] h-full w-full flex items-center justify-center px-6 text-center"
+            : "relative z-[2] h-full w-full flex flex-col items-center justify-center md:justify-center px-6 text-center pt-[calc(18vh-12px)] md:pt-0 pb-[calc(22vh+12px)] md:pb-0"
+        }
+      >
         <h1
           id={headingId}
           className="font-serif-rf mx-auto"
           style={{
-            fontSize: "clamp(52px, 6.5vw, 110px)",
-            lineHeight: 0.96,
+            fontSize: compact
+              ? "clamp(40px, 5vw, 72px)"
+              : "clamp(52px, 6.5vw, 110px)",
+            lineHeight: compact ? 1.0 : 0.96,
             fontWeight: 400,
             letterSpacing: "-0.04em",
             color: "hsl(var(--background))",
@@ -130,50 +147,55 @@ const CPHero = ({
           ))}
         </h1>
 
-        <p
-          className={`word-reveal in delay-${lines.length} mt-3 md:mt-3 max-w-[44ch] mx-auto text-[17px] md:text-[17px] leading-[1.6]`}
-          style={{
-            color: "hsl(var(--background) / 0.9)",
-            textWrap: "pretty",
-          }}
-        >
-          {sub}
-        </p>
+        {!compact && (
+          <p
+            className={`word-reveal in delay-${lines.length} mt-3 md:mt-3 max-w-[44ch] mx-auto text-[17px] md:text-[17px] leading-[1.6]`}
+            style={{
+              color: "hsl(var(--background) / 0.9)",
+              textWrap: "pretty",
+            }}
+          >
+            {sub}
+          </p>
+        )}
       </div>
 
-      {/* Animated scroll cue */}
-      <a
-        href={scrollTarget}
-        aria-label="Scroll to next section"
-        className={`absolute left-1/2 -translate-x-1/2 bottom-[70px] md:bottom-10 z-[3] flex flex-col items-center gap-3 transition-opacity duration-500 ${
-          scrolled ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
-        style={{ color: "hsl(var(--background) / 0.95)" }}
-      >
-        <span
-          className="font-mono-rf text-[10.5px] tracking-[0.32em] uppercase"
-          style={{ color: "hsl(var(--background) / 0.85)" }}
+      {/* Animated scroll cue (skipped in compact mode — there's no
+          "scroll past the hero" gesture for half-height heroes). */}
+      {!compact && (
+        <a
+          href={scrollTarget}
+          aria-label="Scroll to next section"
+          className={`absolute left-1/2 -translate-x-1/2 bottom-[70px] md:bottom-10 z-[3] flex flex-col items-center gap-3 transition-opacity duration-500 ${
+            scrolled ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
+          style={{ color: "hsl(var(--background) / 0.95)" }}
         >
-          Scroll
-        </span>
-        <span className="rfx-scroll-cue" aria-hidden="true">
-          <svg
-            width="22"
-            height="34"
-            viewBox="0 0 22 34"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            className="font-mono-rf text-[10.5px] tracking-[0.32em] uppercase"
+            style={{ color: "hsl(var(--background) / 0.85)" }}
           >
-            <path
-              d="M2 13 L11 22 L20 13"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span>
-      </a>
+            Scroll
+          </span>
+          <span className="rfx-scroll-cue" aria-hidden="true">
+            <svg
+              width="22"
+              height="34"
+              viewBox="0 0 22 34"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 13 L11 22 L20 13"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+        </a>
+      )}
     </section>
   );
 };

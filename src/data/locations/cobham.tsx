@@ -36,9 +36,9 @@ const cobham = makeLocation({
     "Surrey",
   ],
   uniqueWhatWeDoLead:
-    "Cobham KT11 sits at the heart of our Surrey patch — busy village high street on one side, the Fairmile Lane estate roads on the other, and family homes throughout. The kind of variety that means no two celebrations look the same.",
+    "Cobham sits at the heart of our Surrey patch — busy village high street on one side, the Fairmile Lane estate roads on the other, and family homes throughout. The kind of variety that means no two celebrations look the same.",
   uniqueOccasionsLead:
-    "Cobham celebrations span birthday parties at home along the Stoke d'Abernon end, christenings around the village centre, and milestone events at private gardens and homes throughout KT11. Notable venues in the surrounding area include Painshill Park and Brooklands, which sit just the other side of the A3.",
+    "Cobham celebrations span birthday parties at home along the Stoke d'Abernon end, christenings around the village centre, and milestone events at private gardens and homes across the area. Notable venues nearby include Painshill Park and Brooklands, which sit just the other side of the A3.",
   uniquePresenceAnswer:
     "Yes — Cobham is a postcode we cover regularly. Coverage runs across the village high street, the Stoke d'Abernon end and the Fairmile Lane estate roads. Notable venues in the area include Painshill Park and Brooklands, both just the other side of the A3.",
   uniqueExtraFaq: {

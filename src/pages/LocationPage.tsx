@@ -81,14 +81,13 @@ const LocationPage = () => {
       <Nav />
       <main>
         <CPHero
+          compact
           lines={loc.hero.lines}
-          sub={loc.hero.sub}
           image={loc.hero.image}
           imageAlt={
             loc.hero.imageAlt ??
             `Luxury event styling in ${loc.cityName} by River Fox Events — bespoke balloon installation and dressed celebration space`
           }
-          scrollTarget="#loc-what-we-do"
         />
 
         {/* Centred intro block (no image) — first thing under the hero. */}

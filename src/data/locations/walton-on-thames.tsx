@@ -36,11 +36,11 @@ const waltonOnThames = makeLocation({
     "Surrey",
   ],
   uniqueWhatWeDoLead:
-    "Walton-on-Thames sits on a beautiful stretch of the river between Weybridge and Hampton Court — KT12 is riverside parties, garden gatherings and family celebrations as part of the regular rhythm.",
+    "Walton-on-Thames sits on a beautiful stretch of the river between Weybridge and Hampton Court — riverside parties, garden gatherings and family celebrations are part of the regular rhythm here.",
   uniqueOccasionsLead:
     "Walton celebrations span first birthdays in family gardens around Oatlands Park, christenings at riverside homes along Walton Lane, milestone moments at private venues, and corporate launches at the area's landmark spaces. Brooklands and Mercedes-Benz World sit just along the road.",
   uniquePresenceAnswer:
-    "Yes — Walton-on-Thames KT12 is part of our regular Surrey coverage. The patch runs across Walton riverside, Oatlands Park, Hersham and the Whiteley Village edge, with Weybridge a short hop along the road. Notable venues nearby include Brooklands and Mercedes-Benz World.",
+    "Yes — Walton-on-Thames is part of our regular Surrey coverage. The patch runs across Walton riverside, Oatlands Park, Hersham and the Whiteley Village edge, with Weybridge a short hop along the road. Notable venues nearby include Brooklands and Mercedes-Benz World.",
   uniqueExtraFaq: {
     q: "Do you cover riverside parties in Walton?",
     a: "Yes — riverside celebrations are part of the Walton rhythm. Whether it's a party at a home looking onto the Thames, a Walton Lane garden, or a venue along the river, share the location in your enquiry and we'll come back with how we'd style the space.",
