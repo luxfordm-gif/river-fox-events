@@ -42,6 +42,10 @@ export const SITE = {
 export const BUSINESS = {
   "@type": "LocalBusiness" as const,
   name: "River Fox Events",
+  // Previously traded as Lollipop Balloons — `alternateName` tells search
+  // engines the two brands are the same entity so historic links and
+  // searches for the old name flow to River Fox Events.
+  alternateName: "Lollipop Balloons",
   url: SITE.url,
   image: SITE.url + SITE.defaultOgImage,
   email: "Riverfoxevents@gmail.com",
@@ -235,6 +239,18 @@ export const ROUTES: RouteSEO[] = [
     },
     priority: 0.7,
     changefreq: "monthly",
+  },
+  {
+    path: "/journal/lollipop-balloons-to-river-fox-events",
+    title:
+      "Lollipop Balloons is now River Fox Events | River Fox Events",
+    description:
+      "Lollipop Balloons is now River Fox Events. Same designer (Laura), same Surrey studio, new name reflecting the wider work we now do.",
+    // No breadcrumbName here — Article.tsx injects a 3-level
+    // BreadcrumbList (Home → Journal → article) at runtime, which
+    // postbuild leaves alone.
+    priority: 0.6,
+    changefreq: "yearly",
   },
 ];
 

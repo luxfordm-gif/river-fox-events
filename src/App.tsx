@@ -10,7 +10,9 @@ import ChildrensParties from "./pages/ChildrensParties.tsx";
 import Milestones from "./pages/Milestones.tsx";
 import CorporateAndBrand from "./pages/CorporateAndBrand.tsx";
 import LocationPage from "./pages/LocationPage.tsx";
+import Article from "./pages/Article.tsx";
 import { LOCATIONS } from "./data/locations";
+import { ARTICLES } from "./data/articles";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -31,6 +33,13 @@ const AppShell = () => {
             key={loc.slug}
             path={`/party-styling-${loc.slug}`}
             element={<LocationPage />}
+          />
+        ))}
+        {ARTICLES.map((a) => (
+          <Route
+            key={a.slug}
+            path={`/journal/${a.slug}`}
+            element={<Article />}
           />
         ))}
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

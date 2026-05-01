@@ -163,6 +163,9 @@ const Footer = () => {
                 <a href="/#about" className="opacity-85 hover:opacity-100 block">About Laura</a>
                 <a href="/#process" className="opacity-85 hover:opacity-100 block">How it works</a>
                 <a href="/#faq" className="opacity-85 hover:opacity-100 block">FAQ</a>
+                {/* Journal: while there's only one article, link straight
+                    to it. Swap to "/journal/" once a 2nd article ships. */}
+                <a href="/journal/lollipop-balloons-to-river-fox-events/" className="opacity-85 hover:opacity-100 block">Journal</a>
               </div>
             </div>
             <div>

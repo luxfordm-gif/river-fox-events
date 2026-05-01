@@ -788,4 +788,54 @@
     .rfx-tight-mobile .rfx-section { padding: 64px 0; }
     .rfx-tight-mobile .cp-reveal-section + .cp-reveal-section { padding-top: 24px; }
   }
+
+  /* Article (Journal) styles. ChatGPT-style editorial layout: narrow
+     centred prose with break-out wide images, pull-quotes and CTAs.
+     Scoped so they don't leak onto other pages.
+       .article-bg          page background (cream)
+       .article-prose       narrow centred prose column (~720px)
+       .article-prose p     paragraph spacing + drop-shadow free
+       .article-prose h2/h3 in-flow subheadings
+       .article-prose a     subtle underline link styling
+   */
+  .article-bg { background: hsl(35 30% 96%); }
+  .article-prose > * + * { margin-top: 1.4em; }
+  .article-prose h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(26px, 2.4vw, 34px);
+    line-height: 1.18;
+    letter-spacing: -0.012em;
+    margin-top: 2.4em;
+    margin-bottom: 0.4em;
+    text-wrap: balance;
+  }
+  .article-prose h3 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(20px, 1.8vw, 24px);
+    line-height: 1.25;
+    letter-spacing: -0.008em;
+    margin-top: 2em;
+    margin-bottom: 0.4em;
+  }
+  .article-prose a {
+    color: hsl(var(--ink));
+    text-decoration: underline;
+    text-decoration-color: hsl(var(--accent-warm) / 0.5);
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  .article-prose a:hover {
+    text-decoration-color: hsl(var(--accent-warm));
+  }
+  .article-prose ul, .article-prose ol {
+    padding-left: 1.4em;
+  }
+  .article-prose ul { list-style: disc; }
+  .article-prose ol { list-style: decimal; }
+  .article-prose li + li { margin-top: 0.4em; }
+  .article-prose strong { font-weight: 600; }
+  .article-prose em { font-style: italic; }
 }
