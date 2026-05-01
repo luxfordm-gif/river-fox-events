@@ -119,7 +119,11 @@ const LocationPage = () => {
                     className={`word-reveal in${i > 0 ? ` delay-${i}` : ""}`}
                   >
                     <span>{line}</span>
-                    {i < loc.hero.lines.length - 1 && <br />}
+                    {/* Use a plain space between segments — let the
+                        browser wrap naturally instead of forcing a hard
+                        line break that orphans words at certain
+                        breakpoints. */}
+                    {i < loc.hero.lines.length - 1 && " "}
                   </span>
                 ))}
               </h1>
