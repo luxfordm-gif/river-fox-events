@@ -7,7 +7,7 @@ import Enquire from "@/components/rfx/Enquire";
 import CPReveal from "@/components/rfx/CPReveal";
 import CPLocations from "@/components/rfx/CPLocations";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
-import Experiences from "@/components/rfx/Experiences";
+import ServicesCards from "@/components/rfx/ServicesCards";
 import LocationGallery from "@/components/rfx/LocationGallery";
 import ScrollStrip from "@/components/rfx/ScrollStrip";
 import HeroEditorial from "@/components/rfx/HeroEditorial";
@@ -134,29 +134,8 @@ const LocationPage = () => {
           <HeroEditorial />
         </section>
 
-        {/* Three-services cross-link block — sits first under the hero so
-            visitors immediately see the service options for this town and
-            can click through to the dedicated service pages. */}
-        <Experiences
-          sectionId={`loc-${loc.slug}-services`}
-          heading={
-            <>
-              Children's parties, milestones &amp; corporate events in{" "}
-              <em className="italic font-light text-accent-warm">
-                {loc.cityName}.
-              </em>
-            </>
-          }
-          intro={
-            <>
-              Three considered services, each fully bespoke. Whatever the
-              occasion in {loc.cityName} — a child's birthday, a 40th, a brand
-              launch — Laura designs and delivers it personally.
-            </>
-          }
-        />
-
-        {/* 50/50 image + copy */}
+        {/* Two 50/50 storytelling reveals first — let the page breathe
+            before the cross-link to the dedicated service pages. */}
         <CPReveal
           id="loc-what-we-do"
           imageSide={loc.whatWeDo.imageSide}
@@ -178,6 +157,28 @@ const LocationPage = () => {
         >
           {loc.occasions.body}
         </CPReveal>
+
+        {/* Stripped-back services cross-link — minimal cards instead of
+            the full Experiences photography block, so it doesn't read as
+            a duplicate of the homepage. */}
+        <ServicesCards
+          sectionId={`loc-${loc.slug}-services`}
+          heading={
+            <>
+              Children's parties, milestones &amp; corporate events in{" "}
+              <em className="italic font-light text-accent-warm">
+                {loc.cityName}.
+              </em>
+            </>
+          }
+          intro={
+            <>
+              Three considered services, each fully bespoke. Whatever the
+              occasion in {loc.cityName} — a child's birthday, a 40th, a brand
+              launch — Laura designs and delivers it personally.
+            </>
+          }
+        />
 
         <LocationGallery
           id="loc-gallery"
