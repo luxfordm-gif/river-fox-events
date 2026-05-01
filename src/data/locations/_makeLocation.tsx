@@ -268,7 +268,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       },
       {
         q: `How much does event styling cost in ${cityName}?`,
-        a: `Event styling in ${cityName} starts from £460. Most full celebrations with multiple styling elements fall in the £1,200–£2,000 range. Every event is individually quoted — get in touch for a bespoke quote based on your vision.`,
+        a: `Pricing depends on the type of celebration. Our children's party styling, milestone celebration and corporate event pages each show full price tiers. Every ${cityName} event is individually quoted following a short discovery call.`,
       },
       {
         q: "Can I choose my own theme and colours?",

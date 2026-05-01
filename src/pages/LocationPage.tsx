@@ -6,9 +6,7 @@ import Process from "@/components/rfx/Process";
 import Enquire from "@/components/rfx/Enquire";
 import CPHero from "@/components/rfx/CPHero";
 import CPReveal from "@/components/rfx/CPReveal";
-import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
-import CPIncluded from "@/components/rfx/CPIncluded";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import Experiences from "@/components/rfx/Experiences";
 import LocationGallery from "@/components/rfx/LocationGallery";
@@ -93,16 +91,31 @@ const LocationPage = () => {
           scrollTarget="#loc-what-we-do"
         />
 
-        <CPReveal
-          id="loc-what-we-do"
-          imageSide={loc.whatWeDo.imageSide}
-          image={loc.whatWeDo.image}
-          alt={loc.whatWeDo.imageAlt}
-          tone={loc.whatWeDo.tone}
-          headline={loc.whatWeDo.headline}
-        >
-          {loc.whatWeDo.body}
-        </CPReveal>
+        {/* Centred intro block (no image) — first thing under the hero. */}
+        <section id="loc-what-we-do" className="rfx-section white">
+          <div className="container-rfx">
+            <div className="max-w-[680px] mx-auto md:text-center">
+              <h2
+                className="font-serif-rf"
+                style={{
+                  fontSize: "clamp(34px, 3.4vw, 56px)",
+                  lineHeight: 1.0,
+                  fontWeight: 400,
+                  letterSpacing: "-0.025em",
+                  textWrap: "balance",
+                }}
+              >
+                {loc.whatWeDo.headline}
+              </h2>
+              <div
+                className="mt-3 md:mt-7 text-[16px] leading-[1.7] text-ink-soft space-y-5"
+                style={{ textWrap: "pretty" }}
+              >
+                {loc.whatWeDo.body}
+              </div>
+            </div>
+          </div>
+        </section>
 
         <CPReveal
           id="loc-occasions"
@@ -142,22 +155,6 @@ const LocationPage = () => {
               launch — Laura designs and delivers it personally.
             </>
           }
-        />
-
-        <CPIncluded
-          eyebrow={loc.included.eyebrow}
-          heading={loc.included.heading}
-          items={loc.included.items}
-          outro={loc.included.closingLine}
-          sectionId="loc-included"
-          headingId="loc-included-heading"
-        />
-
-        <CPPricing
-          heading={loc.pricing.heading}
-          tiers={loc.pricing.tiers}
-          ctaLabel="Start planning"
-          footnote={loc.pricing.footnote}
         />
 
         <div id="how-it-works">
