@@ -281,6 +281,7 @@ export const ROUTES: RouteSEO[] = [
       "Welcome to River Fox Events | Formerly Lollipop Balloons",
     description:
       "Lollipop Balloons is now River Fox Events. Same designer, same Surrey studio, new name reflecting the wider work we now do.",
+    ogImage: "/og/lollipop-balloons-to-river-fox-events.webp",
     noindex: true,
   },
 ];
