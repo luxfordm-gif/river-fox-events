@@ -90,7 +90,9 @@ const LocationPage = () => {
           aria-labelledby={`loc-${loc.slug}-hero-heading`}
         >
           <div className="container-rfx">
-            <div className="mb-10 md:mb-14 flex flex-col items-center text-center">
+            {/* mb tightened (was mb-10/mb-14) so the cards sit closer to
+                the CTA button — about 22px less air on both breakpoints. */}
+            <div className="mb-4 md:mb-9 flex flex-col items-center text-center">
               <h1
                 id={`loc-${loc.slug}-hero-heading`}
                 className="font-serif-rf max-w-[20ch] md:max-w-none mx-auto break-words text-pretty"
