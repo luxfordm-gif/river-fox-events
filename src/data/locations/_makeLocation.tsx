@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { LocationConfig } from "./types";
 import imgWhatWeDo from "@/assets/cp-celebrations.webp";
 import imgOccasions from "@/assets/luxury-party-styling-occasions-surrey.webp";
@@ -10,8 +11,12 @@ import imgGallery4 from "@/assets/hero-2.webp";
 /**
  * Inputs for a Surrey town location page. The builder fans these out into
  * a full LocationConfig with hero, occasions, gallery, included, pricing,
- * FAQs and "where we work" sections — keeping the on-page copy consistent
- * across towns while still reading naturally.
+ * FAQs and "where we work" sections.
+ *
+ * Required fields drive the templated copy. Optional `unique*` fields let a
+ * town file inject bespoke local content (specific venues, postcode quirks,
+ * local character) so each page reads as genuinely different to crawlers
+ * and humans — not a near-duplicate of its neighbours.
  */
 type LocationInput = {
   slug: string;
@@ -26,6 +31,18 @@ type LocationInput = {
   mapQuery: string;
   /** Areas served in the Service JSON-LD. Keep tight to the town + immediate area. */
   jsonLdAreaServed: string[];
+  /** Override the auto-generated SEO description (≤160 chars). */
+  uniqueSeoDescription?: string;
+  /** Bespoke ReactNode rendered before the templated paragraph in "What we do".
+   *  Use for local venues, postcode notes, town character. */
+  uniqueWhatWeDoLead?: ReactNode;
+  /** Bespoke ReactNode rendered before the templated paragraph in "Occasions". */
+  uniqueOccasionsLead?: ReactNode;
+  /** Replaces the default "Do you style events in [town]?" answer. Use to
+   *  list specific venues / postcode coverage / repeat-client mentions. */
+  uniquePresenceAnswer?: string;
+  /** Extra town-specific Q&A inserted after the standard set. */
+  uniqueExtraFaq?: { q: string; a: string };
 };
 
 export function makeLocation(input: LocationInput): LocationConfig {
@@ -37,6 +54,11 @@ export function makeLocation(input: LocationInput): LocationConfig {
     areas,
     mapQuery,
     jsonLdAreaServed,
+    uniqueSeoDescription,
+    uniqueWhatWeDoLead,
+    uniqueOccasionsLead,
+    uniquePresenceAnswer,
+    uniqueExtraFaq,
   } = input;
 
   const villagesIntro = nearbyVillages.slice(0, 3).join(", ");
@@ -46,7 +68,9 @@ export function makeLocation(input: LocationInput): LocationConfig {
     slug,
     cityName,
     seoTitle: `Party Stylist ${cityName} Surrey | River Fox Events`,
-    seoDescription: `${cityName} party stylist — bespoke children's parties, milestones and corporate events across ${region} from £460. Every detail personally handled by Laura.`,
+    seoDescription:
+      uniqueSeoDescription ??
+      `${cityName} party stylist — bespoke children's parties, milestones and corporate events across ${region} from £460. Every detail personally handled by Laura.`,
     hero: {
       lines: [
         <>Your {cityName} party stylist.</>,
@@ -82,6 +106,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       ),
       body: (
         <>
+          {uniqueWhatWeDoLead && <p>{uniqueWhatWeDoLead}</p>}
           <p>
             We work with families and businesses across {cityName}
             {villagesIntro ? `, ${villagesIntro}` : ""} and the surrounding
@@ -106,6 +131,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       ),
       body: (
         <>
+          {uniqueOccasionsLead && <p>{uniqueOccasionsLead}</p>}
           <p>
             Children's birthdays, christenings, milestone moments, baby
             showers and corporate events across {region} — every {cityName}
@@ -224,7 +250,9 @@ export function makeLocation(input: LocationInput): LocationConfig {
     faqs: [
       {
         q: `Do you style events in ${cityName}?`,
-        a: `Yes — ${cityName} and the surrounding ${region} villages including ${villagesFaq} are areas we work in regularly. We come to you, set everything up and handle the full breakdown once the day is done.`,
+        a:
+          uniquePresenceAnswer ??
+          `Yes — ${cityName} and the surrounding ${region} villages including ${villagesFaq} are areas we work in regularly. We come to you, set everything up and handle the full breakdown once the day is done.`,
       },
       {
         q: "Are you a party planner or a party stylist — what's the difference?",
@@ -250,6 +278,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
         q: "What happens on the day?",
         a: "We arrive before your guests and handle all setup. Once everything is in place the space is yours to enjoy completely. We return after the celebration to take everything down — you don't need to think about it.",
       },
+      ...(uniqueExtraFaq ? [uniqueExtraFaq] : []),
     ],
     nearby: {
       eyebrow: "Where we work",

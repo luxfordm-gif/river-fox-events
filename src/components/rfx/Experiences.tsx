@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 import expChildren from "@/assets/dinosaur-childrens-party-styling-surrey.webp";
 import expMilestone from "@/assets/christening-blessing-styling-surrey.webp";
 import expCorporate from "@/assets/corporate-gala-styling-surrey.webp";
@@ -98,9 +98,22 @@ const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
   );
 };
 
-const Experiences = () => {
+type ExperiencesProps = {
+  /** Override the section heading. Defaults to the homepage copy. */
+  heading?: ReactNode;
+  /** Override the right-column intro paragraph. */
+  intro?: ReactNode;
+  /** Override the section id (used for in-page anchor links). */
+  sectionId?: string;
+};
+
+const Experiences = ({
+  heading,
+  intro,
+  sectionId = "experiences",
+}: ExperiencesProps = {}) => {
   return (
-    <section id="experiences" className="rfx-section white" aria-labelledby="exp-heading">
+    <section id={sectionId} className="rfx-section white" aria-labelledby="exp-heading">
       <div className="container-rfx">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-12 mb-10 md:mb-16 items-end rfx-md-stack">
           <h2
@@ -113,13 +126,16 @@ const Experiences = () => {
               letterSpacing: "-0.025em",
             }}
           >
-            Our signature{" "}
-            <em className="italic font-light text-accent-warm">experiences.</em>
+            {heading ?? (
+              <>
+                Our signature{" "}
+                <em className="italic font-light text-accent-warm">experiences.</em>
+              </>
+            )}
           </h2>
           <p className="text-[15.5px] leading-[1.6] text-ink-soft pb-3 text-center md:text-left mx-auto md:mx-0">
-            Three considered services, each fully bespoke. We work with a small
-            number of clients each month so every event receives Laura's
-            personal attention from concept to install.
+            {intro ??
+              "Three considered services, each fully bespoke. We work with a small number of clients each month so every event receives Laura's personal attention from concept to install."}
           </p>
         </div>
 

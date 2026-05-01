@@ -145,8 +145,12 @@ const Footer = () => {
               </div>
               <div className="text-[13.5px] leading-loose">
                 <a href="/party-styling-cobham/" className="opacity-85 hover:opacity-100 block">Cobham</a>
+                <a href="/party-styling-oxshott/" className="opacity-85 hover:opacity-100 block">Oxshott</a>
                 <a href="/party-styling-weybridge/" className="opacity-85 hover:opacity-100 block">Weybridge</a>
+                <a href="/party-styling-walton-on-thames/" className="opacity-85 hover:opacity-100 block">Walton-on-Thames</a>
                 <a href="/party-styling-esher/" className="opacity-85 hover:opacity-100 block">Esher</a>
+                <a href="/party-styling-guildford/" className="opacity-85 hover:opacity-100 block">Guildford</a>
+                <a href="/party-styling-dorking/" className="opacity-85 hover:opacity-100 block">Dorking</a>
                 <a href="/party-styling-reigate/" className="opacity-85 hover:opacity-100 block">Reigate</a>
                 <a href="/party-styling-oxted/" className="opacity-85 hover:opacity-100 block">Oxted</a>
               </div>

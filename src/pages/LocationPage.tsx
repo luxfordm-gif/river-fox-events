@@ -10,6 +10,7 @@ import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
 import CPIncluded from "@/components/rfx/CPIncluded";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
+import Experiences from "@/components/rfx/Experiences";
 import LocationGallery from "@/components/rfx/LocationGallery";
 import NotFound from "./NotFound";
 import { findLocation } from "@/data/locations";
@@ -122,6 +123,25 @@ const LocationPage = () => {
           mainImage={loc.gallery.mainImage}
           mainImageAlt={loc.gallery.mainImageAlt}
           images={loc.gallery.images}
+        />
+
+        <Experiences
+          sectionId={`loc-${loc.slug}-services`}
+          heading={
+            <>
+              Children's parties, milestones &amp; corporate events in{" "}
+              <em className="italic font-light text-accent-warm">
+                {loc.cityName}.
+              </em>
+            </>
+          }
+          intro={
+            <>
+              Three considered services, each fully bespoke. Whatever the
+              occasion in {loc.cityName} — a child's birthday, a 40th, a brand
+              launch — Laura designs and delivers it personally.
+            </>
+          }
         />
 
         <CPIncluded

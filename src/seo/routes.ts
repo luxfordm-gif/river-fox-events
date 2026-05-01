@@ -180,6 +180,62 @@ export const ROUTES: RouteSEO[] = [
     priority: 0.7,
     changefreq: "monthly",
   },
+  {
+    path: "/party-styling-oxshott",
+    title: "Party Stylist Oxshott Surrey | River Fox Events",
+    description:
+      "Oxshott party stylist — bespoke children's parties, milestones and corporate events across Surrey from £460. Every detail personally handled by Laura.",
+    breadcrumbName: "Party Styling Oxshott",
+    service: {
+      serviceType: "Event Styling",
+      areaServed: ["Oxshott", "Cobham", "Esher", "Stoke d'Abernon", "Leatherhead", "Surrey"],
+      lowPrice: "460",
+    },
+    priority: 0.7,
+    changefreq: "monthly",
+  },
+  {
+    path: "/party-styling-guildford",
+    title: "Party Stylist Guildford Surrey | River Fox Events",
+    description:
+      "Guildford party stylist — bespoke children's parties, milestones and corporate events across Surrey from £460. Every detail personally handled by Laura.",
+    breadcrumbName: "Party Styling Guildford",
+    service: {
+      serviceType: "Event Styling",
+      areaServed: ["Guildford", "Godalming", "Shalford", "Compton", "Merrow", "Surrey"],
+      lowPrice: "460",
+    },
+    priority: 0.7,
+    changefreq: "monthly",
+  },
+  {
+    path: "/party-styling-walton-on-thames",
+    title: "Party Stylist Walton-on-Thames Surrey | River Fox Events",
+    description:
+      "Walton-on-Thames party stylist — bespoke children's parties, milestones and corporate events from £460. Every detail personally handled by Laura.",
+    breadcrumbName: "Party Styling Walton-on-Thames",
+    service: {
+      serviceType: "Event Styling",
+      areaServed: ["Walton-on-Thames", "Hersham", "Oatlands", "Sunbury", "Shepperton", "Surrey"],
+      lowPrice: "460",
+    },
+    priority: 0.7,
+    changefreq: "monthly",
+  },
+  {
+    path: "/party-styling-dorking",
+    title: "Party Stylist Dorking Surrey | River Fox Events",
+    description:
+      "Dorking party stylist — bespoke children's parties, milestones and corporate events across the Surrey Hills from £460. Personally handled by Laura.",
+    breadcrumbName: "Party Styling Dorking",
+    service: {
+      serviceType: "Event Styling",
+      areaServed: ["Dorking", "Westcott", "Brockham", "Mickleham", "Wotton", "Surrey"],
+      lowPrice: "460",
+    },
+    priority: 0.7,
+    changefreq: "monthly",
+  },
 ];
 
 export const findRoute = (path: string): RouteSEO | undefined =>
