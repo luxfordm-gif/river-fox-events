@@ -23,7 +23,7 @@ const ArticleTLDR = ({ children }: Props) => (
     >
       <div
         className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase mb-3"
-        style={{ color: "hsl(var(--accent-warm))", fontWeight: 600 }}
+        style={{ color: "hsl(var(--ink))", fontWeight: 600 }}
       >
         In short
       </div>
