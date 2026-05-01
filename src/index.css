@@ -802,7 +802,7 @@
   .article-prose > * + * { margin-top: 1.4em; }
   .article-prose h2 {
     font-family: var(--font-serif);
-    font-weight: 400;
+    font-weight: 500;
     font-size: clamp(26px, 2.4vw, 34px);
     line-height: 1.18;
     letter-spacing: -0.012em;
@@ -810,6 +810,12 @@
     margin-bottom: 0.4em;
     text-wrap: balance;
   }
+  /* Tighten the gap between an h2 and the paragraph that follows it.
+     The base `> * + *` rule sets 1.4em (~25px @ 18px); margin-collapse
+     means that paragraph margin-top wins over h2's margin-bottom. Force
+     the post-h2 sibling to a fixed 17px (~8px tighter on both mobile
+     and desktop). */
+  .article-prose h2 + * { margin-top: 17px; }
   .article-prose h3 {
     font-family: var(--font-serif);
     font-weight: 500;

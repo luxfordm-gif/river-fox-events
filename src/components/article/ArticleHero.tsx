@@ -44,9 +44,9 @@ const ArticleHero = ({
       <h1
         className="font-serif-rf max-w-[20ch] mx-auto mt-7 md:mt-9"
         style={{
-          fontSize: "clamp(36px, 5vw, 72px)",
-          lineHeight: 1.06,
-          fontWeight: 400,
+          fontSize: "clamp(44px, 5.5vw, 80px)",
+          lineHeight: 1.04,
+          fontWeight: 500,
           letterSpacing: "-0.025em",
           textWrap: "balance",
         }}
