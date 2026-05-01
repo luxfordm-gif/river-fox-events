@@ -231,13 +231,13 @@ const CorporateAndBrand = () => {
           sub="Design-led event styling for launches, openings, office celebrations and brand activations — installations that elevate your brand. Trusted by leading brands."
         />
 
-        {/* No background modifier on the section — the page-default
-            cream sits behind the boxed logo grid. paddingTop tightened
-            from 96 → 40 so the grid sits closer to the hero above. */}
+        {/* `white` modifier puts this section on surface-alt — the
+            site's near-white cream — instead of the warmer page
+            default. paddingTop tightened so the grid hugs the hero. */}
         <section
           id="cb-trust"
           aria-labelledby="cb-trust-heading"
-          className="rfx-section"
+          className="rfx-section white"
           style={{ paddingTop: "40px", paddingBottom: "96px" }}
         >
           <div className="container-rfx text-center">
