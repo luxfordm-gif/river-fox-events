@@ -134,7 +134,29 @@ const LocationPage = () => {
           <HeroEditorial />
         </section>
 
-        {/* 50/50 image + copy — first content section under the hero. */}
+        {/* Three-services cross-link block — sits first under the hero so
+            visitors immediately see the service options for this town and
+            can click through to the dedicated service pages. */}
+        <Experiences
+          sectionId={`loc-${loc.slug}-services`}
+          heading={
+            <>
+              Children's parties, milestones &amp; corporate events in{" "}
+              <em className="italic font-light text-accent-warm">
+                {loc.cityName}.
+              </em>
+            </>
+          }
+          intro={
+            <>
+              Three considered services, each fully bespoke. Whatever the
+              occasion in {loc.cityName} — a child's birthday, a 40th, a brand
+              launch — Laura designs and delivers it personally.
+            </>
+          }
+        />
+
+        {/* 50/50 image + copy */}
         <CPReveal
           id="loc-what-we-do"
           imageSide={loc.whatWeDo.imageSide}
@@ -165,25 +187,6 @@ const LocationPage = () => {
           mainImage={loc.gallery.mainImage}
           mainImageAlt={loc.gallery.mainImageAlt}
           images={loc.gallery.images}
-        />
-
-        <Experiences
-          sectionId={`loc-${loc.slug}-services`}
-          heading={
-            <>
-              Children's parties, milestones &amp; corporate events in{" "}
-              <em className="italic font-light text-accent-warm">
-                {loc.cityName}.
-              </em>
-            </>
-          }
-          intro={
-            <>
-              Three considered services, each fully bespoke. Whatever the
-              occasion in {loc.cityName} — a child's birthday, a 40th, a brand
-              launch — Laura designs and delivers it personally.
-            </>
-          }
         />
 
         <div id="how-it-works">

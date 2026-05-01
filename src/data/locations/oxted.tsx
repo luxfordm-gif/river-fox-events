@@ -5,7 +5,6 @@ import imgGalleryMain from "@/assets/dinosaur-themed-birthday-party-surrey.webp"
 import imgGallery1 from "@/assets/christening-blessing-styling-surrey.webp";
 import imgGallery2 from "@/assets/corporate-gala-styling-surrey.webp";
 import imgGallery3 from "@/assets/cp-included.webp";
-import imgGallery4 from "@/assets/hero-2.webp";
 
 const oxted: LocationConfig = {
   slug: "oxted",
@@ -107,10 +106,6 @@ const oxted: LocationConfig = {
       {
         src: imgGallery3,
         alt: "Children's party styling in Surrey by River Fox Events — fully styled cake table with personalised signage",
-      },
-      {
-        src: imgGallery4,
-        alt: "Bespoke celebration styling in Surrey by River Fox Events — sculptural balloon installation and dressed party space",
       },
     ],
   },
