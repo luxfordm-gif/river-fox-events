@@ -250,6 +250,16 @@ export const ROUTES: RouteSEO[] = [
     changefreq: "weekly",
   },
   {
+    path: "/journal/from-design-to-delivery",
+    title:
+      "From Design to Delivery: Behind a Surrey Children's Party | River Fox Events",
+    description:
+      "Behind the scenes of a Surrey children's party — from concept render to finished install. Laura on how design, sourcing and delivery come together at River Fox Events.",
+    ogImage: "/og/from-design-to-delivery.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+  },
+  {
     path: "/journal/beyond-the-balloon-arch",
     title:
       "Beyond the Balloon Arch: 2026 Surrey Event Styling Trends | River Fox Events",

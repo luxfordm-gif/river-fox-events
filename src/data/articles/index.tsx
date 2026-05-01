@@ -1,9 +1,11 @@
 import type { Article, ArticleSummary } from "./types";
 import LollipopRebrandBody from "./lollipop-balloons-to-river-fox-events";
 import BeyondTheBalloonArchBody from "./beyond-the-balloon-arch";
+import FromDesignToDeliveryBody from "./from-design-to-delivery";
 
 import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
 import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
+import designToDeliveryCard from "@/assets/journal/from-design-to-delivery/dinosaur-party-styling-surrey-finished.webp";
 
 /**
  * Master list of articles. Order = newest first.
@@ -18,6 +20,23 @@ import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.we
  */
 export const ARTICLES: Article[] = [
   {
+    slug: "from-design-to-delivery",
+    title: "From design to delivery",
+    subtitle:
+      "How a dinosaur-themed celebration in Surrey moved from a hand-drawn render to a finished room.",
+    teaser:
+      "Every setup begins long before the day itself. Walking through Ayaan's dinosaur celebration — render, sourcing, install — to show how the sketch becomes the room.",
+    metaDescription:
+      "Behind the scenes of a Surrey children's party — from concept render to finished install. Laura on how design, sourcing and delivery come together at River Fox Events.",
+    publishedAt: "2026-05-01",
+    readMinutes: 6,
+    relatedSlugs: ["beyond-the-balloon-arch", "lollipop-balloons-to-river-fox-events"],
+    cardImage: designToDeliveryCard,
+    ogImage: "/og/from-design-to-delivery.webp",
+    category: "Behind the scenes",
+    Body: FromDesignToDeliveryBody,
+  },
+  {
     slug: "beyond-the-balloon-arch",
     title: "Beyond the balloon arch",
     subtitle:
@@ -28,7 +47,7 @@ export const ARTICLES: Article[] = [
       "The balloon arch is no longer the headline. A note from Laura on layered tablescapes, ceiling drapery and the 2026 trends shaping Surrey celebrations.",
     publishedAt: "2026-05-01",
     readMinutes: 5,
-    relatedSlugs: ["lollipop-balloons-to-river-fox-events"],
+    relatedSlugs: ["from-design-to-delivery", "lollipop-balloons-to-river-fox-events"],
     cardImage: beyondTheArchCard,
     ogImage: "/og/beyond-the-balloon-arch.webp",
     category: "Trends",
