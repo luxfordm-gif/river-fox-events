@@ -9,6 +9,8 @@ import CPLocations from "@/components/rfx/CPLocations";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import Experiences from "@/components/rfx/Experiences";
 import LocationGallery from "@/components/rfx/LocationGallery";
+import ScrollStrip from "@/components/rfx/ScrollStrip";
+import HeroEditorial from "@/components/rfx/HeroEditorial";
 import NotFound from "./NotFound";
 import { findLocation } from "@/data/locations";
 import type { LocationConfig } from "@/data/locations/types";
@@ -79,48 +81,52 @@ const LocationPage = () => {
     <div className="min-h-screen bg-background text-foreground rfx-tight-mobile nav-solid">
       <Nav />
       <main>
-        {/* Flat coloured-bg hero — signals "child page" with a calm peach
-            surface instead of the full-bleed image used on top-level
-            service pages. h1 + italic sub copy, centred. */}
+        {/* Homepage-style hero: centred copy + CTA, then mobile scroll
+            strip and desktop editorial 3-image grid below. Same shape as
+            <Hero /> on the homepage so location pages feel of-a-piece. */}
         <section
           id="top"
-          className="text-center"
-          style={{
-            background: "hsl(var(--surface-warm))",
-            paddingTop: "clamp(96px, 13vh, 160px)",
-            paddingBottom: "clamp(72px, 11vh, 128px)",
-          }}
+          className="rfx-hero pt-[96px] md:pt-[124px] pb-4 md:pb-6"
           aria-labelledby={`loc-${loc.slug}-hero-heading`}
         >
           <div className="container-rfx">
-            <h1
-              id={`loc-${loc.slug}-hero-heading`}
-              className="font-serif-rf max-w-[18ch] mx-auto"
-              style={{
-                fontSize: "clamp(44px, 5.5vw, 88px)",
-                lineHeight: 1.02,
-                fontWeight: 500,
-                letterSpacing: "-0.032em",
-                color: "hsl(var(--ink))",
-                textWrap: "balance",
-              }}
-            >
-              {loc.hero.lines.map((line, i) => (
-                <span key={i}>
-                  {line}
-                  {i < loc.hero.lines.length - 1 && <br />}
-                </span>
-              ))}
-            </h1>
-            {loc.hero.sub && (
-              <p
-                className="mt-7 md:mt-9 max-w-[46ch] mx-auto text-[18px] md:text-[20px] leading-[1.5] text-ink-soft font-serif-rf font-light italic"
-                style={{ textWrap: "pretty" }}
+            <div className="mb-10 md:mb-14 flex flex-col items-center text-center">
+              <h1
+                id={`loc-${loc.slug}-hero-heading`}
+                className="font-serif-rf max-w-[14ch] md:max-w-none mx-auto break-words text-pretty"
+                style={{
+                  fontSize: "clamp(56px, 7vw, 120px)",
+                  lineHeight: 1.02,
+                  fontWeight: 400,
+                  letterSpacing: "-0.038em",
+                }}
               >
-                {loc.hero.sub}
-              </p>
-            )}
+                {loc.hero.lines.map((line, i) => (
+                  <span
+                    key={i}
+                    className={`word-reveal in${i > 0 ? ` delay-${i}` : ""}`}
+                  >
+                    <span>{line}</span>
+                    {i < loc.hero.lines.length - 1 && <br />}
+                  </span>
+                ))}
+              </h1>
+              {loc.hero.sub && (
+                <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-1 md:mt-10 fade-up in text-center">
+                  {loc.hero.sub}
+                </p>
+              )}
+              <div className="flex items-center justify-center gap-5 flex-wrap mt-10 fade-up in">
+                <a href="#enquire" className="btn-solid-rf accent">
+                  Start planning{" "}
+                  <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
+                </a>
+              </div>
+            </div>
           </div>
+
+          <ScrollStrip />
+          <HeroEditorial />
         </section>
 
         {/* 50/50 image + copy — first content section under the hero. */}
