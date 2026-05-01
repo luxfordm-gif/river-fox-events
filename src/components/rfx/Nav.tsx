@@ -113,9 +113,9 @@ const Nav = () => {
         </button>
       </nav>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — scrollable so long menus / short viewports don't clip */}
       <div
-        className={`fixed inset-0 z-[99] bg-background transition-opacity duration-500 md:hidden ${
+        className={`fixed inset-0 z-[99] bg-background overflow-y-auto overscroll-contain transition-opacity duration-500 md:hidden ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
