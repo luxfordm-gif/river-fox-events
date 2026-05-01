@@ -20,13 +20,17 @@ const ArticleImage = ({ src, alt, caption, width = 1120 }: Props) => {
       className="mx-auto px-6 md:px-12 my-12 md:my-16"
       style={{ maxWidth: cap }}
     >
-      <img
-        src={src}
-        alt={alt}
-        className="w-full h-auto rounded-[12px]"
-        loading="lazy"
-        decoding="async"
-      />
+      {/* 16:9 frame — `object-cover` crops portrait sources to landscape.
+          Once we have native 16:9 photography this becomes a no-op. */}
+      <div className="aspect-video overflow-hidden rounded-[12px]">
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
       {caption && (
         <figcaption className="mt-4 text-center text-[13px] italic text-ink-soft max-w-[640px] mx-auto">
           {caption}

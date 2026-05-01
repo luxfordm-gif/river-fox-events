@@ -35,8 +35,8 @@ const ArticleHero = ({
     <header className="container-rfx pt-24 md:pt-32 pb-10 md:pb-12 text-center">
       <a
         href="/journal/"
-        className="inline-block font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft hover:text-ink transition-colors"
-        style={{ fontWeight: 600 }}
+        className="inline-block font-mono-rf text-[10.5px] tracking-[0.28em] uppercase transition-colors"
+        style={{ color: "hsl(var(--accent-warm))", fontWeight: 600 }}
       >
         Journal
       </a>
@@ -68,9 +68,17 @@ const ArticleHero = ({
       </div>
 
       <div className="mt-7 md:mt-9 flex items-center gap-5 max-w-[460px] mx-auto px-2">
-        <span className="h-px flex-1 bg-ink/15" aria-hidden="true" />
+        <span
+          className="h-px flex-1"
+          aria-hidden="true"
+          style={{ background: "hsl(var(--accent-warm) / 0.45)" }}
+        />
         <ArticleShareLinks url={url} title={title} />
-        <span className="h-px flex-1 bg-ink/15" aria-hidden="true" />
+        <span
+          className="h-px flex-1"
+          aria-hidden="true"
+          style={{ background: "hsl(var(--accent-warm) / 0.45)" }}
+        />
       </div>
     </header>
   );

@@ -28,7 +28,7 @@ import imgStudio from "@/assets/studio.webp";
 const LollipopRebrandArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-2">
+      <ul className="list-disc pl-5 space-y-1">
         <li>
           <strong>Lollipop Balloons</strong> is now{" "}
           <strong>River Fox Events</strong>.
