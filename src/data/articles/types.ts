@@ -26,6 +26,15 @@ export type ArticleSummary = {
   /** Path (under /public or imported) to a 1200×630 share image. Falls
    *  back to /social-share.jpg if not provided. */
   ogImage?: string;
+  /** Imported asset used as the card image on the journal index. Aspect
+   *  ratio doesn't need to match — the card crops to 4:3. */
+  cardImage?: string;
+  /** CSS object-position for the card image, e.g. "center 55%". Used to
+   *  keep an off-centre subject (a logo, a face) visible after the crop. */
+  cardImagePosition?: string;
+  /** Optional category label shown above the card title and reused as a
+   *  filter group later. Keep short, e.g. "Trends", "Behind the scenes". */
+  category?: string;
   /** Slugs of related articles to surface at the foot of this one. */
   relatedSlugs?: string[];
 };

@@ -32,7 +32,7 @@ const ArticleHero = ({
   });
 
   return (
-    <header className="container-rfx pt-24 md:pt-32 pb-10 md:pb-12 text-center">
+    <header className="container-rfx pt-6 md:pt-10 pb-10 md:pb-12 text-center">
       <a
         href="/journal/"
         className="inline-block font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink hover:opacity-70 transition-opacity"

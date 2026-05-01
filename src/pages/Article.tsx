@@ -108,6 +108,21 @@ const Article = () => {
       <ReadingProgress />
       <Nav />
       <main>
+        <div className="container-rfx pt-24 md:pt-28 pb-2">
+          <a
+            href="/journal/"
+            className="inline-flex items-center gap-2 font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink-soft hover:text-ink transition-colors group"
+            style={{ fontWeight: 600 }}
+          >
+            <span
+              aria-hidden="true"
+              className="inline-block transition-transform group-hover:-translate-x-0.5"
+            >
+              ←
+            </span>
+            Back to journal
+          </a>
+        </div>
         <ArticleHero
           title={article.title}
           subtitle={article.subtitle}

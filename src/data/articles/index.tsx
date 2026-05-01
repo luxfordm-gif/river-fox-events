@@ -1,5 +1,9 @@
 import type { Article, ArticleSummary } from "./types";
 import LollipopRebrandBody from "./lollipop-balloons-to-river-fox-events";
+import BeyondTheBalloonArchBody from "./beyond-the-balloon-arch";
+
+import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
+import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
 
 /**
  * Master list of articles. Order = newest first.
@@ -14,6 +18,22 @@ import LollipopRebrandBody from "./lollipop-balloons-to-river-fox-events";
  */
 export const ARTICLES: Article[] = [
   {
+    slug: "beyond-the-balloon-arch",
+    title: "Beyond the balloon arch",
+    subtitle:
+      "Why Surrey celebrations are trading entrance installations for layered tablescapes in 2026.",
+    teaser:
+      "The balloon arch ruled the entrance for a decade. In 2026, the same budget is moving onto the table — a note from Laura on what's changing and why.",
+    metaDescription:
+      "The balloon arch is no longer the headline. A note from Laura on layered tablescapes, ceiling drapery and the 2026 trends shaping Surrey celebrations.",
+    publishedAt: "2026-05-01",
+    readMinutes: 5,
+    relatedSlugs: ["lollipop-balloons-to-river-fox-events"],
+    cardImage: beyondTheArchCard,
+    category: "Trends",
+    Body: BeyondTheBalloonArchBody,
+  },
+  {
     slug: "lollipop-balloons-to-river-fox-events",
     title: "Lollipop Balloons is now River Fox Events",
     subtitle:
@@ -24,7 +44,10 @@ export const ARTICLES: Article[] = [
       "Lollipop Balloons is now River Fox Events. Same designer (Laura), same Surrey studio, new name reflecting children's parties, milestones and corporate event styling.",
     publishedAt: "2026-05-01",
     readMinutes: 3,
-    relatedSlugs: [],
+    relatedSlugs: ["beyond-the-balloon-arch"],
+    cardImage: lollipopCard,
+    cardImagePosition: "center 60%",
+    category: "Studio news",
     Body: LollipopRebrandBody,
   },
 ];

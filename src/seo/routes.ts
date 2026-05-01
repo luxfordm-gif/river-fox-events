@@ -241,6 +241,23 @@ export const ROUTES: RouteSEO[] = [
     changefreq: "monthly",
   },
   {
+    path: "/journal",
+    title: "Journal | River Fox Events",
+    description:
+      "Notes from the studio — event styling trends, behind-the-scenes from Surrey celebrations, and the thinking behind the rooms we style.",
+    priority: 0.7,
+    changefreq: "weekly",
+  },
+  {
+    path: "/journal/beyond-the-balloon-arch",
+    title:
+      "Beyond the Balloon Arch: 2026 Surrey Event Styling Trends | River Fox Events",
+    description:
+      "The balloon arch is no longer the headline. A note from Laura on layered tablescapes, ceiling drapery and the 2026 trends shaping Surrey celebrations.",
+    priority: 0.6,
+    changefreq: "monthly",
+  },
+  {
     path: "/journal/lollipop-balloons-to-river-fox-events",
     title:
       "Lollipop Balloons is now River Fox Events | River Fox Events",

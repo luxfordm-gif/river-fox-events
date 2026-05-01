@@ -11,6 +11,7 @@ import Milestones from "./pages/Milestones.tsx";
 import CorporateAndBrand from "./pages/CorporateAndBrand.tsx";
 import LocationPage from "./pages/LocationPage.tsx";
 import Article from "./pages/Article.tsx";
+import Journal from "./pages/Journal.tsx";
 import Welcome from "./pages/Welcome.tsx";
 import { LOCATIONS } from "./data/locations";
 import { ARTICLES } from "./data/articles";
@@ -36,6 +37,7 @@ const AppShell = () => {
             element={<LocationPage />}
           />
         ))}
+        <Route path="/journal" element={<Journal />} />
         {ARTICLES.map((a) => (
           <Route
             key={a.slug}
