@@ -4,11 +4,13 @@ import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
 import Enquire from "@/components/rfx/Enquire";
-import CPReveal from "@/components/rfx/CPReveal";
 import CPLocations from "@/components/rfx/CPLocations";
+import CPPricing from "@/components/rfx/CPPricing";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import ServicesCards from "@/components/rfx/ServicesCards";
 import LocationGallery from "@/components/rfx/LocationGallery";
+import LocationUSP from "@/components/rfx/LocationUSP";
+import LocationTrust from "@/components/rfx/LocationTrust";
 import ScrollStrip from "@/components/rfx/ScrollStrip";
 import LocationHeroFan from "@/components/rfx/LocationHeroFan";
 import NotFound from "./NotFound";
@@ -19,6 +21,7 @@ import { findRoute } from "@/seo/routes";
 import {
   applyMeta,
   breadcrumbSchema,
+  faqPageSchema,
   removeJsonLd,
   routeServiceSchema,
   serviceSchema,
@@ -51,9 +54,14 @@ const useLocationSEO = (loc: LocationConfig) => {
     const breadcrumbs = route ? breadcrumbSchema(path) : null;
     if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
 
+    const faqId = `rfx-jsonld-faq-party-styling-${loc.slug}`;
+    const faqs = faqPageSchema(loc.faqs);
+    if (faqs) upsertJsonLd(faqId, faqs);
+
     return () => {
       removeJsonLd(serviceId);
       removeJsonLd(breadcrumbId);
+      removeJsonLd(faqId);
     };
   }, [loc]);
 };
@@ -149,51 +157,22 @@ const LocationPage = () => {
           <LocationHeroFan />
         </section>
 
-        {/* Two 50/50 storytelling reveals first — let the page breathe
-            before the cross-link to the dedicated service pages. */}
-        <CPReveal
-          id="loc-what-we-do"
-          imageSide={loc.whatWeDo.imageSide}
-          image={loc.whatWeDo.image}
-          alt={loc.whatWeDo.imageAlt}
-          tone={loc.whatWeDo.tone}
-          headline={loc.whatWeDo.headline}
-        >
-          {loc.whatWeDo.body}
-        </CPReveal>
-
-        <CPReveal
-          id="loc-occasions"
-          imageSide={loc.occasions.imageSide}
-          image={loc.occasions.image}
-          alt={loc.occasions.imageAlt}
-          tone={loc.occasions.tone}
-          headline={loc.occasions.headline}
-        >
-          {loc.occasions.body}
-        </CPReveal>
-
-        {/* Stripped-back services cross-link — minimal cards instead of
-            the full Experiences photography block, so it doesn't read as
-            a duplicate of the homepage. */}
+        {/* Services moved up — visitors should know what we offer
+            before they read prose. Three cards link to the dedicated
+            service pages. */}
         <ServicesCards
           sectionId={`loc-${loc.slug}-services`}
           heading={
             <>
-              Children's parties, milestones &amp; corporate events in{" "}
+              Three considered services, designed for celebrations in{" "}
               <em className="italic font-light text-accent-warm">
-                {loc.cityName}.
+                {loc.cityName} and across {loc.region}.
               </em>
             </>
           }
-          intro={
-            <>
-              Three considered services, each fully bespoke. Whatever the
-              occasion in {loc.cityName} — a child's birthday, a 40th, a brand
-              launch — Laura designs and delivers it personally.
-            </>
-          }
         />
+
+        <LocationUSP />
 
         <LocationGallery
           id="loc-gallery"
@@ -209,12 +188,23 @@ const LocationPage = () => {
           <Process />
         </div>
 
+        <CPPricing
+          tiers={loc.pricing.tiers}
+          heading={loc.pricing.heading}
+          ctaLabel="Start planning"
+          footnote={loc.pricing.footnote}
+        />
+
+        <LocationTrust />
+
         <ChildrensFAQ
           faqs={loc.faqs}
           headingId={`loc-${loc.slug}-faq-heading`}
           defaultOpen={false}
           paddingBottom="64px"
         />
+
+        <Enquire venuePlaceholder={`e.g. at home in ${loc.cityName}`} />
 
         <CPLocations
           eyebrow={loc.nearby.eyebrow}
@@ -225,8 +215,6 @@ const LocationPage = () => {
           mapTitle={loc.nearby.mapTitle}
           currentSlug={loc.slug}
         />
-
-        <Enquire />
       </main>
       <Footer />
     </div>

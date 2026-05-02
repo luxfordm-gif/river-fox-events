@@ -9,9 +9,13 @@ const CHECKLIST = [
 
 type EnquireProps = {
   defaultEventType?: "Children's party" | "Milestone celebration" | "Corporate event" | "Other";
+  venuePlaceholder?: string;
 };
 
-const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) => {
+const Enquire = ({
+  defaultEventType = "Children's party",
+  venuePlaceholder = "e.g. at home in Cobham",
+}: EnquireProps = {}) => {
   const [submitting, setSubmitting] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -164,7 +168,7 @@ const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) =
               </label>
               <label className="form-row full">
                 <span className="lbl">Venue / location</span>
-                <input type="text" name="venue" placeholder="e.g. at home in Cobham" />
+                <input type="text" name="venue" placeholder={venuePlaceholder} />
               </label>
               <label className="form-row full">
                 <span className="lbl">Approximate budget</span>

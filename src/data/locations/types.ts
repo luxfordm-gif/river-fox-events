@@ -20,6 +20,7 @@ export type LocationFAQ = { q: string; a: string };
 export type LocationConfig = {
   slug: string;
   cityName: string;
+  region: string;
   seoTitle: string;
   seoDescription: string;
   hero: {

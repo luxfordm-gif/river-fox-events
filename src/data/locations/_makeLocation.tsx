@@ -101,6 +101,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
   return {
     slug,
     cityName,
+    region,
     seoTitle:
       uniqueSeoTitle ??
       `Party Stylist ${cityName} ${
@@ -280,7 +281,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
         },
       ],
       footnote:
-        "Every event is individually quoted following a short discovery call. Get in touch with your vision and we'll come back to you personally.",
+        "All pricing is indicative — every proposal is bespoke.",
     },
     faqs: [
       {

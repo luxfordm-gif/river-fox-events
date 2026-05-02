@@ -4,6 +4,10 @@ const oxted = makeLocation({
   slug: "oxted",
   cityName: "Oxted",
   region: "East Surrey",
+  uniqueSeoTitle:
+    "Oxted Party Stylist | Luxury Event Styling in East Surrey | River Fox Events",
+  uniqueSeoDescription:
+    "Luxury party styling in Oxted and across East Surrey. Bespoke children's parties, milestones and corporate events — personally designed and installed by Laura.",
   nearbyVillages: [
     "Limpsfield",
     "Hurst Green",
@@ -61,15 +65,15 @@ const oxted = makeLocation({
     </>
   ),
   uniquePresenceAnswer:
-    "Yes — Oxted, Limpsfield, Hurst Green, Tandridge, Godstone and Caterham are part of our regular East Surrey coverage. We cover the High Street, Master Park, the residential roads off Bluehouse Lane, Limpsfield Chart, and out into Tandridge, Woldingham and the Westerham edge. Venue work includes Titsey Place and the Master Park pavilion. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
+    "Yes — Oxted is part of our regular East Surrey coverage, along with Limpsfield, Hurst Green, Tandridge, Godstone and the surrounding villages. Whether your celebration is at home, at Titsey Place or somewhere else in the area, mention the venue or postcode in your enquiry and we'll come back with a proposal designed for your space.",
   uniqueExtraFaqs: [
     {
-      q: "Do you cover events at Titsey Place?",
-      a: "Yes — Titsey Place sits firmly within our Oxted patch and is one of the country-house venues we know best. The mansion rooms, the formal gardens and the marquee lawn each take a styling installation differently. Tell us which space you've booked and the date when you enquire and we'll come back with a styling proposal that respects the period architecture.",
+      q: "Do you style events at Titsey Place?",
+      a: "Yes — Titsey Place is one of the country-house venues we know best. The mansion rooms, the formal gardens and the marquee lawn each take a styling installation differently. Tell us which space you've booked and the date when you enquire and we'll come back with a tailored proposal.",
     },
     {
-      q: "Are at-home celebrations across Oxted and Limpsfield within your area?",
-      a: "Yes — most Oxted celebrations happen at home, and that's the bulk of what we do across the area. We're set up to install discreetly across drawing rooms, kitchens and gardens within a single property, and to break down on the night so the house is back to itself by morning.",
+      q: "Do you cover at-home celebrations in Oxted and the surrounding villages?",
+      a: "Yes — at-home celebrations are the bulk of our work across the area. We install discreetly across drawing rooms, kitchens and gardens within a single property, and break down on the night so the house is back to itself by morning.",
     },
   ],
 });
