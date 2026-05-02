@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { toast } from "sonner";
+import { MessageCircle } from "lucide-react";
+
+const WHATSAPP_HREF =
+  "https://wa.me/447872114191?text=Hi%20Laura%2C%20I%27m%20enquiring%20about%20River%20Fox%20Events";
 
 const CHECKLIST = [
   "Events from £460",
@@ -69,6 +73,35 @@ const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) =
               Share your vision and I'll respond personally within 48 hours —
               not a template, a proper bespoke proposal.
             </p>
+
+            <div
+              className="mt-5 flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 max-w-[460px] mx-auto lg:mx-0 text-[14px]"
+              style={{ color: "hsl(var(--on-deep))" }}
+            >
+              <a
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Message Laura on WhatsApp"
+                className="inline-flex items-center gap-2 hover:opacity-100 opacity-90"
+              >
+                <MessageCircle
+                  className="w-4 h-4"
+                  style={{ color: "hsl(var(--accent-warm))" }}
+                  aria-hidden="true"
+                />
+                WhatsApp Laura
+              </a>
+              <span aria-hidden="true" style={{ color: "hsl(var(--on-deep-soft))" }}>
+                ·
+              </span>
+              <a
+                href="mailto:Riverfoxevents@gmail.com"
+                className="hover:opacity-100 opacity-90"
+              >
+                Email instead
+              </a>
+            </div>
 
             <ul className="mt-7 max-w-[460px] w-full space-y-1.5 mx-auto lg:mx-0">
               {CHECKLIST.map((c) => (
