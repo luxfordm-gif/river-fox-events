@@ -135,6 +135,14 @@
     section.rfx-hero { padding-bottom: 72px; }
   }
 
+  /* Tall + wide viewports were leaving the hero CTA floating too far
+     above the editorial image row. Trim 28px back at min-height 900px
+     so the button sits closer to the imagery on big monitors; shorter
+     viewports keep the standard breathing room. */
+  @media (min-width: 1440px) and (min-height: 900px) {
+    section.rfx-hero { padding-bottom: 44px; }
+  }
+
   .font-serif-rf {
     font-family: var(--font-serif);
     font-weight: 300;

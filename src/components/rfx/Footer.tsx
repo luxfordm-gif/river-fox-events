@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Instagram, MessageCircle } from "lucide-react";
+import { ChevronDown, Instagram } from "lucide-react";
 import { useScrollY } from "@/hooks/useRiverFox";
 import { LOCATIONS } from "@/data/locations";
 
-const FOOTER_LOCATIONS_VISIBLE = 7;
+const FOOTER_LOCATIONS_VISIBLE = 5;
 
 const Footer = () => {
   const y = useScrollY();
@@ -205,9 +205,8 @@ const Footer = () => {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Message Laura on WhatsApp"
-                  className="hover:opacity-100 opacity-85 inline-flex items-center gap-1.5"
+                  className="hover:opacity-100 opacity-85 block"
                 >
-                  <MessageCircle className="w-3.5 h-3.5" aria-hidden="true" />
                   WhatsApp Laura
                 </a>
                 <a href="tel:+447872114191" className="hover:opacity-100 opacity-85 block">

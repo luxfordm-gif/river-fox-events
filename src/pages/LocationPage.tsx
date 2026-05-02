@@ -164,9 +164,9 @@ const LocationPage = () => {
           sectionId={`loc-${loc.slug}-services`}
           heading={
             <>
-              Three considered services, designed for celebrations in{" "}
+              Three services, fully bespoke.{" "}
               <em className="italic font-light text-accent-warm">
-                {loc.cityName} and across {loc.region}.
+                In {loc.cityName} and {loc.region}.
               </em>
             </>
           }
