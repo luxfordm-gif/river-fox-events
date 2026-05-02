@@ -185,7 +185,7 @@ const Nav = () => {
           <p className="text-sm text-ink-soft mt-6 leading-relaxed">
             Riverfoxevents@gmail.com
             <br />
-            Based in Surrey · Replied within 48 hours.
+            Based in Surrey · By appointment.
           </p>
         </div>
       </div>

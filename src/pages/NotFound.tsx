@@ -58,7 +58,7 @@ const NotFound = () => {
             style={{ textWrap: "pretty" }}
           >
             It may have moved, or perhaps it never existed. Head back home, or
-            send us a note about your event — we reply personally within 48 hours.
+            send us a note about your event — we reply personally.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a href="/" className="btn-solid-rf">

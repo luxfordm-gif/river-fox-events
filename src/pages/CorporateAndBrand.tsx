@@ -401,7 +401,7 @@ const CorporateAndBrand = () => {
             </>
           }
           ctaLabel="Share your brief"
-          footnote="All projects are individually quoted. Share your brief and we'll respond with a tailored proposal within 48 hours."
+          footnote="All projects are individually quoted. Share your brief and we'll respond with a tailored proposal."
         />
 
         <div id="how-it-works">

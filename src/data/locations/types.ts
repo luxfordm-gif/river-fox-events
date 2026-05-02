@@ -20,6 +20,7 @@ export type LocationFAQ = { q: string; a: string };
 export type LocationConfig = {
   slug: string;
   cityName: string;
+  region: string;
   seoTitle: string;
   seoDescription: string;
   hero: {
@@ -48,6 +49,15 @@ export type LocationConfig = {
     heading: ReactNode;
     tiers: PricingTier[];
     footnote: string;
+  };
+  /** Optional bespoke local-prose section between gallery and "How it
+   *  works". Three short paragraphs of locally-specific copy used for
+   *  SEO weight and to convince a reader that we genuinely know the
+   *  area. Must be rewritten per location — never templated. */
+  localProse?: {
+    eyebrow: string;
+    heading: ReactNode;
+    body: ReactNode;
   };
   faqs: LocationFAQ[];
   nearby: {

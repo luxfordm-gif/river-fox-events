@@ -56,16 +56,21 @@ const LocationHeroFan = () => {
       // Removed `overflow-hidden` so the deep drop shadows on the cards
       // can extend past the section edges without being clipped. Padding
       // around the canvas gives the shadows room to breathe.
-      className="hidden md:block relative bg-transparent py-6 md:py-10"
+      className="hidden md:block relative bg-transparent py-3 md:py-5"
     >
       <div
         className="relative mx-auto"
         style={{
           maxWidth: "1100px",
-          // Locks the section height so absolute-positioned images have
-          // a consistent canvas. Centre card is taller (15% larger) so
-          // the canvas needs to fit it from bottom anchor up.
-          height: "clamp(480px, 68vh, 660px)",
+          // Aspect-ratio so the canvas hugs the imagery instead of
+          // chasing viewport height. The fixed-height clamp left a big
+          // empty band above the images on tall monitors and pushed the
+          // images up against the CTA on short browser windows. With
+          // an aspect-ratio capped at maxHeight, the canvas tracks
+          // container width up to ~1100px and tops out at 580px so the
+          // centre card always fits.
+          aspectRatio: "1100 / 580",
+          maxHeight: "580px",
         }}
       >
         {/* Left back — tilts and slides left */}

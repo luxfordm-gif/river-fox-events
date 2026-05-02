@@ -69,6 +69,44 @@ const weybridge = makeLocation({
   ),
   uniquePresenceAnswer:
     "Yes — Weybridge and the surrounding area sit firmly within our coverage. We cover St George's Hill, Oatlands Park, riverside Walton, Hersham and Whiteley Village, plus venue work at Brooklands Museum, the Heritage Centre and Mercedes-Benz World. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
+  uniqueLocalProse: {
+    eyebrow: "STYLING IN WEYBRIDGE",
+    heading: (
+      <>
+        Three lanes{" "}
+        <em className="italic font-light text-accent-warm">of work.</em>
+      </>
+    ),
+    body: (
+      <>
+        <p>
+          Weybridge celebrations tend to fall into three groups. There
+          are the private at-home events on St George's Hill and across
+          Oatlands Park, where properties have the space to host across
+          drawing rooms, gardens and marquees. There's the riverside
+          work along the Thames. And there's the venue side — Brooklands
+          Museum, the Heritage Centre and Mercedes-Benz World — each
+          with their own logistics and brand cues.
+        </p>
+        <p>
+          The town is a comfortable drive from the studio via the A3 and
+          the A317, which keeps install and breakdown windows realistic.
+          Same-morning installs, late-night clears once the last guest
+          has left, and the kind of small on-the-day adjustments — an
+          extra balloon column, a tablescape tweak — that aren't workable
+          from a stylist further afield. The same applies across
+          Walton-on-Thames, Hersham and Whiteley Village.
+        </p>
+        <p>
+          Most enquiries arrive with a date, a venue and a rough sense
+          of the feel. From there we shape every detail together —
+          palette, installations, signage, tablescape, the install and
+          the clear-down. Laura designs and runs every celebration
+          personally.
+        </p>
+      </>
+    ),
+  },
   uniqueExtraFaqs: [
     {
       q: "Are venues like Brooklands or Mercedes-Benz World within your area?",

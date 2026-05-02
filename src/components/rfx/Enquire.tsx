@@ -3,15 +3,19 @@ import { toast } from "sonner";
 
 const CHECKLIST = [
   "Events from £460",
-  "Response within 48 hours",
+  "Personally read by Laura",
   "Surrey, London & surrounding areas",
 ];
 
 type EnquireProps = {
   defaultEventType?: "Children's party" | "Milestone celebration" | "Corporate event" | "Other";
+  venuePlaceholder?: string;
 };
 
-const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) => {
+const Enquire = ({
+  defaultEventType = "Children's party",
+  venuePlaceholder = "e.g. at home in Cobham",
+}: EnquireProps = {}) => {
   const [submitting, setSubmitting] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -32,7 +36,7 @@ const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) =
         body,
       });
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
-      toast.success("Thank you — Laura will reply personally within 48 hours.");
+      toast.success("Thank you — Laura will be in touch personally.");
       form.reset();
     } catch (err) {
       toast.error("Sorry — something went wrong. Please email Riverfoxevents@gmail.com directly.");
@@ -66,17 +70,15 @@ const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) =
               className="text-[15.5px] leading-[1.7] max-w-[460px] mt-7"
               style={{ color: "hsl(var(--on-deep-soft))" }}
             >
-              Share your vision and I'll respond personally within 48 hours —
-              not a template, a proper bespoke proposal.
+              Share your vision and I'll be in touch personally — not a
+              template, a proper bespoke proposal.
             </p>
 
             <ul className="mt-7 max-w-[460px] w-full space-y-1.5 mx-auto lg:mx-0">
               {CHECKLIST.map((c) => (
                 <li
                   key={c}
-                  className={`flex items-center justify-center lg:justify-start gap-3 text-[14.5px] leading-[1.3] ${
-                    c === "Response within 48 hours" ? "hidden lg:flex" : ""
-                  }`}
+                  className="flex items-center justify-center lg:justify-start gap-3 text-[14.5px] leading-[1.3]"
                   style={{ color: "hsl(var(--on-deep))" }}
                 >
                   <span
@@ -166,7 +168,7 @@ const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) =
               </label>
               <label className="form-row full">
                 <span className="lbl">Venue / location</span>
-                <input type="text" name="venue" placeholder="e.g. at home in Cobham" />
+                <input type="text" name="venue" placeholder={venuePlaceholder} />
               </label>
               <label className="form-row full">
                 <span className="lbl">Approximate budget</span>
@@ -187,10 +189,7 @@ const Enquire = ({ defaultEventType = "Children's party" }: EnquireProps = {}) =
                 />
               </label>
             </div>
-            <div className="flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center mt-6 gap-4 flex-wrap text-center">
-              <span className="font-mono-rf text-[10.5px] tracking-[0.14em] text-ink-soft">
-                Reply within 48 hrs.
-              </span>
+            <div className="flex justify-center lg:justify-end items-center mt-6 gap-4 flex-wrap text-center">
               <button
                 type="submit"
                 disabled={submitting}

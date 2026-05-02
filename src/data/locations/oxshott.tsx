@@ -68,6 +68,43 @@ const oxshott = makeLocation({
   ),
   uniquePresenceAnswer:
     "Yes — Oxshott sits firmly within our Surrey coverage, between Cobham and Esher. We cover Oxshott Heath, the village centre, and the surrounding estate roads — Warren Lane, Sandy Lane, Stoke Road and beyond. Most local celebrations happen at private homes rather than at named venues. Mention your postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
+  uniqueLocalProse: {
+    eyebrow: "STYLING IN OXSHOTT",
+    heading: (
+      <>
+        An at-home{" "}
+        <em className="italic font-light text-accent-warm">town.</em>
+      </>
+    ),
+    body: (
+      <>
+        <p>
+          Oxshott is largely an at-home town. The Crown Estate roads —
+          Warren Lane, Sandy Lane, Stoke Road and the Heath properties
+          — sit on generous plots, which means most local celebrations
+          span multiple zones rather than a single room. A drawing-room
+          or entrance-hall scheme for arrival, a garden marquee for the
+          meal, a kitchen-island bar for the after-dinner. We design
+          across all of it as one piece.
+        </p>
+        <p>
+          Practically, the village is a straightforward drive from us
+          via the A3 and Cobham. That keeps the day comfortable — a
+          single install window in the morning, a late-night breakdown
+          once the last guest has gone, and no need to leave anything
+          overnight. Stoke d'Abernon, Cobham and Esher all fall into
+          the same coverage band.
+        </p>
+        <p>
+          Enquiries usually arrive with a date and a postcode rather
+          than a venue. From the first conversation we walk through the
+          property as a whole — circulation, where guests will land
+          first, where they'll spend the evening — and design the
+          styling around the actual flow of the day.
+        </p>
+      </>
+    ),
+  },
   uniqueExtraFaqs: [
     {
       q: "Do you cover at-home parties in Oxshott?",

@@ -1,4 +1,4 @@
-const QUOTES = [
+export const QUOTES = [
   {
     q: "Everyone commented on how amazing it all looked — it was even better than I had imagined. The whole day felt effortless.",
     a: "Laura",
