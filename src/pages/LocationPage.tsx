@@ -22,7 +22,6 @@ import { findRoute } from "@/seo/routes";
 import {
   applyMeta,
   breadcrumbSchema,
-  faqPageSchema,
   removeJsonLd,
   routeServiceSchema,
   serviceSchema,
@@ -55,14 +54,9 @@ const useLocationSEO = (loc: LocationConfig) => {
     const breadcrumbs = route ? breadcrumbSchema(path) : null;
     if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
 
-    const faqId = `rfx-jsonld-faq-party-styling-${loc.slug}`;
-    const faqs = faqPageSchema(loc.faqs);
-    if (faqs) upsertJsonLd(faqId, faqs);
-
     return () => {
       removeJsonLd(serviceId);
       removeJsonLd(breadcrumbId);
-      removeJsonLd(faqId);
     };
   }, [loc]);
 };
