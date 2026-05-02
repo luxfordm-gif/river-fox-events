@@ -35,17 +35,28 @@ const LocationUSP = () => {
       aria-label="What makes River Fox Events different"
     >
       <div className="container-rfx">
-        <div
-          className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-10 md:mb-12 text-center"
-          style={{ fontWeight: 600 }}
-        >
-          Why River Fox
+        <div className="text-center mb-12 md:mb-16">
+          <h2
+            className="font-serif-rf"
+            style={{
+              fontSize: "clamp(28px, 3vw, 44px)",
+              lineHeight: 1.1,
+              fontWeight: 300,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Why <em className="italic font-light text-accent-warm">River Fox?</em>
+          </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-10 lg:gap-12">
           {USPS.map((u, i) => {
             const Icon = u.icon;
             return (
-              <div key={u.title} className="fade-up" style={{ transitionDelay: `${i * 80}ms` }}>
+              <div
+                key={u.title}
+                className="fade-up flex flex-col items-center text-center"
+                style={{ transitionDelay: `${i * 80}ms` }}
+              >
                 <Icon
                   size={28}
                   strokeWidth={1.25}
@@ -66,7 +77,7 @@ const LocationUSP = () => {
                   {u.title}
                 </h3>
                 <p
-                  className="mt-4 text-[14.5px] leading-[1.65] text-ink-soft"
+                  className="mt-4 text-[14.5px] leading-[1.65] text-ink-soft max-w-[28ch]"
                   style={{ textWrap: "pretty" }}
                 >
                   {u.body}

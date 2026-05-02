@@ -16,8 +16,10 @@ const CLIENT_LOGOS = [
     alt: "P&G",
     width: 600,
     height: 260,
-    // ~48px → 56px tall; widest end gives the stacked mark proper presence
-    sizeClass: "h-12 md:h-[56px]",
+    // P&G is a stacked mark — kept noticeably taller than the wordmarks
+    // but pulled back from the previous 48–56px so it doesn't dominate
+    // the row visually.
+    sizeClass: "h-[34px] md:h-[42px]",
   },
   {
     src: logoTheRange,
@@ -82,11 +84,11 @@ const LocationTrust = () => {
             Recent clients include
           </p>
           <ul
-            className="mt-8 flex flex-wrap items-center justify-center gap-x-14 gap-y-8 md:gap-x-24 list-none p-0 m-0"
+            className="mt-8 grid grid-cols-3 items-center gap-x-6 gap-y-8 md:gap-x-12 list-none p-0 m-0"
             aria-label="Recent clients"
           >
             {CLIENT_LOGOS.map((c) => (
-              <li key={c.alt} className="flex items-center justify-center">
+              <li key={c.alt} className="flex items-center justify-center min-w-0">
                 <img
                   src={c.src}
                   alt={c.alt}

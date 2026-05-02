@@ -68,6 +68,42 @@ const esher = makeLocation({
   ),
   uniquePresenceAnswer:
     "Yes — Esher and the wider area are part of our regular coverage. We cover Esher village, Hinchley Wood, Claygate, Long Ditton and Thames Ditton, plus venue work at Sandown Park and the high-street restaurants. East and West Molesey are also within easy reach. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
+  uniqueLocalProse: {
+    eyebrow: "STYLING IN ESHER",
+    heading: (
+      <>
+        On the ground{" "}
+        <em className="italic font-light text-accent-warm">here.</em>
+      </>
+    ),
+    body: (
+      <>
+        <p>
+          Esher work tends to fall into three lanes. There are the family
+          at-home celebrations across the village, Hinchley Wood and
+          Claygate; the milestone dinners at the high-street restaurants;
+          and the larger hospitality and wedding work at Sandown Park.
+          The residential brief is intimate; Sandown's Eclipse Suite,
+          Surrey Hall and boxes need scale and brand consistency.
+        </p>
+        <p>
+          The A3 and the A309 give us a clean run from the studio, which
+          means we can hold install windows tight, return for a same-night
+          breakdown, and absorb the kind of last-minute layout changes
+          that come up when a venue's space turns out differently to the
+          floor plan. Long Ditton, Thames Ditton, Hersham and the
+          Moleseys sit inside the same coverage band.
+        </p>
+        <p>
+          Clients usually arrive with a Pinterest board, a date and a
+          rough feeling — sometimes a brand deck. The first conversation
+          is short and unhurried. From there we shape the styling:
+          concept, installations, tablescape, signage, full install and
+          breakdown on the day.
+        </p>
+      </>
+    ),
+  },
   uniqueExtraFaqs: [
     {
       q: "Is Sandown Park within your coverage area?",
