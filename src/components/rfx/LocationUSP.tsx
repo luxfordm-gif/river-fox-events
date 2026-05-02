@@ -36,7 +36,7 @@ const LocationUSP = () => {
     >
       <div className="container-rfx">
         <div
-          className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-8"
+          className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-10 md:mb-12 text-center"
           style={{ fontWeight: 600 }}
         >
           Why River Fox

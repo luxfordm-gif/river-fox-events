@@ -69,6 +69,10 @@ type LocationInput = {
   /** Multiple extra Q&As inserted after the standard set. Renders after
    *  uniqueExtraFaq if both are provided. */
   uniqueExtraFaqs?: { q: string; a: string }[];
+  /** Bespoke local-prose section rendered between the gallery and
+   *  "How it works". Must be written per location — three short
+   *  paragraphs referencing real local entities. Never copy-paste. */
+  uniqueLocalProse?: LocationConfig["localProse"];
 };
 
 export function makeLocation(input: LocationInput): LocationConfig {
@@ -93,6 +97,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
     uniqueLeadTimeAnswer,
     uniqueExtraFaq,
     uniqueExtraFaqs,
+    uniqueLocalProse,
   } = input;
 
   const villagesIntro = nearbyVillages.slice(0, 3).join(", ");
@@ -283,6 +288,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       footnote:
         "All pricing is indicative — every proposal is bespoke.",
     },
+    localProse: uniqueLocalProse,
     faqs: [
       {
         q: `Do you style events in ${cityName}?`,

@@ -11,6 +11,7 @@ import ServicesCards from "@/components/rfx/ServicesCards";
 import LocationGallery from "@/components/rfx/LocationGallery";
 import LocationUSP from "@/components/rfx/LocationUSP";
 import LocationTrust from "@/components/rfx/LocationTrust";
+import LocationLocalProse from "@/components/rfx/LocationLocalProse";
 import ScrollStrip from "@/components/rfx/ScrollStrip";
 import LocationHeroFan from "@/components/rfx/LocationHeroFan";
 import NotFound from "./NotFound";
@@ -183,6 +184,15 @@ const LocationPage = () => {
           mainImageAlt={loc.gallery.mainImageAlt}
           images={loc.gallery.images}
         />
+
+        {loc.localProse && (
+          <LocationLocalProse
+            eyebrow={loc.localProse.eyebrow}
+            heading={loc.localProse.heading}
+            body={loc.localProse.body}
+            headingId={`loc-${loc.slug}-local-prose-heading`}
+          />
+        )}
 
         <div id="how-it-works">
           <Process />
