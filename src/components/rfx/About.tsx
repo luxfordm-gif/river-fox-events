@@ -106,7 +106,7 @@ const About = () => {
           <div className="md:sticky md:top-24 fade-up rfx-md-static">
             <div
               ref={studioWrap}
-              className="ph ph-warm overflow-hidden rounded-[22px] relative rfx-about-img"
+              className="ph ph-warm overflow-hidden rounded-[14px] relative rfx-about-img"
               style={{ aspectRatio: "5/6" }}
             >
               {/*

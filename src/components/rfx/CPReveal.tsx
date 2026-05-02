@@ -66,7 +66,7 @@ const CPReveal = ({
     >
       {/* Inner zoom-out reveal: starts small (centred), expands to fill */}
       <div
-        className={`absolute inset-0 ph ${tone} overflow-hidden rounded-[22px]`}
+        className={`absolute inset-0 ph ${tone} overflow-hidden rounded-[14px]`}
         style={{
           transform: visible ? "scale(1)" : "scale(0.92)",
           opacity: visible ? 1 : 0.2,
@@ -122,7 +122,7 @@ const CPReveal = ({
         {headline}
       </h2>
       <div
-        className="mt-3 md:mt-7 text-[16px] leading-[1.7] text-ink-soft max-w-[520px] space-y-5"
+        className="mt-5 md:mt-7 text-[16px] leading-[1.7] text-ink-soft max-w-[520px] space-y-5"
         style={{ textWrap: "pretty" }}
       >
         {children}

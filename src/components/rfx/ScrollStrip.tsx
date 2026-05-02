@@ -135,7 +135,7 @@ const ScrollStrip = () => {
         {STRIP_IMAGES.map((img, i) => (
           <div
             key={i}
-            className="relative flex-none overflow-hidden ph ph-warm rounded-[22px] rfx-rounded-img"
+            className="relative flex-none overflow-hidden ph ph-warm rounded-[14px] rfx-rounded-img"
             style={{ width: "var(--strip-item-w)", aspectRatio: img.aspect }}
           >
             <img
