@@ -189,14 +189,13 @@ const Milestones = () => {
           headingId="ms-hero-heading"
           scrollTarget="#ms-intro"
           lines={[
-            <>Milestone celebration stylist,</>,
+            <>Milestone birthdays,</>,
             <>
-              based in{" "}
               <em
                 className="italic font-normal"
                 style={{ color: "hsl(var(--accent))" }}
               >
-                Surrey.
+                considered in detail.
               </em>
             </>,
           ]}

@@ -218,13 +218,13 @@ const CorporateAndBrand = () => {
           headingId="cb-hero-heading"
           scrollTarget="#cb-intro"
           lines={[
-            <>Corporate event stylist for</>,
+            <>Design-led styling for</>,
             <>
               <em
                 className="italic font-normal"
                 style={{ color: "hsl(var(--accent))" }}
               >
-                Surrey & London.
+                launches, openings and brand events.
               </em>
             </>,
           ]}

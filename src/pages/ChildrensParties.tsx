@@ -105,14 +105,13 @@ const ChildrensParties = () => {
       <main>
         <CPHero
           lines={[
-            <>Children's party stylist,</>,
+            <>Themed children's parties,</>,
             <>
-              based in{" "}
               <em
                 className="italic font-normal"
                 style={{ color: "hsl(var(--accent))" }}
               >
-                Surrey.
+                fully styled.
               </em>
             </>,
           ]}
