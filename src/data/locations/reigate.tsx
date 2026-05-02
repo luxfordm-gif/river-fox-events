@@ -4,6 +4,15 @@ const reigate = makeLocation({
   slug: "reigate",
   cityName: "Reigate",
   region: "Surrey",
+  uniqueSeoTitle: "Reigate Party & Event Stylist | River Fox Events",
+  uniqueSeoDescription:
+    "Layered tablescapes, milestone parties and at-home celebrations in Reigate. Personally designed and installed by Laura.",
+  uniqueHeroSub: (
+    <>
+      Sketched, styled, installed. Studio-led celebrations in Reigate and the
+      surrounding villages.
+    </>
+  ),
   nearbyVillages: [
     "Redhill",
     "Banstead",

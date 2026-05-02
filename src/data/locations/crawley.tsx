@@ -5,8 +5,15 @@ const crawley = makeLocation({
   cityName: "Crawley",
   region: "West Sussex",
   seoTitleRegion: "West Sussex",
+  uniqueSeoTitle: "Crawley Party & Event Stylist | River Fox Events",
   uniqueSeoDescription:
-    "Crawley event stylist — bespoke children's parties, milestone celebrations and corporate brand activations across West Sussex from £460. Personally by Laura.",
+    "Easy reach across West Sussex from Crawley — full-service event styling for celebrations from concept to clear-down, personally by Laura.",
+  uniqueHeroSub: (
+    <>
+      Designed, installed, delivered. Studio-led celebrations in Crawley and the
+      surrounding villages.
+    </>
+  ),
   nearbyVillages: [
     "Three Bridges",
     "Ifield",

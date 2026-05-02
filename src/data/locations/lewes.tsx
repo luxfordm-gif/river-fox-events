@@ -5,8 +5,15 @@ const lewes = makeLocation({
   cityName: "Lewes",
   region: "East Sussex",
   seoTitleRegion: "East Sussex",
+  uniqueSeoTitle: "Luxury Event Styling in Lewes | River Fox Events",
   uniqueSeoDescription:
-    "Lewes event stylist — bespoke children's parties, milestone celebrations and country-house styling across East Sussex from £460. Personally by Laura.",
+    "A short drive from Lewes — full-service East Sussex country-house celebrations. From design to clear-down, personally handled by Laura.",
+  uniqueHeroSub: (
+    <>
+      Considered, drawn, delivered. Studio-led celebrations in Lewes and the
+      East Sussex villages.
+    </>
+  ),
   nearbyVillages: [
     "Cliffe",
     "Kingston near Lewes",

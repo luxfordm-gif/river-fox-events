@@ -4,10 +4,15 @@ const oxted = makeLocation({
   slug: "oxted",
   cityName: "Oxted",
   region: "East Surrey",
-  uniqueSeoTitle:
-    "Oxted Party Stylist | Luxury Event Styling in East Surrey | River Fox Events",
+  uniqueSeoTitle: "Luxury Event Styling in Oxted | River Fox Events",
   uniqueSeoDescription:
-    "Luxury party styling in Oxted and across East Surrey. Bespoke children's parties, milestones and corporate events — personally designed and installed by Laura.",
+    "Statement styling for celebrations at Titsey Place, Limpsfield and across Oxted. Parties and milestones from £460, personally by Laura.",
+  uniqueHeroSub: (
+    <>
+      Tailored event styling in Oxted. From first idea to final breakdown,
+      personally handled.
+    </>
+  ),
   nearbyVillages: [
     "Limpsfield",
     "Hurst Green",

@@ -4,6 +4,15 @@ const cobham = makeLocation({
   slug: "cobham",
   cityName: "Cobham",
   region: "Surrey",
+  uniqueSeoTitle: "Luxury Event Styling in Cobham | River Fox Events",
+  uniqueSeoDescription:
+    "Studio-led styling at Painshill Park, Stoke d'Abernon and across Cobham. Statement parties and milestones from £460, personally by Laura.",
+  uniqueHeroSub: (
+    <>
+      Bespoke event styling in Cobham. From first idea to final breakdown,
+      personally handled.
+    </>
+  ),
   nearbyVillages: [
     "Oxshott",
     "Stoke d'Abernon",

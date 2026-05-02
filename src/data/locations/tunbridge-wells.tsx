@@ -5,8 +5,15 @@ const tunbridgeWells = makeLocation({
   cityName: "Tunbridge Wells",
   region: "Kent",
   seoTitleRegion: "Kent",
+  uniqueSeoTitle: "Luxury Event Styling in Tunbridge Wells | River Fox Events",
   uniqueSeoDescription:
-    "Tunbridge Wells event stylist — bespoke children's parties, milestone celebrations and corporate styling across Kent from £460. Personally by Laura.",
+    "Studio-led event styling in Tunbridge Wells — milestone parties, brand activations and at-home celebrations across Kent. Personally by Laura.",
+  uniqueHeroSub: (
+    <>
+      Milestones brought to life in Tunbridge Wells — personally designed and
+      installed.
+    </>
+  ),
   nearbyVillages: [
     "Rusthall",
     "Southborough",

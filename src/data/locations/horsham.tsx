@@ -5,8 +5,15 @@ const horsham = makeLocation({
   cityName: "Horsham",
   region: "West Sussex",
   seoTitleRegion: "West Sussex",
+  uniqueSeoTitle: "Party Stylist Horsham West Sussex | River Fox Events",
   uniqueSeoDescription:
-    "Horsham event stylist — bespoke children's parties, milestone celebrations and corporate styling across West Sussex from £460. Personally by Laura.",
+    "Statement balloon installations, milestone parties and at-home styling in Horsham. Personally designed and installed by Laura.",
+  uniqueHeroSub: (
+    <>
+      Studio-designed events in Horsham. From first idea to final breakdown,
+      personally handled.
+    </>
+  ),
   nearbyVillages: [
     "Warnham",
     "Slinfold",

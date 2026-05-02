@@ -4,6 +4,14 @@ const oxshott = makeLocation({
   slug: "oxshott",
   cityName: "Oxshott",
   region: "Surrey",
+  uniqueSeoTitle: "Party Stylist Oxshott Surrey | River Fox Events",
+  uniqueSeoDescription:
+    "Themed children's parties, milestones and balloon installations in Oxshott. Personally designed and installed by Laura.",
+  uniqueHeroSub: (
+    <>
+      Birthdays brought to life in Oxshott — personally designed and installed.
+    </>
+  ),
   nearbyVillages: [
     "Cobham",
     "Esher",

@@ -4,6 +4,15 @@ const weybridge = makeLocation({
   slug: "weybridge",
   cityName: "Weybridge",
   region: "Surrey",
+  uniqueSeoTitle: "Party Stylist Weybridge Surrey | River Fox Events",
+  uniqueSeoDescription:
+    "Statement balloon installations and milestone celebrations in Weybridge from £460. Personally designed and installed by Laura.",
+  uniqueHeroSub: (
+    <>
+      Planned, styled, delivered. Studio-led celebrations in Weybridge and the
+      surrounding villages.
+    </>
+  ),
   nearbyVillages: [
     "Walton-on-Thames",
     "Hersham",

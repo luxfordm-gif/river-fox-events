@@ -4,6 +4,15 @@ const guildford = makeLocation({
   slug: "guildford",
   cityName: "Guildford",
   region: "Surrey",
+  uniqueSeoTitle: "Luxury Event Styling in Guildford | River Fox Events",
+  uniqueSeoDescription:
+    "Ceiling drapery, balloon installations and milestone parties in Guildford from £460. Personally designed and installed by Laura.",
+  uniqueHeroSub: (
+    <>
+      Guildford events, considered in detail. One stylist, one client, no
+      templates.
+    </>
+  ),
   nearbyVillages: [
     "Godalming",
     "Shalford",

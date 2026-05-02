@@ -5,14 +5,14 @@ const brightonAndHove = makeLocation({
   cityName: "Brighton & Hove",
   region: "East Sussex",
   seoTitleRegion: "East Sussex",
-  uniqueSeoTitle: "Brighton & Hove Event Stylist | River Fox Events",
+  uniqueSeoTitle: "Party Stylist Brighton & Hove | River Fox Events",
   uniqueSeoDescription:
-    "Brighton & Hove event stylist — bespoke children's parties, milestone celebrations and brand activations across the city from £460. Personally by Laura.",
+    "A short drive from Brighton — full-service event styling across Brighton, Hove and East Sussex. From design to breakdown, by Laura.",
   uniqueHeroLine: <>Your Brighton & Hove event stylist.</>,
   uniqueHeroSub: (
     <>
-      Celebrations brought to life across Brighton & Hove — personally
-      designed, installed and managed.
+      Celebrations brought to life across Brighton & Hove — personally designed
+      and installed.
     </>
   ),
   nearbyVillages: [

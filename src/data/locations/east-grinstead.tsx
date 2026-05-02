@@ -5,8 +5,15 @@ const eastGrinstead = makeLocation({
   cityName: "East Grinstead",
   region: "West Sussex",
   seoTitleRegion: "West Sussex",
+  uniqueSeoTitle: "Luxury Event Styling in East Grinstead | River Fox Events",
   uniqueSeoDescription:
-    "East Grinstead event stylist — bespoke children's parties, milestone celebrations and corporate events from £460. Personally designed and delivered by Laura.",
+    "Full-service styling delivered to East Grinstead and across West Sussex. From design through to clear-down, personally handled by Laura.",
+  uniqueHeroSub: (
+    <>
+      Parties brought to life in East Grinstead — personally designed and
+      installed.
+    </>
+  ),
   nearbyVillages: [
     "Felbridge",
     "Forest Row",

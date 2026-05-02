@@ -5,15 +5,14 @@ const forestRow = makeLocation({
   cityName: "Forest Row",
   region: "the Ashdown Forest",
   seoTitleRegion: "East Sussex",
-  uniqueSeoTitle:
-    "Forest Row & Ashdown Forest Event Stylist | River Fox Events",
+  uniqueSeoTitle: "Party Stylist Forest Row East Sussex | River Fox Events",
   uniqueSeoDescription:
-    "Forest Row & Ashdown Forest event stylist — bespoke celebrations, milestones and country-house styling across East Sussex from £460. Personally by Laura.",
+    "East Sussex country-house events, fully managed from setup to breakdown — including Forest Row, Hartfield and Ashdown Forest, by Laura.",
   uniqueHeroLine: <>Your Forest Row party stylist.</>,
   uniqueHeroSub: (
     <>
-      Celebrations brought to life across Forest Row and Ashdown Forest —
-      personally designed, installed and managed.
+      Drawn, sourced, installed. Studio-led celebrations across Forest Row and
+      Ashdown Forest.
     </>
   ),
   nearbyVillages: [

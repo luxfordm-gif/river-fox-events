@@ -5,8 +5,15 @@ const sevenoaks = makeLocation({
   cityName: "Sevenoaks",
   region: "Kent",
   seoTitleRegion: "Kent",
+  uniqueSeoTitle: "Party Stylist Sevenoaks Kent | River Fox Events",
   uniqueSeoDescription:
-    "Sevenoaks event stylist — bespoke children's parties, milestone celebrations and corporate styling across west Kent from £460. Personally by Laura.",
+    "West Kent events, fully managed from setup to breakdown — including Sevenoaks, Riverhead, Otford and Seal. Personally designed by Laura.",
+  uniqueHeroSub: (
+    <>
+      Sevenoaks events, considered in detail. One stylist, one client, no
+      templates.
+    </>
+  ),
   nearbyVillages: [
     "Riverhead",
     "Otford",

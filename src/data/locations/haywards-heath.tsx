@@ -5,8 +5,15 @@ const haywardsHeath = makeLocation({
   cityName: "Haywards Heath",
   region: "West Sussex",
   seoTitleRegion: "West Sussex",
+  uniqueSeoTitle: "Haywards Heath Party & Event Stylist | River Fox Events",
   uniqueSeoDescription:
-    "Haywards Heath event stylist — bespoke children's parties, milestone celebrations and corporate events across mid-Sussex from £460. Personally by Laura.",
+    "Studio-led styling across mid-Sussex, from Haywards Heath to Lindfield and Cuckfield. Full-service event styling from £460, by Laura.",
+  uniqueHeroSub: (
+    <>
+      Events brought to life in Haywards Heath — personally designed and
+      installed.
+    </>
+  ),
   nearbyVillages: [
     "Lindfield",
     "Cuckfield",

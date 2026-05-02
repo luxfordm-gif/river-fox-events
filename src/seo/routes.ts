@@ -66,9 +66,9 @@ export const BUSINESS = {
 export const ROUTES: RouteSEO[] = [
   {
     path: "/",
-    title: "Luxury Event Stylist Surrey | River Fox Events",
+    title: "Event Styling Studio in Surrey & London | River Fox Events",
     description:
-      "Surrey event stylist for children's parties, milestone celebrations and corporate brand activations across Surrey and London. From £460, designed by Laura.",
+      "Trusted by Surrey families and brand teams to design celebrations that genuinely stand out. Children's parties, milestones and corporate events, by Laura.",
     priority: 1.0,
     changefreq: "monthly",
   },
@@ -76,7 +76,7 @@ export const ROUTES: RouteSEO[] = [
     path: "/childrens-parties",
     title: "Children's Party Stylist Surrey | River Fox Events",
     description:
-      "Surrey children's party stylist — bespoke themed parties, balloon installations and full-room transformations from £460, personally designed by Laura.",
+      "Themed children's parties Surrey parents actually relax at. Full-room styling, balloon installations, tablescapes — every detail handled by Laura.",
     breadcrumbName: "Children's Parties",
     service: {
       serviceType: "Children's Party Styling",
@@ -88,9 +88,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/milestone-celebrations",
-    title: "Milestone Celebration Styling Surrey | River Fox Events",
+    title: "Milestone Birthday & Anniversary Styling | River Fox Events",
     description:
-      "Surrey milestone celebration stylist — 21sts, 30ths, 40ths, 50ths, 70ths, baby showers and anniversaries. Bespoke styling from £460, designed by Laura.",
+      "Milestone birthdays that feel as significant as the day itself. 21sts, 40ths, 70ths, baby showers, anniversaries — designed personally by Laura, Surrey.",
     breadcrumbName: "Milestone Celebrations",
     service: {
       serviceType: "Milestone Celebration Styling",
@@ -102,9 +102,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/corporate-brand-styling",
-    title: "Corporate Event Styling Surrey London | River Fox Events",
+    title: "Corporate Event & Brand Stylist Surrey | River Fox Events",
     description:
-      "Corporate event stylist across Surrey and London — bespoke brand installations, product launches, retail openings and office events from £460, by Laura.",
+      "Corporate events that elevate the brand they represent. Activations, launches and openings styled by Laura — trusted by P&G, The Range and Foxhills.",
     breadcrumbName: "Corporate & Brand Styling",
     service: {
       serviceType: "Corporate Event Styling and Brand Installations",
@@ -116,9 +116,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-oxted",
-    title: "Party Stylist Oxted Surrey | River Fox Events",
+    title: "Luxury Event Styling in Oxted | River Fox Events",
     description:
-      "Oxted party stylist — bespoke children's parties, milestones and corporate events across East Surrey from £460. Every detail personally handled by Laura.",
+      "Statement styling for celebrations at Titsey Place, Limpsfield and across Oxted. Parties and milestones from £460, personally by Laura.",
     breadcrumbName: "Party Styling Oxted",
     service: {
       serviceType: "Event Styling",
@@ -130,9 +130,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-cobham",
-    title: "Party Stylist Cobham Surrey | River Fox Events",
+    title: "Luxury Event Styling in Cobham | River Fox Events",
     description:
-      "Cobham party stylist — bespoke children's parties, milestones and corporate events across Surrey from £460. Every detail personally handled by Laura.",
+      "Studio-led styling at Painshill Park, Stoke d'Abernon and across Cobham. Statement parties and milestones from £460, personally by Laura.",
     breadcrumbName: "Party Styling Cobham",
     service: {
       serviceType: "Event Styling",
@@ -146,7 +146,7 @@ export const ROUTES: RouteSEO[] = [
     path: "/party-styling-weybridge",
     title: "Party Stylist Weybridge Surrey | River Fox Events",
     description:
-      "Weybridge party stylist — bespoke children's parties, milestones and corporate events across Surrey from £460. Every detail personally handled by Laura.",
+      "Statement balloon installations and milestone celebrations in Weybridge from £460. Personally designed and installed by Laura.",
     breadcrumbName: "Party Styling Weybridge",
     service: {
       serviceType: "Event Styling",
@@ -158,9 +158,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-esher",
-    title: "Party Stylist Esher Surrey | River Fox Events",
+    title: "Esher Party & Event Stylist | River Fox Events",
     description:
-      "Esher party stylist — bespoke children's parties, milestones and corporate events across Surrey from £460. Every detail personally handled by Laura.",
+      "Personally designed celebrations at Sandown Park, Claygate and across Esher. Considered parties and milestones, installed and managed by Laura.",
     breadcrumbName: "Party Styling Esher",
     service: {
       serviceType: "Event Styling",
@@ -172,9 +172,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-reigate",
-    title: "Party Stylist Reigate Surrey | River Fox Events",
+    title: "Reigate Party & Event Stylist | River Fox Events",
     description:
-      "Reigate party stylist — bespoke children's parties, milestones and corporate events across Surrey from £460. Every detail personally handled by Laura.",
+      "Layered tablescapes, milestone parties and at-home celebrations in Reigate. Personally designed and installed by Laura.",
     breadcrumbName: "Party Styling Reigate",
     service: {
       serviceType: "Event Styling",
@@ -188,7 +188,7 @@ export const ROUTES: RouteSEO[] = [
     path: "/party-styling-oxshott",
     title: "Party Stylist Oxshott Surrey | River Fox Events",
     description:
-      "Oxshott party stylist — bespoke children's parties, milestones and corporate events across Surrey from £460. Every detail personally handled by Laura.",
+      "Themed children's parties, milestones and balloon installations in Oxshott. Personally designed and installed by Laura.",
     breadcrumbName: "Party Styling Oxshott",
     service: {
       serviceType: "Event Styling",
@@ -200,9 +200,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-guildford",
-    title: "Party Stylist Guildford Surrey | River Fox Events",
+    title: "Luxury Event Styling in Guildford | River Fox Events",
     description:
-      "Guildford party stylist — bespoke children's parties, milestones and corporate events across Surrey from £460. Every detail personally handled by Laura.",
+      "Ceiling drapery, balloon installations and milestone parties in Guildford from £460. Personally designed and installed by Laura.",
     breadcrumbName: "Party Styling Guildford",
     service: {
       serviceType: "Event Styling",
@@ -214,9 +214,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-walton-on-thames",
-    title: "Party Stylist Walton-on-Thames Surrey | River Fox Events",
+    title: "Walton-on-Thames Party & Event Stylist | River Fox Events",
     description:
-      "Walton-on-Thames party stylist — bespoke children's parties, milestones and corporate events from £460. Every detail personally handled by Laura.",
+      "Country-house and at-home celebrations at Oatlands, Hersham and across Walton-on-Thames. Considered styling personally designed by Laura.",
     breadcrumbName: "Party Styling Walton-on-Thames",
     service: {
       serviceType: "Event Styling",
@@ -230,7 +230,7 @@ export const ROUTES: RouteSEO[] = [
     path: "/party-styling-dorking",
     title: "Party Stylist Dorking Surrey | River Fox Events",
     description:
-      "Dorking party stylist — bespoke children's parties, milestones and corporate events across the Surrey Hills from £460. Personally handled by Laura.",
+      "Editorial event styling around Denbies, Westcott and the Surrey Hills near Dorking. Layered, considered celebrations personally designed by Laura.",
     breadcrumbName: "Party Styling Dorking",
     service: {
       serviceType: "Event Styling",
@@ -244,9 +244,9 @@ export const ROUTES: RouteSEO[] = [
   // towns, anchored by East Grinstead (closest Sussex town).
   {
     path: "/party-styling-east-grinstead",
-    title: "Party Stylist East Grinstead West Sussex | River Fox Events",
+    title: "Luxury Event Styling in East Grinstead | River Fox Events",
     description:
-      "East Grinstead event stylist — bespoke children's celebrations, milestones and corporate events across West Sussex from £460. Personally handled by Laura.",
+      "Full-service styling delivered to East Grinstead and across West Sussex. From design through to clear-down, personally handled by Laura.",
     breadcrumbName: "Party Styling East Grinstead",
     service: {
       serviceType: "Event Styling",
@@ -266,9 +266,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-lingfield",
-    title: "Party Stylist Lingfield Surrey | River Fox Events",
+    title: "Lingfield Party & Event Stylist | River Fox Events",
     description:
-      "Lingfield event stylist — bespoke children's celebrations, milestones and corporate styling on the Surrey/Sussex border from £460. Personally by Laura.",
+      "Considered, personal styling at Lingfield Park, Dormansland and across the Surrey/Sussex border. Parties and milestones designed by Laura.",
     breadcrumbName: "Party Styling Lingfield",
     service: {
       serviceType: "Event Styling",
@@ -287,9 +287,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-crawley",
-    title: "Party Stylist Crawley West Sussex | River Fox Events",
+    title: "Crawley Party & Event Stylist | River Fox Events",
     description:
-      "Crawley event stylist — bespoke children's celebrations, milestones and corporate brand activations across West Sussex from £460. Personally by Laura.",
+      "Easy reach across West Sussex from Crawley — full-service event styling for celebrations from concept to clear-down, personally by Laura.",
     breadcrumbName: "Party Styling Crawley",
     service: {
       serviceType: "Event Styling",
@@ -311,7 +311,7 @@ export const ROUTES: RouteSEO[] = [
     path: "/party-styling-horsham",
     title: "Party Stylist Horsham West Sussex | River Fox Events",
     description:
-      "Horsham event stylist — bespoke children's celebrations, milestones and corporate styling across West Sussex from £460. Personally handled by Laura.",
+      "Statement balloon installations, milestone parties and at-home styling in Horsham. Personally designed and installed by Laura.",
     breadcrumbName: "Party Styling Horsham",
     service: {
       serviceType: "Event Styling",
@@ -331,9 +331,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-haywards-heath",
-    title: "Party Stylist Haywards Heath West Sussex | River Fox Events",
+    title: "Haywards Heath Party & Event Stylist | River Fox Events",
     description:
-      "Haywards Heath event stylist — bespoke children's celebrations, milestones and corporate events across mid-Sussex from £460. Personally by Laura.",
+      "Studio-led styling across mid-Sussex, from Haywards Heath to Lindfield and Cuckfield. Full-service event styling from £460, by Laura.",
     breadcrumbName: "Party Styling Haywards Heath",
     service: {
       serviceType: "Event Styling",
@@ -353,9 +353,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-tunbridge-wells",
-    title: "Party Stylist Tunbridge Wells Kent | River Fox Events",
+    title: "Luxury Event Styling in Tunbridge Wells | River Fox Events",
     description:
-      "Tunbridge Wells event stylist — bespoke children's celebrations, milestones and corporate styling across Kent from £460. Personally handled by Laura.",
+      "Studio-led event styling in Tunbridge Wells — milestone parties, brand activations and at-home celebrations across Kent. Personally by Laura.",
     breadcrumbName: "Party Styling Tunbridge Wells",
     service: {
       serviceType: "Event Styling",
@@ -377,7 +377,7 @@ export const ROUTES: RouteSEO[] = [
     path: "/party-styling-sevenoaks",
     title: "Party Stylist Sevenoaks Kent | River Fox Events",
     description:
-      "Sevenoaks event stylist — bespoke children's celebrations, milestones and corporate styling across west Kent from £460. Personally handled by Laura.",
+      "West Kent events, fully managed from setup to breakdown — including Sevenoaks, Riverhead, Otford and Seal. Personally designed by Laura.",
     breadcrumbName: "Party Styling Sevenoaks",
     service: {
       serviceType: "Event Styling",
@@ -397,9 +397,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-forest-row",
-    title: "Forest Row & Ashdown Forest Event Stylist | River Fox Events",
+    title: "Party Stylist Forest Row East Sussex | River Fox Events",
     description:
-      "Forest Row & Ashdown Forest event stylist — bespoke celebrations, milestones and country-house styling across East Sussex from £460. Personally by Laura.",
+      "East Sussex country-house events, fully managed from setup to breakdown — including Forest Row, Hartfield and Ashdown Forest, by Laura.",
     breadcrumbName: "Party Styling Forest Row",
     service: {
       serviceType: "Event Styling",
@@ -419,9 +419,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-lewes",
-    title: "Party Stylist Lewes East Sussex | River Fox Events",
+    title: "Luxury Event Styling in Lewes | River Fox Events",
     description:
-      "Lewes event stylist — bespoke children's celebrations, milestones and country-house styling across East Sussex from £460. Personally handled by Laura.",
+      "A short drive from Lewes — full-service East Sussex country-house celebrations. From design to clear-down, personally handled by Laura.",
     breadcrumbName: "Party Styling Lewes",
     service: {
       serviceType: "Event Styling",
@@ -441,9 +441,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-brighton-and-hove",
-    title: "Brighton & Hove Event Stylist | River Fox Events",
+    title: "Party Stylist Brighton & Hove | River Fox Events",
     description:
-      "Brighton & Hove event stylist — bespoke children's celebrations, milestones and brand activations across the city from £460. Personally handled by Laura.",
+      "A short drive from Brighton — full-service event styling across Brighton, Hove and East Sussex. From design to breakdown, by Laura.",
     breadcrumbName: "Party Styling Brighton & Hove",
     service: {
       serviceType: "Event Styling",

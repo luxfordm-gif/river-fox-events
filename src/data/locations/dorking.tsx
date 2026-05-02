@@ -4,6 +4,15 @@ const dorking = makeLocation({
   slug: "dorking",
   cityName: "Dorking",
   region: "Surrey",
+  uniqueSeoTitle: "Party Stylist Dorking Surrey | River Fox Events",
+  uniqueSeoDescription:
+    "Editorial event styling around Denbies, Westcott and the Surrey Hills near Dorking. Layered, considered celebrations personally designed by Laura.",
+  uniqueHeroSub: (
+    <>
+      Dorking events, considered in detail. One stylist, one client, no
+      templates.
+    </>
+  ),
   nearbyVillages: [
     "Westcott",
     "Brockham",
