@@ -6,7 +6,7 @@ const eastGrinstead = makeLocation({
   region: "West Sussex",
   seoTitleRegion: "West Sussex",
   uniqueSeoDescription:
-    "East Grinstead event stylist — bespoke children's celebrations, milestones and corporate events across West Sussex from £460. Personally handled by Laura.",
+    "East Grinstead event stylist — bespoke children's parties, milestone celebrations and corporate events from £460. Personally designed and delivered by Laura.",
   nearbyVillages: [
     "Felbridge",
     "Forest Row",
@@ -42,56 +42,47 @@ const eastGrinstead = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        East Grinstead is our closest Sussex town. The studio sits on
-        Apsley Road in Horley, RH6 — nine miles north up the A22, with the
-        Surrey/West Sussex line crossed somewhere around Felbridge on the
-        drive down. For most of our East Grinstead celebrations the van is
-        parked in your drive within twenty-five minutes of leaving us.
+        River Fox Events is an East Grinstead event stylist designing
+        bespoke children's parties, milestone birthdays, christenings,
+        baby showers and corporate styling across the RH19 area. Every
+        celebration is built from scratch around your brief — concept,
+        balloon installations, backdrops, signage, cake table and
+        tablescape, all installed and broken down by us.
       </p>
       <p>
-        It's a town with more character than people sometimes credit it
-        for: the High Street holds the longest continuous run of medieval
-        timber-framed buildings in England, Sackville College is still
-        almshouses four hundred years on, and the Bluebell Railway
-        terminus at the bottom of town pulls you straight into the Sussex
-        countryside. We design celebrations that respect that — not too
-        loud, not too neutral, finished to a standard that holds up next
-        to the architecture.
+        Our studio is in Horley, twenty-five minutes north up the A22,
+        which makes East Grinstead one of the closest towns we cover.
+        Same-day install and breakdown, no travel surcharges for the
+        standard celebration, and the kind of last-minute flexibility
+        that's only possible when the stylist isn't an hour away.
       </p>
     </>
   ),
   uniqueOccasionsBody: (
     <>
       <p>
-        East Grinstead celebrations tend to split between two patterns. Family
-        homes across Imberhorne, Baldwins Hill and the lanes out towards
-        Ashurst Wood lean into garden parties, marquee weekends and
-        christenings dressed for the room rather than the venue. Ashdown
-        Forest is twenty minutes south, so country-house and forest-edge
-        weddings and milestones sit easily within our patch.
-      </p>
-      <p>
-        On the venue side, the Felbridge Hotel handles a steady run of
-        50ths and 60ths, Standen House pulls in the National Trust set,
-        and Gravetye Manor a few minutes west at West Hoathly is where
-        the more considered milestone celebrations tend to happen. We
-        style at all three regularly and know how each room takes a
-        balloon installation, a tablescape and a backdrop.
+        East Grinstead celebrations split fairly evenly between at-
+        home styling — first birthdays, christenings and milestone
+        weekends in the family homes around Imberhorne, Baldwins Hill
+        and the Ashurst Wood lanes — and venue work at Felbridge
+        Hotel, Standen House and Gravetye Manor at West Hoathly. We
+        scale the design to either: a single statement balloon arch
+        and dressed cake table for an intimate party, or a full multi-
+        zone install with backdrops, signage and tablescape across an
+        entire ground floor.
       </p>
     </>
   ),
   uniquePresenceAnswer:
-    "Yes — East Grinstead is the closest Sussex town to our Horley studio and one of the postcodes we work in most. The patch runs across the High Street and town centre, the Imberhorne and Baldwins Hill residential roads, Felbridge, Ashurst Wood and out towards Forest Row. Notable venues we cover include the Felbridge Hotel, Standen House (National Trust), Gravetye Manor at West Hoathly and the Ashdown Forest country-house venues just south of town.",
-  uniqueLeadTimeAnswer:
-    "For East Grinstead celebrations we suggest 6–8 weeks for most installs, longer if you're booking around the Bluebell Railway events, summer in Ashdown Forest or the spring/summer wedding window at Gravetye Manor and Standen — those weekends pressure-cook quickly. Smaller celebrations and weekday slots are often workable inside a fortnight; always worth asking.",
+    "Yes — East Grinstead is one of the postcodes we work in most. We cover the town centre, Imberhorne, Baldwins Hill, Felbridge, Ashurst Wood and the lanes towards Forest Row, plus venue work at Felbridge Hotel, Standen House and Gravetye Manor at West Hoathly. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
   uniqueExtraFaqs: [
     {
-      q: "How quickly can you reach East Grinstead from your Horley studio?",
-      a: "Our studio is on Apsley Road, Horley — RH6, just inside the Surrey line. The drive to East Grinstead High Street is around twenty-five minutes down the A22 outside school-run hours, slightly longer at peak. Because we're so close, we can do early-morning installs, late breakdowns and same-day repositioning on a single quote without travel surcharges that some Sussex stylists need to add.",
+      q: "What's included in your East Grinstead party styling?",
+      a: "Every River Fox celebration in East Grinstead includes the design concept, all balloon installations and statement pieces, personalised backdrops and signage, fully styled cake and party tables, and complete setup and breakdown. You don't lift a thing — we arrive before your first guest and leave once the space is cleared.",
     },
     {
-      q: "Do you cover Ashdown Forest weddings and country-house events near East Grinstead?",
-      a: "Yes — Ashdown Forest, Wych Cross and the country-house venues at West Hoathly, Sharpthorne and along the road to Forest Row are part of our regular coverage. Gravetye Manor, Ashdown Park Hotel and the rural farm and barn venues across the forest edge are familiar territory; share your venue when you enquire and we'll come back with a styling proposal that suits the space and the season.",
+      q: "How much is event styling in East Grinstead?",
+      a: "Pricing starts at £460 for an intimate celebration with a single focal-point installation. Most full-styling East Grinstead celebrations sit between £1,200 and £2,500 depending on scale, theme and the number of zones being styled. Every event is individually quoted following a short discovery call — share your vision and we'll come back personally within 48 hours.",
     },
   ],
 });

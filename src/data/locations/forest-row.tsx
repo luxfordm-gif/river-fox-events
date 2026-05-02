@@ -51,61 +51,48 @@ const forestRow = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        Forest Row sits at the northern edge of Ashdown Forest — once a
-        royal hunting ground, now a six-thousand-acre stretch of heath
-        and woodland that gives the village its character and the
-        celebrations we design here their backdrop. It's the corner of
-        Sussex that A. A. Milne walked his son Christopher Robin
-        through — the Pooh Bridge at Hartfield is five minutes east,
-        Pooh Corner the village shop a few yards on. The landscape
-        does a lot of the work; our job is to dress for it without
-        fighting it.
+        River Fox Events is a Forest Row and Ashdown Forest event
+        stylist designing bespoke children's parties, milestone
+        birthdays, christenings, baby showers, weddings and corporate
+        styling across the RH18 postcode and the wider forest area.
+        Every celebration is built from scratch around your brief —
+        concept, balloon installations, backdrops, signage, cake
+        table and tablescape, all installed and broken down by us.
       </p>
       <p>
-        From our Horley studio it's around thirty-five minutes south
-        on the A22 to Wych Cross, then into the village. We cover the
-        forest properly: at-home celebrations across the village,
-        garden parties at Hartfield houses, christenings at the
-        country churches, and landmark milestones at the country-
-        house venues set into the forest itself.
+        Our studio is in Horley, around thirty-five minutes south on
+        the A22, and the Ashdown Forest patch is part of our regular
+        coverage. Full install and breakdown handled — including the
+        weather-contingency planning the forest setting often asks
+        for.
       </p>
     </>
   ),
   uniqueOccasionsBody: (
     <>
       <p>
-        Ashdown Park Hotel at Wych Cross is the country-house anchor
-        of the patch — a 186-acre estate with a chapel, formal
-        gardens and rooms that take a styled installation in
-        completely different registers. We cover weddings, milestone
-        birthdays and corporate retreats there regularly. The
-        Roebuck at Wych Cross handles the more intimate sit-down
-        dinners and family lunches.
-      </p>
-      <p>
-        On the village side, the Forest Row community celebrations
-        — christenings at Holy Trinity, garden parties along the
-        lanes towards Coleman's Hatch and Hartfield, milestone
-        birthdays at homes set against the forest edge — make up
-        the bulk of what we do here. The pace of the forest
-        rewards a softer, slightly more wild visual register —
-        meadow florals over manicured arrangements, natural-fibre
-        finishes, signage that doesn't try too hard.
+        Forest Row celebrations split between family at-home events
+        across the village and the lanes towards Coleman's Hatch and
+        Hartfield, country-house weddings and milestones at Ashdown
+        Park Hotel and the venues set into the forest, and outdoor
+        celebrations across the Ashdown Forest commons and clearings.
+        We scale the styling to either: a single statement
+        installation for an intimate gathering, or a full multi-zone
+        styling for a forest-edge wedding across marquees, lawns and
+        reception rooms.
       </p>
     </>
   ),
   uniquePresenceAnswer:
-    "Yes — Forest Row, Hartfield and the wider Ashdown Forest patch are part of our regular East Sussex coverage. The footprint runs across the village centre, Wych Cross, Coleman's Hatch, Upper Hartfield, Withyham and out into the forest's commons and country-house properties. Notable venues we work at include Ashdown Park Hotel, the Roebuck Hotel, Holy Trinity Forest Row and the rural farm and barn venues set across the forest's heath edges.",
-  uniqueLeadTimeAnswer:
-    "For Forest Row and Ashdown Forest 6–8 weeks ahead is the comfortable window. Pressure points worth flagging: Ashdown Park Hotel's wedding diary books twelve to eighteen months out for May–September Saturdays, the Pooh-Country tourist season makes Hartfield busy across summer holidays, and the forest's spring-summer-autumn celebration weekends pressure-cook quickly. Smaller at-home celebrations are often workable inside two weeks.",
+    "Yes — Forest Row, Hartfield and the wider Ashdown Forest patch are part of our regular East Sussex coverage. We cover the village centre, Wych Cross, Coleman's Hatch, Upper Hartfield, Withyham and the surrounding forest commons, plus venue work at Ashdown Park Hotel and the rural farm and barn venues across the heath edges. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
   uniqueExtraFaqs: [
     {
       q: "Do you cover events at Ashdown Park Hotel?",
-      a: "Yes — Ashdown Park is one of the country-house venues we know best. The Anderida restaurant, the chapel, the marquee lawn and the Richard Towneley Suite each take a styling installation in different directions. Tell us which space you've booked when you enquire and we'll come back with a tailored proposal — including how to factor the estate's natural setting into the design rather than working around it.",
+      a: "Yes — Ashdown Park is one of the country-house venues we know best. The Anderida restaurant, the chapel, the marquee lawn and the Richard Towneley Suite each take a styling installation in different directions. Tell us which space you've booked when you enquire and we'll come back with a tailored proposal.",
     },
     {
-      q: "Are forest-edge weddings and outdoor celebrations within your area?",
-      a: "Yes — outdoor celebrations across Ashdown Forest are part of the rhythm of the patch. We've installed for forest-clearing weddings, garden parties on the lanes towards Hartfield, and christenings at properties looking onto the heath. We design for weather contingency from the start (the forest is changeable in a way the south of Sussex isn't), and we install and break down without leaving a trace.",
+      q: "Do you style outdoor and forest-edge celebrations?",
+      a: "Yes — outdoor celebrations across Ashdown Forest are part of the regular work. We've installed for forest-clearing weddings, garden parties on the lanes towards Hartfield and christenings at properties looking onto the heath. We design for weather contingency from the start, install before guests arrive, and clear afterwards without leaving a trace.",
     },
   ],
 });

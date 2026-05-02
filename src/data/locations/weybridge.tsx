@@ -38,28 +38,37 @@ const weybridge = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        Weybridge has a particular feel — St George's Hill, Brooklands
-        and the riverside between them — and the celebrations we
-        design here lean into that. Garden parties, milestone
-        moments, riverside christenings at home.
+        River Fox Events is a Weybridge party stylist designing
+        bespoke children's parties, milestone birthdays, christenings,
+        baby showers, weddings and corporate styling across the KT13
+        postcode. Every celebration is built from scratch around your
+        brief — concept, balloon installations, backdrops, signage,
+        cake table and tablescape, all installed and broken down by
+        us.
       </p>
       <p>
-        Each pocket of Weybridge brings its own register. St George's
-        Hill private estate properties tend toward properly polished
-        landmark celebrations — full marquee weekends, multi-zone
-        installations, sit-down dinners that need a stylist to
-        handle the room rather than just dress it. Oatlands Park has
-        a family-residential lean — christenings, first-birthday
-        garden parties, the milestone moments that mark the
-        calendar. Riverside properties along the Thames bring some
-        of the prettiest at-home celebrations we style anywhere.
+        Our studio is in Horley and Weybridge sits firmly in our
+        regular Surrey coverage. Same-day install and breakdown, full
+        management on the day, and every detail designed and
+        delivered personally by Laura.
       </p>
     </>
   ),
-  uniqueOccasionsLead:
-    "Weybridge celebrations span private homes on St George's Hill and Oatlands Park, riverside properties looking onto the Thames, and the Hersham/Whiteley Village edge. Notable nearby venues include Brooklands Museum, the Heritage Centre and Mercedes-Benz World a short hop along the road.",
+  uniqueOccasionsBody: (
+    <>
+      <p>
+        Weybridge celebrations split between family at-home work on
+        St George's Hill and across Oatlands Park, riverside
+        celebrations along the Thames, and venue events at Brooklands
+        Museum and Mercedes-Benz World. We scale the styling to
+        either: a single statement installation for an intimate
+        celebration, or a full multi-zone styling across drawing
+        rooms, gardens and marquees.
+      </p>
+    </>
+  ),
   uniquePresenceAnswer:
-    "Yes — Weybridge and the surrounding area sit firmly within our coverage. The patch runs from St George's Hill and Oatlands Park through to riverside Walton, and into Hersham and Whiteley Village. Notable venues nearby include Brooklands Museum, the Heritage Centre and Mercedes-Benz World.",
+    "Yes — Weybridge and the surrounding area sit firmly within our coverage. We cover St George's Hill, Oatlands Park, riverside Walton, Hersham and Whiteley Village, plus venue work at Brooklands Museum, the Heritage Centre and Mercedes-Benz World. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
   uniqueExtraFaqs: [
     {
       q: "Are venues like Brooklands or Mercedes-Benz World within your area?",
@@ -67,7 +76,7 @@ const weybridge = makeLocation({
     },
     {
       q: "Do you cover St George's Hill private estate celebrations?",
-      a: "Yes — St George's Hill is one of the most-asked-about parts of our Weybridge coverage. The private estate properties typically host across multiple zones (drawing rooms, kitchens, gardens, marquees) and we install across all of them in a single morning, manage the day discreetly, and clear afterwards. Mention the property and the day in your enquiry and we'll talk through how we'd approach it.",
+      a: "Yes — St George's Hill is one of the most-asked-about parts of our Weybridge coverage. The private estate properties typically host across multiple zones (drawing rooms, kitchens, gardens, marquees) and we install across all of them in a single morning, manage the day discreetly, and clear afterwards.",
     },
   ],
 });

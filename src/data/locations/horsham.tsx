@@ -6,7 +6,7 @@ const horsham = makeLocation({
   region: "West Sussex",
   seoTitleRegion: "West Sussex",
   uniqueSeoDescription:
-    "Horsham event stylist — bespoke children's celebrations, milestones and corporate styling across West Sussex from £460. Personally handled by Laura.",
+    "Horsham event stylist — bespoke children's parties, milestone celebrations and corporate styling across West Sussex from £460. Personally by Laura.",
   nearbyVillages: [
     "Warnham",
     "Slinfold",
@@ -42,58 +42,47 @@ const horsham = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        Horsham is West Sussex at its most quietly considered — a
-        market town that has resisted being absorbed into the
-        commuter sprawl, with the Causeway's medieval timber-framed
-        houses still leading down to St Mary's church and Horsham
-        Park sitting on the doorstep of the Carfax. The
-        celebrations we design here lean into that — restrained,
-        polished, properly thought-through.
+        River Fox Events is a Horsham event stylist designing bespoke
+        children's parties, milestone birthdays, christenings, baby
+        showers, weddings and corporate styling across the RH12 and
+        RH13 postcodes. Every celebration is built from scratch around
+        your brief — concept, balloon installations, backdrops,
+        signage, cake table and tablescape, all installed and broken
+        down by us.
       </p>
       <p>
-        Most Horsham briefs land in one of three places: family
-        homes around Roffey and Southwater, garden parties on the
-        lanes out towards Slinfold and Itchingfield, and venue
-        events in town or just outside it. The drive from our
-        Horley studio runs about thirty minutes down the A264 —
-        comfortable for a pre-event recce, comfortable for a late
-        breakdown.
+        Our studio is in Horley, around thirty minutes by road, and
+        Horsham sits firmly within our regular coverage. Same-day
+        install and breakdown, no travel surcharges for the standard
+        celebration, and full management on the day so you don't lift
+        a thing.
       </p>
     </>
   ),
   uniqueOccasionsBody: (
     <>
       <p>
-        Notable venues across the Horsham patch include South Lodge
-        Hotel at Lower Beeding — a country-house property where we
-        handle a steady run of milestone birthdays and weddings —
-        plus the Capitol theatre in town, the Drill Hall, and Field
-        Place at Broadbridge Heath. Mannings Heath Golf Club and
-        Slaugham Place pick up the corporate and country-feel
-        celebrations sitting just outside town.
-      </p>
-      <p>
-        We also see a particular pattern around Christ's Hospital
-        and the residential lanes towards Warnham — heritage homes
-        with long gardens that suit marquee weekends and properly
-        dressed cake tables. Wherever the celebration sits in
-        Horsham, we install before guests arrive and break down
-        fully once the day is done.
+        Horsham celebrations split between family at-home events
+        around Roffey, Southwater and Broadbridge Heath, country-house
+        weddings and milestone celebrations at South Lodge Hotel and
+        the surrounding venues, and town-centre celebrations at the
+        Capitol theatre and Field Place. We scale the styling to the
+        room — from a single focal-point installation for an intimate
+        celebration to a full multi-zone install across reception
+        rooms, marquees and gardens.
       </p>
     </>
   ),
   uniquePresenceAnswer:
-    "Yes — Horsham and the surrounding RH12/RH13 area are part of our regular West Sussex coverage. The patch runs across the Carfax and town centre, Roffey, Southwater, Broadbridge Heath, and out into the lanes around Warnham, Slinfold, Itchingfield and Christ's Hospital. Notable venues we work at include South Lodge Hotel at Lower Beeding, Field Place, Mannings Heath Golf Club and the Capitol theatre.",
-  uniqueLeadTimeAnswer:
-    "For Horsham 6–8 weeks ahead is the comfortable window. Local pressure points: the Horsham Festival in October pulls the venue diaries tight, Christmas books up early at South Lodge and Mannings Heath, and country-house weddings in the surrounding villages tend to take Saturdays from May through September. At-home celebrations are often workable inside two weeks — always worth asking.",
+    "Yes — Horsham and the surrounding RH12/RH13 area are part of our regular West Sussex coverage. We cover the town centre, Roffey, Southwater, Broadbridge Heath and the lanes around Warnham, Slinfold, Itchingfield and Christ's Hospital, plus venue work at South Lodge Hotel, Field Place, Mannings Heath Golf Club and the Capitol theatre. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
   uniqueExtraFaqs: [
     {
       q: "Are venues like South Lodge Hotel within your area?",
-      a: "Yes — South Lodge at Lower Beeding sits firmly within our Horsham patch and is one of the country-house properties we know best. Whether it's a wedding in the Camellia Suite, a milestone birthday in the gardens or a quieter celebration in the original mansion rooms, share the venue and the date when you enquire and we'll come back with a styling proposal that reflects the room.",
+      a: "Yes — South Lodge at Lower Beeding sits firmly within our Horsham patch and is one of the country-house properties we know best. Whether it's a wedding in the Camellia Suite, a milestone birthday in the gardens or a quieter celebration in the original mansion rooms, share the venue and the date when you enquire and we'll come back with a styling proposal designed for the room.",
     },
     {
-      q: "Do you cover the Horsham villages — Slinfold, Warnham, Mannings Heath?",
-      a: "Yes — the surrounding villages are part of the same patch. Slinfold Park, Warnham Court, Mannings Heath Golf Club and the lanes connecting them are all within our regular coverage. Most village celebrations happen at private homes; we install on-site, manage the day discreetly, and clear afterwards so you don't notice us at the end.",
+      q: "Do you cover at-home parties in the Horsham villages?",
+      a: "Yes — most village celebrations across Slinfold, Warnham and Mannings Heath happen at private homes. We install on-site, manage the day discreetly, and clear afterwards so the property is back to itself by morning.",
     },
   ],
 });

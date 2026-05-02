@@ -38,28 +38,36 @@ const esher = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        Esher's mix of village high street, Sandown Park horizon and
-        the Claygate edge gives us a wide range of settings to design
-        for — from cake-table christenings at home through to large-
-        scale activations at landmark venues.
+        River Fox Events is an Esher party stylist designing bespoke
+        children's parties, milestone birthdays, christenings, baby
+        showers, weddings and corporate styling across the KT10
+        postcode. Every celebration is built from scratch around your
+        brief — concept, balloon installations, backdrops, signage,
+        cake table and tablescape, all installed and broken down by
+        us.
       </p>
       <p>
-        Each part of Esher has its own pattern. The village high
-        street and the family residential roads off it deliver the
-        bulk of the at-home christenings and first birthdays.
-        Hinchley Wood and Claygate lean into garden parties and
-        marquee weekends. Sandown Park, on the racecourse side,
-        brings the corporate hospitality days, the larger-format
-        weddings and the higher-volume brand activations — a
-        completely different design challenge to a 20-guest sit-
-        down dinner in a Thames Ditton townhouse.
+        Our studio is in Horley and Esher sits firmly in our regular
+        Surrey coverage. Full install and breakdown handled, every
+        detail designed and managed personally by Laura.
       </p>
     </>
   ),
-  uniqueOccasionsLead:
-    "Esher celebrations span children's parties across Hinchley Wood and Claygate, milestone birthdays at Esher's high-street restaurants, and family events at private homes throughout the area. Sandown Park sits within the area as one of Surrey's best-known event venues.",
+  uniqueOccasionsBody: (
+    <>
+      <p>
+        Esher celebrations split between family at-home work across
+        the village, Hinchley Wood and Claygate, milestone dinners at
+        the high-street restaurants, and large-scale corporate and
+        wedding work at Sandown Park. We scale the styling to either:
+        a single statement installation for an intimate celebration,
+        or a full multi-zone styling for a corporate hospitality day
+        across multiple rooms.
+      </p>
+    </>
+  ),
   uniquePresenceAnswer:
-    "Yes — Esher and the wider area are part of our regular coverage. The patch runs from Esher village across Hinchley Wood, Claygate, Long Ditton and Thames Ditton. Notable venues in the area include Sandown Park, with East and West Molesey also within easy reach.",
+    "Yes — Esher and the wider area are part of our regular coverage. We cover Esher village, Hinchley Wood, Claygate, Long Ditton and Thames Ditton, plus venue work at Sandown Park and the high-street restaurants. East and West Molesey are also within easy reach. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
   uniqueExtraFaqs: [
     {
       q: "Is Sandown Park within your coverage area?",
