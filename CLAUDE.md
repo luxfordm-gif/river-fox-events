@@ -50,8 +50,8 @@ Location data lives in `src/data/locations/<slug>.tsx` and is built via the `mak
 
 - **Format: WebP.** Compress and convert before committing. JPG/PNG only for original/source assets that haven't been processed yet.
 - **Focal point matters.** When an image will be cropped or scaled (hero strips, gallery tiles, OG cards), the core subject must stay centred in the frame at every breakpoint. Analyse the image first, then choose `object-position` / aspect ratio so a downscaled or square crop still leads with the subject.
-- **Filenames are content-descriptive and unique.** Never `img1.webp`, `hero.webp`, `IMG_4521.webp`. Use descriptive slugs (`cobham-balloon-arch-pastel.webp`, `safari-second-birthday-cake-table.webp`). No two images in the project should share a filename, even across folders.
-- **Alt text describes what's actually in the image** — not the page topic. Two images of different parties shouldn't have alt text starting with the same 5 words. Bad: "Children's party styling in Surrey…" repeated everywhere. Good: each alt opens with what makes that specific photo specific (the cake table, the balloon installation, the venue, the colour palette).
+- **One image = one filename + one alt text.** The rule is per *image file*, not per *placement*. Each unique image gets a content-descriptive filename (`cobham-balloon-arch-pastel.webp`, `safari-second-birthday-cake-table.webp`) and one alt string that describes what's in the photo. No two different image files in the project may share a filename. It's fine for the same file to be referenced from many pages — that's still one filename, one alt.
+- **Alt text describes what's actually in the image** — not the page topic, and never the brand name (the brand is already in `<title>` and JSON-LD). Two different image files shouldn't open their alt text with the same 5 words. Bad: "Children's party styling in Surrey by River Fox Events…" repeated across multiple files. Good: each alt opens with what makes that specific photo specific (the cake table, the balloon installation, the venue, the colour palette).
 - **Per-page OG images.** The global fallback is `public/social-share.jpg`; journal articles and key pages should override with `ogImage` in `routes.ts` pointing to a per-page `.webp` in `public/og/`.
 
 **Compression & loading targets:**
@@ -67,6 +67,23 @@ Location data lives in `src/data/locations/<slug>.tsx` and is built via the `mak
 Every page must ship valid JSON-LD covering the schema types relevant to it: `LocalBusiness` and `Organization` site-wide, `Service` on each service line (children's parties, milestones, corporate), `FAQPage` wherever an FAQ block is present, `BreadcrumbList` on any non-home page, and `Review` / `AggregateRating` once real reviews are wired in (don't fabricate). The shared business + service blocks are emitted by `scripts/postbuild.mjs` from `src/seo/routes.ts` — extend that file rather than hand-writing JSON-LD into individual templates.
 
 **Validate before deploying any new page or schema change** against [Google's Rich Results Test](https://search.google.com/test/rich-results) and the [Schema Markup Validator](https://validator.schema.org/). Fix every error and warning before merging.
+
+## Maintenance & change process
+
+Two kinds of copy live in two different places, and the update path differs:
+
+1. **SEO copy (titles, metas) lives in `src/seo/routes.ts`.** Edit that file, then `npm run build` regenerates `dist/*/index.html` automatically. Never hand-edit `dist/`.
+2. **Body copy and alt text live in components and data files** (`src/data/locations/*.tsx`, page components, `src/data/articles/`). Editing these triggers a Netlify rebuild on push; HTML always reflects source.
+
+**Whenever body copy changes, or an image is swapped, also check:**
+
+- Does the page's meta description still accurately summarise the body?
+- Does the H1 still pair with the new hero copy?
+- If an image was replaced, has its alt text been rewritten to describe the *new* image — not just left over from the old one?
+- If the page's topic shifted, does its title still front-load the right keyword?
+- If a page or schema type was added, run [Google's Rich Results Test](https://search.google.com/test/rich-results) before merging.
+
+Run `npm run build` locally and spot-check `dist/<slug>/index.html` before pushing. Push to `main` deploys to Netlify automatically — there's no manual deploy step, so a broken push goes live.
 
 ## Brand & business
 
