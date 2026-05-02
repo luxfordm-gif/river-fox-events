@@ -128,7 +128,7 @@ const HeroEditorial = () => {
           {IMAGES.map((img, i) => (
             <div
               key={i}
-              className="relative overflow-hidden ph ph-warm rounded-[22px] rfx-rounded-img"
+              className="relative overflow-hidden ph ph-warm rounded-[14px] rfx-rounded-img"
               style={{ width: `${img.widthPct}%`, aspectRatio: img.aspect }}
             >
               <img

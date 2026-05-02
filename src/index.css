@@ -698,13 +698,19 @@
     }
     .cp-reveal-img-wrap > div { box-shadow: 0 12px 24px -16px hsl(var(--ink) / 0.18) !important; }
 
-    /* Mobile-only: soften corner radius on in-page images from 22px → 18px */
+    /* Mobile-only: tighter corner radius for a more editorial feel */
     .cp-reveal-img-wrap > div,
     .exp-img-wrap,
     .rfx-about-img,
     .rfx-rounded-img {
-      border-radius: 18px !important;
+      border-radius: 12px !important;
     }
+
+    /* Collapse vertical gap between adjacent CPReveal sections on mobile so
+       related reveals read as a sequence, not isolated blocks. Mirrors the
+       desktop rule at line 595. */
+    .cp-reveal-section + .cp-reveal-section { padding-top: 24px !important; }
+    .cp-reveal-section:has(+ .cp-reveal-section) { padding-bottom: 24px !important; }
 
     /* Mobile body-copy bump: bump 16px paragraphs to 17.5px for readability.
        Small/meta text (13–15px) stays as-is intentionally. */
