@@ -3,11 +3,13 @@ import LollipopRebrandBody from "./lollipop-balloons-to-river-fox-events";
 import BeyondTheBalloonArchBody from "./beyond-the-balloon-arch";
 import FromDesignToDeliveryBody from "./from-design-to-delivery";
 import ChildrensPartyThemes2026Body from "./childrens-party-themes-2026";
+import TwoWildSafariSecondBirthdayBody from "./two-wild-safari-second-birthday";
 
 import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
 import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
 import designToDeliveryCard from "@/assets/journal/from-design-to-delivery/dinosaur-party-styling-surrey-finished.webp";
 import childrensThemesCard from "@/assets/jungle-themed-childrens-party-styling-surrey.webp";
+import twoWildCard from "@/assets/journal/two-wild-safari-second-birthday/two-wild-safari-second-birthday-styling-horley-surrey.webp";
 
 /**
  * Master list of articles. Order = newest first.
@@ -22,6 +24,23 @@ import childrensThemesCard from "@/assets/jungle-themed-childrens-party-styling-
  */
 export const ARTICLES: Article[] = [
   {
+    slug: "two-wild-safari-second-birthday",
+    title: "Two Wild: a safari second birthday in Horley",
+    subtitle:
+      "How a 'Two Wild' celebration at Horley Community Centre moved from two concept renders to a finished room.",
+    teaser:
+      "Amiya's 'Two Wild' second birthday at Horley Community Centre — designed across two render boards, sourced over three weeks, installed in six hours.",
+    metaDescription:
+      "Behind the scenes of Amiya's 'Two Wild' safari second birthday at Horley Community Centre — concept renders to finished install. Pastel safari styling by Laura at River Fox Events.",
+    publishedAt: "2026-05-02",
+    readMinutes: 7,
+    relatedSlugs: ["from-design-to-delivery", "childrens-party-themes-2026", "beyond-the-balloon-arch"],
+    cardImage: twoWildCard,
+    ogImage: "/og/two-wild-safari-second-birthday.webp",
+    category: "Behind the scenes",
+    Body: TwoWildSafariSecondBirthdayBody,
+  },
+  {
     slug: "childrens-party-themes-2026",
     title: "Six children's party themes shaping 2026",
     subtitle:
@@ -32,7 +51,7 @@ export const ARTICLES: Article[] = [
       "Six children's party themes Surrey parents are asking for in 2026 — Chateaucore, Bluey done well, soft maximalism, charm-bracelet stations, woodland and Toy Story 5. From Laura at River Fox Events.",
     publishedAt: "2026-05-01",
     readMinutes: 6,
-    relatedSlugs: ["from-design-to-delivery", "beyond-the-balloon-arch", "lollipop-balloons-to-river-fox-events"],
+    relatedSlugs: ["from-design-to-delivery", "two-wild-safari-second-birthday", "beyond-the-balloon-arch", "lollipop-balloons-to-river-fox-events"],
     cardImage: childrensThemesCard,
     ogImage: "/og/childrens-party-themes-2026.webp",
     category: "Trends",
@@ -49,7 +68,7 @@ export const ARTICLES: Article[] = [
       "Behind the scenes of a Surrey children's party — from concept render to finished install. Laura on how design, sourcing and delivery come together at River Fox Events.",
     publishedAt: "2026-05-01",
     readMinutes: 6,
-    relatedSlugs: ["childrens-party-themes-2026", "beyond-the-balloon-arch", "lollipop-balloons-to-river-fox-events"],
+    relatedSlugs: ["two-wild-safari-second-birthday", "childrens-party-themes-2026", "beyond-the-balloon-arch", "lollipop-balloons-to-river-fox-events"],
     cardImage: designToDeliveryCard,
     ogImage: "/og/from-design-to-delivery.webp",
     category: "Behind the scenes",
