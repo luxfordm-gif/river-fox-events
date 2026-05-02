@@ -9,7 +9,7 @@ import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.
 import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
 import designToDeliveryCard from "@/assets/journal/from-design-to-delivery/dinosaur-party-styling-surrey-finished.webp";
 import childrensThemesCard from "@/assets/jungle-themed-childrens-party-styling-surrey.webp";
-import twoWildCard from "@/assets/journal/two-wild-safari-second-birthday/two-wild-safari-second-birthday-styling-horley-surrey.webp";
+import twoWildCard from "@/assets/journal/two-wild-safari-second-birthday/two-wild-safari-feature-backdrop-concept-horley-surrey.webp";
 
 /**
  * Master list of articles. Order = newest first.
