@@ -30,11 +30,18 @@ const LocationUSP = () => {
   return (
     <section
       id="usps"
-      className="rfx-section dark"
+      className="rfx-section white"
+      style={{ paddingTop: 0, paddingBottom: "80px" }}
       aria-label="What makes River Fox Events different"
     >
       <div className="container-rfx">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8 lg:gap-10">
+        <div
+          className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-8"
+          style={{ fontWeight: 600 }}
+        >
+          Why River Fox
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-10 lg:gap-12">
           {USPS.map((u, i) => {
             const Icon = u.icon;
             return (
@@ -53,14 +60,14 @@ const LocationUSP = () => {
                     lineHeight: 1.18,
                     fontWeight: 400,
                     letterSpacing: "-0.012em",
-                    color: "hsl(var(--on-deep))",
+                    color: "hsl(var(--ink))",
                   }}
                 >
                   {u.title}
                 </h3>
                 <p
-                  className="mt-4 text-[14.5px] leading-[1.65]"
-                  style={{ color: "hsl(var(--on-deep-soft))", textWrap: "pretty" }}
+                  className="mt-4 text-[14.5px] leading-[1.65] text-ink-soft"
+                  style={{ textWrap: "pretty" }}
                 >
                   {u.body}
                 </p>
