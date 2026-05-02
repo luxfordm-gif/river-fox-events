@@ -1,4 +1,13 @@
 import { QUOTES } from "./Testimonials";
+import logoPg from "@/assets/client-pg.webp";
+import logoTheRange from "@/assets/client-the-range.png";
+import logoFoxhills from "@/assets/client-foxhills.webp";
+
+const CLIENT_LOGOS = [
+  { src: logoPg, alt: "P&G", width: 600, height: 260 },
+  { src: logoTheRange, alt: "The Range", width: 357, height: 76 },
+  { src: logoFoxhills, alt: "Foxhills", width: 642, height: 137 },
+];
 
 const Stars = () => (
   <span className="tcard-stars" aria-label="Five stars">
@@ -45,21 +54,28 @@ const LocationTrust = () => {
           ))}
         </div>
 
-        <div className="mt-14 md:mt-16 pt-10 md:pt-12 border-t border-ink/10 text-center">
-          <p className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft">
+        <div className="mt-14 md:mt-16 pt-10 md:pt-12 border-t border-ink/10">
+          <p className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft text-center">
             Recent clients include
           </p>
-          <p
-            className="mt-4 font-serif-rf text-ink"
-            style={{
-              fontSize: "clamp(20px, 1.6vw, 26px)",
-              lineHeight: 1.3,
-              fontWeight: 300,
-              letterSpacing: "-0.01em",
-            }}
+          <ul
+            className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 md:gap-x-20 list-none p-0 m-0"
+            aria-label="Recent clients"
           >
-            P&amp;G &nbsp;·&nbsp; The Range &nbsp;·&nbsp; Foxhills
-          </p>
+            {CLIENT_LOGOS.map((c) => (
+              <li key={c.alt} className="flex items-center justify-center">
+                <img
+                  src={c.src}
+                  alt={c.alt}
+                  width={c.width}
+                  height={c.height}
+                  loading="lazy"
+                  decoding="async"
+                  className="block h-9 md:h-10 w-auto opacity-80"
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
