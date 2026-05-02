@@ -1,11 +1,19 @@
 import { useEffect, useRef, useState } from "react";
-import { Instagram, MessageCircle } from "lucide-react";
+import { ChevronDown, Instagram, MessageCircle } from "lucide-react";
 import { useScrollY } from "@/hooks/useRiverFox";
+import { LOCATIONS } from "@/data/locations";
+
+const FOOTER_LOCATIONS_VISIBLE = 7;
 
 const Footer = () => {
   const y = useScrollY();
   const watermarkRef = useRef<HTMLDivElement>(null);
   const [revealed, setRevealed] = useState(false);
+  const [showAllLocations, setShowAllLocations] = useState(false);
+  const visibleLocations = showAllLocations
+    ? LOCATIONS
+    : LOCATIONS.slice(0, FOOTER_LOCATIONS_VISIBLE);
+  const hasMoreLocations = LOCATIONS.length > FOOTER_LOCATIONS_VISIBLE;
 
   useEffect(() => {
     const el = watermarkRef.current;
@@ -144,15 +152,33 @@ const Footer = () => {
                 Locations
               </div>
               <div className="text-[13.5px] leading-loose">
-                <a href="/party-styling-cobham/" className="opacity-85 hover:opacity-100 block">Cobham</a>
-                <a href="/party-styling-oxshott/" className="opacity-85 hover:opacity-100 block">Oxshott</a>
-                <a href="/party-styling-weybridge/" className="opacity-85 hover:opacity-100 block">Weybridge</a>
-                <a href="/party-styling-walton-on-thames/" className="opacity-85 hover:opacity-100 block">Walton-on-Thames</a>
-                <a href="/party-styling-esher/" className="opacity-85 hover:opacity-100 block">Esher</a>
-                <a href="/party-styling-guildford/" className="opacity-85 hover:opacity-100 block">Guildford</a>
-                <a href="/party-styling-dorking/" className="opacity-85 hover:opacity-100 block">Dorking</a>
-                <a href="/party-styling-reigate/" className="opacity-85 hover:opacity-100 block">Reigate</a>
-                <a href="/party-styling-oxted/" className="opacity-85 hover:opacity-100 block">Oxted</a>
+                {visibleLocations.map((loc) => (
+                  <a
+                    key={loc.slug}
+                    href={`/party-styling-${loc.slug}/`}
+                    className="opacity-85 hover:opacity-100 block"
+                  >
+                    {loc.cityName}
+                  </a>
+                ))}
+                {hasMoreLocations && (
+                  <button
+                    type="button"
+                    onClick={() => setShowAllLocations((s) => !s)}
+                    aria-expanded={showAllLocations}
+                    className="mt-2 inline-flex items-center gap-1.5 bg-transparent border-0 p-0 cursor-pointer text-[13.5px] opacity-70 hover:opacity-100 text-inherit"
+                  >
+                    {showAllLocations ? "Show less" : "Show more"}
+                    <ChevronDown
+                      size={12}
+                      strokeWidth={1.25}
+                      aria-hidden="true"
+                      className={`transition-transform duration-300 ${
+                        showAllLocations ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                )}
               </div>
             </div>
             <div>
@@ -190,7 +216,7 @@ const Footer = () => {
                 <a href="https://instagram.com/riverfoxevents" target="_blank" rel="noreferrer" className="hover:opacity-100 opacity-85 block">
                   @riverfoxevents
                 </a>
-                <span className="block">15 Apsley Rd, Horley RH6 9RX</span>
+                <span className="block">15 Apsley Rd, Horley RH6</span>
               </div>
             </div>
           </div>
