@@ -38,36 +38,44 @@ const oxshott = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        Tucked between Cobham and Esher, Oxshott is village in name,
-        estate-belt in feel — large private homes, generous gardens
-        and a community that takes celebrations seriously. Most
-        Oxshott parties happen at home rather than at venues.
+        River Fox Events is an Oxshott party stylist designing bespoke
+        children's parties, milestone birthdays, christenings, baby
+        showers and at-home weddings across the KT22 postcode. Every
+        celebration is built from scratch around your brief —
+        concept, balloon installations, backdrops, signage, cake
+        table and tablescape, all installed and broken down by us.
       </p>
       <p>
-        It's the most home-led of our Surrey patches. The Crown
-        Estate roads — Warren Lane, Sandy Lane, Stoke Road and the
-        Heath properties around them — sit on properly generous
-        plots, which means most celebrations run across multiple
-        zones rather than a single room. Drawing-room and entrance-
-        hall installations for arrival, garden marquees for the
-        meal, kitchen-island bars for the after-dinner. We design
-        across all of it as one piece, install across all of it in
-        a single morning, and break down the same night.
+        Our studio is in Horley and Oxshott sits firmly in our regular
+        Surrey coverage. Most local celebrations happen at home rather
+        than at named venues — and that's the bulk of what we do here.
       </p>
     </>
   ),
-  uniqueOccasionsLead:
-    "Oxshott celebrations often run across multiple zones of a private property — first birthdays in marquee-tented gardens, christenings styled around drawing rooms, and milestone moments dressed across kitchens, terraces and entertaining spaces.",
+  uniqueOccasionsBody: (
+    <>
+      <p>
+        Oxshott celebrations are mostly at-home. The Crown Estate
+        roads — Warren Lane, Sandy Lane, Stoke Road and the Heath
+        properties — sit on generous plots, so most events run across
+        multiple zones rather than a single room. Drawing-room and
+        entrance-hall installations for arrival, garden marquees for
+        the meal, kitchen-island bars for the after-dinner. We design
+        across all of it as one piece, install in a single morning,
+        and break down the same night.
+      </p>
+    </>
+  ),
   uniquePresenceAnswer:
-    "Yes — Oxshott sits firmly within our Surrey coverage, between Cobham and Esher. The patch runs across Oxshott Heath, the village centre, and the surrounding estate roads — Warren Lane, Sandy Lane, Stoke Road and beyond. Most local celebrations happen at private homes rather than at named venues.",
+    "Yes — Oxshott sits firmly within our Surrey coverage, between Cobham and Esher. We cover Oxshott Heath, the village centre, and the surrounding estate roads — Warren Lane, Sandy Lane, Stoke Road and beyond. Most local celebrations happen at private homes rather than at named venues. Mention your postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
   uniqueExtraFaqs: [
     {
-      q: "Do you cover private home parties in Oxshott?",
+      q: "Do you cover at-home parties in Oxshott?",
       a: "Yes — that's the bulk of what we do here. Oxshott is a town of large private properties, and most celebrations happen at home. We're set up to install across multiple rooms, gardens or marquees within a single property, and to handle the full breakdown discreetly afterwards.",
     },
     {
       q: "Can you handle a multi-zone Oxshott celebration in a single day?",
-      a: "Yes — multi-zone installs are routine here. A typical Oxshott celebration might involve dressing the entrance hall and drawing room for arrival, a separate scheme in the garden marquee for dinner, and a third register for the kitchen-island after-dinner space. We design those zones as one piece so the celebration reads coherent rather than fragmented, and we install across all of them in a single morning.",
+      a: "Yes — multi-zone installs are routine here. A typical Oxshott celebration might involve dressing the entrance hall and drawing room for arrival, a separate scheme in the garden marquee for dinner, and a third register for the kitchen-island after-dinner space. We install across all of it in a single morning.",
     },
   ],
 });

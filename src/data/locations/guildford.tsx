@@ -38,31 +38,37 @@ const guildford = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        Guildford is Surrey's county town — a cobbled high street
-        running down to the River Wey, the cathedral on the hill
-        above, and a mix of historic and contemporary venues. The
-        kind of town where celebrations vary widely in setting and
-        style.
+        River Fox Events is a Guildford party stylist designing
+        bespoke children's parties, milestone birthdays, christenings,
+        baby showers, weddings and corporate styling across the GU1
+        and GU2 postcodes and the wider GU area. Every celebration is
+        built from scratch around your brief — concept, balloon
+        installations, backdrops, signage, cake table and tablescape,
+        all installed and broken down by us.
       </p>
       <p>
-        Each pocket of Guildford brings a different design
-        challenge. Castle Street and the cobbled high-street
-        properties suit intimate, properly considered styling that
-        sits comfortably alongside the architecture. The wider GU
-        residential roads — Merrow, Burpham, Worplesdon and
-        Shalford — bring the at-home christenings and milestone
-        birthdays. Loseley Park's house and walled garden, along
-        with the Cathedral's Refectory and G Live's foyer spaces,
-        each take a styled installation in completely different
-        directions; we design accordingly rather than treating
-        Guildford as one market.
+        Our studio is in Horley and Guildford sits within our regular
+        Surrey coverage. Full install and breakdown handled, every
+        detail designed and managed personally by Laura.
       </p>
     </>
   ),
-  uniqueOccasionsLead:
-    "Guildford celebrations span intimate gatherings in Castle Street townhouses, family parties across the GU postcodes, milestone birthdays at country-house venues, and corporate launches in the city centre. Notable venues in the area include Loseley Park, the Mandolay Hotel and G Live.",
+  uniqueOccasionsBody: (
+    <>
+      <p>
+        Guildford celebrations split between intimate gatherings in
+        Castle Street townhouses, family at-home parties across the
+        GU postcodes (Merrow, Burpham, Worplesdon, Shalford),
+        country-house weddings at Loseley Park and corporate launches
+        through the Mandolay Hotel and G Live. We scale the styling
+        to either: a single statement installation for an intimate
+        celebration, or a full multi-zone styling across reception
+        rooms and gardens.
+      </p>
+    </>
+  ),
   uniquePresenceAnswer:
-    "Yes — Guildford and the wider GU area are part of our Surrey coverage. The patch runs from the town centre down through Shalford and Godalming, and out into Compton, Merrow and the surrounding villages. Notable venues in the area include Loseley Park, the Mandolay Hotel and G Live.",
+    "Yes — Guildford and the wider GU area are part of our Surrey coverage. We cover the town centre, Shalford, Godalming, Compton, Merrow and the surrounding villages, plus venue work at Loseley Park, the Mandolay Hotel and G Live. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
   uniqueExtraFaqs: [
     {
       q: "Are venues like Loseley Park or the Mandolay within your area?",
@@ -70,7 +76,7 @@ const guildford = makeLocation({
     },
     {
       q: "Do you cover the Surrey Hills villages south of Guildford?",
-      a: "Yes — the lanes and villages south of Guildford (Compton, Shalford, Godalming, Bramley) are part of the same patch. Most celebrations across these villages happen at private homes; we install on-site, manage the day discreetly, and clear afterwards. Country-house and barn venues across the Surrey Hills are also within our regular coverage.",
+      a: "Yes — the lanes and villages south of Guildford (Compton, Shalford, Godalming, Bramley) are part of the same patch. Most celebrations there happen at private homes; we install on-site, manage the day discreetly, and clear afterwards.",
     },
   ],
 });

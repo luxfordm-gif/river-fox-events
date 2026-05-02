@@ -6,7 +6,7 @@ const tunbridgeWells = makeLocation({
   region: "Kent",
   seoTitleRegion: "Kent",
   uniqueSeoDescription:
-    "Tunbridge Wells event stylist — bespoke children's celebrations, milestones and corporate styling across Kent from £460. Personally handled by Laura.",
+    "Tunbridge Wells event stylist — bespoke children's parties, milestone celebrations and corporate styling across Kent from £460. Personally by Laura.",
   nearbyVillages: [
     "Rusthall",
     "Southborough",
@@ -42,59 +42,46 @@ const tunbridgeWells = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        Royal Tunbridge Wells holds a particular kind of event
-        sensibility — Georgian, considered, slightly formal, with
-        the Pantiles' colonnade and Calverley Park setting the tone
-        for everything around them. We design celebrations for the
-        town that pick up that register without becoming stuffy:
-        soft palettes, considered florals, signage that earns its
-        place rather than shouts.
+        River Fox Events is a Tunbridge Wells event stylist designing
+        bespoke children's parties, milestone birthdays, christenings,
+        baby showers, weddings and corporate styling across the
+        TN1–TN4 postcodes. Every celebration is built from scratch
+        around your brief — concept, balloon installations, backdrops,
+        signage, cake table and tablescape, all installed and broken
+        down by us.
       </p>
       <p>
-        From our Horley studio it's around fifty minutes east on the
-        A21 to TN1 — far enough that we plan the day with proper
-        margin, close enough that we cover the patch genuinely
-        regularly. Most enquiries land in three rough buckets:
-        celebrations at Calverley Park and Mount Sion family homes,
-        landmark events at Salomons Estate and the Hotel du Vin, and
-        the country-house celebrations across Speldhurst,
-        Bidborough and out towards Goudhurst.
+        Our studio is in Horley, around fifty minutes east on the A21,
+        and Tunbridge Wells is a town we cover regularly. The travel
+        is built into the install schedule properly; no surcharge for
+        the standard celebration, full management on the day.
       </p>
     </>
   ),
   uniqueOccasionsBody: (
     <>
       <p>
-        Salomons Estate is the country-house venue most Tunbridge
-        Wells clients ask about for milestone birthdays, anniversaries
-        and weddings — the historic library, the science theatre and
-        the gardens each handle a styled installation differently. The
-        Hotel du Vin on Crescent Road brings a cosier register, suited
-        to 30-guest sit-downs and intimate milestone dinners.
-      </p>
-      <p>
-        On the family side, Calverley Park and the lanes around Mount
-        Sion deliver beautiful at-home celebrations — Regency-era
-        rooms with proportions that take a balloon installation and a
-        properly dressed table without effort. The Pantiles and the
-        High Street venues handle the rest, including a steady stream
-        of hen weekends, baby showers and christening lunches that
-        prefer a townhouse-restaurant setting.
+        Tunbridge Wells celebrations split between family at-home
+        work across Calverley Park, Mount Sion and the residential
+        roads off the Pantiles, country-house weddings and milestone
+        events at Salomons Estate and the venues around Speldhurst,
+        and intimate dining-led celebrations at Hotel du Vin and the
+        Spa Hotel. We scale the styling to either: a single statement
+        balloon installation for an intimate dinner, or a full multi-
+        zone styling across reception rooms and gardens.
       </p>
     </>
   ),
   uniquePresenceAnswer:
-    "Yes — Tunbridge Wells and the surrounding TN1–TN4 area are part of our regular Kent coverage. The patch runs across the Pantiles, Mount Sion, Calverley Park and Mount Ephraim, Southborough, Rusthall, Pembury, and out into the country-house belt at Speldhurst, Langton Green and Bidborough. Notable venues we work at include Salomons Estate, Hotel du Vin, the Spa Hotel and the Bull Inn at Linton.",
-  uniqueLeadTimeAnswer:
-    "For Tunbridge Wells we suggest 6–8 weeks ahead, longer if you're looking at peak Saturdays at Salomons or wedding-season weekends through May to September. Christmas at the Hotel du Vin and the Spa Hotel books up early; corporate diary slots in autumn fill quickly along the High Street venues. Smaller at-home celebrations are often workable inside two weeks.",
+    "Yes — Tunbridge Wells and the surrounding TN1–TN4 area are part of our regular Kent coverage. We cover the Pantiles, Mount Sion, Calverley Park, Mount Ephraim, Southborough, Rusthall, Pembury and the lanes towards Speldhurst, Langton Green and Bidborough, plus venue work at Salomons Estate, Hotel du Vin and the Spa Hotel. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
   uniqueExtraFaqs: [
     {
       q: "Do you cover events at Salomons Estate and Hotel du Vin?",
-      a: "Yes — both are part of our regular Tunbridge Wells coverage. Salomons' historic rooms (the library and the science theatre in particular) each ask for a different design approach; the Hotel du Vin's intimate dining rooms suit smaller, more considered milestones. Tell us which space you've booked when you enquire and we'll come back with a styling proposal that matches the proportions of the room.",
+      a: "Yes — both are part of our regular Tunbridge Wells coverage. Salomons' historic rooms (the library and the science theatre in particular) each ask for a different design approach; Hotel du Vin's intimate dining rooms suit smaller, more considered milestones. Tell us which space you've booked when you enquire and we'll come back with a styling proposal that matches the proportions of the room.",
     },
     {
-      q: "Is the studio close enough to handle Tunbridge Wells celebrations properly?",
-      a: "Tunbridge Wells is around fifty minutes east of our Horley studio on the A21. We cover it regularly, build the journey into the install schedule properly, and don't add a travel surcharge for the standard celebration. For early-morning installs or late-night breakdowns we plan accordingly — the geography of the M25/A21 corridor is something we know how to work with rather than against.",
+      q: "Are at-home celebrations in Calverley Park and Mount Sion within your area?",
+      a: "Yes — at-home celebrations across the Calverley Park and Mount Sion residential roads are part of our regular work. We install across drawing rooms, kitchens and gardens within a single property, manage the day discreetly, and clear afterwards.",
     },
   ],
 });
