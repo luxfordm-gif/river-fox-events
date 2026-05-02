@@ -250,6 +250,16 @@ export const ROUTES: RouteSEO[] = [
     changefreq: "weekly",
   },
   {
+    path: "/journal/two-wild-safari-second-birthday",
+    title:
+      "Two Wild: a Safari Second Birthday in Horley, Surrey | River Fox Events",
+    description:
+      "Behind the scenes of Amiya's 'Two Wild' safari second birthday at Horley Community Centre — concept renders to finished install. Pastel safari styling by Laura at River Fox Events.",
+    ogImage: "/og/two-wild-safari-second-birthday.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+  },
+  {
     path: "/journal/childrens-party-themes-2026",
     title:
       "Children's Party Themes 2026: Six Trending Briefs from a Surrey Studio | River Fox Events",
