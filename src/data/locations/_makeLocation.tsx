@@ -280,7 +280,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
         },
       ],
       footnote:
-        "Every event is individually quoted following a short discovery call. Get in touch with your vision and we'll come back to you personally within 48 hours.",
+        "Every event is individually quoted following a short discovery call. Get in touch with your vision and we'll come back to you personally.",
     },
     faqs: [
       {

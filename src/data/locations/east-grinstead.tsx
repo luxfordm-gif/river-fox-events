@@ -82,7 +82,7 @@ const eastGrinstead = makeLocation({
     },
     {
       q: "How much is event styling in East Grinstead?",
-      a: "Pricing starts at £460 for an intimate celebration with a single focal-point installation. Most full-styling East Grinstead celebrations sit between £1,200 and £2,500 depending on scale, theme and the number of zones being styled. Every event is individually quoted following a short discovery call — share your vision and we'll come back personally within 48 hours.",
+      a: "Pricing starts at £460 for an intimate celebration with a single focal-point installation. Most full-styling East Grinstead celebrations sit between £1,200 and £2,500 depending on scale, theme and the number of zones being styled. Every event is individually quoted following a short discovery call — share your vision and we'll come back personally.",
     },
   ],
 });
