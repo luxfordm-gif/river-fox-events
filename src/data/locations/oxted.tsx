@@ -39,33 +39,24 @@ const oxted = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        River Fox Events is an Oxted party stylist designing bespoke
-        children's parties, milestone birthdays, christenings, baby
-        showers, weddings and corporate styling across the RH8
-        postcode. Every celebration is built from scratch around your
-        brief — concept, balloon installations, backdrops, signage,
-        cake table and tablescape, all installed and broken down by
-        us.
-      </p>
-      <p>
-        Our studio is in Horley, around twenty-five minutes east via
-        the A25 and M25, and Oxted sits within our regular East
-        Surrey coverage. Full install and breakdown handled, every
-        detail designed and managed personally by Laura.
+        Most clients arrive with a feeling rather than a brief — a
+        colour, a memory, a Pinterest board that hasn't quite
+        landed. The first conversation is short and unhurried; you
+        bring the vision, we shape it into something specific and
+        buildable. From that point you can let go: sourcing, build,
+        install on the morning, breakdown on the night.
       </p>
     </>
   ),
   uniqueOccasionsBody: (
     <>
       <p>
-        Oxted celebrations split between family at-home work across
-        the residential roads off Bluehouse Lane, Limpsfield Chart
-        and the properties up on Tandridge Hill, country-house
-        weddings and milestones at Titsey Place, and smaller
-        community-led celebrations at the Master Park pavilion. We
-        scale the styling to either: a single statement installation
-        for an intimate party, or a full multi-zone styling across
-        reception rooms, gardens and marquees.
+        A first birthday in the garden. A fortieth that needs to
+        feel like a proper night out. A christening lunch, a ruby
+        wedding, a brand dinner for the team. Every brief looks
+        different, but the question underneath is always the same —
+        what do you want this day to feel like? The styling is
+        designed backwards from the answer.
       </p>
     </>
   ),
