@@ -168,6 +168,16 @@ const About = () => {
               </p>
             </div>
 
+            <a
+              href="/journal/"
+              className="btn-link-rf mt-8"
+              style={{ fontWeight: 600 }}
+              aria-label="Read the River Fox Events journal — notes, behind the scenes and trends from the studio"
+            >
+              Inside the studio · read the journal{" "}
+              <span className="arr">→</span>
+            </a>
+
             <div
               ref={statsRef}
               className="mt-12 grid grid-cols-3 gap-3 sm:gap-6 items-baseline border-t border-ink/20 pt-8 max-w-[560px]"
