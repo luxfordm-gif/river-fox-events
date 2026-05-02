@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Instagram } from "lucide-react";
+import { Instagram, MessageCircle } from "lucide-react";
 import { useScrollY } from "@/hooks/useRiverFox";
 
 const Footer = () => {
@@ -173,6 +173,16 @@ const Footer = () => {
               <div className="text-[13.5px] leading-loose" style={{ color: "hsl(var(--on-deep-soft))" }}>
                 <a href="mailto:Riverfoxevents@gmail.com" className="hover:opacity-100 opacity-85 block">
                   Riverfoxevents@gmail.com
+                </a>
+                <a
+                  href="https://wa.me/447872114191?text=Hi%20Laura%2C%20I%27m%20enquiring%20about%20River%20Fox%20Events"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Message Laura on WhatsApp"
+                  className="hover:opacity-100 opacity-85 inline-flex items-center gap-1.5"
+                >
+                  <MessageCircle className="w-3.5 h-3.5" aria-hidden="true" />
+                  WhatsApp Laura
                 </a>
                 <a href="tel:+447872114191" className="hover:opacity-100 opacity-85 block">
                   07872 114191

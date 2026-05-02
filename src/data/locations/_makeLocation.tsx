@@ -20,6 +20,18 @@ import imgGallery3 from "@/assets/cp-included.webp";
 type LocationInput = {
   slug: string;
   cityName: string;
+  /** Override the H1's "Your {city} party stylist." with bespoke phrasing.
+   *  Use when the standard line reads awkwardly (e.g. "Your Brighton & Hove
+   *  party stylist."). Should still slot Laura/personalisation into a
+   *  visible italic phrase further down. */
+  uniqueHeroLine?: ReactNode;
+  /** Override the hero subline. */
+  uniqueHeroSub?: ReactNode;
+  /** Override the SEO title (≤60 chars including " | River Fox Events"). */
+  uniqueSeoTitle?: string;
+  /** Override the H1 region word ("Surrey") in seoTitle generation when
+   *  the town isn't strictly Surrey. */
+  seoTitleRegion?: string;
   /** Regional bucket, used in body copy. e.g. "Surrey", "East Surrey", "North Surrey". */
   region: string;
   /** Surrounding villages — populates the "we work across X, Y, Z" body copy and FAQs. */
@@ -32,16 +44,31 @@ type LocationInput = {
   jsonLdAreaServed: string[];
   /** Override the auto-generated SEO description (≤160 chars). */
   uniqueSeoDescription?: string;
-  /** Bespoke ReactNode rendered before the templated paragraph in "What we do".
-   *  Use for local venues, postcode notes, town character. */
+  /** Bespoke single paragraph rendered before the templated paragraph in
+   *  "What we do". String input gets wrapped in <p>; use uniqueWhatWeDoBody
+   *  if you need multiple paragraphs of bespoke local copy. */
   uniqueWhatWeDoLead?: ReactNode;
-  /** Bespoke ReactNode rendered before the templated paragraph in "Occasions". */
+  /** Multiple paragraphs of bespoke local copy for the "What we do" body.
+   *  Caller is responsible for own <p> wrappers. Renders before the templated
+   *  paragraph; supersedes uniqueWhatWeDoLead when both are present. */
+  uniqueWhatWeDoBody?: ReactNode;
+  /** Bespoke single paragraph rendered before the templated paragraph in "Occasions". */
   uniqueOccasionsLead?: ReactNode;
+  /** Multiple paragraphs of bespoke local copy for the "Occasions" body.
+   *  Caller is responsible for own <p> wrappers. */
+  uniqueOccasionsBody?: ReactNode;
   /** Replaces the default "Do you style events in [town]?" answer. Use to
    *  list specific venues / postcode coverage / repeat-client mentions. */
   uniquePresenceAnswer?: string;
+  /** Replaces the default "How far in advance should I book?" answer. Use
+   *  to mention local seasonal pressure (e.g. summer river season,
+   *  Brighton festival, school catchments). */
+  uniqueLeadTimeAnswer?: string;
   /** Extra town-specific Q&A inserted after the standard set. */
   uniqueExtraFaq?: { q: string; a: string };
+  /** Multiple extra Q&As inserted after the standard set. Renders after
+   *  uniqueExtraFaq if both are provided. */
+  uniqueExtraFaqs?: { q: string; a: string }[];
 };
 
 export function makeLocation(input: LocationInput): LocationConfig {
@@ -53,11 +80,19 @@ export function makeLocation(input: LocationInput): LocationConfig {
     areas,
     mapQuery,
     jsonLdAreaServed,
+    uniqueHeroLine,
+    uniqueHeroSub,
+    uniqueSeoTitle,
+    seoTitleRegion,
     uniqueSeoDescription,
     uniqueWhatWeDoLead,
+    uniqueWhatWeDoBody,
     uniqueOccasionsLead,
+    uniqueOccasionsBody,
     uniquePresenceAnswer,
+    uniqueLeadTimeAnswer,
     uniqueExtraFaq,
+    uniqueExtraFaqs,
   } = input;
 
   const villagesIntro = nearbyVillages.slice(0, 3).join(", ");
@@ -66,13 +101,17 @@ export function makeLocation(input: LocationInput): LocationConfig {
   return {
     slug,
     cityName,
-    seoTitle: `Party Stylist ${cityName} Surrey | River Fox Events`,
+    seoTitle:
+      uniqueSeoTitle ??
+      `Party Stylist ${cityName} ${
+        seoTitleRegion ?? "Surrey"
+      } | River Fox Events`,
     seoDescription:
       uniqueSeoDescription ??
       `${cityName} party stylist — bespoke children's parties, milestones and corporate events across ${region} from £460. Every detail personally handled by Laura.`,
     hero: {
       lines: [
-        <>Your {cityName} party stylist.</>,
+        uniqueHeroLine ?? <>Your {cityName} party stylist.</>,
         <>
           Every detail,{" "}
           <em className="italic font-normal text-accent-warm">
@@ -80,7 +119,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
           </em>
         </>,
       ],
-      sub: (
+      sub: uniqueHeroSub ?? (
         <>
           Celebrations brought to life in {cityName} — personally designed,
           installed and managed.
@@ -102,7 +141,9 @@ export function makeLocation(input: LocationInput): LocationConfig {
       ),
       body: (
         <>
-          {uniqueWhatWeDoLead && <p>{uniqueWhatWeDoLead}</p>}
+          {uniqueWhatWeDoBody
+            ? uniqueWhatWeDoBody
+            : uniqueWhatWeDoLead && <p>{uniqueWhatWeDoLead}</p>}
           <p>
             We work with families and businesses across {cityName}
             {villagesIntro ? `, ${villagesIntro}` : ""} and the surrounding
@@ -127,7 +168,9 @@ export function makeLocation(input: LocationInput): LocationConfig {
       ),
       body: (
         <>
-          {uniqueOccasionsLead && <p>{uniqueOccasionsLead}</p>}
+          {uniqueOccasionsBody
+            ? uniqueOccasionsBody
+            : uniqueOccasionsLead && <p>{uniqueOccasionsLead}</p>}
           <p>
             Children's birthdays, christenings, milestone moments, baby
             showers and corporate events across {region} — every {cityName}
@@ -252,7 +295,9 @@ export function makeLocation(input: LocationInput): LocationConfig {
       },
       {
         q: "How far in advance should I book?",
-        a: `For events in ${cityName} we recommend enquiring at least 6–8 weeks ahead, particularly for weekend dates during school holidays — these book up quickly. That said, always worth asking as last-minute availability does occasionally come up.`,
+        a:
+          uniqueLeadTimeAnswer ??
+          `For events in ${cityName} we recommend enquiring at least 6–8 weeks ahead, particularly for weekend dates during school holidays — these book up quickly. That said, always worth asking as last-minute availability does occasionally come up.`,
       },
       {
         q: "Do you travel to my home or venue?",
@@ -271,6 +316,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
         a: "We arrive before your guests and handle all setup. Once everything is in place the space is yours to enjoy completely. We return after the celebration to take everything down — you don't need to think about it.",
       },
       ...(uniqueExtraFaq ? [uniqueExtraFaq] : []),
+      ...(uniqueExtraFaqs ?? []),
     ],
     nearby: {
       eyebrow: "Where we work",
