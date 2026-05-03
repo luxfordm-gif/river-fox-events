@@ -116,7 +116,7 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-oxted",
-    title: "Luxury Event Styling in Oxted | River Fox Events",
+    title: "Party Stylist Oxted Surrey | River Fox Events",
     description:
       "Statement styling for celebrations at Titsey Place, Limpsfield and across Oxted. Parties and milestones from £460, personally by Laura.",
     breadcrumbName: "Party Styling Oxted",
@@ -200,7 +200,7 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-guildford",
-    title: "Luxury Event Styling in Guildford | River Fox Events",
+    title: "Guildford Party & Event Stylist | River Fox Events",
     description:
       "Ceiling drapery, balloon installations and milestone parties in Guildford from £460. Personally designed and installed by Laura.",
     breadcrumbName: "Party Styling Guildford",
@@ -244,7 +244,7 @@ export const ROUTES: RouteSEO[] = [
   // towns, anchored by East Grinstead (closest Sussex town).
   {
     path: "/party-styling-east-grinstead",
-    title: "Luxury Event Styling in East Grinstead | River Fox Events",
+    title: "Party Stylist East Grinstead Sussex | River Fox Events",
     description:
       "Full-service styling delivered to East Grinstead and across West Sussex. From design through to clear-down, personally handled by Laura.",
     breadcrumbName: "Party Styling East Grinstead",
@@ -419,7 +419,7 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-lewes",
-    title: "Luxury Event Styling in Lewes | River Fox Events",
+    title: "Editorial Event Styling Lewes | River Fox Events",
     description:
       "A short drive from Lewes — full-service East Sussex country-house celebrations. From design to clear-down, personally handled by Laura.",
     breadcrumbName: "Party Styling Lewes",
