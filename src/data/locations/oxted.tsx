@@ -80,25 +80,17 @@ const oxted = makeLocation({
     body: (
       <>
         <p>
-          Oxted celebrations have a specific rhythm to them. Many take place at
-          home — across Limpsfield, Hurst Green, Tandridge and the surrounding
-          villages — where the room is the canvas and the styling has to feel
-          like it belongs in your space, not imposed on it. Others move to
-          local venues like the village halls, country clubs or private
-          gardens that East Surrey does so well.
+          Oxted is mostly home work. The houses across the area sit on
+          enough land that styling has to belong in the room rather
+          than be imposed on it — a country house calls for different
+          decisions than a London townhouse, and we make them
+          differently. When the celebration moves out, it tends to be
+          to a private garden, a country club, or one of the village
+          halls East Surrey does well.
         </p>
         <p>
-          Either way, the practical bit matters. We're a short drive from
-          Oxted along the A25, with easy access via M25 J6, which means
-          same-day install, late-finish events, and Sunday morning breakdowns
-          are all comfortable rather than logistically tight. The same goes
-          for Limpsfield, Hurst Green, Tandridge, Godstone and Caterham.
-        </p>
-        <p>
-          Most Oxted families come to us with a Pinterest board, a date, and a
-          feeling. From there, we shape the rest — palette, installations,
-          tablescape, signage, breakdown. Calmly, considerately, and
-          personally.
+          M25 J6 keeps the practical side easy: same-day installs,
+          late finishes, Sunday-morning breakdowns.
         </p>
       </>
     ),

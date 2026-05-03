@@ -90,30 +90,20 @@ const reigate = makeLocation({
     body: (
       <>
         <p>
-          Reigate work splits between at-home celebrations on Reigate
-          Hill and across the Reigate Heath residential roads, milestone
-          events at private homes throughout Banstead and Tadworth, and
-          country-house weddings at Hartsfield Manor and Nutfield Priory.
-          The residential briefs are intimate — a single statement
-          installation, a tablescape, a cake table. The country-house
-          weddings tend to run multi-zone across reception rooms, gardens
-          and marquees.
+          Reigate is fifteen minutes from the studio — closer than
+          Cobham, closer than Esher, closer than the towns that shape
+          most Surrey stylists' work. That proximity changes what's
+          possible on the day: extra installations sourced and added
+          on the morning, layout changes absorbed without panic,
+          breakdowns at midnight that don't blow up the next day.
         </p>
         <p>
-          The studio is in Horley, fifteen minutes south up the
-          A23/A217 — which makes Reigate one of the closest towns we
-          cover. Practically that means flexible install windows,
-          late-night breakdowns, and the kind of last-minute adjustments
-          — extra balloons, an unexpected layout change, a delivery slot
-          that has to shift — that aren't realistic from a stylist
-          further afield. Redhill, Banstead, Tadworth and Brockham sit
-          inside the same easy-access band.
-        </p>
-        <p>
-          Most local families come to us with a date and a feeling
-          rather than a finished brief. We talk through the celebration,
-          agree the palette and the installations, then handle every
-          detail from there: design, sourcing, install, breakdown.
+          The work itself splits between intimate at-home celebrations
+          on Reigate Hill and the Heath, and country-house weddings at
+          Hartsfield Manor and Nutfield Priory. Residential briefs
+          usually one statement installation and a tablescape; the
+          weddings run multi-zone across reception rooms, gardens,
+          marquees. Different scale, same hands.
         </p>
       </>
     ),

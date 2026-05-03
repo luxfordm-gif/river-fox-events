@@ -89,29 +89,21 @@ const weybridge = makeLocation({
     body: (
       <>
         <p>
-          Weybridge celebrations tend to fall into three groups. There
-          are the private at-home events on St George's Hill and across
-          Oatlands Park, where properties have the space to host across
-          drawing rooms, gardens and marquees. There's the riverside
-          work along the Thames. And there's the venue side — Brooklands
-          Museum, the Heritage Centre and Mercedes-Benz World — each
-          with their own logistics and brand cues.
+          St George's Hill is the kind of address where the property
+          dictates what the celebration wants — a drawing room of a
+          certain proportion, a garden built for a marquee, a driveway
+          that handles arrival differently than a London street does.
+          Most of our Weybridge at-home work happens here or across
+          Oatlands Park, and the design conversation tends to start
+          with the architecture.
         </p>
         <p>
-          The town is a comfortable drive from the studio via the A3 and
-          the A317, which keeps install and breakdown windows realistic.
-          Same-morning installs, late-night clears once the last guest
-          has left, and the kind of small on-the-day adjustments — an
-          extra balloon column, a tablescape tweak — that aren't workable
-          from a stylist further afield. The same applies across
-          Walton-on-Thames, Hersham and Whiteley Village.
-        </p>
-        <p>
-          Most enquiries arrive with a date, a venue and a rough sense
-          of the feel. From there we shape every detail together —
-          palette, installations, signage, tablescape, the install and
-          the clear-down. Laura designs and runs every celebration
-          personally.
+          The venue side is its own thing. Brooklands Museum, the
+          Heritage Centre and Mercedes-Benz World each carry strong
+          brand cues, and corporate work in those spaces has to sit
+          alongside what's already there, not against it. Riverside
+          work along the Thames changes the palette again. Three
+          lanes, three briefs.
         </p>
       </>
     ),

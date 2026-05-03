@@ -87,28 +87,18 @@ const oxshott = makeLocation({
     body: (
       <>
         <p>
-          Oxshott is largely an at-home town. The Crown Estate roads —
-          Warren Lane, Sandy Lane, Stoke Road and the Heath properties
-          — sit on generous plots, which means most local celebrations
-          span multiple zones rather than a single room. A drawing-room
-          or entrance-hall scheme for arrival, a garden marquee for the
-          meal, a kitchen-island bar for the after-dinner. We design
-          across all of it as one piece.
+          Oxshott is largely an at-home town. The Crown Estate
+          properties are big enough that most local celebrations move
+          through the house the way guests do — a drawing-room or
+          entrance-hall scheme for arrival, a marquee in the garden
+          for the meal, a kitchen-island bar for the after-dinner. We
+          design across all of it as one piece, not as separate
+          set-pieces stitched together.
         </p>
         <p>
-          Practically, the village is a straightforward drive from us
-          via the A3 and Cobham. That keeps the day comfortable — a
-          single install window in the morning, a late-night breakdown
-          once the last guest has gone, and no need to leave anything
-          overnight. Stoke d'Abernon, Cobham and Esher all fall into
-          the same coverage band.
-        </p>
-        <p>
-          Enquiries usually arrive with a date and a postcode rather
-          than a venue. From the first conversation we walk through the
-          property as a whole — circulation, where guests will land
-          first, where they'll spend the evening — and design the
-          styling around the actual flow of the day.
+          Single-window day. One install in the morning, one breakdown
+          once the last guest has gone, nothing left in a client's
+          house the next day.
         </p>
       </>
     ),
