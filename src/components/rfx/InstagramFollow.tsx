@@ -37,7 +37,7 @@ const InstagramFollow = () => {
             </p>
 
             <a
-              href="https://instagram.com/riverfoxevents"
+              href="https://www.instagram.com/lollipop_balloonsx/"
               target="_blank"
               rel="noreferrer"
               className="btn-solid-rf accent mt-10"

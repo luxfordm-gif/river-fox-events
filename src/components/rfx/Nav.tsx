@@ -157,7 +157,7 @@ const Nav = () => {
 
           <div className="hairline mt-10" />
           <a
-            href="https://instagram.com/riverfoxevents"
+            href="https://www.instagram.com/lollipop_balloonsx/"
             target="_blank"
             rel="noreferrer"
             onClick={() => setOpen(false)}

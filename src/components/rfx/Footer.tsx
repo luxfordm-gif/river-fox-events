@@ -212,7 +212,7 @@ const Footer = () => {
                 <a href="tel:+447872114191" className="hover:opacity-100 opacity-85 block">
                   07872 114191
                 </a>
-                <a href="https://instagram.com/riverfoxevents" target="_blank" rel="noreferrer" className="hover:opacity-100 opacity-85 block">
+                <a href="https://www.instagram.com/lollipop_balloonsx/" target="_blank" rel="noreferrer" className="hover:opacity-100 opacity-85 block">
                   @riverfoxevents
                 </a>
                 <span className="block">15 Apsley Rd, Horley RH6</span>
@@ -227,7 +227,7 @@ const Footer = () => {
             <div className="text-left">© {new Date().getFullYear()} River Fox Events</div>
             <div className="flex justify-center">
               <a
-                href="https://instagram.com/riverfoxevents"
+                href="https://www.instagram.com/lollipop_balloonsx/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram — @riverfoxevents"
