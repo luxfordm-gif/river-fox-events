@@ -29,3 +29,7 @@ dist-ssr
 .claude/
 
 _salvaged-from-old-folder/
+
+# Working artifacts from scripts/audit-location-copy.ts — regenerate via
+# `npx tsx scripts/audit-location-copy.ts`. Not committed.
+location-copy-audit.csv
