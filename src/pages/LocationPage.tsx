@@ -13,6 +13,7 @@ import LocationUSP from "@/components/rfx/LocationUSP";
 import LocationTrust from "@/components/rfx/LocationTrust";
 import LocationLocalProse from "@/components/rfx/LocationLocalProse";
 import ScrollStrip from "@/components/rfx/ScrollStrip";
+import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 import LocationHeroFan from "@/components/rfx/LocationHeroFan";
 import NotFound from "./NotFound";
 import { findLocation } from "@/data/locations";
@@ -136,7 +137,7 @@ const LocationPage = () => {
                 </p>
               )}
               <div className="flex items-center justify-center gap-5 flex-wrap mt-10 fade-up in">
-                <a href="#enquire" className="btn-solid-rf accent">
+                <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
                   Start planning{" "}
                   <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
                 </a>

@@ -1,4 +1,5 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
+import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 type PricingTier = { price: string; label: string; body: string };
 
@@ -168,7 +169,7 @@ const CPPricing = ({
         </div>
 
         <div className="text-center mt-12 fade-up flex flex-col items-center gap-6">
-          <a href="#enquire" className="btn-solid-rf accent">
+          <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
             {ctaLabel} <span>→</span>
           </a>
           <p className="text-[13.5px] text-ink-soft max-w-[560px] mx-auto">

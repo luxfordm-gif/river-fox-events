@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { handleEnquireClick } from "@/lib/enquire";
 
 type Props = {
   /** Card heading. */
@@ -29,7 +30,7 @@ const ArticleCta = ({
   if (variant === "inline") {
     return (
       <div className="my-12 max-w-[720px] mx-auto px-6 text-center">
-        <a href={href} className="btn-solid-rf accent">
+        <a href={href} onClick={handleEnquireClick} className="btn-solid-rf accent">
           {label} <span>→</span>
         </a>
       </div>
@@ -65,7 +66,7 @@ const ArticleCta = ({
             {body}
           </p>
         )}
-        <a href={href} className="btn-solid-rf accent mt-8 inline-flex">
+        <a href={href} onClick={handleEnquireClick} className="btn-solid-rf accent mt-8 inline-flex">
           {label} <span>→</span>
         </a>
       </div>

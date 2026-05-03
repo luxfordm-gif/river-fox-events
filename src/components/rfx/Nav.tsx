@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 const SERVICES = [
   { href: "/childrens-parties", label: "Children's parties" },
@@ -84,7 +85,7 @@ const Nav = () => {
           </span>
         </a>
         <div className="rfx-nav-row nav-right justify-end">
-          <a href="#enquire" className="btn-solid-rf accent !py-2 !px-4 !text-[12px]">
+          <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent !py-2 !px-4 !text-[12px]">
             Start planning <span>→</span>
           </a>
         </div>
@@ -143,8 +144,11 @@ const Nav = () => {
           ))}
 
           <a
-            href="#enquire"
-            onClick={() => setOpen(false)}
+            href={ENQUIRE_HREF}
+            onClick={(e) => {
+              setOpen(false);
+              handleEnquireClick(e);
+            }}
             className="btn-solid-rf accent mt-8 self-start"
             style={{
               opacity: open ? 1 : 0,

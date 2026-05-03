@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import { useNavScroll } from "@/hooks/useRiverFox";
+import { handleEnquireClick } from "@/lib/enquire";
 
 const NotFound = () => {
   const location = useLocation();
@@ -64,7 +65,7 @@ const NotFound = () => {
             <a href="/" className="btn-solid-rf">
               Back to homepage <span>→</span>
             </a>
-            <a href="/#enquire" className="btn-solid-rf accent">
+            <a href="/#enquire" onClick={handleEnquireClick} className="btn-solid-rf accent">
               Start an enquiry <span>→</span>
             </a>
           </div>

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Instagram } from "lucide-react";
 import { useScrollY } from "@/hooks/useRiverFox";
 import { LOCATIONS } from "@/data/locations";
+import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 const FOOTER_LOCATIONS_VISIBLE = 5;
 
@@ -112,7 +113,7 @@ const Footer = () => {
               </em>
             </h2>
             <div className="mt-10 flex items-center justify-center">
-              <a href="#enquire" className="btn-solid-rf accent">
+              <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
                 Start planning <span>→</span>
               </a>
             </div>
