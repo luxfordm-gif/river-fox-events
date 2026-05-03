@@ -88,27 +88,18 @@ const esher = makeLocation({
     body: (
       <>
         <p>
-          Esher work tends to fall into three lanes. There are the family
-          at-home celebrations across the village, Hinchley Wood and
-          Claygate; the milestone dinners at the high-street restaurants;
-          and the larger hospitality and wedding work at Sandown Park.
-          The residential brief is intimate; Sandown's Eclipse Suite,
-          Surrey Hall and boxes need scale and brand consistency.
+          Sandown Park anchors a lot of our Esher work — the Eclipse
+          Suite, Surrey Hall and the boxes each ask for something
+          different, and a stylist who hasn't worked the building
+          before learns that the hard way. The off-site work splits
+          between milestone dinners at the high-street restaurants and
+          at-home parties across the village, which run from intimate
+          to genuinely large.
         </p>
         <p>
-          The A3 and the A309 give us a clean run from the studio, which
-          means we can hold install windows tight, return for a same-night
-          breakdown, and absorb the kind of last-minute layout changes
-          that come up when a venue's space turns out differently to the
-          floor plan. Long Ditton, Thames Ditton, Hersham and the
-          Moleseys sit inside the same coverage band.
-        </p>
-        <p>
-          Clients usually arrive with a Pinterest board, a date and a
-          rough feeling — sometimes a brand deck. The first conversation
-          is short and unhurried. From there we shape the styling:
-          concept, installations, tablescape, signage, full install and
-          breakdown on the day.
+          Different briefs, same approach: one designer, one install
+          team, one point of contact from the first call to the
+          breakdown.
         </p>
       </>
     ),
