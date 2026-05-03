@@ -154,22 +154,3 @@ export const localBusinessSchema = (description: string): SchemaJson => ({
     "Horley",
   ],
 });
-
-/** Build a FAQPage schema from a list of question/answer pairs. */
-export const faqPageSchema = (
-  faqs: { q: string; a: string }[]
-): SchemaJson | null => {
-  if (!faqs.length) return null;
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: f.a,
-      },
-    })),
-  };
-};
