@@ -15,7 +15,7 @@ export type LocationRevealSection = {
 
 export type PricingTier = { price: string; label: string; body: string };
 
-export type LocationFAQ = { q: string; a: string };
+export type LocationFAQ = { q: string; a: string; aNode?: ReactNode };
 
 export type LocationConfig = {
   slug: string;

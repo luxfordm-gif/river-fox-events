@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, type ReactNode } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -7,7 +7,14 @@ import {
 } from "@/components/ui/accordion";
 import { removeJsonLd, upsertJsonLd } from "@/seo/headTags";
 
-const FAQS = [
+const linkCx =
+  "text-ink underline-offset-4 underline decoration-ink/30 hover:decoration-ink";
+
+const INSTAGRAM_URL = "https://www.instagram.com/lollipop_balloonsx/";
+
+type FAQItem = { q: string; a: string; aNode?: ReactNode };
+
+const FAQS: FAQItem[] = [
   {
     q: "What areas do you cover?",
     a: "River Fox Events is based in Surrey and primarily works across Cobham, Weybridge, Esher, Oxshott, Guildford, Reigate, Farnham and Horsham. We also travel into London and the surrounding Home Counties for the right project — just ask when you enquire.",
@@ -19,6 +26,14 @@ const FAQS = [
   {
     q: "How far in advance should I book?",
     a: "We recommend enquiring at least 6–8 weeks ahead for children's parties and milestone celebrations. Popular dates — particularly weekends in school holidays — book quickly. Corporate projects can often be accommodated with shorter lead times, so it's always worth asking.",
+    aNode: (
+      <>
+        We recommend enquiring at least 6–8 weeks ahead for{" "}
+        <a href="/childrens-parties/" className={linkCx}>children's parties</a> and{" "}
+        <a href="/milestone-celebrations/" className={linkCx}>milestone celebrations</a>. Popular dates — particularly weekends in school holidays — book quickly.{" "}
+        <a href="/corporate-brand-styling/" className={linkCx}>Corporate projects</a> can often be accommodated with shorter lead times, so it's always worth asking.
+      </>
+    ),
   },
   {
     q: "Do you travel to my venue or home?",
@@ -27,6 +42,12 @@ const FAQS = [
   {
     q: "Can I see examples of your work?",
     a: "The best way to see Laura's work is on Instagram at @riverfoxevents, where you'll find a full archive of past celebrations. You can also see selected work across our services pages.",
+    aNode: (
+      <>
+        The best way to see Laura's work is on{" "}
+        <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className={linkCx}>Instagram at @riverfoxevents</a>, where you'll find a full archive of past celebrations. You can also see selected work across our services pages.
+      </>
+    ),
   },
   {
     q: "How many events do you take on each month?",
@@ -35,6 +56,13 @@ const FAQS = [
   {
     q: "Do you style events other than children's parties?",
     a: "Yes — milestone celebrations (21sts, 40ths, 50ths, 70ths, baby showers, anniversaries) and corporate events are both core services. See our Signature Experiences for the full picture.",
+    aNode: (
+      <>
+        Yes —{" "}
+        <a href="/milestone-celebrations/" className={linkCx}>milestone celebrations</a> (21sts, 40ths, 50ths, 70ths, baby showers, anniversaries) and{" "}
+        <a href="/corporate-brand-styling/" className={linkCx}>corporate events</a> are both core services. See our Signature Experiences for the full picture.
+      </>
+    ),
   },
 ];
 
@@ -89,7 +117,7 @@ const FAQ = () => {
                 value={`item-${i}`}
                 className="faq-rf-item border-t border-ink/20 last:border-b last:border-ink/20"
               >
-                <AccordionTrigger className="faq-rf-trigger group hover:no-underline py-7 [&>svg]:hidden">
+                <AccordionTrigger className="faq-rf-trigger group hover:no-underline py-7 data-[state=open]:pb-[10px] [&>svg]:hidden">
                   <div className="grid grid-cols-[60px_1fr_40px] items-baseline gap-6 w-full text-left max-md:grid-cols-[40px_1fr_32px] max-md:gap-3.5">
                     <span className="font-mono-rf text-[11px] tracking-[0.22em] text-ink-soft">
                       {String(i + 1).padStart(2, "0")}
@@ -102,13 +130,10 @@ const FAQ = () => {
                     </span>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent
-                  className="faq-rf-content overflow-hidden text-base"
-                  forceMount
-                >
+                <AccordionContent className="faq-rf-content overflow-hidden text-base">
                   <div className="grid grid-cols-[60px_1fr_40px] gap-6 max-md:grid-cols-[40px_1fr_32px] max-md:gap-3.5">
                     <p className="col-start-2 text-[15px] leading-[1.7] text-ink-soft max-w-[680px] pt-2 pb-4">
-                      {it.a}
+                      {it.aNode ?? it.a}
                     </p>
                   </div>
                 </AccordionContent>

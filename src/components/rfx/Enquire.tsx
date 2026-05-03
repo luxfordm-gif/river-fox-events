@@ -3,7 +3,6 @@ import { toast } from "sonner";
 
 const CHECKLIST = [
   "Events from £460",
-  "Personally read by Laura",
   "Surrey, London & surrounding areas",
 ];
 

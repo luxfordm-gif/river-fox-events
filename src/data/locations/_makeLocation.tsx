@@ -313,6 +313,14 @@ export function makeLocation(input: LocationInput): LocationConfig {
       {
         q: `How much does event styling cost in ${cityName}?`,
         a: `Pricing depends on the type of celebration. Our children's party styling, milestone celebration and corporate event pages each show full price tiers. Every ${cityName} event is individually quoted following a short discovery call.`,
+        aNode: (
+          <>
+            Pricing depends on the type of celebration. Our{" "}
+            <a href="/childrens-parties/" className="text-ink underline-offset-4 underline decoration-ink/30 hover:decoration-ink">children's party styling</a>,{" "}
+            <a href="/milestone-celebrations/" className="text-ink underline-offset-4 underline decoration-ink/30 hover:decoration-ink">milestone celebration</a> and{" "}
+            <a href="/corporate-brand-styling/" className="text-ink underline-offset-4 underline decoration-ink/30 hover:decoration-ink">corporate event</a> pages each show full price tiers. Every {cityName} event is individually quoted following a short discovery call.
+          </>
+        ),
       },
       {
         q: "Can I choose my own theme and colours?",

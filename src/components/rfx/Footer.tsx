@@ -128,7 +128,7 @@ const Footer = () => {
                 className="font-mono-rf text-[10px] tracking-[0.28em] uppercase mt-3"
                 style={{ color: "hsl(var(--on-deep-soft))" }}
               >
-                events · surrey · est. 2017
+                events · surrey · est. 2022
               </div>
               <p
                 className="text-[13.5px] leading-[1.7] max-w-[360px] mt-7"
@@ -194,7 +194,7 @@ const Footer = () => {
             </div>
             <div>
               <div className="eyebrow font-semibold mb-4" style={{ color: "hsl(var(--on-deep))" }}>
-                Correspond
+                Contact
               </div>
               <div className="text-[13.5px] leading-loose" style={{ color: "hsl(var(--on-deep-soft))" }}>
                 <a href="mailto:Riverfoxevents@gmail.com" className="hover:opacity-100 opacity-85 block">

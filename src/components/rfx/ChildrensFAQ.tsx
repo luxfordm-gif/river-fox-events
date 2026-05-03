@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, type ReactNode } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-type FAQ = { q: string; a: string };
+type FAQ = { q: string; a: string; aNode?: ReactNode };
 type ChildrensFAQProps = {
   faqs?: FAQ[];
   headingId?: string;
@@ -123,7 +123,7 @@ const ChildrensFAQ = ({
                 value={`item-${i}`}
                 className="faq-rf-item border-t border-ink/20 last:border-b last:border-ink/20"
               >
-                <AccordionTrigger className="faq-rf-trigger group hover:no-underline py-7 [&>svg]:hidden">
+                <AccordionTrigger className="faq-rf-trigger group hover:no-underline py-7 data-[state=open]:pb-[10px] [&>svg]:hidden">
                   <div className="grid grid-cols-[60px_1fr_40px] items-baseline gap-6 w-full text-left max-md:grid-cols-[40px_1fr_32px] max-md:gap-3.5">
                     <span className="font-mono-rf text-[11px] tracking-[0.22em] text-ink-soft">
                       {String(i + 1).padStart(2, "0")}
@@ -136,13 +136,10 @@ const ChildrensFAQ = ({
                     </span>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent
-                  className="faq-rf-content overflow-hidden text-base"
-                  forceMount
-                >
+                <AccordionContent className="faq-rf-content overflow-hidden text-base">
                   <div className="grid grid-cols-[60px_1fr_40px] gap-6 max-md:grid-cols-[40px_1fr_32px] max-md:gap-3.5">
                     <p className="col-start-2 text-[15px] leading-[1.7] text-ink-soft max-w-[680px] pt-2 pb-4">
-                      {it.a}
+                      {it.aNode ?? it.a}
                     </p>
                   </div>
                 </AccordionContent>
