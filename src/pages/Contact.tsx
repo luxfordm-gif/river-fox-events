@@ -70,22 +70,16 @@ const Contact = () => {
     <div className="min-h-screen flex flex-col bg-background text-foreground nav-solid">
       <Nav />
       <main className="flex-1">
-        <section className="px-6 pt-32 pb-24 md:pt-40 md:pb-32" aria-labelledby="contact-heading">
+        <section className="px-6 pt-[106px] md:pt-[122px] pb-24 md:pb-32" aria-labelledby="contact-heading">
           <div className="container-rfx">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-start">
               {/* Left: heading + direct contact methods */}
               <div className="text-center lg:text-left">
-                <div
-                  className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-5"
-                  style={{ fontWeight: 600 }}
-                >
-                  Contact
-                </div>
                 <h1
                   id="contact-heading"
                   className="font-serif-rf"
                   style={{
-                    fontSize: "clamp(40px, 4.2vw, 72px)",
+                    fontSize: "clamp(48px, 6vw, 88px)",
                     lineHeight: 1.0,
                     fontWeight: 300,
                     letterSpacing: "-0.028em",
@@ -105,7 +99,7 @@ const Contact = () => {
                   me directly on the channel that suits you best.
                 </p>
 
-                <ul className="mt-10 flex flex-col gap-6 items-center lg:items-start">
+                <ul className="mt-10 flex flex-col gap-4 items-center lg:items-start">
                   <li>
                     <div className="font-mono-rf text-[10px] tracking-[0.24em] uppercase text-ink-soft mb-1.5">
                       WhatsApp
