@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import studioImg from "@/assets/studio.webp";
+import studioImg from "@/assets/laura-portrait.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
 
 interface Stat {
@@ -117,13 +117,16 @@ const About = () => {
               <img
                 ref={studioImgRef}
                 src={studioImg}
-                alt="Laura, founder of River Fox Events, styling a balloon installation in her Surrey studio with moodboards, fabric and sketches"
+                alt="Laura, founder of River Fox Events, photographed amongst Surrey bluebells in a River Fox Events tee — luxury event stylist for children's parties, milestones and brand celebrations"
                 className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
-                style={{ transform: "translate3d(0,0,0) scale(1.14)" }}
+                style={{
+                  transform: "translate3d(0,0,0) scale(1.14)",
+                  objectPosition: "center 28%",
+                }}
                 loading="lazy"
                 decoding="async"
-                width={1024}
-                height={1280}
+                width={1200}
+                height={1499}
               />
             </div>
           </div>
