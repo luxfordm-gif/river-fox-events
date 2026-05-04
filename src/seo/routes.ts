@@ -466,16 +466,23 @@ export const ROUTES: RouteSEO[] = [
     title: "Journal | River Fox Events",
     description:
       "Notes from the studio — event styling trends, behind-the-scenes from Surrey celebrations, and the thinking behind the rooms we style.",
+    breadcrumbName: "Journal",
     ogImage: "/og/beyond-the-balloon-arch.webp",
     priority: 0.7,
     changefreq: "weekly",
   },
+  // Journal articles: breadcrumbName is the article title shown in the
+  // 3-level BreadcrumbList (Home → Journal → Article). postbuild.mjs picks
+  // up the /journal/* prefix and emits the 3-level chain into static HTML
+  // using the same script id as Article.tsx, so the runtime injection and
+  // the static one don't double up.
   {
     path: "/journal/two-wild-safari-second-birthday",
     title:
       "Two Wild: a Safari Second Birthday in Horley, Surrey | River Fox Events",
     description:
       "Behind the scenes of Amiya's 'Two Wild' safari second birthday at Horley Community Centre — concept renders to finished install. Pastel safari styling by Laura at River Fox Events.",
+    breadcrumbName: "Two Wild: a safari second birthday in Horley",
     ogImage: "/og/two-wild-safari-second-birthday.webp",
     priority: 0.6,
     changefreq: "monthly",
@@ -486,6 +493,7 @@ export const ROUTES: RouteSEO[] = [
       "Children's Party Themes 2026: Six Trending Briefs from a Surrey Studio | River Fox Events",
     description:
       "The six children's party themes Surrey parents are asking for in 2026 — Chateaucore, Bluey done well, soft maximalism, charm-bracelet stations, woodland and Toy Story 5.",
+    breadcrumbName: "Six children's party themes shaping 2026",
     ogImage: "/og/childrens-party-themes-2026.webp",
     priority: 0.6,
     changefreq: "monthly",
@@ -496,6 +504,7 @@ export const ROUTES: RouteSEO[] = [
       "From Design to Delivery: Behind a Surrey Children's Party | River Fox Events",
     description:
       "Behind the scenes of a Surrey children's party — from concept render to finished install. Laura on how design, sourcing and delivery come together at River Fox Events.",
+    breadcrumbName: "From design to delivery",
     ogImage: "/og/from-design-to-delivery.webp",
     priority: 0.6,
     changefreq: "monthly",
@@ -506,6 +515,7 @@ export const ROUTES: RouteSEO[] = [
       "Beyond the Balloon Arch: 2026 Surrey Event Styling Trends | River Fox Events",
     description:
       "The balloon arch is no longer the headline. A note from Laura on layered tablescapes, ceiling drapery and the 2026 trends shaping Surrey celebrations.",
+    breadcrumbName: "Beyond the balloon arch",
     ogImage: "/og/beyond-the-balloon-arch.webp",
     priority: 0.6,
     changefreq: "monthly",
@@ -516,10 +526,8 @@ export const ROUTES: RouteSEO[] = [
       "Lollipop Balloons is now River Fox Events | River Fox Events",
     description:
       "Lollipop Balloons is now River Fox Events. Same designer (Laura), same Surrey studio, new name reflecting the wider work we now do.",
+    breadcrumbName: "Lollipop Balloons is now River Fox Events",
     ogImage: "/og/lollipop-balloons-to-river-fox-events.webp",
-    // No breadcrumbName here — Article.tsx injects a 3-level
-    // BreadcrumbList (Home → Journal → article) at runtime, which
-    // postbuild leaves alone.
     priority: 0.6,
     changefreq: "yearly",
   },
