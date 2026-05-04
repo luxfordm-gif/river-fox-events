@@ -86,7 +86,9 @@ function buildHeadTags({ SITE, route, absUrl, ogImageAbs }) {
  * Build the JSON-LD <script> blocks for a given route.
  *
  * Homepage:        LocalBusiness
- * Sub-pages:       BreadcrumbList (always when breadcrumbName is set)
+ * Sub-pages:       BreadcrumbList (always when breadcrumbName is set, with
+ *                                 a 3-level chain Home → Section → Page for
+ *                                 nested paths like /journal/<slug>).
  *                  Service        (when route.service is set), with the
  *                                 shared BUSINESS embedded as `provider`.
  *
@@ -94,7 +96,7 @@ function buildHeadTags({ SITE, route, absUrl, ogImageAbs }) {
  * matching DOM ids), so SPA navigation stays consistent. Crawlers that
  * don't run JS see the schemas straight from the static HTML.
  */
-function buildJsonLdBlocks({ SITE, BUSINESS, route, absUrl }) {
+function buildJsonLdBlocks({ SITE, BUSINESS, ROUTES, route, absUrl }) {
   const blocks = [];
 
   if (route.path === "/") {
@@ -120,25 +122,53 @@ function buildJsonLdBlocks({ SITE, BUSINESS, route, absUrl }) {
   }
 
   if (route.breadcrumbName) {
+    const segments = route.path.replace(/^\//, "").split("/");
+    const itemListElement = [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE.url + "/",
+      },
+    ];
+
+    // For nested paths (e.g. /journal/<slug>), insert the parent section
+    // (Journal) between Home and the leaf so Google sees the real site
+    // hierarchy rather than two flat hops.
+    if (segments.length > 1) {
+      const parentPath = "/" + segments.slice(0, -1).join("/");
+      const parent = ROUTES.find((r) => r.path === parentPath);
+      if (parent?.breadcrumbName) {
+        itemListElement.push({
+          "@type": "ListItem",
+          position: itemListElement.length + 1,
+          name: parent.breadcrumbName,
+          item: SITE.url + canonicalPath(parent.path),
+        });
+      }
+    }
+
+    itemListElement.push({
+      "@type": "ListItem",
+      position: itemListElement.length + 1,
+      name: route.breadcrumbName,
+      item: absUrl,
+    });
+
+    // Match Article.tsx's runtime id for /journal/<slug> so the dedup in
+    // injectIntoHead leaves whichever copy is already present alone.
+    const isJournalArticle =
+      segments[0] === "journal" && segments.length === 2;
+    const id = isJournalArticle
+      ? `rfx-jsonld-bc-article-${segments[1]}`
+      : `rfx-jsonld-bc-${segments.join("-")}`;
+
     blocks.push({
-      id: `rfx-jsonld-bc-${route.path.replace(/^\//, "").replace(/\//g, "-")}`,
+      id,
       data: {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: SITE.url + "/",
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: route.breadcrumbName,
-            item: absUrl,
-          },
-        ],
+        itemListElement,
       },
     });
   }
@@ -293,7 +323,7 @@ async function main() {
     const absUrl = SITE.url + canonicalPath(route.path);
     const ogImageAbs = SITE.url + (route.ogImage || SITE.defaultOgImage);
     const headFragment = buildHeadTags({ SITE, route, absUrl, ogImageAbs });
-    const jsonLdBlocks = buildJsonLdBlocks({ SITE, BUSINESS, route, absUrl });
+    const jsonLdBlocks = buildJsonLdBlocks({ SITE, BUSINESS, ROUTES, route, absUrl });
     const jsonLdFragment = renderJsonLd(jsonLdBlocks);
     const baseHtml = await readRouteHtml(route);
     const routeHtml = injectIntoHead(baseHtml, headFragment, jsonLdFragment);
