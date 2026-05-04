@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Instagram } from "lucide-react";
+import { ChevronDown, ChevronRight, Instagram } from "lucide-react";
 import { useScrollY } from "@/hooks/useRiverFox";
 import { LOCATIONS } from "@/data/locations";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
@@ -194,9 +194,19 @@ const Footer = () => {
               </div>
             </div>
             <div>
-              <div className="eyebrow font-semibold mb-4" style={{ color: "hsl(var(--on-deep))" }}>
+              <a
+                href="/contact/"
+                className="eyebrow font-semibold mb-4 inline-flex items-center gap-1 no-underline hover:underline underline-offset-4 decoration-[hsl(var(--on-deep))]/50"
+                style={{ color: "hsl(var(--on-deep))" }}
+              >
                 Contact
-              </div>
+                <ChevronRight
+                  size={11}
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                  className="opacity-75 -mt-px"
+                />
+              </a>
               <div className="text-[13.5px] leading-loose" style={{ color: "hsl(var(--on-deep-soft))" }}>
                 <a href="mailto:Riverfoxevents@gmail.com" className="hover:opacity-100 opacity-85 block">
                   Riverfoxevents@gmail.com

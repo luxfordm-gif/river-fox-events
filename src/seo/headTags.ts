@@ -139,6 +139,19 @@ export const routeServiceSchema = (route: RouteSEO): SchemaJson | null => {
   });
 };
 
+/**
+ * ContactPage schema — tells Google "this URL is the contact page for the
+ * shared LocalBusiness", reinforcing the NAP signal and entity association.
+ */
+export const contactPageSchema = (path: string, description: string): SchemaJson => ({
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  url: SITE.url + canonicalPath(path),
+  name: `Contact ${SITE.name}`,
+  description,
+  mainEntity: BUSINESS,
+});
+
 export const localBusinessSchema = (description: string): SchemaJson => ({
   "@context": "https://schema.org",
   ...BUSINESS,

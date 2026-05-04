@@ -8,10 +8,17 @@ const SERVICES = [
   { href: "/corporate-brand-styling", label: "Corporate & brand" },
 ];
 
+const ABOUT_LINKS = [
+  { href: "/#about", label: "About Laura" },
+  { href: "/journal", label: "Read the journal" },
+];
+
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const closeTimer = useRef<number | null>(null);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const servicesCloseTimer = useRef<number | null>(null);
+  const aboutCloseTimer = useRef<number | null>(null);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -20,12 +27,23 @@ const Nav = () => {
     };
   }, [open]);
 
-  const handleEnter = () => {
-    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+  const handleServicesEnter = () => {
+    if (servicesCloseTimer.current)
+      window.clearTimeout(servicesCloseTimer.current);
     setServicesOpen(true);
   };
-  const handleLeave = () => {
-    closeTimer.current = window.setTimeout(() => setServicesOpen(false), 140);
+  const handleServicesLeave = () => {
+    servicesCloseTimer.current = window.setTimeout(
+      () => setServicesOpen(false),
+      140
+    );
+  };
+  const handleAboutEnter = () => {
+    if (aboutCloseTimer.current) window.clearTimeout(aboutCloseTimer.current);
+    setAboutOpen(true);
+  };
+  const handleAboutLeave = () => {
+    aboutCloseTimer.current = window.setTimeout(() => setAboutOpen(false), 140);
   };
 
   return (
@@ -35,8 +53,8 @@ const Nav = () => {
           <a href="/">Home</a>
           <div
             className="relative"
-            onMouseEnter={handleEnter}
-            onMouseLeave={handleLeave}
+            onMouseEnter={handleServicesEnter}
+            onMouseLeave={handleServicesLeave}
           >
             <button
               type="button"
@@ -74,7 +92,48 @@ const Nav = () => {
               </div>
             </div>
           </div>
-          <a href="/#about">About</a>
+          <div
+            className="relative"
+            onMouseEnter={handleAboutEnter}
+            onMouseLeave={handleAboutLeave}
+          >
+            <button
+              type="button"
+              className="inline-flex items-center gap-1.5 bg-transparent border-0 p-0 cursor-pointer text-[13px] text-inherit"
+              aria-haspopup="true"
+              aria-expanded={aboutOpen}
+            >
+              About
+              <ChevronDown
+                size={12}
+                strokeWidth={1.25}
+                aria-hidden="true"
+                className={`transition-transform duration-300 opacity-70 mt-px ${
+                  aboutOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <div
+              className={`absolute left-0 top-full pt-4 transition-all duration-300 ${
+                aboutOpen
+                  ? "opacity-100 translate-y-0 pointer-events-auto"
+                  : "opacity-0 -translate-y-1 pointer-events-none"
+              }`}
+            >
+              <div className="min-w-[200px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--ink)/0.22)] rounded-2xl py-3 px-1">
+                {ABOUT_LINKS.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    className="no-underline-fx block px-5 py-2.5 text-[13px] text-ink hover:underline underline-offset-4 decoration-ink/60"
+                  >
+                    {s.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+          <a href="/contact">Contact</a>
         </div>
         <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto md:pt-2" aria-label="River Fox Events — home">
           <span className="text-[15px] font-medium tracking-[0.22em] leading-none">
@@ -127,12 +186,13 @@ const Nav = () => {
             { href: "/milestone-celebrations", label: "Milestone celebrations" },
             { href: "/corporate-brand-styling", label: "Corporate & brand" },
             { href: "/#about", label: "About" },
+            { href: "/contact", label: "Contact" },
           ].map((l, i) => (
             <a
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="font-serif-rf text-[40px] leading-tight py-2 text-ink no-underline"
+              className="font-serif-rf text-[32px] leading-tight py-1.5 text-ink no-underline"
               style={{
                 opacity: open ? 1 : 0,
                 transform: open ? "translateY(0)" : "translateY(20px)",

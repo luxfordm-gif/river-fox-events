@@ -134,15 +134,9 @@ const Journal = () => {
 
       <main>
         {/* Header */}
-        <header className="container-rfx pt-24 md:pt-32 pb-10 md:pb-14 text-center">
-          <div
-            className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft"
-            style={{ fontWeight: 600 }}
-          >
-            River Fox Events
-          </div>
+        <header className="container-rfx pt-[106px] md:pt-[122px] pb-10 md:pb-14 text-center">
           <h1
-            className="font-serif-rf max-w-[14ch] mx-auto mt-5 md:mt-6"
+            className="font-serif-rf max-w-[14ch] mx-auto"
             style={{
               fontSize: "clamp(48px, 6vw, 88px)",
               lineHeight: 1.02,

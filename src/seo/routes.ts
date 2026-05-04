@@ -462,6 +462,15 @@ export const ROUTES: RouteSEO[] = [
     changefreq: "monthly",
   },
   {
+    path: "/contact",
+    title: "Contact River Fox Events | Event Stylist Surrey",
+    description:
+      "Get in touch with Laura at River Fox Events — luxury event styling across Surrey and London. WhatsApp, email or send a few details about your celebration.",
+    breadcrumbName: "Contact",
+    priority: 0.7,
+    changefreq: "yearly",
+  },
+  {
     path: "/journal",
     title: "Journal | River Fox Events",
     description:

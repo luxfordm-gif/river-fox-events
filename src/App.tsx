@@ -13,6 +13,7 @@ import LocationPage from "./pages/LocationPage.tsx";
 import Article from "./pages/Article.tsx";
 import Journal from "./pages/Journal.tsx";
 import Welcome from "./pages/Welcome.tsx";
+import Contact from "./pages/Contact.tsx";
 import { LOCATIONS } from "./data/locations";
 import { ARTICLES } from "./data/articles";
 import NotFound from "./pages/NotFound.tsx";
@@ -46,6 +47,7 @@ const AppShell = () => {
           />
         ))}
         <Route path="/welcome" element={<Welcome />} />
+        <Route path="/contact" element={<Contact />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
