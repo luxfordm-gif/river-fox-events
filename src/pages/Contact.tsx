@@ -70,7 +70,7 @@ const Contact = () => {
     <div className="min-h-screen flex flex-col bg-background text-foreground nav-solid">
       <Nav />
       <main className="flex-1">
-        <section className="px-6 pt-[106px] md:pt-[122px] pb-24 md:pb-32" aria-labelledby="contact-heading">
+        <section className="pt-[106px] md:pt-[122px] pb-24 md:pb-32" aria-labelledby="contact-heading">
           <div className="container-rfx">
             <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-start">
               {/* Left: heading + direct contact methods */}
