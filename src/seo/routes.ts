@@ -552,6 +552,14 @@ export const ROUTES: RouteSEO[] = [
     ogImage: "/og/lollipop-balloons-to-river-fox-events.webp",
     noindex: true,
   },
+  {
+    path: "/privacy",
+    title: "Privacy & Cookies | River Fox Events",
+    description:
+      "How River Fox Events handles your information when you enquire, plus the analytics cookie this site uses and how to opt out.",
+    breadcrumbName: "Privacy & cookies",
+    noindex: true,
+  },
 ];
 
 export const findRoute = (path: string): RouteSEO | undefined =>

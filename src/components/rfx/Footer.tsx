@@ -248,7 +248,11 @@ const Footer = () => {
                 <Instagram className="w-4 h-4" />
               </a>
             </div>
-            <div className="text-right">Surrey · Luxury event styling</div>
+            <div className="text-right">
+              <a href="/privacy/" className="opacity-85 hover:opacity-100">
+                Privacy &amp; cookies
+              </a>
+            </div>
           </div>
         </div>
       </div>
