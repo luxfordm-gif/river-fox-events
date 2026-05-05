@@ -3,7 +3,7 @@ import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
 import Enquire from "@/components/rfx/Enquire";
-import CPHero from "@/components/rfx/CPHero";
+import ServiceHero from "@/components/rfx/ServiceHero";
 import CPReveal from "@/components/rfx/CPReveal";
 import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
@@ -212,11 +212,10 @@ const CorporateAndBrand = () => {
     <div className="min-h-screen bg-background text-foreground nav-solid">
       <Nav />
       <main>
-        <CPHero
+        <ServiceHero
           image={imgHero}
           imageAlt="Corporate brand activation styling by River Fox Events Surrey — branded entrance installation, sculptural balloons and considered design at a London product launch"
           headingId="cb-hero-heading"
-          scrollTarget="#cb-intro"
           lines={[
             <>Design-led styling for</>,
             <>

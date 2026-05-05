@@ -3,7 +3,7 @@ import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
 import Enquire from "@/components/rfx/Enquire";
-import CPHero from "@/components/rfx/CPHero";
+import ServiceHero from "@/components/rfx/ServiceHero";
 import CPReveal from "@/components/rfx/CPReveal";
 import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
@@ -19,6 +19,7 @@ import {
   upsertJsonLd,
 } from "@/seo/headTags";
 
+import imgHero from "@/assets/cp-hero-frame.webp";
 import imgCelebrations from "@/assets/cp-celebrations.webp";
 import imgOccasions from "@/assets/luxury-party-styling-occasions-surrey.webp";
 import imgThemes from "@/assets/dinosaur-themed-birthday-party-surrey.webp";
@@ -103,7 +104,10 @@ const ChildrensParties = () => {
     <div className="min-h-screen bg-background text-foreground nav-solid">
       <Nav />
       <main>
-        <CPHero
+        <ServiceHero
+          image={imgHero}
+          imageAlt="Luxury children's birthday party styling by River Fox Events Surrey — peach balloon installation, peonies and dressed cake table at a Cobham celebration"
+          headingId="cp-hero-heading"
           lines={[
             <>Themed children's parties,</>,
             <>

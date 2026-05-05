@@ -3,7 +3,7 @@ import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
 import Enquire from "@/components/rfx/Enquire";
-import CPHero from "@/components/rfx/CPHero";
+import ServiceHero from "@/components/rfx/ServiceHero";
 import CPReveal from "@/components/rfx/CPReveal";
 import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
@@ -183,11 +183,10 @@ const Milestones = () => {
     <div className="min-h-screen bg-background text-foreground nav-solid">
       <Nav />
       <main>
-        <CPHero
+        <ServiceHero
           image={imgHero}
           imageAlt="Elegant milestone birthday styling by River Fox Events Surrey — sophisticated tablescape with candles, florals and considered detail"
           headingId="ms-hero-heading"
-          scrollTarget="#ms-intro"
           lines={[
             <>Milestone birthdays,</>,
             <>
