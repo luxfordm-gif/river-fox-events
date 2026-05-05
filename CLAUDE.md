@@ -68,6 +68,24 @@ Every page must ship valid JSON-LD covering the schema types relevant to it: `Lo
 
 **Validate before deploying any new page or schema change** against [Google's Rich Results Test](https://search.google.com/test/rich-results) and the [Schema Markup Validator](https://validator.schema.org/). Fix every error and warning before merging.
 
+## Conventions
+
+### "Start planning" / Enquire CTAs
+
+The Enquire form (`<section id="enquire">`) only renders on a few pages — Index, Children's Parties, Milestones, Corporate & Brand, location pages. Other pages (Journal, articles, 404, Welcome, Contact) reuse the shared Nav and Footer, which both link to the enquire section.
+
+**Always route Start planning / Enquire CTAs through `handleEnquireClick` from `@/lib/enquire`**, with `href={ENQUIRE_HREF}` (`/#enquire`):
+
+```tsx
+import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
+
+<a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
+  Start planning <span>→</span>
+</a>
+```
+
+The handler smooth-scrolls to `#enquire` when it's on the current page, and otherwise navigates to `/#enquire` so the home page enquire form gets focus. Bare `<a href="#enquire">` looks fine on home but is silently broken on every page that doesn't render the Enquire section — don't use it.
+
 ## Maintenance & change process
 
 Two kinds of copy live in two different places, and the update path differs:
@@ -88,7 +106,7 @@ Run `npm run build` locally and spot-check `dist/<slug>/index.html` before pushi
 ## Brand & business
 
 - Brand: **River Fox Events** (formerly Lollipop Balloons). The `alternateName` is preserved in JSON-LD so historic links / brand searches flow through.
-- Real contact: `07872 114191`, `riverfoxevents@gmail.com`, IG `@riverfoxevents`. **Never** `hello@riverfoxevents.co.uk` — that address doesn't exist.
+- Real contact: `07872 114191`, `riverfoxevents@gmail.com`, IG `@lollipop_balloonsx` (the rebrand `@riverfoxevents` handle isn't live yet, so all IG links point at the historic Lollipop Balloons account — don't "correct" them back). **Never** `hello@riverfoxevents.co.uk` — that address doesn't exist.
 - Studio: 15 Apsley Rd, Horley, RH6 9RX.
 - Pricing anchor: events from £460. Use this number consistently.
 - Tone: calm, considered, design-led. Never punchy/salesy. Em dashes are fine, exclamation marks aren't.
