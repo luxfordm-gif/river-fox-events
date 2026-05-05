@@ -60,8 +60,8 @@ const BRANDS = [
 const TRUST_LOGOS = [
   "P&G",
   "The Range",
-  "Taylor Wimpey",
   "Foxhills",
+  "Taylor Wimpey",
   "Enterprise Mobility",
   "Arun Estates",
   "Dawghouse Pizza Co.",
@@ -236,8 +236,7 @@ const CorporateAndBrand = () => {
         <section
           id="cb-trust"
           aria-labelledby="cb-trust-heading"
-          className="rfx-section white"
-          style={{ paddingTop: "40px", paddingBottom: "96px" }}
+          className="rfx-section white pt-10 pb-8 md:pb-12"
         >
           <div className="container-rfx text-center">
             <h2
@@ -245,35 +244,50 @@ const CorporateAndBrand = () => {
               className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft"
               style={{ fontWeight: 600, marginBottom: "32px" }}
             >
-              Trusted by
+              Companies we collaborate with
             </h2>
-            <ul className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 list-none p-0 m-0">
-              {TRUST_LOGOS.map((name) => (
-                <li key={name} className="flex">
-                  <div
-                    className="flex items-center justify-center w-full px-4 py-7 rounded-[10px] transition-colors hover:bg-[hsl(var(--surface-warm)/0.4)]"
-                    style={{
-                      border: "1px solid hsl(var(--accent-warm) / 0.35)",
-                    }}
-                  >
-                    <span
-                      className="text-ink text-center"
-                      style={{
-                        fontFamily: "var(--font-sans)",
-                        fontSize: "clamp(12px, 1.05vw, 15px)",
-                        fontWeight: 600,
-                        letterSpacing: "0.06em",
-                        textTransform: "uppercase",
-                        lineHeight: 1.25,
-                        opacity: 0.72,
-                      }}
-                    >
-                      {name}
-                    </span>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <style>{`
+              @keyframes rfx-trust-ticker {
+                from { transform: translateX(-50%); }
+                to   { transform: translateX(0); }
+              }
+              .rfx-trust-ticker {
+                overflow: hidden;
+                width: 100%;
+                mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+                -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+              }
+              .rfx-trust-track {
+                display: flex;
+                width: max-content;
+                animation: rfx-trust-ticker 60s linear infinite;
+              }
+              .rfx-trust-item {
+                flex: 0 0 auto;
+                padding: 0 2.75rem;
+                font-family: var(--font-sans);
+                font-size: clamp(12px, 1.05vw, 15px);
+                font-weight: 600;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                line-height: 1.25;
+                color: hsl(var(--ink));
+                opacity: 0.72;
+                white-space: nowrap;
+              }
+              @media (prefers-reduced-motion: reduce) {
+                .rfx-trust-track { animation: none; }
+              }
+            `}</style>
+            <div className="rfx-trust-ticker" aria-label="Brands we have worked with">
+              <div className="rfx-trust-track">
+                {[...TRUST_LOGOS, ...TRUST_LOGOS].map((name, i) => (
+                  <span key={`${name}-${i}`} className="rfx-trust-item">
+                    {name}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
