@@ -155,7 +155,7 @@ const Nav = () => {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((s) => !s)}
-          className="md:hidden absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-3 px-3 h-9 font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink"
+          className="lg:hidden absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-3 px-3 h-9 font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink"
         >
           <span className="relative inline-block w-4 h-4 -mt-[2px]" aria-hidden="true">
             <span
@@ -175,7 +175,7 @@ const Nav = () => {
 
       {/* Mobile drawer — scrollable so long menus / short viewports don't clip */}
       <div
-        className={`fixed inset-0 z-[99] bg-background overflow-y-auto overscroll-contain transition-opacity duration-500 md:hidden ${
+        className={`fixed inset-0 z-[99] bg-background overflow-y-auto overscroll-contain transition-opacity duration-500 lg:hidden ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
