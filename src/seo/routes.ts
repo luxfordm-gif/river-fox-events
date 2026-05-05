@@ -63,6 +63,64 @@ export const BUSINESS = {
   sameAs: ["https://www.instagram.com/lollipop_balloonsx/"],
 };
 
+/**
+ * Real customer reviews from Laura's Google profile (historic Lollipop Balloons listing).
+ * Shared between the on-page Testimonials carousel and the LocalBusiness JSON-LD so
+ * Google sees the same review text it would index from the Google profile itself.
+ */
+export type Review = { q: string; a: string; href?: string };
+export const REVIEWS: Review[] = [
+  {
+    q: "Laura designed us the most beautiful balloons and install for our recent business development day in Horley. Everyone commented on them and they were stunning. Efficient, professional and superb with her communication throughout the booking process. I would recommend her to anyone.",
+    a: "Suzy Dorran",
+    href: "https://maps.app.goo.gl/yae87fhpe2Bxe7VE9",
+  },
+  {
+    q: "Brilliant service by Laura — asked for something suitable for an 18 year old boy with a horse racing theme. Great stack delivered on the day, everyone loved it. Definitely will use again.",
+    a: "LP",
+    href: "https://maps.app.goo.gl/9ULznEtm7Ps61MVDA",
+  },
+  {
+    q: "I would wholly recommend Laura — she did a fantastic job at supplying the decorations for my daughter's birthday party. The balloons looked absolutely stunning and transformed the room.",
+    a: "Sarah Lupinski",
+    href: "https://maps.app.goo.gl/fmjXnbTQLsiG36As5",
+  },
+  {
+    q: "An absolutely fabulous display including a balloon garland and kiddies seating area. Would highly recommend and will be reusing Laura.",
+    a: "Lee Dunn",
+  },
+  {
+    q: "The lovely Laura did an amazing job at transforming my salon with a gorgeous Christmas balloon display — she really thought about colours that tie in with my branding. I have had so many lovely compliments. My two boys also loved the brilliant Halloween balloons for their party. Can't wait for our next events.",
+    a: "Danielle Wayman",
+    href: "https://maps.app.goo.gl/an2en7jjetSNTGr27",
+  },
+  {
+    q: "Laura made an amazing display of balloons for my son's 8th birthday back in October. The balloons were still standing in December — such great quality, and an amazing gaming design that my son absolutely loved. Back to her for his 10th birthday soon.",
+    a: "Rupi Heron",
+    href: "https://maps.app.goo.gl/ZUgNNKsYvjgfjg8G8",
+  },
+  {
+    q: "We had the most beautiful backdrop made for our engagement party — exactly what we asked for. Great service.",
+    a: "Emily",
+    href: "https://maps.app.goo.gl/N6oQgGKV8R8aLw249",
+  },
+  {
+    q: "I've worked with Laura a couple of times and her work is always impeccable. From decorating my salon to elf arrival balloons, we are always so pleased with everything.",
+    a: "Nicola Hewitson",
+    href: "https://maps.app.goo.gl/qdUkADHTbZKKj9JM6",
+  },
+  {
+    q: "Amazing balloon stack for my son's first birthday — and with very short notice. Thank you so much Laura.",
+    a: "Emily Stimson",
+    href: "https://maps.app.goo.gl/WhEBLU9Ax3WcNdQN9",
+  },
+  {
+    q: "What a brilliant service. The balloon arch was incredible with really good quality balloons. Laura was so speedy at building it — in no time the kitchen was ready for a 15 year old's party. A great backdrop for many selfies. The arch came down really easily with no marks left. Absolutely wonderful — would definitely recommend.",
+    a: "Helen A",
+    href: "https://maps.app.goo.gl/pxsFhE37FV92P7i19",
+  },
+];
+
 export const ROUTES: RouteSEO[] = [
   {
     path: "/",

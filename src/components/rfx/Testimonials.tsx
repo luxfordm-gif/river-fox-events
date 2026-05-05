@@ -1,20 +1,13 @@
-export const QUOTES = [
-  {
-    q: "Everyone commented on how amazing it all looked — it was even better than I had imagined. The whole day felt effortless.",
-    a: "Laura",
-    loc: "Reigate, Surrey",
-  },
-  {
-    q: "It's gorgeous — thank you for matching it so closely to the picture I sent. It exceeded every expectation. You made my whole day.",
-    a: "Daniela",
-    loc: "Surrey",
-  },
-  {
-    q: "The display was so beautiful, every guest loved it. You're a star as always — I wouldn't trust anyone else with our family's celebrations.",
-    a: "Anna",
-    loc: "Camberley, Surrey",
-  },
-];
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { REVIEWS } from "@/seo/routes";
+
+export const QUOTES = REVIEWS;
 
 const Stars = () => (
   <span className="tcard-stars" aria-label="Five stars">
@@ -57,20 +50,57 @@ const Testimonials = ({
           >
             Kind <em className="italic font-light text-accent-warm">words.</em>
           </h2>
+          <div className="mt-4">
+            <a
+              href="https://www.google.com/maps/search/Lollipop+Balloons+Horley"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="tcard-readall"
+            >
+              Read all reviews on Google →
+            </a>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-2 sm:px-8 md:px-16 lg:px-0">
-          {QUOTES.map((t, i) => (
-            <figure key={i} className="tcard fade-up">
-              <Stars />
-              <blockquote className="tcard-quote font-thin text-ink-soft">{t.q}</blockquote>
-              <figcaption className="tcard-meta">
-                <span className="name">{t.a}</span>
-                <span>{t.loc}</span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+        <Carousel
+          opts={{ align: "start", loop: true }}
+          className="px-9 sm:px-12 md:px-16 lg:px-12"
+        >
+          <CarouselContent className="-ml-6">
+            {QUOTES.map((t, i) => (
+              <CarouselItem
+                key={i}
+                className="pl-6 basis-full md:basis-1/2 lg:basis-1/3"
+              >
+                <figure className="tcard fade-up h-full">
+                  <Stars />
+                  <blockquote className="tcard-quote font-thin text-ink-soft">
+                    {t.q}
+                  </blockquote>
+                  <figcaption className="tcard-meta">
+                    <span className="name">{t.a}</span>
+                    {t.href ? (
+                      <a
+                        href={t.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="tcard-link"
+                        aria-label={`Read ${t.a}'s review on Google`}
+                      >
+                        via Google ↗
+                      </a>
+                    ) : (
+                      <span />
+                    )}
+                  </figcaption>
+                </figure>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="left-0 sm:left-2 lg:-left-6" />
+          <CarouselNext className="right-0 sm:right-2 lg:-right-6" />
+        </Carousel>
+
       </div>
     </section>
   );

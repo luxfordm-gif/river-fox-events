@@ -326,19 +326,19 @@
   /* Testimonial card — refined editorial */
   .tcard {
     position: relative;
-    padding: 38px 34px 32px;
+    padding: 28px 26px 24px;
     background: hsl(var(--surface-alt));
     border: 1px solid hsl(var(--ink) / 0.08);
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
     border-radius: 6px;
-    box-shadow: 0 1px 0 hsl(var(--ink) / 0.04), 0 24px 60px -28px hsl(var(--ink) / 0.18);
-    transition: transform .5s cubic-bezier(.22,.7,.2,1), box-shadow .5s ease, border-color .5s ease;
+    box-shadow: 0 1px 2px hsl(var(--ink) / 0.05);
+    transition: transform .35s cubic-bezier(.22,.7,.2,1), box-shadow .35s ease, border-color .35s ease;
   }
   .tcard:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 1px 0 hsl(var(--ink) / 0.04), 0 36px 80px -30px hsl(var(--ink) / 0.28);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px -8px hsl(var(--ink) / 0.16);
     border-color: hsl(var(--ink) / 0.14);
   }
   .tcard-stars {
@@ -351,7 +351,7 @@
   }
   .tcard-quote {
     font-family: var(--font-serif);
-    font-size: 21px;
+    font-size: 18px;
     line-height: 1.45;
     font-weight: 300;
     letter-spacing: -0.012em;
@@ -368,9 +368,9 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: hsl(var(--ink-soft));
-    padding-top: 22px;
+    padding-top: 14px;
     border-top: 1px solid hsl(var(--ink) / 0.10);
-    margin-top: 6px;
+    margin-top: 4px;
   }
   .tcard-meta .name {
     font-family: var(--font-serif);
@@ -379,6 +379,28 @@
     text-transform: none;
     letter-spacing: -0.01em;
     color: hsl(var(--ink));
+  }
+  .tcard-link {
+    color: hsl(var(--ink-soft));
+    transition: color .25s ease;
+    text-decoration: none;
+  }
+  .tcard-link:hover {
+    color: hsl(var(--accent-warm));
+  }
+  .tcard-readall {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: hsl(var(--ink-soft));
+    border-bottom: 1px solid hsl(var(--ink) / 0.2);
+    padding-bottom: 2px;
+    transition: color .25s ease, border-color .25s ease;
+  }
+  .tcard-readall:hover {
+    color: hsl(var(--accent-warm));
+    border-color: hsl(var(--accent-warm));
   }
 
   /* Form — clear field hierarchy, obvious tap targets */
@@ -660,6 +682,9 @@
   /* Instagram section — slightly tighter top gap so the divider sits closer to the section above */
   .rfx-instagram { padding: 44px 0 56px; }
   .rfx-instagram .rfx-instagram-inner { padding-top: 40px; padding-bottom: 40px; }
+  /* Testimonials section — match Instagram's tighter rhythm so the hairline sits the same distance from section edges */
+  #kindness.rfx-section { padding: 56px 0 44px; }
+  #kindness .hairline { margin-bottom: 40px !important; }
   @media (max-width: 760px) {
     .rfx-section { padding: 56px 0; }
     .rfx-instagram { padding: 28px 0; }

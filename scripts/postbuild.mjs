@@ -46,7 +46,11 @@ async function loadRoutes() {
   if (!routesMatch) throw new Error("Could not find ROUTES in routes.ts");
   const ROUTES = eval("(" + routesMatch[1] + ")");
 
-  return { SITE, BUSINESS, ROUTES };
+  const reviewsMatch = src.match(/export const REVIEWS: Review\[\] = (\[[\s\S]*?\n\]);/);
+  if (!reviewsMatch) throw new Error("Could not find REVIEWS in routes.ts");
+  const REVIEWS = eval("(" + reviewsMatch[1] + ")");
+
+  return { SITE, BUSINESS, ROUTES, REVIEWS };
 }
 
 const escapeHtml = (s) =>
@@ -96,7 +100,7 @@ function buildHeadTags({ SITE, route, absUrl, ogImageAbs }) {
  * matching DOM ids), so SPA navigation stays consistent. Crawlers that
  * don't run JS see the schemas straight from the static HTML.
  */
-function buildJsonLdBlocks({ SITE, BUSINESS, ROUTES, route, absUrl }) {
+function buildJsonLdBlocks({ SITE, BUSINESS, ROUTES, REVIEWS, route, absUrl }) {
   const blocks = [];
 
   if (route.path === "/") {
@@ -116,6 +120,23 @@ function buildJsonLdBlocks({ SITE, BUSINESS, ROUTES, route, absUrl }) {
           "Reigate",
           "Horley",
         ],
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "5",
+          bestRating: "5",
+          reviewCount: REVIEWS.length,
+        },
+        review: REVIEWS.map((r) => ({
+          "@type": "Review",
+          author: { "@type": "Person", name: r.a },
+          reviewRating: {
+            "@type": "Rating",
+            ratingValue: "5",
+            bestRating: "5",
+          },
+          reviewBody: r.q,
+          ...(r.href ? { url: r.href } : {}),
+        })),
       },
     });
     return blocks;
@@ -183,6 +204,23 @@ function buildJsonLdBlocks({ SITE, BUSINESS, ROUTES, route, absUrl }) {
         description: route.description,
         areaServed: route.service.areaServed,
         provider: BUSINESS,
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "5",
+          bestRating: "5",
+          reviewCount: REVIEWS.length,
+        },
+        review: REVIEWS.map((r) => ({
+          "@type": "Review",
+          author: { "@type": "Person", name: r.a },
+          reviewRating: {
+            "@type": "Rating",
+            ratingValue: "5",
+            bestRating: "5",
+          },
+          reviewBody: r.q,
+          ...(r.href ? { url: r.href } : {}),
+        })),
         ...(route.service.lowPrice
           ? {
               offers: {
@@ -313,7 +351,7 @@ async function readRouteHtml(route) {
 }
 
 async function main() {
-  const { SITE, BUSINESS, ROUTES } = await loadRoutes();
+  const { SITE, BUSINESS, ROUTES, REVIEWS } = await loadRoutes();
 
   // Netlify serves /<route>/ (with trailing slash) for prerendered routes,
   // and 301-redirects /<route> → /<route>/. Keep canonicals + sitemap in sync
@@ -323,7 +361,7 @@ async function main() {
     const absUrl = SITE.url + canonicalPath(route.path);
     const ogImageAbs = SITE.url + (route.ogImage || SITE.defaultOgImage);
     const headFragment = buildHeadTags({ SITE, route, absUrl, ogImageAbs });
-    const jsonLdBlocks = buildJsonLdBlocks({ SITE, BUSINESS, ROUTES, route, absUrl });
+    const jsonLdBlocks = buildJsonLdBlocks({ SITE, BUSINESS, ROUTES, REVIEWS, route, absUrl });
     const jsonLdFragment = renderJsonLd(jsonLdBlocks);
     const baseHtml = await readRouteHtml(route);
     const routeHtml = injectIntoHead(baseHtml, headFragment, jsonLdFragment);

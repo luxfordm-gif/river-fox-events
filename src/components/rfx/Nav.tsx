@@ -10,6 +10,7 @@ const SERVICES = [
 
 const ABOUT_LINKS = [
   { href: "/#about", label: "About Laura" },
+  { href: "/#kindness", label: "Client reviews" },
   { href: "/journal", label: "Read the journal" },
 ];
 
@@ -221,9 +222,7 @@ const Nav = () => {
 
           <div className="hairline mt-10" />
           <a
-            href="https://www.instagram.com/lollipop_balloonsx/"
-            target="_blank"
-            rel="noreferrer"
+            href="/journal"
             onClick={() => setOpen(false)}
             className="mt-8 font-mono-rf text-[11px] tracking-[0.22em] uppercase text-ink no-underline inline-flex items-center gap-2 self-start"
             style={{
@@ -232,10 +231,10 @@ const Nav = () => {
               transition: `opacity .5s ease 420ms, transform .5s ease 420ms`,
             }}
           >
-            Follow us on Instagram <span aria-hidden>→</span>
+            Read the journal <span aria-hidden>→</span>
           </a>
           <a
-            href="/journal"
+            href="/#kindness"
             onClick={() => setOpen(false)}
             className="mt-3 font-mono-rf text-[11px] tracking-[0.22em] uppercase text-ink no-underline inline-flex items-center gap-2 self-start"
             style={{
@@ -244,7 +243,21 @@ const Nav = () => {
               transition: `opacity .5s ease 480ms, transform .5s ease 480ms`,
             }}
           >
-            Read the journal <span aria-hidden>→</span>
+            Client reviews <span aria-hidden>→</span>
+          </a>
+          <a
+            href="https://www.instagram.com/lollipop_balloonsx/"
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => setOpen(false)}
+            className="mt-3 font-mono-rf text-[11px] tracking-[0.22em] uppercase text-ink no-underline inline-flex items-center gap-2 self-start"
+            style={{
+              opacity: open ? 1 : 0,
+              transform: open ? "translateY(0)" : "translateY(20px)",
+              transition: `opacity .5s ease 540ms, transform .5s ease 540ms`,
+            }}
+          >
+            Follow us on Instagram <span aria-hidden>→</span>
           </a>
           <p className="text-sm text-ink-soft mt-6 leading-relaxed">
             Riverfoxevents@gmail.com

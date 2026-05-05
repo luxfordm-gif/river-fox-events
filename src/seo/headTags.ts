@@ -1,4 +1,4 @@
-import { BUSINESS, SITE, findRoute, type RouteSEO } from "./routes";
+import { BUSINESS, REVIEWS, SITE, findRoute, type RouteSEO } from "./routes";
 
 /**
  * Client-side <head> updates after hydration.
@@ -117,6 +117,23 @@ export const serviceSchema = (params: {
   description: params.description,
   areaServed: params.areaServed,
   provider: BUSINESS,
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    bestRating: "5",
+    reviewCount: REVIEWS.length,
+  },
+  review: REVIEWS.map((r) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: r.a },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: "5",
+      bestRating: "5",
+    },
+    reviewBody: r.q,
+    ...(r.href ? { url: r.href } : {}),
+  })),
   ...(params.lowPrice
     ? {
         offers: {
@@ -166,4 +183,21 @@ export const localBusinessSchema = (description: string): SchemaJson => ({
     "Reigate",
     "Horley",
   ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    bestRating: "5",
+    reviewCount: REVIEWS.length,
+  },
+  review: REVIEWS.map((r) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: r.a },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: "5",
+      bestRating: "5",
+    },
+    reviewBody: r.q,
+    ...(r.href ? { url: r.href } : {}),
+  })),
 });
