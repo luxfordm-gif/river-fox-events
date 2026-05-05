@@ -756,11 +756,17 @@
       border-radius: 12px !important;
     }
 
-    /* Collapse vertical gap between adjacent CPReveal sections on mobile so
-       related reveals read as a sequence, not isolated blocks. Mirrors the
-       desktop rule at line 595. */
-    .cp-reveal-section + .cp-reveal-section { padding-top: 24px !important; }
-    .cp-reveal-section:has(+ .cp-reveal-section) { padding-bottom: 24px !important; }
+    /* Reduce gap between adjacent CPReveal sections on mobile so related
+       reveals read as a sequence — but keep enough breathing room between them. */
+    .cp-reveal-section + .cp-reveal-section { padding-top: 40px !important; }
+    .cp-reveal-section:has(+ .cp-reveal-section) { padding-bottom: 40px !important; }
+
+    /* Text-only intro section (image hidden on mobile): centre copy and
+       restore full spacing into the first image section below it. */
+    .cp-reveal-no-img .cp-reveal-content { text-align: center; }
+    .cp-reveal-no-img .cp-reveal-body { margin-left: auto; margin-right: auto; }
+    .cp-reveal-section.cp-reveal-no-img:has(+ .cp-reveal-section) { padding-bottom: 56px !important; }
+    .cp-reveal-section.cp-reveal-no-img + .cp-reveal-section { padding-top: 56px !important; }
 
     /* Mobile body-copy bump: bump 16px paragraphs to 17.5px for readability.
        Small/meta text (13–15px) stays as-is intentionally. */

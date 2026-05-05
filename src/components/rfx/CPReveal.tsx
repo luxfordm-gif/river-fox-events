@@ -101,7 +101,7 @@ const CPReveal = ({
 
   const contentBlock = (
     <div
-      className="flex flex-col justify-center"
+      className="cp-reveal-content flex flex-col justify-center"
       style={{
         opacity: visible ? 1 : 0.2,
         transform: visible ? "translateY(0)" : "translateY(20px)",
@@ -122,7 +122,7 @@ const CPReveal = ({
         {headline}
       </h2>
       <div
-        className="mt-5 md:mt-7 text-[16px] leading-[1.7] text-ink-soft max-w-[520px] space-y-5"
+        className="cp-reveal-body mt-5 md:mt-7 text-[16px] leading-[1.7] text-ink-soft max-w-[520px] space-y-5"
         style={{ textWrap: "pretty" }}
       >
         {children}
@@ -134,7 +134,7 @@ const CPReveal = ({
     <section
       id={id}
       ref={sectionRef}
-      className="rfx-section white cp-reveal-section"
+      className={`rfx-section white cp-reveal-section${hideImageOnMobile ? " cp-reveal-no-img" : ""}`}
       aria-labelledby={id ? `${id}-h` : undefined}
     >
       <div className="container-rfx">
