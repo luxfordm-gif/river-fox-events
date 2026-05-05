@@ -16,6 +16,7 @@ const ServiceHero = ({
   headingId = "service-hero-heading",
 }: ServiceHeroProps) => {
   const imgWrapRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia(
@@ -27,15 +28,21 @@ const ServiceHero = ({
       if (raf) return;
       raf = window.requestAnimationFrame(() => {
         const el = imgWrapRef.current;
+        const img = imgRef.current;
         if (el) {
           const progress = reduceMotion
             ? 1
             : Math.min(1, Math.max(0, window.scrollY / 520));
           const marginVw = 5 * (1 - progress);
           const radius = 16 * (1 - progress);
+          // Image starts slightly zoomed in (1.05) and settles to 1.0 as it
+          // expands to full width — prevents the hard background edge being
+          // visible during the transition.
+          const scale = 1.05 - 0.05 * progress;
           el.style.marginLeft = `${marginVw}vw`;
           el.style.marginRight = `${marginVw}vw`;
           el.style.borderRadius = `${radius}px`;
+          if (img) img.style.transform = `scale(${scale})`;
         }
         raf = 0;
       });
@@ -50,7 +57,7 @@ const ServiceHero = ({
   }, []);
 
   return (
-    <section id="top" aria-labelledby={headingId} className="pt-[96px] md:pt-[124px] pb-0">
+    <section id="top" aria-labelledby={headingId} className="pt-[106px] md:pt-[134px] pb-0">
       {/* Text — same position and style as home page H1 */}
       <div className="container-rfx">
         <div className="mb-10 md:mb-14 flex flex-col items-center text-center">
@@ -84,7 +91,9 @@ const ServiceHero = ({
         </div>
       </div>
 
-      {/* Expanding image — starts inset from edges, fills full width on scroll */}
+      {/* Expanding image — starts inset from edges, fills full width on scroll.
+          Mobile uses a taller aspect ratio (~40% deeper than desktop) so the
+          image fills the frame without showing background above/below. */}
       <div className="overflow-hidden">
         <div
           ref={imgWrapRef}
@@ -97,10 +106,11 @@ const ServiceHero = ({
           }}
         >
           <img
+            ref={imgRef}
             src={image}
             alt={imageAlt}
-            className="w-full block"
-            style={{ aspectRatio: "16 / 7", objectFit: "cover" }}
+            className="w-full block object-cover aspect-[16/10] md:aspect-[16/7]"
+            style={{ transform: "scale(1.05)", willChange: "transform" }}
             loading="eager"
             fetchPriority="high"
             decoding="async"
