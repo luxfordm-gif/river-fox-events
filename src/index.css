@@ -351,13 +351,16 @@
   }
   .tcard-quote {
     font-family: var(--font-serif);
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.45;
     font-weight: 300;
     letter-spacing: -0.012em;
     flex: 1;
     color: hsl(var(--ink));
     margin-top: 2px;
+  }
+  @media (max-width: 760px) {
+    .tcard-quote { font-size: 16px; }
   }
   .tcard-meta {
     display: flex;
@@ -375,7 +378,7 @@
   .tcard-meta .name {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 16px;
+    font-size: 14px;
     text-transform: none;
     letter-spacing: -0.01em;
     color: hsl(var(--ink));
@@ -387,6 +390,20 @@
   }
   .tcard-link:hover {
     color: hsl(var(--accent-warm));
+  }
+  .tcard-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: hsl(var(--ink) / 0.18);
+    transition: background .25s ease, width .25s ease;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+  }
+  .tcard-dot.is-active {
+    width: 18px;
+    background: hsl(var(--accent-warm));
   }
   .tcard-readall {
     font-family: var(--font-mono);

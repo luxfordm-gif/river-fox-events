@@ -1,19 +1,7 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import TestimonialsCarousel from "./TestimonialsCarousel";
 import { REVIEWS } from "@/seo/routes";
 
 export const QUOTES = REVIEWS;
-
-const Stars = () => (
-  <span className="tcard-stars" aria-label="Five stars">
-    {"★★★★★"}
-  </span>
-);
 
 type TestimonialsProps = {
   noDivider?: boolean;
@@ -62,44 +50,7 @@ const Testimonials = ({
           </div>
         </div>
 
-        <Carousel
-          opts={{ align: "start", loop: true }}
-          className="px-9 sm:px-12 md:px-16 lg:px-12"
-        >
-          <CarouselContent className="-ml-6">
-            {QUOTES.map((t, i) => (
-              <CarouselItem
-                key={i}
-                className="pl-6 basis-full md:basis-1/2 lg:basis-1/3"
-              >
-                <figure className="tcard fade-up h-full">
-                  <Stars />
-                  <blockquote className="tcard-quote font-thin text-ink-soft">
-                    {t.q}
-                  </blockquote>
-                  <figcaption className="tcard-meta">
-                    <span className="name">{t.a}</span>
-                    {t.href ? (
-                      <a
-                        href={t.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="tcard-link"
-                        aria-label={`Read ${t.a}'s review on Google`}
-                      >
-                        via Google ↗
-                      </a>
-                    ) : (
-                      <span />
-                    )}
-                  </figcaption>
-                </figure>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-0 sm:left-2 lg:-left-6" />
-          <CarouselNext className="right-0 sm:right-2 lg:-right-6" />
-        </Carousel>
+        <TestimonialsCarousel />
 
       </div>
     </section>
