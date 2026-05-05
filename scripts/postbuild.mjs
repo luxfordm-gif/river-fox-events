@@ -204,23 +204,6 @@ function buildJsonLdBlocks({ SITE, BUSINESS, ROUTES, REVIEWS, route, absUrl }) {
         description: route.description,
         areaServed: route.service.areaServed,
         provider: BUSINESS,
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "5",
-          bestRating: "5",
-          reviewCount: REVIEWS.length,
-        },
-        review: REVIEWS.map((r) => ({
-          "@type": "Review",
-          author: { "@type": "Person", name: r.a },
-          reviewRating: {
-            "@type": "Rating",
-            ratingValue: "5",
-            bestRating: "5",
-          },
-          reviewBody: r.q,
-          ...(r.href ? { url: r.href } : {}),
-        })),
         ...(route.service.lowPrice
           ? {
               offers: {
