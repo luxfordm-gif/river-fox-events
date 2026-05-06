@@ -4,6 +4,48 @@ Rules for writing any new article in `src/data/articles/`. Claude must follow th
 
 ---
 
+## 0. Article categories
+
+Every article belongs to one of four categories. The category dictates what Claude can and can't say.
+
+### Trends & insight *(default for weekly articles)*
+Synthesises what's happening in the industry — what people are asking for this season, what design moves are gaining ground, where the wider luxury event market is heading. Framed through Laura's design lens.
+
+- **Allowed:** broad observations grounded in real industry signal (competitor scans, search trends, named publications), Laura's design opinion on those trends, advice for hosts thinking about their own celebration.
+- **Not allowed:** specific event claims that imply Laura styled something she didn't. No "I just finished a 50th in Cobham where we…" unless she actually did.
+- **Examples in repo:** `beyond-the-balloon-arch.tsx`, `childrens-party-themes-2026.tsx`.
+
+### Process pieces *(secondary weekly option)*
+How Laura actually works — render boards, sourcing, install mornings, the questions she asks at the brief stage. Genuine method, not invented method.
+
+- **Allowed:** how Laura's workflow runs, why she does things a particular way, what hosts can expect.
+- **Not allowed:** fabricated processes or steps Laura doesn't actually follow.
+- **Examples in repo:** `from-design-to-delivery.tsx`.
+
+### Case studies *(opportunistic, not weekly)*
+A specific event Laura has styled, with real photos. The strongest pieces in the journal but rate-limited — only write one when there's a genuine event to anchor it.
+
+- **Allowed:** the actual brief, real venue name, real palette, real install detail, real photos.
+- **Not allowed:** composite or invented events. If the event hasn't happened, don't write it as if it has.
+- **Examples in repo:** `two-wild-safari-second-birthday.tsx`.
+
+### Brand pieces *(rare)*
+The rebrand, studio milestones, business-level reflections. Use sparingly.
+
+- **Examples in repo:** `lollipop-balloons-to-river-fox-events.tsx`.
+
+### The fabrication rule (applies to all categories)
+
+Claude must not put words in Laura's mouth that imply experience she may not have had. Specifically:
+
+- "I'm seeing more requests for X" — only if grounded in cited industry signal, OR flagged to Mark with "is this true for Laura right now?" before drafting.
+- "I styled a [specific event] last [month]" — only in case studies, with real photos.
+- "Most of my clients are asking for…" — never. Too specific to assert without Laura's input.
+
+When in doubt, swap a personal claim for an industry observation: *"I'm noticing across Surrey stylists that…"* is safer than *"I'm noticing in my own bookings that…"* unless Mark has confirmed the latter.
+
+---
+
 ## 1. Voice — Laura, in first person
 
 Laura writes the articles. Claude is ghost-writing *as her*, not about her.

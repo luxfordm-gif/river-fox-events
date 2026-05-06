@@ -39,19 +39,29 @@ Publish one new journal article per week to grow organic search traffic and sign
 
 ## Step 2 — Topic pick
 
-From the Y-tagged themes, recommend ONE topic that:
+**Default category for weekly articles: Trends & insight** (see `AUTHORING.md` §0). Process pieces are the secondary option. Case studies are NOT weekly — only write one when Laura has a real, photographed event ready.
+
+From the Y-tagged themes in Step 1, recommend ONE topic that:
+- Fits the Trends & insight or Process category
 - Fits Laura's aesthetic (pastel, neutral, considered, big-event, named-venue)
 - Has clear search intent (someone is actually Googling for this)
 - Ties naturally to a service page (`/childrens-parties/`, `/milestone-celebrations/`, `/corporate-brand-styling/`) for internal linking
 - Hasn't already been covered in `src/data/articles/`
 
+**The fabrication check (mandatory before proposing the topic):**
+- The angle must NOT depend on Laura having styled a specific event unless that event is real and photographed.
+- The angle must NOT make personal claims about Laura's bookings or clients ("most of my clients ask for…", "I'm seeing in my own enquiries…") unless Mark has confirmed those claims are accurate.
+- If the natural framing requires a personal claim, either reframe as an industry observation ("Across Surrey stylists I'm seeing…") or flag the claim to Mark with the question: *"is this true for Laura right now?"* before drafting.
+
 **Deliver before drafting:**
 - Topic in one sentence
+- Category (Trends & insight / Process)
 - Target keyword + 2 secondary keywords
 - 3 title options (≤ 60 chars each, ending `| River Fox Events`)
 - 1-paragraph synopsis of the angle Laura would take
+- Any personal claims that need Mark's confirmation, listed explicitly
 
-**Mark approves the topic and title before any article is drafted.**
+**Mark approves the topic, title, and any flagged claims before any article is drafted.**
 
 ---
 
