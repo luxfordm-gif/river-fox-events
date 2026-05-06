@@ -95,10 +95,48 @@ For both: **only proceed if there's a real, photographed event to write about.**
 **Auto-include — the house style:**
 - Pastel and neutral palettes
 - Large-scale installs (4m+ backdrops, banquet tables of 10+)
-- Tablescape-led design
+- Tablescape-led design (built from Laura's actual toolkit — see below)
 - Milestone moments — christenings, big birthdays, anniversaries, baby showers, corporate
-- Considered florals, render-led process pieces
+- Render-led process pieces
 - Named real venues in Surrey / South East / London
+
+### Laura's actual toolkit — what she does and doesn't supply
+
+This is the canonical in/out list. Articles, image prompts and design-move language must build only from the IN list. If a topic needs an OUT item to land, the topic is wrong — pick another.
+
+**IN — Laura supplies these:**
+- Balloons: arches, garlands, walls, hoops (often dressed with faux florals), towers/columns, organic/sculpted installations, balloon-built centrepieces, threshold pieces, number stacks, jumbo and helium balloons, balloon-built welcome signs / sailboards / photo frames
+- Backdrops & feature walls: fabric backdrops, sailboard backdrops (custom-painted panels with vinyl), themed photo walls, sequin walls, full themed installations (glam garden, enchanted forest, airport, country garden, etc.)
+- Signage: painted boards, vinyl / acrylic stickers on painted boards, life-size cardboard cutouts (including character cutouts — Disney/cartoon), personalised acrylic and foam signs, branded signage, custom welcome signs; high-quality printers; weatherproof variants
+- Light-up letters and numbers, number stacks
+- Up-lighters — including waterproof variants for outdoor use
+- Themed props: 3D acrylic props, curated themed prop builds (aeroplanes, runway carpets, picket fences, mushroom stools, wooden letter blocks, themed favour baskets), plinths, acrylic risers, structural props, cake stands (NOT the cake)
+- Faux florals, faux foliage, oversized paper/foam flowers — sparingly, never the design headline
+- Textiles: drapery / fabric (muslin, cheesecloth, ceiling treatments), linens (tablecloths), cheesecloth runners, chair sashes and chair covers
+- Soft seats, low tables, soft cushions (children's setups, luxury picnics)
+- Service contexts: children's birthdays, milestone/adult, baby showers, christenings, weddings, corporate, brand styling, award nights, product launches, shopfronts, VIP, luxury picnics
+
+**OUT — never frame as Laura's work:**
+- Fresh florals, fresh foliage, any compositional flower-arranging
+- Vessels, glassware, vintage stoneware (the curated-tablescape category)
+- Candles or candle-holders
+- The cake itself (cake stands only)
+- Catering, food, drink, bar service
+
+Reference inventory (canonical): the four service pages on [lollipopballoonssurrey.co.uk](https://www.lollipopballoonssurrey.co.uk/) — `/services/luxury-kids-parties`, `/services/events`, `/services/corporate`, `/services/balloons`. The full list also lives in the project memory file `user_laura_toolkit.md`. When in doubt, check those pages — anything not represented there is not in scope.
+
+### What Laura does and doesn't design — the floral rule
+
+**Laura does not work with florals.** She doesn't arrange flowers, source fresh stems, or design with real florals at any scale. If anything flower-shaped appears on her displays, it's faux — high-quality artificial stems used sparingly as a textural prop, never as the design headline. Compositional floral work (bouquets, centrepieces, large-scale installs) is a separate florist's trade, booked by the host independently. So:
+
+- **Never frame Laura as a florist.** Avoid: "we composed the centrepiece", "we built the floral installation", "we arranged…", "fresh florals", "trailing florals". She doesn't do it.
+- **Never lead a design move with florals — fresh or faux.** The lead is always something Laura actively supplies (see her in-toolkit list at the top of this section): a balloon installation, a drapery treatment, a backdrop, a cake-stand moment, light-up letters or numbers, painted-board or vinyl/acrylic signage, life-size cardboard cutouts, plinths, soft seating, waterproof up-lighters. Florals are not the lever.
+- **Faux stems are a quiet prop, never the headline.** If they appear in copy or images, frame them as: a few faux stems used for texture, sat in a small prop holder as part of a wider tablescape. They should not be the subject of any image and should not appear in titles, metas, H1s, pull quotes or section headings.
+- **Image prompts must lead with non-floral elements.** Hero and supporting images: balloons, drapery, backdrops, painted-board and vinyl-on-board signage, life-size cardboard cutouts, light-up letters/numbers, plinths, linens, soft seating, up-lighters. If anything flower-like is in the frame, it's faux, ambient, and never the focal point. Foliage already in a venue or planting in a garden is fine as background — it's the venue, not Laura's work.
+- **Words to avoid as Laura's design moves:** "low florals", "floral runner", "trailing florals", "floral arch", "tablescape florals", "floral installation", "centrepieces" (when implying Laura built them), "stems we sourced", "we arranged", "fresh florals", "the florals we styled".
+- **Acceptable language (used sparingly, never leading):** "a few faux stems for texture", "the florist's pieces" (where a florist is involved and the host has booked them), planting in a garden, foliage in a venue.
+
+If a topic seems to need florals to land, the topic is wrong for Laura — pick a different topic. Don't write a piece where florals are doing the heavy lifting and try to skirt around it.
 
 If a proposed topic falls in the auto-reject list, propose a different one. If it falls in the discouraged list, flag it explicitly to Mark with the reason it's worth making an exception for, and let him decide.
 
