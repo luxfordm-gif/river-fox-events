@@ -544,6 +544,16 @@ export const ROUTES: RouteSEO[] = [
   // using the same script id as Article.tsx, so the runtime injection and
   // the static one don't double up.
   {
+    path: "/journal/garden-milestone-styling-surrey",
+    title: "When the garden is the venue | River Fox Events",
+    description:
+      "Garden milestone styling in Surrey — design moves that make a private-garden 40th, 50th or anniversary feel like a venue, not a marquee. From Laura at River Fox Events.",
+    breadcrumbName: "When the garden is the venue",
+    ogImage: "/og/garden-milestone-styling-surrey.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+  },
+  {
     path: "/journal/two-wild-safari-second-birthday",
     title:
       "Two Wild: a Safari Second Birthday in Horley, Surrey | River Fox Events",

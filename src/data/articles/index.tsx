@@ -4,12 +4,14 @@ import BeyondTheBalloonArchBody from "./beyond-the-balloon-arch";
 import FromDesignToDeliveryBody from "./from-design-to-delivery";
 import ChildrensPartyThemes2026Body from "./childrens-party-themes-2026";
 import TwoWildSafariSecondBirthdayBody from "./two-wild-safari-second-birthday";
+import GardenMilestoneStylingSurreyBody from "./garden-milestone-styling-surrey";
 
 import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
 import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
 import designToDeliveryCard from "@/assets/journal/from-design-to-delivery/dinosaur-party-styling-surrey-finished.webp";
 import childrensThemesCard from "@/assets/jungle-themed-childrens-party-styling-surrey.webp";
 import twoWildCard from "@/assets/journal/two-wild-safari-second-birthday/two-wild-safari-feature-backdrop-concept-horley-surrey.webp";
+import gardenMilestoneCard from "@/assets/journal/garden-milestone-styling-surrey/garden-milestone-balloon-arch.webp";
 
 /**
  * Master list of articles. Order = newest first.
@@ -23,6 +25,23 @@ import twoWildCard from "@/assets/journal/two-wild-safari-second-birthday/two-wi
  *      `relatedSlugs`, and vice versa.
  */
 export const ARTICLES: Article[] = [
+  {
+    slug: "garden-milestone-styling-surrey",
+    title: "When the garden is the venue",
+    subtitle:
+      "Why a private garden often serves a Surrey milestone better than a hire venue — and the design moves that make it work.",
+    teaser:
+      "A private garden gives you bones a hire venue can't fake. A note from Laura on what changes when you treat the garden as the design, not the backdrop.",
+    metaDescription:
+      "Garden milestone styling in Surrey — design moves that make a private-garden 40th, 50th or anniversary feel like a venue, not a marquee. From Laura at River Fox Events.",
+    publishedAt: "2026-05-08",
+    readMinutes: 6,
+    relatedSlugs: ["beyond-the-balloon-arch", "childrens-party-themes-2026", "from-design-to-delivery"],
+    cardImage: gardenMilestoneCard,
+    ogImage: "/og/garden-milestone-styling-surrey.webp",
+    category: "Trends",
+    Body: GardenMilestoneStylingSurreyBody,
+  },
   {
     slug: "two-wild-safari-second-birthday",
     title: "Two Wild: a safari second birthday in Horley",

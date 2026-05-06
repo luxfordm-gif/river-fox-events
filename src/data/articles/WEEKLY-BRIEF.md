@@ -21,6 +21,7 @@ Publish one new journal article per week to grow organic search traffic and sign
 - The Party Productions — https://thepartyproductions.co.uk
 - Scarlet Events — https://www.scarletevents.com
 - Mix Masters Events — https://www.mixmastersevents.co.uk
+- Kkraft Events — https://instagram.com/kkraftevents
 
 **Aspirational / national benchmark — scan monthly, not weekly:**
 - @bubblegumballoons (IG)
@@ -52,6 +53,9 @@ From the Y-tagged themes in Step 1, recommend ONE topic that:
 - The angle must NOT depend on Laura having styled a specific event unless that event is real and photographed.
 - The angle must NOT make personal claims about Laura's bookings or clients ("most of my clients ask for…", "I'm seeing in my own enquiries…") unless Mark has confirmed those claims are accurate.
 - If the natural framing requires a personal claim, either reframe as an industry observation ("Across Surrey stylists I'm seeing…") or flag the claim to Mark with the question: *"is this true for Laura right now?"* before drafting.
+
+**The floral check (mandatory):**
+- Laura does not arrange flowers. If the topic angle leans on florals as the headline design move (e.g. "trending tablescape florals", "floral arch ideas", "centrepiece styling"), reframe so Laura's contribution is the setting around the florals — balloons, drapery, linens, candles, vessels, lighting, signage. See `AUTHORING.md` §2 "What Laura does and doesn't design — the floral rule" for the full rule. Floral-led articles get rejected at topic stage, not fixed in draft.
 
 **Deliver before drafting:**
 - Topic in one sentence
