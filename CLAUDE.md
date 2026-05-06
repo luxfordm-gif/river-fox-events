@@ -103,6 +103,12 @@ Two kinds of copy live in two different places, and the update path differs:
 
 Run `npm run build` locally and spot-check `dist/<slug>/index.html` before pushing. Push to `main` deploys to Netlify automatically — there's no manual deploy step, so a broken push goes live.
 
+## Journal articles
+
+When writing, editing, or reviewing any article in `src/data/articles/`, read **`src/data/articles/AUTHORING.md`** first — it defines Laura's voice, the aesthetic gate (auto-reject vs discouraged vs auto-include), the article structure (TL;DR → prose → pull quote → "Why I love this part" → `— Laura` sign-off), image specs, and the SEO package required.
+
+For weekly cadence and the competitor-research workflow, see **`src/data/articles/WEEKLY-BRIEF.md`**.
+
 ## Brand & business
 
 - Brand: **River Fox Events** (formerly Lollipop Balloons). The `alternateName` is preserved in JSON-LD so historic links / brand searches flow through.
