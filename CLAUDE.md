@@ -1,6 +1,6 @@
 # River Fox Events — project conventions
 
-Site for **Laura** at River Fox Events (luxury event styling, Surrey). Live at `riverfoxevents.co.uk`. Mark is non-technical and runs the project — favour pragmatic over pure, walk through changes step by step, never assume tooling familiarity.
+Site for **Laura** at River Fox Events (luxury event styling, Surrey). Live at `riverfoxevents.co.uk`. Matt is non-technical and runs the project — favour pragmatic over pure, walk through changes step by step, never assume tooling familiarity.
 
 ## Stack & build
 
@@ -10,9 +10,9 @@ Site for **Laura** at River Fox Events (luxury event styling, Surrey). Live at `
 
 ## Repo layout — one canonical local copy
 
-The active local repo is **`~/Documents/river-fox-events/`** only. A duplicate Lovable-synced clone at `~/Documents/Claude/lauras site/` was deleted on 2026-05-02 — don't recreate it. If Laura/Mark re-engage Lovable, point Lovable at the same GitHub repo, never let it spin up a parallel folder.
+The active local repo is **`~/Documents/river-fox-events/`** only. A duplicate Lovable-synced clone at `~/Documents/Claude/lauras site/` was deleted on 2026-05-02 — don't recreate it. If Laura/Matt re-engage Lovable, point Lovable at the same GitHub repo, never let it spin up a parallel folder.
 
-`_salvaged-from-old-folder/` (gitignored) holds three unsorted asset files rescued from the deleted clone. Mark hasn't reviewed them yet; they're not wired up anywhere.
+`_salvaged-from-old-folder/` (gitignored) holds three unsorted asset files rescued from the deleted clone. Matt hasn't reviewed them yet; they're not wired up anywhere.
 
 ## SEO — `src/seo/routes.ts` is the single source of truth
 
@@ -117,11 +117,11 @@ For weekly cadence and the competitor-research workflow, see **`src/data/article
 - Pricing anchor: events from £460. Use this number consistently.
 - Tone: calm, considered, design-led. Never punchy/salesy. Em dashes are fine, exclamation marks aren't.
 
-## Working with Mark
+## Working with Matt
 
-- Explain what's happening as you go. Don't run silent for several tool calls — Mark is non-technical and reads the running narration to follow what you're doing.
+- Explain what's happening as you go. Don't run silent for several tool calls — Matt is non-technical and reads the running narration to follow what you're doing.
 - Confirm before destructive or shared-state actions (deleting files, force pushes, sending emails, changing DNS). One-time approval doesn't carry to next time.
-- When updating SEO copy across multiple pages, present the proposed values in a table for review **before** writing any code. Mark wants to decide before edits land.
+- When updating SEO copy across multiple pages, present the proposed values in a table for review **before** writing any code. Matt wants to decide before edits land.
 
 ## Useful one-liners
 
