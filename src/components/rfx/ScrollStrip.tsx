@@ -18,7 +18,7 @@ const STRIP_IMAGES = [
   { src: expChildren, alt: "Sage green dinosaur themed children's birthday party styling in Surrey by River Fox Events — personalised name sign and balloon installation", aspect: "820 / 1089" },
   { src: hero3, alt: "A close-up of a Surrey celebration — peach roses, silk ribbons and candlelight on a dressed table, styled by River Fox Events", aspect: "900 / 1195" },
   { src: expCorporate, alt: "Corporate gala event styling in Surrey by River Fox Events — navy blue gold cream balloon garland and branded backdrop", aspect: "820 / 1093" },
-  { src: cpCelebrations, alt: "Children's birthday party styling in Surrey by River Fox Events — bespoke pastel balloon installation with organic textures and soft floral accents", aspect: "1468 / 1920" },
+  { src: cpCelebrations, alt: "Children's birthday party styling in Surrey by River Fox Events — tailored pastel balloon installation with organic textures and soft floral accents", aspect: "1468 / 1920" },
 ];
 
 /**

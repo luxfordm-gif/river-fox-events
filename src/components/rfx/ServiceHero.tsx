@@ -83,7 +83,7 @@ const ServiceHero = ({
           </h1>
 
           <p
-            className={`word-reveal in delay-${lines.length} mt-6 max-w-[44ch] mx-auto text-[17px] leading-[1.65] text-ink-soft text-center`}
+            className={`word-reveal in delay-${lines.length} mt-3 max-w-[44ch] mx-auto text-[17px] leading-[1.65] text-ink-soft text-center`}
             style={{ textWrap: "pretty" } as CSSProperties}
           >
             {sub}

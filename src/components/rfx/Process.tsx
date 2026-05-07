@@ -12,26 +12,26 @@ const DEFAULT_STEPS: ProcessStep[] = [
     n: "01",
     title: "Share your vision",
     body:
-      "Tell me about your event. Date, venue, any ideas you have. A short discovery call follows so we can talk through the detail together.",
+      "Share your event details, including date, venue and any initial ideas. We'll then arrange a short call to refine the direction together.",
   },
   {
     n: "02",
-    title: "Bespoke proposal",
+    title: "Tailored proposal",
     body:
-      "I create a tailored concept — palette, direction, installations. Every proposal is unique. No templates. No packages.",
+      "We develop a tailored concept for your event, with considered moodboards, colour palettes and visuals — giving you complete clarity before we bring everything to life.",
   },
   {
     n: "03",
-    title: "Installation day",
+    title: "Installation",
     body:
-      "My team sets up everything before your first guest arrives. You walk into a finished space. We handle breakdown too.",
+      "Everything is set up by our events team before your first guest arrives, so you walk into a beautifully decorated space, ready to enjoy the moment. After the event we pack down and take it all away.",
   },
 ];
 
 const DEFAULT_INTRO: ReactNode = (
   <>
-    From first message to final installation — everything handled. You just
-    enjoy the day.
+    A calm, guided process — from concept to installation. We refine
+    your vision and bring it all together seamlessly on the day.
   </>
 );
 

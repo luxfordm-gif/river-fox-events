@@ -63,7 +63,7 @@ const Nav = () => {
               aria-haspopup="true"
               aria-expanded={servicesOpen}
             >
-              Services
+              Experiences
               <ChevronDown
                 size={12}
                 strokeWidth={1.25}
@@ -146,7 +146,7 @@ const Nav = () => {
         </a>
         <div className="rfx-nav-row nav-right justify-end">
           <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent !py-2 !px-4 !text-[12px]">
-            Start planning <span>→</span>
+            Enquire now <span>→</span>
           </a>
         </div>
 
@@ -217,7 +217,7 @@ const Nav = () => {
               transition: `opacity .5s ease 360ms, transform .5s ease 360ms`,
             }}
           >
-            Start planning <span>→</span>
+            Enquire now <span>→</span>
           </a>
 
           <div className="hairline mt-10" />

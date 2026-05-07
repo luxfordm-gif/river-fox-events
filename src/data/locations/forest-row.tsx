@@ -51,7 +51,7 @@ const forestRow = makeLocation({
     <>
       <p>
         River Fox Events is a Forest Row and Ashdown Forest event
-        stylist designing bespoke children's parties, milestone
+        stylist designing tailored children's parties, milestone
         birthdays, christenings, baby showers, weddings and corporate
         styling across the RH18 postcode and the wider forest area.
         Every celebration is built from scratch around your brief —
@@ -82,18 +82,6 @@ const forestRow = makeLocation({
       </p>
     </>
   ),
-  uniquePresenceAnswer:
-    "Yes — Forest Row, Hartfield and the wider Ashdown Forest patch are part of our regular East Sussex coverage. We cover the village centre, Wych Cross, Coleman's Hatch, Upper Hartfield, Withyham and the surrounding forest commons, plus venue work at Ashdown Park Hotel and the rural farm and barn venues across the heath edges. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
-  uniqueExtraFaqs: [
-    {
-      q: "Do you cover events at Ashdown Park Hotel?",
-      a: "Yes — Ashdown Park is one of the country-house venues we know best. The Anderida restaurant, the chapel, the marquee lawn and the Richard Towneley Suite each take a styling installation in different directions. Tell us which space you've booked when you enquire and we'll come back with a tailored proposal.",
-    },
-    {
-      q: "Do you style outdoor and forest-edge celebrations?",
-      a: "Yes — outdoor celebrations across Ashdown Forest are part of the regular work. We've installed for forest-clearing weddings, garden parties on the lanes towards Hartfield and christenings at properties looking onto the heath. We design for weather contingency from the start, install before guests arrive, and clear afterwards without leaving a trace.",
-    },
-  ],
 });
 
 export default forestRow;

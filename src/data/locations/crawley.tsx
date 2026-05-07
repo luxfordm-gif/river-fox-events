@@ -49,7 +49,7 @@ const crawley = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        River Fox Events is a Crawley event stylist designing bespoke
+        River Fox Events is a Crawley event stylist designing tailored
         children's parties, milestone birthdays, christenings, baby
         showers, weddings and corporate brand activations across the
         RH10 and RH11 postcodes. Every celebration is built from
@@ -79,18 +79,6 @@ const crawley = makeLocation({
       </p>
     </>
   ),
-  uniquePresenceAnswer:
-    "Yes — Crawley is one of our closest towns from the Horley studio. We cover the full Crawley footprint: Three Bridges, Pound Hill, Maidenbower, Tilgate, Ifield, the corporate belt up towards Gatwick, plus venue work at Tilgate Park, the Hilton London Gatwick, Sofitel London Gatwick and K2 Crawley. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
-  uniqueExtraFaqs: [
-    {
-      q: "Do you handle corporate and brand events around Gatwick?",
-      a: "Yes — the Gatwick corridor is core to our corporate work. We style brand activations, product launches, conference dinners and award nights at the airport hotels (Hilton, Sofitel, Crowne Plaza), at K2 Crawley and at the office complexes around Manor Royal. Share your brief — guest count, timing, brand assets — and we'll come back with a tailored installation plan.",
-    },
-    {
-      q: "Can you cover events at Tilgate Park?",
-      a: "Yes — Tilgate Park is one of the most-asked-about venues in Crawley. We've styled both the function room and the gardens for milestone birthdays, christenings and large family celebrations. Tell us which space you've booked and the time of year, and we'll factor light, seasonal flora and access into the design from the start.",
-    },
-  ],
 });
 
 export default crawley;

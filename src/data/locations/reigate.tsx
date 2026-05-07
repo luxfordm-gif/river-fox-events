@@ -47,7 +47,7 @@ const reigate = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        River Fox Events is a Reigate party stylist designing bespoke
+        River Fox Events is a Reigate party stylist designing tailored
         children's parties, milestone birthdays, christenings, baby
         showers, weddings and corporate styling across the RH2
         postcode. Every celebration is built from scratch around your
@@ -77,8 +77,6 @@ const reigate = makeLocation({
       </p>
     </>
   ),
-  uniquePresenceAnswer:
-    "Yes — Reigate, Redhill and the wider area sit within our regular coverage. We cover Reigate Hill, Reigate Heath, the Priory area and Banstead and Tadworth, plus venue work at Hartsfield Manor and Nutfield Priory. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
   uniqueLocalProse: {
     eyebrow: "STYLING IN REIGATE",
     heading: (
@@ -108,16 +106,6 @@ const reigate = makeLocation({
       </>
     ),
   },
-  uniqueExtraFaqs: [
-    {
-      q: "Are Hartsfield Manor and Nutfield Priory within your area?",
-      a: "Yes — both sit firmly within our Reigate patch. If your celebration is at one of the country-house venues around Reigate, share the venue and date in your enquiry and we'll come back with how we'd approach the styling.",
-    },
-    {
-      q: "How quickly can you reach Reigate from your Horley studio?",
-      a: "Reigate is one of our closest towns — fifteen minutes north up the A23/A217. Because we're so close, we offer flexible install windows, late-night breakdowns and the kind of last-minute adjustments (extra balloons, layout tweaks) that aren't realistic from a stylist further afield.",
-    },
-  ],
 });
 
 export default reigate;

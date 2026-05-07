@@ -47,7 +47,7 @@ const esher = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        River Fox Events is an Esher party stylist designing bespoke
+        River Fox Events is an Esher party stylist designing tailored
         children's parties, milestone birthdays, christenings, baby
         showers, weddings and corporate styling across the KT10
         postcode. Every celebration is built from scratch around your
@@ -75,8 +75,6 @@ const esher = makeLocation({
       </p>
     </>
   ),
-  uniquePresenceAnswer:
-    "Yes — Esher and the wider area are part of our regular coverage. We cover Esher village, Hinchley Wood, Claygate, Long Ditton and Thames Ditton, plus venue work at Sandown Park and the high-street restaurants. East and West Molesey are also within easy reach. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
   uniqueLocalProse: {
     eyebrow: "STYLING IN ESHER",
     heading: (
@@ -104,16 +102,6 @@ const esher = makeLocation({
       </>
     ),
   },
-  uniqueExtraFaqs: [
-    {
-      q: "Is Sandown Park within your coverage area?",
-      a: "Yes — Sandown Park sits right in our Esher patch. Whatever room or marquee you're booking there, share your brief in your enquiry and we'll come back with a tailored styling proposal for the space.",
-    },
-    {
-      q: "Do you handle corporate hospitality days at Sandown?",
-      a: "Yes — corporate hospitality at Sandown is a regular thread in our Esher work. The Eclipse Suite, the Surrey Hall and the boxes each take a different design approach; share your brand assets, expected guest count and the timing window when you enquire and we'll come back with an installation plan that suits both the space and the audience.",
-    },
-  ],
 });
 
 export default esher;

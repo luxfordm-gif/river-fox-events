@@ -8,6 +8,7 @@ import oxshott from "./oxshott";
 import guildford from "./guildford";
 import waltonOnThames from "./walton-on-thames";
 import dorking from "./dorking";
+import epsom from "./epsom";
 import eastGrinstead from "./east-grinstead";
 import lingfield from "./lingfield";
 import crawley from "./crawley";
@@ -30,6 +31,7 @@ export const LOCATIONS: LocationConfig[] = [
   guildford,
   waltonOnThames,
   dorking,
+  epsom,
   // Sussex/Kent corridor
   eastGrinstead,
   lingfield,

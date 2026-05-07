@@ -5,7 +5,7 @@ const eastGrinstead = makeLocation({
   cityName: "East Grinstead",
   region: "West Sussex",
   seoTitleRegion: "West Sussex",
-  uniqueSeoTitle: "Luxury Event Styling in East Grinstead | River Fox Events",
+  uniqueSeoTitle: "Party Stylist East Grinstead Sussex | River Fox Events",
   uniqueSeoDescription:
     "Full-service styling delivered to East Grinstead and across West Sussex. From design through to clear-down, personally handled by Laura.",
   uniqueHeroSub: (
@@ -50,7 +50,7 @@ const eastGrinstead = makeLocation({
     <>
       <p>
         River Fox Events is an East Grinstead event stylist designing
-        bespoke children's parties, milestone birthdays, christenings,
+        tailored children's parties, milestone birthdays, christenings,
         baby showers and corporate styling across the RH19 area. Every
         celebration is built from scratch around your brief — concept,
         balloon installations, backdrops, signage, cake table and
@@ -80,18 +80,6 @@ const eastGrinstead = makeLocation({
       </p>
     </>
   ),
-  uniquePresenceAnswer:
-    "Yes — East Grinstead is one of the postcodes we work in most. We cover the town centre, Imberhorne, Baldwins Hill, Felbridge, Ashurst Wood and the lanes towards Forest Row, plus venue work at Felbridge Hotel, Standen House and Gravetye Manor at West Hoathly. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
-  uniqueExtraFaqs: [
-    {
-      q: "What's included in your East Grinstead party styling?",
-      a: "Every River Fox celebration in East Grinstead includes the design concept, all balloon installations and statement pieces, personalised backdrops and signage, fully styled cake and party tables, and complete setup and breakdown. You don't lift a thing — we arrive before your first guest and leave once the space is cleared.",
-    },
-    {
-      q: "How much is event styling in East Grinstead?",
-      a: "Pricing starts at £460 for an intimate celebration with a single focal-point installation. Most full-styling East Grinstead celebrations sit between £1,200 and £2,500 depending on scale, theme and the number of zones being styled. Every event is individually quoted following a short discovery call — share your vision and we'll come back personally.",
-    },
-  ],
 });
 
 export default eastGrinstead;

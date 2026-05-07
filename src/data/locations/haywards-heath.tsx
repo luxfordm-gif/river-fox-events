@@ -50,7 +50,7 @@ const haywardsHeath = makeLocation({
     <>
       <p>
         River Fox Events is a Haywards Heath event stylist designing
-        bespoke children's parties, milestone birthdays, christenings,
+        tailored children's parties, milestone birthdays, christenings,
         baby showers, weddings and corporate styling across the RH16
         and RH17 postcodes. Every celebration is built from scratch
         around your brief — concept, balloon installations, backdrops,
@@ -79,18 +79,6 @@ const haywardsHeath = makeLocation({
       </p>
     </>
   ),
-  uniquePresenceAnswer:
-    "Yes — Haywards Heath and the surrounding RH16/RH17 patch are part of our regular West Sussex coverage. We cover the town centre, Lindfield, Cuckfield, Ardingly, Balcombe and the lanes towards Scaynes Hill and Wivelsfield, plus venue work at Borde Hill Garden, Wakehurst Place at Ardingly, the South of England Showground and Ockenden Manor. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
-  uniqueExtraFaqs: [
-    {
-      q: "Do you cover events at Borde Hill or Ockenden Manor?",
-      a: "Yes — both sit firmly within our Haywards Heath patch. Borde Hill's main house, gardens and walled garden each take a different design approach; Ockenden Manor at Cuckfield reads more architectural. Tell us which of the rooms or outdoor spaces you've booked when you enquire and we'll come back with a styling proposal built around it.",
-    },
-    {
-      q: "Can you handle at-home celebrations in Lindfield and Cuckfield?",
-      a: "Yes — village at-home celebrations across Lindfield and Cuckfield are part of the regular work. We install discreetly across drawing rooms, gardens and marquees, manage the day, and break down without disturbing the village afterwards.",
-    },
-  ],
 });
 
 export default haywardsHeath;

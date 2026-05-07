@@ -114,27 +114,27 @@ export function makeLocation(input: LocationInput): LocationConfig {
       } | River Fox Events`,
     seoDescription:
       uniqueSeoDescription ??
-      `${cityName} party stylist — bespoke children's parties, milestones and corporate events across ${region} from £460. Every detail personally handled by Laura.`,
+      `${cityName} party stylist — tailored children's parties, milestones and corporate events across ${region} from £460. Every detail personally handled by Laura.`,
     hero: {
       lines: [
-        uniqueHeroLine ?? <>Your {cityName} party stylist.</>,
+        uniqueHeroLine ?? <>Event styling in {cityName},</>,
         <>
-          Every detail,{" "}
           <em className="italic font-normal text-accent-warm">
-            personally handled.
+            designed around you.
           </em>
         </>,
       ],
       sub: uniqueHeroSub ?? (
         <>
-          Celebrations brought to life in {cityName} — personally designed,
-          installed and managed.
+          Design-led event styling in {cityName} and across {region} —
+          children's parties, milestone celebrations and tailored
+          installations.
         </>
       ),
     },
     whatWeDo: {
       image: imgWhatWeDo,
-      imageAlt: `Bespoke event styling in ${cityName} by River Fox Events — pastel balloon installation with organic textures and soft floral accents`,
+      imageAlt: `Tailored event styling in ${cityName} by River Fox Events — pastel balloon installation with organic textures and soft floral accents`,
       imageSide: "right",
       tone: "ph-warm",
       headline: (
@@ -196,7 +196,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       ),
       intro: (
         <>
-          Every River Fox Events celebration is completely bespoke — bring
+          Every River Fox Events celebration is completely tailored — bring
           your inspiration and we'll design around it.
         </>
       ),
@@ -231,7 +231,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
         {
           icon: "palette",
           label: "Design concept",
-          body: "A bespoke theme and colour palette built entirely around your vision.",
+          body: "A tailored theme and colour palette built entirely around your vision.",
         },
         {
           icon: "sparkle",
@@ -286,7 +286,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
         },
       ],
       footnote:
-        "All pricing is indicative — every proposal is bespoke.",
+        "All pricing is indicative — every proposal is tailored.",
     },
     localProse: uniqueLocalProse,
     faqs: [
@@ -294,11 +294,11 @@ export function makeLocation(input: LocationInput): LocationConfig {
         q: `Do you style events in ${cityName}?`,
         a:
           uniquePresenceAnswer ??
-          `Yes — ${cityName} and the surrounding ${region} villages including ${villagesFaq} are areas we work in regularly. We come to you, set everything up and handle the full breakdown once the day is done.`,
+          `Yes — ${cityName} is part of our regular ${region} coverage, along with ${villagesFaq} and the surrounding villages.`,
       },
       {
-        q: "Are you a party planner or a party stylist — what's the difference?",
-        a: "We're event stylists — which means we focus entirely on how your celebration looks and feels. We design the concept, source and create every element, install everything on the day, and take it all down afterwards. You get the vision, the wow factor, and none of the logistics. Think of it as having a creative director for your celebration.",
+        q: "Are you a party planner or party stylist? What's the difference?",
+        a: "River Fox Events is a design-led event stylist. While a planner manages logistics such as venues, suppliers and timelines, our focus is on the visual experience — creating statement installations and cohesive styling that transform your space. We specialise in large-scale balloon installations, custom backdrops and thoughtfully styled details, ensuring your celebration feels considered, elevated and ready to enjoy.",
       },
       {
         q: "How far in advance should I book?",
@@ -312,23 +312,15 @@ export function makeLocation(input: LocationInput): LocationConfig {
       },
       {
         q: `How much does event styling cost in ${cityName}?`,
-        a: `Pricing depends on the type of celebration. Our children's party styling, milestone celebration and corporate event pages each show full price tiers. Every ${cityName} event is individually quoted following a short discovery call.`,
-        aNode: (
-          <>
-            Pricing depends on the type of celebration. Our{" "}
-            <a href="/childrens-parties/" className="text-ink underline-offset-4 underline decoration-ink/30 hover:decoration-ink">children's party styling</a>,{" "}
-            <a href="/milestone-celebrations/" className="text-ink underline-offset-4 underline decoration-ink/30 hover:decoration-ink">milestone celebration</a> and{" "}
-            <a href="/corporate-brand-styling/" className="text-ink underline-offset-4 underline decoration-ink/30 hover:decoration-ink">corporate event</a> pages each show full price tiers. Every {cityName} event is individually quoted following a short discovery call.
-          </>
-        ),
+        a: `Pricing depends on the type of celebration and the scope of the brief. Typically our events start from £460, with larger or more involved designs ranging from £1,200 – £2,500+.`,
       },
       {
         q: "Can I choose my own theme and colours?",
-        a: "Every celebration is completely bespoke. Bring your inspiration — a Pinterest board, a colour, a feeling — and we'll design around it. If you're not sure yet, we'll work through it together on a discovery call.",
+        a: "Each celebration is shaped around your style and vision. Any inspiration you have can be shared and developed into a design that feels cohesive and considered.",
       },
       {
         q: "What happens on the day?",
-        a: "We arrive before your guests and handle all setup. Once everything is in place the space is yours to enjoy completely. We return after the celebration to take everything down — you don't need to think about it.",
+        a: `We arrive ahead of your event to install every detail — from statement installations to custom backdrops, tablescapes and styled elements — ensuring everything is in place before guests arrive. Once the celebration has finished, we return for a seamless breakdown.`,
       },
       ...(uniqueExtraFaq ? [uniqueExtraFaq] : []),
       ...(uniqueExtraFaqs ?? []),

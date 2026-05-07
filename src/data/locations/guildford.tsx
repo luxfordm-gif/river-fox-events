@@ -4,7 +4,7 @@ const guildford = makeLocation({
   slug: "guildford",
   cityName: "Guildford",
   region: "Surrey",
-  uniqueSeoTitle: "Luxury Event Styling in Guildford | River Fox Events",
+  uniqueSeoTitle: "Guildford Party & Event Stylist | River Fox Events",
   uniqueSeoDescription:
     "Ceiling drapery, balloon installations and milestone parties in Guildford from £460. Personally designed and installed by Laura.",
   uniqueHeroSub: (
@@ -48,7 +48,7 @@ const guildford = makeLocation({
     <>
       <p>
         River Fox Events is a Guildford party stylist designing
-        bespoke children's parties, milestone birthdays, christenings,
+        tailored children's parties, milestone birthdays, christenings,
         baby showers, weddings and corporate styling across the GU1
         and GU2 postcodes and the wider GU area. Every celebration is
         built from scratch around your brief — concept, balloon
@@ -76,18 +76,6 @@ const guildford = makeLocation({
       </p>
     </>
   ),
-  uniquePresenceAnswer:
-    "Yes — Guildford and the wider GU area are part of our Surrey coverage. We cover the town centre, Shalford, Godalming, Compton, Merrow and the surrounding villages, plus venue work at Loseley Park, the Mandolay Hotel and G Live. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
-  uniqueExtraFaqs: [
-    {
-      q: "Are venues like Loseley Park or the Mandolay within your area?",
-      a: "Yes — both sit firmly within our Guildford patch, along with G Live and the country-house venues across the GU postcodes. Whatever the venue, mention it in your enquiry and we'll come back with how we'd approach the styling.",
-    },
-    {
-      q: "Do you cover the Surrey Hills villages south of Guildford?",
-      a: "Yes — the lanes and villages south of Guildford (Compton, Shalford, Godalming, Bramley) are part of the same patch. Most celebrations there happen at private homes; we install on-site, manage the day discreetly, and clear afterwards.",
-    },
-  ],
 });
 
 export default guildford;

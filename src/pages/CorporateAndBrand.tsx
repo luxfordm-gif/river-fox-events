@@ -5,10 +5,9 @@ import Process from "@/components/rfx/Process";
 import Enquire from "@/components/rfx/Enquire";
 import ServiceHero from "@/components/rfx/ServiceHero";
 import CPReveal from "@/components/rfx/CPReveal";
-import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
-import CPIncluded, { type IncludedItem } from "@/components/rfx/CPIncluded";
+import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
 import {
@@ -22,40 +21,6 @@ import {
 import imgHero from "@/assets/corporate-gala-styling-surrey.webp";
 import imgIntro from "@/assets/corporate-event-styling-surrey.webp";
 import imgWhat from "@/assets/hero-3.webp";
-import imgBrands from "@/assets/studio.webp";
-
-const SERVICES = [
-  {
-    label: "Product launches",
-    value: "Statement installs that put your product centre stage",
-  },
-  {
-    label: "Retail openings",
-    value: "Eye-catching entrance and in-store styling",
-  },
-  {
-    label: "PR activations",
-    value: "Shareable moments designed to generate coverage",
-  },
-  {
-    label: "Office celebrations",
-    value: "Company milestones and team events styled properly",
-  },
-  {
-    label: "Branded environments",
-    value: "Cohesive design aligned to your brand guidelines",
-  },
-];
-
-const BRANDS = [
-  "P&G",
-  "The Range",
-  "Taylor Wimpey",
-  "Foxhills",
-  "Enterprise Mobility",
-  "Arun Estates",
-  "Dawghouse Pizza Co.",
-];
 
 const TRUST_LOGOS = [
   "P&G",
@@ -68,52 +33,6 @@ const TRUST_LOGOS = [
   "Design Boss Diary",
   "Stribe Fitness",
   "Squid Group",
-];
-
-const INCLUDED_ITEMS: IncludedItem[] = [
-  {
-    icon: "palette",
-    label: "Brand-aligned concept",
-    body: "Designed against your brand guidelines, palette and event objectives.",
-  },
-  {
-    icon: "archway",
-    label: "Statement installations",
-    body: "Entrance displays, branded backdrops and photo moments that stop guests.",
-  },
-  {
-    icon: "badge",
-    label: "Branded signage & props",
-    body: "Logos, messaging and on-brand finish — cohesive throughout.",
-  },
-  {
-    icon: "megaphone",
-    label: "Multi-zone activation",
-    body: "Cohesive styling across entrances, focal points and supporting areas.",
-  },
-  {
-    icon: "heart",
-    label: "Pro install & breakdown",
-    body: "Set up before guests arrive, cleared without fuss after the event.",
-  },
-];
-
-const TIERS = [
-  {
-    price: "From £460",
-    label: "Single zone",
-    body: "A focused single installation — entrance display, photo moment or branded backdrop for one zone.",
-  },
-  {
-    price: "From £1,200",
-    label: "Multi-zone styling",
-    body: "Most popular. Multiple branded styling moments across the event — entrances, focal points and supporting detail.",
-  },
-  {
-    price: "From £2,500",
-    label: "Large-scale activation",
-    body: "Full venue activation, large-format installations, dedicated install team — designed end to end.",
-  },
 ];
 
 const CORPORATE_STEPS = [
@@ -160,31 +79,9 @@ const FAQS = [
   },
   {
     q: "What's included in a corporate installation?",
-    a: "Concept design, all materials and installations, professional setup before the event, on-the-day support where needed, and full breakdown afterwards. Quoted as one inclusive figure — no surprises.",
+    a: "Concept design, all materials and installations, professional setup before the event and full breakdown afterwards.",
   },
 ];
-
-const DetailRows = ({
-  rows,
-}: {
-  rows: { label: string; value: string }[];
-}) => (
-  <ul className="mt-2 border-t border-ink/15">
-    {rows.map((r) => (
-      <li
-        key={r.label}
-        className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-1 md:gap-8 py-5 border-b border-ink/15"
-      >
-        <span className="font-serif-rf text-[18px] md:text-[20px] font-light leading-[1.25] tracking-[-0.012em] text-ink">
-          {r.label}
-        </span>
-        <span className="text-[14.5px] leading-[1.6] text-ink-soft md:text-right">
-          {r.value}
-        </span>
-      </li>
-    ))}
-  </ul>
-);
 
 const CorporateAndBrand = () => {
   useFadeUp();
@@ -217,34 +114,97 @@ const CorporateAndBrand = () => {
           imageAlt="Corporate brand activation styling by River Fox Events Surrey — branded entrance installation, sculptural balloons and considered design at a London product launch"
           headingId="cb-hero-heading"
           lines={[
-            <>Design-led styling for</>,
+            <>Corporate event styling</>,
             <>
               <em
                 className="italic font-normal"
                 style={{ color: "hsl(var(--accent))" }}
               >
-                launches, openings and brand events.
+                and brand installations.
               </em>
             </>,
           ]}
-          sub="Design-led event styling for launches, openings, office celebrations and brand activations — installations that elevate your brand. Trusted by leading brands."
+          sub="We design and install visually impactful setups for brands, launches and events across Surrey and London — balancing creativity with a refined, on-brand finish."
         />
 
-        {/* `white` modifier puts this section on surface-alt — the
-            site's near-white cream — instead of the warmer page
-            default. paddingTop tightened so the grid hugs the hero. */}
+        <CPReveal
+          id="cb-intro"
+          imageSide="right"
+          image={imgIntro}
+          alt="Corporate event styling in Surrey by River Fox Events — branded backdrop, statement installation and on-brand colour palette for a corporate launch"
+          tone="ph-warm"
+          hideImageOnMobile
+          imageScale={1.07}
+          headline={
+            <>
+              Your event environment is{" "}
+              <em className="italic font-light text-accent-warm">
+                your brand.
+              </em>
+            </>
+          }
+        >
+          <p>
+            A thoughtfully styled installation shapes how guests feel the
+            moment they walk in — and what they remember long after they
+            leave.
+          </p>
+          <p>
+            We work with brands and businesses across Surrey and London to
+            design impactful event styling — from statement installations and
+            branded backdrops to entrance displays and photo moments that stop
+            guests in their tracks.
+          </p>
+        </CPReveal>
+
+        <CPReveal
+          id="cb-services"
+          imageSide="left"
+          image={imgWhat}
+          alt="PR activation and brand installation by River Fox Events — sculptural floral arch and branded photo moment at a London brand event"
+          tone="ph-blush"
+          headline={
+            <>
+              Every brief,{" "}
+              <em className="italic font-light text-accent-warm">
+                carefully considered.
+              </em>
+            </>
+          }
+        >
+          <p>
+            Each installation is tailored to your space and objectives,
+            ensuring it feels aligned, considered and professionally
+            executed.
+          </p>
+          <p>
+            From product launches to in-store moments and brand activations,
+            we create installations designed to capture attention and elevate
+            the environment.
+          </p>
+        </CPReveal>
+
         <section
           id="cb-trust"
           aria-labelledby="cb-trust-heading"
-          className="rfx-section white pt-10 pb-8 md:pb-12"
+          className="rfx-section white pt-16 pb-12 md:pt-20 md:pb-16"
         >
           <div className="container-rfx text-center">
             <h2
               id="cb-trust-heading"
-              className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft"
-              style={{ fontWeight: 600, marginBottom: "32px" }}
+              className="font-serif-rf"
+              style={{
+                fontSize: "clamp(36px, 3.6vw, 56px)",
+                lineHeight: 1.04,
+                fontWeight: 300,
+                letterSpacing: "-0.025em",
+                marginBottom: "40px",
+              }}
             >
-              Companies we collaborate with
+              Trusted by{" "}
+              <em className="italic font-light text-accent-warm">
+                leading brands.
+              </em>
             </h2>
             <style>{`
               @keyframes rfx-trust-ticker {
@@ -291,131 +251,43 @@ const CorporateAndBrand = () => {
           </div>
         </section>
 
-        <CPReveal
-          id="cb-intro"
-          imageSide="right"
-          image={imgIntro}
-          alt="Corporate event styling in Surrey by River Fox Events — branded backdrop, statement installation and on-brand colour palette for a corporate launch"
-          tone="ph-warm"
-          hideImageOnMobile
-          imageScale={1.07}
-          headline={
-            <>
-              Your event environment is{" "}
-              <em className="italic font-light text-accent-warm">
-                your brand.
-              </em>
-            </>
-          }
+        <section
+          id="cb-closing"
+          className="rfx-section warm"
+          aria-labelledby="cb-closing-heading"
         >
-          <p>
-            A thoughtfully styled installation shapes how guests feel the
-            moment they walk in — and what they remember long after they
-            leave.
-          </p>
-          <p>
-            We work with brands and businesses across Surrey and London to
-            design impactful event styling — from statement installations and
-            branded backdrops to entrance displays and photo moments that stop
-            guests in their tracks.
-          </p>
-        </CPReveal>
-
-        <CPReveal
-          id="cb-services"
-          imageSide="left"
-          image={imgWhat}
-          alt="PR activation and brand installation by River Fox Events — sculptural floral arch and branded photo moment at a London brand event"
-          tone="ph-blush"
-          headline={
-            <>
-              Every brief, met with{" "}
+          <div className="container-rfx text-center">
+            <h2
+              id="cb-closing-heading"
+              className="font-serif-rf fade-up max-w-[22ch] mx-auto"
+              style={{
+                fontSize: "clamp(36px, 4vw, 64px)",
+                lineHeight: 1.04,
+                fontWeight: 300,
+                letterSpacing: "-0.025em",
+              }}
+            >
+              Polished, purposeful and{" "}
               <em className="italic font-light text-accent-warm">
-                precision.
+                seamlessly delivered.
               </em>
-            </>
-          }
-        >
-          <p>
-            From single-zone installations to full venue activations — every
-            project is scoped, designed and delivered against your objectives.
-          </p>
-          <DetailRows rows={SERVICES} />
-        </CPReveal>
-
-        <CPReveal
-          id="cb-brands"
-          imageSide="right"
-          image={imgBrands}
-          alt="River Fox Events studio in Cobham, Surrey — design and styling base for corporate brand activations across Surrey and London"
-          tone="ph-warm"
-          headline={
-            <>
-              Trusted by{" "}
-              <em className="italic font-light text-accent-warm">
-                leading brands.
-              </em>
-            </>
-          }
-        >
-          <p>
-            River Fox Events has delivered installations for brands including
-            P&amp;G, The Range, Taylor Wimpey, Foxhills, Enterprise Mobility,
-            Arun Estates and Dawghouse Pizza Co.
-          </p>
-          <ul className="mt-7 grid grid-cols-2 gap-x-8 max-w-[520px] border-t border-ink/15">
-            {BRANDS.map((b, i) => (
-              <li
-                key={b}
-                className="flex items-baseline gap-3 py-2.5 border-b border-ink/15 font-serif-rf text-[17px] font-light tracking-[-0.012em] text-ink"
+            </h2>
+            <p className="text-[15.5px] leading-[1.7] text-ink-soft max-w-[520px] mx-auto mt-6">
+              Every event is individually quoted following a discovery
+              call — so the proposal reflects exactly what you have in
+              mind.
+            </p>
+            <div className="mt-8 flex justify-center">
+              <a
+                href={ENQUIRE_HREF}
+                onClick={handleEnquireClick}
+                className="btn-solid-rf accent"
               >
-                <span className="font-mono-rf text-[10px] tracking-[0.18em] text-ink-soft">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {b}
-              </li>
-            ))}
-          </ul>
-        </CPReveal>
-
-        <CPIncluded
-          sectionId="cb-included-grid"
-          headingId="cb-included-heading"
-          eyebrow="What's included"
-          heading={
-            <>
-              Every detail handled.{" "}
-              <em className="italic font-light text-accent-warm">
-                Nothing left to chance.
-              </em>
-            </>
-          }
-          items={INCLUDED_ITEMS}
-          intro={
-            <>
-              Every brand activation is scoped, designed and delivered against
-              your objectives — one inclusive proposal, no surprises.
-            </>
-          }
-          outro={
-            <>
-              Designed, installed and broken down by our team — so your
-              colleagues can focus on the event itself.
-            </>
-          }
-        />
-
-        <CPPricing
-          tiers={TIERS}
-          heading={
-            <>
-              Professional installs{" "}
-              <em className="italic font-light text-accent-warm">from £460.</em>
-            </>
-          }
-          ctaLabel="Share your brief"
-          footnote="All projects are individually quoted. Share your brief and we'll respond with a tailored proposal."
-        />
+                Enquire now <span>→</span>
+              </a>
+            </div>
+          </div>
+        </section>
 
         <div id="how-it-works">
           <Process

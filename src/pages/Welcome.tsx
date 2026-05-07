@@ -85,7 +85,7 @@ const Welcome = () => {
               If you've worked with us under the name{" "}
               <strong>Lollipop Balloons</strong>, nothing about how we work
               has changed. Same Horley studio. Same designer (Laura). Same
-              approach — bespoke, nothing off a shelf, every detail
+              approach — tailored, nothing off a shelf, every detail
               considered.
             </p>
             <p>
@@ -99,16 +99,7 @@ const Welcome = () => {
           </div>
         </section>
 
-        <Experiences
-          sectionId="welcome-services"
-          heading={
-            <>
-              Our three{" "}
-              <em className="italic font-light text-accent-warm">services.</em>
-            </>
-          }
-          intro="Children's parties, milestone celebrations and corporate event styling — all designed and delivered personally by Laura across Surrey."
-        />
+        <Experiences sectionId="welcome-services" />
 
         <section className="container-rfx py-16 md:py-20 text-center">
           <a href="/" className="btn-solid-rf accent">

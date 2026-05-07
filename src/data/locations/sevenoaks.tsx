@@ -50,7 +50,7 @@ const sevenoaks = makeLocation({
     <>
       <p>
         River Fox Events is a Sevenoaks event stylist designing
-        bespoke children's parties, milestone birthdays, christenings,
+        tailored children's parties, milestone birthdays, christenings,
         baby showers, weddings and corporate styling across the
         TN13–TN15 postcodes. Every celebration is built from scratch
         around your brief — concept, balloon installations, backdrops,
@@ -79,18 +79,6 @@ const sevenoaks = makeLocation({
       </p>
     </>
   ),
-  uniquePresenceAnswer:
-    "Yes — Sevenoaks and the surrounding TN13–TN15 area are part of our regular Kent coverage. We cover the High Street, the residential roads around the Vine and Knole, Riverhead, Otford, Kemsing, Seal, Weald and out to Westerham, Brasted and Ide Hill, plus venue work at Knole House (National Trust), Squerryes Court at Westerham, Riverhill Himalayan Gardens and Bradbourne House. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
-  uniqueExtraFaqs: [
-    {
-      q: "Do you cover venues like Knole House and Squerryes Court?",
-      a: "Yes — both are part of our regular Sevenoaks coverage. Knole's hall and grounds suit a country-house register with restrained, period-aware styling; Squerryes Court at Westerham reads more architectural. Mention the venue and the date when you enquire and we'll come back with a styling proposal built around the room.",
-    },
-    {
-      q: "Do you handle at-home celebrations in Sevenoaks?",
-      a: "Yes — family at-home celebrations across the residential roads around the Vine and Knole, plus the lanes towards Seal and Kemsing, make up a large share of our Sevenoaks work. We install across drawing rooms, kitchens, gardens or marquees, manage the day, and clear afterwards.",
-    },
-  ],
 });
 
 export default sevenoaks;

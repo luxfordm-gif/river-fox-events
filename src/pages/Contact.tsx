@@ -70,36 +70,49 @@ const Contact = () => {
     <div className="min-h-screen flex flex-col bg-background text-foreground nav-solid">
       <Nav />
       <main className="flex-1">
-        <section className="pt-[106px] md:pt-[196px] pb-24 md:pb-32" aria-labelledby="contact-heading">
+        <section className="pt-[106px] md:pt-[122px] pb-24 md:pb-32" aria-labelledby="contact-heading">
           <div className="container-rfx">
+            {/* Centered heading above the grid */}
+            <header className="text-center pt-6 md:pt-10 pb-16 md:pb-24">
+              <h1
+                id="contact-heading"
+                className="font-serif-rf max-w-[18ch] mx-auto"
+                style={{
+                  fontSize: "clamp(48px, 6vw, 88px)",
+                  lineHeight: 1.0,
+                  fontWeight: 300,
+                  letterSpacing: "-0.028em",
+                  textWrap: "balance",
+                }}
+              >
+                Let's create something{" "}
+                <em className="italic font-light text-accent-warm">
+                  beautifully considered.
+                </em>
+              </h1>
+            </header>
+
             <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-start">
-              {/* Left: heading + direct contact methods */}
+              {/* Left: intro copy + direct contact methods */}
               <div className="text-center lg:text-left">
-                <h1
-                  id="contact-heading"
-                  className="font-serif-rf"
-                  style={{
-                    fontSize: "clamp(48px, 6vw, 88px)",
-                    lineHeight: 1.0,
-                    fontWeight: 300,
-                    letterSpacing: "-0.028em",
-                    textWrap: "balance",
-                  }}
-                >
-                  Hey,{" "}
-                  <em className="italic font-light text-accent-warm">
-                    let's talk.
-                  </em>
-                </h1>
                 <p
-                  className="text-[16px] md:text-[17px] leading-[1.65] text-ink-soft mt-7 max-w-[460px] mx-auto lg:mx-0"
+                  className="text-[16px] md:text-[17px] leading-[1.65] text-ink-soft max-w-[460px] mx-auto lg:mx-0"
                   style={{ textWrap: "pretty" }}
                 >
-                  Send a quick note and I'll be in touch personally — or reach
-                  me directly on the channel that suits you best.
+                  Share a few details via our enquiry form and I'll be in
+                  touch to discuss your plans. Alternatively you can reach
+                  me via email or phone below.
+                </p>
+                <p
+                  className="text-[15.5px] leading-[1.65] text-ink mt-5 max-w-[460px] mx-auto lg:mx-0"
+                  style={{ textWrap: "pretty" }}
+                >
+                  I look forward to hearing what you have in mind.
                 </p>
 
-                <ul className="mt-10 flex flex-col gap-4 items-center lg:items-start">
+                <div className="hairline mt-10 max-w-[460px] mx-auto lg:mx-0" aria-hidden="true" />
+
+                <ul className="mt-8 flex flex-col gap-4 items-center lg:items-start">
                   <li>
                     <div className="font-mono-rf text-[10px] tracking-[0.24em] uppercase text-ink-soft mb-1.5">
                       WhatsApp

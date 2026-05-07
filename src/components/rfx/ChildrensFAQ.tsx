@@ -19,7 +19,7 @@ type ChildrensFAQProps = {
 const DEFAULT_FAQS: FAQ[] = [
   {
     q: "How far in advance should I book?",
-    a: "We recommend enquiring at least 6–8 weeks ahead for children's parties. Popular dates — particularly weekends in school holidays — book up quickly. If your date is sooner, do still get in touch; we'll always tell you honestly whether we can do it justice in the time available.",
+    a: "We recommend enquiring at least 6–8 weeks ahead for children's parties. Popular dates — particularly weekends in school holidays — book up quickly. If your date is sooner, do still get in touch; we'll always tell you honestly whether we can create something beautiful in the time available.",
   },
   {
     q: "Do you travel to my home or venue?",
@@ -27,15 +27,15 @@ const DEFAULT_FAQS: FAQ[] = [
   },
   {
     q: "Can I choose my own theme?",
-    a: "Absolutely. Every River Fox party is built from scratch around your child's vision — there are no off-the-shelf packages. Bring your inspiration (a Pinterest board, a single object, a favourite story) and Laura will design around it.",
+    a: "Each celebration is created from scratch, tailored to your style and vision. Any inspiration you have can be shared and developed into a design that feels cohesive and considered.",
   },
   {
     q: "How much does children's party styling cost in Surrey?",
-    a: "Our parties start from £460 for an intimate single focal point. Full room styling typically sits between £1,200 and £2,500, with large-scale transformations from £2,500+. Every event is individually quoted following a discovery call so the proposal reflects exactly what you want.",
+    a: "Our parties start from £460, with larger or more involved designs typically ranging from £1,200 to £2,500+. Every event is individually quoted following a discovery call so the proposal reflects exactly what you want.",
   },
   {
     q: "What happens on the day?",
-    a: "We arrive ahead of guests and set everything up — installations, balloons, signage, cake table, the lot. You walk into a finished space. Once the celebration is over, we return for a full breakdown so you don't have to lift a finger.",
+    a: "We arrive before guests and install every element — balloon installations, backdrops, the cake table, signage. You walk into a finished room. After the party we return for a quiet breakdown.",
   },
   {
     q: "Do you style parties outside Surrey?",
@@ -96,7 +96,7 @@ const ChildrensFAQ = ({
               letterSpacing: "-0.025em",
             }}
           >
-            Questions{" "}
+            Your questions{" "}
             <em className="italic font-light text-accent-warm">answered.</em>
           </h2>
           <p className="text-[15.5px] leading-[1.6] text-ink-soft max-w-[520px] mx-auto mt-6">

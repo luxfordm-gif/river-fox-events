@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown, ChevronRight, Instagram } from "lucide-react";
 import { useScrollY } from "@/hooks/useRiverFox";
 import { LOCATIONS } from "@/data/locations";
-import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 const FOOTER_LOCATIONS_VISIBLE = 5;
 
@@ -36,7 +35,7 @@ const Footer = () => {
 
   return (
     <footer className="relative overflow-hidden bg-surface-deep text-on-deep">
-      <div className="relative pt-24 pb-9 overflow-hidden">
+      <div className="relative pt-[54px] md:pt-24 pb-9 overflow-hidden">
         {/* Big watermark — slow drift, parallax, masked sheen */}
         <div
           ref={watermarkRef}
@@ -92,50 +91,24 @@ const Footer = () => {
         `}</style>
 
         <div className="container-rfx relative">
-          {/* CTA stripe */}
+          {/* Mobile-only divider so the footer reads as a clear section break. */}
           <div
-            className="pb-16 mb-16 border-b text-center"
-            style={{ borderColor: "hsl(var(--on-deep) / 0.15)" }}
-          >
-            <h2
-              className="font-serif-rf max-w-[1100px] mx-auto"
-              style={{
-                fontSize: "clamp(48px, 4.2vw, 80px)",
-                lineHeight: 1.0,
-                fontWeight: 300,
-                letterSpacing: "-0.028em",
-              }}
-            >
-              Ready to begin?
-              <br />
-              <em className="italic font-light" style={{ color: "hsl(var(--on-deep) / 0.55)" }}>
-                Let's design your celebration.
-              </em>
-            </h2>
-            <div className="mt-10 flex items-center justify-center">
-              <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
-                Start planning <span>→</span>
-              </a>
-            </div>
-          </div>
+            className="md:hidden mb-12"
+            style={{ borderTop: "1px solid hsl(var(--on-deep) / 0.18)" }}
+            aria-hidden="true"
+          />
 
           {/* Footer columns */}
           <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-12 mb-16 rfx-md-stack">
-            <div>
-              <div className="text-[22px] font-medium tracking-[0.22em] leading-none">
-                RIVER&nbsp;FOX
-              </div>
-              <div
-                className="font-mono-rf text-[10px] tracking-[0.28em] uppercase mt-3"
-                style={{ color: "hsl(var(--on-deep-soft))" }}
-              >
-                events · surrey · est. 2022
+            <div className="mb-8 md:mb-0">
+              <div className="text-[22px] font-medium tracking-[0.22em] leading-none whitespace-nowrap">
+                RIVER&nbsp;FOX&nbsp;EVENTS
               </div>
               <p
                 className="text-[13.5px] leading-[1.7] max-w-[360px] mt-7"
                 style={{ color: "hsl(var(--on-deep-soft))" }}
               >
-                Luxury event styling across Surrey's finest occasions. Formerly known as Lollipop Balloons.
+                Luxury event styling across Surrey. Formerly known as Lollipop Balloons.
               </p>
             </div>
             <div>
@@ -226,7 +199,6 @@ const Footer = () => {
                 <a href="https://www.instagram.com/lollipop_balloonsx/" target="_blank" rel="noreferrer" className="hover:opacity-100 opacity-85 block">
                   @riverfoxevents
                 </a>
-                <span className="block">15 Apsley Rd, Horley RH6</span>
               </div>
             </div>
           </div>

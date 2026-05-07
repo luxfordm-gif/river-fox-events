@@ -4,13 +4,13 @@ const oxted = makeLocation({
   slug: "oxted",
   cityName: "Oxted",
   region: "East Surrey",
-  uniqueSeoTitle: "Luxury Event Styling in Oxted | River Fox Events",
+  uniqueSeoTitle: "Party Stylist Oxted Surrey | River Fox Events",
   uniqueSeoDescription:
-    "Statement styling for celebrations at Titsey Place, Limpsfield and across Oxted. Parties and milestones from £460, personally by Laura.",
+    "Design-led event styling for celebrations across Oxted, Limpsfield and East Surrey. Parties, milestones and installations from £460, by Laura.",
   uniqueHeroSub: (
     <>
-      Tailored event styling in Oxted. From first idea to final breakdown,
-      personally handled.
+      Design-led event styling in Oxted and across Surrey — children's
+      parties, milestone celebrations and tailored installations.
     </>
   ),
   nearbyVillages: [
@@ -96,17 +96,7 @@ const oxted = makeLocation({
     ),
   },
   uniquePresenceAnswer:
-    "Yes — Oxted is part of our regular East Surrey coverage, along with Limpsfield, Hurst Green, Tandridge, Godstone and the surrounding villages. Whether your celebration is at home, at Titsey Place or somewhere else in the area, mention the venue or postcode in your enquiry and we'll come back with a proposal designed for your space.",
-  uniqueExtraFaqs: [
-    {
-      q: "Do you style events at Titsey Place?",
-      a: "Yes — Titsey Place is one of the country-house venues we know best. The mansion rooms, the formal gardens and the marquee lawn each take a styling installation differently. Tell us which space you've booked and the date when you enquire and we'll come back with a tailored proposal.",
-    },
-    {
-      q: "Do you cover at-home celebrations in Oxted and the surrounding villages?",
-      a: "Yes — at-home celebrations are the bulk of our work across the area. We install discreetly across drawing rooms, kitchens and gardens within a single property, and break down on the night so the house is back to itself by morning.",
-    },
-  ],
+    "Yes — Oxted is part of our regular East Surrey coverage, along with Limpsfield, Hurst Green, Tandridge, Godstone and the surrounding villages.",
 });
 
 export default oxted;

@@ -46,7 +46,7 @@ const oxshott = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        River Fox Events is an Oxshott party stylist designing bespoke
+        River Fox Events is an Oxshott party stylist designing tailored
         children's parties, milestone birthdays, christenings, baby
         showers and at-home weddings across the KT22 postcode. Every
         celebration is built from scratch around your brief —
@@ -74,8 +74,6 @@ const oxshott = makeLocation({
       </p>
     </>
   ),
-  uniquePresenceAnswer:
-    "Yes — Oxshott sits firmly within our Surrey coverage, between Cobham and Esher. We cover Oxshott Heath, the village centre, and the surrounding estate roads — Warren Lane, Sandy Lane, Stoke Road and beyond. Most local celebrations happen at private homes rather than at named venues. Mention your postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
   uniqueLocalProse: {
     eyebrow: "STYLING IN OXSHOTT",
     heading: (
@@ -103,16 +101,6 @@ const oxshott = makeLocation({
       </>
     ),
   },
-  uniqueExtraFaqs: [
-    {
-      q: "Do you cover at-home parties in Oxshott?",
-      a: "Yes — that's the bulk of what we do here. Oxshott is a town of large private properties, and most celebrations happen at home. We're set up to install across multiple rooms, gardens or marquees within a single property, and to handle the full breakdown discreetly afterwards.",
-    },
-    {
-      q: "Can you handle a multi-zone Oxshott celebration in a single day?",
-      a: "Yes — multi-zone installs are routine here. A typical Oxshott celebration might involve dressing the entrance hall and drawing room for arrival, a separate scheme in the garden marquee for dinner, and a third register for the kitchen-island after-dinner space. We install across all of it in a single morning.",
-    },
-  ],
 });
 
 export default oxshott;

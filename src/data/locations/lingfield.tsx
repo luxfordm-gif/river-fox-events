@@ -48,7 +48,7 @@ const lingfield = makeLocation({
     <>
       <p>
         River Fox Events is a Lingfield party stylist designing
-        bespoke children's parties, milestone birthdays, christenings,
+        tailored children's parties, milestone birthdays, christenings,
         baby showers and corporate styling across the RH7 area and
         the wider Surrey/Sussex border. Every celebration is built
         from scratch around your brief — concept, balloon
@@ -75,22 +75,10 @@ const lingfield = makeLocation({
         and weddings at the on-site hotel. Whether the brief is a
         single statement balloon installation for an at-home party or
         a full multi-zone styling for a venue event, every Lingfield
-        celebration is bespoke.
+        celebration is tailored.
       </p>
     </>
   ),
-  uniquePresenceAnswer:
-    "Yes — Lingfield, Dormansland, Felbridge and the surrounding lanes are part of our closest patch from the Horley studio. We cover at-home celebrations across the village and venue events at Lingfield Park Racecourse, Greathed Manor and the smaller barn and farm venues across the Surrey/Sussex border. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
-  uniqueExtraFaqs: [
-    {
-      q: "Do you cover events at Lingfield Park Racecourse?",
-      a: "Yes — Lingfield Park is one of the venues we work at most. Whether it's a corporate hospitality day, a milestone birthday in the function suites or a wedding at the on-site hotel, we install ahead of the event window and break down once your guests have left. Mention the room and the date when you enquire and we'll talk through how we'd approach the styling.",
-    },
-    {
-      q: "Do you handle at-home parties in Lingfield?",
-      a: "Yes — at-home celebrations make up most of our Lingfield work. We're set up to install across drawing rooms, kitchens, gardens or marquees within a single property, manage the day discreetly, and clear afterwards so the house is back to itself by morning.",
-    },
-  ],
 });
 
 export default lingfield;

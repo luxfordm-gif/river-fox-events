@@ -11,7 +11,7 @@ interface Stat {
 const STATS: Stat[] = [
   { value: 400, display: (n) => `${n}+`, label: "Events styled" },
   { value: 8, display: (n) => `${n}`, label: "Years in Surrey" },
-  { value: 100, display: (n) => `${n}%`, label: "Bespoke designs" },
+  { value: 100, display: (n) => `${n}%`, label: "Tailored designs" },
 ];
 
 /** Animates a number from 0 to `value` over `duration` ms once visible. */
@@ -102,12 +102,12 @@ const About = () => {
   return (
     <section id="about" className="rfx-section warm" aria-labelledby="about-heading">
       <div className="container-rfx">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-12 md:gap-20 items-start rfx-md-stack">
-          <div className="md:sticky md:top-24 fade-up rfx-md-static">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-12 md:gap-20 rfx-md-stack">
+          <div className="md:sticky md:top-24 md:self-start fade-up rfx-md-static">
             <div
               ref={studioWrap}
               className="ph ph-warm overflow-hidden rounded-[14px] relative rfx-about-img"
-              style={{ aspectRatio: "5/6" }}
+              style={{ aspectRatio: "5/6", maxHeight: "472px" }}
             >
               {/*
                 SEO REMINDER: Alt text must describe the image accurately and
@@ -117,7 +117,7 @@ const About = () => {
               <img
                 ref={studioImgRef}
                 src={studioImg}
-                alt="Laura, founder of River Fox Events, photographed amongst Surrey bluebells in a River Fox Events tee — luxury event stylist for children's parties, milestones and brand celebrations"
+                alt="Laura, founder of River Fox Events, photographed amongst Surrey bluebells in a River Fox Events tee — design-led event stylist for children's parties, milestones and brand celebrations"
                 className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
                 style={{
                   transform: "translate3d(0,0,0) scale(1.14)",
@@ -133,7 +133,7 @@ const About = () => {
 
           <div className="fade-up">
             <div className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-6">
-              Meet Laura · Founder
+              Meet Laura, Founder
             </div>
 
             <h2
@@ -153,21 +153,27 @@ const About = () => {
             </h2>
 
             <div className="mt-8 space-y-5 text-[16px] leading-[1.7] text-ink-soft max-w-[560px]">
-              <p>
-                I started River Fox Events from a single conviction — that a
-                beautifully designed celebration changes how people feel. And
-                those feelings become the memories they keep.
+              <p className="font-medium text-ink">
+                River Fox Events was built on a simple belief — that a
+                thoughtfully designed celebration changes how a moment feels,
+                and how it's remembered.
               </p>
               <p>
-                There are no packages here. No options off a shelf. Every
-                celebration is built from scratch — around your child, your
-                space, your vision — and I personally design and deliver each
-                one. It's why we keep our client list deliberately small. And
-                it's why the results look the way they do.
+                Every event is created from the ground up, designed around
+                your child, your space and your vision. I personally oversee
+                each detail, from concept through to installation, ensuring
+                everything feels cohesive, considered and effortlessly
+                brought together.
               </p>
               <p>
-                Based in Surrey. Working across the county and into London for
-                clients who understand the difference that detail makes.
+                We take on a limited number of events each month, giving each
+                the time and attention it deserves — and it's what gives our
+                work its distinctive, refined finish.
+              </p>
+              <p>
+                Based in Surrey, working across the county and into London
+                for clients who value thoughtful design and the difference
+                that detail makes.
               </p>
             </div>
 

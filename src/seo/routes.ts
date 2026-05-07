@@ -188,7 +188,7 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-cobham",
-    title: "Luxury Event Styling in Cobham | River Fox Events",
+    title: "Considered Event Styling in Cobham | River Fox Events",
     description:
       "Studio-led styling at Painshill Park, Stoke d'Abernon and across Cobham. Statement parties and milestones from £460, personally by Laura.",
     breadcrumbName: "Party Styling Cobham",
@@ -293,6 +293,28 @@ export const ROUTES: RouteSEO[] = [
     service: {
       serviceType: "Event Styling",
       areaServed: ["Dorking", "Westcott", "Brockham", "Mickleham", "Wotton", "Surrey"],
+      lowPrice: "460",
+    },
+    priority: 0.7,
+    changefreq: "monthly",
+  },
+  {
+    path: "/party-styling-epsom",
+    title: "Epsom Party & Event Stylist | River Fox Events",
+    description:
+      "Considered styling for children's parties, milestones and brand events in Epsom. Personally designed and installed by Laura — from £460.",
+    breadcrumbName: "Party Styling Epsom",
+    service: {
+      serviceType: "Event Styling",
+      areaServed: [
+        "Epsom",
+        "Ewell",
+        "Ashtead",
+        "Leatherhead",
+        "Banstead",
+        "Tadworth",
+        "Surrey",
+      ],
       lowPrice: "460",
     },
     priority: 0.7,
@@ -411,7 +433,7 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-tunbridge-wells",
-    title: "Luxury Event Styling in Tunbridge Wells | River Fox Events",
+    title: "Elevated Event Styling, Tunbridge Wells | River Fox Events",
     description:
       "Studio-led event styling in Tunbridge Wells — milestone parties, brand activations and at-home celebrations across Kent. Personally by Laura.",
     breadcrumbName: "Party Styling Tunbridge Wells",
@@ -523,7 +545,7 @@ export const ROUTES: RouteSEO[] = [
     path: "/contact",
     title: "Contact River Fox Events | Event Stylist Surrey",
     description:
-      "Get in touch with Laura at River Fox Events — luxury event styling across Surrey and London. WhatsApp, email or send a few details about your celebration.",
+      "Get in touch with Laura at River Fox Events — design-led event styling across Surrey and London. WhatsApp, email or send a few details about your celebration.",
     breadcrumbName: "Contact",
     priority: 0.7,
     changefreq: "yearly",

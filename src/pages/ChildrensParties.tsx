@@ -8,7 +8,6 @@ import CPReveal from "@/components/rfx/CPReveal";
 import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
-import CPIncluded from "@/components/rfx/CPIncluded";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
 import {
@@ -23,60 +22,6 @@ import imgHero from "@/assets/cp-hero-frame.webp";
 import imgCelebrations from "@/assets/cp-celebrations.webp";
 import imgOccasions from "@/assets/luxury-party-styling-occasions-surrey.webp";
 import imgThemes from "@/assets/dinosaur-themed-birthday-party-surrey.webp";
-
-const OCCASIONS = [
-  {
-    label: "Birthday parties",
-    value: "From first birthdays to big themed celebrations",
-  },
-  {
-    label: "Christenings & naming days",
-    value: "Elegant, considered and completely bespoke",
-  },
-  {
-    label: "Seasonal celebrations",
-    value: "Christmas, Easter, summer garden parties",
-  },
-];
-
-const THEMES = [
-  "Fairy garden",
-  "Jungle",
-  "Princess",
-  "Barbie",
-  "Enchanted forest",
-  "Under the sea",
-  "Safari",
-  "Boho floral",
-  "Frozen",
-  "Woodland",
-  "Superhero",
-  "Vintage tea party",
-];
-
-
-
-const DetailRows = ({
-  rows,
-}: {
-  rows: { label: string; value: string }[];
-}) => (
-  <ul className="mt-2 border-t border-ink/15">
-    {rows.map((r) => (
-      <li
-        key={r.label}
-        className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-1 md:gap-8 py-5 border-b border-ink/15"
-      >
-        <span className="font-serif-rf text-[18px] md:text-[20px] font-light leading-[1.25] tracking-[-0.012em] text-ink">
-          {r.label}
-        </span>
-        <span className="text-[14.5px] leading-[1.6] text-ink-soft md:text-right">
-          {r.value}
-        </span>
-      </li>
-    ))}
-  </ul>
-);
 
 const ChildrensParties = () => {
   useFadeUp();
@@ -106,7 +51,7 @@ const ChildrensParties = () => {
       <main>
         <ServiceHero
           image={imgHero}
-          imageAlt="Luxury children's birthday party styling by River Fox Events Surrey — peach balloon installation, peonies and dressed cake table at a Cobham celebration"
+          imageAlt="Considered children's birthday party styling by River Fox Events Surrey — peach balloon installation, peonies and dressed cake table at a Cobham celebration"
           headingId="cp-hero-heading"
           lines={[
             <>Themed children's parties,</>,
@@ -119,22 +64,22 @@ const ChildrensParties = () => {
               </em>
             </>,
           ]}
-          sub="Immersive, beautifully designed children's parties across Surrey — every detail considered, nothing left to chance."
+          sub="Playful, immersive and beautifully considered — children's parties in Surrey that feel elevated from the moment guests arrive."
         />
 
         <CPReveal
           id="cp-celebrations"
           imageSide="right"
           image={imgCelebrations}
-          alt="Children's birthday party styling in Surrey by River Fox Events — bespoke pastel balloon installation with organic textures and soft floral accents"
+          alt="Children's birthday party styling in Surrey by River Fox Events — tailored pastel balloon installation with organic textures and soft floral accents"
           tone="ph-warm"
           hideImageOnMobile
           imageScale={1.07}
           headline={
             <>
-              Your child's birthday is more than a party.{" "}
+              More than a party —{" "}
               <em className="italic font-light text-accent-warm">
-                It's a memory in the making.
+                a memory in the making.
               </em>
             </>
           }
@@ -145,8 +90,9 @@ const ChildrensParties = () => {
             day is done.
           </p>
           <p>
-            Every River Fox Events party is built from scratch around your
-            vision — no packages, no templates.
+            Every River Fox Events party is created from the ground up,
+            tailored to your child, your space and the atmosphere you want
+            to create.
           </p>
         </CPReveal>
 
@@ -166,11 +112,8 @@ const ChildrensParties = () => {
           }
         >
           <p>
-            From first birthdays and christenings to milestone celebrations and
-            seasonal gatherings, every occasion deserves to feel considered. I
-            design styling that reflects the moment — whether that's a quiet
-            family christening, a big themed birthday or a Christmas dinner at
-            home.
+            From initial concept to final installation, every detail is
+            carefully planned and brought together seamlessly.
           </p>
           <p>
             No two events are ever the same. Every detail is shaped around you,
@@ -186,41 +129,31 @@ const ChildrensParties = () => {
           tone="ph-warm"
           headline={
             <>
-              Whatever the vision,{" "}
+              Whatever your vision,{" "}
               <em className="italic font-light text-accent-warm">
-                we can build it.
+                we can create it.
               </em>
             </>
           }
         >
-          <p>Some of the most popular themes Laura creates across Surrey.</p>
-          <ul className="!mt-7 grid grid-cols-2 gap-x-8 max-w-[520px] border-t border-ink/15">
-            {THEMES.map((t, i) => (
-              <li
-                key={t}
-                className="flex items-baseline gap-3 py-2.5 border-b border-ink/15 font-serif-rf text-[17px] font-light tracking-[-0.012em] text-ink"
-              >
-                <span className="font-mono-rf text-[10px] tracking-[0.18em] text-ink-soft">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {t}
-              </li>
-            ))}
-          </ul>
-          <p className="!mt-6 italic text-ink">
-            Every celebration is completely bespoke — bring your inspiration and
-            we'll design around it.
+          <p>
+            We specialise in large-scale balloon installations, custom
+            backdrops and styled details that transform your space into
+            something immersive and visually striking.
+          </p>
+          <p>
+            From popular first birthday themes such as Wild One and Berry
+            First, to epic Frozen parties and enchanting Harry Potter
+            themes — everything designed to feel special, effortless, and
+            remembered long after the day itself.
           </p>
         </CPReveal>
-
-        <CPIncluded />
-
-
-        <CPPricing />
 
         <div id="how-it-works">
           <Process />
         </div>
+
+        <CPPricing />
 
         <ChildrensFAQ />
 

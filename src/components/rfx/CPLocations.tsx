@@ -35,19 +35,20 @@ const DEFAULT_AREAS = [
   "Oxshott",
   "Guildford",
   "Reigate",
-  "Farnham",
+  "Walton-on-Thames",
+  "Dorking",
+  "Epsom",
+  "Oxted",
+  "East Grinstead",
   "Horsham",
-  "Crawley",
-  "Camberley",
-  "Woking",
 ];
 
 const DEFAULT_INTRO: ReactNode = (
   <>
     Based in Surrey and travelling across the county and into London for
     clients who care about the difference that detail makes. Wherever the
-    celebration, we come to you — set up before guests arrive and broken down
-    once the day is done.
+    celebration, we come to you — set up before guests arrive and packed
+    down once the day is done.
   </>
 );
 

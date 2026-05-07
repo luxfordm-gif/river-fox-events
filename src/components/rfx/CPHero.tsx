@@ -32,7 +32,7 @@ const DEFAULT_SUB =
 
 const CPHero = ({
   image = defaultHeroImg,
-  imageAlt = "Luxury children's birthday party styling by River Fox Events Surrey — peach balloon installation, peonies and dressed cake table at a Cobham celebration",
+  imageAlt = "Considered children's birthday party styling by River Fox Events Surrey — peach balloon installation, peonies and dressed cake table at a Cobham celebration",
   lines = DEFAULT_LINES,
   sub = DEFAULT_SUB,
   scrollTarget = "#cp-celebrations",

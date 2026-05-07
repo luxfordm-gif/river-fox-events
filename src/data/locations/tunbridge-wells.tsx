@@ -5,7 +5,7 @@ const tunbridgeWells = makeLocation({
   cityName: "Tunbridge Wells",
   region: "Kent",
   seoTitleRegion: "Kent",
-  uniqueSeoTitle: "Luxury Event Styling in Tunbridge Wells | River Fox Events",
+  uniqueSeoTitle: "Elevated Event Styling, Tunbridge Wells | River Fox Events",
   uniqueSeoDescription:
     "Studio-led event styling in Tunbridge Wells — milestone parties, brand activations and at-home celebrations across Kent. Personally by Laura.",
   uniqueHeroSub: (
@@ -50,7 +50,7 @@ const tunbridgeWells = makeLocation({
     <>
       <p>
         River Fox Events is a Tunbridge Wells event stylist designing
-        bespoke children's parties, milestone birthdays, christenings,
+        tailored children's parties, milestone birthdays, christenings,
         baby showers, weddings and corporate styling across the
         TN1–TN4 postcodes. Every celebration is built from scratch
         around your brief — concept, balloon installations, backdrops,
@@ -79,18 +79,6 @@ const tunbridgeWells = makeLocation({
       </p>
     </>
   ),
-  uniquePresenceAnswer:
-    "Yes — Tunbridge Wells and the surrounding TN1–TN4 area are part of our regular Kent coverage. We cover the Pantiles, Mount Sion, Calverley Park, Mount Ephraim, Southborough, Rusthall, Pembury and the lanes towards Speldhurst, Langton Green and Bidborough, plus venue work at Salomons Estate, Hotel du Vin and the Spa Hotel. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
-  uniqueExtraFaqs: [
-    {
-      q: "Do you cover events at Salomons Estate and Hotel du Vin?",
-      a: "Yes — both are part of our regular Tunbridge Wells coverage. Salomons' historic rooms (the library and the science theatre in particular) each ask for a different design approach; Hotel du Vin's intimate dining rooms suit smaller, more considered milestones. Tell us which space you've booked when you enquire and we'll come back with a styling proposal that matches the proportions of the room.",
-    },
-    {
-      q: "Are at-home celebrations in Calverley Park and Mount Sion within your area?",
-      a: "Yes — at-home celebrations across the Calverley Park and Mount Sion residential roads are part of our regular work. We install across drawing rooms, kitchens and gardens within a single property, manage the day discreetly, and clear afterwards.",
-    },
-  ],
 });
 
 export default tunbridgeWells;

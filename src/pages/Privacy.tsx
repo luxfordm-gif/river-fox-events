@@ -40,7 +40,7 @@ const Privacy = () => {
 
         <ArticleProse>
           <p>
-            River Fox Events ("we", "us") is a luxury event-styling studio
+            River Fox Events ("we", "us") is a design-led event-styling studio
             based in Surrey. This page explains what personal information we
             collect when you use this website, how we use it and the cookies
             we set. It is written in plain English. If anything is unclear,

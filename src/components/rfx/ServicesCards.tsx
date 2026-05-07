@@ -11,19 +11,19 @@ const SERVICES = [
   {
     title: "Children's Party Styling",
     blurb:
-      "Immersive themed parties, balloon installations and full-room transformations — designed and installed personally by Laura.",
+      "Playful, immersive and beautifully styled. From themed celebrations to soft, tonal setups, we create children's parties that feel as considered as they are joyful.",
     href: "/childrens-parties/",
   },
   {
     title: "Milestone Celebrations",
     blurb:
-      "Statement styling for 21sts, 40ths, 70ths, baby showers and anniversaries. Life's biggest moments, honoured properly.",
+      "Refined styling for meaningful moments. Whether it's a 21st, 40th, baby shower or anniversary, we design spaces that feel special, personal and effortlessly put together.",
     href: "/milestone-celebrations/",
   },
   {
-    title: "Corporate & Brand Styling",
+    title: "Brand & Corporate Installations",
     blurb:
-      "Design-led installations for launches, openings and brand activations. Trusted by P&G, The Range and more.",
+      "Creative installations that elevate your brand. From launches to in-store moments, we design visual experiences that feel polished, on-brand and impactful.",
     href: "/corporate-brand-styling/",
   },
 ];

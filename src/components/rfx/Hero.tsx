@@ -32,13 +32,14 @@ const Hero = () => {
           </h1>
 
           <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-1 md:mt-10 fade-up in text-center">
-            Children's parties, milestone moments and corporate events
-            across Surrey — created around your vision, delivered with calm.
+            Design-led event styling in Surrey — children's parties,
+            milestone celebrations and corporate installations, each
+            tailored to your space.
           </p>
 
           <div className="flex items-center justify-center gap-5 flex-wrap mt-10 fade-up in">
             <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
-              Start planning <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
+              Enquire <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
             </a>
           </div>
         </div>

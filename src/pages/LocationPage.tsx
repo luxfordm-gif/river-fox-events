@@ -11,7 +11,6 @@ import ServicesCards from "@/components/rfx/ServicesCards";
 import LocationGallery from "@/components/rfx/LocationGallery";
 import LocationUSP from "@/components/rfx/LocationUSP";
 import LocationTrust from "@/components/rfx/LocationTrust";
-import LocationLocalProse from "@/components/rfx/LocationLocalProse";
 import ScrollStrip from "@/components/rfx/ScrollStrip";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 import LocationHeroFan from "@/components/rfx/LocationHeroFan";
@@ -138,7 +137,7 @@ const LocationPage = () => {
               )}
               <div className="flex items-center justify-center gap-5 flex-wrap mt-10 fade-up in">
                 <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
-                  Start planning{" "}
+                  Enquire now{" "}
                   <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
                 </a>
               </div>
@@ -160,15 +159,23 @@ const LocationPage = () => {
           sectionId={`loc-${loc.slug}-services`}
           heading={
             <>
-              Three services, fully bespoke.{" "}
+              Our signature{" "}
               <em className="italic font-light text-accent-warm">
-                In {loc.cityName} and {loc.region}.
+                experiences.
               </em>
+            </>
+          }
+          intro={
+            <>
+              Each is designed from the ground up, with a focus on
+              aesthetic, flow and detail. We work with a small number of
+              clients each month so every event receives personal
+              attention from concept to install.
             </>
           }
         />
 
-        <LocationUSP />
+        <LocationUSP cityName={loc.cityName} />
 
         <LocationGallery
           id="loc-gallery"
@@ -180,23 +187,13 @@ const LocationPage = () => {
           images={loc.gallery.images}
         />
 
-        {loc.localProse && (
-          <LocationLocalProse
-            eyebrow={loc.localProse.eyebrow}
-            heading={loc.localProse.heading}
-            body={loc.localProse.body}
-            headingId={`loc-${loc.slug}-local-prose-heading`}
-          />
-        )}
-
         <div id="how-it-works">
           <Process />
         </div>
 
         <CPPricing
-          tiers={loc.pricing.tiers}
           heading={loc.pricing.heading}
-          ctaLabel="Start planning"
+          ctaLabel="Enquire now"
           footnote={loc.pricing.footnote}
         />
 

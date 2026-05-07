@@ -146,7 +146,7 @@ const Article = () => {
               </em>
             </>
           }
-          body="Bespoke design, personally delivered by Laura across Surrey. Share your vision and we'll be in touch personally."
+          body="Considered design, personally delivered by Laura across Surrey. Share your vision and we'll be in touch personally."
           label="Start planning"
           href="/#enquire"
         />

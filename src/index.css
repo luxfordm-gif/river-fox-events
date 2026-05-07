@@ -656,7 +656,7 @@
      visible-but-gentle motion. */
   .rfx-section.warm {
     position: relative;
-    overflow: hidden;
+    overflow: clip;
     isolation: isolate;
   }
   .rfx-section.warm::before,

@@ -184,7 +184,7 @@ const DEFAULT_ITEMS: IncludedItem[] = [
   {
     icon: "balloon",
     label: "Theme & palette",
-    body: "Bespoke design concept built around your vision.",
+    body: "Tailored design concept built around your vision.",
   },
   {
     icon: "sparkle",

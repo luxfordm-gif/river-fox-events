@@ -5,7 +5,7 @@ const lewes = makeLocation({
   cityName: "Lewes",
   region: "East Sussex",
   seoTitleRegion: "East Sussex",
-  uniqueSeoTitle: "Luxury Event Styling in Lewes | River Fox Events",
+  uniqueSeoTitle: "Editorial Event Styling Lewes | River Fox Events",
   uniqueSeoDescription:
     "A short drive from Lewes — full-service East Sussex country-house celebrations. From design to clear-down, personally handled by Laura.",
   uniqueHeroSub: (
@@ -49,7 +49,7 @@ const lewes = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        River Fox Events is a Lewes event stylist designing bespoke
+        River Fox Events is a Lewes event stylist designing tailored
         children's parties, milestone birthdays, christenings, baby
         showers, weddings and corporate styling across the BN7 and
         BN8 postcodes. Every celebration is built from scratch around
@@ -79,18 +79,6 @@ const lewes = makeLocation({
       </p>
     </>
   ),
-  uniquePresenceAnswer:
-    "Yes — Lewes and the surrounding BN7/BN8 patch are part of our East Sussex coverage. We cover the town centre, the Cliffe, the residential roads above the High Street, and the South Downs villages — Kingston, Rodmell, Glynde, Ringmer, Barcombe — plus venue work at Pelham House, Lewes Castle and Maltings, Glynde Place and Firle Place. Mention your venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
-  uniqueExtraFaqs: [
-    {
-      q: "Do you cover Glynde Place, Firle Place and Pelham House?",
-      a: "Yes — all three sit firmly within our Lewes coverage. Glynde Place, Firle Place and Pelham House each take a different design approach; tell us which room you've booked and the date and we'll come back with a styling proposal that respects the architecture.",
-    },
-    {
-      q: "Can you handle at-home celebrations along the Ouse and downland villages?",
-      a: "Yes — at-home celebrations across the river and downland villages around Lewes (Rodmell, Iford, Barcombe, Plumpton, Falmer) are a regular part of our work here. We factor the South Downs weather into install plans and break down fully on the night so the property is back to itself in the morning.",
-    },
-  ],
 });
 
 export default lewes;

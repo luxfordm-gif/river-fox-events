@@ -17,7 +17,7 @@ const ITEMS = [
   {
     title: "Milestone Celebrations",
     body:
-      "Statement styling for christenings, 21sts, 40ths, 70ths, baby showers and anniversaries. Life's biggest moments, honoured properly.",
+      "Refined styling for life's most meaningful moments — christenings, baby showers, milestone birthdays and anniversaries, each designed to feel personal and effortlessly brought together.",
     img: expMilestone,
     alt: "Christening blessing ceremony styling in Surrey by River Fox Events — pink gold champagne and pearl balloon installation with floral arch and pink backdrop",
     href: "/milestone-celebrations",
@@ -135,7 +135,7 @@ const Experiences = ({
           </h2>
           <p className="text-[15.5px] leading-[1.6] text-ink-soft pb-3 text-center md:text-left mx-auto md:mx-0">
             {intro ??
-              "Three considered services, each fully bespoke. We work with a small number of clients each month so every event receives Laura's personal attention from concept to install."}
+              "Three experiences — children's parties, milestone celebrations and corporate installations — each designed from the ground up with a focus on aesthetic, flow and detail. We take on a limited number of clients each month so every event receives personal attention from concept to install."}
           </p>
         </div>
 

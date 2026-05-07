@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 const CHECKLIST = [
-  "Events from £460",
+  "Most celebrations begin from £460",
   "Surrey, London & surrounding areas",
 ];
 
@@ -23,8 +23,8 @@ const Enquire = ({
     setSubmitting(true);
     try {
       const data = new FormData(form);
-      // Stamp the page the enquiry came from so Laura knows which page Mark
-      // is looking at when reading the email.
+      // Stamp the page the enquiry came from so Laura knows which page
+      // the enquirer was on when reading the email.
       data.set("page", window.location.pathname);
       const body = new URLSearchParams(
         Array.from(data.entries()).map(([k, v]) => [k, String(v)])
@@ -35,7 +35,7 @@ const Enquire = ({
         body,
       });
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
-      toast.success("Thank you — Laura will be in touch personally.");
+      toast.success("Thank you — your enquiry has been received. I'll be in touch within 1–2 working days. Laura.");
       form.reset();
     } catch (err) {
       toast.error("Sorry — something went wrong. Please email Riverfoxevents@gmail.com directly.");
@@ -60,17 +60,18 @@ const Enquire = ({
                 letterSpacing: "-0.03em",
               }}
             >
-              Let's make something{" "}
+              Let's create something{" "}
               <em className="italic font-light text-accent-warm">
-                worth remembering.
+                beautiful.
               </em>
             </h2>
             <p
               className="text-[15.5px] leading-[1.7] max-w-[460px] mt-7"
               style={{ color: "hsl(var(--on-deep-soft))" }}
             >
-              Share your vision and I'll be in touch personally — not a
-              template, a proper bespoke proposal.
+              Most celebrations begin from £460. Every event is tailored,
+              so we'll guide you based on your brief. We work across
+              Surrey, London and surrounding areas.
             </p>
 
             <ul className="mt-7 max-w-[460px] w-full space-y-1.5 mx-auto lg:mx-0">
@@ -140,43 +141,37 @@ const Enquire = ({
                 Tell me about your celebration
               </h3>
               <p className="hidden lg:block text-[13px] text-ink-soft mt-1">
-                Every field is bespoke to you — no templates.
+                Complete the form below and I'll be in touch to discuss
+                your event in more detail.
               </p>
             </div>
             <div className="form-grid">
               <label className="form-row">
-                <span className="lbl">Name</span>
+                <span className="lbl">Full name</span>
                 <input type="text" name="name" placeholder="Your full name" required />
               </label>
               <label className="form-row">
-                <span className="lbl">Email</span>
+                <span className="lbl">Email address</span>
                 <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+              <label className="form-row">
+                <span className="lbl">Phone number</span>
+                <input type="tel" name="phone" placeholder="07…" />
               </label>
               <label className="form-row">
                 <span className="lbl">Event date</span>
                 <input type="date" name="date" />
               </label>
-              <label className="form-row">
-                <span className="lbl">Event type</span>
-                <select name="type" defaultValue={defaultEventType}>
-                  <option>Children's party</option>
-                  <option>Milestone celebration</option>
-                  <option>Corporate event</option>
-                  <option>Other</option>
-                </select>
-              </label>
               <label className="form-row full">
-                <span className="lbl">Venue / location</span>
+                <span className="lbl">Event location / venue</span>
                 <input type="text" name="venue" placeholder={venuePlaceholder} />
               </label>
               <label className="form-row full">
-                <span className="lbl">Approximate budget</span>
-                <select name="budget" defaultValue="£460 – £800">
-                  <option>£460 – £800</option>
-                  <option>£800 – £1,200</option>
-                  <option>£1,200 – £2,500</option>
-                  <option>£2,500 – £5,000</option>
-                  <option>£5,000+</option>
+                <span className="lbl">Type of event</span>
+                <select name="type" defaultValue={defaultEventType}>
+                  <option>Children's party</option>
+                  <option>Milestone celebration</option>
+                  <option>Corporate / brand event</option>
                 </select>
               </label>
               <label className="form-row full">
@@ -184,8 +179,29 @@ const Enquire = ({
                 <textarea
                   name="vision"
                   rows={4}
-                  placeholder="A few notes, colours, ideas, or a Pinterest link…"
+                  placeholder="Theme, colours, inspiration, or anything you already have in mind"
                 />
+              </label>
+              <label className="form-row">
+                <span className="lbl">Approximate budget</span>
+                <select name="budget" defaultValue="£460 – £1,200">
+                  <option>£460 – £1,200</option>
+                  <option>£1,200 – £2,000</option>
+                  <option>£2,000 – £3,000</option>
+                  <option>£3,000+</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+              <label className="form-row">
+                <span className="lbl">How did you hear about us?</span>
+                <select name="referral" defaultValue="Google">
+                  <option>Google</option>
+                  <option>Recommendation</option>
+                  <option>Facebook</option>
+                  <option>Instagram</option>
+                  <option>Used before</option>
+                  <option>Other</option>
+                </select>
               </label>
             </div>
             <div className="flex justify-center lg:justify-end items-center mt-6 gap-4 flex-wrap text-center">

@@ -39,7 +39,6 @@ const Index = () => {
         <Hero />
         <Experiences />
         <About />
-        <RevealWord lines={["Calm to plan, <em>unforgettable</em> on the day."]} />
         <Process />
         <Testimonials />
         <InstagramFollow />
