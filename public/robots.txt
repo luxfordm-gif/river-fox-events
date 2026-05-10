@@ -1,14 +1,19 @@
 User-agent: Googlebot
 Allow: /
+Disallow: /brand-book/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /brand-book/
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /brand-book/
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /brand-book/
 
 User-agent: *
 Allow: /
+Disallow: /brand-book/

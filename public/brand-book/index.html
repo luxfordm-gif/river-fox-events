@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>River Fox Events — Brand Book</title>
 <meta name="description" content="River Fox Events brand book — voice, palette, type, aesthetic gate, layout and contact.">
+<meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -108,6 +109,28 @@
     transition: transform .35s ease;
   }
   .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 16px;
+  }
+  .nav-download {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 8px 14px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    transition: background .25s ease, color .25s ease;
+    white-space: nowrap;
+  }
+  .nav-download:hover { background: var(--ink); color: var(--background); }
 
   /* ============ Container ============ */
   .container {
@@ -538,9 +561,14 @@
 <!-- ============ STICKY NAV ============ -->
 <nav class="nav" aria-label="Brand book sections">
   <div class="nav-inner">
-    <a href="#top" class="brand">
-      <span class="word">RIVER FOX EVENTS</span>
-    </a>
+    <div class="nav-top">
+      <a href="#top" class="brand">
+        <span class="word">RIVER FOX EVENTS</span>
+      </a>
+      <a class="nav-download" href="river-fox-events-brand-book.pdf" download>
+        Download PDF ↓
+      </a>
+    </div>
     <ul class="nav-links">
       <li><a href="#essence">Brand</a></li>
       <li><a href="#voice">Voice</a></li>
