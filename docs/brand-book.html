@@ -13,6 +13,7 @@
     --bg-deep: #1E2421;
     --bg-warm: #F1E3DF;
     --bg-blush: #E7EEE9;
+    --bg-pearl: #F5EDE8;
     --ink: #2B312B;
     --ink-soft: #5B5F58;
     --ink-faint: #9AA098;
@@ -41,13 +42,15 @@
   .page {
     width: 210mm;
     height: 297mm;
-    padding: 24mm 22mm 26mm;
+    padding: 24mm 22mm 22mm;
     page-break-after: always;
     page-break-inside: avoid;
     break-inside: avoid;
     overflow: hidden;
     position: relative;
     background: var(--bg);
+    display: flex;
+    flex-direction: column;
   }
   .page.dark { background: var(--bg-deep); color: var(--on-deep); }
   .page.warm { background: var(--bg-warm); }
@@ -439,10 +442,8 @@
 
   /* Footer */
   .footer {
-    position: absolute;
-    bottom: 12mm;
-    left: 22mm;
-    right: 22mm;
+    margin-top: auto;
+    padding-top: 8px;
     display: flex;
     justify-content: space-between;
     font-family: "JetBrains Mono", monospace;
@@ -451,7 +452,6 @@
     text-transform: uppercase;
     color: var(--ink-soft);
     border-top: 1px solid var(--hair-soft);
-    padding-top: 8px;
   }
   .page.dark .footer { color: #97998F; border-top-color: rgba(233,230,221,0.18); }
 
@@ -1073,7 +1073,7 @@
     <h2 class="section">What each one is for.</h2>
     <div class="three-col" style="margin-top: 16px;">
       <div>
-        <div class="specimen-serif" style="font-size: 80px; line-height: 1; letter-spacing: -0.02em;">Aa</div>
+        <div class="specimen-serif" style="font-size: 56px; line-height: 1; letter-spacing: -0.02em;">Aa</div>
         <div style="font-family: 'Fraunces', serif; font-size: 16px; margin-top: 10px;">Fraunces</div>
         <div style="font-size: 10.5px; color: var(--ink-soft); line-height: 1.55; margin-top: 4px;">
           Display serif — headlines, hero, pull-quotes, italic highlights.<br>
@@ -1082,7 +1082,7 @@
         </div>
       </div>
       <div>
-        <div class="specimen-sans" style="font-size: 80px; line-height: 1;">Aa</div>
+        <div class="specimen-sans" style="font-size: 56px; line-height: 1;">Aa</div>
         <div style="font-family: 'Fraunces', serif; font-size: 16px; margin-top: 10px;">DM Sans</div>
         <div style="font-size: 10.5px; color: var(--ink-soft); line-height: 1.55; margin-top: 4px;">
           UI sans — body, buttons, nav, form inputs.<br>
@@ -1091,7 +1091,7 @@
         </div>
       </div>
       <div>
-        <div class="specimen-mono" style="font-size: 80px; line-height: 1;">Aa</div>
+        <div class="specimen-mono" style="font-size: 56px; line-height: 1;">Aa</div>
         <div style="font-family: 'Fraunces', serif; font-size: 16px; margin-top: 10px;">JetBrains Mono</div>
         <div style="font-size: 10.5px; color: var(--ink-soft); line-height: 1.55; margin-top: 4px;">
           Mono — eyebrows, labels, meta.<br>

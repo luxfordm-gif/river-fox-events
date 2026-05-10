@@ -1,0 +1,1266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>River Fox Events — Brand Book</title>
+<meta name="description" content="River Fox Events brand book — voice, palette, type, aesthetic gate, layout and contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ Tokens — match the live River Fox Events site ============ */
+  :root {
+    --background:    #EFEDE6;
+    --surface-alt:   #FCFBF8;
+    --surface-deep:  #1E2421;
+    --surface-warm:  #F1E3DF;
+    --surface-blush: #E7EEE9;
+    --surface-pearl: #F5EDE8;
+    --on-deep:       #E9E6DD;
+    --on-deep-soft:  #979890;
+    --ink:           #2B312B;
+    --ink-soft:      #5B5F58;
+    --ink-faint:     #9AA098;
+    --accent:        #E6B4A8;
+    --accent-warm:   #C39083;
+    --accent-soft:   #A5C0AD;
+    --hair:          rgba(43,49,43,0.10);
+    --hair-strong:   rgba(43,49,43,0.20);
+    --hair-soft:     rgba(43,49,43,0.06);
+
+    --container:    1140px;
+    --container-px: 56px;
+
+    --font-serif: "Fraunces", Georgia, serif;
+    --font-sans:  "DM Sans", system-ui, -apple-system, sans-serif;
+    --font-mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+  body {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--background);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--ink); color: var(--background); }
+
+  a { color: inherit; }
+
+  /* ============ Sticky nav ============ */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: hsl(45 26% 92% / 0.78);
+    backdrop-filter: blur(20px) saturate(1.08);
+    -webkit-backdrop-filter: blur(20px) saturate(1.08);
+    border-bottom: 1px solid var(--hair);
+  }
+  .nav-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 18px var(--container-px);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 32px;
+  }
+  .brand {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .brand .word {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    line-height: 1;
+  }
+  .brand .sub {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 24px;
+    justify-content: flex-end;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 8px 0;
+    position: relative;
+    transition: color .25s ease;
+  }
+  .nav-links a:hover { color: var(--accent-warm); }
+  .nav-links a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 4px;
+    height: 1px; background: currentColor;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .35s ease;
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* ============ Container ============ */
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding-left: var(--container-px);
+    padding-right: var(--container-px);
+  }
+
+  /* ============ Sections ============ */
+  section.chapter {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--hair-soft);
+    scroll-margin-top: 92px;
+  }
+  section.chapter:first-of-type { padding-top: 64px; }
+  section.chapter.warm  { background: var(--surface-warm); }
+  section.chapter.pearl { background: var(--surface-pearl); }
+  section.chapter.alt   { background: var(--surface-alt); }
+  section.chapter.dark  { background: var(--surface-deep); color: var(--on-deep); border-bottom: 0; }
+
+  /* Hero */
+  .hero {
+    padding: 112px 0 80px;
+    background: var(--surface-pearl);
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: 18px;
+  }
+  .hero-title {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(56px, 7vw, 96px);
+    line-height: 0.96;
+    letter-spacing: -0.025em;
+    max-width: 14ch;
+    margin-bottom: 24px;
+  }
+  .hero-title em { font-style: italic; color: var(--accent-warm); font-weight: 300; }
+  .hero-lead {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+    color: var(--ink-soft);
+    max-width: 580px;
+  }
+
+  /* Chapter heads */
+  .ch-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: 14px;
+  }
+  section.chapter.dark .ch-eyebrow { color: var(--accent); }
+  .ch-title {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(40px, 4.6vw, 60px);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    max-width: 18ch;
+  }
+  .ch-title em { font-style: italic; color: var(--accent-warm); font-weight: 300; }
+  section.chapter.dark .ch-title em { color: var(--accent); }
+  .ch-lead {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+    color: var(--ink-soft);
+    max-width: 660px;
+    margin-bottom: 56px;
+  }
+  section.chapter.dark .ch-lead { color: var(--on-deep); opacity: 0.85; }
+
+  /* Sub-section */
+  .sub {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--hair);
+  }
+  .sub:first-of-type { margin-top: 0; }
+  section.chapter.dark .sub { border-top-color: rgba(233,230,221,0.18); }
+  .sub-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  section.chapter.dark .sub-eyebrow { color: var(--on-deep-soft); }
+  .sub-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.18;
+    letter-spacing: -0.012em;
+    margin-bottom: 18px;
+    max-width: 22ch;
+  }
+
+  p { max-width: 70ch; margin-bottom: 16px; }
+  p + p { margin-top: 16px; }
+  p strong { font-weight: 600; }
+
+  /* Editorial bullet list */
+  ul.list, ol.list {
+    list-style: none;
+    margin: 12px 0 16px;
+    max-width: 78ch;
+  }
+  ul.list li, ol.list li {
+    position: relative;
+    padding: 12px 0 12px 26px;
+    border-bottom: 1px solid var(--hair-soft);
+    font-size: 15.5px;
+    line-height: 1.55;
+  }
+  section.chapter.dark ul.list li,
+  section.chapter.dark ol.list li {
+    border-bottom-color: rgba(233,230,221,0.14);
+  }
+  ul.list li::before {
+    content: "—";
+    position: absolute; left: 0; top: 12px;
+    color: var(--accent-warm);
+    font-family: var(--font-mono);
+  }
+  ol.list { counter-reset: ed; }
+  ol.list li { padding-left: 36px; }
+  ol.list li::before {
+    counter-increment: ed;
+    content: counter(ed, decimal-leading-zero);
+    position: absolute; left: 0; top: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--accent-warm);
+  }
+
+  /* Pull quote */
+  .pull {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.18;
+    letter-spacing: -0.018em;
+    margin: 32px 0 12px;
+    max-width: 26ch;
+    color: var(--ink);
+  }
+  .pull em { font-style: italic; color: var(--accent-warm); font-weight: 300; }
+  section.chapter.dark .pull { color: var(--on-deep); }
+  section.chapter.dark .pull em { color: var(--accent); }
+  .pull-attr {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* Italic principle / call-out */
+  .principle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.5;
+    padding: 8px 0 8px 22px;
+    border-left: 2px solid var(--accent-warm);
+    max-width: 70ch;
+    margin: 16px 0 24px;
+  }
+
+  /* Banned/strikethrough word list */
+  .banned-list {
+    list-style: none;
+    margin: 12px 0 24px;
+    max-width: 78ch;
+  }
+  .banned-list li {
+    padding: 10px 0;
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: 18px;
+    color: var(--ink-soft);
+    text-decoration: line-through;
+    text-decoration-color: var(--accent-warm);
+    text-decoration-thickness: 1px;
+    border-bottom: 1px solid var(--hair-soft);
+  }
+  .preferred-list {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.7;
+    max-width: 78ch;
+    margin: 12px 0 16px;
+  }
+
+  /* Do / Don't card pair */
+  .dodont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin: 16px 0 24px;
+    max-width: 78ch;
+  }
+  @media (max-width: 760px) {
+    .dodont { grid-template-columns: 1fr; }
+  }
+  .dodont .col .label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .dodont .col.no .label  { color: #a85a44; }
+  .dodont .col.yes .label { color: #5e7964; }
+  .dodont .quote {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.45;
+    padding-left: 14px;
+    border-left: 1.5px solid;
+    color: var(--ink);
+  }
+  .dodont .col.no .quote  { border-color: #c39083; }
+  .dodont .col.yes .quote { border-color: #a5c0ad; }
+  .dodont .why {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 8px;
+    padding-left: 14px;
+    line-height: 1.5;
+  }
+
+  /* Colour swatch grid */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin: 16px 0 32px;
+  }
+  @media (max-width: 760px) {
+    .swatch-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .swatch .chip {
+    height: 130px;
+    border-radius: 6px;
+    border: 1px solid var(--hair);
+  }
+  .swatch .name {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 15px;
+    margin: 12px 0 4px;
+  }
+  .swatch .hex {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--ink);
+  }
+  .swatch .hsl {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .swatch .role {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  /* Type ramp */
+  .ramp { margin-top: 16px; }
+  .ramp-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--hair-soft);
+  }
+  @media (max-width: 760px) {
+    .ramp-row { grid-template-columns: 1fr; gap: 8px; }
+  }
+  .ramp-row .tag {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ramp-row .tag .name {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+  }
+  .ramp-row .tag .meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-soft);
+  }
+  .specimen-serif { font-family: var(--font-serif); font-weight: 300; letter-spacing: -0.015em; }
+  .specimen-sans  { font-family: var(--font-sans); }
+  .specimen-mono  { font-family: var(--font-mono); }
+
+  /* Reference table */
+  table.tokens {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-top: 12px;
+    max-width: 80ch;
+  }
+  table.tokens th, table.tokens td {
+    text-align: left;
+    padding: 12px 16px 12px 0;
+    border-bottom: 1px solid var(--hair-soft);
+    vertical-align: top;
+  }
+  table.tokens th {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    border-bottom: 1px solid var(--hair);
+  }
+  section.chapter.dark table.tokens th { color: var(--on-deep-soft); border-bottom-color: rgba(233,230,221,0.2); }
+  section.chapter.dark table.tokens td { border-bottom-color: rgba(233,230,221,0.14); }
+  table.tokens code {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent-warm);
+  }
+
+  /* Section label */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 32px 0 12px;
+  }
+
+  /* Footer */
+  .site-footer {
+    background: var(--surface-deep);
+    color: var(--on-deep);
+    padding: 64px 0 36px;
+  }
+  .site-footer .container { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; }
+  .site-footer .word {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.22em;
+  }
+  .site-footer .meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--on-deep-soft);
+  }
+
+  /* Type-three preview cards */
+  .type-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin: 16px 0 32px;
+  }
+  @media (max-width: 760px) {
+    .type-three { grid-template-columns: 1fr; }
+  }
+  .type-three .col .aa {
+    font-size: 64px;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .type-three .col .fam {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  .type-three .col .desc {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  /* Mobile container */
+  @media (max-width: 760px) {
+    :root { --container-px: 28px; }
+    section.chapter { padding: 64px 0; }
+    .hero { padding: 80px 0 56px; }
+    .nav-inner { padding: 14px var(--container-px); grid-template-columns: 1fr; gap: 12px; }
+    .nav-links { justify-content: flex-start; gap: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ STICKY NAV ============ -->
+<nav class="nav" aria-label="Brand book sections">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="word">RIVER FOX EVENTS</span>
+      <span class="sub">BRAND BOOK · v1</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#essence">Brand</a></li>
+      <li><a href="#voice">Voice</a></li>
+      <li><a href="#vocabulary">Vocabulary</a></li>
+      <li><a href="#aesthetic">Aesthetic</a></li>
+      <li><a href="#colour">Colour</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#layout">Layout</a></li>
+      <li><a href="#imagery">Imagery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-eyebrow">Brand book · v1 · 2026</div>
+    <h1 class="hero-title">Considered, <em>design-led</em>, calm.</h1>
+    <p class="hero-lead">
+      The single source of truth for how River Fox Events looks, sounds and behaves —
+      across every page, image and conversation. Voice, palette, type, layout and the rules
+      that hold the brand together.
+    </p>
+  </div>
+</section>
+
+<!-- ============ 01 BRAND ESSENCE ============ -->
+<section class="chapter" id="essence">
+  <div class="container">
+    <div class="ch-eyebrow">Chapter 01 · Brand essence</div>
+    <h2 class="ch-title">Considered, design-led, calm.</h2>
+    <p class="ch-lead">
+      River Fox Events is Laura Hyde's luxury event styling studio in Surrey. Balloon
+      installations, backdrops, signage, light-up letters, props and tablescape architecture for
+      milestone moments — christenings, big birthdays, anniversaries, weddings, corporate launches
+      and brand activations.
+    </p>
+
+    <div class="sub">
+      <div class="sub-eyebrow">A · What we promise</div>
+      <h3 class="sub-title">A room that feels considered the moment guests walk in.</h3>
+      <p>
+        Scale and palette held together by one designer's eye, executed with the calm of someone who
+        has done it before. Hosts get something quietly extraordinary — never punchy, never novelty-led.
+      </p>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">B · Who we serve</div>
+      <h3 class="sub-title">Milestones, mostly.</h3>
+      <ul class="list">
+        <li>Children's parties — first birthdays through teenage milestones</li>
+        <li>Milestone celebrations — 30ths, 40ths, 50ths, 60ths and beyond</li>
+        <li>Weddings, christenings, baby showers</li>
+        <li>Corporate &amp; brand styling, award nights, product launches, shopfronts</li>
+        <li>Luxury picnics &amp; outdoor occasions</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">C · Brand pillars</div>
+      <h3 class="sub-title">Three things we hold to.</h3>
+      <ol class="list">
+        <li><strong>Design-led.</strong> Every brief begins with a render board — palette, scale and sightlines decided before a single balloon is inflated.</li>
+        <li><strong>Quiet luxury.</strong> Pastel and neutral palettes, generous scale, restraint. Never loud. Never themed for the sake of theme.</li>
+        <li><strong>Calmly delivered.</strong> Install morning is steady, not frantic. Hosts hand over the day and stop worrying about it.</li>
+      </ol>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">D · The rebrand</div>
+      <h3 class="sub-title">From Lollipop Balloons to River Fox.</h3>
+      <p>
+        Same designer, same inventory, more grown-up positioning. The historic name is preserved
+        in JSON-LD as <code>alternateName</code> so legacy links and brand searches keep flowing
+        through. Don't bury the heritage; don't lead with it either.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 VOICE & TONE ============ -->
+<section class="chapter pearl" id="voice">
+  <div class="container">
+    <div class="ch-eyebrow">Chapter 02 · Voice &amp; tone</div>
+    <h2 class="ch-title">Quietly <em>authoritative.</em></h2>
+    <p class="ch-lead">
+      Laura speaks as the designer, in first person, with the calm of someone who has done it
+      before. Sentences earn their length. Sensory detail does the work that adjectives can't.
+    </p>
+
+    <div class="sub">
+      <div class="sub-eyebrow">A · Six rules</div>
+      <h3 class="sub-title">How Laura sounds.</h3>
+      <ol class="list">
+        <li><strong>First person, quietly authoritative.</strong> "I want the family to be able to read it in seconds." Not "we" — Laura speaks as the designer.</li>
+        <li><strong>Short, specific, occasionally fragmentary.</strong> "Beautiful bones, very little atmosphere." A two-word sentence is fine when the moment calls for it.</li>
+        <li><strong>Sensory detail over adjectives.</strong> Name the actual thing — "pink scallop-edge plates, a soft zebra-print salad plate on top" — not "beautiful tablescape".</li>
+        <li><strong>Trade-craft language used naturally.</strong> Sightlines, scale, the brief, sourcing, install morning, sign-off, render board.</li>
+        <li><strong>Em dashes welcome. Exclamation marks never.</strong> Use the em dash to slow a sentence down, not the exclamation to speed it up.</li>
+        <li><strong>Quiet expertise, never sales.</strong> Explain <em>why</em> a choice was made; don't tell the reader it was excellent.</li>
+      </ol>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">B · Tone by surface</div>
+      <h3 class="sub-title">Same voice, different rooms.</h3>
+      <table class="tokens">
+        <tr><th>Surface</th><th>Tone</th><th>Length</th></tr>
+        <tr><td>Hero headline</td><td>Considered, image-forward</td><td>4–8 words</td></tr>
+        <tr><td>Section body</td><td>Calm, descriptive, design-led</td><td>2–4 sentence paragraphs</td></tr>
+        <tr><td>Journal article</td><td>First-person Laura, sensory, reflective</td><td>900–1300 words</td></tr>
+        <tr><td>Form labels</td><td>Direct, unadorned</td><td>1–3 words, uppercase mono</td></tr>
+        <tr><td>CTAs</td><td>Invitational, never urgent</td><td>"Start planning →"</td></tr>
+        <tr><td>Email reply / DM</td><td>Warm, prompt, professional</td><td>3–5 lines</td></tr>
+        <tr><td>Instagram caption</td><td>Quietly confident, one design observation</td><td>2–4 lines</td></tr>
+      </table>
+    </div>
+
+    <div class="pull">Calm, considered, <em>design-led.</em> Never punchy, never salesy.</div>
+    <div class="pull-attr">House line · use sparingly</div>
+  </div>
+</section>
+
+<!-- ============ 03 VOCABULARY ============ -->
+<section class="chapter" id="vocabulary">
+  <div class="container">
+    <div class="ch-eyebrow">Chapter 03 · Vocabulary</div>
+    <h2 class="ch-title">Say this, <em>not that.</em></h2>
+
+    <div class="sub">
+      <div class="sub-eyebrow">A · Banned — never use</div>
+      <h3 class="sub-title">Filler &amp; adjective-led praise.</h3>
+      <ul class="banned-list">
+        <li>If you're looking for…</li>
+        <li>Look no further…</li>
+        <li>We pride ourselves on…</li>
+        <li>Our team of experts…</li>
+        <li>The perfect party</li>
+        <li>Stunning</li>
+        <li>Amazing</li>
+        <li>Wow factor</li>
+        <li>Show-stopping</li>
+        <li>Exclamation marks</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">B · Capped — restraint, not abstinence</div>
+      <h3 class="sub-title">Use, but rarely.</h3>
+      <ul class="list">
+        <li><strong>Bespoke</strong> — banned from titles, max once per meta description</li>
+        <li><strong>Luxury</strong> — max twice across all page titles site-wide</li>
+        <li><strong>From £460</strong> — appears in max six page metas site-wide</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">C · Preferred — house language</div>
+      <h3 class="sub-title">The trade-craft we like.</h3>
+      <div class="preferred-list">
+        Considered · Design-led · Calm · Restraint · Render board · Sightlines · Scale ·
+        Install morning · Sign-off · The brief · Sourcing · Tablescape · Threshold piece ·
+        Pastel &amp; neutral · Milestone
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">D · Voice in the wild</div>
+      <h3 class="sub-title">Don't, then do.</h3>
+
+      <div class="dodont">
+        <div class="col no">
+          <div class="label">Don't</div>
+          <div class="quote">"If you're looking for the perfect party, look no further — our team of experts will create a stunning, show-stopping event!"</div>
+          <div class="why">Filler stack, adjective-led praise, exclamation. Says nothing about the work.</div>
+        </div>
+        <div class="col yes">
+          <div class="label">Do</div>
+          <div class="quote">"A pastel palette, a 4m balloon install above the cake table, and a banquet of ten — held together by one designer's eye."</div>
+          <div class="why">Sensory specifics. Names the actual moves. Quietly states scale.</div>
+        </div>
+      </div>
+
+      <div class="dodont">
+        <div class="col no">
+          <div class="label">Don't</div>
+          <div class="quote">"We're so excited to share this amazing styling we did last weekend!"</div>
+          <div class="why">"We" instead of Laura. "Amazing" carries no information. Sounds like a sales post.</div>
+        </div>
+        <div class="col yes">
+          <div class="label">Do</div>
+          <div class="quote">"Beautiful bones, very little atmosphere — a Cobham garden room asking for scale and a softer palette."</div>
+          <div class="why">Diagnoses the venue. Names the design tension. Reader pictures the answer.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 AESTHETIC GATE ============ -->
+<section class="chapter pearl" id="aesthetic">
+  <div class="container">
+    <div class="ch-eyebrow">Chapter 04 · Aesthetic gate</div>
+    <h2 class="ch-title">What we <em>do.</em><br>What we don't.</h2>
+    <p class="ch-lead">
+      Two filters protect the brand: the work we'll publish images of, and the inventory Laura
+      actually supplies. If a topic needs an out-of-scope item to land, the topic is wrong —
+      pick a different one.
+    </p>
+
+    <div class="sub">
+      <div class="sub-eyebrow">A · Auto-reject</div>
+      <h3 class="sub-title">Never published.</h3>
+      <ul class="list">
+        <li>Soft play setups</li>
+        <li>Mascot or costume-character appearances</li>
+        <li>Disco lights, smoke machines, club-style lighting rigs</li>
+        <li>Phone parties / mobile gaming-truck parties</li>
+        <li>Plastic novelty tat, party-shop bunting, off-the-shelf themed kits</li>
+        <li>Anything cheap-feeling, punchy or novelty-led</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">B · Discouraged but allowed</div>
+      <h3 class="sub-title">Range extension, not the house style.</h3>
+      <p>
+        Only published when there's a real, photographed event behind it — and the design moves
+        (palette, scale, restraint) lead, not the IP. Aim for ≤ 1 in 6 articles in this bucket.
+      </p>
+      <ul class="list">
+        <li>Character themes — Bluey, Mario, Disney, Paw Patrol, etc.</li>
+        <li>Neon palettes &amp; brighter colour schemes</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">C · House style — auto-include</div>
+      <h3 class="sub-title">The territory.</h3>
+      <ul class="list">
+        <li>Pastel and neutral palettes</li>
+        <li>Large-scale installs (4m+ backdrops, banquet tables of 10+)</li>
+        <li>Tablescape-led design</li>
+        <li>Milestone moments — christenings, big birthdays, anniversaries, baby showers, corporate</li>
+        <li>Render-led process pieces</li>
+        <li>Named real venues in Surrey, the South East and London</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">D · Toolkit — IN</div>
+      <h3 class="sub-title">What Laura supplies.</h3>
+      <ul class="list">
+        <li><strong>Balloons</strong> — arches, garlands, walls, hoops, towers, organic installs, threshold pieces, number stacks, jumbo &amp; helium</li>
+        <li><strong>Backdrops</strong> — fabric, sailboard (custom-painted with vinyl), themed photo walls, sequin walls, full themed installations</li>
+        <li><strong>Signage</strong> — painted boards, vinyl &amp; acrylic stickers on board, life-size cardboard cutouts, custom welcome signs (weatherproof variants)</li>
+        <li><strong>Light-up letters &amp; numbers</strong>, number stacks</li>
+        <li><strong>Up-lighters</strong> — including waterproof for outdoor</li>
+        <li><strong>Themed props</strong> — 3D acrylic, plinths, risers, cake stands (NOT the cake)</li>
+        <li><strong>Faux florals</strong> — sparingly, as texture, never the headline</li>
+        <li><strong>Textiles</strong> — muslin, cheesecloth, drapery, linens, chair sashes &amp; covers</li>
+        <li><strong>Soft seats, low tables, cushions</strong> — kids' setups, picnics</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">E · Toolkit — OUT</div>
+      <h3 class="sub-title">Never frame as Laura's work.</h3>
+      <ul class="list">
+        <li>Fresh florals, fresh foliage, any compositional flower-arranging</li>
+        <li>Vessels, glassware, vintage stoneware (the curated-tablescape category)</li>
+        <li>Candles or candle-holders</li>
+        <li>The cake itself (cake stands only)</li>
+        <li>Catering, food, drink, bar service</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">F · The floral rule</div>
+      <h3 class="sub-title">Laura is not a florist.</h3>
+      <p>
+        Never lead a design move with florals — fresh or faux. Faux stems are a quiet prop, never
+        the subject of an image, headline, pull quote or section title.
+      </p>
+      <div class="principle">
+        If a topic seems to need florals to land, the topic is wrong for Laura — pick a different one.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 COLOUR PALETTE ============ -->
+<section class="chapter" id="colour">
+  <div class="container">
+    <div class="ch-eyebrow">Chapter 05 · Colour palette</div>
+    <h2 class="ch-title">Moss, cream &amp; <em>soft peach.</em></h2>
+    <p class="ch-lead">
+      All colours specified as HSL in code. Hex values shown for Figma. Never use pure black —
+      the brand ink is a softened charcoal.
+    </p>
+
+    <div class="sub">
+      <div class="sub-eyebrow">A · Surfaces</div>
+      <h3 class="sub-title">Backgrounds.</h3>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="chip" style="background:#EFEDE6"></div>
+          <div class="name">Background — cream</div>
+          <div class="hex">#EFEDE6</div>
+          <div class="hsl">hsl(47 22% 92%)</div>
+          <div class="role">Page background. Primary canvas.</div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:#FCFBF8"></div>
+          <div class="name">Surface alt — warm white</div>
+          <div class="hex">#FCFBF8</div>
+          <div class="hsl">hsl(45 36% 98%)</div>
+          <div class="role">Cards, form wrap, popovers.</div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:#1E2421"></div>
+          <div class="name">Surface deep — moss black</div>
+          <div class="hex">#1E2421</div>
+          <div class="hsl">hsl(144 9% 13%)</div>
+          <div class="role">Dark sections, footer, enquire.</div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:#F1E3DF"></div>
+          <div class="name">Surface warm — peach tint</div>
+          <div class="hex">#F1E3DF</div>
+          <div class="hsl">hsl(14 38% 91%)</div>
+          <div class="role">Soft warm section background.</div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:#F5EDE8"></div>
+          <div class="name">Surface pearl — warm cream</div>
+          <div class="hex">#F5EDE8</div>
+          <div class="hsl">hsl(22 39% 94%)</div>
+          <div class="role">Soft warm section background.</div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:#E7EEE9"></div>
+          <div class="name">Surface blush — sage tint</div>
+          <div class="hex">#E7EEE9</div>
+          <div class="hsl">hsl(137 18% 92%)</div>
+          <div class="role">Soft sage section background.</div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:#E9E6DD"></div>
+          <div class="name">On-deep — text on dark</div>
+          <div class="hex">#E9E6DD</div>
+          <div class="hsl">hsl(47 22% 89%)</div>
+          <div class="role">Body copy on surface deep.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">B · Ink (text)</div>
+      <h3 class="sub-title">Foreground colours.</h3>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="chip" style="background:#2B312B"></div>
+          <div class="name">Ink — primary</div>
+          <div class="hex">#2B312B</div>
+          <div class="hsl">hsl(120 6% 18%)</div>
+          <div class="role">Headlines &amp; body. Softened charcoal — never pure black.</div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:#5B5F58"></div>
+          <div class="name">Ink soft — meta</div>
+          <div class="hex">#5B5F58</div>
+          <div class="hsl">hsl(100 4% 36%)</div>
+          <div class="role">Eyebrows, captions, secondary copy.</div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:#9AA098"></div>
+          <div class="name">Ink faint — placeholder</div>
+          <div class="hex">#9AA098</div>
+          <div class="hsl">hsl(100 4% 61%)</div>
+          <div class="role">Form placeholders, disabled states.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">C · Accents</div>
+      <h3 class="sub-title">Highlights.</h3>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="chip" style="background:#E6B4A8"></div>
+          <div class="name">Accent — soft peach</div>
+          <div class="hex">#E6B4A8</div>
+          <div class="hsl">hsl(12 55% 78%)</div>
+          <div class="role">Primary CTA fill, focus ring.</div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:#C39083"></div>
+          <div class="name">Accent warm — dusty peach</div>
+          <div class="hex">#C39083</div>
+          <div class="hsl">hsl(12 35% 64%)</div>
+          <div class="role">Italic highlights, ticker glyphs.</div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:#A5C0AD"></div>
+          <div class="name">Accent soft — sage</div>
+          <div class="hex">#A5C0AD</div>
+          <div class="hsl">hsl(137 18% 70%)</div>
+          <div class="role">Secondary accent. Use sparingly.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 TYPOGRAPHY ============ -->
+<section class="chapter alt" id="typography">
+  <div class="container">
+    <div class="ch-eyebrow">Chapter 06 · Typography</div>
+    <h2 class="ch-title">Fraunces · DM Sans · <em>JetBrains Mono.</em></h2>
+
+    <div class="sub">
+      <div class="sub-eyebrow">A · The three families</div>
+      <h3 class="sub-title">What each one is for.</h3>
+      <div class="type-three">
+        <div class="col">
+          <div class="aa specimen-serif">Aa</div>
+          <div class="fam">Fraunces</div>
+          <div class="desc">Display serif — headlines, hero, pull-quotes, italic highlights.<br>
+            Weights: 300, 400, 500 (italics 300, 400). Default 300 with letter-spacing −0.015em.</div>
+        </div>
+        <div class="col">
+          <div class="aa specimen-sans">Aa</div>
+          <div class="fam">DM Sans</div>
+          <div class="desc">UI sans — body, buttons, nav, form inputs.<br>
+            Weights: 300, 400, 500, 600. Body baseline: 15px / line-height 1.55.</div>
+        </div>
+        <div class="col">
+          <div class="aa specimen-mono">Aa</div>
+          <div class="fam">JetBrains Mono</div>
+          <div class="desc">Mono — eyebrows, labels, meta, form labels.<br>
+            Weight: 400 (occasional 500/600). Always uppercase · letter-spacing 0.18–0.22em.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">B · Type scale</div>
+      <h3 class="sub-title">Sizes in use.</h3>
+      <div class="ramp">
+        <div class="ramp-row">
+          <div class="tag"><span class="name">H1 / Hero</span><span class="meta">Fraunces Light · clamp(56→120px) · 7vw · −1.5%</span></div>
+          <div class="specimen-serif" style="font-size: 56px; line-height: 1;">Considered styling</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">H2</span><span class="meta">Fraunces Light · clamp(40→80px) · −1.5%</span></div>
+          <div class="specimen-serif" style="font-size: 44px; line-height: 1.05;">Children's parties</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">H3</span><span class="meta">Fraunces SemiBold · clamp(26→34px) · −1%</span></div>
+          <div class="specimen-serif" style="font-size: 30px; line-height: 1.18; font-weight: 500;">A note on faux florals</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">H4 · Article H2</span><span class="meta">Fraunces SemiBold · clamp(26→34px) · −1.2%</span></div>
+          <div class="specimen-serif" style="font-size: 28px; line-height: 1.18; font-weight: 500;">When the garden is the venue</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">H5 · Article H3</span><span class="meta">Fraunces SemiBold · clamp(20→24px) · −0.8%</span></div>
+          <div class="specimen-serif" style="font-size: 22px; line-height: 1.25; font-weight: 500;">A few faux stems for texture</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">Reveal</span><span class="meta">Fraunces Light · clamp(56→200px) · 12vw · −4%</span></div>
+          <div class="specimen-serif" style="font-size: 64px; line-height: 0.92; letter-spacing: -0.04em;">made to <em style="color: var(--accent-warm);">linger</em></div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">Pull quote</span><span class="meta">Fraunces Light · 38px · −2%</span></div>
+          <div class="specimen-serif" style="font-size: 32px; line-height: 1.08; letter-spacing: -0.02em;">Calm, considered, design-led.</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">Lead</span><span class="meta">Fraunces Light · 17px · 145%</span></div>
+          <div class="specimen-serif" style="font-size: 18px; line-height: 1.45;">A pastel palette, a 4m balloon install above the cake table, held together by one designer's eye.</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">Body</span><span class="meta">DM Sans Regular · 15px · 155%</span></div>
+          <div class="specimen-sans" style="font-size: 15px; line-height: 1.55;">Calm, considered, design-led — the tone we hold across every page.</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">Body bumped (mobile)</span><span class="meta">DM Sans Regular · 17.5px · 165%</span></div>
+          <div class="specimen-sans" style="font-size: 17.5px; line-height: 1.65;">Mobile body bump for readability — paragraphs scale to 17.5px on small screens.</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">Testimonial</span><span class="meta">Fraunces Light · 17px · 145% · −1.2%</span></div>
+          <div class="specimen-serif" style="font-size: 17px; line-height: 1.45;">"Laura made our daughter's first birthday feel completely magical."</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">Nav link</span><span class="meta">DM Sans Regular · 13px · 1%</span></div>
+          <div class="specimen-sans" style="font-size: 13px; letter-spacing: 0.01em;">Children's parties</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">Button</span><span class="meta">DM Sans Medium · 13px</span></div>
+          <div class="specimen-sans" style="font-size: 13px; font-weight: 500;">Start planning →</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">Form input</span><span class="meta">DM Sans Medium · 15px · −0.5%</span></div>
+          <div class="specimen-sans" style="font-size: 15px; font-weight: 500;">Laura Hyde</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">Eyebrow</span><span class="meta">JetBrains Mono · 11px · 18% · UPPER</span></div>
+          <div class="specimen-mono" style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft);">Children's parties · 01</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">Form label</span><span class="meta">JetBrains Mono Medium · 9.5px · 22% · UPPER</span></div>
+          <div class="specimen-mono" style="font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft);">Your name</div>
+        </div>
+        <div class="ramp-row">
+          <div class="tag"><span class="name">Meta</span><span class="meta">JetBrains Mono · 10px · 18% · UPPER</span></div>
+          <div class="specimen-mono" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft);">Published 2026 · 4 min read</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 LAYOUT ============ -->
+<section class="chapter" id="layout">
+  <div class="container">
+    <div class="ch-eyebrow">Chapter 07 · Layout, spacing &amp; radii</div>
+    <h2 class="ch-title">Generous space.<br>Tight <em>rhythm.</em></h2>
+
+    <div class="sub">
+      <div class="sub-eyebrow">A · Containers &amp; sections</div>
+      <h3 class="sub-title">The page frame.</h3>
+      <table class="tokens">
+        <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+        <tr><td><code>container max</code></td><td><code>1440px</code></td><td>Maximum page width</td></tr>
+        <tr><td><code>container padding</code></td><td><code>56px</code> · 32px @960 · 28px @640</td><td>Horizontal padding</td></tr>
+        <tr><td><code>section padding (desktop)</code></td><td><code>120px 0</code></td><td>Default vertical rhythm</td></tr>
+        <tr><td><code>section padding (laptop)</code></td><td><code>80px 0</code></td><td>768–1366px</td></tr>
+        <tr><td><code>section padding (mobile)</code></td><td><code>56px 0</code></td><td>≤760px</td></tr>
+        <tr><td><code>nav padding</code></td><td><code>14px 56px 18px</code></td><td>Fixed top nav</td></tr>
+        <tr><td><code>scroll-padding-top</code></td><td><code>80px</code></td><td>Anchor offset (mobile / tablet)</td></tr>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">B · Spacing scale</div>
+      <h3 class="sub-title">Tailwind defaults — used as-is.</h3>
+      <ul class="list">
+        <li>4 · 8 · 12 · 16 · 24 · 32 · 48 · 56 · 80 · 96 · 120 px</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">C · Corner radii</div>
+      <h3 class="sub-title">Roundedness.</h3>
+      <table class="tokens">
+        <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+        <tr><td><code>radius-sm</code></td><td><code>4px</code></td><td>Tight chips, hairline elements</td></tr>
+        <tr><td><code>radius-md</code></td><td><code>6px</code></td><td>Buttons</td></tr>
+        <tr><td><code>radius-lg</code></td><td><code>8px</code></td><td>Default — cards</td></tr>
+        <tr><td><code>form row</code></td><td><code>10px</code></td><td>Form input rows</td></tr>
+        <tr><td><code>form-wrap</code></td><td><code>14px</code> · 12px mobile</td><td>Enquire form container</td></tr>
+        <tr><td><code>image (mobile)</code></td><td><code>12px</code></td><td>Editorial reveal images on phones</td></tr>
+        <tr><td><code>pill</code></td><td><code>9999px</code></td><td>Status dots, chips</td></tr>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">D · Breakpoints</div>
+      <h3 class="sub-title">Where the layout shifts.</h3>
+      <table class="tokens">
+        <tr><th>Name</th><th>Range</th><th>Notes</th></tr>
+        <tr><td>Mobile</td><td>≤ 640px</td><td>Container 28px · sections 56px · body bumps 17.5px</td></tr>
+        <tr><td>Tablet</td><td>641–760px</td><td>Stack to single column · image first in reveals</td></tr>
+        <tr><td>Laptop</td><td>768–1366px</td><td>Container 8vw · sections 80px · hero h1 ≤ 72px</td></tr>
+        <tr><td>Desktop</td><td>≥ 1367px</td><td>Container 56px · max 1440px · sections 120px</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 IMAGERY ============ -->
+<section class="chapter pearl" id="imagery">
+  <div class="container">
+    <div class="ch-eyebrow">Chapter 08 · Imagery direction</div>
+    <h2 class="ch-title">Editorial,<br>natural <em>light.</em></h2>
+
+    <div class="sub">
+      <div class="sub-eyebrow">A · House style</div>
+      <h3 class="sub-title">The visual anchor.</h3>
+      <div class="principle">
+        Photorealistic editorial event styling photography, soft natural daylight, pastel and
+        neutral palette, considered composition, balloon installations and tablescapes in real
+        UK venue interiors, no people or faces, no text, no logos, shot on medium format with
+        shallow depth of field.
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">B · Subject &amp; composition</div>
+      <h3 class="sub-title">What's in the frame.</h3>
+      <ul class="list">
+        <li>Lead with installations Laura actually supplies — balloons, backdrops, signage, light-up letters, plinths</li>
+        <li>Faux florals can sit in frame as quiet texture, never as the subject</li>
+        <li>Subject centred so square or 4:3 crop still leads with the subject</li>
+        <li>No people, no faces, no logos, no on-image text</li>
+        <li>Natural daylight feel even when retouched. Shadows soft, never theatrical</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">C · File &amp; size targets</div>
+      <h3 class="sub-title">What to ship.</h3>
+      <table class="tokens">
+        <tr><th>Use</th><th>Format · size</th><th>Max KB</th><th>Loading</th></tr>
+        <tr><td>Hero</td><td>WebP · 1600×900</td><td>500 KB</td><td>eager · fetchpriority high</td></tr>
+        <tr><td>Gallery / supporting</td><td>WebP · ~1200px wide</td><td>200 KB</td><td>lazy</td></tr>
+        <tr><td>Thumbnail</td><td>WebP · 800×800</td><td>100 KB</td><td>lazy</td></tr>
+        <tr><td>OG card</td><td>WebP · 1200×630</td><td>200 KB</td><td>—</td></tr>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">D · Filenames &amp; alt text</div>
+      <h3 class="sub-title">One image, one filename, one alt.</h3>
+      <ul class="list">
+        <li>The rule is per <em>file</em>, not per placement</li>
+        <li>Filename describes content, not the page topic — <code>cobham-balloon-arch-pastel.webp</code></li>
+        <li>Alt text describes what's in the image, not the page or the brand. Max 125 characters</li>
+        <li>Two different files must not open their alt with the same five words</li>
+        <li>Each page needs a per-page OG image in <code>public/og/</code> overriding the global fallback</li>
+      </ul>
+
+      <div class="dodont">
+        <div class="col no">
+          <div class="label">Don't</div>
+          <div class="quote">"Children's party styling in Surrey by River Fox Events"</div>
+          <div class="why">Brand-led, page-led, says nothing about the photo.</div>
+        </div>
+        <div class="col yes">
+          <div class="label">Do</div>
+          <div class="quote">"Pastel balloon arch over a long banquet table set with pink scallop-edge plates, Cobham garden room"</div>
+          <div class="why">Names the actual subject, palette and venue.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 BRAND FACTS ============ -->
+<section class="chapter dark" id="contact">
+  <div class="container">
+    <div class="ch-eyebrow">Chapter 09 · Brand facts &amp; contact</div>
+    <h2 class="ch-title">Studio, contact,<br><em>the small print.</em></h2>
+
+    <div class="sub">
+      <div class="sub-eyebrow">A · The brand</div>
+      <h3 class="sub-title">Who we are, on paper.</h3>
+      <table class="tokens">
+        <tr><td><strong>Brand name</strong></td><td>River Fox Events</td></tr>
+        <tr><td><strong>Alternate name</strong></td><td>Lollipop Balloons (preserved in JSON-LD <code>alternateName</code>)</td></tr>
+        <tr><td><strong>Founder &amp; stylist</strong></td><td>Laura Hyde</td></tr>
+        <tr><td><strong>Brand &amp; web design</strong></td><td>Matthew Luxford</td></tr>
+        <tr><td><strong>Studio</strong></td><td>15 Apsley Rd, Horley, RH6 9RX</td></tr>
+        <tr><td><strong>Service area</strong></td><td>Surrey · South East · London</td></tr>
+        <tr><td><strong>Pricing anchor</strong></td><td>Events from £460</td></tr>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">B · Contact</div>
+      <h3 class="sub-title">How people reach us.</h3>
+      <table class="tokens">
+        <tr><td><strong>Phone</strong></td><td>07872 114191</td></tr>
+        <tr><td><strong>Email</strong></td><td>riverfoxevents@gmail.com</td></tr>
+        <tr><td><strong>Instagram</strong></td><td>@lollipop_balloonsx — historic handle, still active</td></tr>
+        <tr><td><strong>Website</strong></td><td>riverfoxevents.co.uk</td></tr>
+        <tr><td><strong>Never use</strong></td><td><code>hello@riverfoxevents.co.uk</code> — does not exist</td></tr>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-eyebrow">C · House formatting</div>
+      <h3 class="sub-title">The small punctuation rules.</h3>
+      <table class="tokens">
+        <tr><td>Em dash</td><td>— (preferred for slowing a sentence)</td></tr>
+        <tr><td>En dash</td><td>– (number ranges only: 900–1300 words)</td></tr>
+        <tr><td>Curly quotes</td><td>"like this" — never "straight"</td></tr>
+        <tr><td>Apostrophe</td><td>Children's, not Children's</td></tr>
+        <tr><td>Exclamation marks</td><td>Never</td></tr>
+        <tr><td>Pricing</td><td>"from £460" (lowercase from)</td></tr>
+        <tr><td>Town &amp; venue names</td><td>Always real, always spelled correctly</td></tr>
+      </table>
+    </div>
+
+    <div class="pull">Made to <em>linger</em> — long after the guests have gone home.</div>
+    <div class="pull-attr" style="color: var(--on-deep-soft);">House line · use sparingly</div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <span class="word">RIVER FOX EVENTS</span>
+    <span class="meta">Brand book v1 · 2026 · designed by Matthew Luxford</span>
+  </div>
+</footer>
+
+</body>
+</html>
