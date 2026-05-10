@@ -66,14 +66,12 @@
     max-width: var(--container);
     margin: 0 auto;
     padding: 18px var(--container-px);
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 32px;
-  }
-  .brand {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .brand {
     text-decoration: none;
     color: var(--ink);
   }
@@ -84,19 +82,11 @@
     letter-spacing: 0.22em;
     line-height: 1;
   }
-  .brand .sub {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-top: 4px;
-  }
   .nav-links {
     display: flex;
     flex-wrap: wrap;
     gap: 0 24px;
-    justify-content: flex-end;
+    justify-content: flex-start;
     list-style: none;
   }
   .nav-links a {
@@ -129,11 +119,11 @@
 
   /* ============ Sections ============ */
   section.chapter {
-    padding: 96px 0;
+    padding: 144px 0;
     border-bottom: 1px solid var(--hair-soft);
     scroll-margin-top: 92px;
   }
-  section.chapter:first-of-type { padding-top: 64px; }
+  section.chapter:first-of-type { padding-top: 96px; }
   section.chapter.warm  { background: var(--surface-warm); }
   section.chapter.pearl { background: var(--surface-pearl); }
   section.chapter.alt   { background: var(--surface-alt); }
@@ -538,8 +528,8 @@
     :root { --container-px: 28px; }
     section.chapter { padding: 64px 0; }
     .hero { padding: 80px 0 56px; }
-    .nav-inner { padding: 14px var(--container-px); grid-template-columns: 1fr; gap: 12px; }
-    .nav-links { justify-content: flex-start; gap: 0 16px; }
+    .nav-inner { padding: 14px var(--container-px); gap: 10px; }
+    .nav-links { gap: 0 16px; }
   }
 </style>
 </head>
@@ -550,7 +540,6 @@
   <div class="nav-inner">
     <a href="#top" class="brand">
       <span class="word">RIVER FOX EVENTS</span>
-      <span class="sub">BRAND BOOK · v1</span>
     </a>
     <ul class="nav-links">
       <li><a href="#essence">Brand</a></li>
