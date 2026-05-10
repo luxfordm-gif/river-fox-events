@@ -1,0 +1,1366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>River Fox Events — Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EFEDE6;
+    --bg-alt: #FCFBF8;
+    --bg-deep: #1E2421;
+    --bg-warm: #F1E3DF;
+    --bg-blush: #E7EEE9;
+    --bg-pearl: #F5EDE8;
+    --ink: #2B312B;
+    --ink-soft: #5B5F58;
+    --ink-faint: #9AA098;
+    --on-deep: #E9E6DD;
+    --accent: #E6B4A8;
+    --accent-warm: #C39083;
+    --accent-soft: #A5C0AD;
+    --hair: rgba(43,49,43,0.14);
+    --hair-soft: rgba(43,49,43,0.08);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: "DM Sans", system-ui, sans-serif;
+    font-size: 11.5px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ Print page setup — A4, no browser margins ============ */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 24mm 22mm 22mm;
+    page-break-after: always;
+    position: relative;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+  }
+  .page.dark { background: var(--bg-deep); color: var(--on-deep); }
+  .page.warm { background: var(--bg-warm); }
+  .page.alt  { background: var(--bg-alt); }
+  .page:last-child { page-break-after: auto; }
+
+  /* ============ Print break rules ============
+     Keeps section groups intact so they don't split across pages,
+     and prevents orphaned headers (eyebrow + h2 with no content under). */
+  .section-break,
+  .dodont,
+  .swatch,
+  table.tokens,
+  .type-row,
+  .scale-row,
+  .toc-row,
+  .principle,
+  .pull,
+  ul.editorial,
+  ol.editorial,
+  .three-col {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  h1.page-title,
+  h1.cover-title,
+  h2.section,
+  h3.subsection,
+  .section-eyebrow,
+  .chapter-mark {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  table.tokens tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* ============ Page header ============ */
+  .page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--hair);
+    padding-bottom: 10px;
+    margin-bottom: 32px;
+  }
+  .page-head .left,
+  .page-head .right {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .page.dark .page-head { border-bottom-color: rgba(233,230,221,0.2); }
+  .page.dark .page-head .left,
+  .page.dark .page-head .right { color: #97998F; }
+
+  /* ============ Section number ribbon (chapter opener look) ============ */
+  .chapter-mark {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: 14px;
+  }
+
+  h1.page-title {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 0.96;
+    letter-spacing: -0.025em;
+    margin: 0 0 28px;
+    max-width: 150mm;
+  }
+  h1.page-title em {
+    font-style: italic;
+    color: var(--accent-warm);
+    font-weight: 300;
+  }
+  .page.dark h1.page-title { color: var(--on-deep); }
+
+  /* Lead paragraph after page title */
+  .lead {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+    max-width: 145mm;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+  .page.dark .lead { color: var(--on-deep); }
+
+  /* ============ Section break — generous breathing space + rule ============ */
+  .section-break {
+    margin-top: 48px;
+    padding-top: 22px;
+    border-top: 1px solid var(--hair);
+  }
+  .section-break.first { margin-top: 28px; }
+  .page.dark .section-break { border-top-color: rgba(233,230,221,0.18); }
+
+  .section-eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .page.dark .section-eyebrow { color: #97998F; }
+
+  h2.section {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.018em;
+    margin: 0 0 16px;
+  }
+
+  h3.subsection {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 22px 0 8px;
+  }
+
+  p { margin: 0 0 12px; max-width: 165mm; }
+  p + p { margin-top: 12px; }
+
+  /* Editorial bullet lists — print style */
+  ul.editorial,
+  ol.editorial {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+    max-width: 165mm;
+  }
+  ul.editorial li,
+  ol.editorial li {
+    position: relative;
+    padding: 7px 0 7px 22px;
+    border-bottom: 1px solid var(--hair-soft);
+    font-size: 11.5px;
+    line-height: 1.55;
+  }
+  ul.editorial li:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 6px;
+    height: 1px;
+    background: var(--accent-warm);
+  }
+  ol.editorial { counter-reset: ed; }
+  ol.editorial li { padding-left: 32px; }
+  ol.editorial li:before {
+    counter-increment: ed;
+    content: counter(ed, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 7px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--accent-warm);
+  }
+  ul.editorial li strong,
+  ol.editorial li strong { font-weight: 600; color: var(--ink); }
+
+  /* Inline em block — used for principles, do/don't framing */
+  .principle {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -0.012em;
+    max-width: 150mm;
+    margin: 16px 0 18px;
+    padding-left: 18px;
+    border-left: 2px solid var(--accent-warm);
+  }
+  .principle em { font-style: italic; color: var(--accent-warm); font-weight: 300; }
+  .page.dark .principle { color: var(--on-deep); }
+
+  /* Pull quote — full width editorial */
+  .pull {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 1.05;
+    letter-spacing: -0.022em;
+    max-width: 160mm;
+    margin: 36px 0 12px;
+  }
+  .pull em { font-style: italic; color: var(--accent-warm); font-weight: 300; }
+  .page.dark .pull { color: var(--on-deep); }
+  .pull-attr {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* Two-column grid for short prose */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+
+  /* ============ Cover ============ */
+  h1.cover-title {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 300;
+    font-size: 130px;
+    line-height: 0.9;
+    letter-spacing: -0.038em;
+    margin: 18mm 0 8mm;
+  }
+  h1.cover-title em {
+    font-style: italic;
+    color: var(--accent-warm);
+    font-weight: 300;
+  }
+
+  /* ============ Colour swatches ============ */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .swatch .chip {
+    height: 110px;
+    border: 1px solid var(--hair);
+  }
+  .swatch .meta { padding: 10px 0 0; }
+  .swatch .name {
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+    font-size: 13px;
+    margin: 0 0 4px;
+  }
+  .swatch .hex {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    color: var(--ink);
+  }
+  .swatch .hsl {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .swatch .role {
+    font-size: 10px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+    line-height: 1.45;
+  }
+
+  /* ============ Type specimens ============ */
+  .type-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 130px;
+    gap: 18px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--hair-soft);
+  }
+  .type-row .lbl,
+  .type-row .meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .type-row .meta { text-align: right; letter-spacing: 0.06em; }
+  .specimen-serif { font-family: "Fraunces", Georgia, serif; font-weight: 300; letter-spacing: -0.015em; }
+  .specimen-sans  { font-family: "DM Sans", system-ui, sans-serif; }
+  .specimen-mono  { font-family: "JetBrains Mono", monospace; }
+
+  /* Spacing scale */
+  .scale-row {
+    display: grid;
+    grid-template-columns: 90px 70px 1fr;
+    gap: 18px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--hair-soft);
+    font-size: 11px;
+  }
+  .scale-row .name { font-weight: 600; }
+  .scale-row .val  { font-family: "JetBrains Mono", monospace; color: var(--ink-soft); font-size: 10.5px; }
+  .scale-row .bar  { height: 8px; background: var(--ink); border-radius: 2px; }
+
+  /* Reference table */
+  table.tokens { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 4px; }
+  table.tokens th, table.tokens td {
+    text-align: left;
+    padding: 10px 12px 10px 0;
+    border-bottom: 1px solid var(--hair-soft);
+    vertical-align: top;
+  }
+  table.tokens th {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    border-bottom: 1px solid var(--hair);
+  }
+  table.tokens code {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    color: var(--ink);
+  }
+  .page.dark table.tokens th { color: #97998F; border-bottom-color: rgba(233,230,221,0.2); }
+  .page.dark table.tokens td { border-bottom-color: rgba(233,230,221,0.12); }
+  .page.dark table.tokens code { color: var(--accent); }
+
+  /* ============ Do / Don't quote pairs (print-style, no boxes) ============ */
+  .dodont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    margin: 14px 0 6px;
+  }
+  .dodont .col .label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .dodont .col.no .label  { color: #a85a44; }
+  .dodont .col.yes .label { color: #5e7964; }
+  .dodont .quote {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.45;
+    letter-spacing: -0.005em;
+    padding-left: 14px;
+    border-left: 1.5px solid;
+  }
+  .dodont .col.no .quote  { border-color: #C39083; }
+  .dodont .col.yes .quote { border-color: #A5C0AD; }
+  .dodont .why {
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    margin-top: 8px;
+    padding-left: 14px;
+    line-height: 1.5;
+  }
+
+  /* Word lists — bigger, more typographic */
+  .wordlist {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: -0.005em;
+    max-width: 165mm;
+    margin: 8px 0 14px;
+  }
+  .wordlist .strike {
+    text-decoration: line-through;
+    text-decoration-color: var(--accent-warm);
+    text-decoration-thickness: 1px;
+    color: var(--ink-soft);
+  }
+  .wordlist em.note {
+    font-style: italic;
+    color: var(--accent-warm);
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: auto;
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--hair-soft);
+  }
+  .page.dark .footer { color: #97998F; border-top-color: rgba(233,230,221,0.18); }
+
+  /* TOC rows */
+  .toc-row {
+    display: grid;
+    grid-template-columns: 36px 1fr 30px;
+    gap: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--hair-soft);
+    align-items: baseline;
+  }
+  .toc-row .num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--accent-warm);
+    letter-spacing: 0.06em;
+  }
+  .toc-row .title {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: -0.012em;
+  }
+  .toc-row .pg {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+    text-align: right;
+  }
+  .toc-row .desc {
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    grid-column: 2 / 3;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  /* Section divider — for inside chapters with several sub-sections, when needed */
+  .glyph-divider {
+    text-align: center;
+    color: var(--accent-warm);
+    font-family: "Fraunces", serif;
+    font-size: 18px;
+    letter-spacing: 0.5em;
+    margin: 28px 0 24px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="page warm">
+  <div class="page-head">
+    <div class="left">River Fox Events</div>
+    <div class="right">Brand book · v1 · 2026</div>
+  </div>
+
+  <h1 class="cover-title">River Fox<br><em>Events</em></h1>
+
+  <div style="margin-top: 80mm; max-width: 130mm;">
+    <div class="chapter-mark" style="margin-bottom: 12px;">A reference for design, copy &amp; voice</div>
+    <p class="lead" style="margin: 0;">
+      Considered, design-led event styling — Surrey, the South East and London.
+      This book is the single source of truth for how the brand looks, sounds and behaves
+      across every page, image and conversation.
+    </p>
+  </div>
+
+  <div class="footer"><span>River Fox Events</span><span>riverfoxevents.co.uk</span></div>
+</section>
+
+<!-- ============ CONTENTS ============ -->
+<section class="page">
+  <div class="page-head">
+    <div class="left">Brand book</div>
+    <div class="right">Page 02</div>
+  </div>
+
+  <div class="chapter-mark">Contents</div>
+  <h1 class="page-title">What's <em>inside</em></h1>
+
+  <div class="toc-row">
+    <div class="num">01</div>
+    <div>
+      <div class="title">Brand essence</div>
+      <div class="desc">Who we are, who we serve, what we promise.</div>
+    </div>
+    <div class="pg">03</div>
+  </div>
+  <div class="toc-row">
+    <div class="num">02</div>
+    <div>
+      <div class="title">Voice &amp; tone</div>
+      <div class="desc">Calm, considered, design-led — and how to write that way.</div>
+    </div>
+    <div class="pg">04</div>
+  </div>
+  <div class="toc-row">
+    <div class="num">03</div>
+    <div>
+      <div class="title">Vocabulary — say this, not that</div>
+      <div class="desc">Banned filler, capped words, preferred trade-craft language.</div>
+    </div>
+    <div class="pg">05</div>
+  </div>
+  <div class="toc-row">
+    <div class="num">04</div>
+    <div>
+      <div class="title">The aesthetic gate</div>
+      <div class="desc">What Laura supplies, what she doesn't, and the floral rule.</div>
+    </div>
+    <div class="pg">06</div>
+  </div>
+  <div class="toc-row">
+    <div class="num">05</div>
+    <div>
+      <div class="title">Colour palette</div>
+      <div class="desc">Surfaces, ink and accents — with hex for Figma.</div>
+    </div>
+    <div class="pg">07</div>
+  </div>
+  <div class="toc-row">
+    <div class="num">06</div>
+    <div>
+      <div class="title">Typography</div>
+      <div class="desc">Fraunces · DM Sans · JetBrains Mono with the full type scale.</div>
+    </div>
+    <div class="pg">08</div>
+  </div>
+  <div class="toc-row">
+    <div class="num">07</div>
+    <div>
+      <div class="title">Layout, spacing &amp; radii</div>
+      <div class="desc">Containers, vertical rhythm, corner radii, breakpoints.</div>
+    </div>
+    <div class="pg">09</div>
+  </div>
+  <div class="toc-row">
+    <div class="num">08</div>
+    <div>
+      <div class="title">Imagery direction</div>
+      <div class="desc">Photo style, alt text, file naming, OG image specs.</div>
+    </div>
+    <div class="pg">10</div>
+  </div>
+  <div class="toc-row">
+    <div class="num">09</div>
+    <div>
+      <div class="title">Brand facts &amp; contact</div>
+      <div class="desc">Studio, contact lines, pricing anchor, formatting rules.</div>
+    </div>
+    <div class="pg">11</div>
+  </div>
+
+  <div class="footer"><span>River Fox Events</span><span>02 · Contents</span></div>
+</section>
+
+<!-- ============ 01 BRAND ESSENCE ============ -->
+<section class="page">
+  <div class="page-head">
+    <div class="left">01 — Brand essence</div>
+    <div class="right">Page 03</div>
+  </div>
+
+  <div class="chapter-mark">Chapter 01</div>
+  <h1 class="page-title">Considered,<br><em>design-led</em>, calm.</h1>
+
+  <p class="lead">
+    River Fox Events is Laura Hyde's luxury event styling studio in Surrey. Balloon
+    installations, backdrops, signage, light-up letters, props and tablescape architecture for
+    milestone moments — christenings, big birthdays, anniversaries, weddings, corporate launches
+    and brand activations.
+  </p>
+
+  <div class="section-break">
+    <div class="section-eyebrow">A · What we promise</div>
+    <h2 class="section">A room that feels considered<br>the moment guests walk in.</h2>
+    <p>
+      Scale and palette held together by one designer's eye, executed with the calm of someone who
+      has done it before. Hosts get something quietly extraordinary — never punchy, never novelty-led.
+    </p>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">B · Who we serve</div>
+    <h2 class="section">Milestones, mostly.</h2>
+    <ul class="editorial">
+      <li>Children's parties — first birthdays through to teenage milestones</li>
+      <li>Milestone celebrations — 30ths, 40ths, 50ths, 60ths and beyond</li>
+      <li>Weddings, christenings, baby showers</li>
+      <li>Corporate &amp; brand styling, award nights, product launches, shopfronts</li>
+      <li>Luxury picnics &amp; outdoor occasions</li>
+    </ul>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">C · Brand pillars</div>
+    <h2 class="section">Three things we hold to.</h2>
+    <ol class="editorial">
+      <li><strong>Design-led.</strong> Every brief begins with a render board — palette, scale and sightlines decided before a single balloon is inflated.</li>
+      <li><strong>Quiet luxury.</strong> Pastel and neutral palettes, generous scale, restraint. Never loud. Never themed for the sake of theme.</li>
+      <li><strong>Calmly delivered.</strong> Install morning is steady, not frantic. Hosts hand over the day and stop worrying about it.</li>
+    </ol>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">D · The rebrand</div>
+    <h2 class="section">From Lollipop Balloons to River Fox.</h2>
+    <p>
+      River Fox Events is the rebrand of Lollipop Balloons — the same designer, same inventory,
+      more grown-up positioning. The historic name is preserved in JSON-LD as
+      <code style="font-family:'JetBrains Mono',monospace; font-size:10.5px;">alternateName</code>
+      so legacy links and brand searches keep flowing through. Don't bury the heritage; don't lead
+      with it either.
+    </p>
+  </div>
+
+  <div class="footer"><span>River Fox Events</span><span>03 · Brand essence</span></div>
+</section>
+
+<!-- ============ 02 VOICE & TONE ============ -->
+<section class="page">
+  <div class="page-head">
+    <div class="left">02 — Voice &amp; tone</div>
+    <div class="right">Page 04</div>
+  </div>
+
+  <div class="chapter-mark">Chapter 02</div>
+  <h1 class="page-title">Quietly<br><em>authoritative.</em></h1>
+
+  <p class="lead">
+    Laura speaks as the designer, in first person, with the calm of someone who has done it before.
+    Sentences earn their length. Sensory detail does the work that adjectives can't.
+  </p>
+
+  <div class="section-break">
+    <div class="section-eyebrow">A · Six rules</div>
+    <h2 class="section">How Laura sounds.</h2>
+    <ol class="editorial">
+      <li><strong>First person, quietly authoritative.</strong> "I want the family to be able to read it in seconds." Not "we" — Laura speaks as the designer.</li>
+      <li><strong>Short, specific, occasionally fragmentary.</strong> "Beautiful bones, very little atmosphere." A two-word sentence is fine when the moment calls for it.</li>
+      <li><strong>Sensory detail over adjectives.</strong> Name the actual thing — "pink scallop-edge plates, a soft zebra-print salad plate on top" — not "beautiful tablescape".</li>
+      <li><strong>Trade-craft language used naturally.</strong> Sightlines, scale, the brief, sourcing, install morning, sign-off, render board. Trust the reader to keep up.</li>
+      <li><strong>Em dashes welcome. Exclamation marks never.</strong> Use the em dash to slow a sentence down, not the exclamation to speed it up.</li>
+      <li><strong>Quiet expertise, never sales.</strong> Explain <em>why</em> a choice was made; don't tell the reader it was excellent.</li>
+    </ol>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">B · Tone by surface</div>
+    <h2 class="section">Same voice, different rooms.</h2>
+    <table class="tokens">
+      <tr><th>Surface</th><th>Tone</th><th>Length</th></tr>
+      <tr><td>Hero headline</td><td>Considered, image-forward</td><td>4–8 words</td></tr>
+      <tr><td>Section body</td><td>Calm, descriptive, design-led</td><td>2–4 sentence paragraphs</td></tr>
+      <tr><td>Journal article</td><td>First-person Laura, sensory, reflective</td><td>900–1300 words</td></tr>
+      <tr><td>Form labels</td><td>Direct, unadorned</td><td>1–3 words, uppercase mono</td></tr>
+      <tr><td>CTAs</td><td>Invitational, never urgent</td><td>"Start planning →"</td></tr>
+      <tr><td>Email reply / DM</td><td>Warm, prompt, professional</td><td>3–5 lines</td></tr>
+      <tr><td>Instagram caption</td><td>Quietly confident, one design observation</td><td>2–4 lines</td></tr>
+    </table>
+  </div>
+
+  <div class="pull">
+    Calm, considered, <em>design-led.</em> Never punchy, never salesy.
+  </div>
+  <div class="pull-attr">House line · use sparingly</div>
+
+  <div class="footer"><span>River Fox Events</span><span>04 · Voice</span></div>
+</section>
+
+<!-- ============ 03 VOCABULARY ============ -->
+<section class="page">
+  <div class="page-head">
+    <div class="left">03 — Vocabulary</div>
+    <div class="right">Page 05</div>
+  </div>
+
+  <div class="chapter-mark">Chapter 03</div>
+  <h1 class="page-title">Say this,<br><em>not that.</em></h1>
+
+  <div class="section-break first">
+    <div class="section-eyebrow">A · Banned</div>
+    <h2 class="section">Never use.</h2>
+    <p style="color: var(--ink-soft); font-size: 11px;">Filler phrases and adjective-led praise that say nothing about the work. Strip on sight.</p>
+    <div class="wordlist">
+      <span class="strike">If you're looking for…</span> · <span class="strike">Look no further…</span> · <span class="strike">We pride ourselves on…</span> · <span class="strike">Our team of experts…</span> · <span class="strike">The perfect party</span> · <span class="strike">Stunning</span> · <span class="strike">Amazing</span> · <span class="strike">Wow factor</span> · <span class="strike">Show-stopping</span> · <span class="strike">Exclamation marks</span>
+    </div>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">B · Capped — restraint</div>
+    <h2 class="section">Use, but rarely.</h2>
+    <ul class="editorial">
+      <li><strong>Bespoke</strong> — banned from titles, max once per meta description</li>
+      <li><strong>Luxury</strong> — max twice across all page titles site-wide</li>
+      <li><strong>From £460</strong> — appears in max six page metas site-wide</li>
+    </ul>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">C · Preferred — house language</div>
+    <h2 class="section">The trade-craft we like.</h2>
+    <div class="wordlist">
+      Considered · Design-led · Calm · Restraint · Render board · Sightlines · Scale · Install morning · Sign-off · The brief · Sourcing · Tablescape · Threshold piece · Pastel &amp; neutral · Milestone
+    </div>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">D · Voice in the wild</div>
+    <h2 class="section">Don't, then do.</h2>
+
+    <div class="dodont">
+      <div class="col no">
+        <div class="label">Don't</div>
+        <div class="quote">"If you're looking for the perfect party, look no further — our team of experts will create a stunning, show-stopping event!"</div>
+        <div class="why">Filler stack, adjective-led praise, exclamation. Says nothing about the work. Sounds like every other party stylist.</div>
+      </div>
+      <div class="col yes">
+        <div class="label">Do</div>
+        <div class="quote">"A pastel palette, a 4m balloon install above the cake table, and a banquet of ten — held together by one designer's eye."</div>
+        <div class="why">Sensory specifics. Names the actual moves. Quietly states scale without claiming "wow factor".</div>
+      </div>
+    </div>
+
+    <div class="dodont" style="margin-top: 24px;">
+      <div class="col no">
+        <div class="label">Don't</div>
+        <div class="quote">"We're so excited to share this amazing styling we did last weekend!"</div>
+        <div class="why">"We" instead of Laura. "Amazing" carries no information. Reads like a sales post, not a designer's note.</div>
+      </div>
+      <div class="col yes">
+        <div class="label">Do</div>
+        <div class="quote">"Beautiful bones, very little atmosphere — a Cobham garden room asking for scale and a softer palette."</div>
+        <div class="why">Diagnoses the venue. Names the design tension. Reader can already picture the answer.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"><span>River Fox Events</span><span>05 · Vocabulary</span></div>
+</section>
+
+<!-- ============ 04 AESTHETIC GATE ============ -->
+<section class="page">
+  <div class="page-head">
+    <div class="left">04 — Aesthetic gate</div>
+    <div class="right">Page 06</div>
+  </div>
+
+  <div class="chapter-mark">Chapter 04</div>
+  <h1 class="page-title">What we <em>do.</em><br>What we don't.</h1>
+
+  <p class="lead">
+    Two filters protect the brand: the work we'll publish images of, and the inventory we actually
+    supply. If a topic needs an out-of-scope item to land, the topic is wrong — pick a different one.
+  </p>
+
+  <div class="section-break">
+    <div class="section-eyebrow">A · Auto-reject</div>
+    <h2 class="section">Never published.</h2>
+    <ul class="editorial">
+      <li>Soft play setups</li>
+      <li>Mascot or costume-character appearances</li>
+      <li>Disco lights, smoke machines, club-style lighting rigs</li>
+      <li>Phone parties / mobile gaming-truck parties</li>
+      <li>Plastic novelty tat, party-shop bunting, off-the-shelf themed kits</li>
+      <li>Anything cheap-feeling, punchy or novelty-led</li>
+    </ul>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">B · Discouraged but allowed</div>
+    <h2 class="section">Range extension, not the house style.</h2>
+    <p style="color: var(--ink-soft); font-size: 11px;">
+      Only published when there's a real, photographed event behind it — and the design moves
+      (palette, scale, restraint) lead, not the IP. Aim for ≤ 1 in 6 articles in this bucket.
+    </p>
+    <ul class="editorial">
+      <li>Character themes — Bluey, Mario, Disney, Paw Patrol, etc.</li>
+      <li>Neon palettes &amp; brighter colour schemes</li>
+    </ul>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">C · House style — auto-include</div>
+    <h2 class="section">The territory.</h2>
+    <ul class="editorial">
+      <li>Pastel and neutral palettes</li>
+      <li>Large-scale installs (4m+ backdrops, banquet tables of 10+)</li>
+      <li>Tablescape-led design</li>
+      <li>Milestone moments — christenings, big birthdays, anniversaries, baby showers, corporate</li>
+      <li>Render-led process pieces</li>
+      <li>Named real venues in Surrey, the South East and London</li>
+    </ul>
+  </div>
+
+  <div class="footer"><span>River Fox Events</span><span>06a · Aesthetic gate</span></div>
+</section>
+
+<!-- ============ 04 INVENTORY (continued) ============ -->
+<section class="page">
+  <div class="page-head">
+    <div class="left">04 — Aesthetic gate (cont'd)</div>
+    <div class="right">Page 06b</div>
+  </div>
+
+  <div class="chapter-mark">Chapter 04 · continued</div>
+  <h1 class="page-title">Laura's <em>toolkit.</em></h1>
+
+  <p class="lead">
+    The canonical in-and-out list. Articles, image direction and design-move language must build
+    only from the IN list. If a topic needs an OUT item to land, the topic is wrong — pick another.
+  </p>
+
+  <div class="section-break">
+    <div class="section-eyebrow">A · IN — Laura supplies</div>
+    <h2 class="section">In scope.</h2>
+    <ul class="editorial">
+      <li><strong>Balloons</strong> — arches, garlands, walls, hoops, towers, organic installs, centrepieces, threshold pieces, number stacks, jumbo &amp; helium</li>
+      <li><strong>Backdrops</strong> — fabric, sailboard (custom-painted with vinyl), themed photo walls, sequin walls, full themed installations</li>
+      <li><strong>Signage</strong> — painted boards, vinyl &amp; acrylic stickers on board, life-size cardboard cutouts, personalised acrylic and foam signs, custom welcome signs (weatherproof variants)</li>
+      <li><strong>Light-up letters &amp; numbers</strong>, number stacks</li>
+      <li><strong>Up-lighters</strong> — including waterproof for outdoor</li>
+      <li><strong>Themed props</strong> — 3D acrylic, plinths, risers, cake stands (NOT the cake)</li>
+      <li><strong>Faux florals</strong> — sparingly, as texture, never the headline</li>
+      <li><strong>Textiles</strong> — muslin, cheesecloth, drapery, linens, chair sashes &amp; covers</li>
+      <li><strong>Soft seats, low tables, cushions</strong> — kids' setups, picnics</li>
+    </ul>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">B · OUT — never frame as Laura's work</div>
+    <h2 class="section">Out of scope.</h2>
+    <ul class="editorial">
+      <li>Fresh florals, fresh foliage, any compositional flower-arranging</li>
+      <li>Vessels, glassware, vintage stoneware (the curated-tablescape category)</li>
+      <li>Candles or candle-holders</li>
+      <li>The cake itself (cake stands only)</li>
+      <li>Catering, food, drink, bar service</li>
+    </ul>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">C · The floral rule</div>
+    <h2 class="section">Laura is not a florist.</h2>
+    <p>
+      Never lead a design move with florals — fresh or faux. Faux stems are a quiet prop, never
+      the subject of an image, headline, pull quote or section title. If anything flower-shaped
+      appears on her displays, it's faux, ambient, and never the focal point.
+    </p>
+    <div class="principle">
+      If a topic seems to need florals to land, the topic is wrong for Laura — <em>pick a different one.</em>
+    </div>
+  </div>
+
+  <div class="footer"><span>River Fox Events</span><span>06b · Aesthetic gate</span></div>
+</section>
+
+<!-- ============ 05 COLOUR ============ -->
+<section class="page">
+  <div class="page-head">
+    <div class="left">05 — Colour palette</div>
+    <div class="right">Page 07</div>
+  </div>
+
+  <div class="chapter-mark">Chapter 05</div>
+  <h1 class="page-title">Moss, cream<br>&amp; <em>soft peach.</em></h1>
+
+  <p class="lead">
+    All colours are specified as HSL in code. The hex values below are for Figma. Never use pure
+    black — the brand ink is a softened charcoal.
+  </p>
+
+  <div class="section-break">
+    <div class="section-eyebrow">A · Surfaces</div>
+    <h2 class="section">Backgrounds.</h2>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="chip" style="background:#EFEDE6;"></div>
+        <div class="meta">
+          <div class="name">Background — cream</div>
+          <div class="hex">#EFEDE6</div>
+          <div class="hsl">hsl(47 22% 92%)</div>
+          <div class="role">Page background. Primary canvas.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#FCFBF8;"></div>
+        <div class="meta">
+          <div class="name">Surface alt — warm white</div>
+          <div class="hex">#FCFBF8</div>
+          <div class="hsl">hsl(45 36% 98%)</div>
+          <div class="role">Cards, form wrap, popovers.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#1E2421;"></div>
+        <div class="meta">
+          <div class="name">Surface deep — moss black</div>
+          <div class="hex">#1E2421</div>
+          <div class="hsl">hsl(144 9% 13%)</div>
+          <div class="role">Dark sections, footer, enquire band.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#F1E3DF;"></div>
+        <div class="meta">
+          <div class="name">Surface warm — peach tint</div>
+          <div class="hex">#F1E3DF</div>
+          <div class="hsl">hsl(14 38% 91%)</div>
+          <div class="role">Soft warm section background.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#E7EEE9;"></div>
+        <div class="meta">
+          <div class="name">Surface blush — sage tint</div>
+          <div class="hex">#E7EEE9</div>
+          <div class="hsl">hsl(137 18% 92%)</div>
+          <div class="role">Soft sage section background.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#E9E6DD;"></div>
+        <div class="meta">
+          <div class="name">On-deep — text on dark</div>
+          <div class="hex">#E9E6DD</div>
+          <div class="hsl">hsl(47 22% 89%)</div>
+          <div class="role">Body copy on surface deep.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">B · Ink</div>
+    <h2 class="section">Text.</h2>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="chip" style="background:#2B312B;"></div>
+        <div class="meta">
+          <div class="name">Ink — primary</div>
+          <div class="hex">#2B312B</div>
+          <div class="hsl">hsl(120 6% 18%)</div>
+          <div class="role">Headlines &amp; body. Softened charcoal — never pure black.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#5B5F58;"></div>
+        <div class="meta">
+          <div class="name">Ink soft — meta</div>
+          <div class="hex">#5B5F58</div>
+          <div class="hsl">hsl(100 4% 36%)</div>
+          <div class="role">Eyebrows, captions, secondary copy.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#9AA098;"></div>
+        <div class="meta">
+          <div class="name">Ink faint — placeholder</div>
+          <div class="hex">#9AA098</div>
+          <div class="hsl">hsl(100 4% 61%)</div>
+          <div class="role">Form placeholders, disabled states.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">C · Accents</div>
+    <h2 class="section">Highlights.</h2>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="chip" style="background:#E6B4A8;"></div>
+        <div class="meta">
+          <div class="name">Accent — soft peach</div>
+          <div class="hex">#E6B4A8</div>
+          <div class="hsl">hsl(12 55% 78%)</div>
+          <div class="role">Primary CTA fill, focus ring.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#C39083;"></div>
+        <div class="meta">
+          <div class="name">Accent warm — dusty peach</div>
+          <div class="hex">#C39083</div>
+          <div class="hsl">hsl(12 35% 64%)</div>
+          <div class="role">Italic highlights, ticker glyphs.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#A5C0AD;"></div>
+        <div class="meta">
+          <div class="name">Accent soft — sage</div>
+          <div class="hex">#A5C0AD</div>
+          <div class="hsl">hsl(137 18% 70%)</div>
+          <div class="role">Secondary accent. Use sparingly.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"><span>River Fox Events</span><span>07 · Colour</span></div>
+</section>
+
+<!-- ============ 06 TYPOGRAPHY ============ -->
+<section class="page">
+  <div class="page-head">
+    <div class="left">06 — Typography</div>
+    <div class="right">Page 08</div>
+  </div>
+
+  <div class="chapter-mark">Chapter 06</div>
+  <h1 class="page-title">Fraunces · DM Sans<br><em>JetBrains Mono.</em></h1>
+
+  <div class="section-break first">
+    <div class="section-eyebrow">A · The three families</div>
+    <h2 class="section">What each one is for.</h2>
+    <div class="three-col" style="margin-top: 16px;">
+      <div>
+        <div class="specimen-serif" style="font-size: 56px; line-height: 1; letter-spacing: -0.02em;">Aa</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 16px; margin-top: 10px;">Fraunces</div>
+        <div style="font-size: 10.5px; color: var(--ink-soft); line-height: 1.55; margin-top: 4px;">
+          Display serif — headlines, hero, pull-quotes, italic highlights.<br>
+          Weights: 300, 400, 500 (italics 300, 400).<br>
+          Default 300 with letter-spacing −0.015em.
+        </div>
+      </div>
+      <div>
+        <div class="specimen-sans" style="font-size: 56px; line-height: 1;">Aa</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 16px; margin-top: 10px;">DM Sans</div>
+        <div style="font-size: 10.5px; color: var(--ink-soft); line-height: 1.55; margin-top: 4px;">
+          UI sans — body, buttons, nav, form inputs.<br>
+          Weights: 300, 400, 500, 600.<br>
+          Body baseline: 15px / line-height 1.55.
+        </div>
+      </div>
+      <div>
+        <div class="specimen-mono" style="font-size: 56px; line-height: 1;">Aa</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 16px; margin-top: 10px;">JetBrains Mono</div>
+        <div style="font-size: 10.5px; color: var(--ink-soft); line-height: 1.55; margin-top: 4px;">
+          Mono — eyebrows, labels, meta.<br>
+          Weight: 400 (occasional 500/600).<br>
+          Always uppercase, letter-spacing 0.18–0.22em.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">B · Type scale</div>
+    <h2 class="section">Sizes in use.</h2>
+
+    <div class="type-row">
+      <div class="lbl">Hero H1</div>
+      <div class="specimen-serif" style="font-size: 56px; line-height: 0.95;">Considered styling</div>
+      <div class="meta">Fraunces 300 · clamp(56–120px) · 7vw</div>
+    </div>
+    <div class="type-row">
+      <div class="lbl">H2 section</div>
+      <div class="specimen-serif" style="font-size: 40px; line-height: 1.05;">Children's parties</div>
+      <div class="meta">Fraunces 300 · clamp(40–80px) · ~4.2vw</div>
+    </div>
+    <div class="type-row">
+      <div class="lbl">H3 subhead</div>
+      <div class="specimen-serif" style="font-size: 24px; line-height: 1.18; font-weight: 500;">A note on faux florals</div>
+      <div class="meta">Fraunces 500 · 26–34px</div>
+    </div>
+    <div class="type-row">
+      <div class="lbl">Reveal quote</div>
+      <div class="specimen-serif" style="font-size: 50px; line-height: 0.92; letter-spacing: -0.04em;">made to <em style="color:var(--accent-warm);">linger</em></div>
+      <div class="meta">Fraunces 300 · 56–200px</div>
+    </div>
+    <div class="type-row">
+      <div class="lbl">Body</div>
+      <div class="specimen-sans" style="font-size: 15px; line-height: 1.55;">Calm, considered, design-led — the tone we hold across every page.</div>
+      <div class="meta">DM Sans 400 · 15px</div>
+    </div>
+    <div class="type-row">
+      <div class="lbl">Article H2</div>
+      <div class="specimen-serif" style="font-size: 26px; line-height: 1.18; font-weight: 500;">When the garden is the venue</div>
+      <div class="meta">Fraunces 500 · 26–34px</div>
+    </div>
+    <div class="type-row">
+      <div class="lbl">Eyebrow</div>
+      <div class="specimen-mono" style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft);">Children's parties · 01</div>
+      <div class="meta">Mono 400 · 11px · 0.18em</div>
+    </div>
+    <div class="type-row">
+      <div class="lbl">Form label</div>
+      <div class="specimen-mono" style="font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600;">Your name</div>
+      <div class="meta">Mono 600 · 9.5px · 0.22em</div>
+    </div>
+    <div class="type-row">
+      <div class="lbl">Nav link</div>
+      <div class="specimen-sans" style="font-size: 13px; letter-spacing: 0.01em;">Children's parties</div>
+      <div class="meta">DM Sans 400 · 13px</div>
+    </div>
+    <div class="type-row">
+      <div class="lbl">Button</div>
+      <div class="specimen-sans" style="font-size: 13px; font-weight: 500;">Start planning →</div>
+      <div class="meta">DM Sans 500 · 13px</div>
+    </div>
+  </div>
+
+  <div class="footer"><span>River Fox Events</span><span>08 · Typography</span></div>
+</section>
+
+<!-- ============ 07 LAYOUT ============ -->
+<section class="page">
+  <div class="page-head">
+    <div class="left">07 — Layout, spacing &amp; radii</div>
+    <div class="right">Page 09</div>
+  </div>
+
+  <div class="chapter-mark">Chapter 07</div>
+  <h1 class="page-title">Generous space.<br>Tight <em>rhythm.</em></h1>
+
+  <div class="section-break first">
+    <div class="section-eyebrow">A · Containers &amp; sections</div>
+    <h2 class="section">The page frame.</h2>
+    <table class="tokens">
+      <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+      <tr><td><code>container max</code></td><td><code>1440px</code></td><td>Max page width</td></tr>
+      <tr><td><code>container padding</code></td><td><code>56px</code> · 32px @960 · 28px @640</td><td>Horizontal padding</td></tr>
+      <tr><td><code>section padding (desktop)</code></td><td><code>120px 0</code></td><td>Default vertical rhythm</td></tr>
+      <tr><td><code>section padding (1024+)</code></td><td><code>96px 0</code></td><td>Mid-desktop tighter rhythm</td></tr>
+      <tr><td><code>section padding (mobile)</code></td><td><code>56px 0</code></td><td>≤760px</td></tr>
+      <tr><td><code>laptop section</code></td><td><code>80px 0</code></td><td>768–1366px</td></tr>
+      <tr><td><code>nav padding</code></td><td><code>14px 56px 18px</code></td><td>Fixed top nav</td></tr>
+      <tr><td><code>scroll-padding-top</code></td><td><code>80px</code></td><td>Anchor offset (mobile / tablet)</td></tr>
+    </table>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">B · Spacing scale</div>
+    <h2 class="section">Tailwind defaults — used as-is.</h2>
+    <div class="scale-row"><div class="name">space-1</div><div class="val">4px</div><div class="bar" style="width: 4px;"></div></div>
+    <div class="scale-row"><div class="name">space-2</div><div class="val">8px</div><div class="bar" style="width: 8px;"></div></div>
+    <div class="scale-row"><div class="name">space-3</div><div class="val">12px</div><div class="bar" style="width: 12px;"></div></div>
+    <div class="scale-row"><div class="name">space-4</div><div class="val">16px</div><div class="bar" style="width: 16px;"></div></div>
+    <div class="scale-row"><div class="name">space-6</div><div class="val">24px</div><div class="bar" style="width: 24px;"></div></div>
+    <div class="scale-row"><div class="name">space-8</div><div class="val">32px</div><div class="bar" style="width: 32px;"></div></div>
+    <div class="scale-row"><div class="name">space-12</div><div class="val">48px</div><div class="bar" style="width: 48px;"></div></div>
+    <div class="scale-row"><div class="name">space-14</div><div class="val">56px</div><div class="bar" style="width: 56px;"></div></div>
+    <div class="scale-row"><div class="name">space-20</div><div class="val">80px</div><div class="bar" style="width: 80px;"></div></div>
+    <div class="scale-row"><div class="name">space-24</div><div class="val">96px</div><div class="bar" style="width: 96px;"></div></div>
+    <div class="scale-row"><div class="name">space-30</div><div class="val">120px</div><div class="bar" style="width: 120px;"></div></div>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">C · Corner radii</div>
+    <h2 class="section">Roundedness.</h2>
+    <table class="tokens">
+      <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+      <tr><td><code>radius-sm</code></td><td><code>4px</code></td><td>Tight chips, hairline elements</td></tr>
+      <tr><td><code>radius-md</code></td><td><code>6px</code></td><td>Buttons</td></tr>
+      <tr><td><code>radius-lg</code></td><td><code>8px</code></td><td>Default — cards</td></tr>
+      <tr><td><code>form row</code></td><td><code>10px</code></td><td>Form input rows</td></tr>
+      <tr><td><code>form-wrap</code></td><td><code>14px</code> · 12px mobile</td><td>Enquire form container</td></tr>
+      <tr><td><code>image (mobile)</code></td><td><code>12px</code></td><td>Editorial reveal images on phones</td></tr>
+      <tr><td><code>pill</code></td><td><code>9999px</code></td><td>Status dots, chips</td></tr>
+    </table>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">D · Breakpoints</div>
+    <h2 class="section">Where the layout shifts.</h2>
+    <table class="tokens">
+      <tr><th>Name</th><th>Range</th><th>Notes</th></tr>
+      <tr><td>Mobile</td><td>≤ 640px</td><td>Container 28px · sections 56px · body bumps 17.5px</td></tr>
+      <tr><td>Tablet</td><td>641 – 760px</td><td>Stack to single column · image first in reveals</td></tr>
+      <tr><td>Laptop</td><td>768 – 1366px</td><td>Container 8vw · sections 80px · hero h1 ≤ 72px</td></tr>
+      <tr><td>Desktop</td><td>≥ 1367px</td><td>Container 56px · max 1440px · sections 120px</td></tr>
+    </table>
+  </div>
+
+  <div class="footer"><span>River Fox Events</span><span>09 · Layout</span></div>
+</section>
+
+<!-- ============ 08 IMAGERY ============ -->
+<section class="page">
+  <div class="page-head">
+    <div class="left">08 — Imagery direction</div>
+    <div class="right">Page 10</div>
+  </div>
+
+  <div class="chapter-mark">Chapter 08</div>
+  <h1 class="page-title">Editorial,<br>natural <em>light.</em></h1>
+
+  <div class="section-break first">
+    <div class="section-eyebrow">A · House style</div>
+    <h2 class="section">The visual anchor.</h2>
+    <div class="principle">
+      Photorealistic editorial event styling photography, soft natural daylight, pastel and neutral
+      palette, considered composition, balloon installations and tablescapes in real UK venue
+      interiors, no people or faces, no text, no logos, shot on medium format with shallow depth of field.
+    </div>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">B · Subject &amp; composition</div>
+    <h2 class="section">What's in the frame.</h2>
+    <ul class="editorial">
+      <li>Lead with installations Laura actually supplies — balloons, backdrops, signage, light-up letters, plinths, tablescape props</li>
+      <li>Faux florals can sit in frame as quiet texture, never as the subject</li>
+      <li>Subject centred so a square or 4:3 crop still leads with the subject (hero strips and OG cards crop hard)</li>
+      <li>No people, no faces, no logos, no on-image text</li>
+      <li>Natural daylight feel even when retouched. Shadows soft, never theatrical</li>
+    </ul>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">C · File &amp; size targets</div>
+    <h2 class="section">What to ship.</h2>
+    <table class="tokens">
+      <tr><th>Use</th><th>Format · size</th><th>Max KB</th><th>Loading</th></tr>
+      <tr><td>Hero</td><td>WebP · 1600×900</td><td>500 KB</td><td>eager · fetchpriority high</td></tr>
+      <tr><td>Gallery / supporting</td><td>WebP · ~1200px wide</td><td>200 KB</td><td>lazy</td></tr>
+      <tr><td>Thumbnail</td><td>WebP · 800×800</td><td>100 KB</td><td>lazy</td></tr>
+      <tr><td>OG card</td><td>WebP · 1200×630</td><td>200 KB</td><td>—</td></tr>
+    </table>
+    <p style="font-size: 10.5px; color: var(--ink-soft); margin-top: 8px;">
+      Lossy WebP at quality 75–85. <code style="font-family:'JetBrains Mono',monospace;">srcset</code> with at least three sizes so smaller viewports don't pull the desktop file.
+    </p>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">D · Filenames &amp; alt text</div>
+    <h2 class="section">One image, one filename, one alt.</h2>
+    <ul class="editorial">
+      <li>The rule is per <em>file</em>, not per placement</li>
+      <li>Filename describes content, not the page topic — <code>cobham-balloon-arch-pastel.webp</code>, not <code>journal-image-1.webp</code></li>
+      <li>Alt text describes what's <em>in</em> the image, not the page or the brand. Max 125 characters</li>
+      <li>Two different files must not open their alt with the same five words</li>
+      <li>Each page needs a per-page OG image in <code>public/og/</code> overriding the global fallback</li>
+    </ul>
+
+    <h3 class="subsection">Alt text — don't, then do.</h3>
+    <div class="dodont">
+      <div class="col no">
+        <div class="label">Don't</div>
+        <div class="quote">"Children's party styling in Surrey by River Fox Events"</div>
+        <div class="why">Brand-led, page-led, says nothing about the photo. Repeated across files = duplicate content.</div>
+      </div>
+      <div class="col yes">
+        <div class="label">Do</div>
+        <div class="quote">"Pastel balloon arch over a long banquet table set with pink scallop-edge plates, Cobham garden room"</div>
+        <div class="why">Names the actual subject, palette and venue. Each photo gets its own specific alt.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"><span>River Fox Events</span><span>10 · Imagery</span></div>
+</section>
+
+<!-- ============ 09 BRAND FACTS ============ -->
+<section class="page dark">
+  <div class="page-head">
+    <div class="left">09 — Brand facts &amp; contact</div>
+    <div class="right">Page 11</div>
+  </div>
+
+  <div class="chapter-mark">Chapter 09</div>
+  <h1 class="page-title">Studio, contact,<br><em>the small print.</em></h1>
+
+  <div class="section-break first">
+    <div class="section-eyebrow">A · The brand</div>
+    <h2 class="section" style="color: var(--on-deep);">Who we are, on paper.</h2>
+    <table class="tokens">
+      <tr><td><strong>Brand name</strong></td><td>River Fox Events</td></tr>
+      <tr><td><strong>Alternate name</strong></td><td>Lollipop Balloons (preserved in JSON-LD <code>alternateName</code>)</td></tr>
+      <tr><td><strong>Founder &amp; stylist</strong></td><td>Laura Hyde</td></tr>
+      <tr><td><strong>Brand &amp; web design</strong></td><td>Matthew Luxford</td></tr>
+      <tr><td><strong>Studio</strong></td><td>15 Apsley Rd, Horley, RH6 9RX</td></tr>
+      <tr><td><strong>Service area</strong></td><td>Surrey · South East · London</td></tr>
+      <tr><td><strong>Pricing anchor</strong></td><td>Events from £460 (use this number consistently)</td></tr>
+    </table>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">B · Contact</div>
+    <h2 class="section" style="color: var(--on-deep);">How people reach us.</h2>
+    <table class="tokens">
+      <tr><td><strong>Phone</strong></td><td>07872 114191</td></tr>
+      <tr><td><strong>Email</strong></td><td>riverfoxevents@gmail.com</td></tr>
+      <tr><td><strong>Instagram</strong></td><td>@lollipop_balloonsx — historic handle, still active</td></tr>
+      <tr><td><strong>Website</strong></td><td>riverfoxevents.co.uk</td></tr>
+      <tr><td><strong>Never use</strong></td><td style="color: var(--accent);">hello@riverfoxevents.co.uk — that address does not exist</td></tr>
+    </table>
+  </div>
+
+  <div class="section-break">
+    <div class="section-eyebrow">C · House formatting</div>
+    <h2 class="section" style="color: var(--on-deep);">The small punctuation rules.</h2>
+    <table class="tokens">
+      <tr><td>Em dash</td><td>—  (preferred for slowing a sentence)</td></tr>
+      <tr><td>En dash</td><td>– (number ranges only: 900–1300 words)</td></tr>
+      <tr><td>Curly quotes</td><td>"like this" — never "straight"</td></tr>
+      <tr><td>Apostrophe</td><td>Children's, not Children's</td></tr>
+      <tr><td>Exclamation marks</td><td>Never</td></tr>
+      <tr><td>Pricing</td><td>"from £460" (lowercase "from", no space)</td></tr>
+      <tr><td>Town &amp; venue names</td><td>Always real, always spelled correctly</td></tr>
+    </table>
+  </div>
+
+  <div class="pull">Made to <em>linger</em> — long after the guests have gone home.</div>
+  <div class="pull-attr" style="color:#97998F;">House line · use sparingly</div>
+
+  <div class="footer"><span>River Fox Events · Brand book v1</span><span>11 · End</span></div>
+</section>
+
+</body>
+</html>
