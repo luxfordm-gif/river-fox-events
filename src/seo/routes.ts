@@ -132,9 +132,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/childrens-parties",
-    title: "Children's Party Stylist Surrey | River Fox Events",
+    title: "Children's Party Styling in Surrey | River Fox Events",
     description:
-      "Themed children's parties Surrey parents actually relax at. Full-room styling, balloon installations, tablescapes — every detail handled by Laura.",
+      "Design-led styling for first birthdays through to 7th and 8th — balloon installs, themed backdrops and tablescape design across Surrey. From £460.",
     breadcrumbName: "Children's Parties",
     service: {
       serviceType: "Children's Party Styling",
@@ -188,9 +188,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-cobham",
-    title: "Considered Event Styling in Cobham | River Fox Events",
+    title: "Party Styling in Cobham, Surrey | River Fox Events",
     description:
-      "Studio-led styling at Painshill Park, Stoke d'Abernon and across Cobham. Statement parties and milestones from £460, personally by Laura.",
+      "Design-led party styling in Cobham — balloon installations, backdrops, signage and tablescape design for milestone celebrations, by Laura.",
     breadcrumbName: "Party Styling Cobham",
     service: {
       serviceType: "Event Styling",
@@ -216,9 +216,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-esher",
-    title: "Esher Party & Event Stylist | River Fox Events",
+    title: "Party Styling in Esher, Surrey | River Fox Events",
     description:
-      "Personally designed celebrations at Sandown Park, Claygate and across Esher. Considered parties and milestones, installed and managed by Laura.",
+      "Design-led party styling in Esher — balloon installations, backdrops, signage and tablescape design for first birthdays, milestones and weddings.",
     breadcrumbName: "Party Styling Esher",
     service: {
       serviceType: "Event Styling",
@@ -258,9 +258,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-guildford",
-    title: "Guildford Party & Event Stylist | River Fox Events",
+    title: "Party Styling in Guildford, Surrey | River Fox Events",
     description:
-      "Ceiling drapery, balloon installations and milestone parties in Guildford from £460. Personally designed and installed by Laura.",
+      "Design-led party styling in Guildford — balloon installations, backdrops, signage and tablescape design for first birthdays, milestones and weddings.",
     breadcrumbName: "Party Styling Guildford",
     service: {
       serviceType: "Event Styling",
@@ -272,9 +272,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-walton-on-thames",
-    title: "Walton-on-Thames Party & Event Stylist | River Fox Events",
+    title: "Party Styling in Walton-on-Thames | River Fox Events",
     description:
-      "Country-house and at-home celebrations at Oatlands, Hersham and across Walton-on-Thames. Considered styling personally designed by Laura.",
+      "Design-led party styling in Walton-on-Thames — balloon installations, backdrops, signage and tablescape design for first birthdays, milestones and weddings.",
     breadcrumbName: "Party Styling Walton-on-Thames",
     service: {
       serviceType: "Event Styling",
@@ -286,9 +286,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-dorking",
-    title: "Party Stylist Dorking Surrey | River Fox Events",
+    title: "Party Styling in Dorking, Surrey | River Fox Events",
     description:
-      "Editorial event styling around Denbies, Westcott and the Surrey Hills near Dorking. Layered, considered celebrations personally designed by Laura.",
+      "Design-led party styling in Dorking — balloon installations, backdrops, signage and tablescape design for milestone celebrations across the Surrey Hills.",
     breadcrumbName: "Party Styling Dorking",
     service: {
       serviceType: "Event Styling",
@@ -324,9 +324,9 @@ export const ROUTES: RouteSEO[] = [
   // towns, anchored by East Grinstead (closest Sussex town).
   {
     path: "/party-styling-east-grinstead",
-    title: "Party Stylist East Grinstead Sussex | River Fox Events",
+    title: "Party Styling in East Grinstead | River Fox Events",
     description:
-      "Full-service styling delivered to East Grinstead and across West Sussex. From design through to clear-down, personally handled by Laura.",
+      "Full-service event styling across East Grinstead and the South East — balloon installs, backdrops and tablescape design for milestone celebrations.",
     breadcrumbName: "Party Styling East Grinstead",
     service: {
       serviceType: "Event Styling",
@@ -367,9 +367,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-crawley",
-    title: "Crawley Party & Event Stylist | River Fox Events",
+    title: "Party Styling in Crawley, West Sussex | River Fox Events",
     description:
-      "Easy reach across West Sussex from Crawley — full-service event styling for celebrations from concept to clear-down, personally by Laura.",
+      "Full-service event styling in Crawley — balloon installations, backdrops, signage and tablescape design for first birthdays, milestones and corporate events.",
     breadcrumbName: "Party Styling Crawley",
     service: {
       serviceType: "Event Styling",
@@ -411,9 +411,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-haywards-heath",
-    title: "Haywards Heath Party & Event Stylist | River Fox Events",
+    title: "Party Styling in Haywards Heath | River Fox Events",
     description:
-      "Studio-led styling across mid-Sussex, from Haywards Heath to Lindfield and Cuckfield. Full-service event styling from £460, by Laura.",
+      "Full-service event styling in Haywards Heath and across mid-Sussex — balloon installs, backdrops and tablescape design for milestone celebrations.",
     breadcrumbName: "Party Styling Haywards Heath",
     service: {
       serviceType: "Event Styling",
@@ -477,9 +477,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-forest-row",
-    title: "Party Stylist Forest Row East Sussex | River Fox Events",
+    title: "Party Styling in Forest Row, East Sussex | River Fox Events",
     description:
-      "East Sussex country-house events, fully managed from setup to breakdown — including Forest Row, Hartfield and Ashdown Forest, by Laura.",
+      "Full-service event styling in Forest Row and the Ashdown Forest — balloon installs, backdrops and tablescape design for milestone celebrations.",
     breadcrumbName: "Party Styling Forest Row",
     service: {
       serviceType: "Event Styling",
@@ -521,9 +521,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/party-styling-brighton-and-hove",
-    title: "Party Stylist Brighton & Hove | River Fox Events",
+    title: "Party Styling in Brighton & Hove | River Fox Events",
     description:
-      "A short drive from Brighton — full-service event styling across Brighton, Hove and East Sussex. From design to breakdown, by Laura.",
+      "Full-service event styling across Brighton and Hove — balloon installs, backdrops and tablescape design for first birthdays, milestones and christenings.",
     breadcrumbName: "Party Styling Brighton & Hove",
     service: {
       serviceType: "Event Styling",
