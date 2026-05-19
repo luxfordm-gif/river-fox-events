@@ -126,8 +126,8 @@
   }
   @media (min-width: 1440px) {
     .rfx-hero-edl-track {
-      max-width: 1440px;
-      padding: 0 56px;
+      max-width: 1600px;
+      padding: 0 40px;
     }
     /* Wider viewports get more breathing room below the editorial row
        so the cream background reads as space, not a hairline edge.
@@ -485,16 +485,6 @@
     transition: --hover-zoom 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   .exp-card:hover .exp-img-wrap { --hover-zoom: 1.12; }
-  .exp-card .exp-img-wrap::after {
-    content: "";
-    position: absolute; inset: 0; z-index: 3;
-    background: linear-gradient(180deg, hsl(20 15% 12% / 0) 40%, hsl(20 15% 12% / 0.45) 75%, hsl(20 15% 12% / 0.78) 100%);
-    opacity: 0;
-    transition: opacity .5s ease;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-  }
-  .exp-card:hover .exp-img-wrap::after { opacity: 1; }
   .exp-card .exp-cta {
     position: absolute; left: 22px; bottom: 18px; z-index: 4;
     color: hsl(var(--background));

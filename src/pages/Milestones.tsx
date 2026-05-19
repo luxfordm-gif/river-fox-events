@@ -20,7 +20,7 @@ import {
 
 import imgHero from "@/assets/hero-2.webp";
 import imgIntro from "@/assets/luxury-party-styling-occasions-surrey.webp";
-import imgOccasions from "@/assets/christening-blessing-styling-surrey.webp";
+import imgOccasions from "@/assets/safari-second-birthday-tablescape-surrey.webp";
 
 const FAQS = [
   {
@@ -97,7 +97,7 @@ const Milestones = () => {
           id="ms-intro"
           imageSide="right"
           image={imgIntro}
-          alt="Milestone birthday styling in Surrey by River Fox Events — refined balloon installation with florals and personalised signage at a private venue"
+          alt="Milestone birthday styling in Surrey by River Fox Events — refined balloons with florals and personalised signage"
           tone="ph-warm"
           hideImageOnMobile
           imageScale={1.07}
@@ -125,7 +125,7 @@ const Milestones = () => {
           id="ms-occasions"
           imageSide="left"
           image={imgOccasions}
-          alt="Christening and naming day styling in Surrey by River Fox Events — soft pastel installation with personalised signage and floral detail"
+          alt="Safari second birthday tablescape in Surrey by River Fox Events — Anaya arch, giraffe, balloon centrepiece and light-up two"
           tone="ph-blush"
           headline={
             <>
