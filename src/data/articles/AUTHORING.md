@@ -1,6 +1,6 @@
 # Journal authoring guide — River Fox Events
 
-Rules for writing any new article in `src/data/articles/`. Claude must follow this every time it drafts, edits, or reviews journal copy. Mark reviews before anything is committed.
+Rules for writing any new article in `src/data/articles/`. Claude must follow this every time it drafts, edits, or reviews journal copy. Matt reviews before anything is committed.
 
 ---
 
@@ -38,11 +38,11 @@ The rebrand, studio milestones, business-level reflections. Use sparingly.
 
 Claude must not put words in Laura's mouth that imply experience she may not have had. Specifically:
 
-- "I'm seeing more requests for X" — only if grounded in cited industry signal, OR flagged to Mark with "is this true for Laura right now?" before drafting.
+- "I'm seeing more requests for X" — only if grounded in cited industry signal, OR flagged to Matt with "is this true for Laura right now?" before drafting.
 - "I styled a [specific event] last [month]" — only in case studies, with real photos.
 - "Most of my clients are asking for…" — never. Too specific to assert without Laura's input.
 
-When in doubt, swap a personal claim for an industry observation: *"I'm noticing across Surrey stylists that…"* is safer than *"I'm noticing in my own bookings that…"* unless Mark has confirmed the latter.
+When in doubt, swap a personal claim for an industry observation: *"I'm noticing across Surrey stylists that…"* is safer than *"I'm noticing in my own bookings that…"* unless Matt has confirmed the latter.
 
 ---
 
@@ -67,6 +67,13 @@ Filler phrases — never use:
 - "The perfect party"
 - "Stunning", "amazing", "wow factor", "show-stopping"
 
+Trade / legal jargon — never use when writing about a character or branded theme (Wonka, Bluey, Disney, Encanto, Paw Patrol, etc.):
+- "IP", "the IP"
+- "Licensed", "unlicensed", "licensing", "licensed product"
+- Any framing that contrasts a custom-built prop against a "licensed" alternative
+
+It's industry-side language that pulls the article out of Laura's voice and into stylist-trade-talk, and it raises a legal frame the brand doesn't need to invite. Refer to it as "the theme" or name the specific theme. Custom-built props are "painted in-studio" or "built in-studio" — the design point (palette discipline, personalisation, restraint) lands without needing to name the licensing question at all.
+
 Capped vocabulary (per `CLAUDE.md`):
 - "Bespoke" — banned from titles, max once per meta description
 - "Luxury" — max twice across all page titles site-wide
@@ -87,7 +94,7 @@ This is a two-tier filter. Some things are off-limits entirely. Others are allow
 - Anything cheap-feeling, punchy, or novelty-led
 
 **Discouraged but allowed — only when Laura has actually styled it and the result is genuinely beautiful:**
-- Character themes (Bluey, Mario Bros, Paw Patrol, Disney, etc.) — Laura has done these and can do them well, but they're not the brand's default territory. Lead with the *design moves* (palette, scale, restraint) rather than the IP.
+- Character themes (Bluey, Mario Bros, Paw Patrol, Disney, etc.) — Laura has done these and can do them well, but they're not the brand's default territory. Lead with the *design moves* (palette, scale, restraint) rather than the theme itself. Do not use "IP" / "licensed" language — see Banned vocabulary in section 1.
 - Neon palettes / brighter colour schemes — Laura has done these. Treat them as range-extension pieces, not the house style.
 
 For both: **only proceed if there's a real, photographed event to write about.** Don't invent or trend-chase into these zones. Aim for no more than 1 in every 6 articles to fall into the "discouraged but allowed" bucket — the journal should still read predominantly as pastel, considered, milestone-led.
@@ -138,11 +145,11 @@ Reference inventory (canonical): the four service pages on [lollipopballoonssurr
 
 If a topic seems to need florals to land, the topic is wrong for Laura — pick a different topic. Don't write a piece where florals are doing the heavy lifting and try to skirt around it.
 
-If a proposed topic falls in the auto-reject list, propose a different one. If it falls in the discouraged list, flag it explicitly to Mark with the reason it's worth making an exception for, and let him decide.
+If a proposed topic falls in the auto-reject list, propose a different one. If it falls in the discouraged list, flag it explicitly to Matt with the reason it's worth making an exception for, and let him decide.
 
 ---
 
-## 3. Article structure — the pattern Mark likes
+## 3. Article structure — the pattern Matt likes
 
 Every article follows this shape. Use the existing components in `src/components/article/`.
 
@@ -236,7 +243,7 @@ Validate every new entry against [Google Rich Results Test](https://search.googl
 
 ---
 
-## 8. Pre-flight checklist (Claude runs this before handing the draft to Mark)
+## 8. Pre-flight checklist (Claude runs this before handing the draft to Matt)
 
 - [ ] Voice — re-read; any "we", "stunning", "perfect", or exclamation marks? Strip them.
 - [ ] Aesthetic gate — does every reference (theme, palette, prop) pass? If not, swap.
@@ -248,4 +255,4 @@ Validate every new entry against [Google Rich Results Test](https://search.googl
 - [ ] Uniqueness — first 5 words of title and meta don't match any other page on the site?
 - [ ] Build — `npm run build` runs clean and `dist/journal/[slug]/index.html` looks right?
 
-If any box is unchecked, fix before showing Mark.
+If any box is unchecked, fix before showing Matt.
