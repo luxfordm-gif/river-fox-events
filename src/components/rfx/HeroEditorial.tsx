@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
-import hero1 from "@/assets/hero-1.webp";
-import hero2 from "@/assets/hero-2.webp";
-import hero3 from "@/assets/hero-3.webp";
+import hero1 from "@/assets/baby-shower-baby-in-bloom-arch-surrey.webp";
+import hero2 from "@/assets/jungle-elephant-tablescape-surrey.webp";
+import hero3 from "@/assets/fairy-first-kayla-table-setting-surrey.webp";
 
 /**
  * Three-image editorial layout for laptop + desktop.
@@ -16,23 +16,23 @@ import hero3 from "@/assets/hero-3.webp";
 const IMAGES = [
   {
     src: hero1,
-    alt: "Pastel children's party tablescape with balloon installation in Cobham Surrey by River Fox Events",
+    alt: "Dusty blue and white balloon arch with 'Baby in Bloom' backdrop and foliage for a Surrey baby shower by River Fox Events",
     widthPct: 30,
-    aspect: "900 / 1125",
+    aspect: "760 / 1000",
     speed: 0.18,
   },
   {
     src: hero2,
-    alt: "Editorial tablescape detail with peonies and silk ribbons for a Weybridge celebration by River Fox Events",
+    alt: "Jungle theme children's birthday styling in Surrey by River Fox Events — elephant centrepiece, monstera runner and balloons",
     widthPct: 36,
-    aspect: "900 / 1237",
+    aspect: "760 / 1088",
     speed: 0.08,
   },
   {
     src: hero3,
-    alt: "A close-up of a Surrey celebration — peach roses, silk ribbons and candlelight on a dressed table, styled by River Fox Events",
+    alt: "Pink and lilac fairy first birthday styling in Surrey by River Fox Events — Kayla backdrop, light-up one and mossy runner",
     widthPct: 30,
-    aspect: "900 / 1195",
+    aspect: "760 / 1000",
     speed: 0.18,
   },
 ];
@@ -123,7 +123,7 @@ const HeroEditorial = () => {
       <div className="rfx-hero-edl-track">
         <div
           className="flex items-center justify-center"
-          style={{ gap: 12 }}
+          style={{ gap: 16 }}
         >
           {IMAGES.map((img, i) => (
             <div

@@ -30,6 +30,10 @@ dist-ssr
 
 _salvaged-from-old-folder/
 
+# Source image inbox — original PNG/JPEG drops that get converted into src/assets/.
+# Keep originals on disk for re-cropping; only commit the optimised WebPs.
+_incoming/
+
 # Working artifacts from scripts/audit-location-copy.ts — regenerate via
 # `npx tsx scripts/audit-location-copy.ts`. Not committed.
 location-copy-audit.csv

@@ -18,10 +18,10 @@ import {
   upsertJsonLd,
 } from "@/seo/headTags";
 
-import imgHero from "@/assets/cp-hero-frame.webp";
-import imgCelebrations from "@/assets/cp-celebrations.webp";
+import imgHero from "@/assets/pastel-safari-anaya-two-wild-ballroom-surrey.webp";
+import imgCelebrations from "@/assets/dinosaur-ayaan-arch-surrey.webp";
 import imgOccasions from "@/assets/luxury-party-styling-occasions-surrey.webp";
-import imgThemes from "@/assets/dinosaur-themed-birthday-party-surrey.webp";
+import imgThemes from "@/assets/willy-wonka-savanna-chocolate-arch-surrey.webp";
 
 const ChildrensParties = () => {
   useFadeUp();
@@ -51,7 +51,7 @@ const ChildrensParties = () => {
       <main>
         <ServiceHero
           image={imgHero}
-          imageAlt="Considered children's birthday party styling by River Fox Events Surrey — peach balloon installation, peonies and dressed cake table at a Cobham celebration"
+          imageAlt="Ballroom safari birthday styling in Surrey by River Fox Events — Anaya, Two Wild arch, balloon pillars and light-up two"
           headingId="cp-hero-heading"
           lines={[
             <>Themed children's parties,</>,
@@ -71,7 +71,7 @@ const ChildrensParties = () => {
           id="cp-celebrations"
           imageSide="right"
           image={imgCelebrations}
-          alt="Children's birthday party styling in Surrey by River Fox Events — tailored pastel balloon installation with organic textures and soft floral accents"
+          alt="Dinosaur theme children's birthday styling in Surrey by River Fox Events — Ayaan name arch, sage balloons and crate props"
           tone="ph-warm"
           hideImageOnMobile
           imageScale={1.07}
@@ -100,7 +100,7 @@ const ChildrensParties = () => {
           id="cp-occasions"
           imageSide="left"
           image={imgOccasions}
-          alt="Elegant birthday party styling in Surrey by River Fox Events — ivory, gold and soft blush balloon installation with 'Happy Birthday' signage and floral accents"
+          alt="Elegant birthday party styling in Surrey by River Fox Events — ivory, gold and blush balloon installation with floral accents"
           tone="ph-blush"
           headline={
             <>
@@ -125,7 +125,7 @@ const ChildrensParties = () => {
           id="cp-themes"
           imageSide="right"
           image={imgThemes}
-          alt="Sage green dinosaur themed children's birthday party styling in Surrey by River Fox Events — personalised Ayaan name sign, balloon garland, dinosaur cut-outs, wooden crates and lush tropical foliage"
+          alt="Willy Wonka theme birthday styling in Surrey by River Fox Events — Savanna arch, chocolate bar prop and lollipop foils"
           tone="ph-warm"
           headline={
             <>

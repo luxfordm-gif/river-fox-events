@@ -1,6 +1,6 @@
-# Weekly journal article brief
+# New journal article brief
 
-Paste this whole document at the start of a new Claude session each week. It tells Claude what to research, how to pick a topic, and what to produce. The companion file `AUTHORING.md` (in this folder) defines tone, structure, and SEO standards — Claude must read both.
+Paste this whole document at the start of a new Claude session when starting a new article. It tells Claude what to research, how to pick a topic, and what to produce. The companion file `AUTHORING.md` (in this folder) defines tone, structure, and SEO standards — Claude must read both.
 
 ---
 
@@ -51,8 +51,8 @@ From the Y-tagged themes in Step 1, recommend ONE topic that:
 
 **The fabrication check (mandatory before proposing the topic):**
 - The angle must NOT depend on Laura having styled a specific event unless that event is real and photographed.
-- The angle must NOT make personal claims about Laura's bookings or clients ("most of my clients ask for…", "I'm seeing in my own enquiries…") unless Mark has confirmed those claims are accurate.
-- If the natural framing requires a personal claim, either reframe as an industry observation ("Across Surrey stylists I'm seeing…") or flag the claim to Mark with the question: *"is this true for Laura right now?"* before drafting.
+- The angle must NOT make personal claims about Laura's bookings or clients ("most of my clients ask for…", "I'm seeing in my own enquiries…") unless Matt has confirmed those claims are accurate.
+- If the natural framing requires a personal claim, either reframe as an industry observation ("Across Surrey stylists I'm seeing…") or flag the claim to Matt with the question: *"is this true for Laura right now?"* before drafting.
 
 **The floral check (mandatory):**
 - Laura does not arrange flowers. If the topic angle leans on florals as the headline design move (e.g. "trending tablescape florals", "floral arch ideas", "centrepiece styling"), reframe so Laura's contribution is the setting around the florals — balloons, drapery, linens, candles, vessels, lighting, signage. See `AUTHORING.md` §2 "What Laura does and doesn't design — the floral rule" for the full rule. Floral-led articles get rejected at topic stage, not fixed in draft.
@@ -63,15 +63,15 @@ From the Y-tagged themes in Step 1, recommend ONE topic that:
 - Target keyword + 2 secondary keywords
 - 3 title options (≤ 60 chars each, ending `| River Fox Events`)
 - 1-paragraph synopsis of the angle Laura would take
-- Any personal claims that need Mark's confirmation, listed explicitly
+- Any personal claims that need Matt's confirmation, listed explicitly
 
-**Mark approves the topic, title, and any flagged claims before any article is drafted.**
+**Matt approves the topic, title, and any flagged claims before any article is drafted.**
 
 ---
 
 ## Step 3 — Draft the article
 
-Once Mark approves the topic, follow `AUTHORING.md` in full. Specifically:
+Once Matt approves the topic, follow `AUTHORING.md` in full. Specifically:
 - Voice rules (§1) — Laura, first person
 - Aesthetic gate (§2) — every reference must pass
 - Structure (§3) — TL;DR → prose → image → pull quote → prose → inline CTA → method section → "Why I love this part" → `— Laura`
@@ -102,7 +102,7 @@ Save outputs as WebP under 500 KB (hero/OG) or 200 KB (thumbnail). Filenames des
 
 ## Step 5 — SEO package & routes.ts entry
 
-Per `AUTHORING.md` §7. Before handing the draft to Mark, prepare:
+Per `AUTHORING.md` §7. Before handing the draft to Matt, prepare:
 - Slug, title, meta description
 - `src/seo/routes.ts` entry with `ogImage` set to the per-page WebP
 - JSON-LD `Article` schema fields
@@ -110,9 +110,9 @@ Per `AUTHORING.md` §7. Before handing the draft to Mark, prepare:
 
 ---
 
-## Step 6 — Hand to Mark for review
+## Step 6 — Hand to Matt for review
 
-Show Mark, in order:
+Show Matt, in order:
 1. The competitor research table (§1)
 2. The recommended topic + 3 title options (§2)
 3. **Wait for sign-off**
@@ -120,9 +120,9 @@ Show Mark, in order:
 5. The proposed images (§4)
 6. The SEO package (§5)
 
-**Do not commit anything until Mark approves the full package.**
+**Do not commit anything until Matt approves the full package.**
 
-After Mark approves: write the file to `src/data/articles/[slug].tsx`, update `routes.ts`, run `npm run build`, spot-check `dist/journal/[slug]/index.html`, then push to main.
+After Matt approves: write the file to `src/data/articles/[slug].tsx`, update `routes.ts`, run `npm run build`, spot-check `dist/journal/[slug]/index.html`, then push to main.
 
 ---
 
@@ -130,7 +130,7 @@ After Mark approves: write the file to `src/data/articles/[slug].tsx`, update `r
 
 - Topic + research: Monday
 - Draft + images: Tuesday/Wednesday
-- Mark reviews: Thursday
+- Matt reviews: Thursday
 - Edit + ship: Friday
 
 If a week is light on competitor signal worth borrowing, write a method/process piece from Laura's recent work instead — those are often the strongest articles anyway (see `two-wild-safari-second-birthday.tsx` and `from-design-to-delivery.tsx`).

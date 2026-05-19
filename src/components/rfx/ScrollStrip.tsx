@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
-import hero1 from "@/assets/hero-1.webp";
-import hero2 from "@/assets/hero-2.webp";
-import hero3 from "@/assets/hero-3.webp";
+import hero1 from "@/assets/baby-shower-baby-in-bloom-arch-surrey.webp";
+import hero2 from "@/assets/jungle-elephant-tablescape-surrey.webp";
+import hero3 from "@/assets/fairy-first-kayla-table-setting-surrey.webp";
 import expChildren from "@/assets/dinosaur-childrens-party-styling-surrey.webp";
-import expMilestone from "@/assets/christening-blessing-styling-surrey.webp";
+import expMilestone from "@/assets/40th-birthday-rose-gold-marquee-surrey.webp";
 import expCorporate from "@/assets/corporate-gala-styling-surrey.webp";
 import cpCelebrations from "@/assets/cp-celebrations.webp";
 
@@ -12,13 +12,13 @@ import cpCelebrations from "@/assets/cp-celebrations.webp";
 // where relevant. Never empty, never "image"/"photo". Update alt strings
 // here whenever the source imagery changes.
 const STRIP_IMAGES = [
-  { src: hero1, alt: "Pastel children's party tablescape with balloon installation in Cobham Surrey by River Fox Events", aspect: "900 / 1125" },
-  { src: expMilestone, alt: "Christening blessing ceremony styling in Surrey by River Fox Events — pink gold and champagne balloon installation with floral arch", aspect: "820 / 1093" },
-  { src: hero2, alt: "Editorial tablescape detail with peonies and silk ribbons for a Weybridge celebration by River Fox Events", aspect: "900 / 1237" },
-  { src: expChildren, alt: "Sage green dinosaur themed children's birthday party styling in Surrey by River Fox Events — personalised name sign and balloon installation", aspect: "820 / 1089" },
-  { src: hero3, alt: "A close-up of a Surrey celebration — peach roses, silk ribbons and candlelight on a dressed table, styled by River Fox Events", aspect: "900 / 1195" },
+  { src: hero1, alt: "Dusty blue and white balloon arch with 'Baby in Bloom' backdrop for a Surrey baby shower by River Fox Events", aspect: "760 / 1000" },
+  { src: expMilestone, alt: "Rose gold 40th birthday light-up marquee numbers with blush and chrome balloon garland styled in Surrey by River Fox Events", aspect: "760 / 980" },
+  { src: hero2, alt: "Jungle theme children's birthday styling in Surrey by River Fox Events — elephant centrepiece, monstera runner and balloons", aspect: "760 / 1088" },
+  { src: expChildren, alt: "Sage green dinosaur children's birthday styling in Surrey by River Fox Events — name sign and balloon installation", aspect: "820 / 1089" },
+  { src: hero3, alt: "Pink and lilac fairy first birthday styling in Surrey by River Fox Events — Kayla backdrop, light-up one and mossy runner", aspect: "760 / 1000" },
   { src: expCorporate, alt: "Corporate gala event styling in Surrey by River Fox Events — navy blue gold cream balloon garland and branded backdrop", aspect: "820 / 1093" },
-  { src: cpCelebrations, alt: "Children's birthday party styling in Surrey by River Fox Events — tailored pastel balloon installation with organic textures and soft floral accents", aspect: "1468 / 1920" },
+  { src: cpCelebrations, alt: "Children's birthday styling in Surrey by River Fox Events — tailored pastel balloon installation with floral accents", aspect: "1468 / 1920" },
 ];
 
 /**

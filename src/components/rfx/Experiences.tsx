@@ -1,6 +1,6 @@
 import { useRef, type ReactNode } from "react";
 import expChildren from "@/assets/dinosaur-childrens-party-styling-surrey.webp";
-import expMilestone from "@/assets/christening-blessing-styling-surrey.webp";
+import expMilestone from "@/assets/40th-birthday-rose-gold-marquee-surrey.webp";
 import expCorporate from "@/assets/corporate-gala-styling-surrey.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
 
@@ -10,7 +10,7 @@ const ITEMS = [
     body:
       "Immersive themed parties designed to feel magical for children — and completely effortless for you.",
     img: expChildren,
-    alt: "Sage green dinosaur themed children's birthday party styling in Surrey by River Fox Events — personalised Ayaan name sign, balloon garland and tropical foliage",
+    alt: "Sage green dinosaur children's birthday styling in Surrey by River Fox Events — Ayaan name sign and tropical foliage",
     href: "/childrens-parties",
     tone: "",
   },
@@ -19,7 +19,7 @@ const ITEMS = [
     body:
       "Refined styling for life's most meaningful moments — christenings, baby showers, milestone birthdays and anniversaries, each designed to feel personal and effortlessly brought together.",
     img: expMilestone,
-    alt: "Christening blessing ceremony styling in Surrey by River Fox Events — pink gold champagne and pearl balloon installation with floral arch and pink backdrop",
+    alt: "Rose gold 40th birthday light-up marquee with blush and chrome balloon installation in Surrey by River Fox Events",
     href: "/milestone-celebrations",
     tone: "ph-warm",
   },
@@ -28,7 +28,7 @@ const ITEMS = [
     body:
       "Design-led installations for launches, openings and activations. Trusted by P&G, The Range, Foxhills and more.",
     img: expCorporate,
-    alt: "Corporate gala event styling in Surrey by River Fox Events — navy gold and cream balloon installation with branded backdrop for Children in Need gala dinner",
+    alt: "Corporate gala styling in Surrey by River Fox Events — navy, gold and cream balloons with branded Children in Need backdrop",
     href: "/corporate-brand-styling",
     tone: "ph-blush",
     extraZoom: 1.25,
