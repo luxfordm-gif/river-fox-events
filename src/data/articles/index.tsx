@@ -5,6 +5,7 @@ import FromDesignToDeliveryBody from "./from-design-to-delivery";
 import ChildrensPartyThemes2026Body from "./childrens-party-themes-2026";
 import TwoWildSafariSecondBirthdayBody from "./two-wild-safari-second-birthday";
 import GardenMilestoneStylingSurreyBody from "./garden-milestone-styling-surrey";
+import WillyWonkaFifthBirthdaySavannaBody from "./willy-wonka-fifth-birthday-savanna";
 
 import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
 import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
@@ -12,6 +13,7 @@ import designToDeliveryCard from "@/assets/journal/from-design-to-delivery/dinos
 import childrensThemesCard from "@/assets/jungle-themed-childrens-party-styling-surrey.webp";
 import twoWildCard from "@/assets/journal/two-wild-safari-second-birthday/two-wild-safari-feature-backdrop-concept-horley-surrey.webp";
 import gardenMilestoneCard from "@/assets/journal/garden-milestone-styling-surrey/garden-milestone-balloon-arch.webp";
+import willyWonkaCard from "@/assets/willy-wonka-savanna-chocolate-arch-surrey.webp";
 
 /**
  * Master list of articles. Order = newest first.
@@ -25,6 +27,27 @@ import gardenMilestoneCard from "@/assets/journal/garden-milestone-styling-surre
  *      `relatedSlugs`, and vice versa.
  */
 export const ARTICLES: Article[] = [
+  {
+    slug: "willy-wonka-fifth-birthday-savanna",
+    title: "Savanna's Willy Wonka fifth birthday",
+    subtitle:
+      "A Willy Wonka fifth in a Surrey home — purple-and-gold ticket panel, painted cocoa-bar plinth and one carefully designed threshold.",
+    teaser:
+      "A themed fifth doesn't have to mean shop-bought. Savanna's Willy Wonka party — designed around the child, not the IP.",
+    metaDescription:
+      "Savanna's Willy Wonka fifth birthday in Surrey — purple-and-gold ticket arch, lollipop swirls and a personalised cocoa-bar plinth. Case study from Laura.",
+    publishedAt: "2026-05-19",
+    readMinutes: 4,
+    relatedSlugs: [
+      "childrens-party-themes-2026",
+      "two-wild-safari-second-birthday",
+      "from-design-to-delivery",
+    ],
+    cardImage: willyWonkaCard,
+    ogImage: "/og/willy-wonka-fifth-birthday-savanna.webp",
+    category: "Case study",
+    Body: WillyWonkaFifthBirthdaySavannaBody,
+  },
   {
     slug: "garden-milestone-styling-surrey",
     title: "When the garden is the venue",

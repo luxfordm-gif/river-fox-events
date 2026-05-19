@@ -136,6 +136,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Design-led styling for first birthdays through to 7th and 8th — balloon installs, themed backdrops and tablescape design across Surrey. From £460.",
     breadcrumbName: "Children's Parties",
+    ogImage: "/og/childrens-parties-surrey.webp",
     service: {
       serviceType: "Children's Party Styling",
       areaServed: ["Surrey", "Cobham", "Weybridge", "Esher", "Oxshott", "London"],
@@ -565,6 +566,16 @@ export const ROUTES: RouteSEO[] = [
   // up the /journal/* prefix and emits the 3-level chain into static HTML
   // using the same script id as Article.tsx, so the runtime injection and
   // the static one don't double up.
+  {
+    path: "/journal/willy-wonka-fifth-birthday-savanna",
+    title: "Savanna's Willy Wonka Fifth Birthday in Surrey | River Fox Events",
+    description:
+      "Savanna's Willy Wonka fifth birthday in Surrey — purple-and-gold ticket arch, lollipop swirls and a personalised cocoa-bar plinth. Case study from Laura.",
+    breadcrumbName: "Savanna's Willy Wonka fifth birthday",
+    ogImage: "/og/willy-wonka-fifth-birthday-savanna.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+  },
   {
     path: "/journal/garden-milestone-styling-surrey",
     title: "When the garden is the venue | River Fox Events",
