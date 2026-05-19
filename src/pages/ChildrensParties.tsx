@@ -78,7 +78,6 @@ const ChildrensParties = () => {
           hoverImage={imgCelebrationsHover}
           hoverAlt="Close-up portrait of Ayaan's dinosaur arch — sage and cream balloons with tropical foliage and personalised signage by River Fox Events"
           tone="ph-warm"
-          hideImageOnMobile
           imageScale={1.07}
           headline={
             <>

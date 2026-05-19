@@ -13,7 +13,9 @@ import hero3 from "@/assets/fairy-first-kayla-table-setting-surrey.webp";
  * SEO REMINDER: keep alt strings descriptive — theme, palette, Surrey
  * town and "River Fox Events" must always be present.
  */
-const IMAGES = [
+// Exported so the mobile ScrollStrip can render the same 3 images in the
+// same order — keeps the mobile carousel in sync with the desktop fan.
+export const HERO_EDITORIAL_IMAGES = [
   {
     src: hero1,
     alt: "Dusty blue and white balloon arch with 'Baby in Bloom' backdrop and foliage for a Surrey baby shower by River Fox Events",
@@ -71,7 +73,7 @@ const HeroEditorial = () => {
 
       imgRefs.current.forEach((img, i) => {
         if (!img) return;
-        const speed = IMAGES[i].speed;
+        const speed = HERO_EDITORIAL_IMAGES[i].speed;
         const y = reduceMotion ? 0 : clamped * -30 * speed * 3.3;
         img.style.transform = `translate3d(0, ${y}px, 0) scale(1.02)`;
       });
@@ -125,7 +127,7 @@ const HeroEditorial = () => {
           className="flex items-center justify-center"
           style={{ gap: 16 }}
         >
-          {IMAGES.map((img, i) => (
+          {HERO_EDITORIAL_IMAGES.map((img, i) => (
             <div
               key={i}
               className="relative overflow-hidden ph ph-warm rounded-[14px] rfx-rounded-img"

@@ -19,6 +19,7 @@ import {
 } from "@/seo/headTags";
 
 import imgHero from "@/assets/river-fox-events-corporate-atrium-twin-balloon-arches.webp";
+import imgHeroMobile from "@/assets/river-fox-events-pudsey-charity-gala-dinner-navy-gold.webp";
 import imgIntro from "@/assets/river-fox-events-theatre-125-anniversary-marquee-wide.webp";
 import imgIntroHover from "@/assets/river-fox-events-theatre-125-anniversary-balloon-close-up.webp";
 import imgWhat from "@/assets/river-fox-events-nxtgen-corporate-entrance-columns-side-angle.webp";
@@ -114,6 +115,8 @@ const CorporateAndBrand = () => {
         <ServiceHero
           image={imgHero}
           imageAlt="Twin balloon arches framing a corporate atrium entrance — sculptural installation in cream and brand tones styled by River Fox Events for a Surrey corporate event"
+          mobileImage={imgHeroMobile}
+          mobileImageAlt="Navy and gold balloon installation at the Pudsey charity gala dinner — sophisticated event styling by River Fox Events"
           headingId="cb-hero-heading"
           lines={[
             <>Corporate event styling</>,
@@ -137,7 +140,6 @@ const CorporateAndBrand = () => {
           hoverImage={imgIntroHover}
           hoverAlt="Close-up of cream, gold and pearl balloon detail beside the 125 anniversary marquee on a theatre staircase styled by River Fox Events"
           tone="ph-warm"
-          hideImageOnMobile
           imageScale={1.07}
           headline={
             <>
