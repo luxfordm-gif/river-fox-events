@@ -4,6 +4,11 @@ const cobham = makeLocation({
   slug: "cobham",
   cityName: "Cobham",
   region: "Surrey",
+  images: {
+    heroFan: ["pastel-safari-anaya", "40th-rose-gold", "jungle-elephant"],
+    galleryMain: "wonka-chocolate-arch",
+    galleryThumbs: ["baby-shower-bloom", "veuve-disco", "naming-harvey-daisy"],
+  },
   uniqueSeoTitle: "Considered Event Styling in Cobham | River Fox Events",
   uniqueSeoDescription:
     "Studio-led styling at Painshill Park, Stoke d'Abernon and across Cobham. Statement parties and milestones from £460, personally by Laura.",

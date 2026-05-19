@@ -4,6 +4,11 @@ const waltonOnThames = makeLocation({
   slug: "walton-on-thames",
   cityName: "Walton-on-Thames",
   region: "Surrey",
+  images: {
+    heroFan: ["pastel-safari-anaya", "fairy-kayla", "veuve-disco"],
+    galleryMain: "baby-shower-bloom",
+    galleryThumbs: ["naming-harvey-daisy", "40th-rose-gold", "jungle-elephant"],
+  },
   uniqueSeoTitle: "Walton-on-Thames Party & Event Stylist | River Fox Events",
   uniqueSeoDescription:
     "Country-house and at-home celebrations at Oatlands, Hersham and across Walton-on-Thames. Considered styling personally designed by Laura.",

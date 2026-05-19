@@ -4,6 +4,11 @@ const crawley = makeLocation({
   slug: "crawley",
   cityName: "Crawley",
   region: "West Sussex",
+  images: {
+    heroFan: ["stubbs-gender-reveal", "naming-harvey-daisy", "jungle-elephant"],
+    galleryMain: "baby-shower-bloom",
+    galleryThumbs: ["fairy-kayla", "40th-rose-gold", "wonka-chocolate-arch"],
+  },
   seoTitleRegion: "West Sussex",
   uniqueSeoTitle: "Crawley Party & Event Stylist | River Fox Events",
   uniqueSeoDescription:

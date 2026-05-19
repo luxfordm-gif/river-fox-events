@@ -4,6 +4,11 @@ const lewes = makeLocation({
   slug: "lewes",
   cityName: "Lewes",
   region: "East Sussex",
+  images: {
+    heroFan: ["pastel-safari-anaya", "stubbs-gender-reveal", "baby-shower-bloom"],
+    galleryMain: "wonka-chocolate-arch",
+    galleryThumbs: ["dinosaur-ayaan", "naming-harvey-daisy", "40th-rose-gold"],
+  },
   seoTitleRegion: "East Sussex",
   uniqueSeoTitle: "Editorial Event Styling Lewes | River Fox Events",
   uniqueSeoDescription:

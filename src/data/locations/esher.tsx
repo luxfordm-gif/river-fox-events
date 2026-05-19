@@ -4,6 +4,11 @@ const esher = makeLocation({
   slug: "esher",
   cityName: "Esher",
   region: "Surrey",
+  images: {
+    heroFan: ["stubbs-gender-reveal", "pastel-safari-anaya", "jungle-elephant"],
+    galleryMain: "wonka-chocolate-arch",
+    galleryThumbs: ["fairy-kayla", "40th-rose-gold", "veuve-disco"],
+  },
   uniqueSeoTitle: "Esher Party & Event Stylist | River Fox Events",
   uniqueSeoDescription:
     "Personally designed celebrations at Sandown Park, Claygate and across Esher. Considered parties and milestones, installed and managed by Laura.",

@@ -3,6 +3,12 @@ import hero1 from "@/assets/hero-1.webp";
 import hero2 from "@/assets/hero-2.webp";
 import hero3 from "@/assets/hero-3.webp";
 
+type FanImage = { src: string; alt: string };
+type LocationHeroFanProps = {
+  /** Optional per-location override — order is [left, centre, right]. */
+  images?: [FanImage, FanImage, FanImage];
+};
+
 /**
  * Tablet/desktop hero imagery for location pages — three portrait
  * images stacked on top of each other on first paint, then animated
@@ -16,8 +22,24 @@ import hero3 from "@/assets/hero-3.webp";
  * Honours `prefers-reduced-motion`: jumps straight to the final fanned
  * state with no transition.
  */
-const LocationHeroFan = () => {
+const LocationHeroFan = ({ images }: LocationHeroFanProps = {}) => {
   const [fanned, setFanned] = useState(false);
+
+  const fallback: [FanImage, FanImage, FanImage] = [
+    {
+      src: hero1,
+      alt: "Pastel children's party tablescape with balloon installation styled by River Fox Events",
+    },
+    {
+      src: hero2,
+      alt: "Editorial tablescape detail with peonies and silk ribbons styled by River Fox Events",
+    },
+    {
+      src: hero3,
+      alt: "Close-up of peach roses, silk ribbons and candlelight on a dressed celebration table by River Fox Events",
+    },
+  ];
+  const [left, centre, right] = images ?? fallback;
 
   useEffect(() => {
     const reduceMotion = window.matchMedia(
@@ -75,8 +97,8 @@ const LocationHeroFan = () => {
       >
         {/* Left back — tilts and slides left */}
         <img
-          src={hero1}
-          alt="Pastel children's party tablescape with balloon installation in Cobham Surrey by River Fox Events"
+          src={left.src}
+          alt={left.alt}
           className={sideImg}
           style={{
             ...sideStyle,
@@ -94,8 +116,8 @@ const LocationHeroFan = () => {
 
         {/* Right back — tilts and slides right */}
         <img
-          src={hero3}
-          alt="A close-up of a Surrey celebration — peach roses, silk ribbons and candlelight on a dressed table, styled by River Fox Events"
+          src={right.src}
+          alt={right.alt}
           className={sideImg}
           style={{
             ...sideStyle,
@@ -114,8 +136,8 @@ const LocationHeroFan = () => {
         {/* Centre front — 15% wider than the side cards, anchored at
             the same bottom line so it scales up out of the bottom. */}
         <img
-          src={hero2}
-          alt="Editorial tablescape detail with peonies and silk ribbons for a Weybridge celebration by River Fox Events"
+          src={centre.src}
+          alt={centre.alt}
           className="absolute bottom-[6%] left-1/2 w-[37%] max-w-[400px] object-cover rounded-[10px]"
           style={{
             aspectRatio: "3 / 4",

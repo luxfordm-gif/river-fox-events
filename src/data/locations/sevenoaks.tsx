@@ -4,6 +4,11 @@ const sevenoaks = makeLocation({
   slug: "sevenoaks",
   cityName: "Sevenoaks",
   region: "Kent",
+  images: {
+    heroFan: ["pastel-safari-anaya", "naming-harvey-daisy", "veuve-disco"],
+    galleryMain: "40th-rose-gold",
+    galleryThumbs: ["stubbs-gender-reveal", "wonka-chocolate-arch", "baby-shower-bloom"],
+  },
   seoTitleRegion: "Kent",
   uniqueSeoTitle: "Party Stylist Sevenoaks Kent | River Fox Events",
   uniqueSeoDescription:

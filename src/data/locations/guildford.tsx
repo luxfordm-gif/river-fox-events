@@ -4,6 +4,11 @@ const guildford = makeLocation({
   slug: "guildford",
   cityName: "Guildford",
   region: "Surrey",
+  images: {
+    heroFan: ["naming-harvey-daisy", "fairy-kayla", "40th-rose-gold"],
+    galleryMain: "pastel-safari-anaya",
+    galleryThumbs: ["stubbs-gender-reveal", "baby-shower-bloom", "wonka-chocolate-arch"],
+  },
   uniqueSeoTitle: "Guildford Party & Event Stylist | River Fox Events",
   uniqueSeoDescription:
     "Ceiling drapery, balloon installations and milestone parties in Guildford from £460. Personally designed and installed by Laura.",

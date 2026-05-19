@@ -28,7 +28,15 @@ const STRIP_IMAGES = [
  * scroll progress through the viewport. No auto-play, no controls — purely
  * driven by vertical scroll position.
  */
-const ScrollStrip = () => {
+type ScrollStripImage = { src: string; alt: string; aspect?: string };
+type ScrollStripProps = {
+  /** When provided, overrides the default homepage image set (e.g. a
+   *  location page passes its 3 heroFan images so the scroll-driven
+   *  strip stays in sync with the desktop fan). */
+  images?: ScrollStripImage[];
+};
+
+const ScrollStrip = ({ images }: ScrollStripProps = {}) => {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const visibleRef = useRef(false);
@@ -58,7 +66,12 @@ const ScrollStrip = () => {
       const containerWidth = section.clientWidth;
       cachedMaxTranslate = Math.max(0, trackWidth - containerWidth);
       const isMobile = window.matchMedia("(max-width: 767px)").matches;
-      cachedSpeed = isMobile ? 0.22 : 0.26;
+      // Speed is calibrated to the default 7-image homepage strip. When a
+      // caller passes a shorter custom set (e.g. a location page's 3 hero
+      // images), the available scroll distance is much smaller, so we bump
+      // the multiplier to get a comparable feel of horizontal movement.
+      const fewImages = (images ?? STRIP_IMAGES).length < 5;
+      cachedSpeed = fewImages ? 0.95 : isMobile ? 0.22 : 0.26;
     };
 
     const update = () => {
@@ -132,11 +145,11 @@ const ScrollStrip = () => {
             }
           }
         `}</style>
-        {STRIP_IMAGES.map((img, i) => (
+        {(images ?? STRIP_IMAGES).map((img, i) => (
           <div
             key={i}
             className="relative flex-none overflow-hidden ph ph-warm rounded-[14px] rfx-rounded-img"
-            style={{ width: "var(--strip-item-w)", aspectRatio: img.aspect }}
+            style={{ width: "var(--strip-item-w)", aspectRatio: img.aspect ?? "3 / 4" }}
           >
             <img
               src={img.src}

@@ -7,6 +7,90 @@ import imgGallery1 from "@/assets/christening-blessing-styling-surrey.webp";
 import imgGallery2 from "@/assets/corporate-gala-styling-surrey.webp";
 import imgGallery3 from "@/assets/cp-included.webp";
 
+// Latest Work — shared image pool for location pages. Each entry has a single
+// canonical alt that describes the photo (no per-town interpolation, per the
+// "one image, one alt" rule in CLAUDE.md). Towns pick 6 of these 10 keys via
+// the optional `images` override on makeLocation.
+import lw40thRoseGold from "@/assets/river-fox-events-40th-birthday-rose-gold-marquee-sunlit.webp";
+import lwBabyShowerBloom from "@/assets/river-fox-events-baby-shower-baby-in-bloom-arch-portrait.webp";
+import lwStubbsGenderReveal from "@/assets/river-fox-events-baby-stubbs-gender-reveal-arch-side-angle.webp";
+import lwDinosaurAyaan from "@/assets/river-fox-events-dinosaur-theme-ayaan-arch-side-angle.webp";
+import lwFairyKayla from "@/assets/river-fox-events-fairy-first-birthday-kayla-tablescape-overhead.webp";
+import lwJungleElephant from "@/assets/river-fox-events-jungle-theme-safari-tablescape-elephant.webp";
+import lwNamingHarveyDaisy from "@/assets/river-fox-events-naming-ceremony-harvey-daisy-foreground.webp";
+import lwPastelSafariAnaya from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-table-setting.webp";
+import lwVeuveDisco from "@/assets/river-fox-events-veuve-cliquot-angela-georgia-balloon-disco-close-up.webp";
+import lwWonkaChocolateArch from "@/assets/river-fox-events-willy-wonka-savanna-chocolate-bar-arch.webp";
+
+/**
+ * `balanced: true` means the subject sits centrally in the frame and the
+ * shot can safely take the rotated/scaled right slot of the hero fan.
+ * Off-centre / side-angle / overhead shots must NOT be used in heroFan
+ * slot 3 — they read as visually skewed once tilted +7°.
+ */
+export const LATEST_WORK = {
+  "40th-rose-gold": {
+    src: lw40thRoseGold,
+    alt: "Sunlit 40th birthday rose gold marquee numbers with blush and chrome balloon garland styled by River Fox Events",
+    balanced: true,
+  },
+  "baby-shower-bloom": {
+    src: lwBabyShowerBloom,
+    alt: "Dusty blue and white Baby in Bloom balloon arch with floral accents styled for a Surrey baby shower by River Fox Events",
+    balanced: true,
+  },
+  "stubbs-gender-reveal": {
+    src: lwStubbsGenderReveal,
+    alt: "Side angle of the He or She balloon arch in soft blue and pink for the Stubbs family gender reveal by River Fox Events",
+    balanced: false,
+  },
+  "dinosaur-ayaan": {
+    src: lwDinosaurAyaan,
+    alt: "Side angle of Ayaan's dinosaur birthday balloon arch — sage and cream balloons with crate props and personalised signage by River Fox Events",
+    balanced: false,
+  },
+  "fairy-kayla": {
+    src: lwFairyKayla,
+    alt: "Overhead view of Kayla's fairy first birthday tablescape with pastel place settings, mossy runner and trailing florals by River Fox Events",
+    balanced: false,
+  },
+  "jungle-elephant": {
+    src: lwJungleElephant,
+    alt: "Jungle theme birthday tablescape with elephant centrepiece, monstera runner and balloon installation by River Fox Events",
+    balanced: true,
+  },
+  "naming-harvey-daisy": {
+    src: lwNamingHarveyDaisy,
+    alt: "Daisies and wildflowers in the foreground of Harvey's garden naming ceremony arch styled by River Fox Events",
+    balanced: false,
+  },
+  "pastel-safari-anaya": {
+    src: lwPastelSafariAnaya,
+    alt: "Pastel safari Two Wild table setting for Anaya's second birthday with pink place settings, foliage runner and balloon detail by River Fox Events",
+    balanced: false,
+  },
+  "veuve-disco": {
+    src: lwVeuveDisco,
+    alt: "Close-up of a mirrored disco-ball centrepiece nested in tangerine and white balloons for Angela and Georgia's champagne-themed celebration by River Fox Events",
+    balanced: true,
+  },
+  "wonka-chocolate-arch": {
+    src: lwWonkaChocolateArch,
+    alt: "Oversized chocolate bar arch from Savanna's Willy Wonka fifth birthday styling with purple, brown and gold palette by River Fox Events",
+    balanced: true,
+  },
+} as const;
+
+export type LocationImageKey = keyof typeof LATEST_WORK;
+
+/** Per-location image picks from the LATEST_WORK pool.
+ *  heroFan order is [left, centre, right] — centre is the largest card. */
+export type LocationImages = {
+  heroFan: [LocationImageKey, LocationImageKey, LocationImageKey];
+  galleryMain: LocationImageKey;
+  galleryThumbs: [LocationImageKey, LocationImageKey, LocationImageKey];
+};
+
 /**
  * Inputs for a Surrey town location page. The builder fans these out into
  * a full LocationConfig with hero, occasions, gallery, included, pricing,
@@ -73,6 +157,11 @@ type LocationInput = {
    *  "How it works". Must be written per location — three short
    *  paragraphs referencing real local entities. Never copy-paste. */
   uniqueLocalProse?: LocationConfig["localProse"];
+  /** Per-location image picks from the LATEST_WORK pool. Pass keys for the
+   *  two reveal blocks plus four gallery slots. If omitted, falls back to
+   *  the legacy shared defaults. Alt text is taken from the registry so
+   *  each image carries one canonical alt across the site. */
+  images?: LocationImages;
 };
 
 export function makeLocation(input: LocationInput): LocationConfig {
@@ -98,10 +187,53 @@ export function makeLocation(input: LocationInput): LocationConfig {
     uniqueExtraFaq,
     uniqueExtraFaqs,
     uniqueLocalProse,
+    images,
   } = input;
 
   const villagesIntro = nearbyVillages.slice(0, 3).join(", ");
   const villagesFaq = nearbyVillages.slice(0, 4).join(", ");
+
+  // Resolve image picks. Falls back to legacy shared defaults if a town
+  // hasn't been migrated yet — keeps untouched location files working.
+  if (images && !LATEST_WORK[images.heroFan[2]].balanced) {
+    throw new Error(
+      `[makeLocation:${slug}] heroFan slot 3 must be a balanced image — "${images.heroFan[2]}" is off-centre and will read skewed once tilted. Use one of: ${Object.entries(
+        LATEST_WORK
+      )
+        .filter(([, v]) => v.balanced)
+        .map(([k]) => k)
+        .join(", ")}.`
+    );
+  }
+  const heroFanImages = images
+    ? (images.heroFan.map((k) => LATEST_WORK[k]) as [
+        { src: string; alt: string },
+        { src: string; alt: string },
+        { src: string; alt: string }
+      ])
+    : undefined;
+  const galMain = images
+    ? LATEST_WORK[images.galleryMain]
+    : {
+        src: imgGalleryMain,
+        alt: `Sage green dinosaur themed children's birthday party styling in ${cityName} by River Fox Events — personalised name sign, balloon garland and lush foliage`,
+      };
+  const galThumbs = images
+    ? images.galleryThumbs.map((k) => LATEST_WORK[k])
+    : [
+        {
+          src: imgGallery1,
+          alt: `Christening styling in ${cityName} Surrey by River Fox Events — soft ivory and blush balloon installation with floral accents`,
+        },
+        {
+          src: imgGallery2,
+          alt: "Corporate gala styling in Surrey by River Fox Events — elegant tablescape with statement floral centrepiece",
+        },
+        {
+          src: imgGallery3,
+          alt: "Children's party styling in Surrey by River Fox Events — fully styled cake table with personalised signage",
+        },
+      ];
 
   return {
     slug,
@@ -131,6 +263,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
           installations.
         </>
       ),
+      fanImages: heroFanImages,
     },
     whatWeDo: {
       image: imgWhatWeDo,
@@ -200,22 +333,9 @@ export function makeLocation(input: LocationInput): LocationConfig {
           your inspiration and we'll design around it.
         </>
       ),
-      mainImage: imgGalleryMain,
-      mainImageAlt: `Sage green dinosaur themed children's birthday party styling in ${cityName} by River Fox Events — personalised name sign, balloon garland and lush foliage`,
-      images: [
-        {
-          src: imgGallery1,
-          alt: `Christening styling in ${cityName} Surrey by River Fox Events — soft ivory and blush balloon installation with floral accents`,
-        },
-        {
-          src: imgGallery2,
-          alt: "Corporate gala styling in Surrey by River Fox Events — elegant tablescape with statement floral centrepiece",
-        },
-        {
-          src: imgGallery3,
-          alt: "Children's party styling in Surrey by River Fox Events — fully styled cake table with personalised signage",
-        },
-      ],
+      mainImage: galMain.src,
+      mainImageAlt: galMain.alt,
+      images: galThumbs,
     },
     included: {
       eyebrow: "The full River Fox experience",

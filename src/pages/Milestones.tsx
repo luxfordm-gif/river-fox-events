@@ -19,10 +19,10 @@ import {
 } from "@/seo/headTags";
 
 import imgHero from "@/assets/river-fox-events-naming-ceremony-harvey-arch-side-angle.webp";
-import imgIntro from "@/assets/river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch.webp";
-import imgIntroHover from "@/assets/river-fox-events-baby-stubbs-gender-reveal-wildflower-detail.webp";
-import imgOccasions from "@/assets/river-fox-events-veuve-cliquot-angela-georgia-arch-wide.webp";
-import imgOccasionsHover from "@/assets/river-fox-events-veuve-cliquot-angela-georgia-balloon-disco-close-up.webp";
+import imgIntro from "@/assets/river-fox-events-veuve-cliquot-angela-georgia-arch-wide.webp";
+import imgIntroHover from "@/assets/river-fox-events-veuve-cliquot-angela-georgia-balloon-disco-close-up.webp";
+import imgOccasions from "@/assets/river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch.webp";
+import imgOccasionsHover from "@/assets/river-fox-events-baby-stubbs-gender-reveal-wildflower-detail.webp";
 
 const FAQS = [
   {
@@ -99,9 +99,9 @@ const Milestones = () => {
           id="ms-intro"
           imageSide="right"
           image={imgIntro}
-          alt="He or she balloon arch in soft blue and pink for the Stubbs family gender reveal styled in Surrey by River Fox Events"
+          alt="Champagne-themed milestone birthday arch in tangerine, white and gold balloons for Angela and Georgia, styled in Surrey by River Fox Events"
           hoverImage={imgIntroHover}
-          hoverAlt="Wildflower and dried-grass detail on the Stubbs gender reveal styling — close-up of soft pinks, blues and pampas by River Fox Events"
+          hoverAlt="Close-up of a mirrored disco-ball centrepiece nested in tangerine and white balloons for Angela and Georgia's champagne-themed celebration by River Fox Events"
           tone="ph-warm"
           hideImageOnMobile
           imageScale={1.07}
@@ -129,9 +129,9 @@ const Milestones = () => {
           id="ms-occasions"
           imageSide="left"
           image={imgOccasions}
-          alt="Champagne-themed milestone birthday arch in tangerine, white and gold balloons for Angela and Georgia, styled in Surrey by River Fox Events"
+          alt="He or she balloon arch in soft blue and pink for the Stubbs family gender reveal styled in Surrey by River Fox Events"
           hoverImage={imgOccasionsHover}
-          hoverAlt="Close-up of a mirrored disco-ball centrepiece nested in tangerine and white balloons for Angela and Georgia's champagne-themed celebration by River Fox Events"
+          hoverAlt="Wildflower and dried-grass detail on the Stubbs gender reveal styling — close-up of soft pinks, blues and pampas by River Fox Events"
           tone="ph-blush"
           headline={
             <>
