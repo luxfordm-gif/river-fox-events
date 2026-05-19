@@ -3,6 +3,11 @@ import { type CSSProperties, ReactNode, useEffect, useRef } from "react";
 type ServiceHeroProps = {
   image: string;
   imageAlt: string;
+  /** Optional mobile-only hero image. When set, the desktop hero stays as
+   *  `image` and the mobile (< md) viewport renders `mobileImage` instead.
+   *  Use when the desktop shot doesn't crop well into a portrait frame. */
+  mobileImage?: string;
+  mobileImageAlt?: string;
   lines: ReactNode[];
   sub: ReactNode;
   headingId?: string;
@@ -11,6 +16,8 @@ type ServiceHeroProps = {
 const ServiceHero = ({
   image,
   imageAlt,
+  mobileImage,
+  mobileImageAlt,
   lines,
   sub,
   headingId = "service-hero-heading",
@@ -105,18 +112,42 @@ const ServiceHero = ({
             willChange: "margin, border-radius",
           }}
         >
-          <img
-            ref={imgRef}
-            src={image}
-            alt={imageAlt}
-            className="w-full block object-cover aspect-[2/3] md:aspect-[16/7]"
-            style={{ transform: "scale(1.05)", willChange: "transform" }}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            width={1920}
-            height={840}
-          />
+          {mobileImage ? (
+            // `<picture>` is the only HTML-spec guarantee that the browser
+            // fetches exactly one source per viewport. Two visibility-toggled
+            // `<img>` elements both request their `src` regardless of `display`.
+            // The inner `<img>` alt is mobile-first (Googlebot indexes the
+            // mobile crawl) — the desktop fallback shares the same alt since
+            // both shots describe River Fox Events corporate styling work.
+            <picture>
+              <source media="(min-width: 768px)" srcSet={image} />
+              <img
+                ref={imgRef}
+                src={mobileImage}
+                alt={mobileImageAlt ?? imageAlt}
+                className="w-full block object-cover aspect-[2/3] md:aspect-[16/7]"
+                style={{ transform: "scale(1.05)", willChange: "transform" }}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                width={1920}
+                height={840}
+              />
+            </picture>
+          ) : (
+            <img
+              ref={imgRef}
+              src={image}
+              alt={imageAlt}
+              className="w-full block object-cover aspect-[2/3] md:aspect-[16/7]"
+              style={{ transform: "scale(1.05)", willChange: "transform" }}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              width={1920}
+              height={840}
+            />
+          )}
         </div>
       </div>
     </section>

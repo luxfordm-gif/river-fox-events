@@ -1,5 +1,5 @@
 import ScrollStrip from "@/components/rfx/ScrollStrip";
-import HeroEditorial from "@/components/rfx/HeroEditorial";
+import HeroEditorial, { HERO_EDITORIAL_IMAGES } from "@/components/rfx/HeroEditorial";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 const Hero = () => {
@@ -45,8 +45,10 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Mobile: scroll-driven horizontal slideshow. Laptop/desktop: editorial 3-image layout with subtle parallax. */}
-      <ScrollStrip />
+      {/* Mobile: scroll-driven horizontal slideshow showing the same 3
+          images as the desktop editorial fan, in the same order.
+          Laptop/desktop: editorial 3-image layout with subtle parallax. */}
+      <ScrollStrip images={HERO_EDITORIAL_IMAGES} />
       <HeroEditorial />
     </section>
   );

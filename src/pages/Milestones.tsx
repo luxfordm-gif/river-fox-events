@@ -103,7 +103,6 @@ const Milestones = () => {
           hoverImage={imgIntroHover}
           hoverAlt="Close-up of a mirrored disco-ball centrepiece nested in tangerine and white balloons for Angela and Georgia's champagne-themed celebration by River Fox Events"
           tone="ph-warm"
-          hideImageOnMobile
           imageScale={1.07}
           headline={
             <>
