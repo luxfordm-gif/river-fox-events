@@ -20,8 +20,11 @@ import {
 
 import imgHero from "@/assets/pastel-safari-anaya-two-wild-ballroom-surrey.webp";
 import imgCelebrations from "@/assets/dinosaur-ayaan-arch-surrey.webp";
-import imgOccasions from "@/assets/luxury-party-styling-occasions-surrey.webp";
+import imgCelebrationsHover from "@/assets/river-fox-events-dinosaur-theme-ayaan-arch-close-up-portrait.webp";
+import imgOccasions from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-tablescape-wide.webp";
+import imgOccasionsHover from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-marquee-close-up.webp";
 import imgThemes from "@/assets/willy-wonka-savanna-chocolate-arch-surrey.webp";
+import imgThemesHover from "@/assets/river-fox-events-willy-wonka-savanna-bar-prop-close-up.webp";
 
 const ChildrensParties = () => {
   useFadeUp();
@@ -72,6 +75,8 @@ const ChildrensParties = () => {
           imageSide="right"
           image={imgCelebrations}
           alt="Dinosaur theme children's birthday styling in Surrey by River Fox Events — Ayaan name arch, sage balloons and crate props"
+          hoverImage={imgCelebrationsHover}
+          hoverAlt="Close-up portrait of Ayaan's dinosaur arch — sage and cream balloons with tropical foliage and personalised signage by River Fox Events"
           tone="ph-warm"
           hideImageOnMobile
           imageScale={1.07}
@@ -100,7 +105,9 @@ const ChildrensParties = () => {
           id="cp-occasions"
           imageSide="left"
           image={imgOccasions}
-          alt="Elegant birthday party styling in Surrey by River Fox Events — ivory, gold and blush balloon installation with floral accents"
+          alt="Pastel safari Two Wild tablescape for Anaya's second birthday in Surrey by River Fox Events — Anaya panel, light-up two, giraffe and foliage runner"
+          hoverImage={imgOccasionsHover}
+          hoverAlt="Close-up of the pink light-up two marquee from Anaya's pastel safari Two Wild birthday in Surrey by River Fox Events — sage and pink balloons with foliage"
           tone="ph-blush"
           headline={
             <>
@@ -126,6 +133,8 @@ const ChildrensParties = () => {
           imageSide="right"
           image={imgThemes}
           alt="Willy Wonka theme birthday styling in Surrey by River Fox Events — Savanna arch, chocolate bar prop and lollipop foils"
+          hoverImage={imgThemesHover}
+          hoverAlt="Close-up of the oversized chocolate-bar prop with lilac balloons, lollipop foil and mushroom props from Savanna's Willy Wonka fifth birthday styled in Surrey by River Fox Events"
           tone="ph-warm"
           headline={
             <>

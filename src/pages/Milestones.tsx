@@ -18,9 +18,11 @@ import {
   upsertJsonLd,
 } from "@/seo/headTags";
 
-import imgHero from "@/assets/hero-2.webp";
-import imgIntro from "@/assets/luxury-party-styling-occasions-surrey.webp";
-import imgOccasions from "@/assets/safari-second-birthday-tablescape-surrey.webp";
+import imgHero from "@/assets/river-fox-events-naming-ceremony-harvey-arch-side-angle.webp";
+import imgIntro from "@/assets/river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch.webp";
+import imgIntroHover from "@/assets/river-fox-events-baby-stubbs-gender-reveal-wildflower-detail.webp";
+import imgOccasions from "@/assets/river-fox-events-veuve-cliquot-angela-georgia-arch-wide.webp";
+import imgOccasionsHover from "@/assets/river-fox-events-veuve-cliquot-angela-georgia-balloon-disco-close-up.webp";
 
 const FAQS = [
   {
@@ -77,7 +79,7 @@ const Milestones = () => {
       <main>
         <ServiceHero
           image={imgHero}
-          imageAlt="Elegant milestone birthday styling by River Fox Events Surrey — sophisticated tablescape with candles, florals and considered detail"
+          imageAlt="Side-angle view of a balloon and floral arch with personalised Harvey signage at a Surrey garden naming ceremony, styled by River Fox Events"
           headingId="ms-hero-heading"
           lines={[
             <>Milestone events,</>,
@@ -97,7 +99,9 @@ const Milestones = () => {
           id="ms-intro"
           imageSide="right"
           image={imgIntro}
-          alt="Milestone birthday styling in Surrey by River Fox Events — refined balloons with florals and personalised signage"
+          alt="He or she balloon arch in soft blue and pink for the Stubbs family gender reveal styled in Surrey by River Fox Events"
+          hoverImage={imgIntroHover}
+          hoverAlt="Wildflower and dried-grass detail on the Stubbs gender reveal styling — close-up of soft pinks, blues and pampas by River Fox Events"
           tone="ph-warm"
           hideImageOnMobile
           imageScale={1.07}
@@ -125,7 +129,9 @@ const Milestones = () => {
           id="ms-occasions"
           imageSide="left"
           image={imgOccasions}
-          alt="Safari second birthday tablescape in Surrey by River Fox Events — Anaya arch, giraffe, balloon centrepiece and light-up two"
+          alt="Champagne-themed milestone birthday arch in tangerine, white and gold balloons for Angela and Georgia, styled in Surrey by River Fox Events"
+          hoverImage={imgOccasionsHover}
+          hoverAlt="Close-up of a mirrored disco-ball centrepiece nested in tangerine and white balloons for Angela and Georgia's champagne-themed celebration by River Fox Events"
           tone="ph-blush"
           headline={
             <>

@@ -6,6 +6,10 @@ interface CPRevealProps {
   imageSide: "left" | "right";
   image: string;
   alt: string;
+  /** Optional second image that crossfades in on cursor hover (desktop only). */
+  hoverImage?: string;
+  /** Alt text for the hover image — required if hoverImage is set. */
+  hoverAlt?: string;
   label?: string;
   headline: ReactNode;
   children: ReactNode;
@@ -27,6 +31,8 @@ const CPReveal = ({
   imageSide,
   image,
   alt,
+  hoverImage,
+  hoverAlt,
   headline,
   children,
   tone = "ph-warm",
@@ -95,6 +101,18 @@ const CPReveal = ({
           width={1280}
           height={1600}
         />
+        {hoverImage && (
+          <img
+            src={hoverImage}
+            alt={hoverAlt ?? ""}
+            aria-hidden={hoverAlt ? undefined : true}
+            className="cp-reveal-hover-img absolute inset-0 w-full h-full object-cover z-[3]"
+            loading="lazy"
+            decoding="async"
+            width={1280}
+            height={1600}
+          />
+        )}
       </div>
     </div>
   );
