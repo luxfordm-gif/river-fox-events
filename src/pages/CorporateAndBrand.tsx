@@ -18,9 +18,11 @@ import {
   upsertJsonLd,
 } from "@/seo/headTags";
 
-import imgHero from "@/assets/corporate-gala-styling-surrey.webp";
-import imgIntro from "@/assets/corporate-event-styling-surrey.webp";
-import imgWhat from "@/assets/hero-3.webp";
+import imgHero from "@/assets/river-fox-events-corporate-atrium-twin-balloon-arches.webp";
+import imgIntro from "@/assets/river-fox-events-theatre-125-anniversary-marquee-wide.webp";
+import imgIntroHover from "@/assets/river-fox-events-theatre-125-anniversary-balloon-close-up.webp";
+import imgWhat from "@/assets/river-fox-events-nxtgen-corporate-entrance-columns-side-angle.webp";
+import imgWhatHover from "@/assets/river-fox-events-nxtgen-corporate-balloon-close-up.webp";
 
 const TRUST_LOGOS = [
   "P&G",
@@ -111,7 +113,7 @@ const CorporateAndBrand = () => {
       <main>
         <ServiceHero
           image={imgHero}
-          imageAlt="Corporate brand activation styling by River Fox Events Surrey — branded entrance installation, sculptural balloons and considered design at a London product launch"
+          imageAlt="Twin balloon arches framing a corporate atrium entrance — sculptural installation in cream and brand tones styled by River Fox Events for a Surrey corporate event"
           headingId="cb-hero-heading"
           lines={[
             <>Corporate event styling</>,
@@ -131,7 +133,9 @@ const CorporateAndBrand = () => {
           id="cb-intro"
           imageSide="right"
           image={imgIntro}
-          alt="Corporate event styling in Surrey by River Fox Events — branded backdrop, statement installation and on-brand colour palette for a corporate launch"
+          alt="125th anniversary light-up marquee numbers on a theatre staircase with cream and gold balloons styled by River Fox Events for a Surrey corporate milestone"
+          hoverImage={imgIntroHover}
+          hoverAlt="Close-up of cream, gold and pearl balloon detail beside the 125 anniversary marquee on a theatre staircase styled by River Fox Events"
           tone="ph-warm"
           hideImageOnMobile
           imageScale={1.07}
@@ -161,7 +165,9 @@ const CorporateAndBrand = () => {
           id="cb-services"
           imageSide="left"
           image={imgWhat}
-          alt="PR activation and brand installation by River Fox Events — sculptural floral arch and branded photo moment at a London brand event"
+          alt="Side angle of NXTGEN corporate event entrance — branded balloon columns flanking a glass doorway styled by River Fox Events"
+          hoverImage={imgWhatHover}
+          hoverAlt="Close-up of layered balloon column detail in NXTGEN brand colours by River Fox Events — texture, scale and on-brand finish"
           tone="ph-blush"
           headline={
             <>
