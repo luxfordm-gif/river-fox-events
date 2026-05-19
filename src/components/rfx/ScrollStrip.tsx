@@ -155,8 +155,12 @@ const ScrollStrip = ({ images }: ScrollStripProps = {}) => {
               src={img.src}
               alt={img.alt}
               className="absolute inset-0 w-full h-full object-cover"
-              loading={i === 0 ? "eager" : "lazy"}
-              fetchPriority={i === 0 ? "high" : "auto"}
+              // When this strip is used as the location page's mobile hero
+              // (custom `images` set), every image is above the fold and must
+              // load eagerly. Without this, images 2 and 3 stay lazy and the
+              // hero renders with gaps until the user scrolls.
+              loading={images ? "eager" : i === 0 ? "eager" : "lazy"}
+              fetchPriority={images ? "high" : i === 0 ? "high" : "auto"}
               decoding="async"
               width={1024}
               height={1280}
