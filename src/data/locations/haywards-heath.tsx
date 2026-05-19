@@ -4,6 +4,11 @@ const haywardsHeath = makeLocation({
   slug: "haywards-heath",
   cityName: "Haywards Heath",
   region: "West Sussex",
+  images: {
+    heroFan: ["fairy-kayla", "stubbs-gender-reveal", "40th-rose-gold"],
+    galleryMain: "dinosaur-ayaan",
+    galleryThumbs: ["naming-harvey-daisy", "jungle-elephant", "veuve-disco"],
+  },
   seoTitleRegion: "West Sussex",
   uniqueSeoTitle: "Haywards Heath Party & Event Stylist | River Fox Events",
   uniqueSeoDescription:

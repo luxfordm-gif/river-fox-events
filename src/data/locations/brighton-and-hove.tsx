@@ -4,6 +4,11 @@ const brightonAndHove = makeLocation({
   slug: "brighton-and-hove",
   cityName: "Brighton & Hove",
   region: "East Sussex",
+  images: {
+    heroFan: ["dinosaur-ayaan", "pastel-safari-anaya", "wonka-chocolate-arch"],
+    galleryMain: "40th-rose-gold",
+    galleryThumbs: ["fairy-kayla", "baby-shower-bloom", "veuve-disco"],
+  },
   seoTitleRegion: "East Sussex",
   uniqueSeoTitle: "Party Stylist Brighton & Hove | River Fox Events",
   uniqueSeoDescription:

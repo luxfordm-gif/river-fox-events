@@ -4,6 +4,11 @@ const forestRow = makeLocation({
   slug: "forest-row",
   cityName: "Forest Row",
   region: "the Ashdown Forest",
+  images: {
+    heroFan: ["dinosaur-ayaan", "naming-harvey-daisy", "baby-shower-bloom"],
+    galleryMain: "wonka-chocolate-arch",
+    galleryThumbs: ["stubbs-gender-reveal", "jungle-elephant", "veuve-disco"],
+  },
   seoTitleRegion: "East Sussex",
   uniqueSeoTitle: "Party Stylist Forest Row East Sussex | River Fox Events",
   uniqueSeoDescription:

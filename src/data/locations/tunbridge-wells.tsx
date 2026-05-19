@@ -4,6 +4,11 @@ const tunbridgeWells = makeLocation({
   slug: "tunbridge-wells",
   cityName: "Tunbridge Wells",
   region: "Kent",
+  images: {
+    heroFan: ["fairy-kayla", "stubbs-gender-reveal", "wonka-chocolate-arch"],
+    galleryMain: "veuve-disco",
+    galleryThumbs: ["dinosaur-ayaan", "naming-harvey-daisy", "jungle-elephant"],
+  },
   seoTitleRegion: "Kent",
   uniqueSeoTitle: "Elevated Event Styling, Tunbridge Wells | River Fox Events",
   uniqueSeoDescription:

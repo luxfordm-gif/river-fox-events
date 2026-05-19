@@ -4,6 +4,11 @@ const oxted = makeLocation({
   slug: "oxted",
   cityName: "Oxted",
   region: "East Surrey",
+  images: {
+    heroFan: ["dinosaur-ayaan", "pastel-safari-anaya", "baby-shower-bloom"],
+    galleryMain: "fairy-kayla",
+    galleryThumbs: ["stubbs-gender-reveal", "jungle-elephant", "veuve-disco"],
+  },
   uniqueSeoTitle: "Party Stylist Oxted Surrey | River Fox Events",
   uniqueSeoDescription:
     "Design-led event styling for celebrations across Oxted, Limpsfield and East Surrey. Parties, milestones and installations from £460, by Laura.",

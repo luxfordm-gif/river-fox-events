@@ -4,6 +4,11 @@ const weybridge = makeLocation({
   slug: "weybridge",
   cityName: "Weybridge",
   region: "Surrey",
+  images: {
+    heroFan: ["dinosaur-ayaan", "stubbs-gender-reveal", "40th-rose-gold"],
+    galleryMain: "wonka-chocolate-arch",
+    galleryThumbs: ["fairy-kayla", "pastel-safari-anaya", "jungle-elephant"],
+  },
   uniqueSeoTitle: "Party Stylist Weybridge Surrey | River Fox Events",
   uniqueSeoDescription:
     "Statement balloon installations and milestone celebrations in Weybridge from £460. Personally designed and installed by Laura.",

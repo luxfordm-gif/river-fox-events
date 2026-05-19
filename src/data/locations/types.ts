@@ -28,6 +28,13 @@ export type LocationConfig = {
     sub: ReactNode;
     image?: string;
     imageAlt?: string;
+    /** Per-location override for the three LocationHeroFan images.
+     *  Order: [left card, centre card, right card]. */
+    fanImages?: [
+      { src: string; alt: string },
+      { src: string; alt: string },
+      { src: string; alt: string }
+    ];
   };
   whatWeDo: LocationRevealSection;
   occasions: LocationRevealSection;

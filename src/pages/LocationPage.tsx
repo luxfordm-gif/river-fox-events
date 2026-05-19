@@ -144,12 +144,13 @@ const LocationPage = () => {
             </div>
           </div>
 
-          {/* Mobile-only carousel — wrapper class hides it from md up so
-              tablets and desktops see the LocationHeroFan instead. */}
+          {/* Mobile: scroll-driven horizontal strip using the same 3
+              heroFan images as the desktop fan, so the two breakpoints
+              stay in sync visually. Hidden from md up. */}
           <div className="md:hidden">
-            <ScrollStrip />
+            <ScrollStrip images={loc.hero.fanImages} />
           </div>
-          <LocationHeroFan />
+          <LocationHeroFan images={loc.hero.fanImages} />
         </section>
 
         {/* Services moved up — visitors should know what we offer

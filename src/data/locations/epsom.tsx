@@ -4,6 +4,11 @@ const epsom = makeLocation({
   slug: "epsom",
   cityName: "Epsom",
   region: "Surrey",
+  images: {
+    heroFan: ["dinosaur-ayaan", "fairy-kayla", "veuve-disco"],
+    galleryMain: "pastel-safari-anaya",
+    galleryThumbs: ["baby-shower-bloom", "40th-rose-gold", "naming-harvey-daisy"],
+  },
   uniqueSeoTitle: "Epsom Party & Event Stylist | River Fox Events",
   uniqueSeoDescription:
     "Considered styling for children's parties, milestones and brand events in Epsom. Personally designed and installed by Laura — from £460.",

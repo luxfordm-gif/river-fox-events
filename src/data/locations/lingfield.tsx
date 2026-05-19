@@ -4,6 +4,11 @@ const lingfield = makeLocation({
   slug: "lingfield",
   cityName: "Lingfield",
   region: "the Surrey/Sussex border",
+  images: {
+    heroFan: ["pastel-safari-anaya", "naming-harvey-daisy", "wonka-chocolate-arch"],
+    galleryMain: "jungle-elephant",
+    galleryThumbs: ["fairy-kayla", "stubbs-gender-reveal", "baby-shower-bloom"],
+  },
   uniqueSeoTitle: "Lingfield Party & Event Stylist | River Fox Events",
   uniqueSeoDescription:
     "Considered, personal styling at Lingfield Park, Dormansland and across the Surrey/Sussex border. Parties and milestones designed by Laura.",

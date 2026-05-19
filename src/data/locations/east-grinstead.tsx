@@ -4,6 +4,11 @@ const eastGrinstead = makeLocation({
   slug: "east-grinstead",
   cityName: "East Grinstead",
   region: "West Sussex",
+  images: {
+    heroFan: ["stubbs-gender-reveal", "fairy-kayla", "wonka-chocolate-arch"],
+    galleryMain: "jungle-elephant",
+    galleryThumbs: ["baby-shower-bloom", "naming-harvey-daisy", "veuve-disco"],
+  },
   seoTitleRegion: "West Sussex",
   uniqueSeoTitle: "Party Stylist East Grinstead Sussex | River Fox Events",
   uniqueSeoDescription:

@@ -4,6 +4,11 @@ const horsham = makeLocation({
   slug: "horsham",
   cityName: "Horsham",
   region: "West Sussex",
+  images: {
+    heroFan: ["pastel-safari-anaya", "dinosaur-ayaan", "jungle-elephant"],
+    galleryMain: "veuve-disco",
+    galleryThumbs: ["fairy-kayla", "wonka-chocolate-arch", "baby-shower-bloom"],
+  },
   seoTitleRegion: "West Sussex",
   uniqueSeoTitle: "Party Stylist Horsham West Sussex | River Fox Events",
   uniqueSeoDescription:

@@ -4,6 +4,11 @@ const reigate = makeLocation({
   slug: "reigate",
   cityName: "Reigate",
   region: "Surrey",
+  images: {
+    heroFan: ["stubbs-gender-reveal", "dinosaur-ayaan", "veuve-disco"],
+    galleryMain: "40th-rose-gold",
+    galleryThumbs: ["naming-harvey-daisy", "jungle-elephant", "baby-shower-bloom"],
+  },
   uniqueSeoTitle: "Reigate Party & Event Stylist | River Fox Events",
   uniqueSeoDescription:
     "Layered tablescapes, milestone parties and at-home celebrations in Reigate. Personally designed and installed by Laura.",
