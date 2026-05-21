@@ -12,10 +12,10 @@ const tunbridgeWells = makeLocation({
   seoTitleRegion: "Kent",
   uniqueSeoTitle: "Elevated Event Styling, Tunbridge Wells | River Fox Events",
   uniqueSeoDescription:
-    "Studio-led event styling in Tunbridge Wells — milestone parties, brand activations and at-home celebrations across Kent. Personally by Laura.",
+    "Studio-led event styling in Tunbridge Wells - milestone parties, brand activations and at-home celebrations across Kent. Personally by Laura.",
   uniqueHeroSub: (
     <>
-      Milestones brought to life in Tunbridge Wells — personally designed and
+      Milestones brought to life in Tunbridge Wells - personally designed and
       installed.
     </>
   ),
@@ -57,8 +57,8 @@ const tunbridgeWells = makeLocation({
         River Fox Events is a Tunbridge Wells event stylist designing
         tailored children's parties, milestone birthdays, christenings,
         baby showers, weddings and corporate styling across the
-        TN1–TN4 postcodes. Every celebration is built from scratch
-        around your brief — concept, balloon installations, backdrops,
+        TN1–TN4 postcodes. Every celebration is individually designed
+        around your brief - concept, balloon installations, backdrops,
         signage, cake table and tablescape, all installed and broken
         down by us.
       </p>

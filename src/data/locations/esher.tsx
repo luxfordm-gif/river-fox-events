@@ -55,8 +55,8 @@ const esher = makeLocation({
         River Fox Events is an Esher party stylist designing tailored
         children's parties, milestone birthdays, christenings, baby
         showers, weddings and corporate styling across the KT10
-        postcode. Every celebration is built from scratch around your
-        brief — concept, balloon installations, backdrops, signage,
+        postcode. Every celebration is individually designed around your
+        brief - concept, balloon installations, backdrops, signage,
         cake table and tablescape, all installed and broken down by
         us.
       </p>
@@ -91,7 +91,7 @@ const esher = makeLocation({
     body: (
       <>
         <p>
-          Sandown Park anchors a lot of our Esher work — the Eclipse
+          Sandown Park anchors a lot of our Esher work - the Eclipse
           Suite, Surrey Hall and the boxes each ask for something
           different, and a stylist who hasn't worked the building
           before learns that the hard way. The off-site work splits

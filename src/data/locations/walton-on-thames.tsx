@@ -56,7 +56,7 @@ const waltonOnThames = makeLocation({
         designing tailored children's parties, milestone birthdays,
         christenings, baby showers, weddings and corporate styling
         across the KT12 postcode. Every celebration is built from
-        scratch around your brief — concept, balloon installations,
+        scratch around your brief - concept, balloon installations,
         backdrops, signage, cake table and tablescape, all installed
         and broken down by us.
       </p>

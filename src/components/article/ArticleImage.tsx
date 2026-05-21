@@ -1,9 +1,9 @@
 /** Display aspect for an article image.
  *  - "video"   16:9 landscape (default)
- *  - "4/3"     4:3 landscape — softer crop, good for room photos
- *  - "3/4"     3:4 portrait — for vertical photography
+ *  - "4/3"     4:3 landscape - softer crop, good for room photos
+ *  - "3/4"     3:4 portrait - for vertical photography
  *  - "square"  1:1
- *  - "natural" use the file's intrinsic aspect — no cropping. Ideal for
+ *  - "natural" use the file's intrinsic aspect - no cropping. Ideal for
  *              sketches / renders / any image whose composition can't be
  *              cropped without losing meaning. */
 type Aspect = "video" | "4/3" | "3/4" | "square" | "natural";

@@ -4,14 +4,14 @@ import type { ReactNode } from "react";
 /**
  * Stripped-back services cross-link block. Used on location pages where
  * the full Experiences component (with parallax photography) would feel
- * repetitive next to the homepage. Three minimal cards — title, short
- * blurb, arrow — with a soft pinky-peach stroke and gentle drop shadow.
+ * repetitive next to the homepage. Three minimal cards - title, short
+ * blurb, arrow - with a soft pinky-peach stroke and gentle drop shadow.
  */
 const SERVICES = [
   {
     title: "Children's Party Styling",
     blurb:
-      "Playful, immersive and beautifully styled. From themed celebrations to soft, tonal setups, we create children's parties that feel as considered as they are joyful.",
+      "Playful, immersive and beautifully styled. From themed celebrations to soft, tonal setups, we create children's parties that are as unique as your child.",
     href: "/childrens-parties/",
   },
   {

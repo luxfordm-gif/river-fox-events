@@ -33,7 +33,7 @@ const Article = () => {
       ogImage: article.ogImage,
     });
 
-    // BlogPosting JSON-LD — gives Google an article-specific signal.
+    // BlogPosting JSON-LD - gives Google an article-specific signal.
     // Publisher uses the shared BUSINESS constant + alternateName so
     // search engines can connect "Lollipop Balloons" with the new brand.
     const blogPostingId = `rfx-jsonld-article-${article.slug}`;

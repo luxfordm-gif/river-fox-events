@@ -23,7 +23,7 @@ import NotFound from "./pages/NotFound.tsx";
 const queryClient = new QueryClient();
 
 const AppShell = () => {
-  // Site-wide smooth-scroll hijack — slows scroll for premium feel.
+  // Site-wide smooth-scroll hijack - slows scroll for premium feel.
   useSmoothScroll();
   return (
     <BrowserRouter>

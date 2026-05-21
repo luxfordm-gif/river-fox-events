@@ -22,7 +22,7 @@ const PageTransition = () => {
 
     if (firstMount.current) {
       firstMount.current = false;
-      // Initial load — keep hidden, no animation
+      // Initial load - keep hidden, no animation
       el.style.transition = "none";
       el.style.opacity = "0";
       return;

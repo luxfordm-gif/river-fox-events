@@ -6,7 +6,7 @@ type LocationGalleryProps = {
   eyebrow?: string;
   heading?: ReactNode;
   intro?: ReactNode;
-  /** Large image — stays sticky in the left column on desktop. */
+  /** Large image - stays sticky in the left column on desktop. */
   mainImage: string;
   mainImageAlt: string;
   /** Scrolling images on the right. Max 4 recommended. */
@@ -70,7 +70,7 @@ const LocationGallery = ({
       {/* Full-bleed split: sticky left image (desktop), scrolling right images on peach bg.
           On mobile the layout collapses to a single peach panel containing all images. */}
       <div className="grid grid-cols-1 md:grid-cols-2">
-        {/* Desktop only — sticky full-viewport-height image, edge-to-edge */}
+        {/* Desktop only - sticky full-viewport-height image, edge-to-edge */}
         <div className="hidden md:block md:sticky md:top-0 md:self-start md:h-screen w-full">
           <img
             src={mainImage}
@@ -84,12 +84,12 @@ const LocationGallery = ({
           />
         </div>
 
-        {/* Right (desktop) / single column (mobile) — peach panel with stacked images */}
+        {/* Right (desktop) / single column (mobile) - peach panel with stacked images */}
         <div
           className="flex flex-col gap-6 md:gap-10 px-6 md:px-12 py-10 md:py-16"
           style={{ background: "hsl(var(--surface-warm))" }}
         >
-          {/* Mobile only — main image rendered first inside the peach panel */}
+          {/* Mobile only - main image rendered first inside the peach panel */}
           <div className="md:hidden overflow-hidden">
             <img
               src={mainImage}

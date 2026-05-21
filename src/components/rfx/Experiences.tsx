@@ -8,16 +8,16 @@ const ITEMS = [
   {
     title: "Children's Party Styling",
     body:
-      "Immersive themed parties designed to feel magical for children — and completely effortless for you.",
+      "Immersive themed parties designed to feel magical for children - and completely effortless for you.",
     img: expChildren,
-    alt: "Sage green dinosaur children's birthday styling in Surrey by River Fox Events — Ayaan name sign and tropical foliage",
+    alt: "Sage green dinosaur children's birthday styling in Surrey by River Fox Events - Ayaan name sign and tropical foliage",
     href: "/childrens-parties",
     tone: "",
   },
   {
     title: "Milestone Celebrations",
     body:
-      "Refined styling for life's most meaningful moments — christenings, baby showers, milestone birthdays and anniversaries, each designed to feel personal and effortlessly brought together.",
+      "Refined styling for life's most meaningful moments. Christenings and baby showers to 21sts, 40ths and anniversaries, each celebration is thoughtfully designed to feel personal, elevated and effortlessly brought together.",
     img: expMilestone,
     alt: "Rose gold 40th birthday light-up marquee with blush and chrome balloon installation in Surrey by River Fox Events",
     href: "/milestone-celebrations",
@@ -26,9 +26,9 @@ const ITEMS = [
   {
     title: "Corporate & Brand Styling",
     body:
-      "Design-led installations for launches, openings and activations. Trusted by P&G, The Range, Foxhills and more.",
+      "Thoughtfully styled installations for launches, openings and activations. Trusted by P&G, The Range, Foxhills and more.",
     img: expCorporate,
-    alt: "Corporate gala styling in Surrey by River Fox Events — navy, gold and cream balloons with branded Children in Need backdrop",
+    alt: "Corporate gala styling in Surrey by River Fox Events - navy, gold and cream balloons with branded Children in Need backdrop",
     href: "/corporate-brand-styling",
     tone: "ph-blush",
     extraZoom: 1.25,
@@ -63,7 +63,7 @@ const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
         {/*
           SEO REMINDER: Alt text on each card describes the specific service +
           Surrey location and includes "River Fox Events". Update the ITEMS
-          alt strings above when changing imagery — never leave generic alt.
+          alt strings above when changing imagery - never leave generic alt.
         */}
         <img
           ref={img}
@@ -135,7 +135,7 @@ const Experiences = ({
           </h2>
           <p className="text-[15.5px] leading-[1.6] text-ink-soft pb-3 text-center md:text-left mx-auto md:mx-0">
             {intro ??
-              "Three experiences — children's parties, milestone celebrations and corporate installations — each designed from the ground up with a focus on aesthetic, flow and detail. We take on a limited number of clients each month so every event receives personal attention from concept to install."}
+              "Our work centres around three core experiences; Children's Parties, Milestone Celebrations and Corporate Installations. Each fully bespoke and designed from the ground up, with a focus on aesthetic, flow and detail. We work with a small number of clients each month so every event receives personal attention from concept to install."}
           </p>
         </div>
 

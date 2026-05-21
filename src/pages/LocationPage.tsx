@@ -94,7 +94,7 @@ const LocationPage = () => {
         >
           <div className="container-rfx">
             {/* mb tightened (was mb-10/mb-14) so the cards sit closer to
-                the CTA button — about 22px less air on both breakpoints. */}
+                the CTA button - about 22px less air on both breakpoints. */}
             <div className="mb-4 md:mb-9 flex flex-col items-center text-center">
               <h1
                 id={`loc-${loc.slug}-hero-heading`}
@@ -108,7 +108,7 @@ const LocationPage = () => {
                   //
                   // Mobile max-w bumped from 14ch to 20ch so longer town
                   // names ("Oxshott", "Walton-on-Thames") aren't forced
-                  // into a narrow column — gives the h1 more breathing
+                  // into a narrow column - gives the h1 more breathing
                   // room across the typical phone viewport.
                   fontSize: "clamp(40px, 5.5vw, 80px)",
                   lineHeight: 1.04,
@@ -122,7 +122,7 @@ const LocationPage = () => {
                     className={`word-reveal in${i > 0 ? ` delay-${i}` : ""}`}
                   >
                     <span>{line}</span>
-                    {/* Use a plain space between segments — let the
+                    {/* Use a plain space between segments - let the
                         browser wrap naturally instead of forcing a hard
                         line break that orphans words at certain
                         breakpoints. */}
@@ -153,7 +153,7 @@ const LocationPage = () => {
           <LocationHeroFan images={loc.hero.fanImages} />
         </section>
 
-        {/* Services moved up — visitors should know what we offer
+        {/* Services moved up - visitors should know what we offer
             before they read prose. Three cards link to the dedicated
             service pages. */}
         <ServicesCards
@@ -168,7 +168,7 @@ const LocationPage = () => {
           }
           intro={
             <>
-              Each is designed from the ground up, with a focus on
+              Each event is individually designed, with a focus on
               aesthetic, flow and detail. We work with a small number of
               clients each month so every event receives personal
               attention from concept to install.

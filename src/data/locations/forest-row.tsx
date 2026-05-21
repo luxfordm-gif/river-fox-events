@@ -12,7 +12,7 @@ const forestRow = makeLocation({
   seoTitleRegion: "East Sussex",
   uniqueSeoTitle: "Party Stylist Forest Row East Sussex | River Fox Events",
   uniqueSeoDescription:
-    "East Sussex country-house events, fully managed from setup to breakdown — including Forest Row, Hartfield and Ashdown Forest, by Laura.",
+    "East Sussex country-house events, fully managed from setup to breakdown - including Forest Row, Hartfield and Ashdown Forest, by Laura.",
   uniqueHeroLine: <>Your Forest Row party stylist.</>,
   uniqueHeroSub: (
     <>
@@ -59,14 +59,14 @@ const forestRow = makeLocation({
         stylist designing tailored children's parties, milestone
         birthdays, christenings, baby showers, weddings and corporate
         styling across the RH18 postcode and the wider forest area.
-        Every celebration is built from scratch around your brief —
+        Every celebration is individually designed around your brief -
         concept, balloon installations, backdrops, signage, cake
         table and tablescape, all installed and broken down by us.
       </p>
       <p>
         Our studio is in Horley, around thirty-five minutes south on
         the A22, and the Ashdown Forest patch is part of our regular
-        coverage. Full install and breakdown handled — including the
+        coverage. Full install and breakdown handled - including the
         weather-contingency planning the forest setting often asks
         for.
       </p>

@@ -15,7 +15,7 @@ const DEFAULT_HEADING: ReactNode = (
 );
 
 const DEFAULT_FOOTNOTE =
-  "All events are individually quoted following a discovery call — so the proposal reflects exactly what you have in mind.";
+  "All events are individually quoted following a discovery call - so the proposal reflects exactly what you have in mind.";
 
 const CPPricing = ({
   heading = DEFAULT_HEADING,
@@ -49,9 +49,11 @@ const CPPricing = ({
           <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
             {ctaLabel} <span>→</span>
           </a>
-          <p className="text-[13.5px] text-ink-soft max-w-[560px] mx-auto">
-            {footnote}
-          </p>
+          {footnote ? (
+            <p className="text-[13.5px] text-ink-soft max-w-[560px] mx-auto">
+              {footnote}
+            </p>
+          ) : null}
         </div>
       </div>
     </section>

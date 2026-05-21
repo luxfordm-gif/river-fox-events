@@ -56,7 +56,7 @@ const guildford = makeLocation({
         tailored children's parties, milestone birthdays, christenings,
         baby showers, weddings and corporate styling across the GU1
         and GU2 postcodes and the wider GU area. Every celebration is
-        built from scratch around your brief — concept, balloon
+        individually designed around your brief - concept, balloon
         installations, backdrops, signage, cake table and tablescape,
         all installed and broken down by us.
       </p>

@@ -8,7 +8,7 @@ interface CPRevealProps {
   alt: string;
   /** Optional second image that crossfades in on cursor hover (desktop only). */
   hoverImage?: string;
-  /** Alt text for the hover image — required if hoverImage is set. */
+  /** Alt text for the hover image - required if hoverImage is set. */
   hoverAlt?: string;
   label?: string;
   headline: ReactNode;
@@ -62,7 +62,7 @@ const CPReveal = ({
     return () => io.disconnect();
   }, []);
 
-  // Parallax — translate the inner <img> upward inside its clipped wrapper.
+  // Parallax - translate the inner <img> upward inside its clipped wrapper.
   useImageParallax(sectionRef, imgRef, { intensity: 10, scale: imageScale });
 
   const imageBlock = (

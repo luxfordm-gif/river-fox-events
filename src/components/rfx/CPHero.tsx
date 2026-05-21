@@ -8,7 +8,7 @@ type CPHeroProps = {
   sub?: ReactNode;
   scrollTarget?: string;
   headingId?: string;
-  /** Compact (≈50dvh) hero used on child pages — hides the sub copy and
+  /** Compact (≈50dvh) hero used on child pages - hides the sub copy and
    *  the scroll cue, and uses a tighter h1 size. Signals visually that
    *  this is a sub-page rather than a top-level service page. */
   compact?: boolean;
@@ -28,11 +28,11 @@ const DEFAULT_LINES: ReactNode[] = [
 ];
 
 const DEFAULT_SUB =
-  "Immersive, beautifully designed children's parties across Surrey — every detail considered, nothing left to chance.";
+  "Immersive, beautifully designed children's parties across Surrey - every detail considered, nothing left to chance.";
 
 const CPHero = ({
   image = defaultHeroImg,
-  imageAlt = "Considered children's birthday party styling by River Fox Events Surrey — peach balloon installation, peonies and dressed cake table at a Cobham celebration",
+  imageAlt = "Considered children's birthday party styling by River Fox Events Surrey - peach balloon installation, peonies and dressed cake table at a Cobham celebration",
   lines = DEFAULT_LINES,
   sub = DEFAULT_SUB,
   scrollTarget = "#cp-celebrations",
@@ -103,7 +103,7 @@ const CPHero = ({
         height={1080}
       />
 
-      {/* Overlay — even, slightly darker for centred copy legibility */}
+      {/* Overlay - even, slightly darker for centred copy legibility */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
@@ -112,7 +112,7 @@ const CPHero = ({
         }}
       />
 
-      {/* Headline — centred horizontally, upper-centre vertically on mobile.
+      {/* Headline - centred horizontally, upper-centre vertically on mobile.
           Compact mode skips the off-centre padding and the sub copy. */}
       <div
         className={
@@ -160,7 +160,7 @@ const CPHero = ({
         )}
       </div>
 
-      {/* Animated scroll cue (skipped in compact mode — there's no
+      {/* Animated scroll cue (skipped in compact mode - there's no
           "scroll past the hero" gesture for half-height heroes). */}
       {!compact && (
         <a

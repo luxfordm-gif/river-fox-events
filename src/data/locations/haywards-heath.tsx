@@ -15,7 +15,7 @@ const haywardsHeath = makeLocation({
     "Studio-led styling across mid-Sussex, from Haywards Heath to Lindfield and Cuckfield. Full-service event styling from £460, by Laura.",
   uniqueHeroSub: (
     <>
-      Events brought to life in Haywards Heath — personally designed and
+      Events brought to life in Haywards Heath - personally designed and
       installed.
     </>
   ),
@@ -57,8 +57,8 @@ const haywardsHeath = makeLocation({
         River Fox Events is a Haywards Heath event stylist designing
         tailored children's parties, milestone birthdays, christenings,
         baby showers, weddings and corporate styling across the RH16
-        and RH17 postcodes. Every celebration is built from scratch
-        around your brief — concept, balloon installations, backdrops,
+        and RH17 postcodes. Every celebration is individually designed
+        around your brief - concept, balloon installations, backdrops,
         signage, cake table and tablescape, all installed and broken
         down by us.
       </p>

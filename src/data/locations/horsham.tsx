@@ -57,8 +57,8 @@ const horsham = makeLocation({
         River Fox Events is a Horsham event stylist designing tailored
         children's parties, milestone birthdays, christenings, baby
         showers, weddings and corporate styling across the RH12 and
-        RH13 postcodes. Every celebration is built from scratch around
-        your brief — concept, balloon installations, backdrops,
+        RH13 postcodes. Every celebration is individually designed around
+        your brief - concept, balloon installations, backdrops,
         signage, cake table and tablescape, all installed and broken
         down by us.
       </p>
@@ -79,7 +79,7 @@ const horsham = makeLocation({
         weddings and milestone celebrations at South Lodge Hotel and
         the surrounding venues, and town-centre celebrations at the
         Capitol theatre and Field Place. We scale the styling to the
-        room — from a single focal-point installation for an intimate
+        room - from a single focal-point installation for an intimate
         celebration to a full multi-zone install across reception
         rooms, marquees and gardens.
       </p>

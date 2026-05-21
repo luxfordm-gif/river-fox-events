@@ -12,7 +12,7 @@ const lewes = makeLocation({
   seoTitleRegion: "East Sussex",
   uniqueSeoTitle: "Editorial Event Styling Lewes | River Fox Events",
   uniqueSeoDescription:
-    "A short drive from Lewes — full-service East Sussex country-house celebrations. From design to clear-down, personally handled by Laura.",
+    "A short drive from Lewes - full-service East Sussex country-house celebrations. From design to clear-down, personally handled by Laura.",
   uniqueHeroSub: (
     <>
       Considered, drawn, delivered. Studio-led celebrations in Lewes and the
@@ -57,8 +57,8 @@ const lewes = makeLocation({
         River Fox Events is a Lewes event stylist designing tailored
         children's parties, milestone birthdays, christenings, baby
         showers, weddings and corporate styling across the BN7 and
-        BN8 postcodes. Every celebration is built from scratch around
-        your brief — concept, balloon installations, backdrops,
+        BN8 postcodes. Every celebration is individually designed around
+        your brief - concept, balloon installations, backdrops,
         signage, cake table and tablescape, all installed and broken
         down by us.
       </p>

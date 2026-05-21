@@ -9,7 +9,7 @@ export type LocationRevealSection = {
   image: string;
   imageAlt: string;
   imageSide: "left" | "right";
-  /** ph-warm or ph-blush — subtle background tint on the image card. */
+  /** ph-warm or ph-blush - subtle background tint on the image card. */
   tone?: string;
 };
 
@@ -60,7 +60,7 @@ export type LocationConfig = {
   /** Optional bespoke local-prose section between gallery and "How it
    *  works". Three short paragraphs of locally-specific copy used for
    *  SEO weight and to convince a reader that we genuinely know the
-   *  area. Must be rewritten per location — never templated. */
+   *  area. Must be rewritten per location - never templated. */
   localProse?: {
     eyebrow: string;
     heading: ReactNode;

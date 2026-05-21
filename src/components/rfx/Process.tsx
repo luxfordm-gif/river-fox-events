@@ -18,7 +18,7 @@ const DEFAULT_STEPS: ProcessStep[] = [
     n: "02",
     title: "Tailored proposal",
     body:
-      "We develop a tailored concept for your event, with considered moodboards, colour palettes and visuals — giving you complete clarity before we bring everything to life.",
+      "We develop a tailored concept for your event, with considered moodboards, colour palettes and visuals - giving you complete clarity before we bring everything to life.",
   },
   {
     n: "03",
@@ -30,7 +30,7 @@ const DEFAULT_STEPS: ProcessStep[] = [
 
 const DEFAULT_INTRO: ReactNode = (
   <>
-    A calm, guided process — from concept to installation. We refine
+    A calm, guided process - from concept to installation. We refine
     your vision and bring it all together seamlessly on the day.
   </>
 );

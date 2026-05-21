@@ -33,7 +33,7 @@ export function useImageParallax(
     let raf = 0;
 
     // Cached layout (read only on resize / when wrapper enters viewport),
-    // never inside the scroll handler — avoids forced reflows.
+    // never inside the scroll handler - avoids forced reflows.
     let cachedTop = 0;
     let cachedHeight = 0;
     let cachedVH = window.innerHeight || 1;

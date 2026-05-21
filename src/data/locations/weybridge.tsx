@@ -55,8 +55,8 @@ const weybridge = makeLocation({
         River Fox Events is a Weybridge party stylist designing
         tailored children's parties, milestone birthdays, christenings,
         baby showers, weddings and corporate styling across the KT13
-        postcode. Every celebration is built from scratch around your
-        brief — concept, balloon installations, backdrops, signage,
+        postcode. Every celebration is individually designed around your
+        brief - concept, balloon installations, backdrops, signage,
         cake table and tablescape, all installed and broken down by
         us.
       </p>
@@ -93,7 +93,7 @@ const weybridge = makeLocation({
       <>
         <p>
           St George's Hill is the kind of address where the property
-          dictates what the celebration wants — a drawing room of a
+          dictates what the celebration wants - a drawing room of a
           certain proportion, a garden built for a marquee, a driveway
           that handles arrival differently than a London street does.
           Most of our Weybridge at-home work happens here or across

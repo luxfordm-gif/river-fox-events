@@ -11,12 +11,12 @@ type CPLocationsProps = {
   paddingTop?: string;
   paddingBottom?: string;
   /** Slug of the current location page, if any. We'll skip linking the
-   *  current city to itself — every other matching area gets a link. */
+   *  current city to itself - every other matching area gets a link. */
   currentSlug?: string;
 };
 
 // Town name → location-page slug. Used to convert plain area names in the
-// bullet list into internal links wherever we have a dedicated page —
+// bullet list into internal links wherever we have a dedicated page -
 // boosts cross-linking between every service page, every location page
 // and every other location page that shares a town.
 const SLUG_BY_CITY = new Map(LOCATIONS.map((l) => [l.cityName, l.slug]));
@@ -47,7 +47,7 @@ const DEFAULT_INTRO: ReactNode = (
   <>
     Based in Surrey and travelling across the county and into London for
     clients who care about the difference that detail makes. Wherever the
-    celebration, we come to you — set up before guests arrive and packed
+    celebration, we come to you - set up before guests arrive and packed
     down once the day is done.
   </>
 );
@@ -56,7 +56,7 @@ const CPLocations = ({
   areas = DEFAULT_AREAS,
   intro = DEFAULT_INTRO,
   mapQuery = "Surrey,England,UK&z=9",
-  mapTitle = "Map of Surrey, England — areas covered by River Fox Events",
+  mapTitle = "Map of Surrey, England - areas covered by River Fox Events",
   eyebrow,
   heading = DEFAULT_HEADING,
   paddingTop = "48px",
@@ -72,7 +72,7 @@ const CPLocations = ({
     >
       <div className="container-rfx">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left — copy + areas list */}
+          {/* Left - copy + areas list */}
           <div className="flex flex-col items-start text-left fade-up">
             {eyebrow && (
               <div
@@ -130,7 +130,7 @@ const CPLocations = ({
             </ul>
           </div>
 
-          {/* Right — map covering the whole of Surrey */}
+          {/* Right - map covering the whole of Surrey */}
           <div className="w-full overflow-hidden rounded-sm border border-ink/15 shadow-[0_22px_44px_-22px_hsl(var(--ink)/0.18)] fade-up">
             <div className="relative w-full" style={{ aspectRatio: "4/5" }}>
               <iframe

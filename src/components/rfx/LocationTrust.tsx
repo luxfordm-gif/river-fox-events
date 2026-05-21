@@ -16,7 +16,7 @@ const CLIENT_LOGOS = [
     alt: "P&G",
     width: 600,
     height: 260,
-    // P&G is a stacked mark — kept noticeably taller than the wordmarks
+    // P&G is a stacked mark - kept noticeably taller than the wordmarks
     // but pulled back from the previous 48–56px so it doesn't dominate
     // the row visually.
     sizeClass: "h-[34px] md:h-[42px]",

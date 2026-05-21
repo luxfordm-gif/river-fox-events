@@ -41,7 +41,7 @@ const LollipopRebrandArticle = () => (
           Three core services unchanged: children's parties, milestone
           celebrations and corporate event styling.
         </li>
-        <li>More to follow — and we're excited.</li>
+        <li>More to follow - and we're excited.</li>
       </ul>
     </ArticleTLDR>
 
@@ -49,11 +49,11 @@ const LollipopRebrandArticle = () => (
       <p>
         For the past several years, you might have known us as{" "}
         <strong>Lollipop Balloons</strong>. Today we're stepping into a new
-        name — <strong>River Fox Events</strong> — and a new chapter.
+        name - <strong>River Fox Events</strong> - and a new chapter.
       </p>
       <p>
         Nothing about how we work is changing. Same studio in Horley. Same
-        designer (Laura). Same approach to design — bespoke, nothing off a
+        designer (Laura). Same approach to design - bespoke, nothing off a
         shelf, every detail considered. What's changing is the name on the
         door.
       </p>
@@ -68,7 +68,7 @@ const LollipopRebrandArticle = () => (
     <ArticleProse>
       <h2>Why the change</h2>
       <p>
-        When Lollipop Balloons started, the work was — as you'd guess —
+        When Lollipop Balloons started, the work was - as you'd guess -
         mostly balloons. A really good balloon installation could carry an
         entire celebration.
       </p>
@@ -81,7 +81,7 @@ const LollipopRebrandArticle = () => (
       <p>
         <em>River Fox Events</em> captures the bigger picture without
         losing the playfulness. The fox is for the colour and the
-        character — bold, distinctive, agile. The river is for the calm —
+        character - bold, distinctive, agile. The river is for the calm -
         celebrations that feel composed rather than chaotic.
       </p>
     </ArticleProse>
@@ -140,7 +140,7 @@ const LollipopRebrandArticle = () => (
         Surrey towns we work in. Cleaner styling for the brand itself.
       </p>
       <p>
-        And a slightly broader ambition —{" "}
+        And a slightly broader ambition -{" "}
         <a href="/corporate-brand-styling/">
           corporate events and brand activations
         </a>{" "}
@@ -153,7 +153,7 @@ const LollipopRebrandArticle = () => (
       <h2>What's next</h2>
       <p>
         We're looking forward to continuing the relationships we've built
-        with so many of you over the years — and to welcoming new clients
+        with so many of you over the years - and to welcoming new clients
         into the next chapter.
       </p>
       <p>
@@ -162,7 +162,7 @@ const LollipopRebrandArticle = () => (
         next.
       </p>
       <p>
-        — <em>Laura</em>
+        - <em>Laura</em>
       </p>
     </ArticleProse>
   </>

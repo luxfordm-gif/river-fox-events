@@ -136,7 +136,7 @@ const Nav = () => {
           </div>
           <a href="/contact">Contact</a>
         </div>
-        <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto md:pt-2" aria-label="River Fox Events — home">
+        <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto md:pt-2" aria-label="River Fox Events - home">
           <span className="text-[15px] font-medium tracking-[0.22em] leading-none">
             RIVER&nbsp;FOX&nbsp;EVENTS
           </span>
@@ -150,7 +150,7 @@ const Nav = () => {
           </a>
         </div>
 
-        {/* Mobile toggle — refined "menu / close" label */}
+        {/* Mobile toggle - refined "menu / close" label */}
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -174,7 +174,7 @@ const Nav = () => {
         </button>
       </nav>
 
-      {/* Mobile drawer — scrollable so long menus / short viewports don't clip */}
+      {/* Mobile drawer - scrollable so long menus / short viewports don't clip */}
       <div
         className={`fixed inset-0 z-[99] bg-background overflow-y-auto overscroll-contain transition-opacity duration-500 lg:hidden ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"

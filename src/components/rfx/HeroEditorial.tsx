@@ -1,56 +1,180 @@
-import { useEffect, useRef } from "react";
-import hero1 from "@/assets/baby-shower-baby-in-bloom-arch-surrey.webp";
-import hero2 from "@/assets/jungle-elephant-tablescape-surrey.webp";
-import hero3 from "@/assets/fairy-first-kayla-table-setting-surrey.webp";
+import { useEffect, useRef, useState } from "react";
+
+// Column 1 - Jungle theme.
+import junglA from "@/assets/river-fox-events-jungle-theme-safari-jeep-balloon-garland.webp";
+import junglB from "@/assets/river-fox-events-jungle-theme-safari-tablescape-elephant.webp";
+import junglC from "@/assets/river-fox-events-jungle-theme-lion-plates-overhead.webp";
+
+// Column 2 - Pastel safari / pastel entrance decor.
+import pastelA from "@/assets/river-fox-events-pastel-entrance-decor-arch.webp";
+import pastelB from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-table-setting.webp";
+import pastelC from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-marquee-close-up.webp";
+
+// Column 3 - Fairy first birthday.
+import fairyA from "@/assets/river-fox-events-fairy-first-birthday-kayla-tablescape-overhead.webp";
+import fairyB from "@/assets/river-fox-events-fairy-first-birthday-kayla-table-florals.webp";
+import fairyC from "@/assets/river-fox-events-fairy-first-birthday-kayla-arch-marquee-portrait.webp";
 
 /**
- * Three-image editorial layout for laptop + desktop.
+ * Three-column editorial hero with rotating slides.
  *
- * Wrappers use the source images' native 4:5 aspect ratio so nothing
- * gets cropped. Centre column is wider (and therefore taller) than the
- * side columns to preserve the staggered editorial feel.
+ * Each column holds three slides that crossfade in sync, with a small
+ * left-to-right stagger so the swap travels across the row rather than
+ * blinking all at once. Slower fade (~1.6s) and longer dwell (5s) to keep
+ * the hero feeling calm.
  *
- * SEO REMINDER: keep alt strings descriptive — theme, palette, Surrey
- * town and "River Fox Events" must always be present.
+ * Wrappers use the source images' native aspect ratios so nothing gets
+ * cropped. Centre column is wider (and taller) than the side columns to
+ * preserve the staggered editorial feel.
+ *
+ * SEO REMINDER: keep alt strings descriptive - theme, palette and
+ * "River Fox Events" must always be present, per-slide.
  */
-// Exported so the mobile ScrollStrip can render the same 3 images in the
-// same order — keeps the mobile carousel in sync with the desktop fan.
-export const HERO_EDITORIAL_IMAGES = [
+
+type HeroSlide = { src: string; alt: string };
+
+type HeroColumn = {
+  /** Three slides that rotate in this column. */
+  slides: [HeroSlide, HeroSlide, HeroSlide];
+  /** Column width as % of the row. */
+  widthPct: number;
+  /** CSS aspect-ratio of the column frame. */
+  aspect: string;
+  /** Parallax speed (lower = more subtle). */
+  speed: number;
+};
+
+// Frames advance as a set: at any moment all three columns show photos
+// from the same theme. Frame 0 = jungle, frame 1 = pastel safari, frame 2 =
+// fairy first birthday. Per-column slides are listed in theme order so the
+// shared activeSlide index maps directly to the frame.
+const COLUMNS: HeroColumn[] = [
   {
-    src: hero1,
-    alt: "Dusty blue and white balloon arch with 'Baby in Bloom' backdrop and foliage for a Surrey baby shower by River Fox Events",
+    // Left column.
+    slides: [
+      {
+        src: junglA,
+        alt: "Jungle theme children's birthday in Surrey by River Fox Events - safari jeep prop with leafy balloon garland",
+      },
+      {
+        src: pastelA,
+        alt: "Pastel birthday entrance styling by River Fox Events - soft pastel balloon arch with floral accents at a Surrey venue",
+      },
+      {
+        src: fairyC,
+        alt: "Fairy first birthday arch and light-up one marquee for Kayla in Surrey by River Fox Events - pink and lilac balloons with mossy detail",
+      },
+    ],
     widthPct: 30,
     aspect: "760 / 1000",
     speed: 0.18,
   },
   {
-    src: hero2,
-    alt: "Jungle theme children's birthday styling in Surrey by River Fox Events — elephant centrepiece, monstera runner and balloons",
+    // Centre column (taller, wider).
+    slides: [
+      {
+        src: junglB,
+        alt: "Jungle theme tablescape by River Fox Events - elephant centrepiece with monstera runner and safari balloons",
+      },
+      {
+        src: pastelB,
+        alt: "Pastel safari Two Wild tablescape for Anaya's second birthday in Surrey by River Fox Events - pink place settings, foliage runner",
+      },
+      {
+        src: fairyB,
+        alt: "Fairy first birthday floral table detail for Kayla in Surrey by River Fox Events - soft pinks, blush and trailing greenery",
+      },
+    ],
     widthPct: 36,
     aspect: "760 / 1088",
     speed: 0.08,
   },
   {
-    src: hero3,
-    alt: "Pink and lilac fairy first birthday styling in Surrey by River Fox Events — Kayla backdrop, light-up one and mossy runner",
+    // Right column.
+    slides: [
+      {
+        src: junglC,
+        alt: "Jungle theme overhead place setting by River Fox Events - lion-printed plates with raffia and animal-print napkins",
+      },
+      {
+        src: pastelC,
+        alt: "Close-up of the pink light-up two marquee from Anaya's pastel safari Two Wild birthday in Surrey by River Fox Events",
+      },
+      {
+        src: fairyA,
+        alt: "Fairy first birthday tablescape overhead for Kayla in Surrey by River Fox Events - pastel place settings, mossy runner and trailing florals",
+      },
+    ],
     widthPct: 30,
     aspect: "760 / 1000",
     speed: 0.18,
   },
 ];
 
+// Hand-picked 3-image set for the mobile ScrollStrip. The desktop hero
+// rotates through all 9 photos in three themed frames; mobile keeps a
+// tighter, curated trio so the strip stays scannable on a phone.
+export const HERO_EDITORIAL_IMAGES = [
+  {
+    src: fairyA,
+    alt: "Fairy first birthday tablescape overhead for Kayla in Surrey by River Fox Events - pastel place settings, mossy runner and trailing florals",
+    widthPct: 30,
+    aspect: "760 / 1000",
+    speed: 0.18,
+  },
+  {
+    src: junglB,
+    alt: "Jungle theme tablescape by River Fox Events - elephant centrepiece with monstera runner and safari balloons",
+    widthPct: 36,
+    aspect: "760 / 1088",
+    speed: 0.08,
+  },
+  {
+    src: fairyC,
+    alt: "Fairy first birthday arch and light-up one marquee for Kayla in Surrey by River Fox Events - pink and lilac balloons with mossy detail",
+    widthPct: 30,
+    aspect: "760 / 1000",
+    speed: 0.18,
+  },
+];
+
+// Timings for the auto-rotation. Tweak these to taste.
+const SLIDE_INTERVAL_MS = 5000; // Dwell on each slide before advancing.
+const FADE_DURATION_MS = 1600; // How long the crossfade itself takes.
+const STAGGER_PER_COL_MS = 250; // Left-to-right offset between columns.
+
 const HeroEditorial = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const imgRefs = useRef<(HTMLImageElement | null)[]>([]);
+  // Refs as [colIndex][slideIndex] so parallax can apply the same transform
+  // to all stacked imgs in a column.
+  const imgRefs = useRef<(HTMLImageElement | null)[][]>(
+    COLUMNS.map(() => [null, null, null])
+  );
   const rafRef = useRef(0);
   const visibleRef = useRef(false);
+
+  // Single shared index so all columns advance together. The visual stagger
+  // is achieved via per-column transition-delay, not by offsetting the index.
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reduceMotion) return;
+    const id = window.setInterval(() => {
+      setActiveSlide((n) => (n + 1) % 3);
+    }, SLIDE_INTERVAL_MS);
+    return () => window.clearInterval(id);
+  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // Cached layout — measured outside the scroll handler to prevent
+    // Cached layout - measured outside the scroll handler to prevent
     // forced reflows on every scroll frame.
     let cachedTop = 0;
     let cachedHeight = 0;
@@ -71,11 +195,13 @@ const HeroEditorial = () => {
         (cachedVH / 2 + cachedHeight / 2);
       const clamped = Math.max(-1, Math.min(1, progress));
 
-      imgRefs.current.forEach((img, i) => {
-        if (!img) return;
-        const speed = HERO_EDITORIAL_IMAGES[i].speed;
+      imgRefs.current.forEach((column, colIdx) => {
+        const speed = COLUMNS[colIdx].speed;
         const y = reduceMotion ? 0 : clamped * -30 * speed * 3.3;
-        img.style.transform = `translate3d(0, ${y}px, 0) scale(1.02)`;
+        column.forEach((img) => {
+          if (!img) return;
+          img.style.transform = `translate3d(0, ${y}px, 0) scale(1.02)`;
+        });
       });
     };
 
@@ -127,27 +253,41 @@ const HeroEditorial = () => {
           className="flex items-center justify-center"
           style={{ gap: 16 }}
         >
-          {HERO_EDITORIAL_IMAGES.map((img, i) => (
+          {COLUMNS.map((col, colIdx) => (
             <div
-              key={i}
+              key={colIdx}
               className="relative overflow-hidden ph ph-warm rounded-[14px] rfx-rounded-img"
-              style={{ width: `${img.widthPct}%`, aspectRatio: img.aspect }}
+              style={{ width: `${col.widthPct}%`, aspectRatio: col.aspect }}
             >
-              <img
-                ref={(el) => (imgRefs.current[i] = el)}
-                src={img.src}
-                alt={img.alt}
-                className="absolute inset-0 w-full h-full object-cover will-change-transform"
-                style={{
-                  transform: "translate3d(0,0,0) scale(1.02)",
-                  transition: "transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-                }}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                width={1024}
-                height={1280}
-              />
+              {col.slides.map((slide, sIdx) => {
+                const active = sIdx === activeSlide;
+                return (
+                  <img
+                    key={slide.src}
+                    ref={(el) => (imgRefs.current[colIdx][sIdx] = el)}
+                    src={slide.src}
+                    alt={slide.alt}
+                    className="absolute inset-0 w-full h-full object-cover will-change-transform"
+                    style={{
+                      transform: "translate3d(0,0,0) scale(1.02)",
+                      // Parallax transform updates use a quick easing; opacity
+                      // is a separate, slower transition for the crossfade.
+                      transition: `opacity ${FADE_DURATION_MS}ms ease ${colIdx * STAGGER_PER_COL_MS}ms, transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94)`,
+                      opacity: active ? 1 : 0,
+                    }}
+                    // First slide of every column is eager so the hero is
+                    // fully populated on first paint. The other two preload
+                    // as lazy with high priority so the first crossfade
+                    // doesn't show a flash of empty.
+                    loading={sIdx === 0 ? "eager" : "lazy"}
+                    fetchPriority={sIdx === 0 ? "high" : "auto"}
+                    decoding="async"
+                    width={1024}
+                    height={1280}
+                    aria-hidden={active ? undefined : true}
+                  />
+                );
+              })}
             </div>
           ))}
         </div>

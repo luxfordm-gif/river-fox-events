@@ -33,6 +33,13 @@ Targets:
 - "From £460" — appears in a maximum of 6 page metas site-wide.
 - Banned filler phrases (never use): "If you're looking for…", "Look no further…", "We pride ourselves on…", "Our team of experts…", "the perfect party".
 
+**Client-locked copy rules (Laura, 2026-05-21).** These apply everywhere — body copy, hero copy, SEO metas, alt text, FAQs, location pages:
+
+- **Em dashes (—) are banned.** Use a hyphen (-) instead. The entire `src/` tree was converted on 2026-05-21; don't reintroduce them.
+- **"Design-led" is banned** (too industry, not consumer-friendly). Use **"thoughtfully styled"** in body copy and **"bespoke"** in SEO metas.
+- **"From scratch" is banned.** Use **"individually designed"**.
+- **"Elevated"** — use as little as possible. Allowed sparingly, never as the headline word.
+
 **Uniqueness rule — applies to titles, metas, H1s, hero sub-copy and image alt text.** Before writing new copy for a page, skim existing pages and make sure the first ~5 words of the new draft don't echo any other page. This protects against duplicate-content signals and keeps the writing feeling considered rather than templated.
 
 ## Location pages
@@ -115,7 +122,7 @@ For the competitor-research workflow when starting a new article, see **`src/dat
 - Real contact: `07872 114191`, `riverfoxevents@gmail.com`, IG `@lollipop_balloonsx` (the rebrand `@riverfoxevents` handle isn't live yet, so all IG links point at the historic Lollipop Balloons account — don't "correct" them back). **Never** `hello@riverfoxevents.co.uk` — that address doesn't exist.
 - Studio: 15 Apsley Rd, Horley, RH6 9RX.
 - Pricing anchor: events from £460. Use this number consistently.
-- Tone: calm, considered, design-led. Never punchy/salesy. Em dashes are fine, exclamation marks aren't.
+- Tone: calm, considered, thoughtfully styled. Never punchy/salesy. No em dashes (use hyphens), no exclamation marks.
 
 ## Working with Matt
 

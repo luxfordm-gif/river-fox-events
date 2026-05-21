@@ -40,7 +40,7 @@ const Privacy = () => {
 
         <ArticleProse>
           <p>
-            River Fox Events ("we", "us") is a design-led event-styling studio
+            River Fox Events ("we", "us") is an event-styling studio
             based in Surrey. This page explains what personal information we
             collect when you use this website, how we use it and the cookies
             we set. It is written in plain English. If anything is unclear,
@@ -79,14 +79,14 @@ const Privacy = () => {
             This site uses one analytics cookie set by Google Analytics 4
             (measurement ID <code>G-L2YVNSW0ZQ</code>). It tells us how many
             people visit, which pages they read and roughly where in the UK
-            they are — nothing that identifies an individual. It does not
+            they are - nothing that identifies an individual. It does not
             follow you to other sites and we do not use it for advertising.
           </p>
           <p>
             The cookie only loads if you click <em>Accept</em> on the cookie
             banner. If you click <em>Decline</em>, or ignore the banner, no
             analytics cookie is set. You can change your mind at any time by
-            clearing this site's cookies in your browser — the banner will
+            clearing this site's cookies in your browser - the banner will
             reappear on your next visit.
           </p>
 

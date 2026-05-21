@@ -18,7 +18,7 @@ export type IncludedItem = {
   body: string;
 };
 
-// Custom inline icons — refined, hand-crafted line work for a more premium,
+// Custom inline icons - refined, hand-crafted line work for a more premium,
 // editorial feel than off-the-shelf lucide glyphs.
 const BalloonIcon = ({ size = 26, strokeWidth = 1.4 }: IconProps) => (
   <svg
@@ -204,7 +204,7 @@ const DEFAULT_ITEMS: IncludedItem[] = [
   {
     icon: "heart",
     label: "Setup & breakdown",
-    body: "Fully managed, start to finish — nothing for you to lift.",
+    body: "Fully managed, start to finish - nothing for you to lift.",
   },
 ];
 

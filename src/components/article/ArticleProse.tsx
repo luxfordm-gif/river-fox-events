@@ -10,7 +10,7 @@ type Props = {
  * inter-paragraph spacing.
  *
  * Children are typically a sequence of <p> / <h2> / <h3> / <ul> / <a>.
- * Tailwind's prose classes are deliberately not used — the styling here
+ * Tailwind's prose classes are deliberately not used - the styling here
  * matches the rest of the site (Fraunces serif, ink colours, accent on
  * links) rather than Tailwind's defaults.
  */

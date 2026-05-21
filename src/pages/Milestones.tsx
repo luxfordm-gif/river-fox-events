@@ -27,23 +27,23 @@ import imgOccasionsHover from "@/assets/river-fox-events-baby-stubbs-gender-reve
 const FAQS = [
   {
     q: "How far in advance should I book a milestone event?",
-    a: "We recommend enquiring 8–12 weeks in advance for milestone celebrations, particularly for spring and summer weekends which book quickly. If your date is sooner, you're welcome to get in touch — we'll always advise honestly on what's possible.",
+    a: "We recommend enquiring 8–12 weeks in advance for milestone celebrations, particularly for spring and summer weekends which book quickly. If your date is sooner, you're welcome to get in touch - we'll always advise honestly on what's possible.",
   },
   {
     q: "Do you travel to my home or venue?",
-    a: "Yes. We come to you — your home, garden, a private venue, restaurant or hotel. Setup happens before guests arrive and full breakdown is included afterwards, so the day feels effortless from start to finish.",
+    a: "Yes. We come to you - your home, garden, a private venue, restaurant or hotel. Setup happens before guests arrive and full breakdown is included afterwards, so the day feels effortless from start to finish.",
   },
   {
     q: "Can I choose specific colours and themes?",
-    a: "Every milestone is shaped around you — bring a palette, a Pinterest board or a single reference and the design grows from there.",
+    a: "Every milestone is shaped around you - bring a palette, a Pinterest board or a single reference and the design grows from there.",
   },
   {
     q: "How much does milestone celebration styling cost in Surrey?",
-    a: "Milestone celebrations start from £460, with larger or more involved designs typically ranging from £1,200 to £2,500+. Every event is individually quoted following a discovery call.",
+    a: "Milestone celebrations start from £460, with larger or more involved designs typically ranging from £1,200 to £2,500+.",
   },
   {
     q: "What happens on the day?",
-    a: "We arrive ahead of your guests and dress the space — installations, tablescapes, signage and styled details, all in place before anyone walks in. We return afterwards to pack everything away.",
+    a: "We arrive ahead of your guests and dress the space - installations, tablescapes, signage and styled details, all in place before anyone walks in. We return afterwards to pack everything away.",
   },
   {
     q: "Do you style events outside Surrey?",
@@ -88,11 +88,11 @@ const Milestones = () => {
                 className="italic font-normal"
                 style={{ color: "hsl(var(--accent))" }}
               >
-                considered in detail.
+                beautifully styled.
               </em>
             </>,
           ]}
-          sub="Considered event styling for milestone birthdays, baby showers and anniversaries across Surrey — life's most significant moments, honoured properly."
+          sub="Bespoke event styling for milestone birthdays, baby showers and anniversaries across Surrey - life's most significant moments, honoured properly."
         />
 
         <CPReveal
@@ -115,12 +115,12 @@ const Milestones = () => {
         >
           <p>
             A milestone birthday or anniversary isn't just another event. It's
-            a marker — a moment that deserves a setting as considered and
+            a marker - a moment that deserves a setting as considered and
             special as the person and occasion being celebrated.
           </p>
           <p>
-            I design events that feel elevated and personal — whether at
-            home, a private venue, restaurant or hotel.
+            I design special events that feel considered and personal -
+            whether at home, a private venue, restaurant or hotel.
           </p>
         </CPReveal>
 
@@ -130,7 +130,7 @@ const Milestones = () => {
           image={imgOccasions}
           alt="He or she balloon arch in soft blue and pink for the Stubbs family gender reveal styled in Surrey by River Fox Events"
           hoverImage={imgOccasionsHover}
-          hoverAlt="Wildflower and dried-grass detail on the Stubbs gender reveal styling — close-up of soft pinks, blues and pampas by River Fox Events"
+          hoverAlt="Wildflower and dried-grass detail on the Stubbs gender reveal styling - close-up of soft pinks, blues and pampas by River Fox Events"
           tone="ph-blush"
           headline={
             <>
@@ -142,8 +142,8 @@ const Milestones = () => {
           }
         >
           <p>
-            Whether it's a 21st or 70th birthday, anniversary, baby shower
-            or christening, each event is designed with a focus on
+            Whether it's a 21st or 70th birthday, wedding anniversary, baby
+            shower or christening, each event is designed with a focus on
             atmosphere, balance and detail.
           </p>
         </CPReveal>
@@ -162,7 +162,7 @@ const Milestones = () => {
             </>
           }
           ctaLabel="Enquire now"
-          footnote="Beautifully styled milestone celebrations from £460. Every event is individually quoted following a discovery call — so the proposal reflects exactly what you have in mind."
+          footnote=""
         />
 
         <ChildrensFAQ faqs={FAQS} headingId="ms-faq-heading" />

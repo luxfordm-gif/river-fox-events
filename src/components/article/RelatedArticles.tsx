@@ -11,11 +11,11 @@ type Props = {
  *
  * Card layout: small thumbnail on the left (using `cardImage`), title +
  * teaser + read-more on the right. Single column on mobile, two columns
- * from md+. Same horizontal card shape across breakpoints — feels
+ * from md+. Same horizontal card shape across breakpoints - feels
  * editorial-list rather than a Pinterest-style grid.
  *
  * Related items are *manually curated* via each article's `relatedSlugs`
- * array in src/data/articles/index.tsx — not auto previous/next or
+ * array in src/data/articles/index.tsx - not auto previous/next or
  * latest. See `findRelated` for the lookup.
  */
 const RelatedArticles = ({ items }: Props) => {

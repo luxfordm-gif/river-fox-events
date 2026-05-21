@@ -9,7 +9,7 @@ type Props = {
 /**
  * Inline social-share row for the article hero. Three icons:
  * X/Twitter, LinkedIn and copy-to-clipboard. Deliberately small and
- * minimal — the article title is the centrepiece, not the share row.
+ * minimal - the article title is the centrepiece, not the share row.
  */
 const ArticleShareLinks = ({ url, title }: Props) => {
   const [copied, setCopied] = useState(false);
@@ -20,7 +20,7 @@ const ArticleShareLinks = ({ url, title }: Props) => {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Older browsers without clipboard API — silently fail; X / LinkedIn
+      // Older browsers without clipboard API - silently fail; X / LinkedIn
       // links still work.
     }
   };

@@ -14,7 +14,7 @@ const oxshott = makeLocation({
     "Themed children's parties, milestones and balloon installations in Oxshott. Personally designed and installed by Laura.",
   uniqueHeroSub: (
     <>
-      Birthdays brought to life in Oxshott — personally designed and installed.
+      Birthdays brought to life in Oxshott - personally designed and installed.
     </>
   ),
   nearbyVillages: [
@@ -54,14 +54,14 @@ const oxshott = makeLocation({
         River Fox Events is an Oxshott party stylist designing tailored
         children's parties, milestone birthdays, christenings, baby
         showers and at-home weddings across the KT22 postcode. Every
-        celebration is built from scratch around your brief —
+        celebration is individually designed around your brief -
         concept, balloon installations, backdrops, signage, cake
         table and tablescape, all installed and broken down by us.
       </p>
       <p>
         Our studio is in Horley and Oxshott sits firmly in our regular
         Surrey coverage. Most local celebrations happen at home rather
-        than at named venues — and that's the bulk of what we do here.
+        than at named venues - and that's the bulk of what we do here.
       </p>
     </>
   ),
@@ -69,8 +69,8 @@ const oxshott = makeLocation({
     <>
       <p>
         Oxshott celebrations are mostly at-home. The Crown Estate
-        roads — Warren Lane, Sandy Lane, Stoke Road and the Heath
-        properties — sit on generous plots, so most events run across
+        roads - Warren Lane, Sandy Lane, Stoke Road and the Heath
+        properties - sit on generous plots, so most events run across
         multiple zones rather than a single room. Drawing-room and
         entrance-hall installations for arrival, garden marquees for
         the meal, kitchen-island bars for the after-dinner. We design
@@ -92,7 +92,7 @@ const oxshott = makeLocation({
         <p>
           Oxshott is largely an at-home town. The Crown Estate
           properties are big enough that most local celebrations move
-          through the house the way guests do — a drawing-room or
+          through the house the way guests do - a drawing-room or
           entrance-hall scheme for arrival, a marquee in the garden
           for the meal, a kitchen-island bar for the after-dinner. We
           design across all of it as one piece, not as separate

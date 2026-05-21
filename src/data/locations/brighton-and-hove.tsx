@@ -12,11 +12,11 @@ const brightonAndHove = makeLocation({
   seoTitleRegion: "East Sussex",
   uniqueSeoTitle: "Party Stylist Brighton & Hove | River Fox Events",
   uniqueSeoDescription:
-    "A short drive from Brighton — full-service event styling across Brighton, Hove and East Sussex. From design to breakdown, by Laura.",
+    "A short drive from Brighton - full-service event styling across Brighton, Hove and East Sussex. From design to breakdown, by Laura.",
   uniqueHeroLine: <>Your Brighton & Hove event stylist.</>,
   uniqueHeroSub: (
     <>
-      Celebrations brought to life across Brighton & Hove — personally designed
+      Celebrations brought to life across Brighton & Hove - personally designed
       and installed.
     </>
   ),
@@ -58,8 +58,8 @@ const brightonAndHove = makeLocation({
         River Fox Events is a Brighton & Hove event stylist designing
         tailored children's parties, milestone birthdays, christenings,
         baby showers, weddings and corporate brand activations across
-        the BN1, BN2 and BN3 postcodes. Every celebration is built
-        from scratch around your brief — concept, balloon
+        the BN1, BN2 and BN3 postcodes. Every celebration is individually
+        designed around your brief - concept, balloon
         installations, backdrops, signage, cake table and tablescape,
         all installed and broken down by us.
       </p>

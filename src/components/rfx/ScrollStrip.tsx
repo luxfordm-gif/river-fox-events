@@ -14,18 +14,18 @@ import cpCelebrations from "@/assets/cp-celebrations.webp";
 const STRIP_IMAGES = [
   { src: hero1, alt: "Dusty blue and white balloon arch with 'Baby in Bloom' backdrop for a Surrey baby shower by River Fox Events", aspect: "760 / 1000" },
   { src: expMilestone, alt: "Rose gold 40th birthday light-up marquee numbers with blush and chrome balloon garland styled in Surrey by River Fox Events", aspect: "760 / 980" },
-  { src: hero2, alt: "Jungle theme children's birthday styling in Surrey by River Fox Events — elephant centrepiece, monstera runner and balloons", aspect: "760 / 1088" },
-  { src: expChildren, alt: "Sage green dinosaur children's birthday styling in Surrey by River Fox Events — name sign and balloon installation", aspect: "820 / 1089" },
-  { src: hero3, alt: "Pink and lilac fairy first birthday styling in Surrey by River Fox Events — Kayla backdrop, light-up one and mossy runner", aspect: "760 / 1000" },
-  { src: expCorporate, alt: "Corporate gala event styling in Surrey by River Fox Events — navy blue gold cream balloon garland and branded backdrop", aspect: "820 / 1093" },
-  { src: cpCelebrations, alt: "Children's birthday styling in Surrey by River Fox Events — tailored pastel balloon installation with floral accents", aspect: "1468 / 1920" },
+  { src: hero2, alt: "Jungle theme children's birthday styling in Surrey by River Fox Events - elephant centrepiece, monstera runner and balloons", aspect: "760 / 1088" },
+  { src: expChildren, alt: "Sage green dinosaur children's birthday styling in Surrey by River Fox Events - name sign and balloon installation", aspect: "820 / 1089" },
+  { src: hero3, alt: "Pink and lilac fairy first birthday styling in Surrey by River Fox Events - Kayla backdrop, light-up one and mossy runner", aspect: "760 / 1000" },
+  { src: expCorporate, alt: "Corporate gala event styling in Surrey by River Fox Events - navy blue gold cream balloon garland and branded backdrop", aspect: "820 / 1093" },
+  { src: cpCelebrations, alt: "Children's birthday styling in Surrey by River Fox Events - tailored pastel balloon installation with floral accents", aspect: "1468 / 1920" },
 ];
 
 /**
  * Scroll-driven horizontal image strip.
  *
  * The horizontal translation of the image track is mapped from the section's
- * scroll progress through the viewport. No auto-play, no controls — purely
+ * scroll progress through the viewport. No auto-play, no controls - purely
  * driven by vertical scroll position.
  */
 type ScrollStripImage = { src: string; alt: string; aspect?: string };
@@ -49,7 +49,7 @@ const ScrollStrip = ({ images }: ScrollStripProps = {}) => {
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // Cached layout — measured on resize / IntersectionObserver entry only,
+    // Cached layout - measured on resize / IntersectionObserver entry only,
     // never per scroll frame, to avoid forced reflows.
     let cachedTop = 0;
     let cachedHeight = 0;
