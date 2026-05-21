@@ -4,7 +4,7 @@ import { BUSINESS, REVIEWS, SITE, findRoute, type RouteSEO } from "./routes";
  * Client-side <head> updates after hydration.
  *
  * Single helper used by every page so meta tags, canonical link and JSON-LD
- * are emitted consistently. Source descriptions live in routes.ts — pages
+ * are emitted consistently. Source descriptions live in routes.ts - pages
  * never hard-code SEO copy.
  */
 
@@ -103,7 +103,7 @@ export const breadcrumbSchema = (path: string): SchemaJson | null => {
 
 /**
  * Service schema with the shared LocalBusiness as `provider`. `areaServed`
- * lives on the Service only — never duplicated on the provider.
+ * lives on the Service only - never duplicated on the provider.
  */
 export const serviceSchema = (params: {
   serviceType: string;
@@ -140,7 +140,7 @@ export const routeServiceSchema = (route: RouteSEO): SchemaJson | null => {
 };
 
 /**
- * ContactPage schema — tells Google "this URL is the contact page for the
+ * ContactPage schema - tells Google "this URL is the contact page for the
  * shared LocalBusiness", reinforcing the NAP signal and entity association.
  */
 export const contactPageSchema = (path: string, description: string): SchemaJson => ({

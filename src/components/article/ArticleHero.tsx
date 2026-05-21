@@ -6,7 +6,7 @@ type Props = {
   publishedAt: string;
   readMinutes: number;
   authorName?: string;
-  /** Absolute URL to this article — used for share links. */
+  /** Absolute URL to this article - used for share links. */
   url: string;
 };
 

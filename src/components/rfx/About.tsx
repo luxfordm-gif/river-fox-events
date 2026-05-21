@@ -117,7 +117,7 @@ const About = () => {
               <img
                 ref={studioImgRef}
                 src={studioImg}
-                alt="Laura, founder of River Fox Events, photographed amongst Surrey bluebells in a River Fox Events tee — design-led event stylist for children's parties, milestones and brand celebrations"
+                alt="Laura, founder of River Fox Events, photographed amongst Surrey bluebells in a River Fox Events tee - event stylist for children's parties, milestones and brand celebrations"
                 className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
                 style={{
                   transform: "translate3d(0,0,0) scale(1.14)",
@@ -154,26 +154,31 @@ const About = () => {
 
             <div className="mt-8 space-y-5 text-[16px] leading-[1.7] text-ink-soft max-w-[560px]">
               <p className="font-medium text-ink">
-                River Fox Events was built on a simple belief — that a
-                thoughtfully designed celebration changes how a moment feels,
-                and how it's remembered.
+                I started River Fox Events after owning a teepee sleepover
+                business and realising how much I loved creating those
+                magical little moments and memories that stay with you long
+                after the day is over.
               </p>
               <p>
-                Every event is created from the ground up, designed around
-                your child, your space and your vision. I personally oversee
-                each detail, from concept through to installation, ensuring
-                everything feels cohesive, considered and effortlessly
-                brought together.
+                For me, it's never just been about balloons or decorations,
+                it's about the feeling when everything comes together and
+                your child walks into a space created just for them. The
+                excitement, the atmosphere, the tiny details they (and you)
+                remember years later.
               </p>
               <p>
-                We take on a limited number of events each month, giving each
-                the time and attention it deserves — and it's what gives our
-                work its distinctive, refined finish.
+                Over time, what began as a creative outlet naturally grew
+                into the business it is today. I now work with families
+                across Surrey and London creating beautifully styled
+                children's parties, statement balloon installations and
+                celebrations that feel personal, immersive and genuinely
+                special.
               </p>
               <p>
-                Based in Surrey, working across the county and into London
-                for clients who value thoughtful design and the difference
-                that detail makes.
+                I keep the business intentionally small so I can stay
+                hands-on with every event and give each one the care and
+                attention it deserves - from the first ideas through to
+                installation day.
               </p>
             </div>
 
@@ -181,7 +186,7 @@ const About = () => {
               href="/journal/"
               className="btn-link-rf mt-8"
               style={{ fontWeight: 600 }}
-              aria-label="Read the River Fox Events journal — notes, behind the scenes and trends from the studio"
+              aria-label="Read the River Fox Events journal - notes, behind the scenes and trends from the studio"
             >
               Inside the studio · read the journal{" "}
               <span className="arr">→</span>

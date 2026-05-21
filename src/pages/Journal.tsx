@@ -118,7 +118,7 @@ const Journal = () => {
     applyMeta({
       title: "Journal | River Fox Events",
       description:
-        "Notes from the studio — event styling trends, behind-the-scenes from Surrey celebrations, and thinking on what makes a room feel right.",
+        "Notes from the studio - event styling trends, behind-the-scenes from Surrey celebrations, and thinking on what makes a room feel right.",
       path: "/journal/",
     });
   }, []);
@@ -151,7 +151,7 @@ const Journal = () => {
             className="mt-5 md:mt-7 max-w-[44ch] mx-auto text-[16px] md:text-[19px] leading-[1.55] text-ink-soft font-serif-rf font-light italic"
             style={{ textWrap: "pretty" }}
           >
-            Notes from the studio — trends, behind-the-scenes, and the
+            Notes from the studio - trends, behind-the-scenes, and the
             thinking behind the celebrations we style.
           </p>
         </header>

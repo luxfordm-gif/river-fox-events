@@ -11,10 +11,10 @@ const oxted = makeLocation({
   },
   uniqueSeoTitle: "Party Stylist Oxted Surrey | River Fox Events",
   uniqueSeoDescription:
-    "Design-led event styling for celebrations across Oxted, Limpsfield and East Surrey. Parties, milestones and installations from £460, by Laura.",
+    "Bespoke event styling for celebrations across Oxted, Limpsfield and East Surrey. Parties, milestones and installations from £460, by Laura.",
   uniqueHeroSub: (
     <>
-      Design-led event styling in Oxted and across Surrey — children's
+      Bespoke event styling in Oxted and across Surrey - children's
       parties, milestone celebrations and tailored installations.
     </>
   ),
@@ -53,7 +53,7 @@ const oxted = makeLocation({
   uniqueWhatWeDoBody: (
     <>
       <p>
-        Most clients arrive with a feeling rather than a brief — a
+        Most clients arrive with a feeling rather than a brief - a
         colour, a memory, a Pinterest board that hasn't quite
         landed. The first conversation is short and unhurried; you
         bring the vision, we shape it into something specific and
@@ -68,7 +68,7 @@ const oxted = makeLocation({
         A first birthday in the garden. A fortieth that needs to
         feel like a proper night out. A christening lunch, a ruby
         wedding, a brand dinner for the team. Every brief looks
-        different, but the question underneath is always the same —
+        different, but the question underneath is always the same -
         what do you want this day to feel like? The styling is
         designed backwards from the answer.
       </p>
@@ -87,7 +87,7 @@ const oxted = makeLocation({
         <p>
           Oxted is mostly home work. The houses across the area sit on
           enough land that styling has to belong in the room rather
-          than be imposed on it — a country house calls for different
+          than be imposed on it - a country house calls for different
           decisions than a London townhouse, and we make them
           differently. When the celebration moves out, it tends to be
           to a private garden, a country club, or one of the village
@@ -101,7 +101,7 @@ const oxted = makeLocation({
     ),
   },
   uniquePresenceAnswer:
-    "Yes — Oxted is part of our regular East Surrey coverage, along with Limpsfield, Hurst Green, Tandridge, Godstone and the surrounding villages.",
+    "Yes - Oxted is part of our regular East Surrey coverage, along with Limpsfield, Hurst Green, Tandridge, Godstone and the surrounding villages.",
 });
 
 export default oxted;

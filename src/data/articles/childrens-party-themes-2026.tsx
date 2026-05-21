@@ -11,7 +11,7 @@ const ChildrensPartyThemes2026Article = () => (
     <ArticleTLDR>
       <ul className="list-disc pl-5 space-y-1">
         <li>
-          The brief from Surrey parents has shifted — themes are still
+          The brief from Surrey parents has shifted - themes are still
           everything, but the look is more grown-up and more personal.
         </li>
         <li>
@@ -35,7 +35,7 @@ const ChildrensPartyThemes2026Article = () => (
     <ArticleProse>
       <p>
         The brief from <a href="/childrens-parties/">Surrey parents</a> has
-        shifted. Themes are still everything for a 4th or 6th birthday — but
+        shifted. Themes are still everything for a 4th or 6th birthday - but
         the version of "themed" landing in our inbox in 2026 is more
         grown-up, more personal, and a lot less plastic-pink-from-the-supermarket.
       </p>
@@ -48,8 +48,8 @@ const ChildrensPartyThemes2026Article = () => (
 
     <ArticleImage
       src={imgLead}
-      alt="A jungle-themed children's birthday party tablescape styled by River Fox Events in Surrey — deep foliage runner, lion plates, giraffe-print cups and a leopard centrepiece"
-      caption="A jungle tablescape — character plates carried by a deep foliage runner. The detail is in the layering."
+      alt="A jungle-themed children's birthday party tablescape styled by River Fox Events in Surrey - deep foliage runner, lion plates, giraffe-print cups and a leopard centrepiece"
+      caption="A jungle tablescape - character plates carried by a deep foliage runner. The detail is in the layering."
     />
 
     <ArticleProse>
@@ -77,8 +77,8 @@ const ChildrensPartyThemes2026Article = () => (
         looking like a merch wall.
       </p>
       <p>
-        How we style it: lean into the colour palette — terracotta,
-        warm orange, sage, soft blue — and let those carry the room.
+        How we style it: lean into the colour palette - terracotta,
+        warm orange, sage, soft blue - and let those carry the room.
         One or two well-placed Bluey props (a balloon dog, a custom
         backdrop) read as Bluey because the parent has dressed for it,
         not because every surface is branded.
@@ -93,7 +93,7 @@ const ChildrensPartyThemes2026Article = () => (
       <h2>3. Soft maximalism</h2>
       <p>
         The non-character alternative parents are increasingly asking
-        for. Big, layered, joyful — but soft. Pastels mixed with earth
+        for. Big, layered, joyful - but soft. Pastels mixed with earth
         tones, layered patterns, oversized florals, mismatched textures.
         It feels like a styled magazine shoot for a 5-year-old.
       </p>
@@ -113,9 +113,9 @@ const ChildrensPartyThemes2026Article = () => (
         as a styling motif.
       </p>
       <p>
-        It works alongside almost any other theme — stone-castle
+        It works alongside almost any other theme - stone-castle
         princess + charm station, woodland + charm station, soft
-        maximalism + charm station — and gives the children a thing
+        maximalism + charm station - and gives the children a thing
         they actually take home rather than a bag of plastic.
       </p>
     </ArticleProse>
@@ -132,11 +132,11 @@ const ChildrensPartyThemes2026Article = () => (
         garden-room celebrations through spring and summer.
       </p>
 
-      <h2>6. Toy Story 5 — incoming</h2>
+      <h2>6. Toy Story 5 - incoming</h2>
       <p>
         The June 2026 release will land hard for the 4-to-7 bracket. We
         already have Toy-Story-themed enquiries on the books for autumn
-        birthdays. The smart approach: don't try to recreate the film —
+        birthdays. The smart approach: don't try to recreate the film -
         style around its colour palette (cherry red, sky blue, cream,
         deep yellow) and let one or two iconic props (a Buzz balloon, a
         cloud-print backdrop) do the character work.
@@ -146,7 +146,7 @@ const ChildrensPartyThemes2026Article = () => (
       <p>
         Across every brief landing this year, the same instincts come
         through. Smaller groups. More hands-on. Less merch, more
-        styling. Themes are still the brief — but parents want something
+        styling. Themes are still the brief - but parents want something
         that looks beautiful in the family camera roll, not just
         recognisable.
       </p>
@@ -155,7 +155,7 @@ const ChildrensPartyThemes2026Article = () => (
         looks like a kit. A theme styled properly looks like a memory.
       </p>
       <p>
-        — <em>Laura</em>
+        - <em>Laura</em>
       </p>
     </ArticleProse>
   </>

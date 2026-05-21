@@ -26,7 +26,7 @@ const ArticlePullQuote = ({ children, attribution }: Props) => (
     </p>
     {attribution && (
       <cite className="mt-5 inline-block font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink-soft not-italic">
-        — {attribution}
+        - {attribution}
       </cite>
     )}
   </blockquote>

@@ -36,7 +36,7 @@ const Footer = () => {
   return (
     <footer className="relative overflow-hidden bg-surface-deep text-on-deep">
       <div className="relative pt-[54px] md:pt-24 pb-9 overflow-hidden">
-        {/* Big watermark — slow drift, parallax, masked sheen */}
+        {/* Big watermark - slow drift, parallax, masked sheen */}
         <div
           ref={watermarkRef}
           aria-hidden="true"
@@ -213,7 +213,7 @@ const Footer = () => {
                 href="https://www.instagram.com/lollipop_balloonsx/"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Instagram — @riverfoxevents"
+                aria-label="Instagram - @riverfoxevents"
                 className="inline-flex items-center justify-center w-9 h-9 rounded-full border transition-opacity hover:opacity-100 opacity-85"
                 style={{ borderColor: "hsl(var(--on-deep) / 0.25)", color: "hsl(var(--on-deep))" }}
               >

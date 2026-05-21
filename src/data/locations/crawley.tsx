@@ -12,7 +12,7 @@ const crawley = makeLocation({
   seoTitleRegion: "West Sussex",
   uniqueSeoTitle: "Crawley Party & Event Stylist | River Fox Events",
   uniqueSeoDescription:
-    "Easy reach across West Sussex from Crawley — full-service event styling for celebrations from concept to clear-down, personally by Laura.",
+    "Easy reach across West Sussex from Crawley - full-service event styling for celebrations from concept to clear-down, personally by Laura.",
   uniqueHeroSub: (
     <>
       Designed, installed, delivered. Studio-led celebrations in Crawley and the
@@ -58,7 +58,7 @@ const crawley = makeLocation({
         children's parties, milestone birthdays, christenings, baby
         showers, weddings and corporate brand activations across the
         RH10 and RH11 postcodes. Every celebration is built from
-        scratch around your brief — concept, balloon installations,
+        scratch around your brief - concept, balloon installations,
         backdrops, signage, cake table and tablescape, all installed
         and broken down by us.
       </p>
@@ -74,8 +74,8 @@ const crawley = makeLocation({
     <>
       <p>
         Crawley splits broadly between family celebrations across
-        Three Bridges, Pound Hill, Maidenbower and Tilgate — first
-        birthdays, christenings, milestone weekends, often at home —
+        Three Bridges, Pound Hill, Maidenbower and Tilgate - first
+        birthdays, christenings, milestone weekends, often at home -
         and corporate work along the Gatwick corridor. Brand
         activations, conference styling, product launches and award
         nights at the airport hotels and at K2 Crawley are a regular

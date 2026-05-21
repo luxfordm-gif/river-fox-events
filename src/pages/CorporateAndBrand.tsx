@@ -43,13 +43,13 @@ const CORPORATE_STEPS = [
     n: "01",
     title: "Share your brief",
     body:
-      "Tell us about the event — date, venue, brand guidelines and objectives. A short call follows to talk through the detail.",
+      "Tell us about the event - date, venue, brand guidelines and objectives. A short call follows to talk through the detail.",
   },
   {
     n: "02",
     title: "Concept & proposal",
     body:
-      "We design a brand-aligned concept with clear pricing — installations, materials and timeline mapped against your brief.",
+      "We design a brand-aligned concept with clear pricing - installations, materials and timeline mapped against your brief.",
   },
   {
     n: "03",
@@ -62,15 +62,15 @@ const CORPORATE_STEPS = [
 const FAQS = [
   {
     q: "What types of corporate events do you style?",
-    a: "Product launches, retail and showroom openings, PR activations, brand events, office celebrations and milestone team events. Anything where the environment matters — from a single statement entrance to a full venue activation.",
+    a: "Product launches, retail and showroom openings, PR activations, brand events, office celebrations and milestone team events. Anything where the environment matters - from a single statement entrance to a full venue activation.",
   },
   {
     q: "Do you work with brand guidelines and specific colour palettes?",
-    a: "Yes — every corporate project is aligned to your brand. Share your guidelines, palette and any reference creative and we'll design installations that feel cohesive and on-brand throughout.",
+    a: "Yes - every corporate project is aligned to your brand. Share your guidelines, palette and any reference creative and we'll design installations that feel cohesive and on-brand throughout.",
   },
   {
     q: "How far in advance should we book?",
-    a: "Ideally 8–12 weeks ahead for larger activations. Shorter timelines are possible for single-zone installs — get in touch as early as you can and we'll tell you honestly what's deliverable.",
+    a: "Ideally 8–12 weeks ahead for larger activations. Shorter timelines are possible for single-zone installs - get in touch as early as you can and we'll tell you honestly what's deliverable.",
   },
   {
     q: "Do you travel outside Surrey?",
@@ -78,7 +78,7 @@ const FAQS = [
   },
   {
     q: "Can you provide a quote before we commit?",
-    a: "Always. After a short discovery call we send a tailored proposal with clear pricing, recommended installations and timeline — no commitment to proceed.",
+    a: "Always. After a short discovery call we send a tailored proposal with clear pricing, recommended installations and timeline - no commitment to proceed.",
   },
   {
     q: "What's included in a corporate installation?",
@@ -114,9 +114,9 @@ const CorporateAndBrand = () => {
       <main>
         <ServiceHero
           image={imgHero}
-          imageAlt="Twin balloon arches framing a corporate atrium entrance — sculptural installation in cream and brand tones styled by River Fox Events for a Surrey corporate event"
+          imageAlt="Twin balloon arches framing a corporate atrium entrance - sculptural installation in cream and brand tones styled by River Fox Events for a Surrey corporate event"
           mobileImage={imgHeroMobile}
-          mobileImageAlt="Navy and gold balloon installation at the Pudsey charity gala dinner — sophisticated event styling by River Fox Events"
+          mobileImageAlt="Navy and gold balloon installation at the Pudsey charity gala dinner - sophisticated event styling by River Fox Events"
           headingId="cb-hero-heading"
           lines={[
             <>Corporate event styling</>,
@@ -129,7 +129,7 @@ const CorporateAndBrand = () => {
               </em>
             </>,
           ]}
-          sub="We design and install visually impactful setups for brands, launches and events across Surrey and London — balancing creativity with a refined, on-brand finish."
+          sub="We design and install visually impactful setups for brands, launches and events across Surrey and London - balancing creativity with a refined, on-brand finish."
         />
 
         <CPReveal
@@ -152,12 +152,12 @@ const CorporateAndBrand = () => {
         >
           <p>
             A thoughtfully styled installation shapes how guests feel the
-            moment they walk in — and what they remember long after they
+            moment they walk in - and what they remember long after they
             leave.
           </p>
           <p>
             We work with brands and businesses across Surrey and London to
-            design impactful event styling — from statement installations and
+            design impactful event styling - from statement installations and
             branded backdrops to entrance displays and photo moments that stop
             guests in their tracks.
           </p>
@@ -167,9 +167,9 @@ const CorporateAndBrand = () => {
           id="cb-services"
           imageSide="left"
           image={imgWhat}
-          alt="Side angle of NXTGEN corporate event entrance — branded balloon columns flanking a glass doorway styled by River Fox Events"
+          alt="Side angle of NXTGEN corporate event entrance - branded balloon columns flanking a glass doorway styled by River Fox Events"
           hoverImage={imgWhatHover}
-          hoverAlt="Close-up of layered balloon column detail in NXTGEN brand colours by River Fox Events — texture, scale and on-brand finish"
+          hoverAlt="Close-up of layered balloon column detail in NXTGEN brand colours by River Fox Events - texture, scale and on-brand finish"
           tone="ph-blush"
           headline={
             <>
@@ -281,9 +281,8 @@ const CorporateAndBrand = () => {
               </em>
             </h2>
             <p className="text-[15.5px] leading-[1.7] text-ink-soft max-w-[520px] mx-auto mt-6">
-              Every event is individually quoted following a discovery
-              call — so the proposal reflects exactly what you have in
-              mind.
+              Every event is individually quoted based on your
+              requirements.
             </p>
             <div className="mt-8 flex justify-center">
               <a
@@ -302,7 +301,7 @@ const CorporateAndBrand = () => {
             steps={CORPORATE_STEPS}
             intro={
               <>
-                A clear, professional process — from first brief through to
+                A clear, professional process - from first brief through to
                 full breakdown after the last guest leaves.
               </>
             }
@@ -328,14 +327,14 @@ const CorporateAndBrand = () => {
           ]}
           intro={
             <>
-              Based in Surrey and installing regularly across London — for
+              Based in Surrey and installing regularly across London - for
               brands and businesses that care about how their event looks and
               feels. Wherever the venue, our team installs before guests
               arrive and returns for full breakdown afterwards.
             </>
           }
           mapQuery="Surrey,England,UK&z=8"
-          mapTitle="Map of Surrey and London — areas covered by River Fox Events"
+          mapTitle="Map of Surrey and London - areas covered by River Fox Events"
         />
 
         <Enquire defaultEventType="Corporate event" />

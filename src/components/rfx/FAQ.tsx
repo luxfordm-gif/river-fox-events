@@ -17,7 +17,7 @@ type FAQItem = { q: string; a: string; aNode?: ReactNode };
 const FAQS: FAQItem[] = [
   {
     q: "What areas do you cover?",
-    a: "River Fox Events is based in Surrey and primarily works across Cobham, Weybridge, Esher, Oxshott, Guildford, Reigate, Farnham and Horsham. We also travel into London and the surrounding Home Counties for the right project — just ask when you enquire.",
+    a: "River Fox Events is based in Surrey and primarily works across Cobham, Weybridge, Esher, Oxshott, Guildford, Reigate, Farnham and Horsham. We also travel into London and the surrounding Home Counties for the right project - just ask when you enquire.",
   },
   {
     q: "How much does event styling cost?",
@@ -25,19 +25,19 @@ const FAQS: FAQItem[] = [
   },
   {
     q: "How far in advance should I book?",
-    a: "We recommend enquiring at least 6–8 weeks ahead for children's parties and milestone celebrations. Popular dates — particularly weekends in school holidays — book quickly. Corporate projects can often be accommodated with shorter lead times, so it's always worth asking.",
+    a: "We recommend enquiring at least 6–8 weeks ahead for children's parties and milestone celebrations. Popular dates - particularly weekends in school holidays - book quickly. Corporate projects can often be accommodated with shorter lead times, so it's always worth asking.",
     aNode: (
       <>
         We recommend enquiring at least 6–8 weeks ahead for{" "}
         <a href="/childrens-parties/" className={linkCx}>children's parties</a> and{" "}
-        <a href="/milestone-celebrations/" className={linkCx}>milestone celebrations</a>. Popular dates — particularly weekends in school holidays — book quickly.{" "}
+        <a href="/milestone-celebrations/" className={linkCx}>milestone celebrations</a>. Popular dates - particularly weekends in school holidays - book quickly.{" "}
         <a href="/corporate-brand-styling/" className={linkCx}>Corporate projects</a> can often be accommodated with shorter lead times, so it's always worth asking.
       </>
     ),
   },
   {
     q: "Do you travel to my venue or home?",
-    a: "Yes. We come to you — whether that's your home, a private venue, a restaurant, a corporate space or a hotel. We set everything up before guests arrive and take care of full breakdown afterwards.",
+    a: "Yes. We come to you - whether that's your home, a private venue, a restaurant, a corporate space or a hotel. We set everything up before guests arrive and take care of full breakdown afterwards.",
   },
   {
     q: "Can I see examples of your work?",
@@ -51,14 +51,14 @@ const FAQS: FAQItem[] = [
   },
   {
     q: "How many events do you take on each month?",
-    a: "Deliberately few. Keeping our client list small means every event receives Laura's full personal attention — from design concept through to the day itself. We'd rather do fewer events exceptionally well than many events adequately.",
+    a: "Deliberately few. Keeping our client list small means every event receives Laura's full personal attention - from design concept through to the day itself. We'd rather do fewer events exceptionally well than many events adequately.",
   },
   {
     q: "Do you style events other than children's parties?",
-    a: "Yes — milestone celebrations (21sts, 40ths, 50ths, 70ths, baby showers, anniversaries) and corporate events are both core services. See our Signature Experiences for the full picture.",
+    a: "Yes - milestone celebrations (21sts, 40ths, 50ths, 70ths, baby showers, anniversaries) and corporate events are both core services. See our Signature Experiences for the full picture.",
     aNode: (
       <>
-        Yes —{" "}
+        Yes -{" "}
         <a href="/milestone-celebrations/" className={linkCx}>milestone celebrations</a> (21sts, 40ths, 50ths, 70ths, baby showers, anniversaries) and{" "}
         <a href="/corporate-brand-styling/" className={linkCx}>corporate events</a> are both core services. See our Signature Experiences for the full picture.
       </>
@@ -99,7 +99,7 @@ const FAQ = () => {
             <em className="italic font-light text-accent-warm">answered.</em>
           </h2>
           <p className="text-[15.5px] leading-[1.6] text-ink-soft max-w-[520px] mx-auto mt-6">
-            If you don't see what you need here, just ask —{" "}
+            If you don't see what you need here, just ask -{" "}
             <a
               href="mailto:Riverfoxevents@gmail.com"
               className="text-ink underline-offset-4 underline decoration-ink/30 hover:decoration-ink"

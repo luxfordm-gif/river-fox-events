@@ -12,7 +12,7 @@ const setConsent = (value: "granted" | "denied") => {
   try {
     localStorage.setItem(STORAGE_KEY, value);
   } catch {
-    // localStorage may be blocked — fail silently, user just won't be remembered
+    // localStorage may be blocked - fail silently, user just won't be remembered
   }
   if (typeof window !== "undefined" && typeof window.gtag === "function") {
     window.gtag("consent", "update", { analytics_storage: value });

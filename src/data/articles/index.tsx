@@ -31,11 +31,11 @@ export const ARTICLES: Article[] = [
     slug: "willy-wonka-fifth-birthday-savanna",
     title: "Savanna's Willy Wonka fifth birthday",
     subtitle:
-      "A Willy Wonka fifth in a Surrey home — purple-and-gold ticket panel, painted cocoa-bar plinth and one carefully designed threshold.",
+      "A Willy Wonka fifth in a Surrey home - purple-and-gold ticket panel, painted cocoa-bar plinth and one carefully designed threshold.",
     teaser:
-      "A themed fifth doesn't have to mean shop-bought. Savanna's Willy Wonka party — designed around the child, not the IP.",
+      "A themed fifth doesn't have to mean shop-bought. Savanna's Willy Wonka party - designed around the child, not the IP.",
     metaDescription:
-      "Savanna's Willy Wonka fifth birthday in Surrey — purple-and-gold ticket arch, lollipop swirls and a personalised cocoa-bar plinth. Case study from Laura.",
+      "Savanna's Willy Wonka fifth birthday in Surrey - purple-and-gold ticket arch, lollipop swirls and a personalised cocoa-bar plinth. Case study from Laura.",
     publishedAt: "2026-05-19",
     readMinutes: 4,
     relatedSlugs: [
@@ -52,11 +52,11 @@ export const ARTICLES: Article[] = [
     slug: "garden-milestone-styling-surrey",
     title: "When the garden is the venue",
     subtitle:
-      "Why a private garden often serves a Surrey milestone better than a hire venue — and the design moves that make it work.",
+      "Why a private garden often serves a Surrey milestone better than a hire venue - and the design moves that make it work.",
     teaser:
       "A private garden gives you bones a hire venue can't fake. A note from Laura on what changes when you treat the garden as the design, not the backdrop.",
     metaDescription:
-      "Garden milestone styling in Surrey — design moves that make a private-garden 40th, 50th or anniversary feel like a venue, not a marquee. From Laura at River Fox Events.",
+      "Garden milestone styling in Surrey - design moves that make a private-garden 40th, 50th or anniversary feel like a venue, not a marquee. From Laura at River Fox Events.",
     publishedAt: "2026-05-08",
     readMinutes: 6,
     relatedSlugs: ["beyond-the-balloon-arch", "childrens-party-themes-2026", "from-design-to-delivery"],
@@ -71,9 +71,9 @@ export const ARTICLES: Article[] = [
     subtitle:
       "How a 'Two Wild' celebration at Horley Community Centre moved from two concept renders to a finished room.",
     teaser:
-      "Amiya's 'Two Wild' second birthday at Horley Community Centre — designed across two render boards, sourced over three weeks, installed in six hours.",
+      "Amiya's 'Two Wild' second birthday at Horley Community Centre - designed across two render boards, sourced over three weeks, installed in six hours.",
     metaDescription:
-      "Behind the scenes of Amiya's 'Two Wild' safari second birthday at Horley Community Centre — concept renders to finished install. Pastel safari styling by Laura at River Fox Events.",
+      "Behind the scenes of Amiya's 'Two Wild' safari second birthday at Horley Community Centre - concept renders to finished install. Pastel safari styling by Laura at River Fox Events.",
     publishedAt: "2026-05-02",
     readMinutes: 7,
     relatedSlugs: ["from-design-to-delivery", "childrens-party-themes-2026", "beyond-the-balloon-arch"],
@@ -86,11 +86,11 @@ export const ARTICLES: Article[] = [
     slug: "childrens-party-themes-2026",
     title: "Six children's party themes shaping 2026",
     subtitle:
-      "From Chateaucore to charm-bracelet stations — the briefs landing in our Surrey studio right now.",
+      "From Chateaucore to charm-bracelet stations - the briefs landing in our Surrey studio right now.",
     teaser:
-      "Themes are still everything for a 4th or 6th — but the version of \"themed\" parents are asking for in 2026 is grown-up and personal. Here's the brief-bag.",
+      "Themes are still everything for a 4th or 6th - but the version of \"themed\" parents are asking for in 2026 is grown-up and personal. Here's the brief-bag.",
     metaDescription:
-      "Six children's party themes Surrey parents are asking for in 2026 — Chateaucore, Bluey done well, soft maximalism, charm-bracelet stations, woodland and Toy Story 5. From Laura at River Fox Events.",
+      "Six children's party themes Surrey parents are asking for in 2026 - Chateaucore, Bluey done well, soft maximalism, charm-bracelet stations, woodland and Toy Story 5. From Laura at River Fox Events.",
     publishedAt: "2026-05-01",
     readMinutes: 6,
     relatedSlugs: ["from-design-to-delivery", "two-wild-safari-second-birthday", "beyond-the-balloon-arch", "lollipop-balloons-to-river-fox-events"],
@@ -105,9 +105,9 @@ export const ARTICLES: Article[] = [
     subtitle:
       "How a dinosaur-themed celebration in Surrey moved from a hand-drawn render to a finished room.",
     teaser:
-      "Every setup begins long before the day itself. Walking through Ayaan's dinosaur celebration — render, sourcing, install — to show how the sketch becomes the room.",
+      "Every setup begins long before the day itself. Walking through Ayaan's dinosaur celebration - render, sourcing, install - to show how the sketch becomes the room.",
     metaDescription:
-      "Behind the scenes of a Surrey children's party — from concept render to finished install. Laura on how design, sourcing and delivery come together at River Fox Events.",
+      "Behind the scenes of a Surrey children's party - from concept render to finished install. Laura on how design, sourcing and delivery come together at River Fox Events.",
     publishedAt: "2026-05-01",
     readMinutes: 6,
     relatedSlugs: ["two-wild-safari-second-birthday", "childrens-party-themes-2026", "beyond-the-balloon-arch", "lollipop-balloons-to-river-fox-events"],
@@ -122,7 +122,7 @@ export const ARTICLES: Article[] = [
     subtitle:
       "Why Surrey celebrations are trading entrance installations for layered tablescapes in 2026.",
     teaser:
-      "The balloon arch ruled the entrance for a decade. In 2026, the same budget is moving onto the table — a note from Laura on what's changing and why.",
+      "The balloon arch ruled the entrance for a decade. In 2026, the same budget is moving onto the table - a note from Laura on what's changing and why.",
     metaDescription:
       "The balloon arch is no longer the headline. A note from Laura on layered tablescapes, ceiling drapery and the 2026 trends shaping Surrey celebrations.",
     publishedAt: "2026-05-01",
@@ -139,7 +139,7 @@ export const ARTICLES: Article[] = [
     subtitle:
       "A new name, the same hands. Same studio in Surrey. Same level of detail.",
     teaser:
-      "After several years as Lollipop Balloons, we're stepping into a new name — and explaining why.",
+      "After several years as Lollipop Balloons, we're stepping into a new name - and explaining why.",
     metaDescription:
       "Lollipop Balloons is now River Fox Events. Same designer (Laura), same Surrey studio, new name reflecting children's parties, milestones and corporate event styling.",
     publishedAt: "2026-05-01",

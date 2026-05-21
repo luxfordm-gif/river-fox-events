@@ -12,7 +12,7 @@ const sevenoaks = makeLocation({
   seoTitleRegion: "Kent",
   uniqueSeoTitle: "Party Stylist Sevenoaks Kent | River Fox Events",
   uniqueSeoDescription:
-    "West Kent events, fully managed from setup to breakdown — including Sevenoaks, Riverhead, Otford and Seal. Personally designed by Laura.",
+    "West Kent events, fully managed from setup to breakdown - including Sevenoaks, Riverhead, Otford and Seal. Personally designed by Laura.",
   uniqueHeroSub: (
     <>
       Sevenoaks events, considered in detail. One stylist, one client, no
@@ -57,8 +57,8 @@ const sevenoaks = makeLocation({
         River Fox Events is a Sevenoaks event stylist designing
         tailored children's parties, milestone birthdays, christenings,
         baby showers, weddings and corporate styling across the
-        TN13–TN15 postcodes. Every celebration is built from scratch
-        around your brief — concept, balloon installations, backdrops,
+        TN13–TN15 postcodes. Every celebration is individually designed
+        around your brief - concept, balloon installations, backdrops,
         signage, cake table and tablescape, all installed and broken
         down by us.
       </p>

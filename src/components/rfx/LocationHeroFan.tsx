@@ -5,19 +5,19 @@ import hero3 from "@/assets/hero-3.webp";
 
 type FanImage = { src: string; alt: string };
 type LocationHeroFanProps = {
-  /** Optional per-location override — order is [left, centre, right]. */
+  /** Optional per-location override - order is [left, centre, right]. */
   images?: [FanImage, FanImage, FanImage];
 };
 
 /**
- * Tablet/desktop hero imagery for location pages — three portrait
+ * Tablet/desktop hero imagery for location pages - three portrait
  * images stacked on top of each other on first paint, then animated
  * outward into a soft fan. All three are anchored at the same bottom
  * line so the centre card (15% larger) scales up out of the bottom.
  * Side cards rotate around their bottom-centre point so their bottoms
  * stay pinned as they tilt.
  *
- * Mobile uses ScrollStrip — this component is hidden below md.
+ * Mobile uses ScrollStrip - this component is hidden below md.
  *
  * Honours `prefers-reduced-motion`: jumps straight to the final fanned
  * state with no transition.
@@ -95,7 +95,7 @@ const LocationHeroFan = ({ images }: LocationHeroFanProps = {}) => {
           maxHeight: "580px",
         }}
       >
-        {/* Left back — tilts and slides left */}
+        {/* Left back - tilts and slides left */}
         <img
           src={left.src}
           alt={left.alt}
@@ -114,7 +114,7 @@ const LocationHeroFan = ({ images }: LocationHeroFanProps = {}) => {
           height={1200}
         />
 
-        {/* Right back — tilts and slides right */}
+        {/* Right back - tilts and slides right */}
         <img
           src={right.src}
           alt={right.alt}
@@ -133,7 +133,7 @@ const LocationHeroFan = ({ images }: LocationHeroFanProps = {}) => {
           height={1200}
         />
 
-        {/* Centre front — 15% wider than the side cards, anchored at
+        {/* Centre front - 15% wider than the side cards, anchored at
             the same bottom line so it scales up out of the bottom. */}
         <img
           src={centre.src}

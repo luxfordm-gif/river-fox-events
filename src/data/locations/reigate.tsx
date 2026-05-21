@@ -55,8 +55,8 @@ const reigate = makeLocation({
         River Fox Events is a Reigate party stylist designing tailored
         children's parties, milestone birthdays, christenings, baby
         showers, weddings and corporate styling across the RH2
-        postcode. Every celebration is built from scratch around your
-        brief — concept, balloon installations, backdrops, signage,
+        postcode. Every celebration is individually designed around your
+        brief - concept, balloon installations, backdrops, signage,
         cake table and tablescape, all installed and broken down by
         us.
       </p>
@@ -93,7 +93,7 @@ const reigate = makeLocation({
     body: (
       <>
         <p>
-          Reigate is fifteen minutes from the studio — closer than
+          Reigate is fifteen minutes from the studio - closer than
           Cobham, closer than Esher, closer than the towns that shape
           most Surrey stylists' work. That proximity changes what's
           possible on the day: extra installations sourced and added

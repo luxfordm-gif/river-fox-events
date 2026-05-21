@@ -10,8 +10,8 @@ type Props = {
   label?: string;
   /** Button destination. */
   href?: string;
-  /** "card" — large dark card at end of article (default).
-   *  "inline" — small inline button used mid-article. */
+  /** "card" - large dark card at end of article (default).
+   *  "inline" - small inline button used mid-article. */
   variant?: "card" | "inline";
 };
 

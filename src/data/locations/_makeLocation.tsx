@@ -7,7 +7,7 @@ import imgGallery1 from "@/assets/christening-blessing-styling-surrey.webp";
 import imgGallery2 from "@/assets/corporate-gala-styling-surrey.webp";
 import imgGallery3 from "@/assets/cp-included.webp";
 
-// Latest Work — shared image pool for location pages. Each entry has a single
+// Latest Work - shared image pool for location pages. Each entry has a single
 // canonical alt that describes the photo (no per-town interpolation, per the
 // "one image, one alt" rule in CLAUDE.md). Towns pick 6 of these 10 keys via
 // the optional `images` override on makeLocation.
@@ -26,7 +26,7 @@ import lwWonkaChocolateArch from "@/assets/river-fox-events-willy-wonka-savanna-
  * `balanced: true` means the subject sits centrally in the frame and the
  * shot can safely take the rotated/scaled right slot of the hero fan.
  * Off-centre / side-angle / overhead shots must NOT be used in heroFan
- * slot 3 — they read as visually skewed once tilted +7°.
+ * slot 3 - they read as visually skewed once tilted +7°.
  */
 export const LATEST_WORK = {
   "40th-rose-gold": {
@@ -46,7 +46,7 @@ export const LATEST_WORK = {
   },
   "dinosaur-ayaan": {
     src: lwDinosaurAyaan,
-    alt: "Side angle of Ayaan's dinosaur birthday balloon arch — sage and cream balloons with crate props and personalised signage by River Fox Events",
+    alt: "Side angle of Ayaan's dinosaur birthday balloon arch - sage and cream balloons with crate props and personalised signage by River Fox Events",
     balanced: false,
   },
   "fairy-kayla": {
@@ -84,7 +84,7 @@ export const LATEST_WORK = {
 export type LocationImageKey = keyof typeof LATEST_WORK;
 
 /** Per-location image picks from the LATEST_WORK pool.
- *  heroFan order is [left, centre, right] — centre is the largest card. */
+ *  heroFan order is [left, centre, right] - centre is the largest card. */
 export type LocationImages = {
   heroFan: [LocationImageKey, LocationImageKey, LocationImageKey];
   galleryMain: LocationImageKey;
@@ -99,7 +99,7 @@ export type LocationImages = {
  * Required fields drive the templated copy. Optional `unique*` fields let a
  * town file inject bespoke local content (specific venues, postcode quirks,
  * local character) so each page reads as genuinely different to crawlers
- * and humans — not a near-duplicate of its neighbours.
+ * and humans - not a near-duplicate of its neighbours.
  */
 type LocationInput = {
   slug: string;
@@ -118,7 +118,7 @@ type LocationInput = {
   seoTitleRegion?: string;
   /** Regional bucket, used in body copy. e.g. "Surrey", "East Surrey", "North Surrey". */
   region: string;
-  /** Surrounding villages — populates the "we work across X, Y, Z" body copy and FAQs. */
+  /** Surrounding villages - populates the "we work across X, Y, Z" body copy and FAQs. */
   nearbyVillages: string[];
   /** Bullet list shown in the "Where we work" section. */
   areas: string[];
@@ -154,7 +154,7 @@ type LocationInput = {
    *  uniqueExtraFaq if both are provided. */
   uniqueExtraFaqs?: { q: string; a: string }[];
   /** Bespoke local-prose section rendered between the gallery and
-   *  "How it works". Must be written per location — three short
+   *  "How it works". Must be written per location - three short
    *  paragraphs referencing real local entities. Never copy-paste. */
   uniqueLocalProse?: LocationConfig["localProse"];
   /** Per-location image picks from the LATEST_WORK pool. Pass keys for the
@@ -194,10 +194,10 @@ export function makeLocation(input: LocationInput): LocationConfig {
   const villagesFaq = nearbyVillages.slice(0, 4).join(", ");
 
   // Resolve image picks. Falls back to legacy shared defaults if a town
-  // hasn't been migrated yet — keeps untouched location files working.
+  // hasn't been migrated yet - keeps untouched location files working.
   if (images && !LATEST_WORK[images.heroFan[2]].balanced) {
     throw new Error(
-      `[makeLocation:${slug}] heroFan slot 3 must be a balanced image — "${images.heroFan[2]}" is off-centre and will read skewed once tilted. Use one of: ${Object.entries(
+      `[makeLocation:${slug}] heroFan slot 3 must be a balanced image - "${images.heroFan[2]}" is off-centre and will read skewed once tilted. Use one of: ${Object.entries(
         LATEST_WORK
       )
         .filter(([, v]) => v.balanced)
@@ -216,22 +216,22 @@ export function makeLocation(input: LocationInput): LocationConfig {
     ? LATEST_WORK[images.galleryMain]
     : {
         src: imgGalleryMain,
-        alt: `Sage green dinosaur themed children's birthday party styling in ${cityName} by River Fox Events — personalised name sign, balloon garland and lush foliage`,
+        alt: `Sage green dinosaur themed children's birthday party styling in ${cityName} by River Fox Events - personalised name sign, balloon garland and lush foliage`,
       };
   const galThumbs = images
     ? images.galleryThumbs.map((k) => LATEST_WORK[k])
     : [
         {
           src: imgGallery1,
-          alt: `Christening styling in ${cityName} Surrey by River Fox Events — soft ivory and blush balloon installation with floral accents`,
+          alt: `Christening styling in ${cityName} Surrey by River Fox Events - soft ivory and blush balloon installation with floral accents`,
         },
         {
           src: imgGallery2,
-          alt: "Corporate gala styling in Surrey by River Fox Events — elegant tablescape with statement floral centrepiece",
+          alt: "Corporate gala styling in Surrey by River Fox Events - elegant tablescape with statement floral centrepiece",
         },
         {
           src: imgGallery3,
-          alt: "Children's party styling in Surrey by River Fox Events — fully styled cake table with personalised signage",
+          alt: "Children's party styling in Surrey by River Fox Events - fully styled cake table with personalised signage",
         },
       ];
 
@@ -246,7 +246,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       } | River Fox Events`,
     seoDescription:
       uniqueSeoDescription ??
-      `${cityName} party stylist — tailored children's parties, milestones and corporate events across ${region} from £460. Every detail personally handled by Laura.`,
+      `${cityName} party stylist - tailored children's parties, milestones and corporate events across ${region} from £460. Every detail personally handled by Laura.`,
     hero: {
       lines: [
         uniqueHeroLine ?? <>Event styling in {cityName},</>,
@@ -258,7 +258,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       ],
       sub: uniqueHeroSub ?? (
         <>
-          Design-led event styling in {cityName} and across {region} —
+          Bespoke event styling in {cityName} and across {region} -
           children's parties, milestone celebrations and tailored
           installations.
         </>
@@ -267,7 +267,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
     },
     whatWeDo: {
       image: imgWhatWeDo,
-      imageAlt: `Tailored event styling in ${cityName} by River Fox Events — pastel balloon installation with organic textures and soft floral accents`,
+      imageAlt: `Tailored event styling in ${cityName} by River Fox Events - pastel balloon installation with organic textures and soft floral accents`,
       imageSide: "right",
       tone: "ph-warm",
       headline: (
@@ -286,7 +286,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
           <p>
             We work with families and businesses across {cityName}
             {villagesIntro ? `, ${villagesIntro}` : ""} and the surrounding
-            villages — designing celebrations from scratch around your
+            villages - individually designing celebrations around your
             vision, then handling every detail on the day.
           </p>
         </>
@@ -294,7 +294,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
     },
     occasions: {
       image: imgOccasions,
-      imageAlt: `Elegant birthday party styling in ${cityName} by River Fox Events — ivory, gold and soft blush balloon installation with floral accents`,
+      imageAlt: `Elegant birthday party styling in ${cityName} by River Fox Events - ivory, gold and soft blush balloon installation with floral accents`,
       imageSide: "left",
       tone: "ph-blush",
       headline: (
@@ -312,7 +312,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
             : uniqueOccasionsLead && <p>{uniqueOccasionsLead}</p>}
           <p>
             Children's birthdays, christenings, milestone moments, baby
-            showers and corporate events across {region} — every {cityName}
+            showers and corporate events across {region} - every {cityName}
             celebration shaped around the people, the venue and the feeling
             of the day.
           </p>
@@ -329,8 +329,8 @@ export function makeLocation(input: LocationInput): LocationConfig {
       ),
       intro: (
         <>
-          Every River Fox Events celebration is completely tailored — bring
-          your inspiration and we'll design around it.
+          Every River Fox Events celebration is completely bespoke and
+          tailored to you.
         </>
       ),
       mainImage: galMain.src,
@@ -371,7 +371,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
         {
           icon: "heart",
           label: "Setup & breakdown",
-          body: "Fully managed, start to finish — nothing for you to lift.",
+          body: "Fully managed, start to finish - nothing for you to lift.",
         },
       ],
       closingLine: (
@@ -406,7 +406,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
         },
       ],
       footnote:
-        "All pricing is indicative — every proposal is tailored.",
+        "All pricing is indicative - every proposal is tailored.",
     },
     localProse: uniqueLocalProse,
     faqs: [
@@ -414,21 +414,21 @@ export function makeLocation(input: LocationInput): LocationConfig {
         q: `Do you style events in ${cityName}?`,
         a:
           uniquePresenceAnswer ??
-          `Yes — ${cityName} is part of our regular ${region} coverage, along with ${villagesFaq} and the surrounding villages.`,
+          `Yes - ${cityName} is part of our regular ${region} coverage, along with ${villagesFaq} and the surrounding villages.`,
       },
       {
         q: "Are you a party planner or party stylist? What's the difference?",
-        a: "River Fox Events is a design-led event stylist. While a planner manages logistics such as venues, suppliers and timelines, our focus is on the visual experience — creating statement installations and cohesive styling that transform your space. We specialise in large-scale balloon installations, custom backdrops and thoughtfully styled details, ensuring your celebration feels considered, elevated and ready to enjoy.",
+        a: "River Fox Events is an event styling studio. While a planner manages logistics such as venues, suppliers and timelines, our focus is on the visual experience - creating statement installations and cohesive styling that transform your space. We specialise in large-scale balloon installations, custom backdrops and thoughtfully styled details, ensuring your celebration feels considered and ready to enjoy.",
       },
       {
         q: "How far in advance should I book?",
         a:
           uniqueLeadTimeAnswer ??
-          `For events in ${cityName} we recommend enquiring at least 6–8 weeks ahead, particularly for weekend dates during school holidays — these book up quickly. That said, always worth asking as last-minute availability does occasionally come up.`,
+          `For events in ${cityName} we recommend enquiring at least 6–8 weeks ahead, particularly for weekend dates during school holidays - these book up quickly. That said, always worth asking as last-minute availability does occasionally come up.`,
       },
       {
         q: "Do you travel to my home or venue?",
-        a: `Yes — whether it's your home, a village hall, a restaurant, a hotel or a private hire space in or around ${cityName}, we come to you. Setup and breakdown are fully included.`,
+        a: `Yes - whether it's your home, a village hall, a restaurant, a hotel or a private hire space in or around ${cityName}, we come to you. Setup and breakdown are fully included.`,
       },
       {
         q: `How much does event styling cost in ${cityName}?`,
@@ -440,7 +440,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       },
       {
         q: "What happens on the day?",
-        a: `We arrive ahead of your event to install every detail — from statement installations to custom backdrops, tablescapes and styled elements — ensuring everything is in place before guests arrive. Once the celebration has finished, we return for a seamless breakdown.`,
+        a: `We arrive ahead of your event to install every detail - from statement installations to custom backdrops, tablescapes and styled elements - ensuring everything is in place before guests arrive. Once the celebration has finished, we return for a seamless breakdown.`,
       },
       ...(uniqueExtraFaq ? [uniqueExtraFaq] : []),
       ...(uniqueExtraFaqs ?? []),
@@ -464,7 +464,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       ),
       areas,
       mapQuery,
-      mapTitle: `Map of ${cityName} and ${region} — areas covered by River Fox Events`,
+      mapTitle: `Map of ${cityName} and ${region} - areas covered by River Fox Events`,
     },
     jsonLdAreaServed,
   };

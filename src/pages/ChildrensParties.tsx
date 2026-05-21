@@ -18,7 +18,7 @@ import {
   upsertJsonLd,
 } from "@/seo/headTags";
 
-import imgHero from "@/assets/pastel-safari-anaya-two-wild-ballroom-surrey.webp";
+import imgHero from "@/assets/jungle-fourever-wild-childrens-party-surrey.webp";
 import imgCelebrations from "@/assets/dinosaur-ayaan-arch-surrey.webp";
 import imgCelebrationsHover from "@/assets/river-fox-events-dinosaur-theme-ayaan-arch-close-up-portrait.webp";
 import imgOccasions from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-tablescape-wide.webp";
@@ -54,7 +54,7 @@ const ChildrensParties = () => {
       <main>
         <ServiceHero
           image={imgHero}
-          imageAlt="Ballroom safari birthday styling in Surrey by River Fox Events — Anaya, Two Wild arch, balloon pillars and light-up two"
+          imageAlt="Jungle theme 'Fourever Wild' fourth birthday styling in Surrey by River Fox Events - balloon arch with leaf foliage, safari props and full party setup"
           headingId="cp-hero-heading"
           lines={[
             <>Themed children's parties,</>,
@@ -67,21 +67,21 @@ const ChildrensParties = () => {
               </em>
             </>,
           ]}
-          sub="Playful, immersive and beautifully considered — children's parties in Surrey that feel elevated from the moment guests arrive."
+          sub="Playful, immersive and beautifully put together - we create luxury children's parties in Surrey that feel special from the moment guests arrive."
         />
 
         <CPReveal
           id="cp-celebrations"
           imageSide="right"
           image={imgCelebrations}
-          alt="Dinosaur theme children's birthday styling in Surrey by River Fox Events — Ayaan name arch, sage balloons and crate props"
+          alt="Dinosaur theme children's birthday styling in Surrey by River Fox Events - Ayaan name arch, sage balloons and crate props"
           hoverImage={imgCelebrationsHover}
-          hoverAlt="Close-up portrait of Ayaan's dinosaur arch — sage and cream balloons with tropical foliage and personalised signage by River Fox Events"
+          hoverAlt="Close-up portrait of Ayaan's dinosaur arch - sage and cream balloons with tropical foliage and personalised signage by River Fox Events"
           tone="ph-warm"
           imageScale={1.07}
           headline={
             <>
-              More than a party —{" "}
+              More than a party,{" "}
               <em className="italic font-light text-accent-warm">
                 a memory in the making.
               </em>
@@ -94,7 +94,7 @@ const ChildrensParties = () => {
             day is done.
           </p>
           <p>
-            Every River Fox Events party is created from the ground up,
+            Every River Fox Events party is individually designed,
             tailored to your child, your space and the atmosphere you want
             to create.
           </p>
@@ -104,9 +104,9 @@ const ChildrensParties = () => {
           id="cp-occasions"
           imageSide="left"
           image={imgOccasions}
-          alt="Pastel safari Two Wild tablescape for Anaya's second birthday in Surrey by River Fox Events — Anaya panel, light-up two, giraffe and foliage runner"
+          alt="Pastel safari Two Wild tablescape for Anaya's second birthday in Surrey by River Fox Events - Anaya panel, light-up two, giraffe and foliage runner"
           hoverImage={imgOccasionsHover}
-          hoverAlt="Close-up of the pink light-up two marquee from Anaya's pastel safari Two Wild birthday in Surrey by River Fox Events — sage and pink balloons with foliage"
+          hoverAlt="Close-up of the pink light-up two marquee from Anaya's pastel safari Two Wild birthday in Surrey by River Fox Events - sage and pink balloons with foliage"
           tone="ph-blush"
           headline={
             <>
@@ -131,7 +131,7 @@ const ChildrensParties = () => {
           id="cp-themes"
           imageSide="right"
           image={imgThemes}
-          alt="Willy Wonka theme birthday styling in Surrey by River Fox Events — Savanna arch, chocolate bar prop and lollipop foils"
+          alt="Willy Wonka theme birthday styling in Surrey by River Fox Events - Savanna arch, chocolate bar prop and lollipop foils"
           hoverImage={imgThemesHover}
           hoverAlt="Close-up of the oversized chocolate-bar prop with lilac balloons, lollipop foil and mushroom props from Savanna's Willy Wonka fifth birthday styled in Surrey by River Fox Events"
           tone="ph-warm"
@@ -152,7 +152,7 @@ const ChildrensParties = () => {
           <p>
             From popular first birthday themes such as Wild One and Berry
             First, to epic Frozen parties and enchanting Harry Potter
-            themes — everything designed to feel special, effortless, and
+            themes - everything designed to feel special, effortless, and
             remembered long after the day itself.
           </p>
         </CPReveal>
@@ -161,7 +161,7 @@ const ChildrensParties = () => {
           <Process />
         </div>
 
-        <CPPricing />
+        <CPPricing footnote="" />
 
         <ChildrensFAQ />
 

@@ -56,7 +56,7 @@ const dorking = makeLocation({
         children's parties, milestone birthdays, christenings, baby
         showers, weddings and corporate styling across the RH4 and
         RH5 postcodes and the wider Surrey Hills. Every celebration
-        is built from scratch around your brief — concept, balloon
+        is individually designed around your brief - concept, balloon
         installations, backdrops, signage, cake table and tablescape,
         all installed and broken down by us.
       </p>

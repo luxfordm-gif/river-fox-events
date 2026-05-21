@@ -55,11 +55,11 @@ const Contact = () => {
         body,
       });
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
-      toast.success("Thank you — Laura will be in touch personally.");
+      toast.success("Thank you - your enquiry has been received. I'll be in touch within 1-2 working days to discuss your event in more detail. Laura");
       form.reset();
     } catch (err) {
       toast.error(
-        "Sorry — something went wrong. Please email Riverfoxevents@gmail.com directly."
+        "Sorry - something went wrong. Please email Riverfoxevents@gmail.com directly."
       );
     } finally {
       setSubmitting(false);
@@ -87,7 +87,7 @@ const Contact = () => {
               >
                 Let's create something{" "}
                 <em className="italic font-light text-accent-warm">
-                  beautifully considered.
+                  beautiful.
                 </em>
               </h1>
             </header>
@@ -100,8 +100,23 @@ const Contact = () => {
                   style={{ textWrap: "pretty" }}
                 >
                   Share a few details via our enquiry form and I'll be in
-                  touch to discuss your plans. Alternatively you can reach
-                  me via email or phone below.
+                  touch to discuss your plans. Alternatively you can get in
+                  touch via email or phone below.
+                </p>
+                <p
+                  className="text-[15.5px] leading-[1.65] text-ink-soft mt-5 max-w-[460px] mx-auto lg:mx-0"
+                  style={{ textWrap: "pretty" }}
+                >
+                  Each event is bespoke and tailored to your space, style and
+                  vision. We take on a limited number of bookings each month
+                  to ensure every detail is carefully considered.
+                </p>
+                <p
+                  className="text-[15.5px] leading-[1.65] text-ink-soft mt-5 max-w-[460px] mx-auto lg:mx-0"
+                  style={{ textWrap: "pretty" }}
+                >
+                  Most celebrations begin from £460, with larger or more
+                  bespoke designs typically ranging from £1,200 - £2,500+.
                 </p>
                 <p
                   className="text-[15.5px] leading-[1.65] text-ink mt-5 max-w-[460px] mx-auto lg:mx-0"
@@ -170,8 +185,8 @@ const Contact = () => {
                   </label>
                 </p>
                 <div className="form-grid">
-                  <label className="form-row full">
-                    <span className="lbl">Name</span>
+                  <label className="form-row">
+                    <span className="lbl">Full name</span>
                     <input
                       type="text"
                       name="name"
@@ -179,8 +194,8 @@ const Contact = () => {
                       required
                     />
                   </label>
-                  <label className="form-row full">
-                    <span className="lbl">Email</span>
+                  <label className="form-row">
+                    <span className="lbl">Email address</span>
                     <input
                       type="email"
                       name="email"
@@ -188,14 +203,58 @@ const Contact = () => {
                       required
                     />
                   </label>
+                  <label className="form-row">
+                    <span className="lbl">Phone number (optional)</span>
+                    <input type="tel" name="phone" placeholder="07…" />
+                  </label>
+                  <label className="form-row">
+                    <span className="lbl">Event date</span>
+                    <input type="date" name="date" />
+                  </label>
                   <label className="form-row full">
-                    <span className="lbl">Your message</span>
-                    <textarea
-                      name="message"
-                      rows={6}
-                      placeholder="A few words — I'll reply personally."
-                      required
+                    <span className="lbl">Event location / venue</span>
+                    <input
+                      type="text"
+                      name="venue"
+                      placeholder="e.g. at home in Cobham"
                     />
+                  </label>
+                  <label className="form-row full">
+                    <span className="lbl">Type of event</span>
+                    <select name="type" defaultValue="Children's party">
+                      <option>Children's party</option>
+                      <option>Milestone celebration</option>
+                      <option>Corporate / brand event</option>
+                    </select>
+                  </label>
+                  <label className="form-row full">
+                    <span className="lbl">Tell me about your vision</span>
+                    <textarea
+                      name="vision"
+                      rows={5}
+                      placeholder="Theme, colours, inspiration, or anything you already have in mind"
+                    />
+                  </label>
+                  <label className="form-row">
+                    <span className="lbl">Planned investment</span>
+                    <select name="budget" defaultValue="£460 – £1,200">
+                      <option>£460 – £1,200</option>
+                      <option>£1,200 – £2,000</option>
+                      <option>£2,000 – £3,000</option>
+                      <option>£3,000+</option>
+                      <option>Not sure yet</option>
+                    </select>
+                  </label>
+                  <label className="form-row">
+                    <span className="lbl">How did you hear about us? (optional)</span>
+                    <select name="referral" defaultValue="Google">
+                      <option>Google</option>
+                      <option>Recommendation</option>
+                      <option>Facebook</option>
+                      <option>Instagram</option>
+                      <option>Used before</option>
+                      <option>Other</option>
+                    </select>
                   </label>
                 </div>
                 <div className="flex justify-center lg:justify-end mt-6">
@@ -204,7 +263,7 @@ const Contact = () => {
                     disabled={submitting}
                     className="btn-solid-rf accent disabled:opacity-60"
                   >
-                    {submitting ? "Sending…" : "Send message"} <span>→</span>
+                    {submitting ? "Sending…" : "Send enquiry"} <span>→</span>
                   </button>
                 </div>
               </form>

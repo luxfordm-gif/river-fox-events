@@ -15,7 +15,7 @@ const eastGrinstead = makeLocation({
     "Full-service styling delivered to East Grinstead and across West Sussex. From design through to clear-down, personally handled by Laura.",
   uniqueHeroSub: (
     <>
-      Parties brought to life in East Grinstead — personally designed and
+      Parties brought to life in East Grinstead - personally designed and
       installed.
     </>
   ),
@@ -57,7 +57,7 @@ const eastGrinstead = makeLocation({
         River Fox Events is an East Grinstead event stylist designing
         tailored children's parties, milestone birthdays, christenings,
         baby showers and corporate styling across the RH19 area. Every
-        celebration is built from scratch around your brief — concept,
+        celebration is individually designed around your brief - concept,
         balloon installations, backdrops, signage, cake table and
         tablescape, all installed and broken down by us.
       </p>
@@ -74,9 +74,9 @@ const eastGrinstead = makeLocation({
     <>
       <p>
         East Grinstead celebrations split fairly evenly between at-
-        home styling — first birthdays, christenings and milestone
+        home styling - first birthdays, christenings and milestone
         weekends in the family homes around Imberhorne, Baldwins Hill
-        and the Ashurst Wood lanes — and venue work at Felbridge
+        and the Ashurst Wood lanes - and venue work at Felbridge
         Hotel, Standen House and Gravetye Manor at West Hoathly. We
         scale the design to either: a single statement balloon arch
         and dressed cake table for an intimate party, or a full multi-

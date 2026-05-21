@@ -11,10 +11,10 @@ const epsom = makeLocation({
   },
   uniqueSeoTitle: "Epsom Party & Event Stylist | River Fox Events",
   uniqueSeoDescription:
-    "Considered styling for children's parties, milestones and brand events in Epsom. Personally designed and installed by Laura — from £460.",
+    "Considered styling for children's parties, milestones and brand events in Epsom. Personally designed and installed by Laura - from £460.",
   uniqueHeroSub: (
     <>
-      Studio-led styling for Epsom celebrations — children's parties,
+      Studio-led styling for Epsom celebrations - children's parties,
       milestone moments and brand installations across the KT17 area.
     </>
   ),
@@ -56,8 +56,8 @@ const epsom = makeLocation({
         River Fox Events is an Epsom event stylist designing tailored
         children's parties, milestone birthdays, christenings, baby
         showers and brand installations across the KT17, KT18 and KT19
-        postcodes. Every celebration is built from scratch around your
-        brief — concept, balloon installations, backdrops, signage,
+        postcodes. Every celebration is individually designed around your
+        brief - concept, balloon installations, backdrops, signage,
         cake table and tablescape, all installed and broken down by us.
       </p>
       <p>
@@ -81,7 +81,7 @@ const epsom = makeLocation({
     </>
   ),
   uniquePresenceAnswer:
-    "Yes — Epsom and the surrounding area sit within our regular north Surrey coverage, alongside Ewell, Ashtead, Leatherhead, Banstead and Tadworth. Whether you're at home, at one of the venues around the Downs, or at a private space in the wider KT area, share the venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
+    "Yes - Epsom and the surrounding area sit within our regular north Surrey coverage, alongside Ewell, Ashtead, Leatherhead, Banstead and Tadworth. Whether you're at home, at one of the venues around the Downs, or at a private space in the wider KT area, share the venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
 });
 
 export default epsom;

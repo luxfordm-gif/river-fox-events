@@ -7,7 +7,7 @@ import { findRoute } from "@/seo/routes";
 import { applyMeta } from "@/seo/headTags";
 
 /**
- * Transitional landing page for the rebrand — the destination for any
+ * Transitional landing page for the rebrand - the destination for any
  * 301 redirects coming from the old Lollipop Balloons URL(s). Marked
  * noindex in routes.ts so it doesn't compete with the homepage in
  * search, but still prerendered so people redirected here see content
@@ -85,12 +85,12 @@ const Welcome = () => {
               If you've worked with us under the name{" "}
               <strong>Lollipop Balloons</strong>, nothing about how we work
               has changed. Same Horley studio. Same designer (Laura). Same
-              approach — tailored, nothing off a shelf, every detail
+              approach - tailored, nothing off a shelf, every detail
               considered.
             </p>
             <p>
-              The new name reflects the wider work we now do — children's
-              parties, milestone celebrations and corporate brand styling —
+              The new name reflects the wider work we now do - children's
+              parties, milestone celebrations and corporate brand styling -
               without losing the playfulness.
             </p>
             <p>

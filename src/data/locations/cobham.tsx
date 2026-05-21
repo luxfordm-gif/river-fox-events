@@ -14,8 +14,8 @@ const cobham = makeLocation({
     "Studio-led styling at Painshill Park, Stoke d'Abernon and across Cobham. Statement parties and milestones from £460, personally by Laura.",
   uniqueHeroSub: (
     <>
-      Tailored event styling in Cobham. From first idea to final breakdown,
-      personally handled.
+      Bespoke event styling in Cobham for children's parties, milestone
+      birthdays and life events.
     </>
   ),
   nearbyVillages: [
@@ -55,8 +55,8 @@ const cobham = makeLocation({
         River Fox Events is a Cobham party stylist designing tailored
         children's parties, milestone birthdays, christenings, baby
         showers, weddings and corporate styling across the KT11
-        postcode. Every celebration is built from scratch around your
-        brief — concept, balloon installations, backdrops, signage,
+        postcode. Every celebration is individually designed around your
+        brief - concept, balloon installations, backdrops, signage,
         cake table and tablescape, all installed and broken down by
         us.
       </p>
@@ -94,7 +94,7 @@ const cobham = makeLocation({
         <p>
           Cobham splits cleanly into two kinds of celebration. There's the
           at-home work along the village high street, the Stoke d'Abernon
-          end and the Fairmile Lane estate roads — properties with the
+          end and the Fairmile Lane estate roads - properties with the
           space to host across multiple zones. And there's the venue work
           at Painshill Park, Brooklands and the surrounding hospitality
           spaces, each of which takes a styling installation differently.
@@ -109,7 +109,7 @@ const cobham = makeLocation({
         <p>
           Most enquiries arrive with a date, a venue or postcode and a
           rough feeling rather than a finished brief. From the first
-          conversation we shape the rest together — palette, installations,
+          conversation we shape the rest together - palette, installations,
           tablescape, signage, the install and the breakdown. Laura designs
           and runs every event personally.
         </p>

@@ -35,10 +35,10 @@ const Enquire = ({
         body,
       });
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
-      toast.success("Thank you — your enquiry has been received. I'll be in touch within 1–2 working days. Laura.");
+      toast.success("Thank you - your enquiry has been received. I'll be in touch within 1-2 working days to discuss your event in more detail. Laura");
       form.reset();
     } catch (err) {
-      toast.error("Sorry — something went wrong. Please email Riverfoxevents@gmail.com directly.");
+      toast.error("Sorry - something went wrong. Please email Riverfoxevents@gmail.com directly.");
     } finally {
       setSubmitting(false);
     }
@@ -111,7 +111,7 @@ const Enquire = ({
             </div>
           </div>
 
-          {/* Right: form — wired to Netlify Forms (see index.html for build-time
+          {/* Right: form - wired to Netlify Forms (see index.html for build-time
               detection of field names; submissions are emailed via Forms →
               Notifications in the Netlify dashboard). */}
           <form
@@ -155,7 +155,7 @@ const Enquire = ({
                 <input type="email" name="email" placeholder="you@example.com" required />
               </label>
               <label className="form-row">
-                <span className="lbl">Phone number</span>
+                <span className="lbl">Phone number (optional)</span>
                 <input type="tel" name="phone" placeholder="07…" />
               </label>
               <label className="form-row">
@@ -183,7 +183,7 @@ const Enquire = ({
                 />
               </label>
               <label className="form-row">
-                <span className="lbl">Approximate budget</span>
+                <span className="lbl">Planned investment</span>
                 <select name="budget" defaultValue="£460 – £1,200">
                   <option>£460 – £1,200</option>
                   <option>£1,200 – £2,000</option>
@@ -193,7 +193,7 @@ const Enquire = ({
                 </select>
               </label>
               <label className="form-row">
-                <span className="lbl">How did you hear about us?</span>
+                <span className="lbl">How did you hear about us? (optional)</span>
                 <select name="referral" defaultValue="Google">
                   <option>Google</option>
                   <option>Recommendation</option>

@@ -26,7 +26,7 @@ const NotFound = () => {
     setMeta("description", "The page you're looking for doesn't exist.");
 
     if (process.env.NODE_ENV !== "production") {
-      console.warn("404 — non-existent route:", location.pathname);
+      console.warn("404 - non-existent route:", location.pathname);
     }
   }, [location.pathname]);
 
@@ -39,7 +39,7 @@ const NotFound = () => {
             className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-5"
             style={{ fontWeight: 600 }}
           >
-            404 — Page not found
+            404 - Page not found
           </div>
           <h1
             className="font-serif-rf"
@@ -59,7 +59,7 @@ const NotFound = () => {
             style={{ textWrap: "pretty" }}
           >
             It may have moved, or perhaps it never existed. Head back home, or
-            send us a note about your event — we reply personally.
+            send us a note about your event - we reply personally.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a href="/" className="btn-solid-rf">

@@ -55,8 +55,8 @@ const lingfield = makeLocation({
         River Fox Events is a Lingfield party stylist designing
         tailored children's parties, milestone birthdays, christenings,
         baby showers and corporate styling across the RH7 area and
-        the wider Surrey/Sussex border. Every celebration is built
-        from scratch around your brief — concept, balloon
+        the wider Surrey/Sussex border. Every celebration is individually
+        designed around your brief - concept, balloon
         installations, backdrops, signage, cake table and tablescape,
         all installed and broken down by us.
       </p>
@@ -72,7 +72,7 @@ const lingfield = makeLocation({
   uniqueOccasionsBody: (
     <>
       <p>
-        Most Lingfield celebrations happen at home — first birthdays,
+        Most Lingfield celebrations happen at home - first birthdays,
         christenings and milestone weekends across the village green,
         Dormansland and the lanes towards Crowhurst. We also work
         regularly at Lingfield Park Racecourse for corporate

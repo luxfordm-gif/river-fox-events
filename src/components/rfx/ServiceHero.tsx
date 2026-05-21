@@ -43,7 +43,7 @@ const ServiceHero = ({
           const marginVw = 5 * (1 - progress);
           const radius = 16 * (1 - progress);
           // Image starts slightly zoomed in (1.05) and settles to 1.0 as it
-          // expands to full width — prevents the hard background edge being
+          // expands to full width - prevents the hard background edge being
           // visible during the transition.
           const scale = 1.05 - 0.05 * progress;
           el.style.marginLeft = `${marginVw}vw`;
@@ -65,7 +65,7 @@ const ServiceHero = ({
 
   return (
     <section id="top" aria-labelledby={headingId} className="pt-[106px] md:pt-[134px] pb-0">
-      {/* Text — same position and style as home page H1 */}
+      {/* Text - same position and style as home page H1 */}
       <div className="container-rfx">
         <div className="mb-10 md:mb-14 flex flex-col items-center text-center">
           <h1
@@ -98,7 +98,7 @@ const ServiceHero = ({
         </div>
       </div>
 
-      {/* Expanding image — starts inset from edges, fills full width on scroll.
+      {/* Expanding image - starts inset from edges, fills full width on scroll.
           Mobile uses a taller aspect ratio (~40% deeper than desktop) so the
           image fills the frame without showing background above/below. */}
       <div className="overflow-hidden">
@@ -117,7 +117,7 @@ const ServiceHero = ({
             // fetches exactly one source per viewport. Two visibility-toggled
             // `<img>` elements both request their `src` regardless of `display`.
             // The inner `<img>` alt is mobile-first (Googlebot indexes the
-            // mobile crawl) — the desktop fallback shares the same alt since
+            // mobile crawl) - the desktop fallback shares the same alt since
             // both shots describe River Fox Events corporate styling work.
             <picture>
               <source media="(min-width: 768px)" srcSet={image} />

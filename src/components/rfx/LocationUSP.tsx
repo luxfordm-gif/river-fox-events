@@ -37,7 +37,7 @@ const LocationUSP = ({ cityName }: LocationUSPProps = {}) => {
           {cityName ? ` in ${cityName}` : ""} that feel cohesive, elevated
           and effortlessly brought together. With a focus on statement
           installations and refined styling, each event is tailored to your
-          space and vision — resulting in a finish that feels considered,
+          space and vision - resulting in a finish that feels considered,
           distinctive and ready to be enjoyed.
         </p>
       </div>

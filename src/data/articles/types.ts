@@ -1,7 +1,7 @@
 import type { ComponentType } from "react";
 
 /**
- * Lightweight metadata for an article — used by the journal index, related
+ * Lightweight metadata for an article - used by the journal index, related
  * cards and SEO helpers. Kept minimal so we can list/sort without pulling
  * in the full article body.
  */
@@ -27,7 +27,7 @@ export type ArticleSummary = {
    *  back to /social-share.jpg if not provided. */
   ogImage?: string;
   /** Imported asset used as the card image on the journal index. Aspect
-   *  ratio doesn't need to match — the card crops to 4:3. */
+   *  ratio doesn't need to match - the card crops to 4:3. */
   cardImage?: string;
   /** CSS object-position for the card image, e.g. "center 55%". Used to
    *  keep an off-centre subject (a logo, a face) visible after the crop. */

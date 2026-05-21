@@ -3,7 +3,7 @@ import Lenis from "lenis";
 
 /**
  * Site-wide smooth-scroll hijack. Dampens vertical scrolling so the page
- * eases into motion rather than snapping — gives the site a slow, premium,
+ * eases into motion rather than snapping - gives the site a slow, premium,
  * "luxury" scroll feel. Disabled automatically when the user prefers
  * reduced motion.
  *
@@ -15,7 +15,7 @@ export function useSmoothScroll() {
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    // Lenis fights native momentum scrolling on touchscreens — feels "off"
+    // Lenis fights native momentum scrolling on touchscreens - feels "off"
     // on phones/tablets. Use the OS scroll there.
     const isTouch = window.matchMedia(
       "(pointer: coarse) and (max-width: 1024px)"

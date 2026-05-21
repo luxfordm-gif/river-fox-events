@@ -1,6 +1,6 @@
 import { Instagram } from "lucide-react";
 
-/** Lightweight Instagram CTA block — no gallery, links straight to the profile. */
+/** Lightweight Instagram CTA block - no gallery, links straight to the profile. */
 const InstagramFollow = () => {
   return (
     <section

@@ -19,23 +19,23 @@ type ChildrensFAQProps = {
 const DEFAULT_FAQS: FAQ[] = [
   {
     q: "How far in advance should I book?",
-    a: "We recommend enquiring at least 6–8 weeks ahead for children's parties. Popular dates — particularly weekends in school holidays — book up quickly. If your date is sooner, do still get in touch; we'll always tell you honestly whether we can create something beautiful in the time available.",
+    a: "We recommend enquiring at least 6–8 weeks ahead for children's parties. Popular dates - particularly weekends in school holidays - book up quickly. If your date is sooner, do still get in touch; we'll always tell you honestly whether we can create something beautiful in the time available.",
   },
   {
     q: "Do you travel to my home or venue?",
-    a: "Yes. We come to you — your home, garden, a private venue, a restaurant or a hotel. Setup happens before guests arrive and full breakdown is included afterwards, so the day feels effortless from start to finish.",
+    a: "Yes. We come to you - your home, garden, a private venue, a restaurant or a hotel. Setup happens before guests arrive and full breakdown is included afterwards, so the day feels effortless from start to finish.",
   },
   {
     q: "Can I choose my own theme?",
-    a: "Each celebration is created from scratch, tailored to your style and vision. Any inspiration you have can be shared and developed into a design that feels cohesive and considered.",
+    a: "Each celebration is individually created and tailored to your style and vision. Any inspiration you have can be shared and developed into a design that feels cohesive and considered.",
   },
   {
     q: "How much does children's party styling cost in Surrey?",
-    a: "Our parties start from £460, with larger or more involved designs typically ranging from £1,200 to £2,500+. Every event is individually quoted following a discovery call so the proposal reflects exactly what you want.",
+    a: "Our parties start from £460, with larger or more involved designs typically ranging from £1,200 to £2,500+.",
   },
   {
     q: "What happens on the day?",
-    a: "We arrive before guests and install every element — balloon installations, backdrops, the cake table, signage. You walk into a finished room. After the party we return for a quiet breakdown.",
+    a: "We arrive before guests and install every element - balloon installations, backdrops, the cake table, signage. You walk into a finished room. After the party we return for a quiet breakdown.",
   },
   {
     q: "Do you style parties outside Surrey?",

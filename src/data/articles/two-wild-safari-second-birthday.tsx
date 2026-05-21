@@ -18,8 +18,8 @@ const TwoWildSafariSecondBirthdayArticle = () => (
           twelve-seat banquet table as the&nbsp;centrepiece.
         </li>
         <li>
-          Two concept renders signed off before sourcing — one for the
-          feature backdrop, one for the table — so palette, props and
+          Two concept renders signed off before sourcing - one for the
+          feature backdrop, one for the table - so palette, props and
           scale were agreed in&nbsp;advance.
         </li>
         <li>
@@ -37,7 +37,7 @@ const TwoWildSafariSecondBirthdayArticle = () => (
 
     <ArticleProse>
       <p>
-        Amiya was turning two — and her family wanted a safari without
+        Amiya was turning two - and her family wanted a safari without
         the cliché. No primary brights, no jungle-print bunting, no
         cartoon zebra cake. Something soft, slightly grown-up, and
         properly considered. The venue was{" "}
@@ -46,7 +46,7 @@ const TwoWildSafariSecondBirthdayArticle = () => (
         floor. Beautiful bones, very little&nbsp;atmosphere.
       </p>
       <p>
-        This is a quick walk-through of how the day came together — from
+        This is a quick walk-through of how the day came together - from
         the two render boards we signed off in March, through to install
         morning at the&nbsp;hall.
       </p>
@@ -55,7 +55,7 @@ const TwoWildSafariSecondBirthdayArticle = () => (
     <ArticleImage
       src={imgBackdropConcept}
       alt="Hand-drawn concept render for Amiya's Two Wild safari second birthday at Horley Community Centre in Surrey, with pastel balloon garland, personalised safari name panel, marquee number 2 with lights and lush greenery accents"
-      caption="Render one — the feature backdrop. Personalised safari panel for Amiya, marquee '2' with bulb lights, balloon garland and lush foliage built around a greenery wall. Palette signed off&nbsp;first."
+      caption="Render one - the feature backdrop. Personalised safari panel for Amiya, marquee '2' with bulb lights, balloon garland and lush foliage built around a greenery wall. Palette signed off&nbsp;first."
       aspect="natural"
       width={780}
     />
@@ -63,8 +63,8 @@ const TwoWildSafariSecondBirthdayArticle = () => (
     <ArticleProse>
       <h2>Two renders, one room</h2>
       <p>
-        For a celebration with a single hero installation — a backdrop
-        in a corner of a living room, say — one concept render is
+        For a celebration with a single hero installation - a backdrop
+        in a corner of a living room, say - one concept render is
         usually enough. For Amiya's setup we needed two: one for the
         feature backdrop on the long wall, and a second for the
         twelve-seat banquet table running through the middle of the
@@ -77,9 +77,9 @@ const TwoWildSafariSecondBirthdayArticle = () => (
         shape, the marquee "2", the safari character cut-outs, where
         the balloon clusters sit and crucially the{" "}
         <em>colour&nbsp;palette</em>. Dusty pink, peach, sage, soft
-        lilac, butter gold and cream. Everything that came after — the
+        lilac, butter gold and cream. Everything that came after - the
         latex finishes, the cardboard cut-out tones, the moss on the
-        bases, even the gold of the cutlery — was chosen to sit inside
+        bases, even the gold of the cutlery - was chosen to sit inside
         that&nbsp;palette.
       </p>
     </ArticleProse>
@@ -92,7 +92,7 @@ const TwoWildSafariSecondBirthdayArticle = () => (
     <ArticleImage
       src={imgTableConcept}
       alt="Hand-drawn concept render for a Two Wild safari second birthday table styling in Surrey, with pastel balloon clusters integrated along a long banquet table, lush foliage runner with florals, plush safari soft toy centrepieces and safari themed place settings"
-      caption="Render two — the twelve-seat banquet table. Balloon clusters integrated along the run, foliage and florals as the runner, plush safari toys as natural centrepieces. Place settings echo the backdrop&nbsp;palette."
+      caption="Render two - the twelve-seat banquet table. Balloon clusters integrated along the run, foliage and florals as the runner, plush safari toys as natural centrepieces. Place settings echo the backdrop&nbsp;palette."
       aspect="natural"
       width={780}
     />
@@ -101,7 +101,7 @@ const TwoWildSafariSecondBirthdayArticle = () => (
       <h2>Designing for a long table</h2>
       <p>
         The table was the bit that needed the most thought. Twelve
-        seats, white chiavari chairs, a long unbroken run — beautiful to
+        seats, white chiavari chairs, a long unbroken run - beautiful to
         look at empty, easy to leave looking sparse if you don't dress
         it&nbsp;properly.
       </p>
@@ -110,8 +110,8 @@ const TwoWildSafariSecondBirthdayArticle = () => (
         <em>foliage runner</em> with real ivy and pale pink garden roses
         threaded through it, so the table read as alive rather than
         decorated. A pair of{" "}
-        <em>plush safari soft toys</em> — a baby elephant and a
-        giraffe — propped into the runner as centrepieces, picking up
+        <em>plush safari soft toys</em> - a baby elephant and a
+        giraffe - propped into the runner as centrepieces, picking up
         the safari brief without a single piece of bunting. And{" "}
         <em>balloon clusters integrated along the table itself</em>,
         not floating above it, so the eye reads the table and the
@@ -127,8 +127,8 @@ const TwoWildSafariSecondBirthdayArticle = () => (
 
     <ArticleImage
       src={imgFinished}
-      alt="Finished Two Wild safari second birthday styling at Horley Community Centre in Surrey by River Fox Events — pastel balloon garland with foliage, personalised Amiya safari name panel, marquee 2 with pink bulb lights, twelve seat banquet table dressed with foliage runner, plush elephant centrepiece, pink scallop plates, zebra print salad plates and gold cutlery"
-      caption="Render to room — Amiya's 'Two Wild' setup at Horley Community Centre on the&nbsp;day."
+      alt="Finished Two Wild safari second birthday styling at Horley Community Centre in Surrey by River Fox Events - pastel balloon garland with foliage, personalised Amiya safari name panel, marquee 2 with pink bulb lights, twelve seat banquet table dressed with foliage runner, plush elephant centrepiece, pink scallop plates, zebra print salad plates and gold cutlery"
+      caption="Render to room - Amiya's 'Two Wild' setup at Horley Community Centre on the&nbsp;day."
       aspect="4/3"
     />
 
@@ -139,13 +139,13 @@ const TwoWildSafariSecondBirthdayArticle = () => (
         sourcing. The personalised "Amiya" panel and the safari
         character cut-outs (giraffe, lion cub, elephant, peeking zebra)
         were drawn and printed in-studio so the tones matched the
-        palette exactly — off-the-shelf safari prints almost always
+        palette exactly - off-the-shelf safari prints almost always
         skew too&nbsp;saturated.
       </p>
       <p>
         The marquee "2" is a hire piece, but the bulbs were swapped to
         a warmer pink to sit inside the palette rather than fight it.
-        Greenery is a mix of preserved and faux — preserved on the
+        Greenery is a mix of preserved and faux - preserved on the
         topiary letters and runner because it photographs well, faux
         underneath because it has to survive the install, the day and
         the&nbsp;teardown.
@@ -171,7 +171,7 @@ const TwoWildSafariSecondBirthdayArticle = () => (
         Wild" letters are nestled into the wall&nbsp;greenery.
       </p>
       <p>
-        The safari character cut-outs go in next — the giraffe tall on
+        The safari character cut-outs go in next - the giraffe tall on
         one side leading the eye up, the elephant low and forward, the
         zebra peeking out from behind the panel. The table is dressed
         last: foliage runner first, then the soft-toy centrepieces, then
@@ -180,7 +180,7 @@ const TwoWildSafariSecondBirthdayArticle = () => (
       </p>
       <p>
         I always do a final ten-minute walk around before the family
-        comes in. That's the part the render can't quite predict — how
+        comes in. That's the part the render can't quite predict - how
         the natural light from the arched windows is hitting the panel,
         whether one balloon needs to come down a few inches, whether
         the foliage on the table wants pulling forward to soften an
@@ -191,7 +191,7 @@ const TwoWildSafariSecondBirthdayArticle = () => (
       <h2>Why I love this part</h2>
       <p>
         A community hall is the test case for this work. There's no
-        pretty kitchen island or beautiful garden to lean on — whatever
+        pretty kitchen island or beautiful garden to lean on - whatever
         atmosphere the room ends up with, you've brought it with you.
         That makes the upfront design honest. If the renders aren't
         right, the room won't&nbsp;be&nbsp;either.
@@ -203,14 +203,14 @@ const TwoWildSafariSecondBirthdayArticle = () => (
         sightlines and what the venue can actually&nbsp;hold.
       </p>
       <p>
-        If you're planning a second birthday — or a tenth, or a first —
+        If you're planning a second birthday - or a tenth, or a first -
         and you'd love something designed from the ground up around your
         child rather than picked from a package,{" "}
         <a href="/#enquire">tell me what you have in mind</a>. The first
         sketch is always&nbsp;free.
       </p>
       <p>
-        — <em>Laura</em>
+        - <em>Laura</em>
       </p>
     </ArticleProse>
   </>
