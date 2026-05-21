@@ -18,7 +18,7 @@ import {
   upsertJsonLd,
 } from "@/seo/headTags";
 
-import imgHero from "@/assets/river-fox-events-naming-ceremony-harvey-arch-side-angle.webp";
+import imgHero from "@/assets/garden-party-iman-pastel-milestone-surrey.webp";
 import imgIntro from "@/assets/river-fox-events-veuve-cliquot-angela-georgia-arch-wide.webp";
 import imgIntroHover from "@/assets/river-fox-events-veuve-cliquot-angela-georgia-balloon-disco-close-up.webp";
 import imgOccasions from "@/assets/river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch.webp";
@@ -79,7 +79,7 @@ const Milestones = () => {
       <main>
         <ServiceHero
           image={imgHero}
-          imageAlt="Side-angle view of a balloon and floral arch with personalised Harvey signage at a Surrey garden naming ceremony, styled by River Fox Events"
+          imageAlt="Pastel garden party tablescape collage for Iman in Surrey by River Fox Events - blush florals, candles and styled place settings across a long outdoor table"
           headingId="ms-hero-heading"
           lines={[
             <>Milestone events,</>,
