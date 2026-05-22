@@ -1,11 +1,40 @@
 import ArticleProse from "@/components/article/ArticleProse";
 import ArticleImage from "@/components/article/ArticleImage";
+import ArticleImageCarousel from "@/components/article/ArticleImageCarousel";
 import ArticlePullQuote from "@/components/article/ArticlePullQuote";
 import ArticleCta from "@/components/article/ArticleCta";
 import ArticleTLDR from "@/components/article/ArticleTLDR";
 
 import imgLead from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
 import imgCards from "@/assets/river-fox-events-business-cards-surrey.webp";
+import imgGalleryIman from "@/assets/garden-party-iman-pastel-milestone-surrey.webp";
+import imgGalleryFourever from "@/assets/jungle-fourever-wild-childrens-party-surrey.webp";
+import imgGalleryKayla from "@/assets/river-fox-events-fairy-first-birthday-kayla-tablescape-overhead.webp";
+import imgGalleryReeva from "@/assets/river-fox-events-pastel-birthday-reeva-entrance-arch.webp";
+import imgGalleryAnaya from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-tablescape-wide.webp";
+
+const galleryImages = [
+  {
+    src: imgGalleryIman,
+    alt: "Pastel garden-party tablescape for Iman's milestone in Surrey by River Fox Events - soft floral runner, layered place settings and balloon installation",
+  },
+  {
+    src: imgGalleryFourever,
+    alt: "Fourever Wild jungle-theme children's party by River Fox Events - safari balloon garland, name sign and tropical foliage",
+  },
+  {
+    src: imgGalleryKayla,
+    alt: "Fairy first birthday tablescape overhead for Kayla in Surrey by River Fox Events - pastel place settings, mossy runner and trailing florals",
+  },
+  {
+    src: imgGalleryReeva,
+    alt: "Pastel birthday entrance arch for Reeva in Surrey by River Fox Events - blush, peach and cream balloon arch over a welcome easel",
+  },
+  {
+    src: imgGalleryAnaya,
+    alt: "Pastel safari Two Wild second birthday tablescape for Anaya in Surrey by River Fox Events - blush and sand palette with animal figurines",
+  },
+];
 
 /**
  * First-article body for the Lollipop Balloons → River Fox Events rebrand.
@@ -85,6 +114,8 @@ const LollipopRebrandArticle = () => (
         celebrations that feel composed rather than chaotic.
       </p>
     </ArticleProse>
+
+    <ArticleImageCarousel images={galleryImages} />
 
     <ArticlePullQuote>
       Same hands. Same studio. New name. Same level of detail.
