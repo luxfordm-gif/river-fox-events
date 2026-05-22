@@ -116,7 +116,8 @@ const Contact = () => {
                   style={{ textWrap: "pretty" }}
                 >
                   Most celebrations begin from £460, with larger or more
-                  bespoke designs typically ranging from £1,200 - £2,500+.
+                  bespoke designs typically ranging from{" "}
+                  <span className="whitespace-nowrap">£1,200 - £2,500+</span>.
                 </p>
                 <p
                   className="text-[15.5px] leading-[1.65] text-ink mt-5 max-w-[460px] mx-auto lg:mx-0"
