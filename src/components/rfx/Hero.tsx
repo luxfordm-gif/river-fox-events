@@ -32,8 +32,9 @@ const Hero = () => {
           </h1>
 
           <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-1 md:mt-10 fade-up in text-center">
-            Luxury event styling in Surrey, specialising in children's
-            parties, milestone celebrations and bespoke installations.
+            We're now River Fox Events - same studio, same Laura, fresh
+            name. Luxury event styling in Surrey for children's parties,
+            milestones and bespoke installations.
           </p>
 
           <div className="flex items-center justify-center gap-5 flex-wrap mt-10 fade-up in">
