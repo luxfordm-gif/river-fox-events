@@ -124,9 +124,9 @@ export const REVIEWS: Review[] = [
 export const ROUTES: RouteSEO[] = [
   {
     path: "/",
-    title: "Event Styling Studio in Surrey & London | River Fox Events",
+    title: "Party & Event Styling in Surrey | River Fox Events",
     description:
-      "Trusted by Surrey families and brand teams to design celebrations that genuinely stand out. Children's parties, milestones and corporate events, by Laura.",
+      "Bespoke event styling across Surrey, the South East and London - balloon installs, backdrops and tablescapes for milestone moments. From £460.",
     priority: 1.0,
     changefreq: "monthly",
   },
@@ -134,7 +134,7 @@ export const ROUTES: RouteSEO[] = [
     path: "/childrens-parties",
     title: "Children's Party Styling in Surrey | River Fox Events",
     description:
-      "Bespoke styling for first birthdays through to 7th and 8th - balloon installs, themed backdrops and tablescape design across Surrey. From £460.",
+      "Considered styling for children's parties - balloon installs, backdrops and props, scaled to the room and held to a calm palette. From first birthdays to teenage milestones.",
     breadcrumbName: "Children's Parties",
     ogImage: "/og/childrens-parties-surrey.webp",
     service: {
@@ -147,9 +147,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/milestone-celebrations",
-    title: "Milestone Birthday & Anniversary Styling | River Fox Events",
+    title: "Milestone Birthday & Celebration Styling | River Fox Events",
     description:
-      "Milestone birthdays that feel as significant as the day itself. 21sts, 40ths, 70ths, baby showers, anniversaries - designed personally by Laura, Surrey.",
+      "Styling for 30ths, 40ths, 50ths and beyond - anniversaries, christenings and the milestones that earn scale. One designer's eye, from brief to install morning.",
     breadcrumbName: "Milestone Celebrations",
     service: {
       serviceType: "Milestone Celebration Styling",
@@ -161,9 +161,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/corporate-brand-styling",
-    title: "Corporate Event & Brand Stylist Surrey | River Fox Events",
+    title: "Corporate Event & Brand Styling - Surrey | River Fox Events",
     description:
-      "Corporate events that elevate the brand they represent. Activations, launches and openings styled by Laura - trusted by P&G, The Range and Foxhills.",
+      "Event styling for launches, award nights and brand activations - installations and signage built around your palette, delivered with the calm of someone who's done it before.",
     breadcrumbName: "Corporate & Brand Styling",
     service: {
       serviceType: "Corporate Event Styling and Brand Installations",
@@ -176,9 +176,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-oxted",
     ogImage: "/og/og-fairy-kayla.webp",
-    title: "Party Stylist Oxted Surrey | River Fox Events",
+    title: "Party Styling & Balloons in Oxted | River Fox Events",
     description:
-      "Statement styling for celebrations at Titsey Place, Limpsfield and across Oxted. Parties and milestones from £460, personally by Laura.",
+      "Bespoke party styling in Oxted - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Oxted",
     service: {
       serviceType: "Event Styling",
@@ -191,9 +191,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-cobham",
     ogImage: "/og/og-baby-shower-bloom.webp",
-    title: "Party Styling in Cobham, Surrey | River Fox Events",
+    title: "Party Styling & Balloons in Cobham | River Fox Events",
     description:
-      "Bespoke party styling in Cobham - balloon installations, backdrops, signage and tablescape design for milestone celebrations, by Laura.",
+      "Bespoke party styling in Cobham - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Cobham",
     service: {
       serviceType: "Event Styling",
@@ -206,9 +206,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-weybridge",
     ogImage: "/og/og-wonka-chocolate-arch.webp",
-    title: "Party Stylist Weybridge Surrey | River Fox Events",
+    title: "Party Styling & Balloons in Weybridge | River Fox Events",
     description:
-      "Statement balloon installations and milestone celebrations in Weybridge from £460. Personally designed and installed by Laura.",
+      "Bespoke party styling in Weybridge - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Weybridge",
     service: {
       serviceType: "Event Styling",
@@ -221,9 +221,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-esher",
     ogImage: "/og/og-naming-harvey-daisy.webp",
-    title: "Party Styling in Esher, Surrey | River Fox Events",
+    title: "Party Styling & Balloons in Esher | River Fox Events",
     description:
-      "Bespoke party styling in Esher - balloon installations, backdrops, signage and tablescape design for first birthdays, milestones and weddings.",
+      "Bespoke party styling in Esher - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Esher",
     service: {
       serviceType: "Event Styling",
@@ -236,9 +236,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-reigate",
     ogImage: "/og/og-naming-harvey-daisy.webp",
-    title: "Reigate Party & Event Stylist | River Fox Events",
+    title: "Party Styling & Balloons in Reigate | River Fox Events",
     description:
-      "Layered tablescapes, milestone parties and at-home celebrations in Reigate. Personally designed and installed by Laura.",
+      "Bespoke party styling in Reigate - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Reigate",
     service: {
       serviceType: "Event Styling",
@@ -251,9 +251,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-oxshott",
     ogImage: "/og/og-dinosaur-ayaan.webp",
-    title: "Party Stylist Oxshott Surrey | River Fox Events",
+    title: "Party Styling & Balloons in Oxshott | River Fox Events",
     description:
-      "Themed children's parties, milestones and balloon installations in Oxshott. Personally designed and installed by Laura.",
+      "Bespoke party styling in Oxshott - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Oxshott",
     service: {
       serviceType: "Event Styling",
@@ -266,9 +266,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-guildford",
     ogImage: "/og/og-veuve-disco.webp",
-    title: "Party Styling in Guildford, Surrey | River Fox Events",
+    title: "Party Styling & Balloons in Guildford | River Fox Events",
     description:
-      "Bespoke party styling in Guildford - balloon installations, backdrops, signage and tablescape design for first birthdays, milestones and weddings.",
+      "Considered event styling for Guildford homes and venues - balloon installations, backdrops and signage, held together by one designer's eye. From £460.",
     breadcrumbName: "Party Styling Guildford",
     service: {
       serviceType: "Event Styling",
@@ -283,7 +283,7 @@ export const ROUTES: RouteSEO[] = [
     ogImage: "/og/og-pastel-safari-anaya.webp",
     title: "Party Styling in Walton-on-Thames | River Fox Events",
     description:
-      "Bespoke party styling in Walton-on-Thames - balloon installations, backdrops, signage and tablescape design for first birthdays, milestones and weddings.",
+      "Bespoke party styling in Walton-on-Thames - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Walton-on-Thames",
     service: {
       serviceType: "Event Styling",
@@ -296,9 +296,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-dorking",
     ogImage: "/og/og-dinosaur-ayaan.webp",
-    title: "Party Styling in Dorking, Surrey | River Fox Events",
+    title: "Party Styling & Balloons in Dorking | River Fox Events",
     description:
-      "Bespoke party styling in Dorking - balloon installations, backdrops, signage and tablescape design for milestone celebrations across the Surrey Hills.",
+      "Bespoke party styling in Dorking - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Dorking",
     service: {
       serviceType: "Event Styling",
@@ -311,9 +311,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-epsom",
     ogImage: "/og/og-jungle-elephant.webp",
-    title: "Epsom Party & Event Stylist | River Fox Events",
+    title: "Party Styling & Balloons in Epsom | River Fox Events",
     description:
-      "Considered styling for children's parties, milestones and brand events in Epsom. Personally designed and installed by Laura - from £460.",
+      "Bespoke party styling in Epsom - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Epsom",
     service: {
       serviceType: "Event Styling",
@@ -338,7 +338,7 @@ export const ROUTES: RouteSEO[] = [
     ogImage: "/og/og-fairy-kayla.webp",
     title: "Party Styling in East Grinstead | River Fox Events",
     description:
-      "Full-service event styling across East Grinstead and the South East - balloon installs, backdrops and tablescape design for milestone celebrations.",
+      "Bespoke party styling in East Grinstead - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling East Grinstead",
     service: {
       serviceType: "Event Styling",
@@ -359,9 +359,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-lingfield",
     ogImage: "/og/og-stubbs-gender-reveal.webp",
-    title: "Lingfield Party & Event Stylist | River Fox Events",
+    title: "Party Styling & Balloons in Lingfield | River Fox Events",
     description:
-      "Considered, personal styling at Lingfield Park, Dormansland and across the Surrey/Sussex border. Parties and milestones designed by Laura.",
+      "Bespoke party styling in Lingfield - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Lingfield",
     service: {
       serviceType: "Event Styling",
@@ -381,9 +381,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-crawley",
     ogImage: "/og/og-stubbs-gender-reveal.webp",
-    title: "Party Styling in Crawley, West Sussex | River Fox Events",
+    title: "Party Styling & Balloons in Crawley | River Fox Events",
     description:
-      "Full-service event styling in Crawley - balloon installations, backdrops, signage and tablescape design for first birthdays, milestones and corporate events.",
+      "Bespoke party styling in Crawley - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Crawley",
     service: {
       serviceType: "Event Styling",
@@ -404,9 +404,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-horsham",
     ogImage: "/og/og-40th-rose-gold.webp",
-    title: "Party Stylist Horsham West Sussex | River Fox Events",
+    title: "Party Styling & Balloons in Horsham | River Fox Events",
     description:
-      "Statement balloon installations, milestone parties and at-home styling in Horsham. Personally designed and installed by Laura.",
+      "Bespoke party styling in Horsham - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Horsham",
     service: {
       serviceType: "Event Styling",
@@ -429,7 +429,7 @@ export const ROUTES: RouteSEO[] = [
     ogImage: "/og/og-wonka-chocolate-arch.webp",
     title: "Party Styling in Haywards Heath | River Fox Events",
     description:
-      "Full-service event styling in Haywards Heath and across mid-Sussex - balloon installs, backdrops and tablescape design for milestone celebrations.",
+      "Bespoke party styling in Haywards Heath - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Haywards Heath",
     service: {
       serviceType: "Event Styling",
@@ -450,9 +450,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-tunbridge-wells",
     ogImage: "/og/og-veuve-disco.webp",
-    title: "Elevated Event Styling, Tunbridge Wells | River Fox Events",
+    title: "Party Styling in Tunbridge Wells | River Fox Events",
     description:
-      "Studio-led event styling in Tunbridge Wells - milestone parties, brand activations and at-home celebrations across Kent. Personally by Laura.",
+      "Bespoke party styling in Tunbridge Wells - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Tunbridge Wells",
     service: {
       serviceType: "Event Styling",
@@ -473,9 +473,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-sevenoaks",
     ogImage: "/og/og-jungle-elephant.webp",
-    title: "Party Stylist Sevenoaks Kent | River Fox Events",
+    title: "Party Styling & Balloons in Sevenoaks | River Fox Events",
     description:
-      "West Kent events, fully managed from setup to breakdown - including Sevenoaks, Riverhead, Otford and Seal. Personally designed by Laura.",
+      "Bespoke party styling in Sevenoaks - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Sevenoaks",
     service: {
       serviceType: "Event Styling",
@@ -496,9 +496,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-forest-row",
     ogImage: "/og/og-pastel-safari-anaya.webp",
-    title: "Party Styling in Forest Row, East Sussex | River Fox Events",
+    title: "Party Styling & Balloons in Forest Row | River Fox Events",
     description:
-      "Full-service event styling in Forest Row and the Ashdown Forest - balloon installs, backdrops and tablescape design for milestone celebrations.",
+      "Bespoke party styling in Forest Row - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Forest Row",
     service: {
       serviceType: "Event Styling",
@@ -519,9 +519,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-lewes",
     ogImage: "/og/og-baby-shower-bloom.webp",
-    title: "Editorial Event Styling Lewes | River Fox Events",
+    title: "Party Styling & Balloons in Lewes | River Fox Events",
     description:
-      "A short drive from Lewes - full-service East Sussex country-house celebrations. From design to clear-down, personally handled by Laura.",
+      "Bespoke party styling in Lewes - balloon installations, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day.",
     breadcrumbName: "Party Styling Lewes",
     service: {
       serviceType: "Event Styling",
@@ -544,7 +544,7 @@ export const ROUTES: RouteSEO[] = [
     ogImage: "/og/og-40th-rose-gold.webp",
     title: "Party Styling in Brighton & Hove | River Fox Events",
     description:
-      "Full-service event styling across Brighton and Hove - balloon installs, backdrops and tablescape design for first birthdays, milestones and christenings.",
+      "Bespoke party styling across Brighton and Hove - balloon installs, backdrops, signage and tablescapes for milestones. I style the room, you enjoy the day. From £460.",
     breadcrumbName: "Party Styling Brighton & Hove",
     service: {
       serviceType: "Event Styling",
