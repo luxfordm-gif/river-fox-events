@@ -134,7 +134,7 @@ export const ROUTES: RouteSEO[] = [
     path: "/childrens-parties",
     title: "Children's Party Styling in Surrey | River Fox Events",
     description:
-      "Considered styling for children's parties - balloon installs, backdrops and props, scaled to the room and held to a calm palette. From first birthdays to teenage milestones.",
+      "Children's party styling - balloon installs, backdrops and props, scaled to the room, held to a calm palette. From first birthdays to teenage milestones.",
     breadcrumbName: "Children's Parties",
     ogImage: "/og/childrens-parties-surrey.webp",
     service: {
@@ -268,7 +268,7 @@ export const ROUTES: RouteSEO[] = [
     ogImage: "/og/og-veuve-disco.webp",
     title: "Party Styling & Balloons in Guildford | River Fox Events",
     description:
-      "Considered event styling for Guildford homes and venues - balloon installations, backdrops and signage, held together by one designer's eye. From £460.",
+      "Event styling for Guildford homes and venues - balloon installations, backdrops and signage, held together by one designer's eye. From £460.",
     breadcrumbName: "Party Styling Guildford",
     service: {
       serviceType: "Event Styling",
