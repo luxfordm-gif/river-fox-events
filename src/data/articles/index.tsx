@@ -6,6 +6,7 @@ import ChildrensPartyThemes2026Body from "./childrens-party-themes-2026";
 import TwoWildSafariSecondBirthdayBody from "./two-wild-safari-second-birthday";
 import GardenMilestoneStylingSurreyBody from "./garden-milestone-styling-surrey";
 import WillyWonkaFifthBirthdaySavannaBody from "./willy-wonka-fifth-birthday-savanna";
+import DylanChristeningFirstBirthdayBody from "./dylan-christening-first-birthday";
 
 import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
 import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
@@ -14,6 +15,7 @@ import childrensThemesCard from "@/assets/jungle-themed-childrens-party-styling-
 import twoWildCard from "@/assets/journal/two-wild-safari-second-birthday/two-wild-safari-feature-backdrop-concept-horley-surrey.webp";
 import gardenMilestoneCard from "@/assets/journal/garden-milestone-styling-surrey/garden-milestone-balloon-arch.webp";
 import willyWonkaCard from "@/assets/willy-wonka-savanna-chocolate-arch-surrey.webp";
+import dylanChristeningCard from "@/assets/journal/dylan-christening-first-birthday/dylan-christening-arched-welcome-panel-balloon-garland.webp";
 
 /**
  * Master list of articles. Order = newest first.
@@ -27,6 +29,27 @@ import willyWonkaCard from "@/assets/willy-wonka-savanna-chocolate-arch-surrey.w
  *      `relatedSlugs`, and vice versa.
  */
 export const ARTICLES: Article[] = [
+  {
+    slug: "dylan-christening-first-birthday",
+    title: "Dylan's Christening & First Birthday",
+    subtitle:
+      "A combined christening and first birthday near Walton-on-Thames - a sky-blue, chrome-gold and ivory balloon feature wall around one arched welcome panel.",
+    teaser:
+      "Two milestones, one day, one feature wall. Dylan's combined christening and first birthday near Walton-on-Thames - and the design that holds both at once.",
+    metaDescription:
+      "Dylan's combined christening and first birthday near Walton-on-Thames - a sky-blue, chrome-gold and ivory balloon feature wall, styled by Laura.",
+    publishedAt: "2026-05-29",
+    readMinutes: 4,
+    relatedSlugs: [
+      "willy-wonka-fifth-birthday-savanna",
+      "two-wild-safari-second-birthday",
+      "from-design-to-delivery",
+    ],
+    cardImage: dylanChristeningCard,
+    ogImage: "/og/dylan-christening-first-birthday.webp",
+    category: "Case study",
+    Body: DylanChristeningFirstBirthdayBody,
+  },
   {
     slug: "willy-wonka-fifth-birthday-savanna",
     title: "Savanna's Willy Wonka fifth birthday",
