@@ -71,6 +71,11 @@ export const BUSINESS = {
 export type Review = { q: string; a: string; href?: string };
 export const REVIEWS: Review[] = [
   {
+    q: "Laura created a beautiful balloon hoop garland for my son's Christening. It was a beautiful piece of decor and we received loads of compliments about it. It really transformed the event hall and was stunning. Laura was really easy to communicate with and had great creative vision for the event. I would highly recommend this company for event decor.",
+    a: "Samantha",
+    href: "https://goo.gl/maps/3U8ddozdYipptXt16?g_st=ac",
+  },
+  {
     q: "Laura designed us the most beautiful balloons and install for our recent business development day in Horley. Everyone commented on them and they were stunning. Efficient, professional and superb with her communication throughout the booking process. I would recommend her to anyone.",
     a: "Suzy Dorran",
     href: "https://maps.app.goo.gl/yae87fhpe2Bxe7VE9",
@@ -586,6 +591,16 @@ export const ROUTES: RouteSEO[] = [
   // up the /journal/* prefix and emits the 3-level chain into static HTML
   // using the same script id as Article.tsx, so the runtime injection and
   // the static one don't double up.
+  {
+    path: "/journal/dylan-christening-first-birthday",
+    title: "Dylan's Christening & First Birthday | River Fox Events",
+    description:
+      "Dylan's combined christening and first birthday near Walton-on-Thames - a sky-blue, chrome-gold and ivory balloon feature wall, styled by Laura.",
+    breadcrumbName: "Dylan's Christening & First Birthday",
+    ogImage: "/og/dylan-christening-first-birthday.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+  },
   {
     path: "/journal/willy-wonka-fifth-birthday-savanna",
     title: "Savanna's Willy Wonka Fifth Birthday in Surrey | River Fox Events",
