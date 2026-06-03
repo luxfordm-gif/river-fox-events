@@ -60,7 +60,7 @@ const LocationTrust = () => {
           </h2>
           <div className="mt-4">
             <a
-              href="https://www.google.com/maps/search/Lollipop+Balloons+Horley"
+              href="https://maps.app.goo.gl/dcLgoJHXnhjjzJKP6"
               target="_blank"
               rel="noopener noreferrer"
               className="tcard-readall"
