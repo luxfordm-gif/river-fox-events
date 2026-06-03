@@ -30,5 +30,18 @@
 /location/luxury-children-party-styling-redhill     /party-styling-reigate/        301
 /location/luxury-children-party-styling-weybridge   /party-styling-weybridge/      301
 
+# Older Wix URLs not in the final sitemap (belt-and-braces for stray backlinks)
+/contact-us                  /contact/                              301
+/blog                        /journal/                              301
+/post/*                      /journal/childrens-party-themes-2026/  301
+/services                    /childrens-parties/                    301
+/services-1                  /childrens-parties/                    301
+/installations               /childrens-parties/                    301
+/portfolio                   /                                      301
+/portfolio-collections/*     /                                      301
+/blank-1                     /                                      301
+/blank-2                     /                                      301
+/blank-3                     /                                      301
+
 # SPA fallback — must stay last so it doesn't swallow the 301s above
 /*    /index.html   200
