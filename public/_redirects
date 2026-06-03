@@ -1,47 +1,59 @@
+# ── Old Lollipop Balloons URLs → matching River Fox Events pages ──
+# Absolute targets so the redirect lands on the new domain in a single hop
+# and SEO signals consolidate onto riverfoxevents.co.uk.
+
 # Service pages
-/services/luxury-kids-parties   /childrens-parties/         301
-/services/corporate             /corporate-brand-styling/   301
-/services/events                /milestone-celebrations/    301
-/services/balloons              /childrens-parties/         301
+/services/luxury-kids-parties   https://riverfoxevents.co.uk/childrens-parties/         301
+/services/corporate             https://riverfoxevents.co.uk/corporate-brand-styling/   301
+/services/events                https://riverfoxevents.co.uk/milestone-celebrations/    301
+/services/balloons              https://riverfoxevents.co.uk/childrens-parties/         301
 
 # Core pages
-/about      /          301
-/contact    /contact/  301
+/about      https://riverfoxevents.co.uk/          301
+/contact    https://riverfoxevents.co.uk/contact/  301
 
 # Old balloon-arches location pages
-/location/balloon-arches-near-cobham      /party-styling-cobham/         301
-/location/balloon-arches-near-elmbridge   /party-styling-weybridge/      301
-/location/balloon-arches-near-esher       /party-styling-esher/          301
-/location/balloon-arches-near-felbridge   /party-styling-east-grinstead/ 301
-/location/balloon-arches-near-kingswood   /party-styling-epsom/          301
-/location/balloon-arches-near-oxshott     /party-styling-oxshott/        301
-/location/balloon-arches-near-oxted       /party-styling-oxted/          301
-/location/balloon-arches-near-redhill     /party-styling-reigate/        301
-/location/balloon-arches-near-weybridge   /party-styling-weybridge/      301
+/location/balloon-arches-near-cobham      https://riverfoxevents.co.uk/party-styling-cobham/         301
+/location/balloon-arches-near-elmbridge   https://riverfoxevents.co.uk/party-styling-weybridge/      301
+/location/balloon-arches-near-esher       https://riverfoxevents.co.uk/party-styling-esher/          301
+/location/balloon-arches-near-felbridge   https://riverfoxevents.co.uk/party-styling-east-grinstead/ 301
+/location/balloon-arches-near-kingswood   https://riverfoxevents.co.uk/party-styling-epsom/          301
+/location/balloon-arches-near-oxshott     https://riverfoxevents.co.uk/party-styling-oxshott/        301
+/location/balloon-arches-near-oxted       https://riverfoxevents.co.uk/party-styling-oxted/          301
+/location/balloon-arches-near-redhill     https://riverfoxevents.co.uk/party-styling-reigate/        301
+/location/balloon-arches-near-weybridge   https://riverfoxevents.co.uk/party-styling-weybridge/      301
 
 # Old luxury-children-party-styling location pages
-/location/luxury-children-party-styling-cobham      /party-styling-cobham/         301
-/location/luxury-children-party-styling-elmbridge   /party-styling-weybridge/      301
-/location/luxury-children-party-styling-esher       /party-styling-esher/          301
-/location/luxury-children-party-styling-felbridge   /party-styling-east-grinstead/ 301
-/location/luxury-children-party-styling-kingswood   /party-styling-epsom/          301
-/location/luxury-children-party-styling-oxshott     /party-styling-oxshott/        301
-/location/luxury-children-party-styling-oxted       /party-styling-oxted/          301
-/location/luxury-children-party-styling-redhill     /party-styling-reigate/        301
-/location/luxury-children-party-styling-weybridge   /party-styling-weybridge/      301
+/location/luxury-children-party-styling-cobham      https://riverfoxevents.co.uk/party-styling-cobham/         301
+/location/luxury-children-party-styling-elmbridge   https://riverfoxevents.co.uk/party-styling-weybridge/      301
+/location/luxury-children-party-styling-esher       https://riverfoxevents.co.uk/party-styling-esher/          301
+/location/luxury-children-party-styling-felbridge   https://riverfoxevents.co.uk/party-styling-east-grinstead/ 301
+/location/luxury-children-party-styling-kingswood   https://riverfoxevents.co.uk/party-styling-epsom/          301
+/location/luxury-children-party-styling-oxshott     https://riverfoxevents.co.uk/party-styling-oxshott/        301
+/location/luxury-children-party-styling-oxted       https://riverfoxevents.co.uk/party-styling-oxted/          301
+/location/luxury-children-party-styling-redhill     https://riverfoxevents.co.uk/party-styling-reigate/        301
+/location/luxury-children-party-styling-weybridge   https://riverfoxevents.co.uk/party-styling-weybridge/      301
 
 # Older Wix URLs not in the final sitemap (belt-and-braces for stray backlinks)
-/contact-us                  /contact/                              301
-/blog                        /journal/                              301
-/post/*                      /journal/childrens-party-themes-2026/  301
-/services                    /childrens-parties/                    301
-/services-1                  /childrens-parties/                    301
-/installations               /childrens-parties/                    301
-/portfolio                   /                                      301
-/portfolio-collections/*     /                                      301
-/blank-1                     /                                      301
-/blank-2                     /                                      301
-/blank-3                     /                                      301
+/contact-us                  https://riverfoxevents.co.uk/contact/                              301
+/blog                        https://riverfoxevents.co.uk/journal/                              301
+/post/*                      https://riverfoxevents.co.uk/journal/childrens-party-themes-2026/  301
+/services                    https://riverfoxevents.co.uk/childrens-parties/                    301
+/services-1                  https://riverfoxevents.co.uk/childrens-parties/                    301
+/installations               https://riverfoxevents.co.uk/childrens-parties/                    301
+/portfolio                   https://riverfoxevents.co.uk/                                      301
+/portfolio-collections/*     https://riverfoxevents.co.uk/                                      301
+/blank-1                     https://riverfoxevents.co.uk/                                      301
+/blank-2                     https://riverfoxevents.co.uk/                                      301
+/blank-3                     https://riverfoxevents.co.uk/                                      301
+
+# Catch-all for the old domain: anything not mapped above → same path on the new
+# domain. Forced (301!) so it wins over the prerendered static files, which stops
+# the old domain ever serving a duplicate copy of the site.
+http://lollipopballoonssurrey.co.uk/*        https://riverfoxevents.co.uk/:splat  301!
+https://lollipopballoonssurrey.co.uk/*       https://riverfoxevents.co.uk/:splat  301!
+http://www.lollipopballoonssurrey.co.uk/*    https://riverfoxevents.co.uk/:splat  301!
+https://www.lollipopballoonssurrey.co.uk/*   https://riverfoxevents.co.uk/:splat  301!
 
 # SPA fallback — must stay last so it doesn't swallow the 301s above
 /*    /index.html   200
