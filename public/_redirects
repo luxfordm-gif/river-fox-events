@@ -9,8 +9,11 @@
 /services/balloons              https://riverfoxevents.co.uk/childrens-parties/         301
 
 # Core pages
+# NB: /contact deliberately has NO explicit rule — /contact/ is a real page on
+# the new site, so a non-forced rule here would make the old domain serve that
+# file instead of redirecting. The old-domain catch-all below maps /contact/ →
+# the new /contact/ (same path) correctly, so no rule is needed.
 /about      https://riverfoxevents.co.uk/          301
-/contact    https://riverfoxevents.co.uk/contact/  301
 
 # Old balloon-arches location pages
 /location/balloon-arches-near-cobham      https://riverfoxevents.co.uk/party-styling-cobham/         301
