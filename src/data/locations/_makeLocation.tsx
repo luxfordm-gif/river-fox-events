@@ -326,7 +326,6 @@ export function makeLocation(input: LocationInput): LocationConfig {
       ),
     },
     gallery: {
-      eyebrow: "Through our lens",
       heading: (
         <>
           A glimpse of recent{" "}
