@@ -15,12 +15,12 @@ const DylanChristeningFirstBirthdayArticle = () => (
         <li>
           A christening and a first birthday for <strong>Dylan</strong>,
           celebrated on the same day near Walton-on-Thames, built around a
-          single feature wall in sky blue, chrome gold and&nbsp;ivory.
+          gold balloon hoop in sky blue, chrome gold and&nbsp;ivory.
         </li>
         <li>
-          The centrepiece: an organic balloon garland wrapping a
-          custom-painted arched welcome panel, with a painted teddy cutout
-          at its&nbsp;base.
+          The centrepiece: an organic balloon hoop set beside a
+          custom-painted arched welcome backdrop, with a painted rabbit
+          cutout at its&nbsp;base.
         </li>
         <li>
           A black starlight wall already in the room did the atmospheric
@@ -28,9 +28,9 @@ const DylanChristeningFirstBirthdayArticle = () => (
           lead.
         </li>
         <li>
-          One day, two milestones. The design had to hold a christening and
-          a first birthday at once, without tipping into nursery-bright or
-          too&nbsp;grown-up.
+          The animals came from Dylan's invite - a rabbit and a lamb - and
+          the gold hoop picked up the gold hoop centrepieces his mum had
+          made for the&nbsp;tables.
         </li>
       </ul>
     </ArticleTLDR>
@@ -53,25 +53,26 @@ const DylanChristeningFirstBirthdayArticle = () => (
 
     <ArticleImage
       src={imgFeatureWall}
-      alt="Sky blue, chrome gold and ivory balloon garland around an arched welcome panel against a black starlight wall"
-      caption="The feature wall on the day - an organic balloon garland framing the arched welcome panel, set against the room's black starlight&nbsp;backdrop."
+      alt="Sky blue, chrome gold and ivory balloon hoop beside an arched welcome backdrop against a black starlight wall"
+      caption="The hoop and backdrop on the day - an organic balloon hoop set beside the arched welcome panel, against the room's black starlight&nbsp;backdrop."
       aspect="4/3"
     />
 
     <ArticleProse>
-      <h2>One wall, two milestones</h2>
+      <h2>One hoop, two milestones</h2>
       <p>
         A christening and a first birthday pull in slightly different
         directions. One wants quiet and a touch of ceremony; the other wants
         to feel like a party. Rather than split the room in two, I built
-        everything around a single feature wall so the eye had one clear
-        place to land as guests&nbsp;arrived.
+        everything around a single balloon hoop and a personalised backdrop,
+        so the eye had one clear place to land as guests&nbsp;arrived.
       </p>
       <p>
-        That wall carried the whole story: the arched welcome panel naming
-        the occasion, the balloon garland framing it, and the teddy cutout
-        at the base for Dylan. One installation, reading as both things
-        at&nbsp;once.
+        The hoop wasn't an arbitrary shape. Dylan's mum had made gold hoop
+        centrepieces for each table, and I wanted the main display to speak
+        to them rather than sit apart - so the installation became a gold
+        hoop too, dressed in balloons and set beside the arched welcome
+        panel naming the&nbsp;occasion.
       </p>
     </ArticleProse>
 
@@ -82,8 +83,8 @@ const DylanChristeningFirstBirthdayArticle = () => (
 
     <ArticleImage
       src={imgTeddy}
-      alt="Painted teddy bear cutout holding a gift box at the foot of a chrome gold, sky blue and ivory balloon cluster"
-      caption="The teddy cutout at the foot of the garland - the one properly playful note, tipping the wall toward the first-birthday side of the&nbsp;brief."
+      alt="Painted rabbit cutout in a party hat holding a gift box at the foot of a chrome gold, sky blue and ivory balloon cluster"
+      caption="The rabbit cutout at the foot of the hoop, lifted straight from Dylan's invite - the one properly playful note on the first-birthday side of the&nbsp;brief."
       aspect="4/3"
     />
 
@@ -91,25 +92,27 @@ const DylanChristeningFirstBirthdayArticle = () => (
       <h2>Building it in blue and gold</h2>
       <p>
         The palette did the heavy lifting. Sky blue, a deeper dusty blue,
-        chrome gold and ivory, mixed across the garland in different sizes
+        chrome gold and ivory, mixed across the hoop in different sizes
         and finishes so it read as organic rather than evenly spaced. Chrome
         gold is the balloon that earns its place here - a few of them
-        through the garland catch the light and lift the whole thing out of
-        pastel-only&nbsp;territory.
+        through the hoop catch the light and tie the display to the gold
+        of the table&nbsp;centrepieces.
       </p>
       <p>
         The arched panel is a custom-painted sailboard, with Dylan's name
         and the wording applied in vinyl so the lettering sits crisply
-        against the soft blue. A painted teddy cutout, holding a little gift
-        box, sits at the foot of the garland - the one properly playful
-        note, and the piece that tips the wall gently toward the
-        first-birthday side of the brief. A few faux stems in soft blue and
-        white are tucked in at the side for texture, never the&nbsp;focus.
+        against the soft blue. The animals came from his invite - a rabbit
+        and a lamb - and I brought them into the display to pull the whole
+        look together: the lamb printed onto the backdrop, the rabbit as a
+        painted cutout holding a little gift box at the foot of the hoop.
+        That's the piece that tips things gently toward the first-birthday
+        side of the brief. A few faux stems in soft blue and white are
+        tucked in at the side for texture, never the&nbsp;focus.
       </p>
       <p>
         <a href="/childrens-parties/">First birthdays</a> and{" "}
         <a href="/milestone-celebrations/">christenings</a> often land in my
-        inbox separately. Combining them in one feature wall is becoming one
+        inbox separately. Combining them in one display is becoming one
         of my favourite&nbsp;briefs.
       </p>
     </ArticleProse>
@@ -119,14 +122,14 @@ const DylanChristeningFirstBirthdayArticle = () => (
     <ArticleProse>
       <h2>Install morning</h2>
       <p>
-        The starlight wall meant I could keep the build focused. The garland
-        goes up first, worked along its frame by hand and weighted so it
-        holds its shape through the day. Mixed finishes go in as I build,
-        not after, so the chrome golds sit where the light will find them
-        rather than being dotted on at the&nbsp;end.
+        The starlight wall meant I could keep the build focused. The hoop
+        goes up first, balloons worked along its frame by hand and weighted
+        so it holds its shape through the day. Mixed finishes go in as I
+        build, not after, so the chrome golds sit where the light will find
+        them rather than being dotted on at the&nbsp;end.
       </p>
       <p>
-        The arched panel is positioned next, then the teddy cutout nestled
+        The arched panel is positioned next, then the rabbit cutout nestled
         at the base, then the faux stems threaded in last to soften the join
         between balloons and floor. A final walk-round before the family
         arrives is where the small adjustments happen - a cluster lowered an
@@ -157,9 +160,11 @@ const DylanChristeningFirstBirthdayArticle = () => (
         feel like the same day rather than two events sharing&nbsp;a&nbsp;hall.
       </p>
       <p>
-        Dylan's wall did that with a single palette and a single
-        installation. The teddy gives it warmth, the gold gives it occasion,
-        and the blue ties it&nbsp;to&nbsp;him.
+        Dylan's display did that with a single palette and a single
+        installation, and by borrowing the family's own touches - the gold
+        of his mum's centrepieces, the animals from his invite. The rabbit
+        gives it warmth, the gold gives it occasion, and the blue ties it
+        to&nbsp;him.
       </p>
       <p>
         If you're marking two milestones at once - a christening and a

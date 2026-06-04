@@ -6,20 +6,37 @@ const dorking = makeLocation({
   region: "Surrey",
   images: {
     heroFan: ["naming-harvey-daisy", "dinosaur-ayaan", "40th-rose-gold"],
-    galleryMain: "veuve-disco",
+    galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["stubbs-gender-reveal", "pastel-safari-anaya", "jungle-elephant"],
   },
-  uniqueSeoTitle: "Party Stylist Dorking Surrey | River Fox Events",
+  uniqueSeoTitle: "Dorking Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "Editorial event styling around Denbies, Westcott and the Surrey Hills near Dorking. Layered, considered celebrations personally designed by Laura.",
+    "Children's parties beneath the Surrey Hills - first birthdays to big themed celebrations in Dorking, individually designed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Dorking,</>,
   uniqueHeroSub: (
     <>
-      Dorking events, considered in detail. One stylist, one client, no
-      templates.
+      Surrey Hills children's parties, styled with care - first birthdays to
+      big themed celebrations, with christenings, milestones and corporate
+      work handled too.
     </>
   ),
   uniqueUspBody:
-    "Tucked beneath the Surrey Hills, Dorking calls for styling that feels natural and well-composed. Each celebration is built around statement installations and quiet, considered detail, shaped to your venue and vision so the room reads as cohesive, distinctive and genuinely ready to enjoy.",
+    "Beneath the Surrey Hills, a Dorking children's party works best when it feels natural and well-composed - designed around your child and your space, built from statement installations and quiet detail, then cleared away by us.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties take the lead.{" "}
+      <em className="italic font-light text-accent-warm">
+        We style the grown-up days too.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Most Dorking work starts with a child's birthday, and that's where we
+      spend our time. Christenings, milestones and corporate styling are
+      handled with the same care when you need them.
+    </>
+  ),
   nearbyVillages: [
     "Westcott",
     "Brockham",

@@ -10,17 +10,34 @@ const haywardsHeath = makeLocation({
     galleryThumbs: ["naming-harvey-daisy", "jungle-elephant", "veuve-disco"],
   },
   seoTitleRegion: "West Sussex",
-  uniqueSeoTitle: "Haywards Heath Party & Event Stylist | River Fox Events",
+  uniqueSeoTitle: "Haywards Heath Kids' Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "Studio-led styling across mid-Sussex, from Haywards Heath to Lindfield and Cuckfield. Full-service event styling from £460, by Laura.",
+    "Kids' birthday styling across Haywards Heath, Lindfield and Cuckfield - first birthdays to themed parties, individually designed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Haywards Heath,</>,
   uniqueHeroSub: (
     <>
-      Events brought to life in Haywards Heath - personally designed and
-      installed.
+      Mid-Sussex children's parties designed with care - first birthdays
+      through to big themed celebrations, with christenings, milestones and
+      corporate work handled too.
     </>
   ),
   uniqueUspBody:
-    "Calm, thoughtfully styled celebrations sit at the centre of our Haywards Heath work. Each design leads with statement installations and careful detail, tailored to your space and vision so the finished room feels cohesive, distinctive and genuinely ready for the occasion.",
+    "Children's parties across Haywards Heath are styled to feel calm rather than chaotic - a first birthday or a big themed celebration, designed around your space and your child and finished to the last detail before guests arrive.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties are the main event.{" "}
+      <em className="italic font-light text-accent-warm">
+        We cover the rest as well.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Families across Haywards Heath mostly book us for a child's birthday,
+      and that's our focus. The same attention goes into christenings,
+      milestones and corporate events when you need them.
+    </>
+  ),
   nearbyVillages: [
     "Lindfield",
     "Cuckfield",

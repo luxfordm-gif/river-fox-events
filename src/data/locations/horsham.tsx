@@ -6,21 +6,38 @@ const horsham = makeLocation({
   region: "West Sussex",
   images: {
     heroFan: ["pastel-safari-anaya", "dinosaur-ayaan", "jungle-elephant"],
-    galleryMain: "veuve-disco",
-    galleryThumbs: ["fairy-kayla", "wonka-chocolate-arch", "baby-shower-bloom"],
+    galleryMain: "wonka-chocolate-arch",
+    galleryThumbs: ["fairy-kayla", "veuve-disco", "baby-shower-bloom"],
   },
   seoTitleRegion: "West Sussex",
-  uniqueSeoTitle: "Party Stylist Horsham West Sussex | River Fox Events",
+  uniqueSeoTitle: "Horsham Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "Statement balloon installations, milestone parties and at-home styling in Horsham. Personally designed and installed by Laura.",
+    "Big themed birthdays and first-birthday styling in Horsham - children's parties individually designed and installed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Horsham,</>,
   uniqueHeroSub: (
     <>
-      Studio-designed events in Horsham. From first idea to final breakdown,
-      personally handled.
+      Slow, deliberate styling for Horsham children's parties - first
+      birthdays to big themed celebrations, with milestones and corporate
+      work alongside.
     </>
   ),
   uniqueUspBody:
-    "Each Horsham celebration is shaped slowly and deliberately, from first concept to final styled detail. The focus stays on statement installations and cohesive detailing, individually designed around your venue and vision, with a result that feels considered, distinctive and ready to enjoy.",
+    "Horsham children's parties are shaped slowly and deliberately, from the first idea to the last styled detail - a first birthday or a big themed celebration designed around your child and your space, installed and broken down by us.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties are the bulk of it.{" "}
+      <em className="italic font-light text-accent-warm">
+        We style the rest as well.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Horsham families mostly come to us for a child's birthday, and that's
+      our focus. The same eye goes into christenings, milestones and corporate
+      work when the occasion calls for it.
+    </>
+  ),
   nearbyVillages: [
     "Warnham",
     "Slinfold",

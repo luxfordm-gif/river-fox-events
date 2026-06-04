@@ -63,6 +63,12 @@ export type LocationConfig = {
    *  shared/templated value here makes every location result look
    *  identical. Falls back to a generic paragraph when omitted. */
   uspBody?: string;
+  /** Optional per-location override for the "Our signature experiences."
+   *  services-cards block heading and intro. Use on children's-party-led
+   *  pages to reframe the block as a secondary "we also style X" section.
+   *  Falls back to the shared default in LocationPage when omitted. */
+  servicesHeading?: ReactNode;
+  servicesIntro?: ReactNode;
   /** Optional bespoke local-prose section between gallery and "How it
    *  works". Three short paragraphs of locally-specific copy used for
    *  SEO weight and to convince a reader that we genuinely know the

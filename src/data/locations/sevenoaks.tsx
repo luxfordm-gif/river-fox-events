@@ -6,21 +6,37 @@ const sevenoaks = makeLocation({
   region: "Kent",
   images: {
     heroFan: ["pastel-safari-anaya", "naming-harvey-daisy", "veuve-disco"],
-    galleryMain: "40th-rose-gold",
+    galleryMain: "jungle-elephant",
     galleryThumbs: ["stubbs-gender-reveal", "wonka-chocolate-arch", "baby-shower-bloom"],
   },
   seoTitleRegion: "Kent",
-  uniqueSeoTitle: "Party Stylist Sevenoaks Kent | River Fox Events",
+  uniqueSeoTitle: "Sevenoaks Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "West Kent events, fully managed from setup to breakdown - including Sevenoaks, Riverhead, Otford and Seal. Personally designed by Laura.",
+    "West Kent children's parties in Sevenoaks - first birthdays to big themed celebrations, individually designed and installed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Sevenoaks,</>,
   uniqueHeroSub: (
     <>
-      Sevenoaks events, considered in detail. One stylist, one client, no
-      templates.
+      Homes, halls and marquees across Sevenoaks - children's parties styled
+      with care, with christenings, milestones and corporate work alongside.
     </>
   ),
   uniqueUspBody:
-    "Across homes, halls and marquees in Sevenoaks, celebrations are styled to feel cohesive and considered. Statement installations and careful detailing are tailored to your space and palette, leaving a room that reads as distinctive and calm, genuinely ready for the occasion.",
+    "A Sevenoaks children's party works across homes, halls and marquees alike - each one designed around your child, the theme and the space, with statement installations and careful detail installed and broken down by us.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties are the centre of it.{" "}
+      <em className="italic font-light text-accent-warm">
+        We cover the rest as well.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Most Sevenoaks bookings start with a child's birthday, and that's where
+      most of our time goes. The same attention goes into christenings,
+      milestones and corporate work when you need them.
+    </>
+  ),
   nearbyVillages: [
     "Riverhead",
     "Otford",

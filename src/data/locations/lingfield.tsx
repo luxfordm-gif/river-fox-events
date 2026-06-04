@@ -9,17 +9,34 @@ const lingfield = makeLocation({
     galleryMain: "jungle-elephant",
     galleryThumbs: ["fairy-kayla", "stubbs-gender-reveal", "baby-shower-bloom"],
   },
-  uniqueSeoTitle: "Lingfield Party & Event Stylist | River Fox Events",
+  uniqueSeoTitle: "Lingfield Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "Considered, personal styling at Lingfield Park, Dormansland and across the Surrey/Sussex border. Parties and milestones designed by Laura.",
+    "Village children's parties in Lingfield and along the Surrey/Sussex border - first birthdays to themed celebrations, individually designed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Lingfield,</>,
   uniqueHeroSub: (
     <>
-      Lingfield events, considered in detail. One stylist, one client, no
-      templates.
+      A quick run from the studio - Lingfield children's parties designed
+      around your home, with christenings, milestones and corporate work
+      alongside.
     </>
   ),
   uniqueUspBody:
-    "Village celebrations have a particular warmth, and Lingfield styling is shaped to hold onto it. Statement installations and refined detail are individually designed around your space and vision, leaving a finish that feels cohesive, distinctive and ready from the moment guests arrive.",
+    "A Lingfield children's party keeps the warmth of a village celebration - designed around your child, the theme and the room, with statement installations and considered detail installed and cleared so the day stays yours.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties lead our calendar.{" "}
+      <em className="italic font-light text-accent-warm">
+        The grown-up days follow.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Most Lingfield bookings begin with a child's birthday, and that's where
+      our time goes. Christenings, milestones and corporate work are handled
+      with the same care when you need them.
+    </>
+  ),
   nearbyVillages: [
     "Dormansland",
     "Felbridge",

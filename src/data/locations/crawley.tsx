@@ -6,21 +6,38 @@ const crawley = makeLocation({
   region: "West Sussex",
   images: {
     heroFan: ["stubbs-gender-reveal", "naming-harvey-daisy", "jungle-elephant"],
-    galleryMain: "baby-shower-bloom",
+    galleryMain: "pastel-safari-anaya",
     galleryThumbs: ["fairy-kayla", "40th-rose-gold", "wonka-chocolate-arch"],
   },
   seoTitleRegion: "West Sussex",
-  uniqueSeoTitle: "Crawley Party & Event Stylist | River Fox Events",
+  uniqueSeoTitle: "Crawley Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "Easy reach across West Sussex from Crawley - full-service event styling for celebrations from concept to clear-down, personally by Laura.",
+    "Children's birthday styling in Crawley and across West Sussex, from first birthdays to big themed parties - individually designed and installed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Crawley,</>,
   uniqueHeroSub: (
     <>
-      Designed, installed, delivered. Studio-led celebrations in Crawley and the
-      surrounding villages.
+      Thoughtfully styled children's parties for Crawley and the surrounding
+      villages - with christenings, milestone birthdays and corporate work
+      handled alongside.
     </>
   ),
   uniqueUspBody:
-    "From a child's first birthday to a milestone gathering, Crawley celebrations are individually designed around the people in the room - cohesive styling, statement focal points and a finish that feels considered rather than off-the-shelf, tailored to your space and the day you have in mind.",
+    "Children's parties in Crawley are built around the people in the room rather than a template - a first birthday or a big themed celebration, designed to feel cohesive and considered, then installed and broken down so the day stays yours.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties lead the way.{" "}
+      <em className="italic font-light text-accent-warm">
+        The grown-up events follow.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Most Crawley work starts with a child's birthday, and that's where we
+      spend our time. Christenings, milestone birthdays and corporate styling
+      are handled with the same care when you need them.
+    </>
+  ),
   nearbyVillages: [
     "Three Bridges",
     "Ifield",

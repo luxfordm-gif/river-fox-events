@@ -159,20 +159,24 @@ const LocationPage = () => {
         <ServicesCards
           sectionId={`loc-${loc.slug}-services`}
           heading={
-            <>
-              Our signature{" "}
-              <em className="italic font-light text-accent-warm">
-                experiences.
-              </em>
-            </>
+            loc.servicesHeading ?? (
+              <>
+                Our signature{" "}
+                <em className="italic font-light text-accent-warm">
+                  experiences.
+                </em>
+              </>
+            )
           }
           intro={
-            <>
-              Each event is individually designed, with a focus on
-              aesthetic, flow and detail. We work with a small number of
-              clients each month so every event receives personal
-              attention from concept to install.
-            </>
+            loc.servicesIntro ?? (
+              <>
+                Each event is individually designed, with a focus on
+                aesthetic, flow and detail. We work with a small number of
+                clients each month so every event receives personal
+                attention from concept to install.
+              </>
+            )
           }
         />
 

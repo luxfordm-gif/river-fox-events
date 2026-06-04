@@ -158,6 +158,11 @@ type LocationInput = {
    *  snippet, so a shared value makes every location look identical.
    *  Falls back to a generic templated paragraph when omitted. */
   uniqueUspBody?: string;
+  /** Override the "Our signature experiences." services-cards heading/intro.
+   *  Use on children's-party-led pages to demote the block to a secondary
+   *  "we also style X" framing. Falls back to the shared default. */
+  uniqueServicesHeading?: ReactNode;
+  uniqueServicesIntro?: ReactNode;
   /** Bespoke local-prose section rendered between the gallery and
    *  "How it works". Must be written per location - three short
    *  paragraphs referencing real local entities. Never copy-paste. */
@@ -192,6 +197,8 @@ export function makeLocation(input: LocationInput): LocationConfig {
     uniqueExtraFaq,
     uniqueExtraFaqs,
     uniqueUspBody,
+    uniqueServicesHeading,
+    uniqueServicesIntro,
     uniqueLocalProse,
     images,
   } = input;
@@ -414,6 +421,8 @@ export function makeLocation(input: LocationInput): LocationConfig {
         "All pricing is indicative - every proposal is tailored.",
     },
     uspBody: uniqueUspBody,
+    servicesHeading: uniqueServicesHeading,
+    servicesIntro: uniqueServicesIntro,
     localProse: uniqueLocalProse,
     faqs: [
       {

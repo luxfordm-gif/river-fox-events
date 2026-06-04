@@ -9,17 +9,34 @@ const weybridge = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["fairy-kayla", "pastel-safari-anaya", "jungle-elephant"],
   },
-  uniqueSeoTitle: "Party Stylist Weybridge Surrey | River Fox Events",
+  uniqueSeoTitle: "Weybridge Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "Statement balloon installations and milestone celebrations in Weybridge from £460. Personally designed and installed by Laura.",
+    "Riverside children's parties in Weybridge - first birthdays to big themed celebrations, individually designed and installed by Laura, from £460.",
+  uniqueHeroLine: <>Children's party styling in Weybridge,</>,
   uniqueHeroSub: (
     <>
-      Planned, styled, delivered. Studio-led celebrations in Weybridge and the
-      surrounding villages.
+      Designed around your child, from St George's Hill to Oatlands -
+      Weybridge children's parties, with christenings, milestones and
+      corporate work too.
     </>
   ),
   uniqueUspBody:
-    "Smart, cohesive styling shapes each Weybridge celebration from first idea to final detail. The emphasis stays on statement installations and considered detailing, tailored to your venue, palette and occasion, leaving a room that feels distinctive and calm well before guests arrive.",
+    "A Weybridge children's party is shaped around the home it's held in - the proportions of the room, the garden, the child it's for - then built from statement installations and the details that make it feel personal, installed and cleared by us.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties first, always.{" "}
+      <em className="italic font-light text-accent-warm">
+        We style the milestones too.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Weybridge families mostly come to us for a child's birthday, and that's
+      our focus. The same eye goes into christenings, milestones and corporate
+      work when the occasion calls for it.
+    </>
+  ),
   nearbyVillages: [
     "Walton-on-Thames",
     "Hersham",

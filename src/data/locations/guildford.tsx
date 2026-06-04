@@ -9,17 +9,34 @@ const guildford = makeLocation({
     galleryMain: "pastel-safari-anaya",
     galleryThumbs: ["stubbs-gender-reveal", "baby-shower-bloom", "wonka-chocolate-arch"],
   },
-  uniqueSeoTitle: "Guildford Party & Event Stylist | River Fox Events",
+  uniqueSeoTitle: "Guildford Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "Ceiling drapery, balloon installations and milestone parties in Guildford from £460. Personally designed and installed by Laura.",
+    "Themed children's parties across Guildford and the GU postcodes - first birthdays to big celebrations, individually designed and installed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Guildford,</>,
   uniqueHeroSub: (
     <>
-      Guildford events, considered in detail. One stylist, one client, no
-      templates.
+      First birthdays, big themed parties and everything in between, designed
+      for Guildford families - with grown-up milestones and corporate
+      evenings handled when you need them.
     </>
   ),
   uniqueUspBody:
-    "Whether it's a family birthday or a corporate evening, Guildford celebrations are styled to feel cohesive and considered. Statement installations and refined detailing are individually designed around your venue and palette, leaving a room that feels distinctive and calm well before guests arrive.",
+    "A children's party in Guildford should feel personal, not packaged. We design each one around the child it's for - the theme, the colours, the room - building statement installations and small details that hold together from the first guest to the last.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties are the heart of it.{" "}
+      <em className="italic font-light text-accent-warm">
+        We style the rest as well.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Guildford families mostly come to us for a birthday party, and that's
+      our focus. The same eye goes into christenings, milestones and
+      corporate evenings when the occasion calls for it.
+    </>
+  ),
   nearbyVillages: [
     "Godalming",
     "Shalford",

@@ -6,20 +6,36 @@ const waltonOnThames = makeLocation({
   region: "Surrey",
   images: {
     heroFan: ["pastel-safari-anaya", "fairy-kayla", "veuve-disco"],
-    galleryMain: "baby-shower-bloom",
+    galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["naming-harvey-daisy", "40th-rose-gold", "jungle-elephant"],
   },
-  uniqueSeoTitle: "Walton-on-Thames Party & Event Stylist | River Fox Events",
+  uniqueSeoTitle: "Walton-on-Thames Kids' Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "Country-house and at-home celebrations at Oatlands, Hersham and across Walton-on-Thames. Considered styling personally designed by Laura.",
+    "Thames-side children's parties in Walton-on-Thames - first birthdays to big themed celebrations, individually designed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Walton-on-Thames,</>,
   uniqueHeroSub: (
     <>
-      Considered styling in Walton-on-Thames. From first idea to final
-      breakdown, personally handled.
+      Relaxed riverside children's parties in Walton-on-Thames - with
+      christenings, milestones and corporate work handled when you need them.
     </>
   ),
   uniqueUspBody:
-    "Riverside celebrations have a relaxed character, and Walton-on-Thames styling is shaped to suit it. Each design is built around statement installations and refined detail, tailored to your space and vision, with a finish that feels cohesive, distinctive and ready to be enjoyed.",
+    "A Walton-on-Thames children's party carries a relaxed, riverside character - designed around your child and your space, built from statement installations and refined detail, then installed and cleared so the day stays yours.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties are where we shine.{" "}
+      <em className="italic font-light text-accent-warm">
+        The grown-up occasions too.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Most Walton-on-Thames work begins with a child's birthday, and that's
+      our focus. Christenings, milestones and corporate work are handled with
+      the same care when you need them.
+    </>
+  ),
   nearbyVillages: [
     "Hersham",
     "Weybridge",

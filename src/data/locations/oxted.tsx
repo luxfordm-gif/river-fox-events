@@ -9,17 +9,35 @@ const oxted = makeLocation({
     galleryMain: "fairy-kayla",
     galleryThumbs: ["stubbs-gender-reveal", "jungle-elephant", "veuve-disco"],
   },
-  uniqueSeoTitle: "Party Stylist Oxted Surrey | River Fox Events",
+  uniqueSeoTitle: "Children's Party Styling in Oxted | River Fox Events",
   uniqueSeoDescription:
-    "Bespoke event styling for celebrations across Oxted, Limpsfield and East Surrey. Parties, milestones and installations from £460, by Laura.",
+    "Children's party styling in Oxted and across East Surrey - from first birthdays to big themed celebrations, from £460 and individually designed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Oxted,</>,
   uniqueHeroSub: (
     <>
-      Bespoke event styling in Oxted and across Surrey - children's
-      parties, milestone celebrations and tailored installations.
+      From first birthdays to big themed celebrations, individually
+      designed for families across Oxted and East Surrey - with
+      christenings, milestones and corporate styling handled when you
+      need it.
     </>
   ),
   uniqueUspBody:
-    "Sitting at the foot of the North Downs, Oxted celebrations call for styling that feels grounded and considered. Each design grows from statement installations and quiet detail, tailored to your space and vision so the room reads as cohesive, distinctive and ready to be enjoyed.",
+    "Sitting at the foot of the North Downs, Oxted children's parties call for styling that feels grounded rather than loud - a first birthday or a big themed celebration built from statement installations and quiet detail, tailored to your home and the day you have in mind.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties are our home ground.{" "}
+      <em className="italic font-light text-accent-warm">
+        We also style the grown-up occasions.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Most Oxted families come to us for a child's birthday, and that's
+      where we spend most of our time. The same eye goes into christenings,
+      milestone birthdays and corporate events when you need them.
+    </>
+  ),
   nearbyVillages: [
     "Limpsfield",
     "Hurst Green",

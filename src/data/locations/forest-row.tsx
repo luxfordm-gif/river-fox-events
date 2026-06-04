@@ -10,18 +10,34 @@ const forestRow = makeLocation({
     galleryThumbs: ["stubbs-gender-reveal", "jungle-elephant", "veuve-disco"],
   },
   seoTitleRegion: "East Sussex",
-  uniqueSeoTitle: "Party Stylist Forest Row East Sussex | River Fox Events",
+  uniqueSeoTitle: "Forest Row Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "East Sussex country-house events, fully managed from setup to breakdown - including Forest Row, Hartfield and Ashdown Forest, by Laura.",
-  uniqueHeroLine: <>Your Forest Row party stylist.</>,
+    "Forest-edge children's parties across the Ashdown Forest - first birthdays to big themed celebrations, individually designed and installed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Forest Row,</>,
   uniqueHeroSub: (
     <>
-      Drawn, sourced, installed. Studio-led celebrations across Forest Row and
-      Ashdown Forest.
+      Organic, woodland-leaning styling for Forest Row children's parties -
+      with christenings, milestones and corporate work handled when you need
+      them.
     </>
   ),
   uniqueUspBody:
-    "Set among the trees on the edge of Ashdown Forest, Forest Row celebrations suit styling that feels organic and considered. Each design is built around statement installations and quiet detail, tailored to your space and vision so the room feels cohesive, distinctive and ready to be enjoyed.",
+    "A Forest Row children's party suits styling that feels organic rather than staged - a first birthday or a big themed celebration designed around your space and your child, built from natural detail and statement installations and cleared away by us.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties are our specialism.{" "}
+      <em className="italic font-light text-accent-warm">
+        The grown-up days too.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Most Forest Row bookings are for a child's birthday, and that's where
+      our time goes. Christenings, milestones and corporate work are styled
+      with the same care when you need them.
+    </>
+  ),
   nearbyVillages: [
     "Hartfield",
     "Wych Cross",

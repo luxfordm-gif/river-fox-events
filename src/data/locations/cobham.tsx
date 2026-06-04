@@ -9,17 +9,34 @@ const cobham = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["baby-shower-bloom", "veuve-disco", "naming-harvey-daisy"],
   },
-  uniqueSeoTitle: "Considered Event Styling in Cobham | River Fox Events",
+  uniqueSeoTitle: "Cobham Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "Studio-led styling at Painshill Park, Stoke d'Abernon and across Cobham. Statement parties and milestones from £460, personally by Laura.",
+    "First birthdays and big themed parties styled across Cobham, Oxshott and Stoke d'Abernon - individually designed and installed by Laura, from £460.",
+  uniqueHeroLine: <>Children's party styling in Cobham,</>,
   uniqueHeroSub: (
     <>
-      Bespoke event styling in Cobham for children's parties, milestone
-      birthdays and life events.
+      Statement installations and quiet detail for Cobham birthdays - with
+      christenings, milestones and corporate styling handled whenever the
+      occasion calls for it.
     </>
   ),
   uniqueUspBody:
-    "Considered, unhurried styling sits at the heart of every Cobham celebration we take on. The focus is on statement installations and refined detail, each design built around your venue and vision so the finished room feels distinctive, calm and ready to be enjoyed.",
+    "Cobham children's parties tend to ask for polish without fuss - a first birthday in the garden or a themed celebration that fills the room, each one designed around your space, your colours and the kind of day you're picturing, then installed and cleared by us.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties come first.{" "}
+      <em className="italic font-light text-accent-warm">
+        The grown-up occasions, too.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Most Cobham bookings are for a child's birthday, and that's where most
+      of our time goes. The same care shapes christenings, milestone
+      birthdays and corporate events when you need them.
+    </>
+  ),
   nearbyVillages: [
     "Oxshott",
     "Stoke d'Abernon",

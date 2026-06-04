@@ -10,17 +10,34 @@ const eastGrinstead = makeLocation({
     galleryThumbs: ["baby-shower-bloom", "naming-harvey-daisy", "veuve-disco"],
   },
   seoTitleRegion: "West Sussex",
-  uniqueSeoTitle: "Party Stylist East Grinstead Sussex | River Fox Events",
+  uniqueSeoTitle: "East Grinstead Children's Parties | River Fox Events",
   uniqueSeoDescription:
-    "Full-service styling delivered to East Grinstead and across West Sussex. From design through to clear-down, personally handled by Laura.",
+    "Kids' party styling in East Grinstead and the RH19 area - first birthdays through to big themed celebrations, individually designed and installed by Laura.",
+  uniqueHeroLine: <>Children's party styling in East Grinstead,</>,
   uniqueHeroSub: (
     <>
-      Parties brought to life in East Grinstead - personally designed and
-      installed.
+      Big themed birthdays and gentle first-birthday styling across East
+      Grinstead - with christenings, milestones and corporate events styled
+      when the day calls for it.
     </>
   ),
   uniqueUspBody:
-    "Every East Grinstead celebration begins with the people and the place, then grows into a cohesive design. Statement installations and refined styling are tailored to your venue, colours and the moment you're marking - a finish that feels considered and effortless once guests arrive.",
+    "An East Grinstead children's party starts with the child and the space, then grows into a complete look - statement installations, a dressed cake table and the details that tie a theme together, all tailored to your home and the moment you're marking.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties are our main work.{" "}
+      <em className="italic font-light text-accent-warm">
+        We cover the grown-up days too.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Families across East Grinstead mostly book us for a child's birthday,
+      and that's our focus. The same attention goes into christenings,
+      milestones and corporate events when you need them.
+    </>
+  ),
   nearbyVillages: [
     "Felbridge",
     "Forest Row",

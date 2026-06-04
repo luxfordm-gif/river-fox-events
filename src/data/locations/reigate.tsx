@@ -6,20 +6,37 @@ const reigate = makeLocation({
   region: "Surrey",
   images: {
     heroFan: ["stubbs-gender-reveal", "dinosaur-ayaan", "veuve-disco"],
-    galleryMain: "40th-rose-gold",
+    galleryMain: "pastel-safari-anaya",
     galleryThumbs: ["naming-harvey-daisy", "jungle-elephant", "baby-shower-bloom"],
   },
-  uniqueSeoTitle: "Reigate Party & Event Stylist | River Fox Events",
+  uniqueSeoTitle: "Reigate Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "Layered tablescapes, milestone parties and at-home celebrations in Reigate. Personally designed and installed by Laura.",
+    "Fifteen minutes from the studio - children's party styling in Reigate, from first birthdays to big themed celebrations, individually designed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Reigate,</>,
   uniqueHeroSub: (
     <>
-      Sketched, styled, installed. Studio-led celebrations in Reigate and the
-      surrounding villages.
+      Just fifteen minutes from the studio - children's parties styled for
+      Reigate families, with christenings, milestones and corporate work
+      handled alongside.
     </>
   ),
   uniqueUspBody:
-    "Thoughtful, cohesive design carries every Reigate celebration from concept to install. The focus is on statement installations and refined detail, individually designed around your venue and vision, with a finish that feels distinctive and calm before your first guest arrives.",
+    "Being fifteen minutes from the studio shapes every Reigate children's party we take on - a first birthday or a big themed celebration designed around your home and your child, with the flexibility to add and adjust right up to the morning.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties are most of what we do.{" "}
+      <em className="italic font-light text-accent-warm">
+        The grown-up days as well.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Reigate families mostly come to us for a child's birthday, and that's
+      our focus. Christenings, milestone birthdays and corporate work are
+      handled with the same care when you need them.
+    </>
+  ),
   nearbyVillages: [
     "Redhill",
     "Banstead",

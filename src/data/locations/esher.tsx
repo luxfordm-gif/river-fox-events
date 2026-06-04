@@ -9,17 +9,34 @@ const esher = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["fairy-kayla", "40th-rose-gold", "veuve-disco"],
   },
-  uniqueSeoTitle: "Esher Party & Event Stylist | River Fox Events",
+  uniqueSeoTitle: "Esher Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "Personally designed celebrations at Sandown Park, Claygate and across Esher. Considered parties and milestones, installed and managed by Laura.",
+    "Statement children's parties in Esher and Claygate - first birthdays to big themed celebrations, individually designed and installed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Esher,</>,
   uniqueHeroSub: (
     <>
-      Personally led styling in Esher. From first idea to final breakdown, every
-      detail handled.
+      From first idea to final breakdown, children's parties styled for Esher
+      families - christenings, milestones and corporate work handled when you
+      need them.
     </>
   ),
   uniqueUspBody:
-    "Polished, cohesive celebrations are what Esher clients return for. Each design centres on statement installations and considered detail, tailored to your venue and vision, with a finish that reads as calm and distinctive by the time your first guest arrives.",
+    "An Esher children's party is designed around the child it's for - the theme, the colours, the room - then built from statement installations and the small details that make it feel personal, installed and cleared so the day stays yours.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties are our focus.{" "}
+      <em className="italic font-light text-accent-warm">
+        The milestones, too.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Most Esher bookings start with a child's birthday, and that's where most
+      of our time goes. The same eye goes into christenings, milestones and
+      corporate evenings when the occasion calls for it.
+    </>
+  ),
   nearbyVillages: [
     "Claygate",
     "Hinchley Wood",

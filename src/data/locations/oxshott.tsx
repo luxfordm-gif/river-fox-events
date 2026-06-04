@@ -6,19 +6,37 @@ const oxshott = makeLocation({
   region: "Surrey",
   images: {
     heroFan: ["naming-harvey-daisy", "dinosaur-ayaan", "veuve-disco"],
-    galleryMain: "40th-rose-gold",
+    galleryMain: "pastel-safari-anaya",
     galleryThumbs: ["fairy-kayla", "jungle-elephant", "wonka-chocolate-arch"],
   },
-  uniqueSeoTitle: "Party Stylist Oxshott Surrey | River Fox Events",
+  uniqueSeoTitle: "Oxshott Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "Themed children's parties, milestones and balloon installations in Oxshott. Personally designed and installed by Laura.",
+    "At-home children's parties in Oxshott - first birthdays to big themed celebrations, individually designed and installed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Oxshott,</>,
   uniqueHeroSub: (
     <>
-      Birthdays brought to life in Oxshott - personally designed and installed.
+      Mostly at-home and entirely tailored - Oxshott children's parties
+      designed around your house, with christenings, milestones and corporate
+      work too.
     </>
   ),
   uniqueUspBody:
-    "Quietly refined styling defines the Oxshott celebrations we take on. Each design centres on statement installations and considered detail, tailored closely to your venue, colours and occasion, with a finished room that feels cohesive, distinctive and calmly ready for the day.",
+    "Most Oxshott children's parties happen at home, and that suits us - each one designed around your house and your child, built from statement installations and considered detail that move through the rooms the way your guests do.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties are what we're known for.{" "}
+      <em className="italic font-light text-accent-warm">
+        We handle the milestones too.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Most Oxshott bookings start with a child's birthday, and that's where
+      most of our time goes. The same attention goes into christenings,
+      milestones and corporate work when you need them.
+    </>
+  ),
   nearbyVillages: [
     "Cobham",
     "Esher",

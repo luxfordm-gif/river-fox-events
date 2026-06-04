@@ -6,22 +6,38 @@ const brightonAndHove = makeLocation({
   region: "East Sussex",
   images: {
     heroFan: ["dinosaur-ayaan", "pastel-safari-anaya", "wonka-chocolate-arch"],
-    galleryMain: "40th-rose-gold",
+    galleryMain: "jungle-elephant",
     galleryThumbs: ["fairy-kayla", "baby-shower-bloom", "veuve-disco"],
   },
   seoTitleRegion: "East Sussex",
-  uniqueSeoTitle: "Party Stylist Brighton & Hove | River Fox Events",
+  uniqueSeoTitle: "Brighton & Hove Kids' Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "A short drive from Brighton - full-service event styling across Brighton, Hove and East Sussex. From design to breakdown, by Laura.",
-  uniqueHeroLine: <>Your Brighton & Hove event stylist.</>,
+    "Children's parties styled across Brighton & Hove and East Sussex, from first birthdays to themed celebrations - individually designed and installed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Brighton & Hove,</>,
   uniqueHeroSub: (
     <>
-      Celebrations brought to life across Brighton & Hove - personally designed
-      and installed.
+      Seafront first birthdays and big themed parties across Brighton & Hove -
+      with christenings, milestones and brand events styled alongside when you
+      need them.
     </>
   ),
   uniqueUspBody:
-    "Coastal celebrations carry their own energy, and styling in Brighton & Hove is shaped to match it - statement installations and considered detailing that feel cohesive from the first guest to the last, tailored to your space, your palette and the occasion you're marking.",
+    "A Brighton & Hove children's party can take the coast's energy or keep things calm - either way each one is designed around the child, the theme and the room, with statement installations and considered detail installed and cleared by us.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties first.{" "}
+      <em className="italic font-light text-accent-warm">
+        The grown-up occasions when you need them.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Most Brighton & Hove bookings begin with a child's birthday, and that's
+      where most of our time goes. Christenings, milestones and brand events
+      are styled with the same eye when the day calls for it.
+    </>
+  ),
   nearbyVillages: [
     "Hove",
     "Kemp Town",

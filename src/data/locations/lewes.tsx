@@ -10,17 +10,34 @@ const lewes = makeLocation({
     galleryThumbs: ["dinosaur-ayaan", "naming-harvey-daisy", "40th-rose-gold"],
   },
   seoTitleRegion: "East Sussex",
-  uniqueSeoTitle: "Editorial Event Styling Lewes | River Fox Events",
+  uniqueSeoTitle: "Lewes Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "A short drive from Lewes - full-service East Sussex country-house celebrations. From design to clear-down, personally handled by Laura.",
+    "Themed first birthdays and children's parties in Lewes and the East Sussex villages, individually designed and installed by Laura.",
+  uniqueHeroLine: <>Children's party styling in Lewes,</>,
   uniqueHeroSub: (
     <>
-      Considered, drawn, delivered. Studio-led celebrations in Lewes and the
-      East Sussex villages.
+      Character-filled celebrations for Lewes children - first birthdays to
+      big themed parties, with christenings, milestones and corporate work
+      alongside.
     </>
   ),
   uniqueUspBody:
-    "Full of character and history, Lewes deserves celebrations styled with the same individuality. Each design is built around statement installations and considered detail, tailored to your venue and palette so the room feels cohesive and distinctive once guests step inside.",
+    "A Lewes children's party can carry as much character as the town itself - each one designed around the child, the theme and the room, with statement installations and considered detail installed and broken down by us.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties are where we start.{" "}
+      <em className="italic font-light text-accent-warm">
+        We style the rest too.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Most Lewes bookings begin with a child's birthday, and that's where our
+      time goes. Christenings, milestones and corporate work are styled with
+      the same eye when the day calls for it.
+    </>
+  ),
   nearbyVillages: [
     "Cliffe",
     "Kingston near Lewes",

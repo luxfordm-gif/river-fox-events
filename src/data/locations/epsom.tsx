@@ -9,17 +9,33 @@ const epsom = makeLocation({
     galleryMain: "pastel-safari-anaya",
     galleryThumbs: ["baby-shower-bloom", "40th-rose-gold", "naming-harvey-daisy"],
   },
-  uniqueSeoTitle: "Epsom Party & Event Stylist | River Fox Events",
+  uniqueSeoTitle: "Epsom Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
-    "Considered styling for children's parties, milestones and brand events in Epsom. Personally designed and installed by Laura - from £460.",
+    "North Surrey children's parties in Epsom - first birthdays to big themed celebrations, individually designed and installed by Laura, from £460.",
+  uniqueHeroLine: <>Children's party styling in Epsom,</>,
   uniqueHeroSub: (
     <>
-      Studio-led styling for Epsom celebrations - children's parties,
-      milestone moments and brand installations across the KT17 area.
+      Birthdays designed around your child across Epsom and Ewell - with
+      milestones, christenings and brand work handled when you need them.
     </>
   ),
   uniqueUspBody:
-    "Refined styling, planned around you, shapes each Epsom celebration. The emphasis falls on statement installations and careful detailing, individually designed for your space and vision so the room feels cohesive, distinctive and entirely ready for the day ahead.",
+    "An Epsom children's party is planned closely around you - the child, the theme, the space - then built from statement installations and careful detail, installed and broken down so there's nothing left for you to do but enjoy it.",
+  uniqueServicesHeading: (
+    <>
+      Children's parties are our home turf.{" "}
+      <em className="italic font-light text-accent-warm">
+        We style the rest as well.
+      </em>
+    </>
+  ),
+  uniqueServicesIntro: (
+    <>
+      Epsom families mostly book us for a child's birthday, and that's our
+      focus. The same eye goes into christenings, milestones and brand work
+      when the occasion calls for it.
+    </>
+  ),
   nearbyVillages: [
     "Ewell",
     "Ashtead",

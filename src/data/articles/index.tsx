@@ -33,11 +33,11 @@ export const ARTICLES: Article[] = [
     slug: "dylan-christening-first-birthday",
     title: "Dylan's Christening & First Birthday",
     subtitle:
-      "A combined christening and first birthday near Walton-on-Thames - a sky-blue, chrome-gold and ivory balloon feature wall around one arched welcome panel.",
+      "A combined christening and first birthday near Walton-on-Thames - a sky-blue and chrome-gold balloon hoop set beside a personalised arched welcome backdrop.",
     teaser:
-      "Two milestones, one day, one feature wall. Dylan's combined christening and first birthday near Walton-on-Thames - and the design that holds both at once.",
+      "Two milestones, one day. Dylan's combined christening and first birthday near Walton-on-Thames - a balloon hoop, a personalised backdrop and the animals from his invite.",
     metaDescription:
-      "Dylan's combined christening and first birthday near Walton-on-Thames - a sky-blue, chrome-gold and ivory balloon feature wall, styled by Laura.",
+      "Dylan's combined christening and first birthday near Walton-on-Thames - a sky-blue and chrome-gold balloon hoop with a personalised backdrop, styled by Laura.",
     publishedAt: "2026-05-29",
     readMinutes: 4,
     relatedSlugs: [
