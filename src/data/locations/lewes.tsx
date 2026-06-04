@@ -19,6 +19,8 @@ const lewes = makeLocation({
       East Sussex villages.
     </>
   ),
+  uniqueUspBody:
+    "Full of character and history, Lewes deserves celebrations styled with the same individuality. Each design is built around statement installations and considered detail, tailored to your venue and palette so the room feels cohesive and distinctive once guests step inside.",
   nearbyVillages: [
     "Cliffe",
     "Kingston near Lewes",

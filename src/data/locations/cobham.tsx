@@ -18,6 +18,8 @@ const cobham = makeLocation({
       birthdays and life events.
     </>
   ),
+  uniqueUspBody:
+    "Considered, unhurried styling sits at the heart of every Cobham celebration we take on. The focus is on statement installations and refined detail, each design built around your venue and vision so the finished room feels distinctive, calm and ready to be enjoyed.",
   nearbyVillages: [
     "Oxshott",
     "Stoke d'Abernon",

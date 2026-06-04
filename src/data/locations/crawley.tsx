@@ -19,6 +19,8 @@ const crawley = makeLocation({
       surrounding villages.
     </>
   ),
+  uniqueUspBody:
+    "From a child's first birthday to a milestone gathering, Crawley celebrations are individually designed around the people in the room - cohesive styling, statement focal points and a finish that feels considered rather than off-the-shelf, tailored to your space and the day you have in mind.",
   nearbyVillages: [
     "Three Bridges",
     "Ifield",

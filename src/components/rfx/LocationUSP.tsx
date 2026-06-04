@@ -1,8 +1,13 @@
 type LocationUSPProps = {
   cityName?: string;
+  /** Per-town paragraph. This block is the most prominent body text on a
+   *  location page, so Google tends to pull it as the search snippet -
+   *  pass a unique value per town so results don't all look identical.
+   *  Falls back to the generic templated copy below when omitted. */
+  body?: string;
 };
 
-const LocationUSP = ({ cityName }: LocationUSPProps = {}) => {
+const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
   return (
     <section
       id="why-river-fox"
@@ -32,13 +37,17 @@ const LocationUSP = ({ cityName }: LocationUSPProps = {}) => {
           className="mx-auto max-w-[680px] text-center text-[16px] leading-[1.75] text-ink-soft fade-up"
           style={{ textWrap: "pretty" }}
         >
-          River Fox Events is known for creating thoughtfully designed
-          celebrations
-          {cityName ? ` in ${cityName}` : ""} that feel cohesive, elevated
-          and effortlessly brought together. With a focus on statement
-          installations and refined styling, each event is tailored to your
-          space and vision - resulting in a finish that feels considered,
-          distinctive and ready to be enjoyed.
+          {body ?? (
+            <>
+              River Fox Events is known for creating thoughtfully styled
+              celebrations
+              {cityName ? ` in ${cityName}` : ""} that feel cohesive and
+              effortlessly brought together. With a focus on statement
+              installations and refined styling, each event is tailored to
+              your space and vision - resulting in a finish that feels
+              considered, distinctive and ready to be enjoyed.
+            </>
+          )}
         </p>
       </div>
     </section>

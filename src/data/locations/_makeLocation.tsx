@@ -153,6 +153,11 @@ type LocationInput = {
   /** Multiple extra Q&As inserted after the standard set. Renders after
    *  uniqueExtraFaq if both are provided. */
   uniqueExtraFaqs?: { q: string; a: string }[];
+  /** Bespoke paragraph for the "Why choose River Fox Events?" block.
+   *  Must be unique per town - Google pulls this as the search-result
+   *  snippet, so a shared value makes every location look identical.
+   *  Falls back to a generic templated paragraph when omitted. */
+  uniqueUspBody?: string;
   /** Bespoke local-prose section rendered between the gallery and
    *  "How it works". Must be written per location - three short
    *  paragraphs referencing real local entities. Never copy-paste. */
@@ -186,6 +191,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
     uniqueLeadTimeAnswer,
     uniqueExtraFaq,
     uniqueExtraFaqs,
+    uniqueUspBody,
     uniqueLocalProse,
     images,
   } = input;
@@ -408,6 +414,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       footnote:
         "All pricing is indicative - every proposal is tailored.",
     },
+    uspBody: uniqueUspBody,
     localProse: uniqueLocalProse,
     faqs: [
       {

@@ -19,6 +19,8 @@ const sevenoaks = makeLocation({
       templates.
     </>
   ),
+  uniqueUspBody:
+    "Across homes, halls and marquees in Sevenoaks, celebrations are styled to feel cohesive and considered. Statement installations and careful detailing are tailored to your space and palette, leaving a room that reads as distinctive and calm, genuinely ready for the occasion.",
   nearbyVillages: [
     "Riverhead",
     "Otford",

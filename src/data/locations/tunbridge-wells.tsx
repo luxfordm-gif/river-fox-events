@@ -19,6 +19,8 @@ const tunbridgeWells = makeLocation({
       installed.
     </>
   ),
+  uniqueUspBody:
+    "Elegant, understated styling sits behind each Tunbridge Wells celebration. Every design leads with statement installations and considered detail, individually designed around your venue and vision so the finished space feels cohesive and distinctive by the time guests arrive.",
   nearbyVillages: [
     "Rusthall",
     "Southborough",

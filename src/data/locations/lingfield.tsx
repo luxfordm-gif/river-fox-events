@@ -18,6 +18,8 @@ const lingfield = makeLocation({
       templates.
     </>
   ),
+  uniqueUspBody:
+    "Village celebrations have a particular warmth, and Lingfield styling is shaped to hold onto it. Statement installations and refined detail are individually designed around your space and vision, leaving a finish that feels cohesive, distinctive and ready from the moment guests arrive.",
   nearbyVillages: [
     "Dormansland",
     "Felbridge",

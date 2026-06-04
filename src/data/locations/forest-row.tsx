@@ -20,6 +20,8 @@ const forestRow = makeLocation({
       Ashdown Forest.
     </>
   ),
+  uniqueUspBody:
+    "Set among the trees on the edge of Ashdown Forest, Forest Row celebrations suit styling that feels organic and considered. Each design is built around statement installations and quiet detail, tailored to your space and vision so the room feels cohesive, distinctive and ready to be enjoyed.",
   nearbyVillages: [
     "Hartfield",
     "Wych Cross",

@@ -18,6 +18,8 @@ const reigate = makeLocation({
       surrounding villages.
     </>
   ),
+  uniqueUspBody:
+    "Thoughtful, cohesive design carries every Reigate celebration from concept to install. The focus is on statement installations and refined detail, individually designed around your venue and vision, with a finish that feels distinctive and calm before your first guest arrives.",
   nearbyVillages: [
     "Redhill",
     "Banstead",

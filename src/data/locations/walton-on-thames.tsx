@@ -18,6 +18,8 @@ const waltonOnThames = makeLocation({
       breakdown, personally handled.
     </>
   ),
+  uniqueUspBody:
+    "Riverside celebrations have a relaxed character, and Walton-on-Thames styling is shaped to suit it. Each design is built around statement installations and refined detail, tailored to your space and vision, with a finish that feels cohesive, distinctive and ready to be enjoyed.",
   nearbyVillages: [
     "Hersham",
     "Weybridge",

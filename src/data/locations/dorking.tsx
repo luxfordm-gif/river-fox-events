@@ -18,6 +18,8 @@ const dorking = makeLocation({
       templates.
     </>
   ),
+  uniqueUspBody:
+    "Tucked beneath the Surrey Hills, Dorking calls for styling that feels natural and well-composed. Each celebration is built around statement installations and quiet, considered detail, shaped to your venue and vision so the room reads as cohesive, distinctive and genuinely ready to enjoy.",
   nearbyVillages: [
     "Westcott",
     "Brockham",

@@ -17,6 +17,8 @@ const oxshott = makeLocation({
       Birthdays brought to life in Oxshott - personally designed and installed.
     </>
   ),
+  uniqueUspBody:
+    "Quietly refined styling defines the Oxshott celebrations we take on. Each design centres on statement installations and considered detail, tailored closely to your venue, colours and occasion, with a finished room that feels cohesive, distinctive and calmly ready for the day.",
   nearbyVillages: [
     "Cobham",
     "Esher",

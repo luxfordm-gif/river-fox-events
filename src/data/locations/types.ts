@@ -57,6 +57,12 @@ export type LocationConfig = {
     tiers: PricingTier[];
     footnote: string;
   };
+  /** Optional bespoke paragraph for the "Why choose River Fox Events?"
+   *  block. Must be unique per town - it's the most prominent body text
+   *  on the page, so Google tends to pull it as the search snippet. A
+   *  shared/templated value here makes every location result look
+   *  identical. Falls back to a generic paragraph when omitted. */
+  uspBody?: string;
   /** Optional bespoke local-prose section between gallery and "How it
    *  works". Three short paragraphs of locally-specific copy used for
    *  SEO weight and to convince a reader that we genuinely know the

@@ -18,6 +18,8 @@ const esher = makeLocation({
       detail handled.
     </>
   ),
+  uniqueUspBody:
+    "Polished, cohesive celebrations are what Esher clients return for. Each design centres on statement installations and considered detail, tailored to your venue and vision, with a finish that reads as calm and distinctive by the time your first guest arrives.",
   nearbyVillages: [
     "Claygate",
     "Hinchley Wood",

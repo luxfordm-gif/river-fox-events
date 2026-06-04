@@ -19,6 +19,8 @@ const haywardsHeath = makeLocation({
       installed.
     </>
   ),
+  uniqueUspBody:
+    "Calm, thoughtfully styled celebrations sit at the centre of our Haywards Heath work. Each design leads with statement installations and careful detail, tailored to your space and vision so the finished room feels cohesive, distinctive and genuinely ready for the occasion.",
   nearbyVillages: [
     "Lindfield",
     "Cuckfield",

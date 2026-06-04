@@ -18,6 +18,8 @@ const weybridge = makeLocation({
       surrounding villages.
     </>
   ),
+  uniqueUspBody:
+    "Smart, cohesive styling shapes each Weybridge celebration from first idea to final detail. The emphasis stays on statement installations and considered detailing, tailored to your venue, palette and occasion, leaving a room that feels distinctive and calm well before guests arrive.",
   nearbyVillages: [
     "Walton-on-Thames",
     "Hersham",

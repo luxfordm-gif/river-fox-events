@@ -19,6 +19,8 @@ const horsham = makeLocation({
       personally handled.
     </>
   ),
+  uniqueUspBody:
+    "Each Horsham celebration is shaped slowly and deliberately, from first concept to final styled detail. The focus stays on statement installations and cohesive detailing, individually designed around your venue and vision, with a result that feels considered, distinctive and ready to enjoy.",
   nearbyVillages: [
     "Warnham",
     "Slinfold",

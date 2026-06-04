@@ -18,6 +18,8 @@ const epsom = makeLocation({
       milestone moments and brand installations across the KT17 area.
     </>
   ),
+  uniqueUspBody:
+    "Refined styling, planned around you, shapes each Epsom celebration. The emphasis falls on statement installations and careful detailing, individually designed for your space and vision so the room feels cohesive, distinctive and entirely ready for the day ahead.",
   nearbyVillages: [
     "Ewell",
     "Ashtead",

@@ -20,6 +20,8 @@ const brightonAndHove = makeLocation({
       and installed.
     </>
   ),
+  uniqueUspBody:
+    "Coastal celebrations carry their own energy, and styling in Brighton & Hove is shaped to match it - statement installations and considered detailing that feel cohesive from the first guest to the last, tailored to your space, your palette and the occasion you're marking.",
   nearbyVillages: [
     "Hove",
     "Kemp Town",

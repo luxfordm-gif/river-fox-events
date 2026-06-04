@@ -18,6 +18,8 @@ const oxted = makeLocation({
       parties, milestone celebrations and tailored installations.
     </>
   ),
+  uniqueUspBody:
+    "Sitting at the foot of the North Downs, Oxted celebrations call for styling that feels grounded and considered. Each design grows from statement installations and quiet detail, tailored to your space and vision so the room reads as cohesive, distinctive and ready to be enjoyed.",
   nearbyVillages: [
     "Limpsfield",
     "Hurst Green",

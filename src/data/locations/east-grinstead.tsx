@@ -19,6 +19,8 @@ const eastGrinstead = makeLocation({
       installed.
     </>
   ),
+  uniqueUspBody:
+    "Every East Grinstead celebration begins with the people and the place, then grows into a cohesive design. Statement installations and refined styling are tailored to your venue, colours and the moment you're marking - a finish that feels considered and effortless once guests arrive.",
   nearbyVillages: [
     "Felbridge",
     "Forest Row",

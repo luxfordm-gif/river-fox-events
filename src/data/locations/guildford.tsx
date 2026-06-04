@@ -18,6 +18,8 @@ const guildford = makeLocation({
       templates.
     </>
   ),
+  uniqueUspBody:
+    "Whether it's a family birthday or a corporate evening, Guildford celebrations are styled to feel cohesive and considered. Statement installations and refined detailing are individually designed around your venue and palette, leaving a room that feels distinctive and calm well before guests arrive.",
   nearbyVillages: [
     "Godalming",
     "Shalford",

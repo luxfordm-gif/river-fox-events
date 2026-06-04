@@ -176,7 +176,7 @@ const LocationPage = () => {
           }
         />
 
-        <LocationUSP cityName={loc.cityName} />
+        <LocationUSP cityName={loc.cityName} body={loc.uspBody} />
 
         <LocationGallery
           id="loc-gallery"
