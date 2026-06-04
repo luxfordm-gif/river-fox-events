@@ -169,7 +169,7 @@ const MegaphoneIcon = ({ size = 26, strokeWidth = 1.4 }: IconProps) => (
   </svg>
 );
 
-const ICON_REGISTRY: Record<IncludedIconKey, ComponentType<IconProps>> = {
+export const ICON_REGISTRY: Record<IncludedIconKey, ComponentType<IconProps>> = {
   balloon: BalloonIcon,
   sparkle: SparkleStarIcon,
   archway: ArchwayIcon,
