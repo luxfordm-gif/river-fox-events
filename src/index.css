@@ -601,6 +601,13 @@
     .rfx-section { padding: 96px 0; }
   }
 
+  /* Shared gap between a section heading and the body copy directly beneath
+     it. Single source of truth - retune here, not per-component. Used by the
+     heading-to-body-copy sections (LocationUSP, LocationLocalProse, FAQ,
+     ChildrensFAQ). 768px mirrors Tailwind's md: breakpoint. */
+  .heading-to-body { margin-bottom: 24px; }
+  @media (min-width: 768px) { .heading-to-body { margin-bottom: 28px; } }
+
   /* CPReveal + About sticky images — desktop default. Aspect-ratio keeps a
      portrait shape from the column width, then max-height caps the image so
      the whole section fits roughly inside the viewport on small/medium

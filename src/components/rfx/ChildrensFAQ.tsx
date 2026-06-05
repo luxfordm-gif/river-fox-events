@@ -85,7 +85,7 @@ const ChildrensFAQ = ({
       aria-labelledby={headingId}
     >
       <div className="container-rfx">
-        <div className="text-center mb-14">
+        <div className="text-center heading-to-body">
           <h2
             id={headingId}
             className="font-serif-rf"

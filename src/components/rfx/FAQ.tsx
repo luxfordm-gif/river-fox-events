@@ -84,7 +84,7 @@ const FAQ = () => {
   return (
     <section id="faq" className="rfx-section white" aria-labelledby="faq-heading">
       <div className="container-rfx">
-        <div className="text-center mb-14">
+        <div className="text-center heading-to-body">
           <h2
             id="faq-heading"
             className="font-serif-rf"

@@ -71,7 +71,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
       aria-label="Why choose River Fox Events"
     >
       <div className="container-rfx">
-        <div className="text-center mb-8 md:mb-10">
+        <div className="text-center heading-to-body">
           <h2
             className="font-serif-rf"
             style={{

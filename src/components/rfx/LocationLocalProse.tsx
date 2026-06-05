@@ -20,7 +20,7 @@ const LocationLocalProse = ({
       aria-labelledby={headingId}
     >
       <div className="container-rfx">
-        <div className="text-center max-w-[760px] mx-auto mb-10 md:mb-12 fade-up">
+        <div className="text-center max-w-[760px] mx-auto heading-to-body fade-up">
           <p
             className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-5"
             style={{ fontWeight: 600 }}
