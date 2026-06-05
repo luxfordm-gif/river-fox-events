@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
 // Column 1 - Jungle theme.
-import junglA from "@/assets/river-fox-events-jungle-theme-safari-jeep-balloon-garland.webp";
+import junglA from "@/assets/river-fox-events-jungle-theme-safari-jeep-giraffe-lion-cub.webp";
 import junglB from "@/assets/river-fox-events-jungle-theme-safari-tablescape-elephant.webp";
 import junglC from "@/assets/river-fox-events-jungle-theme-lion-plates-overhead.webp";
 
 // Column 2 - Pastel safari / pastel entrance decor.
 import pastelA from "@/assets/river-fox-events-pastel-entrance-decor-arch.webp";
-import pastelB from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-table-setting.webp";
+import pastelB from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-tablescape.webp";
 import pastelC from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-marquee-close-up.webp";
 
 // Column 3 - Fairy first birthday.
@@ -54,7 +54,7 @@ const COLUMNS: HeroColumn[] = [
     slides: [
       {
         src: junglA,
-        alt: "Jungle theme children's birthday in Surrey by River Fox Events - safari jeep prop with leafy balloon garland",
+        alt: "White safari jeep prop with teal and orange balloon garland, a giraffe and a lion cub at a jungle children's party in Surrey",
       },
       {
         src: pastelA,

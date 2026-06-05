@@ -18,10 +18,10 @@ import {
   upsertJsonLd,
 } from "@/seo/headTags";
 
-import imgHero from "@/assets/jungle-fourever-wild-childrens-party-surrey.webp";
+import imgHero from "@/assets/river-fox-events-jungle-theme-fourever-wild-full-setup.webp";
 import imgCelebrations from "@/assets/dinosaur-ayaan-arch-surrey.webp";
 import imgCelebrationsHover from "@/assets/river-fox-events-dinosaur-theme-ayaan-arch-close-up-portrait.webp";
-import imgOccasions from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-tablescape-wide.webp";
+import imgOccasions from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-tablescape.webp";
 import imgOccasionsHover from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-marquee-close-up.webp";
 import imgThemes from "@/assets/willy-wonka-savanna-chocolate-arch-surrey.webp";
 import imgThemesHover from "@/assets/river-fox-events-willy-wonka-savanna-bar-prop-close-up.webp";
@@ -54,7 +54,7 @@ const ChildrensParties = () => {
       <main>
         <ServiceHero
           image={imgHero}
-          imageAlt="Jungle theme 'Fourever Wild' fourth birthday styling in Surrey by River Fox Events - balloon arch with leaf foliage, safari props and full party setup"
+          imageAlt="Fourever Wild jungle party setup with white safari jeep, balloon garland, giraffe, zebra and lion cub by a bamboo backdrop"
           headingId="cp-hero-heading"
           lines={[
             <>Themed children's parties,</>,
@@ -73,12 +73,11 @@ const ChildrensParties = () => {
         <CPReveal
           id="cp-celebrations"
           imageSide="right"
-          image={imgCelebrations}
-          alt="Dinosaur theme children's birthday styling in Surrey by River Fox Events - Ayaan name arch, sage balloons and crate props"
-          hoverImage={imgCelebrationsHover}
-          hoverAlt="Close-up portrait of Ayaan's dinosaur arch - sage and cream balloons with tropical foliage and personalised signage by River Fox Events"
+          image={imgOccasions}
+          alt="Pastel safari Two Wild tablescape for Anaya's second birthday in Surrey by River Fox Events - Anaya panel, light-up two, giraffe and foliage runner"
+          hoverImage={imgOccasionsHover}
+          hoverAlt="Close-up of the pink light-up two marquee from Anaya's pastel safari Two Wild birthday in Surrey by River Fox Events - sage and pink balloons with foliage"
           tone="ph-warm"
-          imageScale={1.07}
           headline={
             <>
               More than a party,{" "}
@@ -103,11 +102,12 @@ const ChildrensParties = () => {
         <CPReveal
           id="cp-occasions"
           imageSide="left"
-          image={imgOccasions}
-          alt="Pastel safari Two Wild tablescape for Anaya's second birthday in Surrey by River Fox Events - Anaya panel, light-up two, giraffe and foliage runner"
-          hoverImage={imgOccasionsHover}
-          hoverAlt="Close-up of the pink light-up two marquee from Anaya's pastel safari Two Wild birthday in Surrey by River Fox Events - sage and pink balloons with foliage"
+          image={imgCelebrations}
+          alt="Dinosaur theme children's birthday styling in Surrey by River Fox Events - Ayaan name arch, sage balloons and crate props"
+          hoverImage={imgCelebrationsHover}
+          hoverAlt="Close-up portrait of Ayaan's dinosaur arch - sage and cream balloons with tropical foliage and personalised signage by River Fox Events"
           tone="ph-blush"
+          imageScale={1.07}
           headline={
             <>
               Every milestone,{" "}
@@ -145,9 +145,9 @@ const ChildrensParties = () => {
           }
         >
           <p>
-            We specialise in large-scale balloon installations, custom
-            backdrops and styled details that transform your space into
-            something immersive and visually striking.
+            Whatever your space, we create custom backdrops, themed props
+            and styled details that turn it into something immersive and
+            visually striking.
           </p>
           <p>
             From popular first birthday themes such as Wild One and Berry

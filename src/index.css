@@ -178,7 +178,7 @@
       linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.06) 100%),
       repeating-linear-gradient(135deg, transparent 0 28px, rgba(0,0,0,0.022) 28px 29px);
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
   }
   .ph-warm { background: hsl(var(--surface-warm)); }
   .ph-blush { background: hsl(var(--surface-blush)); }

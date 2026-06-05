@@ -18,7 +18,7 @@ import lwDinosaurAyaan from "@/assets/river-fox-events-dinosaur-theme-ayaan-arch
 import lwFairyKayla from "@/assets/river-fox-events-fairy-first-birthday-kayla-tablescape-overhead.webp";
 import lwJungleElephant from "@/assets/river-fox-events-jungle-theme-safari-tablescape-elephant.webp";
 import lwNamingHarveyDaisy from "@/assets/river-fox-events-naming-ceremony-harvey-daisy-foreground.webp";
-import lwPastelSafariAnaya from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-table-setting.webp";
+import lwPastelSafariAnaya from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-tablescape.webp";
 import lwVeuveDisco from "@/assets/river-fox-events-veuve-cliquot-angela-georgia-balloon-disco-close-up.webp";
 import lwWonkaChocolateArch from "@/assets/river-fox-events-willy-wonka-savanna-chocolate-bar-arch.webp";
 

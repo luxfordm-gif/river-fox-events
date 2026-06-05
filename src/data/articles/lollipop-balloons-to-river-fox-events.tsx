@@ -11,7 +11,7 @@ import imgGalleryIman from "@/assets/garden-party-iman-pastel-milestone-surrey.w
 import imgGalleryFourever from "@/assets/jungle-fourever-wild-childrens-party-surrey.webp";
 import imgGalleryKayla from "@/assets/river-fox-events-fairy-first-birthday-kayla-tablescape-overhead.webp";
 import imgGalleryReeva from "@/assets/river-fox-events-pastel-birthday-reeva-entrance-arch.webp";
-import imgGalleryAnaya from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-tablescape-wide.webp";
+import imgGalleryAnaya from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-tablescape.webp";
 
 const galleryImages = [
   {
