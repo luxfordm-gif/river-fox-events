@@ -14,15 +14,9 @@ const haywardsHeath = makeLocation({
   uniqueSeoDescription:
     "Kids' birthday styling across Haywards Heath, Lindfield and Cuckfield - first birthdays to themed parties, individually designed by Laura.",
   uniqueHeroLine: <>Children's party styling in Haywards Heath,</>,
-  uniqueHeroSub: (
-    <>
-      Mid-Sussex children's parties designed with care - first birthdays
-      through to big themed celebrations, with christenings, milestones and
-      corporate work handled too.
-    </>
-  ),
+  uniqueHeroSub: <>Children's parties in Haywards Heath, built around statement balloon installations, bespoke backdrops and personal detail.</>,
   uniqueUspBody:
-    "Children's parties across Haywards Heath are styled to feel calm rather than chaotic - a first birthday or a big themed celebration, designed around your space and your child and finished to the last detail before guests arrive.",
+    "Planning something in Haywards Heath? River Fox Events brings together considered styling, statement balloon installations and the details that lift a room into something memorable. Each event is individually designed around your child, your space and your vision, so the day feels personal, exciting and genuinely your own.",
   uniqueServicesHeading: (
     <>
       Children's parties are the main event.{" "}

@@ -14,15 +14,9 @@ const crawley = makeLocation({
   uniqueSeoDescription:
     "Children's birthday styling in Crawley and across West Sussex, from first birthdays to big themed parties - individually designed and installed by Laura.",
   uniqueHeroLine: <>Children's party styling in Crawley,</>,
-  uniqueHeroSub: (
-    <>
-      Thoughtfully styled children's parties for Crawley and the surrounding
-      villages - with christenings, milestone birthdays and corporate work
-      handled alongside.
-    </>
-  ),
+  uniqueHeroSub: <>Children's birthdays in Crawley, styled with statement balloon installations, bespoke backdrops and considered personal touches.</>,
   uniqueUspBody:
-    "Children's parties in Crawley are built around the people in the room rather than a template - a first birthday or a big themed celebration, designed to feel cohesive and considered, then installed and broken down so the day stays yours.",
+    "Celebrating in Crawley? River Fox Events combines considered styling, statement balloon installations and carefully chosen details into something your family will remember. Each event is individually designed around your child, your space and the day you have in mind, so the result feels personal, joyful and entirely your own.",
   uniqueServicesHeading: (
     <>
       Children's parties lead the way.{" "}

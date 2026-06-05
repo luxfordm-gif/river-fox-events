@@ -14,15 +14,9 @@ const horsham = makeLocation({
   uniqueSeoDescription:
     "Big themed birthdays and first-birthday styling in Horsham - children's parties individually designed and installed by Laura.",
   uniqueHeroLine: <>Children's party styling in Horsham,</>,
-  uniqueHeroSub: (
-    <>
-      Slow, deliberate styling for Horsham children's parties - first
-      birthdays to big themed celebrations, with milestones and corporate
-      work alongside.
-    </>
-  ),
+  uniqueHeroSub: <>Children's parties in Horsham, shaped by statement balloon installations, bespoke backdrops and details chosen for the day.</>,
   uniqueUspBody:
-    "Horsham children's parties are shaped slowly and deliberately, from the first idea to the last styled detail - a first birthday or a big themed celebration designed around your child and your space, installed and broken down by us.",
+    "For Horsham families looking for a celebration with a little more care behind it, River Fox Events designs days that feel personal, memorable and beautifully finished. Known for statement balloon installations, bespoke backdrops and thoughtful styling, we turn homes and venues across the town into days children and guests carry with them.",
   uniqueServicesHeading: (
     <>
       Children's parties are the bulk of it.{" "}

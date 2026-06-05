@@ -13,15 +13,9 @@ const weybridge = makeLocation({
   uniqueSeoDescription:
     "Riverside children's parties in Weybridge - first birthdays to big themed celebrations, individually designed and installed by Laura, from £460.",
   uniqueHeroLine: <>Children's party styling in Weybridge,</>,
-  uniqueHeroSub: (
-    <>
-      Designed around your child, from St George's Hill to Oatlands -
-      Weybridge children's parties, with christenings, milestones and
-      corporate work too.
-    </>
-  ),
+  uniqueHeroSub: <>Party styling in Weybridge, with statement balloon installations, bespoke backdrops and personalised detail.</>,
   uniqueUspBody:
-    "A Weybridge children's party is shaped around the home it's held in - the proportions of the room, the garden, the child it's for - then built from statement installations and the details that make it feel personal, installed and cleared by us.",
+    "For Weybridge families looking for something with a little more to it, River Fox Events designs celebrations that feel personal, memorable and beautifully resolved. Built around statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes, gardens and venues across the town into days children and guests remember long after the last guest leaves.",
   uniqueServicesHeading: (
     <>
       Children's parties first, always.{" "}

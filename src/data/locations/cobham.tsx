@@ -13,15 +13,9 @@ const cobham = makeLocation({
   uniqueSeoDescription:
     "First birthdays and big themed parties styled across Cobham, Oxshott and Stoke d'Abernon - individually designed and installed by Laura, from £460.",
   uniqueHeroLine: <>Children's party styling in Cobham,</>,
-  uniqueHeroSub: (
-    <>
-      Statement installations and quiet detail for Cobham birthdays - with
-      christenings, milestones and corporate styling handled whenever the
-      occasion calls for it.
-    </>
-  ),
+  uniqueHeroSub: <>Children's parties in Cobham, built around statement balloon installations, bespoke backdrops and details chosen for your child.</>,
   uniqueUspBody:
-    "Cobham children's parties tend to ask for polish without fuss - a first birthday in the garden or a themed celebration that fills the room, each one designed around your space, your colours and the kind of day you're picturing, then installed and cleared by us.",
+    "If you're planning a celebration in Cobham, River Fox Events brings together beautiful styling, statement balloon installations and thoughtful details to create something truly memorable. Every event is individually designed around your child, your space and your vision, resulting in a celebration that feels personal, exciting and completely unique.",
   uniqueServicesHeading: (
     <>
       Children's parties come first.{" "}

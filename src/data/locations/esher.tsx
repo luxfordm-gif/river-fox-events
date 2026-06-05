@@ -13,15 +13,9 @@ const esher = makeLocation({
   uniqueSeoDescription:
     "Statement children's parties in Esher and Claygate - first birthdays to big themed celebrations, individually designed and installed by Laura.",
   uniqueHeroLine: <>Children's party styling in Esher,</>,
-  uniqueHeroSub: (
-    <>
-      From first idea to final breakdown, children's parties styled for Esher
-      families - christenings, milestones and corporate work handled when you
-      need them.
-    </>
-  ),
+  uniqueHeroSub: <>Beautifully styled children's parties in Esher, featuring statement balloon installations, bespoke backdrops and personalised details.</>,
   uniqueUspBody:
-    "An Esher children's party is designed around the child it's for - the theme, the colours, the room - then built from statement installations and the small details that make it feel personal, installed and cleared so the day stays yours.",
+    "Planning a children's party, baby shower or special event in Esher? River Fox Events creates beautifully styled celebrations designed to feel personal, exciting and completely unforgettable. From statement balloon installations and bespoke backdrops to carefully chosen finishing touches, every celebration is individually designed to bring your vision to life and create a magical experience for your child and guests.",
   uniqueServicesHeading: (
     <>
       Children's parties are our focus.{" "}

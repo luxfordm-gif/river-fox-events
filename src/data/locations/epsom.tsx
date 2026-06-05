@@ -13,14 +13,9 @@ const epsom = makeLocation({
   uniqueSeoDescription:
     "North Surrey children's parties in Epsom - first birthdays to big themed celebrations, individually designed and installed by Laura, from £460.",
   uniqueHeroLine: <>Children's party styling in Epsom,</>,
-  uniqueHeroSub: (
-    <>
-      Birthdays designed around your child across Epsom and Ewell - with
-      milestones, christenings and brand work handled when you need them.
-    </>
-  ),
+  uniqueHeroSub: <>Children's parties in Epsom, with statement balloon installations, bespoke backdrops and thoughtful personal details.</>,
   uniqueUspBody:
-    "An Epsom children's party is planned closely around you - the child, the theme, the space - then built from statement installations and careful detail, installed and broken down so there's nothing left for you to do but enjoy it.",
+    "Have a celebration coming up in Epsom? River Fox Events pulls together polished styling, statement balloon installations and the small details that make something memorable. Every event is individually designed around your child, your space and your vision, leaving you with a day that feels personal, exciting and unlike anyone else's.",
   uniqueServicesHeading: (
     <>
       Children's parties are our home turf.{" "}

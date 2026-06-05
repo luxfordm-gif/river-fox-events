@@ -13,16 +13,9 @@ const oxted = makeLocation({
   uniqueSeoDescription:
     "Children's party styling in Oxted and across East Surrey - from first birthdays to big themed celebrations, from £460 and individually designed by Laura.",
   uniqueHeroLine: <>Children's party styling in Oxted,</>,
-  uniqueHeroSub: (
-    <>
-      From first birthdays to big themed celebrations, individually
-      designed for families across Oxted and East Surrey - with
-      christenings, milestones and corporate styling handled when you
-      need it.
-    </>
-  ),
+  uniqueHeroSub: <>Party styling in Oxted, built around statement balloon installations, bespoke backdrops and details that feel personal.</>,
   uniqueUspBody:
-    "Sitting at the foot of the North Downs, Oxted children's parties call for styling that feels grounded rather than loud - a first birthday or a big themed celebration built from statement installations and quiet detail, tailored to your home and the day you have in mind.",
+    "For families in Oxted looking for something a little more special, River Fox Events creates individually designed celebrations that feel personal, memorable and beautifully put together. Known for statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes, venues and event spaces across Oxted into celebrations that children and guests will remember long after the day itself.",
   uniqueServicesHeading: (
     <>
       Children's parties are our home ground.{" "}

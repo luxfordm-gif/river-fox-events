@@ -14,15 +14,9 @@ const forestRow = makeLocation({
   uniqueSeoDescription:
     "Forest-edge children's parties across the Ashdown Forest - first birthdays to big themed celebrations, individually designed and installed by Laura.",
   uniqueHeroLine: <>Children's party styling in Forest Row,</>,
-  uniqueHeroSub: (
-    <>
-      Organic, woodland-leaning styling for Forest Row children's parties -
-      with christenings, milestones and corporate work handled when you need
-      them.
-    </>
-  ),
+  uniqueHeroSub: <>Children's birthdays in Forest Row, styled with statement balloon installations, bespoke backdrops and considered detail.</>,
   uniqueUspBody:
-    "A Forest Row children's party suits styling that feels organic rather than staged - a first birthday or a big themed celebration designed around your space and your child, built from natural detail and statement installations and cleared away by us.",
+    "For Forest Row families wanting a celebration with a little more to it, River Fox Events designs days that feel personal, memorable and beautifully resolved. Built around statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes and village venues into celebrations children and guests remember well beyond the day.",
   uniqueServicesHeading: (
     <>
       Children's parties are our specialism.{" "}

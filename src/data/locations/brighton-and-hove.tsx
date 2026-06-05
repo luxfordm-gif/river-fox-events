@@ -14,15 +14,9 @@ const brightonAndHove = makeLocation({
   uniqueSeoDescription:
     "Children's parties styled across Brighton & Hove and East Sussex, from first birthdays to themed celebrations - individually designed and installed by Laura.",
   uniqueHeroLine: <>Children's party styling in Brighton & Hove,</>,
-  uniqueHeroSub: (
-    <>
-      Seafront first birthdays and big themed parties across Brighton & Hove -
-      with christenings, milestones and brand events styled alongside when you
-      need them.
-    </>
-  ),
+  uniqueHeroSub: <>Children's parties styled across Brighton & Hove, with statement balloon installations, bespoke backdrops and personalised finishing touches.</>,
   uniqueUspBody:
-    "A Brighton & Hove children's party can take the coast's energy or keep things calm - either way each one is designed around the child, the theme and the room, with statement installations and considered detail installed and cleared by us.",
+    "Planning a child's birthday, baby shower or special celebration in Brighton & Hove? River Fox Events designs styling that feels personal, exciting and genuinely unforgettable. From statement balloon installations and bespoke backdrops to the smallest finishing touches, every celebration is individually designed to bring your idea to life for your child and your guests.",
   uniqueServicesHeading: (
     <>
       Children's parties first.{" "}

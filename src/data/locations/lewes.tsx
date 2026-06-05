@@ -14,15 +14,9 @@ const lewes = makeLocation({
   uniqueSeoDescription:
     "Themed first birthdays and children's parties in Lewes and the East Sussex villages, individually designed and installed by Laura.",
   uniqueHeroLine: <>Children's party styling in Lewes,</>,
-  uniqueHeroSub: (
-    <>
-      Character-filled celebrations for Lewes children - first birthdays to
-      big themed parties, with christenings, milestones and corporate work
-      alongside.
-    </>
-  ),
+  uniqueHeroSub: <>Styled children's parties in Lewes, with statement balloon installations, bespoke backdrops and personalised touches.</>,
   uniqueUspBody:
-    "A Lewes children's party can carry as much character as the town itself - each one designed around the child, the theme and the room, with statement installations and considered detail installed and broken down by us.",
+    "Planning a birthday, christening or family celebration in Lewes? River Fox Events creates styling designed to feel personal, exciting and hard to forget. From statement balloon installations and bespoke backdrops to the finishing details, each celebration is individually designed to bring your vision to life for your child and the people there to share it.",
   uniqueServicesHeading: (
     <>
       Children's parties are where we start.{" "}

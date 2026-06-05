@@ -13,14 +13,9 @@ const waltonOnThames = makeLocation({
   uniqueSeoDescription:
     "Thames-side children's parties in Walton-on-Thames - first birthdays to big themed celebrations, individually designed by Laura.",
   uniqueHeroLine: <>Children's party styling in Walton-on-Thames,</>,
-  uniqueHeroSub: (
-    <>
-      Relaxed riverside children's parties in Walton-on-Thames - with
-      christenings, milestones and corporate work handled when you need them.
-    </>
-  ),
+  uniqueHeroSub: <>Children's parties in Walton-on-Thames, built around statement balloon installations, bespoke backdrops and personal detail.</>,
   uniqueUspBody:
-    "A Walton-on-Thames children's party carries a relaxed, riverside character - designed around your child and your space, built from statement installations and refined detail, then installed and cleared so the day stays yours.",
+    "Planning a celebration in Walton-on-Thames? River Fox Events brings together considered styling, statement balloon installations and the details that make a day memorable. Each event is individually designed around your child, your space and your vision, leaving a day that feels personal, exciting and one of a kind.",
   uniqueServicesHeading: (
     <>
       Children's parties are where we shine.{" "}

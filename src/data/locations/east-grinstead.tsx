@@ -14,15 +14,9 @@ const eastGrinstead = makeLocation({
   uniqueSeoDescription:
     "Kids' party styling in East Grinstead and the RH19 area - first birthdays through to big themed celebrations, individually designed and installed by Laura.",
   uniqueHeroLine: <>Children's party styling in East Grinstead,</>,
-  uniqueHeroSub: (
-    <>
-      Big themed birthdays and gentle first-birthday styling across East
-      Grinstead - with christenings, milestones and corporate events styled
-      when the day calls for it.
-    </>
-  ),
+  uniqueHeroSub: <>Styled children's parties in East Grinstead, featuring statement balloon installations, bespoke backdrops and personalised detail.</>,
   uniqueUspBody:
-    "An East Grinstead children's party starts with the child and the space, then grows into a complete look - statement installations, a dressed cake table and the details that tie a theme together, all tailored to your home and the moment you're marking.",
+    "Planning a birthday, christening or special occasion in East Grinstead? River Fox Events creates styling designed to feel personal, exciting and unforgettable. From statement balloon installations and bespoke backdrops through to the finishing touches, each celebration is individually designed to bring your vision to life for your child and everyone there.",
   uniqueServicesHeading: (
     <>
       Children's parties are our main work.{" "}

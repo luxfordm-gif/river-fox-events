@@ -13,15 +13,9 @@ const oxshott = makeLocation({
   uniqueSeoDescription:
     "At-home children's parties in Oxshott - first birthdays to big themed celebrations, individually designed and installed by Laura.",
   uniqueHeroLine: <>Children's party styling in Oxshott,</>,
-  uniqueHeroSub: (
-    <>
-      Mostly at-home and entirely tailored - Oxshott children's parties
-      designed around your house, with christenings, milestones and corporate
-      work too.
-    </>
-  ),
+  uniqueHeroSub: <>Children's parties in Oxshott, styled with statement balloon installations, bespoke backdrops and personalised detail.</>,
   uniqueUspBody:
-    "Most Oxshott children's parties happen at home, and that suits us - each one designed around your house and your child, built from statement installations and considered detail that move through the rooms the way your guests do.",
+    "For Oxshott families after a celebration that feels a cut above, River Fox Events designs days that are personal, memorable and beautifully put together. Built around statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes, gardens and venues into celebrations children and guests remember long after everyone has gone home.",
   uniqueServicesHeading: (
     <>
       Children's parties are what we're known for.{" "}

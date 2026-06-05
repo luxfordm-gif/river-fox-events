@@ -13,15 +13,9 @@ const lingfield = makeLocation({
   uniqueSeoDescription:
     "Village children's parties in Lingfield and along the Surrey/Sussex border - first birthdays to themed celebrations, individually designed by Laura.",
   uniqueHeroLine: <>Children's party styling in Lingfield,</>,
-  uniqueHeroSub: (
-    <>
-      A quick run from the studio - Lingfield children's parties designed
-      around your home, with christenings, milestones and corporate work
-      alongside.
-    </>
-  ),
+  uniqueHeroSub: <>Children's birthdays in Lingfield, with statement balloon installations, bespoke backdrops and thoughtful personal detail.</>,
   uniqueUspBody:
-    "A Lingfield children's party keeps the warmth of a village celebration - designed around your child, the theme and the room, with statement installations and considered detail installed and cleared so the day stays yours.",
+    "Got a celebration planned in Lingfield? River Fox Events combines careful styling, statement balloon installations and the small touches that make a day memorable. Every event is individually designed around your child, your space and your vision, for something that feels personal, joyful and unmistakably yours.",
   uniqueServicesHeading: (
     <>
       Children's parties lead our calendar.{" "}

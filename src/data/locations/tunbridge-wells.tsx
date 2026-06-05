@@ -14,15 +14,9 @@ const tunbridgeWells = makeLocation({
   uniqueSeoDescription:
     "Kent children's parties in Tunbridge Wells - first birthdays to big themed celebrations, individually designed and installed by Laura.",
   uniqueHeroLine: <>Children's party styling in Tunbridge Wells,</>,
-  uniqueHeroSub: (
-    <>
-      Understated children's party styling across Tunbridge Wells and Kent -
-      with christenings, milestones and corporate work handled when you need
-      them.
-    </>
-  ),
+  uniqueHeroSub: <>Styled children's parties in Tunbridge Wells, featuring statement balloon installations, bespoke backdrops and personal detail.</>,
   uniqueUspBody:
-    "A Tunbridge Wells children's party tends to suit something elegant and understated - a first birthday or a big themed celebration designed around your child and your space, built from statement installations and considered detail, then cleared by us.",
+    "Planning a birthday, christening or special occasion in Tunbridge Wells? River Fox Events designs styling made to feel personal, exciting and quietly unforgettable. From statement balloon installations and bespoke backdrops to the finishing touches, every celebration is individually designed to bring your vision to life for your child and your guests.",
   uniqueServicesHeading: (
     <>
       Children's parties are our main focus.{" "}
