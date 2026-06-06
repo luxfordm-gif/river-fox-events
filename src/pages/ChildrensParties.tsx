@@ -19,6 +19,7 @@ import {
 } from "@/seo/headTags";
 
 import imgHero from "@/assets/river-fox-events-jungle-theme-fourever-wild-full-setup.webp";
+import imgHeroMobile from "@/assets/river-fox-events-jungle-theme-safari-tablescape-elephant.webp";
 import imgCelebrations from "@/assets/dinosaur-ayaan-arch-surrey.webp";
 import imgCelebrationsHover from "@/assets/river-fox-events-dinosaur-theme-ayaan-arch-close-up-portrait.webp";
 import imgOccasions from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-tablescape.webp";
@@ -55,6 +56,8 @@ const ChildrensParties = () => {
         <ServiceHero
           image={imgHero}
           imageAlt="Fourever Wild jungle party setup with white safari jeep, balloon garland, giraffe, zebra and lion cub by a bamboo backdrop"
+          mobileImage={imgHeroMobile}
+          mobileImageAlt="Jungle safari tablescape with giraffe-print plates, palm-leaf runner and elephant centrepiece, giraffe cutout behind"
           headingId="cp-hero-heading"
           lines={[
             <>Themed children's parties,</>,

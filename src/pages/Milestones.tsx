@@ -18,7 +18,8 @@ import {
   upsertJsonLd,
 } from "@/seo/headTags";
 
-import imgHero from "@/assets/garden-party-iman-pastel-milestone-surrey.webp";
+import imgHero from "@/assets/milestone-celebration-styling-collage-surrey.webp";
+import imgHeroMobile from "@/assets/milestone-celebration-styling-collage-portrait-surrey.webp";
 import imgIntro from "@/assets/river-fox-events-veuve-cliquot-angela-georgia-arch-wide.webp";
 import imgIntroHover from "@/assets/river-fox-events-veuve-cliquot-angela-georgia-balloon-disco-close-up.webp";
 import imgOccasions from "@/assets/river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch.webp";
@@ -79,7 +80,9 @@ const Milestones = () => {
       <main>
         <ServiceHero
           image={imgHero}
-          imageAlt="Pastel garden party tablescape collage for Iman in Surrey by River Fox Events - blush florals, candles and styled place settings across a long outdoor table"
+          imageAlt="Collage of milestone celebration setups - pink and tangerine birthday board, blue balloon arches, a lit coral 40 number and a neutral styled arch"
+          mobileImage={imgHeroMobile}
+          mobileImageAlt="Pink and tangerine birthday balloon display with a Happy Birthday board, above blue baby-reveal arches and a Reeva is 2 sign"
           headingId="ms-hero-heading"
           lines={[
             <>Milestone events,</>,
@@ -98,12 +101,11 @@ const Milestones = () => {
         <CPReveal
           id="ms-intro"
           imageSide="right"
-          image={imgIntro}
-          alt="Champagne-themed milestone birthday arch in tangerine, white and gold balloons for Angela and Georgia, styled in Surrey by River Fox Events"
-          hoverImage={imgIntroHover}
-          hoverAlt="Close-up of a mirrored disco-ball centrepiece nested in tangerine and white balloons for Angela and Georgia's champagne-themed celebration by River Fox Events"
+          image={imgOccasions}
+          alt="He or she balloon arch in soft blue and pink for the Stubbs family gender reveal styled in Surrey by River Fox Events"
+          hoverImage={imgOccasionsHover}
+          hoverAlt="Wildflower and dried-grass detail on the Stubbs gender reveal styling - close-up of soft pinks, blues and pampas by River Fox Events"
           tone="ph-warm"
-          imageScale={1.07}
           headline={
             <>
               Some occasions deserve more than{" "}
@@ -127,11 +129,12 @@ const Milestones = () => {
         <CPReveal
           id="ms-occasions"
           imageSide="left"
-          image={imgOccasions}
-          alt="He or she balloon arch in soft blue and pink for the Stubbs family gender reveal styled in Surrey by River Fox Events"
-          hoverImage={imgOccasionsHover}
-          hoverAlt="Wildflower and dried-grass detail on the Stubbs gender reveal styling - close-up of soft pinks, blues and pampas by River Fox Events"
+          image={imgIntro}
+          alt="Champagne-themed milestone birthday arch in tangerine, white and gold balloons for Angela and Georgia, styled in Surrey by River Fox Events"
+          hoverImage={imgIntroHover}
+          hoverAlt="Close-up of a mirrored disco-ball centrepiece nested in tangerine and white balloons for Angela and Georgia's champagne-themed celebration by River Fox Events"
           tone="ph-blush"
+          imageScale={1.07}
           headline={
             <>
               Every milestone,{" "}

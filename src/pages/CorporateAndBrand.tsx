@@ -114,7 +114,7 @@ const CorporateAndBrand = () => {
       <main>
         <ServiceHero
           image={imgHero}
-          imageAlt="Twin balloon arches framing a corporate atrium entrance - sculptural installation in cream and brand tones styled by River Fox Events for a Surrey corporate event"
+          imageAlt="Twin balloon arches in a corporate office atrium - blue and yellow left, purple right, framing black leather sofas"
           mobileImage={imgHeroMobile}
           mobileImageAlt="Navy and gold balloon installation at the Pudsey charity gala dinner - sophisticated event styling by River Fox Events"
           headingId="cb-hero-heading"
@@ -167,9 +167,9 @@ const CorporateAndBrand = () => {
           id="cb-services"
           imageSide="left"
           image={imgWhat}
-          alt="Side angle of NXTGEN corporate event entrance - branded balloon columns flanking a glass doorway styled by River Fox Events"
+          alt="NXTGEN branded balloon columns in green and black flanking a black panelled doorway at a corporate entrance"
           hoverImage={imgWhatHover}
-          hoverAlt="Close-up of layered balloon column detail in NXTGEN brand colours by River Fox Events - texture, scale and on-brand finish"
+          hoverAlt="Close-up of stacked green and black balloons on the NXTGEN column against a black panelled door and brick wall"
           tone="ph-blush"
           headline={
             <>

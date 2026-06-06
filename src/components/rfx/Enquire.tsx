@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { toast } from "sonner";
 
-const CHECKLIST = [
-  "Most celebrations begin from £460",
-  "Surrey, London & surrounding areas",
-];
-
 type EnquireProps = {
   defaultEventType?: "Children's party" | "Milestone celebration" | "Corporate event" | "Other";
   venuePlaceholder?: string;
@@ -48,8 +43,9 @@ const Enquire = ({
     <section id="enquire" className="rfx-section dark rfx-enquire" aria-labelledby="enquire-heading">
       <div className="container-rfx">
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start rfx-md-stack">
-          {/* Left: heading + checklist */}
-          <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:h-full">
+          {/* Left: heading + intro + availability card. Sticky on desktop so it
+              follows the reader down the long form. */}
+          <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
             <h2
               id="enquire-heading"
               className="font-serif-rf"
@@ -74,25 +70,8 @@ const Enquire = ({
               Surrey, London and surrounding areas.
             </p>
 
-            <ul className="mt-7 max-w-[460px] w-full space-y-1.5 mx-auto lg:mx-0">
-              {CHECKLIST.map((c) => (
-                <li
-                  key={c}
-                  className="flex items-center justify-center lg:justify-start gap-3 text-[14.5px] leading-[1.3]"
-                  style={{ color: "hsl(var(--on-deep))" }}
-                >
-                  <span
-                    className="hidden lg:inline-block w-3 h-px shrink-0"
-                    style={{ background: "hsl(var(--accent-warm))" }}
-                    aria-hidden="true"
-                  />
-                  {c}
-                </li>
-              ))}
-            </ul>
-
             <div
-              className="mt-9 lg:mt-auto p-5 max-w-[460px] w-full rounded-md text-center lg:text-left mx-auto lg:mx-0"
+              className="mt-9 p-5 max-w-[460px] w-full rounded-md text-center lg:text-left mx-auto lg:mx-0"
               style={{
                 border: "1px solid hsl(var(--accent-warm) / 0.55)",
                 color: "hsl(var(--on-deep))",
