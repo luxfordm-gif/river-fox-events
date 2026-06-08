@@ -73,13 +73,13 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "garden-milestone-styling-surrey",
-    title: "When the garden is the venue",
+    title: "Summer garden parties, done right",
     subtitle:
-      "Why a private garden often serves a Surrey milestone better than a hire venue - and the design moves that make it work.",
+      "What makes a garden party feel effortless - reading the planting, planning the practical bits, and styling so everything belongs in the garden.",
     teaser:
-      "A private garden gives you bones a hire venue can't fake. A note from Laura on what changes when you treat the garden as the design, not the backdrop.",
+      "Long golden evenings and a relaxed lawn - the best garden parties only look effortless. Laura on palette, zones, power and British-weather planning.",
     metaDescription:
-      "Garden milestone styling in Surrey - design moves that make a private-garden 40th, 50th or anniversary feel like a venue, not a marquee. From Laura at River Fox Events.",
+      "How to style a summer garden party in Surrey so it feels part of the garden, not dropped on top - palette, zones, power, weather and the prep, from Laura.",
     publishedAt: "2026-05-08",
     readMinutes: 6,
     relatedSlugs: ["beyond-the-balloon-arch", "childrens-party-themes-2026", "from-design-to-delivery"],

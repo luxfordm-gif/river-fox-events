@@ -613,10 +613,10 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/journal/garden-milestone-styling-surrey",
-    title: "When the garden is the venue | River Fox Events",
+    title: "Summer Garden Party Styling in Surrey | River Fox Events",
     description:
-      "Garden milestone styling in Surrey - design moves that make a private-garden 40th, 50th or anniversary feel like a venue, not a marquee. From Laura at River Fox Events.",
-    breadcrumbName: "When the garden is the venue",
+      "How to style a summer garden party in Surrey so it feels part of the garden, not dropped on top - palette, zones, power, weather and the prep, from Laura.",
+    breadcrumbName: "Summer garden parties done right",
     ogImage: "/og/garden-milestone-styling-surrey.webp",
     priority: 0.6,
     changefreq: "monthly",
