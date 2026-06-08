@@ -12,8 +12,8 @@ const WillyWonkaFifthBirthdaySavannaArticle = () => (
       <ul className="list-disc pl-5 space-y-1">
         <li>
           A Willy Wonka fifth birthday designed for{" "}
-          <strong>Savanna</strong> at the family home in Surrey, with a
-          single threshold installation as the&nbsp;hero.
+          <strong>Savanna</strong>, a returning client, at the family home in
+          Surrey - one immersive installation in the&nbsp;kitchen.
         </li>
         <li>
           Palette held to deep purple, lilac and butter gold - the
@@ -21,69 +21,63 @@ const WillyWonkaFifthBirthdaySavannaArticle = () => (
           warm&nbsp;note.
         </li>
         <li>
-          Custom golden-ticket panel printed with Savanna's name, a
-          painted cocoa-bar plinth and a purple "5" column - the theme
-          rebuilt around one specific&nbsp;child.
+          A custom golden-ticket panel printed with Savanna's name, a
+          custom-made giant Wonka Bar prop and a purple "5" column - the
+          theme rebuilt around one specific&nbsp;child.
         </li>
         <li>
-          A reminder that a themed fifth doesn't have to mean
-          shop-bought: the same idea, designed from the ground up, reads
-          as a&nbsp;celebration.
+          A reminder that maximum impact doesn't need a venue: a focal
+          installation designed for the room can do the work without
+          overwhelming the&nbsp;home.
         </li>
       </ul>
     </ArticleTLDR>
 
     <ArticleProse>
       <p>
-        When it comes to themed children's parties, Willy Wonka usually
-        brings to mind bright colours, larger-than-life props and a certain
-        amount of happy chaos. Savanna's fifth was a lovely chance to show it
-        doesn't have to be that way. Her parents are returning clients, and
-        they wanted a Willy Wonka party that didn't look like a Willy Wonka
-        party - no primary purple-and-orange, no plastic top hats, no
-        off-the-shelf cardboard cut-outs. Something soft, considered and
-        personalised enough that the theme felt like it belonged
-        to&nbsp;her.
+        When it comes to themed children's parties, Willy Wonka is often
+        associated with bright colours, larger-than-life props and plenty of
+        visual chaos. But for this Surrey birthday celebration, the brief was
+        refreshingly different. As returning clients, Savanna's family know
+        that every event I create is tailored to their vision, and for this
+        particular birthday they wanted a Willy Wonka-inspired setup that felt
+        immersive and fun, without filling the room with every colour of
+        the&nbsp;rainbow.
       </p>
       <p>
-        The brief was a single installation in the family's kitchen at home
-        in Surrey - a room with marble surfaces and plenty of natural light.
-        The setup had to hold its own space and photograph beautifully as the
-        family moved through&nbsp;it.
+        The challenge was to create maximum impact within a kitchen space -
+        marble surfaces, plenty of natural light - while keeping the design
+        cohesive, stylish and practical for a family celebration at&nbsp;home.
       </p>
     </ArticleProse>
 
     <ArticleImage
       src={imgArch}
       alt="Purple and lilac balloon arch with a gold 'Savanna' ticket panel, painted cocoa-bar plinth, lollipop swirls and a purple number 5 column."
-      caption="Savanna's fifth - purple-and-gold ticket panel, painted cocoa-bar plinth and giant lollipop swirls, set against the family's marble&nbsp;kitchen."
+      caption="Savanna's fifth - purple-and-gold ticket panel, custom Wonka Bar prop and giant lollipop swirls, set against the family's marble&nbsp;kitchen."
       aspect="natural"
       width={780}
     />
 
     <ArticleProse>
-      <h2>One installation, three design moves</h2>
+      <h2>Creating a Willy Wonka world in a smaller space</h2>
       <p>
-        One of the kindest things you can tell a parent is that a children's
-        fifth doesn't need a backdrop, a tablescape <em>and</em> a feature
-        wall. One installation, properly designed, will carry the day - and
-        gives the family one beautifully styled moment to photograph rather
-        than three half-finished&nbsp;ones.
+        One of the biggest misconceptions about event styling is that you need
+        a huge venue to create something memorable. For Savanna's party the
+        celebration was taking place at the family's Surrey home, with the main
+        styling area in the kitchen. Rather than seeing that as a limitation,
+        it became an opportunity to design something that felt intentionally
+        curated and perfectly suited to the&nbsp;space.
       </p>
       <p>
-        Three moves did the work here. A balloon arch in deep purple,
-        soft lilac and grape, sculpted asymmetrically so it reads as a
-        canopy rather than a frame. A painted{" "}
-        <em>cocoa-bar plinth</em> custom-printed for Savanna - the only
-        warm note in the palette, sat low and forward so it draws the
-        eye in. And a pair of oversized{" "}
-        <em>lollipop swirls</em> flanking the arch at different
-        heights, so the silhouette has rhythm rather than&nbsp;symmetry.
-      </p>
-      <p>
-        The number "5" is a purple column with a brushed-gold numeral,
-        keeping the milestone in the room without competing with the
-        ticket panel for&nbsp;attention.
+        The focal point was a bespoke purple arched installation, paired with a
+        golden-ticket panel to bring a touch of Wonka-worthy magic to the
+        design. Crucially, the typography on that panel is printed with
+        Savanna's name - not the studio's, not a generic invitation - and that
+        single swap is what stops the installation feeling like a hired
+        backdrop. Rich purple balloons in varying tones added depth and texture
+        while keeping the palette refined, so the setup felt grown-up while
+        still capturing the playful spirit of the&nbsp;theme.
       </p>
     </ArticleProse>
 
@@ -93,52 +87,48 @@ const WillyWonkaFifthBirthdaySavannaArticle = () => (
     </ArticlePullQuote>
 
     <ArticleProse>
-      <h2>Making the theme feel like Savanna's</h2>
+      <h2>The details that brought the theme to life</h2>
       <p>
-        The single most important piece in the setup is the gold panel.
-        It's modelled on the golden ticket, but the typography is
-        printed with Savanna's name - not the studio's name, not a
-        generic invitation. That swap is what stops the installation
-        feeling like a hired&nbsp;backdrop.
+        The magic of a themed celebration often lies in the details. To bring
+        in the whimsical elements that make Willy Wonka so recognisable, I
+        added oversized multicoloured swirl lollipops throughout the
+        installation and a few bespoke bubblegum balloons. These playful
+        statement props transport you into a world of imagination while
+        complementing the more restrained&nbsp;palette.
       </p>
       <p>
-        The cocoa-bar wrapper carries the same idea. It's a painted
-        prop built in-studio so the purple sits inside the palette
-        instead of fighting it, and the proportions are scaled for a
-        five-year-old rather than for an adult&nbsp;shelf.
+        One of my favourite additions was the custom-made giant Wonka Bar prop,
+        created especially for the setup. Would you believe it started life as
+        a stack of disposable plastic take-away boxes? I spray-painted them in
+        the studio until the wrapper and the proportions read right - it's the
+        piece I most loved making on this build, and the bit you couldn't buy
+        in if you&nbsp;tried.
       </p>
       <p>
-        Would you believe it started life as a stack of disposable
-        plastic take-away boxes? I spray-painted them in the studio
-        until the wrapper and the proportions read right. It's the
-        piece I most loved making on this build - and the bit you
-        couldn't buy in if you&nbsp;tried.
-      </p>
-      <p>
-        The recognisably-Wonka details are layered in around the hero so they
-        read as magic rather than clutter. Oversized multicoloured swirl
-        lollipops and a few bespoke bubblegum balloons sit within the
-        installation, and a chocolate river - flowing satin laid across a
-        grass mat - runs out from the base, turning a styled corner into
-        somewhere children actually want to step into. Smaller notes around
-        the plinth - a toadstool prop, a scatter of moss - are kept
-        deliberately quiet. They're the texture under the headline, not
-        the&nbsp;headline.
+        To complete the scene, I created a chocolate river using flowing satin
+        fabric laid across a grass mat, bringing one of the most iconic
+        elements of the Willy Wonka story into the space. It's a simple but
+        effective detail that turns a styled corner into somewhere children
+        actually want to step into. A purple "5" column with a brushed-gold
+        numeral keeps the milestone in the room, and smaller notes around the
+        base - a toadstool prop, a scatter of moss - are kept deliberately
+        quiet. They're the texture under the headline, not&nbsp;the&nbsp;headline.
       </p>
     </ArticleProse>
 
     <ArticleCta variant="inline" label="Design a fifth birthday like this" />
 
     <ArticleProse>
-      <h2>What this means for your brief</h2>
+      <h2>Why home parties can be just as impactful</h2>
       <p>
-        If your child has a theme they're fixed on - Wonka, Bluey,
-        Encanto, a dinosaur, a particular colour - the question isn't
-        whether to honour it. It's how to design{" "}
-        <em>around</em> it so the room still reads as considered.
-        Constrain the palette to three or four colours. Pick one hero
-        installation rather than three. Personalise hard enough that
-        the theme reads as theirs, not as a&nbsp;costume.
+        Many parents assume they need to hire a venue to create a memorable
+        party, but some of the most effective setups are designed specifically
+        for the home. By working with the available space and building a focal
+        installation tailored to the room, it's possible to achieve a
+        high-impact result without overwhelming the environment. Every element
+        of Savanna's setup was considered so the party felt exciting, themed
+        and beautifully styled while still letting the family enjoy their home
+        throughout the&nbsp;celebration.
       </p>
       <p>
         See also{" "}
@@ -155,18 +145,17 @@ const WillyWonkaFifthBirthdaySavannaArticle = () => (
       <h2>Why I love this part</h2>
       <p>
         Themed birthdays are where parents most often expect to compromise on
-        the design - to lean on shop-bought banners and novelty plates
-        because their child loves a character. I always want to reassure them
-        that they don't have to. A character theme can be styled as
-        thoughtfully as a christening or a milestone, and the child still
-        gets exactly the thing they asked for - just designed beautifully for
-        their own&nbsp;room.
+        the design - to lean on shop-bought banners and novelty plates because
+        their child loves a character. I always want to reassure them that they
+        don't have to. A character theme can be styled as thoughtfully as a
+        christening or a milestone, and the child still gets exactly the thing
+        they asked for - just designed beautifully for their own&nbsp;room.
       </p>
       <p>
-        And when a family comes back year after year to mark their children's
-        milestones, it's always a privilege to be trusted with those memories
-        again. If you're planning a fifth, a sixth or a first and there's a
-        theme your child won't budge on, I'd love to hear it.{" "}
+        And when clients return year after year to mark their children's
+        milestones, it's always a privilege to be trusted to help create those
+        memories once again. If you're planning a fifth, a sixth or a first and
+        there's a theme your child won't budge on, I'd love to hear it.{" "}
         <a href="/#enquire">Tell me what they have in mind</a> and the first
         sketch is always&nbsp;free.
       </p>

@@ -37,20 +37,21 @@ const DylanChristeningFirstBirthdayArticle = () => (
 
     <ArticleProse>
       <p>
-        Creating celebrations that feel personal is the part of this work I
-        love most, and Dylan's day was a lovely example of it. He was being
-        christened and turning one on the same day, and his family wanted the
-        two milestones to share a single look rather than compete for the
-        room. The venue was an event hall close to{" "}
-        <a href="/party-styling-walton-on-thames/">Walton-on-Thames</a>, with
-        a black starlight wall already built into one end - beautiful to work
-        against, and a real gift for an evening&nbsp;celebration.
+        Creating celebrations that feel personal is always at the heart of
+        what I do, and Dylan's joint christening and first birthday near{" "}
+        <a href="/party-styling-walton-on-thames/">Walton-on-Thames</a> was a
+        perfect example of how thoughtful details can transform a day. He was
+        being christened and turning one on the same day, and his family
+        wanted the two milestones to share a single look rather than compete
+        for the&nbsp;room.
       </p>
       <p>
-        The brief was soft, calm and quietly special. Blue, but not a nursery
-        baby-blue. Gold that felt warm rather than glitzy. The kind of palette
-        that can hold a christening and a first birthday at the
-        same&nbsp;time.
+        The venue was an event hall with a black starlight wall already built
+        into one end - beautiful to work against, and a real gift for an
+        evening celebration. It let the palette stay soft and quietly special:
+        blue, but not a nursery baby-blue, and gold that felt warm rather than
+        glitzy. The kind of palette that can hold a christening and a first
+        birthday at the same&nbsp;time.
       </p>
     </ArticleProse>
 
@@ -64,19 +65,22 @@ const DylanChristeningFirstBirthdayArticle = () => (
     <ArticleProse>
       <h2>One hoop, two milestones</h2>
       <p>
-        A christening and a first birthday pull in slightly different
-        directions. One asks for quiet and a touch of ceremony; the other
-        wants to feel like a party. Rather than split the room in two, I built
-        everything around a single balloon hoop and a personalised backdrop,
-        so guests had one clear, welcoming place for the eye to land as they
-        arrived.
+        Designed to celebrate two important milestones in one special day, the
+        setup combined soft blue tones, warm gold accents and personalised
+        touches that reflected the family's vision. I worked closely with
+        Dylan's mum, who had lovingly made the gold hoop centrepieces for the
+        tables herself, so every element of the styling felt beautifully
+        connected from the moment guests&nbsp;arrived.
       </p>
       <p>
-        The hoop wasn't an arbitrary shape. Dylan's mum had lovingly made gold
-        hoop centrepieces for each table, and I wanted the main display to
-        speak to her work rather than sit apart from it - so the installation
-        became a gold hoop too, dressed in balloons and set beside the arched
-        welcome panel naming the&nbsp;occasion.
+        A christening and a first birthday pull in slightly different
+        directions - one asks for quiet and a touch of ceremony, the other
+        wants to feel like a party. Rather than split the room in two, I built
+        everything around a single balloon hoop and a personalised backdrop,
+        so guests had one clear, welcoming place for the eye to land. The hoop
+        wasn't an arbitrary shape: I wanted the main display to speak to the
+        centrepieces Dylan's mum had made rather than sit apart from them, so
+        the installation became a gold hoop too, dressed in&nbsp;balloons.
       </p>
     </ArticleProse>
 
@@ -95,52 +99,44 @@ const DylanChristeningFirstBirthdayArticle = () => (
     <ArticleProse>
       <h2>Building it in blue and gold</h2>
       <p>
-        The palette did the heavy lifting. Sky blue, a deeper dusty blue,
-        chrome gold and ivory, mixed across the hoop in different sizes
-        and finishes so it read as organic rather than evenly spaced. Chrome
-        gold is the balloon that earns its place here - a few of them
-        through the hoop catch the light and tie the whole display back to
-        the gold of his mum's table&nbsp;centrepieces.
+        One of my favourite aspects of this celebration was the way I brought
+        the artwork from Dylan's invitations into the final design. The sweet
+        bunny and lamb illustrations were transformed into bespoke cut-outs
+        and became a key feature of the backdrop, a playful nod to the
+        original stationery that helped tell a cohesive story throughout the
+        event. The lamb is printed onto the panel, and the rabbit sits as a
+        painted cut-out holding a little gift box at the foot of the&nbsp;hoop.
       </p>
       <p>
-        The arched panel is a custom-painted sailboard, with Dylan's name
-        and the wording applied in vinyl so the lettering sits crisply
-        against the soft blue. One of my favourite touches was bringing the
-        animals from his invitation into the design - a sweet rabbit and lamb
-        that I turned into bespoke cut-outs, so the day quietly echoed the
-        stationery the family had already fallen for. The lamb is printed onto
-        the backdrop, and the rabbit sits as a painted cut-out holding a
-        little gift box at the foot of the hoop - the one properly playful
-        note that tips things gently toward the first-birthday side of the
-        brief. A few faux stems in soft blue and white are tucked in at the
-        side, there for a little softness and texture, never the&nbsp;focus.
+        The statement balloon installation framed a personalised arched
+        backdrop, creating a focal point for photographs and family memories.
+        The palette did the rest: sky blue, a deeper dusty blue, chrome gold
+        and ivory, mixed across the hoop in different sizes and finishes so it
+        read as organic rather than evenly spaced. A few chrome golds through
+        the hoop catch the light and tie the display back to the gold of his
+        mum's table&nbsp;centrepieces.
       </p>
       <p>
-        <a href="/childrens-parties/">First birthdays</a> and{" "}
-        <a href="/milestone-celebrations/">christenings</a> often land in my
-        inbox separately. Combining them in one display is quietly becoming
-        one of my favourite&nbsp;briefs.
+        To soften the join between balloons and floor, I tucked a few faux
+        stems in soft blue and white at the side, echoing the table styling -
+        there for a little texture rather than as a focus, so every detail
+        still worked together&nbsp;seamlessly.
       </p>
     </ArticleProse>
 
     <ArticleCta variant="inline" label="Planning a christening or a first birthday?" />
 
     <ArticleProse>
-      <h2>Install morning</h2>
+      <h2>The beauty of combining two celebrations</h2>
       <p>
-        The starlight wall meant I could keep the build focused. The hoop
-        goes up first, balloons worked along its frame by hand and weighted
-        so it holds its shape right through the day. Mixed finishes go in as I
-        build, not after, so the chrome golds sit where the light will find
-        them rather than being dotted on at the&nbsp;end.
-      </p>
-      <p>
-        The arched panel is positioned next, then the rabbit cut-out nestled
-        at the base, and the faux stems threaded in last to soften the join
-        between balloons and floor. A final walk-round before the family
-        arrives is where the small adjustments happen - a cluster lowered an
-        inch, a stem pulled forward - the little things a plan can't quite
-        predict until the room is&nbsp;lit.
+        When families choose to celebrate multiple milestones together, it
+        matters that the styling feels balanced and appropriate for both
+        occasions. For Dylan's day I wanted something elegant enough for a
+        christening while still capturing the joy and playfulness of a first
+        birthday. The soft palette, the personalised details and the whimsical
+        illustrations let me strike exactly the right balance, so the
+        celebration felt both grown-up and child-friendly rather than two
+        events sharing&nbsp;a&nbsp;hall.
       </p>
     </ArticleProse>
 
@@ -159,19 +155,13 @@ const DylanChristeningFirstBirthdayArticle = () => (
     <ArticleProse>
       <h2>Why I love this part</h2>
       <p>
-        Combined celebrations are quietly one of the hardest briefs to get
-        right, and one of the most rewarding. It would be easy to design two
-        halves that don't speak to each other - a solemn corner and a party
-        corner. The real work is finding the one look that holds both, so a
-        christening and a first birthday feel like the same warm day rather
-        than two events sharing&nbsp;a&nbsp;hall.
-      </p>
-      <p>
-        Dylan's display did that with a single palette and a single
-        installation, and by borrowing the family's own touches - the gold
-        of his mum's centrepieces, the animals from his invitation. The
-        rabbit gives it warmth, the gold gives it occasion, and the blue ties
-        it all back to&nbsp;him.
+        The most memorable events are often the ones where every element feels
+        connected. By taking inspiration from Dylan's invitations, coordinating
+        with the table décor his mum had made and threading the same palette
+        through the room, the day flowed beautifully from one moment to the
+        next. These are the kinds of projects I love most - bringing together
+        personal details, meaningful moments and beautiful design to create
+        celebrations that feel truly unique to each&nbsp;family.
       </p>
       <p>
         If you're marking two milestones at once - a christening and a
