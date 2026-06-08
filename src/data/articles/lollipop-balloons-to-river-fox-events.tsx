@@ -188,13 +188,11 @@ const LollipopRebrandArticle = () => (
         into the next chapter.
       </p>
       <p>
-        More to follow over the coming weeks. For now: thank you for being
+        More to follow over the coming weeks. For now, thank you for being
         part of the journey, and here's to whatever you're celebrating
-        next.
+        next. I'd love to help you style it.
       </p>
-      <p>
-        - <em>Laura</em>
-      </p>
+      <p>Laura&nbsp;x</p>
     </ArticleProse>
   </>
 );

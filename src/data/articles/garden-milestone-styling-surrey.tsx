@@ -36,26 +36,28 @@ const GardenMilestoneStylingSurreyArticle = () => (
 
     <ArticleProse>
       <p>
-        Most of the milestone briefs landing in Surrey studios this spring
-        share a sentence - a version of <em>we love our garden, we don't want
-        to leave it</em>. Forty-firsts, fiftieths, anniversaries, christenings
-        spilling onto a lawn. The pull toward hosting at home is real, and
-        for the right plot it produces a softer, more characterful
-        celebration than a hire venue ever will. It also asks a different
-        kind of work from the design.
+        There's something undeniably special about a celebration held in your
+        own garden, and it's one of my favourite briefs to take on. Most of
+        the milestone enquiries landing this spring share a sentence - a
+        version of <em>we love our garden, we don't want to leave it</em>.
+        Forty-firsts, fiftieths, anniversaries, christenings spilling onto a
+        lawn. The pull toward hosting at home is real, and for the right plot
+        it gives you a softer, more characterful celebration than a hire
+        venue ever could. It just asks a slightly different kind of work from
+        the design.
       </p>
       <p>
-        A garden gives you beautiful bones. It rarely gives you a finished
-        room. The job is to thread one without smothering the other. The
-        photographs through this piece are from a fifth birthday we styled
-        in a private garden in Oxted last summer.
+        A garden gives you beautiful bones, but it rarely gives you a
+        finished room, and the art is in threading one without smothering the
+        other. The photographs through this piece are from a fifth birthday I
+        styled in a private garden in Oxted last summer.
       </p>
     </ArticleProse>
 
     <ArticleImage
       src={imgArch}
       alt="Pastel balloon garland in cream, peach, lilac and butter yellow wrapping a tall pink arched backdrop with hand-lettered Happy Birthday signage, set on a garden lawn against summer planting."
-      caption="Oxted, last summer - the pastel garland and painted-board arch we built for a milestone celebration. Garden planting reading as the back wall."
+      caption="Oxted, last summer - the pastel garland and painted-board arch I built for a milestone celebration. Garden planting reading as the back wall."
     />
 
     <ArticleProse>
@@ -111,7 +113,7 @@ const GardenMilestoneStylingSurreyArticle = () => (
     <ArticleImage
       src={imgBanquet}
       alt="Long banquet-style picnic on a lawn in Oxted, with floor cushions, a cheesecloth runner, place settings and a tall pastel arched backdrop with balloon garland behind."
-      caption="The wider scene at Oxted - our pastel arch and balloon garland anchoring the head of the table, with the picnic-style banquet running out into the garden."
+      caption="The wider scene at Oxted - my pastel arch and balloon garland anchoring the head of the table, with the picnic-style banquet running out into the garden."
     />
 
     <ArticleProse>
@@ -228,13 +230,12 @@ const GardenMilestoneStylingSurreyArticle = () => (
       </p>
       <p>
         If you're holding a milestone in your own garden later this year -
-        or trying to decide between booking a venue and staying home - tell
-        me what you have in mind and I'll come and walk it with you.{" "}
+        or simply trying to decide between booking a venue and staying home -
+        I'd love to hear about it. Tell me what you have in mind and I'll
+        come and walk the garden with you.{" "}
         <a href="/#enquire">Start a conversation here</a>.
       </p>
-      <p>
-        - <em>Laura</em>
-      </p>
+      <p>Laura&nbsp;x</p>
     </ArticleProse>
   </>
 );

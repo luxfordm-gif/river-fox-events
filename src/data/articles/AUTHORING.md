@@ -50,22 +50,28 @@ When in doubt, swap a personal claim for an industry observation: *"I'm noticing
 
 Laura writes the articles. Claude is ghost-writing *as her*, not about her.
 
-- **First person, quietly authoritative.** "I want the family to be able to read it in seconds." Not "we" — Laura speaks as the designer.
-- **Short, specific, occasionally fragmentary.** "Beautiful bones, very little atmosphere." Sentences earn their length.
-- **Sensory detail over adjectives.** Name the actual thing — "pink scallop-edge plates, a soft zebra-print salad plate on top" — not how nice it was.
-- **Trade-craft language used naturally.** Sightlines, scale, the brief, sourcing, install morning, sign-off, render board. Trust the reader to keep up.
-- **Em dashes welcome. Exclamation marks never.**
-- **Quiet expertise, never sales.** Explain *why* a choice was made; don't say it was excellent.
+Laura reviewed the journal in mid-2026 and asked for a **warmer tone of voice**. The clipped, insider, trade-craft register the journal launched with read as cool and detached to her. The voice below is the corrected one: warm, flowing, reassuring and host-facing, while staying first-person and specific.
+
+- **First person, warm and quietly authoritative.** "I want the family to be able to read it in seconds." Always "I", not "we" — Laura speaks as the designer. (The one exception is genuine business-voice pieces such as the rebrand announcement, where "we" reads naturally.)
+- **Warm and flowing, not clipped.** Laura's voice is gentle and welcoming. Favour complete, flowing sentences over staccato fragments. A short sentence is fine for rhythm, but don't make the clipped, fragmentary style ("Beautiful bones, very little atmosphere.") the *default* — that's the cool, detached tone Laura asked us to move away from.
+- **Reassure the host.** Lead sections with the reader's worry and answer it warmly ("Many parents assume they need to hire a venue, but…"). This reassuring, host-facing register is the heart of the new voice.
+- **Warmth is welcome.** Phrases like "celebrations that feel personal", "I'd love to hear from you", "truly unique to each family", "it's always a privilege" are encouraged. An earlier version of this guide treated warmth as off-limits ("never sales", "quiet, never warm"); that was wrong for Laura.
+- **Sensory detail over empty adjectives.** Keep naming the actual thing — "pink scallop-edge plates, a soft zebra-print salad plate on top". Warmth must never *replace* specificity — carry both. Don't let the warmer register slide into generic filler ("truly unforgettable", "bringing the magic to life") with no concrete detail underneath.
+- **Trade-craft language, lightly.** Sightlines, scale, the brief, sourcing, install morning, render board are all welcome, but don't stack them — gloss them so a non-trade reader follows easily.
+- **Hyphens, not em dashes. Exclamation marks and emojis never.** (Laura's own Google-Doc drafts sometimes use these; strip them.)
+- **Quiet expertise, gently shared.** Explain *why* a choice was made, and reassure the reader rather than sell to them.
 
 ### Banned vocabulary
 
-Filler phrases — never use:
+Hard sales clichés — still never use, even in the warmer register:
 - "If you're looking for…"
 - "Look no further…"
 - "We pride ourselves on…"
 - "Our team of experts…"
 - "The perfect party"
 - "Stunning", "amazing", "wow factor", "show-stopping"
+
+**Now explicitly allowed (warm register).** These were discouraged under the old "never warm" rule and are now welcome, *provided real, specific detail sits underneath them*: "celebrations that feel personal", "I'd love to hear from you / about it", "truly unique to each family", "it's always a privilege", "I always want to reassure parents that…". Warmth is the point; empty warmth ("truly unforgettable" with nothing concrete attached) is not.
 
 Trade / legal jargon — never use when writing about a character or branded theme (Wonka, Bluey, Disney, Encanto, Paw Patrol, etc.):
 - "IP", "the IP"
@@ -75,7 +81,7 @@ Trade / legal jargon — never use when writing about a character or branded the
 It's industry-side language that pulls the article out of Laura's voice and into stylist-trade-talk, and it raises a legal frame the brand doesn't need to invite. Refer to it as "the theme" or name the specific theme. Custom-built props are "painted in-studio" or "built in-studio" — the design point (palette discipline, personalisation, restraint) lands without needing to name the licensing question at all.
 
 Capped vocabulary (per `CLAUDE.md`):
-- "Bespoke" — banned from titles, max once per meta description
+- "Bespoke" — **free to use in body copy** (it's Laura's own word), but still banned from titles and capped at once per meta description (an SEO duplicate-content guard, not a tone rule)
 - "Luxury" — max twice across all page titles site-wide
 - "From £460" — appears in max 6 page metas site-wide
 
@@ -182,11 +188,11 @@ Every article follows this shape. Use the existing components in `src/components
 
 10. <ArticleProse> — "Why I love this part" with <h2>
     ↳ Laura's personal reflection. WHAT THIS PROJECT TAUGHT HER, or why this kind of work matters to her.
-    ↳ Closes with a soft invitation: "tell me what you have in mind" → /#enquire
-    ↳ Final line is always: — *Laura*
+    ↳ Closes with a soft, warm invitation: "I'd love to hear from you / tell me what you have in mind" → /#enquire
+    ↳ Final line is always the sign-off: **Laura x**
 ```
 
-The `— Laura` sign-off and the "Why I love this part" section are the soul of the journal. Don't skip them. Don't rename them. Don't make them generic.
+The `Laura x` sign-off and the "Why I love this part" section are the soul of the journal. Don't skip them. Don't rename them. Don't make them generic. (The sign-off was `— Laura` at launch; Laura asked for the warmer `Laura x` in mid-2026.)
 
 ---
 
@@ -245,9 +251,10 @@ Validate every new entry against [Google Rich Results Test](https://search.googl
 
 ## 8. Pre-flight checklist (Claude runs this before handing the draft to Matt)
 
-- [ ] Voice — re-read; any "we", "stunning", "perfect", or exclamation marks? Strip them.
+- [ ] Voice — re-read; warm and flowing, not clipped/insider? Any stray "we" (outside genuine business-voice), "stunning", "amazing", "perfect", exclamation marks or emojis? Strip them.
 - [ ] Aesthetic gate — does every reference (theme, palette, prop) pass? If not, swap.
-- [ ] Structure — TL;DR, hero image, pull quote, inline CTA, "Why I love this part", `— Laura` sign-off all present?
+- [ ] Sign-off — closing line reads `Laura x` (not `— Laura`)?
+- [ ] Structure — TL;DR, hero image, pull quote, inline CTA, "Why I love this part", `Laura x` sign-off all present?
 - [ ] Length — 900–1300 words of prose?
 - [ ] Internal links — 2 service + 1 location (where relevant) + 1 enquire CTA?
 - [ ] Image alt — ≤ 125 chars, describes the photo, no brand-name openers?

@@ -37,18 +37,18 @@ const TwoWildSafariSecondBirthdayArticle = () => (
 
     <ArticleProse>
       <p>
-        Amiya was turning two - and her family wanted a safari without
-        the cliché. No primary brights, no jungle-print bunting, no
-        cartoon zebra cake. Something soft, slightly grown-up, and
-        properly considered. The venue was{" "}
-        <strong>Horley Community Centre</strong>: a generous hall with
-        tall arched windows, deep blue curtains and a parquet wood
-        floor. Beautiful bones, very little&nbsp;atmosphere.
+        Amiya was turning two, and her family wanted a safari without the
+        cliché. No primary brights, no jungle-print bunting, no cartoon zebra
+        cake. Something soft, slightly grown-up and properly considered. The
+        venue was <strong>Horley Community Centre</strong>: a generous hall
+        with tall arched windows, deep blue curtains and a parquet wood floor.
+        Beautiful bones, but very little atmosphere of its own to
+        begin&nbsp;with.
       </p>
       <p>
-        This is a quick walk-through of how the day came together - from
-        the two render boards we signed off in March, through to install
-        morning at the&nbsp;hall.
+        I thought it might be lovely to walk you gently through how the day
+        came together - from the two render boards I signed off in March,
+        through to install morning at the&nbsp;hall.
       </p>
     </ArticleProse>
 
@@ -204,14 +204,12 @@ const TwoWildSafariSecondBirthdayArticle = () => (
       </p>
       <p>
         If you're planning a second birthday - or a tenth, or a first -
-        and you'd love something designed from the ground up around your
-        child rather than picked from a package,{" "}
-        <a href="/#enquire">tell me what you have in mind</a>. The first
+        and you'd love something individually designed around your child
+        rather than picked from a package, I'd love to hear about it.{" "}
+        <a href="/#enquire">Tell me what you have in mind</a> and the first
         sketch is always&nbsp;free.
       </p>
-      <p>
-        - <em>Laura</em>
-      </p>
+      <p>Laura&nbsp;x</p>
     </ArticleProse>
   </>
 );

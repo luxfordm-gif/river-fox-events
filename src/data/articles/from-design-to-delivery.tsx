@@ -36,8 +36,8 @@ const FromDesignToDeliveryArticle = () => (
       <p>
         Every setup begins long before the day itself. By the time the
         family arrives, the room has already been drawn, redrawn,
-        sourced, sampled and rehearsed in my head a dozen times. This
-        is a quick walk-through of what that process actually looks
+        sourced, sampled and rehearsed in my head a dozen times. I thought
+        I'd walk you gently through what that process actually looks
         like - using a recent dinosaur-themed celebration for{" "}
         <strong>Ayaan</strong> as the&nbsp;example.
       </p>
@@ -164,15 +164,13 @@ const FromDesignToDeliveryArticle = () => (
         space and the budget can&nbsp;hold.
       </p>
       <p>
-        If you're planning a birthday and would love something designed
-        from the ground up around your child - not picked from a
-        package -{" "}
-        <a href="/#enquire">tell me what you have in mind</a>. The
+        If you're planning a birthday and would love something
+        individually designed around your child - not picked from a
+        package - I'd love to hear about it.{" "}
+        <a href="/#enquire">Tell me what you have in mind</a> and the
         first sketch is always&nbsp;free.
       </p>
-      <p>
-        - <em>Laura</em>
-      </p>
+      <p>Laura&nbsp;x</p>
     </ArticleProse>
   </>
 );

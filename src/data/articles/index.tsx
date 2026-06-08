@@ -56,7 +56,7 @@ export const ARTICLES: Article[] = [
     subtitle:
       "A Willy Wonka fifth in a Surrey home - purple-and-gold ticket panel, painted cocoa-bar plinth and one carefully designed threshold.",
     teaser:
-      "A themed fifth doesn't have to mean shop-bought. Savanna's Willy Wonka party - designed around the child, not the IP.",
+      "A themed fifth doesn't have to mean shop-bought. Savanna's Willy Wonka party - designed around the child, not the theme.",
     metaDescription:
       "Savanna's Willy Wonka fifth birthday in Surrey - purple-and-gold ticket arch, lollipop swirls and a personalised cocoa-bar plinth. Case study from Laura.",
     publishedAt: "2026-05-19",

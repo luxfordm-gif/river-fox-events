@@ -36,13 +36,13 @@ const ChildrensPartyThemes2026Article = () => (
       <p>
         The brief from <a href="/childrens-parties/">Surrey parents</a> has
         shifted. Themes are still everything for a 4th or 6th birthday - but
-        the version of "themed" landing in our inbox in 2026 is more
+        the version of "themed" landing in my inbox in 2026 is more
         grown-up, more personal, and a lot less plastic-pink-from-the-supermarket.
       </p>
       <p>
-        We styled around 90 children's parties last year, and there's a
-        clear pattern in what's getting booked now. Six themes are doing
-        almost all of the heavy lifting. Here's the brief-bag.
+        I styled around 90 children's parties last year, and there's a
+        lovely, clear pattern in what's getting booked now. Six themes are
+        doing almost all of the heavy lifting, so here's the brief-bag.
       </p>
     </ArticleProse>
 
@@ -63,7 +63,7 @@ const ChildrensPartyThemes2026Article = () => (
         princess.
       </p>
       <p>
-        How we style it: low florals in pinks and creams, draped velvet
+        How I style it: low florals in pinks and creams, draped velvet
         runners, candle-effect taper lights (battery, never real flame
         with under-7s in the room), and a single statement balloon
         installation in tonal pinks rather than rainbow.
@@ -77,7 +77,7 @@ const ChildrensPartyThemes2026Article = () => (
         looking like a merch wall.
       </p>
       <p>
-        How we style it: lean into the colour palette - terracotta,
+        How I style it: lean into the colour palette - terracotta,
         warm orange, sage, soft blue - and let those carry the room.
         One or two well-placed Bluey props (a balloon dog, a custom
         backdrop) read as Bluey because the parent has dressed for it,
@@ -155,8 +155,12 @@ const ChildrensPartyThemes2026Article = () => (
         looks like a kit. A theme styled properly looks like a memory.
       </p>
       <p>
-        - <em>Laura</em>
+        If one of these feels right for your little one, I'd love to hear
+        about it.{" "}
+        <a href="/#enquire">Tell me what you have in mind</a> and we'll
+        start there.
       </p>
+      <p>Laura&nbsp;x</p>
     </ArticleProse>
   </>
 );

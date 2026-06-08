@@ -83,7 +83,7 @@ const BeyondTheBalloonArchArticle = () => (
         looks like a school hall.
       </p>
       <p>
-        The difference is weight, fall and finish. We use heavier weights of
+        The difference is weight, fall and finish. I use heavier weights of
         muslin and silk for milestone work - they catch light properly and
         they don't ripple in the way thin polyester does. For a 70th in
         Reigate last month, four panels of unbleached muslin draped from a
@@ -140,15 +140,14 @@ const BeyondTheBalloonArchArticle = () => (
         don't be frightened of richer colour.
       </p>
       <p>
-        None of this is rules. Every celebration we style at River Fox
+        None of this is a rule. Every celebration I style at River Fox
         Events is individually designed around the person being celebrated - no
         templates, no packages. But if you've been looking at Pinterest
         boards from 2022 and wondering why nothing feels quite right, this
-        is probably why.
+        is probably why. And if you'd like to talk yours through, I'd love
+        to hear what you have in mind.
       </p>
-      <p>
-        - <em>Laura</em>
-      </p>
+      <p>Laura&nbsp;x</p>
     </ArticleProse>
   </>
 );

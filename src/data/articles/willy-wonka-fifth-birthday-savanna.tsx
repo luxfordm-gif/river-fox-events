@@ -35,25 +35,28 @@ const WillyWonkaFifthBirthdaySavannaArticle = () => (
 
     <ArticleProse>
       <p>
-        Savanna was turning five - and her parents wanted a Willy Wonka
-        party that didn't look like a Willy Wonka party. No primary
-        purple-and-orange, no plastic top hats, no off-the-shelf
-        cardboard cut-outs. Something soft, considered, and
-        personalised hard enough that the theme feels like it belongs
+        When it comes to themed children's parties, Willy Wonka usually
+        brings to mind bright colours, larger-than-life props and a certain
+        amount of happy chaos. Savanna's fifth was a lovely chance to show it
+        doesn't have to be that way. Her parents are returning clients, and
+        they wanted a Willy Wonka party that didn't look like a Willy Wonka
+        party - no primary purple-and-orange, no plastic top hats, no
+        off-the-shelf cardboard cut-outs. Something soft, considered and
+        personalised enough that the theme felt like it belonged
         to&nbsp;her.
       </p>
       <p>
-        The brief was a single threshold installation at the family
-        home - a Surrey house with a marble hall and a chandelier above
-        it. The setup had to hold the room on its own and photograph
-        well as the family moved through&nbsp;it.
+        The brief was a single installation in the family's kitchen at home
+        in Surrey - a room with marble surfaces and plenty of natural light.
+        The setup had to hold its own space and photograph beautifully as the
+        family moved through&nbsp;it.
       </p>
     </ArticleProse>
 
     <ArticleImage
       src={imgArch}
       alt="Purple and lilac balloon arch with a gold 'Savanna' ticket panel, painted cocoa-bar plinth, lollipop swirls and a purple number 5 column."
-      caption="Savanna's fifth - purple-and-gold ticket panel, painted cocoa-bar plinth and giant lollipop swirls, sat under the hall&nbsp;chandelier."
+      caption="Savanna's fifth - purple-and-gold ticket panel, painted cocoa-bar plinth and giant lollipop swirls, set against the family's marble&nbsp;kitchen."
       aspect="natural"
       width={780}
     />
@@ -61,11 +64,11 @@ const WillyWonkaFifthBirthdaySavannaArticle = () => (
     <ArticleProse>
       <h2>One installation, three design moves</h2>
       <p>
-        A children's fifth doesn't need a backdrop, a tablescape{" "}
-        <em>and</em> a feature wall. One installation, properly
-        designed, will carry the day - and gives the parents one
-        beautifully styled moment to photograph rather than three
-        half-finished&nbsp;ones.
+        One of the kindest things you can tell a parent is that a children's
+        fifth doesn't need a backdrop, a tablescape <em>and</em> a feature
+        wall. One installation, properly designed, will carry the day - and
+        gives the family one beautifully styled moment to photograph rather
+        than three half-finished&nbsp;ones.
       </p>
       <p>
         Three moves did the work here. A balloon arch in deep purple,
@@ -112,8 +115,13 @@ const WillyWonkaFifthBirthdaySavannaArticle = () => (
         couldn't buy in if you&nbsp;tried.
       </p>
       <p>
-        Small touches around the base - a toadstool prop, a scatter of
-        moss, a sweet-shop nod in the props on the plinth - are kept
+        The recognisably-Wonka details are layered in around the hero so they
+        read as magic rather than clutter. Oversized multicoloured swirl
+        lollipops and a few bespoke bubblegum balloons sit within the
+        installation, and a chocolate river - flowing satin laid across a
+        grass mat - runs out from the base, turning a styled corner into
+        somewhere children actually want to step into. Smaller notes around
+        the plinth - a toadstool prop, a scatter of moss - are kept
         deliberately quiet. They're the texture under the headline, not
         the&nbsp;headline.
       </p>
@@ -146,22 +154,23 @@ const WillyWonkaFifthBirthdaySavannaArticle = () => (
 
       <h2>Why I love this part</h2>
       <p>
-        Themed fifth birthdays are where parents most often expect to
-        compromise on the design - to lean on shop-bought banners and
-        novelty plates because the child loves a character. They don't
-        have to. A character theme can be rendered as carefully as a
-        christening or a milestone, and the child still gets the thing
-        they asked for - just designed for their&nbsp;room.
+        Themed birthdays are where parents most often expect to compromise on
+        the design - to lean on shop-bought banners and novelty plates
+        because their child loves a character. I always want to reassure them
+        that they don't have to. A character theme can be styled as
+        thoughtfully as a christening or a milestone, and the child still
+        gets exactly the thing they asked for - just designed beautifully for
+        their own&nbsp;room.
       </p>
       <p>
-        If you're planning a fifth, a sixth or a first and there's a
-        theme your child won't budge on,{" "}
-        <a href="/#enquire">tell me what they have in mind</a>. The
-        first sketch is always&nbsp;free.
+        And when a family comes back year after year to mark their children's
+        milestones, it's always a privilege to be trusted with those memories
+        again. If you're planning a fifth, a sixth or a first and there's a
+        theme your child won't budge on, I'd love to hear it.{" "}
+        <a href="/#enquire">Tell me what they have in mind</a> and the first
+        sketch is always&nbsp;free.
       </p>
-      <p>
-        - <em>Laura</em>
-      </p>
+      <p>Laura&nbsp;x</p>
     </ArticleProse>
   </>
 );
