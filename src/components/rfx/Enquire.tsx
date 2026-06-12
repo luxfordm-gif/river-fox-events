@@ -30,6 +30,11 @@ const Enquire = ({
         body,
       });
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
+      // Google Ads conversion - only fires on a confirmed submission, and the
+      // typeof guard means it no-ops when the Google tag is blocked by consent.
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
+      }
       toast.success("Thank you - your enquiry has been received. I'll be in touch within 1-2 working days to discuss your event in more detail. Laura");
       form.reset();
     } catch (err) {
