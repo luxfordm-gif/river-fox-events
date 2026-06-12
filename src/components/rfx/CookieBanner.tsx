@@ -15,7 +15,12 @@ const setConsent = (value: "granted" | "denied") => {
     // localStorage may be blocked - fail silently, user just won't be remembered
   }
   if (typeof window !== "undefined" && typeof window.gtag === "function") {
-    window.gtag("consent", "update", { analytics_storage: value });
+    window.gtag("consent", "update", {
+      analytics_storage: value,
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+    });
   }
 };
 
@@ -50,9 +55,9 @@ const CookieBanner = () => {
       className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 md:max-w-[420px] z-[200] rounded-2xl bg-surface-deep text-on-deep shadow-[0_24px_60px_-20px_hsl(var(--ink)/0.45)] px-5 py-4 md:px-6 md:py-5"
     >
       <p className="text-[13.5px] leading-[1.55]">
-        We use a single analytics cookie (Google Analytics) to understand how
-        the site is used. No advertising, no tracking across other sites. See
-        our{" "}
+        We use cookies to understand how the site is used (Google Analytics)
+        and to measure our advertising (Google Ads). Nothing loads until you
+        accept. See our{" "}
         <a
           href="/privacy/"
           className="underline underline-offset-4 decoration-on-deep/50 hover:decoration-on-deep"

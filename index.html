@@ -42,11 +42,17 @@
       });
       try {
         if (localStorage.getItem('rfx-consent') === 'granted') {
-          gtag('consent', 'update', { analytics_storage: 'granted' });
+          gtag('consent', 'update', {
+            analytics_storage: 'granted',
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted'
+          });
         }
       } catch (e) {}
       gtag('js', new Date());
       gtag('config', 'G-L2YVNSW0ZQ');
+      gtag('config', 'AW-18210626936');
     </script>
   </head>
 

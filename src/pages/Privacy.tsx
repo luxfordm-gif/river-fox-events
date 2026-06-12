@@ -6,7 +6,7 @@ import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
 import { applyMeta } from "@/seo/headTags";
 
-const LAST_UPDATED = "5 May 2026";
+const LAST_UPDATED = "12 June 2026";
 
 const Privacy = () => {
   useFadeUp();
@@ -76,18 +76,19 @@ const Privacy = () => {
 
           <h2>Cookies</h2>
           <p>
-            This site uses one analytics cookie set by Google Analytics 4
-            (measurement ID <code>G-L2YVNSW0ZQ</code>). It tells us how many
-            people visit, which pages they read and roughly where in the UK
-            they are - nothing that identifies an individual. It does not
-            follow you to other sites and we do not use it for advertising.
+            This site uses cookies from two Google services. Google Analytics 4
+            (measurement ID <code>G-L2YVNSW0ZQ</code>) tells us how many people
+            visit, which pages they read and roughly where in the UK they are -
+            nothing that identifies an individual. Google Ads (conversion ID{" "}
+            <code>AW-18210626936</code>) lets us measure which of our adverts
+            lead to an enquiry, so we spend our advertising budget well.
           </p>
           <p>
-            The cookie only loads if you click <em>Accept</em> on the cookie
+            These cookies only load if you click <em>Accept</em> on the cookie
             banner. If you click <em>Decline</em>, or ignore the banner, no
-            analytics cookie is set. You can change your mind at any time by
-            clearing this site's cookies in your browser - the banner will
-            reappear on your next visit.
+            analytics or advertising cookie is set. You can change your mind at
+            any time by clearing this site's cookies in your browser - the
+            banner will reappear on your next visit.
           </p>
 
           <h2>Form submissions</h2>
