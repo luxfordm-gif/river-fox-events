@@ -121,6 +121,11 @@ const ScrollStrip = ({ images }: ScrollStripProps = {}) => {
     };
   }, []);
 
+  const stripImages = images ?? STRIP_IMAGES;
+  // Short strips (home + location pages pass exactly 3 images) get a different
+  // tablet layout - see the `.rfx-strip-fill` rules below.
+  const fill = stripImages.length <= 3;
+
   return (
     <section
       ref={sectionRef}
@@ -130,7 +135,7 @@ const ScrollStrip = ({ images }: ScrollStripProps = {}) => {
     >
       <div
         ref={trackRef}
-        className="flex gap-3 md:gap-4 will-change-transform"
+        className={`flex gap-3 md:gap-4 will-change-transform${fill ? " rfx-strip-fill" : ""}`}
         style={{
           transform: "translate3d(0, 0, 0)",
         }}
@@ -139,16 +144,30 @@ const ScrollStrip = ({ images }: ScrollStripProps = {}) => {
           :root { --strip-item-w: 48vw; }
           @media (min-width: 768px) {
             :root {
-              /* 3 images visible with a partial 4th peeking in.
-                 Account for 16px (gap-4) gaps between items. */
+              /* Default (5+ image) strip: ~3.5 items visible so a 4th peeks in
+                 and the row reads as a scrollable strip. Account for 16px
+                 (gap-4) gaps between items. */
               --strip-item-w: calc((100vw - (3 * 16px)) / 3.5);
+            }
+            /* Short strips carry only 3 images. The 3.5-item sizing above left
+               those 3 narrower than the viewport, so the row sat jammed to the
+               left with dead space on the right. When the strip is short, inset
+               it 40px (matching the desktop image row) and let the 3 images
+               share the full width instead of using the fixed item width. */
+            .rfx-strip-fill {
+              padding-left: 40px;
+              padding-right: 40px;
+            }
+            .rfx-strip-fill > .rfx-strip-item {
+              flex: 1 1 0 !important;
+              width: auto !important;
             }
           }
         `}</style>
-        {(images ?? STRIP_IMAGES).map((img, i) => (
+        {stripImages.map((img, i) => (
           <div
             key={i}
-            className="relative flex-none overflow-hidden ph ph-warm rounded-[14px] rfx-rounded-img"
+            className="rfx-strip-item relative flex-none overflow-hidden ph ph-warm rounded-[14px] rfx-rounded-img"
             style={{ width: "var(--strip-item-w)", aspectRatio: img.aspect ?? "3 / 4" }}
           >
             <img
