@@ -131,7 +131,7 @@ const LocationPage = () => {
                 ))}
               </h1>
               {loc.hero.sub && (
-                <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-1 md:mt-10 fade-up in text-center">
+                <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-1 md:mt-5 fade-up in text-center">
                   {loc.hero.sub}
                 </p>
               )}
