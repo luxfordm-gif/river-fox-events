@@ -115,14 +115,15 @@
   @media (max-width: 960px) { .container-rfx { padding: 0 32px; } }
   @media (max-width: 640px) { .container-rfx { padding: 0 32px; } }
 
-  /* HeroEditorial track: full-bleed below 1440px so images breathe on
-     small/medium desktops; matches container-rfx spacing at 1440+ so
-     wide viewports keep the cream side margins consistent with the rest
-     of the page. */
+  /* HeroEditorial track: a 40px side gutter at every desktop width keeps the
+     image row inset from the screen edges (it previously went full-bleed below
+     1440px, which jammed the side images against the edges and read as broken).
+     At 1440+ the row also caps at 1600px so very wide viewports keep cream side
+     margins consistent with the rest of the page. */
   .rfx-hero-edl-track {
     max-width: 100%;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 40px;
   }
   @media (min-width: 1440px) {
     .rfx-hero-edl-track {
