@@ -1,4 +1,5 @@
 import { type CSSProperties, ReactNode, useEffect, useRef } from "react";
+import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 type ServiceHeroProps = {
   image: string;
@@ -95,6 +96,17 @@ const ServiceHero = ({
           >
             {sub}
           </p>
+
+          <div className="flex items-center justify-center gap-5 flex-wrap mt-8 fade-up in">
+            <a
+              href={ENQUIRE_HREF}
+              onClick={handleEnquireClick}
+              className="btn-solid-rf accent"
+            >
+              Start planning{" "}
+              <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
+            </a>
+          </div>
         </div>
       </div>
 
