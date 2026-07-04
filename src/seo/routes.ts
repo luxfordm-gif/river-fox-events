@@ -60,7 +60,10 @@ export const BUSINESS = {
     addressCountry: "GB",
   },
   openingHours: "Mo-Fr 09:00-17:00",
-  sameAs: ["https://www.instagram.com/riverfox_events/"],
+  sameAs: [
+    "https://www.instagram.com/riverfox_events/",
+    "https://maps.app.goo.gl/dcLgoJHXnhjjzJKP6",
+  ],
 };
 
 /**
