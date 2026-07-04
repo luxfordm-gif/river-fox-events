@@ -119,7 +119,7 @@ For the competitor-research workflow when starting a new article, see **`src/dat
 ## Brand & business
 
 - Brand: **River Fox Events** (formerly Lollipop Balloons). The `alternateName` is preserved in JSON-LD so historic links / brand searches flow through.
-- Real contact: `07872 114191`, `riverfoxevents@gmail.com`, IG `@lollipop_balloonsx` (the rebrand `@riverfoxevents` handle isn't live yet, so all IG links point at the historic Lollipop Balloons account — don't "correct" them back). **Never** `hello@riverfoxevents.co.uk` — that address doesn't exist.
+- Real contact: `07872 114191`, `riverfoxevents@gmail.com`, IG `@riverfox_events` (the account was renamed from `@lollipop_balloonsx` on 2026-07-04 - it's the same account, so historic `@lollipop_balloonsx` links still resolve, but all IG links now point at `@riverfox_events`; note the underscore, and don't "correct" it to `@riverfoxevents`). **Never** `hello@riverfoxevents.co.uk` — that address doesn't exist.
 - Studio: 15 Apsley Rd, Horley, RH6 9RX.
 - Pricing anchor: events from £460. Use this number consistently.
 - Tone: calm, considered, thoughtfully styled. Never punchy/salesy. No em dashes (use hyphens), no exclamation marks.

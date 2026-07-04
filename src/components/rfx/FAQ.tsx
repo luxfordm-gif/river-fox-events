@@ -10,7 +10,7 @@ import { removeJsonLd, upsertJsonLd } from "@/seo/headTags";
 const linkCx =
   "text-ink underline-offset-4 underline decoration-ink/30 hover:decoration-ink";
 
-const INSTAGRAM_URL = "https://www.instagram.com/lollipop_balloonsx/";
+const INSTAGRAM_URL = "https://www.instagram.com/riverfox_events/";
 
 type FAQItem = { q: string; a: string; aNode?: ReactNode };
 
@@ -41,11 +41,11 @@ const FAQS: FAQItem[] = [
   },
   {
     q: "Can I see examples of your work?",
-    a: "The best way to see Laura's work is on Instagram at @riverfoxevents, where you'll find a full archive of past celebrations. You can also see selected work across our services pages.",
+    a: "The best way to see Laura's work is on Instagram at @riverfox_events, where you'll find a full archive of past celebrations. You can also see selected work across our services pages.",
     aNode: (
       <>
         The best way to see Laura's work is on{" "}
-        <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className={linkCx}>Instagram at @riverfoxevents</a>, where you'll find a full archive of past celebrations. You can also see selected work across our services pages.
+        <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className={linkCx}>Instagram at @riverfox_events</a>, where you'll find a full archive of past celebrations. You can also see selected work across our services pages.
       </>
     ),
   },
