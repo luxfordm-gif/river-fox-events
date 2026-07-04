@@ -37,14 +37,14 @@ const InstagramFollow = () => {
             </p>
 
             <a
-              href="https://www.instagram.com/lollipop_balloonsx/"
+              href="https://www.instagram.com/riverfox_events/"
               target="_blank"
               rel="noreferrer"
               className="btn-solid-rf accent mt-10"
               aria-label="Follow River Fox Events on Instagram"
             >
               <Instagram size={16} aria-hidden="true" />
-              @riverfoxevents
+              @riverfox_events
               <span>→</span>
             </a>
           </div>

@@ -246,7 +246,7 @@ const Nav = () => {
             Client reviews <span aria-hidden>→</span>
           </a>
           <a
-            href="https://www.instagram.com/lollipop_balloonsx/"
+            href="https://www.instagram.com/riverfox_events/"
             target="_blank"
             rel="noreferrer"
             onClick={() => setOpen(false)}

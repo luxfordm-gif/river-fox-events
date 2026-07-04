@@ -196,8 +196,8 @@ const Footer = () => {
                 <a href="tel:+447872114191" className="hover:opacity-100 opacity-85 block">
                   07872 114191
                 </a>
-                <a href="https://www.instagram.com/lollipop_balloonsx/" target="_blank" rel="noreferrer" className="hover:opacity-100 opacity-85 block">
-                  @riverfoxevents
+                <a href="https://www.instagram.com/riverfox_events/" target="_blank" rel="noreferrer" className="hover:opacity-100 opacity-85 block">
+                  @riverfox_events
                 </a>
               </div>
             </div>
@@ -210,10 +210,10 @@ const Footer = () => {
             <div className="text-left">© {new Date().getFullYear()} River Fox Events</div>
             <div className="flex justify-center">
               <a
-                href="https://www.instagram.com/lollipop_balloonsx/"
+                href="https://www.instagram.com/riverfox_events/"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Instagram - @riverfoxevents"
+                aria-label="Instagram - @riverfox_events"
                 className="inline-flex items-center justify-center w-9 h-9 rounded-full border transition-opacity hover:opacity-100 opacity-85"
                 style={{ borderColor: "hsl(var(--on-deep) / 0.25)", color: "hsl(var(--on-deep))" }}
               >

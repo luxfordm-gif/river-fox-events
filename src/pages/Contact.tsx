@@ -16,8 +16,8 @@ const WHATSAPP_NUMBER = "447872114191";
 const WHATSAPP_DISPLAY = "07872 114191";
 const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Laura%2C%20I%27m%20enquiring%20about%20River%20Fox%20Events`;
 const EMAIL = "Riverfoxevents@gmail.com";
-const INSTAGRAM_HANDLE = "@riverfoxevents";
-const INSTAGRAM_URL = "https://www.instagram.com/riverfoxevents/";
+const INSTAGRAM_HANDLE = "@riverfox_events";
+const INSTAGRAM_URL = "https://www.instagram.com/riverfox_events/";
 
 const Contact = () => {
   useNavScroll();
