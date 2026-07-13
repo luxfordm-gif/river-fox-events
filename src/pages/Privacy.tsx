@@ -21,7 +21,7 @@ const Privacy = () => {
     <div className="min-h-screen article-bg text-foreground nav-solid">
       <Nav />
       <main>
-        <section className="container-rfx pt-[106px] md:pt-[122px] pb-10 md:pb-14 text-center">
+        <section className="container-rfx pt-[118px] md:pt-[122px] pb-10 md:pb-14 text-center">
           <h1
             className="font-serif-rf max-w-[18ch] mx-auto"
             style={{
@@ -33,7 +33,7 @@ const Privacy = () => {
           >
             Privacy &amp; cookies
           </h1>
-          <p className="text-[13.5px] text-ink-soft mt-5">
+          <p className="text-[13.5px] text-ink-soft mt-3 md:mt-5">
             Last updated {LAST_UPDATED}
           </p>
         </section>
