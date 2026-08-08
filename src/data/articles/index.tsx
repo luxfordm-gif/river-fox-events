@@ -7,6 +7,7 @@ import TwoWildSafariSecondBirthdayBody from "./two-wild-safari-second-birthday";
 import GardenMilestoneStylingSurreyBody from "./garden-milestone-styling-surrey";
 import WillyWonkaFifthBirthdaySavannaBody from "./willy-wonka-fifth-birthday-savanna";
 import DylanChristeningFirstBirthdayBody from "./dylan-christening-first-birthday";
+import BabyShowerThemes2026Body from "./baby-shower-themes-2026";
 
 import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
 import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
@@ -16,6 +17,7 @@ import twoWildCard from "@/assets/journal/two-wild-safari-second-birthday/two-wi
 import gardenMilestoneCard from "@/assets/journal/garden-milestone-styling-surrey/garden-milestone-balloon-arch.webp";
 import willyWonkaCard from "@/assets/willy-wonka-savanna-chocolate-arch-surrey.webp";
 import dylanChristeningCard from "@/assets/journal/dylan-christening-first-birthday/dylan-christening-arched-welcome-panel-balloon-garland.webp";
+import babyShowerThemesCard from "@/assets/baby-shower-baby-in-bloom-arch-surrey.webp";
 
 /**
  * Master list of articles. Order = newest first.
@@ -29,6 +31,27 @@ import dylanChristeningCard from "@/assets/journal/dylan-christening-first-birth
  *      `relatedSlugs`, and vice versa.
  */
 export const ARTICLES: Article[] = [
+  {
+    slug: "baby-shower-themes-2026",
+    title: "Baby shower themes shaping 2026",
+    subtitle:
+      "From neutral and sage palettes to Little Sunshine and Adventure Awaits - the baby shower themes shaping 2026, and the styling that carries them.",
+    teaser:
+      "The ten baby shower themes I'm expecting to see across 2026, from calm neutrals and sage to Little Sunshine, Adventure Awaits and Baby in Bloom, and how I'd style each.",
+    metaDescription:
+      "Ten baby shower themes for 2026, from neutral and sage palettes to Little Sunshine and Adventure Awaits. Balloon installations and backdrops across Surrey.",
+    publishedAt: "2026-08-08",
+    readMinutes: 6,
+    relatedSlugs: [
+      "dylan-christening-first-birthday",
+      "garden-milestone-styling-surrey",
+      "from-design-to-delivery",
+    ],
+    cardImage: babyShowerThemesCard,
+    ogImage: "/og/og-baby-shower-bloom.webp",
+    category: "Trends",
+    Body: BabyShowerThemes2026Body,
+  },
   {
     slug: "dylan-christening-first-birthday",
     title: "Dylan's Christening & First Birthday",

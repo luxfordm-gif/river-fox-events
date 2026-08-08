@@ -595,6 +595,16 @@ export const ROUTES: RouteSEO[] = [
   // using the same script id as Article.tsx, so the runtime injection and
   // the static one don't double up.
   {
+    path: "/journal/baby-shower-themes-2026",
+    title: "Baby Shower Themes 2026: 10 Styling Ideas | River Fox Events",
+    description:
+      "Ten baby shower themes for 2026, from neutral and sage palettes to Little Sunshine and Adventure Awaits. Balloon installations and backdrops across Surrey.",
+    breadcrumbName: "Baby shower themes shaping 2026",
+    ogImage: "/og/og-baby-shower-bloom.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+  },
+  {
     path: "/journal/dylan-christening-first-birthday",
     title: "Dylan's Christening & First Birthday | River Fox Events",
     description:
