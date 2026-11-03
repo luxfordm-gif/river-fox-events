@@ -332,8 +332,9 @@ const ChristmasDoorways = () => {
                 across Surrey. Styled around your paintwork, put up for you,
                 and taken down again in January if you'd&nbsp;like.
               </p>
-              {/* Phones: stacked and the same width. Wider screens: side by side. */}
-              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-[300px] sm:max-w-none">
+              {/* Phones: stacked, matching widths, sized to the longer label
+                  (not full width). Wider screens: side by side. */}
+              <div className="mt-8 mx-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-fit">
                 <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
                   Reserve your date <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
                 </a>
@@ -620,7 +621,8 @@ const ChristmasDoorways = () => {
                   </label>
                 </div>
                 <div className="flex justify-center lg:justify-end items-center mt-6">
-                  <button type="submit" disabled={submitting} className="btn-solid-rf accent disabled:opacity-60">
+                  {/* Full width on phones to match the fields above; natural width from sm up. */}
+                  <button type="submit" disabled={submitting} className="btn-solid-rf accent w-full sm:w-auto justify-center disabled:opacity-60">
                     {submitting ? "Sending…" : "Request a quote"} <span>→</span>
                   </button>
                 </div>
