@@ -595,6 +595,16 @@ export const ROUTES: RouteSEO[] = [
   // using the same script id as Article.tsx, so the runtime injection and
   // the static one don't double up.
   {
+    path: "/journal/christmas-decorations-surrey",
+    title: "Christmas Party Decorations in Surrey | River Fox Events",
+    description:
+      "Christmas party decorations in Surrey, from fresh or faux doorway garlands for homes and shops to sequin walls and LED balloons for the office Christmas party.",
+    breadcrumbName: "Christmas decorations, from front door to dance floor",
+    ogImage: "/og/christmas-decorations-surrey.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+  },
+  {
     path: "/journal/baby-shower-themes-2026",
     title: "Baby Shower Themes 2026: 10 Styling Ideas | River Fox Events",
     description:
