@@ -93,8 +93,8 @@ const ChristmasDecorationsSurreyArticle = () => (
       src={imgPorchIdea}
       aspect="3/4"
       width={560}
-      alt="Snow-dusted fir garland with jewel-toned baubles and warm lights arching over a navy front door with a matching wreath"
-      caption="An idea for a navy door on a brick house: jewel-toned baubles and warm lights, with a wreath to&nbsp;match."
+      alt="Snow-dusted fir garland with jewel-toned baubles and warm lights arching over a navy front door"
+      caption="An idea for a navy door on a brick house: jewel-toned baubles and warm lights around the whole&nbsp;frame."
     />
 
     <ArticlePullQuote>
@@ -145,7 +145,7 @@ const ChristmasDecorationsSurreyArticle = () => (
       </p>
     </ArticleProse>
 
-    <ArticleCta variant="inline" label="Check your date" />
+    <ArticleCta variant="inline" label="Reserve your date" />
 
     <ArticleImage
       src={imgPanel}

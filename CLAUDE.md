@@ -77,19 +77,19 @@ Every page must ship valid JSON-LD covering the schema types relevant to it: `Lo
 
 ## Conventions
 
-### "Check your date" / Enquire CTAs
+### "Reserve your date" / Enquire CTAs
 
-The hero and article button label is **"Check your date"** (changed from "Start planning" in Nov 2026). Laura styles and decorates, she doesn't plan parties, and the enquire form leads with the event date. Don't use "planner" / "planning" wording to describe her service.
+The hero and article button label is **"Reserve your date"** (was "Start planning", then "Check your date"; changed to "Reserve your date" on 2026-11-03). Laura styles and decorates, she doesn't plan parties, and the enquire form leads with the event date. Don't use "planner" / "planning" wording to describe her service.
 
-The Enquire form (`<section id="enquire">`) only renders on a few pages — Index, Children's Parties, Milestones, Corporate & Brand, location pages. Other pages (Journal, articles, 404, Welcome, Contact) reuse the shared Nav and Footer, which both link to the enquire section.
+The Enquire form (`<section id="enquire">`) only renders on a few pages — Index, Children's Parties, Milestones, Corporate & Brand, location pages, and Christmas Door Garlands (which has its own booking form with the same id). Other pages (Journal, articles, 404, Welcome, Contact) reuse the shared Nav and Footer, which both link to the enquire section.
 
-**Always route Check your date / Enquire CTAs through `handleEnquireClick` from `@/lib/enquire`**, with `href={ENQUIRE_HREF}` (`/#enquire`):
+**Always route Reserve your date / Enquire CTAs through `handleEnquireClick` from `@/lib/enquire`**, with `href={ENQUIRE_HREF}` (`/#enquire`):
 
 ```tsx
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
-  Check your date <span>→</span>
+  Reserve your date <span>→</span>
 </a>
 ```
 

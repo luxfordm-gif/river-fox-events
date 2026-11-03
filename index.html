@@ -54,6 +54,43 @@
       gtag('config', 'G-L2YVNSW0ZQ');
       gtag('config', 'AW-18210626936');
     </script>
+
+    <!-- Preference panel: review-only pill (see public/pref-panel.js). On for
+         localhost and Netlify previews, or anywhere with ?panel. Skipped under
+         automation (navigator.webdriver) so the prerender step never bakes it
+         into the static HTML. Visitors never download it. -->
+    <script>
+      (function(){
+        var on=false,q=new URLSearchParams(location.search).get("panel");
+        try{
+          if(q==="off")localStorage.removeItem("pref-panel:on");
+          else if(q!==null)localStorage.setItem("pref-panel:on","1");
+          on=localStorage.getItem("pref-panel:on")==="1";
+        }catch(e){}
+        var h=location.hostname;
+        on=on||/^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\]|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+)$/.test(h)||/\.netlify\.app$/.test(h);
+        if(!on||q==="off")return;
+        if(navigator.webdriver&&q===null)return;
+        window.PREF_PANEL={
+          groups:[
+            {id:"xmas",label:"Christmas edition",options:[
+              {value:"frost",title:"Frost & gold",sub:"Stays on cream, antique gold accents"},
+              {value:"spruce",title:"Spruce & berry",sub:"Deep spruce sections, berry buttons, gold italics"},
+              {value:"brand",title:"Everyday brand",sub:"No Christmas changes, for comparison"}
+            ]}
+          ]
+        };
+        try{
+          var s=JSON.parse(localStorage.getItem("pref-panel"))||{},p=s.prefs||{};
+          window.PREF_PANEL.groups.forEach(function(g){
+            document.documentElement.setAttribute("data-pref-"+g.id,p[g.id]||g.options[0].value);
+          });
+        }catch(e){}
+        var el=document.createElement("script");
+        el.src="/pref-panel.js";el.defer=true;
+        document.head.appendChild(el);
+      })();
+    </script>
   </head>
 
   <body>
@@ -88,6 +125,24 @@
       <input type="text" name="budget" />
       <input type="text" name="referral" />
       <textarea name="vision"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
+
+    <!-- Static form for the /christmas-door-garlands booking form. Multipart
+         because it carries a photo of the door. -->
+    <form name="christmas-doorway" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="postcode" />
+      <input type="text" name="property" />
+      <input type="text" name="garland" />
+      <input type="text" name="measurements" />
+      <input type="text" name="install" />
+      <input type="file" name="door-photo" />
+      <input type="text" name="takedown" />
+      <textarea name="notes"></textarea>
+      <input type="text" name="page" />
       <input type="text" name="bot-field" />
     </form>
 

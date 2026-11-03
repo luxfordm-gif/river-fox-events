@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
 import { ChevronDown } from "lucide-react";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
@@ -7,6 +8,9 @@ const SERVICES = [
   { href: "/milestone-celebrations", label: "Milestone celebrations" },
   { href: "/corporate-brand-styling", label: "Corporate & brand" },
 ];
+
+/* Seasonal service, set apart below a divider with a velvet bow. */
+const SEASONAL = { href: "/christmas-door-garlands", label: "Christmas door garlands" };
 
 const ABOUT_LINKS = [
   { href: "/#about", label: "About Laura" },
@@ -63,7 +67,7 @@ const Nav = () => {
               aria-haspopup="true"
               aria-expanded={servicesOpen}
             >
-              Experiences
+              Services
               <ChevronDown
                 size={12}
                 strokeWidth={1.25}
@@ -90,6 +94,14 @@ const Nav = () => {
                     {s.label}
                   </a>
                 ))}
+                <div className="mx-5 my-2 border-t border-ink/10" aria-hidden="true" />
+                <a
+                  href={SEASONAL.href}
+                  className="no-underline-fx flex items-center gap-2.5 px-5 py-2.5 text-[13px] text-ink hover:underline underline-offset-4 decoration-ink/60"
+                >
+                  <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />
+                  {SEASONAL.label}
+                </a>
               </div>
             </div>
           </div>
@@ -186,6 +198,7 @@ const Nav = () => {
             { href: "/childrens-parties", label: "Children's parties" },
             { href: "/milestone-celebrations", label: "Milestone celebrations" },
             { href: "/corporate-brand-styling", label: "Corporate & brand" },
+            { href: SEASONAL.href, label: "Christmas garlands", seasonal: true },
             { href: "/#about", label: "About" },
             { href: "/contact", label: "Contact" },
           ].map((l, i) => (
@@ -193,13 +206,18 @@ const Nav = () => {
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="font-serif-rf text-[32px] leading-tight py-1.5 text-ink no-underline"
+              className={`font-serif-rf text-[32px] leading-tight py-1.5 text-ink no-underline ${
+                "seasonal" in l ? "flex items-center gap-3 border-y border-ink/10 py-4 my-2" : ""
+              }`}
               style={{
                 opacity: open ? 1 : 0,
                 transform: open ? "translateY(0)" : "translateY(20px)",
                 transition: `opacity .5s ease ${i * 60}ms, transform .5s ease ${i * 60}ms`,
               }}
             >
+              {"seasonal" in l && (
+                <img src={bow160} alt="" aria-hidden="true" className="w-[30px] h-auto" width={160} height={165} />
+              )}
               {l.label}
             </a>
           ))}

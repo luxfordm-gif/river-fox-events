@@ -147,7 +147,7 @@ const Article = () => {
             </>
           }
           body="Considered design, personally delivered by Laura across Surrey. Share your vision and we'll be in touch personally."
-          label="Check your date"
+          label="Reserve your date"
           href="/#enquire"
         />
 

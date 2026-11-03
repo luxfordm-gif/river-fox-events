@@ -182,6 +182,19 @@ export const ROUTES: RouteSEO[] = [
     changefreq: "monthly",
   },
   {
+    path: "/christmas-door-garlands",
+    title: "Christmas Door Garlands in Surrey | River Fox Events",
+    description:
+      "Christmas door garlands in Surrey for homes, porches and shopfronts. Fresh spruce or faux, styled to your paintwork, put up for you and taken down in January.",
+    breadcrumbName: "Christmas Door Garlands",
+    service: {
+      serviceType: "Christmas Door Garland Installation",
+      areaServed: ["Surrey", "Reigate", "East Molesey", "Cobham", "Esher", "Weybridge"],
+    },
+    priority: 0.8,
+    changefreq: "weekly",
+  },
+  {
     path: "/party-styling-oxted",
     ogImage: "/og/og-fairy-kayla.webp",
     title: "Oxted Party Decorations & Balloon Arches | River Fox Events",

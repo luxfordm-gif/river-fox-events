@@ -3,10 +3,14 @@ import hero1 from "@/assets/hero-1.webp";
 import hero2 from "@/assets/hero-2.webp";
 import hero3 from "@/assets/hero-3.webp";
 
-type FanImage = { src: string; alt: string };
+type FanImage = { src: string; alt: string; objectPosition?: string };
 type LocationHeroFanProps = {
   /** Optional per-location override - order is [left, centre, right]. */
   images?: [FanImage, FanImage, FanImage];
+  /** Fan the side cards further apart while the pointer is over the fan. */
+  spreadOnHover?: boolean;
+  /** Corner radius of the cards, in px. */
+  radius?: number;
 };
 
 /**
@@ -19,11 +23,15 @@ type LocationHeroFanProps = {
  *
  * Mobile uses ScrollStrip - this component is hidden below md.
  *
+ * With `spreadOnHover`, the side cards open out further (wider and more
+ * tilted) while the pointer is over the fan, and settle back on leave.
+ *
  * Honours `prefers-reduced-motion`: jumps straight to the final fanned
  * state with no transition.
  */
-const LocationHeroFan = ({ images }: LocationHeroFanProps = {}) => {
+const LocationHeroFan = ({ images, spreadOnHover = false, radius = 10 }: LocationHeroFanProps = {}) => {
   const [fanned, setFanned] = useState(false);
+  const [spread, setSpread] = useState(false);
 
   const fallback: [FanImage, FanImage, FanImage] = [
     {
@@ -56,7 +64,16 @@ const LocationHeroFan = ({ images }: LocationHeroFanProps = {}) => {
     return () => window.clearTimeout(t);
   }, []);
 
-  const transition = "transform 1.4s cubic-bezier(0.22, 0.7, 0.2, 1) 0.15s";
+  // The first fan-out keeps its slight delay; once hovering has started the
+  // spread uses a slow-in, slow-out ease so it opens and closes smoothly.
+  const [settled, setSettled] = useState(false);
+  const transition = settled
+    ? "transform 1.2s cubic-bezier(0.45, 0, 0.2, 1)"
+    : "transform 1.4s cubic-bezier(0.22, 0.7, 0.2, 1) 0.15s";
+  const onEnter = spreadOnHover ? () => { setSettled(true); setSpread(true); } : undefined;
+  const onLeave = spreadOnHover ? () => setSpread(false) : undefined;
+  const sideX = spread ? 14.5 : 12; // vw
+  const sideTilt = spread ? 8.5 : 7; // deg
   const sideShadow = "0 22px 56px -22px hsl(var(--ink) / 0.28)";
   const centerShadow = "0 30px 72px -22px hsl(var(--ink) / 0.34)";
 
@@ -64,12 +81,13 @@ const LocationHeroFan = ({ images }: LocationHeroFanProps = {}) => {
   // canvas, horizontally centred. Rotation pivot at bottom-centre so
   // tilts don't lift the bottom edge off the line.
   const sideImg =
-    "absolute bottom-[6%] left-1/2 w-[32%] max-w-[340px] object-cover rounded-[10px] will-change-transform";
+    "absolute bottom-[6%] left-1/2 w-[32%] max-w-[340px] object-cover will-change-transform";
   const sideStyle = {
     aspectRatio: "3 / 4" as const,
     transformOrigin: "bottom center" as const,
     transition,
     boxShadow: sideShadow,
+    borderRadius: radius,
   };
 
   return (
@@ -82,6 +100,8 @@ const LocationHeroFan = ({ images }: LocationHeroFanProps = {}) => {
     >
       <div
         className="relative mx-auto"
+        onMouseEnter={onEnter}
+        onMouseLeave={onLeave}
         style={{
           maxWidth: "1100px",
           // Aspect-ratio so the canvas hugs the imagery instead of
@@ -102,8 +122,9 @@ const LocationHeroFan = ({ images }: LocationHeroFanProps = {}) => {
           className={sideImg}
           style={{
             ...sideStyle,
+            objectPosition: left.objectPosition,
             transform: fanned
-              ? "translateX(-50%) translateX(-12vw) rotate(-7deg)"
+              ? `translateX(-50%) translateX(-${sideX}vw) rotate(-${sideTilt}deg)`
               : "translateX(-50%) rotate(0deg)",
             zIndex: 1,
           }}
@@ -121,8 +142,9 @@ const LocationHeroFan = ({ images }: LocationHeroFanProps = {}) => {
           className={sideImg}
           style={{
             ...sideStyle,
+            objectPosition: right.objectPosition,
             transform: fanned
-              ? "translateX(-50%) translateX(12vw) rotate(7deg)"
+              ? `translateX(-50%) translateX(${sideX}vw) rotate(${sideTilt}deg)`
               : "translateX(-50%) rotate(0deg)",
             zIndex: 2,
           }}
@@ -138,12 +160,15 @@ const LocationHeroFan = ({ images }: LocationHeroFanProps = {}) => {
         <img
           src={centre.src}
           alt={centre.alt}
-          className="absolute bottom-[6%] left-1/2 w-[37%] max-w-[400px] object-cover rounded-[10px]"
+          className="absolute bottom-[6%] left-1/2 w-[37%] max-w-[400px] object-cover"
           style={{
             aspectRatio: "3 / 4",
-            transform: "translateX(-50%)",
+            objectPosition: centre.objectPosition,
+            transform: spread ? "translateX(-50%) translateY(-1%)" : "translateX(-50%)",
             transformOrigin: "bottom center",
+            transition,
             boxShadow: centerShadow,
+            borderRadius: radius,
             zIndex: 3,
           }}
           loading="eager"
