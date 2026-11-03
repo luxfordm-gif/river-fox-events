@@ -13,7 +13,7 @@ const forestRow = makeLocation({
   uniqueSeoTitle: "Forest Row Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Forest-edge children's parties across the Ashdown Forest - first birthdays to big themed celebrations, individually designed and installed by Laura.",
-  uniqueHeroLine: <>Children's party styling in Forest Row,</>,
+  uniqueHeroLine: <>Forest Row birthdays,</>,
   uniqueHeroSub: <>Gardens on the edge of Ashdown Forest, around Hartfield and Nutley, suit balloon hoops, woodland-themed backdrops and picnic setups for little ones.</>,
   uniqueUspBody:
     "For Forest Row families wanting a celebration with a little more to it, River Fox Events designs days that feel personal, memorable and beautifully resolved. Built around statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes and village venues into celebrations children and guests remember well beyond the day.",

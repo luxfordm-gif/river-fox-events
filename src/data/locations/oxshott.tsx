@@ -12,7 +12,7 @@ const oxshott = makeLocation({
   uniqueSeoTitle: "Children's Party Decorators in Oxshott | River Fox Events",
   uniqueSeoDescription:
     "Children's party decorators for at-home parties in Oxshott, with balloon installations, themed backdrops and props. Rated 5.0 on Google, takedown included.",
-  uniqueHeroLine: <>Children's party styling in Oxshott,</>,
+  uniqueHeroLine: <>Balloon arches in&nbsp;Oxshott,</>,
   uniqueHeroSub: <>At-home parties near Hinchley Wood and Leatherhead get arrival balloon arches, garden backdrops and themed props, with everything gone by the evening.</>,
   uniqueUspBody:
     "For Oxshott families after a celebration that feels a cut above, River Fox Events designs days that are personal, memorable and beautifully put together. Built around statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes, gardens and venues into celebrations children and guests remember long after everyone has gone home.",

@@ -13,7 +13,7 @@ const lewes = makeLocation({
   uniqueSeoTitle: "Lewes Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Themed first birthdays and children's parties in Lewes and the East Sussex villages, individually designed and installed by Laura.",
-  uniqueHeroLine: <>Children's party styling in Lewes,</>,
+  uniqueHeroLine: <>Lewes children's parties,</>,
   uniqueHeroSub: <>Family celebrations in Ringmer, Barcombe and the villages around Glynde, decorated with character cutouts, balloon garlands and themed backdrops.</>,
   uniqueUspBody:
     "Planning a birthday, christening or family celebration in Lewes? River Fox Events creates styling designed to feel personal, exciting and hard to forget. From statement balloon installations and bespoke backdrops to the finishing details, each celebration is individually designed to bring your vision to life for your child and the people there to share it.",

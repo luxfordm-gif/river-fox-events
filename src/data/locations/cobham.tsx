@@ -12,7 +12,7 @@ const cobham = makeLocation({
   uniqueSeoTitle: "Balloon Arches & Party Decor in Cobham | River Fox Events",
   uniqueSeoDescription:
     "Balloon arches, garlands and photo backdrops for Cobham and Stoke d'Abernon parties. Designed by Laura, set up on the morning and taken down after, from £460.",
-  uniqueHeroLine: <>Children's party styling in Cobham,</>,
+  uniqueHeroLine: <>Children's parties in&nbsp;Cobham,</>,
   uniqueHeroSub: <>Garden marquees and family kitchens around Stoke d'Abernon, filled with balloon garlands, sailboard backdrops and your child's name in light-up letters.</>,
   uniqueUspBody:
     "If you're planning a celebration in Cobham, River Fox Events brings together beautiful styling, statement balloon installations and thoughtful details to create something truly memorable. Every event is individually designed around your child, your space and your vision, resulting in a celebration that feels personal, exciting and completely unique.",

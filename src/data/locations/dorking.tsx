@@ -12,7 +12,7 @@ const dorking = makeLocation({
   uniqueSeoTitle: "Dorking Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Children's parties beneath the Surrey Hills - first birthdays to big themed celebrations in Dorking, individually designed by Laura.",
-  uniqueHeroLine: <>Children's party styling in Dorking,</>,
+  uniqueHeroLine: <>Party decorations in&nbsp;Dorking,</>,
   uniqueHeroSub: <>Balloon towers, fabric backdrops and painted welcome signs for village halls in Brockham and gardens near Box Hill.</>,
   uniqueUspBody:
     "For Dorking families after something a little more special, River Fox Events designs celebrations that feel personal, memorable and beautifully put together. Known for statement balloon installations, bespoke backdrops and thoughtful styling, we turn homes and venues around the town into days that children and guests talk about long afterwards.",
