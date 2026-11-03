@@ -20,20 +20,21 @@ const Hero = () => {
             }}
           >
             <span className="word-reveal in">
-              <span>Immersive celebrations,</span>
+              <span>Balloons&nbsp;and backdrops,</span>
             </span>
             <br />
             <span className="word-reveal in delay-1">
               <span>
-                thoughtfully{" "}
-                <em className="italic font-normal text-accent-warm">designed.</em>
+                styled in{" "}
+                <em className="italic font-normal text-accent-warm">Surrey.</em>
               </span>
             </span>
           </h1>
 
           <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-1 md:mt-5 fade-up in text-center">
-            Luxury event styling in Surrey, specialising in children's
-            parties, milestone celebrations and bespoke installations.
+            Children's parties, milestone birthdays and brand events,
+            designed by Laura, set up before guests arrive and cleared away
+            after.
           </p>
 
           <div className="flex items-center justify-center gap-5 flex-wrap mt-10 fade-up in">
