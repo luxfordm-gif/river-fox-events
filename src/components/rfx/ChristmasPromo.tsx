@@ -19,8 +19,8 @@ const DECK = [imgGeorgian, imgPilates, imgNavy, imgReigate];
  * along the bottom on phones). A small deck of doorway photos shuffles: every
  * few seconds the front photo slides out and tucks in at the back.
  *
- * Shows once the visitor has scrolled a little and has answered the cookie
- * banner (which uses the same corner). Closing it is remembered. Never shows
+ * Shows about a second after load, once the cookie banner (which uses the
+ * same corner) has been answered. Closing it is remembered. Never shows
  * on the Christmas page itself. Uses the Christmas edition's colours by
  * carrying the .rfx-xmas class.
  */
@@ -43,15 +43,15 @@ const ChristmasPromo = () => {
         return true;
       }
     };
-    const onScroll = () => {
-      if (window.scrollY > 500 && consentAnswered()) {
-        setShow(true);
-        window.removeEventListener("scroll", onScroll);
-      }
+    // Appear about a second after load. If the cookie banner (same corner)
+    // is still waiting for an answer, check again until it's been answered.
+    let t = 0;
+    const tryShow = () => {
+      if (consentAnswered()) setShow(true);
+      else t = window.setTimeout(tryShow, 600);
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    t = window.setTimeout(tryShow, 1100);
+    return () => window.clearTimeout(t);
   }, []);
 
   useEffect(() => {
