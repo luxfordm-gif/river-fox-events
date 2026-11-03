@@ -41,7 +41,7 @@ const Welcome = () => {
           <h1
             className="font-serif-rf max-w-[18ch] mx-auto"
             style={{
-              fontSize: "clamp(40px, 5.5vw, 84px)",
+              fontSize: "var(--fs-h1)",
               lineHeight: 1.02,
               fontWeight: 400,
               letterSpacing: "-0.028em",

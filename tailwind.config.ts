@@ -18,6 +18,14 @@ export default {
         sans: ["DM Sans", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "ui-monospace", "monospace"],
       },
+      fontSize: {
+        display: "var(--fs-display)",
+        h1: "var(--fs-h1)",
+        h2: "var(--fs-h2)",
+        h3: "var(--fs-h3)",
+        h4: "var(--fs-h4)",
+        faq: "var(--fs-faq)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

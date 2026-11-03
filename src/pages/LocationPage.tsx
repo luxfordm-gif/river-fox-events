@@ -110,7 +110,7 @@ const LocationPage = () => {
                   // names ("Oxshott", "Walton-on-Thames") aren't forced
                   // into a narrow column - gives the h1 more breathing
                   // room across the typical phone viewport.
-                  fontSize: "clamp(40px, 5.5vw, 80px)",
+                  fontSize: "var(--fs-h1)",
                   lineHeight: 1.04,
                   fontWeight: 400,
                   letterSpacing: "-0.032em",

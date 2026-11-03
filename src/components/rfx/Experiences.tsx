@@ -120,7 +120,7 @@ const Experiences = ({
             id="exp-heading"
             className="font-serif-rf fade-up m-0 text-center md:text-left"
             style={{
-              fontSize: "clamp(48px, 4.2vw, 76px)",
+              fontSize: "var(--fs-h2)",
               lineHeight: 1.04,
               fontWeight: 300,
               letterSpacing: "-0.025em",

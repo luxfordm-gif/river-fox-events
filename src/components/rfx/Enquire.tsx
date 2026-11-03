@@ -55,7 +55,7 @@ const Enquire = ({
               id="enquire-heading"
               className="font-serif-rf"
               style={{
-                fontSize: "clamp(48px, 4.2vw, 80px)",
+                fontSize: "var(--fs-h2)",
                 lineHeight: 0.96,
                 fontWeight: 300,
                 letterSpacing: "-0.03em",
@@ -116,7 +116,7 @@ const Enquire = ({
               <h3
                 className="font-serif-rf text-primary"
                 style={{
-                  fontSize: "clamp(26px, 3vw, 34px)",
+                  fontSize: "var(--fs-h3)",
                   lineHeight: 1.18,
                   fontWeight: 400,
                   letterSpacing: "-0.018em",

@@ -15,7 +15,7 @@ const ArticlePullQuote = ({ children, attribution }: Props) => (
     <p
       className="font-serif-rf italic text-ink"
       style={{
-        fontSize: "clamp(26px, 2.6vw, 36px)",
+        fontSize: "var(--fs-h3)",
         lineHeight: 1.22,
         fontWeight: 300,
         letterSpacing: "-0.012em",

@@ -90,7 +90,7 @@ const ChildrensFAQ = ({
             id={headingId}
             className="font-serif-rf"
             style={{
-              fontSize: "clamp(36px, 4vw, 72px)",
+              fontSize: "var(--fs-h2)",
               lineHeight: 1.06,
               fontWeight: 300,
               letterSpacing: "-0.025em",
@@ -123,12 +123,12 @@ const ChildrensFAQ = ({
                 value={`item-${i}`}
                 className="faq-rf-item border-t border-ink/20 last:border-b last:border-ink/20"
               >
-                <AccordionTrigger className="faq-rf-trigger group hover:no-underline py-7 data-[state=open]:pb-[10px] [&>svg]:hidden">
+                <AccordionTrigger className="faq-rf-trigger group hover:no-underline py-7 max-md:py-5 data-[state=open]:pb-[10px] [&>svg]:hidden">
                   <div className="grid grid-cols-[60px_1fr_40px] items-baseline gap-6 w-full text-left max-md:grid-cols-[40px_1fr_32px] max-md:gap-3.5">
                     <span className="font-mono-rf text-[11px] tracking-[0.22em] text-ink-soft">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-serif-rf font-light text-ink leading-[1.25] tracking-[-0.018em] text-[clamp(20px,2.4vw,30px)]">
+                    <span className="font-serif-rf font-light text-ink leading-[1.25] tracking-[-0.018em] text-faq">
                       {it.q}
                     </span>
                     <span className="faq-rf-plus inline-flex items-center justify-center text-[22px] font-light text-ink transition-transform duration-500 ease-out">

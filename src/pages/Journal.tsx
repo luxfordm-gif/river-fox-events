@@ -138,7 +138,7 @@ const Journal = () => {
           <h1
             className="font-serif-rf max-w-[14ch] mx-auto"
             style={{
-              fontSize: "clamp(48px, 6vw, 88px)",
+              fontSize: "var(--fs-h1)",
               lineHeight: 1.02,
               fontWeight: 500,
               letterSpacing: "-0.025em",
