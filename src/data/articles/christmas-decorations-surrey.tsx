@@ -79,7 +79,11 @@ const ChristmasDecorationsSurreyArticle = () => (
         Garlands can be fresh or faux, depending on how long you'd like them to
         last. Fresh foliage smells wonderful and suits a shorter window, while
         a good faux garland stays full and neat right through to January, which
-        shops and offices often&nbsp;prefer.
+        shops and offices often prefer. Many clients choose a mix of the two, a
+        faux base with fresh spruce layered on top, for the fullest look. You
+        can see past doorways and book yours on my{" "}
+        <a href="/christmas-door-garlands/">Christmas door garlands</a>{" "}
+        page.
       </p>
       <p>
         For shops, salons and studios, a dressed doorway does real work too. It
