@@ -8,6 +8,7 @@ import GardenMilestoneStylingSurreyBody from "./garden-milestone-styling-surrey"
 import WillyWonkaFifthBirthdaySavannaBody from "./willy-wonka-fifth-birthday-savanna";
 import DylanChristeningFirstBirthdayBody from "./dylan-christening-first-birthday";
 import BabyShowerThemes2026Body from "./baby-shower-themes-2026";
+import ChristmasDecorationsSurreyBody from "./christmas-decorations-surrey";
 
 import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
 import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
@@ -18,6 +19,7 @@ import gardenMilestoneCard from "@/assets/journal/garden-milestone-styling-surre
 import willyWonkaCard from "@/assets/willy-wonka-savanna-chocolate-arch-surrey.webp";
 import dylanChristeningCard from "@/assets/journal/dylan-christening-first-birthday/dylan-christening-arched-welcome-panel-balloon-garland.webp";
 import babyShowerThemesCard from "@/assets/baby-shower-baby-in-bloom-arch-surrey.webp";
+import christmasDecorationsCard from "@/assets/journal/christmas-decorations-surrey/christmas-doorway-garland-pink-studio-east-molesey.webp";
 
 /**
  * Master list of articles. Order = newest first.
@@ -31,6 +33,27 @@ import babyShowerThemesCard from "@/assets/baby-shower-baby-in-bloom-arch-surrey
  *      `relatedSlugs`, and vice versa.
  */
 export const ARTICLES: Article[] = [
+  {
+    slug: "christmas-decorations-surrey",
+    title: "Christmas decorations, from front door to dance floor",
+    subtitle:
+      "Doorway garlands for homes and shops, sequin walls and balloon garlands for the office party, and how to book before the season fills up.",
+    teaser:
+      "Where Christmas decorating makes the biggest difference - the front door, the shop entrance and the party room - with real doorways and work parties from last season.",
+    metaDescription:
+      "Christmas party decorations in Surrey, from fresh or faux doorway garlands for homes and shops to sequin walls and LED balloons for the office Christmas party.",
+    publishedAt: "2026-11-03",
+    readMinutes: 5,
+    relatedSlugs: [
+      "garden-milestone-styling-surrey",
+      "beyond-the-balloon-arch",
+      "from-design-to-delivery",
+    ],
+    cardImage: christmasDecorationsCard,
+    ogImage: "/og/christmas-decorations-surrey.webp",
+    category: "Trends",
+    Body: ChristmasDecorationsSurreyBody,
+  },
   {
     slug: "baby-shower-themes-2026",
     title: "Baby shower themes shaping 2026",
