@@ -129,7 +129,7 @@ const CorporateAndBrand = () => {
               </em>
             </>,
           ]}
-          sub="We design and install visually impactful setups for brands, launches and events across Surrey and London - balancing creativity with a refined, on-brand finish."
+          sub="Branded balloon installations, sequin walls and signage for launches, award nights and Christmas parties, installed before doors open and cleared away after."
         />
 
         <CPReveal

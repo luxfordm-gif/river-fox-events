@@ -155,9 +155,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/milestone-celebrations",
-    title: "Milestone Birthday & Celebration Styling | River Fox Events",
+    title: "Milestone Birthday Decorations & Balloons | River Fox Events",
     description:
-      "Styling for 30ths, 40ths, 50ths and beyond - christenings, anniversaries and baby showers. Balloons, backdrops and a room that feels like the occasion.",
+      "Milestone birthday decorations in Surrey, from light-up numbers and balloon walls for 40ths and 50ths to christening and baby shower backdrops, from £460.",
     breadcrumbName: "Milestone Celebrations",
     service: {
       serviceType: "Milestone Celebration Styling",
@@ -169,9 +169,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/corporate-brand-styling",
-    title: "Corporate Event & Brand Styling - Surrey | River Fox Events",
+    title: "Corporate Event Decor & Brand Backdrops | River Fox Events",
     description:
-      "Event styling for launches, award nights and brand activations - installs and signage built around your brand. Trusted by P&G, The Range and Foxhills.",
+      "Corporate event decor across Surrey, with branded balloon installations, sequin walls and signage for launches and award nights. Trusted by P&G and Foxhills.",
     breadcrumbName: "Corporate & Brand Styling",
     service: {
       serviceType: "Corporate Event Styling and Brand Installations",

@@ -95,7 +95,7 @@ const Milestones = () => {
               </em>
             </>,
           ]}
-          sub="Bespoke event styling for milestone birthdays, baby showers and anniversaries across Surrey - life's most significant moments, honoured properly."
+          sub="Light-up numbers, balloon walls and personalised backdrops for 30ths, 40ths, anniversaries and christenings, set up before guests arrive and cleared away after."
         />
 
         <CPReveal
