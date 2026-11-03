@@ -7,6 +7,7 @@ import ArticleTLDR from "@/components/article/ArticleTLDR";
 import imgDoorway from "@/assets/journal/christmas-decorations-surrey/christmas-doorway-garland-pink-studio-east-molesey.webp";
 import imgSequin from "@/assets/journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp";
 import imgPanel from "@/assets/journal/christmas-decorations-surrey/merry-christmas-panel-silver-navy-balloon-garland.webp";
+import imgPorchIdea from "@/assets/journal/christmas-decorations-surrey/jewel-tone-bauble-garland-brick-porch-idea.webp";
 
 const ChristmasDecorationsSurreyArticle = () => (
   <>
@@ -70,9 +71,9 @@ const ChristmasDecorationsSurreyArticle = () => (
         I always start with the paintwork. Last year at Bondi Rise, the soft
         pink frontage set the palette: frosted fir, red and blush baubles, a
         few white pearls to catch the light and candy canes for a playful
-        touch. On a dark green or navy door I'd lean into gold and ivory
-        instead, and on a white cottage door, deep reds and natural pine cones
-        feel&nbsp;right.
+        touch. A navy or dark green door can carry jewel tones and warm
+        lights, or gold and ivory if you'd like it quieter. On a white cottage
+        door, deep reds and natural pine cones feel&nbsp;right.
       </p>
       <p>
         Garlands can be fresh or faux, depending on how long you'd like them to
@@ -87,6 +88,14 @@ const ChristmasDecorationsSurreyArticle = () => (
         in.
       </p>
     </ArticleProse>
+
+    <ArticleImage
+      src={imgPorchIdea}
+      aspect="3/4"
+      width={560}
+      alt="Snow-dusted fir garland with jewel-toned baubles and warm lights arching over a navy front door with a matching wreath"
+      caption="An idea for a navy door on a brick house: jewel-toned baubles and warm lights, with a wreath to&nbsp;match."
+    />
 
     <ArticlePullQuote>
       Christmas decorating should feel generous and finished, never like a box
