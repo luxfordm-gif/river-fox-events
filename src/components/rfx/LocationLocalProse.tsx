@@ -31,7 +31,7 @@ const LocationLocalProse = ({
             id={headingId}
             className="font-serif-rf"
             style={{
-              fontSize: "clamp(36px, 3.8vw, 60px)",
+              fontSize: "var(--fs-h2)",
               lineHeight: 1.05,
               fontWeight: 400,
               letterSpacing: "-0.025em",

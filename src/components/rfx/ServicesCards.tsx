@@ -55,7 +55,7 @@ const ServicesCards = ({
                 id={headingId}
                 className="font-serif-rf"
                 style={{
-                  fontSize: "clamp(34px, 3.6vw, 56px)",
+                  fontSize: "var(--fs-h2)",
                   lineHeight: 1.05,
                   fontWeight: 400,
                   letterSpacing: "-0.025em",
@@ -97,7 +97,7 @@ const ServicesCards = ({
               <h3
                 className="font-serif-rf text-ink"
                 style={{
-                  fontSize: "clamp(22px, 2.2vw, 28px)",
+                  fontSize: "var(--fs-h4)",
                   lineHeight: 1.18,
                   fontWeight: 400,
                   letterSpacing: "-0.012em",

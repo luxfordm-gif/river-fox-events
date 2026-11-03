@@ -73,7 +73,7 @@ const ServiceHero = ({
             id={headingId}
             className="font-serif-rf max-w-[14ch] md:max-w-none mx-auto break-words text-pretty"
             style={{
-              fontSize: "clamp(52px, 6.5vw, 110px)",
+              fontSize: "var(--fs-display)",
               lineHeight: 0.96,
               fontWeight: 400,
               letterSpacing: "-0.038em",

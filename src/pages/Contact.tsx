@@ -83,7 +83,7 @@ const Contact = () => {
                 id="contact-heading"
                 className="font-serif-rf max-w-[18ch] mx-auto"
                 style={{
-                  fontSize: "clamp(48px, 6vw, 88px)",
+                  fontSize: "var(--fs-h1)",
                   lineHeight: 1.0,
                   fontWeight: 300,
                   letterSpacing: "-0.028em",

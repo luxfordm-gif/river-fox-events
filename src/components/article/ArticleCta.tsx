@@ -43,7 +43,7 @@ const ArticleCta = ({
         <h2
           className="font-serif-rf max-w-[20ch] mx-auto"
           style={{
-            fontSize: "clamp(28px, 3vw, 44px)",
+            fontSize: "var(--fs-h3)",
             lineHeight: 1.06,
             fontWeight: 300,
             letterSpacing: "-0.022em",

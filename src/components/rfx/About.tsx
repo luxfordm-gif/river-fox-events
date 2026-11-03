@@ -140,7 +140,7 @@ const About = () => {
               id="about-heading"
               className="font-serif-rf"
               style={{
-                fontSize: "clamp(44px, 4.2vw, 72px)",
+                fontSize: "var(--fs-h2)",
                 lineHeight: 1.02,
                 fontWeight: 300,
                 letterSpacing: "-0.028em",

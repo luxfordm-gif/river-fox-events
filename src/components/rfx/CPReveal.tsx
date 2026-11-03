@@ -130,7 +130,7 @@ const CPReveal = ({
       <h2
         className="font-serif-rf"
         style={{
-          fontSize: "clamp(34px, 3.4vw, 56px)",
+          fontSize: "var(--fs-h2)",
           lineHeight: 1.0,
           fontWeight: 400,
           letterSpacing: "-0.025em",

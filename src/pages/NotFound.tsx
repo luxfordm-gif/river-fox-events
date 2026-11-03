@@ -44,7 +44,7 @@ const NotFound = () => {
           <h1
             className="font-serif-rf"
             style={{
-              fontSize: "clamp(40px, 4.5vw, 80px)",
+              fontSize: "var(--fs-h1)",
               lineHeight: 1.0,
               fontWeight: 300,
               letterSpacing: "-0.028em",

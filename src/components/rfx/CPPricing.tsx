@@ -34,7 +34,7 @@ const CPPricing = ({
             id="cp-pricing-heading"
             className="font-serif-rf fade-up max-w-[20ch] mx-auto"
             style={{
-              fontSize: "clamp(40px, 4vw, 72px)",
+              fontSize: "var(--fs-h2)",
               lineHeight: 1.0,
               fontWeight: 300,
               letterSpacing: "-0.028em",

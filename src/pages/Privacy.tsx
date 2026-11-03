@@ -25,7 +25,7 @@ const Privacy = () => {
           <h1
             className="font-serif-rf max-w-[18ch] mx-auto"
             style={{
-              fontSize: "clamp(44px, 5vw, 72px)",
+              fontSize: "var(--fs-h1)",
               lineHeight: 1.04,
               fontWeight: 400,
               letterSpacing: "-0.028em",

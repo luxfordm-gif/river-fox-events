@@ -55,7 +55,7 @@ const RelatedArticles = ({ items }: Props) => {
               <h3
                 className="font-serif-rf text-ink group-hover:text-accent-warm transition-colors"
                 style={{
-                  fontSize: "clamp(20px, 1.8vw, 24px)",
+                  fontSize: "var(--fs-h4)",
                   lineHeight: 1.2,
                   fontWeight: 400,
                   letterSpacing: "-0.012em",

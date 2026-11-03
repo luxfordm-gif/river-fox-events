@@ -21,7 +21,7 @@ const InstagramFollow = () => {
               id="instagram-heading"
               className="font-serif-rf"
               style={{
-                fontSize: "clamp(36px, 4vw, 64px)",
+                fontSize: "var(--fs-h2)",
                 lineHeight: 1.04,
                 fontWeight: 300,
                 letterSpacing: "-0.028em",

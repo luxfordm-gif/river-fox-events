@@ -202,7 +202,7 @@ const CorporateAndBrand = () => {
               id="cb-trust-heading"
               className="font-serif-rf"
               style={{
-                fontSize: "clamp(36px, 3.6vw, 56px)",
+                fontSize: "var(--fs-h2)",
                 lineHeight: 1.04,
                 fontWeight: 300,
                 letterSpacing: "-0.025em",
@@ -269,7 +269,7 @@ const CorporateAndBrand = () => {
               id="cb-closing-heading"
               className="font-serif-rf fade-up max-w-[22ch] mx-auto"
               style={{
-                fontSize: "clamp(36px, 4vw, 64px)",
+                fontSize: "var(--fs-h2)",
                 lineHeight: 1.04,
                 fontWeight: 300,
                 letterSpacing: "-0.025em",

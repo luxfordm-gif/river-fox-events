@@ -75,7 +75,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
           <h2
             className="font-serif-rf"
             style={{
-              fontSize: "clamp(34px, 3.6vw, 56px)",
+              fontSize: "var(--fs-h2)",
               lineHeight: 1.05,
               fontWeight: 400,
               letterSpacing: "-0.025em",
