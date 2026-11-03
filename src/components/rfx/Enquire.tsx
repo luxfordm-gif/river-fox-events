@@ -112,7 +112,7 @@ const Enquire = ({
                 Don't fill this out: <input name="bot-field" />
               </label>
             </p>
-            <div className="mb-5 text-center lg:text-left">
+            <div className="hidden md:block mb-5 text-left">
               <h3
                 className="font-serif-rf text-primary"
                 style={{

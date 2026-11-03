@@ -36,11 +36,25 @@ const Footer = () => {
   return (
     <footer className="relative overflow-hidden bg-surface-deep text-on-deep">
       <div className="relative pt-[54px] md:pt-24 pb-9 overflow-hidden">
-        {/* Big watermark - slow drift, parallax, masked sheen */}
+        {/* Big watermark - slow drift, parallax, masked sheen. The fade-in
+            mask sits on a layer the size of the footer, so it always starts
+            from clear at the footer's top edge. (On the text itself it was
+            sized to the letters, which on wide screens are taller than the
+            footer: the tall italic F was already solid where the footer
+            edge sliced it.) */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 22%, rgba(0,0,0,0.55) 45%, #000 70%)",
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 22%, rgba(0,0,0,0.55) 45%, #000 70%)",
+          }}
+        >
         <div
           ref={watermarkRef}
-          aria-hidden="true"
-          className="absolute left-0 right-0 -bottom-24 md:-bottom-32 pointer-events-none flex items-end justify-center"
+          className="absolute left-0 right-0 -bottom-24 md:-bottom-32 flex items-end justify-center"
         >
           <div
             className="font-serif-rf whitespace-nowrap relative"
@@ -52,10 +66,6 @@ const Footer = () => {
               transform: `translateY(${Math.min(80, y * 0.025)}px) translateX(${revealed ? 0 : -40}px)`,
               opacity: revealed ? 1 : 0,
               transition: "opacity 1.6s ease, transform 1.8s cubic-bezier(.2,.7,.2,1)",
-              WebkitMaskImage:
-                "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 18%, rgba(0,0,0,0.55) 38%, #000 60%)",
-              maskImage:
-                "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 18%, rgba(0,0,0,0.55) 38%, #000 60%)",
             }}
           >
             River&nbsp;
@@ -80,6 +90,7 @@ const Footer = () => {
               }}
             />
           </div>
+        </div>
         </div>
 
         <style>{`
@@ -113,12 +124,13 @@ const Footer = () => {
             </div>
             <div>
               <div className="eyebrow font-semibold mb-4" style={{ color: "hsl(var(--on-deep))" }}>
-                Experiences
+                Services
               </div>
               <div className="text-[13.5px] leading-loose">
                 <a href="/childrens-parties/" className="opacity-85 hover:opacity-100 block">Children's Parties</a>
                 <a href="/milestone-celebrations/" className="opacity-85 hover:opacity-100 block">Milestones</a>
                 <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate</a>
+                <a href="/christmas-door-garlands/" className="opacity-85 hover:opacity-100 block">Christmas Garlands</a>
               </div>
             </div>
             <div>

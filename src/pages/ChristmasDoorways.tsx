@@ -1,0 +1,637 @@
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { toast } from "sonner";
+import Nav from "@/components/rfx/Nav";
+import Footer from "@/components/rfx/Footer";
+import HeroGarland from "@/components/rfx/HeroGarland";
+import LocationHeroFan from "@/components/rfx/LocationHeroFan";
+import ScrollStrip from "@/components/rfx/ScrollStrip";
+import InstagramStrip from "@/components/rfx/InstagramStrip";
+import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
+import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
+import bow320 from "@/assets/christmas/burgundy-velvet-bow-320.webp";
+import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
+import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
+import { findRoute } from "@/seo/routes";
+import {
+  applyMeta,
+  breadcrumbSchema,
+  removeJsonLd,
+  routeServiceSchema,
+  upsertJsonLd,
+} from "@/seo/headTags";
+import "@/styles/christmas.css";
+
+import door420 from "@/assets/christmas/black-front-door-gold-ribbon-garland-red-brick-420.webp";
+import door640 from "@/assets/christmas/black-front-door-gold-ribbon-garland-red-brick-640.webp";
+import door838 from "@/assets/christmas/black-front-door-gold-ribbon-garland-red-brick-838.webp";
+import goldDetail420 from "@/assets/christmas/gold-star-pine-cone-bauble-spruce-detail-420.webp";
+import goldDetail640 from "@/assets/christmas/gold-star-pine-cone-bauble-spruce-detail-640.webp";
+import goldDetail838 from "@/assets/christmas/gold-star-pine-cone-bauble-spruce-detail-838.webp";
+import shop420 from "@/assets/christmas/salon-shopfront-red-bauble-corner-garland-420.webp";
+import shop640 from "@/assets/christmas/salon-shopfront-red-bauble-corner-garland-640.webp";
+import shop838 from "@/assets/christmas/salon-shopfront-red-bauble-corner-garland-838.webp";
+import redDetail420 from "@/assets/christmas/red-baubles-eucalyptus-spruce-detail-420.webp";
+import redDetail640 from "@/assets/christmas/red-baubles-eucalyptus-spruce-detail-640.webp";
+import redDetail838 from "@/assets/christmas/red-baubles-eucalyptus-spruce-detail-838.webp";
+import igNavy from "@/assets/christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp";
+import igSalon from "@/assets/christmas/instagram/glass-salon-true-red-corner-garland.webp";
+import igPillars from "@/assets/christmas/instagram/brick-pillars-red-gold-garlands-sage-door.webp";
+import igReigate from "@/assets/christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp";
+import igBlueDoor from "@/assets/christmas/instagram/blue-door-spruce-garland-silver-white-baubles.webp";
+import igPilates from "@/assets/christmas/instagram/pink-pilates-studio-garland-blush-red-baubles.webp";
+import igCream from "@/assets/christmas/instagram/cream-door-brick-porch-jewel-garland.webp";
+import igMedispa from "@/assets/christmas/instagram/medispa-entrance-frosted-white-silver-garland.webp";
+import igWhiteDoor from "@/assets/christmas/instagram/white-door-wreath-pink-plum-garland.webp";
+import igLaura from "@/assets/christmas/instagram/laura-reigate-restaurant-doorway-garland.webp";
+import igGeorgian from "@/assets/christmas/instagram/georgian-door-gold-champagne-garland.webp";
+import igPinkShop from "@/assets/christmas/instagram/pink-shopfront-red-white-window-garland.webp";
+import igDetail from "@/assets/christmas/instagram/pink-doorframe-red-silver-bauble-detail.webp";
+import igLedge from "@/assets/christmas/instagram/restaurant-window-ledge-red-bauble-garland.webp";
+import igPillar from "@/assets/christmas/instagram/pink-studio-pillar-garland-detail.webp";
+import imgRestaurant from "@/assets/christmas/blue-restaurant-doorway-red-bauble-garland.webp";
+import imgJewel from "@/assets/christmas/jewel-tone-bauble-arch-white-porch.webp";
+import imgBondi from "@/assets/journal/christmas-decorations-surrey/christmas-doorway-garland-pink-studio-east-molesey.webp";
+import imgGarland800 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-800.webp";
+import imgGarland1200 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-1200.webp";
+import imgGarland1440 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-1440.webp";
+
+/* Hero fan, left to right. On phones the same three run as a scroll strip. */
+const FAN = [
+  {
+    src: imgJewel,
+    alt: "Jewel-toned baubles in pink, teal and purple on a spruce arch over a white house porch",
+    objectPosition: "6% 30%",
+  },
+  {
+    src: imgBondi,
+    alt: "Frosted fir garland with red, blush and white baubles and candy canes framing a pink pilates studio doorway",
+    objectPosition: "50% 50%",
+  },
+  {
+    src: imgRestaurant,
+    alt: "Blue shopfront doorway with a spruce garland of large red and champagne baubles running up the frame",
+    objectPosition: "82% 50%",
+  },
+] as const;
+
+/* Garland types, in the order they sit under the cutout. Titles double as
+   the booking form's "Garland" option values. */
+const GARLAND_OPTIONS = [
+  {
+    title: "Fresh spruce",
+    note: "Scented and seasonal",
+    body: "Real foliage with that Christmas tree scent. Lovely for a shorter window, from early December.",
+    link: "Book fresh spruce",
+  },
+  {
+    title: "Fresh and faux",
+    note: "The fullest look",
+    popular: true,
+    body: "A faux base layered with fresh spruce on top, so it looks fuller and bushier than either on its own.",
+    link: "Book fresh and faux",
+  },
+  {
+    title: "Faux",
+    note: "Neat until January",
+    body: "Stays full and neat to January in any weather, which shops and offices often prefer.",
+    link: "Book faux",
+  },
+];
+
+/* FAQ answers also go out as FAQPage structured data (ChildrensFAQ). */
+const FAQS = [
+  {
+    q: "Which areas do you cover?",
+    a: "All of Surrey. I dress doorways in Cobham, Esher, Weybridge, Oxshott, Walton-on-Thames, East Molesey, Kingswood, Tadworth, Banstead, Epsom, Leatherhead, Dorking, Reigate, Redhill, Guildford, Oxted and Horley, where my studio is, and the villages in between. If your town isn't listed, send your postcode and I'll confirm.",
+  },
+  {
+    q: "Do you travel outside Surrey?",
+    a: "Often, yes. I regularly travel into south-west London and the neighbouring Home Counties for the right doorway. Mention your postcode when you enquire and I'll let you know.",
+  },
+  {
+    q: "When should I book my Christmas doorway?",
+    a: "As early as you can. Bookings open in October and the diary fills quickly through November, so send your photo and postcode early to secure your install date.",
+  },
+  {
+    q: "When will my garland go up?",
+    a: "Faux and fresh and faux garlands can go up from late November. Fresh spruce is best installed in early December so it still looks full on Christmas Day. We'll agree the date when you book.",
+  },
+  {
+    q: "Do you dress doorways for businesses as well as homes?",
+    a: "Yes. I dress front doors and porches for homes, and entrances for shops, salons, restaurants, clinics and offices, styled to your paintwork or brand colours.",
+  },
+  {
+    q: "What's the difference between fresh, faux, and fresh and faux?",
+    a: "Fresh spruce brings the scent of a real Christmas tree and suits a shorter window. Faux stays full and neat through to January. Fresh and faux layers fresh spruce over a faux base for the fullest, bushiest look, and it's the most popular choice.",
+  },
+  {
+    q: "Can you match my door, brick or brand colours?",
+    a: "Always. Every doorway starts with your paintwork, so the baubles, ribbon and accents are chosen to suit your door, brickwork or brand rather than taken from a set design.",
+  },
+  {
+    q: "What do you need from me for a quote?",
+    a: "A photo of your door, rough measurements and your postcode. I'll come back with ideas, a colour palette and a quote.",
+  },
+  {
+    q: "Is the January takedown included?",
+    a: "Takedown is an optional extra. Add it when you book, or let me know before Christmas, and I'll come back in January to take everything down and leave your doorway as I found it.",
+  },
+];
+
+/* Instagram strip: Laura's own doorway posts, homes and shopfronts
+   alternating. */
+const INSTAGRAM = [
+  { src: igNavy, alt: "Navy front door beneath a spruce arch crowded with pink, purple, teal and gold baubles" },
+  { src: igSalon, alt: "Glass salon frontage with a spruce corner garland weighed down with true-red baubles" },
+  { src: igPillars, alt: "Brick porch pillars wound with red, gold and green garlands either side of a sage door" },
+  { src: igReigate, alt: "Blue restaurant double doors in Reigate edged with red and gold bauble garlands" },
+  { src: igBlueDoor, alt: "Blue front door framed in real spruce with blue, white and silver baubles" },
+  { src: igPilates, alt: "Pink pilates studio doorway in East Molesey dressed in spruce with blush, white and red baubles" },
+  { src: igCream, alt: "Cream front door under a brick porch, framed by spruce with jewel-toned baubles" },
+  { src: igMedispa, alt: "Medispa entrance framed in frosted spruce with white and silver baubles" },
+  { src: igWhiteDoor, alt: "White front door edged in a spruce garland of pink, plum, gold and red baubles" },
+  { src: igLaura, alt: "Laura with arms out beside a blue restaurant doorway dressed in red and gold bauble garlands" },
+  { src: igGeorgian, alt: "Georgian black door at number 16 framed in spruce with gold and champagne baubles and stars" },
+  { src: igPinkShop, alt: "Pink shopfront with a spruce garland of red and white baubles running along the window base" },
+  { src: igDetail, alt: "Detail of a spruce garland on a pink door frame with red, silver and gold baubles" },
+  { src: igLedge, alt: "Restaurant window ledge lined with a spruce garland of red and cream baubles beside bistro chairs" },
+  { src: igPillar, alt: "Pillar garland on a pink studio front mixing red, white and gold baubles with spruce" },
+];
+
+/* "What we do" cards. Each has a wide shot and a close-up of the garland;
+   the close-up fades in on hover, or on touch screens as the card reaches
+   the middle of the screen. */
+const srcSet = (a: string, b: string, c: string) => `${a} 420w, ${b} 640w, ${c} 838w`;
+
+const CARDS = [
+  {
+    img: door640,
+    srcSet: srcSet(door420, door640, door838),
+    alt: "Black Georgian front door with a spruce garland of gold ribbons, stars and baubles arching over the fanlight",
+    detail: goldDetail640,
+    detailSrcSet: srcSet(goldDetail420, goldDetail640, goldDetail838),
+    detailAlt: "Gold star, frosted pine cone and gold bauble tucked into spruce with a gold ribbon bow",
+    title: "Front doors and porches",
+    body: "A full garland around the frame, built up with baubles, ribbon and pine cones in colours that suit the paintwork and brick, so the whole entrance feels finished.",
+  },
+  {
+    img: shop640,
+    srcSet: srcSet(shop420, shop640, shop838),
+    alt: "Salon shopfront with a spruce corner garland of red baubles and red berry sprays across the glass",
+    detail: redDetail640,
+    detailSrcSet: srcSet(redDetail420, redDetail640, redDetail838),
+    detailAlt: "Deep red baubles, eucalyptus and warm fairy lights nestled in spruce beside a shop window",
+    title: "Shops, salons and restaurants",
+    body: "A doorway that tells people you're open and festive, and becomes the backdrop to the photos customers take on the way in.",
+  },
+];
+
+/* Velvet bow used as a divider between white sections, sitting in the gap
+   (the section it opens drops its top padding so the gap stays even). */
+const BowDivider = () => (
+  <img
+    src={bow160}
+    srcSet={`${bow160} 160w, ${bow320} 320w`}
+    sizes="72px"
+    alt=""
+    aria-hidden="true"
+    className="block mx-auto w-[60px] md:w-[72px] h-auto mb-14 md:mb-20"
+    width={320}
+    height={330}
+    loading="lazy"
+    decoding="async"
+  />
+);
+
+const SectionTitle = ({ children, id, light }: { children: ReactNode; id: string; light?: boolean }) => (
+  <h2
+    id={id}
+    className={`font-serif-rf ${light ? "" : "text-primary"}`}
+    style={{
+      fontSize: "var(--fs-h2)",
+      lineHeight: 0.98,
+      fontWeight: 300,
+      letterSpacing: "-0.03em",
+    }}
+  >
+    {children}
+  </h2>
+);
+
+const STEPS = [
+  {
+    n: "01",
+    title: "Send a photo",
+    body: "A photo of your door, rough measurements and your postcode is all I need to come back with ideas and a quote.",
+  },
+  {
+    n: "02",
+    title: "Choose your colours",
+    body: "We settle on fresh or faux and pick a palette from your paintwork and brick, then book a date for the install.",
+  },
+  {
+    n: "03",
+    title: "Setup",
+    body: "I arrive with everything, dress the doorway on site and tidy up before I leave. Most doorways take a few hours.",
+  },
+  {
+    n: "04",
+    title: "Takedown",
+    extra: true,
+    body: "In January I come back, take it all down and leave the doorway as I found it. Add it when you book, or ask before Christmas.",
+  },
+];
+
+const ChristmasDoorways = () => {
+  useFadeUp();
+  useNavScroll();
+  const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    const route = findRoute("/christmas-door-garlands")!;
+    applyMeta(route);
+
+    const serviceId = "rfx-jsonld-svc-christmas-door-garlands";
+    const svc = routeServiceSchema(route);
+    if (svc) upsertJsonLd(serviceId, svc);
+
+    const breadcrumbId = "rfx-jsonld-bc-christmas-door-garlands";
+    const breadcrumbs = breadcrumbSchema(route.path);
+    if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
+
+    return () => {
+      removeJsonLd(serviceId);
+      removeJsonLd(breadcrumbId);
+    };
+  }, []);
+
+  // Touch screens have no hover, so show the close-up as each card reaches
+  // the middle band of the screen, and the wide shot again as it leaves.
+  const cardsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const root = cardsRef.current;
+    if (!root || !window.matchMedia("(hover: none)").matches) return;
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.target.classList.toggle("is-swapped", e.isIntersecting)),
+      { rootMargin: "-30% 0px -30% 0px" }
+    );
+    root.querySelectorAll(".xmas-swap").forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setSubmitting(true);
+    try {
+      // Multipart, because the door photo travels with it. Netlify Forms
+      // accepts a FormData body as-is; the browser sets the boundary header.
+      const data = new FormData(form);
+      data.set("page", window.location.pathname);
+      const res = await fetch("/", { method: "POST", body: data });
+      if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
+      }
+      toast.success("Thank you - I've got your door details. I'll be in touch within 1-2 working days with ideas and a quote. Laura");
+      form.reset();
+    } catch (err) {
+      toast.error("Sorry - something went wrong. Please email Riverfoxevents@gmail.com directly.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="rfx-xmas min-h-screen bg-background text-foreground nav-solid">
+      <Nav />
+      <main>
+        {/* Hero: garland drapes edge to edge above the headline, then the
+            photo fan (scroll strip on phones), as on the location pages. */}
+        <section aria-labelledby="xmas-hero-heading" className="rfx-hero pt-[76px] md:pt-[76px] pb-4 md:pb-6">
+          <HeroGarland />
+          <div className="container-rfx">
+            <div className="mt-2 md:mt-4 mb-4 md:mb-9 flex flex-col items-center text-center">
+              <p className="eyebrow">Christmas 2026 · Now booking</p>
+              <h1
+                id="xmas-hero-heading"
+                className="font-serif-rf mt-5 max-w-[14ch] md:max-w-none"
+                style={{
+                  fontSize: "var(--fs-display)",
+                  lineHeight: 0.96,
+                  fontWeight: 400,
+                  letterSpacing: "-0.038em",
+                }}
+              >
+                Christmas door garlands,
+                <br />
+                <em className="italic font-normal text-accent-warm">dressed by hand.</em>
+              </h1>
+              <p className="mt-5 max-w-[46ch] text-[17px] leading-[1.65] text-ink-soft">
+                Fresh spruce or faux, for front doors, porches and shopfronts
+                across Surrey. Styled around your paintwork, put up for you,
+                and taken down again in January if you'd&nbsp;like.
+              </p>
+              {/* Phones: stacked and the same width. Wider screens: side by side. */}
+              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-[300px] sm:max-w-none">
+                <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
+                  Reserve your date <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
+                </a>
+                <a href="#how-it-works" className="btn-ghost-rf justify-center">
+                  How it works
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="md:hidden">
+            <ScrollStrip images={[...FAN]} />
+          </div>
+          <LocationHeroFan images={[FAN[0], FAN[1], FAN[2]]} spreadOnHover radius={16} />
+        </section>
+
+        {/* What we do */}
+        <section className="rfx-section white" aria-labelledby="xmas-what-heading">
+          <div className="container-rfx">
+            <div className="max-w-[760px] mx-auto text-center fade-up">
+              <SectionTitle id="xmas-what-heading">
+                Homes and shopfronts,{" "}
+                <em className="italic font-light text-accent-warm">ready for December.</em>
+              </SectionTitle>
+              <p className="mt-6 text-[16px] leading-[1.7] text-ink-soft max-w-[54ch] mx-auto">
+                I dress doorways for families who want the house to feel like
+                Christmas from the end of the drive, and for shops, salons and
+                restaurants who'd like passers-by to stop and look.
+              </p>
+            </div>
+
+            <div ref={cardsRef} className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+              {CARDS.map((card) => (
+                <article key={card.title} className="fade-up">
+                  <div className="xmas-swap">
+                    <img
+                      src={card.img}
+                      srcSet={card.srcSet}
+                      sizes="(min-width: 768px) 46vw, calc(100vw - 64px)"
+                      alt={card.alt}
+                      className="w-full block object-cover aspect-[838/462]"
+                      width={838}
+                      height={462}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <img
+                      src={card.detail}
+                      srcSet={card.detailSrcSet}
+                      sizes="(min-width: 768px) 46vw, calc(100vw - 64px)"
+                      alt={card.detailAlt}
+                      className="xmas-swap__detail absolute inset-0 w-full h-full object-cover"
+                      width={838}
+                      height={462}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h3
+                    className="font-serif-rf text-primary mt-6"
+                    style={{ fontSize: "var(--fs-h4)", lineHeight: 1.2, fontWeight: 400 }}
+                  >
+                    {card.title}
+                  </h3>
+                  <p className="mt-2 text-[15.5px] leading-[1.7] text-ink-soft max-w-[52ch]">{card.body}</p>
+                </article>
+              ))}
+            </div>
+
+            {/* Fresh or faux: a garland cutout (transparent WebP, shadow from
+                CSS) with a plain header under each half. */}
+            <div className="mt-20 md:mt-28 max-w-[1040px] mx-auto">
+              <img
+                src={imgGarland1200}
+                srcSet={`${imgGarland800} 800w, ${imgGarland1200} 1200w, ${imgGarland1440} 1440w`}
+                sizes="(min-width: 1140px) 1040px, calc(100vw - 64px)"
+                alt="Evergreen garland with burgundy velvet bows, red and gold baubles, pine cones and warm fairy lights"
+                className="xmas-cutout w-full h-auto block"
+                width={1440}
+                height={288}
+                loading="lazy"
+                decoding="async"
+              />
+              {/* Three columns split by hairlines; each column is a flex stack so
+                  the Book links line up along one baseline. */}
+              <div className="mt-6 md:mt-12 grid grid-cols-1 md:grid-cols-3 text-center divide-y md:divide-y-0 md:divide-x">
+                {GARLAND_OPTIONS.map((opt) => (
+                  <div key={opt.title} className="fade-up flex flex-col items-center py-10 md:py-2 md:px-8 lg:px-12">
+                    {/* Tag slot keeps the three titles level side by side; on
+                        phones (stacked) only the popular one needs it. */}
+                    <p className={`mb-4 md:h-[24px] ${opt.popular ? "" : "hidden md:block"}`}>
+                      {opt.popular && <span className="xmas-tag">Most popular</span>}
+                    </p>
+                    <h3
+                      className="font-serif-rf text-primary"
+                      style={{ fontSize: "var(--fs-h4)", lineHeight: 1.15, fontWeight: 400 }}
+                    >
+                      {opt.title}
+                    </h3>
+                    <p className="font-serif-rf italic text-accent-warm text-[17px] leading-[1.3] mt-1">{opt.note}</p>
+                    <p className="mt-4 text-[15px] leading-[1.75] text-ink-soft max-w-[30ch]">{opt.body}</p>
+                    <div className="mt-auto pt-6">
+                      <a
+                        href={ENQUIRE_HREF}
+                        onClick={(e) => {
+                          handleEnquireClick(e);
+                          // Pre-select this garland in the booking form.
+                          const select = document.querySelector<HTMLSelectElement>('form[name="christmas-doorway"] select[name="garland"]');
+                          if (select) select.value = opt.title;
+                        }}
+                        className="btn-link-rf text-[14px] text-primary"
+                      >
+                        {opt.link} <span className="arr">→</span>
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Past doorways: Laura's Instagram, as an endless strip */}
+        <section className="rfx-section white !pt-0" aria-labelledby="xmas-ig-heading">
+          <div className="container-rfx">
+            <BowDivider />
+            <div className="max-w-[760px] mx-auto text-center fade-up">
+              <SectionTitle id="xmas-ig-heading">
+                Doorways from{" "}
+                <em className="italic font-light text-accent-warm">past seasons.</em>
+              </SectionTitle>
+              <p className="mt-4 text-[15px] text-ink-soft">(each photo opens Laura's Instagram, @riverfox_events)</p>
+            </div>
+          </div>
+          <div className="mt-12 md:mt-14">
+            <InstagramStrip images={INSTAGRAM} />
+          </div>
+        </section>
+
+        {/* Setup and takedown */}
+        <section id="how-it-works" className="rfx-section white !pt-0" aria-labelledby="xmas-how-heading">
+          <div className="container-rfx">
+            <BowDivider />
+            <div className="max-w-[760px] mx-auto text-center fade-up">
+              <SectionTitle id="xmas-how-heading">
+                From first photo to{" "}
+                <em className="italic font-light text-accent-warm">January takedown.</em>
+              </SectionTitle>
+            </div>
+            <ol className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+              {STEPS.map((s) => (
+                <li key={s.n} className="fade-up border-t pt-6" style={{ borderColor: "hsl(var(--ink) / 0.14)" }}>
+                  <span className="font-mono-rf text-[12px] tracking-[0.18em] text-ink-soft">{s.n}</span>
+                  <h3
+                    className="font-serif-rf text-primary mt-3 flex items-center gap-3 flex-wrap"
+                    style={{ fontSize: "var(--fs-h4)", lineHeight: 1.2, fontWeight: 400 }}
+                  >
+                    {s.title}
+                    {s.extra && <span className="xmas-tag">Extra</span>}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-[1.7] text-ink-soft">{s.body}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <ChildrensFAQ
+          faqs={FAQS}
+          headingId="xmas-faq-heading"
+          headingSize="var(--fs-h3)"
+          paddingTop="clamp(40px, 6vw, 96px)"
+          paddingBottom="clamp(80px, 10vw, 150px)"
+        />
+
+        {/* Booking form + contact */}
+        <section id="enquire" className="rfx-section dark rfx-enquire" aria-labelledby="enquire-heading">
+          <div className="container-rfx">
+            <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">
+              <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
+                <SectionTitle id="enquire-heading" light>
+                  Book your{" "}
+                  <em className="italic font-light text-accent-warm">Christmas doorway.</em>
+                </SectionTitle>
+                <p className="text-[15.5px] leading-[1.7] max-w-[460px] mt-7" style={{ color: "hsl(var(--on-deep-soft))" }}>
+                  Send a photo of your door with rough measurements and your
+                  postcode, and I'll come back with ideas and a quote. Every
+                  doorway is dressed by hand, so I can only take a small number
+                  each December. If you'd rather call me, use this number:{" "}
+                  <a href="tel:+447872114191" className="whitespace-nowrap underline underline-offset-4" style={{ color: "hsl(var(--on-deep))" }}>
+                    07872&nbsp;114191
+                  </a>
+                  .
+                </p>
+
+              </div>
+
+              <form
+                className="form-wrap"
+                name="christmas-doorway"
+                method="POST"
+                encType="multipart/form-data"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                onSubmit={onSubmit}
+              >
+                <input type="hidden" name="form-name" value="christmas-doorway" />
+                <p className="hidden" aria-hidden="true">
+                  <label>
+                    Don't fill this out: <input name="bot-field" />
+                  </label>
+                </p>
+                <div className="hidden md:block mb-5 text-left">
+                  <h3
+                    className="font-serif-rf text-primary"
+                    style={{ fontSize: "var(--fs-h3)", lineHeight: 1.18, fontWeight: 400, letterSpacing: "-0.018em" }}
+                  >
+                    Tell me about your door
+                  </h3>
+                </div>
+                <div className="form-grid">
+                  <label className="form-row">
+                    <span className="lbl">Full name</span>
+                    <input type="text" name="name" placeholder="Your full name" required />
+                  </label>
+                  <label className="form-row">
+                    <span className="lbl">Email address</span>
+                    <input type="email" name="email" placeholder="you@example.com" required />
+                  </label>
+                  <label className="form-row">
+                    <span className="lbl">Phone number (optional)</span>
+                    <input type="tel" name="phone" placeholder="07…" />
+                  </label>
+                  <label className="form-row">
+                    <span className="lbl">Postcode</span>
+                    <input type="text" name="postcode" placeholder="e.g. KT8 9AB" required />
+                  </label>
+                  <label className="form-row">
+                    <span className="lbl">Home or business</span>
+                    <select name="property" defaultValue="Home">
+                      <option>Home</option>
+                      <option>Business</option>
+                    </select>
+                  </label>
+                  <label className="form-row">
+                    <span className="lbl">Garland</span>
+                    <select name="garland" defaultValue="Not sure yet">
+                      <option>Fresh spruce</option>
+                      <option>Fresh and faux</option>
+                      <option>Faux</option>
+                      <option>Not sure yet</option>
+                    </select>
+                  </label>
+                  <label className="form-row">
+                    <span className="lbl">Door size (rough)</span>
+                    <input type="text" name="measurements" placeholder="e.g. 90cm wide, 210cm tall" />
+                  </label>
+                  <label className="form-row">
+                    <span className="lbl">Install</span>
+                    <select name="install" defaultValue="Late November">
+                      <option>Late November</option>
+                      <option>First week of December</option>
+                      <option>Second week of December</option>
+                      <option>Flexible</option>
+                    </select>
+                  </label>
+                  <label className="form-row full">
+                    <span className="lbl">Photo of your door (optional)</span>
+                    <input type="file" name="door-photo" accept="image/*" />
+                  </label>
+                  <label className="form-row full">
+                    <span className="lbl">Colours or ideas</span>
+                    <textarea
+                      name="notes"
+                      rows={3}
+                      placeholder="Colours you love, the paint colour of your door, or anything else"
+                    />
+                  </label>
+                  <label className="form-row full form-check">
+                    <input type="checkbox" name="takedown" value="Yes" />
+                    <span className="text-[14.5px] leading-[1.5] text-ink">
+                      Add January takedown
+                    </span>
+                    <span className="xmas-tag ml-auto">Extra</span>
+                  </label>
+                </div>
+                <div className="flex justify-center lg:justify-end items-center mt-6">
+                  <button type="submit" disabled={submitting} className="btn-solid-rf accent disabled:opacity-60">
+                    {submitting ? "Sending…" : "Request a quote"} <span>→</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default ChristmasDoorways;

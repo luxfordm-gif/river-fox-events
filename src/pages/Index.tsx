@@ -10,6 +10,7 @@ import Testimonials from "@/components/rfx/Testimonials";
 import FAQ from "@/components/rfx/FAQ";
 import Enquire from "@/components/rfx/Enquire";
 import Footer from "@/components/rfx/Footer";
+import ChristmasPromo from "@/components/rfx/ChristmasPromo";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
 import {
@@ -46,6 +47,8 @@ const Index = () => {
         <Enquire />
       </main>
       <Footer />
+      {/* Mock-up: Christmas garlands card, home page only for review. */}
+      <ChristmasPromo />
     </div>
   );
 };

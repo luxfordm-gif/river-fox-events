@@ -28,7 +28,7 @@ const STRIP_IMAGES = [
  * scroll progress through the viewport. No auto-play, no controls - purely
  * driven by vertical scroll position.
  */
-type ScrollStripImage = { src: string; alt: string; aspect?: string };
+type ScrollStripImage = { src: string; alt: string; aspect?: string; objectPosition?: string };
 type ScrollStripProps = {
   /** When provided, overrides the default homepage image set (e.g. a
    *  location page passes its 3 heroFan images so the scroll-driven
@@ -174,6 +174,7 @@ const ScrollStrip = ({ images }: ScrollStripProps = {}) => {
               src={img.src}
               alt={img.alt}
               className="absolute inset-0 w-full h-full object-cover"
+              style={{ objectPosition: img.objectPosition }}
               // When this strip is used as the location page's mobile hero
               // (custom `images` set), every image is above the fold and must
               // load eagerly. Without this, images 2 and 3 stay lazy and the

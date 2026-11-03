@@ -333,6 +333,37 @@ async function readRouteHtml(route) {
   }
 }
 
+// The review panel (public/pref-panel.js + its gate in index.html) is for
+// localhost and Netlify deploy previews only. On the live production deploy
+// (Netlify sets CONTEXT=production) strip it out completely: the gate script
+// and its comment come out of every HTML file and the script file is deleted,
+// so visitors download none of it. Previews and local builds keep it.
+async function htmlFiles(dir) {
+  const out = [];
+  for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
+    const p = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...(await htmlFiles(p)));
+    else if (entry.name.endsWith(".html")) out.push(p);
+  }
+  return out;
+}
+
+async function stripReviewPanel() {
+  const gate = /\s*<!--\s*Preference panel:[\s\S]*?-->\s*<script>[\s\S]*?PREF_PANEL[\s\S]*?<\/script>/g;
+  const bareGate = /\s*<script>(?:(?!<\/script>)[\s\S])*?PREF_PANEL[\s\S]*?<\/script>/g;
+  let count = 0;
+  for (const file of await htmlFiles(DIST)) {
+    const html = await fs.readFile(file, "utf8");
+    const next = html.replace(gate, "").replace(bareGate, "");
+    if (next !== html) {
+      await fs.writeFile(file, next, "utf8");
+      count++;
+    }
+  }
+  await fs.rm(path.join(DIST, "pref-panel.js"), { force: true });
+  return count;
+}
+
 async function main() {
   const { SITE, BUSINESS, ROUTES, REVIEWS } = await loadRoutes();
 
@@ -357,6 +388,11 @@ async function main() {
   console.log(`✓ sitemap.xml`);
   await writeRobots(SITE);
   console.log(`✓ robots.txt`);
+
+  if (process.env.CONTEXT === "production") {
+    const n = await stripReviewPanel();
+    console.log(`✓ review panel stripped from ${n} HTML files (production)`);
+  }
 }
 
 main().catch((err) => {
