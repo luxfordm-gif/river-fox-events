@@ -103,7 +103,7 @@ const ServiceHero = ({
               onClick={handleEnquireClick}
               className="btn-solid-rf accent"
             >
-              Start planning{" "}
+              Check your date{" "}
               <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
             </a>
           </div>

@@ -9,11 +9,11 @@ const cobham = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["baby-shower-bloom", "veuve-disco", "naming-harvey-daisy"],
   },
-  uniqueSeoTitle: "Cobham Children's Party Styling | River Fox Events",
+  uniqueSeoTitle: "Balloon Arches & Party Decor in Cobham | River Fox Events",
   uniqueSeoDescription:
-    "First birthdays and big themed parties styled across Cobham, Oxshott and Stoke d'Abernon - individually designed and installed by Laura, from £460.",
+    "Balloon arches, garlands and photo backdrops for Cobham and Stoke d'Abernon parties. Designed by Laura, set up on the morning and taken down after, from £460.",
   uniqueHeroLine: <>Children's party styling in Cobham,</>,
-  uniqueHeroSub: <>Children's parties in Cobham, built around statement balloon installations, bespoke backdrops and details chosen for your child.</>,
+  uniqueHeroSub: <>Garden marquees and family kitchens around Stoke d'Abernon, filled with balloon garlands, sailboard backdrops and your child's name in light-up letters.</>,
   uniqueUspBody:
     "If you're planning a celebration in Cobham, River Fox Events brings together beautiful styling, statement balloon installations and thoughtful details to create something truly memorable. Every event is individually designed around your child, your space and your vision, resulting in a celebration that feels personal, exciting and completely unique.",
   uniqueServicesHeading: (

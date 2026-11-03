@@ -65,7 +65,7 @@ const LocationTrust = () => {
               rel="noopener noreferrer"
               className="tcard-readall"
             >
-              Read all reviews on Google →
+              5.0 from 13 Google reviews&nbsp;→
             </a>
           </div>
         </div>

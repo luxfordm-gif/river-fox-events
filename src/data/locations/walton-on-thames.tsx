@@ -9,11 +9,11 @@ const waltonOnThames = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["naming-harvey-daisy", "40th-rose-gold", "jungle-elephant"],
   },
-  uniqueSeoTitle: "Walton-on-Thames Kids' Party Styling | River Fox Events",
+  uniqueSeoTitle: "Walton-on-Thames Kids Party Decorations | River Fox Events",
   uniqueSeoDescription:
-    "Thames-side children's parties in Walton-on-Thames - first birthdays to big themed celebrations, individually designed by Laura.",
+    "Walton-on-Thames kids party decorations, with balloon garlands, soft-seat picnic setups and themed props for homes in Hersham. Rated 5.0 on Google reviews.",
   uniqueHeroLine: <>Children's party styling in Walton-on-Thames,</>,
-  uniqueHeroSub: <>Children's parties in Walton-on-Thames, built around statement balloon installations, bespoke backdrops and personal detail.</>,
+  uniqueHeroSub: <>Family homes in Hersham and Whiteley Village, styled with balloon garlands, soft-seat picnic setups and props that suit your child's age.</>,
   uniqueUspBody:
     "Planning a celebration in Walton-on-Thames? River Fox Events brings together considered styling, statement balloon installations and the details that make a day memorable. Each event is individually designed around your child, your space and your vision, leaving a day that feels personal, exciting and one of a kind.",
   uniqueServicesHeading: (

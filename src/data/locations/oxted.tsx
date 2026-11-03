@@ -9,11 +9,11 @@ const oxted = makeLocation({
     galleryMain: "fairy-kayla",
     galleryThumbs: ["stubbs-gender-reveal", "jungle-elephant", "veuve-disco"],
   },
-  uniqueSeoTitle: "Children's Party Styling in Oxted | River Fox Events",
+  uniqueSeoTitle: "Oxted Party Decorations & Balloon Arches | River Fox Events",
   uniqueSeoDescription:
-    "Children's party styling in Oxted and across East Surrey - from first birthdays to big themed celebrations, from £460 and individually designed by Laura.",
+    "Party decorations in Oxted, Limpsfield and Hurst Green. Balloon arches, painted name boards and themed props, installed and collected by Laura, from £460.",
   uniqueHeroLine: <>Children's party styling in Oxted,</>,
-  uniqueHeroSub: <>Party styling in Oxted, built around statement balloon installations, bespoke backdrops and details that feel personal.</>,
+  uniqueHeroSub: <>Homes and gardens from Limpsfield to Woldingham, dressed with balloon arches, painted name boards and themed props, then cleared away the same day.</>,
   uniqueUspBody:
     "For families in Oxted looking for something a little more special, River Fox Events creates individually designed celebrations that feel personal, memorable and beautifully put together. Known for statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes, venues and event spaces across Oxted into celebrations that children and guests will remember long after the day itself.",
   uniqueServicesHeading: (

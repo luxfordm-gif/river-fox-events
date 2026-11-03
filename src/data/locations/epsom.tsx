@@ -9,11 +9,11 @@ const epsom = makeLocation({
     galleryMain: "pastel-safari-anaya",
     galleryThumbs: ["baby-shower-bloom", "40th-rose-gold", "naming-harvey-daisy"],
   },
-  uniqueSeoTitle: "Epsom Children's Party Styling | River Fox Events",
+  uniqueSeoTitle: "Birthday Party Decorators in Epsom | River Fox Events",
   uniqueSeoDescription:
-    "North Surrey children's parties in Epsom - first birthdays to big themed celebrations, individually designed and installed by Laura, from £460.",
+    "Birthday party decorators in Epsom, Ashtead and Ewell. Number balloons, character cutouts and photo backdrops, delivered, set up and collected, from £460.",
   uniqueHeroLine: <>Children's party styling in Epsom,</>,
-  uniqueHeroSub: <>Children's parties in Epsom, with statement balloon installations, bespoke backdrops and thoughtful personal details.</>,
+  uniqueHeroSub: <>Number balloons, character cutouts and photo backdrops for birthdays around Ashtead and Ewell, delivered, set up and collected by our install team.</>,
   uniqueUspBody:
     "Have a celebration coming up in Epsom? River Fox Events pulls together polished styling, statement balloon installations and the small details that make something memorable. Every event is individually designed around your child, your space and your vision, leaving you with a day that feels personal, exciting and unlike anyone else's.",
   uniqueServicesHeading: (

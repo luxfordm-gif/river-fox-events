@@ -70,7 +70,7 @@ const ChildrensParties = () => {
               </em>
             </>,
           ]}
-          sub="Playful, immersive and beautifully put together - we create luxury children's parties in Surrey that feel special from the moment guests arrive."
+          sub="Balloon arches, themed backdrops and painted name signs, set up across Surrey before your guests arrive and cleared away afterwards."
         />
 
         <CPReveal

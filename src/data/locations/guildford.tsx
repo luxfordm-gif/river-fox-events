@@ -13,7 +13,7 @@ const guildford = makeLocation({
   uniqueSeoDescription:
     "Themed children's parties across Guildford and the GU postcodes - first birthdays to big celebrations, individually designed and installed by Laura.",
   uniqueHeroLine: <>Children's party styling in Guildford,</>,
-  uniqueHeroSub: <>Party styling in Guildford, with statement balloon installations, bespoke backdrops and personal finishing touches.</>,
+  uniqueHeroSub: <>Organic balloon garlands and life-size cutouts of favourite characters, for family parties in Godalming, Merrow and Burpham.</>,
   uniqueUspBody:
     "Marking a birthday, naming day or milestone in Guildford? River Fox Events designs styling made to feel personal, exciting and properly memorable. From statement balloon installations and bespoke backdrops to the details most people miss, every celebration is individually designed to bring your idea to life for your child and your guests.",
   uniqueServicesHeading: (

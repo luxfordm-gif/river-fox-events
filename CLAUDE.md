@@ -77,17 +77,19 @@ Every page must ship valid JSON-LD covering the schema types relevant to it: `Lo
 
 ## Conventions
 
-### "Start planning" / Enquire CTAs
+### "Check your date" / Enquire CTAs
+
+The hero and article button label is **"Check your date"** (changed from "Start planning" in Nov 2026). Laura styles and decorates, she doesn't plan parties, and the enquire form leads with the event date. Don't use "planner" / "planning" wording to describe her service.
 
 The Enquire form (`<section id="enquire">`) only renders on a few pages — Index, Children's Parties, Milestones, Corporate & Brand, location pages. Other pages (Journal, articles, 404, Welcome, Contact) reuse the shared Nav and Footer, which both link to the enquire section.
 
-**Always route Start planning / Enquire CTAs through `handleEnquireClick` from `@/lib/enquire`**, with `href={ENQUIRE_HREF}` (`/#enquire`):
+**Always route Check your date / Enquire CTAs through `handleEnquireClick` from `@/lib/enquire`**, with `href={ENQUIRE_HREF}` (`/#enquire`):
 
 ```tsx
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
-  Start planning <span>→</span>
+  Check your date <span>→</span>
 </a>
 ```
 

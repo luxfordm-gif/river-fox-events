@@ -140,9 +140,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/childrens-parties",
-    title: "Children's Party Styling in Surrey | River Fox Events",
+    title: "Kids Party Decorations & Balloons, Surrey | River Fox Events",
     description:
-      "Balloon installs, backdrops and props for children's parties across Surrey. Bring me the theme and I'll style the room, set up before guests arrive.",
+      "Kids party decorations across Surrey, from balloon arches to themed backdrops and character props, set up before guests arrive and cleared away afterwards.",
     breadcrumbName: "Children's Parties",
     ogImage: "/og/childrens-parties-surrey.webp",
     service: {
@@ -184,9 +184,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-oxted",
     ogImage: "/og/og-fairy-kayla.webp",
-    title: "Children's Party Styling in Oxted | River Fox Events",
+    title: "Oxted Party Decorations & Balloon Arches | River Fox Events",
     description:
-      "Children's party styling in Oxted and across East Surrey - from first birthdays to big themed celebrations, from £460 and individually designed by Laura.",
+      "Party decorations in Oxted, Limpsfield and Hurst Green. Balloon arches, painted name boards and themed props, installed and collected by Laura, from £460.",
     breadcrumbName: "Party Styling Oxted",
     service: {
       serviceType: "Event Styling",
@@ -199,9 +199,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-cobham",
     ogImage: "/og/og-wonka-chocolate-arch.webp",
-    title: "Cobham Children's Party Styling | River Fox Events",
+    title: "Balloon Arches & Party Decor in Cobham | River Fox Events",
     description:
-      "First birthdays and big themed parties styled across Cobham, Oxshott and Stoke d'Abernon - individually designed and installed by Laura, from £460.",
+      "Balloon arches, garlands and photo backdrops for Cobham and Stoke d'Abernon parties. Designed by Laura, set up on the morning and taken down after, from £460.",
     breadcrumbName: "Party Styling Cobham",
     service: {
       serviceType: "Event Styling",
@@ -214,9 +214,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-weybridge",
     ogImage: "/og/og-wonka-chocolate-arch.webp",
-    title: "Weybridge Children's Party Styling | River Fox Events",
+    title: "Weybridge Birthday Decorations & Balloons | River Fox Events",
     description:
-      "Riverside children's parties in Weybridge - first birthdays to big themed celebrations, individually designed and installed by Laura, from £460.",
+      "Weybridge birthday decorations, from balloon hoops and light-up numbers to painted sailboards, for homes on St George's Hill and Oatlands Park. From £460.",
     breadcrumbName: "Party Styling Weybridge",
     service: {
       serviceType: "Event Styling",
@@ -229,9 +229,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-esher",
     ogImage: "/og/og-naming-harvey-daisy.webp",
-    title: "Esher Children's Party Styling | River Fox Events",
+    title: "Party Balloons & Backdrops in Esher | River Fox Events",
     description:
-      "Statement children's parties in Esher and Claygate - first birthdays to big themed celebrations, individually designed and installed by Laura.",
+      "Party balloons and backdrops in Esher, Claygate and Thames Ditton, from first birthdays to Sandown Park events. Everything set up and cleared away by Laura.",
     breadcrumbName: "Party Styling Esher",
     service: {
       serviceType: "Event Styling",
@@ -259,9 +259,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-oxshott",
     ogImage: "/og/og-dinosaur-ayaan.webp",
-    title: "Oxshott Children's Party Styling | River Fox Events",
+    title: "Children's Party Decorators in Oxshott | River Fox Events",
     description:
-      "At-home children's parties in Oxshott - first birthdays to big themed celebrations, individually designed and installed by Laura.",
+      "Children's party decorators for at-home parties in Oxshott, with balloon installations, themed backdrops and props. Rated 5.0 on Google, takedown included.",
     breadcrumbName: "Party Styling Oxshott",
     service: {
       serviceType: "Event Styling",
@@ -289,9 +289,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-walton-on-thames",
     ogImage: "/og/og-pastel-safari-anaya.webp",
-    title: "Walton-on-Thames Kids' Party Styling | River Fox Events",
+    title: "Walton-on-Thames Kids Party Decorations | River Fox Events",
     description:
-      "Thames-side children's parties in Walton-on-Thames - first birthdays to big themed celebrations, individually designed by Laura.",
+      "Walton-on-Thames kids party decorations, with balloon garlands, soft-seat picnic setups and themed props for homes in Hersham. Rated 5.0 on Google reviews.",
     breadcrumbName: "Party Styling Walton-on-Thames",
     service: {
       serviceType: "Event Styling",
@@ -319,9 +319,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-epsom",
     ogImage: "/og/og-jungle-elephant.webp",
-    title: "Epsom Children's Party Styling | River Fox Events",
+    title: "Birthday Party Decorators in Epsom | River Fox Events",
     description:
-      "North Surrey children's parties in Epsom - first birthdays to big themed celebrations, individually designed and installed by Laura, from £460.",
+      "Birthday party decorators in Epsom, Ashtead and Ewell. Number balloons, character cutouts and photo backdrops, delivered, set up and collected, from £460.",
     breadcrumbName: "Party Styling Epsom",
     service: {
       serviceType: "Event Styling",
