@@ -12,7 +12,7 @@ const reigate = makeLocation({
   uniqueSeoTitle: "Reigate Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Fifteen minutes from the studio - children's party styling in Reigate, from first birthdays to big themed celebrations, individually designed by Laura.",
-  uniqueHeroLine: <>Children's party styling in Reigate,</>,
+  uniqueHeroLine: <>Reigate birthday decorations,</>,
   uniqueHeroSub: <>Our Horley studio is fifteen minutes away, so balloon garlands, themed backdrops and painted signs go up on the morning and come down the same night.</>,
   uniqueUspBody:
     "Planning a celebration in Reigate? River Fox Events draws together polished styling, statement balloon installations and the details that make a room feel considered. Each one is individually designed around your child, your space and your vision, for a day that feels personal, exciting and unlike anything off a shelf.",

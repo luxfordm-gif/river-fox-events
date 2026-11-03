@@ -13,7 +13,7 @@ const sevenoaks = makeLocation({
   uniqueSeoTitle: "Sevenoaks Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "West Kent children's parties in Sevenoaks - first birthdays to big themed celebrations, individually designed and installed by Laura.",
-  uniqueHeroLine: <>Children's party styling in Sevenoaks,</>,
+  uniqueHeroLine: <>Sevenoaks party decorations,</>,
   uniqueHeroSub: <>Birthday decorations for Otford, Kemsing and Riverhead, with jumbo balloons, light-up numbers and a themed backdrop ready before guests arrive.</>,
   uniqueUspBody:
     "For Sevenoaks families wanting a celebration with real care behind it, River Fox Events designs days that feel personal, memorable and beautifully put together. Known for statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes and venues across the area into celebrations children and guests remember long afterwards.",

@@ -13,7 +13,7 @@ const tunbridgeWells = makeLocation({
   uniqueSeoTitle: "Tunbridge Wells Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Kent children's parties in Tunbridge Wells - first birthdays to big themed celebrations, individually designed and installed by Laura.",
-  uniqueHeroLine: <>Children's party styling in Tunbridge Wells,</>,
+  uniqueHeroLine: <>Tunbridge Wells balloon decor,</>,
   uniqueHeroSub: <>Pembury, Southborough and Speldhurst birthdays dressed with balloon installations, painted sailboard names and themed props, all collected afterwards.</>,
   uniqueUspBody:
     "Planning a birthday, christening or special occasion in Tunbridge Wells? River Fox Events designs styling made to feel personal, exciting and quietly unforgettable. From statement balloon installations and bespoke backdrops to the finishing touches, every celebration is individually designed to bring your vision to life for your child and your guests.",

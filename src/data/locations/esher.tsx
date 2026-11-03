@@ -12,7 +12,7 @@ const esher = makeLocation({
   uniqueSeoTitle: "Party Balloons & Backdrops in Esher | River Fox Events",
   uniqueSeoDescription:
     "Party balloons and backdrops in Esher, Claygate and Thames Ditton, from first birthdays to Sandown Park events. Everything set up and cleared away by Laura.",
-  uniqueHeroLine: <>Children's party styling in Esher,</>,
+  uniqueHeroLine: <>Kids' party decorations in&nbsp;Esher,</>,
   uniqueHeroSub: <>From Sandown Park suites to garden parties in Thames Ditton, every setup comes with balloon installations, themed backdrops and personalised signs.</>,
   uniqueUspBody:
     "Planning a children's party, baby shower or special event in Esher? River Fox Events creates beautifully styled celebrations designed to feel personal, exciting and completely unforgettable. From statement balloon installations and bespoke backdrops to carefully chosen finishing touches, every celebration is individually designed to bring your vision to life and create a magical experience for your child and guests.",

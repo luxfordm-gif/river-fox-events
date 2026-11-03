@@ -12,7 +12,7 @@ const lingfield = makeLocation({
   uniqueSeoTitle: "Lingfield Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Village children's parties in Lingfield and along the Surrey/Sussex border - first birthdays to themed celebrations, individually designed by Laura.",
-  uniqueHeroLine: <>Children's party styling in Lingfield,</>,
+  uniqueHeroLine: <>Lingfield party styling,</>,
   uniqueHeroSub: <>Close to our Horley studio, so parties in Dormansland and Crowhurst get early setups, balloon arches, painted signs and a same-night clear-away.</>,
   uniqueUspBody:
     "Got a celebration planned in Lingfield? River Fox Events combines careful styling, statement balloon installations and the small touches that make a day memorable. Every event is individually designed around your child, your space and your vision, for something that feels personal, joyful and unmistakably yours.",
