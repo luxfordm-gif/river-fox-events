@@ -187,6 +187,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Christmas door garlands in Surrey for homes, porches and shopfronts. Fresh spruce or faux, styled to your paintwork, put up for you and taken down in January.",
     breadcrumbName: "Christmas Door Garlands",
+    ogImage: "/og/christmas-door-garlands.webp",
     service: {
       serviceType: "Christmas Door Garland Installation",
       areaServed: ["Surrey", "Reigate", "East Molesey", "Cobham", "Esher", "Weybridge"],
