@@ -9,11 +9,11 @@ const weybridge = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["fairy-kayla", "pastel-safari-anaya", "jungle-elephant"],
   },
-  uniqueSeoTitle: "Weybridge Children's Party Styling | River Fox Events",
+  uniqueSeoTitle: "Weybridge Birthday Decorations & Balloons | River Fox Events",
   uniqueSeoDescription:
-    "Riverside children's parties in Weybridge - first birthdays to big themed celebrations, individually designed and installed by Laura, from £460.",
+    "Weybridge birthday decorations, from balloon hoops and light-up numbers to painted sailboards, for homes on St George's Hill and Oatlands Park. From £460.",
   uniqueHeroLine: <>Children's party styling in Weybridge,</>,
-  uniqueHeroSub: <>Party styling in Weybridge, with statement balloon installations, bespoke backdrops and personalised detail.</>,
+  uniqueHeroSub: <>St George's Hill gardens and Oatlands Park homes, finished with balloon hoops, painted sailboards and light-up numbers for the birthday child.</>,
   uniqueUspBody:
     "For Weybridge families looking for something with a little more to it, River Fox Events designs celebrations that feel personal, memorable and beautifully resolved. Built around statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes, gardens and venues across the town into days children and guests remember long after the last guest leaves.",
   uniqueServicesHeading: (

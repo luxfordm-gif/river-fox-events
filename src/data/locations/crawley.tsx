@@ -14,7 +14,7 @@ const crawley = makeLocation({
   uniqueSeoDescription:
     "Children's birthday styling in Crawley and across West Sussex, from first birthdays to big themed parties - individually designed and installed by Laura.",
   uniqueHeroLine: <>Children's party styling in Crawley,</>,
-  uniqueHeroSub: <>Children's birthdays in Crawley, styled with statement balloon installations, bespoke backdrops and considered personal touches.</>,
+  uniqueHeroSub: <>Pound Hill, Maidenbower and Three Bridges birthdays get balloon walls, light-up letters and themed props, set up and cleared by us on the day.</>,
   uniqueUspBody:
     "Celebrating in Crawley? River Fox Events combines considered styling, statement balloon installations and carefully chosen details into something your family will remember. Each event is individually designed around your child, your space and the day you have in mind, so the result feels personal, joyful and entirely your own.",
   uniqueServicesHeading: (

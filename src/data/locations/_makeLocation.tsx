@@ -433,7 +433,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       },
       {
         q: "Are you a party planner or party stylist? What's the difference?",
-        a: "River Fox Events is an event styling studio. While a planner manages logistics such as venues, suppliers and timelines, our focus is on the visual experience - creating statement installations and cohesive styling that transform your space. We specialise in large-scale balloon installations, custom backdrops and thoughtfully styled details, ensuring your celebration feels considered and ready to enjoy.",
+        a: "Laura is a party stylist. She designs the decorations, brings them to your home or venue, sets everything up before guests arrive and takes it all down afterwards. That covers balloon installations, backdrops, signs and themed props. The venue, food and entertainment stay with you, or with your planner if you have one.",
       },
       {
         q: "How far in advance should I book?",

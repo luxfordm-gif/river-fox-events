@@ -14,7 +14,7 @@ const horsham = makeLocation({
   uniqueSeoDescription:
     "Big themed birthdays and first-birthday styling in Horsham - children's parties individually designed and installed by Laura.",
   uniqueHeroLine: <>Children's party styling in Horsham,</>,
-  uniqueHeroSub: <>Children's parties in Horsham, shaped by statement balloon installations, bespoke backdrops and details chosen for the day.</>,
+  uniqueHeroSub: <>For parties in Southwater, Warnham and Broadbridge Heath, we bring the balloon columns, light-up number stacks and theme props, and take them all away after.</>,
   uniqueUspBody:
     "For Horsham families looking for a celebration with a little more care behind it, River Fox Events designs days that feel personal, memorable and beautifully finished. Known for statement balloon installations, bespoke backdrops and thoughtful styling, we turn homes and venues across the town into days children and guests carry with them.",
   uniqueServicesHeading: (
