@@ -53,6 +53,17 @@ export const ARTICLES: Article[] = [
     ogImage: "/og/christmas-decorations-surrey.webp",
     category: "Trends",
     Body: ChristmasDecorationsSurreyBody,
+    endCta: {
+      heading: (
+        <>
+          Dress your door{" "}
+          <em className="italic font-light text-accent-warm">for Christmas.</em>
+        </>
+      ),
+      body: "Fresh spruce, faux, or a mix of both, installed from late November. Send a photo of your door and I'll come back with ideas and a quote.",
+      label: "Reserve your date",
+      href: "/christmas-door-garlands/#enquire",
+    },
   },
   {
     slug: "baby-shower-themes-2026",

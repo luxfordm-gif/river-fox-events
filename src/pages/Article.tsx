@@ -139,16 +139,21 @@ const Article = () => {
 
         <ArticleCta
           heading={
-            <>
-              Plan your{" "}
-              <em className="italic font-light text-accent-warm">
-                celebration.
-              </em>
-            </>
+            article.endCta?.heading ?? (
+              <>
+                Plan your{" "}
+                <em className="italic font-light text-accent-warm">
+                  celebration.
+                </em>
+              </>
+            )
           }
-          body="Considered design, personally delivered by Laura across Surrey. Share your vision and we'll be in touch personally."
-          label="Reserve your date"
-          href="/#enquire"
+          body={
+            article.endCta?.body ??
+            "Considered design, personally delivered by Laura across Surrey. Share your vision and we'll be in touch personally."
+          }
+          label={article.endCta?.label ?? "Reserve your date"}
+          href={article.endCta?.href ?? "/#enquire"}
         />
 
         <RelatedArticles items={related} />

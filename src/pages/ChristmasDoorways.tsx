@@ -406,6 +406,15 @@ const ChristmasDoorways = () => {
             {/* Fresh or faux: a garland cutout (transparent WebP, shadow from
                 CSS) with a plain header under each half. */}
             <div className="mt-20 md:mt-28 max-w-[1040px] mx-auto">
+              <div className="max-w-[760px] mx-auto text-center fade-up mb-10 md:mb-14">
+                <p className="eyebrow">Garland options</p>
+                <div className="mt-5">
+                  <SectionTitle id="xmas-options-heading">
+                    Fresh, faux, or{" "}
+                    <em className="italic font-light text-accent-warm">a little of both.</em>
+                  </SectionTitle>
+                </div>
+              </div>
               <img
                 src={imgGarland1200}
                 srcSet={`${imgGarland800} 800w, ${imgGarland1200} 1200w, ${imgGarland1440} 1440w`}
@@ -427,14 +436,16 @@ const ChristmasDoorways = () => {
                     <p className={`mb-4 md:h-[24px] ${opt.popular ? "" : "hidden md:block"}`}>
                       {opt.popular && <span className="xmas-tag">Most popular</span>}
                     </p>
+                    {/* Phones get larger titles and a wider body measure; the
+                        desktop columns keep the tighter sizing. */}
                     <h3
-                      className="font-serif-rf text-primary"
-                      style={{ fontSize: "var(--fs-h4)", lineHeight: 1.15, fontWeight: 400 }}
+                      className="font-serif-rf text-primary text-[28px] md:text-h4"
+                      style={{ lineHeight: 1.15, fontWeight: 400 }}
                     >
                       {opt.title}
                     </h3>
-                    <p className="font-serif-rf italic text-accent-warm text-[17px] leading-[1.3] mt-1">{opt.note}</p>
-                    <p className="mt-4 text-[15px] leading-[1.75] text-ink-soft max-w-[30ch]">{opt.body}</p>
+                    <p className="font-serif-rf italic text-accent-warm text-[19px] md:text-[17px] leading-[1.3] mt-1">{opt.note}</p>
+                    <p className="mt-4 text-[15.5px] md:text-[15px] leading-[1.75] text-ink-soft max-w-[42ch] md:max-w-[30ch]">{opt.body}</p>
                     <div className="mt-auto pt-6">
                       <a
                         href={ENQUIRE_HREF}
