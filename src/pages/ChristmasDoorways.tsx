@@ -80,6 +80,7 @@ const GARLAND_OPTIONS = [
   {
     title: "Fresh spruce",
     note: "Naturally festive",
+    popular: true,
     body: [
       "Nothing quite captures Christmas like the scent of fresh spruce. Beautifully seasonal, with natural foliage and a wonderfully traditional feel.",
       "Installed from early November, your fresh garland will last beautifully throughout the festive season and into January.",
@@ -109,7 +110,7 @@ const FAQS = [
   },
   {
     q: "When should I book my Christmas doorway?",
-    a: "As early as you can. Bookings open in October and the diary fills quickly through November, so send your photo and postcode early to secure your install date.",
+    a: "Christmas garlands are a seasonal favourite, and installation dates are limited. I recommend enquiring as early as possible.",
   },
   {
     q: "When will my garland go up?",
@@ -454,6 +455,11 @@ const ChristmasDoorways = () => {
               <div className="mt-6 md:mt-14 max-w-[840px] mx-auto grid grid-cols-1 md:grid-cols-2 text-center divide-y md:divide-y-0 md:divide-x">
                 {GARLAND_OPTIONS.map((opt) => (
                   <div key={opt.title} className="fade-up flex flex-col items-center py-10 md:py-2 md:px-10 lg:px-14">
+                    {/* Tag slot keeps both titles level side by side; on
+                        phones (stacked) only the popular one needs it. */}
+                    <p className={`mb-4 md:h-[24px] ${opt.popular ? "" : "hidden md:block"}`}>
+                      {opt.popular && <span className="xmas-tag">Most popular</span>}
+                    </p>
                     {/* Phones get larger titles; the desktop columns keep the
                         tighter sizing. */}
                     <h3
