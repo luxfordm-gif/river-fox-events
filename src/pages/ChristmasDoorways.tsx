@@ -81,19 +81,13 @@ const GARLAND_OPTIONS = [
     title: "Fresh spruce",
     note: "Naturally festive",
     popular: true,
-    body: [
-      "Nothing quite captures Christmas like the scent of fresh spruce. Beautifully seasonal, with natural foliage and a wonderfully traditional feel.",
-      "Installed from early November, your fresh garland will last beautifully throughout the festive season and into January.",
-    ],
+    body: "Nothing captures Christmas like the scent of fresh spruce. Installed from early November, it lasts into January.",
     link: "Enquire about fresh spruce",
   },
   {
     title: "Faux",
     note: "Beautiful all season",
-    body: [
-      "A beautifully full garland that can be installed whenever you wish and enjoyed year after year.",
-      "A lovely choice for those who want a lasting Christmas decoration that can become part of their festive traditions.",
-    ],
+    body: "A beautifully full garland, installed whenever you wish and enjoyed year after year.",
     link: "Enquire about faux garlands",
   },
 ];
@@ -227,17 +221,17 @@ const SectionTitle = ({ children, id, light }: { children: ReactNode; id: string
 const STEPS = [
   {
     n: "01",
-    title: "Tell me about your doorway",
+    title: "Send me a photo",
     body: "Send me a photo, approximate measurements and your postcode. If you have colours or inspiration in mind, I'd love to see those too. I'll come back to you with ideas and a personalised quote.",
   },
   {
     n: "02",
-    title: "Let's settle on your design",
+    title: "Settle on a design",
     body: "We'll choose your garland style, colours and decorative details, creating a look that complements your home or business. Once you're happy, we'll arrange your installation date.",
   },
   {
     n: "03",
-    title: "I'll bring it all to life",
+    title: "I'll bring it to life",
     body: "I'll arrive with everything needed and dress your doorway in place, taking care of the installation and clearing away afterwards. All you need to do is enjoy the finished result.",
   },
   {
@@ -333,7 +327,7 @@ const ChristmasDoorways = () => {
                 <br />
                 <em className="italic font-normal text-accent-warm">beautifully dressed.</em>
               </h1>
-              <div className="mt-5 max-w-[46ch] text-[17px] leading-[1.65] text-ink-soft space-y-4">
+              <div className="mt-5 max-w-[46ch] md:max-w-[70ch] text-[17px] leading-[1.65] text-ink-soft space-y-4">
                 <p>
                   A beautifully dressed doorway is one of the loveliest ways to
                   welcome Christmas.
@@ -372,17 +366,11 @@ const ChristmasDoorways = () => {
                 A little Christmas magic,{" "}
                 <em className="italic font-light text-accent-warm">right at your door.</em>
               </SectionTitle>
-              <div className="mt-6 text-[16px] leading-[1.7] text-ink-soft max-w-[54ch] mx-auto space-y-4">
-                <p>
-                  Whether it's the finishing touch to your family home or a
-                  festive welcome for your customers, a beautifully styled
-                  doorway sets the tone for the season.
-                </p>
-                <p>
-                  From front doors and porches to shopfronts and entrances,
-                  each design is created to make an impression.
-                </p>
-              </div>
+              <p className="mt-6 text-[16px] leading-[1.7] text-ink-soft max-w-[54ch] mx-auto">
+                Whether it's the finishing touch to your family home or a
+                festive welcome for your customers, a beautifully styled
+                doorway sets the tone for the season.
+              </p>
             </div>
 
             <div ref={cardsRef} className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
@@ -469,11 +457,8 @@ const ChristmasDoorways = () => {
                       {opt.title}
                     </h3>
                     <p className="font-serif-rf italic text-accent-warm text-[19px] md:text-[17px] leading-[1.3] mt-1">{opt.note}</p>
-                    <div className="mt-4 text-[15.5px] md:text-[15px] leading-[1.75] text-ink-soft max-w-[42ch] md:max-w-[36ch] space-y-3">
-                      {opt.body.map((para) => (
-                        <p key={para}>{para}</p>
-                      ))}
-                    </div>
+                    {/* Keep to three lines max (Matt, 2026-11-04). */}
+                    <p className="mt-4 text-[15.5px] md:text-[15px] leading-[1.75] text-ink-soft max-w-[42ch] md:max-w-[40ch]">{opt.body}</p>
                     <div className="mt-auto pt-6">
                       <a
                         href={ENQUIRE_HREF}
@@ -533,13 +518,17 @@ const ChristmasDoorways = () => {
             <ol className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
               {STEPS.map((s) => (
                 <li key={s.n} className="fade-up border-t pt-6" style={{ borderColor: "hsl(var(--ink) / 0.14)" }}>
-                  <span className="font-mono-rf text-[12px] tracking-[0.18em] text-ink-soft">{s.n}</span>
+                  {/* Extra tag sits by the step number so step titles stay on
+                      one line, even in the narrow 4-column layout. */}
+                  <div className="flex items-center gap-3 h-[22px]">
+                    <span className="font-mono-rf text-[12px] tracking-[0.18em] text-ink-soft">{s.n}</span>
+                    {s.extra && <span className="xmas-tag">Extra</span>}
+                  </div>
                   <h3
-                    className="font-serif-rf text-primary mt-3 flex items-center gap-3 flex-wrap"
+                    className="font-serif-rf text-primary mt-3"
                     style={{ fontSize: "var(--fs-h4)", lineHeight: 1.2, fontWeight: 400 }}
                   >
                     {s.title}
-                    {s.extra && <span className="xmas-tag">Extra</span>}
                   </h3>
                   <p className="mt-3 text-[15px] leading-[1.7] text-ink-soft">{s.body}</p>
                 </li>
