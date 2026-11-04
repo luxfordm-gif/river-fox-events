@@ -277,7 +277,7 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
     align-items: center;
     gap: 14px;
   }
-  .xmas-promo__bow { top: -10px; left: 46px; width: 40px; }
+  .xmas-promo__bow { display: none; }
   .xmas-promo__close { top: 6px; right: 6px; width: 26px; height: 26px; }
   .xmas-promo__deck { flex: none; width: 74px; height: 92px; margin: 0; }
   .xmas-promo__deck { margin-left: 6px; }
