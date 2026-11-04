@@ -404,17 +404,8 @@ const ChristmasDoorways = () => {
             </div>
 
             {/* Fresh or faux: a garland cutout (transparent WebP, shadow from
-                CSS) with a plain header under each half. */}
+                CSS), the section heading under it, then the three options. */}
             <div className="mt-20 md:mt-28 max-w-[1040px] mx-auto">
-              <div className="max-w-[760px] mx-auto text-center fade-up mb-10 md:mb-14">
-                <p className="eyebrow">Garland options</p>
-                <div className="mt-5">
-                  <SectionTitle id="xmas-options-heading">
-                    Fresh, faux, or{" "}
-                    <em className="italic font-light text-accent-warm">a little of both.</em>
-                  </SectionTitle>
-                </div>
-              </div>
               <img
                 src={imgGarland1200}
                 srcSet={`${imgGarland800} 800w, ${imgGarland1200} 1200w, ${imgGarland1440} 1440w`}
@@ -426,9 +417,18 @@ const ChristmasDoorways = () => {
                 loading="lazy"
                 decoding="async"
               />
+              <div className="max-w-[760px] mx-auto text-center fade-up mt-8 md:mt-10">
+                <p className="eyebrow">Garland options</p>
+                <div className="mt-5">
+                  <SectionTitle id="xmas-options-heading">
+                    Fresh, faux, or{" "}
+                    <em className="italic font-light text-accent-warm">a little of both.</em>
+                  </SectionTitle>
+                </div>
+              </div>
               {/* Three columns split by hairlines; each column is a flex stack so
                   the Book links line up along one baseline. */}
-              <div className="mt-6 md:mt-12 grid grid-cols-1 md:grid-cols-3 text-center divide-y md:divide-y-0 md:divide-x">
+              <div className="mt-6 md:mt-14 grid grid-cols-1 md:grid-cols-3 text-center divide-y md:divide-y-0 md:divide-x">
                 {GARLAND_OPTIONS.map((opt) => (
                   <div key={opt.title} className="fade-up flex flex-col items-center py-10 md:py-2 md:px-8 lg:px-12">
                     {/* Tag slot keeps the three titles level side by side; on
