@@ -100,7 +100,8 @@ const ChristmasPromo = () => {
         })}
       </div>
 
-      <div className="xmas-promo__body">
+      {/* Desktop card: centred, with a solid button. */}
+      <div className="xmas-promo__body hidden md:block">
         <p className="eyebrow">Now booking</p>
         <h2 className="xmas-promo__title font-serif-rf">
           Get your Christmas{" "}
@@ -110,6 +111,16 @@ const ChristmasPromo = () => {
         <p className="xmas-promo__text">Fresh or faux, styled to your door.</p>
         <a href={`${PAGE}#enquire`} className="btn-solid-rf accent xmas-promo__cta" tabIndex={show ? 0 : -1}>
           Reserve your date <span>→</span>
+        </a>
+      </div>
+
+      {/* Phone bar: lighter, a text link instead of a chunky button (Matt,
+          2026-11-04). */}
+      <div className="xmas-promo__body md:hidden">
+        <p className="eyebrow xmas-promo__eyebrow">Christmas 2026</p>
+        <h2 className="xmas-promo__title font-serif-rf">A little Christmas magic.</h2>
+        <a href={PAGE} className="btn-link-rf xmas-promo__link" tabIndex={show ? 0 : -1}>
+          Explore our garlands <span className="arr">→</span>
         </a>
       </div>
     </aside>
