@@ -19,7 +19,7 @@ const ChristmasDecorationsSurreyArticle = () => (
           party&nbsp;happens.
         </li>
         <li>
-          A doorway garland, fresh or faux, gives a home or business a welcome
+          A <a href="/christmas-door-garlands/">doorway garland</a>, fresh or faux, gives a home or business a welcome
           that lasts all season, and the slots go quickly once November&nbsp;starts.
         </li>
         <li>
@@ -62,7 +62,8 @@ const ChristmasDecorationsSurreyArticle = () => (
       <h2>The front door, for homes and businesses</h2>
       <p>
         A dressed doorway is one of the simplest ways to make a home or a
-        business feel ready for Christmas. A full garland around the frame,
+        business feel ready for Christmas. A{" "}
+        <a href="/christmas-door-garlands/">full garland around the frame</a>,
         built up with baubles in colours that suit the door, changes the whole
         frontage, and it greets everyone who walks past for the rest of
         the&nbsp;season.
@@ -86,7 +87,9 @@ const ChristmasDecorationsSurreyArticle = () => (
         page.
       </p>
       <p>
-        For shops, salons and studios, a dressed doorway does real work too. It
+        For shops, salons and studios, a{" "}
+        <a href="/christmas-door-garlands/">shopfront garland</a> does real
+        work too. It
         tells people you're open and festive, it gives customers a reason to
         stop, and it's often the backdrop for the photos they take on the way
         in.
@@ -99,6 +102,12 @@ const ChristmasDecorationsSurreyArticle = () => (
       width={560}
       alt="Snow-dusted fir garland with jewel-toned baubles and warm lights arching over a navy front door"
       caption="An idea for a navy door on a brick house: jewel-toned baubles and warm lights around the whole&nbsp;frame."
+    />
+
+    <ArticleCta
+      variant="inline"
+      label="See the garland options"
+      href="/christmas-door-garlands/"
     />
 
     <ArticlePullQuote>
@@ -169,8 +178,10 @@ const ChristmasDecorationsSurreyArticle = () => (
         December, often on the same&nbsp;evenings.
       </p>
       <p>
-        For a doorway, the easiest way to book is to email me at{" "}
-        <a href="mailto:riverfoxevents@gmail.com">riverfoxevents@gmail.com</a>{" "}
+        For a doorway, the easiest way to book is the form on my{" "}
+        <a href="/christmas-door-garlands/#enquire">Christmas doorway page</a>,
+        or an email to{" "}
+        <a href="mailto:riverfoxevents@gmail.com">riverfoxevents@gmail.com</a>,
         with a photo of your door and your postcode. That tells me the size,
         the colour and where you are, and I can come back to you with a quote
         and a date. For a party, send me the venue, the date and a rough idea
@@ -205,7 +216,9 @@ const ChristmasDecorationsSurreyArticle = () => (
         a great deal when clients ask me back year after&nbsp;year.
       </p>
       <p>
-        If you'd like your door dressed this year, or you're organising a
+        If you'd like{" "}
+        <a href="/christmas-door-garlands/">your door dressed this year</a>,
+        or you're organising a
         Christmas party and want the room to feel like the occasion, I'd love
         to hear from you.{" "}
         <a href="/#enquire">Tell me what you have in mind</a> and I'll come

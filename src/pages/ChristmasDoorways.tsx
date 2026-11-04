@@ -404,7 +404,7 @@ const ChristmasDoorways = () => {
             </div>
 
             {/* Fresh or faux: a garland cutout (transparent WebP, shadow from
-                CSS) with a plain header under each half. */}
+                CSS), the section heading under it, then the three options. */}
             <div className="mt-20 md:mt-28 max-w-[1040px] mx-auto">
               <img
                 src={imgGarland1200}
@@ -417,9 +417,18 @@ const ChristmasDoorways = () => {
                 loading="lazy"
                 decoding="async"
               />
+              <div className="max-w-[760px] mx-auto text-center fade-up mt-8 md:mt-10">
+                <p className="eyebrow">Garland options</p>
+                <div className="mt-5">
+                  <SectionTitle id="xmas-options-heading">
+                    Fresh, faux, or{" "}
+                    <em className="italic font-light text-accent-warm">a little of both.</em>
+                  </SectionTitle>
+                </div>
+              </div>
               {/* Three columns split by hairlines; each column is a flex stack so
                   the Book links line up along one baseline. */}
-              <div className="mt-6 md:mt-12 grid grid-cols-1 md:grid-cols-3 text-center divide-y md:divide-y-0 md:divide-x">
+              <div className="mt-6 md:mt-14 grid grid-cols-1 md:grid-cols-3 text-center divide-y md:divide-y-0 md:divide-x">
                 {GARLAND_OPTIONS.map((opt) => (
                   <div key={opt.title} className="fade-up flex flex-col items-center py-10 md:py-2 md:px-8 lg:px-12">
                     {/* Tag slot keeps the three titles level side by side; on
@@ -427,14 +436,16 @@ const ChristmasDoorways = () => {
                     <p className={`mb-4 md:h-[24px] ${opt.popular ? "" : "hidden md:block"}`}>
                       {opt.popular && <span className="xmas-tag">Most popular</span>}
                     </p>
+                    {/* Phones get larger titles and a wider body measure; the
+                        desktop columns keep the tighter sizing. */}
                     <h3
-                      className="font-serif-rf text-primary"
-                      style={{ fontSize: "var(--fs-h4)", lineHeight: 1.15, fontWeight: 400 }}
+                      className="font-serif-rf text-primary text-[28px] md:text-h4"
+                      style={{ lineHeight: 1.15, fontWeight: 400 }}
                     >
                       {opt.title}
                     </h3>
-                    <p className="font-serif-rf italic text-accent-warm text-[17px] leading-[1.3] mt-1">{opt.note}</p>
-                    <p className="mt-4 text-[15px] leading-[1.75] text-ink-soft max-w-[30ch]">{opt.body}</p>
+                    <p className="font-serif-rf italic text-accent-warm text-[19px] md:text-[17px] leading-[1.3] mt-1">{opt.note}</p>
+                    <p className="mt-4 text-[15.5px] md:text-[15px] leading-[1.75] text-ink-soft max-w-[42ch] md:max-w-[30ch]">{opt.body}</p>
                     <div className="mt-auto pt-6">
                       <a
                         href={ENQUIRE_HREF}

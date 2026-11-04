@@ -1,4 +1,4 @@
-import type { ComponentType } from "react";
+import type { ComponentType, ReactNode } from "react";
 
 /**
  * Lightweight metadata for an article - used by the journal index, related
@@ -44,4 +44,13 @@ export type ArticleSummary = {
  * static import (not lazy / code-split) so prerender can capture it. */
 export type Article = ArticleSummary & {
   Body: ComponentType;
+  /** Optional override for the dark end-of-article CTA card, e.g. to send
+   *  a seasonal article's readers to its own landing page. Any field left
+   *  out falls back to the default "Plan your celebration" card. */
+  endCta?: {
+    heading?: ReactNode;
+    body?: string;
+    label?: string;
+    href?: string;
+  };
 };
