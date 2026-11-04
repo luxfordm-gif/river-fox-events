@@ -639,7 +639,7 @@ const ChristmasDoorways = () => {
                   </label>
                   <label className="form-row">
                     <span className="lbl">Install</span>
-                    <select name="install" defaultValue="Late November">
+                    <select name="install" defaultValue="Early November">
                       <option>Early November</option>
                       <option>Late November</option>
                       <option>First week of December</option>
