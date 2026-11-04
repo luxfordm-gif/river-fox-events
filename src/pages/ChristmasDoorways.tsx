@@ -79,22 +79,16 @@ const FAN = [
 const GARLAND_OPTIONS = [
   {
     title: "Fresh spruce",
-    note: "Scented and seasonal",
-    body: "Real foliage with that Christmas tree scent. Lovely for a shorter window, from early December.",
-    link: "Book fresh spruce",
-  },
-  {
-    title: "Fresh and faux",
-    note: "The fullest look",
+    note: "Naturally festive",
     popular: true,
-    body: "A faux base layered with fresh spruce on top, so it looks fuller and bushier than either on its own.",
-    link: "Book fresh and faux",
+    body: "Nothing captures Christmas like the scent of fresh spruce. Installed from early November, it lasts into January.",
+    link: "Enquire about fresh spruce",
   },
   {
     title: "Faux",
-    note: "Neat until January",
-    body: "Stays full and neat to January in any weather, which shops and offices often prefer.",
-    link: "Book faux",
+    note: "Beautiful all season",
+    body: "A beautifully full garland, installed whenever you wish and enjoyed year after year.",
+    link: "Enquire about faux garlands",
   },
 ];
 
@@ -110,19 +104,19 @@ const FAQS = [
   },
   {
     q: "When should I book my Christmas doorway?",
-    a: "As early as you can. Bookings open in October and the diary fills quickly through November, so send your photo and postcode early to secure your install date.",
+    a: "Christmas garlands are a seasonal favourite, and installation dates are limited. I recommend enquiring as early as possible.",
   },
   {
     q: "When will my garland go up?",
-    a: "Faux and fresh and faux garlands can go up from late November. Fresh spruce is best installed in early December so it still looks full on Christmas Day. We'll agree the date when you book.",
+    a: "Faux garlands can be installed whenever you wish. Fresh spruce is installed from early November and lasts beautifully through the festive season and into January. We'll agree the date when you book.",
   },
   {
     q: "Do you dress doorways for businesses as well as homes?",
     a: "Yes. I dress front doors and porches for homes, and entrances for shops, salons, restaurants, clinics and offices, styled to your paintwork or brand colours.",
   },
   {
-    q: "What's the difference between fresh, faux, and fresh and faux?",
-    a: "Fresh spruce brings the scent of a real Christmas tree and suits a shorter window. Faux stays full and neat through to January. Fresh and faux layers fresh spruce over a faux base for the fullest, bushiest look, and it's the most popular choice.",
+    q: "What's the difference between fresh spruce and faux?",
+    a: "Fresh spruce brings the scent and natural foliage of a real Christmas tree, and lasts through the festive season into January. Faux is beautifully full, can go up whenever you wish, and can be enjoyed year after year.",
   },
   {
     q: "Can you match my door, brick or brand colours?",
@@ -172,7 +166,10 @@ const CARDS = [
     detailSrcSet: srcSet(goldDetail420, goldDetail640, goldDetail838),
     detailAlt: "Gold star, frosted pine cone and gold bauble tucked into spruce with a gold ribbon bow",
     title: "Front doors and porches",
-    body: "A full garland around the frame, built up with baubles, ribbon and pine cones in colours that suit the paintwork and brick, so the whole entrance feels finished.",
+    body: [
+      "From a generous sweep of festive greenery to a beautifully adorned doorway, each garland is styled to complement your home's character.",
+      "Think beautiful foliage, statement baubles, sumptuous ribbons and carefully chosen details, all brought together in a palette that feels just right for your home.",
+    ],
   },
   {
     img: shop640,
@@ -182,7 +179,10 @@ const CARDS = [
     detailSrcSet: srcSet(redDetail420, redDetail640, redDetail838),
     detailAlt: "Deep red baubles, eucalyptus and warm fairy lights nestled in spruce beside a shop window",
     title: "Shops, salons and restaurants",
-    body: "A doorway that tells people you're open and festive, and becomes the backdrop to the photos customers take on the way in.",
+    body: [
+      "Make a festive first impression with a beautifully dressed entrance that catches the eye and welcomes customers in.",
+      "Whether you favour classic Christmas colours or something more contemporary, your garland can be styled to complement your brand and create a memorable seasonal backdrop.",
+    ],
   },
 ];
 
@@ -221,24 +221,24 @@ const SectionTitle = ({ children, id, light }: { children: ReactNode; id: string
 const STEPS = [
   {
     n: "01",
-    title: "Send a photo",
-    body: "A photo of your door, rough measurements and your postcode is all I need to come back with ideas and a quote.",
+    title: "Send me a photo",
+    body: "Send me a photo, approximate measurements and your postcode. If you have colours or inspiration in mind, I'd love to see those too. I'll come back to you with ideas and a personalised quote.",
   },
   {
     n: "02",
-    title: "Choose your colours",
-    body: "We settle on fresh or faux and pick a palette from your paintwork and brick, then book a date for the install.",
+    title: "Settle on a design",
+    body: "We'll choose your garland style, colours and decorative details, creating a look that complements your home or business. Once you're happy, we'll arrange your installation date.",
   },
   {
     n: "03",
-    title: "Setup",
-    body: "I arrive with everything, dress the doorway on site and tidy up before I leave. Most doorways take a few hours.",
+    title: "I'll bring it to life",
+    body: "I'll arrive with everything needed and dress your doorway in place, taking care of the installation and clearing away afterwards. All you need to do is enjoy the finished result.",
   },
   {
     n: "04",
-    title: "Takedown",
+    title: "January takedown",
     extra: true,
-    body: "In January I come back, take it all down and leave the doorway as I found it. Add it when you book, or ask before Christmas.",
+    body: "When Christmas is over, I can return to carefully remove your garland and leave your doorway just as I found it. Takedown is available as an optional extra when booking.",
   },
 ];
 
@@ -325,21 +325,29 @@ const ChristmasDoorways = () => {
               >
                 Christmas door garlands,
                 <br />
-                <em className="italic font-normal text-accent-warm">dressed by hand.</em>
+                <em className="italic font-normal text-accent-warm">beautifully dressed.</em>
               </h1>
-              <p className="mt-5 max-w-[46ch] text-[17px] leading-[1.65] text-ink-soft">
-                Fresh spruce or faux, for front doors, porches and shopfronts
-                across Surrey. Styled around your paintwork, put up for you,
-                and taken down again in January if you'd&nbsp;like.
-              </p>
-              {/* Phones: stacked, matching widths, sized to the longer label
-                  (not full width). Wider screens: side by side. */}
-              <div className="mt-8 mx-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-fit">
+              <div className="mt-5 max-w-[46ch] md:max-w-[70ch] text-[17px] leading-[1.65] text-ink-soft space-y-4">
+                <p>
+                  A beautifully dressed doorway is one of the loveliest ways to
+                  welcome Christmas.
+                </p>
+                <p>
+                  Individually styled for your home or business, each garland
+                  brings together beautiful foliage, carefully chosen colours
+                  and festive details to create an entrance that feels truly
+                  special.
+                </p>
+                <p>
+                  Installed by hand across Surrey, with optional January
+                  takedown, so you can enjoy a little Christmas magic without
+                  lifting a&nbsp;finger.
+                </p>
+              </div>
+              {/* Single CTA (Laura/Matt, 2026-11-04: short label, no second button). */}
+              <div className="mt-8 flex justify-center">
                 <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
-                  Reserve your date <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
-                </a>
-                <a href="#how-it-works" className="btn-ghost-rf justify-center">
-                  How it works
+                  Enquire now <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
                 </a>
               </div>
             </div>
@@ -355,13 +363,13 @@ const ChristmasDoorways = () => {
           <div className="container-rfx">
             <div className="max-w-[760px] mx-auto text-center fade-up">
               <SectionTitle id="xmas-what-heading">
-                Homes and shopfronts,{" "}
-                <em className="italic font-light text-accent-warm">ready for December.</em>
+                A little Christmas magic,{" "}
+                <em className="italic font-light text-accent-warm">right at your door.</em>
               </SectionTitle>
               <p className="mt-6 text-[16px] leading-[1.7] text-ink-soft max-w-[54ch] mx-auto">
-                I dress doorways for families who want the house to feel like
-                Christmas from the end of the drive, and for shops, salons and
-                restaurants who'd like passers-by to stop and look.
+                Whether it's the finishing touch to your family home or a
+                festive welcome for your customers, a beautifully styled
+                doorway sets the tone for the season.
               </p>
             </div>
 
@@ -398,13 +406,17 @@ const ChristmasDoorways = () => {
                   >
                     {card.title}
                   </h3>
-                  <p className="mt-2 text-[15.5px] leading-[1.7] text-ink-soft max-w-[52ch]">{card.body}</p>
+                  <div className="mt-2 text-[15.5px] leading-[1.7] text-ink-soft max-w-[52ch] space-y-3">
+                    {card.body.map((para) => (
+                      <p key={para}>{para}</p>
+                    ))}
+                  </div>
                 </article>
               ))}
             </div>
 
             {/* Fresh or faux: a garland cutout (transparent WebP, shadow from
-                CSS), the section heading under it, then the three options. */}
+                CSS), the section heading under it, then the two options. */}
             <div className="mt-20 md:mt-28 max-w-[1040px] mx-auto">
               <img
                 src={imgGarland1200}
@@ -421,23 +433,23 @@ const ChristmasDoorways = () => {
                 <p className="eyebrow">Garland options</p>
                 <div className="mt-5">
                   <SectionTitle id="xmas-options-heading">
-                    Fresh, faux, or{" "}
-                    <em className="italic font-light text-accent-warm">a little of both.</em>
+                    Choose your{" "}
+                    <em className="italic font-light text-accent-warm">Christmas garland.</em>
                   </SectionTitle>
                 </div>
               </div>
-              {/* Three columns split by hairlines; each column is a flex stack so
-                  the Book links line up along one baseline. */}
-              <div className="mt-6 md:mt-14 grid grid-cols-1 md:grid-cols-3 text-center divide-y md:divide-y-0 md:divide-x">
+              {/* Two columns split by a hairline; each column is a flex stack so
+                  the Enquire links line up along one baseline. */}
+              <div className="mt-6 md:mt-14 max-w-[840px] mx-auto grid grid-cols-1 md:grid-cols-2 text-center divide-y md:divide-y-0 md:divide-x">
                 {GARLAND_OPTIONS.map((opt) => (
-                  <div key={opt.title} className="fade-up flex flex-col items-center py-10 md:py-2 md:px-8 lg:px-12">
-                    {/* Tag slot keeps the three titles level side by side; on
+                  <div key={opt.title} className="fade-up flex flex-col items-center py-10 md:py-2 md:px-10 lg:px-14">
+                    {/* Tag slot keeps both titles level side by side; on
                         phones (stacked) only the popular one needs it. */}
                     <p className={`mb-4 md:h-[24px] ${opt.popular ? "" : "hidden md:block"}`}>
                       {opt.popular && <span className="xmas-tag">Most popular</span>}
                     </p>
-                    {/* Phones get larger titles and a wider body measure; the
-                        desktop columns keep the tighter sizing. */}
+                    {/* Phones get larger titles; the desktop columns keep the
+                        tighter sizing. */}
                     <h3
                       className="font-serif-rf text-primary text-[28px] md:text-h4"
                       style={{ lineHeight: 1.15, fontWeight: 400 }}
@@ -445,7 +457,8 @@ const ChristmasDoorways = () => {
                       {opt.title}
                     </h3>
                     <p className="font-serif-rf italic text-accent-warm text-[19px] md:text-[17px] leading-[1.3] mt-1">{opt.note}</p>
-                    <p className="mt-4 text-[15.5px] md:text-[15px] leading-[1.75] text-ink-soft max-w-[42ch] md:max-w-[30ch]">{opt.body}</p>
+                    {/* Keep to three lines max (Matt, 2026-11-04). */}
+                    <p className="mt-4 text-[15.5px] md:text-[15px] leading-[1.75] text-ink-soft max-w-[42ch] md:max-w-[40ch]">{opt.body}</p>
                     <div className="mt-auto pt-6">
                       <a
                         href={ENQUIRE_HREF}
@@ -473,10 +486,13 @@ const ChristmasDoorways = () => {
             <BowDivider />
             <div className="max-w-[760px] mx-auto text-center fade-up">
               <SectionTitle id="xmas-ig-heading">
-                Doorways from{" "}
-                <em className="italic font-light text-accent-warm">past seasons.</em>
+                A little inspiration for{" "}
+                <em className="italic font-light text-accent-warm">your Christmas doorway.</em>
               </SectionTitle>
-              <p className="mt-4 text-[15px] text-ink-soft">(each photo opens Laura's Instagram, @riverfox_events)</p>
+              <p className="mt-6 text-[16px] leading-[1.7] text-ink-soft">
+                A few favourite doorways from Christmases past.
+              </p>
+              <p className="mt-2 text-[14px] text-ink-soft">(each photo opens Laura's Instagram, @riverfox_events)</p>
             </div>
           </div>
           <div className="mt-12 md:mt-14">
@@ -490,20 +506,29 @@ const ChristmasDoorways = () => {
             <BowDivider />
             <div className="max-w-[760px] mx-auto text-center fade-up">
               <SectionTitle id="xmas-how-heading">
-                From first photo to{" "}
-                <em className="italic font-light text-accent-warm">January takedown.</em>
+                Your Christmas doorway,{" "}
+                <em className="italic font-light text-accent-warm">taken care of.</em>
               </SectionTitle>
+              <p className="mt-6 text-[16px] leading-[1.7] text-ink-soft max-w-[54ch] mx-auto">
+                From the first conversation to the finished installation, I'll
+                take care of the details so you can simply enjoy your
+                beautifully dressed doorway throughout the festive season.
+              </p>
             </div>
             <ol className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
               {STEPS.map((s) => (
                 <li key={s.n} className="fade-up border-t pt-6" style={{ borderColor: "hsl(var(--ink) / 0.14)" }}>
-                  <span className="font-mono-rf text-[12px] tracking-[0.18em] text-ink-soft">{s.n}</span>
+                  {/* Extra tag sits by the step number so step titles stay on
+                      one line, even in the narrow 4-column layout. */}
+                  <div className="flex items-center gap-3 h-[22px]">
+                    <span className="font-mono-rf text-[12px] tracking-[0.18em] text-ink-soft">{s.n}</span>
+                    {s.extra && <span className="xmas-tag">Extra</span>}
+                  </div>
                   <h3
-                    className="font-serif-rf text-primary mt-3 flex items-center gap-3 flex-wrap"
+                    className="font-serif-rf text-primary mt-3"
                     style={{ fontSize: "var(--fs-h4)", lineHeight: 1.2, fontWeight: 400 }}
                   >
                     {s.title}
-                    {s.extra && <span className="xmas-tag">Extra</span>}
                   </h3>
                   <p className="mt-3 text-[15px] leading-[1.7] text-ink-soft">{s.body}</p>
                 </li>
@@ -593,7 +618,6 @@ const ChristmasDoorways = () => {
                     <span className="lbl">Garland</span>
                     <select name="garland" defaultValue="Not sure yet">
                       <option>Fresh spruce</option>
-                      <option>Fresh and faux</option>
                       <option>Faux</option>
                       <option>Not sure yet</option>
                     </select>
@@ -604,7 +628,8 @@ const ChristmasDoorways = () => {
                   </label>
                   <label className="form-row">
                     <span className="lbl">Install</span>
-                    <select name="install" defaultValue="Late November">
+                    <select name="install" defaultValue="Early November">
+                      <option>Early November</option>
                       <option>Late November</option>
                       <option>First week of December</option>
                       <option>Second week of December</option>
