@@ -6,6 +6,7 @@ import HeroGarland from "@/components/rfx/HeroGarland";
 import LocationHeroFan from "@/components/rfx/LocationHeroFan";
 import ScrollStrip from "@/components/rfx/ScrollStrip";
 import InstagramStrip from "@/components/rfx/InstagramStrip";
+import StoryVideos, { type Story } from "@/components/rfx/StoryVideos";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
 import bow320 from "@/assets/christmas/burgundy-velvet-bow-320.webp";
@@ -54,6 +55,14 @@ import imgBondi from "@/assets/journal/christmas-decorations-surrey/christmas-do
 import imgGarland800 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-800.webp";
 import imgGarland1200 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-1200.webp";
 import imgGarland1440 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-1440.webp";
+
+/* Christmas ad: Laura's Instagram story videos, played full screen from one
+   thumbnail tile in the inspiration section. Waiting on the video files:
+   add them to src/assets/christmas/video/ (compressed H.264 MP4, 720x1280),
+   import them here with a WebP thumbnail pulled from one of them, and the
+   tile appears. Until then nothing renders. */
+const AD_STORIES: Story[] = [];
+const AD_THUMB = { src: "", alt: "" };
 
 /* Hero fan, left to right. On phones the same three run as a scroll strip. */
 const FAN = [
@@ -498,6 +507,16 @@ const ChristmasDoorways = () => {
           <div className="mt-12 md:mt-14">
             <InstagramStrip images={INSTAGRAM} />
           </div>
+          {AD_STORIES.length > 0 && (
+            <div className="mt-14 md:mt-20 fade-up">
+              <StoryVideos
+                stories={AD_STORIES}
+                thumb={AD_THUMB.src}
+                thumbAlt={AD_THUMB.alt}
+                cta="Watch our Christmas ad"
+              />
+            </div>
+          )}
         </section>
 
         {/* Setup and takedown */}
