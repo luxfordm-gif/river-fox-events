@@ -289,13 +289,11 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
   .xmas-promo .eyebrow { font-size: 9.5px; }
   .xmas-promo .xmas-promo__eyebrow { color: hsl(var(--xmas-gold-deep)); }
   .xmas-promo__title { font-size: 20px; margin-top: 2px; }
-  .xmas-promo__sub { margin-top: 3px; font-size: 12.5px; line-height: 1.45; color: hsl(var(--ink-soft)); }
   .xmas-promo__link { margin-top: 4px; padding: 6px 0 4px; font-size: 13px; font-weight: 500; }
 }
 /* Small phones: keep the bar slim. */
 @media (max-width: 389px) {
   .xmas-promo__title { font-size: 18px; }
-  .xmas-promo__sub { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .xmas-promo, .xmas-promo__card { transition: none; }

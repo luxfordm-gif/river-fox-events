@@ -119,7 +119,6 @@ const ChristmasPromo = () => {
       <div className="xmas-promo__body md:hidden">
         <p className="eyebrow xmas-promo__eyebrow">Christmas 2026</p>
         <h2 className="xmas-promo__title font-serif-rf">A little Christmas magic.</h2>
-        <p className="xmas-promo__sub">Bespoke festive door garlands, beautifully styled.</p>
         <a href={PAGE} className="btn-link-rf xmas-promo__link" tabIndex={show ? 0 : -1}>
           Explore our garlands <span className="arr">→</span>
         </a>
