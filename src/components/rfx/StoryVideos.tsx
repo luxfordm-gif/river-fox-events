@@ -3,7 +3,9 @@ import { useCallback, useEffect, useRef, useState, type TouchEvent } from "react
 /* One portrait thumbnail that opens a full-screen, Instagram-story style
    player. Videos only load once the tile is tapped, so the page itself only
    pays for the thumbnail. With several videos they play in order with
-   progress bars; tap right for next, left for previous. */
+   progress bars at the top and a "1 of 6" counter at the bottom; tap or
+   swipe left for next, tap the left edge or swipe right for previous, swipe
+   down to close. */
 
 export type Story = {
   src: string;
@@ -31,18 +33,25 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
   const [muted, setMuted] = useState(false);
   const [paused, setPaused] = useState(false);
   const [hint, setHint] = useState(false);
+  // "Tap or swipe" tip on the first video, until the viewer moves on once.
+  const [showTip, setShowTip] = useState(false);
+  const learned = useRef(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
-  const touchY = useRef<number | null>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
   const single = stories.length === 1;
 
   const close = useCallback(() => setOpen(false), []);
   const next = useCallback(() => {
+    learned.current = true;
+    setShowTip(false);
     if (index < stories.length - 1) setIndex(index + 1);
     else setOpen(false);
   }, [index, stories.length]);
   const prev = useCallback(() => {
+    learned.current = true;
+    setShowTip(false);
     if (index > 0) setIndex(index - 1);
     else if (videoRef.current) videoRef.current.currentTime = 0;
   }, [index]);
@@ -112,18 +121,49 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
     return () => window.clearTimeout(t);
   }, [open, index]);
 
+  // Explain tap / swipe for a few seconds on the first video only.
+  useEffect(() => {
+    if (!open || single || index !== 0 || learned.current) return;
+    setShowTip(true);
+    const t = window.setTimeout(() => setShowTip(false), 4000);
+    return () => window.clearTimeout(t);
+  }, [open, index, single]);
+
   const openAt = (i: number) => {
     setIndex(i);
     setPaused(false);
     setOpen(true);
   };
 
+  // Touch is handled here rather than through clicks, which phones don't
+  // always send after a swipe. Handled touches cancel the browser's own click
+  // so nothing fires twice. Mouse and keyboard still use the buttons.
   const onTouchStart = (e: TouchEvent) => {
-    touchY.current = e.touches[0].clientY;
+    touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
   };
   const onTouchEnd = (e: TouchEvent) => {
-    if (touchY.current !== null && e.changedTouches[0].clientY - touchY.current > 80) close();
-    touchY.current = null;
+    const start = touchStart.current;
+    touchStart.current = null;
+    if (!start) return;
+    const dx = e.changedTouches[0].clientX - start.x;
+    const dy = e.changedTouches[0].clientY - start.y;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      // Like Instagram: swipe left for the next video, right for the previous.
+      e.preventDefault();
+      if (single) return;
+      if (dx < 0) next();
+      else prev();
+    } else if (dy > 80 && dy > Math.abs(dx)) {
+      e.preventDefault();
+      close();
+    } else if (Math.abs(dx) < 12 && Math.abs(dy) < 12) {
+      const zone = (e.target as HTMLElement).closest("[data-zone]")?.getAttribute("data-zone");
+      if (!zone) return; // sound, close etc. keep their normal click
+      e.preventDefault();
+      if (zone === "next") next();
+      else if (zone === "prev") prev();
+      else togglePause();
+    }
   };
 
   const story = stories[index];
@@ -179,7 +219,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
           role="dialog"
           aria-modal="true"
           aria-label={cta}
-          className="fixed inset-0 z-[200] grid place-items-center bg-black/95"
+          className="fixed inset-0 z-[200] grid place-items-center bg-black/95 touch-none"
           onClick={(e) => {
             if (e.target === e.currentTarget) close();
           }}
@@ -208,16 +248,17 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
 
             {/* Tap zones: previous / next, or pause for a single video. */}
             {single ? (
-              <button type="button" className="absolute inset-0 w-full h-full cursor-pointer" aria-label={paused ? "Play" : "Pause"} onClick={togglePause} />
+              <button type="button" className="absolute inset-0 w-full h-full cursor-pointer" data-zone="pause" aria-label={paused ? "Play" : "Pause"} onClick={togglePause} />
             ) : (
               <>
-                <button type="button" className="absolute left-0 top-0 h-full w-1/3 cursor-w-resize" aria-label="Previous video" onClick={prev} />
-                <button type="button" className="absolute right-0 top-0 h-full w-2/3 cursor-e-resize" aria-label="Next video" onClick={next} />
+                <button type="button" className="absolute left-0 top-0 h-full w-1/3 cursor-w-resize" data-zone="prev" aria-label="Previous video" onClick={prev} />
+                <button type="button" className="absolute right-0 top-0 h-full w-2/3 cursor-e-resize" data-zone="next" aria-label="Next video" onClick={next} />
               </>
             )}
 
-            {/* Dark fade so the bars and buttons read over bright footage. */}
+            {/* Dark fades so the bars, buttons and counter read over bright footage. */}
             <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/60 to-transparent" />
+            {!single && <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black/60 to-transparent" />}
 
             {/* Progress bars, one per video */}
             <div className="absolute top-3 left-3 right-3 flex gap-1.5 pointer-events-none" aria-hidden="true">
@@ -254,15 +295,24 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
               </svg>
             </button>
 
-            {/* Which video of how many. Announced to screen readers too. */}
+            {/* Bottom: which video of how many (announced to screen readers
+                too), with a short "tap or swipe" tip above it at the start. */}
             {!single && (
-              <span
-                aria-live="polite"
-                className="pointer-events-none absolute top-7 left-1/2 -translate-x-1/2 h-11 inline-flex items-center rounded-full bg-black/35 px-4 text-[14px] font-medium tracking-[0.04em] text-white tabular-nums"
-              >
-                <span className="sr-only">Video </span>
-                {index + 1} of {stories.length}
-              </span>
+              <div className="pointer-events-none absolute inset-x-0 bottom-[max(1.25rem,env(safe-area-inset-bottom))] flex flex-col items-center gap-2.5">
+                <span
+                  aria-hidden="true"
+                  className={`rounded-full bg-black/45 px-4 py-2 text-[13px] tracking-[0.02em] text-white transition-opacity duration-500 ${showTip ? "opacity-100" : "opacity-0"}`}
+                >
+                  Tap or swipe for the next video
+                </span>
+                <span
+                  aria-live="polite"
+                  className="h-9 inline-flex items-center rounded-full bg-black/35 px-4 text-[14px] font-medium tracking-[0.04em] text-white tabular-nums"
+                >
+                  <span className="sr-only">Video </span>
+                  {index + 1} of {stories.length}
+                </span>
+              </div>
             )}
 
             {/* Phones: a "there's more" arrow at the right edge for the first
