@@ -290,6 +290,9 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
   .xmas-promo .xmas-promo__eyebrow { color: hsl(var(--xmas-gold-deep)); }
   .xmas-promo__title { font-size: 20px; margin-top: 2px; }
   .xmas-promo__link { margin-top: 4px; padding: 6px 0 4px; font-size: 13px; font-weight: 500; }
+  /* Whole bar is tappable: the link's hit area stretches over the card,
+     above the photo deck (z 1-4) and below the close button (z 7). */
+  .xmas-promo__link::after { content: ""; position: absolute; inset: 0; z-index: 5; border-radius: inherit; }
 }
 /* Small phones: keep the bar slim. */
 @media (max-width: 389px) {
