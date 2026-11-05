@@ -30,6 +30,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
   const [progress, setProgress] = useState(0);
   const [muted, setMuted] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [hint, setHint] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -103,6 +104,14 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
     if (videoRef.current) videoRef.current.muted = muted;
   }, [muted]);
 
+  // Show the phone "next" arrow briefly at the start of each video.
+  useEffect(() => {
+    if (!open) return;
+    setHint(true);
+    const t = window.setTimeout(() => setHint(false), 2500);
+    return () => window.clearTimeout(t);
+  }, [open, index]);
+
   const openAt = (i: number) => {
     setIndex(i);
     setPaused(false);
@@ -125,13 +134,13 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
         ref={triggerRef}
         type="button"
         onClick={() => openAt(0)}
-        className="group relative block w-[240px] md:w-[256px] aspect-[9/16] rounded-[16px] overflow-hidden mx-auto shadow-[0_18px_40px_-18px_hsl(var(--ink)/0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+        className="group relative block w-[240px] md:w-[min(320px,calc((100svh-160px)*9/16))] lg:w-[min(380px,calc((100svh-160px)*9/16))] xl:w-[min(420px,calc((100svh-160px)*9/16))] aspect-[9/16] rounded-[16px] overflow-hidden mx-auto shadow-[0_18px_40px_-18px_hsl(var(--ink)/0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
         aria-haspopup="dialog"
       >
         <img
           src={thumb}
           srcSet={thumbSrcSet}
-          sizes="(min-width: 768px) 256px, 240px"
+          sizes="(min-width: 1280px) 420px, (min-width: 1024px) 380px, (min-width: 768px) 320px, 240px"
           alt={thumbAlt}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
           style={{ objectPosition: thumbPosition }}
@@ -144,13 +153,23 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
         {/* Play mark */}
         <span
           aria-hidden="true"
-          className="absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2 grid place-items-center w-16 h-16 rounded-full bg-white/85 backdrop-blur-sm transition-transform duration-300 group-hover:scale-105"
+          className="absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2 grid place-items-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110"
         >
-          <svg viewBox="0 0 24 24" className="w-6 h-6 ml-1 fill-[hsl(var(--ink))]">
+          <svg viewBox="0 0 24 24" className="w-6 h-6 md:w-9 md:h-9 ml-1 fill-[hsl(var(--ink))]">
             <path d="M8 5.5v13l11-6.5z" />
           </svg>
         </span>
-        <span className="absolute left-3 right-3 bottom-4 btn-solid-rf accent justify-center !px-3 !gap-2 whitespace-nowrap">
+        {/* How many videos are inside, so the series is obvious before tapping. */}
+        {!single && (
+          <span className="absolute top-3 left-3 md:top-4 md:left-4 inline-flex items-center gap-1.5 rounded-[4px] bg-black/50 backdrop-blur-sm px-2.5 py-1 text-[12px] md:text-[13px] font-medium tracking-[0.02em] text-white">
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current" strokeWidth={2} strokeLinejoin="round" aria-hidden="true">
+              <rect x="3" y="7" width="13" height="14" rx="2" />
+              <path d="M8 3h11a2 2 0 0 1 2 2v12" />
+            </svg>
+            {stories.length} videos
+          </span>
+        )}
+        <span className="absolute left-3 right-3 bottom-4 md:left-5 md:right-5 md:bottom-5 btn-solid-rf accent justify-center !px-3 !gap-2 whitespace-nowrap">
           {cta} <span aria-hidden="true">→</span>
         </span>
       </button>
@@ -160,14 +179,15 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
           role="dialog"
           aria-modal="true"
           aria-label={cta}
-          className="fixed inset-0 z-[200] grid place-items-center bg-black/90"
+          className="fixed inset-0 z-[200] grid place-items-center bg-black/95"
           onClick={(e) => {
             if (e.target === e.currentTarget) close();
           }}
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
-          <div className="relative h-[100dvh] w-full md:h-[min(92dvh,calc(100vw*16/9))] md:w-auto md:aspect-[9/16] md:rounded-[18px] overflow-hidden bg-black">
+          <div className="relative h-[100dvh] w-full md:h-[min(88dvh,calc(100vw*16/9))] md:w-auto md:aspect-[9/16]">
+          <div className="absolute inset-0 md:rounded-[18px] overflow-hidden bg-black">
             <video
               ref={videoRef}
               key={story.src}
@@ -196,10 +216,13 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
               </>
             )}
 
-            {/* Progress bars */}
-            <div className="absolute top-3 left-3 right-3 flex gap-1 pointer-events-none" aria-hidden="true">
+            {/* Dark fade so the bars and buttons read over bright footage. */}
+            <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/60 to-transparent" />
+
+            {/* Progress bars, one per video */}
+            <div className="absolute top-3 left-3 right-3 flex gap-1.5 pointer-events-none" aria-hidden="true">
               {stories.map((s, i) => (
-                <span key={s.src} className="h-[3px] flex-1 rounded-full bg-white/35 overflow-hidden">
+                <span key={s.src} className="h-[4px] md:h-[5px] flex-1 rounded-full bg-white/40 overflow-hidden">
                   <span
                     className="block h-full bg-white transition-[width] duration-200 ease-linear"
                     style={{ width: `${i < index ? 100 : i === index ? progress * 100 : 0}%` }}
@@ -231,10 +254,56 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
               </svg>
             </button>
 
+            {/* Which video of how many. Announced to screen readers too. */}
+            {!single && (
+              <span
+                aria-live="polite"
+                className="pointer-events-none absolute top-7 left-1/2 -translate-x-1/2 h-11 inline-flex items-center rounded-full bg-black/35 px-4 text-[14px] font-medium tracking-[0.04em] text-white tabular-nums"
+              >
+                <span className="sr-only">Video </span>
+                {index + 1} of {stories.length}
+              </span>
+            )}
+
+            {/* Phones: a "there's more" arrow at the right edge for the first
+                moments of each video. Taps fall through to the next zone. */}
+            {!single && index < stories.length - 1 && (
+              <span
+                aria-hidden="true"
+                className={`md:hidden pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 grid place-items-center w-11 h-11 rounded-full bg-black/40 text-white transition-opacity duration-500 ${hint ? "opacity-100" : "opacity-0"}`}
+              >
+                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+              </span>
+            )}
+
             {paused && (
               <span aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 grid place-items-center w-16 h-16 rounded-full bg-black/40">
                 <svg viewBox="0 0 24 24" className="w-6 h-6 ml-1 fill-white"><path d="M8 5.5v13l11-6.5z" /></svg>
               </span>
+            )}
+          </div>
+
+            {/* Laptop and up: big previous / next arrows either side of the video. */}
+            {!single && (
+              <>
+                <button
+                  type="button"
+                  onClick={prev}
+                  disabled={index === 0}
+                  className="hidden md:grid absolute right-full mr-6 top-1/2 -translate-y-1/2 place-items-center w-14 h-14 rounded-full bg-white/90 text-[hsl(var(--ink))] transition hover:scale-105 hover:bg-white disabled:opacity-30 disabled:hover:scale-100"
+                  aria-label="Previous video"
+                >
+                  <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-current" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={next}
+                  className="hidden md:grid absolute left-full ml-6 top-1/2 -translate-y-1/2 place-items-center w-14 h-14 rounded-full bg-white/90 text-[hsl(var(--ink))] transition hover:scale-105 hover:bg-white"
+                  aria-label={index < stories.length - 1 ? "Next video" : "Close"}
+                >
+                  <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-current" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+                </button>
+              </>
             )}
           </div>
         </div>
