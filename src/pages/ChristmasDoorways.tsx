@@ -56,13 +56,49 @@ import imgGarland800 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-
 import imgGarland1200 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-1200.webp";
 import imgGarland1440 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-1440.webp";
 
+import adWonky from "@/assets/christmas/video/christmas-ad-wonky-garland.mp4";
+import adWonkyPoster from "@/assets/christmas/video/christmas-ad-wonky-garland-poster.webp";
+import adTree from "@/assets/christmas/video/christmas-ad-diy-tree.mp4";
+import adTreePoster from "@/assets/christmas/video/christmas-ad-diy-tree-poster.webp";
+import adSnowball from "@/assets/christmas/video/christmas-ad-snowball.mp4";
+import adSnowballPoster from "@/assets/christmas/video/christmas-ad-snowball-poster.webp";
+import adLadder from "@/assets/christmas/video/christmas-ad-ladder-in-the-rain.mp4";
+import adLadderPoster from "@/assets/christmas/video/christmas-ad-ladder-in-the-rain-poster.webp";
+import adSwitchOn from "@/assets/christmas/video/christmas-ad-big-switch-on.mp4";
+import adSwitchOnPoster from "@/assets/christmas/video/christmas-ad-big-switch-on-poster.webp";
+import adDog from "@/assets/christmas/video/christmas-ad-dog-and-squirrel.mp4";
+import adDogPoster from "@/assets/christmas/video/christmas-ad-dog-and-squirrel-poster.webp";
+import adThumb360 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-360.webp";
+import adThumb540 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-540.webp";
+import adThumb720 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-720.webp";
+
 /* Christmas ad: Laura's Instagram story videos, played full screen from one
-   thumbnail tile in the inspiration section. Waiting on the video files:
-   add them to src/assets/christmas/video/ (compressed H.264 MP4, 720x1280),
-   import them here with a WebP thumbnail pulled from one of them, and the
-   tile appears. Until then nothing renders. */
-const AD_STORIES: Story[] = [];
-const AD_THUMB = { src: "", alt: "" };
+   thumbnail tile in the inspiration section. Videos only load once the tile
+   is tapped. */
+const AD_STORIES: Story[] = [
+  { src: adWonky, poster: adWonkyPoster, label: "A homemade porch garland sags and ends up on the step, then a styled doorway glows with baubles" },
+  { src: adTree, poster: adTreePoster, label: "A DIY garland gets no further than a string outline and a few spruce cuttings" },
+  { src: adSnowball, poster: adSnowballPoster, label: "A porch garland slides off on its own while a woman stands beneath it" },
+  { src: adLadder, poster: adLadderPoster, label: "Hanging a garland from a stepladder in the rain goes wrong" },
+  { src: adSwitchOn, poster: adSwitchOnPoster, label: "A family gathers for the garland lights switch-on, and it fizzles out with a spark" },
+  { src: adDog, poster: adDogPoster, label: "A passing dog chases a squirrel and its lead pulls the lit garland down" },
+];
+const AD_THUMB = {
+  src: adThumb540,
+  srcSet: `${adThumb360} 360w, ${adThumb540} 540w, ${adThumb720} 720w`,
+  alt: "Black front door with a jewel bauble wreath, framed by a lit spruce arch of multicoloured baubles at dusk",
+};
+const AD_ANCHOR = "christmas-ad";
+
+/* Hero "Watch our ad": glide down to the video tile and centre it. */
+const scrollToAd = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const el = document.getElementById(AD_ANCHOR);
+  if (!el) return;
+  e.preventDefault();
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+  history.replaceState(null, "", `#${AD_ANCHOR}`);
+};
 
 /* Hero fan, left to right. On phones the same three run as a scroll strip. */
 const FAN = [
@@ -231,23 +267,23 @@ const STEPS = [
   {
     n: "01",
     title: "Send me a photo",
-    body: "Send me a photo, approximate measurements and your postcode. If you have colours or inspiration in mind, I'd love to see those too. I'll come back to you with ideas and a personalised quote.",
+    body: "Share a photo of your doorway, rough measurements and your postcode, and I'll come back with ideas and a personalised quote.",
   },
   {
     n: "02",
     title: "Settle on a design",
-    body: "We'll choose your garland style, colours and decorative details, creating a look that complements your home or business. Once you're happy, we'll arrange your installation date.",
+    body: "Together we'll choose the style, colours and details, then book in your installation date.",
   },
   {
     n: "03",
     title: "I'll bring it to life",
-    body: "I'll arrive with everything needed and dress your doorway in place, taking care of the installation and clearing away afterwards. All you need to do is enjoy the finished result.",
+    body: "I'll arrive with everything needed, dress your doorway in place and clear away afterwards.",
   },
   {
     n: "04",
     title: "January takedown",
     extra: true,
-    body: "When Christmas is over, I can return to carefully remove your garland and leave your doorway just as I found it. Takedown is available as an optional extra when booking.",
+    body: "After Christmas I'll carefully remove your garland and leave your doorway just as I found it. Add it when you book.",
   },
 ];
 
@@ -342,22 +378,25 @@ const ChristmasDoorways = () => {
                   welcome Christmas.
                 </p>
                 <p>
-                  Individually styled for your home or business, each garland
-                  brings together beautiful foliage, carefully chosen colours
-                  and festive details to create an entrance that feels truly
-                  special.
-                </p>
-                <p>
-                  Installed by hand across Surrey, with optional January
-                  takedown, so you can enjoy a little Christmas magic without
-                  lifting a&nbsp;finger.
+                  Each garland is individually styled for your home or
+                  business and installed by hand across Surrey, with optional
+                  January&nbsp;takedown.
                 </p>
               </div>
-              {/* Single CTA (Laura/Matt, 2026-11-04: short label, no second button). */}
-              <div className="mt-8 flex justify-center">
+              {/* Enquire now + Watch our ad (Matt, 2026-11-05). Matching widths,
+                  stacked on phones, side by side from sm. */}
+              <div className="mt-8 mx-auto grid gap-3 sm:grid-flow-col sm:auto-cols-fr sm:gap-4 w-fit">
                 <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
                   Enquire now <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
                 </a>
+                {AD_STORIES.length > 0 && (
+                  <a href={`#${AD_ANCHOR}`} onClick={scrollToAd} className="btn-ghost-rf justify-center">
+                    <svg viewBox="0 0 24 24" className="hidden sm:block w-[0.95em] h-[0.95em] fill-current" aria-hidden="true">
+                      <path d="M8 5.5v13l11-6.5z" />
+                    </svg>
+                    Watch our ad
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -500,18 +539,17 @@ const ChristmasDoorways = () => {
               </SectionTitle>
               <p className="mt-6 text-[16px] leading-[1.7] text-ink-soft">
                 A few favourite doorways from Christmases past.
-              </p>
-              <p className="mt-2 text-[14px] text-ink-soft">(each photo opens Laura's Instagram, @riverfox_events)</p>
-            </div>
+              </p>            </div>
           </div>
           <div className="mt-12 md:mt-14">
             <InstagramStrip images={INSTAGRAM} />
           </div>
           {AD_STORIES.length > 0 && (
-            <div className="mt-14 md:mt-20 fade-up">
+            <div id={AD_ANCHOR} className="mt-14 md:mt-20 fade-up">
               <StoryVideos
                 stories={AD_STORIES}
                 thumb={AD_THUMB.src}
+                thumbSrcSet={AD_THUMB.srcSet}
                 thumbAlt={AD_THUMB.alt}
                 cta="Watch our Christmas ad"
               />

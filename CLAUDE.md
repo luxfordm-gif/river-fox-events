@@ -81,7 +81,7 @@ Every page must ship valid JSON-LD covering the schema types relevant to it: `Lo
 
 The hero and article button label is **"Reserve your date"** (was "Start planning", then "Check your date"; changed to "Reserve your date" on 2026-11-03). Laura styles and decorates, she doesn't plan parties, and the enquire form leads with the event date. Don't use "planner" / "planning" wording to describe her service.
 
-**Exception: Christmas Door Garlands** (`src/pages/ChristmasDoorways.tsx`) uses a single hero button labelled **"Enquire now"** with no second button (Matt, 2026-11-04). Don't change it back to "Reserve your date".
+**Exception: Christmas Door Garlands** (`src/pages/ChristmasDoorways.tsx`) labels its main hero button **"Enquire now"** (Matt, 2026-11-04), with a second ghost button **"Watch our ad"** beside it that scrolls down to the Christmas ad video tile (Matt, 2026-11-05). Don't change it back to "Reserve your date".
 
 The Enquire form (`<section id="enquire">`) only renders on a few pages — Index, Children's Parties, Milestones, Corporate & Brand, location pages, and Christmas Door Garlands (which has its own booking form with the same id). Other pages (Journal, articles, 404, Welcome, Contact) reuse the shared Nav and Footer, which both link to the enquire section.
 
