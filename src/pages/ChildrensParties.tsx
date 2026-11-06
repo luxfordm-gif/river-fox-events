@@ -57,7 +57,7 @@ const ChildrensParties = () => {
           image={imgHero}
           imageAlt="Fourever Wild jungle party setup with white safari jeep, balloon garland, giraffe, zebra and lion cub by a bamboo backdrop"
           mobileImage={imgHeroMobile}
-          mobileImageAlt="Jungle safari tablescape with giraffe-print plates, palm-leaf runner and elephant centrepiece, giraffe cutout behind"
+          mobileImageAlt="Jungle tablescape with an elephant centrepiece, monstera runner, giraffe-print plates and safari balloons"
           headingId="cp-hero-heading"
           lines={[
             <>Themed children's parties,</>,
@@ -77,9 +77,9 @@ const ChildrensParties = () => {
           id="cp-celebrations"
           imageSide="right"
           image={imgOccasions}
-          alt="Pastel safari Two Wild tablescape for Anaya's second birthday in Surrey by River Fox Events - Anaya panel, light-up two, giraffe and foliage runner"
+          alt="Pastel safari Two Wild table for Anaya's second birthday, with pink place settings, a foliage runner and a light-up two"
           hoverImage={imgOccasionsHover}
-          hoverAlt="Close-up of the pink light-up two marquee from Anaya's pastel safari Two Wild birthday in Surrey by River Fox Events - sage and pink balloons with foliage"
+          hoverAlt="Close-up of the pink light-up two marquee at Anaya's pastel safari birthday, with sage and pink balloons"
           tone="ph-warm"
           headline={
             <>
@@ -106,9 +106,9 @@ const ChildrensParties = () => {
           id="cp-occasions"
           imageSide="left"
           image={imgCelebrations}
-          alt="Dinosaur theme children's birthday styling in Surrey by River Fox Events - Ayaan name arch, sage balloons and crate props"
+          alt="Ayaan's dinosaur birthday arch with sage balloons, a personalised name sign and wooden crate props"
           hoverImage={imgCelebrationsHover}
-          hoverAlt="Close-up portrait of Ayaan's dinosaur arch - sage and cream balloons with tropical foliage and personalised signage by River Fox Events"
+          hoverAlt="Close-up of Ayaan's dinosaur arch, with sage and cream balloons, tropical foliage and a personalised sign"
           tone="ph-blush"
           imageScale={1.07}
           headline={
@@ -134,9 +134,9 @@ const ChildrensParties = () => {
           id="cp-themes"
           imageSide="right"
           image={imgThemes}
-          alt="Willy Wonka theme birthday styling in Surrey by River Fox Events - Savanna arch, chocolate bar prop and lollipop foils"
+          alt="Purple and lilac balloon arch with a gold Savanna ticket panel, cocoa-bar plinth, lollipop swirls and a number 5 column"
           hoverImage={imgThemesHover}
-          hoverAlt="Close-up of the oversized chocolate-bar prop with lilac balloons, lollipop foil and mushroom props from Savanna's Willy Wonka fifth birthday styled in Surrey by River Fox Events"
+          hoverAlt="Close-up of the chocolate-bar prop with lilac balloons, a lollipop foil and mushroom props at Savanna's Wonka party"
           tone="ph-warm"
           headline={
             <>

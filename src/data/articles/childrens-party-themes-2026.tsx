@@ -48,7 +48,7 @@ const ChildrensPartyThemes2026Article = () => (
 
     <ArticleImage
       src={imgLead}
-      alt="A jungle-themed children's birthday party tablescape styled by River Fox Events in Surrey - deep foliage runner, lion plates, giraffe-print cups and a leopard centrepiece"
+      alt="Jungle birthday tablescape with a deep foliage runner, lion plates, giraffe-print cups and a leopard centrepiece"
       caption="A jungle tablescape - character plates carried by a deep foliage runner. The detail is in the layering."
     />
 

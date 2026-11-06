@@ -10,7 +10,7 @@ const ITEMS = [
     body:
       "Immersive themed parties designed to feel magical for children - and completely effortless for you.",
     img: expChildren,
-    alt: "Sage green dinosaur children's birthday styling in Surrey by River Fox Events - Ayaan name sign and tropical foliage",
+    alt: "Sage green dinosaur birthday backdrop with an Ayaan name sign, tropical foliage and dinosaur cutouts",
     href: "/childrens-parties",
     tone: "",
   },
@@ -19,7 +19,7 @@ const ITEMS = [
     body:
       "Refined styling for life's most meaningful moments. Christenings and baby showers to 21sts, 40ths and anniversaries, each celebration is thoughtfully designed to feel personal, elevated and effortlessly brought together.",
     img: expMilestone,
-    alt: "Rose gold 40th birthday light-up marquee with blush and chrome balloon installation in Surrey by River Fox Events",
+    alt: "Rose gold light-up 40 marquee with a blush and chrome balloon installation in a hall with a wall clock",
     href: "/milestone-celebrations",
     tone: "ph-warm",
   },
@@ -28,7 +28,7 @@ const ITEMS = [
     body:
       "Thoughtfully styled installations for launches, openings and activations. Trusted by P&G, The Range, Foxhills and more.",
     img: expCorporate,
-    alt: "Corporate gala styling in Surrey by River Fox Events - navy, gold and cream balloons with branded Children in Need backdrop",
+    alt: "Navy, gold and cream balloons around a Children in Need Pudsey backdrop at a corporate gala",
     href: "/corporate-brand-styling",
     tone: "ph-blush",
     extraZoom: 1.25,
@@ -61,9 +61,9 @@ const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
         style={{ aspectRatio: "4/5" }}
       >
         {/*
-          SEO REMINDER: Alt text on each card describes the specific service +
-          Surrey location and includes "River Fox Events". Update the ITEMS
-          alt strings above when changing imagery - never leave generic alt.
+          ALT TEXT: describe what is in the photo (max 125 characters, no
+          brand name - CLAUDE.md). One image file, one alt across the site:
+          reuse the alt the same file has elsewhere.
         */}
         <img
           ref={img}

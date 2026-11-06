@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
+import PageHeader from "@/components/rfx/PageHeader";
 import ArticleProse from "@/components/article/ArticleProse";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
@@ -21,22 +22,7 @@ const Privacy = () => {
     <div className="min-h-screen article-bg text-foreground nav-solid">
       <Nav />
       <main>
-        <section className="container-rfx pt-[106px] md:pt-[122px] pb-10 md:pb-14 text-center">
-          <h1
-            className="font-serif-rf max-w-[18ch] mx-auto"
-            style={{
-              fontSize: "var(--fs-h1)",
-              lineHeight: 1.04,
-              fontWeight: 400,
-              letterSpacing: "-0.028em",
-            }}
-          >
-            Privacy &amp; cookies
-          </h1>
-          <p className="text-[13.5px] text-ink-soft mt-5">
-            Last updated {LAST_UPDATED}
-          </p>
-        </section>
+        <PageHeader title={<>Privacy &amp; cookies</>} note={`Last updated ${LAST_UPDATED}`} />
 
         <ArticleProse>
           <p>

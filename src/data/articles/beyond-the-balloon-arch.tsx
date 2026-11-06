@@ -43,7 +43,7 @@ const BeyondTheBalloonArchArticle = () => (
 
     <ArticleImage
       src={imgLead}
-      alt="Layered tablescape with velvet runner, peonies and tapered candles styled by River Fox Events in Surrey"
+      alt="Pastel safari banquet table under tall windows, with sage and pink balloons and a light-up 2"
       caption="A recent Surrey milestone - velvet runner, layered linens, low florals. The drama lives on the table now."
     />
 
@@ -94,7 +94,7 @@ const BeyondTheBalloonArchArticle = () => (
 
     <ArticleImage
       src={imgInline}
-      alt="Ceiling drapery and statement floral installation at a Surrey corporate event styled by River Fox Events"
+      alt="Navy, gold and cream balloons around a Children in Need Pudsey backdrop at a corporate gala"
       caption="Ceiling drapery doing what the entrance arch used to - transforming the whole room, not just the doorway."
     />
 

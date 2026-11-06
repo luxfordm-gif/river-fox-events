@@ -16,6 +16,7 @@ import Welcome from "./pages/Welcome.tsx";
 import Contact from "./pages/Contact.tsx";
 import Privacy from "./pages/Privacy.tsx";
 import ChristmasDoorways from "./pages/ChristmasDoorways.tsx";
+import OurWork from "./pages/OurWork.tsx";
 import CookieBanner from "@/components/rfx/CookieBanner";
 import { LOCATIONS } from "./data/locations";
 import { ARTICLES } from "./data/articles";
@@ -35,6 +36,7 @@ const AppShell = () => {
         <Route path="/milestone-celebrations" element={<Milestones />} />
         <Route path="/corporate-brand-styling" element={<CorporateAndBrand />} />
         <Route path="/christmas-door-garlands" element={<ChristmasDoorways />} />
+        <Route path="/our-work" element={<OurWork />} />
         {LOCATIONS.map((loc) => (
           <Route
             key={loc.slug}
