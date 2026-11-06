@@ -376,13 +376,11 @@ const ChristmasDoorways = () => {
                   letterSpacing: "-0.038em",
                 }}
               >
-                Christmas door garlands in Surrey,
-                <br />
-                <em className="italic font-normal text-accent-warm">beautifully dressed.</em>
+                Christmas door garlands in Surrey.
               </h1>
               <div className="mt-5 max-w-[46ch] md:max-w-[70ch] text-[17px] leading-[1.65] text-ink-soft space-y-4">
                 <p>
-                  A beautifully dressed doorway is one of the loveliest ways to
+                  A garlanded doorway is one of the loveliest ways to
                   welcome Christmas.
                 </p>
                 <p>
@@ -454,7 +452,7 @@ const ChristmasDoorways = () => {
                   </div>
                   <h3
                     className="font-serif-rf text-primary mt-6"
-                    style={{ fontSize: "var(--fs-h4)", lineHeight: 1.2, fontWeight: 400 }}
+                    style={{ fontSize: "var(--fs-h3)", lineHeight: 1.18, fontWeight: 400, letterSpacing: "-0.018em" }}
                   >
                     {card.title}
                   </h3>

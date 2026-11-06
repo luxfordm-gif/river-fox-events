@@ -884,9 +884,25 @@
     display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 56px 16px 24px;
     animation: work-viewer-in .25s ease;
   }
+  /* Footer "River Fox" watermark (Footer.tsx). Phones: the whole word sits
+     in its own strip at the very end, below the copyright row, so it never
+     sits behind text (the footer's bottom padding makes room for it; the
+     line box is 0.78em tall). md+: the large cropped version behind the
+     columns, with a gentle scroll parallax. */
+  .rfx-footer-inner { padding-bottom: calc(26vw * 0.78 + 40px); }
+  .rfx-footer-mark-wrap { bottom: 14px; }
+  .rfx-footer-mark { --rfx-mark-parallax: 0; font-size: 26vw; }
+  @media (min-width: 768px) {
+    .rfx-footer-inner { padding-bottom: 2.25rem; }
+    .rfx-footer-mark-wrap { bottom: -8rem; }
+    .rfx-footer-mark { --rfx-mark-parallax: 1; font-size: clamp(220px, 50vw, 880px); }
+  }
   @keyframes work-viewer-in { from { opacity: 0; } to { opacity: 1; } }
-  .work-viewer__img { max-width: min(92vw, 1100px); max-height: calc(100vh - 170px); width: auto; height: auto; object-fit: contain; border-radius: 6px; touch-action: pan-y; user-select: none; }
-  .work-viewer__cap { margin-top: 16px; text-align: center; max-width: 60ch; }
+  /* The stage takes all the height left after the caption, so the caption
+     and counter sit in the same place for tall and wide photos alike. */
+  .work-viewer__stage { flex: 1 1 0; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; }
+  .work-viewer__img { max-width: min(92vw, 1100px); max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 6px; touch-action: pan-y; user-select: none; }
+  .work-viewer__cap { flex: none; margin-top: 16px; min-height: 56px; text-align: center; max-width: 60ch; }
   .work-viewer__btn {
     position: absolute; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px;
     border-radius: 4px; border: 1px solid hsl(0 0% 100% / 0.25); background: hsl(0 0% 100% / 0.06); color: inherit; cursor: pointer;
