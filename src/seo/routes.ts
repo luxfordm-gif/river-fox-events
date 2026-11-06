@@ -190,7 +190,11 @@ export const ROUTES: RouteSEO[] = [
     ogImage: "/og/christmas-door-garlands.webp",
     service: {
       serviceType: "Christmas Door Garland Installation",
-      areaServed: ["Surrey", "Reigate", "East Molesey", "Cobham", "Esher", "Weybridge"],
+      areaServed: [
+        "Surrey", "Cobham", "Esher", "Weybridge", "Oxshott", "Walton-on-Thames",
+        "Kingston", "Twickenham", "East Molesey", "Kingswood", "Tadworth", "Banstead", "Epsom", "Leatherhead",
+        "Dorking", "Reigate", "Redhill", "Guildford", "Oxted", "Horley",
+      ],
     },
     priority: 0.8,
     changefreq: "weekly",

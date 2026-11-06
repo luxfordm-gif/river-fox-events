@@ -11,7 +11,7 @@ import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
 import bow320 from "@/assets/christmas/burgundy-velvet-bow-320.webp";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
-import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
+import { handleEnquireClick } from "@/lib/enquire";
 import { findRoute } from "@/seo/routes";
 import {
   applyMeta,
@@ -68,6 +68,10 @@ import adSwitchOn from "@/assets/christmas/video/christmas-ad-big-switch-on.mp4"
 import adSwitchOnPoster from "@/assets/christmas/video/christmas-ad-big-switch-on-poster.webp";
 import adDog from "@/assets/christmas/video/christmas-ad-dog-and-squirrel.mp4";
 import adDogPoster from "@/assets/christmas/video/christmas-ad-dog-and-squirrel-poster.webp";
+import fanSwitchOn from "@/assets/christmas/video/family-porch-garland-lights-switch-on.webp";
+import fanLadder from "@/assets/christmas/video/porch-garland-sliding-off-stepladder.webp";
+import fanSnowball from "@/assets/christmas/video/porch-garland-falling-onto-woman-below.webp";
+import fanDog from "@/assets/christmas/video/woman-running-after-dragged-lit-garland.webp";
 import adThumb360 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-360.webp";
 import adThumb540 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-540.webp";
 import adThumb720 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-720.webp";
@@ -89,16 +93,20 @@ const AD_THUMB = {
   alt: "Black front door with a jewel bauble wreath, framed by a lit spruce arch of multicoloured baubles at dusk",
 };
 const AD_ANCHOR = "christmas-ad";
+/* Stills from the DIY mishaps that fan out behind the tile, left to right;
+   each opens its own film. All six films share one porch, so each still is
+   a close crop with its moment on the side that shows when fanned (left
+   cards: left edge, right cards: right edge). Decorative, so no alt text. */
+const AD_FAN = [
+  { src: fanSwitchOn, story: 4 },
+  { src: fanLadder, story: 3 },
+  { src: fanSnowball, story: 2 },
+  { src: fanDog, story: 5 },
+];
 
-/* Hero "Watch our ad": glide down to the video tile and centre it. */
-const scrollToAd = (e: React.MouseEvent<HTMLAnchorElement>) => {
-  const el = document.getElementById(AD_ANCHOR);
-  if (!el) return;
-  e.preventDefault();
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
-  history.replaceState(null, "", `#${AD_ANCHOR}`);
-};
+/* Hero WhatsApp button (phones): message pre-filled, they add a postcode. */
+const WHATSAPP_HREF =
+  "https://wa.me/447872114191?text=Hi%20Laura%2C%20I%27d%20like%20a%20quote%20for%20a%20Christmas%20door%20garland.%20My%20postcode%20is%20";
 
 /* Hero fan, left to right. On phones the same three run as a scroll strip. */
 const FAN = [
@@ -141,7 +149,7 @@ const GARLAND_OPTIONS = [
 const FAQS = [
   {
     q: "Which areas do you cover?",
-    a: "All of Surrey. I dress doorways in Cobham, Esher, Weybridge, Oxshott, Walton-on-Thames, East Molesey, Kingswood, Tadworth, Banstead, Epsom, Leatherhead, Dorking, Reigate, Redhill, Guildford, Oxted and Horley, where my studio is, and the villages in between. If your town isn't listed, send your postcode and I'll confirm.",
+    a: "All of Surrey. I dress doorways in Cobham, Esher, Weybridge, Oxshott, Walton-on-Thames, Kingston, Twickenham, East Molesey, Kingswood, Tadworth, Banstead, Epsom, Leatherhead, Dorking, Reigate, Redhill, Guildford, Oxted and Horley, where my studio is, and the villages in between. If your town isn't listed, send your postcode and I'll confirm.",
   },
   {
     q: "Do you travel outside Surrey?",
@@ -349,7 +357,7 @@ const ChristmasDoorways = () => {
 
   return (
     <div className="rfx-xmas min-h-screen bg-background text-foreground nav-solid">
-      <Nav />
+      <Nav enquireHref="#enquire" />
       <main>
         {/* Hero: garland drapes edge to edge above the headline, then the
             photo fan (scroll strip on phones), as on the location pages. */}
@@ -368,7 +376,7 @@ const ChristmasDoorways = () => {
                   letterSpacing: "-0.038em",
                 }}
               >
-                Christmas door garlands,
+                Christmas door garlands in Surrey,
                 <br />
                 <em className="italic font-normal text-accent-warm">beautifully dressed.</em>
               </h1>
@@ -383,20 +391,16 @@ const ChristmasDoorways = () => {
                   January&nbsp;takedown.
                 </p>
               </div>
-              {/* Enquire now + Watch our ad (Matt, 2026-11-05). Matching widths,
-                  stacked on phones, side by side from sm. */}
-              <div className="mt-8 mx-auto grid gap-3 sm:grid-flow-col sm:auto-cols-fr sm:gap-4 w-fit">
-                <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
+              {/* Enquire now everywhere; phones also get WhatsApp Laura now,
+                  pre-filled so they only add a postcode (Matt, 2026-11-06).
+                  Matching widths, stacked. */}
+              <div className="mt-8 mx-auto grid gap-3 w-fit">
+                <a href="#enquire" onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
                   Enquire now <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
                 </a>
-                {AD_STORIES.length > 0 && (
-                  <a href={`#${AD_ANCHOR}`} onClick={scrollToAd} className="btn-ghost-rf justify-center">
-                    <svg viewBox="0 0 24 24" className="hidden sm:block w-[0.95em] h-[0.95em] fill-current" aria-hidden="true">
-                      <path d="M8 5.5v13l11-6.5z" />
-                    </svg>
-                    Watch our ad
-                  </a>
-                )}
+                <a href={WHATSAPP_HREF} className="btn-ghost-rf justify-center md:hidden">
+                  WhatsApp Laura now
+                </a>
               </div>
             </div>
           </div>
@@ -509,7 +513,7 @@ const ChristmasDoorways = () => {
                     <p className="mt-4 text-[15.5px] md:text-[15px] leading-[1.75] text-ink-soft max-w-[42ch] md:max-w-[40ch]">{opt.body}</p>
                     <div className="mt-auto pt-6">
                       <a
-                        href={ENQUIRE_HREF}
+                        href="#enquire"
                         onClick={(e) => {
                           handleEnquireClick(e);
                           // Pre-select this garland in the booking form.
@@ -544,18 +548,34 @@ const ChristmasDoorways = () => {
           <div className="mt-12 md:mt-14">
             <InstagramStrip images={INSTAGRAM} />
           </div>
-          {AD_STORIES.length > 0 && (
-            <div id={AD_ANCHOR} className="mt-14 md:mt-20 fade-up">
-              <StoryVideos
-                stories={AD_STORIES}
-                thumb={AD_THUMB.src}
-                thumbSrcSet={AD_THUMB.srcSet}
-                thumbAlt={AD_THUMB.alt}
-                cta="Watch our Christmas ad"
-              />
-            </div>
-          )}
         </section>
+
+        {/* Christmas campaign: the ad films behind one tile. Stills from the
+            DIY attempts fan out behind it on hover. */}
+        {AD_STORIES.length > 0 && (
+          <section id={AD_ANCHOR} className="rfx-section white !pt-0 overflow-x-clip" aria-labelledby="xmas-ad-heading">
+            <div className="container-rfx">
+              <BowDivider />
+              <div className="max-w-[760px] mx-auto text-center fade-up">
+                <SectionTitle id="xmas-ad-heading">
+                  Watch the{" "}
+                  <em className="italic font-light text-accent-warm">Christmas campaign.</em>
+                </SectionTitle>
+              </div>
+              <div className="mt-12 md:mt-16 fade-up">
+                <StoryVideos
+                  stories={AD_STORIES}
+                  thumb={AD_THUMB.src}
+                  thumbSrcSet={AD_THUMB.srcSet}
+                  thumbAlt={AD_THUMB.alt}
+                  cta="Watch our Christmas ad"
+                  hideCta
+                  fan={AD_FAN}
+                />
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Setup and takedown */}
         <section id="how-it-works" className="rfx-section white !pt-0" aria-labelledby="xmas-how-heading">
@@ -679,11 +699,7 @@ const ChristmasDoorways = () => {
                       <option>Not sure yet</option>
                     </select>
                   </label>
-                  <label className="form-row">
-                    <span className="lbl">Door size (rough)</span>
-                    <input type="text" name="measurements" placeholder="e.g. 90cm wide, 210cm tall" />
-                  </label>
-                  <label className="form-row">
+                  <label className="form-row full">
                     <span className="lbl">Install</span>
                     <select name="install" defaultValue="Early November">
                       <option>Early November</option>
