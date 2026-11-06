@@ -275,15 +275,19 @@ const Viewer = ({
           </button>
         </>
       )}
-      <img
-        key={item.source}
-        src={item.large}
-        alt={item.alt}
-        width={item.width}
-        height={item.height}
-        className="work-viewer__img"
-        draggable={false}
-      />
+      {/* Fixed-size stage: the photo centres inside it, so the caption and
+          counter below stay put whatever the photo's shape. */}
+      <div className="work-viewer__stage" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+        <img
+          key={item.source}
+          src={item.large}
+          alt={item.alt}
+          width={item.width}
+          height={item.height}
+          className="work-viewer__img"
+          draggable={false}
+        />
+      </div>
       <div className="work-viewer__cap">
         <div className="font-serif-rf" style={{ fontSize: "var(--fs-caption)" }}>{item.title}</div>
         <div className="mt-1 font-mono-rf text-[10px] tracking-[0.2em] uppercase opacity-70" style={{ fontWeight: 600 }}>
