@@ -307,15 +307,6 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
-        title: "Purple and teal number 9",
-        photos: [
-          {
-            source: "services/childrens-parties/ninth-birthday-mosaic-9-purple-teal.webp",
-            alt: "Mosaic number 9 filled with purple, teal, lilac and silver balloons in a bright room",
-          },
-        ],
-      },
-      {
         title: "Reeva's pastel birthday entrance",
         photos: [
           {
