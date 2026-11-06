@@ -887,8 +887,8 @@
   /* Footer "River Fox" watermark (Footer.tsx). Phones: whole word fits the
      width and sits on the bottom edge. md+: the large cropped version with
      a gentle scroll parallax. */
-  .rfx-footer-mark-wrap { bottom: -2px; }
-  .rfx-footer-mark { --rfx-mark-parallax: 0; font-size: 27vw; }
+  .rfx-footer-mark-wrap { bottom: 14px; }
+  .rfx-footer-mark { --rfx-mark-parallax: 0; font-size: 24vw; }
   @media (min-width: 768px) {
     .rfx-footer-mark-wrap { bottom: -8rem; }
     .rfx-footer-mark { --rfx-mark-parallax: 1; font-size: clamp(220px, 50vw, 880px); }
