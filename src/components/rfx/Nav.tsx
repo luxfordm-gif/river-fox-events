@@ -18,7 +18,9 @@ const ABOUT_LINKS = [
   { href: "/journal", label: "Read the journal" },
 ];
 
-const Nav = () => {
+/** `enquireHref`: pages with their own enquire form pass "#enquire" so the
+    button never points at the home page form. */
+const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -157,7 +159,7 @@ const Nav = () => {
           </span>
         </a>
         <div className="rfx-nav-row nav-right justify-end">
-          <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent !py-2 !px-4 !text-[12px]">
+          <a href={enquireHref} onClick={handleEnquireClick} className="btn-solid-rf accent !py-2 !px-4 !text-[12px]">
             Enquire now <span>→</span>
           </a>
         </div>
@@ -223,7 +225,7 @@ const Nav = () => {
           ))}
 
           <a
-            href={ENQUIRE_HREF}
+            href={enquireHref}
             onClick={(e) => {
               setOpen(false);
               handleEnquireClick(e);

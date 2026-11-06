@@ -1,11 +1,16 @@
-import { useCallback, useEffect, useRef, useState, type TouchEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type TouchEvent } from "react";
 
 /* One portrait thumbnail that opens a full-screen, Instagram-story style
    player. Videos only load once the tile is tapped, so the page itself only
    pays for the thumbnail. With several videos they play in order with
    progress bars at the top and a "1 of 6" counter at the bottom; tap or
    swipe left for next, tap the left edge or swipe right for previous, swipe
-   down to close. */
+   down to close.
+
+   Optional `fan`: stills from the other videos tucked behind the tile. They
+   fan out like a hand of cards on hover (and once as a hint when the tile
+   scrolls into view; on touch screens again now and then while it sits
+   idle). Clicking a fanned card opens the player at that video. */
 
 export type Story = {
   src: string;
@@ -20,13 +25,29 @@ type Props = {
   thumb: string;
   thumbSrcSet?: string;
   thumbAlt: string;
-  /** Text on the button over the thumbnail. */
+  /** Text on the button over the thumbnail (and the player's label). */
   cta: string;
+  /** Hide the button when a heading above already says it; the play mark
+      sits centred and `cta` stays as the tile's accessible name. */
+  hideCta?: boolean;
   /** Focal point for the thumbnail crop, e.g. "50% 40%". */
   thumbPosition?: string;
+  /** Stills that fan out behind the tile, left to right; `story` is the
+      index of the video each one opens. Four reads best. */
+  fan?: { src: string; story: number }[];
 };
 
-const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition = "50% 50%" }: Props) => {
+/* Rest and fanned positions for up to four cards, outside in. Cards pivot
+   from the bottom centre, like a hand of cards. */
+const FAN_SLOTS = [
+  { rest: -5, open: -14, x: -26 },
+  { rest: -2.5, open: -7, x: -13 },
+  { rest: 2.5, open: 7, x: 13 },
+  { rest: 5, open: 14, x: 26 },
+];
+const fanSlots = (n: number) => (n >= 4 ? FAN_SLOTS : n === 2 ? [FAN_SLOTS[1], FAN_SLOTS[2]] : FAN_SLOTS.slice(0, n));
+
+const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition = "50% 50%", fan, hideCta = false }: Props) => {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -40,6 +61,8 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const fanRef = useRef<HTMLDivElement>(null);
+  const [peek, setPeek] = useState(false);
   const single = stories.length === 1;
 
   const close = useCallback(() => setOpen(false), []);
@@ -129,6 +152,45 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
     return () => window.clearTimeout(t);
   }, [open, index, single]);
 
+  // Fan the cards out once when the tile comes into view, so the stack reads
+  // as several films. Touch screens can't hover, so there it repeats a couple
+  // of times while the tile sits on screen untouched.
+  const hasFan = !!fan?.length;
+  useEffect(() => {
+    const el = fanRef.current;
+    if (!el || !hasFan) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const touch = window.matchMedia("(hover: none)").matches;
+    let shown = 0;
+    let idle: number | undefined;
+    let close: number | undefined;
+    const doPeek = () => {
+      shown += 1;
+      setPeek(true);
+      close = window.setTimeout(() => setPeek(false), 1300);
+    };
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        window.clearInterval(idle);
+        if (!entry.isIntersecting) return;
+        if (shown === 0) window.setTimeout(doPeek, 350);
+        if (touch) {
+          idle = window.setInterval(() => {
+            if (shown >= 3) window.clearInterval(idle);
+            else doPeek();
+          }, 7000);
+        }
+      },
+      { threshold: 0.6 },
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      window.clearInterval(idle);
+      window.clearTimeout(close);
+    };
+  }, [hasFan]);
+
   const openAt = (i: number) => {
     setIndex(i);
     setPaused(false);
@@ -170,12 +232,36 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
 
   return (
     <>
+      <div
+        ref={fanRef}
+        className={`story-fan relative w-[240px] md:w-[min(320px,calc((100svh-160px)*9/16))] lg:w-[min(380px,calc((100svh-160px)*9/16))] xl:w-[min(420px,calc((100svh-160px)*9/16))] aspect-[9/16] mx-auto ${peek ? "is-peek" : ""}`}
+      >
+      {fan &&
+        fanSlots(fan.length).map((slot, i) => (
+          <span
+            key={fan[i].src}
+            aria-hidden="true"
+            onClick={() => openAt(fan[i].story)}
+            className="story-fan-card"
+            style={
+              {
+                "--rest": `${slot.rest}deg`,
+                "--open": `${slot.open}deg`,
+                "--x": `${slot.x}%`,
+                zIndex: Math.abs(slot.x) > 20 ? 1 : 2,
+              } as CSSProperties
+            }
+          >
+            <img src={fan[i].src} alt="" loading="lazy" decoding="async" width={540} height={960} />
+          </span>
+        ))}
       <button
         ref={triggerRef}
         type="button"
         onClick={() => openAt(0)}
-        className="group relative block w-[240px] md:w-[min(320px,calc((100svh-160px)*9/16))] lg:w-[min(380px,calc((100svh-160px)*9/16))] xl:w-[min(420px,calc((100svh-160px)*9/16))] aspect-[9/16] rounded-[16px] overflow-hidden mx-auto shadow-[0_18px_40px_-18px_hsl(var(--ink)/0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+        className="story-fan-front group absolute inset-0 z-[3] block w-full h-full rounded-[16px] overflow-hidden shadow-[0_18px_40px_-18px_hsl(var(--ink)/0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
         aria-haspopup="dialog"
+        aria-label={hideCta ? cta : undefined}
       >
         <img
           src={thumb}
@@ -193,7 +279,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
         {/* Play mark */}
         <span
           aria-hidden="true"
-          className="absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2 grid place-items-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110"
+          className={`absolute left-1/2 ${hideCta ? "top-1/2" : "top-[42%]"} -translate-x-1/2 -translate-y-1/2 grid place-items-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110`}
         >
           <svg viewBox="0 0 24 24" className="w-6 h-6 md:w-9 md:h-9 ml-1 fill-[hsl(var(--ink))]">
             <path d="M8 5.5v13l11-6.5z" />
@@ -209,10 +295,13 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
             {stories.length} videos
           </span>
         )}
-        <span className="absolute left-3 right-3 bottom-4 md:left-5 md:right-5 md:bottom-5 btn-solid-rf accent justify-center !px-3 !gap-2 whitespace-nowrap">
-          {cta} <span aria-hidden="true">→</span>
-        </span>
+        {!hideCta && (
+          <span className="absolute left-3 right-3 bottom-4 md:left-5 md:right-5 md:bottom-5 btn-solid-rf accent justify-center !px-3 !gap-2 whitespace-nowrap">
+            {cta} <span aria-hidden="true">→</span>
+          </span>
+        )}
       </button>
+      </div>
 
       {open && (
         <div
