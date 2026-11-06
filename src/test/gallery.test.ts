@@ -12,6 +12,12 @@ describe("Our work gallery data", () => {
     }
   });
 
+  it("every photo has the house colour grade (scripts/grade-photos.py)", async () => {
+    const manifest = (await import("@/assets/gallery/manifest.json")).default as Record<string, { graded?: boolean }>;
+    const ungraded = Object.entries(manifest).filter(([, m]) => !m.graded).map(([k]) => k);
+    expect(ungraded).toEqual([]);
+  });
+
   it("uses each image file once, with one alt", () => {
     const seen = new Map<string, string>();
     for (const p of photos) {

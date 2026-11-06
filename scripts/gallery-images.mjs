@@ -2,22 +2,31 @@
 /**
  * Makes the gallery-sized copies of every photo listed in src/data/gallery.ts.
  *
- * The /our-work/ page shows ~45 photos, so it never loads the full-size
- * originals. For each `source` in the data file this writes up to three
+ * The /our-work/ page shows ~80 photos, so it never loads the full-size
+ * originals. For each `source` in the data file this writes up to four
  * WebP copies into src/assets/gallery/, named after the original with the
  * width on the end (same pattern as the Christmas page's -420/-640/-838
  * files):
  *
- *   src/assets/gallery/<original-name>-400.webp
- *   src/assets/gallery/<original-name>-700.webp
- *   src/assets/gallery/<original-name>-1000.webp
+ *   src/assets/gallery/<original-name>-400.webp   (grid)
+ *   src/assets/gallery/<original-name>-700.webp   (grid)
+ *   src/assets/gallery/<original-name>-1000.webp  (grid)
+ *   src/assets/gallery/<original-name>-1400.webp  (full-screen viewer)
  *
  * A photo narrower than a target width is never upscaled: its largest copy
  * is written at its own width instead. Existing copies are left alone, so
  * the script is safe to re-run after adding new entries.
  *
- * Usage (local only - needs macOS `sips` and `cwebp`):
- *   node scripts/gallery-images.mjs
+ * House colour grade: run scripts/grade-photos.py first, then point this
+ * script at its output with --graded=<dir>. Copies are made from the graded
+ * version and the manifest records `graded: true`; the gallery test fails
+ * if any photo on the page hasn't been graded.
+ *
+ * Usage (local only - needs macOS `sips` and `cwebp`, plus Python Pillow
+ * for the grade):
+ *   python3 scripts/grade-photos.py /tmp/graded src/assets/<new photo>.webp ...
+ *   node scripts/gallery-images.mjs --graded=/tmp/graded
+ * Add --force to remake every copy (after changing the grade).
  */
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
@@ -29,9 +38,15 @@ const ASSETS = path.join(ROOT, "src/assets");
 const OUT = path.join(ASSETS, "gallery");
 // 400-1000 for the grid; 1400 for the full-screen viewer.
 const WIDTHS = [400, 700, 1000, 1400];
-const QUALITY = "78";
+// Larger copies compress a little harder to stay near the 200 KB gallery target.
+const QUALITY = { 400: "78", 700: "78", 1000: "72", 1400: "70" };
+const qualityFor = (w) => QUALITY[w] || (w > 1000 ? "70" : w > 700 ? "72" : "78");
 // --force remakes every copy (use after re-grading the source photos).
 const FORCE = process.argv.includes("--force");
+const GRADED = (process.argv.find((a) => a.startsWith("--graded=")) || "").slice("--graded=".length);
+const previous = fs.existsSync(path.join(OUT, "manifest.json"))
+  ? JSON.parse(fs.readFileSync(path.join(OUT, "manifest.json"), "utf8"))
+  : {};
 
 const data = fs.readFileSync(path.join(ROOT, "src/data/gallery.ts"), "utf8");
 
@@ -75,14 +90,20 @@ for (const src of sources) {
   const base = path.basename(src, path.extname(src));
   const own = sizeOf(file);
   const widths = [...new Set(WIDTHS.map((w) => Math.min(w, own.width)))];
-  manifest[base] = { width: own.width, height: own.height, widths, seen: usedElsewhere(src) };
+  const gradedFile = GRADED ? path.join(GRADED, `${base}.png`) : "";
+  const input = gradedFile && fs.existsSync(gradedFile) ? gradedFile : file;
+  let graded = !!previous[base]?.graded;
+  let remade = false;
   for (const w of widths) {
     const out = path.join(OUT, `${base}-${w}.webp`);
-    if (fs.existsSync(out) && !FORCE) continue;
-    execFileSync("cwebp", ["-quiet", "-q", QUALITY, "-m", "6", "-resize", String(w), "0", file, "-o", out]);
+    if (fs.existsSync(out) && !FORCE && !(input !== file && !graded)) continue;
+    execFileSync("cwebp", ["-quiet", "-q", qualityFor(w), "-m", "6", "-resize", String(w), "0", input, "-o", out]);
     made++;
+    remade = true;
     console.log(`  made gallery/${base}-${w}.webp`);
   }
+  if (remade) graded = input !== file;
+  manifest[base] = { width: own.width, height: own.height, widths, seen: usedElsewhere(src), graded };
 }
 // Remove copies of photos no longer in the gallery.
 const keep = new Set(Object.entries(manifest).flatMap(([b, m]) => m.widths.map((w) => `${b}-${w}.webp`)));

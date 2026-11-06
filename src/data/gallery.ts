@@ -46,8 +46,10 @@ export type GalleryEvent = {
 export type GallerySection = {
   /** Anchor id, e.g. /our-work/#childrens-parties */
   id: string;
-  /** Short label for the jump links at the top of the page. */
+  /** Label for the jump links at the top of the page. */
   label: string;
+  /** Shorter label for the floating section nav at the bottom of the screen. */
+  short: string;
   /** Section title: plain words, then the italic accent word(s). */
   titleLead: string;
   titleAccent: string;
@@ -62,6 +64,7 @@ export const GALLERY: GallerySection[] = [
   {
     id: "childrens-parties",
     label: "Children's parties",
+    short: "Children's",
     titleLead: "Children's",
     titleAccent: "parties.",
     link: { href: "/childrens-parties/", label: "See children's party styling" },
@@ -326,6 +329,7 @@ export const GALLERY: GallerySection[] = [
   {
     id: "milestones",
     label: "Milestones",
+    short: "Milestones",
     titleLead: "Milestone",
     titleAccent: "celebrations.",
     link: { href: "/milestone-celebrations/", label: "See milestone styling" },
@@ -541,6 +545,7 @@ export const GALLERY: GallerySection[] = [
   {
     id: "corporate",
     label: "Corporate & brand",
+    short: "Corporate",
     titleLead: "Corporate",
     titleAccent: "& brand.",
     link: { href: "/corporate-brand-styling/", label: "See corporate styling" },
@@ -685,6 +690,7 @@ export const GALLERY: GallerySection[] = [
   {
     id: "christmas",
     label: "Christmas",
+    short: "Christmas",
     titleLead: "Christmas",
     titleAccent: "doorways.",
     link: { href: "/christmas-door-garlands/", label: "See Christmas door garlands" },

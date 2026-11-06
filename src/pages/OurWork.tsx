@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type { MouseEvent as ReactMouseEvent, RefObject } from "react";
 import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
@@ -136,7 +137,14 @@ const Section = ({
   section, events, index, openViewer,
 }: { section: GallerySection; events: GalleryEvent[]; index: number; openViewer: OpenViewer }) => {
   const n = useColumns(section.compact);
-  const cols = useMemo(() => balance(events, n), [events, n]);
+  // Half of each section shows at first; "Show more" reveals the rest.
+  // Columns are filled in order, so the first half keeps its place when
+  // the rest is added underneath.
+  const [expanded, setExpanded] = useState(false);
+  const initial = Math.ceil(events.length / 2);
+  const shown = expanded ? events : events.slice(0, initial);
+  const hidden = events.length - shown.length;
+  const cols = useMemo(() => balance(shown, n), [shown, n]);
   // Index of each event's first photo within the section's viewer list.
   let running = 0;
   const starts = events.map((e) => {
@@ -183,6 +191,13 @@ const Section = ({
             </div>
           ))}
         </div>
+        {hidden > 0 && (
+          <div className="mt-10 md:mt-14 flex justify-center">
+            <button type="button" className="btn-ghost-rf" onClick={() => setExpanded(true)}>
+              Show {hidden} more <span aria-hidden="true">↓</span>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -276,6 +291,72 @@ const Viewer = ({
   );
 };
 
+/* Floating section nav: slides up from the bottom once the header tabs have
+   scrolled away, highlights the section in view, and tucks away again at
+   the end of the page so it never sits over the enquiry button or footer. */
+const SectionDock = ({
+  sections, tabsRef, endRef,
+}: {
+  sections: { id: string; short: string }[];
+  tabsRef: RefObject<HTMLElement>;
+  endRef: RefObject<HTMLElement>;
+}) => {
+  const [show, setShow] = useState(false);
+  const [active, setActive] = useState(sections[0]?.id);
+
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const vh = window.innerHeight;
+      const pastTabs = (tabsRef.current?.getBoundingClientRect().bottom ?? 0) < 0;
+      const beforeEnd = (endRef.current?.getBoundingClientRect().top ?? Infinity) > vh * 0.8;
+      setShow(pastTabs && beforeEnd);
+      let current = sections[0]?.id;
+      for (const s of sections) {
+        const el = document.getElementById(s.id);
+        if (el && el.getBoundingClientRect().top < vh * 0.4) current = s.id;
+      }
+      setActive(current);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [sections, tabsRef, endRef]);
+
+  // Laptops: the site's smooth scroll (Lenis) eases anchor jumps itself.
+  // Phones use native scrolling, so ease the jump here instead.
+  const onJump = (e: ReactMouseEvent<HTMLAnchorElement>, id: string) => {
+    if (!window.matchMedia("(pointer: coarse) and (max-width: 1024px)").matches) return;
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    history.replaceState(null, "", `#${id}`);
+  };
+
+  return (
+    <nav className={`work-dock ${show ? "is-on" : ""}`} aria-label="Jump to an occasion" aria-hidden={!show}>
+      {sections.map((s) => (
+        <a
+          key={s.id}
+          href={`#${s.id}`}
+          tabIndex={show ? undefined : -1}
+          aria-current={active === s.id ? "true" : undefined}
+          className={`work-dock__link no-underline-fx ${active === s.id ? "is-active" : ""}`}
+          onClick={(e) => onJump(e, s.id)}
+        >
+          {s.short}
+        </a>
+      ))}
+    </nav>
+  );
+};
+
 const OurWork = () => {
   useFadeUp();
   useNavScroll();
@@ -301,6 +382,9 @@ const OurWork = () => {
     []
   );
 
+  const tabsRef = useRef<HTMLElement>(null);
+  const endRef = useRef<HTMLElement>(null);
+  const dockSections = useMemo(() => GALLERY.map((s) => ({ id: s.id, short: s.short })), []);
   const [viewer, setViewer] = useState<{ sectionId: string; index: number } | null>(null);
   const openViewer: OpenViewer = (sectionId, index) => setViewer({ sectionId, index });
   const active = viewer && sections.find((s) => s.section.id === viewer.sectionId);
@@ -313,7 +397,7 @@ const OurWork = () => {
           title="Our work, by occasion."
           intro="Real parties and events Laura has styled across Surrey, grouped so you can find the kind of day you have in mind."
         >
-          <nav aria-label="Jump to an occasion" className="work-tabs">
+          <nav ref={tabsRef} aria-label="Occasions" className="work-tabs">
             {sections.map(({ section, events }) => (
               <a key={section.id} href={`#${section.id}`} className="work-tab no-underline-fx">
                 {section.label}
@@ -327,7 +411,7 @@ const OurWork = () => {
           <Section key={section.id} section={section} events={events} index={i} openViewer={openViewer} />
         ))}
 
-        <section className="rfx-section" aria-labelledby="our-work-cta">
+        <section ref={endRef} className="rfx-section" aria-labelledby="our-work-cta">
           <div className="container-rfx text-center">
             <h2
               id="our-work-cta"
@@ -347,6 +431,7 @@ const OurWork = () => {
         </section>
       </main>
       <Footer />
+      <SectionDock sections={dockSections} tabsRef={tabsRef} endRef={endRef} />
 
       {active && viewer && (
         <Viewer

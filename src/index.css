@@ -746,7 +746,7 @@
      Tapping opens the viewer. */
   .work-tile {
     position: relative; display: block; width: 100%; padding: 0; border: 0;
-    background: hsl(var(--ink) / 0.05); border-radius: 10px; overflow: hidden; cursor: zoom-in;
+    background: hsl(var(--ink) / 0.05); border-radius: 10px; overflow: hidden; cursor: pointer;
     transition: transform .6s cubic-bezier(.2,.7,.2,1);
   }
   .work-tile img { transition: transform .9s cubic-bezier(.2,.7,.2,1); }
@@ -771,6 +771,35 @@
   @media (prefers-reduced-motion: reduce) {
     .work-tile, .work-tile img { transition: none; }
     .work-tile:hover, .work-tile:hover img { transform: none; }
+  }
+
+  /* Our work floating section nav: a frosted, fully rounded bar that lifts
+     up from the bottom once the header tabs scroll away. Below the cookie
+     banner (200) and the photo viewer (300). */
+  .work-dock {
+    position: fixed; left: 50%; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 90;
+    display: flex; gap: 2px; padding: 5px; max-width: calc(100vw - 24px);
+    border-radius: 999px; border: 1px solid hsl(var(--ink) / 0.10);
+    background: hsl(var(--background) / 0.72);
+    -webkit-backdrop-filter: blur(16px) saturate(1.3); backdrop-filter: blur(16px) saturate(1.3);
+    box-shadow: 0 14px 36px -14px hsl(var(--ink) / 0.38);
+    transform: translate(-50%, calc(100% + 32px)); opacity: 0; pointer-events: none;
+    transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
+  }
+  .work-dock.is-on { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
+  .work-dock__link {
+    padding: 9px 16px; border-radius: 999px; white-space: nowrap;
+    font-family: var(--font-sans); font-size: 13px; color: hsl(var(--ink)); text-decoration: none;
+    transition: background-color .35s ease, color .35s ease;
+  }
+  .work-dock__link:hover { background: hsl(var(--ink) / 0.07); }
+  .work-dock__link.is-active { background: hsl(var(--ink)); color: hsl(var(--background)); }
+  @media (max-width: 480px) {
+    .work-dock { padding: 4px; }
+    .work-dock__link { padding: 8px 10px; font-size: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .work-dock { transition: opacity .2s ease; transform: translate(-50%, 0); }
   }
 
   /* Our work viewer (lightbox) */
