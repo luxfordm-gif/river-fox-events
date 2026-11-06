@@ -122,8 +122,7 @@ const CorporateAndBrand = () => {
             <>Corporate event styling</>,
             <>
               <em
-                className="italic font-normal"
-                style={{ color: "hsl(var(--accent))" }}
+                className="italic font-normal text-accent-warm"
               >
                 and brand installations.
               </em>
