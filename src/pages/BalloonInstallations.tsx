@@ -31,15 +31,15 @@ import imgGalleryIman from "@/assets/garden-party-iman-pastel-milestone-surrey.w
 import imgGalleryJeep from "@/assets/river-fox-events-jungle-theme-safari-jeep-giraffe-lion-cub.webp";
 
 /* "It usually starts with a balloon arch": a story-style run of six
-   balloon-led photos, one per kind of occasion. Photos come from the Our work gallery
+   balloon-led photos in soft, neutral palettes (Matt, 2026-11-06). Photos come from the Our work gallery
    (graded copies, same alt everywhere). Harvey's arch stays first. */
 const INTRO_SLIDES = [
   "river-fox-events-naming-ceremony-harvey-daisy-foreground.webp",
-  "services/childrens-parties/rishi-summer-party-bright-balloon-backdrop.webp",
+  "river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch.webp",
   "services/milestones/baby-in-bloom-barn-twin-arches-dusty-blue.webp",
-  "services/milestones/70th-birthday-sage-gold-light-up-numbers.webp",
-  "river-fox-events-nxtgen-corporate-entrance-columns-side-angle.webp",
-  "services/corporate/bocketts-farm-easter-bunny-booth-balloon-garland.webp",
+  "services/childrens-parties/hot-air-balloon-teddy-basket-neutral.webp",
+  "christening-blessing-styling-surrey.webp",
+  "services/milestones/baby-shower-sage-gold-balloons-baby-blocks.webp",
 ].map((source) => {
   const p = galleryPhoto(source);
   return { src: p.src, srcSet: p.srcSet, alt: p.alt, position: p.position };
