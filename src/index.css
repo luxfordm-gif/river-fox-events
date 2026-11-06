@@ -692,6 +692,19 @@
   .rfx-section.warm { background: hsl(var(--surface-warm)); }
   .rfx-section.blush { background: hsl(var(--surface-blush)); }
 
+  /* Our work (/our-work/) - events flow into columns like a contact sheet,
+     so photos keep their own shape instead of being cropped to one ratio. */
+  .gallery-masonry { column-count: 1; column-gap: 24px; }
+  .gallery-masonry > .gallery-event { break-inside: avoid; margin-bottom: 48px; }
+  @media (min-width: 768px) {
+    .gallery-masonry { column-count: 2; column-gap: 32px; }
+    .gallery-masonry > .gallery-event { margin-bottom: 56px; }
+  }
+  @media (min-width: 1280px) {
+    .gallery-masonry { column-count: 3; column-gap: 40px; }
+  }
+  .gallery-section { scroll-margin-top: 72px; }
+
   /* Subtle drifting gradient — applied to every warm/pink section.
      Two large soft blobs slowly translate across the warm base for
      visible-but-gentle motion. */

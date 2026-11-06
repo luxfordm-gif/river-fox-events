@@ -172,6 +172,7 @@ const Footer = () => {
                 Studio
               </div>
               <div className="text-[13.5px] leading-loose">
+                <a href="/our-work/" className="opacity-85 hover:opacity-100 block">Our Work</a>
                 <a href="/#about" className="opacity-85 hover:opacity-100 block">About Laura</a>
                 <a href="/#process" className="opacity-85 hover:opacity-100 block">How it works</a>
                 <a href="/#faq" className="opacity-85 hover:opacity-100 block">FAQ</a>

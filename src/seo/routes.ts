@@ -598,6 +598,16 @@ export const ROUTES: RouteSEO[] = [
     changefreq: "yearly",
   },
   {
+    path: "/our-work",
+    title: "Balloon & Party Styling Gallery, Surrey | River Fox Events",
+    description:
+      "Real Surrey events styled by Laura: dinosaur and safari birthdays, milestone balloon arches, christenings, corporate galas and Christmas door garlands.",
+    breadcrumbName: "Our Work",
+    ogImage: "/og/our-work.webp",
+    priority: 0.8,
+    changefreq: "monthly",
+  },
+  {
     path: "/journal",
     title: "Journal | River Fox Events",
     description:
