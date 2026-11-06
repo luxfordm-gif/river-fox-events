@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useImageParallax } from "@/hooks/useImageParallax";
+import StoryCarousel, { type StorySlide } from "@/components/rfx/StoryCarousel";
 
 interface CPRevealProps {
   /** "left" => image on left column. "right" => image on right column. */
@@ -20,6 +21,9 @@ interface CPRevealProps {
   hideImageOnMobile?: boolean;
   /** Override the parallax overscale on the image (default 1.18). Lower = less zoomed in. */
   imageScale?: number;
+  /** Optional: show these photos as a story-style carousel instead of the
+   *  single image (image/alt are then unused apart from as a fallback). */
+  slides?: StorySlide[];
 }
 
 /**
@@ -39,6 +43,7 @@ const CPReveal = ({
   id,
   hideImageOnMobile = false,
   imageScale = 1.18,
+  slides,
 }: CPRevealProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -90,6 +95,10 @@ const CPReveal = ({
           exact image (theme, palette, location) and include "River Fox Events"
           plus relevant Surrey town keywords. Never empty, never generic.
         */}
+        {slides && slides.length > 1 ? (
+          <StoryCarousel slides={slides} />
+        ) : (
+        <>
         <img
           ref={imgRef}
           src={image}
@@ -112,6 +121,8 @@ const CPReveal = ({
             width={1280}
             height={1600}
           />
+        )}
+        </>
         )}
       </div>
     </div>

@@ -12,6 +12,7 @@ import LocationGallery from "@/components/rfx/LocationGallery";
 import Experiences from "@/components/rfx/Experiences";
 import LocationTrust from "@/components/rfx/LocationTrust";
 import { LATEST_WORK } from "@/data/locations/_makeLocation";
+import { galleryPhoto } from "@/data/gallery";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { whatsappHref } from "@/lib/whatsapp";
 import { findRoute, REVIEWS } from "@/seo/routes";
@@ -25,10 +26,29 @@ import {
 
 import imgHero from "@/assets/pastel-safari-anaya-two-wild-ballroom-surrey.webp";
 import imgHeroMobile from "@/assets/river-fox-events-fairy-first-birthday-kayla-arch-marquee-portrait.webp";
-import imgIntroHover from "@/assets/river-fox-events-naming-ceremony-harvey-arch-side-angle.webp";
 import imgGalleryJungle from "@/assets/river-fox-events-jungle-theme-fourever-wild-full-setup.webp";
 import imgGalleryIman from "@/assets/garden-party-iman-pastel-milestone-surrey.webp";
 import imgGalleryJeep from "@/assets/river-fox-events-jungle-theme-safari-jeep-giraffe-lion-cub.webp";
+
+/* "It usually starts with a balloon arch": a story-style run of
+   balloon-led work across occasions. Photos come from the Our work gallery
+   (graded copies, same alt everywhere). Harvey's arch stays first. */
+const INTRO_SLIDES = [
+  "river-fox-events-naming-ceremony-harvey-daisy-foreground.webp",
+  "services/childrens-parties/rishi-summer-party-bright-balloon-backdrop.webp",
+  "services/milestones/baby-in-bloom-barn-twin-arches-dusty-blue.webp",
+  "services/milestones/70th-birthday-sage-gold-light-up-numbers.webp",
+  "services/corporate/bocketts-farm-easter-bunny-booth-balloon-garland.webp",
+  "river-fox-events-nxtgen-corporate-entrance-columns-side-angle.webp",
+  "services/milestones/baby-shower-sage-gold-balloons-baby-blocks.webp",
+  "services/corporate/shop-entrance-arch-green-white-balloons.webp",
+  "services/milestones/heart-hoop-red-blush-balloons-heart-foils.webp",
+  "services/milestones/50th-birthday-pink-light-up-numbers-teal-garland.webp",
+  "services/corporate/lakeside-terrace-navy-balloon-arch.webp",
+].map((source) => {
+  const p = galleryPhoto(source);
+  return { src: p.src, srcSet: p.srcSet, alt: p.alt, position: p.position };
+});
 
 /* Five things Laura makes with balloons. Each card links on to the
    occasion page where that piece usually lives, so balloons stay the way
@@ -161,8 +181,7 @@ const BalloonInstallations = () => {
           imageSide="right"
           image={LATEST_WORK["naming-harvey-daisy"].src}
           alt={LATEST_WORK["naming-harvey-daisy"].alt}
-          hoverImage={imgIntroHover}
-          hoverAlt="Side view of Harvey's naming ceremony board in a garden, framed by pale blue, white and chrome gold balloons"
+          slides={INTRO_SLIDES}
           tone="ph-warm"
           headline={
             <>
@@ -271,6 +290,7 @@ const BalloonInstallations = () => {
         <Experiences
           sectionId="bi-services"
           showBalloonLink={false}
+          compactImages
           heading={
             <>
               Want the whole room{" "}
