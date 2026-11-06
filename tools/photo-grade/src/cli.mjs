@@ -190,6 +190,9 @@ async function apply() {
       if (!fs.existsSync(path.join(dirs.originals, `${p.key}.webp`))) fs.writeFileSync(path.join(dirs.originals, `${p.key}.webp`), orig);
       const md = await sharp(orig).metadata(); w = md.width; h = md.height;
     }
+    // per-photo display cap (e.g. small carousel tiles): no point shipping more pixels than the page shows
+    const cap = p.maxLongEdge || byKey[lead]?.maxLongEdge;
+    if (cap && Math.max(w, h) > cap) { const k = cap / Math.max(w, h); w = Math.round(w * k); h = Math.round(h * k); }
     const { out, q } = await encodeForSite(fs.readFileSync(png), w, h, byKey[lead]?.hero);
     fs.writeFileSync(path.join(REPO, 'src', 'assets', p.src), out);
     const own = (m.images[p.key] ||= { key: p.key, src: p.src, status: 'copy' });
