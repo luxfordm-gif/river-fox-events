@@ -632,11 +632,12 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
-        title: "Café counter garland",
+        title: "DawgHouse Pizza Co. opening",
+        place: "Epsom",
         photos: [
           {
-            source: "services/corporate/cafe-counter-garland-forest-green-cream-black.webp",
-            alt: "Forest green, cream and black balloon garland around a café serving counter with a menu screen",
+            source: "services/corporate/dawghouse-pizza-takeaway-opening-garland-epsom.webp",
+            alt: "Forest green, cream and black balloon garland around a pizza takeaway counter for its opening",
           },
         ],
       },
