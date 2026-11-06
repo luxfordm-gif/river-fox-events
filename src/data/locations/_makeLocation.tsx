@@ -31,52 +31,52 @@ import lwWonkaChocolateArch from "@/assets/river-fox-events-willy-wonka-savanna-
 export const LATEST_WORK = {
   "40th-rose-gold": {
     src: lw40thRoseGold,
-    alt: "Sunlit 40th birthday rose gold marquee numbers with blush and chrome balloon garland styled by River Fox Events",
+    alt: "Sunlit rose gold 40th marquee numbers with a blush and chrome balloon garland",
     balanced: true,
   },
   "baby-shower-bloom": {
     src: lwBabyShowerBloom,
-    alt: "Dusty blue and white Baby in Bloom balloon arch with floral accents styled for a Surrey baby shower by River Fox Events",
+    alt: "Dusty blue and white Baby in Bloom balloon arch with floral accents for a baby shower",
     balanced: true,
   },
   "stubbs-gender-reveal": {
     src: lwStubbsGenderReveal,
-    alt: "Side angle of the He or She balloon arch in soft blue and pink for the Stubbs family gender reveal by River Fox Events",
+    alt: "Side angle of the He or She balloon arch in soft blue and pink for the Stubbs gender reveal",
     balanced: false,
   },
   "dinosaur-ayaan": {
     src: lwDinosaurAyaan,
-    alt: "Side angle of Ayaan's dinosaur birthday balloon arch - sage and cream balloons with crate props and personalised signage by River Fox Events",
+    alt: "Side angle of Ayaan's dinosaur birthday arch, with sage and cream balloons, crate props and personalised signage",
     balanced: false,
   },
   "fairy-kayla": {
     src: lwFairyKayla,
-    alt: "Overhead view of Kayla's fairy first birthday tablescape with pastel place settings, mossy runner and trailing florals by River Fox Events",
+    alt: "Overhead view of Kayla's fairy first birthday table with pastel place settings, a mossy runner and trailing greenery",
     balanced: false,
   },
   "jungle-elephant": {
     src: lwJungleElephant,
-    alt: "Jungle theme birthday tablescape with elephant centrepiece, monstera runner and balloon installation by River Fox Events",
+    alt: "Jungle tablescape with an elephant centrepiece, monstera runner, giraffe-print plates and safari balloons",
     balanced: true,
   },
   "naming-harvey-daisy": {
     src: lwNamingHarveyDaisy,
-    alt: "Daisies and wildflowers in the foreground of Harvey's garden naming ceremony arch styled by River Fox Events",
+    alt: "Daisies and wildflowers in the foreground of Harvey's garden naming ceremony arch",
     balanced: false,
   },
   "pastel-safari-anaya": {
     src: lwPastelSafariAnaya,
-    alt: "Pastel safari Two Wild table setting for Anaya's second birthday with pink place settings, foliage runner and balloon detail by River Fox Events",
+    alt: "Pastel safari Two Wild table for Anaya's second birthday, with pink place settings, a foliage runner and a light-up two",
     balanced: false,
   },
   "veuve-disco": {
     src: lwVeuveDisco,
-    alt: "Close-up of a mirrored disco-ball centrepiece nested in tangerine and white balloons for Angela and Georgia's champagne-themed celebration by River Fox Events",
+    alt: "Mirrored disco-ball centrepiece nested in tangerine and white balloons at Angela and Georgia's celebration",
     balanced: true,
   },
   "wonka-chocolate-arch": {
     src: lwWonkaChocolateArch,
-    alt: "Oversized chocolate bar arch from Savanna's Willy Wonka fifth birthday styling with purple, brown and gold palette by River Fox Events",
+    alt: "Oversized chocolate bar arch from Savanna's Willy Wonka fifth birthday in purple, brown and gold",
     balanced: true,
   },
 } as const;
@@ -229,22 +229,22 @@ export function makeLocation(input: LocationInput): LocationConfig {
     ? LATEST_WORK[images.galleryMain]
     : {
         src: imgGalleryMain,
-        alt: `Sage green dinosaur themed children's birthday party styling in ${cityName} by River Fox Events - personalised name sign, balloon garland and lush foliage`,
+        alt: "Sage green dinosaur birthday backdrop with an Ayaan name sign, tropical foliage and dinosaur cutouts",
       };
   const galThumbs = images
     ? images.galleryThumbs.map((k) => LATEST_WORK[k])
     : [
         {
           src: imgGallery1,
-          alt: `Christening styling in ${cityName} Surrey by River Fox Events - soft ivory and blush balloon installation with floral accents`,
+          alt: "Blush, champagne and pearl balloon garlands either side of a christening panel with a cross and a draped plinth",
         },
         {
           src: imgGallery2,
-          alt: "Corporate gala styling in Surrey by River Fox Events - elegant tablescape with statement floral centrepiece",
+          alt: "Navy, gold and cream balloons around a Children in Need Pudsey backdrop at a corporate gala",
         },
         {
           src: imgGallery3,
-          alt: "Children's party styling in Surrey by River Fox Events - fully styled cake table with personalised signage",
+          alt: "Pink and blue balloons above a celebration cake on a styled cake table",
         },
       ];
 

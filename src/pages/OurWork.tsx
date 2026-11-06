@@ -26,8 +26,8 @@ const COMPACT_SIZES = "(min-width: 1440px) 330px, (min-width: 768px) 23vw, 46vw"
 
 /* A photo tile: pinches in on hover with a "View larger" label; opens the viewer. */
 const Tile = ({
-  photo, sizes, onOpen, crop,
-}: { photo: ResolvedPhoto; sizes: string; onOpen: () => void; crop?: string }) => (
+  photo, sizes, onOpen, crop, eager,
+}: { photo: ResolvedPhoto; sizes: string; onOpen: () => void; crop?: string; eager?: boolean }) => (
   <button type="button" className="work-tile" onClick={onOpen} aria-label={`View larger: ${photo.alt}`}>
     <img
       src={photo.src}
@@ -36,7 +36,7 @@ const Tile = ({
       alt={photo.alt}
       width={photo.width}
       height={photo.height}
-      loading="lazy"
+      loading={eager ? "eager" : "lazy"}
       decoding="async"
       className={`block w-full ${crop ? "h-full object-cover" : "h-auto"}`}
       style={crop ? { aspectRatio: crop, objectPosition: photo.position } : undefined}
@@ -54,13 +54,13 @@ const Tile = ({
 
 /* One event: a large lead photo, up to two smaller tiles beneath, caption. */
 const EventCard = ({
-  event, compact, firstIndex, open,
-}: { event: GalleryEvent; compact?: boolean; firstIndex: number; open: (i: number) => void }) => {
+  event, compact, firstIndex, open, eager,
+}: { event: GalleryEvent; compact?: boolean; firstIndex: number; open: (i: number) => void; eager?: boolean }) => {
   const [lead, ...rest] = event.photos.map(resolvePhoto);
   const extras = rest.slice(0, 2);
   return (
     <figure className="gallery-event fade-up m-0">
-      <Tile photo={lead} sizes={compact ? COMPACT_SIZES : GRID_SIZES} onOpen={() => open(firstIndex)} />
+      <Tile photo={lead} sizes={compact ? COMPACT_SIZES : GRID_SIZES} onOpen={() => open(firstIndex)} eager={eager} />
       {extras.length > 0 && (
         <div className={`grid gap-2 md:gap-3 mt-2 md:mt-3 ${extras.length === 1 ? "grid-cols-1" : "grid-cols-2"}`}>
           {extras.map((p, i) => (
@@ -156,6 +156,9 @@ const Section = ({
     <EventCard
       key={e.title}
       event={e}
+      // First row of the first section is visible without scrolling on a
+      // laptop, so those photos load straight away.
+      eager={index === 0 && i < 3}
       compact={section.compact}
       firstIndex={starts[i]}
       open={(n) => openViewer(section.id, n)}

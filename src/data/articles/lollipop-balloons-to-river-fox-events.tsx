@@ -16,23 +16,23 @@ import imgGalleryAnaya from "@/assets/river-fox-events-pastel-safari-anaya-two-w
 const galleryImages = [
   {
     src: imgGalleryIman,
-    alt: "Pastel garden-party tablescape for Iman's milestone in Surrey by River Fox Events - soft floral runner, layered place settings and balloon installation",
+    alt: "Pastel garden-party tablescape for Iman's milestone with a soft runner, layered place settings and balloons",
   },
   {
     src: imgGalleryFourever,
-    alt: "Fourever Wild jungle-theme children's party by River Fox Events - safari balloon garland, name sign and tropical foliage",
+    alt: "Fourever Wild jungle party with a safari balloon garland, name sign and tropical foliage",
   },
   {
     src: imgGalleryKayla,
-    alt: "Fairy first birthday tablescape overhead for Kayla in Surrey by River Fox Events - pastel place settings, mossy runner and trailing florals",
+    alt: "Overhead view of Kayla's fairy first birthday table with pastel place settings, a mossy runner and trailing greenery",
   },
   {
     src: imgGalleryReeva,
-    alt: "Pastel birthday entrance arch for Reeva in Surrey by River Fox Events - blush, peach and cream balloon arch over a welcome easel",
+    alt: "Blush, peach and cream balloon arch over Reeva's birthday welcome easel at a front door",
   },
   {
     src: imgGalleryAnaya,
-    alt: "Pastel safari Two Wild second birthday tablescape for Anaya in Surrey by River Fox Events - blush and sand palette with animal figurines",
+    alt: "Pastel safari Two Wild table for Anaya's second birthday, with pink place settings, a foliage runner and a light-up two",
   },
 ];
 
@@ -90,7 +90,7 @@ const LollipopRebrandArticle = () => (
 
     <ArticleImage
       src={imgLead}
-      alt="River Fox Events branded hoodie in cream, photographed outside the Surrey studio"
+      alt="Cream hoodie with the new logo, photographed outside the Surrey studio"
       caption="The new identity, on the back of a hoodie outside the studio."
     />
 
@@ -157,7 +157,7 @@ const LollipopRebrandArticle = () => (
 
     <ArticleImage
       src={imgCards}
-      alt="River Fox Events business cards in cream with the new brand identity, photographed on travertine"
+      alt="Cream business cards with the new brand identity, photographed on travertine"
       caption="The new identity, on paper. Cards going out to recent enquiries."
     />
 

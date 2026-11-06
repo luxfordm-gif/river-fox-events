@@ -102,9 +102,9 @@ const Milestones = () => {
           id="ms-intro"
           imageSide="right"
           image={imgOccasions}
-          alt="He or she balloon arch in soft blue and pink for the Stubbs family gender reveal styled in Surrey by River Fox Events"
+          alt="He or She balloon arch in soft blue and pink for the Stubbs family gender reveal"
           hoverImage={imgOccasionsHover}
-          hoverAlt="Wildflower and dried-grass detail on the Stubbs gender reveal styling - close-up of soft pinks, blues and pampas by River Fox Events"
+          hoverAlt="Wildflower and dried-grass detail on the Stubbs gender reveal, in soft pinks, blues and pampas"
           tone="ph-warm"
           headline={
             <>
@@ -130,9 +130,9 @@ const Milestones = () => {
           id="ms-occasions"
           imageSide="left"
           image={imgIntro}
-          alt="Champagne-themed milestone birthday arch in tangerine, white and gold balloons for Angela and Georgia, styled in Surrey by River Fox Events"
+          alt="Champagne-themed birthday arch in tangerine, white and gold balloons for Angela and Georgia"
           hoverImage={imgIntroHover}
-          hoverAlt="Close-up of a mirrored disco-ball centrepiece nested in tangerine and white balloons for Angela and Georgia's champagne-themed celebration by River Fox Events"
+          hoverAlt="Mirrored disco-ball centrepiece nested in tangerine and white balloons at Angela and Georgia's celebration"
           tone="ph-blush"
           imageScale={1.07}
           headline={

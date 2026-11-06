@@ -78,11 +78,11 @@ export const GALLERY: GallerySection[] = [
           },
           {
             source: "river-fox-events-jungle-theme-safari-tablescape-elephant.webp",
-            alt: "Jungle theme birthday tablescape with elephant centrepiece, monstera runner and balloon installation by River Fox Events",
+            alt: "Jungle tablescape with an elephant centrepiece, monstera runner, giraffe-print plates and safari balloons",
           },
           {
             source: "river-fox-events-jungle-theme-lion-plates-overhead.webp",
-            alt: "Jungle theme overhead place setting by River Fox Events - lion-printed plates with raffia and animal-print napkins",
+            alt: "Overhead jungle place settings with lion-printed plates, raffia and animal-print napkins",
           },
         ],
       },
@@ -91,7 +91,7 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "river-fox-events-pastel-safari-anaya-two-wild-tablescape.webp",
-            alt: "Pastel safari Two Wild table setting for Anaya's second birthday with pink place settings, foliage runner and balloon detail by River Fox Events",
+            alt: "Pastel safari Two Wild table for Anaya's second birthday, with pink place settings, a foliage runner and a light-up two",
           },
           {
             source: "pastel-safari-anaya-two-wild-ballroom-surrey.webp",
@@ -99,7 +99,7 @@ export const GALLERY: GallerySection[] = [
           },
           {
             source: "river-fox-events-pastel-safari-anaya-two-wild-marquee-close-up.webp",
-            alt: "Close-up of the pink light-up two marquee from Anaya's pastel safari Two Wild birthday in Surrey by River Fox Events",
+            alt: "Close-up of the pink light-up two marquee at Anaya's pastel safari birthday, with sage and pink balloons",
           },
         ],
       },
@@ -108,11 +108,11 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "river-fox-events-fairy-first-birthday-kayla-arch-marquee-portrait.webp",
-            alt: "Fairy first birthday arch and light-up one marquee for Kayla in Surrey by River Fox Events - pink and lilac balloons with mossy detail",
+            alt: "Kayla's fairy first birthday arch in pink and lilac balloons with a light-up one and mossy detail",
           },
           {
             source: "river-fox-events-fairy-first-birthday-kayla-tablescape-overhead.webp",
-            alt: "Overhead view of Kayla's fairy first birthday tablescape with pastel place settings, mossy runner and trailing florals by River Fox Events",
+            alt: "Overhead view of Kayla's fairy first birthday table with pastel place settings, a mossy runner and trailing greenery",
           },
         ],
       },
@@ -134,11 +134,11 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "dinosaur-ayaan-arch-surrey.webp",
-            alt: "Dinosaur theme children's birthday styling in Surrey by River Fox Events - Ayaan name arch, sage balloons and crate props",
+            alt: "Ayaan's dinosaur birthday arch with sage balloons, a personalised name sign and wooden crate props",
           },
           {
             source: "river-fox-events-dinosaur-theme-ayaan-arch-close-up-portrait.webp",
-            alt: "Close-up portrait of Ayaan's dinosaur arch - sage and cream balloons with tropical foliage and personalised signage by River Fox Events",
+            alt: "Close-up of Ayaan's dinosaur arch, with sage and cream balloons, tropical foliage and a personalised sign",
           },
         ],
       },
@@ -147,11 +147,11 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "river-fox-events-willy-wonka-savanna-chocolate-bar-arch.webp",
-            alt: "Oversized chocolate bar arch from Savanna's Willy Wonka fifth birthday styling with purple, brown and gold palette by River Fox Events",
+            alt: "Oversized chocolate bar arch from Savanna's Willy Wonka fifth birthday in purple, brown and gold",
           },
           {
             source: "river-fox-events-willy-wonka-savanna-bar-prop-close-up.webp",
-            alt: "Close-up of the oversized chocolate-bar prop with lilac balloons, lollipop foil and mushroom props from Savanna's Willy Wonka fifth birthday styled in Surrey by River Fox Events",
+            alt: "Close-up of the chocolate-bar prop with lilac balloons, a lollipop foil and mushroom props at Savanna's Wonka party",
           },
         ],
       },
@@ -170,7 +170,7 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "journal/two-wild-safari-second-birthday/two-wild-safari-second-birthday-styling-horley-surrey.webp",
-            alt: "Finished Two Wild safari second birthday styling at Horley Community Centre in Surrey by River Fox Events - pastel balloon garland with foliage, personalised Amiya safari name panel, marquee 2 with pink bulb lights, twelve seat banquet table dressed with foliage runner, plush elephant centrepiece, pink scallop plates, zebra print salad plates and gold cutlery",
+            alt: "Amiya's Two Wild birthday at Horley Community Centre: pastel garland, safari name panel, light-up 2 and a banquet table",
           },
         ],
       },
@@ -320,7 +320,7 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "river-fox-events-pastel-birthday-reeva-entrance-arch.webp",
-            alt: "Pastel birthday entrance arch for Reeva in Surrey by River Fox Events - blush, peach and cream balloon arch over a welcome easel",
+            alt: "Blush, peach and cream balloon arch over Reeva's birthday welcome easel at a front door",
           },
         ],
       },
@@ -339,11 +339,11 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "river-fox-events-veuve-cliquot-angela-georgia-arch-wide.webp",
-            alt: "Champagne-themed milestone birthday arch in tangerine, white and gold balloons for Angela and Georgia, styled in Surrey by River Fox Events",
+            alt: "Champagne-themed birthday arch in tangerine, white and gold balloons for Angela and Georgia",
           },
           {
             source: "river-fox-events-veuve-cliquot-angela-georgia-balloon-disco-close-up.webp",
-            alt: "Close-up of a mirrored disco-ball centrepiece nested in tangerine and white balloons for Angela and Georgia's champagne-themed celebration by River Fox Events",
+            alt: "Mirrored disco-ball centrepiece nested in tangerine and white balloons at Angela and Georgia's celebration",
           },
         ],
       },
@@ -352,7 +352,7 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "river-fox-events-40th-birthday-rose-gold-marquee-sunlit.webp",
-            alt: "Sunlit 40th birthday rose gold marquee numbers with blush and chrome balloon garland styled by River Fox Events",
+            alt: "Sunlit rose gold 40th marquee numbers with a blush and chrome balloon garland",
           },
         ],
       },
@@ -381,11 +381,11 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "journal/garden-milestone-styling-surrey/garden-milestone-balloon-arch.webp",
-            alt: "Pastel balloon garland in cream, peach, lilac and butter yellow wrapping a tall pink arched backdrop with hand-lettered Happy Birthday signage, set on a garden lawn against summer planting.",
+            alt: "Pastel garland in cream, peach, lilac and butter yellow around a pink arched Happy Birthday backdrop on a garden lawn",
           },
           {
             source: "journal/garden-milestone-styling-surrey/garden-milestone-banquet-table-oxted.webp",
-            alt: "Long banquet-style picnic on a lawn with floor cushions, a cheesecloth runner, place settings and a tall pastel arched backdrop with balloon garland behind.",
+            alt: "Long lawn picnic table with floor cushions, a cheesecloth runner and a pastel arched backdrop behind",
           },
         ],
       },
@@ -394,11 +394,11 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch.webp",
-            alt: "He or she balloon arch in soft blue and pink for the Stubbs family gender reveal styled in Surrey by River Fox Events",
+            alt: "He or She balloon arch in soft blue and pink for the Stubbs family gender reveal",
           },
           {
             source: "river-fox-events-baby-stubbs-gender-reveal-wildflower-detail.webp",
-            alt: "Wildflower and dried-grass detail on the Stubbs gender reveal styling - close-up of soft pinks, blues and pampas by River Fox Events",
+            alt: "Wildflower and dried-grass detail on the Stubbs gender reveal, in soft pinks, blues and pampas",
           },
         ],
       },
@@ -407,7 +407,7 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "river-fox-events-naming-ceremony-harvey-daisy-foreground.webp",
-            alt: "Daisies and wildflowers in the foreground of Harvey's garden naming ceremony arch styled by River Fox Events",
+            alt: "Daisies and wildflowers in the foreground of Harvey's garden naming ceremony arch",
           },
           {
             source: "river-fox-events-naming-ceremony-harvey-arch-side-angle.webp",
@@ -420,11 +420,11 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "river-fox-events-baby-shower-baby-in-bloom-arch-portrait.webp",
-            alt: "Dusty blue and white Baby in Bloom balloon arch with floral accents styled for a Surrey baby shower by River Fox Events",
+            alt: "Dusty blue and white Baby in Bloom balloon arch with floral accents for a baby shower",
           },
           {
             source: "services/milestones/baby-in-bloom-barn-twin-arches-dusty-blue.webp",
-            alt: "Dusty blue and white balloon garlands either side of twin arched panels in a timber-framed barn",
+            alt: "Twin arched panels in a timber-framed barn, flanked by dusty blue and white balloon garlands",
           },
           {
             source: "services/milestones/baby-in-bloom-welcome-sign-blue-balloons.webp",
@@ -555,11 +555,11 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "river-fox-events-theatre-125-anniversary-marquee-wide.webp",
-            alt: "125th anniversary light-up marquee numbers on a theatre staircase with cream and gold balloons styled by River Fox Events for a Surrey corporate milestone",
+            alt: "125th anniversary light-up marquee numbers on a theatre staircase with cream and gold balloons",
           },
           {
             source: "river-fox-events-theatre-125-anniversary-balloon-close-up.webp",
-            alt: "Close-up of cream, gold and pearl balloon detail beside the 125 anniversary marquee on a theatre staircase styled by River Fox Events",
+            alt: "Close-up of cream, gold and pearl balloons beside the 125 anniversary marquee on a theatre staircase",
           },
         ],
       },
@@ -609,7 +609,7 @@ export const GALLERY: GallerySection[] = [
         photos: [
           {
             source: "river-fox-events-pudsey-charity-gala-dinner-navy-gold.webp",
-            alt: "Navy and gold balloon installation at the Pudsey charity gala dinner - sophisticated event styling by River Fox Events",
+            alt: "Navy and gold balloon installation beside a Pudsey bear at a charity gala dinner",
           },
         ],
       },

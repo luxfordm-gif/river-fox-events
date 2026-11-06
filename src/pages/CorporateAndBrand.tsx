@@ -116,7 +116,7 @@ const CorporateAndBrand = () => {
           image={imgHero}
           imageAlt="Twin balloon arches in a corporate office atrium - blue and yellow left, purple right, framing black leather sofas"
           mobileImage={imgHeroMobile}
-          mobileImageAlt="Navy and gold balloon installation at the Pudsey charity gala dinner - sophisticated event styling by River Fox Events"
+          mobileImageAlt="Navy and gold balloon installation beside a Pudsey bear at a charity gala dinner"
           headingId="cb-hero-heading"
           lines={[
             <>Corporate event styling</>,
@@ -136,9 +136,9 @@ const CorporateAndBrand = () => {
           id="cb-intro"
           imageSide="right"
           image={imgIntro}
-          alt="125th anniversary light-up marquee numbers on a theatre staircase with cream and gold balloons styled by River Fox Events for a Surrey corporate milestone"
+          alt="125th anniversary light-up marquee numbers on a theatre staircase with cream and gold balloons"
           hoverImage={imgIntroHover}
-          hoverAlt="Close-up of cream, gold and pearl balloon detail beside the 125 anniversary marquee on a theatre staircase styled by River Fox Events"
+          hoverAlt="Close-up of cream, gold and pearl balloons beside the 125 anniversary marquee on a theatre staircase"
           tone="ph-warm"
           imageScale={1.07}
           headline={
