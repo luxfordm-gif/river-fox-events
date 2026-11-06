@@ -1,0 +1,18 @@
+{
+  "name": "river-fox-photo-grade",
+  "private": true,
+  "type": "module",
+  "description": "Batch colour grade / exposure / sharpness pass on the site's gallery photos with the OpenAI Images API. Kept separate from the site build.",
+  "scripts": {
+    "trial": "node src/cli.mjs run --trial",
+    "run": "node src/cli.mjs run",
+    "status": "node src/cli.mjs status",
+    "review": "node src/cli.mjs review",
+    "apply": "node src/cli.mjs apply",
+    "audit": "node src/audit.mjs"
+  },
+  "dependencies": {
+    "openai": "^7.53.0",
+    "sharp": "^0.35.5"
+  }
+}

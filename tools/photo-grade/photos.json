@@ -1,0 +1,71 @@
+{
+  "trial": [
+    "blue-restaurant-doorway-red-bauble-garland",
+    "pink-pilates-studio-garland-blush-red-baubles",
+    "navy-door-jewel-bauble-arch-wreath",
+    "bunny-picnic-party-pink-arches-low-table",
+    "kai-one-o-saurus-first-birthday-dinosaur-backdrop",
+    "cafe-counter-garland-forest-green-cream-black",
+    "river-fox-events-nxtgen-corporate-balloon-close-up",
+    "river-fox-events-naming-ceremony-harvey-arch-side-angle",
+    "50th-birthday-gold-sequin-wall-navy-garland",
+    "40th-birthday-champagne-gold-garland-restaurant",
+    "rishi-summer-party-bright-balloon-backdrop",
+    "river-fox-events-corporate-atrium-twin-balloon-arches",
+    "river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch",
+    "river-fox-events-willy-wonka-savanna-chocolate-bar-arch",
+    "aurelia-first-birthday-welcome-sign-pink"
+  ],
+  "extra": [
+    "christmas/blue-restaurant-doorway-red-bauble-garland.webp",
+    "christmas/instagram/pink-pilates-studio-garland-blush-red-baubles.webp"
+  ],
+  "photos": {
+    "blue-restaurant-doorway-red-bauble-garland": {
+      "note": "A shopfront on a grey day. Keep the building, the street, the windows and everything reflected in them exactly as they are; keep every bauble its exact colour."
+    },
+    "pink-pilates-studio-garland-blush-red-baubles": {
+      "note": "Copy the shop sign lettering exactly as photographed, letter for letter. Keep the pink shopfront its exact pink, and the street and reflections as they are."
+    },
+    "navy-door-jewel-bauble-arch-wreath": {
+      "note": "Keep the snow on the roof and the navy door its exact navy; keep every bauble its exact colour. Keep the exact framing of the original: do not zoom in, crop, reframe or straighten; the edges of the frame must show exactly what the original shows."
+    },
+    "kai-one-o-saurus-first-birthday-dinosaur-backdrop": {
+      "note": "Copy the lettering on the green board exactly as photographed, letter for letter. The brick wall, curtains and window behind the backdrop are softly out of focus: keep that background blur exactly as it is and sharpen only the backdrop, balloons and dinosaurs. The rust balloons are a muted terracotta: keep them muted, not bright orange."
+    },
+    "cafe-counter-garland-forest-green-cream-black": {
+      "note": "Keep the menu screens and any lettering exactly as photographed; do not redraw or sharpen them into new text."
+    },
+    "river-fox-events-nxtgen-corporate-balloon-close-up": {
+      "note": "Copy any logo printed on the balloons exactly as photographed; keep the lime green and black exactly as they are."
+    },
+    "river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch": {
+      "preset": "gentle",
+      "note": "Copy the hand lettering on the arch board exactly as photographed, letter for letter."
+    },
+    "rishi-summer-party-bright-balloon-backdrop": {
+      "note": "Copy the lettering on the sign exactly as photographed, letter for letter."
+    },
+    "50th-birthday-gold-sequin-wall-navy-garland": {
+      "note": "The light-up 50 numbers glow blue: keep that glow and its colour exactly as photographed."
+    },
+    "river-fox-events-willy-wonka-savanna-chocolate-bar-arch": {
+      "preset": "gentle",
+      "note": "Copy the name and the Wonka bar lettering exactly as photographed, letter for letter."
+    },
+    "aurelia-first-birthday-welcome-sign-pink": {
+      "preset": "gentle",
+      "note": "Copy the lettering on the round welcome sign exactly as photographed, letter for letter."
+    },
+    "40th-birthday-champagne-gold-garland-restaurant": {
+      "note": "The view through the window on the right is a dusky street: keep it as dim and as it was photographed, do not turn it into daylight. Brighten only the room."
+    },
+    "18th-birthday-blue-chrome-light-up-numbers": {
+      "note": "The light-up numbers are lit blue and cast blue light onto the floor and the balloons around them: that blue glow is part of the styling. Keep the numbers glowing blue and keep the blue light on the floor exactly as photographed; brighten and clean the rest of the room around it. The strong pool of blue light across the wooden floor must stay as deep and as blue as in the original.",
+      "preset": "gentle"
+    },
+    "gina-13th-birthday-navy-gold-kitchen-backdrop": {
+      "note": "The light-up numbers are lit blue and cast blue light onto the floor and the balloons around them: that blue glow is part of the styling. Keep the numbers glowing blue and keep the blue light on the floor exactly as photographed; brighten and clean the rest of the room around it. Copy the lettering on the round board exactly as photographed, letter for letter."
+    }
+  }
+}
