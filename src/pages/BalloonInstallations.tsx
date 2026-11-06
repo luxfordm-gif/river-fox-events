@@ -137,7 +137,7 @@ const BalloonInstallations = () => {
           image={imgHero}
           imageAlt="Ballroom long table for a pastel safari second birthday, flanked by pink, sage and gold balloon columns under chandeliers"
           mobileImage={imgHeroMobile}
-          mobileImageAlt="Fairy first birthday arch and light-up one marquee for Kayla in Surrey by River Fox Events - pink and lilac balloons with mossy detail"
+          mobileImageAlt="Kayla's fairy first birthday arch in pink and lilac balloons with a light-up one and mossy detail"
           headingId="bi-hero-heading"
           whatsappHref={whatsappHref(
             "Hi Laura, I'd like a quote for a balloon installation. My date and postcode are "
@@ -225,7 +225,7 @@ const BalloonInstallations = () => {
             },
             {
               src: imgGalleryIman,
-              alt: "Pastel garden-party tablescape for Iman's milestone in Surrey by River Fox Events - soft floral runner, layered place settings and balloon installation",
+              alt: "Pastel garden-party tablescape for Iman's milestone with a soft runner, layered place settings and balloons",
             },
             {
               src: imgGalleryJeep,
