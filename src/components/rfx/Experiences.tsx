@@ -144,6 +144,13 @@ const Experiences = ({
             <ExpCard key={i} it={it} i={i} />
           ))}
         </div>
+
+        <p className="mt-12 md:mt-14 text-center text-[14.5px] text-ink-soft fade-up">
+          Just after a balloon arch or garland?{" "}
+          <a href="/balloon-installations/" className="btn-link-rf ml-1">
+            Balloon installations <span className="arr">→</span>
+          </a>
+        </p>
       </div>
     </section>
   );

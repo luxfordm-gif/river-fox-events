@@ -9,6 +9,7 @@ import Index from "./pages/Index.tsx";
 import ChildrensParties from "./pages/ChildrensParties.tsx";
 import Milestones from "./pages/Milestones.tsx";
 import CorporateAndBrand from "./pages/CorporateAndBrand.tsx";
+import BalloonInstallations from "./pages/BalloonInstallations.tsx";
 import LocationPage from "./pages/LocationPage.tsx";
 import Article from "./pages/Article.tsx";
 import Journal from "./pages/Journal.tsx";
@@ -34,6 +35,7 @@ const AppShell = () => {
         <Route path="/childrens-parties" element={<ChildrensParties />} />
         <Route path="/milestone-celebrations" element={<Milestones />} />
         <Route path="/corporate-brand-styling" element={<CorporateAndBrand />} />
+        <Route path="/balloon-installations" element={<BalloonInstallations />} />
         <Route path="/christmas-door-garlands" element={<ChristmasDoorways />} />
         {LOCATIONS.map((loc) => (
           <Route

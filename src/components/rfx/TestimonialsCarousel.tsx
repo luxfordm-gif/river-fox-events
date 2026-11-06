@@ -7,7 +7,7 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { REVIEWS } from "@/seo/routes";
+import { REVIEWS, type Review } from "@/seo/routes";
 
 const Stars = () => (
   <span className="tcard-stars" aria-label="Five stars">
@@ -15,7 +15,12 @@ const Stars = () => (
   </span>
 );
 
-const TestimonialsCarousel = () => {
+type TestimonialsCarouselProps = {
+  /** Show a chosen subset of reviews. Defaults to every review. */
+  reviews?: Review[];
+};
+
+const TestimonialsCarousel = ({ reviews = REVIEWS }: TestimonialsCarouselProps = {}) => {
   const [api, setApi] = useState<CarouselApi>();
   const [selected, setSelected] = useState(0);
   const [count, setCount] = useState(0);
@@ -41,7 +46,7 @@ const TestimonialsCarousel = () => {
         className="md:px-16 lg:px-12"
       >
         <CarouselContent className="-ml-4 md:-ml-6">
-          {REVIEWS.map((t, i) => (
+          {reviews.map((t, i) => (
             <CarouselItem
               key={i}
               className="pl-4 md:pl-6 basis-[86%] md:basis-1/2 lg:basis-1/3"

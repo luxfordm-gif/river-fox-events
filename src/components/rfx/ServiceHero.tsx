@@ -12,6 +12,9 @@ type ServiceHeroProps = {
   lines: ReactNode[];
   sub: ReactNode;
   headingId?: string;
+  /** Pre-filled WhatsApp link. When set, phones (below md) get a
+   *  "WhatsApp Laura now" ghost button under Reserve your date. */
+  whatsappHref?: string;
 };
 
 const ServiceHero = ({
@@ -22,6 +25,7 @@ const ServiceHero = ({
   lines,
   sub,
   headingId = "service-hero-heading",
+  whatsappHref,
 }: ServiceHeroProps) => {
   const imgWrapRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -97,15 +101,21 @@ const ServiceHero = ({
             {sub}
           </p>
 
-          <div className="flex items-center justify-center gap-5 flex-wrap mt-8 fade-up in">
+          {/* Matching widths, stacked, as on Christmas Door Garlands. */}
+          <div className="mt-8 mx-auto grid gap-3 w-fit fade-up in">
             <a
               href={ENQUIRE_HREF}
               onClick={handleEnquireClick}
-              className="btn-solid-rf accent"
+              className="btn-solid-rf accent justify-center"
             >
               Reserve your date{" "}
               <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
             </a>
+            {whatsappHref ? (
+              <a href={whatsappHref} className="btn-ghost-rf justify-center md:hidden">
+                WhatsApp Laura now
+              </a>
+            ) : null}
           </div>
         </div>
       </div>
