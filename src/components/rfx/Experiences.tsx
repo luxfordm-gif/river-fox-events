@@ -105,12 +105,16 @@ type ExperiencesProps = {
   intro?: ReactNode;
   /** Override the section id (used for in-page anchor links). */
   sectionId?: string;
+  /** Show the "Just after a balloon arch or garland?" line under the cards.
+   *  Off on /balloon-installations/ itself. */
+  showBalloonLink?: boolean;
 };
 
 const Experiences = ({
   heading,
   intro,
   sectionId = "experiences",
+  showBalloonLink = true,
 }: ExperiencesProps = {}) => {
   return (
     <section id={sectionId} className="rfx-section white" aria-labelledby="exp-heading">
@@ -145,12 +149,14 @@ const Experiences = ({
           ))}
         </div>
 
-        <p className="mt-12 md:mt-14 text-center text-[14.5px] text-ink-soft fade-up">
-          Just after a balloon arch or garland?{" "}
-          <a href="/balloon-installations/" className="btn-link-rf ml-1">
-            Balloon installations <span className="arr">→</span>
-          </a>
-        </p>
+        {showBalloonLink ? (
+          <p className="mt-12 md:mt-14 text-center text-[14.5px] text-ink-soft fade-up">
+            Just after a balloon arch or garland?{" "}
+            <a href="/balloon-installations/" className="btn-link-rf ml-1">
+              Balloon installations <span className="arr">→</span>
+            </a>
+          </p>
+        ) : null}
       </div>
     </section>
   );

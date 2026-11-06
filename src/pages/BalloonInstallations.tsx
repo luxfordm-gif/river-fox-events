@@ -9,6 +9,7 @@ import CPPricing from "@/components/rfx/CPPricing";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import ServicesCards, { type ServiceCardItem } from "@/components/rfx/ServicesCards";
 import LocationGallery from "@/components/rfx/LocationGallery";
+import Experiences from "@/components/rfx/Experiences";
 import LocationTrust from "@/components/rfx/LocationTrust";
 import { LATEST_WORK } from "@/data/locations/_makeLocation";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
@@ -267,9 +268,9 @@ const BalloonInstallations = () => {
 
         {/* Onward to the three full-styling services - the point of this
             page is to move balloon searchers into these. */}
-        <ServicesCards
+        <Experiences
           sectionId="bi-services"
-          headingId="bi-services-heading"
+          showBalloonLink={false}
           heading={
             <>
               Want the whole room{" "}
