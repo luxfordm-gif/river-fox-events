@@ -17,7 +17,7 @@ const ITEMS = [
   {
     title: "Milestone Celebrations",
     body:
-      "Refined styling for life's most meaningful moments. Christenings and baby showers to 21sts, 40ths and anniversaries, each celebration is thoughtfully designed to feel personal, elevated and effortlessly brought together.",
+      "Refined styling for life's biggest moments, from christenings and baby showers to 40ths and anniversaries.",
     img: expMilestone,
     alt: "Rose gold light-up 40 marquee with a blush and chrome balloon installation in a hall with a wall clock",
     href: "/milestone-celebrations",
@@ -45,7 +45,7 @@ interface ExpItem {
   extraZoom?: number;
 }
 
-const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
+const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean }) => {
   const wrap = useRef<HTMLDivElement>(null);
   const img = useRef<HTMLImageElement>(null);
   const baseScale = 1.14 * (it.extraZoom ?? 1);
@@ -57,8 +57,8 @@ const ExpCard = ({ it, i }: { it: ExpItem; i: number }) => {
     >
       <div
         ref={wrap}
-        className={`exp-img-wrap ph rounded-[14px] ${it.tone} fade-up rfx-svc-img relative overflow-hidden`}
-        style={{ aspectRatio: "4/5" }}
+        className={`exp-img-wrap ph rounded-[14px] ${it.tone} fade-up rfx-svc-img ${compact ? "rfx-svc-img--compact" : ""} relative overflow-hidden`}
+        style={{ aspectRatio: compact ? "3/2" : "4/5" }}
       >
         {/*
           ALT TEXT: describe what is in the photo (max 125 characters, no
@@ -108,6 +108,9 @@ type ExperiencesProps = {
   /** Show the "Just after a balloon arch or garland?" line under the cards.
    *  Off on /balloon-installations/ itself. */
   showBalloonLink?: boolean;
+  /** Shorter, landscape photos (about half the height). Used on
+   *  /balloon-installations/, where these cards repeat the homepage. */
+  compactImages?: boolean;
 };
 
 const Experiences = ({
@@ -115,6 +118,7 @@ const Experiences = ({
   intro,
   sectionId = "experiences",
   showBalloonLink = true,
+  compactImages = false,
 }: ExperiencesProps = {}) => {
   return (
     <section id={sectionId} className="rfx-section white" aria-labelledby="exp-heading">
@@ -145,7 +149,7 @@ const Experiences = ({
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[56px] md:gap-0 md:border-t md:border-ink/20 pt-0 md:pt-12">
           {ITEMS.map((it, i) => (
-            <ExpCard key={i} it={it} i={i} />
+            <ExpCard key={i} it={it} i={i} compact={compactImages} />
           ))}
         </div>
 
