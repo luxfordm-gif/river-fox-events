@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { MouseEvent as ReactMouseEvent, RefObject } from "react";
-import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronUp, Expand, LayoutGrid, X } from "lucide-react";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import PageHeader from "@/components/rfx/PageHeader";
@@ -297,7 +297,7 @@ const Viewer = ({
 const SectionDock = ({
   sections, tabsRef, endRef,
 }: {
-  sections: { id: string; short: string }[];
+  sections: { id: string; short: string; label: string; count: number }[];
   tabsRef: RefObject<HTMLElement>;
   endRef: RefObject<HTMLElement>;
 }) => {
@@ -333,27 +333,82 @@ const SectionDock = ({
   // Laptops: the site's smooth scroll (Lenis) eases anchor jumps itself.
   // Phones use native scrolling, so ease the jump here instead.
   const onJump = (e: ReactMouseEvent<HTMLAnchorElement>, id: string) => {
+    setMenuOpen(false);
     if (!window.matchMedia("(pointer: coarse) and (max-width: 1024px)").matches) return;
     e.preventDefault();
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
     history.replaceState(null, "", `#${id}`);
   };
 
+  // Phones: one button showing the current section; tapping it opens a menu.
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  useEffect(() => { if (!show) setMenuOpen(false); }, [show]);
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onDown = (e: PointerEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) setMenuOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMenuOpen(false); };
+    document.addEventListener("pointerdown", onDown);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen]);
+  const current = sections.find((s) => s.id === active) ?? sections[0];
+
   return (
-    <nav className={`work-dock ${show ? "is-on" : ""}`} aria-label="Jump to an occasion" aria-hidden={!show}>
-      {sections.map((s) => (
-        <a
-          key={s.id}
-          href={`#${s.id}`}
+    <>
+      {/* Laptop and tablet: the full bar of sections. */}
+      <nav className={`work-dock ${show ? "is-on" : ""}`} aria-label="Jump to an occasion" aria-hidden={!show}>
+        {sections.map((s) => (
+          <a
+            key={s.id}
+            href={`#${s.id}`}
+            tabIndex={show ? undefined : -1}
+            aria-current={active === s.id ? "true" : undefined}
+            className={`work-dock__link no-underline-fx ${active === s.id ? "is-active" : ""}`}
+            onClick={(e) => onJump(e, s.id)}
+          >
+            {s.short}
+          </a>
+        ))}
+      </nav>
+
+      {/* Phone: a single floating button that opens a menu of sections. */}
+      <div ref={menuRef} className={`work-fab ${show ? "is-on" : ""} ${menuOpen ? "is-open" : ""}`} aria-hidden={!show}>
+        <div className="work-fab__menu" id="work-fab-menu" role="menu" aria-label="Jump to an occasion">
+          {sections.map((s) => (
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              role="menuitem"
+              tabIndex={menuOpen ? undefined : -1}
+              aria-current={active === s.id ? "true" : undefined}
+              className={`work-fab__item no-underline-fx ${active === s.id ? "is-active" : ""}`}
+              onClick={(e) => onJump(e, s.id)}
+            >
+              <span>{s.label}</span>
+              <span className="work-fab__count">{s.count}</span>
+            </a>
+          ))}
+        </div>
+        <button
+          type="button"
+          className="work-fab__btn"
           tabIndex={show ? undefined : -1}
-          aria-current={active === s.id ? "true" : undefined}
-          className={`work-dock__link no-underline-fx ${active === s.id ? "is-active" : ""}`}
-          onClick={(e) => onJump(e, s.id)}
+          aria-expanded={menuOpen}
+          aria-controls="work-fab-menu"
+          onClick={() => setMenuOpen((o) => !o)}
         >
-          {s.short}
-        </a>
-      ))}
-    </nav>
+          {menuOpen ? <X size={18} strokeWidth={1.75} /> : <LayoutGrid size={18} strokeWidth={1.75} />}
+          <span className="work-fab__label">{menuOpen ? "Jump to" : current?.label}</span>
+          <ChevronUp size={16} strokeWidth={1.75} className="work-fab__chev" />
+        </button>
+      </div>
+    </>
   );
 };
 
@@ -384,7 +439,10 @@ const OurWork = () => {
 
   const tabsRef = useRef<HTMLElement>(null);
   const endRef = useRef<HTMLElement>(null);
-  const dockSections = useMemo(() => GALLERY.map((s) => ({ id: s.id, short: s.short })), []);
+  const dockSections = useMemo(
+    () => sections.map(({ section, events }) => ({ id: section.id, short: section.short, label: section.label, count: events.length })),
+    [sections]
+  );
   const [viewer, setViewer] = useState<{ sectionId: string; index: number } | null>(null);
   const openViewer: OpenViewer = (sectionId, index) => setViewer({ sectionId, index });
   const active = viewer && sections.find((s) => s.section.id === viewer.sectionId);
@@ -418,11 +476,11 @@ const OurWork = () => {
               className="font-serif-rf fade-up m-0 mx-auto max-w-[18ch]"
               style={{ fontSize: "var(--fs-h2)", lineHeight: 1.04, fontWeight: 300, letterSpacing: "-0.025em", textWrap: "balance" }}
             >
-              Have a date <em className="italic font-light text-accent-warm">in mind?</em>
+              Have an event <em className="italic font-light text-accent-warm">in mind?</em>
             </h2>
             <p className="mt-5 text-[15.5px] leading-[1.6] text-ink-soft max-w-[44ch] mx-auto">
-              Tell Laura the date and the occasion, and she will come back to
-              you with ideas and a quote.
+              Message me the date and the occasion, and I'll get back to you
+              with ideas and a quote.
             </p>
             <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent mt-8">
               Reserve your date <span>→</span>
