@@ -35,7 +35,7 @@ const Footer = () => {
 
   return (
     <footer className="relative overflow-hidden bg-surface-deep text-on-deep">
-      <div className="relative pt-[54px] md:pt-24 pb-9 overflow-hidden">
+      <div className="rfx-footer-inner relative pt-[54px] md:pt-24 overflow-hidden">
         {/* Big watermark - slow drift, parallax, masked sheen. The fade-in
             mask sits on a layer the size of the footer, so it always starts
             from clear at the footer's top edge. (On the text itself it was

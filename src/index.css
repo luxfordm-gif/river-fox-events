@@ -884,12 +884,16 @@
     display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 56px 16px 24px;
     animation: work-viewer-in .25s ease;
   }
-  /* Footer "River Fox" watermark (Footer.tsx). Phones: whole word fits the
-     width and sits on the bottom edge. md+: the large cropped version with
-     a gentle scroll parallax. */
+  /* Footer "River Fox" watermark (Footer.tsx). Phones: the whole word sits
+     in its own strip at the very end, below the copyright row, so it never
+     sits behind text (the footer's bottom padding makes room for it; the
+     line box is 0.78em tall). md+: the large cropped version behind the
+     columns, with a gentle scroll parallax. */
+  .rfx-footer-inner { padding-bottom: calc(26vw * 0.78 + 40px); }
   .rfx-footer-mark-wrap { bottom: 14px; }
-  .rfx-footer-mark { --rfx-mark-parallax: 0; font-size: 24vw; }
+  .rfx-footer-mark { --rfx-mark-parallax: 0; font-size: 26vw; }
   @media (min-width: 768px) {
+    .rfx-footer-inner { padding-bottom: 2.25rem; }
     .rfx-footer-mark-wrap { bottom: -8rem; }
     .rfx-footer-mark { --rfx-mark-parallax: 1; font-size: clamp(220px, 50vw, 880px); }
   }
