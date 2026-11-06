@@ -11,6 +11,8 @@
  * Also writes:
  *   - dist/sitemap.xml
  *   - dist/robots.txt
+ *   - dist/_redirects (old Lollipop Balloons URLs, from scripts/legacy-redirects.mjs,
+ *     followed by public/_redirects)
  *
  * The React app continues to refresh head tags on the client after hydration,
  * so navigation (e.g. via React Router) still updates the head correctly.
@@ -18,6 +20,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { buildLegacyRedirects } from "./legacy-redirects.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -313,6 +316,14 @@ async function writeSitemap(SITE, ROUTES) {
   await fs.writeFile(path.join(DIST, "sitemap.xml"), xml, "utf8");
 }
 
+// Generated old-domain rules go first (Netlify uses the first matching rule),
+// then the hand-written public/_redirects, which ends with the SPA fallback.
+// Read from public/ rather than dist/ so running postbuild twice is harmless.
+async function writeRedirects(ROUTES) {
+  const handWritten = await fs.readFile(path.join(ROOT, "public/_redirects"), "utf8");
+  await fs.writeFile(path.join(DIST, "_redirects"), buildLegacyRedirects(ROUTES) + "\n" + handWritten, "utf8");
+}
+
 async function writeRobots(SITE) {
   const txt = `User-agent: *\nAllow: /\n\nSitemap: ${SITE.url}/sitemap.xml\n`;
   await fs.writeFile(path.join(DIST, "robots.txt"), txt, "utf8");
@@ -388,6 +399,8 @@ async function main() {
   console.log(`✓ sitemap.xml`);
   await writeRobots(SITE);
   console.log(`✓ robots.txt`);
+  await writeRedirects(ROUTES);
+  console.log(`✓ _redirects`);
 
   if (process.env.CONTEXT === "production") {
     const n = await stripReviewPanel();
