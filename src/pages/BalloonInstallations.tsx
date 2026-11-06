@@ -30,21 +30,16 @@ import imgGalleryJungle from "@/assets/river-fox-events-jungle-theme-fourever-wi
 import imgGalleryIman from "@/assets/garden-party-iman-pastel-milestone-surrey.webp";
 import imgGalleryJeep from "@/assets/river-fox-events-jungle-theme-safari-jeep-giraffe-lion-cub.webp";
 
-/* "It usually starts with a balloon arch": a story-style run of
-   balloon-led work across occasions. Photos come from the Our work gallery
+/* "It usually starts with a balloon arch": a story-style run of six
+   balloon-led photos, one per kind of occasion. Photos come from the Our work gallery
    (graded copies, same alt everywhere). Harvey's arch stays first. */
 const INTRO_SLIDES = [
   "river-fox-events-naming-ceremony-harvey-daisy-foreground.webp",
   "services/childrens-parties/rishi-summer-party-bright-balloon-backdrop.webp",
   "services/milestones/baby-in-bloom-barn-twin-arches-dusty-blue.webp",
   "services/milestones/70th-birthday-sage-gold-light-up-numbers.webp",
-  "services/corporate/bocketts-farm-easter-bunny-booth-balloon-garland.webp",
   "river-fox-events-nxtgen-corporate-entrance-columns-side-angle.webp",
-  "services/milestones/baby-shower-sage-gold-balloons-baby-blocks.webp",
-  "services/corporate/shop-entrance-arch-green-white-balloons.webp",
-  "services/milestones/heart-hoop-red-blush-balloons-heart-foils.webp",
-  "services/milestones/50th-birthday-pink-light-up-numbers-teal-garland.webp",
-  "services/corporate/lakeside-terrace-navy-balloon-arch.webp",
+  "services/corporate/bocketts-farm-easter-bunny-booth-balloon-garland.webp",
 ].map((source) => {
   const p = galleryPhoto(source);
   return { src: p.src, srcSet: p.srcSet, alt: p.alt, position: p.position };

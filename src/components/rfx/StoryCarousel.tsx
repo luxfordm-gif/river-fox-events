@@ -19,7 +19,7 @@ type StoryCarouselProps = {
 };
 
 /**
- * Instagram-story style photo carousel: a row of thin bars along the top,
+ * Instagram-story style photo carousel: a row of thin bars along the bottom,
  * the current one filling over `duration`, then the next photo fades in.
  * Tap the right of the photo for the next one, the left third for the
  * previous one. It pauses while hovered, while a finger is held down, when
