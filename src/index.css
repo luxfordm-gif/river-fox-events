@@ -884,6 +884,15 @@
     display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 56px 16px 24px;
     animation: work-viewer-in .25s ease;
   }
+  /* Footer "River Fox" watermark (Footer.tsx). Phones: whole word fits the
+     width and sits on the bottom edge. md+: the large cropped version with
+     a gentle scroll parallax. */
+  .rfx-footer-mark-wrap { bottom: -2px; }
+  .rfx-footer-mark { --rfx-mark-parallax: 0; font-size: 27vw; }
+  @media (min-width: 768px) {
+    .rfx-footer-mark-wrap { bottom: -8rem; }
+    .rfx-footer-mark { --rfx-mark-parallax: 1; font-size: clamp(220px, 50vw, 880px); }
+  }
   @keyframes work-viewer-in { from { opacity: 0; } to { opacity: 1; } }
   /* The stage takes all the height left after the caption, so the caption
      and counter sit in the same place for tall and wide photos alike. */

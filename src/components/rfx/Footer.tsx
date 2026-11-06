@@ -54,16 +54,18 @@ const Footer = () => {
         >
         <div
           ref={watermarkRef}
-          className="absolute left-0 right-0 -bottom-24 md:-bottom-32 flex items-end justify-center"
+          className="rfx-footer-mark-wrap absolute left-0 right-0 flex items-end justify-center"
         >
+          {/* Phones: sized so the whole "River Fox" fits the width and sits
+              on the footer's bottom edge, no parallax push. md+: the large
+              cropped watermark. Sizes live in index.css (.rfx-footer-mark). */}
           <div
-            className="font-serif-rf whitespace-nowrap relative"
+            className="rfx-footer-mark font-serif-rf whitespace-nowrap relative"
             style={{
-              fontSize: "clamp(220px, 50vw, 880px)",
               lineHeight: 0.78,
               letterSpacing: "-0.05em",
               color: "hsl(var(--on-deep) / 0.10)",
-              transform: `translateY(${Math.min(80, y * 0.025)}px) translateX(${revealed ? 0 : -40}px)`,
+              transform: `translateY(calc(var(--rfx-mark-parallax) * ${Math.min(80, y * 0.025)}px)) translateX(${revealed ? 0 : -40}px)`,
               opacity: revealed ? 1 : 0,
               transition: "opacity 1.6s ease, transform 1.8s cubic-bezier(.2,.7,.2,1)",
             }}
@@ -77,7 +79,8 @@ const Footer = () => {
             >
               Fox
             </em>
-            {/* Animated sheen sweep */}
+            {/* Animated sheen sweep, clipped to the letters so it never
+                shows as a box behind them. */}
             <span
               aria-hidden="true"
               className="absolute inset-0 pointer-events-none"
@@ -85,10 +88,15 @@ const Footer = () => {
                 background:
                   "linear-gradient(100deg, transparent 35%, hsl(var(--accent-warm) / 0.18) 50%, transparent 65%)",
                 backgroundSize: "200% 100%",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
                 animation: revealed ? "rfx-sheen 6s ease-in-out infinite" : undefined,
                 mixBlendMode: "screen",
               }}
-            />
+            >
+              River&nbsp;<em className="italic">Fox</em>
+            </span>
           </div>
         </div>
         </div>
