@@ -45,7 +45,7 @@ const BabyShowerThemes2026Article = () => (
 
     <ArticleImage
       src={imgHero}
-      alt="Dusty blue and white balloon arch with 'Baby in Bloom' backdrop for a Surrey baby shower by River Fox Events"
+      alt="Dusty blue and white balloon arch with a Baby in Bloom backdrop for a baby shower"
       caption="A 'Baby in Bloom' arch in dusty blue and white, styled for a Surrey baby shower."
     />
 
@@ -139,7 +139,7 @@ const BabyShowerThemes2026Article = () => (
 
     <ArticleImage
       src={imgBloomPortrait}
-      alt="Dusty blue and white Baby in Bloom balloon arch with floral accents styled for a Surrey baby shower by River Fox Events"
+      alt="Dusty blue and white Baby in Bloom balloon arch with floral accents for a baby shower"
       caption="The same Baby in Bloom setup from another angle, with floral accents worked into the garland."
       aspect="3/4"
       width={720}

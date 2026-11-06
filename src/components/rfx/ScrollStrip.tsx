@@ -12,13 +12,13 @@ import cpCelebrations from "@/assets/cp-celebrations.webp";
 // where relevant. Never empty, never "image"/"photo". Update alt strings
 // here whenever the source imagery changes.
 const STRIP_IMAGES = [
-  { src: hero1, alt: "Dusty blue and white balloon arch with 'Baby in Bloom' backdrop for a Surrey baby shower by River Fox Events", aspect: "760 / 1000" },
-  { src: expMilestone, alt: "Rose gold 40th birthday light-up marquee numbers with blush and chrome balloon garland styled in Surrey by River Fox Events", aspect: "760 / 980" },
-  { src: hero2, alt: "Jungle theme children's birthday styling in Surrey by River Fox Events - elephant centrepiece, monstera runner and balloons", aspect: "760 / 1088" },
-  { src: expChildren, alt: "Sage green dinosaur children's birthday styling in Surrey by River Fox Events - name sign and balloon installation", aspect: "820 / 1089" },
-  { src: hero3, alt: "Pink and lilac fairy first birthday styling in Surrey by River Fox Events - Kayla backdrop, light-up one and mossy runner", aspect: "760 / 1000" },
-  { src: expCorporate, alt: "Corporate gala event styling in Surrey by River Fox Events - navy blue gold cream balloon garland and branded backdrop", aspect: "820 / 1093" },
-  { src: cpCelebrations, alt: "Children's birthday styling in Surrey by River Fox Events - tailored pastel balloon installation with floral accents", aspect: "1468 / 1920" },
+  { src: hero1, alt: "Dusty blue and white balloon arch with a Baby in Bloom backdrop for a baby shower", aspect: "760 / 1000" },
+  { src: expMilestone, alt: "Rose gold light-up 40 marquee with a blush and chrome balloon installation in a hall with a wall clock", aspect: "760 / 980" },
+  { src: hero2, alt: "Jungle birthday table with an elephant centrepiece, monstera runner and safari balloons", aspect: "760 / 1088" },
+  { src: expChildren, alt: "Sage dinosaur birthday arch with a name sign, dinosaur cutouts and a balloon installation", aspect: "820 / 1089" },
+  { src: hero3, alt: "Pink and lilac fairy first birthday backdrop for Kayla with a light-up one and a mossy runner", aspect: "760 / 1000" },
+  { src: expCorporate, alt: "Navy, gold and cream balloons around a Children in Need Pudsey backdrop at a corporate gala", aspect: "820 / 1093" },
+  { src: cpCelebrations, alt: "Rainbow balloon hoop around a light-up 5 with a pastel balloon installation", aspect: "1468 / 1920" },
 ];
 
 /**

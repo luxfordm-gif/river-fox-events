@@ -108,6 +108,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               </div>
             </div>
           </div>
+          <a href="/our-work/" className="whitespace-nowrap">Our work</a>
           <div
             className="relative"
             onMouseEnter={handleAboutEnter}
@@ -203,6 +204,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
             { href: "/corporate-brand-styling", label: "Corporate & brand" },
             { href: "/balloon-installations", label: "Balloon installations" },
             { href: SEASONAL.href, label: "Christmas garlands", seasonal: true },
+            { href: "/our-work/", label: "Our work" },
             { href: "/#about", label: "About" },
             { href: "/contact", label: "Contact" },
           ].map((l, i) => (
