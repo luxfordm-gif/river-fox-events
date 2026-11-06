@@ -39,6 +39,8 @@ export type GalleryEvent = {
   place?: string;
   /** 1-3 photos. The first is shown large. */
   photos: GalleryPhoto[];
+  /** Always show at the end of its section (after newer photos). */
+  last?: boolean;
 };
 
 export type GallerySection = {
@@ -49,7 +51,6 @@ export type GallerySection = {
   /** Section title: plain words, then the italic accent word(s). */
   titleLead: string;
   titleAccent: string;
-  intro: string;
   /** The service page this section links on to. */
   link: { href: string; label: string };
   /** Single-photo events in a tighter grid (used for Christmas doorways). */
@@ -63,8 +64,6 @@ export const GALLERY: GallerySection[] = [
     label: "Children's parties",
     titleLead: "Children's",
     titleAccent: "parties.",
-    intro:
-      "Themed birthdays, first birthdays and christenings, each one individually designed around the child.",
     link: { href: "/childrens-parties/", label: "See children's party styling" },
     events: [
       {
@@ -222,6 +221,98 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
+        title: "Savanna's London party",
+        photos: [
+          {
+            source: "services/childrens-parties/savanna-london-party-bus-phone-box-backdrop.webp",
+            alt: "London party backdrop with a red bus, phone box and bear cutouts, a Savanna roundel sign and red and navy balloons",
+          },
+        ],
+      },
+      {
+        title: "Bright Halloween balloon wall",
+        photos: [
+          {
+            source: "services/childrens-parties/halloween-balloon-wall-bright-skeletons-bats.webp",
+            alt: "Bright Halloween balloon wall in teal, lime, pink and black with skeletons, bat foils and spider webs",
+          },
+        ],
+      },
+      {
+        title: "Aurelia's first birthday",
+        last: true,
+        photos: [
+          {
+            source: "services/childrens-parties/aurelia-first-birthday-welcome-sign-pink.webp",
+            alt: "Pale pink and stone balloon garland around a Welcome to Aurelia's 1st Birthday sign on an easel",
+          },
+        ],
+      },
+      {
+        title: "Halloween BOO letters",
+        last: true,
+        photos: [
+          {
+            source: "services/childrens-parties/halloween-boo-light-up-letters-spiders.webp",
+            alt: "Light-up BOO marquee letters filled with orange and lilac balloons, with spiders and a black balloon cluster",
+          },
+        ],
+      },
+      {
+        title: "Hot air balloon teddy",
+        photos: [
+          {
+            source: "services/childrens-parties/hot-air-balloon-teddy-basket-neutral.webp",
+            alt: "Hot air balloon of stone and cream balloons over a wicker basket with a teddy bear on a lawn",
+          },
+        ],
+      },
+      {
+        title: "Garden picnic party",
+        photos: [
+          {
+            source: "services/childrens-parties/garden-picnic-party-pastel-balloons-low-table.webp",
+            alt: "Garden picnic party with a low table, floor cushions, pastel balloon garland and a pink Happy Birthday panel",
+          },
+        ],
+      },
+      {
+        title: "Bell tent picnic",
+        photos: [
+          {
+            source: "services/childrens-parties/bell-tent-picnic-pastel-balloons-garden.webp",
+            alt: "Bell tent in a garden with a pastel balloon garland and a low picnic table laid in pink and blue",
+          },
+        ],
+      },
+      {
+        title: "Dinosaur party table",
+        photos: [
+          {
+            source: "services/childrens-parties/dinosaur-table-roar-plates-foliage-runner.webp",
+            alt: "Overhead dinosaur party table with ROAR plates, a teal runner, trailing ivy and toy dinosaurs",
+          },
+        ],
+      },
+      {
+        title: "Jungle party long table",
+        photos: [
+          {
+            source: "services/childrens-parties/jungle-party-long-table-lion-plates-soft-play.webp",
+            alt: "Long jungle party table with lion plates, giraffe cups and palm leaves in a soft play venue",
+          },
+        ],
+      },
+      {
+        title: "Purple and teal number 9",
+        photos: [
+          {
+            source: "services/childrens-parties/ninth-birthday-mosaic-9-purple-teal.webp",
+            alt: "Mosaic number 9 filled with purple, teal, lilac and silver balloons in a bright room",
+          },
+        ],
+      },
+      {
         title: "Reeva's pastel birthday entrance",
         photos: [
           {
@@ -237,8 +328,6 @@ export const GALLERY: GallerySection[] = [
     label: "Milestones",
     titleLead: "Milestone",
     titleAccent: "celebrations.",
-    intro:
-      "Big birthdays, baby showers, gender reveals and naming days, styled at home, in the garden or at the venue.",
     link: { href: "/milestone-celebrations/", label: "See milestone styling" },
     events: [
       {
@@ -412,6 +501,33 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
+        title: "Red and blush heart hoop",
+        photos: [
+          {
+            source: "services/milestones/heart-hoop-red-blush-balloons-heart-foils.webp",
+            alt: "Gold hoop with a red, blush and coral balloon garland and heart-shaped foils in a living room",
+          },
+        ],
+      },
+      {
+        title: "Blush and rose gold hoop",
+        photos: [
+          {
+            source: "services/milestones/blush-rose-hoop-garland-living-room.webp",
+            alt: "Gold hoop wrapped in blush, rose gold and cream balloons in front of a sheer-curtained window",
+          },
+        ],
+      },
+      {
+        title: "Navy and gold table centrepieces",
+        photos: [
+          {
+            source: "services/milestones/navy-gold-bubble-balloon-table-centrepieces.webp",
+            alt: "Navy bubble balloon centrepieces with gold table numbers on gold stands, with navy and chrome gold bases",
+          },
+        ],
+      },
+      {
         title: "Blush christening blessing",
         photos: [
           {
@@ -427,8 +543,6 @@ export const GALLERY: GallerySection[] = [
     label: "Corporate & brand",
     titleLead: "Corporate",
     titleAccent: "& brand.",
-    intro:
-      "Branded entrances, gala dinners, anniversaries and office parties, set up around the working day.",
     link: { href: "/corporate-brand-styling/", label: "See corporate styling" },
     events: [
       {
@@ -531,6 +645,15 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
+        title: "Lakeside terrace arch",
+        photos: [
+          {
+            source: "services/corporate/lakeside-terrace-navy-balloon-arch.webp",
+            alt: "Navy, cobalt and chrome balloon arch framing a lakeside terrace with tables and parasols",
+          },
+        ],
+      },
+      {
         title: "Casino night columns",
         photos: [
           {
@@ -564,8 +687,6 @@ export const GALLERY: GallerySection[] = [
     label: "Christmas",
     titleLead: "Christmas",
     titleAccent: "doorways.",
-    intro:
-      "Spruce garlands for front doors, shopfronts and restaurants, put up for you and taken down in January.",
     link: { href: "/christmas-door-garlands/", label: "See Christmas door garlands" },
     compact: true,
     events: [
@@ -584,8 +705,8 @@ export const GALLERY: GallerySection[] = [
         place: "East Molesey",
         photos: [
           {
-            source: "christmas/instagram/pink-pilates-studio-garland-blush-red-baubles.webp",
-            alt: "Pink pilates studio doorway in East Molesey dressed in spruce with blush, white and red baubles",
+            source: "journal/christmas-decorations-surrey/christmas-doorway-garland-pink-studio-east-molesey.webp",
+            alt: "Frosted fir garland with red, blush and white baubles and candy canes framing a pink pilates studio doorway",
           },
         ],
       },
@@ -602,8 +723,8 @@ export const GALLERY: GallerySection[] = [
         title: "Georgian door in gold and champagne",
         photos: [
           {
-            source: "christmas/instagram/georgian-door-gold-champagne-garland.webp",
-            alt: "Georgian black door at number 16 framed in spruce with gold and champagne baubles and stars",
+            source: "christmas/black-front-door-gold-ribbon-garland-red-brick-838.webp",
+            alt: "Black Georgian front door with a spruce garland of gold ribbons, stars and baubles arching over the fanlight",
           },
         ],
       },
@@ -656,18 +777,41 @@ const COPIES = import.meta.glob<string>("/src/assets/gallery/*.webp", {
   import: "default",
 });
 
-type ManifestEntry = { width: number; height: number; widths: number[] };
+type ManifestEntry = { width: number; height: number; widths: number[]; seen?: boolean };
 const SIZES = manifest as Record<string, ManifestEntry>;
 
 export type ResolvedPhoto = GalleryPhoto & {
   src: string;
   srcSet: string;
+  /** Largest copy, for the full-screen viewer. */
+  large: string;
   width: number;
   height: number;
+  /** Already shown on another page of the site. */
+  seen: boolean;
 };
 
 const baseName = (source: string) =>
   source.replace(/^.*\//, "").replace(/\.webp$/, "");
+
+const isSeen = (p: GalleryPhoto) => !!SIZES[baseName(p.source)]?.seen;
+
+/**
+ * Events in display order: photos not yet shown elsewhere on the site come
+ * first (Matt, Nov 2026), so the gallery leads with something new. Within an
+ * event an unseen photo becomes the lead. Otherwise the order in this file
+ * is kept.
+ */
+export function orderedEvents(section: GallerySection): GalleryEvent[] {
+  const events = section.events.map((e) => ({
+    ...e,
+    photos: [...e.photos].sort((a, b) => Number(isSeen(a)) - Number(isSeen(b))),
+  }));
+  return events
+    .map((e, i) => ({ e, i, seen: isSeen(e.photos[0]), last: !!e.last }))
+    .sort((a, b) => Number(a.last) - Number(b.last) || Number(a.seen) - Number(b.seen) || a.i - b.i)
+    .map(({ e }) => e);
+}
 
 export function resolvePhoto(photo: GalleryPhoto): ResolvedPhoto {
   const base = baseName(photo.source);
@@ -687,7 +831,9 @@ export function resolvePhoto(photo: GalleryPhoto): ResolvedPhoto {
     // Middle size as the fallback src for browsers that ignore srcset.
     src: urls[Math.min(1, urls.length - 1)].url,
     srcSet: urls.map(({ w, url }) => `${url} ${w}w`).join(", "),
+    large: urls[urls.length - 1].url,
     width: entry.width,
     height: entry.height,
+    seen: !!entry.seen,
   };
 }

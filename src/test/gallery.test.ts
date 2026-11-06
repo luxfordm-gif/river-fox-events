@@ -32,7 +32,7 @@ describe("Our work gallery data", () => {
 
   it("keeps to Laura's copy rules (no em dashes, no exclamation marks)", () => {
     const text = GALLERY.flatMap((s) => [
-      s.label, s.titleLead, s.titleAccent, s.intro, s.link.label,
+      s.label, s.titleLead, s.titleAccent, s.link.label,
       ...s.events.flatMap((e) => [e.title, e.place ?? "", ...e.photos.map((p) => p.alt)]),
     ]);
     for (const t of text) {

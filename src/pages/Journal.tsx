@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
+import PageHeader from "@/components/rfx/PageHeader";
 import { ARTICLES, summariseArticle } from "@/data/articles";
 import type { ArticleSummary } from "@/data/articles";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
@@ -134,27 +135,10 @@ const Journal = () => {
 
       <main>
         {/* Header */}
-        <header className="container-rfx pt-[106px] md:pt-[122px] pb-10 md:pb-14 text-center">
-          <h1
-            className="font-serif-rf max-w-[14ch] mx-auto"
-            style={{
-              fontSize: "var(--fs-h1)",
-              lineHeight: 1.02,
-              fontWeight: 500,
-              letterSpacing: "-0.025em",
-              textWrap: "balance",
-            }}
-          >
-            Journal
-          </h1>
-          <p
-            className="mt-5 md:mt-7 max-w-[44ch] mx-auto text-[16px] md:text-[19px] leading-[1.55] text-ink-soft font-serif-rf font-light italic"
-            style={{ textWrap: "pretty" }}
-          >
-            Notes from the studio - trends, behind-the-scenes, and the
-            thinking behind the celebrations we style.
-          </p>
-        </header>
+        <PageHeader
+          title="Journal"
+          intro="Notes from the studio - trends, behind-the-scenes, and the thinking behind the celebrations we style."
+        />
 
         {/* Grid */}
         <section className="container-rfx pb-20 md:pb-28">

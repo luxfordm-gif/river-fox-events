@@ -1,85 +1,88 @@
-import { useEffect } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
+import PageHeader from "@/components/rfx/PageHeader";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
 import { applyMeta, breadcrumbSchema, removeJsonLd, upsertJsonLd } from "@/seo/headTags";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
-import { GALLERY, resolvePhoto } from "@/data/gallery";
-import type { GalleryEvent, GallerySection } from "@/data/gallery";
+import { GALLERY, orderedEvents, resolvePhoto } from "@/data/gallery";
+import type { GalleryEvent, GallerySection, ResolvedPhoto } from "@/data/gallery";
 
 /**
  * /our-work/ - a curated gallery of Laura's real events, grouped by occasion.
  * All content comes from src/data/gallery.ts; this file is layout only.
+ * Every photo opens a full-screen viewer that steps through its section.
  */
 
+type ViewerItem = ResolvedPhoto & { title: string; place?: string };
+type OpenViewer = (sectionId: string, index: number) => void;
+
+const GRID_SIZES = "(min-width: 1440px) 440px, (min-width: 1280px) 30vw, (min-width: 768px) 45vw, 92vw";
+const THUMB_SIZES = "(min-width: 1440px) 220px, (min-width: 1280px) 15vw, (min-width: 768px) 22vw, 46vw";
+const COMPACT_SIZES = "(min-width: 1440px) 330px, (min-width: 768px) 23vw, 46vw";
+
+/* A photo tile: pinches in on hover with a "View larger" label; opens the viewer. */
+const Tile = ({
+  photo, sizes, onOpen, crop,
+}: { photo: ResolvedPhoto; sizes: string; onOpen: () => void; crop?: string }) => (
+  <button type="button" className="work-tile" onClick={onOpen} aria-label={`View larger: ${photo.alt}`}>
+    <img
+      src={photo.src}
+      srcSet={photo.srcSet}
+      sizes={sizes}
+      alt={photo.alt}
+      width={photo.width}
+      height={photo.height}
+      loading="lazy"
+      decoding="async"
+      className={`block w-full ${crop ? "h-full object-cover" : "h-auto"}`}
+      style={crop ? { aspectRatio: crop, objectPosition: photo.position } : undefined}
+    />
+    <span className="work-tile__over" aria-hidden="true">
+      <span className="work-tile__label">
+        <Expand size={18} strokeWidth={1.6} />
+      </span>
+    </span>
+    <span className="work-tile__badge" aria-hidden="true">
+      <Expand size={13} strokeWidth={1.9} />
+    </span>
+  </button>
+);
+
 /* One event: a large lead photo, up to two smaller tiles beneath, caption. */
-const EventCard = ({ event, compact }: { event: GalleryEvent; compact?: boolean }) => {
+const EventCard = ({
+  event, compact, firstIndex, open,
+}: { event: GalleryEvent; compact?: boolean; firstIndex: number; open: (i: number) => void }) => {
   const [lead, ...rest] = event.photos.map(resolvePhoto);
   const extras = rest.slice(0, 2);
   return (
     <figure className="gallery-event fade-up m-0">
-      <div className="overflow-hidden rounded-[10px] bg-ink/5">
-        <img
-          src={lead.src}
-          srcSet={lead.srcSet}
-          sizes={
-            compact
-              ? "(min-width: 1440px) 330px, (min-width: 768px) 23vw, 46vw"
-              : "(min-width: 1440px) 440px, (min-width: 1280px) 30vw, (min-width: 768px) 45vw, 92vw"
-          }
-          alt={lead.alt}
-          width={lead.width}
-          height={lead.height}
-          loading="lazy"
-          decoding="async"
-          className="block w-full h-auto"
-          style={compact ? { aspectRatio: "4 / 5", objectFit: "cover", objectPosition: lead.position } : undefined}
-        />
-      </div>
+      <Tile photo={lead} sizes={compact ? COMPACT_SIZES : GRID_SIZES} onOpen={() => open(firstIndex)} />
       {extras.length > 0 && (
         <div className={`grid gap-2 md:gap-3 mt-2 md:mt-3 ${extras.length === 1 ? "grid-cols-1" : "grid-cols-2"}`}>
-          {extras.map((p) => (
-            <div key={p.source} className="overflow-hidden rounded-[10px] bg-ink/5">
-              <img
-                src={p.src}
-                srcSet={p.srcSet}
-                sizes={
-                  extras.length === 1
-                    ? "(min-width: 1440px) 440px, (min-width: 1280px) 30vw, (min-width: 768px) 45vw, 92vw"
-                    : "(min-width: 1440px) 220px, (min-width: 1280px) 15vw, (min-width: 768px) 22vw, 46vw"
-                }
-                alt={p.alt}
-                width={p.width}
-                height={p.height}
-                loading="lazy"
-                decoding="async"
-                className="block w-full h-full object-cover"
-                style={{
-                  aspectRatio: extras.length === 1 ? "16 / 10" : "1 / 1",
-                  objectPosition: p.position,
-                }}
-              />
-            </div>
+          {extras.map((p, i) => (
+            <Tile
+              key={p.source}
+              photo={p}
+              sizes={extras.length === 1 ? GRID_SIZES : THUMB_SIZES}
+              crop={extras.length === 1 ? "16 / 10" : "1 / 1"}
+              onOpen={() => open(firstIndex + 1 + i)}
+            />
           ))}
         </div>
       )}
-      <figcaption className="mt-3 md:mt-4">
+      <figcaption className="mt-3">
         <span
           className="block font-serif-rf text-ink"
-          style={{
-            fontSize: compact ? "clamp(17px, 1.4vw, 20px)" : "var(--fs-h4)",
-            lineHeight: 1.2,
-            fontWeight: 400,
-            letterSpacing: "-0.012em",
-            textWrap: "balance",
-          }}
+          style={{ fontSize: "var(--fs-caption)", lineHeight: 1.3, fontWeight: 400, textWrap: "balance" }}
         >
           {event.title}
         </span>
         {event.place && (
           <span
-            className="block mt-1.5 font-mono-rf text-[10px] md:text-[10.5px] tracking-[0.22em] uppercase text-ink-soft"
+            className="block mt-1 font-mono-rf text-[10px] tracking-[0.2em] uppercase text-ink-soft"
             style={{ fontWeight: 600 }}
           >
             {event.place}
@@ -90,53 +93,188 @@ const EventCard = ({ event, compact }: { event: GalleryEvent; compact?: boolean 
   );
 };
 
-const Section = ({ section, index }: { section: GallerySection; index: number }) => (
-  <section
-    id={section.id}
-    className={`rfx-section gallery-section ${index % 2 === 0 ? "white" : ""}`}
-    aria-labelledby={`${section.id}-heading`}
-  >
-    <div className="container-rfx">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-12 mb-10 md:mb-14 items-end">
-        <h2
-          id={`${section.id}-heading`}
-          className="font-serif-rf fade-up m-0"
-          style={{
-            fontSize: "var(--fs-h2)",
-            lineHeight: 1.04,
-            fontWeight: 300,
-            letterSpacing: "-0.025em",
-          }}
-        >
-          {section.titleLead}{" "}
-          <em className="italic font-light text-accent-warm">{section.titleAccent}</em>
-        </h2>
-        <div className="pb-2">
-          <p className="text-[15.5px] leading-[1.6] text-ink-soft m-0 max-w-[46ch]">
-            {section.intro}
-          </p>
-          <a href={section.link.href} className="btn-link-rf mt-4" style={{ fontWeight: 600 }}>
-            {section.link.label} <span className="arr">→</span>
+/* Column count for the photo grid, following the same breakpoints as the
+   rest of the site (phone 1, tablet 2, laptop 3; Christmas 2 then 4). */
+const columnsFor = (compact?: boolean) => {
+  if (typeof window === "undefined") return compact ? 4 : 3;
+  const md = window.matchMedia("(min-width: 768px)").matches;
+  const xl = window.matchMedia("(min-width: 1280px)").matches;
+  return compact ? (md ? 4 : 2) : xl ? 3 : md ? 2 : 1;
+};
+const useColumns = (compact?: boolean) => {
+  const [n, setN] = useState(() => columnsFor(compact));
+  useEffect(() => {
+    const onResize = () => setN(columnsFor(compact));
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [compact]);
+  return n;
+};
+
+/* Rough height of an event card, in column widths, from each photo's shape. */
+const cardHeight = (e: GalleryEvent) => {
+  const [lead, ...rest] = e.photos.map(resolvePhoto);
+  const extras = rest.slice(0, 2).length;
+  return lead.height / lead.width + (extras === 1 ? 0.66 : extras === 2 ? 0.52 : 0) + 0.22;
+};
+
+/* Lay events out row by row: each goes into the currently shortest column,
+   so the first events fill the top row from left to right (CSS columns
+   would put them all down the first column instead). */
+const balance = (events: GalleryEvent[], n: number) => {
+  const cols: number[][] = Array.from({ length: n }, () => []);
+  const heights = new Array(n).fill(0);
+  events.forEach((e, i) => {
+    const c = heights.indexOf(Math.min(...heights));
+    cols[c].push(i);
+    heights[c] += cardHeight(e);
+  });
+  return cols;
+};
+
+const Section = ({
+  section, events, index, openViewer,
+}: { section: GallerySection; events: GalleryEvent[]; index: number; openViewer: OpenViewer }) => {
+  const n = useColumns(section.compact);
+  const cols = useMemo(() => balance(events, n), [events, n]);
+  // Index of each event's first photo within the section's viewer list.
+  let running = 0;
+  const starts = events.map((e) => {
+    const s = running;
+    running += Math.min(e.photos.length, 3);
+    return s;
+  });
+  const cards = events.map((e, i) => (
+    <EventCard
+      key={e.title}
+      event={e}
+      compact={section.compact}
+      firstIndex={starts[i]}
+      open={(n) => openViewer(section.id, n)}
+    />
+  ));
+  return (
+    <section
+      id={section.id}
+      className={`rfx-section gallery-section ${index % 2 === 0 ? "white" : ""}`}
+      aria-labelledby={`${section.id}-heading`}
+    >
+      <div className="container-rfx">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-10 mb-10 md:mb-14">
+          <h2
+            id={`${section.id}-heading`}
+            className="font-serif-rf fade-up m-0"
+            style={{ fontSize: "var(--fs-h2)", lineHeight: 1.04, fontWeight: 300, letterSpacing: "-0.025em" }}
+          >
+            {section.titleLead}{" "}
+            <em className="italic font-light text-accent-warm">{section.titleAccent}</em>
+          </h2>
+          <a href={section.link.href} className="btn-ghost-rf self-start md:self-auto shrink-0">
+            {section.link.label} <span aria-hidden="true">→</span>
           </a>
         </div>
+        <div
+          className={section.compact ? "gallery-cols gallery-cols--compact" : "gallery-cols"}
+          style={{ gridTemplateColumns: `repeat(${cols.length}, minmax(0, 1fr))` }}
+        >
+          {cols.map((idx, c) => (
+            <div key={c} className="gallery-col">
+              {idx.map((i) => cards[i])}
+            </div>
+          ))}
+        </div>
       </div>
+    </section>
+  );
+};
 
-      {section.compact ? (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8 md:gap-y-12">
-          {section.events.map((e) => (
-            <EventCard key={e.title} event={e} compact />
-          ))}
-        </div>
-      ) : (
-        <div className="gallery-masonry">
-          {section.events.map((e) => (
-            <EventCard key={e.title} event={e} />
-          ))}
-        </div>
+/* Full-screen viewer: arrows, keyboard (←/→/Esc), swipe on touch, tap outside to close. */
+const Viewer = ({
+  items, index, onIndex, onClose,
+}: { items: ViewerItem[]; index: number; onIndex: (i: number) => void; onClose: () => void }) => {
+  const item = items[index];
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const startX = useRef<number | null>(null);
+  const go = useCallback(
+    (d: number) => onIndex((index + d + items.length) % items.length),
+    [index, items.length, onIndex]
+  );
+
+  useEffect(() => {
+    const prevFocus = document.activeElement as HTMLElement | null;
+    closeRef.current?.focus();
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      prevFocus?.focus?.();
+    };
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      else if (e.key === "ArrowRight") go(1);
+      else if (e.key === "ArrowLeft") go(-1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [go, onClose]);
+
+  // Preload the neighbours so stepping through feels instant.
+  useEffect(() => {
+    [items[(index + 1) % items.length], items[(index - 1 + items.length) % items.length]].forEach((it) => {
+      const img = new Image();
+      img.src = it.large;
+    });
+  }, [index, items]);
+
+  return (
+    <div
+      className="work-viewer"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${item.title}, photo ${index + 1} of ${items.length}`}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      onPointerDown={(e) => { startX.current = e.clientX; }}
+      onPointerUp={(e) => {
+        if (startX.current == null) return;
+        const dx = e.clientX - startX.current;
+        startX.current = null;
+        if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+      }}
+    >
+      <button ref={closeRef} type="button" className="work-viewer__btn work-viewer__close" onClick={onClose} aria-label="Close">
+        <X size={20} strokeWidth={1.5} />
+      </button>
+      {items.length > 1 && (
+        <>
+          <button type="button" className="work-viewer__btn work-viewer__prev" onClick={() => go(-1)} aria-label="Previous photo">
+            <ChevronLeft size={22} strokeWidth={1.5} />
+          </button>
+          <button type="button" className="work-viewer__btn work-viewer__next" onClick={() => go(1)} aria-label="Next photo">
+            <ChevronRight size={22} strokeWidth={1.5} />
+          </button>
+        </>
       )}
+      <img
+        key={item.source}
+        src={item.large}
+        alt={item.alt}
+        width={item.width}
+        height={item.height}
+        className="work-viewer__img"
+        draggable={false}
+      />
+      <div className="work-viewer__cap">
+        <div className="font-serif-rf" style={{ fontSize: "var(--fs-caption)" }}>{item.title}</div>
+        <div className="mt-1 font-mono-rf text-[10px] tracking-[0.2em] uppercase opacity-70" style={{ fontWeight: 600 }}>
+          {item.place ? `${item.place} · ` : ""}{index + 1} / {items.length}
+        </div>
+      </div>
     </div>
-  </section>
-);
+  );
+};
 
 const OurWork = () => {
   useFadeUp();
@@ -145,53 +283,48 @@ const OurWork = () => {
   useEffect(() => {
     const route = findRoute("/our-work")!;
     applyMeta(route);
-
     const breadcrumbId = "rfx-jsonld-bc-our-work";
     const breadcrumbs = breadcrumbSchema(route.path);
     if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
     return () => removeJsonLd(breadcrumbId);
   }, []);
 
+  const sections = useMemo(
+    () =>
+      GALLERY.map((s) => {
+        const events = orderedEvents(s);
+        const items: ViewerItem[] = events.flatMap((e) =>
+          e.photos.slice(0, 3).map((p) => ({ ...resolvePhoto(p), title: e.title, place: e.place }))
+        );
+        return { section: s, events, items };
+      }),
+    []
+  );
+
+  const [viewer, setViewer] = useState<{ sectionId: string; index: number } | null>(null);
+  const openViewer: OpenViewer = (sectionId, index) => setViewer({ sectionId, index });
+  const active = viewer && sections.find((s) => s.section.id === viewer.sectionId);
+
   return (
     <div className="min-h-screen bg-background text-foreground nav-solid">
       <Nav />
       <main>
-        <header className="container-rfx pt-[106px] md:pt-[122px] pb-10 md:pb-14 text-center">
-          <h1
-            className="font-serif-rf max-w-[16ch] mx-auto"
-            style={{
-              fontSize: "var(--fs-h1)",
-              lineHeight: 1.02,
-              fontWeight: 500,
-              letterSpacing: "-0.025em",
-              textWrap: "balance",
-            }}
-          >
-            Our work, by occasion.
-          </h1>
-          <p
-            className="mt-5 md:mt-7 max-w-[46ch] mx-auto text-[16px] md:text-[19px] leading-[1.55] text-ink-soft"
-            style={{ textWrap: "pretty" }}
-          >
-            Real parties and events Laura has styled across Surrey, grouped so
-            you can find the kind of day you have in mind.
-          </p>
-          <nav aria-label="Jump to an occasion" className="mt-8 md:mt-10 flex flex-wrap justify-center gap-2 md:gap-3">
-            {GALLERY.map((s) => (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                className="no-underline-fx font-mono-rf text-[10.5px] md:text-[11px] tracking-[0.2em] uppercase text-ink border border-ink/20 hover:border-ink rounded-[4px] px-4 py-2.5 transition-colors"
-                style={{ fontWeight: 600 }}
-              >
-                {s.label}
+        <PageHeader
+          title="Our work, by occasion."
+          intro="Real parties and events Laura has styled across Surrey, grouped so you can find the kind of day you have in mind."
+        >
+          <nav aria-label="Jump to an occasion" className="work-tabs">
+            {sections.map(({ section, events }) => (
+              <a key={section.id} href={`#${section.id}`} className="work-tab no-underline-fx">
+                {section.label}
+                <span className="work-tab__count">{events.length}</span>
               </a>
             ))}
           </nav>
-        </header>
+        </PageHeader>
 
-        {GALLERY.map((s, i) => (
-          <Section key={s.id} section={s} index={i} />
+        {sections.map(({ section, events }, i) => (
+          <Section key={section.id} section={section} events={events} index={i} openViewer={openViewer} />
         ))}
 
         <section className="rfx-section" aria-labelledby="our-work-cta">
@@ -199,13 +332,7 @@ const OurWork = () => {
             <h2
               id="our-work-cta"
               className="font-serif-rf fade-up m-0 mx-auto max-w-[18ch]"
-              style={{
-                fontSize: "var(--fs-h2)",
-                lineHeight: 1.04,
-                fontWeight: 300,
-                letterSpacing: "-0.025em",
-                textWrap: "balance",
-              }}
+              style={{ fontSize: "var(--fs-h2)", lineHeight: 1.04, fontWeight: 300, letterSpacing: "-0.025em", textWrap: "balance" }}
             >
               Have a date <em className="italic font-light text-accent-warm">in mind?</em>
             </h2>
@@ -213,17 +340,22 @@ const OurWork = () => {
               Tell Laura the date and the occasion, and she will come back to
               you with ideas and a quote.
             </p>
-            <a
-              href={ENQUIRE_HREF}
-              onClick={handleEnquireClick}
-              className="btn-solid-rf accent mt-8"
-            >
+            <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent mt-8">
               Reserve your date <span>→</span>
             </a>
           </div>
         </section>
       </main>
       <Footer />
+
+      {active && viewer && (
+        <Viewer
+          items={active.items}
+          index={viewer.index}
+          onIndex={(index) => setViewer({ sectionId: viewer.sectionId, index })}
+          onClose={() => setViewer(null)}
+        />
+      )}
     </div>
   );
 };
