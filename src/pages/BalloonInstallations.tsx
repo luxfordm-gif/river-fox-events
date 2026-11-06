@@ -161,8 +161,7 @@ const BalloonInstallations = () => {
             <>Balloons are where it starts,</>,
             <>
               <em
-                className="italic font-normal"
-                style={{ color: "hsl(var(--accent))" }}
+                className="italic font-normal text-accent-warm"
               >
                 styling is where it shines.
               </em>

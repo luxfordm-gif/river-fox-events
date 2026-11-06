@@ -19,8 +19,7 @@ const DEFAULT_LINES: ReactNode[] = [
   <>
     Effortless for{" "}
     <em
-      className="italic font-normal"
-      style={{ color: "hsl(var(--accent))" }}
+      className="italic font-normal text-accent-warm"
     >
       parents.
     </em>

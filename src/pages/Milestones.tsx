@@ -92,8 +92,7 @@ const Milestones = () => {
             <>Milestone events,</>,
             <>
               <em
-                className="italic font-normal"
-                style={{ color: "hsl(var(--accent))" }}
+                className="italic font-normal text-accent-warm"
               >
                 beautifully styled.
               </em>

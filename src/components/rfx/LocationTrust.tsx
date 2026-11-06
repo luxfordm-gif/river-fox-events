@@ -1,7 +1,7 @@
 import TestimonialsCarousel from "./TestimonialsCarousel";
 import type { Review } from "@/seo/routes";
 import logoPg from "@/assets/client-pg.webp";
-import logoTheRange from "@/assets/client-the-range.png";
+import logoTheRange from "@/assets/client-the-range.webp";
 import logoFoxhills from "@/assets/client-foxhills.webp";
 
 /**

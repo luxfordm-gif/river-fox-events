@@ -37,3 +37,8 @@ _incoming/
 # Working artifacts from scripts/audit-location-copy.ts — regenerate via
 # `npx tsx scripts/audit-location-copy.ts`. Not committed.
 location-copy-audit.csv
+
+# Photo grade tool: API key, working files and dependencies stay local
+tools/photo-grade/.env
+tools/photo-grade/state/
+tools/photo-grade/node_modules/

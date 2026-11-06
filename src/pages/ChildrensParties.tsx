@@ -67,8 +67,7 @@ const ChildrensParties = () => {
             <>Themed children's parties,</>,
             <>
               <em
-                className="italic font-normal"
-                style={{ color: "hsl(var(--accent))" }}
+                className="italic font-normal text-accent-warm"
               >
                 fully styled.
               </em>
