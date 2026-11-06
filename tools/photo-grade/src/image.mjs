@@ -2,11 +2,14 @@
 import sharp from 'sharp';
 import { config } from './config.mjs';
 
-/** API output size: the photo's own aspect ratio, both sides multiples of 16, inside the API's pixel limits. */
-export function apiSize(w, h) {
-  let s = 1;
-  if (w * h > config.maxPixels) s = Math.sqrt(config.maxPixels / (w * h));
-  if (w * h < config.minPixels) s = Math.sqrt(config.minPixels / (w * h));
+/**
+ * API output size: the photo's own aspect ratio, both sides multiples of 16, inside the API's pixel limits.
+ * `longEdge` asks for an upscale: the long side is scaled up to it (never down), as far as the pixel cap allows.
+ */
+export function apiSize(w, h, longEdge = 0) {
+  let s = Math.max(1, longEdge / Math.max(w, h));
+  if (w * h * s * s > config.maxPixels) s = Math.sqrt(config.maxPixels / (w * h));
+  if (w * h * s * s < config.minPixels) s = Math.sqrt(config.minPixels / (w * h));
   let W = Math.max(16, Math.round((w * s) / 16) * 16), H = Math.max(16, Math.round((h * s) / 16) * 16);
   while (W * H > config.maxPixels) { W -= 16; H = Math.round((W * h) / w / 16) * 16; }
   while (W * H < config.minPixels) { W += 16; H = Math.round((W * h) / w / 16) * 16; }

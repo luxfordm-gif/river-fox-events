@@ -66,6 +66,43 @@
     },
     "gina-13th-birthday-navy-gold-kitchen-backdrop": {
       "note": "The light-up numbers are lit blue and cast blue light onto the floor and the balloons around them: that blue glow is part of the styling. Keep the numbers glowing blue and keep the blue light on the floor exactly as photographed; brighten and clean the rest of the room around it. Copy the lettering on the round board exactly as photographed, letter for letter."
+    },
+    "laura-portrait": {
+      "preset": "gentle",
+      "note": "This is a portrait of Laura, the business owner. Her face, hair, expression, skin and body must stay exactly as photographed: do not smooth, slim, reshape, retouch or beautify anything about her. Only correct the light and colour of the photo and clean up noise. Copy the lettering on her T-shirt exactly, letter for letter."
+    },
+    "laura-reigate-restaurant-doorway-garland": {
+      "note": "Laura, the business owner, is standing in the doorway: her face, expression and body must stay exactly as photographed, with no retouching. Keep the building, the street and everything reflected in the windows exactly as they are; keep every bauble its exact colour."
+    },
+    "milestone-celebration-styling-collage-surrey": {
+      "note": "This image is a collage of several separate photos arranged in a grid with thin white gutters between them. Keep the grid, every gutter and every photo's edges exactly where they are; grade each photo inside the grid to the house look so they match, without merging or redrawing the layout."
+    },
+    "milestone-celebration-styling-collage-portrait-surrey": {
+      "note": "This image is a collage of several separate photos arranged in a grid with thin white gutters between them. Keep the grid, every gutter and every photo's edges exactly where they are; grade each photo inside the grid to the house look so they match, without merging or redrawing the layout."
+    },
+    "garden-party-iman-pastel-milestone-surrey": {
+      "note": "This image is a collage of several separate photos arranged in a grid with thin white gutters between them. Keep the grid, every gutter and every photo's edges exactly where they are; grade each photo inside the grid to the house look so they match, without merging or redrawing the layout."
+    },
+    "cp-hero-frame": {
+      "skip": true,
+      "why": "only imported by CPHero, which no page renders"
     }
-  }
+  },
+  "heroes": [
+    "river-fox-events-jungle-theme-fourever-wild-full-setup",
+    "river-fox-events-jungle-theme-safari-tablescape-elephant",
+    "milestone-celebration-styling-collage-surrey",
+    "milestone-celebration-styling-collage-portrait-surrey",
+    "river-fox-events-corporate-atrium-twin-balloon-arches",
+    "river-fox-events-pudsey-charity-gala-dinner-navy-gold",
+    "pastel-safari-anaya-two-wild-ballroom-surrey",
+    "river-fox-events-fairy-first-birthday-kayla-arch-marquee-portrait",
+    "river-fox-events-fairy-first-birthday-kayla-table-florals",
+    "river-fox-events-jungle-theme-safari-jeep-giraffe-lion-cub",
+    "river-fox-events-pastel-entrance-decor-arch",
+    "hero-1",
+    "hero-2",
+    "hero-3",
+    "jewel-tone-bauble-arch-white-porch"
+  ]
 }

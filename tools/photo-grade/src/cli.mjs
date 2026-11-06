@@ -1,7 +1,7 @@
-// River Fox gallery photo grade. Same approach as ~/Projects/invicta-photo-editor:
-// photo -> OpenAI Images edit (fixed prompt + per-photo note) -> metrics -> before/after review -> apply on approval.
-// The originals in src/assets/ are never changed: `apply` builds the folder of graded PNGs that
-// scripts/gallery-images.mjs --graded=<dir> makes the /our-work/ copies from.
+// River Fox site photo grade. Same approach as ~/Projects/invicta-photo-editor:
+// photo -> OpenAI Images edit (house look + per-photo note) -> metrics -> before/after review -> apply on approval.
+// Nothing in src/assets/ changes until `apply`, which swaps every graded photo in under its own filename
+// (git history keeps the originals) and remakes the gallery's copies from the full-size results.
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -15,7 +15,7 @@ import { estimateCost } from './cost.mjs';
 const MANIFEST = path.join(STATE, 'manifest.json');
 const dirs = {
   originals: path.join(STATE, 'originals'), // untouched source, for the review page
-  ai: path.join(STATE, 'ai'),               // AI result at the original's exact size, lossless PNG
+  ai: path.join(STATE, 'ai'),               // AI result at full API size, lossless PNG (gallery copies are made from it)
   preview: path.join(STATE, 'preview'),     // AI result as WebP, for the review page
   compare: path.join(STATE, 'compare'),     // before | after sheets
   graded: path.join(STATE, 'graded'),       // what apply hands to gallery-images.mjs
@@ -33,22 +33,40 @@ const sha = (buf) => crypto.createHash('sha256').update(buf).digest('hex').slice
 const loadManifest = () => (fs.existsSync(MANIFEST) ? JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) : { spendUsd: 0, calls: [], images: {} });
 const saveManifest = (m) => fs.writeFileSync(MANIFEST, JSON.stringify(m, null, 2));
 const recipeOf = (p) => sha(Buffer.from(`${config.model}|${config.quality}|${promptFor(p)}`));
+/** Sizes for one photo: what the API makes (W x H), and what the site file becomes (outW x outH). */
+function plan(p, width, height) {
+  const long = Math.max(width, height);
+  const target = p.keepSize ? 0 : p.hero ? config.heroLongEdge : Math.max(long, config.minLongEdge);
+  const { W, H, size } = apiSize(width, height, target);
+  if (p.keepSize) return { W, H, size, outW: width, outH: height };
+  // upscale to the API's size, but never shrink a photo that was already bigger than the API can make
+  const k = Math.max(1, W / width);
+  return { W, H, size, outW: Math.round(width * k), outH: Math.round(height * k) };
+}
+const graded = (p) => !p.derived && !p.copyOf; // the ones that actually go to the API
 const matches = (p, keys = only) => !keys || keys.some((k) => p.key === k || p.key.includes(k));
 
 function selected() {
   const { photos, trial } = loadPhotos();
   const pool = flag('trial') ? photos.filter((p) => trial.includes(p.key)) : photos.filter((p) => !p.skip);
-  return pool.filter((p) => matches(p));
+  return pool.filter((p) => matches(p) && graded(p));
+}
+
+/** Laura's original: the site file, unless apply has already replaced it with a graded one. */
+function originalOf(p, e) {
+  const cur = readSource(p.src);
+  if (e?.appliedHash && sha(cur) === e.appliedHash) return fs.readFileSync(path.join(dirs.originals, `${p.key}.webp`));
+  return cur;
 }
 
 async function gradeOne(p, m) {
   const e = (m.images[p.key] ||= { key: p.key, src: p.src, attempts: 0 });
-  const src = readSource(p.src);
+  const src = originalOf(p, e);
   e.sourceHash = sha(src);
   fs.writeFileSync(path.join(dirs.originals, `${p.key}.webp`), src);
   const prepared = await prepareInput(src);
   const { width, height } = prepared;
-  const { W, H, size } = apiSize(width, height);
+  const { W, H, size, outW, outH } = plan(p, width, height);
   // send the photo at exactly the output size: given a smaller input, the model tends to re-compose (zoom) the shot
   const png = await sharp(prepared.png).resize(W, H, { fit: 'fill', kernel: 'lanczos3' }).png({ compressionLevel: 6 }).toBuffer();
   const prompt = promptFor(p);
@@ -58,12 +76,12 @@ async function gradeOne(p, m) {
       const r = await editImage(png, p.key, prompt, size);
       m.spendUsd = +(m.spendUsd + (r.costUsd ?? estimateCost(config.model, config.quality, size))).toFixed(4);
       m.calls.push({ key: p.key, at: new Date().toISOString(), costUsd: r.costUsd, ms: r.ms, size });
-      fs.writeFileSync(path.join(dirs.ai, `${p.key}.png`), await finishPng(r.png, width, height));
-      const webp = await finish(r.png, width, height);
+      fs.writeFileSync(path.join(dirs.ai, `${p.key}.png`), await finishPng(r.png, W, H));
+      const webp = await finish(r.png, outW, outH);
       fs.writeFileSync(path.join(dirs.preview, `${p.key}.webp`), webp);
       const metrics = await compareMetrics(src, webp);
       fs.writeFileSync(path.join(dirs.compare, `${p.key}.jpg`), await sideBySide(src, webp, p.key));
-      Object.assign(e, { status: 'done', recipe: recipeOf(p), preset: p.preset || 'grade', size, width, height,
+      Object.assign(e, { status: 'done', recipe: recipeOf(p), preset: p.preset || 'grade', size, width, height, outW, outH,
         costUsd: r.costUsd, metrics, error: null, at: new Date().toISOString() });
       return e;
     } catch (err) {
@@ -76,7 +94,15 @@ async function gradeOne(p, m) {
 
 async function run() {
   const m = loadManifest();
-  const todo = selected().filter((p) => flag('force') || m.images[p.key]?.status !== 'done' || m.images[p.key]?.recipe !== recipeOf(p));
+  const todo = [];
+  for (const p of selected()) {
+    const e = m.images[p.key];
+    if (!flag('force') && e?.status === 'done' && e.recipe === recipeOf(p)) {
+      const md = await sharp(originalOf(p, e)).metadata();
+      if (plan(p, md.width, md.height).size === e.size) continue; // same prompt, same size: nothing to do
+    }
+    todo.push(p);
+  }
   const paid = m.calls.filter((c) => c.costUsd).map((c) => c.costUsd);
   const avg = paid.length ? paid.reduce((a, b) => a + b, 0) / paid.length : null;
   const est = estimateCost(config.model, config.quality, '1088x1456', avg);
@@ -101,9 +127,9 @@ async function run() {
 
 function status() {
   const m = loadManifest();
-  const all = loadPhotos().photos.filter((p) => !p.skip);
+  const all = loadPhotos().photos.filter((p) => !p.skip && graded(p));
   const by = (s) => all.filter((p) => (m.images[p.key]?.status || 'pending') === s).length;
-  console.log(`${all.length} gallery photos · done ${by('done')} · failed ${by('failed')} · pending ${by('pending')} · spend $${m.spendUsd.toFixed(2)}`);
+  console.log(`${all.length} site photos · done ${by('done')} · failed ${by('failed')} · pending ${by('pending')} · spend $${m.spendUsd.toFixed(2)}`);
   for (const p of all) {
     const e = m.images[p.key];
     if (e?.status === 'done') console.log(`  ${e.applied ? 'applied' : 'ready  '} ${p.key}  ${e.metrics.flags.join(', ') || 'ok'}`);
@@ -127,32 +153,62 @@ function review(m = loadManifest()) {
   console.log('review page: tools/photo-grade/state/review/index.html');
 }
 
-/**
- * Build the graded folder and remake the gallery copies.
- *   --ai=all | --ai=name1,name2   photos that take the AI version (they must be done)
- * Every other gallery photo gets the house grade (scripts/grade-photos.py), so the
- * gallery test's "every photo graded" check still passes.
- */
-function apply() {
-  const m = loadManifest();
-  const aiKeys = opt('ai') === 'all' ? null : list('ai');
-  if (!opt('ai')) { console.log('Say which photos take the AI grade: --ai=all or --ai=name1,name2'); return; }
-  const photos = loadPhotos().photos.filter((p) => p.gallery);
-  fs.rmSync(dirs.graded, { recursive: true, force: true });
-  fs.mkdirSync(dirs.graded, { recursive: true });
-  const house = [];
-  for (const p of photos) {
-    const e = m.images[p.key];
-    const useAi = e?.status === 'done' && matches(p, aiKeys) && !p.skip;
-    if (useAi && e.sourceHash !== sha(readSource(p.src))) throw new Error(`${p.key} changed since it was graded; re-run it first`);
-    if (useAi) fs.copyFileSync(path.join(dirs.ai, `${p.key}.png`), path.join(dirs.graded, `${p.key}.png`));
-    else house.push(path.join('src/assets', p.src));
-    if (e) e.applied = useAi;
+/** WebP at the highest quality that fits the size budget (heroes 480 KB, other photos 240 KB). */
+async function encodeForSite(png, w, h, hero) {
+  const budget = (hero ? 480 : 240) * 1024;
+  const img = sharp(png).resize(w, h, { fit: 'cover', position: 'centre' });
+  let out;
+  for (let q = config.webpQuality; q >= 66; q -= 4) {
+    out = await img.clone().webp({ quality: q, effort: 6, smartSubsample: true }).toBuffer();
+    if (out.length <= budget) return { out, q };
   }
-  if (house.length) execFileSync('python3', ['scripts/grade-photos.py', dirs.graded, ...house], { cwd: REPO, stdio: 'inherit' });
-  execFileSync('node', ['scripts/gallery-images.mjs', `--graded=${dirs.graded}`, '--force'], { cwd: REPO, stdio: 'inherit' });
+  return { out, q: 66 };
+}
+
+/**
+ * Swap every graded photo into the site under its own filename, then remake the gallery's copies.
+ *   --except=name1,name2   leave those photos as they are
+ * Responsive sets get each size made from the one graded photo; byte-identical copies get the same result.
+ * Any gallery photo without an AI grade falls back to the house grade (scripts/grade-photos.py).
+ */
+async function apply() {
+  const m = loadManifest();
+  const { photos } = loadPhotos();
+  const except = list('except') || [];
+  const byKey = Object.fromEntries(photos.map((p) => [p.key, p]));
+  const ok = (k) => m.images[k]?.status === 'done' && !except.includes(k);
+  const report = [], left = [];
+  for (const p of photos) {
+    const lead = p.copyOf || p.derived || p.key;
+    if (p.skip || !ok(lead)) { left.push(p.key); continue; }
+    const e = m.images[lead];
+    const png = path.join(dirs.ai, `${lead}.png`);
+    let w = e.outW || e.width, h = e.outH || e.height;
+    if (p.derived || p.keepSize) {
+      // keep the exact pixel size the page's srcset names
+      const orig = fs.existsSync(path.join(dirs.originals, `${p.key}.webp`)) ? fs.readFileSync(path.join(dirs.originals, `${p.key}.webp`)) : originalOf(p, m.images[p.key]);
+      if (!fs.existsSync(path.join(dirs.originals, `${p.key}.webp`))) fs.writeFileSync(path.join(dirs.originals, `${p.key}.webp`), orig);
+      const md = await sharp(orig).metadata(); w = md.width; h = md.height;
+    }
+    const { out, q } = await encodeForSite(fs.readFileSync(png), w, h, byKey[lead]?.hero);
+    fs.writeFileSync(path.join(REPO, 'src', 'assets', p.src), out);
+    const own = (m.images[p.key] ||= { key: p.key, src: p.src, status: 'copy' });
+    own.appliedHash = sha(out); own.appliedAt = new Date().toISOString();
+    if (p.derived || p.copyOf) own.from = lead;
+    report.push({ key: p.key, size: `${w}x${h}`, kb: Math.round(out.length / 1024), q });
+  }
   saveManifest(m);
-  console.log(`${photos.length - house.length} photo(s) on the AI grade, ${house.length} on the house grade. Copies remade in src/assets/gallery/.`);
+  // gallery copies from the full-size AI results; house grade for any gallery photo that has none
+  const house = photos.filter((p) => p.gallery && !ok(p.copyOf || p.derived || p.key));
+  fs.rmSync(dirs.graded, { recursive: true, force: true }); fs.mkdirSync(dirs.graded, { recursive: true });
+  for (const p of photos.filter((p) => p.gallery && ok(p.copyOf || p.derived || p.key)))
+    fs.copyFileSync(path.join(dirs.ai, `${p.copyOf || p.derived || p.key}.png`), path.join(dirs.graded, `${p.key}.png`));
+  if (house.length) execFileSync('python3', ['scripts/grade-photos.py', dirs.graded, ...house.map((p) => path.join('src/assets', p.src))], { cwd: REPO, stdio: 'inherit' });
+  execFileSync('node', ['scripts/gallery-images.mjs', `--graded=${dirs.graded}`, '--force'], { cwd: REPO, stdio: 'inherit' });
+  fs.writeFileSync(path.join(STATE, 'apply-report.json'), JSON.stringify({ report, left }, null, 2));
+  const big = report.filter((r) => r.q < config.webpQuality);
+  console.log(`swapped in ${report.length} file(s); left as they were: ${left.length ? left.join(', ') : 'none'}`);
+  if (big.length) console.log(`quality lowered to fit the size budget on ${big.length}: ${big.map((r) => `${r.key} q${r.q}`).join(', ')}`);
 }
 
 /** state/sheets/page-NN.jpg: before | after pairs, six to a page, labelled with flags, for checking a big run by eye. */

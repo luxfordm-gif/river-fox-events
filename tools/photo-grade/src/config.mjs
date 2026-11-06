@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
 export const TOOL = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -28,7 +29,10 @@ export const config = {
   openaiKey: process.env.OPENAI_API_KEY || local.OPENAI_API_KEY || invicta.OPENAI_API_KEY || '',
   model: env('OPENAI_IMAGE_MODEL', 'gpt-image-2.5-sunburst'),
   quality: env('OPENAI_IMAGE_QUALITY', 'high'),
-  maxSpendUsd: Number(env('MAX_SPEND_USD', 8)),
+  maxSpendUsd: Number(env('MAX_SPEND_USD', 20)),
+  // upscaling: content photos come back at least this long on their long side; heroes as large as the API allows
+  minLongEdge: Number(env('MIN_LONG_EDGE', 1600)),
+  heroLongEdge: Number(env('HERO_LONG_EDGE', 2560)),
   concurrency: Number(env('CONCURRENCY', 3)),
   maxRetries: Number(env('MAX_RETRIES', 3)),
   webpQuality: Number(env('WEBP_QUALITY', 82)),
@@ -73,20 +77,52 @@ function readRepoFile(rel) {
 export const readSource = (src) => readRepoFile(`src/assets/${src}`);
 
 /**
- * The photos are every `source:` in src/data/gallery.ts (what /our-work/ shows).
- * photos.json only holds the exceptions: { trial: [names], photos: { "<name>": { preset, note, skip } } },
- * keyed by file name without folder or extension (the same key scripts/gallery-images.mjs uses).
+ * The photos are every image the site shows: imported by a page, component or data file under src/,
+ * plus every `source:` in src/data/gallery.ts. Left out: see-through decorations (alpha), client logos,
+ * business cards and video poster frames (they must match their videos).
+ *
+ * photos.json holds only the exceptions, keyed by file name without folder or extension:
+ *   { trial: [names], heroes: [names], photos: { "<name>": { preset, note, skip } } }
+ * - heroes: generated at the API's largest size (full-width hero images).
+ * - A responsive set (name-420/-640/-838.webp) is graded once, from its largest file, and the
+ *   smaller sizes are made from that result (`derived`).
+ * - Byte-identical files are graded once (`copyOf`).
  */
 export const keyOf = (src) => path.basename(src, path.extname(src));
+const EXCLUDE = /(^|\/)(christmas\/video)\/|client-|business-cards|placeholder/i;
+function siteImageRefs() {
+  const SRC = path.join(REPO, 'src');
+  const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]));
+  const refs = new Set();
+  for (const f of walk(SRC).filter((f) => /\.(tsx?|jsx?)$/.test(f)))
+    for (const m of fs.readFileSync(f, 'utf8').matchAll(/@\/assets\/([^"'`]+?\.(?:webp|jpe?g|png))/g)) refs.add(m[1]);
+  return refs;
+}
 export function loadPhotos() {
   const data = readRepoFile('src/data/gallery.ts').toString('utf8');
-  const sources = [...new Set([...data.matchAll(/source:\s*"([^"]+)"/g)].map((m) => m[1]))];
+  const gallery = [...new Set([...data.matchAll(/source:\s*"([^"]+)"/g)].map((m) => m[1]))];
   const over = JSON.parse(fs.readFileSync(path.join(TOOL, 'photos.json'), 'utf8'));
-  // `extra`: photos elsewhere on the site (e.g. the Christmas page) that can be graded and reviewed;
-  // `apply` only rebuilds the gallery, so these never reach a page by accident.
-  const extra = (over.extra || []).filter((src) => !sources.includes(src));
-  const photos = [...sources.map((src) => ({ src, gallery: true })), ...extra.map((src) => ({ src, gallery: false }))]
-    .map((p) => ({ ...p, key: keyOf(p.src), ...(over.photos?.[keyOf(p.src)] || {}) }));
+  const heroes = new Set(over.heroes || []);
+  const all = [...new Set([...siteImageRefs(), ...gallery])].filter((src) => !EXCLUDE.test(src) && !/\/gallery\//.test(src)).sort();
+  const photos = [], byHash = {}, sets = {};
+  for (const src of all) {
+    let buf; try { buf = readSource(src); } catch { continue; }
+    // see-through cut-outs (bows, garland swags) are decorations, not photos
+    if (/\.png$/i.test(src) || buf.includes(Buffer.from('ALPH'))) continue;
+    const key = keyOf(src);
+    const p = { src, key, gallery: gallery.includes(src), hero: heroes.has(key), ...(over.photos?.[key] || {}) };
+    const h = crypto.createHash('sha1').update(buf).digest('hex');
+    if (byHash[h]) p.copyOf = byHash[h]; else byHash[h] = key;
+    const r = src.match(/^(.*)-(\d{3,4})\.webp$/);
+    if (r) (sets[r[1]] ||= []).push({ p, w: Number(r[2]) });
+    photos.push(p);
+  }
+  for (const members of Object.values(sets)) {
+    if (members.length < 2) continue;
+    members.sort((a, b) => b.w - a.w);
+    members[0].p.keepSize = true;                       // srcset widths must stay exact
+    for (const m of members.slice(1)) Object.assign(m.p, { derived: members[0].p.key, keepSize: true });
+  }
   return { photos, trial: over.trial || [] };
 }
 export function promptFor(photo) {
