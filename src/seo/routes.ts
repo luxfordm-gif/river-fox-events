@@ -72,11 +72,20 @@ export const BUSINESS = {
  * Google sees the same review text it would index from the Google profile itself.
  */
 export type Review = { q: string; a: string; href?: string };
+/** Every review links to Google: its own share link where there is one,
+ *  otherwise Laura's Google reviews page (https://maps.app.goo.gl/dcLgoJHXnhjjzJKP6).
+ *  Keep these as plain string literals - scripts/postbuild.mjs reads this
+ *  array as text. */
 export const REVIEWS: Review[] = [
   {
     q: "Laura created a beautiful balloon hoop garland for my son's Christening. It was a beautiful piece of decor and we received loads of compliments about it. It really transformed the event hall and was stunning. Laura was really easy to communicate with and had great creative vision for the event. I would highly recommend this company for event decor.",
     a: "Samantha",
     href: "https://goo.gl/maps/3U8ddozdYipptXt16?g_st=ac",
+  },
+  {
+    q: "Laura is absolutely fantastic. It was such a smooth and seamless process, from our initial conversation to the design of my son's birthday backdrop and tablescape, and it all brought the wow factor. I highly recommend her and will be using her always.",
+    a: "Tolu Balogun",
+    href: "https://maps.app.goo.gl/dcLgoJHXnhjjzJKP6",
   },
   {
     q: "Laura designed us the most beautiful balloons and install for our recent business development day in Horley. Everyone commented on them and they were stunning. Efficient, professional and superb with her communication throughout the booking process. I would recommend her to anyone.",
@@ -96,6 +105,7 @@ export const REVIEWS: Review[] = [
   {
     q: "An absolutely fabulous display including a balloon garland and kiddies seating area. Would highly recommend and will be reusing Laura.",
     a: "Lee Dunn",
+    href: "https://maps.app.goo.gl/dcLgoJHXnhjjzJKP6",
   },
   {
     q: "The lovely Laura did an amazing job at transforming my salon with a gorgeous Christmas balloon display - she really thought about colours that tie in with my branding. I have had so many lovely compliments. My two boys also loved the brilliant Halloween balloons for their party. Can't wait for our next events.",

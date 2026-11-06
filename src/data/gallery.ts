@@ -820,6 +820,15 @@ export function orderedEvents(section: GallerySection): GalleryEvent[] {
     .map(({ e }) => e);
 }
 
+/** A gallery photo by its `source`, with its graded copies and canonical
+ *  alt, for reuse on other pages (one image, one alt). */
+export function galleryPhoto(source: string): ResolvedPhoto {
+  for (const s of GALLERY)
+    for (const e of s.events)
+      for (const p of e.photos) if (p.source === source) return resolvePhoto(p);
+  throw new Error(`Not a gallery photo: ${source}`);
+}
+
 export function resolvePhoto(photo: GalleryPhoto): ResolvedPhoto {
   const base = baseName(photo.source);
   const entry = SIZES[base];
