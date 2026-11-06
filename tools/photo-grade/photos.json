@@ -68,11 +68,15 @@
     },
     "laura-portrait": {
       "preset": "gentle",
-      "note": "This is a portrait of Laura, the business owner. Her face, hair, expression, skin and body must stay exactly as photographed: do not smooth, slim, reshape, retouch or beautify anything about her. Only correct the light and colour of the photo and clean up noise. Copy the lettering on her T-shirt exactly, letter for letter."
+      "note": "This is a portrait of Laura, the business owner. Her face, hair, expression, skin and body must stay exactly as photographed: do not smooth, slim, reshape, retouch or beautify anything about her. Only correct the light and colour of the photo and clean up noise. Copy the lettering on her T-shirt exactly, letter for letter.",
+      "skip": true,
+      "why": "Never grade: the model redraws Laura's face and it stops looking like her (Matt, 2026-11-06). Keep Laura's original photo."
     },
     "laura-reigate-restaurant-doorway-garland": {
       "note": "Laura, the business owner, is standing in the doorway: her face, expression and body must stay exactly as photographed, with no retouching. Keep the building, the street and everything reflected in the windows exactly as they are; keep every bauble its exact colour.",
-      "maxLongEdge": 900
+      "maxLongEdge": 900,
+      "skip": true,
+      "why": "Never grade: the model redraws Laura's face and it stops looking like her (Matt, 2026-11-06). Keep Laura's original photo."
     },
     "milestone-celebration-styling-collage-surrey": {
       "note": "This image is a collage of several separate photos arranged in a grid with thin white gutters between them. Keep the grid, every gutter and every photo's edges exactly where they are; grade each photo inside the grid to the house look so they match, without merging or redrawing the layout."
