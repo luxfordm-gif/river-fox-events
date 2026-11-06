@@ -33,6 +33,16 @@ const DEFAULT_FAQS: FAQ[] = [
   {
     q: "What happens on the day?",
     a: "We arrive before guests and install every element - balloon installations, backdrops, the cake table, signage. You walk into a finished room. After the party we return for a quiet breakdown.",
+    aNode: (
+      <>
+        We arrive before guests and install every element -{" "}
+        <a href="/balloon-installations/" className="underline underline-offset-4 decoration-ink/30 hover:decoration-ink transition-colors">
+          balloon installations
+        </a>
+        , backdrops, the cake table, signage. You walk into a finished room.
+        After the party we return for a quiet breakdown.
+      </>
+    ),
   },
   {
     q: "Do you style parties outside Surrey?",

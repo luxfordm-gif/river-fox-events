@@ -9,6 +9,7 @@ import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
+import { whatsappHref } from "@/lib/whatsapp";
 import { findRoute } from "@/seo/routes";
 import {
   applyMeta,
@@ -84,6 +85,9 @@ const Milestones = () => {
           mobileImage={imgHeroMobile}
           mobileImageAlt="Pink and tangerine birthday balloon display with a Happy Birthday board, above blue baby-reveal arches and a Reeva is 2 sign"
           headingId="ms-hero-heading"
+          whatsappHref={whatsappHref(
+            "Hi Laura, I'd love to talk about styling a milestone celebration. My date and postcode are "
+          )}
           lines={[
             <>Milestone events,</>,
             <>
@@ -95,7 +99,16 @@ const Milestones = () => {
               </em>
             </>,
           ]}
-          sub="Light-up numbers, balloon walls and personalised backdrops for 30ths, 40ths, anniversaries and christenings, set up before guests arrive and cleared away after."
+          sub={
+            <>
+              Light-up numbers,{" "}
+              <a href="/balloon-installations/" className="underline underline-offset-4 decoration-ink/30 hover:decoration-ink transition-colors">
+                balloon walls
+              </a>{" "}
+              and personalised backdrops for 30ths, 40ths, anniversaries and
+              christenings, set up before guests arrive and cleared away after.
+            </>
+          }
         />
 
         <CPReveal

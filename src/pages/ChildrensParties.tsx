@@ -9,6 +9,7 @@ import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
+import { whatsappHref } from "@/lib/whatsapp";
 import { findRoute } from "@/seo/routes";
 import {
   applyMeta,
@@ -59,6 +60,9 @@ const ChildrensParties = () => {
           mobileImage={imgHeroMobile}
           mobileImageAlt="Jungle tablescape with an elephant centrepiece, monstera runner, giraffe-print plates and safari balloons"
           headingId="cp-hero-heading"
+          whatsappHref={whatsappHref(
+            "Hi Laura, I'd love to talk about styling my child's party. My date and postcode are "
+          )}
           lines={[
             <>Themed children's parties,</>,
             <>
@@ -70,7 +74,15 @@ const ChildrensParties = () => {
               </em>
             </>,
           ]}
-          sub="Balloon arches, themed backdrops and painted name signs, set up across Surrey before your guests arrive and cleared away afterwards."
+          sub={
+            <>
+              <a href="/balloon-installations/" className="underline underline-offset-4 decoration-ink/30 hover:decoration-ink transition-colors">
+                Balloon arches
+              </a>
+              , themed backdrops and painted name signs, set up across Surrey
+              before your guests arrive and cleared away afterwards.
+            </>
+          }
         />
 
         <CPReveal

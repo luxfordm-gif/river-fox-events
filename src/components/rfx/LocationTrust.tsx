@@ -1,4 +1,5 @@
 import TestimonialsCarousel from "./TestimonialsCarousel";
+import type { Review } from "@/seo/routes";
 import logoPg from "@/assets/client-pg.webp";
 import logoTheRange from "@/assets/client-the-range.png";
 import logoFoxhills from "@/assets/client-foxhills.webp";
@@ -37,7 +38,12 @@ const CLIENT_LOGOS = [
   },
 ];
 
-const LocationTrust = () => {
+type LocationTrustProps = {
+  /** Show a chosen subset of reviews. Defaults to every review. */
+  reviews?: Review[];
+};
+
+const LocationTrust = ({ reviews }: LocationTrustProps = {}) => {
   return (
     <section
       id="trust"
@@ -70,7 +76,7 @@ const LocationTrust = () => {
           </div>
         </div>
 
-        <TestimonialsCarousel />
+        <TestimonialsCarousel reviews={reviews} />
 
         <div className="mt-14 md:mt-16 pt-10 md:pt-12 border-t border-ink/10">
           <p className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft text-center">
