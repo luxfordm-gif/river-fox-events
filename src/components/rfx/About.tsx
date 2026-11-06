@@ -117,7 +117,7 @@ const About = () => {
               <img
                 ref={studioImgRef}
                 src={studioImg}
-                alt="Laura, founder of River Fox Events, photographed amongst Surrey bluebells in a River Fox Events tee - event stylist for children's parties, milestones and brand celebrations"
+                alt="Laura, the founder and stylist, photographed amongst Surrey bluebells in a branded tee"
                 className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
                 style={{
                   transform: "translate3d(0,0,0) scale(1.14)",

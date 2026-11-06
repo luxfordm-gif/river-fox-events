@@ -37,8 +37,7 @@ export const NEW_ORIGIN = "https://riverfoxevents.co.uk";
 /** Old path → new path. Order doesn't matter; every path is exact. */
 export const PAGE_REDIRECTS = [
   // Service pages
-  // TODO: point /services/balloons at the balloons page once it exists.
-  ["/services/balloons", "/childrens-parties/"],
+  ["/services/balloons", "/balloon-installations/"],
   ["/services/luxury-kids-parties", "/childrens-parties/"],
   ["/services/events", "/milestone-celebrations/"],
   ["/services/corporate", "/corporate-brand-styling/"],

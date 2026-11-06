@@ -9,6 +9,7 @@ import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
+import { whatsappHref } from "@/lib/whatsapp";
 import { findRoute } from "@/seo/routes";
 import {
   applyMeta,
@@ -84,6 +85,9 @@ const Milestones = () => {
           mobileImage={imgHeroMobile}
           mobileImageAlt="Pink and tangerine birthday balloon display with a Happy Birthday board, above blue baby-reveal arches and a Reeva is 2 sign"
           headingId="ms-hero-heading"
+          whatsappHref={whatsappHref(
+            "Hi Laura, I'd love to talk about styling a milestone celebration. My date and postcode are "
+          )}
           lines={[
             <>Milestone events,</>,
             <>
@@ -95,16 +99,25 @@ const Milestones = () => {
               </em>
             </>,
           ]}
-          sub="Light-up numbers, balloon walls and personalised backdrops for 30ths, 40ths, anniversaries and christenings, set up before guests arrive and cleared away after."
+          sub={
+            <>
+              Light-up numbers,{" "}
+              <a href="/balloon-installations/" className="underline underline-offset-4 decoration-ink/30 hover:decoration-ink transition-colors">
+                balloon walls
+              </a>{" "}
+              and personalised backdrops for 30ths, 40ths, anniversaries and
+              christenings, set up before guests arrive and cleared away after.
+            </>
+          }
         />
 
         <CPReveal
           id="ms-intro"
           imageSide="right"
           image={imgOccasions}
-          alt="He or she balloon arch in soft blue and pink for the Stubbs family gender reveal styled in Surrey by River Fox Events"
+          alt="He or She balloon arch in soft blue and pink for the Stubbs family gender reveal"
           hoverImage={imgOccasionsHover}
-          hoverAlt="Wildflower and dried-grass detail on the Stubbs gender reveal styling - close-up of soft pinks, blues and pampas by River Fox Events"
+          hoverAlt="Wildflower and dried-grass detail on the Stubbs gender reveal, in soft pinks, blues and pampas"
           tone="ph-warm"
           headline={
             <>
@@ -130,9 +143,9 @@ const Milestones = () => {
           id="ms-occasions"
           imageSide="left"
           image={imgIntro}
-          alt="Champagne-themed milestone birthday arch in tangerine, white and gold balloons for Angela and Georgia, styled in Surrey by River Fox Events"
+          alt="Champagne-themed birthday arch in tangerine, white and gold balloons for Angela and Georgia"
           hoverImage={imgIntroHover}
-          hoverAlt="Close-up of a mirrored disco-ball centrepiece nested in tangerine and white balloons for Angela and Georgia's champagne-themed celebration by River Fox Events"
+          hoverAlt="Mirrored disco-ball centrepiece nested in tangerine and white balloons at Angela and Georgia's celebration"
           tone="ph-blush"
           imageScale={1.07}
           headline={

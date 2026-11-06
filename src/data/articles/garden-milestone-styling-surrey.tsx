@@ -52,7 +52,7 @@ const GardenPartiesDoneRightArticle = () => (
 
     <ArticleImage
       src={imgArch}
-      alt="Pastel balloon garland in cream, peach, lilac and butter yellow wrapping a tall pink arched backdrop with hand-lettered Happy Birthday signage, set on a garden lawn against summer planting."
+      alt="Pastel garland in cream, peach, lilac and butter yellow around a pink arched Happy Birthday backdrop on a garden lawn"
       caption="A pastel garland and painted-board arch I built for a garden party in Surrey - the planting reading as the back wall behind&nbsp;it."
     />
 
@@ -120,7 +120,7 @@ const GardenPartiesDoneRightArticle = () => (
 
     <ArticleImage
       src={imgBanquet}
-      alt="Long banquet-style picnic on a lawn with floor cushions, a cheesecloth runner, place settings and a tall pastel arched backdrop with balloon garland behind."
+      alt="Long lawn picnic table with floor cushions, a cheesecloth runner and a pastel arched backdrop behind"
       caption="A picnic-style banquet running out into the garden, with the arch and garland anchoring the head of the&nbsp;table."
     />
 

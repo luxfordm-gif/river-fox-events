@@ -7,7 +7,7 @@ describe("old Lollipop Balloons redirects", () => {
   const out = buildLegacyRedirects(ROUTES);
 
   it("maps the requested old paths", () => {
-    expect(pairs.get("/services/balloons")).toBe("/childrens-parties/");
+    expect(pairs.get("/services/balloons")).toBe("/balloon-installations/");
     expect(pairs.get("/services/luxury-kids-parties")).toBe("/childrens-parties/");
     expect(pairs.get("/services/events")).toBe("/milestone-celebrations/");
     expect(pairs.get("/services/corporate")).toBe("/corporate-brand-styling/");
@@ -31,7 +31,7 @@ describe("old Lollipop Balloons redirects", () => {
 
   it("forces 301s on www and non-www, ending in a home-page catch-all", () => {
     for (const host of ["https://lollipopballoonssurrey.co.uk", "https://www.lollipopballoonssurrey.co.uk"]) {
-      expect(out).toMatch(new RegExp(`^${host}/services/balloons +https://riverfoxevents\\.co\\.uk/childrens-parties/  301!$`, "m"));
+      expect(out).toMatch(new RegExp(`^${host}/services/balloons +https://riverfoxevents\\.co\\.uk/balloon-installations/  301!$`, "m"));
       expect(out).toMatch(new RegExp(`^${host}/\\* +https://riverfoxevents\\.co\\.uk/  301!$`, "m"));
     }
     expect(out).not.toMatch(/ 302/);

@@ -53,7 +53,7 @@ const WillyWonkaFifthBirthdaySavannaArticle = () => (
 
     <ArticleImage
       src={imgArch}
-      alt="Purple and lilac balloon arch with a gold 'Savanna' ticket panel, painted cocoa-bar plinth, lollipop swirls and a purple number 5 column."
+      alt="Purple and lilac balloon arch with a gold Savanna ticket panel, cocoa-bar plinth, lollipop swirls and a number 5 column"
       caption="Savanna's fifth - purple-and-gold ticket panel, custom Wonka Bar prop and giant lollipop swirls, set against the family's marble&nbsp;kitchen."
       aspect="natural"
       width={780}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
+import PageHeader from "@/components/rfx/PageHeader";
 import { useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
 import {
@@ -75,27 +76,17 @@ const Contact = () => {
     <div className="min-h-screen flex flex-col bg-background text-foreground nav-solid">
       <Nav />
       <main className="flex-1">
-        <section className="pt-[106px] md:pt-[122px] pb-24 md:pb-32" aria-labelledby="contact-heading">
+        <PageHeader
+          id="contact-heading"
+          title={
+            <>
+              Let's create something{" "}
+              <em className="italic font-light text-accent-warm">beautiful.</em>
+            </>
+          }
+        />
+        <section className="pt-6 md:pt-10 pb-24 md:pb-32" aria-labelledby="contact-heading">
           <div className="container-rfx">
-            {/* Centered heading above the grid */}
-            <header className="text-center pt-6 md:pt-10 pb-16 md:pb-24">
-              <h1
-                id="contact-heading"
-                className="font-serif-rf max-w-[18ch] mx-auto"
-                style={{
-                  fontSize: "var(--fs-h1)",
-                  lineHeight: 1.0,
-                  fontWeight: 300,
-                  letterSpacing: "-0.028em",
-                  textWrap: "balance",
-                }}
-              >
-                Let's create something{" "}
-                <em className="italic font-light text-accent-warm">
-                  beautiful.
-                </em>
-              </h1>
-            </header>
 
             <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-start">
               {/* Left: intro copy + direct contact methods */}

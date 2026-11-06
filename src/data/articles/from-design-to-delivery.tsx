@@ -45,7 +45,7 @@ const FromDesignToDeliveryArticle = () => (
 
     <ArticleImage
       src={imgConcept}
-      alt="Hand-drawn concept render for a dinosaur themed children's party in Surrey, with sage and green balloon garland, cardboard dinosaur cutouts, jungle pedestal and explorer crates, annotated with colour palette swatches"
+      alt="Hand-drawn concept render of a dinosaur party with a sage garland, dinosaur cutouts, explorer crates and colour swatches"
       caption="The original concept render - neutral arch panel, sage and green balloon garland, cardboard dinosaurs, jungle pedestal, explorer crates. Palette signed off before anything is&nbsp;ordered."
       aspect="natural"
       width={780}
@@ -96,7 +96,7 @@ const FromDesignToDeliveryArticle = () => (
 
     <ArticleImage
       src={imgFinished}
-      alt="Finished dinosaur themed children's party setup in a Surrey home, with sage balloon arch, AYAAN name sign, cardboard brontosaurus and stegosaurus cutouts, wooden explorer crates and tropical foliage"
+      alt="Finished dinosaur party in a Surrey home: sage balloon arch, AYAAN name sign, dinosaur cutouts and wooden explorer crates"
       caption="Render to room - the finished setup, in situ. Same palette, same composition, same negative&nbsp;space."
       aspect="4/3"
     />
@@ -124,7 +124,7 @@ const FromDesignToDeliveryArticle = () => (
 
     <ArticleImage
       src={imgDetail}
-      alt="Close-up detail of an illuminated AYAAN wooden name sign nestled in greenery, surrounded by sage and green balloons, on a neutral arch panel"
+      alt="Illuminated AYAAN wooden name sign nestled in greenery among sage and green balloons on an arch panel"
       caption="The detail that ties it together - Ayaan's name lit and nestled in fresh greenery, against the neutral&nbsp;arch."
       aspect="4/3"
     />

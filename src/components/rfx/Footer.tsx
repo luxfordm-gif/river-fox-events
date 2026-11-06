@@ -130,6 +130,7 @@ const Footer = () => {
                 <a href="/childrens-parties/" className="opacity-85 hover:opacity-100 block">Children's Parties</a>
                 <a href="/milestone-celebrations/" className="opacity-85 hover:opacity-100 block">Milestones</a>
                 <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate</a>
+                <a href="/balloon-installations/" className="opacity-85 hover:opacity-100 block">Balloon Installations</a>
                 <a href="/christmas-door-garlands/" className="opacity-85 hover:opacity-100 block">Christmas Garlands</a>
               </div>
             </div>
@@ -172,6 +173,7 @@ const Footer = () => {
                 Studio
               </div>
               <div className="text-[13.5px] leading-loose">
+                <a href="/our-work/" className="opacity-85 hover:opacity-100 block">Our Work</a>
                 <a href="/#about" className="opacity-85 hover:opacity-100 block">About Laura</a>
                 <a href="/#process" className="opacity-85 hover:opacity-100 block">How it works</a>
                 <a href="/#faq" className="opacity-85 hover:opacity-100 block">FAQ</a>

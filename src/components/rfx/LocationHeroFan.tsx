@@ -36,15 +36,15 @@ const LocationHeroFan = ({ images, spreadOnHover = false, radius = 10 }: Locatio
   const fallback: [FanImage, FanImage, FanImage] = [
     {
       src: hero1,
-      alt: "Pastel children's party tablescape with balloon installation styled by River Fox Events",
+      alt: "Peach and cream balloon arch over an outdoor table set with flowers and glassware in a garden",
     },
     {
       src: hero2,
-      alt: "Editorial tablescape detail with peonies and silk ribbons styled by River Fox Events",
+      alt: "Tall floral and balloon arch above a long dining table with tapered candles",
     },
     {
       src: hero3,
-      alt: "Close-up of peach roses, silk ribbons and candlelight on a dressed celebration table by River Fox Events",
+      alt: "Pastel safari banquet table under tall windows, with sage and pink balloons and a light-up 2",
     },
   ];
   const [left, centre, right] = images ?? fallback;

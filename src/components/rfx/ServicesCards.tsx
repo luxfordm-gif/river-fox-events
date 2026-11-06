@@ -28,7 +28,18 @@ const SERVICES = [
   },
 ];
 
+export type ServiceCardItem = {
+  title: string;
+  blurb: string;
+  href: string;
+  /** Link label at the foot of the card. Defaults to "Discover". */
+  cta?: string;
+};
+
 type ServicesCardsProps = {
+  /** Override the three default service cards (e.g. the five balloon
+   *  cards on /balloon-installations/). Five items lay out 3 + 2 on desktop. */
+  items?: ServiceCardItem[];
   heading?: ReactNode;
   intro?: ReactNode;
   sectionId?: string;
@@ -36,6 +47,7 @@ type ServicesCardsProps = {
 };
 
 const ServicesCards = ({
+  items = SERVICES,
   heading,
   intro,
   sectionId = "services",
@@ -76,18 +88,23 @@ const ServicesCards = ({
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-7">
-          {SERVICES.map((s) => (
+        <div
+          className={`grid grid-cols-1 gap-5 md:gap-7 ${
+            items.length === 5 ? "md:grid-cols-6" : "md:grid-cols-3"
+          }`}
+        >
+          {items.map((s: ServiceCardItem, i) => (
             <a
-              key={s.href}
+              key={s.title}
               href={s.href}
-              className="
+              className={`
                 group relative flex flex-col p-7 md:p-9 rounded-[18px] no-underline-fx
+                ${items.length === 5 ? (i < 3 ? "md:col-span-2" : "md:col-span-3") : ""}
                 transition-all duration-300 ease-out
                 hover:-translate-y-[2px]
                 hover:shadow-[0_14px_36px_-14px_hsl(var(--ink)/0.18)]
                 hover:border-[hsl(var(--accent-warm)/0.65)]
-              "
+              `}
               style={{
                 background: "hsl(var(--background))",
                 border: "1px solid hsl(var(--accent-warm) / 0.35)",
@@ -115,7 +132,7 @@ const ServicesCards = ({
                 className="mt-7 inline-flex items-center gap-2 font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink group-hover:gap-3 transition-all"
                 style={{ fontWeight: 600 }}
               >
-                Discover
+                {s.cta ?? "Discover"}
                 <ArrowRight
                   size={14}
                   strokeWidth={1.5}

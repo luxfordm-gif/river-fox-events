@@ -182,6 +182,25 @@ export const ROUTES: RouteSEO[] = [
     changefreq: "monthly",
   },
   {
+    path: "/balloon-installations",
+    title: "Balloon Arches & Installations in Surrey | River Fox Events",
+    description:
+      "Balloon arches, garlands and statement installs across Surrey, installed and collected by Laura, with full party styling available. Enquire for your date.",
+    breadcrumbName: "Balloon Installations",
+    service: {
+      serviceType: "Balloon Installation",
+      // Same town list as /christmas-door-garlands.
+      areaServed: [
+        "Surrey", "Cobham", "Esher", "Weybridge", "Oxshott", "Walton-on-Thames",
+        "Kingston", "Twickenham", "East Molesey", "Kingswood", "Tadworth", "Banstead", "Epsom", "Leatherhead",
+        "Dorking", "Reigate", "Redhill", "Guildford", "Oxted", "Horley",
+      ],
+      // No lowPrice: balloon-only work is quoted to size.
+    },
+    priority: 0.8,
+    changefreq: "monthly",
+  },
+  {
     path: "/christmas-door-garlands",
     title: "Christmas Door Garlands in Surrey | River Fox Events",
     description:
@@ -596,6 +615,16 @@ export const ROUTES: RouteSEO[] = [
     breadcrumbName: "Contact",
     priority: 0.7,
     changefreq: "yearly",
+  },
+  {
+    path: "/our-work",
+    title: "Balloon & Party Styling Gallery, Surrey | River Fox Events",
+    description:
+      "Real Surrey events styled by Laura: dinosaur and safari birthdays, milestone balloon arches, christenings, corporate galas and Christmas door garlands.",
+    breadcrumbName: "Our Work",
+    ogImage: "/og/our-work.webp",
+    priority: 0.8,
+    changefreq: "monthly",
   },
   {
     path: "/journal",

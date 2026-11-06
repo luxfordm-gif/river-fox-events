@@ -13,6 +13,7 @@ import LocationUSP from "@/components/rfx/LocationUSP";
 import LocationTrust from "@/components/rfx/LocationTrust";
 import ScrollStrip from "@/components/rfx/ScrollStrip";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
+import { whatsappHref } from "@/lib/whatsapp";
 import LocationHeroFan from "@/components/rfx/LocationHeroFan";
 import NotFound from "./NotFound";
 import { findLocation } from "@/data/locations";
@@ -135,10 +136,20 @@ const LocationPage = () => {
                   {loc.hero.sub}
                 </p>
               )}
-              <div className="flex items-center justify-center gap-5 flex-wrap mt-10 fade-up in">
-                <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
+              {/* Phones also get WhatsApp Laura now, pre-filled with the
+                  town. Matching widths, stacked. */}
+              <div className="mt-10 mx-auto grid gap-3 w-fit fade-up in">
+                <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
                   Reserve your date{" "}
                   <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
+                </a>
+                <a
+                  href={whatsappHref(
+                    `Hi Laura, I'd love to talk about styling a party in ${loc.cityName}. My date is `
+                  )}
+                  className="btn-ghost-rf justify-center md:hidden"
+                >
+                  WhatsApp Laura now
                 </a>
               </div>
             </div>

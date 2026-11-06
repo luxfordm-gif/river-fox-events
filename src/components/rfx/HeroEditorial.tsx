@@ -58,11 +58,11 @@ const COLUMNS: HeroColumn[] = [
       },
       {
         src: pastelA,
-        alt: "Pastel birthday entrance styling by River Fox Events - soft pastel balloon arch with floral accents at a Surrey venue",
+        alt: "Overhead pastel table runner of foliage and pastel balloons between pink scalloped plates",
       },
       {
         src: fairyC,
-        alt: "Fairy first birthday arch and light-up one marquee for Kayla in Surrey by River Fox Events - pink and lilac balloons with mossy detail",
+        alt: "Kayla's fairy first birthday arch in pink and lilac balloons with a light-up one and mossy detail",
       },
     ],
     widthPct: 30,
@@ -74,15 +74,15 @@ const COLUMNS: HeroColumn[] = [
     slides: [
       {
         src: junglB,
-        alt: "Jungle theme tablescape by River Fox Events - elephant centrepiece with monstera runner and safari balloons",
+        alt: "Jungle tablescape with an elephant centrepiece, monstera runner, giraffe-print plates and safari balloons",
       },
       {
         src: pastelB,
-        alt: "Pastel safari Two Wild tablescape for Anaya's second birthday in Surrey by River Fox Events - pink place settings, foliage runner",
+        alt: "Pastel safari Two Wild table for Anaya's second birthday, with pink place settings, a foliage runner and a light-up two",
       },
       {
         src: fairyB,
-        alt: "Fairy first birthday floral table detail for Kayla in Surrey by River Fox Events - soft pinks, blush and trailing greenery",
+        alt: "Table detail from Kayla's fairy first birthday in soft pinks and blush, with trailing greenery",
       },
     ],
     widthPct: 36,
@@ -94,15 +94,15 @@ const COLUMNS: HeroColumn[] = [
     slides: [
       {
         src: junglC,
-        alt: "Jungle theme overhead place setting by River Fox Events - lion-printed plates with raffia and animal-print napkins",
+        alt: "Overhead jungle place settings with lion-printed plates, raffia and animal-print napkins",
       },
       {
         src: pastelC,
-        alt: "Close-up of the pink light-up two marquee from Anaya's pastel safari Two Wild birthday in Surrey by River Fox Events",
+        alt: "Close-up of the pink light-up two marquee at Anaya's pastel safari birthday, with sage and pink balloons",
       },
       {
         src: fairyA,
-        alt: "Fairy first birthday tablescape overhead for Kayla in Surrey by River Fox Events - pastel place settings, mossy runner and trailing florals",
+        alt: "Overhead view of Kayla's fairy first birthday table with pastel place settings, a mossy runner and trailing greenery",
       },
     ],
     widthPct: 30,
@@ -117,21 +117,21 @@ const COLUMNS: HeroColumn[] = [
 export const HERO_EDITORIAL_IMAGES = [
   {
     src: fairyA,
-    alt: "Fairy first birthday tablescape overhead for Kayla in Surrey by River Fox Events - pastel place settings, mossy runner and trailing florals",
+    alt: "Overhead view of Kayla's fairy first birthday table with pastel place settings, a mossy runner and trailing greenery",
     widthPct: 30,
     aspect: "760 / 1000",
     speed: 0.18,
   },
   {
     src: junglB,
-    alt: "Jungle theme tablescape by River Fox Events - elephant centrepiece with monstera runner and safari balloons",
+    alt: "Jungle tablescape with an elephant centrepiece, monstera runner, giraffe-print plates and safari balloons",
     widthPct: 36,
     aspect: "760 / 1088",
     speed: 0.08,
   },
   {
     src: fairyC,
-    alt: "Fairy first birthday arch and light-up one marquee for Kayla in Surrey by River Fox Events - pink and lilac balloons with mossy detail",
+    alt: "Kayla's fairy first birthday arch in pink and lilac balloons with a light-up one and mossy detail",
     widthPct: 30,
     aspect: "760 / 1000",
     speed: 0.18,

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
+import PageHeader from "@/components/rfx/PageHeader";
 import Experiences from "@/components/rfx/Experiences";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
@@ -30,40 +31,18 @@ const Welcome = () => {
     <div className="min-h-screen article-bg text-foreground nav-solid">
       <Nav />
       <main>
-        <section className="container-rfx pt-28 md:pt-36 pb-12 md:pb-16 text-center">
-          <div
-            className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-7"
-            style={{ fontWeight: 600 }}
-          >
-            Formerly Lollipop Balloons
-          </div>
-
-          <h1
-            className="font-serif-rf max-w-[18ch] mx-auto"
-            style={{
-              fontSize: "var(--fs-h1)",
-              lineHeight: 1.02,
-              fontWeight: 400,
-              letterSpacing: "-0.028em",
-              textWrap: "balance",
-            }}
-          >
-            Welcome to{" "}
-            <em className="italic font-light text-accent-warm">
-              River Fox Events.
-            </em>
-          </h1>
-
-          <p
-            className="mt-7 max-w-[44ch] mx-auto text-[18px] md:text-[20px] leading-[1.5] text-ink-soft font-serif-rf font-light italic"
-            style={{ textWrap: "pretty" }}
-          >
-            A new name, the same hands. Same studio in Surrey. Same level of
-            detail.
-          </p>
-
+        <PageHeader
+          title={
+            <>
+              Welcome to{" "}
+              <em className="italic font-light text-accent-warm">River Fox Events.</em>
+            </>
+          }
+          note="Formerly Lollipop Balloons"
+          intro="A new name, the same hands. Same studio in Surrey. Same level of detail."
+        >
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-            <a href="/" className="btn-solid-rf accent">
+            <a href="/our-work/" className="btn-solid-rf accent">
               Explore our work <span>→</span>
             </a>
             <a
@@ -74,7 +53,7 @@ const Welcome = () => {
               Read the rebrand story <span className="arr">→</span>
             </a>
           </div>
-        </section>
+        </PageHeader>
 
         <section className="container-rfx pb-12 md:pb-16">
           <div

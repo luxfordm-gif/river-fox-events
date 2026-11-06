@@ -54,7 +54,7 @@ const TwoWildSafariSecondBirthdayArticle = () => (
 
     <ArticleImage
       src={imgBackdropConcept}
-      alt="Hand-drawn concept render for Amiya's Two Wild safari second birthday at Horley Community Centre in Surrey, with pastel balloon garland, personalised safari name panel, marquee number 2 with lights and lush greenery accents"
+      alt="Hand-drawn render of Amiya's Two Wild backdrop: pastel garland, safari name panel and a lit marquee 2"
       caption="Render one - the feature backdrop. Personalised safari panel for Amiya, marquee '2' with bulb lights, balloon garland and lush foliage built around a greenery wall. Palette signed off&nbsp;first."
       aspect="natural"
       width={780}
@@ -91,7 +91,7 @@ const TwoWildSafariSecondBirthdayArticle = () => (
 
     <ArticleImage
       src={imgTableConcept}
-      alt="Hand-drawn concept render for a Two Wild safari second birthday table styling in Surrey, with pastel balloon clusters integrated along a long banquet table, lush foliage runner with florals, plush safari soft toy centrepieces and safari themed place settings"
+      alt="Hand-drawn table concept for a Two Wild safari birthday with pastel balloons, a foliage runner and soft toy centrepieces"
       caption="Render two - the twelve-seat banquet table. Balloon clusters integrated along the run, foliage and florals as the runner, plush safari toys as natural centrepieces. Place settings echo the backdrop&nbsp;palette."
       aspect="natural"
       width={780}
@@ -127,7 +127,7 @@ const TwoWildSafariSecondBirthdayArticle = () => (
 
     <ArticleImage
       src={imgFinished}
-      alt="Finished Two Wild safari second birthday styling at Horley Community Centre in Surrey by River Fox Events - pastel balloon garland with foliage, personalised Amiya safari name panel, marquee 2 with pink bulb lights, twelve seat banquet table dressed with foliage runner, plush elephant centrepiece, pink scallop plates, zebra print salad plates and gold cutlery"
+      alt="Amiya's Two Wild birthday at Horley Community Centre: pastel garland, safari name panel, light-up 2 and a banquet table"
       caption="Render to room - Amiya's 'Two Wild' setup at Horley Community Centre on the&nbsp;day."
       aspect="4/3"
     />
