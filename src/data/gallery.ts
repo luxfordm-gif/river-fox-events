@@ -632,11 +632,12 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
-        title: "Café counter garland",
+        title: "DawgHouse Pizza Co. opening",
+        place: "Epsom",
         photos: [
           {
-            source: "services/corporate/cafe-counter-garland-forest-green-cream-black.webp",
-            alt: "Forest green, cream and black balloon garland around a café serving counter with a menu screen",
+            source: "services/corporate/dawghouse-pizza-takeaway-opening-garland-epsom.webp",
+            alt: "Forest green, cream and black balloon garland around a pizza takeaway counter for its opening",
           },
         ],
       },
@@ -817,6 +818,15 @@ export function orderedEvents(section: GallerySection): GalleryEvent[] {
     .map((e, i) => ({ e, i, seen: isSeen(e.photos[0]), last: !!e.last }))
     .sort((a, b) => Number(a.last) - Number(b.last) || Number(a.seen) - Number(b.seen) || a.i - b.i)
     .map(({ e }) => e);
+}
+
+/** A gallery photo by its `source`, with its graded copies and canonical
+ *  alt, for reuse on other pages (one image, one alt). */
+export function galleryPhoto(source: string): ResolvedPhoto {
+  for (const s of GALLERY)
+    for (const e of s.events)
+      for (const p of e.photos) if (p.source === source) return resolvePhoto(p);
+  throw new Error(`Not a gallery photo: ${source}`);
 }
 
 export function resolvePhoto(photo: GalleryPhoto): ResolvedPhoto {
