@@ -107,7 +107,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               </div>
             </div>
           </div>
-          <a href="/our-work/">Our work</a>
+          <a href="/our-work/" className="whitespace-nowrap">Our work</a>
           <div
             className="relative"
             onMouseEnter={handleAboutEnter}
