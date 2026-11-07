@@ -45,9 +45,9 @@ const HeroGarland = () => {
   const fullPadTop = Math.max(0, fullBowW * BOW_RATIO * KNOT.y - fullTileH * JOIN_Y) + 4;
   const blockH = fullPadTop + fullTileH + 6;
 
-  // Phones: draw the garland 10% smaller, centred, for a little more air
+  // Phones: draw the garland 18% smaller, centred, for a little more air
   // between it and the eyebrow (Matt, 2026-11-07).
-  const scale = w < 768 ? 0.9 : 1;
+  const scale = w < 768 ? 0.82 : 1;
   const tileW = fullTileW * scale;
   const tileH = tileW * DRAPE_RATIO;
   const offsetX = (w - n * tileW) / 2;
