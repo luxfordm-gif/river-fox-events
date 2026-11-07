@@ -222,7 +222,7 @@ const LocationPage = () => {
 
         <LocationTrust />
 
-        <InspirationStrip id={`loc-${loc.slug}-inspiration`} accent="your next celebration." images={INSPIRATION_TOWNS} flushBottom compactTop />
+        <InspirationStrip id={`loc-${loc.slug}-inspiration`} accent="your next celebration." images={INSPIRATION_TOWNS} flushBottom />
 
         <ChildrensFAQ
           faqs={loc.faqs}

@@ -9,8 +9,6 @@ type InspirationStripProps = {
   /** No bottom padding: when the next section has the same background (the FAQs on the town and
    *  Balloons pages), its own top padding is the whole gap, as on the rest of the page. */
   flushBottom?: boolean;
-  /** Shorter top padding, when it sits right under "Kind words" (town and Balloons pages). */
-  compactTop?: boolean;
 };
 
 /**
@@ -18,8 +16,8 @@ type InspirationStripProps = {
  * as the Christmas page, for the service pages. Every tile links to
  * @riverfox_events. The title uses the shared section size (--fs-h2).
  */
-const InspirationStrip = ({ id, accent, images, flushBottom, compactTop }: InspirationStripProps) => (
-  <section className={`rfx-section white rfx-inspiration${flushBottom ? " !pb-0" : ""}${compactTop ? " !pt-12 md:!pt-14" : ""}`} aria-labelledby={`${id}-heading`}>
+const InspirationStrip = ({ id, accent, images, flushBottom }: InspirationStripProps) => (
+  <section className={`rfx-section white rfx-inspiration${flushBottom ? " !pb-0" : ""}`} aria-labelledby={`${id}-heading`}>
     <div className="container-rfx">
       <div className="max-w-[760px] mx-auto text-center fade-up">
         <h2

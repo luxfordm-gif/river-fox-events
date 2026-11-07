@@ -47,7 +47,7 @@ const LocationTrust = ({ reviews }: LocationTrustProps = {}) => {
   return (
     <section
       id="trust"
-      className="rfx-section !pb-12 md:!pb-14"
+      className="rfx-section"
       aria-labelledby="trust-heading"
     >
       <div className="container-rfx">
