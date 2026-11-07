@@ -37,14 +37,14 @@ const fromGallery = (source: string) => {
 };
 
 /* "It usually starts with a balloon arch": a story-style run of balloon-led
-   photos, in the order Matt picked them from the photo catalogue (2026-11-07).
+   photos, in the order Matt picked them (2026-11-07): Reeva's arch first, the rainbow 5 last.
    Photos not in the gallery reuse the alt they carry elsewhere on the site. */
 const INTRO_SLIDES = [
-  { src: imgRainbowFive, alt: "Rainbow balloon hoop around a light-up 5 with a pastel balloon installation" },
   fromGallery("river-fox-events-pastel-birthday-reeva-entrance-arch.webp"),
   fromGallery("services/childrens-parties/bell-tent-picnic-pastel-balloons-garden.webp"),
   { src: imgRoseGold40, alt: "Rose gold light-up 40 marquee with a blush and chrome balloon installation in a hall with a wall clock" },
   fromGallery("services/milestones/baby-shower-sage-gold-balloons-baby-blocks.webp"),
+  { src: imgRainbowFive, alt: "Rainbow balloon hoop around a light-up 5 with a pastel balloon installation" },
 ];
 
 /* "Balloons as part of the whole room": one large photo, then a column of
@@ -287,7 +287,6 @@ const BalloonInstallations = () => {
         <Experiences
           sectionId="bi-services"
           showBalloonLink={false}
-          compactImages
           heading={
             <>
               Want the whole room{" "}

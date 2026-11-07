@@ -5,7 +5,6 @@ import imgOccasions from "@/assets/luxury-party-styling-occasions-surrey.webp";
 import imgGalleryMain from "@/assets/dinosaur-themed-birthday-party-surrey.webp";
 import imgGallery1 from "@/assets/christening-blessing-styling-surrey.webp";
 import imgGallery2 from "@/assets/corporate-gala-styling-surrey.webp";
-import imgGallery3 from "@/assets/cp-included.webp";
 
 // Latest Work - shared image pool for location pages. Each entry has a single
 // canonical alt that describes the photo (no per-town interpolation, per the
@@ -242,10 +241,8 @@ export function makeLocation(input: LocationInput): LocationConfig {
           src: imgGallery2,
           alt: "Navy, gold and cream balloons around a Children in Need Pudsey backdrop at a corporate gala",
         },
-        {
-          src: imgGallery3,
-          alt: "Pink and blue balloons above a celebration cake on a styled cake table",
-        },
+        // was cp-included, which is never shown (Matt, 2026-11-07)
+        LATEST_WORK["fairy-kayla"],
       ];
 
   return {

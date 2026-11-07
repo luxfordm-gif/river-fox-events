@@ -89,7 +89,7 @@
     },
     "cp-hero-frame": {
       "skip": true,
-      "why": "only imported by CPHero, which no page renders"
+      "why": "Never show (Matt, 2026-11-07). File deleted from the site; restore from git history only if he asks."
     },
     "dawghouse-pizza-takeaway-opening-garland-epsom": {
       "note": "Keep the menu screens and any lettering exactly as photographed; do not redraw or sharpen them into new text."
@@ -129,6 +129,22 @@
     },
     "medispa-entrance-frosted-white-silver-garland": {
       "maxLongEdge": 900
+    },
+    "cp-included": {
+      "skip": true,
+      "why": "Never show (Matt, 2026-11-07). File deleted from the site; restore from git history only if he asks."
+    },
+    "hero-1": {
+      "skip": true,
+      "why": "Never show (Matt, 2026-11-07). File deleted from the site; restore from git history only if he asks."
+    },
+    "hero-2": {
+      "skip": true,
+      "why": "Never show (Matt, 2026-11-07). File deleted from the site; restore from git history only if he asks."
+    },
+    "baby-in-bloom-pink-garden-baby-shower": {
+      "skip": true,
+      "why": "Never show (Matt, 2026-11-07). File deleted from the site; restore from git history only if he asks."
     }
   },
   "heroes": [

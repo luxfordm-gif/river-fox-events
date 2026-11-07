@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import hero1 from "@/assets/hero-1.webp";
-import hero2 from "@/assets/hero-2.webp";
+// Fallback photos only (every page passes its own). hero-1 and hero-2 are never shown (Matt, 2026-11-07).
+import fanLeft from "@/assets/river-fox-events-40th-birthday-rose-gold-marquee-sunlit.webp";
+import fanCentre from "@/assets/river-fox-events-baby-shower-baby-in-bloom-arch-portrait.webp";
 import hero3 from "@/assets/hero-3.webp";
 
 type FanImage = { src: string; alt: string; objectPosition?: string };
@@ -35,12 +36,12 @@ const LocationHeroFan = ({ images, spreadOnHover = false, radius = 10 }: Locatio
 
   const fallback: [FanImage, FanImage, FanImage] = [
     {
-      src: hero1,
-      alt: "Peach and cream balloon arch over an outdoor table set with flowers and glassware in a garden",
+      src: fanLeft,
+      alt: "Sunlit rose gold 40th marquee numbers with a blush and chrome balloon garland",
     },
     {
-      src: hero2,
-      alt: "Tall floral and balloon arch above a long dining table with tapered candles",
+      src: fanCentre,
+      alt: "Dusty blue and white Baby in Bloom balloon arch with floral accents for a baby shower",
     },
     {
       src: hero3,
