@@ -256,7 +256,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       } | River Fox Events`,
     seoDescription:
       uniqueSeoDescription ??
-      `${cityName} party stylist - tailored children's parties, milestones and corporate events across ${region} from £460. Every detail personally handled by Laura.`,
+      `${cityName} party stylist - tailored children's parties, milestones and corporate events across ${region} from £300. Every detail personally handled by Laura.`,
     hero: {
       lines: [
         uniqueHeroLine ?? <>Event styling in {cityName},</>,
@@ -393,23 +393,23 @@ export function makeLocation(input: LocationInput): LocationConfig {
     pricing: {
       heading: (
         <>
-          Beautifully styled celebrations in {cityName}{" "}
-          <em className="italic font-light text-accent-warm">from £460.</em>
+          Styling in {cityName}{" "}
+          <em className="italic font-light text-accent-warm">from £300.</em>
         </>
       ),
       tiers: [
         {
-          price: "From £460",
+          price: "From £300",
           label: "Intimate",
           body: "Intimate celebrations · Single focal point installation.",
         },
         {
-          price: "From £1,200",
+          price: "From £800",
           label: "Full styling",
           body: "Full styling · Multiple installations · Backdrops and tablescape.",
         },
         {
-          price: "From £2,500",
+          price: "From £1,500",
           label: "Premium",
           body: "Large-scale events · Premium full-venue transformation.",
         },
@@ -444,7 +444,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       },
       {
         q: `How much does event styling cost in ${cityName}?`,
-        a: `Pricing depends on the type of celebration and the scope of the brief. Typically our events start from £460, with larger or more involved designs ranging from £1,200 – £2,500+.`,
+        a: `Pricing depends on the type of celebration and the scope of the brief. Typically our events start from £300, with larger or more involved designs ranging from £800 – £1,500+.`,
       },
       {
         q: "Can I choose my own theme and colours?",

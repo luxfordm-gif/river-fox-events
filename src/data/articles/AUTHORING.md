@@ -83,7 +83,7 @@ It's industry-side language that pulls the article out of Laura's voice and into
 Capped vocabulary (per `CLAUDE.md`):
 - "Bespoke" — **free to use in body copy** (it's Laura's own word), but still banned from titles and capped at once per meta description (an SEO duplicate-content guard, not a tone rule)
 - "Luxury" — max twice across all page titles site-wide
-- "From £460" — appears in max 6 page metas site-wide
+- "From £300" — appears in max 6 page metas site-wide
 
 ---
 

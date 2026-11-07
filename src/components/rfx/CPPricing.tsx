@@ -22,7 +22,7 @@ type CPPricingProps = {
 const DEFAULT_HEADING: ReactNode = (
   <>
     Beautifully styled celebrations{" "}
-    <em className="italic font-light text-accent-warm">from £460.</em>
+    <em className="italic font-light text-accent-warm">from £300.</em>
   </>
 );
 

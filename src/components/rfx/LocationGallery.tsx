@@ -12,6 +12,8 @@ type LocationGalleryProps = {
   /** Scrolling images on the right. Max 4 recommended. */
   images: GalleryImage[];
   id?: string;
+  /** Standard section top padding (80px laptop / 64px phone) when it follows a section with the same background. */
+  compactTop?: boolean;
 };
 
 const LocationGallery = ({
@@ -22,11 +24,12 @@ const LocationGallery = ({
   mainImageAlt,
   images,
   id = "loc-gallery",
+  compactTop = false,
 }: LocationGalleryProps) => {
   return (
     <section
       id={id}
-      className="rfx-section white pt-14 md:pt-24 !pb-0"
+      className={`rfx-section white ${compactTop ? "!pt-16 md:!pt-20" : "pt-14 md:pt-24"} !pb-0`}
       aria-labelledby={`${id}-heading`}
     >
       {(heading || eyebrow || intro) && (

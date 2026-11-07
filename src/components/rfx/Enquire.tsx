@@ -70,7 +70,7 @@ const Enquire = ({
               className="text-[15.5px] leading-[1.7] max-w-[460px] mt-7"
               style={{ color: "hsl(var(--on-deep-soft))" }}
             >
-              Most celebrations begin from £460. Every event is tailored,
+              Most celebrations begin from £300. Every event is tailored,
               so we'll guide you based on your brief. We work across
               Surrey, London and surrounding areas.
             </p>
@@ -168,11 +168,12 @@ const Enquire = ({
               </label>
               <label className="form-row">
                 <span className="lbl">Planned investment</span>
-                <select name="budget" defaultValue="£460 – £1,200">
-                  <option>£460 – £1,200</option>
-                  <option>£1,200 – £2,000</option>
-                  <option>£2,000 – £3,000</option>
-                  <option>£3,000+</option>
+                <select name="budget" defaultValue="Under £300">
+                  <option>Under £300</option>
+                  <option>£300 – £460</option>
+                  <option>£460 – £800</option>
+                  <option>£800 – £1,500</option>
+                  <option>£1,500+</option>
                   <option>Not sure yet</option>
                 </select>
               </label>

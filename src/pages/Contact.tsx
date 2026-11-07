@@ -111,9 +111,9 @@ const Contact = () => {
                   className="text-[15.5px] leading-[1.65] text-ink-soft mt-5 max-w-[460px] mx-auto lg:mx-0"
                   style={{ textWrap: "pretty" }}
                 >
-                  Most celebrations begin from £460, with larger or more
+                  Most celebrations begin from £300, with larger or more
                   bespoke designs typically ranging from{" "}
-                  <span className="whitespace-nowrap">£1,200 - £2,500+</span>.
+                  <span className="whitespace-nowrap">£800 - £1,500+</span>.
                 </p>
                 <p
                   className="text-[15.5px] leading-[1.65] text-ink mt-5 max-w-[460px] mx-auto lg:mx-0"
@@ -234,11 +234,12 @@ const Contact = () => {
                   </label>
                   <label className="form-row">
                     <span className="lbl">Planned investment</span>
-                    <select name="budget" defaultValue="£460 – £1,200">
-                      <option>£460 – £1,200</option>
-                      <option>£1,200 – £2,000</option>
-                      <option>£2,000 – £3,000</option>
-                      <option>£3,000+</option>
+                    <select name="budget" defaultValue="Under £300">
+                      <option>Under £300</option>
+                      <option>£300 – £460</option>
+                      <option>£460 – £800</option>
+                      <option>£800 – £1,500</option>
+                      <option>£1,500+</option>
                       <option>Not sure yet</option>
                     </select>
                   </label>

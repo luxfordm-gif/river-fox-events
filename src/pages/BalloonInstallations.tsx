@@ -115,7 +115,7 @@ const FAQS = [
   },
   {
     q: "How much does a balloon arch cost?",
-    a: "It depends on the size, the colours and where it's going, so I quote each one to your design. If you'd like the backdrop, props and name board too, full party styling starts from £460.",
+    a: "It depends on the size, the colours and where it's going, so I quote each one to your design. If you'd like the backdrop, props and name board too, full party styling starts from £300.",
   },
   {
     q: "How far in advance should I book?",
@@ -127,7 +127,7 @@ const FAQS = [
   },
   {
     q: "Can I add balloons to a fully styled party?",
-    a: "Yes, and it's what most families do. Full styling starts with the balloons and builds the backdrop, props and name board around them, from £460.",
+    a: "Yes, and it's what most families do. Full styling starts with the balloons and builds the backdrop, props and name board around them, from £300.",
   },
   {
     q: "Which areas do you cover?",
@@ -275,7 +275,7 @@ const BalloonInstallations = () => {
             },
             {
               label: "Full party styling",
-              price: "From £460",
+              price: "From £300",
               body: "Balloons, backdrops and props.",
               note: "Most families book this one.",
             },
@@ -300,7 +300,7 @@ const BalloonInstallations = () => {
 
         <LocationTrust reviews={BALLOON_REVIEWS} />
 
-        <InspirationStrip id="bi-inspiration" accent="your next balloon installation." images={INSPIRATION_BALLOONS} />
+        <InspirationStrip id="bi-inspiration" accent="your next balloon installation." images={INSPIRATION_BALLOONS} flushBottom />
 
         <ChildrensFAQ
           faqs={FAQS}

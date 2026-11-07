@@ -1,10 +1,9 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type ProcessStep = { n: string; title: string; body: string };
 
 type ProcessProps = {
   steps?: ProcessStep[];
-  intro?: ReactNode;
 };
 
 const DEFAULT_STEPS: ProcessStep[] = [
@@ -28,14 +27,9 @@ const DEFAULT_STEPS: ProcessStep[] = [
   },
 ];
 
-const DEFAULT_INTRO: ReactNode = (
-  <>
-    A calm, guided process - from concept to installation. We refine
-    your vision and bring it all together seamlessly on the day.
-  </>
-);
-
-const Process = ({ steps = DEFAULT_STEPS, intro = DEFAULT_INTRO }: ProcessProps = {}) => {
+/* "How it works": heading and three steps. The intro line beside the heading
+   was removed across the site (Matt, 2026-11-07). */
+const Process = ({ steps = DEFAULT_STEPS }: ProcessProps = {}) => {
   const stepsRef = useRef<HTMLDivElement>(null);
   const [stepsIn, setStepsIn] = useState(false);
 
@@ -60,7 +54,7 @@ const Process = ({ steps = DEFAULT_STEPS, intro = DEFAULT_INTRO }: ProcessProps 
   return (
     <section id="process" className="rfx-section dark" aria-labelledby="process-heading">
       <div className="container-rfx">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-12 items-end mb-6 md:mb-16 rfx-md-stack">
+        <div className="mb-6 md:mb-16">
           <h2
             id="process-heading"
             className="font-serif-rf m-0 text-center md:text-left"
@@ -74,9 +68,6 @@ const Process = ({ steps = DEFAULT_STEPS, intro = DEFAULT_INTRO }: ProcessProps 
             How it{" "}
             <em className="italic font-light text-accent-warm">works.</em>
           </h2>
-          <p className="text-[15.5px] leading-[1.6] max-w-[440px] m-0 pb-3 text-center md:text-left mx-auto md:mx-0" style={{ color: "hsl(var(--on-deep-soft))" }}>
-            {intro}
-          </p>
         </div>
 
         <div

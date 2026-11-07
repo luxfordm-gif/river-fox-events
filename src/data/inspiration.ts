@@ -93,3 +93,19 @@ export const INSPIRATION_BALLOONS: InstagramStripImage[] = [
   INSPIRATION_CORPORATE[0], // office Christmas half arch
   INSPIRATION_MILESTONES[7], // 70th floating orbs
 ];
+
+/* Town pages: a mix of all three services, children's parties first (the town pages lead on them). */
+export const INSPIRATION_TOWNS: InstagramStripImage[] = [
+  INSPIRATION_CHILDRENS[0], // Ottilie's Toy Story table
+  INSPIRATION_MILESTONES[2], // pastel 21 balloon wall
+  INSPIRATION_CHILDRENS[3], // rainbow unicorn backdrop
+  INSPIRATION_CORPORATE[1], // gala staircase garland
+  INSPIRATION_CHILDRENS[1], // Duke's Level 8
+  INSPIRATION_MILESTONES[5], // Bearly Wait baby shower
+  INSPIRATION_CHILDRENS[5], // Berry First
+  INSPIRATION_MILESTONES[1], // blue 60
+  INSPIRATION_CHILDRENS[10], // Rudy's Rodeo
+  INSPIRATION_MILESTONES[4], // champagne 40 garland
+  INSPIRATION_CHILDRENS[7], // Cutest Pumpkin
+  INSPIRATION_CORPORATE[0], // office Christmas half arch
+];

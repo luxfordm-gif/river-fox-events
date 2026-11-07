@@ -1260,3 +1260,10 @@
     transition: none;
   }
 }
+
+/* Inspiration carousel: 22px less space below it, before the FAQs, at every
+   width the shared .rfx-section padding changes (Matt, 2026-11-07). */
+.rfx-section.rfx-inspiration { padding-bottom: 98px; }
+@media (min-width: 761px) and (max-width: 1439px) { .rfx-section.rfx-inspiration { padding-bottom: 74px; } }
+@media (min-width: 768px) and (max-width: 1366px) { .rfx-section.rfx-inspiration { padding-bottom: 58px; } }
+@media (max-width: 760px) { .rfx-section.rfx-inspiration { padding-bottom: 34px; } }

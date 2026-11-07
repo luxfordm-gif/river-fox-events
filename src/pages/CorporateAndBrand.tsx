@@ -263,12 +263,6 @@ const CorporateAndBrand = () => {
         <div id="how-it-works">
           <Process
             steps={CORPORATE_STEPS}
-            intro={
-              <>
-                A clear, professional process - from first brief through to
-                full breakdown after the last guest leaves.
-              </>
-            }
           />
         </div>
 

@@ -11,7 +11,7 @@ const weybridge = makeLocation({
   },
   uniqueSeoTitle: "Weybridge Birthday Decorations & Balloons | River Fox Events",
   uniqueSeoDescription:
-    "Weybridge birthday decorations, from balloon hoops and light-up numbers to painted sailboards, for homes on St George's Hill and Oatlands Park. From £460.",
+    "Weybridge birthday decorations, from balloon hoops and light-up numbers to painted sailboards, for homes on St George's Hill and Oatlands Park. From £300.",
   uniqueHeroLine: <>Weybridge balloon styling,</>,
   uniqueHeroSub: <>St George's Hill gardens and Oatlands Park homes, finished with balloon hoops, painted sailboards and light-up numbers for the birthday child.</>,
   uniqueUspBody:

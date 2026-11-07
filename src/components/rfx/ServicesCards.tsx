@@ -1,5 +1,11 @@
 import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
+import { galleryPhoto } from "@/data/gallery";
+
+const photo = (source: string) => {
+  const p = galleryPhoto(source);
+  return { image: p.src, srcSet: p.srcSet, alt: p.alt };
+};
 
 /**
  * Stripped-back services cross-link block. Used on location pages where
@@ -11,20 +17,26 @@ const SERVICES = [
   {
     title: "Children's Party Styling",
     blurb:
-      "Playful, immersive and beautifully styled. From themed celebrations to soft, tonal setups, we create children's parties that are as unique as your child.",
+      "Backdrops, balloon garlands and props built around your child's theme, from dinosaurs to fairy first birthdays, set up before guests arrive.",
     href: "/childrens-parties/",
+    cta: "See children's parties",
+    ...photo("river-fox-events-jungle-theme-fourever-wild-full-setup.webp"),
   },
   {
     title: "Milestone Celebrations",
     blurb:
-      "Refined styling for meaningful moments. Whether it's a 21st, 40th, baby shower or anniversary, we design spaces that feel special, personal and effortlessly put together.",
+      "Light-up numbers, garlands and personalised boards for 18ths, 40ths, christenings and baby showers.",
     href: "/milestone-celebrations/",
+    cta: "See milestones",
+    ...photo("services/milestones/13th-birthday-pink-light-up-numbers-garland.webp"),
   },
   {
-    title: "Brand & Corporate Installations",
+    title: "Corporate Installations",
     blurb:
-      "Creative installations that elevate your brand. From launches to in-store moments, we design visual experiences that feel polished, on-brand and impactful.",
+      "Branded arches, entrance columns and photo walls for launches, galas and office parties, in your brand colours.",
     href: "/corporate-brand-styling/",
+    cta: "See corporate work",
+    ...photo("river-fox-events-theatre-125-anniversary-marquee-wide.webp"),
   },
 ];
 
@@ -34,6 +46,10 @@ export type ServiceCardItem = {
   href: string;
   /** Link label at the foot of the card. Defaults to "Discover". */
   cta?: string;
+  /** Optional photo across the top of the card (the town pages' three service cards). */
+  image?: string;
+  srcSet?: string;
+  alt?: string;
 };
 
 type ServicesCardsProps = {
@@ -98,7 +114,8 @@ const ServicesCards = ({
               key={s.title}
               href={s.href}
               className={`
-                group relative flex flex-col p-7 md:p-9 rounded-[18px] no-underline-fx
+                group relative flex flex-col rounded-[18px] no-underline-fx overflow-hidden
+                ${s.image ? "" : "p-7 md:p-9"}
                 ${items.length === 5 ? (i < 3 ? "md:col-span-2" : "md:col-span-3") : ""}
                 transition-all duration-300 ease-out
                 hover:-translate-y-[2px]
@@ -111,6 +128,20 @@ const ServicesCards = ({
                 boxShadow: "0 6px 22px -14px hsl(var(--ink) / 0.12)",
               }}
             >
+              {s.image && (
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={s.image}
+                    srcSet={s.srcSet}
+                    sizes="(min-width: 768px) 31vw, calc(100vw - 48px)"
+                    alt={s.alt ?? ""}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover block transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  />
+                </div>
+              )}
+              <div className={s.image ? "flex flex-col flex-1 p-7 md:p-8" : "contents"}>
               <h3
                 className="font-serif-rf text-ink"
                 style={{
@@ -123,7 +154,7 @@ const ServicesCards = ({
                 {s.title}
               </h3>
               <p
-                className="mt-4 text-[14.5px] leading-[1.6] text-ink-soft flex-1"
+                className={`${s.image ? "mt-2" : "mt-4"} text-[14.5px] leading-[1.6] text-ink-soft flex-1`}
                 style={{ textWrap: "pretty" }}
               >
                 {s.blurb}
@@ -140,6 +171,7 @@ const ServicesCards = ({
                   className="transition-transform group-hover:translate-x-[2px]"
                 />
               </span>
+              </div>
             </a>
           ))}
         </div>
