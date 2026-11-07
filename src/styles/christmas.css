@@ -252,7 +252,7 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 .xmas-options { gap: 20px; max-width: 880px; }
 .xmas-option {
   position: relative;
-  border: 1px solid hsl(var(--ink) / 0.14);
+  border: 1px solid hsl(var(--ink) / 0.28);
   border-radius: 14px;
   /* Halfway between the page cream (#FCFBF7) and the main cream (#F1EFE8). */
   background: hsl(46 30% 95.5%);
@@ -262,17 +262,17 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
    which sets transition: none and made the card jump.) */
 .xmas-options > .xmas-option {
   transition: transform .45s cubic-bezier(.45,0,.25,1), box-shadow .45s cubic-bezier(.45,0,.25,1);
-  box-shadow: inset 0 0 0 0 hsl(var(--ink) / 0.14);
+  box-shadow: inset 0 0 0 0 hsl(var(--ink) / 0.28);
 }
 .xmas-options > .xmas-option.is-popular {
   box-shadow: inset 0 0 0 0 hsl(var(--xmas-gold-deep)), 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
 }
-/* On hover the border thickens 2px inwards (an inset ring, so nothing shifts). */
+/* On hover the border thickens 1px inwards (an inset ring, so nothing shifts). */
 .xmas-options > .xmas-option:hover, .xmas-options > .xmas-option:focus-within {
-  box-shadow: inset 0 0 0 2px hsl(var(--ink) / 0.14);
+  box-shadow: inset 0 0 0 1px hsl(var(--ink) / 0.28);
 }
 .xmas-options > .xmas-option.is-popular:hover, .xmas-options > .xmas-option.is-popular:focus-within {
-  box-shadow: inset 0 0 0 2px hsl(var(--xmas-gold-deep)), 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
+  box-shadow: inset 0 0 0 1px hsl(var(--xmas-gold-deep)), 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
 }
 /* The link doesn't grow or nudge its arrow here; the card's lift is the hover. */
 .xmas-option .xmas-option__link, .xmas-option .xmas-option__link .arr { transition: none; }
