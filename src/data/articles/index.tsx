@@ -60,7 +60,7 @@ export const ARTICLES: Article[] = [
           <em className="italic font-light text-accent-warm">for Christmas.</em>
         </>
       ),
-      body: "Fresh spruce, faux, or a mix of both, installed from late November. Send a photo of your door and I'll come back with ideas and a quote.",
+      body: "Fresh spruce from early November, or faux whenever you're ready. Send a photo of your door and your postcode, and I'll come back with a quote.",
       label: "Reserve your date",
       href: "/christmas-door-garlands/#enquire",
     },

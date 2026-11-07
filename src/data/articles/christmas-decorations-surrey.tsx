@@ -8,7 +8,6 @@ import ArticleTLDR from "@/components/article/ArticleTLDR";
 import imgDoorway from "@/assets/journal/christmas-decorations-surrey/christmas-doorway-garland-pink-studio-east-molesey.webp";
 import imgSequin from "@/assets/journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp";
 import imgPanel from "@/assets/journal/christmas-decorations-surrey/merry-christmas-panel-silver-navy-balloon-garland.webp";
-import imgPorchIdea from "@/assets/journal/christmas-decorations-surrey/jewel-tone-bauble-garland-brick-porch-idea.webp";
 import imgDoorReigate from "@/assets/christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp";
 import imgDoorGeorgianNo16 from "@/assets/christmas/instagram/georgian-door-gold-champagne-garland.webp";
 import imgDoorNavyJewel from "@/assets/christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp";
@@ -99,12 +98,14 @@ const ChristmasDecorationsSurreyArticle = () => (
         door, deep reds and natural pine cones feel&nbsp;right.
       </p>
       <p>
-        Garlands can be fresh or faux, depending on how long you'd like them to
-        last. Fresh foliage smells wonderful and suits a shorter window, while
-        a good faux garland stays full and neat right through to January, which
-        shops and offices often prefer. Many clients choose a mix of the two, a
-        faux base with fresh spruce layered on top, for the fullest look. You
-        can see past doorways and book yours on my{" "}
+        Every garland I make is either fully fresh or fully faux. Fresh
+        spruce brings the deep green and the scent of a real Christmas tree;
+        I install it from early November, and it stays fresh right through
+        Christmas and into January. A faux, or everlasting, garland can go up
+        whenever you're ready to start decorating, then be packed away
+        carefully and enjoyed again next year. Both look lovely, so the choice
+        really comes down to the feel you'd like at your door. You can see
+        past doorways and book yours on my{" "}
         <a href="/christmas-door-garlands/">Christmas door garlands</a>{" "}
         page.
       </p>
@@ -117,14 +118,6 @@ const ChristmasDecorationsSurreyArticle = () => (
         in.
       </p>
     </ArticleProse>
-
-    <ArticleImage
-      src={imgPorchIdea}
-      aspect="3/4"
-      width={560}
-      alt="Snow-dusted fir garland with jewel-toned baubles and warm lights arching over a navy front door"
-      caption="An idea for a navy door on a brick house: jewel-toned baubles and warm lights around the whole&nbsp;frame."
-    />
 
     <ArticleImageCarousel images={doorways} aspect="4/5" width={560} />
 
@@ -206,9 +199,11 @@ const ChristmasDecorationsSurreyArticle = () => (
         <a href="/christmas-door-garlands/#enquire">Christmas doorway page</a>,
         or an email to{" "}
         <a href="mailto:riverfoxevents@gmail.com">riverfoxevents@gmail.com</a>,
-        with a photo of your door and your postcode. That tells me the size,
-        the colour and where you are, and I can come back to you with a quote
-        and a date. For a party, send me the venue, the date and a rough idea
+        with a photo of your door, your postcode, and whether you'd like
+        fresh spruce or everlasting faux. Every doorway is different, so the
+        photo tells me the size and the colour, the postcode tells me where
+        you are, and I can come back to you with a quote tailored to your
+        door and a date. For a party, send me the venue, the date and a rough idea
         of the room, and I'll suggest the setup that will do the most
         for&nbsp;it.
       </p>
