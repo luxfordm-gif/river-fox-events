@@ -182,15 +182,6 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
-        title: "Ava's ONEderland first birthday",
-        photos: [
-          {
-            source: "services/childrens-parties/onederland-first-birthday-ava-garden-backdrop.webp",
-            alt: "Wonderland first birthday backdrop in a garden, with checkerboard and pastel balloons, playing cards and toadstools",
-          },
-        ],
-      },
-      {
         title: "Amiya's Two Wild second birthday",
         place: "Horley Community Centre",
         photos: [
@@ -245,6 +236,18 @@ export const GALLERY: GallerySection[] = [
           {
             source: "services/childrens-parties/bunny-picnic-party-pink-arches-low-table.webp",
             alt: "Low picnic table with cushions in front of pink arched panels, daisy balloons and a bunny cutout in a marquee",
+          },
+        ],
+      },
+      {
+        title: "Ava's ONEderland first birthday",
+        // Near the end (Matt, 2026-11-07): in the "last" group, and placed first in
+        // that group, so it lands 4th from the end.
+        last: true,
+        photos: [
+          {
+            source: "services/childrens-parties/onederland-first-birthday-ava-garden-backdrop.webp",
+            alt: "Wonderland first birthday backdrop in a garden, with checkerboard and pastel balloons, playing cards and toadstools",
           },
         ],
       },

@@ -1021,7 +1021,8 @@
   /* No bottom rule any more: the photo strip runs under the button (Matt, 2026-11-07). */
   .rfx-instagram .rfx-instagram-inner { padding-top: 68px; padding-bottom: 0; }
   /* Testimonials section — match Instagram's tighter rhythm so the hairline sits the same distance from section edges */
-  #kindness.rfx-section { padding: 56px 0 44px; }
+  /* 88px above "Kind words." so it clears the dark How it works band (Matt, 2026-11-07). */
+  #kindness.rfx-section { padding: 88px 0 44px; }
   #kindness .hairline { margin-bottom: 40px !important; }
   @media (max-width: 760px) {
     .rfx-section { padding: 56px 0; }
@@ -1049,7 +1050,7 @@
       height: 280px !important;
     }
     /* Tighten gap between Testimonials and Instagram on mobile */
-    #kindness.rfx-section { padding-bottom: 28px; }
+    #kindness.rfx-section { padding-top: 56px; padding-bottom: 28px; }
     /* Instagram: tighter top/bottom padding on mobile */
     .rfx-instagram { padding: 16px 0 56px !important; }
   }
