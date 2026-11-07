@@ -634,7 +634,7 @@ const ChristmasDoorways = () => {
           headingId="xmas-faq-heading"
           headingSize="var(--fs-h3)"
           paddingTop="clamp(40px, 6vw, 96px)"
-          paddingBottom="clamp(80px, 10vw, 150px)"
+          paddingBottom="clamp(150px, 12vw, 170px)"
         />
 
         {/* Booking form + contact */}
@@ -645,6 +645,15 @@ const ChristmasDoorways = () => {
               both ends) from widening the page on phones. */}
           <div aria-hidden="true" className="absolute left-0 right-0 top-0 h-0" style={{ overflowX: "clip" }}>
             <SnowCap mode="edge" radius={0} scale={2.4} bleed />
+          </div>
+          {/* A handwritten nudge that the snow can be moved (hidden with
+              reduced motion, where the snow stays still). */}
+          <div className="xmas-snow-hint" aria-hidden="true">
+            <span>Move the snow</span>
+            <svg width="40" height="66" viewBox="0 0 40 66" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 5c15 1 27 11 25 30-.7 8-2.5 15-5 23" />
+              <path d="M17 51l7 8 6-10" />
+            </svg>
           </div>
           <div className="container-rfx">
             <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">

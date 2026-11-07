@@ -303,3 +303,26 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
    letters. The Most popular tag stays in front of it. */
 .xmas-option__tag { z-index: 2; }
 .xmas-title-snow { position: relative; display: inline-block; }
+
+/* "Move the snow": a handwritten note above the drift on the booking
+   section's top edge, with an arrow down into the snow. */
+.xmas-snow-hint {
+  position: absolute;
+  right: max(20px, 8vw);
+  top: -112px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  font-family: "Caveat", cursive;
+  font-weight: 500;
+  font-size: clamp(22px, 1.9vw, 28px);
+  line-height: 1;
+  color: hsl(var(--ink-soft));
+  transform: rotate(-4deg);
+  pointer-events: none;
+}
+.xmas-snow-hint svg { flex: none; margin-bottom: -46px; }
+@media (prefers-reduced-motion: reduce) {
+  .xmas-snow-hint { display: none; }
+}
