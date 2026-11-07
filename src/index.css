@@ -86,22 +86,12 @@
     @apply border-border;
   }
   html {
-    /* Native smooth scroll disabled — Lenis (useSmoothScroll) handles
-       site-wide smooth scrolling for a slower, premium feel. */
+    /* Plain browser scrolling (the Lenis smooth-scroll hijack was removed on
+       2026-11-07). Same-page anchor links glide via useSmoothScroll; this
+       padding stops the fixed nav covering the top of the section. */
     scroll-behavior: auto;
+    scroll-padding-top: 80px;
   }
-  /* Mobile/tablet: Lenis is off (see useSmoothScroll), so anchor jumps use
-     native browser scrolling. Without padding the fixed nav covers the top
-     of the destination section. Matches the -80px offset Lenis uses on
-     desktop. */
-  @media (pointer: coarse) and (max-width: 1024px) {
-    html { scroll-padding-top: 80px; }
-  }
-  /* Lenis smooth-scroll baseline styles */
-  html.lenis, html.lenis body { height: auto; }
-  .lenis.lenis-smooth { scroll-behavior: auto !important; }
-  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-  .lenis.lenis-stopped { overflow: hidden; }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);

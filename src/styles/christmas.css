@@ -73,10 +73,10 @@ html[data-pref-xmas="brand"] .rfx-xmas .rfx-section.dark,
 html[data-pref-xmas="brand"] .rfx-xmas footer { --accent-warm: 12 35% 64%; }
 html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 
-/* Snow background (review toggle): the light sections a touch darker, so the
-   white of the settled snow has something to stand out against. */
-html[data-pref-snowbg="darker"] .rfx-xmas .rfx-section.white { background: hsl(45 30% 95.5%); }
-html[data-pref-snowbg="darker"] .rfx-xmas .xmas-option { background: hsl(46 28% 93.5%); }
+/* The light sections a touch darker than the brand's #FCFBF8 on this page,
+   so the white of the settled snow has something to stand out against
+   (Matt, 2026-11-07). The garland cards shift with them. */
+.rfx-xmas .rfx-section.white { background: hsl(45 30% 95.5%); }
 
 /* Hero garland (src/components/rfx/HeroGarland.tsx). Static, so the
    filtered layer is rasterised once, not every frame. */
@@ -259,8 +259,8 @@ html[data-pref-snowbg="darker"] .rfx-xmas .xmas-option { background: hsl(46 28% 
   position: relative;
   border: 1px solid hsl(var(--ink) / 0.28);
   border-radius: 14px;
-  /* Halfway between the page cream (#FCFBF7) and the main cream (#F1EFE8). */
-  background: hsl(46 30% 95.5%);
+  /* Between this page's section cream and the main cream (#F1EFE8). */
+  background: hsl(46 28% 93.5%);
   padding: 52px 32px 36px;
 }
 /* One movement only: the card eases up 4px. (Scoped tighter than .fade-up,
