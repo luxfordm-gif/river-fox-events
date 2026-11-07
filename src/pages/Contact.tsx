@@ -96,24 +96,22 @@ const Contact = () => {
                   className="text-[16px] md:text-[17px] leading-[1.65] text-ink-soft max-w-[460px] mx-auto lg:mx-0"
                   style={{ textWrap: "pretty" }}
                 >
-                  Share a few details via our enquiry form and I'll be in
-                  touch to discuss your plans. Alternatively you can get in
-                  touch via email or phone below.
+                  Share a few details in the enquiry form and I'll be in
+                  touch to talk through your plans.
                 </p>
                 <p
                   className="text-[15.5px] leading-[1.65] text-ink-soft mt-5 max-w-[460px] mx-auto lg:mx-0"
                   style={{ textWrap: "pretty" }}
                 >
-                  Each event is bespoke and tailored to your space, style and
-                  vision. We take on a limited number of bookings each month
-                  to ensure every detail is carefully considered.
+                  I only take a handful of events each month, so each one gets
+                  my full attention.
                 </p>
                 <p
                   className="text-[15.5px] leading-[1.65] text-ink-soft mt-5 max-w-[460px] mx-auto lg:mx-0"
                   style={{ textWrap: "pretty" }}
                 >
-                  Most celebrations begin from £300, with larger or more
-                  bespoke designs typically ranging from{" "}
+                  Celebrations start from £300, with larger designs
+                  from{" "}
                   <span className="whitespace-nowrap">£800 - £1,500+</span>.
                 </p>
                 <p
