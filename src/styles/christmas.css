@@ -73,6 +73,11 @@ html[data-pref-xmas="brand"] .rfx-xmas .rfx-section.dark,
 html[data-pref-xmas="brand"] .rfx-xmas footer { --accent-warm: 12 35% 64%; }
 html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 
+/* Snow background (review toggle): the light sections a touch darker, so the
+   white of the settled snow has something to stand out against. */
+html[data-pref-snowbg="darker"] .rfx-xmas .rfx-section.white { background: hsl(45 30% 95.5%); }
+html[data-pref-snowbg="darker"] .rfx-xmas .xmas-option { background: hsl(46 28% 93.5%); }
+
 /* Hero garland (src/components/rfx/HeroGarland.tsx). Static, so the
    filtered layer is rasterised once, not every frame. */
 .xmas-garland { pointer-events: none; filter: drop-shadow(0 10px 10px hsl(150 30% 10% / 0.2)); }
