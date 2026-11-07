@@ -1,5 +1,6 @@
 import ArticleProse from "@/components/article/ArticleProse";
 import ArticleImage from "@/components/article/ArticleImage";
+import ArticleImageCarousel from "@/components/article/ArticleImageCarousel";
 import ArticlePullQuote from "@/components/article/ArticlePullQuote";
 import ArticleCta from "@/components/article/ArticleCta";
 import ArticleTLDR from "@/components/article/ArticleTLDR";
@@ -8,6 +9,27 @@ import imgDoorway from "@/assets/journal/christmas-decorations-surrey/christmas-
 import imgSequin from "@/assets/journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp";
 import imgPanel from "@/assets/journal/christmas-decorations-surrey/merry-christmas-panel-silver-navy-balloon-garland.webp";
 import imgPorchIdea from "@/assets/journal/christmas-decorations-surrey/jewel-tone-bauble-garland-brick-porch-idea.webp";
+import imgDoorReigate from "@/assets/christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp";
+import imgDoorGeorgianNo16 from "@/assets/christmas/instagram/georgian-door-gold-champagne-garland.webp";
+import imgDoorNavyJewel from "@/assets/christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp";
+import imgDoorSalon from "@/assets/christmas/instagram/glass-salon-true-red-corner-garland.webp";
+import imgDoorMedispa from "@/assets/christmas/instagram/medispa-entrance-frosted-white-silver-garland.webp";
+import imgDoorWhitePlum from "@/assets/christmas/instagram/white-door-wreath-pink-plum-garland.webp";
+import imgDoorBlueSilver from "@/assets/christmas/instagram/blue-door-spruce-garland-silver-white-baubles.webp";
+import imgDoorBrickPillars from "@/assets/christmas/instagram/brick-pillars-red-gold-garlands-sage-door.webp";
+
+/* Doorways Laura dressed last season (same files and alt text as the
+   Christmas section of Our work). */
+const doorways = [
+  { src: imgDoorReigate, alt: "Blue restaurant double doors in Reigate edged with red and gold bauble garlands", caption: "A restaurant doorway in Reigate, in red and gold." },
+  { src: imgDoorGeorgianNo16, alt: "Georgian black door at number 16 framed in spruce with gold and champagne baubles and stars", caption: "A Georgian door in gold and champagne." },
+  { src: imgDoorNavyJewel, alt: "Navy front door beneath a spruce arch crowded with pink, purple, teal and gold baubles", caption: "A navy door under an arch of jewel-toned baubles." },
+  { src: imgDoorSalon, alt: "Glass salon frontage with a spruce corner garland weighed down with true-red baubles", caption: "A salon frontage in true red." },
+  { src: imgDoorMedispa, alt: "Medispa entrance framed in frosted spruce with white and silver baubles", caption: "A medispa entrance in frosted white and silver." },
+  { src: imgDoorWhitePlum, alt: "White front door edged in a spruce garland of pink, plum, gold and red baubles", caption: "A white door in pink and plum." },
+  { src: imgDoorBlueSilver, alt: "Blue front door framed in real spruce with blue, white and silver baubles", caption: "A blue front door in silver and white." },
+  { src: imgDoorBrickPillars, alt: "Brick porch pillars wound with red, gold and green garlands either side of a sage door", caption: "Brick porch pillars in red, gold and green." },
+];
 
 const ChristmasDecorationsSurreyArticle = () => (
   <>
@@ -103,6 +125,8 @@ const ChristmasDecorationsSurreyArticle = () => (
       alt="Snow-dusted fir garland with jewel-toned baubles and warm lights arching over a navy front door"
       caption="An idea for a navy door on a brick house: jewel-toned baubles and warm lights around the whole&nbsp;frame."
     />
+
+    <ArticleImageCarousel images={doorways} aspect="4/5" width={560} />
 
     <ArticleCta
       variant="inline"

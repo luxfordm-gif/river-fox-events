@@ -1137,6 +1137,24 @@
     .reveal-word h3 { font-size: clamp(44px, 5.4vw, 64px) !important; }
   }
 
+  /* Nav dropdown bow: one jingle on hover, swinging from the knot and
+     settling (Nav.tsx jingleBow). */
+  @keyframes rfx-bow-jingle {
+    0%   { transform: rotate(0) scale(1); }
+    12%  { transform: rotate(-16deg) scale(1.1); }
+    28%  { transform: rotate(13deg) scale(1.08); }
+    44%  { transform: rotate(-9deg) scale(1.05); }
+    60%  { transform: rotate(6deg) scale(1.02); }
+    76%  { transform: rotate(-3deg) scale(1); }
+    90%  { transform: rotate(1deg); }
+    100% { transform: rotate(0) scale(1); }
+  }
+  .bow-jingle {
+    transform-origin: 50% 35%;
+    animation: rfx-bow-jingle 0.85s cubic-bezier(.36, .07, .19, .97) both;
+  }
+  @media (prefers-reduced-motion: reduce) { .bow-jingle { animation: none; } }
+
   /* Hero scroll-down cue — soft bouncing chevron */
   .rfx-scroll-cue {
     display: inline-flex;
