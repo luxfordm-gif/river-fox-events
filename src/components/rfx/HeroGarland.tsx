@@ -36,10 +36,23 @@ const HeroGarland = () => {
   }, []);
 
   const n = Math.max(1, Math.round(w / 480));
-  const tileW = w / n;
+
+  // Full-size layout: sets the block's height, so the eyebrow and h1 below
+  // sit in the same place whatever the garland's drawn size.
+  const fullTileW = w / n;
+  const fullTileH = fullTileW * DRAPE_RATIO;
+  const fullBowW = Math.min(120, Math.max(60, fullTileW * 0.2));
+  const fullPadTop = Math.max(0, fullBowW * BOW_RATIO * KNOT.y - fullTileH * JOIN_Y) + 4;
+  const blockH = fullPadTop + fullTileH + 6;
+
+  // Phones: draw the garland 10% smaller, centred, for a little more air
+  // between it and the eyebrow (Matt, 2026-11-07).
+  const scale = w < 768 ? 0.9 : 1;
+  const tileW = fullTileW * scale;
   const tileH = tileW * DRAPE_RATIO;
+  const offsetX = (w - n * tileW) / 2;
   const overlap = tileW * 0.02; // drapes tuck slightly under each other at the join
-  const bowW = Math.min(120, Math.max(60, tileW * 0.2));
+  const bowW = fullBowW * scale;
   const bowH = bowW * BOW_RATIO;
   const joinY = tileH * JOIN_Y;
   const padTop = Math.max(0, bowH * KNOT.y - joinY) + 4;
@@ -48,7 +61,7 @@ const HeroGarland = () => {
     <div
       ref={ref}
       className="xmas-garland relative w-full overflow-hidden"
-      style={{ height: padTop + tileH + 6 }}
+      style={{ height: blockH }}
       aria-hidden="true"
     >
       {Array.from({ length: n }, (_, i) => (
@@ -59,7 +72,7 @@ const HeroGarland = () => {
           sizes={`${Math.ceil(tileW + overlap)}px`}
           alt=""
           className="absolute block max-w-none"
-          style={{ left: i * tileW - overlap / 2, top: padTop, width: tileW + overlap, height: "auto" }}
+          style={{ left: offsetX + i * tileW - overlap / 2, top: padTop, width: tileW + overlap, height: "auto" }}
           width={1400}
           height={401}
           loading="eager"
@@ -74,7 +87,7 @@ const HeroGarland = () => {
           sizes={`${Math.ceil(bowW)}px`}
           alt=""
           className="absolute block max-w-none"
-          style={{ left: i * tileW - bowW * KNOT.x, top: padTop + joinY - bowH * KNOT.y, width: bowW, height: "auto" }}
+          style={{ left: offsetX + i * tileW - bowW * KNOT.x, top: padTop + joinY - bowH * KNOT.y, width: bowW, height: "auto" }}
           width={320}
           height={330}
           loading="eager"
