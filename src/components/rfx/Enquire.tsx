@@ -70,29 +70,10 @@ const Enquire = ({
               className="text-[15.5px] leading-[1.7] max-w-[460px] mt-7"
               style={{ color: "hsl(var(--on-deep-soft))" }}
             >
-              Most celebrations begin from £300. Every event is tailored,
-              so we'll guide you based on your brief. We work across
-              Surrey, London and surrounding areas.
+              Celebrations begin from £300, each one tailored to your
+              brief. We take on a limited number of events each month, so
+              book early to secure your date.
             </p>
-
-            <div
-              className="mt-9 p-5 max-w-[460px] w-full rounded-md text-center lg:text-left mx-auto lg:mx-0"
-              style={{
-                border: "1px solid hsl(var(--accent-warm) / 0.55)",
-                color: "hsl(var(--on-deep))",
-              }}
-            >
-              <div
-                className="font-mono-rf text-[10px] tracking-[0.22em] uppercase mb-2"
-                style={{ color: "hsl(var(--accent-warm))" }}
-              >
-                Limited availability
-              </div>
-              <p className="text-[13.5px] leading-[1.6]">
-                To give every celebration the attention it deserves, we work
-                with a limited number of clients each month.
-              </p>
-            </div>
           </div>
 
           {/* Right: form - wired to Netlify Forms (see index.html for build-time

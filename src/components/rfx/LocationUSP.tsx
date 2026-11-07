@@ -70,7 +70,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
       id="why-river-fox"
       className="rfx-section white !pb-8 md:!pb-10"
       style={{ paddingTop: 0, paddingBottom: "80px" }}
-      aria-label="Why choose River Fox Events"
+      aria-label="Why River Fox Events"
     >
       <div className="container-rfx">
         <div className="text-center heading-to-body">
@@ -84,7 +84,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
               textWrap: "balance",
             }}
           >
-            Why choose{" "}
+            Why{" "}
             <em className="italic font-light text-accent-warm">
               River Fox Events?
             </em>

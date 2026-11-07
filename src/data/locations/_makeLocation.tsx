@@ -152,7 +152,7 @@ type LocationInput = {
   /** Multiple extra Q&As inserted after the standard set. Renders after
    *  uniqueExtraFaq if both are provided. */
   uniqueExtraFaqs?: { q: string; a: string }[];
-  /** Bespoke paragraph for the "Why choose River Fox Events?" block.
+  /** Bespoke paragraph for the "Why River Fox Events?" block.
    *  Must be unique per town - Google pulls this as the search-result
    *  snippet, so a shared value makes every location look identical.
    *  Falls back to a generic templated paragraph when omitted. */
@@ -469,9 +469,10 @@ export function makeLocation(input: LocationInput): LocationConfig {
       ),
       intro: (
         <>
-          Based in Surrey, River Fox Events styles celebrations across{" "}
-          {areas.join(", ")} and into London. Not sure if we cover your
-          area? Just ask.
+          Every piece is designed and prepared at our studio in Horley,
+          then brought to you and installed on the day. We travel across
+          Surrey and into London, so if your venue isn't listed below,
+          just ask.
         </>
       ),
       areas,

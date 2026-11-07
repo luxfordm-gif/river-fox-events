@@ -300,7 +300,7 @@ const BalloonInstallations = () => {
 
         <LocationTrust reviews={BALLOON_REVIEWS} />
 
-        <InspirationStrip id="bi-inspiration" accent="your next balloon installation." images={INSPIRATION_BALLOONS} flushBottom />
+        <InspirationStrip id="bi-inspiration" accent="your next balloon installation." images={INSPIRATION_BALLOONS} flushBottom compactTop />
 
         <ChildrensFAQ
           faqs={FAQS}

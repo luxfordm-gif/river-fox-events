@@ -47,7 +47,7 @@ const LocationTrust = ({ reviews }: LocationTrustProps = {}) => {
   return (
     <section
       id="trust"
-      className="rfx-section"
+      className="rfx-section !pb-12 md:!pb-14"
       aria-labelledby="trust-heading"
     >
       <div className="container-rfx">
@@ -64,16 +64,6 @@ const LocationTrust = ({ reviews }: LocationTrustProps = {}) => {
           >
             Kind <em className="italic font-light text-accent-warm">words.</em>
           </h2>
-          <div className="mt-4">
-            <a
-              href="https://maps.app.goo.gl/dcLgoJHXnhjjzJKP6"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="tcard-readall"
-            >
-              5.0 from 13 Google reviews&nbsp;→
-            </a>
-          </div>
         </div>
 
         <TestimonialsCarousel reviews={reviews} />
