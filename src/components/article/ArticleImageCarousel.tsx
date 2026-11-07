@@ -15,13 +15,14 @@ export type ArticleCarouselImage = {
   caption?: string;
 };
 
-type Aspect = "video" | "3/2" | "4/3" | "square";
+type Aspect = "video" | "3/2" | "4/3" | "square" | "4/5";
 
 const ASPECT_CLASS: Record<Aspect, string> = {
   video: "aspect-video",
   "3/2": "aspect-[3/2]",
   "4/3": "aspect-[4/3]",
   square: "aspect-square",
+  "4/5": "aspect-[4/5]",
 };
 
 type Props = {

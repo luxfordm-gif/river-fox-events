@@ -1,5 +1,6 @@
 import ArticleProse from "@/components/article/ArticleProse";
 import ArticleImage from "@/components/article/ArticleImage";
+import ArticleImageCarousel from "@/components/article/ArticleImageCarousel";
 import ArticlePullQuote from "@/components/article/ArticlePullQuote";
 import ArticleCta from "@/components/article/ArticleCta";
 import ArticleTLDR from "@/components/article/ArticleTLDR";
@@ -7,7 +8,27 @@ import ArticleTLDR from "@/components/article/ArticleTLDR";
 import imgDoorway from "@/assets/journal/christmas-decorations-surrey/christmas-doorway-garland-pink-studio-east-molesey.webp";
 import imgSequin from "@/assets/journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp";
 import imgPanel from "@/assets/journal/christmas-decorations-surrey/merry-christmas-panel-silver-navy-balloon-garland.webp";
-import imgPorchIdea from "@/assets/journal/christmas-decorations-surrey/jewel-tone-bauble-garland-brick-porch-idea.webp";
+import imgDoorReigate from "@/assets/christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp";
+import imgDoorGeorgianNo16 from "@/assets/christmas/instagram/georgian-door-gold-champagne-garland.webp";
+import imgDoorNavyJewel from "@/assets/christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp";
+import imgDoorSalon from "@/assets/christmas/instagram/glass-salon-true-red-corner-garland.webp";
+import imgDoorMedispa from "@/assets/christmas/instagram/medispa-entrance-frosted-white-silver-garland.webp";
+import imgDoorWhitePlum from "@/assets/christmas/instagram/white-door-wreath-pink-plum-garland.webp";
+import imgDoorBlueSilver from "@/assets/christmas/instagram/blue-door-spruce-garland-silver-white-baubles.webp";
+import imgDoorBrickPillars from "@/assets/christmas/instagram/brick-pillars-red-gold-garlands-sage-door.webp";
+
+/* Doorways Laura dressed last season (same files and alt text as the
+   Christmas section of Our work). */
+const doorways = [
+  { src: imgDoorReigate, alt: "Blue restaurant double doors in Reigate edged with red and gold bauble garlands", caption: "A restaurant doorway in Reigate, in red and gold." },
+  { src: imgDoorGeorgianNo16, alt: "Georgian black door at number 16 framed in spruce with gold and champagne baubles and stars", caption: "A Georgian door in gold and champagne." },
+  { src: imgDoorNavyJewel, alt: "Navy front door beneath a spruce arch crowded with pink, purple, teal and gold baubles", caption: "A navy door under an arch of jewel-toned baubles." },
+  { src: imgDoorSalon, alt: "Glass salon frontage with a spruce corner garland weighed down with true-red baubles", caption: "A salon frontage in true red." },
+  { src: imgDoorMedispa, alt: "Medispa entrance framed in frosted spruce with white and silver baubles", caption: "A medispa entrance in frosted white and silver." },
+  { src: imgDoorWhitePlum, alt: "White front door edged in a spruce garland of pink, plum, gold and red baubles", caption: "A white door in pink and plum." },
+  { src: imgDoorBlueSilver, alt: "Blue front door framed in real spruce with blue, white and silver baubles", caption: "A blue front door in silver and white." },
+  { src: imgDoorBrickPillars, alt: "Brick porch pillars wound with red, gold and green garlands either side of a sage door", caption: "Brick porch pillars in red, gold and green." },
+];
 
 const ChristmasDecorationsSurreyArticle = () => (
   <>
@@ -77,12 +98,14 @@ const ChristmasDecorationsSurreyArticle = () => (
         door, deep reds and natural pine cones feel&nbsp;right.
       </p>
       <p>
-        Garlands can be fresh or faux, depending on how long you'd like them to
-        last. Fresh foliage smells wonderful and suits a shorter window, while
-        a good faux garland stays full and neat right through to January, which
-        shops and offices often prefer. Many clients choose a mix of the two, a
-        faux base with fresh spruce layered on top, for the fullest look. You
-        can see past doorways and book yours on my{" "}
+        Every garland I make is either fully fresh or fully faux. Fresh
+        spruce brings the deep green and the scent of a real Christmas tree;
+        I install it from early November, and it stays fresh right through
+        Christmas and into January. A faux, or everlasting, garland can go up
+        whenever you're ready to start decorating, then be packed away
+        carefully and enjoyed again next year. Both look lovely, so the choice
+        really comes down to the feel you'd like at your door. You can see
+        past doorways and book yours on my{" "}
         <a href="/christmas-door-garlands/">Christmas door garlands</a>{" "}
         page.
       </p>
@@ -96,13 +119,7 @@ const ChristmasDecorationsSurreyArticle = () => (
       </p>
     </ArticleProse>
 
-    <ArticleImage
-      src={imgPorchIdea}
-      aspect="3/4"
-      width={560}
-      alt="Snow-dusted fir garland with jewel-toned baubles and warm lights arching over a navy front door"
-      caption="An idea for a navy door on a brick house: jewel-toned baubles and warm lights around the whole&nbsp;frame."
-    />
+    <ArticleImageCarousel images={doorways} aspect="4/5" width={560} />
 
     <ArticleCta
       variant="inline"
@@ -182,9 +199,11 @@ const ChristmasDecorationsSurreyArticle = () => (
         <a href="/christmas-door-garlands/#enquire">Christmas doorway page</a>,
         or an email to{" "}
         <a href="mailto:riverfoxevents@gmail.com">riverfoxevents@gmail.com</a>,
-        with a photo of your door and your postcode. That tells me the size,
-        the colour and where you are, and I can come back to you with a quote
-        and a date. For a party, send me the venue, the date and a rough idea
+        with a photo of your door, your postcode, and whether you'd like
+        fresh spruce or everlasting faux. Every doorway is different, so the
+        photo tells me the size and the colour, the postcode tells me where
+        you are, and I can come back to you with a quote tailored to your
+        door and a date. For a party, send me the venue, the date and a rough idea
         of the room, and I'll suggest the setup that will do the most
         for&nbsp;it.
       </p>

@@ -13,6 +13,16 @@ const SERVICES = [
 /* Seasonal service, set apart below a divider with a velvet bow. */
 const SEASONAL = { href: "/christmas-door-garlands", label: "Christmas door garlands" };
 
+/* Desktop dropdown: the bow jingles once on hover (Matt, 2026-11-07). The
+   class comes off only when the animation ends, so leaving mid-jingle lets it
+   finish, and a new hover can't restart it part-way. */
+const jingleBow = (e: React.MouseEvent<HTMLElement>) => {
+  const bow = e.currentTarget.querySelector("img");
+  if (!bow || bow.classList.contains("bow-jingle")) return;
+  bow.classList.add("bow-jingle");
+  bow.addEventListener("animationend", () => bow.classList.remove("bow-jingle"), { once: true });
+};
+
 const ABOUT_LINKS = [
   { href: "/#about", label: "About Laura" },
   { href: "/#kindness", label: "Client reviews" },
@@ -100,6 +110,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                 <div className="mx-5 my-2 border-t border-ink/10" aria-hidden="true" />
                 <a
                   href={SEASONAL.href}
+                  onMouseEnter={jingleBow}
                   className="no-underline-fx flex items-center gap-2.5 px-5 py-2.5 text-[13px] text-ink hover:underline underline-offset-4 decoration-ink/60"
                 >
                   <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />

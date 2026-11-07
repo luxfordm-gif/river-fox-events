@@ -38,7 +38,7 @@ const ArticleCta = ({
   }
 
   return (
-    <aside className="max-w-[820px] mx-auto my-16 md:my-24 px-6">
+    <aside className="max-w-[720px] mx-auto my-16 md:my-24 px-6">
       <div className="rounded-[18px] bg-surface-deep text-on-deep px-8 md:px-14 py-10 md:py-16 text-center">
         <h2
           className="font-serif-rf max-w-[20ch] mx-auto"
