@@ -141,62 +141,6 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 .form-row.form-check input { width: 18px; height: 18px; padding: 0; accent-color: hsl(var(--accent)); flex: none; }
 .form-row.form-check > span { min-width: 0; }
 
-/* Instagram strip (src/components/rfx/InstagramStrip.tsx). */
-.xmas-ig { overflow: hidden; }
-.xmas-ig__track {
-  display: flex;
-  gap: 12px;
-  width: max-content;
-  animation: rfx-marq var(--ig-duration, 75s) linear infinite;
-}
-.xmas-ig:hover .xmas-ig__track,
-.xmas-ig:focus-within .xmas-ig__track { animation-play-state: paused; }
-.xmas-ig__item { flex: none; }
-.xmas-ig__tile {
-  position: relative;
-  display: block;
-  width: clamp(230px, 22vw, 340px);
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  border-radius: 10px;
-}
-.xmas-ig__tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.xmas-ig__over {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  color: hsl(var(--xmas-cream));
-  background: hsl(120 6% 12% / 0.55);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-.xmas-ig__handle { font-family: var(--font-sans); font-weight: 600; font-size: 14px; letter-spacing: 0.01em; }
-.xmas-ig__note { font-family: var(--font-sans); font-size: 12px; opacity: 0.85; }
-.xmas-ig__tile:hover .xmas-ig__over,
-.xmas-ig__tile:focus-visible .xmas-ig__over { opacity: 1; }
-/* Touch screens get a small badge instead of the hover overlay. */
-.xmas-ig__badge {
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
-  display: none;
-  padding: 5px;
-  border-radius: 4px;
-  color: hsl(var(--xmas-cream));
-  background: hsl(120 6% 12% / 0.5);
-}
-@media (hover: none) {
-  .xmas-ig__badge { display: inline-flex; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .xmas-ig { overflow-x: auto; }
-  .xmas-ig__track { animation: none; }
-}
-
 /* Floating Christmas card (src/components/rfx/ChristmasPromo.tsx).
    Bottom-right card on desktop, a slim bar along the bottom on phones. */
 .xmas-promo {

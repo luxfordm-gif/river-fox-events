@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import InspirationStrip from "@/components/rfx/InspirationStrip";
+import { INSPIRATION_BALLOONS } from "@/data/inspiration";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
@@ -297,6 +299,8 @@ const BalloonInstallations = () => {
         />
 
         <LocationTrust reviews={BALLOON_REVIEWS} />
+
+        <InspirationStrip id="bi-inspiration" accent="your next balloon installation." images={INSPIRATION_BALLOONS} />
 
         <ChildrensFAQ
           faqs={FAQS}

@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import InspirationStrip from "@/components/rfx/InspirationStrip";
+import { INSPIRATION_MILESTONES } from "@/data/inspiration";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
@@ -162,6 +164,8 @@ const Milestones = () => {
             atmosphere, balance and detail.
           </p>
         </CPReveal>
+
+        <InspirationStrip id="ms-inspiration" accent="your next celebration." images={INSPIRATION_MILESTONES} />
 
         <div id="how-it-works">
           <Process />

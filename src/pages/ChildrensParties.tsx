@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import InspirationStrip from "@/components/rfx/InspirationStrip";
+import { INSPIRATION_CHILDRENS } from "@/data/inspiration";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
@@ -170,6 +172,8 @@ const ChildrensParties = () => {
             remembered long after the day itself.
           </p>
         </CPReveal>
+
+        <InspirationStrip id="cp-inspiration" accent="your next party." images={INSPIRATION_CHILDRENS} />
 
         <div id="how-it-works">
           <Process />
