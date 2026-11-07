@@ -69,6 +69,8 @@ import adSwitchOn from "@/assets/christmas/video/christmas-ad-big-switch-on.mp4"
 import adSwitchOnPoster from "@/assets/christmas/video/christmas-ad-big-switch-on-poster.webp";
 import adDog from "@/assets/christmas/video/christmas-ad-dog-and-squirrel.mp4";
 import adDogPoster from "@/assets/christmas/video/christmas-ad-dog-and-squirrel-poster.webp";
+import adCarols from "@/assets/christmas/video/christmas-ad-carol-singers.mp4";
+import adCarolsPoster from "@/assets/christmas/video/christmas-ad-carol-singers-poster.webp";
 import fanSwitchOn from "@/assets/christmas/video/family-porch-garland-lights-switch-on.webp";
 import fanLadder from "@/assets/christmas/video/porch-garland-sliding-off-stepladder.webp";
 import fanSnowball from "@/assets/christmas/video/porch-garland-falling-onto-woman-below.webp";
@@ -83,10 +85,11 @@ import adThumb720 from "@/assets/christmas/video/cream-house-door-lit-jewel-baub
 const AD_STORIES: Story[] = [
   { src: adWonky, poster: adWonkyPoster, label: "A homemade porch garland sags and ends up on the step, then a styled doorway glows with baubles" },
   { src: adTree, poster: adTreePoster, label: "A DIY garland gets no further than a string outline and a few spruce cuttings" },
-  { src: adSnowball, poster: adSnowballPoster, label: "A porch garland slides off on its own while a woman stands beneath it" },
+  { src: adSnowball, poster: adSnowballPoster, label: "A child's snowball knocks the porch garland down onto a woman standing beneath it" },
   { src: adLadder, poster: adLadderPoster, label: "Hanging a garland from a stepladder in the rain goes wrong" },
   { src: adSwitchOn, poster: adSwitchOnPoster, label: "A family gathers for the garland lights switch-on, and it fizzles out with a spark" },
   { src: adDog, poster: adDogPoster, label: "A passing dog chases a squirrel and its lead pulls the lit garland down" },
+  { src: adCarols, poster: adCarolsPoster, label: "Carol singers scatter as the porch garland falls behind them, leaving song sheets and baubles on the path" },
 ];
 const AD_THUMB = {
   src: adThumb540,
@@ -95,7 +98,7 @@ const AD_THUMB = {
 };
 const AD_ANCHOR = "christmas-ad";
 /* Stills from the DIY mishaps that fan out behind the tile, left to right;
-   each opens its own film. All six films share one porch, so each still is
+   each opens its own film. All seven films share one porch, so each still is
    a close crop with its moment on the side that shows when fanned (left
    cards: left edge, right cards: right edge). Decorative, so no alt text. */
 const AD_FAN = [
