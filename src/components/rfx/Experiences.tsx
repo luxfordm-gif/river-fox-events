@@ -143,7 +143,7 @@ const Experiences = ({
           </h2>
           <p className="text-[15.5px] leading-[1.6] text-ink-soft pb-3 text-center md:text-left mx-auto md:mx-0">
             {intro ??
-              "Our work centres around three core experiences; Children's Parties, Milestone Celebrations and Corporate Installations. Each fully bespoke and designed from the ground up, with a focus on aesthetic, flow and detail. We work with a small number of clients each month so every event receives personal attention from concept to install."}
+              "Our work centres around three core experiences; Children's Parties, Milestone Celebrations and Corporate Installations. Each fully bespoke and designed from the ground up, with a focus on aesthetic, flow and detail."}
           </p>
         </div>
 

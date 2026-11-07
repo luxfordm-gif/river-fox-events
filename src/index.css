@@ -811,7 +811,7 @@
     border-radius: 999px; border: 1px solid hsl(var(--ink) / 0.14);
     background: hsl(var(--background) / 0.86);
     -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4);
-    box-shadow: 0 24px 56px -10px hsl(var(--ink) / 0.58), 0 4px 14px hsl(var(--ink) / 0.18);
+    box-shadow: 0 20px 48px -12px hsl(var(--ink) / 0.5), 0 3px 9px hsl(var(--ink) / 0.13);
     transform: translate(-50%, calc(100% + 60px)); opacity: 0; pointer-events: none;
     transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
   }

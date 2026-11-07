@@ -26,23 +26,39 @@ import {
 
 import imgHero from "@/assets/pastel-safari-anaya-two-wild-ballroom-surrey.webp";
 import imgHeroMobile from "@/assets/river-fox-events-fairy-first-birthday-kayla-arch-marquee-portrait.webp";
-import imgGalleryJungle from "@/assets/river-fox-events-jungle-theme-fourever-wild-full-setup.webp";
-import imgGalleryIman from "@/assets/garden-party-iman-pastel-milestone-surrey.webp";
-import imgGalleryJeep from "@/assets/river-fox-events-jungle-theme-safari-jeep-giraffe-lion-cub.webp";
+import imgRainbowFive from "@/assets/cp-celebrations.webp";
+import imgRoseGold40 from "@/assets/40th-birthday-rose-gold-marquee-surrey.webp";
+import imgDinosaurFinished from "@/assets/journal/from-design-to-delivery/dinosaur-party-styling-surrey-finished.webp";
 
-/* "It usually starts with a balloon arch": a story-style run of six
-   balloon-led photos in soft, neutral palettes (Matt, 2026-11-06). Photos come from the Our work gallery
-   (graded copies, same alt everywhere). Harvey's arch stays first. */
-const INTRO_SLIDES = [
-  "river-fox-events-naming-ceremony-harvey-daisy-foreground.webp",
-  "river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch.webp",
-  "services/milestones/baby-in-bloom-barn-twin-arches-dusty-blue.webp",
-  "services/childrens-parties/hot-air-balloon-teddy-basket-neutral.webp",
-  "christening-blessing-styling-surrey.webp",
-  "services/milestones/baby-shower-sage-gold-balloons-baby-blocks.webp",
-].map((source) => {
+/* Photos from the Our work gallery: its resized copies and its one alt per photo. */
+const fromGallery = (source: string) => {
   const p = galleryPhoto(source);
   return { src: p.src, srcSet: p.srcSet, alt: p.alt, position: p.position };
+};
+
+/* "It usually starts with a balloon arch": a story-style run of balloon-led
+   photos, in the order Matt picked them from the photo catalogue (2026-11-07).
+   Photos not in the gallery reuse the alt they carry elsewhere on the site. */
+const INTRO_SLIDES = [
+  { src: imgRainbowFive, alt: "Rainbow balloon hoop around a light-up 5 with a pastel balloon installation" },
+  fromGallery("river-fox-events-pastel-birthday-reeva-entrance-arch.webp"),
+  fromGallery("services/childrens-parties/bell-tent-picnic-pastel-balloons-garden.webp"),
+  { src: imgRoseGold40, alt: "Rose gold light-up 40 marquee with a blush and chrome balloon installation in a hall with a wall clock" },
+  fromGallery("services/milestones/baby-shower-sage-gold-balloons-baby-blocks.webp"),
+];
+
+/* "Balloons as part of the whole room": one large photo, then a column of
+   six (Matt, 2026-11-07). The gallery's 1400px copies keep the page light. */
+const RECENT_WORK = [
+  "journal/dylan-christening-first-birthday/dylan-first-birthday-teddy-cutout-chrome-gold-balloons.webp",
+  "services/childrens-parties/hot-air-balloon-teddy-basket-neutral.webp",
+  "services/childrens-parties/bunny-picnic-party-pink-arches-low-table.webp",
+  "river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch.webp",
+  "services/milestones/gloria-80th-birthday-table-centrepiece-burhill.webp",
+  "services/milestones/13th-birthday-pink-light-up-numbers-garland.webp",
+].map((source) => {
+  const p = galleryPhoto(source);
+  return { src: p.large, alt: p.alt };
 });
 
 /* Five things Laura makes with balloons. Each card links on to the
@@ -229,22 +245,9 @@ const BalloonInstallations = () => {
             </>
           }
           intro="A few recent setups where the arch or garland is one layer of the styling, alongside the backdrop, the props and the table."
-          mainImage={LATEST_WORK["wonka-chocolate-arch"].src}
-          mainImageAlt={LATEST_WORK["wonka-chocolate-arch"].alt}
-          images={[
-            {
-              src: imgGalleryJungle,
-              alt: "Fourever Wild jungle party setup with white safari jeep, balloon garland, giraffe, zebra and lion cub by a bamboo backdrop",
-            },
-            {
-              src: imgGalleryIman,
-              alt: "Pastel garden-party tablescape for Iman's milestone with a soft runner, layered place settings and balloons",
-            },
-            {
-              src: imgGalleryJeep,
-              alt: "White safari jeep prop with teal and orange balloon garland, a giraffe and a lion cub at a jungle children's party in Surrey",
-            },
-          ]}
+          mainImage={imgDinosaurFinished}
+          mainImageAlt="Finished dinosaur party in a Surrey home: sage balloon arch, AYAAN name sign, dinosaur cutouts and wooden explorer crates"
+          images={RECENT_WORK}
         />
 
         <div id="how-it-works">
