@@ -10,9 +10,9 @@ type Props = {
  * section.
  *
  * Card layout: small thumbnail on the left (using `cardImage`), title +
- * teaser + read-more on the right. Single column on mobile, two columns
- * from md+. Same horizontal card shape across breakpoints - feels
- * editorial-list rather than a Pinterest-style grid.
+ * teaser + read-more on the right. One column at every width, at the
+ * article text width. Same horizontal card shape across breakpoints -
+ * feels editorial-list rather than a Pinterest-style grid.
  *
  * Related items are *manually curated* via each article's `relatedSlugs`
  * array in src/data/articles/index.tsx - not auto previous/next or
@@ -22,14 +22,16 @@ const RelatedArticles = ({ items }: Props) => {
   if (!items || items.length === 0) return null;
 
   return (
-    <section className="max-w-[1120px] mx-auto px-6 md:px-12 my-16 md:my-24">
+    // Same 720px column as the article text and the end panel, so all three
+    // share one left and right edge (Matt, 2026-11-07).
+    <section className="max-w-[720px] mx-auto px-6 my-16 md:my-24">
       <div
         className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-8 text-center"
         style={{ fontWeight: 600 }}
       >
         More to read
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 gap-8 md:gap-10">
         {items.map((a) => (
           <a
             key={a.slug}
