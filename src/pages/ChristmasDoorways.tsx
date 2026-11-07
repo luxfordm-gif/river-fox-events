@@ -638,7 +638,14 @@ const ChristmasDoorways = () => {
         />
 
         {/* Booking form + contact */}
-        <section id="enquire" className="rfx-section dark rfx-enquire" aria-labelledby="enquire-heading">
+        <section id="enquire" className="rfx-section dark rfx-enquire relative" aria-labelledby="enquire-heading">
+          {/* A deep drift of snow along the whole top edge, where the cream
+              page meets the dark booking section (Matt, 2026-11-07). */}
+          {/* overflow-x: clip keeps the canvas (which runs a little past
+              both ends) from widening the page on phones. */}
+          <div aria-hidden="true" className="absolute left-0 right-0 top-0 h-0" style={{ overflowX: "clip" }}>
+            <SnowCap mode="edge" radius={0} scale={2.4} bleed />
+          </div>
           <div className="container-rfx">
             <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">
               <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
