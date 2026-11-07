@@ -99,7 +99,7 @@ const SnowCap = ({ mode, radius = 14, ground = "light" }: SnowCapProps) => {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const surf = surface();
       const rnd = rand(W * 31 + H);
-      const maxDepth = mode === "edge" ? 10 : ground === "light" ? 4.6 : 4;
+      const maxDepth = mode === "edge" ? 13 : ground === "light" ? 5.4 : 5;
       flakes = [];
       for (let x = 1; x < W - 1; x += 1.1) {
         const xi = Math.round(x), y0 = surf[xi];

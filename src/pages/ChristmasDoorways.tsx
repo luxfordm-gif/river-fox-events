@@ -388,7 +388,10 @@ const ChristmasDoorways = () => {
                   letterSpacing: "-0.038em",
                 }}
               >
-                Christmas door garlands in Surrey.
+                <span className="xmas-title-snow">
+                  <SnowCap mode="text" />
+                  <span data-snow-text>Christmas door garlands in Surrey.</span>
+                </span>
               </h1>
               <div className="mt-5 max-w-[46ch] md:max-w-[70ch] text-[17px] leading-[1.65] text-ink-soft space-y-4">
                 <p>
@@ -437,7 +440,8 @@ const ChristmasDoorways = () => {
 
             <div ref={cardsRef} className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
               {CARDS.map((card) => (
-                <article key={card.title} className="fade-up">
+                <article key={card.title} className="fade-up relative">
+                  <SnowCap mode="edge" radius={12} />
                   <div className="xmas-swap">
                     <img
                       src={card.img}
@@ -494,7 +498,7 @@ const ChristmasDoorways = () => {
               <div className="max-w-[760px] mx-auto text-center fade-up mt-8 md:mt-10">
                 <p className="eyebrow">Garland options</p>
                 <div className="mt-5">
-                  <SectionTitle id="xmas-options-heading">
+                  <SectionTitle id="xmas-options-heading" snow>
                     Choose your{" "}
                     <em className="italic font-light text-accent-warm">Christmas garland.</em>
                   </SectionTitle>
@@ -567,7 +571,7 @@ const ChristmasDoorways = () => {
             <div className="container-rfx">
               <BowDivider />
               <div className="max-w-[760px] mx-auto text-center fade-up">
-                <SectionTitle id="xmas-ad-heading">
+                <SectionTitle id="xmas-ad-heading" snow>
                   Watch the{" "}
                   <em className="italic font-light text-accent-warm">Christmas campaign.</em>
                 </SectionTitle>
@@ -604,7 +608,8 @@ const ChristmasDoorways = () => {
             </div>
             <ol className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
               {STEPS.map((s) => (
-                <li key={s.n} className="fade-up border-t pt-6" style={{ borderColor: "hsl(var(--ink) / 0.14)" }}>
+                <li key={s.n} className="fade-up border-t pt-6 relative" style={{ borderColor: "hsl(var(--ink) / 0.14)" }}>
+                  <SnowCap mode="edge" radius={0} />
                   {/* Extra tag sits by the step number so step titles stay on
                       one line, even in the narrow 4-column layout. */}
                   <div className="flex items-center gap-3 h-[22px]">
@@ -655,7 +660,7 @@ const ChristmasDoorways = () => {
               </div>
 
               <form
-                className="form-wrap"
+                className="form-wrap relative"
                 name="christmas-doorway"
                 method="POST"
                 encType="multipart/form-data"
@@ -663,6 +668,7 @@ const ChristmasDoorways = () => {
                 data-netlify-honeypot="bot-field"
                 onSubmit={onSubmit}
               >
+                <SnowCap mode="edge" radius={14} ground="dark" />
                 <input type="hidden" name="form-name" value="christmas-doorway" />
                 <p className="hidden" aria-hidden="true">
                   <label>
