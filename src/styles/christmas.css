@@ -260,7 +260,20 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 }
 /* One movement only: the card eases up 4px. (Scoped tighter than .fade-up,
    which sets transition: none and made the card jump.) */
-.xmas-options > .xmas-option { transition: transform .45s cubic-bezier(.45,0,.25,1); }
+.xmas-options > .xmas-option {
+  transition: transform .45s cubic-bezier(.45,0,.25,1), box-shadow .45s cubic-bezier(.45,0,.25,1);
+  box-shadow: inset 0 0 0 0 hsl(var(--ink) / 0.14);
+}
+.xmas-options > .xmas-option.is-popular {
+  box-shadow: inset 0 0 0 0 hsl(var(--xmas-gold-deep)), 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
+}
+/* On hover the border thickens 2px inwards (an inset ring, so nothing shifts). */
+.xmas-options > .xmas-option:hover, .xmas-options > .xmas-option:focus-within {
+  box-shadow: inset 0 0 0 2px hsl(var(--ink) / 0.14);
+}
+.xmas-options > .xmas-option.is-popular:hover, .xmas-options > .xmas-option.is-popular:focus-within {
+  box-shadow: inset 0 0 0 2px hsl(var(--xmas-gold-deep)), 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
+}
 /* The link doesn't grow or nudge its arrow here; the card's lift is the hover. */
 .xmas-option .xmas-option__link, .xmas-option .xmas-option__link .arr { transition: none; }
 .xmas-option .xmas-option__link:hover { gap: 10px; }
