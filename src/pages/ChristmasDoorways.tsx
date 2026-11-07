@@ -262,9 +262,10 @@ const BowDivider = () => (
 const SnowHint = ({ className = "" }: { className?: string }) => (
   <div className={`xmas-snow-hint ${className}`} aria-hidden="true">
     <span>Move the snow</span>
-    <svg width="40" height="66" viewBox="0 0 40 66" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 5c15 1 27 11 25 30-.7 8-2.5 15-5 23" />
-      <path d="M17 51l7 8 6-10" />
+    <svg width="40" height="66" viewBox="0 0 40 66" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 5c15 1 27 11 25 30-.7 8-2.5 15-5 24" />
+      {/* Arrowhead: an even V lined up with the end of the curve. */}
+      <path d="M32.2 50.6L24 59.5l-3.4-11.6" />
     </svg>
   </div>
 );
