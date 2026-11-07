@@ -257,8 +257,14 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
   /* Halfway between the page cream (#FCFBF7) and the main cream (#F1EFE8). */
   background: hsl(46 30% 95.5%);
   padding: 52px 32px 36px;
-  transition: transform .35s cubic-bezier(.2,.7,.2,1);
 }
+/* One movement only: the card eases up 4px. (Scoped tighter than .fade-up,
+   which sets transition: none and made the card jump.) */
+.xmas-options > .xmas-option { transition: transform .45s cubic-bezier(.45,0,.25,1); }
+/* The link doesn't grow or nudge its arrow here; the card's lift is the hover. */
+.xmas-option .xmas-option__link, .xmas-option .xmas-option__link .arr { transition: none; }
+.xmas-option .xmas-option__link:hover { gap: 10px; }
+.xmas-option .xmas-option__link:hover .arr { transform: none; }
 .xmas-option.is-popular {
   border: 1.5px solid hsl(var(--xmas-gold-deep));
   box-shadow: 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
