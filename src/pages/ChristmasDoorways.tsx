@@ -224,8 +224,8 @@ const CARDS = [
     detailAlt: "Gold star, frosted pine cone and gold bauble tucked into spruce with a gold ribbon bow",
     title: "Front doors and porches",
     body: [
-      "From a generous sweep of festive greenery to a beautifully adorned doorway, each garland is styled to complement your home's character.",
-      "Think beautiful foliage, statement baubles, sumptuous ribbons and carefully chosen details, all brought together in a palette that feels just right for your home.",
+      "From a generous sweep of greenery to a fully adorned doorway, each garland is styled around your home's character.",
+      "Think lush foliage, statement baubles, rich ribbons and carefully chosen details, in a palette that feels just right for you.",
     ],
   },
   {
@@ -237,8 +237,8 @@ const CARDS = [
     detailAlt: "Deep red baubles, eucalyptus and warm fairy lights nestled in spruce beside a shop window",
     title: "Shops, salons and restaurants",
     body: [
-      "Make a festive first impression with a beautifully dressed entrance that catches the eye and welcomes customers in.",
-      "Whether you favour classic Christmas colours or something more contemporary, your garland can be styled to complement your brand and create a memorable seasonal backdrop.",
+      "Make a festive first impression with a dressed entrance that catches the eye and welcomes customers in.",
+      "Classic Christmas colours or something more contemporary, each garland is matched to your brand for a memorable seasonal backdrop.",
     ],
   },
 ];
@@ -396,7 +396,7 @@ const ChristmasDoorways = () => {
               <p className="eyebrow">Christmas 2026 · Now booking</p>
               <h1
                 id="xmas-hero-heading"
-                className="font-serif-rf mt-5 max-w-[14ch] md:max-w-none"
+                className="font-serif-rf mt-5 max-w-none"
                 style={{
                   fontSize: "var(--fs-display)",
                   lineHeight: 0.96,

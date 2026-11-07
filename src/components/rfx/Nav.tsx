@@ -223,8 +223,8 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className={`font-serif-rf text-[32px] leading-tight py-1.5 text-ink no-underline ${
-                "seasonal" in l ? "flex items-center gap-3 border-y border-ink/10 py-4 my-2" : ""
+              className={`font-serif-rf text-[28px] leading-tight py-1 text-ink no-underline ${
+                "seasonal" in l ? "flex items-center gap-3 border-y border-ink/10 py-3 my-1.5" : ""
               }`}
               style={{
                 opacity: open ? 1 : 0,
@@ -239,27 +239,11 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
             </a>
           ))}
 
-          <a
-            href={enquireHref}
-            onClick={(e) => {
-              setOpen(false);
-              handleEnquireClick(e);
-            }}
-            className="btn-solid-rf accent mt-8 self-start"
-            style={{
-              opacity: open ? 1 : 0,
-              transform: open ? "translateY(0)" : "translateY(20px)",
-              transition: `opacity .5s ease 360ms, transform .5s ease 360ms`,
-            }}
-          >
-            Enquire now <span>→</span>
-          </a>
-
-          <div className="hairline mt-10" />
+          <div className="hairline mt-4" />
           <a
             href="/journal"
             onClick={() => setOpen(false)}
-            className="mt-8 font-mono-rf text-[11px] tracking-[0.22em] uppercase text-ink no-underline inline-flex items-center gap-2 self-start"
+            className="mt-6 font-mono-rf text-[11px] tracking-[0.22em] uppercase text-ink no-underline inline-flex items-center gap-2 self-start"
             style={{
               opacity: open ? 1 : 0,
               transform: open ? "translateY(0)" : "translateY(20px)",
@@ -299,6 +283,22 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
             <br />
             Based in Surrey · By appointment.
           </p>
+
+          <a
+            href={enquireHref}
+            onClick={(e) => {
+              setOpen(false);
+              handleEnquireClick(e);
+            }}
+            className="btn-solid-rf accent mt-8 self-start"
+            style={{
+              opacity: open ? 1 : 0,
+              transform: open ? "translateY(0)" : "translateY(20px)",
+              transition: `opacity .5s ease 600ms, transform .5s ease 600ms`,
+            }}
+          >
+            Enquire now <span>→</span>
+          </a>
         </div>
       </div>
     </>

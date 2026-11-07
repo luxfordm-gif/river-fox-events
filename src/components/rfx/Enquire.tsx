@@ -50,7 +50,7 @@ const Enquire = ({
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start rfx-md-stack">
           {/* Left: heading + intro + availability card. Sticky on desktop so it
               follows the reader down the long form. */}
-          <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
+          <div className="pt-2 mb-6 lg:mb-0 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
             <h2
               id="enquire-heading"
               className="font-serif-rf"

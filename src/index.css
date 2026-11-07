@@ -97,6 +97,13 @@
     --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   }
+
+  /* Phones: the hero h1 scales with the screen instead of holding at 52px,
+     so headings like "Themed children's parties, fully styled." sit on
+     three lines, not four or five. Meets the 52px floor above at ~473px. */
+  @media (max-width: 480px) {
+    :root { --fs-display: clamp(36px, 11vw, 52px); }
+  }
 }
 
 @layer base {
