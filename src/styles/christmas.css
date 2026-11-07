@@ -323,6 +323,18 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
   pointer-events: none;
 }
 .xmas-snow-hint svg { flex: none; margin-bottom: -46px; }
+/* The smaller note above the first garland card: laptop and up only. */
+.xmas-snow-hint--card {
+  display: none;
+  right: auto;
+  left: 6px;
+  top: -64px;
+  font-size: clamp(19px, 1.45vw, 23px);
+}
+.xmas-snow-hint--card svg { width: 32px; height: 53px; margin-bottom: -40px; }
+@media (min-width: 1024px) {
+  .xmas-snow-hint--card { display: flex; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .xmas-snow-hint { display: none; }
+  .xmas-snow-hint { display: none !important; }
 }

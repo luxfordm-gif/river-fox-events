@@ -257,6 +257,18 @@ const BowDivider = () => (
   />
 );
 
+/* Handwritten "Move the snow" note with an arrow curving down into the snow
+   (styles in christmas.css; hidden with reduced motion, where snow stays still). */
+const SnowHint = ({ className = "" }: { className?: string }) => (
+  <div className={`xmas-snow-hint ${className}`} aria-hidden="true">
+    <span>Move the snow</span>
+    <svg width="40" height="66" viewBox="0 0 40 66" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 5c15 1 27 11 25 30-.7 8-2.5 15-5 23" />
+      <path d="M17 51l7 8 6-10" />
+    </svg>
+  </div>
+);
+
 /* Section title. With `snow`, snow settles on top of the letters; the cursor
    pushes it off (SnowCap). */
 const SectionTitle = ({ children, id, light, snow }: { children: ReactNode; id: string; light?: boolean; snow?: boolean }) => {
@@ -442,6 +454,9 @@ const ChristmasDoorways = () => {
               {CARDS.map((card) => (
                 <article key={card.title} className="fade-up relative">
                   <SnowCap mode="edge" radius={12} />
+                  {/* Laptop and up only: on narrower screens the intro text
+                      above runs too wide for the note to sit beside it. */}
+                  {card === CARDS[0] && <SnowHint className="xmas-snow-hint--card" />}
                   <div className="xmas-swap">
                     <img
                       src={card.img}
@@ -648,13 +663,7 @@ const ChristmasDoorways = () => {
           </div>
           {/* A handwritten nudge that the snow can be moved (hidden with
               reduced motion, where the snow stays still). */}
-          <div className="xmas-snow-hint" aria-hidden="true">
-            <span>Move the snow</span>
-            <svg width="40" height="66" viewBox="0 0 40 66" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 5c15 1 27 11 25 30-.7 8-2.5 15-5 23" />
-              <path d="M17 51l7 8 6-10" />
-            </svg>
-          </div>
+          <SnowHint />
           <div className="container-rfx">
             <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">
               <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
