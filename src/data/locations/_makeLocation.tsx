@@ -332,7 +332,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
     gallery: {
       heading: (
         <>
-          A glimpse of recent{" "}
+          Recent{" "}
           <em className="italic font-light text-accent-warm">celebrations.</em>
         </>
       ),

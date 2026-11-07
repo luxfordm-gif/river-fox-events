@@ -6,6 +6,9 @@
 import type { InstagramStripImage } from "@/components/rfx/InstagramStrip";
 import { galleryPhoto } from "@/data/gallery";
 
+import xmasNavyDoor from "@/assets/christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp";
+import xmasGeorgianDoor from "@/assets/christmas/instagram/georgian-door-gold-champagne-garland.webp";
+import xmasPilates from "@/assets/christmas/instagram/pink-pilates-studio-garland-blush-red-baubles.webp";
 import igOttilieToyStory from "@/assets/services/childrens-parties/ottilie-toy-story-second-birthday-gingham-table.webp";
 import igDukeLevel8Gaming from "@/assets/services/childrens-parties/duke-level-8-gaming-birthday-backdrop.webp";
 import igTeddyBearFirstBirthdayPinkGreyBalloonHoop from "@/assets/services/childrens-parties/teddy-bear-first-birthday-pink-grey-balloon-hoop.webp";
@@ -108,4 +111,22 @@ export const INSPIRATION_TOWNS: InstagramStripImage[] = [
   INSPIRATION_MILESTONES[4], // champagne 40 garland
   INSPIRATION_CHILDRENS[7], // Cutest Pumpkin
   INSPIRATION_CORPORATE[0], // office Christmas half arch
+];
+
+/* Homepage "Follow along on Instagram": a mix of all three services plus a few
+   Christmas door garlands (Matt, 2026-11-07). Garland alts match the Christmas page. */
+export const INSPIRATION_HOME: InstagramStripImage[] = [
+  INSPIRATION_CHILDRENS[0], // Ottilie's Toy Story table
+  INSPIRATION_MILESTONES[2], // pastel 21 balloon wall
+  { src: xmasNavyDoor, alt: "Navy front door beneath a spruce arch crowded with pink, purple, teal and gold baubles" },
+  INSPIRATION_CHILDRENS[3], // rainbow unicorn backdrop
+  INSPIRATION_CORPORATE[1], // gala staircase garland
+  INSPIRATION_CHILDRENS[1], // Duke's Level 8
+  { src: xmasGeorgianDoor, alt: "Georgian black door at number 16 framed in spruce with gold and champagne baubles and stars" },
+  INSPIRATION_MILESTONES[5], // Bearly Wait baby shower
+  INSPIRATION_CHILDRENS[5], // Berry First
+  INSPIRATION_MILESTONES[1], // blue 60
+  { src: xmasPilates, alt: "Pink pilates studio doorway in East Molesey dressed in spruce with blush, white and red baubles" },
+  INSPIRATION_CHILDRENS[10], // Rudy's Rodeo
+  INSPIRATION_MILESTONES[4], // champagne 40 garland
 ];

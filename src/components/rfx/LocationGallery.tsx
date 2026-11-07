@@ -34,7 +34,7 @@ const LocationGallery = ({
     >
       {(heading || eyebrow || intro) && (
         <div className="container-rfx mb-14 md:mb-20">
-          <div className="text-center max-w-[760px] mx-auto fade-up">
+          <div className="text-center max-w-[1000px] mx-auto fade-up">
             {eyebrow && (
               <div
                 className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-4"

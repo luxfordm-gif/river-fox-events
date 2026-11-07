@@ -983,8 +983,9 @@
     .rfx-section.warm::after { animation: none; }
   }
   /* Instagram section — slightly tighter top gap so the divider sits closer to the section above */
-  .rfx-instagram { padding: 44px 0 56px; }
-  .rfx-instagram .rfx-instagram-inner { padding-top: 40px; padding-bottom: 40px; }
+  .rfx-instagram { padding: 44px 0 80px; }
+  /* No bottom rule any more: the photo strip runs under the button (Matt, 2026-11-07). */
+  .rfx-instagram .rfx-instagram-inner { padding-top: 40px; padding-bottom: 0; }
   /* Testimonials section — match Instagram's tighter rhythm so the hairline sits the same distance from section edges */
   #kindness.rfx-section { padding: 56px 0 44px; }
   #kindness .hairline { margin-bottom: 40px !important; }
@@ -1016,7 +1017,7 @@
     /* Tighten gap between Testimonials and Instagram on mobile */
     #kindness.rfx-section { padding-bottom: 28px; }
     /* Instagram: tighter top/bottom padding on mobile */
-    .rfx-instagram { padding: 16px 0 32px !important; }
+    .rfx-instagram { padding: 16px 0 56px !important; }
   }
 
   /* Responsive grid stacking helper */
@@ -1267,3 +1268,13 @@
 @media (min-width: 761px) and (max-width: 1439px) { .rfx-section.rfx-inspiration { padding-bottom: 74px; } }
 @media (min-width: 768px) and (max-width: 1366px) { .rfx-section.rfx-inspiration { padding-bottom: 58px; } }
 @media (max-width: 760px) { .rfx-section.rfx-inspiration { padding-bottom: 34px; } }
+
+/* Our work: cards scale gently up into view as you scroll (OurWork.tsx adds
+   .gallery-anim only in a real browser without reduced motion). */
+.gallery-anim .gallery-event {
+  opacity: 0;
+  transform: translateY(14px) scale(0.965);
+  transition: opacity .7s ease, transform 1s cubic-bezier(.2,.7,.2,1);
+}
+.gallery-anim .gallery-event.is-in { opacity: 1; transform: none; }
+.gallery-anim .gallery-event:not(.is-in) .work-tile img { transform: scale(1.06); }

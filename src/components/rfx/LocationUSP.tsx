@@ -68,7 +68,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
   return (
     <section
       id="why-river-fox"
-      className="rfx-section white !pb-8 md:!pb-10"
+      className="rfx-section white"
       style={{ paddingTop: 0, paddingBottom: "80px" }}
       aria-label="Why River Fox Events"
     >

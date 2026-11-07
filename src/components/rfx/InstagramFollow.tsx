@@ -1,6 +1,8 @@
 import { Instagram } from "lucide-react";
+import InstagramStrip from "@/components/rfx/InstagramStrip";
+import { INSPIRATION_HOME } from "@/data/inspiration";
 
-/** Lightweight Instagram CTA block - no gallery, links straight to the profile. */
+/** Instagram CTA block, then an endless strip of recent work (same strip as the Christmas and service pages). */
 const InstagramFollow = () => {
   return (
     <section
@@ -9,7 +11,7 @@ const InstagramFollow = () => {
       aria-labelledby="instagram-heading"
     >
       <div className="container-rfx">
-        <div className="border-t border-b border-ink/15 py-10 md:py-14 fade-up rfx-instagram-inner">
+        <div className="border-t border-ink/15 pt-10 md:pt-14 fade-up rfx-instagram-inner">
           <div className="flex flex-col items-center text-center max-w-[680px] mx-auto">
             <div className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-7 inline-flex items-center gap-3">
               <span className="h-px w-8 bg-ink/30" aria-hidden="true" />
@@ -49,6 +51,9 @@ const InstagramFollow = () => {
             </a>
           </div>
         </div>
+      </div>
+      <div className="mt-12 md:mt-14">
+        <InstagramStrip images={INSPIRATION_HOME} />
       </div>
     </section>
   );

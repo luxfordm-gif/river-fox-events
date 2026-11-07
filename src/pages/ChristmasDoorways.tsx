@@ -488,14 +488,13 @@ const ChristmasDoorways = () => {
                   </SectionTitle>
                 </div>
               </div>
-              {/* Two columns split by a hairline; each column is a flex stack so
-                  the Enquire links line up along one baseline. */}
-              <div className="mt-6 md:mt-14 max-w-[840px] mx-auto grid grid-cols-1 md:grid-cols-2 text-center divide-y md:divide-y-0 md:divide-x">
+              {/* Two equal cards; Most popular gets the gold border (Matt, 2026-11-07).
+                  Each card is a flex stack so the Enquire links line up, and the
+                  link stretches over the whole card, so the card itself is clickable. */}
+              <div className="xmas-options mt-6 md:mt-14 mx-auto grid grid-cols-1 md:grid-cols-2 text-center">
                 {GARLAND_OPTIONS.map((opt) => (
-                  <div key={opt.title} className="fade-up flex flex-col items-center py-10 md:py-2 md:px-10 lg:px-14">
-                    {/* Tag slot keeps both titles level side by side; on
-                        phones (stacked) only the popular one needs it. */}
-                    <p className={`mb-4 md:h-[24px] ${opt.popular ? "" : "hidden md:block"}`}>
+                  <div key={opt.title} className={`xmas-option fade-up flex flex-col items-center${opt.popular ? " is-popular" : ""}`}>
+                    <p className="xmas-option__tag">
                       {opt.popular && <span className="xmas-tag">Most popular</span>}
                     </p>
                     {/* Phones get larger titles; the desktop columns keep the
@@ -518,7 +517,7 @@ const ChristmasDoorways = () => {
                           const select = document.querySelector<HTMLSelectElement>('form[name="christmas-doorway"] select[name="garland"]');
                           if (select) select.value = opt.title;
                         }}
-                        className="btn-link-rf text-[14px] text-primary"
+                        className="xmas-option__link btn-link-rf text-[14px] text-primary"
                       >
                         {opt.link} <span className="arr">→</span>
                       </a>
