@@ -294,46 +294,7 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
   .xmas-options > .xmas-option:hover, .xmas-options > .xmas-option:focus-within { transform: none; }
 }
 
-/* Snow drift on the garland cards, and a few flakes falling from it on hover. */
-.xmas-snow { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; }
-.xmas-snow__drift {
-  position: absolute; left: 10px; width: calc(100% - 20px); top: -18px; height: 22px;
-  font-size: 16px; filter: drop-shadow(0 1px 1.5px hsl(210 22% 35% / 0.22));
-}
-.xmas-puff {
-  position: absolute; transform: translateX(-50%); border-radius: 50%;
-  background: radial-gradient(circle at 42% 34%, #fff 52%, #edf1f4 78%, #dfe6ec 100%);
-}
+/* Snow (SnowCap.tsx): a canvas sits over the card's top edge or the title's
+   letters. The Most popular tag stays in front of it. */
 .xmas-option__tag { z-index: 2; }
-.xmas-snow__fall { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; }
-.xmas-flake {
-  position: absolute; top: 3px; border-radius: 50%;
-  background: #fff; box-shadow: 0 0 0 0.5px hsl(210 20% 70% / 0.6), 0 1px 3px hsl(210 25% 40% / 0.35);
-  opacity: 0;
-}
-.xmas-options > .xmas-option:hover .xmas-flake,
-.xmas-title-snow:hover .xmas-flake, .xmas-title-snow.is-snowing .xmas-flake {
-  animation-name: xmas-flake; animation-timing-function: cubic-bezier(.35,.1,.55,1); animation-fill-mode: forwards;
-}
-@keyframes xmas-flake {
-  0% { opacity: 0; transform: translate(0, 0); }
-  12% { opacity: 1; }
-  80% { opacity: 0.9; }
-  100% { opacity: 0; transform: translate(var(--sway), var(--fall, 160px)); }
-}
-/* Section titles: the drift sits on the first line of words only (OurWork-style
-   measurement in SectionTitle sets --snow-x / --snow-w); flakes fall over the words. */
 .xmas-title-snow { position: relative; display: inline-block; }
-.xmas-snow--title { --fall: 1.8em; }
-.xmas-snow--title .xmas-snow__drift {
-  left: calc(var(--snow-x, 0px) + var(--snow-w, 100%) * 0.04); width: calc(var(--snow-w, 100%) * 0.92);
-  font-size: 0.2em; top: -0.55em; height: 1.5em;
-}
-.xmas-snow--title .xmas-snow__fall {
-  overflow: visible; left: var(--snow-x, 0px); width: var(--snow-w, 100%); right: auto;
-}
-.xmas-snow--title .xmas-flake { top: 0.05em; }
-@media (prefers-reduced-motion: reduce) {
-  .xmas-options > .xmas-option:hover .xmas-flake,
-  .xmas-title-snow:hover .xmas-flake, .xmas-title-snow.is-snowing .xmas-flake { animation: none; }
-}

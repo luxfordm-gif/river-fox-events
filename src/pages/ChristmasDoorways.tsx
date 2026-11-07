@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { toast } from "sonner";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
@@ -6,6 +6,7 @@ import HeroGarland from "@/components/rfx/HeroGarland";
 import LocationHeroFan from "@/components/rfx/LocationHeroFan";
 import ScrollStrip from "@/components/rfx/ScrollStrip";
 import InstagramStrip from "@/components/rfx/InstagramStrip";
+import SnowCap from "@/components/rfx/SnowCap";
 import StoryVideos, { type Story } from "@/components/rfx/StoryVideos";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
@@ -256,94 +257,9 @@ const BowDivider = () => (
   />
 );
 
-/* A soft snow drift along the top of a garland card; on hover a few flakes
-   fall from it (Matt, 2026-11-07). Decorative only, so hidden from screen readers. */
-/* The drift: a row of overlapping snowballs, smaller towards the ends (Matt, 2026-11-07). */
-const PUFFS = (() => {
-  // Two overlapping rows of snowballs, smaller and lower towards each end so
-  // the drift tapers off. A fixed pattern (no randomness) so every load matches.
-  const out: { x: number; s: number; y: number }[] = [];
-  const jitter = (i: number) => ((Math.sin(i * 12.9898) * 43758.5453) % 1 + 1) % 1;
-  const taper = (x: number) => Math.min(1, Math.min(x, 100 - x) / 14);
-  for (let i = 0; i < 26; i++) {
-    const x = 6 + (i * 88) / 25; // back row, sits a little higher
-    out.push({ x, s: (0.7 + jitter(i + 50) * 0.45) * (0.55 + 0.45 * taper(x)), y: 0.38 * taper(x) });
-  }
-  for (let i = 0; i < 38; i++) {
-    const x = 1.5 + (i * 97) / 37; // front row, rests on the edge
-    out.push({ x, s: (0.85 + jitter(i) * 0.55) * (0.5 + 0.5 * taper(x)), y: jitter(i + 99) * 0.08 });
-  }
-  return out;
-})();
-const FLAKES = [
-  { x: 7, d: 0, s: 6, t: 1.7, w: 7 }, { x: 15, d: 0.3, s: 4, t: 2.0, w: -6 },
-  { x: 24, d: 0.12, s: 5, t: 1.6, w: 5 }, { x: 33, d: 0.45, s: 4, t: 2.1, w: -7 },
-  { x: 42, d: 0.06, s: 6, t: 1.8, w: 6 }, { x: 51, d: 0.34, s: 4, t: 1.9, w: -5 },
-  { x: 60, d: 0.18, s: 5, t: 1.7, w: 7 }, { x: 69, d: 0.5, s: 4, t: 2.0, w: -6 },
-  { x: 78, d: 0.09, s: 6, t: 1.6, w: 5 }, { x: 87, d: 0.38, s: 4, t: 1.9, w: -7 },
-  { x: 94, d: 0.22, s: 5, t: 1.8, w: 6 },
-];
-const Snow = ({ variant = "card" }: { variant?: "card" | "title" }) => (
-  <span className={`xmas-snow xmas-snow--${variant}`} aria-hidden="true">
-    <span className="xmas-snow__drift">
-      {PUFFS.map((p, i) => (
-        <span key={i} className="xmas-puff" style={{ left: `${p.x}%`, width: `${p.s}em`, height: `${p.s}em`, bottom: `${p.y}em` }} />
-      ))}
-    </span>
-    <span className="xmas-snow__fall">
-      {FLAKES.map((f, i) => (
-        <i
-          key={i}
-          className="xmas-flake"
-          style={{ left: `${f.x}%`, width: f.s, height: f.s, animationDelay: `${f.d}s`, animationDuration: `${f.t}s`, ["--sway" as string]: `${f.w}px` }}
-        />
-      ))}
-    </span>
-  </span>
-);
-
-/* Section title. With `snow`, a drift sits on top of the words; a few flakes
-   fall off once as it scrolls into view, and again whenever the cursor is over it. */
+/* Section title. With `snow`, snow settles on top of the letters; the cursor
+   pushes it off (SnowCap). */
 const SectionTitle = ({ children, id, light, snow }: { children: ReactNode; id: string; light?: boolean; snow?: boolean }) => {
-  const host = useRef<HTMLSpanElement>(null);
-  const words = useRef<HTMLSpanElement>(null);
-  // Place the drift on the first line of words (measured, so it fits every width).
-  useLayoutEffect(() => {
-    const el = host.current, w = words.current;
-    if (!el || !w) return;
-    const place = () => {
-      const range = document.createRange();
-      range.selectNodeContents(w);
-      const rects = [...range.getClientRects()].filter((r) => r.width > 1);
-      if (!rects.length) return;
-      const top = Math.min(...rects.map((r) => r.top));
-      const line = rects.filter((r) => Math.abs(r.top - top) < 4);
-      const left = Math.min(...line.map((r) => r.left)), right = Math.max(...line.map((r) => r.right));
-      const box = el.getBoundingClientRect();
-      el.style.setProperty("--snow-x", `${left - box.left}px`);
-      el.style.setProperty("--snow-w", `${right - left}px`);
-    };
-    place();
-    document.fonts?.ready.then(place);
-    window.addEventListener("resize", place);
-    return () => window.removeEventListener("resize", place);
-  }, []);
-  useEffect(() => {
-    const el = host.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let t = 0;
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (!e.isIntersecting) return;
-        el.classList.add("is-snowing");
-        t = window.setTimeout(() => el.classList.remove("is-snowing"), 2800);
-        io.disconnect();
-      },
-      { rootMargin: "0px 0px -35% 0px" }
-    );
-    io.observe(el);
-    return () => { io.disconnect(); window.clearTimeout(t); };
-  }, []);
   return (
     <h2
       id={id}
@@ -356,9 +272,9 @@ const SectionTitle = ({ children, id, light, snow }: { children: ReactNode; id: 
       }}
     >
       {snow ? (
-        <span ref={host} className="xmas-title-snow">
-          <Snow variant="title" />
-          <span ref={words}>{children}</span>
+        <span className="xmas-title-snow">
+          <SnowCap mode="text" ground={light ? "dark" : "light"} />
+          <span data-snow-text>{children}</span>
         </span>
       ) : (
         children
@@ -590,7 +506,7 @@ const ChristmasDoorways = () => {
               <div className="xmas-options mt-6 md:mt-14 mx-auto grid grid-cols-1 md:grid-cols-2 text-center">
                 {GARLAND_OPTIONS.map((opt) => (
                   <div key={opt.title} className={`xmas-option fade-up flex flex-col items-center${opt.popular ? " is-popular" : ""}`}>
-                    <Snow />
+                    <SnowCap mode="edge" />
                     <p className="xmas-option__tag">
                       {opt.popular && <span className="xmas-tag">Most popular</span>}
                     </p>
