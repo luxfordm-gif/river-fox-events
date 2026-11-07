@@ -73,10 +73,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground nav-solid">
+    <div className="min-h-screen flex flex-col page-paper text-foreground nav-solid nav-paper">
       <Nav />
       <main className="flex-1">
         <PageHeader
+          divider
           id="contact-heading"
           title={
             <>

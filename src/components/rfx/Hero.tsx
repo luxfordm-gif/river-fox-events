@@ -4,10 +4,10 @@ import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 const Hero = () => {
   return (
-    <section id="top" className="rfx-hero pt-[106px] md:pt-[134px] pb-4 md:pb-6" aria-labelledby="hero-heading">
+    <section id="top" className="rfx-hero rfx-hero-home rfx-hero-scale pt-[106px] md:pt-[134px] pb-4 md:pb-6" aria-labelledby="hero-heading">
       <div className="container-rfx">
         {/* Centered editorial intro */}
-        <div className="mb-10 md:mb-14 flex flex-col items-center text-center">
+        <div className="rfx-hero-intro mb-10 md:mb-14 flex flex-col items-center text-center">
 
           <h1
             id="hero-heading"
@@ -31,7 +31,7 @@ const Hero = () => {
             </span>
           </h1>
 
-          <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-1 md:mt-5 fade-up in text-center">
+          <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-1 md:mt-0 fade-up in text-center">
             Children's parties, milestone birthdays and brand events,
             designed by Laura, set up before guests arrive and cleared away
             after.

@@ -41,7 +41,7 @@ const Index = () => {
         <Experiences showBalloonLink={false} rotatePhotos />
         <About />
         <Process />
-        <Testimonials />
+        <Testimonials noDivider />
         <InstagramFollow />
         <FAQ />
         <Enquire />

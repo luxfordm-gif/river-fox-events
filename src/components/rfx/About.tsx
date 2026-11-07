@@ -155,29 +155,23 @@ const About = () => {
             <div className="mt-8 space-y-5 text-[16px] leading-[1.7] text-ink-soft max-w-[560px]">
               <p className="font-medium text-ink">
                 I started River Fox Events after owning a teepee sleepover
-                business and realising how much I loved creating those
-                magical little moments and memories that stay with you long
-                after the day is over.
+                business and realising how much I loved creating the little
+                moments that stay with you long after the day is over.
               </p>
               <p>
-                For me, it's never just been about balloons or decorations,
-                it's about the feeling when everything comes together and
-                your child walks into a space created just for them. The
-                excitement, the atmosphere, the tiny details they (and you)
-                remember years later.
+                For me, it's never just been about balloons or decorations.
+                It's the feeling when your child walks into a space created
+                just for them, and the tiny details they (and you) remember
+                years later.
               </p>
               <p>
-                Over time, what began as a creative outlet naturally grew
-                into the business it is today. I now work with families
-                across Surrey and London creating beautifully styled
-                children's parties, statement balloon installations and
-                celebrations that feel personal, immersive and genuinely
-                special.
+                What began as a creative outlet grew into the business it is
+                today. I now style children's parties, balloon installations
+                and celebrations for families across Surrey and London.
               </p>
               <p>
                 I keep the business intentionally small so I can stay
-                hands-on with every event and give each one the care and
-                attention it deserves - from the first ideas through to
+                hands-on with every event, from the first ideas through to
                 installation day.
               </p>
             </div>

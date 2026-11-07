@@ -182,15 +182,6 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
-        title: "Ava's ONEderland first birthday",
-        photos: [
-          {
-            source: "services/childrens-parties/onederland-first-birthday-ava-garden-backdrop.webp",
-            alt: "Wonderland first birthday backdrop in a garden, with checkerboard and pastel balloons, playing cards and toadstools",
-          },
-        ],
-      },
-      {
         title: "Amiya's Two Wild second birthday",
         place: "Horley Community Centre",
         photos: [
@@ -249,20 +240,14 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
-        title: "Rishi's summer party",
+        title: "Ava's ONEderland first birthday",
+        // Near the end (Matt, 2026-11-07): in the "last" group, and placed first in
+        // that group, so it lands 4th from the end.
+        last: true,
         photos: [
           {
-            source: "services/childrens-parties/rishi-summer-party-bright-balloon-backdrop.webp",
-            alt: "Turquoise, coral and lemon balloons around a Rishi's Summer Party panel, with beach balls on a garden patio",
-          },
-        ],
-      },
-      {
-        title: "Bright Halloween balloon wall",
-        photos: [
-          {
-            source: "services/childrens-parties/halloween-balloon-wall-bright-skeletons-bats.webp",
-            alt: "Bright Halloween balloon wall in teal, lime, pink and black with skeletons, bat foils and spider webs",
+            source: "services/childrens-parties/onederland-first-birthday-ava-garden-backdrop.webp",
+            alt: "Wonderland first birthday backdrop in a garden, with checkerboard and pastel balloons, playing cards and toadstools",
           },
         ],
       },
@@ -319,6 +304,16 @@ export const GALLERY: GallerySection[] = [
           {
             source: "services/childrens-parties/dinosaur-table-roar-plates-foliage-runner.webp",
             alt: "Overhead dinosaur party table with ROAR plates, a teal runner, trailing ivy and toy dinosaurs",
+          },
+        ],
+      },
+      {
+        title: "Rishi's summer party",
+        last: true, // end of the section (Matt, 2026-11-07)
+        photos: [
+          {
+            source: "services/childrens-parties/rishi-summer-party-bright-balloon-backdrop.webp",
+            alt: "Turquoise, coral and lemon balloons around a Rishi's Summer Party panel, with beach balls on a garden patio",
           },
         ],
       },
@@ -530,6 +525,16 @@ export const GALLERY: GallerySection[] = [
           {
             source: "christening-blessing-styling-surrey.webp",
             alt: "Blush, champagne and pearl balloon garlands either side of a christening panel with a cross and a draped plinth",
+          },
+        ],
+      },
+      {
+        title: "Bright Halloween balloon wall",
+        last: true, // end of the section (Matt, 2026-11-07)
+        photos: [
+          {
+            source: "services/childrens-parties/halloween-balloon-wall-bright-skeletons-bats.webp",
+            alt: "Bright Halloween balloon wall in teal, lime, pink and black with skeletons, bat foils and spider webs",
           },
         ],
       },
