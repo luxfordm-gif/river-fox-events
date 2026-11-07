@@ -15,6 +15,10 @@ type SnowCapProps = {
   radius?: number;
   /** "light" (cream backgrounds) gives the snow a soft cool edge so white reads on cream. */
   ground?: "light" | "dark";
+  /** Edge mode: how deep the drift is (1 = a card's light dusting). */
+  scale?: number;
+  /** Edge mode: run right off both ends (a full-width section edge) instead of tapering in. */
+  bleed?: boolean;
 };
 
 type Flake = { x: number; y: number; hx: number; hy: number; r: number; vx: number; vy: number; a: number; s: 0 | 1 | 2 | 3; t: number; k: 0 | 1 | 2; q: boolean };
@@ -33,8 +37,10 @@ const rand = (seed: number) => {
   return () => { v = (v * 1664525 + 1013904223) >>> 0; return v / 4294967296; };
 };
 
-const SnowCap = ({ mode, radius = 14, ground = "light" }: SnowCapProps) => {
+const SnowCap = ({ mode, radius = 14, ground = "light", scale = 1, bleed = false }: SnowCapProps) => {
   const canvas = useRef<HTMLCanvasElement>(null);
+  // Deeper drifts need more room above the edge.
+  const pad = Math.round(PAD * Math.max(1, scale));
 
   useEffect(() => {
     const cv = canvas.current;
@@ -50,7 +56,8 @@ const SnowCap = ({ mode, radius = 14, ground = "light" }: SnowCapProps) => {
     const surface = (): Int16Array => {
       const surf = new Int16Array(W).fill(-1);
       if (mode === "edge") {
-        const top = PAD, r = radius;
+        const top = pad, r = radius;
+        if (bleed) return surf.fill(top);
         for (let x = 0; x < W; x++) {
           const cx = x - SIDE;
           const w = W - 2 * SIDE;
@@ -98,14 +105,14 @@ const SnowCap = ({ mode, radius = 14, ground = "light" }: SnowCapProps) => {
       const rect = host.getBoundingClientRect();
       W = Math.ceil(rect.width + SIDE * 2);
       // A card only needs the strip along its top; a heading needs every line.
-      H = Math.ceil((mode === "edge" ? 24 : rect.height) + PAD + FALL);
+      H = Math.ceil((mode === "edge" ? 24 * scale : rect.height) + pad + FALL);
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       cv.width = W * dpr; cv.height = H * dpr;
       cv.style.width = `${W}px`; cv.style.height = `${H}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const surf = surface();
       const rnd = rand(W * 31 + H);
-      const maxDepth = mode === "edge" ? 13 : ground === "light" ? 5.4 : 5;
+      const maxDepth = mode === "edge" ? 13 * scale : ground === "light" ? 5.4 : 5;
       // Where the snow hangs over the edge: soft broad droops plus a few
       // rounded clumps, placed at random along the edge (seeded, so stable).
       const lobes: { c: number; a: number; w: number; round: boolean }[] = [];
@@ -113,7 +120,7 @@ const SnowCap = ({ mode, radius = 14, ground = "light" }: SnowCapProps) => {
       const count = mode === "edge" ? Math.max(2, Math.round(span / 75)) : Math.round(span / 110);
       for (let i = 0; i < count; i++) {
         const clump = rnd() < (mode === "edge" ? 0.45 : 0.6);
-        const a = mode === "edge" ? (clump ? 6 + rnd() * 7 : 3 + rnd() * 4) : (clump ? 2 + rnd() * 2.2 : 1 + rnd() * 1.2);
+        const a = mode === "edge" ? (clump ? 6 + rnd() * 7 : 3 + rnd() * 4) * Math.sqrt(scale) : (clump ? 2 + rnd() * 2.2 : 1 + rnd() * 1.2);
         lobes.push({ c: SIDE + 20 + rnd() * Math.max(1, span - 40), a, w: clump ? a * (0.7 + rnd() * 0.5) : 10 + rnd() * 18, round: clump });
       }
       const hangAt = (x: number) => {
@@ -133,9 +140,9 @@ const SnowCap = ({ mode, radius = 14, ground = "light" }: SnowCapProps) => {
         if (slope > 6 || (surf[xi - 2] ?? -1) < 0 || (surf[xi + 2] ?? -1) < 0) continue;
         // Gentle lumps: broad mounds on a card edge, finer variation on letters.
         const drift = mode === "edge"
-          ? Math.max(0.2, 0.5 + 0.32 * Math.sin(x * 0.028 + 0.6) + 0.18 * Math.sin(x * 0.09 + 1.7))
+          ? Math.max(0.2, 0.5 + 0.32 * Math.sin((x * 0.028) / Math.sqrt(scale) + 0.6) + 0.18 * Math.sin((x * 0.09) / Math.sqrt(scale) + 1.7))
           : 0.55 + 0.25 * Math.sin(x * 0.045) + 0.2 * Math.sin(x * 0.13 + 1.7);
-        const taper = mode === "edge" ? Math.min(1, Math.min(x - SIDE, W - SIDE - x) / 40) : 1;
+        const taper = mode === "edge" && !bleed ? Math.min(1, Math.min(x - SIDE, W - SIDE - x) / 40) : 1;
         const steep = slope > 2 ? 0.45 : 1;
         const depth = maxDepth * drift * taper * steep;
         const layers = Math.max(1, Math.round(depth / 1.15));
@@ -176,9 +183,9 @@ const SnowCap = ({ mode, radius = 14, ground = "light" }: SnowCapProps) => {
     const light = ground === "light";
     const PASSES: [string, number, number, (f: Flake) => boolean][] = [
       // A soft shadow cast just under the overhang, so it lifts off the edge.
-      [light ? "rgba(70, 84, 104, 0.12)" : "rgba(20, 26, 36, 0.28)", 1.7, 0.9, (f) => f.k > 0],
+      [light ? "rgba(70, 84, 104, 0.07)" : "rgba(20, 26, 36, 0.2)", 1.7, 0.9, (f) => f.k > 0],
       // A soft cool rim around each flake so the white reads as snow on cream.
-      [light ? "rgba(128, 146, 166, 0.42)" : "rgba(120, 136, 152, 0.28)", light ? 0.45 : 0.7, light ? 0.55 : 0, () => true],
+      [light ? "rgba(128, 146, 166, 0.3)" : "rgba(120, 136, 152, 0.2)", light ? 0.45 : 0.7, light ? 0.55 : 0, () => true],
       ["#ffffff", 0, 0, (f) => f.k === 0],
       ["#f2f5f9", 0, 0, (f) => f.k === 1],
       ["#dde4ec", 0, 0, (f) => f.k === 2],
@@ -235,9 +242,12 @@ const SnowCap = ({ mode, radius = 14, ground = "light" }: SnowCapProps) => {
 
     const regrow = () => {
       // A few seconds after the last push, the snow settles back in.
+      // Flakes still tumbling off count too: wait for them, or they'd never
+      // come back and the drift would be left with gaps.
+      if (active.some((f) => f.s === 1)) { regrowTimer = window.setTimeout(regrow, 250); return; }
       const now = performance.now();
       let i = 0;
-      for (const f of active) if (f.s === 2) { f.s = 3; f.x = f.hx + (Math.random() - 0.5) * 6; f.y = f.hy - 12 - Math.random() * 18; f.a = 0; f.t = now + (i++ % 400) * 4; }
+      for (const f of active) if (f.s === 2) { f.s = 3; f.x = f.hx + (Math.random() - 0.5) * 6; f.y = f.hy - 12 - Math.random() * 18; f.a = 0; f.t = now + (i++ % 300) * 2; }
       kick();
     };
 
@@ -266,7 +276,7 @@ const SnowCap = ({ mode, radius = 14, ground = "light" }: SnowCapProps) => {
         rctx.fill();
         rctx.globalCompositeOperation = "source-over";
         window.clearTimeout(regrowTimer);
-        regrowTimer = window.setTimeout(regrow, 3500);
+        regrowTimer = window.setTimeout(regrow, 1200);
         changed = true;
       }
       for (const f of active) {
@@ -281,8 +291,8 @@ const SnowCap = ({ mode, radius = 14, ground = "light" }: SnowCapProps) => {
         } else if (f.s === 3) {
           moving = true;
           if (now < f.t) continue;
-          f.y += (f.hy - f.y) * 0.12; f.x += (f.hx - f.x) * 0.12;
-          f.a = Math.min(1, f.a + 0.06);
+          f.y += (f.hy - f.y) * 0.18; f.x += (f.hx - f.x) * 0.18;
+          f.a = Math.min(1, f.a + 0.09);
           if (Math.abs(f.y - f.hy) < 0.2) { f.y = f.hy; f.x = f.hx; f.a = 1; f.s = 0; }
         }
       }
@@ -374,14 +384,14 @@ const SnowCap = ({ mode, radius = 14, ground = "light" }: SnowCapProps) => {
       cancelAnimationFrame(raf);
       window.clearTimeout(regrowTimer);
     };
-  }, [mode, radius, ground]);
+  }, [mode, radius, ground, scale, bleed, pad]);
 
   return (
     <canvas
       ref={canvas}
       aria-hidden="true"
       className="snow-cap"
-      style={{ position: "absolute", left: -SIDE, top: -PAD, pointerEvents: "none", zIndex: 1 }}
+      style={{ position: "absolute", left: -SIDE, top: -pad, pointerEvents: "none", zIndex: 1 }}
     />
   );
 };

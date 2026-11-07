@@ -257,6 +257,19 @@ const BowDivider = () => (
   />
 );
 
+/* Handwritten "Move the snow" note with an arrow curving down into the snow
+   (styles in christmas.css; hidden with reduced motion, where snow stays still). */
+const SnowHint = ({ className = "" }: { className?: string }) => (
+  <div className={`xmas-snow-hint ${className}`} aria-hidden="true">
+    <span>Move the snow</span>
+    <svg width="40" height="66" viewBox="0 0 40 66" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 5c15 1 27 11 25 30-.7 8-2.5 15-5 24" />
+      {/* Arrowhead: an even V lined up with the end of the curve. */}
+      <path d="M32.2 50.6L24 59.5l-3.4-11.6" />
+    </svg>
+  </div>
+);
+
 /* Section title. With `snow`, snow settles on top of the letters; the cursor
    pushes it off (SnowCap). */
 const SectionTitle = ({ children, id, light, snow }: { children: ReactNode; id: string; light?: boolean; snow?: boolean }) => {
@@ -442,6 +455,9 @@ const ChristmasDoorways = () => {
               {CARDS.map((card) => (
                 <article key={card.title} className="fade-up relative">
                   <SnowCap mode="edge" radius={12} />
+                  {/* Laptop and up only: on narrower screens the intro text
+                      above runs too wide for the note to sit beside it. */}
+                  {card === CARDS[0] && <SnowHint className="xmas-snow-hint--card" />}
                   <div className="xmas-swap">
                     <img
                       src={card.img}
@@ -634,11 +650,21 @@ const ChristmasDoorways = () => {
           headingId="xmas-faq-heading"
           headingSize="var(--fs-h3)"
           paddingTop="clamp(40px, 6vw, 96px)"
-          paddingBottom="clamp(80px, 10vw, 150px)"
+          paddingBottom="clamp(150px, 12vw, 170px)"
         />
 
         {/* Booking form + contact */}
-        <section id="enquire" className="rfx-section dark rfx-enquire" aria-labelledby="enquire-heading">
+        <section id="enquire" className="rfx-section dark rfx-enquire relative" aria-labelledby="enquire-heading">
+          {/* A deep drift of snow along the whole top edge, where the cream
+              page meets the dark booking section (Matt, 2026-11-07). */}
+          {/* overflow-x: clip keeps the canvas (which runs a little past
+              both ends) from widening the page on phones. */}
+          <div aria-hidden="true" className="absolute left-0 right-0 top-0 h-0" style={{ overflowX: "clip" }}>
+            <SnowCap mode="edge" radius={0} scale={2.4} bleed />
+          </div>
+          {/* A handwritten nudge that the snow can be moved (hidden with
+              reduced motion, where the snow stays still). */}
+          <SnowHint />
           <div className="container-rfx">
             <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">
               <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
