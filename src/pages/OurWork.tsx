@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { MouseEvent as ReactMouseEvent, RefObject } from "react";
 import { ChevronLeft, ChevronRight, ChevronUp, Expand, LayoutGrid, X } from "lucide-react";
 import Nav from "@/components/rfx/Nav";
@@ -59,7 +59,7 @@ const EventCard = ({
   const [lead, ...rest] = event.photos.map(resolvePhoto);
   const extras = rest.slice(0, 2);
   return (
-    <figure className="gallery-event fade-up m-0">
+    <figure className="gallery-event fade-up m-0" data-title={event.title}>
       <Tile photo={lead} sizes={compact ? COMPACT_SIZES : GRID_SIZES} onOpen={() => open(firstIndex)} eager={eager} />
       {extras.length > 0 && (
         <div className={`grid gap-2 md:gap-3 mt-2 md:mt-3 ${extras.length === 1 ? "grid-cols-1" : "grid-cols-2"}`}>
@@ -122,14 +122,45 @@ const cardHeight = (e: GalleryEvent) => {
 /* Lay events out row by row: each goes into the currently shortest column,
    so the first events fill the top row from left to right (CSS columns
    would put them all down the first column instead). */
-const balance = (events: GalleryEvent[], n: number) => {
+const balance = (events: GalleryEvent[], n: number, measured: Record<string, number> = {}) => {
   const cols: number[][] = Array.from({ length: n }, () => []);
   const heights = new Array(n).fill(0);
+  // Real card heights (in column widths) once they have been drawn; the photo-shape estimate until then.
+  const size = (i: number) => measured[events[i].title] ?? cardHeight(events[i]);
   events.forEach((e, i) => {
     const c = heights.indexOf(Math.min(...heights));
     cols[c].push(i);
-    heights[c] += cardHeight(e);
+    heights[c] += size(i);
   });
+  // Even out the bottoms (Matt, 2026-11-07: "never a massive gap"). Only cards
+  // below the first row may move, so the top row keeps its order:
+  // try every move (to the end of another column) and every swap, keep the one
+  // that most reduces the difference between the tallest and shortest column.
+  const movable = (i: number) => i >= n; // everything below the first row
+  const spread = (hs: number[]) => Math.max(...hs) - Math.min(...hs);
+  for (let step = 0; step < 40 && n > 1; step++) {
+    let best = spread(heights) - 0.01, apply: (() => void) | null = null;
+    for (let a = 0; a < n; a++) for (let b = 0; b < n; b++) {
+      if (a === b) continue;
+      cols[a].forEach((i, ai) => {
+        if (!movable(i)) return;
+        // move i from column a to the end of column b
+        const hs = heights.slice(); hs[a] -= size(i); hs[b] += size(i);
+        if (spread(hs) < best) { best = spread(hs); apply = () => { cols[a].splice(ai, 1); cols[b].push(i); heights[a] = hs[a]; heights[b] = hs[b]; }; }
+        // or swap i with a card j in column b
+        cols[b].forEach((j, bj) => {
+          if (!movable(j) || a > b) return;
+          const d = size(i) - size(j);
+          const hs2 = heights.slice(); hs2[a] -= d; hs2[b] += d;
+          if (spread(hs2) < best) { best = spread(hs2); apply = () => { cols[a][ai] = j; cols[b][bj] = i; heights[a] = hs2[a]; heights[b] = hs2[b]; }; }
+        });
+      });
+    }
+    if (!apply) break;
+    (apply as () => void)();
+  }
+  // Keep each column in list order, so moved cards sit in their natural place.
+  cols.forEach((c) => c.sort((x, y) => x - y));
   return cols;
 };
 
@@ -144,7 +175,45 @@ const Section = ({
   const initial = Math.ceil(events.length / 2);
   const shown = expanded ? events : events.slice(0, initial);
   const hidden = events.length - shown.length;
-  const cols = useMemo(() => balance(shown, n), [shown, n]);
+  // Card heights measured after the first layout (key: event title), so the
+  // columns balance on what's actually on screen rather than an estimate.
+  const [measured, setMeasured] = useState<{ n: number; sizes: Record<string, number> }>({ n: 0, sizes: {} });
+  const cols = useMemo(
+    () => balance(shown, n, measured.n === n ? measured.sizes : {}),
+    [shown, n, measured]
+  );
+  // Cards scale gently up into view as you scroll (Matt, 2026-11-07). Off for
+  // reduced motion and for the prerender (navigator.webdriver), so the built
+  // HTML and anyone without JavaScript always see every photo.
+  const gridRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid || navigator.webdriver || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    grid.classList.add("gallery-anim");
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+      }),
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+    );
+    grid.querySelectorAll(".gallery-event:not(.is-in)").forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [cols]);
+  useLayoutEffect(() => {
+    const grid = gridRef.current;
+    const colEl = grid?.querySelector<HTMLElement>(".gallery-col");
+    if (!grid || !colEl) return;
+    const w = colEl.getBoundingClientRect().width;
+    if (!w) return;
+    const gap = parseFloat(getComputedStyle(colEl).rowGap || "0") || 0;
+    const sizes: Record<string, number> = {};
+    grid.querySelectorAll<HTMLElement>(".gallery-event[data-title]").forEach((el) => {
+      sizes[el.dataset.title!] = (el.offsetHeight + gap) / w;
+    });
+    const prev = measured.n === n ? measured.sizes : {};
+    const changed = Object.keys(sizes).some((k) => Math.abs((prev[k] ?? 0) - sizes[k]) > 0.02);
+    if (changed) setMeasured({ n, sizes: { ...prev, ...sizes } });
+  }, [cols, n, measured]);
   // Index of each event's first photo within the section's viewer list.
   let running = 0;
   const starts = events.map((e) => {
@@ -185,6 +254,7 @@ const Section = ({
           </a>
         </div>
         <div
+          ref={gridRef}
           className={section.compact ? "gallery-cols gallery-cols--compact" : "gallery-cols"}
           style={{ gridTemplateColumns: `repeat(${cols.length}, minmax(0, 1fr))` }}
         >

@@ -89,7 +89,7 @@
     },
     "cp-hero-frame": {
       "skip": true,
-      "why": "only imported by CPHero, which no page renders"
+      "why": "Never show (Matt, 2026-11-07). File deleted from the site; restore from git history only if he asks."
     },
     "dawghouse-pizza-takeaway-opening-garland-epsom": {
       "note": "Keep the menu screens and any lettering exactly as photographed; do not redraw or sharpen them into new text."
@@ -129,6 +129,109 @@
     },
     "medispa-entrance-frosted-white-silver-garland": {
       "maxLongEdge": 900
+    },
+    "cp-included": {
+      "skip": true,
+      "why": "Never show (Matt, 2026-11-07). File deleted from the site; restore from git history only if he asks."
+    },
+    "hero-1": {
+      "skip": true,
+      "why": "Never show (Matt, 2026-11-07). File deleted from the site; restore from git history only if he asks."
+    },
+    "hero-2": {
+      "skip": true,
+      "why": "Never show (Matt, 2026-11-07). File deleted from the site; restore from git history only if he asks."
+    },
+    "baby-in-bloom-pink-garden-baby-shower": {
+      "skip": true,
+      "why": "Never show (Matt, 2026-11-07). File deleted from the site; restore from git history only if he asks."
+    },
+    "teddy-bear-first-birthday-pink-grey-balloon-hoop": {
+      "maxLongEdge": 900
+    },
+    "rainbow-unicorn-party-pastel-sequin-backdrop": {
+      "maxLongEdge": 900
+    },
+    "grace-fifth-birthday-rainbow-arch-unicorn": {
+      "maxLongEdge": 900
+    },
+    "berry-first-birthday-strawberry-balloon-backdrop": {
+      "maxLongEdge": 900
+    },
+    "pink-dinosaur-fourth-birthday-4-roar-table": {
+      "maxLongEdge": 900
+    },
+    "cutest-pumpkin-autumn-first-birthday-table": {
+      "maxLongEdge": 900
+    },
+    "dahlia-first-birthday-pink-daisy-balloons": {
+      "maxLongEdge": 900
+    },
+    "wild-ones-joint-birthday-sage-leopard-balloons": {
+      "maxLongEdge": 900
+    },
+    "rudys-rodeo-cowboy-party-backdrop": {
+      "maxLongEdge": 900
+    },
+    "two-sweet-second-birthday-sprinkle-backdrop": {
+      "maxLongEdge": 900
+    },
+    "21st-midnight-blue-light-up-numbers": {
+      "maxLongEdge": 900
+    },
+    "60th-birthday-blue-chrome-light-up-60": {
+      "maxLongEdge": 900
+    },
+    "21st-pastel-balloon-wall-light-up-numbers": {
+      "maxLongEdge": 900
+    },
+    "surprise-30th-dusky-blue-gold-moustache-garland": {
+      "maxLongEdge": 900
+    },
+    "40th-birthday-gold-champagne-bowling-garland": {
+      "maxLongEdge": 900
+    },
+    "bearly-wait-baby-shower-teddy-hot-air-balloon": {
+      "maxLongEdge": 900
+    },
+    "40th-purple-gold-light-up-numbers": {
+      "maxLongEdge": 900
+    },
+    "70th-floating-gold-orbs-restaurant-ceiling": {
+      "maxLongEdge": 900
+    },
+    "18th-birthday-red-carpet-hollywood-entrance": {
+      "maxLongEdge": 900
+    },
+    "coaching-business-branded-event-display-barn": {
+      "skip": true,
+      "why": "Removed from the corporate carousel (Matt, 2026-11-07)"
+    },
+    "office-christmas-black-gold-half-arch-streamers": {
+      "maxLongEdge": 900
+    },
+    "gala-dinner-staircase-navy-gold-balloon-garland": {
+      "maxLongEdge": 900
+    },
+    "dinosaur-party-concept-render-surrey": {
+      "skip": true,
+      "why": "Concept drawing: the grade greys its cream paper (Nov 2026)."
+    },
+    "two-wild-safari-feature-backdrop-concept-horley-surrey": {
+      "skip": true,
+      "why": "Concept drawing: the grade greys its cream paper (Nov 2026)."
+    },
+    "two-wild-safari-table-styling-concept-horley-surrey": {
+      "skip": true,
+      "why": "Concept drawing: the grade greys its cream paper (Nov 2026)."
+    },
+    "ottilie-toy-story-second-birthday-gingham-table": {
+      "maxLongEdge": 900,
+      "note": "Copy every name and word on the signs, boxes and cutlery wraps exactly as photographed, letter for letter."
+    },
+    "duke-level-8-gaming-birthday-backdrop": {
+      "maxLongEdge": 900,
+      "note": "Copy every word on the boards, plinths and crates exactly as photographed, letter for letter; keep the neon controller glowing."
     }
   },
   "heroes": [

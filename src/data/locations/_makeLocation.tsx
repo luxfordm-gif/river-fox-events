@@ -5,7 +5,6 @@ import imgOccasions from "@/assets/luxury-party-styling-occasions-surrey.webp";
 import imgGalleryMain from "@/assets/dinosaur-themed-birthday-party-surrey.webp";
 import imgGallery1 from "@/assets/christening-blessing-styling-surrey.webp";
 import imgGallery2 from "@/assets/corporate-gala-styling-surrey.webp";
-import imgGallery3 from "@/assets/cp-included.webp";
 
 // Latest Work - shared image pool for location pages. Each entry has a single
 // canonical alt that describes the photo (no per-town interpolation, per the
@@ -153,7 +152,7 @@ type LocationInput = {
   /** Multiple extra Q&As inserted after the standard set. Renders after
    *  uniqueExtraFaq if both are provided. */
   uniqueExtraFaqs?: { q: string; a: string }[];
-  /** Bespoke paragraph for the "Why choose River Fox Events?" block.
+  /** Bespoke paragraph for the "Why River Fox Events?" block.
    *  Must be unique per town - Google pulls this as the search-result
    *  snippet, so a shared value makes every location look identical.
    *  Falls back to a generic templated paragraph when omitted. */
@@ -242,10 +241,8 @@ export function makeLocation(input: LocationInput): LocationConfig {
           src: imgGallery2,
           alt: "Navy, gold and cream balloons around a Children in Need Pudsey backdrop at a corporate gala",
         },
-        {
-          src: imgGallery3,
-          alt: "Pink and blue balloons above a celebration cake on a styled cake table",
-        },
+        // was cp-included, which is never shown (Matt, 2026-11-07)
+        LATEST_WORK["fairy-kayla"],
       ];
 
   return {
@@ -259,7 +256,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       } | River Fox Events`,
     seoDescription:
       uniqueSeoDescription ??
-      `${cityName} party stylist - tailored children's parties, milestones and corporate events across ${region} from £460. Every detail personally handled by Laura.`,
+      `${cityName} party stylist - tailored children's parties, milestones and corporate events across ${region} from £300. Every detail personally handled by Laura.`,
     hero: {
       lines: [
         uniqueHeroLine ?? <>Event styling in {cityName},</>,
@@ -335,7 +332,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
     gallery: {
       heading: (
         <>
-          A glimpse of recent{" "}
+          Recent{" "}
           <em className="italic font-light text-accent-warm">celebrations.</em>
         </>
       ),
@@ -396,23 +393,23 @@ export function makeLocation(input: LocationInput): LocationConfig {
     pricing: {
       heading: (
         <>
-          Beautifully styled celebrations in {cityName}{" "}
-          <em className="italic font-light text-accent-warm">from £460.</em>
+          Styling in {cityName}{" "}
+          <em className="italic font-light text-accent-warm">from £300.</em>
         </>
       ),
       tiers: [
         {
-          price: "From £460",
+          price: "From £300",
           label: "Intimate",
           body: "Intimate celebrations · Single focal point installation.",
         },
         {
-          price: "From £1,200",
+          price: "From £800",
           label: "Full styling",
           body: "Full styling · Multiple installations · Backdrops and tablescape.",
         },
         {
-          price: "From £2,500",
+          price: "From £1,500",
           label: "Premium",
           body: "Large-scale events · Premium full-venue transformation.",
         },
@@ -447,7 +444,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       },
       {
         q: `How much does event styling cost in ${cityName}?`,
-        a: `Pricing depends on the type of celebration and the scope of the brief. Typically our events start from £460, with larger or more involved designs ranging from £1,200 – £2,500+.`,
+        a: `Pricing depends on the type of celebration and the scope of the brief. Typically our events start from £300, with larger or more involved designs ranging from £800 – £1,500+.`,
       },
       {
         q: "Can I choose my own theme and colours?",
@@ -472,9 +469,10 @@ export function makeLocation(input: LocationInput): LocationConfig {
       ),
       intro: (
         <>
-          Based in Surrey, River Fox Events styles celebrations across{" "}
-          {areas.join(", ")} and into London. Not sure if we cover your
-          area? Just ask.
+          Every piece is designed and prepared at our studio in Horley,
+          then brought to you and installed on the day. We travel across
+          Surrey and into London, so if your venue isn't listed below,
+          just ask.
         </>
       ),
       areas,

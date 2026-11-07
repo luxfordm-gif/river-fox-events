@@ -38,7 +38,7 @@ const Index = () => {
       <Nav />
       <main>
         <Hero />
-        <Experiences />
+        <Experiences showBalloonLink={false} rotatePhotos />
         <About />
         <Process />
         <Testimonials />

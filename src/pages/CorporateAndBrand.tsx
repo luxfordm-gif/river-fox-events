@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import InspirationStrip from "@/components/rfx/InspirationStrip";
+import { INSPIRATION_CORPORATE } from "@/data/inspiration";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
@@ -7,7 +9,6 @@ import ServiceHero from "@/components/rfx/ServiceHero";
 import CPReveal from "@/components/rfx/CPReveal";
 import CPLocations from "@/components/rfx/CPLocations";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
-import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
 import {
@@ -131,6 +132,72 @@ const CorporateAndBrand = () => {
           sub="Branded balloon installations, sequin walls and signage for launches, award nights and Christmas parties, installed before doors open and cleared away after."
         />
 
+        {/* Client names straight under the hero (Matt, 2026-11-07) */}
+        <section
+          id="cb-trust"
+          aria-labelledby="cb-trust-heading"
+          className="rfx-section white !pt-10 !pb-6 md:!pt-14 md:!pb-8"
+        >
+          <div className="container-rfx text-center">
+            <h2
+              id="cb-trust-heading"
+              className="font-serif-rf text-ink-soft"
+              style={{
+                fontSize: "clamp(18px, 1.5vw, 22px)",
+                lineHeight: 1.2,
+                fontWeight: 400,
+                letterSpacing: "-0.01em",
+                marginBottom: "30px",
+              }}
+            >
+              Trusted by{" "}
+              <em className="italic font-light text-accent-warm">leading brands.</em>
+            </h2>
+            <style>{`
+              @keyframes rfx-trust-ticker {
+                from { transform: translateX(-50%); }
+                to   { transform: translateX(0); }
+              }
+              .rfx-trust-ticker {
+                overflow: hidden;
+                width: 100%;
+                mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+                -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+              }
+              .rfx-trust-track {
+                display: flex;
+                width: max-content;
+                animation: rfx-trust-ticker 60s linear infinite;
+              }
+              .rfx-trust-item {
+                flex: 0 0 auto;
+                padding: 0 2.75rem;
+                font-family: var(--font-sans);
+                font-size: clamp(12px, 1.05vw, 15px);
+                font-weight: 600;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                line-height: 1.25;
+                color: hsl(var(--ink));
+                opacity: 0.72;
+                white-space: nowrap;
+              }
+              @media (prefers-reduced-motion: reduce) {
+                .rfx-trust-track { animation: none; }
+              }
+            `}</style>
+            <div className="rfx-trust-ticker" aria-label="Brands we have worked with">
+              <div className="rfx-trust-track">
+                {[...TRUST_LOGOS, ...TRUST_LOGOS].map((name, i) => (
+                  <span key={`${name}-${i}`} className="rfx-trust-item">
+                    {name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         <CPReveal
           id="cb-intro"
           imageSide="right"
@@ -191,119 +258,11 @@ const CorporateAndBrand = () => {
           </p>
         </CPReveal>
 
-        <section
-          id="cb-trust"
-          aria-labelledby="cb-trust-heading"
-          className="rfx-section white pt-16 pb-12 md:pt-20 md:pb-16"
-        >
-          <div className="container-rfx text-center">
-            <h2
-              id="cb-trust-heading"
-              className="font-serif-rf"
-              style={{
-                fontSize: "var(--fs-h2)",
-                lineHeight: 1.04,
-                fontWeight: 300,
-                letterSpacing: "-0.025em",
-                marginBottom: "40px",
-              }}
-            >
-              Trusted by{" "}
-              <em className="italic font-light text-accent-warm">
-                leading brands.
-              </em>
-            </h2>
-            <style>{`
-              @keyframes rfx-trust-ticker {
-                from { transform: translateX(-50%); }
-                to   { transform: translateX(0); }
-              }
-              .rfx-trust-ticker {
-                overflow: hidden;
-                width: 100%;
-                mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-                -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-              }
-              .rfx-trust-track {
-                display: flex;
-                width: max-content;
-                animation: rfx-trust-ticker 60s linear infinite;
-              }
-              .rfx-trust-item {
-                flex: 0 0 auto;
-                padding: 0 2.75rem;
-                font-family: var(--font-sans);
-                font-size: clamp(12px, 1.05vw, 15px);
-                font-weight: 600;
-                letter-spacing: 0.06em;
-                text-transform: uppercase;
-                line-height: 1.25;
-                color: hsl(var(--ink));
-                opacity: 0.72;
-                white-space: nowrap;
-              }
-              @media (prefers-reduced-motion: reduce) {
-                .rfx-trust-track { animation: none; }
-              }
-            `}</style>
-            <div className="rfx-trust-ticker" aria-label="Brands we have worked with">
-              <div className="rfx-trust-track">
-                {[...TRUST_LOGOS, ...TRUST_LOGOS].map((name, i) => (
-                  <span key={`${name}-${i}`} className="rfx-trust-item">
-                    {name}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section
-          id="cb-closing"
-          className="rfx-section warm"
-          aria-labelledby="cb-closing-heading"
-        >
-          <div className="container-rfx text-center">
-            <h2
-              id="cb-closing-heading"
-              className="font-serif-rf fade-up max-w-[22ch] mx-auto"
-              style={{
-                fontSize: "var(--fs-h2)",
-                lineHeight: 1.04,
-                fontWeight: 300,
-                letterSpacing: "-0.025em",
-              }}
-            >
-              Polished, purposeful and{" "}
-              <em className="italic font-light text-accent-warm">
-                seamlessly delivered.
-              </em>
-            </h2>
-            <p className="text-[15.5px] leading-[1.7] text-ink-soft max-w-[520px] mx-auto mt-6">
-              Every event is individually quoted based on your
-              requirements.
-            </p>
-            <div className="mt-8 flex justify-center">
-              <a
-                href={ENQUIRE_HREF}
-                onClick={handleEnquireClick}
-                className="btn-solid-rf accent"
-              >
-                Enquire now <span>→</span>
-              </a>
-            </div>
-          </div>
-        </section>
+        <InspirationStrip id="cb-inspiration" accent="your next event." images={INSPIRATION_CORPORATE} />
 
         <div id="how-it-works">
           <Process
             steps={CORPORATE_STEPS}
-            intro={
-              <>
-                A clear, professional process - from first brief through to
-                full breakdown after the last guest leaves.
-              </>
-            }
           />
         </div>
 

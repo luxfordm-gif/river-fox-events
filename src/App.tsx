@@ -26,7 +26,7 @@ import NotFound from "./pages/NotFound.tsx";
 const queryClient = new QueryClient();
 
 const AppShell = () => {
-  // Site-wide smooth-scroll hijack - slows scroll for premium feel.
+  // Same-page anchor links glide to their section (ordinary scrolling is native).
   useSmoothScroll();
   return (
     <BrowserRouter>

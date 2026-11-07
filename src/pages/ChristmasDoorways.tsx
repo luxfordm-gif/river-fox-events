@@ -6,6 +6,7 @@ import HeroGarland from "@/components/rfx/HeroGarland";
 import LocationHeroFan from "@/components/rfx/LocationHeroFan";
 import ScrollStrip from "@/components/rfx/ScrollStrip";
 import InstagramStrip from "@/components/rfx/InstagramStrip";
+import SnowCap from "@/components/rfx/SnowCap";
 import StoryVideos, { type Story } from "@/components/rfx/StoryVideos";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
@@ -256,20 +257,31 @@ const BowDivider = () => (
   />
 );
 
-const SectionTitle = ({ children, id, light }: { children: ReactNode; id: string; light?: boolean }) => (
-  <h2
-    id={id}
-    className={`font-serif-rf ${light ? "" : "text-primary"}`}
-    style={{
-      fontSize: "var(--fs-h2)",
-      lineHeight: 0.98,
-      fontWeight: 300,
-      letterSpacing: "-0.03em",
-    }}
-  >
-    {children}
-  </h2>
-);
+/* Section title. With `snow`, snow settles on top of the letters; the cursor
+   pushes it off (SnowCap). */
+const SectionTitle = ({ children, id, light, snow }: { children: ReactNode; id: string; light?: boolean; snow?: boolean }) => {
+  return (
+    <h2
+      id={id}
+      className={`font-serif-rf ${light ? "" : "text-primary"}`}
+      style={{
+        fontSize: "var(--fs-h2)",
+        lineHeight: 0.98,
+        fontWeight: 300,
+        letterSpacing: "-0.03em",
+      }}
+    >
+      {snow ? (
+        <span className="xmas-title-snow">
+          <SnowCap mode="text" ground={light ? "dark" : "light"} />
+          <span data-snow-text>{children}</span>
+        </span>
+      ) : (
+        children
+      )}
+    </h2>
+  );
+};
 
 const STEPS = [
   {
@@ -376,7 +388,10 @@ const ChristmasDoorways = () => {
                   letterSpacing: "-0.038em",
                 }}
               >
-                Christmas door garlands in Surrey.
+                <span className="xmas-title-snow">
+                  <SnowCap mode="text" />
+                  <span data-snow-text>Christmas door garlands in Surrey.</span>
+                </span>
               </h1>
               <div className="mt-5 max-w-[46ch] md:max-w-[70ch] text-[17px] leading-[1.65] text-ink-soft space-y-4">
                 <p>
@@ -412,7 +427,7 @@ const ChristmasDoorways = () => {
         <section className="rfx-section white" aria-labelledby="xmas-what-heading">
           <div className="container-rfx">
             <div className="max-w-[760px] mx-auto text-center fade-up">
-              <SectionTitle id="xmas-what-heading">
+              <SectionTitle id="xmas-what-heading" snow>
                 A little Christmas magic,{" "}
                 <em className="italic font-light text-accent-warm">right at your door.</em>
               </SectionTitle>
@@ -425,7 +440,8 @@ const ChristmasDoorways = () => {
 
             <div ref={cardsRef} className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
               {CARDS.map((card) => (
-                <article key={card.title} className="fade-up">
+                <article key={card.title} className="fade-up relative">
+                  <SnowCap mode="edge" radius={12} />
                   <div className="xmas-swap">
                     <img
                       src={card.img}
@@ -482,20 +498,20 @@ const ChristmasDoorways = () => {
               <div className="max-w-[760px] mx-auto text-center fade-up mt-8 md:mt-10">
                 <p className="eyebrow">Garland options</p>
                 <div className="mt-5">
-                  <SectionTitle id="xmas-options-heading">
+                  <SectionTitle id="xmas-options-heading" snow>
                     Choose your{" "}
                     <em className="italic font-light text-accent-warm">Christmas garland.</em>
                   </SectionTitle>
                 </div>
               </div>
-              {/* Two columns split by a hairline; each column is a flex stack so
-                  the Enquire links line up along one baseline. */}
-              <div className="mt-6 md:mt-14 max-w-[840px] mx-auto grid grid-cols-1 md:grid-cols-2 text-center divide-y md:divide-y-0 md:divide-x">
+              {/* Two equal cards; Most popular gets the gold border (Matt, 2026-11-07).
+                  Each card is a flex stack so the Enquire links line up, and the
+                  link stretches over the whole card, so the card itself is clickable. */}
+              <div className="xmas-options mt-6 md:mt-14 mx-auto grid grid-cols-1 md:grid-cols-2 text-center">
                 {GARLAND_OPTIONS.map((opt) => (
-                  <div key={opt.title} className="fade-up flex flex-col items-center py-10 md:py-2 md:px-10 lg:px-14">
-                    {/* Tag slot keeps both titles level side by side; on
-                        phones (stacked) only the popular one needs it. */}
-                    <p className={`mb-4 md:h-[24px] ${opt.popular ? "" : "hidden md:block"}`}>
+                  <div key={opt.title} className={`xmas-option fade-up flex flex-col items-center${opt.popular ? " is-popular" : ""}`}>
+                    <SnowCap mode="edge" />
+                    <p className="xmas-option__tag">
                       {opt.popular && <span className="xmas-tag">Most popular</span>}
                     </p>
                     {/* Phones get larger titles; the desktop columns keep the
@@ -518,7 +534,7 @@ const ChristmasDoorways = () => {
                           const select = document.querySelector<HTMLSelectElement>('form[name="christmas-doorway"] select[name="garland"]');
                           if (select) select.value = opt.title;
                         }}
-                        className="btn-link-rf text-[14px] text-primary"
+                        className="xmas-option__link btn-link-rf text-[14px] text-primary"
                       >
                         {opt.link} <span className="arr">→</span>
                       </a>
@@ -535,7 +551,7 @@ const ChristmasDoorways = () => {
           <div className="container-rfx">
             <BowDivider />
             <div className="max-w-[760px] mx-auto text-center fade-up">
-              <SectionTitle id="xmas-ig-heading">
+              <SectionTitle id="xmas-ig-heading" snow>
                 A little inspiration for{" "}
                 <em className="italic font-light text-accent-warm">your Christmas doorway.</em>
               </SectionTitle>
@@ -555,7 +571,7 @@ const ChristmasDoorways = () => {
             <div className="container-rfx">
               <BowDivider />
               <div className="max-w-[760px] mx-auto text-center fade-up">
-                <SectionTitle id="xmas-ad-heading">
+                <SectionTitle id="xmas-ad-heading" snow>
                   Watch the{" "}
                   <em className="italic font-light text-accent-warm">Christmas campaign.</em>
                 </SectionTitle>
@@ -580,7 +596,7 @@ const ChristmasDoorways = () => {
           <div className="container-rfx">
             <BowDivider />
             <div className="max-w-[760px] mx-auto text-center fade-up">
-              <SectionTitle id="xmas-how-heading">
+              <SectionTitle id="xmas-how-heading" snow>
                 Your Christmas doorway,{" "}
                 <em className="italic font-light text-accent-warm">taken care of.</em>
               </SectionTitle>
@@ -592,7 +608,8 @@ const ChristmasDoorways = () => {
             </div>
             <ol className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
               {STEPS.map((s) => (
-                <li key={s.n} className="fade-up border-t pt-6" style={{ borderColor: "hsl(var(--ink) / 0.14)" }}>
+                <li key={s.n} className="fade-up border-t pt-6 relative" style={{ borderColor: "hsl(var(--ink) / 0.14)" }}>
+                  <SnowCap mode="edge" radius={0} />
                   {/* Extra tag sits by the step number so step titles stay on
                       one line, even in the narrow 4-column layout. */}
                   <div className="flex items-center gap-3 h-[22px]">
@@ -625,7 +642,7 @@ const ChristmasDoorways = () => {
           <div className="container-rfx">
             <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">
               <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
-                <SectionTitle id="enquire-heading" light>
+                <SectionTitle id="enquire-heading" light snow>
                   Book your{" "}
                   <em className="italic font-light text-accent-warm">Christmas doorway.</em>
                 </SectionTitle>
@@ -643,7 +660,7 @@ const ChristmasDoorways = () => {
               </div>
 
               <form
-                className="form-wrap"
+                className="form-wrap relative"
                 name="christmas-doorway"
                 method="POST"
                 encType="multipart/form-data"
@@ -651,6 +668,7 @@ const ChristmasDoorways = () => {
                 data-netlify-honeypot="bot-field"
                 onSubmit={onSubmit}
               >
+                <SnowCap mode="edge" radius={14} ground="dark" />
                 <input type="hidden" name="form-name" value="christmas-doorway" />
                 <p className="hidden" aria-hidden="true">
                   <label>

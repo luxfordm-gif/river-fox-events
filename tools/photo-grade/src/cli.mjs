@@ -180,6 +180,7 @@ async function apply() {
   const report = [], left = [];
   for (const p of photos) {
     const lead = p.copyOf || p.derived || p.key;
+    if (only && !matches(p)) continue; // --only: swap just these in
     if (p.skip || !ok(lead)) { left.push(p.key); continue; }
     const e = m.images[lead];
     const png = path.join(dirs.ai, `${lead}.png`);
@@ -201,6 +202,7 @@ async function apply() {
     report.push({ key: p.key, size: `${w}x${h}`, kb: Math.round(out.length / 1024), q });
   }
   saveManifest(m);
+  if (only && !photos.some((p) => p.gallery && matches(p))) { console.log(`swapped in ${report.length} file(s); gallery copies unchanged`); return; }
   // gallery copies from the full-size AI results; house grade for any gallery photo that has none
   const house = photos.filter((p) => p.gallery && !ok(p.copyOf || p.derived || p.key));
   fs.rmSync(dirs.graded, { recursive: true, force: true }); fs.mkdirSync(dirs.graded, { recursive: true });

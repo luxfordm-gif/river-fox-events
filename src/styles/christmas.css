@@ -73,6 +73,11 @@ html[data-pref-xmas="brand"] .rfx-xmas .rfx-section.dark,
 html[data-pref-xmas="brand"] .rfx-xmas footer { --accent-warm: 12 35% 64%; }
 html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 
+/* The light sections a touch darker than the brand's #FCFBF8 on this page,
+   so the white of the settled snow has something to stand out against
+   (Matt, 2026-11-07). The garland cards shift with them. */
+.rfx-xmas .rfx-section.white { background: hsl(45 30% 95.5%); }
+
 /* Hero garland (src/components/rfx/HeroGarland.tsx). Static, so the
    filtered layer is rasterised once, not every frame. */
 .xmas-garland { pointer-events: none; filter: drop-shadow(0 10px 10px hsl(150 30% 10% / 0.2)); }
@@ -140,62 +145,6 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 .form-row.form-check { align-items: center; padding-top: 14px; padding-bottom: 14px; }
 .form-row.form-check input { width: 18px; height: 18px; padding: 0; accent-color: hsl(var(--accent)); flex: none; }
 .form-row.form-check > span { min-width: 0; }
-
-/* Instagram strip (src/components/rfx/InstagramStrip.tsx). */
-.xmas-ig { overflow: hidden; }
-.xmas-ig__track {
-  display: flex;
-  gap: 12px;
-  width: max-content;
-  animation: rfx-marq var(--ig-duration, 75s) linear infinite;
-}
-.xmas-ig:hover .xmas-ig__track,
-.xmas-ig:focus-within .xmas-ig__track { animation-play-state: paused; }
-.xmas-ig__item { flex: none; }
-.xmas-ig__tile {
-  position: relative;
-  display: block;
-  width: clamp(230px, 22vw, 340px);
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  border-radius: 10px;
-}
-.xmas-ig__tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.xmas-ig__over {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  color: hsl(var(--xmas-cream));
-  background: hsl(120 6% 12% / 0.55);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-.xmas-ig__handle { font-family: var(--font-sans); font-weight: 600; font-size: 14px; letter-spacing: 0.01em; }
-.xmas-ig__note { font-family: var(--font-sans); font-size: 12px; opacity: 0.85; }
-.xmas-ig__tile:hover .xmas-ig__over,
-.xmas-ig__tile:focus-visible .xmas-ig__over { opacity: 1; }
-/* Touch screens get a small badge instead of the hover overlay. */
-.xmas-ig__badge {
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
-  display: none;
-  padding: 5px;
-  border-radius: 4px;
-  color: hsl(var(--xmas-cream));
-  background: hsl(120 6% 12% / 0.5);
-}
-@media (hover: none) {
-  .xmas-ig__badge { display: inline-flex; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .xmas-ig { overflow-x: auto; }
-  .xmas-ig__track { animation: none; }
-}
 
 /* Floating Christmas card (src/components/rfx/ChristmasPromo.tsx).
    Bottom-right card on desktop, a slim bar along the bottom on phones. */
@@ -301,3 +250,56 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .xmas-promo, .xmas-promo__card { transition: none; }
 }
+
+/* Garland options: two equal cards (Matt, 2026-11-07). Most popular has the gold
+   border and a tag sitting on its top edge, so both titles line up. The whole card
+   is the link (the link's ::after covers it) and lifts 4px on hover. */
+.xmas-options { gap: 20px; max-width: 880px; }
+.xmas-option {
+  position: relative;
+  border: 1px solid hsl(var(--ink) / 0.28);
+  border-radius: 14px;
+  /* Between this page's section cream and the main cream (#F1EFE8). */
+  background: hsl(46 28% 93.5%);
+  padding: 52px 32px 36px;
+}
+/* One movement only: the card eases up 4px. (Scoped tighter than .fade-up,
+   which sets transition: none and made the card jump.) */
+.xmas-options > .xmas-option {
+  transition: transform .45s cubic-bezier(.45,0,.25,1), box-shadow .45s cubic-bezier(.45,0,.25,1);
+  box-shadow: inset 0 0 0 0 hsl(var(--ink) / 0.28);
+}
+.xmas-options > .xmas-option.is-popular {
+  box-shadow: inset 0 0 0 0 hsl(var(--xmas-gold-deep)), 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
+}
+/* On hover the border thickens 1px inwards (an inset ring, so nothing shifts). */
+.xmas-options > .xmas-option:hover, .xmas-options > .xmas-option:focus-within {
+  box-shadow: inset 0 0 0 1px hsl(var(--ink) / 0.28);
+}
+.xmas-options > .xmas-option.is-popular:hover, .xmas-options > .xmas-option.is-popular:focus-within {
+  box-shadow: inset 0 0 0 1px hsl(var(--xmas-gold-deep)), 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
+}
+/* The link doesn't grow or nudge its arrow here; the card's lift is the hover. */
+.xmas-option .xmas-option__link, .xmas-option .xmas-option__link .arr { transition: none; }
+.xmas-option .xmas-option__link:hover { gap: 10px; }
+.xmas-option .xmas-option__link:hover .arr { transform: none; }
+.xmas-option.is-popular {
+  border: 1.5px solid hsl(var(--xmas-gold-deep));
+  box-shadow: 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
+}
+.xmas-options > .xmas-option:hover, .xmas-options > .xmas-option:focus-within { transform: translateY(-4px); }
+.xmas-option__link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.xmas-option__tag { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); margin: 0; }
+@media (max-width: 767px) {
+  .xmas-options { gap: 28px; }
+  .xmas-option { padding: 48px 24px 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .xmas-option { transition: none; }
+  .xmas-options > .xmas-option:hover, .xmas-options > .xmas-option:focus-within { transform: none; }
+}
+
+/* Snow (SnowCap.tsx): a canvas sits over the card's top edge or the title's
+   letters. The Most popular tag stays in front of it. */
+.xmas-option__tag { z-index: 2; }
+.xmas-title-snow { position: relative; display: inline-block; }

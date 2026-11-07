@@ -1,8 +1,50 @@
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import expChildren from "@/assets/dinosaur-childrens-party-styling-surrey.webp";
 import expMilestone from "@/assets/40th-birthday-rose-gold-marquee-surrey.webp";
 import expCorporate from "@/assets/corporate-gala-styling-surrey.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
+import { galleryPhoto } from "@/data/gallery";
+
+type CardPhoto = { img: string; srcSet?: string; alt: string; position?: string };
+const fromGallery = (source: string, position?: string): CardPhoto => {
+  const p = galleryPhoto(source);
+  return { img: p.src, srcSet: p.srcSet, alt: p.alt, position };
+};
+
+/* Homepage only: four hand-picked sets of the strongest photos, [children's,
+   milestone, corporate]. One is picked at random on each page load (never the
+   same set twice running) and stays put while the page is open (Matt, 2026-11-07). */
+const HOME_SETS: CardPhoto[][] = [
+  [
+    { img: expChildren, alt: "Sage green dinosaur birthday backdrop with an Ayaan name sign, tropical foliage and dinosaur cutouts" },
+    { img: expMilestone, alt: "Rose gold light-up 40 marquee with a blush and chrome balloon installation in a hall with a wall clock" },
+    { img: expCorporate, alt: "Navy, gold and cream balloons around a Children in Need Pudsey backdrop at a corporate gala" },
+  ],
+  [
+    fromGallery("river-fox-events-jungle-theme-fourever-wild-full-setup.webp"),
+    fromGallery("services/milestones/13th-birthday-pink-light-up-numbers-garland.webp", "58% 50%"),
+    fromGallery("river-fox-events-theatre-125-anniversary-marquee-wide.webp"),
+  ],
+  [
+    fromGallery("river-fox-events-fairy-first-birthday-kayla-arch-marquee-portrait.webp"),
+    fromGallery("river-fox-events-veuve-cliquot-angela-georgia-arch-wide.webp"),
+    fromGallery("river-fox-events-nxtgen-corporate-entrance-columns-side-angle.webp"),
+  ],
+  [
+    fromGallery("river-fox-events-willy-wonka-savanna-chocolate-bar-arch.webp"),
+    fromGallery("services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp", "96% 50%"),
+    fromGallery("services/corporate/enterprise-mobility-branded-backdrop-black-gold-balloons.webp"),
+  ],
+];
+const pickHomeSet = () => {
+  if (typeof window === "undefined" || navigator.webdriver) return 0; // the prerender always bakes set 1
+  let last = -1;
+  try { last = Number(sessionStorage.getItem("rfx-home-set") ?? localStorage.getItem("rfx-home-set") ?? -1); } catch { /* storage blocked */ }
+  let next = Math.floor(Math.random() * HOME_SETS.length);
+  if (next === last) next = (next + 1) % HOME_SETS.length;
+  try { localStorage.setItem("rfx-home-set", String(next)); } catch { /* storage blocked */ }
+  return next;
+};
 
 const ITEMS = [
   {
@@ -43,6 +85,8 @@ interface ExpItem {
   href: string;
   tone: string;
   extraZoom?: number;
+  srcSet?: string;
+  position?: string;
 }
 
 const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean }) => {
@@ -68,9 +112,11 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
         <img
           ref={img}
           src={it.img}
+          srcSet={it.srcSet}
+          sizes={it.srcSet ? "(min-width: 768px) 31vw, calc(100vw - 56px)" : undefined}
           alt={it.alt}
           className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
-          style={{ transform: `translate3d(0,0,0) scale(${baseScale})` }}
+          style={{ transform: `translate3d(0,0,0) scale(${baseScale})`, objectPosition: it.position }}
           loading="lazy"
           decoding="async"
           width={1024}
@@ -111,6 +157,8 @@ type ExperiencesProps = {
   /** Shorter, landscape photos (about half the height). Used on
    *  /balloon-installations/, where these cards repeat the homepage. */
   compactImages?: boolean;
+  /** Homepage: show one of four photo sets, chosen per page load. */
+  rotatePhotos?: boolean;
 };
 
 const Experiences = ({
@@ -119,7 +167,12 @@ const Experiences = ({
   sectionId = "experiences",
   showBalloonLink = true,
   compactImages = false,
+  rotatePhotos = false,
 }: ExperiencesProps = {}) => {
+  const [setIndex] = useState(() => (rotatePhotos ? pickHomeSet() : 0));
+  const items = rotatePhotos
+    ? ITEMS.map((it, i) => ({ ...it, ...HOME_SETS[setIndex][i], extraZoom: setIndex === 0 ? it.extraZoom : undefined }))
+    : ITEMS;
   return (
     <section id={sectionId} className="rfx-section white" aria-labelledby="exp-heading">
       <div className="container-rfx">
@@ -143,12 +196,12 @@ const Experiences = ({
           </h2>
           <p className="text-[15.5px] leading-[1.6] text-ink-soft pb-3 text-center md:text-left mx-auto md:mx-0">
             {intro ??
-              "Our work centres around three core experiences; Children's Parties, Milestone Celebrations and Corporate Installations. Each fully bespoke and designed from the ground up, with a focus on aesthetic, flow and detail. We work with a small number of clients each month so every event receives personal attention from concept to install."}
+              "Our work centres around three core experiences; Children's Parties, Milestone Celebrations and Corporate Installations. Each fully bespoke and designed from the ground up, with a focus on aesthetic, flow and detail."}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[56px] md:gap-0 md:border-t md:border-ink/20 pt-0 md:pt-12">
-          {ITEMS.map((it, i) => (
+          {items.map((it, i) => (
             <ExpCard key={i} it={it} i={i} compact={compactImages} />
           ))}
         </div>

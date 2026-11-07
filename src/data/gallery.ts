@@ -77,12 +77,46 @@ export const GALLERY: GallerySection[] = [
             alt: "Fourever Wild jungle party setup with white safari jeep, balloon garland, giraffe, zebra and lion cub by a bamboo backdrop",
           },
           {
+            source: "services/childrens-parties/jungle-party-long-table-lion-plates-soft-play.webp",
+            alt: "Long jungle party table with lion plates, giraffe cups and palm leaves in a soft play venue",
+          },
+          {
             source: "river-fox-events-jungle-theme-safari-tablescape-elephant.webp",
             alt: "Jungle tablescape with an elephant centrepiece, monstera runner, giraffe-print plates and safari balloons",
           },
+        ],
+      },
+      {
+        title: "Ayaan's dinosaur birthday",
+        photos: [
           {
-            source: "river-fox-events-jungle-theme-lion-plates-overhead.webp",
-            alt: "Overhead jungle place settings with lion-printed plates, raffia and animal-print napkins",
+            source: "dinosaur-ayaan-arch-surrey.webp",
+            alt: "Ayaan's dinosaur birthday arch with sage balloons, a personalised name sign and wooden crate props",
+          },
+          {
+            source: "river-fox-events-dinosaur-theme-ayaan-arch-close-up-portrait.webp",
+            alt: "Close-up of Ayaan's dinosaur arch, with sage and cream balloons, tropical foliage and a personalised sign",
+          },
+          {
+            source: "journal/from-design-to-delivery/dinosaur-party-styling-surrey-finished.webp",
+            alt: "Finished dinosaur party in a Surrey home: sage balloon arch, AYAAN name sign, dinosaur cutouts and wooden explorer crates",
+          },
+        ],
+      },
+      {
+        title: "Kayla's fairy first birthday",
+        photos: [
+          {
+            source: "river-fox-events-fairy-first-birthday-kayla-arch-marquee-portrait.webp",
+            alt: "Kayla's fairy first birthday arch in pink and lilac balloons with a light-up one and mossy detail",
+          },
+          {
+            source: "river-fox-events-fairy-first-birthday-kayla-tablescape-overhead.webp",
+            alt: "Overhead view of Kayla's fairy first birthday table with pastel place settings, a mossy runner and trailing greenery",
+          },
+          {
+            source: "river-fox-events-fairy-first-birthday-kayla-table-florals.webp",
+            alt: "Table detail from Kayla's fairy first birthday in soft pinks and blush, with trailing greenery",
           },
         ],
       },
@@ -104,15 +138,33 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
-        title: "Kayla's fairy first birthday",
+        title: "Savanna's Willy Wonka fifth birthday",
         photos: [
           {
-            source: "river-fox-events-fairy-first-birthday-kayla-arch-marquee-portrait.webp",
-            alt: "Kayla's fairy first birthday arch in pink and lilac balloons with a light-up one and mossy detail",
+            source: "river-fox-events-willy-wonka-savanna-chocolate-bar-arch.webp",
+            alt: "Oversized chocolate bar arch from Savanna's Willy Wonka fifth birthday in purple, brown and gold",
           },
           {
-            source: "river-fox-events-fairy-first-birthday-kayla-tablescape-overhead.webp",
-            alt: "Overhead view of Kayla's fairy first birthday table with pastel place settings, a mossy runner and trailing greenery",
+            source: "river-fox-events-willy-wonka-savanna-bar-prop-close-up.webp",
+            alt: "Close-up of the chocolate-bar prop with lilac balloons, a lollipop foil and mushroom props at Savanna's Wonka party",
+          },
+        ],
+      },
+      {
+        title: "Reeva's pastel birthday entrance",
+        photos: [
+          {
+            source: "river-fox-events-pastel-birthday-reeva-entrance-arch.webp",
+            alt: "Blush, peach and cream balloon arch over Reeva's birthday welcome easel at a front door",
+          },
+        ],
+      },
+      {
+        title: "Savanna's London party",
+        photos: [
+          {
+            source: "services/childrens-parties/savanna-london-party-bus-phone-box-backdrop.webp",
+            alt: "London party backdrop with a red bus, phone box and bear cutouts, a Savanna roundel sign and red and navy balloons",
           },
         ],
       },
@@ -126,32 +178,6 @@ export const GALLERY: GallerySection[] = [
           {
             source: "services/childrens-parties/kai-one-o-saurus-dinosaur-cutouts-side-angle.webp",
             alt: "Side view of painted dinosaur cutouts and a rust, sage and gold garland on Kai's one-o-saurus backdrop",
-          },
-        ],
-      },
-      {
-        title: "Ayaan's dinosaur birthday",
-        photos: [
-          {
-            source: "dinosaur-ayaan-arch-surrey.webp",
-            alt: "Ayaan's dinosaur birthday arch with sage balloons, a personalised name sign and wooden crate props",
-          },
-          {
-            source: "river-fox-events-dinosaur-theme-ayaan-arch-close-up-portrait.webp",
-            alt: "Close-up of Ayaan's dinosaur arch, with sage and cream balloons, tropical foliage and a personalised sign",
-          },
-        ],
-      },
-      {
-        title: "Savanna's Willy Wonka fifth birthday",
-        photos: [
-          {
-            source: "river-fox-events-willy-wonka-savanna-chocolate-bar-arch.webp",
-            alt: "Oversized chocolate bar arch from Savanna's Willy Wonka fifth birthday in purple, brown and gold",
-          },
-          {
-            source: "river-fox-events-willy-wonka-savanna-bar-prop-close-up.webp",
-            alt: "Close-up of the chocolate-bar prop with lilac balloons, a lollipop foil and mushroom props at Savanna's Wonka party",
           },
         ],
       },
@@ -171,6 +197,10 @@ export const GALLERY: GallerySection[] = [
           {
             source: "journal/two-wild-safari-second-birthday/two-wild-safari-second-birthday-styling-horley-surrey.webp",
             alt: "Amiya's Two Wild birthday at Horley Community Centre: pastel garland, safari name panel, light-up 2 and a banquet table",
+          },
+          {
+            source: "river-fox-events-pastel-entrance-decor-arch.webp",
+            alt: "Overhead pastel table runner of foliage and pastel balloons between pink scalloped plates",
           },
         ],
       },
@@ -203,6 +233,10 @@ export const GALLERY: GallerySection[] = [
             source: "journal/dylan-christening-first-birthday/dylan-first-birthday-teddy-cutout-chrome-gold-balloons.webp",
             alt: "Painted rabbit cutout in a party hat holding a gift box at the foot of a chrome gold, sky blue and ivory balloon cluster",
           },
+          {
+            source: "journal/dylan-christening-first-birthday/dylan-christening-arched-welcome-panel-balloon-garland.webp",
+            alt: "Arched welcome panel for Dylan's christening on a starlit stage, framed by blue, ivory and gold balloons",
+          },
         ],
       },
       {
@@ -220,15 +254,6 @@ export const GALLERY: GallerySection[] = [
           {
             source: "services/childrens-parties/rishi-summer-party-bright-balloon-backdrop.webp",
             alt: "Turquoise, coral and lemon balloons around a Rishi's Summer Party panel, with beach balls on a garden patio",
-          },
-        ],
-      },
-      {
-        title: "Savanna's London party",
-        photos: [
-          {
-            source: "services/childrens-parties/savanna-london-party-bus-phone-box-backdrop.webp",
-            alt: "London party backdrop with a red bus, phone box and bear cutouts, a Savanna roundel sign and red and navy balloons",
           },
         ],
       },
@@ -297,33 +322,6 @@ export const GALLERY: GallerySection[] = [
           },
         ],
       },
-      {
-        title: "Jungle party long table",
-        photos: [
-          {
-            source: "services/childrens-parties/jungle-party-long-table-lion-plates-soft-play.webp",
-            alt: "Long jungle party table with lion plates, giraffe cups and palm leaves in a soft play venue",
-          },
-        ],
-      },
-      {
-        title: "Purple and teal number 9",
-        photos: [
-          {
-            source: "services/childrens-parties/ninth-birthday-mosaic-9-purple-teal.webp",
-            alt: "Mosaic number 9 filled with purple, teal, lilac and silver balloons in a bright room",
-          },
-        ],
-      },
-      {
-        title: "Reeva's pastel birthday entrance",
-        photos: [
-          {
-            source: "river-fox-events-pastel-birthday-reeva-entrance-arch.webp",
-            alt: "Blush, peach and cream balloon arch over Reeva's birthday welcome easel at a front door",
-          },
-        ],
-      },
     ],
   },
   {
@@ -334,6 +332,50 @@ export const GALLERY: GallerySection[] = [
     titleAccent: "celebrations.",
     link: { href: "/milestone-celebrations/", label: "See milestone styling" },
     events: [
+      {
+        title: "Pink 13th birthday",
+        photos: [
+          {
+            source: "services/milestones/13th-birthday-pink-light-up-numbers-garland.webp",
+            alt: "Hot pink and magenta balloon garland beside pink light-up 13 numbers in a conservatory",
+          },
+        ],
+      },
+      {
+        title: "Navy and gold table centrepieces",
+        photos: [
+          {
+            source: "services/milestones/navy-gold-bubble-balloon-table-centrepieces.webp",
+            alt: "Navy bubble balloon centrepieces with gold table numbers on gold stands, with navy and chrome gold bases",
+          },
+        ],
+      },
+      {
+        title: "Rose gold 40th birthday",
+        photos: [
+          {
+            source: "river-fox-events-40th-birthday-rose-gold-marquee-sunlit.webp",
+            alt: "Sunlit rose gold 40th marquee numbers with a blush and chrome balloon garland",
+          },
+        ],
+      },
+      {
+        title: "The Stubbs family gender reveal",
+        photos: [
+          {
+            source: "river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch.webp",
+            alt: "He or She balloon arch in soft blue and pink for the Stubbs family gender reveal",
+          },
+          {
+            source: "river-fox-events-baby-stubbs-gender-reveal-wildflower-detail.webp",
+            alt: "Wildflower and dried-grass detail on the Stubbs gender reveal, in soft pinks, blues and pampas",
+          },
+          {
+            source: "river-fox-events-baby-stubbs-gender-reveal-arch-side-angle.webp",
+            alt: "Side angle of the He or She balloon arch in soft blue and pink for the Stubbs gender reveal",
+          },
+        ],
+      },
       {
         title: "Angela and Georgia's champagne celebration",
         photos: [
@@ -348,11 +390,20 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
-        title: "Rose gold 40th birthday",
+        title: "Red and blush heart hoop",
         photos: [
           {
-            source: "river-fox-events-40th-birthday-rose-gold-marquee-sunlit.webp",
-            alt: "Sunlit rose gold 40th marquee numbers with a blush and chrome balloon garland",
+            source: "services/milestones/heart-hoop-red-blush-balloons-heart-foils.webp",
+            alt: "Gold hoop with a red, blush and coral balloon garland and heart-shaped foils in a living room",
+          },
+        ],
+      },
+      {
+        title: "Navy and gold 50th birthday",
+        photos: [
+          {
+            source: "services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp",
+            alt: "Gold sequin wall framed by navy and gold balloons beside blue light-up 50 numbers in a panelled room",
           },
         ],
       },
@@ -386,19 +437,6 @@ export const GALLERY: GallerySection[] = [
           {
             source: "journal/garden-milestone-styling-surrey/garden-milestone-banquet-table-oxted.webp",
             alt: "Long lawn picnic table with floor cushions, a cheesecloth runner and a pastel arched backdrop behind",
-          },
-        ],
-      },
-      {
-        title: "The Stubbs family gender reveal",
-        photos: [
-          {
-            source: "river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch.webp",
-            alt: "He or She balloon arch in soft blue and pink for the Stubbs family gender reveal",
-          },
-          {
-            source: "river-fox-events-baby-stubbs-gender-reveal-wildflower-detail.webp",
-            alt: "Wildflower and dried-grass detail on the Stubbs gender reveal, in soft pinks, blues and pampas",
           },
         ],
       },
@@ -442,29 +480,11 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
-        title: "Navy and gold 50th birthday",
-        photos: [
-          {
-            source: "services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp",
-            alt: "Gold sequin wall framed by navy and gold balloons beside blue light-up 50 numbers in a panelled room",
-          },
-        ],
-      },
-      {
         title: "Champagne 40th birthday",
         photos: [
           {
             source: "services/milestones/40th-birthday-champagne-gold-garland-restaurant.webp",
             alt: "Champagne, ivory and gold balloon garland climbing a patterned wall beside rose gold 40 foil numbers",
-          },
-        ],
-      },
-      {
-        title: "Pink Baby in Bloom garden shower",
-        photos: [
-          {
-            source: "services/milestones/baby-in-bloom-pink-garden-baby-shower.webp",
-            alt: "Pink Baby in Bloom arched panels with a magenta balloon arch and a rattan chair on a garden lawn",
           },
         ],
       },
@@ -496,38 +516,11 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
-        title: "Pink 13th birthday",
-        photos: [
-          {
-            source: "services/milestones/13th-birthday-pink-light-up-numbers-garland.webp",
-            alt: "Hot pink and magenta balloon garland beside pink light-up 13 numbers in a conservatory",
-          },
-        ],
-      },
-      {
-        title: "Red and blush heart hoop",
-        photos: [
-          {
-            source: "services/milestones/heart-hoop-red-blush-balloons-heart-foils.webp",
-            alt: "Gold hoop with a red, blush and coral balloon garland and heart-shaped foils in a living room",
-          },
-        ],
-      },
-      {
         title: "Blush and rose gold hoop",
         photos: [
           {
             source: "services/milestones/blush-rose-hoop-garland-living-room.webp",
             alt: "Gold hoop wrapped in blush, rose gold and cream balloons in front of a sheer-curtained window",
-          },
-        ],
-      },
-      {
-        title: "Navy and gold table centrepieces",
-        photos: [
-          {
-            source: "services/milestones/navy-gold-bubble-balloon-table-centrepieces.webp",
-            alt: "Navy bubble balloon centrepieces with gold table numbers on gold stands, with navy and chrome gold bases",
           },
         ],
       },
@@ -560,6 +553,15 @@ export const GALLERY: GallerySection[] = [
           {
             source: "river-fox-events-theatre-125-anniversary-balloon-close-up.webp",
             alt: "Close-up of cream, gold and pearl balloons beside the 125 anniversary marquee on a theatre staircase",
+          },
+        ],
+      },
+      {
+        title: "Office Christmas party sequin wall",
+        photos: [
+          {
+            source: "journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp",
+            alt: "Gold mirror sequin wall framed by an organic garland of black and chrome gold balloons on a checkerboard floor",
           },
         ],
       },
@@ -669,15 +671,6 @@ export const GALLERY: GallerySection[] = [
         ],
       },
       {
-        title: "Office Christmas party sequin wall",
-        photos: [
-          {
-            source: "journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp",
-            alt: "Gold mirror sequin wall framed by an organic garland of black and chrome gold balloons on a checkerboard floor",
-          },
-        ],
-      },
-      {
         title: "Merry Christmas works party",
         photos: [
           {
@@ -705,6 +698,14 @@ export const GALLERY: GallerySection[] = [
             source: "christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp",
             alt: "Blue restaurant double doors in Reigate edged with red and gold bauble garlands",
           },
+          {
+            source: "christmas/blue-restaurant-doorway-red-bauble-garland.webp",
+            alt: "Blue shopfront doorway with a spruce garland of large red and champagne baubles running up the frame",
+          },
+          {
+            source: "christmas/instagram/restaurant-window-ledge-red-bauble-garland.webp",
+            alt: "Restaurant window ledge lined with a spruce garland of red and cream baubles beside bistro chairs",
+          },
         ],
       },
       {
@@ -715,6 +716,14 @@ export const GALLERY: GallerySection[] = [
             source: "journal/christmas-decorations-surrey/christmas-doorway-garland-pink-studio-east-molesey.webp",
             alt: "Frosted fir garland with red, blush and white baubles and candy canes framing a pink pilates studio doorway",
           },
+          {
+            source: "christmas/instagram/pink-pilates-studio-garland-blush-red-baubles.webp",
+            alt: "Pink pilates studio doorway in East Molesey dressed in spruce with blush, white and red baubles",
+          },
+          {
+            source: "christmas/instagram/pink-studio-pillar-garland-detail.webp",
+            alt: "Pillar garland on a pink studio front mixing red, white and gold baubles with spruce",
+          },
         ],
       },
       {
@@ -723,6 +732,10 @@ export const GALLERY: GallerySection[] = [
           {
             source: "christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp",
             alt: "Navy front door beneath a spruce arch crowded with pink, purple, teal and gold baubles",
+          },
+          {
+            source: "christmas/jewel-tone-bauble-arch-white-porch.webp",
+            alt: "Jewel-toned baubles in pink, teal and purple on a spruce arch over a white house porch",
           },
         ],
       },
@@ -733,6 +746,10 @@ export const GALLERY: GallerySection[] = [
             source: "christmas/black-front-door-gold-ribbon-garland-red-brick-838.webp",
             alt: "Black Georgian front door with a spruce garland of gold ribbons, stars and baubles arching over the fanlight",
           },
+          {
+            source: "christmas/gold-star-pine-cone-bauble-spruce-detail-838.webp",
+            alt: "Gold star, frosted pine cone and gold bauble tucked into spruce with a gold ribbon bow",
+          },
         ],
       },
       {
@@ -741,6 +758,10 @@ export const GALLERY: GallerySection[] = [
           {
             source: "christmas/instagram/glass-salon-true-red-corner-garland.webp",
             alt: "Glass salon frontage with a spruce corner garland weighed down with true-red baubles",
+          },
+          {
+            source: "christmas/red-baubles-eucalyptus-spruce-detail-838.webp",
+            alt: "Deep red baubles, eucalyptus and warm fairy lights nestled in spruce beside a shop window",
           },
         ],
       },
@@ -768,6 +789,42 @@ export const GALLERY: GallerySection[] = [
           {
             source: "christmas/instagram/white-door-wreath-pink-plum-garland.webp",
             alt: "White front door edged in a spruce garland of pink, plum, gold and red baubles",
+          },
+        ],
+      },
+      {
+        title: "Georgian door at number 16",
+        photos: [
+          {
+            source: "christmas/instagram/georgian-door-gold-champagne-garland.webp",
+            alt: "Georgian black door at number 16 framed in spruce with gold and champagne baubles and stars",
+          },
+        ],
+      },
+      {
+        title: "Blue front door in silver and white",
+        photos: [
+          {
+            source: "christmas/instagram/blue-door-spruce-garland-silver-white-baubles.webp",
+            alt: "Blue front door framed in real spruce with blue, white and silver baubles",
+          },
+        ],
+      },
+      {
+        title: "Cream door in jewel tones",
+        photos: [
+          {
+            source: "christmas/instagram/cream-door-brick-porch-jewel-garland.webp",
+            alt: "Cream front door under a brick porch, framed by spruce with jewel-toned baubles",
+          },
+        ],
+      },
+      {
+        title: "Pink shopfront window",
+        photos: [
+          {
+            source: "christmas/instagram/pink-shopfront-red-white-window-garland.webp",
+            alt: "Pink shopfront with a spruce garland of red and white baubles running along the window base",
           },
         ],
       },

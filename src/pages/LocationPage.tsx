@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import InspirationStrip from "@/components/rfx/InspirationStrip";
+import { INSPIRATION_TOWNS } from "@/data/inspiration";
 import { useLocation } from "react-router-dom";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
@@ -47,7 +49,7 @@ const useLocationSEO = (loc: LocationConfig) => {
           serviceType: "Event Styling",
           description: loc.seoDescription,
           areaServed: loc.jsonLdAreaServed,
-          lowPrice: "460",
+          lowPrice: "300",
         });
     if (svc) upsertJsonLd(serviceId, svc);
 
@@ -138,9 +140,13 @@ const LocationPage = () => {
               )}
               {/* Phones also get WhatsApp Laura now, pre-filled with the
                   town. Matching widths, stacked. */}
-              <div className="mt-10 mx-auto grid gap-3 w-fit fade-up in">
+              <div className="mt-10 mx-auto grid gap-3 w-fit md:grid-flow-col md:auto-cols-fr fade-up in">
                 <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
                   Reserve your date{" "}
+                  <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
+                </a>
+                <a href="/our-work/" className="btn-ghost-rf justify-center">
+                  See our work{" "}
                   <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
                 </a>
                 <a
@@ -195,6 +201,7 @@ const LocationPage = () => {
 
         <LocationGallery
           id="loc-gallery"
+          compactTop
           eyebrow={loc.gallery.eyebrow}
           heading={loc.gallery.heading}
           intro={loc.gallery.intro}
@@ -209,17 +216,19 @@ const LocationPage = () => {
 
         <CPPricing
           heading={loc.pricing.heading}
-          ctaLabel="Enquire now"
+          ctaLabel="Reserve your date"
           footnote={loc.pricing.footnote}
         />
 
         <LocationTrust />
 
+        <InspirationStrip id={`loc-${loc.slug}-inspiration`} accent="your next celebration." images={INSPIRATION_TOWNS} flushBottom />
+
         <ChildrensFAQ
           faqs={loc.faqs}
           headingId={`loc-${loc.slug}-faq-heading`}
           defaultOpen={false}
-          paddingBottom="64px"
+          paddingBottom=""
         />
 
         <Enquire venuePlaceholder={`e.g. at home in ${loc.cityName}`} />

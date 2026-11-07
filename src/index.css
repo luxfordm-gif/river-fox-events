@@ -86,22 +86,12 @@
     @apply border-border;
   }
   html {
-    /* Native smooth scroll disabled — Lenis (useSmoothScroll) handles
-       site-wide smooth scrolling for a slower, premium feel. */
+    /* Plain browser scrolling (the Lenis smooth-scroll hijack was removed on
+       2026-11-07). Same-page anchor links glide via useSmoothScroll; this
+       padding stops the fixed nav covering the top of the section. */
     scroll-behavior: auto;
+    scroll-padding-top: 80px;
   }
-  /* Mobile/tablet: Lenis is off (see useSmoothScroll), so anchor jumps use
-     native browser scrolling. Without padding the fixed nav covers the top
-     of the destination section. Matches the -80px offset Lenis uses on
-     desktop. */
-  @media (pointer: coarse) and (max-width: 1024px) {
-    html { scroll-padding-top: 80px; }
-  }
-  /* Lenis smooth-scroll baseline styles */
-  html.lenis, html.lenis body { height: auto; }
-  .lenis.lenis-smooth { scroll-behavior: auto !important; }
-  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-  .lenis.lenis-stopped { overflow: hidden; }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
@@ -806,12 +796,12 @@
      up from the bottom once the header tabs scroll away. Below the cookie
      banner (200) and the photo viewer (300). */
   .work-dock {
-    position: fixed; left: 50%; bottom: calc(36px + env(safe-area-inset-bottom)); z-index: 90;
+    position: fixed; left: 50%; bottom: calc(72px + env(safe-area-inset-bottom)); z-index: 90;
     display: flex; gap: 4px; padding: 6px; max-width: calc(100vw - 24px);
     border-radius: 999px; border: 1px solid hsl(var(--ink) / 0.14);
     background: hsl(var(--background) / 0.86);
     -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4);
-    box-shadow: 0 18px 44px -12px hsl(var(--ink) / 0.45), 0 2px 6px hsl(var(--ink) / 0.10);
+    box-shadow: 0 20px 48px -12px hsl(var(--ink) / 0.5), 0 3px 9px hsl(var(--ink) / 0.13);
     transform: translate(-50%, calc(100% + 60px)); opacity: 0; pointer-events: none;
     transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
   }
@@ -983,8 +973,9 @@
     .rfx-section.warm::after { animation: none; }
   }
   /* Instagram section — slightly tighter top gap so the divider sits closer to the section above */
-  .rfx-instagram { padding: 44px 0 56px; }
-  .rfx-instagram .rfx-instagram-inner { padding-top: 40px; padding-bottom: 40px; }
+  .rfx-instagram { padding: 44px 0 80px; }
+  /* No bottom rule any more: the photo strip runs under the button (Matt, 2026-11-07). */
+  .rfx-instagram .rfx-instagram-inner { padding-top: 40px; padding-bottom: 0; }
   /* Testimonials section — match Instagram's tighter rhythm so the hairline sits the same distance from section edges */
   #kindness.rfx-section { padding: 56px 0 44px; }
   #kindness .hairline { margin-bottom: 40px !important; }
@@ -1016,7 +1007,7 @@
     /* Tighten gap between Testimonials and Instagram on mobile */
     #kindness.rfx-section { padding-bottom: 28px; }
     /* Instagram: tighter top/bottom padding on mobile */
-    .rfx-instagram { padding: 16px 0 32px !important; }
+    .rfx-instagram { padding: 16px 0 56px !important; }
   }
 
   /* Responsive grid stacking helper */
@@ -1260,3 +1251,20 @@
     transition: none;
   }
 }
+
+/* Inspiration carousel: 22px less space below it, before the FAQs, at every
+   width the shared .rfx-section padding changes (Matt, 2026-11-07). */
+.rfx-section.rfx-inspiration { padding-bottom: 98px; }
+@media (min-width: 761px) and (max-width: 1439px) { .rfx-section.rfx-inspiration { padding-bottom: 74px; } }
+@media (min-width: 768px) and (max-width: 1366px) { .rfx-section.rfx-inspiration { padding-bottom: 58px; } }
+@media (max-width: 760px) { .rfx-section.rfx-inspiration { padding-bottom: 34px; } }
+
+/* Our work: cards scale gently up into view as you scroll (OurWork.tsx adds
+   .gallery-anim only in a real browser without reduced motion). */
+.gallery-anim .gallery-event {
+  opacity: 0;
+  transform: translateY(14px) scale(0.965);
+  transition: opacity .7s ease, transform 1s cubic-bezier(.2,.7,.2,1);
+}
+.gallery-anim .gallery-event.is-in { opacity: 1; transform: none; }
+.gallery-anim .gallery-event:not(.is-in) .work-tile img { transform: scale(1.06); }

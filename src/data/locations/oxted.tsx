@@ -11,7 +11,7 @@ const oxted = makeLocation({
   },
   uniqueSeoTitle: "Oxted Party Decorations & Balloon Arches | River Fox Events",
   uniqueSeoDescription:
-    "Party decorations in Oxted, Limpsfield and Hurst Green. Balloon arches, painted name boards and themed props, installed and collected by Laura, from £460.",
+    "Party decorations in Oxted, Limpsfield and Hurst Green. Balloon arches, painted name boards and themed props, installed and collected by Laura, from £300.",
   uniqueHeroLine: <>Oxted party decorations,</>,
   uniqueHeroSub: <>Homes and gardens from Limpsfield to Woldingham, dressed with balloon arches, painted name boards and themed props, then cleared away the same day.</>,
   uniqueUspBody:

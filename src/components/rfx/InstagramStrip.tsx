@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import { Instagram } from "lucide-react";
+import "@/styles/instagram-strip.css";
 
 export type InstagramStripImage = { src: string; alt: string };
 

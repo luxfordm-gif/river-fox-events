@@ -22,24 +22,26 @@ const TRUST_POINTS: { icon: IncludedIconKey; label: string; body: string }[] = [
   {
     icon: "badge",
     label: "Eight years in Surrey",
-    body: "We've styled celebrations across Surrey for eight years, with more than 400 events brought to life.",
+    body: "More than 400 events styled across Surrey.",
   },
   {
     icon: "palette",
     label: "Full-service styling",
-    body: "One studio for the whole look - concept, design and every styled detail handled in-house.",
+    body: "Concept, design and every detail, in-house.",
   },
   {
     icon: "heart",
-    label: "Planning made calm",
-    body: "We take the stress out of organising, guiding each decision so you can simply enjoy the lead-up.",
+    label: "Calm from start to finish",
+    body: "One point of contact, from first idea to the day.",
   },
   {
     icon: "sparkle",
     label: "Setup and collection",
-    body: "We deliver, install and return to clear everything away afterwards. Nothing for you to set up or carry.",
+    body: "Installed before guests arrive, cleared away after.",
   },
 ];
+
+const firstSentence = (text: string) => text.match(/^.*?[.?!](?=\s|$)/)?.[0] ?? text;
 
 const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -68,7 +70,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
       id="why-river-fox"
       className="rfx-section white"
       style={{ paddingTop: 0, paddingBottom: "80px" }}
-      aria-label="Why choose River Fox Events"
+      aria-label="Why River Fox Events"
     >
       <div className="container-rfx">
         <div className="text-center heading-to-body">
@@ -82,7 +84,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
               textWrap: "balance",
             }}
           >
-            Why choose{" "}
+            Why{" "}
             <em className="italic font-light text-accent-warm">
               River Fox Events?
             </em>
@@ -92,7 +94,8 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
           className="mx-auto max-w-[680px] text-center text-[16px] leading-[1.75] text-ink-soft fade-up"
           style={{ textWrap: "pretty" }}
         >
-          {body ?? (
+          {/* First sentence only: still unique per town, half the words (Matt, 2026-11-07). */}
+          {body ? firstSentence(body) : (
             <>
               River Fox Events is known for creating thoughtfully styled
               celebrations

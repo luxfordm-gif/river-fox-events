@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import InspirationStrip from "@/components/rfx/InspirationStrip";
+import { INSPIRATION_MILESTONES } from "@/data/inspiration";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
@@ -41,7 +43,7 @@ const FAQS = [
   },
   {
     q: "How much does milestone celebration styling cost in Surrey?",
-    a: "Milestone celebrations start from £460, with larger or more involved designs typically ranging from £1,200 to £2,500+.",
+    a: "Milestone celebrations start from £300, with larger or more involved designs typically ranging from £800 to £1,500+.",
   },
   {
     q: "What happens on the day?",
@@ -162,6 +164,8 @@ const Milestones = () => {
             atmosphere, balance and detail.
           </p>
         </CPReveal>
+
+        <InspirationStrip id="ms-inspiration" accent="your next celebration." images={INSPIRATION_MILESTONES} />
 
         <div id="how-it-works">
           <Process />
