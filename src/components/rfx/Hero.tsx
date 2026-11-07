@@ -11,7 +11,7 @@ const Hero = () => {
 
           <h1
             id="hero-heading"
-            className="font-serif-rf max-w-[14ch] md:max-w-none mx-auto break-words text-pretty"
+            className="font-serif-rf max-w-none mx-auto break-words text-pretty"
             style={{
               fontSize: "var(--fs-display)",
               lineHeight: 1.02,
