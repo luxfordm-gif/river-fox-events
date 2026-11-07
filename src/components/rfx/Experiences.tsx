@@ -48,30 +48,33 @@ const pickHomeSet = () => {
 
 const ITEMS = [
   {
-    title: "Children's Party Styling",
+    title: "Children's party styling",
     body:
       "Immersive themed parties designed to feel magical for children - and completely effortless for you.",
     img: expChildren,
     alt: "Sage green dinosaur birthday backdrop with an Ayaan name sign, tropical foliage and dinosaur cutouts",
     href: "/childrens-parties",
+    cta: "See the parties",
     tone: "",
   },
   {
-    title: "Milestone Celebrations",
+    title: "Milestone celebrations",
     body:
       "Refined styling for life's biggest moments, from christenings and baby showers to 40ths and anniversaries.",
     img: expMilestone,
     alt: "Rose gold light-up 40 marquee with a blush and chrome balloon installation in a hall with a wall clock",
     href: "/milestone-celebrations",
+    cta: "See the celebrations",
     tone: "ph-warm",
   },
   {
-    title: "Corporate & Brand Styling",
+    title: "Corporate & brand styling",
     body:
       "Thoughtfully styled installations for launches, openings and activations. Trusted by P&G, The Range, Foxhills and more.",
     img: expCorporate,
     alt: "Navy, gold and cream balloons around a Children in Need Pudsey backdrop at a corporate gala",
     href: "/corporate-brand-styling",
+    cta: "See the brand work",
     tone: "ph-blush",
     extraZoom: 1.25,
   },
@@ -83,6 +86,8 @@ interface ExpItem {
   img: string;
   alt: string;
   href: string;
+  /** Button label under the card, e.g. "See the parties". */
+  cta: string;
   tone: string;
   extraZoom?: number;
   srcSet?: string;
@@ -138,7 +143,7 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
         {it.body}
       </p>
       <span className="btn-link-rf self-start mt-auto pt-4 md:pt-6" style={{ fontWeight: 600 }}>
-        Discover <span className="arr">→</span>
+        {it.cta} <span className="arr">→</span>
       </span>
     </a>
   );
@@ -196,7 +201,7 @@ const Experiences = ({
           </h2>
           <p className="text-[15.5px] leading-[1.6] text-ink-soft pb-3 text-center md:text-left mx-auto md:mx-0">
             {intro ??
-              "Our work centres around three core experiences; Children's Parties, Milestone Celebrations and Corporate Installations. Each fully bespoke and designed from the ground up, with a focus on aesthetic, flow and detail."}
+              "Our work centres on three core experiences: children's parties, milestone celebrations and corporate installations. Each one is individually designed, with a focus on aesthetic, flow and detail."}
           </p>
         </div>
 

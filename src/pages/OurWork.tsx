@@ -70,6 +70,7 @@ const EventCard = ({
               sizes={extras.length === 1 ? GRID_SIZES : THUMB_SIZES}
               crop={extras.length === 1 ? "16 / 10" : "1 / 1"}
               onOpen={() => open(firstIndex + 1 + i)}
+              eager={eager}
             />
           ))}
         </div>
@@ -225,9 +226,10 @@ const Section = ({
     <EventCard
       key={e.title}
       event={e}
-      // First row of the first section is visible without scrolling on a
-      // laptop, so those photos load straight away.
-      eager={index === 0 && i < 3}
+      // The first two rows of the first section (2 x the column count: 6 on
+      // a 3-column laptop, 2 on a phone) load straight away; every other
+      // photo on the page is lazy (Matt, 2026-11-07).
+      eager={index === 0 && i < n * 2}
       compact={section.compact}
       firstIndex={starts[i]}
       open={(n) => openViewer(section.id, n)}
@@ -236,7 +238,7 @@ const Section = ({
   return (
     <section
       id={section.id}
-      className={`rfx-section gallery-section ${index % 2 === 0 ? "white" : ""}`}
+      className={`rfx-section gallery-section${index % 2 === 1 ? " white" : ""}`}
       aria-labelledby={`${section.id}-heading`}
     >
       <div className="container-rfx">
@@ -244,14 +246,11 @@ const Section = ({
           <h2
             id={`${section.id}-heading`}
             className="font-serif-rf fade-up m-0"
-            style={{ fontSize: "var(--fs-h2)", lineHeight: 1.04, fontWeight: 300, letterSpacing: "-0.025em" }}
+            style={{ fontSize: "var(--fs-h2-sm)", lineHeight: 1.04, fontWeight: 300, letterSpacing: "-0.025em" }}
           >
             {section.titleLead}{" "}
             <em className="italic font-light text-accent-warm">{section.titleAccent}</em>
           </h2>
-          <a href={section.link.href} className="btn-ghost-rf self-start md:self-auto shrink-0">
-            {section.link.label} <span aria-hidden="true">→</span>
-          </a>
         </div>
         <div
           ref={gridRef}
@@ -514,7 +513,7 @@ const OurWork = () => {
     []
   );
 
-  const tabsRef = useRef<HTMLElement>(null);
+  const headerEndRef = useRef<HTMLDivElement>(null);
   const endRef = useRef<HTMLElement>(null);
   const dockSections = useMemo(
     () => sections.map(({ section, events }) => ({ id: section.id, short: section.short, label: section.label, count: events.length })),
@@ -525,22 +524,19 @@ const OurWork = () => {
   const active = viewer && sections.find((s) => s.section.id === viewer.sectionId);
 
   return (
-    <div className="min-h-screen bg-background text-foreground nav-solid">
+    <div className="min-h-screen page-paper text-foreground nav-solid nav-paper">
       <Nav />
       <main>
         <PageHeader
+          tone="paper"
+          divider
           title="Our work, by occasion."
           intro="Real parties and events Laura has styled across Surrey, grouped so you can find the kind of day you have in mind."
-        >
-          <nav ref={tabsRef} aria-label="Occasions" className="work-tabs">
-            {sections.map(({ section, events }) => (
-              <a key={section.id} href={`#${section.id}`} className="work-tab no-underline-fx">
-                {section.label}
-                <span className="work-tab__count">{events.length}</span>
-              </a>
-            ))}
-          </nav>
-        </PageHeader>
+        />
+        {/* Marker at the foot of the header: the occasion dock appears once
+            this has scrolled off the top (the header links were removed,
+            Matt 2026-11-07, as the dock already carries them). */}
+        <div ref={headerEndRef} aria-hidden="true" />
 
         {sections.map(({ section, events }, i) => (
           <Section key={section.id} section={section} events={events} index={i} openViewer={openViewer} />
@@ -566,7 +562,7 @@ const OurWork = () => {
         </section>
       </main>
       <Footer />
-      <SectionDock sections={dockSections} tabsRef={tabsRef} endRef={endRef} />
+      <SectionDock sections={dockSections} tabsRef={headerEndRef} endRef={endRef} />
 
       {active && viewer && (
         <Viewer

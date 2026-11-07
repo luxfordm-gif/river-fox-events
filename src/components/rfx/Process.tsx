@@ -100,7 +100,7 @@ const Process = ({ steps = DEFAULT_STEPS }: ProcessProps = {}) => {
                 </span>
               </div>
               <h3
-                className="font-serif-rf mb-4"
+                className="font-serif-rf mb-2"
                 style={{
                   fontSize: 30,
                   fontWeight: 400,

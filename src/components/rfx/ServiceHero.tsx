@@ -69,10 +69,10 @@ const ServiceHero = ({
   }, []);
 
   return (
-    <section id="top" aria-labelledby={headingId} className="pt-[106px] md:pt-[134px] pb-0">
+    <section id="top" aria-labelledby={headingId} className="rfx-hero-scale pt-[106px] md:pt-[134px] pb-0">
       {/* Text - same position and style as home page H1 */}
       <div className="container-rfx">
-        <div className="mb-10 md:mb-14 flex flex-col items-center text-center">
+        <div className="rfx-hero-intro mb-10 md:mb-14 flex flex-col items-center text-center">
           <h1
             id={headingId}
             className="font-serif-rf max-w-[14ch] md:max-w-none mx-auto break-words text-pretty"
@@ -95,7 +95,7 @@ const ServiceHero = ({
           </h1>
 
           <p
-            className={`word-reveal in delay-${lines.length} mt-3 max-w-[44ch] mx-auto text-[17px] leading-[1.65] text-ink-soft text-center`}
+            className={`word-reveal in delay-${lines.length} mt-3 md:mt-0 max-w-[44ch] mx-auto text-[17px] leading-[1.65] text-ink-soft text-center`}
             style={{ textWrap: "pretty" } as CSSProperties}
           >
             {sub}

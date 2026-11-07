@@ -11,6 +11,10 @@ type PageHeaderProps = {
   /** Optional extra content under the intro (jump links, buttons). */
   children?: ReactNode;
   id?: string;
+  /** "paper" puts the header on the lighter cream (Our work). */
+  tone?: "paper";
+  /** Hairline under the intro, with equal space above and below (Our work). */
+  divider?: boolean;
 };
 
 /**
@@ -19,10 +23,14 @@ type PageHeaderProps = {
  * so moving between these pages the heading never jumps. Spacing lives in
  * `.page-header*` in index.css.
  */
-const PageHeader = ({ title, intro, note, children, id }: PageHeaderProps) => (
+const PageHeader = ({ title, intro, note, children, id, tone, divider }: PageHeaderProps) => {
+  const cls = ["page-header", tone === "paper" && "page-paper", divider && "page-header--rule"]
+    .filter(Boolean)
+    .join(" ");
+  return (
   // Spacing sits on the outer <header>, not on .container-rfx: container
   // rules elsewhere reset padding with the shorthand and would undo it.
-  <header className="page-header">
+  <header className={cls}>
     <div className="container-rfx text-center">
       <h1 id={id} className="page-header__title font-serif-rf mx-auto">
         {title}
@@ -32,8 +40,10 @@ const PageHeader = ({ title, intro, note, children, id }: PageHeaderProps) => (
       )}
       {intro && <p className="page-header__intro mx-auto text-ink-soft">{intro}</p>}
       {children}
+      {divider && <div className="page-header__rule" aria-hidden="true" />}
     </div>
   </header>
-);
+  );
+};
 
 export default PageHeader;

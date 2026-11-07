@@ -130,12 +130,13 @@ const Journal = () => {
   // operating on the filtered list.
 
   return (
-    <div className="min-h-screen bg-cream text-ink">
+    <div className="min-h-screen page-paper text-ink nav-solid nav-paper">
       <Nav />
 
       <main>
         {/* Header */}
         <PageHeader
+          divider
           title="Journal"
           intro="Notes from the studio - trends, behind-the-scenes, and the thinking behind the celebrations we style."
         />
