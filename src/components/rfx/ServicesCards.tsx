@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { galleryPhoto } from "@/data/gallery";
 
@@ -159,17 +158,9 @@ const ServicesCards = ({
               >
                 {s.blurb}
               </p>
-              <span
-                className="mt-7 inline-flex items-center gap-2 font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink group-hover:gap-3 transition-all"
-                style={{ fontWeight: 600 }}
-              >
-                {s.cta ?? "Discover"}
-                <ArrowRight
-                  size={14}
-                  strokeWidth={1.5}
-                  aria-hidden="true"
-                  className="transition-transform group-hover:translate-x-[2px]"
-                />
+              {/* Same link style as the homepage cards (normal case, underlined), easier to read than spaced capitals (Matt, 2026-11-07). */}
+              <span className="btn-link-rf self-start mt-7" style={{ fontWeight: 600 }}>
+                {s.cta ?? "Discover"} <span className="arr">→</span>
               </span>
               </div>
             </a>
