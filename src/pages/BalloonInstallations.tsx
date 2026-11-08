@@ -89,7 +89,7 @@ const WHAT_WE_MAKE: ServiceCardItem[] = [
       "Garlands that trail along a fireplace, a staircase or the top of a backdrop, in a palette matched to the occasion. Lovely for 40ths, christenings and baby showers.",
     href: "/milestone-celebrations/",
     cta: "Milestone celebrations",
-    ...tilePhoto("river-fox-events-theatre-125-anniversary-marquee-wide.webp", "50% 55%"),
+    ...tilePhoto("journal/dylan-christening-first-birthday/dylan-christening-blue-gold-balloon-feature-wall.webp", "50% 40%"),
   },
   {
     title: "Hoops & backdrops",

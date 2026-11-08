@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { galleryPhoto } from "@/data/gallery";
 
 const photo = (source: string) => {
@@ -56,13 +56,14 @@ export type ServiceCardItem = {
 /* Bento layout (the five balloon cards on /balloon-installations/, Matt 2026-11-08).
    Desktop, 4 columns: tile 1 is 2x2 (the hero tile), tile 2 is 2x1 top right,
    tiles 3 and 4 are 1x1, tile 5 runs the full width along the bottom.
-   Tablet: 2 equal columns. Phone: one column. */
+   Tablet: 2 equal columns. Phone: a swipe carousel with the next card
+   peeking in and dots underneath, like the reviews (Matt, 2026-11-08). */
 const BENTO_TILES = [
-  { span: "lg:col-span-2 lg:row-span-2", sizes: "(min-width: 768px) 50vw, calc(100vw - 64px)" },
-  { span: "lg:col-span-2", sizes: "(min-width: 768px) 50vw, calc(100vw - 64px)" },
-  { span: "", sizes: "(min-width: 1024px) 25vw, (min-width: 768px) 50vw, calc(100vw - 64px)" },
-  { span: "", sizes: "(min-width: 1024px) 25vw, (min-width: 768px) 50vw, calc(100vw - 64px)" },
-  { span: "lg:col-span-4", sizes: "(min-width: 1024px) 100vw, (min-width: 768px) 50vw, calc(100vw - 64px)" },
+  { span: "lg:col-span-2 lg:row-span-2", sizes: "(min-width: 768px) 50vw, 80vw" },
+  { span: "lg:col-span-2", sizes: "(min-width: 768px) 50vw, 80vw" },
+  { span: "", sizes: "(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 80vw" },
+  { span: "", sizes: "(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 80vw" },
+  { span: "lg:col-span-4", sizes: "(min-width: 1024px) 100vw, (min-width: 768px) 50vw, 80vw" },
 ];
 
 type ServicesCardsProps = {
@@ -86,6 +87,31 @@ const ServicesCards = ({
   headingId = "services-cards-heading",
 }: ServicesCardsProps = {}) => {
   const bento = layout === "bento";
+
+  /* Phone carousel: track which card is centred so the right dot lights up. */
+  const track = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+  const onTrackScroll = () => {
+    const el = track.current;
+    if (!el) return;
+    const centre = el.scrollLeft + el.clientWidth / 2;
+    let nearest = 0;
+    Array.from(el.children).forEach((c, i) => {
+      const card = c as HTMLElement;
+      const nearestCard = el.children[nearest] as HTMLElement;
+      const dist = Math.abs(card.offsetLeft + card.offsetWidth / 2 - centre);
+      const best = Math.abs(nearestCard.offsetLeft + nearestCard.offsetWidth / 2 - centre);
+      if (dist < best) nearest = i;
+    });
+    setActive(nearest);
+  };
+  const goTo = (i: number) => {
+    const el = track.current;
+    const card = el?.children[i] as HTMLElement | undefined;
+    if (!el || !card) return;
+    el.scrollTo({ left: card.offsetLeft - (el.clientWidth - card.offsetWidth) / 2, behavior: "smooth" });
+  };
+
   return (
     <section
       id={sectionId}
@@ -122,13 +148,14 @@ const ServicesCards = ({
         )}
 
         <div
-          className={`grid grid-cols-1 gap-5 md:gap-7 ${
+          ref={bento ? track : undefined}
+          onScroll={bento ? onTrackScroll : undefined}
+          className={
             bento
-              ? "md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-3"
-              : items.length === 5
-                ? "md:grid-cols-6"
-                : "md:grid-cols-3"
-          }`}
+              ? // Phone: sideways swipe row that runs to the screen edges. Tablet up: the grid.
+                "relative flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-8 px-8 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:mx-0 md:px-0 md:pb-0 md:overflow-visible md:grid-cols-2 md:gap-7 lg:grid-cols-4 lg:grid-rows-3"
+              : `grid grid-cols-1 gap-5 md:gap-7 ${items.length === 5 ? "md:grid-cols-6" : "md:grid-cols-3"}`
+          }
         >
           {items.map((s: ServiceCardItem, i) => (
             <a
@@ -137,7 +164,7 @@ const ServicesCards = ({
               className={`
                 group relative flex flex-col rounded-[18px] no-underline-fx overflow-hidden
                 ${s.image ? "" : "p-7 md:p-9"}
-                ${bento ? BENTO_TILES[i]?.span ?? "" : items.length === 5 ? (i < 3 ? "md:col-span-2" : "md:col-span-3") : ""}
+                ${bento ? `shrink-0 basis-[86%] snap-center md:basis-auto ${BENTO_TILES[i]?.span ?? ""}` : items.length === 5 ? (i < 3 ? "md:col-span-2" : "md:col-span-3") : ""}
                 transition-all duration-300 ease-out
                 hover:-translate-y-[2px]
                 hover:shadow-[0_14px_36px_-14px_hsl(var(--ink)/0.18)]
@@ -195,6 +222,26 @@ const ServicesCards = ({
             </a>
           ))}
         </div>
+
+        {bento && (
+          <div
+            className="flex md:hidden justify-center gap-2 mt-5"
+            role="tablist"
+            aria-label="Choose a card"
+          >
+            {items.map((s, i) => (
+              <button
+                key={s.title}
+                type="button"
+                role="tab"
+                aria-selected={i === active}
+                aria-label={`Show ${s.title}`}
+                onClick={() => goTo(i)}
+                className={`tcard-dot ${i === active ? "is-active" : ""}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
