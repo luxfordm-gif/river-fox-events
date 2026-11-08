@@ -229,7 +229,7 @@ const TYPE_GROUPS: { title: string; intro: string; styles: { name: string; sampl
   },
   {
     title: "Headings",
-    intro: "Heading 1 is the page title, Heading 2 every section title, then down in size.",
+    intro: "Heading 1 is the page title, Heading 2 every section title, then down in size. On phones (below 768px) all six step up together as one scale, and Headings 1 to 3 get line height 1.1 so two-line titles aren't cramped; the Phone columns show the sizes.",
     styles: [
       { name: "t-h1", sample: HEADING_SAMPLE },
       { name: "t-h2", sample: HEADING_SAMPLE },

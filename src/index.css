@@ -72,13 +72,13 @@
     /* Headings: Heading 1 is the page title, Heading 2 every section title.
        Sizes are the ones the site had before the 2026-11-08 restructure
        (Matt: "what we had before worked"); only the names changed. */
-    --fs-h1: clamp(40px, 5vw, 80px);           /* Heading 1 · page titles: towns, journal, articles, Contact */
-    --fs-h2: clamp(34px, 4.4vw, 68px);         /* Heading 2 · every section title */
-    --fs-h3: clamp(30px, 3.4vw, 52px);         /* Heading 3 · titles under a display heading, Our work galleries */
-    --fs-h4: clamp(24px, 2.2vw, 32px);         /* Heading 4 · featured journal card, CTA and form headings, prices, phone menu (was 40; brought down so H5 26 → H4 32 is a normal step, Matt 2026-11-08) */
-    --fs-h5: clamp(19px, 1.8vw, 26px);         /* Heading 5 · card titles, FAQ questions */
-    --fs-h6: clamp(16px, 1.45vw, 21px);        /* Heading 6 · names under photo tiles, kept to one line */
-    --lh-h1: 1.04;
+    --fs-h1: clamp(40px, 5vw, 80px);           /* Heading 1 · page titles: towns, journal, articles, Contact (42 phone) */
+    --fs-h2: clamp(34px, 4.4vw, 68px);         /* Heading 2 · every section title (36 phone) */
+    --fs-h3: clamp(30px, 3.4vw, 52px);         /* Heading 3 · titles under a display heading, Our work galleries (32 phone) */
+    --fs-h4: clamp(24px, 2.2vw, 32px);         /* Heading 4 · featured journal card, CTA and form headings, prices, phone menu (26 phone; was 40; brought down so H5 26 → H4 32 is a normal step, Matt 2026-11-08) */
+    --fs-h5: clamp(19px, 1.8vw, 26px);         /* Heading 5 · card titles, FAQ questions (22 phone) */
+    --fs-h6: clamp(16px, 1.45vw, 21px);        /* Heading 6 · names under photo tiles, kept to one line (17 phone) */
+    --lh-h1: 1.04;                             /* phone 1.1 */
     --lh-h2: 1.04;                             /* phone 1.1 */
     --lh-h3: 1.04;                             /* phone 1.1 */
     --lh-h4: 1.15;
@@ -210,10 +210,14 @@
       /* Body and lead stay 17px / 18px on phones: the old phone patch had
          already taken main paragraphs to 17.5px, so dropping them would
          make phone reading harder (Matt, 2026-11-08). */
+      /* The whole heading scale steps up on phones together, H1 to H6
+         (Matt, 2026-11-08): 42 / 36 / 32 / 26 / 22 / 17, the small ones
+         most so card titles stand clear of the 17px body. The three big
+         headings share line height 1.1 so two-line titles aren't cramped. */
+      --lh-h1: 1.1;
       --lh-h2: 1.1;
       --lh-h3: 1.1;
-      /* Headings a step larger on phones, the small ones most, so card
-         titles stand clear of the 17px body (Matt, 2026-11-08). */
+      --fs-h1: 42px;
       --fs-h2: 36px;
       --fs-h3: 32px;
       --fs-h4: 26px;
