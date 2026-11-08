@@ -16,7 +16,7 @@
   :root {
     /* Brand palette — Moss / warm cream */
     --background: 47 22% 92%;          /* rf-bg #F1EFE8 */
-    --foreground: 120 6% 18%;          /* softened charcoal — not pure black */
+    --foreground: 100 8% 10%;          /* = --ink */
 
     --surface-alt: 45 36% 98%;         /* rf-bg-alt #FCFBF7 */
     --surface-deep: 144 9% 13%;        /* rf-bg-deep #1E2420 */
@@ -24,7 +24,7 @@
     --surface-blush: 137 18% 92%;      /* very soft sage tint */
     --surface-paper: 35 30% 96%;       /* lighter warm cream: journal articles, Contact, Our work header */
 
-    --ink: 120 6% 18%;                 /* softened charcoal */
+    --ink: 100 8% 10%;                 /* deep charcoal #191C17: headings and strong text. Darkened from 120 6% 18% so headings stand clear of the body grey (Matt, 2026-11-08) */
     --ink-soft: 100 5% 29%;            /* body grey #494E46: 7.3:1 on --background, 6.9:1+ on every tint (Matt, 2026-11-08; was 100 4% 36%) */
     --ink-faint: 100 4% 61%;           /* rf-ink-faint */
 
@@ -142,7 +142,7 @@
     --muted: 47 22% 88%;
     --muted-foreground: 100 5% 29%;    /* = --ink-soft */
     --accent-bg: 12 55% 78%;
-    --accent-foreground: 120 6% 18%;
+    --accent-foreground: 100 8% 10%;
     --destructive: 0 70% 45%;
     --destructive-foreground: 47 22% 92%;
     --border: 120 6% 18% / 0.12;
@@ -153,9 +153,9 @@
     --sidebar-background: 45 36% 98%;
     --sidebar-foreground: 100 8% 10%;
     --sidebar-primary: 12 55% 78%;
-    --sidebar-primary-foreground: 120 6% 18%;
+    --sidebar-primary-foreground: 100 8% 10%;
     --sidebar-accent: 137 18% 92%;
-    --sidebar-accent-foreground: 120 6% 18%;
+    --sidebar-accent-foreground: 100 8% 10%;
     --sidebar-border: 120 6% 18% / 0.12;
     --sidebar-ring: 12 55% 78%;
 
@@ -449,8 +449,8 @@
     border-radius: var(--radius-control);
   }
   .btn-solid-rf:hover { background: #000; gap: 18px; }
-  .btn-solid-rf.accent { background: hsl(var(--accent)); color: hsl(120 6% 18%); }
-  .btn-solid-rf.accent:hover { background: hsl(12 55% 70%); color: hsl(120 6% 14%); }
+  .btn-solid-rf.accent { background: hsl(var(--accent)); color: hsl(var(--ink)); }
+  .btn-solid-rf.accent:hover { background: hsl(12 55% 70%); color: hsl(var(--ink)); }
 
   .btn-ghost-rf {
     font-family: var(--font-sans);
@@ -1357,6 +1357,9 @@
    */
   .article-bg { background: hsl(var(--surface-paper)); }
   .article-prose > * + * { margin-top: 1.4em; }
+  /* Body copy is the body grey (set on .article-prose); headings, links and
+     bold text stay deep ink so they stand out (Matt, 2026-11-08). */
+  .article-prose h2, .article-prose h3, .article-prose strong { color: hsl(var(--ink)); }
   .article-prose h2 {
     font-family: var(--font-serif);
     font-weight: var(--fw-heading);

@@ -16,7 +16,7 @@ type Props = {
  */
 const ArticleProse = ({ children }: Props) => (
   <div
-    className="article-prose t-body max-w-[720px] mx-auto px-6 text-ink"
+    className="article-prose t-body max-w-[720px] mx-auto px-6 text-ink-soft"
   >
     {children}
   </div>

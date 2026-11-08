@@ -139,7 +139,7 @@ const CorporateAndBrand = () => {
           <div className="container-rfx text-center">
             <h2
               id="cb-trust-heading"
-              className="t-h4 text-ink-soft"
+              className="t-h4 text-ink"
               style={{ marginBottom: "30px" }}
             >
               Trusted by{" "}
