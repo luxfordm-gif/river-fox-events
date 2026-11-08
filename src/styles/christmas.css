@@ -132,9 +132,14 @@
   opacity: 0;
   transform: translateY(28px);
   pointer-events: none;
+  /* Leaving is quick so the close feels instant (Matt, 2026-11-08); the
+     slow, gentle entrance is on .is-shown below. */
+  transition: opacity 0.2s ease, transform 0.25s ease-in;
+}
+.xmas-promo.is-shown {
+  opacity: 1; transform: none; pointer-events: auto;
   transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.22, 0.7, 0.2, 1);
 }
-.xmas-promo.is-shown { opacity: 1; transform: none; pointer-events: auto; }
 .xmas-promo__bow {
   position: absolute;
   top: -14px;
@@ -160,6 +165,18 @@
   transition: color 0.2s ease, background 0.2s ease;
 }
 .xmas-promo__close:hover { color: hsl(var(--text-primary)); background: hsl(var(--muted)); }
+/* The circle stays small but the tap area is a full Tap target, centred on
+   it, so a slightly-off tap closes the banner instead of opening the
+   garlands link underneath (Matt, 2026-11-08). */
+.xmas-promo__close::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--tap-target);
+  height: var(--tap-target);
+  transform: translate(-50%, -50%);
+}
 
 /* The deck: the front photo slides out to the right and tucks in behind. */
 .xmas-promo__deck { position: relative; height: 170px; margin: 8px 0 16px; }

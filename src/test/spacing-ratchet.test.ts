@@ -16,8 +16,8 @@ import { join } from "node:path";
  * baseline below to lock the gain in.
  */
 const BASELINE = {
-  stylesheetRawSpacing: 134, // padding / margin / gap declarations with a px, rem, vw or vh value and no var()
-  arbitrarySpacingClasses: 12, // Tailwind pt-[134px], gap-[56px] ...
+  stylesheetRawSpacing: 130, // padding / margin / gap declarations with a px, rem, vw or vh value and no var()
+  arbitrarySpacingClasses: 9, // Tailwind pt-[134px], gap-[56px] ...
   inlineSpacingStyles: 6, // style={{ paddingTop: ... }}
 };
 
