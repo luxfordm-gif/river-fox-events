@@ -70,9 +70,9 @@ const RECENT_WORK = [
    along the bottom, so the strongest photos sit in the largest tiles.
    None of these photos repeat the hero. Alts come from the gallery (one
    image, one alt). `position` keeps each subject in frame when cropped. */
-const tilePhoto = (source: string, position: string) => {
+const tilePhoto = (source: string, position: string, phonePosition?: string) => {
   const p = galleryPhoto(source);
-  return { image: p.src, srcSet: p.srcSet, alt: p.alt, position };
+  return { image: p.src, srcSet: p.srcSet, alt: p.alt, position, phonePosition };
 };
 const WHAT_WE_MAKE: ServiceCardItem[] = [
   {
@@ -89,7 +89,7 @@ const WHAT_WE_MAKE: ServiceCardItem[] = [
       "Garlands that trail along a fireplace, a staircase or the top of a backdrop, in a palette matched to the occasion. Lovely for 40ths, christenings and baby showers.",
     href: "/milestone-celebrations/",
     cta: "Milestone celebrations",
-    ...tilePhoto("journal/dylan-christening-first-birthday/dylan-christening-blue-gold-balloon-feature-wall.webp", "50% 40%"),
+    ...tilePhoto("journal/dylan-christening-first-birthday/dylan-christening-blue-gold-balloon-feature-wall.webp", "50% 40%", "38% 50%"),
   },
   {
     title: "Hoops & backdrops",
@@ -113,7 +113,7 @@ const WHAT_WE_MAKE: ServiceCardItem[] = [
       "Branded arches and window displays for salons, shops, launches and office events, matched to your brand colours. Installed before you open and collected when you're finished.",
     href: "/corporate-brand-styling/",
     cta: "Corporate & brand",
-    ...tilePhoto("river-fox-events-corporate-atrium-twin-balloon-arches.webp", "50% 50%"),
+    ...tilePhoto("river-fox-events-corporate-atrium-twin-balloon-arches.webp", "50% 50%", "82% 50%"),
   },
 ];
 

@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { galleryPhoto } from "@/data/gallery";
 
 const photo = (source: string) => {
@@ -51,13 +51,16 @@ export type ServiceCardItem = {
   alt?: string;
   /** CSS object-position, to keep the subject in frame when the tile crops the photo. */
   position?: string;
+  /** Bento only: a different focal point for the tall phone carousel crop. */
+  phonePosition?: string;
 };
 
 /* Bento layout (the five balloon cards on /balloon-installations/, Matt 2026-11-08).
    Desktop, 4 columns: tile 1 is 2x2 (the hero tile), tile 2 is 2x1 top right,
    tiles 3 and 4 are 1x1, tile 5 runs the full width along the bottom.
-   Tablet: 2 equal columns. Phone: a swipe carousel with the next card
-   peeking in and dots underneath, like the reviews (Matt, 2026-11-08). */
+   Rows are a fixed height, since tiles are photo-only.
+   Tablet: 2 equal columns. Phone: a swipe carousel of tall cards with the
+   next one peeking in and dots underneath (Matt, 2026-11-08). */
 const BENTO_TILES = [
   { span: "lg:col-span-2 lg:row-span-2", sizes: "(min-width: 768px) 50vw, 80vw" },
   { span: "lg:col-span-2", sizes: "(min-width: 768px) 50vw, 80vw" },
@@ -153,11 +156,60 @@ const ServicesCards = ({
           className={
             bento
               ? // Phone: sideways swipe row that runs to the screen edges. Tablet up: the grid.
-                "relative flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-8 px-8 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:mx-0 md:px-0 md:pb-0 md:overflow-visible md:grid-cols-2 md:gap-7 lg:grid-cols-4 lg:grid-rows-3"
+                "relative flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-8 px-5 scroll-px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:mx-0 md:px-0 md:pb-0 md:overflow-visible md:grid-cols-2 md:gap-7 lg:grid-cols-4 lg:auto-rows-[clamp(250px,22vw,330px)]"
               : `grid grid-cols-1 gap-5 md:gap-7 ${items.length === 5 ? "md:grid-cols-6" : "md:grid-cols-3"}`
           }
         >
-          {items.map((s: ServiceCardItem, i) => (
+          {items.map((s: ServiceCardItem, i) => bento ? (
+            /* Bento tile (Matt, 2026-11-08): the photo is the whole tile, with the
+               name on a frosted-glass label. No body copy, no cream panel. The label
+               has a dark tint so white text stays readable on pale photos. */
+            <a
+              key={s.title}
+              href={s.href}
+              className={`group relative block overflow-hidden rounded-[18px] no-underline-fx
+                shrink-0 basis-[86%] snap-center aspect-[4/5]
+                md:basis-auto md:aspect-[4/3] lg:aspect-auto ${BENTO_TILES[i]?.span ?? ""}
+                transition-all duration-300 ease-out hover:-translate-y-[2px]
+                hover:shadow-[0_14px_36px_-14px_hsl(var(--ink)/0.25)]`}
+              style={{ boxShadow: "0 6px 22px -14px hsl(var(--ink) / 0.16)" }}
+            >
+              {s.image && (
+                <img
+                  src={s.image}
+                  srcSet={s.srcSet}
+                  sizes={BENTO_TILES[i]?.sizes}
+                  alt={s.alt ?? ""}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover block transition-transform duration-700 ease-out group-hover:scale-[1.03] [object-position:var(--pos-phone)] md:[object-position:var(--pos)]"
+                  style={{
+                    "--pos": s.position ?? "50% 50%",
+                    "--pos-phone": s.phonePosition ?? s.position ?? "50% 50%",
+                  } as CSSProperties}
+                />
+              )}
+              <div
+                className="absolute left-3 right-3 bottom-3 md:left-4 md:right-auto md:bottom-4 md:max-w-[calc(100%-32px)] rounded-[14px] px-5 py-4 text-white backdrop-blur-md"
+                style={{
+                  background: "hsl(var(--ink) / 0.34)",
+                  border: "1px solid hsl(0 0% 100% / 0.22)",
+                  WebkitBackdropFilter: "blur(12px)",
+                }}
+              >
+                <h3
+                  className="font-serif-rf"
+                  style={{ fontSize: "var(--fs-h4)", lineHeight: 1.15, fontWeight: 400, letterSpacing: "-0.012em" }}
+                >
+                  {s.title}
+                </h3>
+                <span className="mt-1.5 inline-flex items-center gap-1.5 text-[13px] text-white/85" style={{ fontWeight: 500 }}>
+                  {s.cta ?? "Discover"}
+                  <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </span>
+              </div>
+            </a>
+          ) : (
             <a
               key={s.title}
               href={s.href}
