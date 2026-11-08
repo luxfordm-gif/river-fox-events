@@ -49,12 +49,28 @@ export type ServiceCardItem = {
   image?: string;
   srcSet?: string;
   alt?: string;
+  /** CSS object-position, to keep the subject in frame when the tile crops the photo. */
+  position?: string;
 };
+
+/* Bento layout (the five balloon cards on /balloon-installations/, Matt 2026-11-08).
+   Desktop, 4 columns: tile 1 is 2x2 (the hero tile), tile 2 is 2x1 top right,
+   tiles 3 and 4 are 1x1, tile 5 runs the full width along the bottom.
+   Tablet: 2 equal columns. Phone: one column. */
+const BENTO_TILES = [
+  { span: "lg:col-span-2 lg:row-span-2", sizes: "(min-width: 768px) 50vw, calc(100vw - 64px)" },
+  { span: "lg:col-span-2", sizes: "(min-width: 768px) 50vw, calc(100vw - 64px)" },
+  { span: "", sizes: "(min-width: 1024px) 25vw, (min-width: 768px) 50vw, calc(100vw - 64px)" },
+  { span: "", sizes: "(min-width: 1024px) 25vw, (min-width: 768px) 50vw, calc(100vw - 64px)" },
+  { span: "lg:col-span-4", sizes: "(min-width: 1024px) 100vw, (min-width: 768px) 50vw, calc(100vw - 64px)" },
+];
 
 type ServicesCardsProps = {
   /** Override the three default service cards (e.g. the five balloon
    *  cards on /balloon-installations/). Five items lay out 3 + 2 on desktop. */
   items?: ServiceCardItem[];
+  /** "bento": mixed tile sizes for five photo cards (see BENTO_TILES). */
+  layout?: "grid" | "bento";
   heading?: ReactNode;
   intro?: ReactNode;
   sectionId?: string;
@@ -63,11 +79,13 @@ type ServicesCardsProps = {
 
 const ServicesCards = ({
   items = SERVICES,
+  layout = "grid",
   heading,
   intro,
   sectionId = "services",
   headingId = "services-cards-heading",
 }: ServicesCardsProps = {}) => {
+  const bento = layout === "bento";
   return (
     <section
       id={sectionId}
@@ -105,7 +123,11 @@ const ServicesCards = ({
 
         <div
           className={`grid grid-cols-1 gap-5 md:gap-7 ${
-            items.length === 5 ? "md:grid-cols-6" : "md:grid-cols-3"
+            bento
+              ? "md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-3"
+              : items.length === 5
+                ? "md:grid-cols-6"
+                : "md:grid-cols-3"
           }`}
         >
           {items.map((s: ServiceCardItem, i) => (
@@ -115,7 +137,7 @@ const ServicesCards = ({
               className={`
                 group relative flex flex-col rounded-[18px] no-underline-fx overflow-hidden
                 ${s.image ? "" : "p-7 md:p-9"}
-                ${items.length === 5 ? (i < 3 ? "md:col-span-2" : "md:col-span-3") : ""}
+                ${bento ? BENTO_TILES[i]?.span ?? "" : items.length === 5 ? (i < 3 ? "md:col-span-2" : "md:col-span-3") : ""}
                 transition-all duration-300 ease-out
                 hover:-translate-y-[2px]
                 hover:shadow-[0_14px_36px_-14px_hsl(var(--ink)/0.18)]
@@ -128,19 +150,26 @@ const ServicesCards = ({
               }}
             >
               {s.image && (
-                <div className="aspect-[4/3] overflow-hidden">
+                <div
+                  className={`relative aspect-[4/3] overflow-hidden ${
+                    // Desktop bento: the photo grows to fill whatever height the tile has.
+                    bento ? "lg:aspect-auto lg:flex-1 lg:min-h-[220px]" : ""
+                  }`}
+                >
                   <img
                     src={s.image}
                     srcSet={s.srcSet}
-                    sizes="(min-width: 768px) 31vw, calc(100vw - 48px)"
+                    sizes={bento ? BENTO_TILES[i]?.sizes : "(min-width: 768px) 31vw, calc(100vw - 48px)"}
                     alt={s.alt ?? ""}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover block transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    className="absolute inset-0 w-full h-full object-cover block transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    style={s.position ? { objectPosition: s.position } : undefined}
                   />
                 </div>
               )}
-              <div className={s.image ? "flex flex-col flex-1 p-7 md:p-8" : "contents"}>
+              {/* Bento: the text keeps its natural height so the photo takes up the rest of the tile. */}
+              <div className={s.image ? `flex flex-col ${bento ? "lg:flex-none" : ""} flex-1 p-7 md:p-8` : "contents"}>
               <h3
                 className="font-serif-rf text-ink"
                 style={{
