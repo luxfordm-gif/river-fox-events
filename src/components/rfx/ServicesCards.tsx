@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { galleryPhoto } from "@/data/gallery";
 
 const photo = (source: string) => {
@@ -75,6 +75,27 @@ const ServicesCards = ({
   sectionId = "services",
   headingId = "services-cards-heading",
 }: ServicesCardsProps = {}) => {
+  /* Tiles on phones: track which tile is centred so the right dot lights up. */
+  const track = useRef<HTMLUListElement>(null);
+  const [active, setActive] = useState(0);
+  const centreOf = (el: Element) => (el as HTMLElement).offsetLeft + (el as HTMLElement).offsetWidth / 2;
+  const onTrackScroll = () => {
+    const el = track.current;
+    if (!el) return;
+    const mid = el.scrollLeft + el.clientWidth / 2;
+    let nearest = 0;
+    Array.from(el.children).forEach((c, i) => {
+      if (Math.abs(centreOf(c) - mid) < Math.abs(centreOf(el.children[nearest]) - mid)) nearest = i;
+    });
+    setActive(nearest);
+  };
+  const goTo = (i: number) => {
+    const el = track.current;
+    const tile = el?.children[i];
+    if (!el || !tile) return;
+    el.scrollTo({ left: centreOf(tile) - el.clientWidth / 2, behavior: "smooth" });
+  };
+
   return (
     <section
       id={sectionId}
@@ -112,17 +133,23 @@ const ServicesCards = ({
 
         {layout === "tiles" ? (
           /* Simple tile grid (Matt, 2026-11-08): small square photo, just the name,
-             the whole tile links to the service. 2 across on phones, 4 from tablet up. */
-          <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-7 md:gap-y-10 max-w-[1040px] mx-auto list-none p-0">
+             the whole tile links to the service. Phones: a swipe carousel running to
+             the screen edges, next tile peeking in, dots underneath. Tablet up: 4 across. */
+          <>
+          <ul
+            ref={track}
+            onScroll={onTrackScroll}
+            className="relative flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-8 px-5 scroll-px-5 list-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-4 md:gap-x-7 md:gap-y-10 md:max-w-[1040px] md:mx-auto md:px-0 md:overflow-visible"
+          >
             {items.map((s) => (
-              <li key={s.title}>
+              <li key={s.title} className="shrink-0 basis-[62%] snap-center md:basis-auto">
                 <a href={s.href} className="group block no-underline-fx">
                   <div className="relative aspect-square overflow-hidden rounded-[14px]">
                     {s.image && (
                       <img
                         src={s.image}
                         srcSet={s.srcSet}
-                        sizes="(min-width: 1100px) 240px, (min-width: 768px) 22vw, 45vw"
+                        sizes="(min-width: 1100px) 240px, (min-width: 768px) 22vw, 60vw"
                         alt={s.alt ?? ""}
                         loading="lazy"
                         decoding="async"
@@ -141,6 +168,20 @@ const ServicesCards = ({
               </li>
             ))}
           </ul>
+          <div className="flex md:hidden justify-center gap-2 mt-6" role="tablist" aria-label="Choose a tile">
+            {items.map((s, i) => (
+              <button
+                key={s.title}
+                type="button"
+                role="tab"
+                aria-selected={i === active}
+                aria-label={`Show ${s.title}`}
+                onClick={() => goTo(i)}
+                className={`tcard-dot ${i === active ? "is-active" : ""}`}
+              />
+            ))}
+          </div>
+          </>
         ) : (
         <div className="grid grid-cols-1 gap-5 md:gap-7 md:grid-cols-3">
           {items.map((s: ServiceCardItem) => (
