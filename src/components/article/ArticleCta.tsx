@@ -39,8 +39,8 @@ const ArticleCta = ({
 
   return (
     <aside className="max-w-[720px] mx-auto my-16 md:my-24 px-6">
-      <div className="rounded-card bg-surface-deep text-on-deep px-8 md:px-14 py-10 md:py-16 text-center">
-        <h2 className="t-h3 max-w-[20ch] mx-auto">
+      <div className="rounded-large bg-surface-deep text-on-deep px-8 md:px-14 py-10 md:py-16 text-center">
+        <h2 className="t-h4 max-w-[20ch] mx-auto">
           {heading ?? (
             <>
               Plan your{" "}
@@ -52,8 +52,8 @@ const ArticleCta = ({
         </h2>
         {body && (
           <p
-            className="t-body-sm mt-5 max-w-[440px] mx-auto"
-            style={{ color: "hsl(var(--on-deep-soft))" }}
+            className="t-small mt-5 max-w-[440px] mx-auto"
+            style={{ color: "hsl(var(--text-dimmed))" }}
           >
             {body}
           </p>

@@ -63,7 +63,7 @@ const LocationTrust = ({ reviews }: LocationTrustProps = {}) => {
         <TestimonialsCarousel reviews={reviews} />
 
         <div className="mt-14 md:mt-16 pt-10 md:pt-12 border-t border-ink/10">
-          <p className="t-eyebrow text-ink-soft text-center">
+          <p className="t-overline text-ink-soft text-center">
             Recent clients include
           </p>
           <ul

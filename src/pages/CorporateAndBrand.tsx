@@ -110,7 +110,7 @@ const CorporateAndBrand = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground nav-solid">
+    <div className="min-h-screen page-paper text-foreground nav-solid nav-paper">
       <Nav />
       <main>
         <ServiceHero
@@ -139,7 +139,7 @@ const CorporateAndBrand = () => {
           <div className="container-rfx text-center">
             <h2
               id="cb-trust-heading"
-              className="t-h4 text-ink"
+              className="t-h5 text-ink"
               style={{ marginBottom: "30px" }}
             >
               Trusted by{" "}
@@ -164,7 +164,7 @@ const CorporateAndBrand = () => {
               .rfx-trust-item {
                 flex: 0 0 auto;
                 padding: 0 2.75rem;
-                color: hsl(var(--ink));
+                color: hsl(var(--text-primary));
                 opacity: 0.72;
                 white-space: nowrap;
               }
@@ -175,7 +175,7 @@ const CorporateAndBrand = () => {
             <div className="rfx-trust-ticker" aria-label="Brands we have worked with">
               <div className="rfx-trust-track">
                 {[...TRUST_LOGOS, ...TRUST_LOGOS].map((name, i) => (
-                  <span key={`${name}-${i}`} className="rfx-trust-item t-ui uppercase">
+                  <span key={`${name}-${i}`} className="rfx-trust-item t-label uppercase">
                     {name}
                   </span>
                 ))}
@@ -195,7 +195,7 @@ const CorporateAndBrand = () => {
           imageScale={1.07}
           headline={
             <>
-              Your event environment is{" "}
+              Spaces that speak{" "}
               <em className="t-accent">
                 your brand.
               </em>
@@ -244,13 +244,9 @@ const CorporateAndBrand = () => {
           </p>
         </CPReveal>
 
-        <InspirationStrip id="cb-inspiration" accent="your next event." images={INSPIRATION_CORPORATE} />
+        <InspirationStrip id="cb-inspiration" accent="your event." images={INSPIRATION_CORPORATE} />
 
-        <div id="how-it-works">
-          <Process
-            steps={CORPORATE_STEPS}
-          />
-        </div>
+        <Process sectionId="how-it-works" steps={CORPORATE_STEPS} />
 
         <ChildrensFAQ faqs={FAQS} headingId="cb-faq-heading" />
 

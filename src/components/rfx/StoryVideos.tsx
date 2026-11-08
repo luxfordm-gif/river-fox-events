@@ -259,7 +259,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
         ref={triggerRef}
         type="button"
         onClick={() => openAt(0)}
-        className="story-fan-front group absolute inset-0 z-[3] block w-full h-full rounded-media overflow-hidden shadow-[0_18px_40px_-18px_hsl(var(--ink)/0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+        className="story-fan-front group absolute inset-0 z-[3] block w-full h-full rounded-large overflow-hidden shadow-[0_18px_40px_-18px_hsl(var(--text-primary)/0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
         aria-haspopup="dialog"
         aria-label={hideCta ? cta : undefined}
       >
@@ -281,13 +281,13 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
           aria-hidden="true"
           className={`absolute left-1/2 ${hideCta ? "top-1/2" : "top-[42%]"} -translate-x-1/2 -translate-y-1/2 grid place-items-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110`}
         >
-          <svg viewBox="0 0 24 24" className="w-6 h-6 md:w-9 md:h-9 ml-1 fill-[hsl(var(--ink))]">
+          <svg viewBox="0 0 24 24" className="w-6 h-6 md:w-9 md:h-9 ml-1 fill-[hsl(var(--text-primary))]">
             <path d="M8 5.5v13l11-6.5z" />
           </svg>
         </span>
         {/* How many videos are inside, so the series is obvious before tapping. */}
         {!single && (
-          <span className="absolute top-3 left-3 md:top-4 md:left-4 inline-flex items-center gap-1.5 rounded-chip bg-black/50 backdrop-blur-sm px-2.5 py-1 t-ui text-white">
+          <span className="absolute top-3 left-3 md:top-4 md:left-4 inline-flex items-center gap-1.5 rounded-small bg-black/50 backdrop-blur-sm px-2.5 py-1 t-label text-white">
             <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current" strokeWidth={2} strokeLinejoin="round" aria-hidden="true">
               <rect x="3" y="7" width="13" height="14" rx="2" />
               <path d="M8 3h11a2 2 0 0 1 2 2v12" />
@@ -316,7 +316,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
           onTouchEnd={onTouchEnd}
         >
           <div className="relative h-[100dvh] w-full md:h-[min(88dvh,calc(100vw*16/9))] md:w-auto md:aspect-[9/16]">
-          <div className="absolute inset-0 md:rounded-media overflow-hidden bg-black">
+          <div className="absolute inset-0 md:rounded-large overflow-hidden bg-black">
             <video
               ref={videoRef}
               key={story.src}
@@ -396,7 +396,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
                 </span>
                 <span
                   aria-live="polite"
-                  className="h-9 inline-flex items-center rounded-full bg-black/35 px-4 t-ui text-white tabular-nums"
+                  className="h-9 inline-flex items-center rounded-full bg-black/35 px-4 t-label text-white tabular-nums"
                 >
                   <span className="sr-only">Video </span>
                   {index + 1} of {stories.length}
@@ -429,7 +429,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
                   type="button"
                   onClick={prev}
                   disabled={index === 0}
-                  className="hidden md:grid absolute right-full mr-6 top-1/2 -translate-y-1/2 place-items-center w-14 h-14 rounded-full bg-white/90 text-[hsl(var(--ink))] transition hover:scale-105 hover:bg-white disabled:opacity-30 disabled:hover:scale-100"
+                  className="hidden md:grid absolute right-full mr-6 top-1/2 -translate-y-1/2 place-items-center w-14 h-14 rounded-full bg-white/90 text-[hsl(var(--text-primary))] transition hover:scale-105 hover:bg-white disabled:opacity-30 disabled:hover:scale-100"
                   aria-label="Previous video"
                 >
                   <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-current" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
@@ -437,7 +437,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
                 <button
                   type="button"
                   onClick={next}
-                  className="hidden md:grid absolute left-full ml-6 top-1/2 -translate-y-1/2 place-items-center w-14 h-14 rounded-full bg-white/90 text-[hsl(var(--ink))] transition hover:scale-105 hover:bg-white"
+                  className="hidden md:grid absolute left-full ml-6 top-1/2 -translate-y-1/2 place-items-center w-14 h-14 rounded-full bg-white/90 text-[hsl(var(--text-primary))] transition hover:scale-105 hover:bg-white"
                   aria-label={index < stories.length - 1 ? "Next video" : "Close"}
                 >
                   <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-current" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>

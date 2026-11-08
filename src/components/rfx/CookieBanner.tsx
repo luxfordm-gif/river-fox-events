@@ -52,7 +52,7 @@ const CookieBanner = () => {
       role="dialog"
       aria-live="polite"
       aria-label="Cookie preferences"
-      className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 md:max-w-[420px] z-[200] rounded-card bg-surface-deep text-on-deep shadow-[0_24px_60px_-20px_hsl(var(--ink)/0.45)] px-5 py-4 md:px-6 md:py-5"
+      className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 md:max-w-[420px] z-[200] rounded-large bg-surface-deep text-on-deep shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.45)] px-5 py-4 md:px-6 md:py-5"
     >
       <p className="t-meta">
         We use cookies to understand how the site is used (Google Analytics)
@@ -60,7 +60,7 @@ const CookieBanner = () => {
         accept. See our{" "}
         <a
           href="/privacy/"
-          className="underline underline-offset-4 decoration-on-deep/50 hover:decoration-on-deep"
+          className="text-link"
         >
           privacy &amp; cookies
         </a>{" "}
@@ -77,7 +77,7 @@ const CookieBanner = () => {
         <button
           type="button"
           onClick={decline}
-          className="t-ui opacity-80 hover:opacity-100 underline underline-offset-4"
+          className="t-label opacity-80 hover:opacity-100 underline underline-offset-4"
         >
           Decline
         </button>

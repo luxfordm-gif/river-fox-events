@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import studioImg from "@/assets/laura-portrait.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
 
 interface Stat {
   value: number;
@@ -57,7 +58,7 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
       >
         {stat.display(n)}
       </div>
-      <div className="t-eyebrow mt-3 text-center text-ink-soft">
+      <div className="t-overline mt-3 text-center text-ink-soft">
         {stat.label}
       </div>
     </div>
@@ -68,6 +69,13 @@ const About = () => {
   const statsRef = useRef<HTMLDivElement>(null);
   const [statsVisible, setStatsVisible] = useState(false);
   const studioWrap = useRef<HTMLDivElement>(null);
+  // The panel starts full width and draws in to its rounded inset as it
+  // scrolls up the screen (Matt, 2026-11-08).
+  const panelRef = useRef<HTMLElement>(null);
+  const onPanelProgress = useCallback((p: number) => {
+    panelRef.current?.style.setProperty("--shrink", p.toFixed(3));
+  }, []);
+  useScrollProgress(panelRef, onPanelProgress, { from: 1, to: 0.35 });
   const studioImgRef = useRef<HTMLImageElement>(null);
   useImageParallax(studioWrap, studioImgRef, { intensity: 8, scale: 1.14 });
   useEffect(() => {
@@ -89,13 +97,13 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="rfx-section warm" aria-labelledby="about-heading">
+    <section ref={panelRef} id="about" className="rfx-section warm rfx-panel" aria-labelledby="about-heading">
       <div className="container-rfx">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-12 md:gap-20 rfx-md-stack">
           <div className="md:sticky md:top-24 md:self-start fade-up rfx-md-static">
             <div
               ref={studioWrap}
-              className="ph ph-warm overflow-hidden rounded-media relative rfx-about-img"
+              className="ph ph-warm overflow-hidden rounded-large relative rfx-about-img"
               style={{ aspectRatio: "5/6", maxHeight: "472px" }}
             >
               {/*
@@ -121,7 +129,7 @@ const About = () => {
           </div>
 
           <div className="fade-up">
-            <div className="t-eyebrow text-ink-soft mb-6">
+            <div className="t-overline text-ink-soft mb-6">
               Meet Laura, Founder
             </div>
 
@@ -132,35 +140,29 @@ const About = () => {
               </em>
             </h2>
 
-            <div className="t-body mt-8 space-y-5 text-ink-soft max-w-[560px]">
+            <div className="t-body heading-to-text space-y-5 text-ink-soft max-w-[560px]">
               <p className="text-ink">
                 <strong>
-                  I started River Fox Events after owning a teepee sleepover
-                  business and realising how much I loved creating the little
-                  moments that stay with you long after the day is over.
+                  I started River Fox Events after running a teepee sleepover
+                  business and realising how much I loved creating moments
+                  that stay with you.
                 </strong>
               </p>
               <p>
-                For me, it's never just been about balloons or decorations.
-                It's the feeling when your child walks into a space created
-                just for them, and the tiny details they (and you) remember
-                years later.
+                It's never just been about balloons. It's the feeling when
+                your child walks into a space made just for them, and the tiny
+                details they (and you) remember years later.
               </p>
               <p>
-                What began as a creative outlet grew into the business it is
-                today. I now style children's parties, balloon installations
-                and celebrations for families across Surrey and London.
-              </p>
-              <p>
-                I keep the business intentionally small so I can stay
-                hands-on with every event, from the first ideas through to
-                installation day.
+                Today I style parties, balloon installations and celebrations
+                across Surrey and London, and keep the business small so I'm
+                hands-on with every event.
               </p>
             </div>
 
             <a
               href="/journal/"
-              className="btn-link-rf t-ui mt-8"
+              className="btn-link-rf t-label mt-8"
               aria-label="Read the River Fox Events journal - notes, behind the scenes and trends from the studio"
             >
               Inside the studio · read the journal{" "}

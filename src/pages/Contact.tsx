@@ -93,14 +93,14 @@ const Contact = () => {
               {/* Left: intro copy + direct contact methods */}
               <div className="text-center lg:text-left">
                 <p
-                  className="t-body text-ink-soft max-w-[460px] mx-auto lg:mx-0"
+                  className="t-body text-ink max-w-[460px] mx-auto lg:mx-0"
                   style={{ textWrap: "pretty" }}
                 >
                   Share a few details in the enquiry form and I'll be in
                   touch to talk through your plans.
                 </p>
                 <p
-                  className="t-body text-ink-soft mt-5 max-w-[460px] mx-auto lg:mx-0"
+                  className="t-body text-ink mt-5 max-w-[460px] mx-auto lg:mx-0"
                   style={{ textWrap: "pretty" }}
                 >
                   Celebrations start from £300, with larger designs
@@ -112,7 +112,7 @@ const Contact = () => {
 
                 <ul className="mt-8 flex flex-col gap-4 items-center lg:items-start">
                   <li>
-                    <div className="t-eyebrow text-ink-soft mb-1.5">
+                    <div className="t-overline text-ink-soft mb-1.5">
                       WhatsApp
                     </div>
                     <a
@@ -120,31 +120,31 @@ const Contact = () => {
                       target="_blank"
                       rel="noreferrer"
                       aria-label="Message Laura on WhatsApp"
-                      className="t-h4 text-ink no-underline hover:underline underline-offset-4"
+                      className="t-h5 text-ink text-link"
                     >
                       {WHATSAPP_DISPLAY}
                     </a>
                   </li>
                   <li>
-                    <div className="t-eyebrow text-ink-soft mb-1.5">
+                    <div className="t-overline text-ink-soft mb-1.5">
                       Email
                     </div>
                     <a
                       href={`mailto:${EMAIL}`}
-                      className="t-h4 text-ink no-underline hover:underline underline-offset-4 break-all"
+                      className="t-h5 text-ink text-link break-all"
                     >
                       {EMAIL}
                     </a>
                   </li>
                   <li>
-                    <div className="t-eyebrow text-ink-soft mb-1.5">
+                    <div className="t-overline text-ink-soft mb-1.5">
                       Instagram
                     </div>
                     <a
                       href={INSTAGRAM_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="t-h4 text-ink no-underline hover:underline underline-offset-4"
+                      className="t-h5 text-ink text-link"
                     >
                       {INSTAGRAM_HANDLE}
                     </a>

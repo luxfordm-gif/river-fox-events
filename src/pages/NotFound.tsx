@@ -32,7 +32,7 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground nav-solid">
+    <div className="min-h-screen flex flex-col page-paper text-foreground nav-solid nav-paper">
       <Nav />
       <main className="flex-1 pb-24 md:pb-32">
         <PageHeader

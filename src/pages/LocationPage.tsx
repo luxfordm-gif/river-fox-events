@@ -9,7 +9,7 @@ import Enquire from "@/components/rfx/Enquire";
 import CPLocations from "@/components/rfx/CPLocations";
 import CPPricing from "@/components/rfx/CPPricing";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
-import ServicesCards from "@/components/rfx/ServicesCards";
+import Experiences from "@/components/rfx/Experiences";
 import LocationGallery from "@/components/rfx/LocationGallery";
 import LocationUSP from "@/components/rfx/LocationUSP";
 import LocationTrust from "@/components/rfx/LocationTrust";
@@ -84,15 +84,16 @@ const LocationPage = () => {
   if (!loc) return <NotFound />;
 
   return (
-    <div className="min-h-screen bg-background text-foreground rfx-tight-mobile nav-solid">
+    <div className="min-h-screen page-paper text-foreground rfx-tight-mobile nav-solid nav-paper">
       <Nav />
       <main>
-        {/* Homepage-style hero: centred copy + CTA, then mobile scroll
+        {/* Same top space as the service heroes, scaling on big screens
+            (Matt, 2026-11-08). Homepage-style hero: centred copy + CTA, then mobile scroll
             strip and desktop editorial 3-image grid below. Same shape as
             <Hero /> on the homepage so location pages feel of-a-piece. */}
         <section
           id="top"
-          className="rfx-hero pt-[96px] md:pt-[124px] pb-4 md:pb-6"
+          className="rfx-hero rfx-hero-scale pt-[106px] md:pt-[134px] pb-4 md:pb-6"
           aria-labelledby={`loc-${loc.slug}-hero-heading`}
         >
           <div className="container-rfx">
@@ -156,13 +157,14 @@ const LocationPage = () => {
           <div className="md:hidden">
             <ScrollStrip images={loc.hero.fanImages} />
           </div>
-          <LocationHeroFan images={loc.hero.fanImages} />
+          <LocationHeroFan images={loc.hero.fanImages} spreadOnHover />
         </section>
 
-        {/* Services moved up - visitors should know what we offer
-            before they read prose. Three cards link to the dedicated
-            service pages. */}
-        <ServicesCards
+        {/* Services moved up - visitors should know what we offer before
+            they read prose. The same section as the homepage (rotating
+            photos), with this town's own heading and intro (Matt, 2026-11-08). */}
+        <Experiences
+          align="stacked"
           sectionId={`loc-${loc.slug}-services`}
           heading={
             loc.servicesHeading ?? (
@@ -190,7 +192,6 @@ const LocationPage = () => {
 
         <LocationGallery
           id="loc-gallery"
-          compactTop
           eyebrow={loc.gallery.eyebrow}
           heading={loc.gallery.heading}
           intro={loc.gallery.intro}
@@ -199,9 +200,7 @@ const LocationPage = () => {
           images={loc.gallery.images}
         />
 
-        <div id="how-it-works">
-          <Process />
-        </div>
+        <Process sectionId="how-it-works" />
 
         <CPPricing
           heading={loc.pricing.heading}
@@ -211,16 +210,13 @@ const LocationPage = () => {
 
         <LocationTrust />
 
-        <InspirationStrip id={`loc-${loc.slug}-inspiration`} accent="your next celebration." images={INSPIRATION_TOWNS} flushBottom />
+        <InspirationStrip id={`loc-${loc.slug}-inspiration`} accent="your celebration." images={INSPIRATION_TOWNS} />
 
         <ChildrensFAQ
           faqs={loc.faqs}
           headingId={`loc-${loc.slug}-faq-heading`}
           defaultOpen={false}
-          paddingBottom=""
         />
-
-        <Enquire venuePlaceholder={`e.g. at home in ${loc.cityName}`} />
 
         <CPLocations
           eyebrow={loc.nearby.eyebrow}
@@ -231,6 +227,8 @@ const LocationPage = () => {
           mapTitle={loc.nearby.mapTitle}
           currentSlug={loc.slug}
         />
+
+        <Enquire venuePlaceholder={`e.g. at home in ${loc.cityName}`} />
       </main>
       <Footer />
     </div>

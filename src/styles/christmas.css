@@ -7,41 +7,46 @@
 
 .rfx-xmas {
   /* Seasonal palette */
-  --xmas-gold: 40 50% 64%;          /* antique gold, for dark grounds */
-  --xmas-gold-deep: 38 45% 42%;     /* antique gold, for cream grounds */
-  --xmas-cream: 42 45% 96%;         /* Instagram strip text on photos */
+  --xmas-gold: 40 50% 64%;          /* Gold · button fill, accents on Background Dark */
+  --xmas-gold-deep: 38 45% 42%;     /* Gold Dark · italic words in headings */
+  --xmas-page: 45 30% 95.5%;        /* Page (Christmas) · hero and light sections, a touch darker so settled snow shows */
+  --strip-text: var(--background-light); /* Instagram strip text on photos (was its own near-identical cream) */
 
   /* Frost & gold: stays on the brand's cream and charcoal, gold carries it. */
-  --surface-blush: 42 40% 92%;
+  --background-blush: 42 40% 92%;   /* Blush (Christmas) · frosted sections */
   --accent: var(--xmas-gold);
-  --accent-warm: var(--xmas-gold-deep);
+  --accent-dark: var(--xmas-gold-deep);
   --ring: var(--xmas-gold);
 
   --xmas-btn-bg: var(--xmas-gold);
-  --xmas-btn-hover: 40 50% 56%;
-  --xmas-btn-fg: var(--ink);
+  --xmas-btn-hover: 40 50% 56%;     /* Gold hover · button fill on hover */
+  --xmas-btn-fg: var(--text-primary);
   --xmas-tag-bg: var(--xmas-gold);
-  --xmas-tag-fg: var(--ink);
+  --xmas-tag-fg: var(--text-primary);
 }
+
+/* One colour for the whole page, hero included: the same frosted cream as
+   the light sections (Matt, 2026-11-08). */
+.rfx-xmas { background: hsl(var(--xmas-page)); }
+.rfx-xmas .rfx-nav.scrolled, .rfx-xmas.nav-solid .rfx-nav { background: hsl(var(--xmas-page) / 0.82); }
 
 /* Gold on dark grounds reads; the deep gold is for cream. */
 .rfx-xmas .rfx-section.dark,
-.rfx-xmas footer { --accent-warm: var(--xmas-gold); }
+.rfx-xmas footer { --accent-dark: var(--xmas-gold); }
 
 .rfx-xmas .btn-solid-rf.accent {
   background: hsl(var(--xmas-btn-bg));
-  color: hsl(var(--xmas-btn-fg));
+  --btn-fg: hsl(var(--xmas-btn-fg));
 }
 .rfx-xmas .btn-solid-rf.accent:hover {
   background: hsl(var(--xmas-btn-hover));
-  color: hsl(var(--xmas-btn-fg));
 }
 
 
 /* The light sections a touch darker than the brand's #FCFBF8 on this page,
    so the white of the settled snow has something to stand out against
    (Matt, 2026-11-07). The garland cards shift with them. */
-.rfx-xmas .rfx-section.white { background: hsl(45 30% 95.5%); }
+.rfx-xmas .rfx-section.white { background: hsl(var(--xmas-page)); }
 
 /* Hero garland (src/components/rfx/HeroGarland.tsx). Static, so the
    filtered layer is rasterised once, not every frame. */
@@ -56,7 +61,7 @@
 /* Card image swap: the garland close-up fades in over the wide shot on
    hover, or on touch when the card is mid-screen (.is-swapped, set by the
    page). */
-.xmas-swap { position: relative; overflow: hidden; border-radius: var(--radius-media); }
+.xmas-swap { position: relative; overflow: hidden; border-radius: var(--radius-large); }
 .xmas-swap__detail { opacity: 0; transition: opacity 0.6s ease; }
 @media (hover: hover) {
   .xmas-swap:hover .xmas-swap__detail { opacity: 1; }
@@ -70,14 +75,14 @@
 .xmas-tag {
   display: inline-block;
   font-family: var(--font-sans);
-  font-weight: var(--fw-strong);
-  font-size: var(--fs-eyebrow);
-  letter-spacing: var(--ls-eyebrow);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-overline);
+  letter-spacing: var(--ls-overline);
   text-transform: uppercase;
   line-height: 1;
   /* Capitals sit high in their line box, so give a touch more room on top. */
   padding: 7px 11px 6px;
-  border-radius: var(--radius-chip);
+  border-radius: var(--radius-small);
   background: hsl(var(--xmas-tag-bg));
   color: hsl(var(--xmas-tag-fg));
   vertical-align: middle;
@@ -88,17 +93,17 @@
 }
 
 /* File input inside the shared .form-row field style. */
-.form-row input[type="file"] { font-size: var(--fs-meta); font-weight: var(--fw-body); color: hsl(var(--ink-soft)); cursor: pointer; }
+.form-row input[type="file"] { font-size: var(--fs-meta); font-weight: var(--fw-regular); color: hsl(var(--text-neutral)); cursor: pointer; }
 .form-row input[type="file"]::file-selector-button {
   font-family: var(--font-sans);
   font-size: var(--fs-meta);
-  font-weight: var(--fw-ui);
+  font-weight: var(--fw-medium);
   margin-right: 12px;
   padding: 6px 12px;
-  border: 1px solid hsl(var(--ink) / 0.2);
-  border-radius: var(--radius-control);
-  background: hsl(var(--surface-alt));
-  color: hsl(var(--ink));
+  border: 1px solid hsl(var(--text-primary) / 0.2);
+  border-radius: var(--radius-small);
+  background: hsl(var(--background-light));
+  color: hsl(var(--text-primary));
   cursor: pointer;
 }
 .form-row.form-check {
@@ -120,10 +125,10 @@
   bottom: 24px;
   width: 320px;
   padding: 30px 20px 20px;
-  border-radius: var(--radius-card);
-  background: hsl(var(--surface-alt));
-  color: hsl(var(--ink));
-  box-shadow: 0 30px 70px -24px hsl(var(--ink) / 0.4), 0 6px 18px -8px hsl(var(--ink) / 0.18);
+  border-radius: var(--radius-large);
+  background: hsl(var(--background-light));
+  color: hsl(var(--text-primary));
+  box-shadow: 0 30px 70px -24px hsl(var(--text-primary) / 0.4), 0 6px 18px -8px hsl(var(--text-primary) / 0.18);
   opacity: 0;
   transform: translateY(28px);
   pointer-events: none;
@@ -150,11 +155,11 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  color: hsl(var(--ink-soft));
+  color: hsl(var(--text-neutral));
   background: hsl(var(--background));
   transition: color 0.2s ease, background 0.2s ease;
 }
-.xmas-promo__close:hover { color: hsl(var(--ink)); background: hsl(var(--muted)); }
+.xmas-promo__close:hover { color: hsl(var(--text-primary)); background: hsl(var(--muted)); }
 
 /* The deck: the front photo slides out to the right and tucks in behind. */
 .xmas-promo__deck { position: relative; height: 170px; margin: 8px 0 16px; }
@@ -165,9 +170,9 @@
   width: 130px;
   height: 163px;
   object-fit: cover;
-  border-radius: var(--radius-media);
+  border-radius: var(--radius-large);
   border: 4px solid hsl(0 0% 100%);
-  box-shadow: 0 14px 28px -14px hsl(var(--ink) / 0.45);
+  box-shadow: 0 14px 28px -14px hsl(var(--text-primary) / 0.45);
   transition: transform 0.9s cubic-bezier(0.45, 0, 0.2, 1), opacity 0.9s ease;
 }
 .xmas-promo__card[data-pos="0"] { z-index: 4; transform: translateX(-50%) rotate(-2deg); }
@@ -176,8 +181,8 @@
 .xmas-promo__card[data-pos="3"] { z-index: 1; transform: translateX(-50%) translateX(70%) rotate(16deg) scale(0.84); opacity: 0; }
 
 .xmas-promo__body { text-align: center; }
-.xmas-promo__title { font-size: var(--fs-h4); line-height: var(--lh-h4); font-weight: var(--fw-heading); letter-spacing: var(--ls-h4); margin-top: 8px; }
-.xmas-promo__text { margin-top: 8px; font-size: var(--fs-meta); line-height: var(--lh-body-sm); color: hsl(var(--ink-soft)); }
+.xmas-promo__title { font-size: var(--fs-h5); line-height: var(--lh-h5); font-weight: var(--fw-regular); letter-spacing: var(--ls-h5); margin-top: 8px; }
+.xmas-promo__text { margin-top: 8px; font-size: var(--fs-meta); line-height: var(--lh-small); color: hsl(var(--text-neutral)); }
 .xmas-promo__cta { margin-top: 16px; width: 100%; justify-content: center; }
 
 @media (max-width: 767px) {
@@ -217,8 +222,8 @@
 .xmas-options { gap: 20px; max-width: 880px; }
 .xmas-option {
   position: relative;
-  border: 1px solid hsl(var(--ink) / 0.28);
-  border-radius: var(--radius-card);
+  border: 1px solid hsl(var(--text-primary) / 0.28);
+  border-radius: var(--radius-large);
   /* Between this page's section cream and the main cream (#F1EFE8). */
   background: hsl(46 28% 93.5%);
   padding: 52px 32px 36px;
@@ -227,14 +232,14 @@
    which sets transition: none and made the card jump.) */
 .xmas-options > .xmas-option {
   transition: transform .45s cubic-bezier(.45,0,.25,1), box-shadow .45s cubic-bezier(.45,0,.25,1);
-  box-shadow: inset 0 0 0 0 hsl(var(--ink) / 0.28);
+  box-shadow: inset 0 0 0 0 hsl(var(--text-primary) / 0.28);
 }
 .xmas-options > .xmas-option.is-popular {
   box-shadow: inset 0 0 0 0 hsl(var(--xmas-gold-deep)), 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
 }
 /* On hover the border thickens 1px inwards (an inset ring, so nothing shifts). */
 .xmas-options > .xmas-option:hover, .xmas-options > .xmas-option:focus-within {
-  box-shadow: inset 0 0 0 1px hsl(var(--ink) / 0.28);
+  box-shadow: inset 0 0 0 1px hsl(var(--text-primary) / 0.28);
 }
 .xmas-options > .xmas-option.is-popular:hover, .xmas-options > .xmas-option.is-popular:focus-within {
   box-shadow: inset 0 0 0 1px hsl(var(--xmas-gold-deep)), 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
@@ -275,10 +280,10 @@
   align-items: flex-end;
   gap: 2px;
   font-family: var(--font-hand);
-  font-weight: var(--fw-ui);
+  font-weight: var(--fw-medium);
   font-size: var(--fs-hand);
   line-height: 1;
-  color: hsl(var(--ink-soft));
+  color: hsl(var(--text-neutral));
   transform: rotate(-4deg);
   pointer-events: none;
 }

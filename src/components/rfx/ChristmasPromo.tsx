@@ -102,23 +102,24 @@ const ChristmasPromo = () => {
 
       {/* Desktop card: centred, with a solid button. */}
       <div className="xmas-promo__body hidden md:block">
-        <p className="t-eyebrow text-ink-soft">Now booking</p>
-        <h2 className="xmas-promo__title t-h4">
+        <p className="t-overline text-ink-soft">Now booking</p>
+        <h2 className="xmas-promo__title t-h5">
           Get your Christmas{" "}
           <br />
           <em className="t-accent">garlands.</em>
         </h2>
         <p className="xmas-promo__text t-meta">Fresh or faux, styled to your door.</p>
-        <a href={`${PAGE}#enquire`} className="btn-solid-rf accent xmas-promo__cta" tabIndex={show ? 0 : -1}>
-          Reserve your date <span>→</span>
+        {/* Opens the top of the Christmas page, not its form (Matt, 2026-11-08). */}
+        <a href={PAGE} className="btn-solid-rf accent xmas-promo__cta" tabIndex={show ? 0 : -1}>
+          Find out more <span>→</span>
         </a>
       </div>
 
       {/* Phone bar: lighter, a text link instead of a chunky button (Matt,
           2026-11-04). */}
       <div className="xmas-promo__body md:hidden">
-        <p className="t-eyebrow text-ink-soft xmas-promo__eyebrow">Christmas 2026</p>
-        <h2 className="xmas-promo__title t-h4">A little Christmas magic.</h2>
+        <p className="t-overline text-ink-soft xmas-promo__eyebrow">Christmas 2026</p>
+        <h2 className="xmas-promo__title t-h5">A little Christmas magic.</h2>
         <a href={PAGE} className="btn-link-rf xmas-promo__link" tabIndex={show ? 0 : -1}>
           Explore our garlands <span className="arr">→</span>
         </a>

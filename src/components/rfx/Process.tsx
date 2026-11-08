@@ -4,6 +4,12 @@ type ProcessStep = { n: string; title: string; body: string };
 
 type ProcessProps = {
   steps?: ProcessStep[];
+  /** Background, matching the section below so there's no colour band
+   *  (Matt, 2026-11-08): "white" before pricing / FAQs, "cream" before the
+   *  homepage reviews. */
+  tone?: "white" | "cream";
+  /** Anchor id ("how-it-works" on the service and town pages). */
+  sectionId?: string;
 };
 
 const DEFAULT_STEPS: ProcessStep[] = [
@@ -17,19 +23,21 @@ const DEFAULT_STEPS: ProcessStep[] = [
     n: "02",
     title: "Tailored proposal",
     body:
-      "We develop a tailored concept for your event, with considered moodboards, colour palettes and visuals - giving you complete clarity before we bring everything to life.",
+      "We develop a tailored concept with moodboards, colour palettes and visuals, so you know exactly how it will look before we begin.",
   },
   {
     n: "03",
     title: "Installation",
     body:
-      "Everything is set up by our events team before your first guest arrives, so you walk into a beautifully decorated space, ready to enjoy the moment. After the event we pack down and take it all away.",
+      "Our team sets everything up before your first guest arrives, so you walk into a finished space. Afterwards, we pack down and take it away.",
   },
 ];
 
-/* "How it works": heading and three steps. The intro line beside the heading
-   was removed across the site (Matt, 2026-11-07). */
-const Process = ({ steps = DEFAULT_STEPS }: ProcessProps = {}) => {
+/* "How it works": centred heading and three steps. The intro line beside the
+   heading was removed (Matt, 2026-11-07). No dark band since 2026-11-08: the
+   section shares its neighbours' background, and the same-background rule in
+   index.css gives it one Section gap above and below. */
+const Process = ({ steps = DEFAULT_STEPS, tone = "white", sectionId = "process" }: ProcessProps = {}) => {
   const stepsRef = useRef<HTMLDivElement>(null);
   const [stepsIn, setStepsIn] = useState(false);
 
@@ -52,12 +60,12 @@ const Process = ({ steps = DEFAULT_STEPS }: ProcessProps = {}) => {
   }, []);
 
   return (
-    <section id="process" className="rfx-section dark" aria-labelledby="process-heading">
+    <section id={sectionId} className={`rfx-section ${tone === "white" ? "white" : ""}`} aria-labelledby="process-heading">
       <div className="container-rfx">
-        <div className="mb-6 md:mb-16">
+        <div className="mb-6 md:mb-10">
           <h2
             id="process-heading"
-            className="t-h2 m-0 text-center md:text-left"
+            className="t-h2 m-0 text-center text-ink"
           >
             How it{" "}
             <em className="t-accent">works.</em>
@@ -66,8 +74,7 @@ const Process = ({ steps = DEFAULT_STEPS }: ProcessProps = {}) => {
 
         <div
           ref={stepsRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 border-t pt-8 md:pt-10"
-          style={{ borderColor: "hsl(var(--on-deep) / 0.18)" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 border-t border-divider pt-8 md:pt-10"
         >
           {steps.map((s, i) => (
             <div
@@ -80,12 +87,12 @@ const Process = ({ steps = DEFAULT_STEPS }: ProcessProps = {}) => {
               }}
             >
               <div
-                className="t-eyebrow mb-3 overflow-hidden inline-block"
+                className="t-overline label-to-title overflow-hidden inline-block"
               >
                 <span
                   className="inline-block"
                   style={{
-                    color: "hsl(var(--accent-warm))",
+                    color: "hsl(var(--accent-dark))",
                     transform: stepsIn ? "translateX(0)" : "translateX(-110%)",
                     transition: `transform 1s cubic-bezier(.22,.7,.2,1) ${i * 180 + 80}ms`,
                   }}
@@ -93,10 +100,10 @@ const Process = ({ steps = DEFAULT_STEPS }: ProcessProps = {}) => {
                   {s.n} /
                 </span>
               </div>
-              <h3 className="t-h3 mb-2">
+              <h3 className="t-h5 text-ink">
                 {s.title}
               </h3>
-              <p className="t-body-sm" style={{ color: "hsl(var(--on-deep-soft))" }}>
+              <p className="t-small text-ink-soft title-to-text">
                 {s.body}
               </p>
             </div>

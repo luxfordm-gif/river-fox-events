@@ -31,7 +31,7 @@ const JournalCard = ({ article, feature = false }: CardProps) => {
   return (
     <a
       href={href}
-      className={`group block ${feature ? "md:col-span-2" : ""}`}
+      className={`group flex flex-col h-full ${feature ? "md:col-span-2" : ""}`}
     >
       <div
         className={`relative overflow-hidden bg-ink/5 ${
@@ -51,28 +51,29 @@ const JournalCard = ({ article, feature = false }: CardProps) => {
             }
           />
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center text-ink-soft t-body-sm">
+          <div className="absolute inset-0 flex items-center justify-center text-ink-soft t-small">
             River Fox Events
           </div>
         )}
       </div>
 
-      <div className="mt-4 md:mt-5">
+      {/* Fills the card so the date line sits at the foot, level across a row (Matt, 2026-11-08). */}
+      <div className="mt-4 md:mt-5 card-text flex-1 flex flex-col">
         {article.category && (
-          <div className="t-eyebrow text-ink-soft">
+          <div className="t-overline text-ink-soft">
             {article.category}
           </div>
         )}
         <h2
-          className={`${feature ? "t-h3" : "t-h4"} text-ink group-hover:text-accent-warm transition-colors mt-2 md:mt-3`}
+          className={`${feature ? "t-h4" : "t-h5"} text-ink group-hover:text-accent-warm transition-colors mt-2 md:mt-3`}
           style={{ textWrap: "balance" }}
         >
           {article.title}
         </h2>
-        <p className="mt-2 md:mt-3 t-body-sm text-ink-soft">
+        <p className="title-to-text t-small text-ink-soft">
           {article.teaser}
         </p>
-        <div className="mt-3 md:mt-4 t-eyebrow text-ink-soft">
+        <div className="mt-auto pt-3 md:pt-4 t-overline text-ink-soft">
           {formatDate(article.publishedAt)} · {article.readMinutes} min read
         </div>
       </div>
@@ -131,7 +132,7 @@ const Journal = () => {
                 {/* On mobile we render a denser horizontal-ish layout
                     via a separate component branch; on desktop the
                     full card. Keep DOM order accessible. */}
-                <div className="hidden md:block">
+                <div className="hidden md:block md:h-full">
                   <JournalCard
                     article={a}
                     feature={i === 0 && shown.length > 1}
@@ -159,21 +160,21 @@ const Journal = () => {
                     </div>
                     <div className="flex-1 min-w-0 flex flex-col">
                       {a.category && (
-                        <div className="t-eyebrow text-ink-soft">
+                        <div className="t-overline text-ink-soft">
                           {a.category}
                         </div>
                       )}
                       <h2
-                        className="t-h4 text-ink mt-1.5"
+                        className="t-h5 text-ink mt-1.5"
                         style={{ textWrap: "balance" }}
                       >
                         {a.title}
                       </h2>
-                      <p className="mt-1.5 t-body-sm text-ink-soft line-clamp-3">
+                      <p className="title-to-text t-small text-ink-soft line-clamp-3">
                         {a.teaser}
                       </p>
                       <div
-                        className="mt-auto pt-2 t-eyebrow text-ink-soft"
+                        className="mt-auto pt-2 t-overline text-ink-soft"
                       >
                         {formatDate(a.publishedAt)} · {a.readMinutes} min
                       </div>
@@ -189,7 +190,7 @@ const Journal = () => {
               <button
                 type="button"
                 onClick={() => setVisible((v) => v + PAGE_SIZE)}
-                className="t-eyebrow text-ink border border-ink/30 hover:border-ink hover:bg-ink hover:text-cream transition-colors px-7 py-3"
+                className="t-overline text-ink border border-ink/30 hover:border-ink hover:bg-ink hover:text-cream transition-colors px-7 py-3"
               >
                 Show more
               </button>

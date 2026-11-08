@@ -3,21 +3,18 @@ import InstagramStrip, { type InstagramStripImage } from "@/components/rfx/Insta
 
 type InspirationStripProps = {
   id: string;
-  /** Italic end of "A little inspiration for ...", e.g. "your next party." */
+  /** Italic end of "Ideas for ...", e.g. "your party." Shortened from "A little inspiration for your next ..." (Matt, 2026-11-08). */
   accent: ReactNode;
   images: InstagramStripImage[];
-  /** No bottom padding: when the next section has the same background (the FAQs on the town and
-   *  Balloons pages), its own top padding is the whole gap, as on the rest of the page. */
-  flushBottom?: boolean;
 };
 
 /**
- * "A little inspiration for your next ..." - the same endless Instagram strip
+ * "Ideas for your ..." - the same endless Instagram strip
  * as the Christmas page, for the service pages. Every tile links to
  * @riverfox_events. The title uses the shared section size (--fs-h2).
  */
-const InspirationStrip = ({ id, accent, images, flushBottom }: InspirationStripProps) => (
-  <section className={`rfx-section white rfx-inspiration${flushBottom ? " !pb-0" : ""}`} aria-labelledby={`${id}-heading`}>
+const InspirationStrip = ({ id, accent, images }: InspirationStripProps) => (
+  <section className="rfx-section white rfx-inspiration" aria-labelledby={`${id}-heading`}>
     <div className="container-rfx">
       <div className="max-w-[760px] mx-auto text-center fade-up">
         <h2
@@ -25,7 +22,7 @@ const InspirationStrip = ({ id, accent, images, flushBottom }: InspirationStripP
           className="t-h2"
           style={{ textWrap: "balance" }}
         >
-          A little inspiration for <em className="t-accent">{accent}</em>
+          Ideas for <em className="t-accent">{accent}</em>
         </h2>
       </div>
     </div>

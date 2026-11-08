@@ -68,15 +68,15 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
     <>
       <nav className="rfx-nav">
         <div className="rfx-nav-row nav-left">
-          <a href="/" className="t-ui">Home</a>
+          <a href="/" className="t-label">Home</a>
           <div
-            className="relative"
+            className="relative flex"
             onMouseEnter={handleServicesEnter}
             onMouseLeave={handleServicesLeave}
           >
             <button
               type="button"
-              className="inline-flex items-center gap-1.5 bg-transparent border-0 p-0 cursor-pointer t-ui text-inherit"
+              className="inline-flex items-center gap-1.5 bg-transparent border-0 p-0 pb-0.5 cursor-pointer t-label text-inherit"
               aria-haspopup="true"
               aria-expanded={servicesOpen}
             >
@@ -97,12 +97,12 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                   : "opacity-0 -translate-y-1 pointer-events-none"
               }`}
             >
-              <div className="min-w-[240px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--ink)/0.22)] rounded-2xl py-3 px-1">
+              <div className="min-w-[240px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.22)] rounded-2xl py-3 px-1">
                 {SERVICES.map((s) => (
                   <a
                     key={s.label}
                     href={s.href}
-                    className="no-underline-fx block px-5 py-2.5 t-ui text-ink hover:underline underline-offset-4 decoration-ink/60"
+                    className="no-underline-fx block px-5 py-2.5 t-label text-ink hover:underline underline-offset-4 decoration-ink/60"
                   >
                     {s.label}
                   </a>
@@ -111,7 +111,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                 <a
                   href={SEASONAL.href}
                   onMouseEnter={jingleBow}
-                  className="no-underline-fx flex items-center gap-2.5 px-5 py-2.5 t-ui text-ink hover:underline underline-offset-4 decoration-ink/60"
+                  className="no-underline-fx flex items-center gap-2.5 px-5 py-2.5 t-label text-ink hover:underline underline-offset-4 decoration-ink/60"
                 >
                   <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />
                   {SEASONAL.label}
@@ -119,15 +119,15 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               </div>
             </div>
           </div>
-          <a href="/our-work/" className="t-ui whitespace-nowrap">Our work</a>
+          <a href="/our-work/" className="t-label whitespace-nowrap">Our work</a>
           <div
-            className="relative"
+            className="relative flex"
             onMouseEnter={handleAboutEnter}
             onMouseLeave={handleAboutLeave}
           >
             <button
               type="button"
-              className="inline-flex items-center gap-1.5 bg-transparent border-0 p-0 cursor-pointer t-ui text-inherit"
+              className="inline-flex items-center gap-1.5 bg-transparent border-0 p-0 pb-0.5 cursor-pointer t-label text-inherit"
               aria-haspopup="true"
               aria-expanded={aboutOpen}
             >
@@ -148,12 +148,12 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                   : "opacity-0 -translate-y-1 pointer-events-none"
               }`}
             >
-              <div className="min-w-[200px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--ink)/0.22)] rounded-2xl py-3 px-1">
+              <div className="min-w-[200px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.22)] rounded-2xl py-3 px-1">
                 {ABOUT_LINKS.map((s) => (
                   <a
                     key={s.label}
                     href={s.href}
-                    className="no-underline-fx block px-5 py-2.5 t-ui text-ink hover:underline underline-offset-4 decoration-ink/60"
+                    className="no-underline-fx block px-5 py-2.5 t-label text-ink hover:underline underline-offset-4 decoration-ink/60"
                   >
                     {s.label}
                   </a>
@@ -161,18 +161,18 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               </div>
             </div>
           </div>
-          <a href="/contact/" className="t-ui">Contact</a>
+          <a href="/contact/" className="t-label">Contact</a>
         </div>
         <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto md:pt-2" aria-label="River Fox Events - home">
           <span className="t-wordmark">
             RIVER&nbsp;FOX&nbsp;EVENTS
           </span>
-          <span className="t-eyebrow text-ink-soft">
+          <span className="t-overline text-ink-soft">
             Surrey
           </span>
         </a>
         <div className="rfx-nav-row nav-right justify-end">
-          <a href={enquireHref} onClick={handleEnquireClick} className="btn-solid-rf accent t-ui !py-2 !px-4">
+          <a href={enquireHref} onClick={handleEnquireClick} className="btn-solid-rf accent t-label !py-2 !px-4">
             Enquire now <span>→</span>
           </a>
         </div>
@@ -183,7 +183,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((s) => !s)}
-          className="lg:hidden absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-3 px-3 h-9 t-eyebrow text-ink"
+          className="lg:hidden absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-3 px-3 h-9 t-overline text-ink"
         >
           <span className="relative inline-block w-4 h-4 -mt-[2px]" aria-hidden="true">
             <span
@@ -223,7 +223,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className={`t-h3 py-1 text-ink no-underline ${
+              className={`t-h4 py-1 text-ink no-underline ${
                 "seasonal" in l ? "flex items-center gap-3 border-y border-ink/10 py-3 my-1.5" : ""
               }`}
               style={{
@@ -243,7 +243,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           <a
             href="/journal/"
             onClick={() => setOpen(false)}
-            className="mt-6 t-eyebrow text-ink no-underline inline-flex items-center gap-2 self-start"
+            className="mt-6 t-overline text-ink no-underline inline-flex items-center gap-2 self-start"
             style={{
               opacity: open ? 1 : 0,
               transform: open ? "translateY(0)" : "translateY(20px)",
@@ -255,7 +255,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           <a
             href="/#kindness"
             onClick={() => setOpen(false)}
-            className="mt-3 t-eyebrow text-ink no-underline inline-flex items-center gap-2 self-start"
+            className="mt-3 t-overline text-ink no-underline inline-flex items-center gap-2 self-start"
             style={{
               opacity: open ? 1 : 0,
               transform: open ? "translateY(0)" : "translateY(20px)",
@@ -269,7 +269,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
             target="_blank"
             rel="noreferrer"
             onClick={() => setOpen(false)}
-            className="mt-3 t-eyebrow text-ink no-underline inline-flex items-center gap-2 self-start"
+            className="mt-3 t-overline text-ink no-underline inline-flex items-center gap-2 self-start"
             style={{
               opacity: open ? 1 : 0,
               transform: open ? "translateY(0)" : "translateY(20px)",
@@ -278,7 +278,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           >
             Follow us on Instagram <span aria-hidden>→</span>
           </a>
-          <p className="t-body-sm text-ink-soft mt-6">
+          <p className="t-small text-ink-soft mt-6">
             Riverfoxevents@gmail.com
             <br />
             Based in Surrey · By appointment.
@@ -290,7 +290,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               setOpen(false);
               handleEnquireClick(e);
             }}
-            className="btn-solid-rf accent t-ui mt-8 self-start"
+            className="btn-solid-rf accent t-label mt-8 self-start"
             style={{
               opacity: open ? 1 : 0,
               transform: open ? "translateY(0)" : "translateY(20px)",

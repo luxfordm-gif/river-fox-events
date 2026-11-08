@@ -11,9 +11,9 @@ const InstagramFollow = () => {
       aria-labelledby="instagram-heading"
     >
       <div className="container-rfx">
-        <div className="border-t border-ink/15 pt-10 md:pt-14 fade-up rfx-instagram-inner">
+        <div className="border-t border-divider pt-10 md:pt-14 fade-up rfx-instagram-inner">
           <div className="flex flex-col items-center text-center max-w-[680px] mx-auto">
-            <div className="t-eyebrow text-ink-soft mb-7 inline-flex items-center gap-3">
+            <div className="t-overline text-ink-soft mb-7 inline-flex items-center gap-3">
               <span className="h-px w-8 bg-ink/30" aria-hidden="true" />
               Behind the scenes
               <span className="h-px w-8 bg-ink/30" aria-hidden="true" />
@@ -27,7 +27,7 @@ const InstagramFollow = () => {
               <em className="t-accent">Instagram.</em>
             </h2>
 
-            <p className="t-lead text-ink-soft mt-7 max-w-[480px]">
+            <p className="t-lead text-ink-soft heading-to-text max-w-[480px]">
               Sneak peeks, install days and the small details that make every
               River Fox celebration feel like itself.
             </p>

@@ -73,14 +73,14 @@ const LocationHeroFan = ({ images, spreadOnHover = false }: LocationHeroFanProps
   const onLeave = spreadOnHover ? () => setSpread(false) : undefined;
   const sideX = spread ? 14.5 : 12; // vw
   const sideTilt = spread ? 8.5 : 7; // deg
-  const sideShadow = "0 22px 56px -22px hsl(var(--ink) / 0.28)";
-  const centerShadow = "0 30px 72px -22px hsl(var(--ink) / 0.34)";
+  const sideShadow = "0 22px 56px -22px hsl(var(--text-primary) / 0.28)";
+  const centerShadow = "0 30px 72px -22px hsl(var(--text-primary) / 0.34)";
 
   // All three images share this base. Anchor at the bottom of the
   // canvas, horizontally centred. Rotation pivot at bottom-centre so
   // tilts don't lift the bottom edge off the line.
   const sideImg =
-    "absolute bottom-[6%] left-1/2 w-[32%] max-w-[340px] object-cover rounded-media will-change-transform";
+    "absolute bottom-[6%] left-1/2 w-[32%] max-w-[340px] object-cover rounded-large will-change-transform";
   const sideStyle = {
     aspectRatio: "3 / 4" as const,
     transformOrigin: "bottom center" as const,
@@ -158,7 +158,7 @@ const LocationHeroFan = ({ images, spreadOnHover = false }: LocationHeroFanProps
         <img
           src={centre.src}
           alt={centre.alt}
-          className="absolute bottom-[6%] left-1/2 w-[37%] max-w-[400px] object-cover rounded-media"
+          className="absolute bottom-[6%] left-1/2 w-[37%] max-w-[400px] object-cover rounded-large"
           style={{
             aspectRatio: "3 / 4",
             objectPosition: centre.objectPosition,

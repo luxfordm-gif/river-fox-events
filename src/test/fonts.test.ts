@@ -17,7 +17,7 @@ const families = urls.flatMap((u) => new URL(u).searchParams.getAll("family"));
 describe("Google Fonts request", () => {
   it("loads the site's three fonts", () => {
     const names = families.map((f) => f.split(":")[0]);
-    expect(names).toEqual(expect.arrayContaining(["Fraunces", "DM Sans", "JetBrains Mono"]));
+    expect(names).toEqual(expect.arrayContaining(["Fraunces", "DM Sans", "DM Mono"]));
   });
 
   it.each(families.filter((f) => f.includes("@")))("%s follows Google's axis rules", (family) => {

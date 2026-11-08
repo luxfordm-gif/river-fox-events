@@ -12,8 +12,6 @@ type LocationGalleryProps = {
   /** Scrolling images on the right. Max 4 recommended. */
   images: GalleryImage[];
   id?: string;
-  /** Standard section top padding (80px laptop / 64px phone) when it follows a section with the same background. */
-  compactTop?: boolean;
 };
 
 const LocationGallery = ({
@@ -24,19 +22,18 @@ const LocationGallery = ({
   mainImageAlt,
   images,
   id = "loc-gallery",
-  compactTop = false,
 }: LocationGalleryProps) => {
   return (
     <section
       id={id}
-      className={`rfx-section white ${compactTop ? "!pt-16 md:!pt-20" : "pt-14 md:pt-24"} !pb-0`}
+      className="rfx-section white"
       aria-labelledby={`${id}-heading`}
     >
       {(heading || eyebrow || intro) && (
         <div className="container-rfx mb-14 md:mb-20">
           <div className="text-center max-w-[1000px] mx-auto fade-up">
             {eyebrow && (
-              <div className="t-eyebrow text-ink-soft mb-4">
+              <div className="t-overline text-ink-soft mb-4">
                 {eyebrow}
               </div>
             )}
@@ -51,7 +48,7 @@ const LocationGallery = ({
             )}
             {intro && (
               <p
-                className="t-lead text-ink-soft mt-6 max-w-[560px] mx-auto"
+                className="t-lead text-ink-soft heading-to-text max-w-[560px] mx-auto"
                 style={{ textWrap: "pretty" }}
               >
                 {intro}
@@ -81,7 +78,7 @@ const LocationGallery = ({
         {/* Right (desktop) / single column (mobile) - peach panel with stacked images */}
         <div
           className="flex flex-col gap-6 md:gap-10 px-6 md:px-12 py-10 md:py-16"
-          style={{ background: "hsl(var(--surface-warm))" }}
+          style={{ background: "hsl(var(--background-warm))" }}
         >
           {/* Mobile only - main image rendered first inside the peach panel */}
           <div className="md:hidden overflow-hidden">

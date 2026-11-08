@@ -26,7 +26,7 @@ const RelatedArticles = ({ items }: Props) => {
     // share one left and right edge (Matt, 2026-11-07).
     <section className="max-w-[720px] mx-auto px-6 my-16 md:my-24">
       <div
-        className="t-eyebrow text-ink-soft mb-8 text-center"
+        className="t-overline text-ink-soft mb-8 text-center"
       >
         More to read
       </div>
@@ -39,7 +39,7 @@ const RelatedArticles = ({ items }: Props) => {
           >
             {a.cardImage && (
               <div
-                className="shrink-0 w-[112px] md:w-[140px] aspect-square overflow-hidden rounded-media bg-surface-alt"
+                className="shrink-0 w-[112px] md:w-[140px] aspect-square overflow-hidden rounded-large bg-surface-alt"
                 aria-hidden="true"
               >
                 <img
@@ -52,17 +52,17 @@ const RelatedArticles = ({ items }: Props) => {
                 />
               </div>
             )}
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 card-text">
               <h3
-                className="t-h4 text-ink group-hover:text-accent-warm transition-colors"
+                className="t-h5 text-ink group-hover:text-accent-warm transition-colors"
               >
                 {a.title}
               </h3>
-              <p className="t-body-sm mt-2 text-ink-soft line-clamp-3">
+              <p className="t-small title-to-text text-ink-soft line-clamp-3">
                 {a.teaser}
               </p>
               <span
-                className="t-eyebrow mt-3 inline-block text-ink-soft group-hover:text-ink transition-colors"
+                className="t-overline mt-3 inline-block text-ink-soft group-hover:text-ink transition-colors"
               >
                 Read →
               </span>

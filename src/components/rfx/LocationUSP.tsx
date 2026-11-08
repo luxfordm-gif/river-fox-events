@@ -69,11 +69,10 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
     <section
       id="why-river-fox"
       className="rfx-section white"
-      style={{ paddingTop: 0, paddingBottom: "80px" }}
       aria-label="Why River Fox Events"
     >
       <div className="container-rfx">
-        <div className="text-center heading-to-body">
+        <div className="text-center">
           <h2
             className="t-h2"
             style={{ textWrap: "balance" }}
@@ -85,7 +84,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
           </h2>
         </div>
         <p
-          className="mx-auto max-w-[680px] text-center t-lead text-ink-soft fade-up"
+          className="mx-auto max-w-[680px] text-center t-lead text-ink-soft heading-to-text fade-up"
           style={{ textWrap: "pretty" }}
         >
           {/* First sentence only: still unique per town, half the words (Matt, 2026-11-07). */}
@@ -126,17 +125,17 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
                     width: 64,
                     height: 64,
                     borderRadius: "50%",
-                    background: "hsl(var(--surface-warm))",
-                    color: "hsl(var(--accent-warm))",
+                    background: "hsl(var(--background-warm))",
+                    color: "hsl(var(--accent-dark))",
                   }}
                 >
                   <Icon strokeWidth={1.4} size={26} />
                 </div>
-                <h3 className="t-h4 text-ink">
+                <h3 className="t-h6 text-ink">
                   {label}
                 </h3>
                 <p
-                  className="t-body-sm text-ink-soft mt-2.5 max-w-[240px]"
+                  className="t-small text-ink-soft title-to-text max-w-[240px]"
                   style={{ textWrap: "pretty" }}
                 >
                   {pointBody}

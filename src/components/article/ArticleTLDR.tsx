@@ -14,20 +14,20 @@ const ArticleTLDR = ({ children }: Props) => (
   // social-share row at the foot of the article hero.
   <aside className="max-w-[720px] mx-auto mt-6 mb-12 md:mt-10 md:mb-16 px-6">
     <div
-      className="rounded-card px-6 md:px-8 py-6 md:py-7 border"
+      className="rounded-large px-6 md:px-8 py-6 md:py-7 border"
       style={{
         // Pinky-peach surface at 20% opacity - soft fill, full-strength stroke.
-        background: "hsl(var(--surface-warm) / 0.20)",
-        borderColor: "hsl(var(--accent-warm))",
+        background: "hsl(var(--background-warm) / 0.20)",
+        borderColor: "hsl(var(--accent-dark))",
       }}
     >
       <div
-        className="t-eyebrow mb-3"
-        style={{ color: "hsl(var(--ink))" }}
+        className="t-overline mb-3"
+        style={{ color: "hsl(var(--text-primary))" }}
       >
         In short
       </div>
-      <div className="t-body-sm text-ink space-y-1.5">
+      <div className="t-small text-ink space-y-1.5">
         {children}
       </div>
     </div>

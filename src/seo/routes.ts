@@ -78,7 +78,8 @@ export type Review = { q: string; a: string; href?: string };
  *  array as text. */
 export const REVIEWS: Review[] = [
   {
-    q: "Laura created a beautiful balloon hoop garland for my son's Christening. It was a beautiful piece of decor and we received loads of compliments about it. It really transformed the event hall and was stunning. Laura was really easy to communicate with and had great creative vision for the event. I would highly recommend this company for event decor.",
+    // Trimmed for length, her own words kept (Matt, 2026-11-08).
+    q: "Laura created a beautiful balloon hoop garland for my son's Christening. We received loads of compliments about it. It really transformed the event hall. I would highly recommend this company for event decor.",
     a: "Samantha",
     href: "https://goo.gl/maps/3U8ddozdYipptXt16?g_st=ac",
   },
@@ -777,6 +778,16 @@ export const ROUTES: RouteSEO[] = [
     description:
       "How River Fox Events handles your information when you enquire, plus the analytics cookie this site uses and how to opt out.",
     breadcrumbName: "Privacy & cookies",
+    noindex: true,
+  },
+  {
+    // Hidden design reference for Matt (2026-11-08): every token, text style
+    // and reusable section. noindex keeps it out of search and the sitemap;
+    // nothing links to it.
+    path: "/style-guide",
+    title: "Style guide | River Fox Events",
+    description:
+      "Internal design reference for River Fox Events: colour tokens, named text styles, corners, buttons and every reusable section.",
     noindex: true,
   },
 ];

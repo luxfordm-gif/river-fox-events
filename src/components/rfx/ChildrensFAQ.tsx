@@ -11,6 +11,9 @@ type ChildrensFAQProps = {
   paddingBottom?: string;
   /** Named text style for the heading; defaults to the section title (t-h2). */
   headingClass?: string;
+  /** Section title. "FAQs" on the service and town pages; the Christmas page
+   *  keeps "Your questions answered." (Matt, 2026-11-08). */
+  heading?: ReactNode;
 };
 
 const DEFAULT_FAQS: FAQ[] = [
@@ -36,7 +39,7 @@ const DEFAULT_FAQS: FAQ[] = [
     aNode: (
       <>
         We arrive before guests and install every element -{" "}
-        <a href="/balloon-installations/" className="underline underline-offset-4 decoration-ink/30 hover:decoration-ink transition-colors">
+        <a href="/balloon-installations/" className="text-link">
           balloon installations
         </a>
         , backdrops, the cake table, signage. You walk into a finished room.
@@ -55,8 +58,9 @@ const ChildrensFAQ = ({
   headingId = "cp-faq-heading",
   defaultOpen = false,
   paddingTop,
-  paddingBottom = "48px",
+  paddingBottom,
   headingClass = "t-h2",
+  heading = "FAQs",
 }: ChildrensFAQProps = {}) => {
   // Inject FAQPage JSON-LD scoped to this section so search engines can pick up
   // the Q&A as a rich result. We dedupe per headingId so multiple FAQ blocks
@@ -93,23 +97,13 @@ const ChildrensFAQ = ({
       aria-labelledby={headingId}
     >
       <div className="container-rfx">
-        <div className="text-center heading-to-body">
+        <div className="text-center heading-to-content">
           <h2
             id={headingId}
             className={headingClass}
           >
-            Your questions{" "}
-            <em className="t-accent">answered.</em>
+            {heading}
           </h2>
-          <p className="t-body-sm text-ink-soft max-w-[520px] mx-auto mt-6">
-            Anything else on your mind?{" "}
-            <a
-              href="mailto:Riverfoxevents@gmail.com"
-              className="text-ink underline-offset-4 underline decoration-ink/30 hover:decoration-ink"
-            >
-              Riverfoxevents@gmail.com
-            </a>
-          </p>
         </div>
 
         <div className="max-w-[980px] mx-auto">

@@ -1,12 +1,12 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 export type PricingTier = {
   label: string;
   price: string;
   body?: string;
-  /** Small line under the tier, e.g. "Most families book this one." The
-   *  tier with a note gets the soft highlighted background. */
+  /** Any value marks the tier as the popular one: it gets the "Most popular"
+   *  tag and the accent border (the text itself isn't shown any more). */
   note?: string;
 };
 
@@ -15,6 +15,10 @@ type CPPricingProps = {
    *  the heading-only block used on the service and town pages. */
   tiers?: PricingTier[];
   heading?: ReactNode;
+  /** Short line between the heading and the button (heading, body copy,
+   *  button - Matt, 2026-11-08). Defaults to the quoting line when there are
+   *  no tiers; the tiers do that job when present. */
+  intro?: ReactNode;
   ctaLabel?: string;
   footnote?: string;
 };
@@ -26,68 +30,81 @@ const DEFAULT_HEADING: ReactNode = (
   </>
 );
 
-const DEFAULT_FOOTNOTE =
-  "All events are individually quoted following a discovery call - so the proposal reflects exactly what you have in mind.";
+const DEFAULT_INTRO =
+  "Every celebration is quoted individually after a short call, so the price reflects exactly what you have in mind.";
 
 const CPPricing = ({
   tiers,
   heading = DEFAULT_HEADING,
+  intro,
   ctaLabel = "Enquire now",
-  footnote = DEFAULT_FOOTNOTE,
+  footnote = "",
 }: CPPricingProps = {}) => {
+  // Copy fades up as the box scrolls into view (Matt, 2026-11-08).
+  const body = intro ?? (tiers && tiers.length > 0 ? null : DEFAULT_INTRO);
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = boxRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -15% 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section
       id="pricing"
-      className="rfx-section warm"
+      className="rfx-section white rfx-pricing"
       aria-labelledby="cp-pricing-heading"
     >
+      {/* Boxed, not a full-width band: a soft Warm card inside the page
+          margins (Matt, 2026-11-08). */}
       <div className="container-rfx">
+        <div ref={boxRef} className={`rfx-pricing-box rounded-large ${inView ? "is-in" : ""}`}>
         <div className="text-center mb-10 md:mb-12">
           <h2
             id="cp-pricing-heading"
-            className="t-h2 fade-up max-w-[20ch] mx-auto"
+            className="t-h2 rfx-reveal max-w-[20ch] mx-auto"
             style={{ textWrap: "balance" }}
           >
             {heading}
           </h2>
+          {body ? (
+            <p className="t-body text-ink-soft max-w-[460px] mx-auto heading-to-text rfx-reveal rfx-reveal-2">
+              {body}
+            </p>
+          ) : null}
         </div>
 
         {tiers && tiers.length > 0 ? (
+          /* Option cards, as on the Christmas garlands (Matt, 2026-11-08). */
           <div
-            className={`grid grid-cols-1 ${
-              tiers.length === 2 ? "md:grid-cols-2 max-w-[880px]" : "md:grid-cols-3"
-            } mx-auto mb-10 md:mb-12 border-t border-ink/15 fade-up`}
+            className={`option-cards grid-cols-1 ${
+              tiers.length === 2 ? "md:grid-cols-2 max-w-[960px]" : "md:grid-cols-3"
+            } mb-10 md:mb-12 rfx-reveal rfx-reveal-2`}
           >
-            {tiers.map((t, i) => (
-              <div
-                key={t.label}
-                className={`py-9 md:py-12 px-6 md:px-10 text-center ${
-                  i > 0 ? "border-t md:border-t-0 md:border-l border-ink/15" : ""
-                } ${t.note ? "bg-[hsl(var(--surface-alt)/0.6)]" : ""}`}
-              >
-                <div className="t-eyebrow text-ink-soft">
-                  {t.label}
-                </div>
-                <div className="t-h3 mt-4">
-                  {t.price}
-                </div>
-                {t.body ? (
-                  <p className="t-body-sm mt-4 text-ink-soft">
-                    {t.body}
-                  </p>
-                ) : null}
-                {t.note ? (
-                  <p className="t-meta mt-3 italic text-accent-warm">
-                    {t.note}
-                  </p>
-                ) : null}
+            {tiers.map((t) => (
+              <div key={t.label} className={`option-card${t.note ? " is-popular" : ""}`}>
+                {t.note ? <p className="option-card__tag"><span className="tag">Most popular</span></p> : null}
+                <h3 className="t-h4 text-ink">{t.label}</h3>
+                <p className="t-small italic text-accent-warm title-to-text">{t.price}</p>
+                {t.body ? <p className="t-small text-ink-soft heading-to-text max-w-[40ch]">{t.body}</p> : null}
               </div>
             ))}
           </div>
         ) : null}
 
-        <div className="text-center fade-up flex flex-col items-center gap-6">
-          <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent t-ui">
+        <div className="text-center rfx-reveal rfx-reveal-3 flex flex-col items-center gap-6">
+          <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent t-label">
             {ctaLabel} <span>→</span>
           </a>
           {footnote ? (
@@ -95,6 +112,7 @@ const CPPricing = ({
               {footnote}
             </p>
           ) : null}
+        </div>
         </div>
       </div>
     </section>

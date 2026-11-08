@@ -9,7 +9,8 @@ import ServiceHero from "@/components/rfx/ServiceHero";
 import CPReveal from "@/components/rfx/CPReveal";
 import CPPricing from "@/components/rfx/CPPricing";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
-import ServicesCards, { type ServiceCardItem } from "@/components/rfx/ServicesCards";
+import ServicesCards from "@/components/rfx/ServicesCards";
+import { WHAT_WE_MAKE } from "@/data/balloonTiles";
 import LocationGallery from "@/components/rfx/LocationGallery";
 import Experiences from "@/components/rfx/Experiences";
 import LocationTrust from "@/components/rfx/LocationTrust";
@@ -68,20 +69,6 @@ const RECENT_WORK = [
    (Matt, 2026-11-08). Order alternates colours so similar photos don't sit
    side by side; on phones they pair up two across. None repeat the hero or
    the inspiration strip. Alts come from the gallery (one image, one alt). */
-const tile = (title: string, href: string, source: string, position?: string): ServiceCardItem => {
-  const p = galleryPhoto(source);
-  return { title, href, image: p.src, srcSet: p.srcSet, alt: p.alt, position };
-};
-const WHAT_WE_MAKE: ServiceCardItem[] = [
-  tile("Organic arches", "/childrens-parties/", "river-fox-events-baby-shower-baby-in-bloom-arch-portrait.webp", "40% 50%"),
-  tile("Hoops & backdrops", "/childrens-parties/", "services/milestones/heart-hoop-red-blush-balloons-heart-foils.webp"),
-  tile("Balloon garlands", "/milestone-celebrations/", "journal/dylan-christening-first-birthday/dylan-christening-blue-gold-balloon-feature-wall.webp", "35% 50%"),
-  tile("Balloon walls", "/childrens-parties/", "services/childrens-parties/halloween-balloon-wall-bright-skeletons-bats.webp"),
-  tile("Number & letter stacks", "/milestone-celebrations/", "services/milestones/18th-birthday-blue-chrome-light-up-numbers.webp"),
-  tile("Balloon columns", "/corporate-brand-styling/", "services/corporate/casino-night-balloon-columns-red-black-gold.webp"),
-  tile("Table centrepieces", "/milestone-celebrations/", "services/milestones/navy-gold-bubble-balloon-table-centrepieces.webp"),
-  tile("Shopfront installs", "/corporate-brand-styling/", "services/corporate/shop-entrance-arch-green-white-balloons.webp"),
-];
 
 const FAQS = [
   {
@@ -142,7 +129,7 @@ const BalloonInstallations = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground nav-solid">
+    <div className="min-h-screen page-paper text-foreground nav-solid nav-paper">
       <Nav />
       <main>
         <ServiceHero
@@ -182,22 +169,18 @@ const BalloonInstallations = () => {
           }
         >
           <p>
-            Most celebrations start with a balloon arch, and that's where I
-            started too. Plenty of people still come to me just for balloon
-            arch hire or a few balloon garlands, and I love those jobs. Over
-            eight years and more than 400 events, though, I've learned that
-            balloons look their best when the rest of the room is styled
-            around them.
+            That's where I started too, and plenty of people still come to me
+            just for balloon arch hire or a few balloon garlands. Over eight
+            years and 400+ events, I've learned balloons look their best when
+            the room is styled around them.
           </p>
           <p>
-            So now I build the whole setting: backdrops, props, personalised
-            name boards and tablescapes, all chosen to sit with the balloons
-            rather than compete with them.
+            So I build the whole setting: backdrops, props, name boards and
+            tablescapes chosen to sit with the balloons.
           </p>
           <p>
-            I work from my studio in Horley and cover the whole of Surrey,
-            from family homes in Reigate and Oxted to garden parties in
-            Cobham, Esher and Weybridge.
+            From my Horley studio I cover all of Surrey, from homes in Reigate
+            and Oxted to garden parties in Cobham, Esher and Weybridge.
           </p>
         </CPReveal>
 
@@ -205,7 +188,6 @@ const BalloonInstallations = () => {
           sectionId="what-we-make"
           headingId="bi-make-heading"
           items={WHAT_WE_MAKE}
-          layout="tiles"
           heading={
             <>
               What we{" "}
@@ -217,13 +199,9 @@ const BalloonInstallations = () => {
 
         <LocationGallery
           id="bi-gallery"
-          eyebrow="Recent work"
           heading={
             <>
-              Balloons as part of{" "}
-              <em className="t-accent">
-                the whole room.
-              </em>
+              Recent <em className="t-accent">work.</em>
             </>
           }
           intro="A few recent setups where the arch or garland is one layer of the styling, alongside the backdrop, the props and the table."
@@ -232,34 +210,18 @@ const BalloonInstallations = () => {
           images={RECENT_WORK}
         />
 
-        <div id="how-it-works">
-          <Process />
-        </div>
+        <Process sectionId="how-it-works" />
 
+        {/* Heading and button only: the two price cards were taken out
+            (Matt, 2026-11-08). intro="" keeps the default quoting line off. */}
         <CPPricing
           heading={
             <>
-              Start with the balloons,{" "}
-              <em className="t-accent">
-                or style the whole room.
-              </em>
+              Every balloon design,{" "}
+              <em className="t-accent">quoted to size.</em>
             </>
           }
-          tiers={[
-            {
-              label: "Balloon installation only",
-              // No from-price: balloon-only work runs from a single helium
-              // balloon to a full arch, so one number would mislead.
-              price: "Quoted to size",
-              body: "From a single helium balloon to a full arch.",
-            },
-            {
-              label: "Full party styling",
-              price: "From £300",
-              body: "Balloons, backdrops and props.",
-              note: "Most families book this one.",
-            },
-          ]}
+          intro=""
           ctaLabel="Enquire now"
           footnote=""
         />
@@ -268,40 +230,26 @@ const BalloonInstallations = () => {
             page is to move balloon searchers into these. */}
         <Experiences
           sectionId="bi-services"
-          showBalloonLink={false}
+          align="centre"
           heading={
             <>
               Want the whole room{" "}
               <em className="t-accent">styled?</em>
             </>
           }
-          intro="Balloons are one part of what I do. These are the three ways I style a full celebration, with the balloons built in."
         />
 
         <LocationTrust reviews={BALLOON_REVIEWS} />
 
-        <InspirationStrip id="bi-inspiration" accent="your next balloon installation." images={INSPIRATION_BALLOONS} flushBottom />
+        <InspirationStrip id="bi-inspiration" accent="your balloons." images={INSPIRATION_BALLOONS} />
 
         <ChildrensFAQ
           faqs={FAQS}
           headingId="bi-faq-heading"
-          paddingBottom="64px"
         />
 
         <Enquire />
 
-        <section
-          aria-label="See a fully styled party"
-          className="py-14 md:py-20 text-center"
-          style={{ background: "hsl(var(--surface-alt))" }}
-        >
-          <div className="container-rfx">
-            <a href="/childrens-parties/" className="btn-link-rf">
-              See what a fully styled party looks like{" "}
-              <span className="arr">→</span>
-            </a>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>
