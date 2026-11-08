@@ -316,8 +316,6 @@
      outrank the Tailwind utilities and the shared .rfx-hero rules above. */
   @media (min-width: 1440px) {
     section.rfx-hero-scale { padding-top: var(--hero-pad-top); }
-    /* Home hero sits 12px higher than the service heroes (Matt, 2026-11-08). */
-    section.rfx-hero-home.rfx-hero-scale { padding-top: calc(var(--hero-pad-top) - 12px); }
     .rfx-hero-scale .rfx-hero-intro { margin-bottom: var(--hero-gap); }
     /* Home only: cream space under the three-photo row. Service heroes run
        their big image straight into the next section. */

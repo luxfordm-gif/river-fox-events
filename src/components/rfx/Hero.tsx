@@ -4,7 +4,7 @@ import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 const Hero = () => {
   return (
-    <section id="top" className="rfx-hero rfx-hero-home rfx-hero-scale pt-[var(--page-pad-top)] md:pt-[122px] pb-4 md:pb-6" aria-labelledby="hero-heading">
+    <section id="top" className="rfx-hero rfx-hero-home rfx-hero-scale pt-[var(--page-pad-top)] md:pt-[134px] pb-4 md:pb-6" aria-labelledby="hero-heading">
       <div className="container-rfx">
         {/* Centered editorial intro */}
         <div className="rfx-hero-intro mb-10 md:mb-14 flex flex-col items-center text-center">
