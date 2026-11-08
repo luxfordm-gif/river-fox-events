@@ -775,7 +775,9 @@
      so the bar doesn't read as a darker strip over the page. */
   .page-paper { background: hsl(var(--surface-paper)); }
   .nav-paper .rfx-nav { background: hsl(var(--surface-paper) / 0.82); }
-  .rfx-nav-row { display: flex; gap: 32px; font-size: var(--fs-meta); letter-spacing: var(--ls-ui); }
+  /* Links and dropdown buttons share one text baseline, so Home / Our work /
+     Contact line up with Services / About (Matt, 2026-11-08). */
+  .rfx-nav-row { display: flex; align-items: baseline; gap: 32px; font-size: var(--fs-meta); letter-spacing: var(--ls-ui); }
   .rfx-nav a { color: inherit; text-decoration: none; position: relative; padding-bottom: 2px; }
   .rfx-nav a:not(.btn-solid-rf):not(.no-underline-fx)::after {
     content: "";
