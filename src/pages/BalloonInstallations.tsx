@@ -65,42 +65,57 @@ const RECENT_WORK = [
 
 /* Five things Laura makes with balloons. Each card links on to the
    occasion page where that piece usually lives, so balloons stay the way
-   in rather than the end point. */
+   in rather than the end point. Shown as a bento grid (Matt, 2026-11-08):
+   the order matters, the first card is the big tile (top left) and the
+   last is the wide tile (bottom right), so the strongest photos sit in
+   the largest tiles.
+   One short line per card (Matt, 2026-11-08): the photo does the talking.
+   None of these photos repeat the hero. Alts come from the gallery (one
+   image, one alt). `position` keeps each subject in frame when cropped. */
+const tilePhoto = (source: string, position: string, phonePosition?: string) => {
+  const p = galleryPhoto(source);
+  return { image: p.src, srcSet: p.srcSet, alt: p.alt, position, phonePosition };
+};
 const WHAT_WE_MAKE: ServiceCardItem[] = [
   {
     title: "Organic arches",
     blurb:
-      "Loose, cloud-like arches in mixed sizes and tones, built to frame a cake table, a doorway or a backdrop. They're the piece most children's parties are built around.",
+      "Cloud-like arches to frame a cake table or doorway.",
     href: "/childrens-parties/",
     cta: "Children's parties",
+    ...tilePhoto("river-fox-events-baby-shower-baby-in-bloom-arch-portrait.webp", "35% 45%"),
   },
   {
     title: "Balloon garlands",
     blurb:
-      "Garlands that trail along a fireplace, a staircase or the top of a backdrop, in a palette matched to the occasion. Lovely for 40ths, christenings and baby showers.",
+      "Trailing along a fireplace, staircase or backdrop.",
     href: "/milestone-celebrations/",
     cta: "Milestone celebrations",
+    ...tilePhoto("journal/dylan-christening-first-birthday/dylan-christening-blue-gold-balloon-feature-wall.webp", "50% 40%", "38% 50%"),
   },
   {
     title: "Hoops & backdrops",
     blurb:
-      "A balloon hoop or arched backdrop board personalised with a name and wrapped in your colours. It gives every guest a photo spot to gather around.",
+      "A personalised photo spot for every guest.",
     href: "/childrens-parties/",
     cta: "Children's parties",
+    ...tilePhoto("services/milestones/heart-hoop-red-blush-balloons-heart-foils.webp", "45% 55%"),
   },
   {
     title: "Number & letter stacks",
     blurb:
-      "Stacked balloon numbers and letters, sized to stand beside the cake table or greet guests at the door. A simple way to mark a first birthday, an 18th or a 50th.",
+      "Numbers and letters to mark a 1st, 18th or 50th.",
     href: "/milestone-celebrations/",
     cta: "Milestone celebrations",
+    ...tilePhoto("services/milestones/18th-birthday-blue-chrome-light-up-numbers.webp", "50% 55%"),
   },
   {
     title: "Shopfront & corporate installs",
     blurb:
-      "Branded arches and window displays for salons, shops, launches and office events, matched to your brand colours. Installed before you open and collected when you're finished.",
+      "Branded arches and window displays in your colours.",
     href: "/corporate-brand-styling/",
     cta: "Corporate & brand",
+    ...tilePhoto("river-fox-events-corporate-atrium-twin-balloon-arches.webp", "50% 50%", "82% 50%"),
   },
 ];
 
@@ -176,12 +191,12 @@ const BalloonInstallations = () => {
             "Hi Laura, I'd like a quote for a balloon installation. My date and postcode are "
           )}
           lines={[
-            <>Balloons are where it starts,</>,
+            <>Balloon arches and installations,</>,
             <>
               <em
                 className="italic font-normal text-accent-warm"
               >
-                styling is where it shines.
+                styled around your celebration.
               </em>
             </>,
           ]}
@@ -205,10 +220,12 @@ const BalloonInstallations = () => {
           }
         >
           <p>
-            Most celebrations start with a balloon arch or a garland, and
-            that's where I started too. Over eight years and more than 400
-            events, I've learned that balloons look their best when the rest
-            of the room is styled around them.
+            Most celebrations start with a balloon arch, and that's where I
+            started too. Plenty of people still come to me just for balloon
+            arch hire or a few balloon garlands, and I love those jobs. Over
+            eight years and more than 400 events, though, I've learned that
+            balloons look their best when the rest of the room is styled
+            around them.
           </p>
           <p>
             So now I build the whole setting: backdrops, props, personalised
@@ -226,6 +243,7 @@ const BalloonInstallations = () => {
           sectionId="what-we-make"
           headingId="bi-make-heading"
           items={WHAT_WE_MAKE}
+          layout="bento"
           heading={
             <>
               What we{" "}

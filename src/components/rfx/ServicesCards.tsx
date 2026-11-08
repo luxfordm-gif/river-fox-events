@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { galleryPhoto } from "@/data/gallery";
 
 const photo = (source: string) => {
@@ -49,12 +49,36 @@ export type ServiceCardItem = {
   image?: string;
   srcSet?: string;
   alt?: string;
+  /** CSS object-position, to keep the subject in frame when the tile crops the photo. */
+  position?: string;
+  /** Bento only: a different focal point for the tall phone carousel crop. */
+  phonePosition?: string;
 };
+
+/* Bento layout (the five balloon cards on /balloon-installations/, Matt 2026-11-08).
+   Desktop (1280px+), 3 columns, a diagonal bento that fills with no gaps:
+     [ 1 1 | 2 ]
+     [ 1 1 | 3 ]
+     [ 4 | 5 5 ]
+   Tile 1 (the hero tile) is 2x2, tile 5 is 2x1, the rest are 1x1. The cards
+   fall into place in their listed order. Rows have a set minimum height and
+   the photo fills what the text leaves.
+   Tablet and small laptops: 2 equal columns. Phone: a swipe carousel with
+   square photos and the next card peeking in, dots underneath. */
+const BENTO_TILES = [
+  { span: "xl:col-span-2 xl:row-span-2", sizes: "(min-width: 1280px) 60vw, (min-width: 768px) 50vw, 80vw" },
+  { span: "", sizes: "(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 80vw" },
+  { span: "", sizes: "(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 80vw" },
+  { span: "", sizes: "(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 80vw" },
+  { span: "xl:col-span-2", sizes: "(min-width: 1280px) 60vw, (min-width: 768px) 50vw, 80vw" },
+];
 
 type ServicesCardsProps = {
   /** Override the three default service cards (e.g. the five balloon
    *  cards on /balloon-installations/). Five items lay out 3 + 2 on desktop. */
   items?: ServiceCardItem[];
+  /** "bento": mixed tile sizes for five photo cards (see BENTO_TILES). */
+  layout?: "grid" | "bento";
   heading?: ReactNode;
   intro?: ReactNode;
   sectionId?: string;
@@ -63,11 +87,38 @@ type ServicesCardsProps = {
 
 const ServicesCards = ({
   items = SERVICES,
+  layout = "grid",
   heading,
   intro,
   sectionId = "services",
   headingId = "services-cards-heading",
 }: ServicesCardsProps = {}) => {
+  const bento = layout === "bento";
+
+  /* Phone carousel: track which card is centred so the right dot lights up. */
+  const track = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+  const onTrackScroll = () => {
+    const el = track.current;
+    if (!el) return;
+    const centre = el.scrollLeft + el.clientWidth / 2;
+    let nearest = 0;
+    Array.from(el.children).forEach((c, i) => {
+      const card = c as HTMLElement;
+      const nearestCard = el.children[nearest] as HTMLElement;
+      const dist = Math.abs(card.offsetLeft + card.offsetWidth / 2 - centre);
+      const best = Math.abs(nearestCard.offsetLeft + nearestCard.offsetWidth / 2 - centre);
+      if (dist < best) nearest = i;
+    });
+    setActive(nearest);
+  };
+  const goTo = (i: number) => {
+    const el = track.current;
+    const card = el?.children[i] as HTMLElement | undefined;
+    if (!el || !card) return;
+    el.scrollTo({ left: card.offsetLeft - (el.clientWidth - card.offsetWidth) / 2, behavior: "smooth" });
+  };
+
   return (
     <section
       id={sectionId}
@@ -104,11 +155,64 @@ const ServicesCards = ({
         )}
 
         <div
-          className={`grid grid-cols-1 gap-5 md:gap-7 ${
-            items.length === 5 ? "md:grid-cols-6" : "md:grid-cols-3"
-          }`}
+          ref={bento ? track : undefined}
+          onScroll={bento ? onTrackScroll : undefined}
+          className={
+            bento
+              ? // Phone: sideways swipe row that runs to the screen edges. Tablet up: the grid.
+                "relative flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-8 px-5 scroll-px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:mx-0 md:px-0 md:pb-0 md:overflow-visible md:grid-cols-2 md:gap-7 xl:grid-cols-3 xl:auto-rows-[minmax(clamp(340px,31vw,450px),auto)]"
+              : `grid grid-cols-1 gap-5 md:gap-7 ${items.length === 5 ? "md:grid-cols-6" : "md:grid-cols-3"}`
+          }
         >
-          {items.map((s: ServiceCardItem, i) => (
+          {items.map((s: ServiceCardItem, i) => bento ? (
+            /* Bento tile (Matt, 2026-11-08): photo on top, then the title, one short
+               line and the link, on white (not the cream card, which felt dated). */
+            <a
+              key={s.title}
+              href={s.href}
+              className={`group relative flex flex-col overflow-hidden rounded-[18px] no-underline-fx
+                shrink-0 basis-[86%] snap-center md:basis-auto ${BENTO_TILES[i]?.span ?? ""}
+                transition-all duration-300 ease-out hover:-translate-y-[2px]
+                hover:shadow-[0_14px_36px_-14px_hsl(var(--ink)/0.18)]`}
+              style={{
+                background: "#fff",
+                border: "1px solid hsl(var(--border))",
+                boxShadow: "0 6px 22px -14px hsl(var(--ink) / 0.12)",
+              }}
+            >
+              {s.image && (
+                <div className="relative overflow-hidden aspect-square md:aspect-[4/3] xl:aspect-auto xl:flex-1 xl:min-h-[180px]">
+                  <img
+                    src={s.image}
+                    srcSet={s.srcSet}
+                    sizes={BENTO_TILES[i]?.sizes}
+                    alt={s.alt ?? ""}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 w-full h-full object-cover block transition-transform duration-700 ease-out group-hover:scale-[1.03] [object-position:var(--pos-phone)] md:[object-position:var(--pos)]"
+                    style={{
+                      "--pos": s.position ?? "50% 50%",
+                      "--pos-phone": s.phonePosition ?? s.position ?? "50% 50%",
+                    } as CSSProperties}
+                  />
+                </div>
+              )}
+              <div className="flex flex-col p-6 md:p-7">
+                <h3
+                  className="font-serif-rf text-ink"
+                  style={{ fontSize: "var(--fs-h4)", lineHeight: 1.18, fontWeight: 400, letterSpacing: "-0.012em" }}
+                >
+                  {s.title}
+                </h3>
+                <p className="mt-1.5 text-[14.5px] leading-[1.55] text-ink-soft" style={{ textWrap: "pretty" }}>
+                  {s.blurb}
+                </p>
+                <span className="btn-link-rf self-start mt-4" style={{ fontWeight: 600 }}>
+                  {s.cta ?? "Discover"} <span className="arr">→</span>
+                </span>
+              </div>
+            </a>
+          ) : (
             <a
               key={s.title}
               href={s.href}
@@ -128,7 +232,7 @@ const ServicesCards = ({
               }}
             >
               {s.image && (
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={s.image}
                     srcSet={s.srcSet}
@@ -136,7 +240,8 @@ const ServicesCards = ({
                     alt={s.alt ?? ""}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover block transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    className="absolute inset-0 w-full h-full object-cover block transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    style={s.position ? { objectPosition: s.position } : undefined}
                   />
                 </div>
               )}
@@ -166,6 +271,26 @@ const ServicesCards = ({
             </a>
           ))}
         </div>
+
+        {bento && (
+          <div
+            className="flex md:hidden justify-center gap-2 mt-5"
+            role="tablist"
+            aria-label="Choose a card"
+          >
+            {items.map((s, i) => (
+              <button
+                key={s.title}
+                type="button"
+                role="tab"
+                aria-selected={i === active}
+                aria-label={`Show ${s.title}`}
+                onClick={() => goTo(i)}
+                className={`tcard-dot ${i === active ? "is-active" : ""}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
