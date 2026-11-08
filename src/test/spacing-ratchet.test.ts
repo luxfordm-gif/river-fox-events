@@ -17,7 +17,7 @@ import { join } from "node:path";
  */
 const BASELINE = {
   stylesheetRawSpacing: 130, // padding / margin / gap declarations with a px, rem, vw or vh value and no var()
-  arbitrarySpacingClasses: 9, // Tailwind pt-[134px], gap-[56px] ...
+  arbitrarySpacingClasses: 6, // Tailwind pt-[134px], gap-[56px] ...
   inlineSpacingStyles: 6, // style={{ paddingTop: ... }}
 };
 
