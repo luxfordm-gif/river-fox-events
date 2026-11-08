@@ -36,31 +36,22 @@ const LocationGallery = ({
         <div className="container-rfx mb-14 md:mb-20">
           <div className="text-center max-w-[1000px] mx-auto fade-up">
             {eyebrow && (
-              <div
-                className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-4"
-                style={{ fontWeight: 600 }}
-              >
+              <div className="t-eyebrow text-ink-soft mb-4">
                 {eyebrow}
               </div>
             )}
             {heading && (
               <h2
                 id={`${id}-heading`}
-                className="font-serif-rf"
-                style={{
-                  fontSize: "var(--fs-h2)",
-                  lineHeight: 1.0,
-                  fontWeight: 400,
-                  letterSpacing: "-0.025em",
-                  textWrap: "balance",
-                }}
+                className="t-h2"
+                style={{ textWrap: "balance" }}
               >
                 {heading}
               </h2>
             )}
             {intro && (
               <p
-                className="text-[16px] leading-[1.7] text-ink-soft mt-6 max-w-[560px] mx-auto"
+                className="t-lead text-ink-soft mt-6 max-w-[560px] mx-auto"
                 style={{ textWrap: "pretty" }}
               >
                 {intro}

@@ -221,7 +221,7 @@ type CPIncludedProps = {
 const DEFAULT_HEADING: ReactNode = (
   <>
     Everything handled.{" "}
-    <em className="italic font-light text-accent-warm">
+    <em className="t-accent">
       Nothing left to chance.
     </em>
   </>
@@ -276,27 +276,18 @@ const CPIncluded = ({
     >
       <div className="container-rfx">
         <div className="text-center max-w-[760px] mx-auto">
-          <div
-            className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-3"
-            style={{ fontWeight: 600 }}
-          >
+          <div className="t-eyebrow text-ink-soft mb-3">
             {eyebrow}
           </div>
           <h2
             id={headingId}
-            className="font-serif-rf"
-            style={{
-              fontSize: "var(--fs-h2)",
-              lineHeight: 1.0,
-              fontWeight: 400,
-              letterSpacing: "-0.025em",
-              textWrap: "balance",
-            }}
+            className="t-h2"
+            style={{ textWrap: "balance" }}
           >
             {heading}
           </h2>
           <p
-            className="text-[16px] leading-[1.7] text-ink-soft mt-6 max-w-[520px] mx-auto"
+            className="t-lead text-ink-soft mt-6 max-w-[520px] mx-auto"
             style={{ textWrap: "pretty" }}
           >
             {intro}
@@ -342,18 +333,12 @@ const CPIncluded = ({
                 <Icon strokeWidth={1.4} size={26} />
               </div>
               <h3
-                className="font-serif-rf text-ink"
-                style={{
-                  fontSize: "20px",
-                  lineHeight: 1.15,
-                  fontWeight: 400,
-                  letterSpacing: "-0.012em",
-                }}
+                className="t-h4 text-ink"
               >
                 {label}
               </h3>
               <p
-                className="text-[14px] leading-[1.6] text-ink-soft mt-2.5 max-w-[220px]"
+                className="t-body-sm text-ink-soft mt-2.5 max-w-[220px]"
                 style={{ textWrap: "pretty" }}
               >
                 {body}
@@ -364,14 +349,8 @@ const CPIncluded = ({
         </div>
 
         <p
-          className="italic text-ink text-center mt-14 max-w-[560px] mx-auto"
-          style={{
-            fontFamily: "var(--font-serif)",
-            fontWeight: 300,
-            fontSize: "18px",
-            lineHeight: 1.5,
-            textWrap: "pretty",
-          }}
+          className="t-caption italic text-ink text-center mt-14 max-w-[560px] mx-auto"
+          style={{ textWrap: "pretty" }}
         >
           {outro}
         </p>

@@ -15,7 +15,7 @@
   width: clamp(230px, 22vw, 340px);
   aspect-ratio: 4 / 5;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: var(--radius-media);
 }
 .xmas-ig__tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .xmas-ig__over {
@@ -31,8 +31,8 @@
   opacity: 0;
   transition: opacity 0.35s ease;
 }
-.xmas-ig__handle { font-family: var(--font-sans); font-weight: 600; font-size: 14px; letter-spacing: 0.01em; }
-.xmas-ig__note { font-family: var(--font-sans); font-size: 12px; opacity: 0.85; }
+.xmas-ig__handle { font-family: var(--font-sans); font-weight: var(--fw-strong); font-size: var(--fs-meta); letter-spacing: var(--ls-ui); }
+.xmas-ig__note { font-family: var(--font-sans); font-size: var(--fs-meta); opacity: 0.85; }
 .xmas-ig__tile:hover .xmas-ig__over,
 .xmas-ig__tile:focus-visible .xmas-ig__over { opacity: 1; }
 /* Touch screens get a small badge instead of the hover overlay. */
@@ -42,7 +42,7 @@
   bottom: 8px;
   display: none;
   padding: 5px;
-  border-radius: 4px;
+  border-radius: var(--radius-chip);
   color: hsl(var(--xmas-cream, var(--background)));
   background: hsl(120 6% 12% / 0.5);
 }

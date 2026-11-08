@@ -60,10 +60,8 @@ const Footer = () => {
               on the footer's bottom edge, no parallax push. md+: the large
               cropped watermark. Sizes live in index.css (.rfx-footer-mark). */}
           <div
-            className="rfx-footer-mark font-serif-rf whitespace-nowrap relative"
+            className="rfx-footer-mark whitespace-nowrap relative"
             style={{
-              lineHeight: 0.78,
-              letterSpacing: "-0.05em",
               color: "hsl(var(--on-deep) / 0.10)",
               transform: `translateY(calc(var(--rfx-mark-parallax) * ${Math.min(80, y * 0.025)}px)) translateX(${revealed ? 0 : -40}px)`,
               opacity: revealed ? 1 : 0,
@@ -120,21 +118,21 @@ const Footer = () => {
           {/* Footer columns */}
           <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-12 mb-16 rfx-md-stack">
             <div className="mb-8 md:mb-0">
-              <div className="text-[22px] font-medium tracking-[0.22em] leading-none whitespace-nowrap">
+              <div className="t-wordmark-lg whitespace-nowrap">
                 RIVER&nbsp;FOX&nbsp;EVENTS
               </div>
               <p
-                className="text-[13.5px] leading-[1.7] max-w-[360px] mt-7"
+                className="t-meta max-w-[360px] mt-7"
                 style={{ color: "hsl(var(--on-deep-soft))" }}
               >
                 Luxury event styling across Surrey. Formerly known as Lollipop Balloons.
               </p>
             </div>
             <div>
-              <div className="eyebrow font-semibold mb-4" style={{ color: "hsl(var(--on-deep))" }}>
+              <div className="t-eyebrow mb-4" style={{ color: "hsl(var(--on-deep))" }}>
                 Services
               </div>
-              <div className="text-[13.5px] leading-loose">
+              <div className="t-meta space-y-2">
                 <a href="/childrens-parties/" className="opacity-85 hover:opacity-100 block">Children's Parties</a>
                 <a href="/milestone-celebrations/" className="opacity-85 hover:opacity-100 block">Milestones</a>
                 <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate</a>
@@ -143,10 +141,10 @@ const Footer = () => {
               </div>
             </div>
             <div>
-              <div className="eyebrow font-semibold mb-4" style={{ color: "hsl(var(--on-deep))" }}>
+              <div className="t-eyebrow mb-4" style={{ color: "hsl(var(--on-deep))" }}>
                 Locations
               </div>
-              <div className="text-[13.5px] leading-loose">
+              <div className="t-meta space-y-2">
                 {visibleLocations.map((loc) => (
                   <a
                     key={loc.slug}
@@ -161,7 +159,7 @@ const Footer = () => {
                     type="button"
                     onClick={() => setShowAllLocations((s) => !s)}
                     aria-expanded={showAllLocations}
-                    className="mt-2 inline-flex items-center gap-1.5 bg-transparent border-0 p-0 cursor-pointer text-[13.5px] opacity-70 hover:opacity-100 text-inherit"
+                    className="mt-2 inline-flex items-center gap-1.5 bg-transparent border-0 p-0 cursor-pointer t-meta opacity-70 hover:opacity-100 text-inherit"
                   >
                     {showAllLocations ? "Show less" : "Show more"}
                     <ChevronDown
@@ -177,10 +175,10 @@ const Footer = () => {
               </div>
             </div>
             <div>
-              <div className="eyebrow font-semibold mb-4" style={{ color: "hsl(var(--on-deep))" }}>
+              <div className="t-eyebrow mb-4" style={{ color: "hsl(var(--on-deep))" }}>
                 Studio
               </div>
-              <div className="text-[13.5px] leading-loose">
+              <div className="t-meta space-y-2">
                 <a href="/our-work/" className="opacity-85 hover:opacity-100 block">Our Work</a>
                 <a href="/#about" className="opacity-85 hover:opacity-100 block">About Laura</a>
                 <a href="/#process" className="opacity-85 hover:opacity-100 block">How it works</a>
@@ -191,7 +189,7 @@ const Footer = () => {
             <div>
               <a
                 href="/contact/"
-                className="eyebrow font-semibold mb-4 inline-flex items-center gap-1 no-underline hover:underline underline-offset-4 decoration-[hsl(var(--on-deep))]/50"
+                className="t-eyebrow mb-4 inline-flex items-center gap-1 no-underline hover:underline underline-offset-4 decoration-[hsl(var(--on-deep))]/50"
                 style={{ color: "hsl(var(--on-deep))" }}
               >
                 Contact
@@ -202,7 +200,7 @@ const Footer = () => {
                   className="opacity-75 -mt-px"
                 />
               </a>
-              <div className="text-[13.5px] leading-loose" style={{ color: "hsl(var(--on-deep-soft))" }}>
+              <div className="t-meta space-y-2" style={{ color: "hsl(var(--on-deep-soft))" }}>
                 <a href="mailto:Riverfoxevents@gmail.com" className="hover:opacity-100 opacity-85 block">
                   Riverfoxevents@gmail.com
                 </a>
@@ -226,7 +224,7 @@ const Footer = () => {
           </div>
 
           <div
-            className="pt-6 border-t grid grid-cols-3 items-center gap-3 text-[11px] font-mono-rf tracking-[0.08em]"
+            className="t-meta pt-6 border-t grid grid-cols-3 items-center gap-3"
             style={{ borderColor: "hsl(var(--on-deep) / 0.15)", color: "hsl(var(--on-deep-soft))" }}
           >
             <div className="text-left">© {new Date().getFullYear()} River Fox Events</div>

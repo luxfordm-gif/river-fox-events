@@ -46,7 +46,7 @@ const ArticleImage = ({
       style={{ maxWidth: cap }}
     >
       {aspect === "natural" ? (
-        <div className="overflow-hidden rounded-[12px]">
+        <div className="overflow-hidden rounded-media">
           <img
             src={src}
             alt={alt}
@@ -57,7 +57,7 @@ const ArticleImage = ({
         </div>
       ) : (
         <div
-          className={`${ASPECT_CLASS[aspect]} overflow-hidden rounded-[12px]`}
+          className={`${ASPECT_CLASS[aspect]} overflow-hidden rounded-media`}
         >
           <img
             src={src}
@@ -69,7 +69,7 @@ const ArticleImage = ({
         </div>
       )}
       {caption && (
-        <figcaption className="mt-4 text-center text-[13px] italic text-ink-soft max-w-[640px] mx-auto">
+        <figcaption className="t-meta mt-4 text-center italic text-ink-soft max-w-[640px] mx-auto">
           {caption}
         </figcaption>
       )}

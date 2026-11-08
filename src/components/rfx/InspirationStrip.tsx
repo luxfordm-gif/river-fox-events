@@ -22,10 +22,10 @@ const InspirationStrip = ({ id, accent, images, flushBottom }: InspirationStripP
       <div className="max-w-[760px] mx-auto text-center fade-up">
         <h2
           id={`${id}-heading`}
-          className="font-serif-rf"
-          style={{ fontSize: "var(--fs-h2)", lineHeight: 1.0, fontWeight: 400, letterSpacing: "-0.025em", textWrap: "balance" }}
+          className="t-h2"
+          style={{ textWrap: "balance" }}
         >
-          A little inspiration for <em className="italic font-light text-accent-warm">{accent}</em>
+          A little inspiration for <em className="t-accent">{accent}</em>
         </h2>
       </div>
     </div>

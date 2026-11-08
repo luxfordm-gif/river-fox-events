@@ -68,9 +68,7 @@ const ChildrensParties = () => {
           lines={[
             <>Themed children's parties,</>,
             <>
-              <em
-                className="italic font-normal text-accent-warm"
-              >
+              <em className="t-accent">
                 fully styled.
               </em>
             </>,
@@ -97,7 +95,7 @@ const ChildrensParties = () => {
           headline={
             <>
               More than a party,{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 a memory in the making.
               </em>
             </>
@@ -127,7 +125,7 @@ const ChildrensParties = () => {
           headline={
             <>
               Every milestone,{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 beautifully marked.
               </em>
             </>
@@ -154,7 +152,7 @@ const ChildrensParties = () => {
           headline={
             <>
               Whatever your vision,{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 we can create it.
               </em>
             </>

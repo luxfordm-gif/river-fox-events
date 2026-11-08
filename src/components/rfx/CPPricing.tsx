@@ -22,7 +22,7 @@ type CPPricingProps = {
 const DEFAULT_HEADING: ReactNode = (
   <>
     Beautifully styled celebrations{" "}
-    <em className="italic font-light text-accent-warm">from £300.</em>
+    <em className="t-accent">from £300.</em>
   </>
 );
 
@@ -45,14 +45,8 @@ const CPPricing = ({
         <div className="text-center mb-10 md:mb-12">
           <h2
             id="cp-pricing-heading"
-            className="font-serif-rf fade-up max-w-[20ch] mx-auto"
-            style={{
-              fontSize: "var(--fs-h2)",
-              lineHeight: 1.0,
-              fontWeight: 300,
-              letterSpacing: "-0.028em",
-              textWrap: "balance",
-            }}
+            className="t-h2 fade-up max-w-[20ch] mx-auto"
+            style={{ textWrap: "balance" }}
           >
             {heading}
           </h2>
@@ -71,30 +65,19 @@ const CPPricing = ({
                   i > 0 ? "border-t md:border-t-0 md:border-l border-ink/15" : ""
                 } ${t.note ? "bg-[hsl(var(--surface-alt)/0.6)]" : ""}`}
               >
-                <div
-                  className="font-mono-rf text-[10.5px] tracking-[0.24em] uppercase text-ink-soft"
-                  style={{ fontWeight: 600 }}
-                >
+                <div className="t-eyebrow text-ink-soft">
                   {t.label}
                 </div>
-                <div
-                  className="font-serif-rf mt-4"
-                  style={{
-                    fontSize: "var(--fs-h3)",
-                    lineHeight: 1,
-                    fontWeight: 300,
-                    letterSpacing: "-0.022em",
-                  }}
-                >
+                <div className="t-h3 mt-4">
                   {t.price}
                 </div>
                 {t.body ? (
-                  <p className="mt-4 text-[14.5px] leading-[1.6] text-ink-soft">
+                  <p className="t-body-sm mt-4 text-ink-soft">
                     {t.body}
                   </p>
                 ) : null}
                 {t.note ? (
-                  <p className="mt-3 text-[13.5px] italic text-accent-warm">
+                  <p className="t-meta mt-3 italic text-accent-warm">
                     {t.note}
                   </p>
                 ) : null}
@@ -104,11 +87,11 @@ const CPPricing = ({
         ) : null}
 
         <div className="text-center fade-up flex flex-col items-center gap-6">
-          <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
+          <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent t-ui">
             {ctaLabel} <span>→</span>
           </a>
           {footnote ? (
-            <p className="text-[13.5px] text-ink-soft max-w-[560px] mx-auto">
+            <p className="t-meta text-ink-soft max-w-[560px] mx-auto">
               {footnote}
             </p>
           ) : null}

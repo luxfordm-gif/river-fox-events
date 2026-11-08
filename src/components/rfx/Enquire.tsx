@@ -53,21 +53,15 @@ const Enquire = ({
           <div className="pt-2 mb-6 lg:mb-0 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
             <h2
               id="enquire-heading"
-              className="font-serif-rf"
-              style={{
-                fontSize: "var(--fs-h2)",
-                lineHeight: 0.96,
-                fontWeight: 300,
-                letterSpacing: "-0.03em",
-              }}
+              className="t-h2"
             >
               Let's create something{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 beautiful.
               </em>
             </h2>
             <p
-              className="text-[15.5px] leading-[1.7] max-w-[460px] mt-7"
+              className="t-lead max-w-[460px] mt-7"
               style={{ color: "hsl(var(--on-deep-soft))" }}
             >
               Celebrations begin from £300, each one tailored to your
@@ -105,18 +99,10 @@ const Enquire = ({
               </label>
             </p>
             <div className="hidden md:block mb-5 text-left">
-              <h3
-                className="font-serif-rf text-primary"
-                style={{
-                  fontSize: "var(--fs-h3)",
-                  lineHeight: 1.18,
-                  fontWeight: 400,
-                  letterSpacing: "-0.018em",
-                }}
-              >
+              <h3 className="t-h3 text-primary">
                 Tell me about your celebration
               </h3>
-              <p className="hidden lg:block text-[13px] text-ink-soft mt-1">
+              <p className="hidden lg:block t-body-sm text-ink-soft mt-1">
                 Complete the form below and I'll be in touch to discuss
                 your event in more detail.
               </p>

@@ -261,7 +261,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       lines: [
         uniqueHeroLine ?? <>Event styling in {cityName},</>,
         <>
-          <em className="italic font-normal text-accent-warm">
+          <em className="t-accent">
             designed around you.
           </em>
         </>,
@@ -283,7 +283,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       headline: (
         <>
           Your celebration,{" "}
-          <em className="italic font-light text-accent-warm">
+          <em className="t-accent">
             completely taken care of.
           </em>
         </>
@@ -310,7 +310,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       headline: (
         <>
           Every occasion,{" "}
-          <em className="italic font-light text-accent-warm">
+          <em className="t-accent">
             honoured properly.
           </em>
         </>
@@ -333,7 +333,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       heading: (
         <>
           Recent{" "}
-          <em className="italic font-light text-accent-warm">celebrations.</em>
+          <em className="t-accent">celebrations.</em>
         </>
       ),
       intro: (
@@ -351,7 +351,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       heading: (
         <>
           Everything handled.{" "}
-          <em className="italic font-light text-accent-warm">
+          <em className="t-accent">
             Nothing left to chance.
           </em>
         </>
@@ -394,7 +394,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       heading: (
         <>
           Styling in {cityName}{" "}
-          <em className="italic font-light text-accent-warm">from £300.</em>
+          <em className="t-accent">from £300.</em>
         </>
       ),
       tiers: [
@@ -462,7 +462,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       heading: (
         <>
           Styling celebrations across{" "}
-          <em className="italic font-light text-accent-warm">
+          <em className="t-accent">
             {cityName} and {region}.
           </em>
         </>

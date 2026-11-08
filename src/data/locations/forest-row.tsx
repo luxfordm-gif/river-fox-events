@@ -20,7 +20,7 @@ const forestRow = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties are our specialism.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         The grown-up days too.
       </em>
     </>

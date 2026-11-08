@@ -106,7 +106,7 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
     >
       <div
         ref={wrap}
-        className={`exp-img-wrap ph rounded-[14px] ${it.tone} fade-up rfx-svc-img ${compact ? "rfx-svc-img--compact" : ""} relative overflow-hidden`}
+        className={`exp-img-wrap ph rounded-media ${it.tone} fade-up rfx-svc-img ${compact ? "rfx-svc-img--compact" : ""} relative overflow-hidden`}
         style={{ aspectRatio: compact ? "3/2" : "4/5" }}
       >
         {/*
@@ -128,21 +128,13 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
           height={1280}
         />
       </div>
-      <h3
-        className="font-serif-rf exp-title mt-3 md:mt-4"
-        style={{
-          fontSize: 30,
-          lineHeight: 1.18,
-          fontWeight: 300,
-          letterSpacing: "-0.02em",
-        }}
-      >
+      <h3 className="t-feature exp-title mt-3 md:mt-4">
         {it.title}
       </h3>
-      <p className="text-[14.5px] leading-[1.65] text-ink-soft max-w-[360px]">
+      <p className="t-body-sm text-ink-soft max-w-[360px]">
         {it.body}
       </p>
-      <span className="btn-link-rf self-start mt-auto pt-4 md:pt-6" style={{ fontWeight: 600 }}>
+      <span className="btn-link-rf t-ui self-start mt-auto pt-4 md:pt-6">
         {it.cta} <span className="arr">→</span>
       </span>
     </a>
@@ -184,22 +176,16 @@ const Experiences = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-12 mb-10 md:mb-16 items-end rfx-md-stack">
           <h2
             id="exp-heading"
-            className="font-serif-rf fade-up m-0 text-center md:text-left"
-            style={{
-              fontSize: "var(--fs-h2)",
-              lineHeight: 1.04,
-              fontWeight: 300,
-              letterSpacing: "-0.025em",
-            }}
+            className="t-h2 fade-up m-0 text-center md:text-left"
           >
             {heading ?? (
               <>
                 Our signature{" "}
-                <em className="italic font-light text-accent-warm">experiences.</em>
+                <em className="t-accent">experiences.</em>
               </>
             )}
           </h2>
-          <p className="text-[15.5px] leading-[1.6] text-ink-soft pb-3 text-center md:text-left mx-auto md:mx-0">
+          <p className="t-lead text-ink-soft pb-3 text-center md:text-left mx-auto md:mx-0">
             {intro ??
               "Our work centres on three core experiences: children's parties, milestone celebrations and corporate installations. Each one is individually designed, with a focus on aesthetic, flow and detail."}
           </p>
@@ -212,9 +198,9 @@ const Experiences = ({
         </div>
 
         {showBalloonLink ? (
-          <p className="mt-12 md:mt-14 text-center text-[14.5px] text-ink-soft fade-up">
+          <p className="t-body-sm mt-12 md:mt-14 text-center text-ink-soft fade-up">
             Just after a balloon arch or garland?{" "}
-            <a href="/balloon-installations/" className="btn-link-rf ml-1">
+            <a href="/balloon-installations/" className="btn-link-rf t-ui ml-1">
               Balloon installations <span className="arr">→</span>
             </a>
           </p>

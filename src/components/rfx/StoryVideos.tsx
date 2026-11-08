@@ -259,7 +259,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
         ref={triggerRef}
         type="button"
         onClick={() => openAt(0)}
-        className="story-fan-front group absolute inset-0 z-[3] block w-full h-full rounded-[16px] overflow-hidden shadow-[0_18px_40px_-18px_hsl(var(--ink)/0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+        className="story-fan-front group absolute inset-0 z-[3] block w-full h-full rounded-media overflow-hidden shadow-[0_18px_40px_-18px_hsl(var(--ink)/0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
         aria-haspopup="dialog"
         aria-label={hideCta ? cta : undefined}
       >
@@ -287,7 +287,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
         </span>
         {/* How many videos are inside, so the series is obvious before tapping. */}
         {!single && (
-          <span className="absolute top-3 left-3 md:top-4 md:left-4 inline-flex items-center gap-1.5 rounded-[4px] bg-black/50 backdrop-blur-sm px-2.5 py-1 text-[12px] md:text-[13px] font-medium tracking-[0.02em] text-white">
+          <span className="absolute top-3 left-3 md:top-4 md:left-4 inline-flex items-center gap-1.5 rounded-chip bg-black/50 backdrop-blur-sm px-2.5 py-1 t-ui text-white">
             <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current" strokeWidth={2} strokeLinejoin="round" aria-hidden="true">
               <rect x="3" y="7" width="13" height="14" rx="2" />
               <path d="M8 3h11a2 2 0 0 1 2 2v12" />
@@ -316,7 +316,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
           onTouchEnd={onTouchEnd}
         >
           <div className="relative h-[100dvh] w-full md:h-[min(88dvh,calc(100vw*16/9))] md:w-auto md:aspect-[9/16]">
-          <div className="absolute inset-0 md:rounded-[18px] overflow-hidden bg-black">
+          <div className="absolute inset-0 md:rounded-media overflow-hidden bg-black">
             <video
               ref={videoRef}
               key={story.src}
@@ -390,13 +390,13 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
               <div className="pointer-events-none absolute inset-x-0 bottom-[max(1.25rem,env(safe-area-inset-bottom))] flex flex-col items-center gap-2.5">
                 <span
                   aria-hidden="true"
-                  className={`rounded-full bg-black/45 px-4 py-2 text-[13px] tracking-[0.02em] text-white transition-opacity duration-500 ${showTip ? "opacity-100" : "opacity-0"}`}
+                  className={`rounded-full bg-black/45 px-4 py-2 t-meta text-white transition-opacity duration-500 ${showTip ? "opacity-100" : "opacity-0"}`}
                 >
                   Tap or swipe for the next video
                 </span>
                 <span
                   aria-live="polite"
-                  className="h-9 inline-flex items-center rounded-full bg-black/35 px-4 text-[14px] font-medium tracking-[0.04em] text-white tabular-nums"
+                  className="h-9 inline-flex items-center rounded-full bg-black/35 px-4 t-ui text-white tabular-nums"
                 >
                   <span className="sr-only">Video </span>
                   {index + 1} of {stories.length}

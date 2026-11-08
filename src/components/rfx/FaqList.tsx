@@ -46,13 +46,13 @@ const FaqList = ({ items, defaultOpen = null }: FaqListProps) => {
                 className="faq-rf-trigger flex flex-1 items-center py-7 max-md:py-5 data-[state=open]:pb-[10px]"
               >
                 <span className="grid grid-cols-[60px_1fr_40px] items-baseline gap-6 w-full text-left max-md:grid-cols-[40px_1fr_32px] max-md:gap-3.5">
-                  <span className="font-mono-rf text-[11px] tracking-[0.22em] text-ink-soft">
+                  <span className="t-eyebrow text-ink-soft">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-serif-rf font-light text-ink leading-[1.25] tracking-[-0.018em] text-faq">
+                  <span className="t-faq text-ink">
                     {it.q}
                   </span>
-                  <span className="faq-rf-plus inline-flex items-center justify-center text-[22px] font-light text-ink" aria-hidden="true">
+                  <span className="faq-rf-plus inline-flex items-center justify-center t-icon text-ink" aria-hidden="true">
                     +
                   </span>
                 </span>
@@ -68,7 +68,7 @@ const FaqList = ({ items, defaultOpen = null }: FaqListProps) => {
             >
               <div className="faq-rf-panel__inner">
                 <div className="grid grid-cols-[60px_1fr_40px] gap-6 max-md:grid-cols-[40px_1fr_32px] max-md:gap-3.5">
-                  <p className="col-start-2 text-[15px] leading-[1.7] text-ink-soft max-w-[680px] pt-2 pb-6">
+                  <p className="col-start-2 t-body text-ink-soft max-w-[680px] pt-2 pb-6">
                     {it.aNode ?? it.a}
                   </p>
                 </div>

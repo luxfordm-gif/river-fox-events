@@ -19,7 +19,7 @@ const cobham = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties come first.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         The grown-up occasions, too.
       </em>
     </>
@@ -99,7 +99,7 @@ const cobham = makeLocation({
     heading: (
       <>
         Local detail,{" "}
-        <em className="italic font-light text-accent-warm">properly handled.</em>
+        <em className="t-accent">properly handled.</em>
       </>
     ),
     body: (

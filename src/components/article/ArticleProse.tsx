@@ -16,12 +16,7 @@ type Props = {
  */
 const ArticleProse = ({ children }: Props) => (
   <div
-    className="article-prose max-w-[720px] mx-auto px-6 font-serif-rf text-ink"
-    style={{
-      fontSize: "18px",
-      lineHeight: 1.7,
-      fontWeight: 400,
-    }}
+    className="article-prose t-body max-w-[720px] mx-auto px-6 text-ink-soft"
   >
     {children}
   </div>

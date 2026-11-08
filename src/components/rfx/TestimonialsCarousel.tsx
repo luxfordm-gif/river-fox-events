@@ -53,7 +53,7 @@ const TestimonialsCarousel = ({ reviews = REVIEWS }: TestimonialsCarouselProps =
             >
               <figure className="tcard fade-up h-full">
                 <Stars />
-                <blockquote className="tcard-quote font-thin text-ink-soft">
+                <blockquote className="tcard-quote text-ink-soft">
                   {t.q}
                 </blockquote>
                 <figcaption className="tcard-meta">

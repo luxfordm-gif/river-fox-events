@@ -43,6 +43,17 @@ Targets:
 
 **Uniqueness rule — applies to titles, metas, H1s, hero sub-copy and image alt text.** Before writing new copy for a page, skim existing pages and make sure the first ~5 words of the new draft don't echo any other page. This protects against duplicate-content signals and keeps the writing feeling considered rather than templated.
 
+## Design system - no one-off values (Matt, 2026-11-08)
+
+Every reusable component and page, the Christmas page included, takes its typography and corners from the design system in `src/index.css`. **Never hard-code a font size, line height, letter-spacing, weight, font family or corner radius in a component.** `src/test/design-system.test.ts` fails the test run if one appears (inline style, Tailwind `text-[15px]` / `leading-*` / `tracking-*` / `font-light` / `rounded-[12px]`, or a raw value in a stylesheet).
+
+- **Text: one named style per element.** Serif: `t-display` (home/service hero h1), `t-h1` (page h1), `t-h2` (every section title), `t-h2-sm`, `t-feature` (big service-card titles, e.g. the homepage's three services), `t-h3` (sub-headings, main card titles, CTA/form headings), `t-quote`, `t-h4` (small card titles), `t-faq`, `t-caption`. Sans: `t-lead` (18px: intro under a section title, hero sub-copy), `t-body` (17px: paragraphs, prose, FAQ answers, form fields), `t-body-sm` (15px: card text, captions, form help), `t-meta` (13.5px: footer, legal, dates), `t-ui` (13.5px medium: buttons, nav). Mono: `t-eyebrow` (11px caps labels). Plus `t-accent` (italic highlight in a heading), `t-wordmark` / `t-wordmark-lg`, `t-icon` (→ / + glyphs). Colour, alignment and spacing stay separate utilities.
+- **Headings are Regular (400)**; light (300) read too thin in the real Fraunces. Body and lead sizes are the same on phones as desktop (readability). Section titles get line height 1.1 on phones.
+- **Body grey** `--ink-soft` is `#494E46` (7.3:1 on the cream background, 6.9:1+ on every tint).
+- **Corners:** `rounded-card` (framed cards/panels), `rounded-media` (photos/videos), `rounded-control` (buttons, form fields), `rounded-chip` (tiny badges/keys); `rounded-full` / `50%` for circles. Phones get slightly tighter card/media corners from the tokens.
+- **Need something new?** Add a token in `:root` (and a named style if it's a text role), never a raw value. Stylesheets may use `var(--...)` or neutral values (0, 1, inherit, em, 50%).
+- **Fonts:** Fraunces / DM Sans / JetBrains Mono load from the Google Fonts `@import` at the top of `index.css`. Google needs axes in alphabetical order (`ital,opsz,wght`); `src/test/fonts.test.ts` checks it. The request was broken until 2026-11-08, so nobody saw the real fonts before then.
+
 ## Location pages
 
 Location data lives in `src/data/locations/<slug>.tsx` and is built via the `makeLocation()` helper in `_makeLocation.tsx`. Each location must have a unique `uniqueSeoTitle`, `uniqueSeoDescription`, `uniqueHeroSub` and `uniqueWhatWeDoBody`. Location pages are the highest collision risk — there are 20+ of them and they share structure, so the copy has to work harder to feel distinct.

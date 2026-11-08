@@ -1,5 +1,6 @@
 // Link / navigation / redirect / canonical / sitemap audit of the built site.
 // Run after `npm run build`:  npm run check:links
+// Also checks heading structure: one h1 per page, no skipped heading levels.
 // Exits with an error if anything is broken (Matt, 2026-11-08).
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join } from "node:path";
@@ -125,6 +126,17 @@ if (!fallback || fallback.to !== "/404.html" || fallback.status !== "404") P(`ca
 if (rules[rules.length - 1]?.from !== "/*") P("the /* catch-all must be the last redirect rule");
 if (!fileExists("/404.html")) P("dist/404.html is missing");
 else if (!/<meta name="robots" content="[^"]*noindex/.test(readFileSync(join(DIST, "404.html"), "utf8"))) P("404.html is not marked noindex");
+
+// --- heading structure: one h1 per page, no skipped levels (h2 -> h4)
+for (const [pg, { html, noindex }] of pages) {
+  if (/brand-book/.test(pg)) continue;
+  const body = html.replace(/<script[\s\S]*?<\/script>/g, "");
+  const levels = [...body.matchAll(/<h([1-6])\b/g)].map((m) => +m[1]);
+  const h1 = levels.filter((l) => l === 1).length;
+  if (h1 !== 1 && !noindex) P(`${pg}: ${h1} h1 headings (expected exactly 1)`);
+  let prev = 0;
+  for (const l of levels) { if (prev && l > prev + 1) { P(`${pg}: heading skips h${prev} -> h${l}`); break; } prev = l; }
+}
 
 // --- pages Google can only find through the sitemap
 for (const [pg, v] of pages) if (!v.noindex && inbound.get(pg).size === 0) P(`no other page links to ${pg}`);

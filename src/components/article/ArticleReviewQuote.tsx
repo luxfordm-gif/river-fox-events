@@ -18,7 +18,7 @@ const ArticleReviewQuote = ({ children, author, href }: Props) => (
     <span className="tcard-stars" aria-label="Five stars">
       {"★★★★★"}
     </span>
-    <blockquote className="tcard-quote font-thin text-ink-soft">
+    <blockquote className="tcard-quote text-ink-soft">
       {children}
     </blockquote>
     <figcaption className="tcard-meta">

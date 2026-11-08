@@ -20,7 +20,7 @@ const brightonAndHove = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties first.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         The grown-up occasions when you need them.
       </em>
     </>

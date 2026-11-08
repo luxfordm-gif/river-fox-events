@@ -51,7 +51,7 @@ const JournalCard = ({ article, feature = false }: CardProps) => {
             }
           />
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center text-ink-soft text-sm">
+          <div className="absolute inset-0 flex items-center justify-center text-ink-soft t-body-sm">
             River Fox Events
           </div>
         )}
@@ -59,40 +59,20 @@ const JournalCard = ({ article, feature = false }: CardProps) => {
 
       <div className="mt-4 md:mt-5">
         {article.category && (
-          <div
-            className="font-mono-rf text-[10px] md:text-[10.5px] tracking-[0.28em] uppercase text-ink-soft"
-            style={{ fontWeight: 600 }}
-          >
+          <div className="t-eyebrow text-ink-soft">
             {article.category}
           </div>
         )}
         <h2
-          className={`font-serif-rf text-ink group-hover:text-accent-warm transition-colors mt-2 md:mt-3 ${
-            feature ? "" : ""
-          }`}
-          style={{
-            fontSize: feature
-              ? "clamp(26px, 2.6vw, 36px)"
-              : "clamp(20px, 1.8vw, 26px)",
-            lineHeight: 1.16,
-            fontWeight: 400,
-            letterSpacing: "-0.014em",
-            textWrap: "balance",
-          }}
+          className={`${feature ? "t-h3" : "t-h4"} text-ink group-hover:text-accent-warm transition-colors mt-2 md:mt-3`}
+          style={{ textWrap: "balance" }}
         >
           {article.title}
         </h2>
-        <p
-          className={`mt-2 md:mt-3 text-ink-soft leading-[1.6] ${
-            feature ? "text-[15px] md:text-[16px]" : "text-[14px] md:text-[14.5px]"
-          }`}
-        >
+        <p className="mt-2 md:mt-3 t-body-sm text-ink-soft">
           {article.teaser}
         </p>
-        <div
-          className="mt-3 md:mt-4 font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink-soft"
-          style={{ fontWeight: 600 }}
-        >
+        <div className="mt-3 md:mt-4 t-eyebrow text-ink-soft">
           {formatDate(article.publishedAt)} · {article.readMinutes} min read
         </div>
       </div>
@@ -179,31 +159,21 @@ const Journal = () => {
                     </div>
                     <div className="flex-1 min-w-0 flex flex-col">
                       {a.category && (
-                        <div
-                          className="font-mono-rf text-[9.5px] tracking-[0.26em] uppercase text-ink-soft"
-                          style={{ fontWeight: 600 }}
-                        >
+                        <div className="t-eyebrow text-ink-soft">
                           {a.category}
                         </div>
                       )}
                       <h2
-                        className="font-serif-rf text-ink mt-1.5"
-                        style={{
-                          fontSize: "19px",
-                          lineHeight: 1.2,
-                          fontWeight: 400,
-                          letterSpacing: "-0.012em",
-                          textWrap: "balance",
-                        }}
+                        className="t-h4 text-ink mt-1.5"
+                        style={{ textWrap: "balance" }}
                       >
                         {a.title}
                       </h2>
-                      <p className="mt-1.5 text-[13px] leading-[1.5] text-ink-soft line-clamp-3">
+                      <p className="mt-1.5 t-body-sm text-ink-soft line-clamp-3">
                         {a.teaser}
                       </p>
                       <div
-                        className="mt-auto pt-2 font-mono-rf text-[9.5px] tracking-[0.22em] uppercase text-ink-soft"
-                        style={{ fontWeight: 600 }}
+                        className="mt-auto pt-2 t-eyebrow text-ink-soft"
                       >
                         {formatDate(a.publishedAt)} · {a.readMinutes} min
                       </div>
@@ -219,8 +189,7 @@ const Journal = () => {
               <button
                 type="button"
                 onClick={() => setVisible((v) => v + PAGE_SIZE)}
-                className="font-mono-rf text-[11px] tracking-[0.22em] uppercase text-ink border border-ink/30 hover:border-ink hover:bg-ink hover:text-cream transition-colors px-7 py-3"
-                style={{ fontWeight: 600 }}
+                className="t-eyebrow text-ink border border-ink/30 hover:border-ink hover:bg-ink hover:text-cream transition-colors px-7 py-3"
               >
                 Show more
               </button>

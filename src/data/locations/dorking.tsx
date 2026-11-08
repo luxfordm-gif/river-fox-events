@@ -19,7 +19,7 @@ const dorking = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties take the lead.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         We style the grown-up days too.
       </em>
     </>

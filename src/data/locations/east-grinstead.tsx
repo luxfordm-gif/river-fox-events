@@ -20,7 +20,7 @@ const eastGrinstead = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties are our main work.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         We cover the grown-up days too.
       </em>
     </>

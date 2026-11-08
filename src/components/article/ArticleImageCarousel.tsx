@@ -77,7 +77,7 @@ const ArticleImageCarousel = ({
         <CarouselContent className="ml-0">
           {images.map((img, i) => (
             <CarouselItem key={i} className="pl-0 basis-full">
-              <div className={`${ASPECT_CLASS[aspect]} overflow-hidden rounded-[12px]`}>
+              <div className={`${ASPECT_CLASS[aspect]} overflow-hidden rounded-media`}>
                 <img
                   src={img.src}
                   alt={img.alt}
@@ -87,7 +87,7 @@ const ArticleImageCarousel = ({
                 />
               </div>
               {img.caption && (
-                <figcaption className="mt-4 text-center text-[13px] italic text-ink-soft max-w-[640px] mx-auto">
+                <figcaption className="t-meta mt-4 text-center italic text-ink-soft max-w-[640px] mx-auto">
                   {img.caption}
                 </figcaption>
               )}

@@ -20,7 +20,7 @@ const lewes = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties are where we start.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         We style the rest too.
       </em>
     </>

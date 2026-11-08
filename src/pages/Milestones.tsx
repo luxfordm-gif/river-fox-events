@@ -93,9 +93,7 @@ const Milestones = () => {
           lines={[
             <>Milestone events,</>,
             <>
-              <em
-                className="italic font-normal text-accent-warm"
-              >
+              <em className="t-accent">
                 beautifully styled.
               </em>
             </>,
@@ -123,7 +121,7 @@ const Milestones = () => {
           headline={
             <>
               Some occasions deserve more than{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 decoration.
               </em>
             </>
@@ -152,7 +150,7 @@ const Milestones = () => {
           headline={
             <>
               Every milestone,{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 beautifully marked.
               </em>
             </>
@@ -175,7 +173,7 @@ const Milestones = () => {
           heading={
             <>
               A celebration that feels as special as{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 the moment itself.
               </em>
             </>

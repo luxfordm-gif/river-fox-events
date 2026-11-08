@@ -39,20 +39,12 @@ const ArticleCta = ({
 
   return (
     <aside className="max-w-[720px] mx-auto my-16 md:my-24 px-6">
-      <div className="rounded-[18px] bg-surface-deep text-on-deep px-8 md:px-14 py-10 md:py-16 text-center">
-        <h2
-          className="font-serif-rf max-w-[20ch] mx-auto"
-          style={{
-            fontSize: "var(--fs-h3)",
-            lineHeight: 1.06,
-            fontWeight: 300,
-            letterSpacing: "-0.022em",
-          }}
-        >
+      <div className="rounded-card bg-surface-deep text-on-deep px-8 md:px-14 py-10 md:py-16 text-center">
+        <h2 className="t-h3 max-w-[20ch] mx-auto">
           {heading ?? (
             <>
               Plan your{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 celebration.
               </em>
             </>
@@ -60,7 +52,7 @@ const ArticleCta = ({
         </h2>
         {body && (
           <p
-            className="mt-5 max-w-[440px] mx-auto text-[15px] leading-[1.65]"
+            className="t-body-sm mt-5 max-w-[440px] mx-auto"
             style={{ color: "hsl(var(--on-deep-soft))" }}
           >
             {body}

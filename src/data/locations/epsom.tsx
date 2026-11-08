@@ -19,7 +19,7 @@ const epsom = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties are our home turf.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         We style the rest as well.
       </em>
     </>

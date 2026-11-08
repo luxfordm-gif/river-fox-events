@@ -46,13 +46,9 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
       }}
     >
       <div
-        className="font-serif-rf tabular-nums text-center"
+        className="t-h2 tabular-nums text-center"
         style={{
-          fontSize: "clamp(40px, 4.2vw, 60px)",
-          lineHeight: 0.9,
-          fontWeight: 300,
-          letterSpacing: "-0.022em",
-          minHeight: "clamp(40px, 4.2vw, 60px)",
+          minHeight: "1em",
           paddingBottom: 0,
           display: "flex",
           alignItems: "flex-end",
@@ -61,14 +57,7 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
       >
         {stat.display(n)}
       </div>
-      <div
-        className="font-mono-rf mt-3 text-center whitespace-nowrap uppercase text-ink-soft"
-        style={{
-          fontSize: "clamp(6.5px, 1.8vw, 10px)",
-          lineHeight: 1.1,
-          letterSpacing: "clamp(0.08em, 0.18vw, 0.18em)",
-        }}
-      >
+      <div className="t-eyebrow mt-3 text-center text-ink-soft">
         {stat.label}
       </div>
     </div>
@@ -106,7 +95,7 @@ const About = () => {
           <div className="md:sticky md:top-24 md:self-start fade-up rfx-md-static">
             <div
               ref={studioWrap}
-              className="ph ph-warm overflow-hidden rounded-[14px] relative rfx-about-img"
+              className="ph ph-warm overflow-hidden rounded-media relative rfx-about-img"
               style={{ aspectRatio: "5/6", maxHeight: "472px" }}
             >
               {/*
@@ -132,31 +121,24 @@ const About = () => {
           </div>
 
           <div className="fade-up">
-            <div className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-6">
+            <div className="t-eyebrow text-ink-soft mb-6">
               Meet Laura, Founder
             </div>
 
-            <h2
-              id="about-heading"
-              className="font-serif-rf"
-              style={{
-                fontSize: "var(--fs-h2)",
-                lineHeight: 1.02,
-                fontWeight: 300,
-                letterSpacing: "-0.028em",
-              }}
-            >
+            <h2 id="about-heading" className="t-h2">
               Personally designed.{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 Personally delivered.
               </em>
             </h2>
 
-            <div className="mt-8 space-y-5 text-[16px] leading-[1.7] text-ink-soft max-w-[560px]">
-              <p className="font-medium text-ink">
-                I started River Fox Events after owning a teepee sleepover
-                business and realising how much I loved creating the little
-                moments that stay with you long after the day is over.
+            <div className="t-body mt-8 space-y-5 text-ink-soft max-w-[560px]">
+              <p className="text-ink">
+                <strong>
+                  I started River Fox Events after owning a teepee sleepover
+                  business and realising how much I loved creating the little
+                  moments that stay with you long after the day is over.
+                </strong>
               </p>
               <p>
                 For me, it's never just been about balloons or decorations.
@@ -178,8 +160,7 @@ const About = () => {
 
             <a
               href="/journal/"
-              className="btn-link-rf mt-8"
-              style={{ fontWeight: 600 }}
+              className="btn-link-rf t-ui mt-8"
               aria-label="Read the River Fox Events journal - notes, behind the scenes and trends from the studio"
             >
               Inside the studio · read the journal{" "}

@@ -111,8 +111,7 @@ const Article = () => {
         <div className="container-rfx pt-24 md:pt-28 pb-2">
           <a
             href="/journal/"
-            className="inline-flex items-center gap-2 font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink-soft hover:text-ink transition-colors group"
-            style={{ fontWeight: 600 }}
+            className="inline-flex items-center gap-2 t-eyebrow text-ink-soft hover:text-ink transition-colors group"
           >
             <span
               aria-hidden="true"
@@ -142,7 +141,7 @@ const Article = () => {
             article.endCta?.heading ?? (
               <>
                 Plan your{" "}
-                <em className="italic font-light text-accent-warm">
+                <em className="t-accent">
                   celebration.
                 </em>
               </>

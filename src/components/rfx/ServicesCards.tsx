@@ -108,21 +108,15 @@ const ServicesCards = ({
             {heading && (
               <h2
                 id={headingId}
-                className="font-serif-rf"
-                style={{
-                  fontSize: "var(--fs-h2)",
-                  lineHeight: 1.05,
-                  fontWeight: 400,
-                  letterSpacing: "-0.025em",
-                  textWrap: "balance",
-                }}
+                className="t-h2"
+                style={{ textWrap: "balance" }}
               >
                 {heading}
               </h2>
             )}
             {intro && (
               <p
-                className="mt-6 max-w-[560px] mx-auto text-[16px] leading-[1.65] text-ink-soft"
+                className="t-lead mt-6 max-w-[560px] mx-auto text-ink-soft"
                 style={{ textWrap: "pretty" }}
               >
                 {intro}
@@ -144,7 +138,7 @@ const ServicesCards = ({
             {items.map((s) => (
               <li key={s.title} className="shrink-0 basis-[62%] snap-center md:basis-auto">
                 <a href={s.href} className="group block no-underline-fx">
-                  <div className="relative aspect-square overflow-hidden rounded-[14px]">
+                  <div className="relative aspect-square overflow-hidden rounded-media">
                     {s.image && (
                       <img
                         src={s.image}
@@ -159,8 +153,7 @@ const ServicesCards = ({
                     )}
                   </div>
                   <h3
-                    className="mt-3 md:mt-4 text-center font-serif-rf text-ink transition-colors duration-300 group-hover:text-accent-warm"
-                    style={{ fontSize: "clamp(17px, 1.5vw, 21px)", lineHeight: 1.2, fontWeight: 400, letterSpacing: "-0.01em" }}
+                    className="t-h4 mt-3 md:mt-4 text-center text-ink transition-colors duration-300 group-hover:text-accent-warm"
                   >
                     {s.title}
                   </h3>
@@ -189,7 +182,7 @@ const ServicesCards = ({
               key={s.title}
               href={s.href}
               className={`
-                group relative flex flex-col rounded-[18px] no-underline-fx overflow-hidden
+                group relative flex flex-col rounded-card no-underline-fx overflow-hidden
                 ${s.image ? "" : "p-7 md:p-9"}
                 transition-all duration-300 ease-out
                 hover:-translate-y-[2px]
@@ -217,24 +210,18 @@ const ServicesCards = ({
               )}
               <div className={s.image ? "flex flex-col flex-1 p-7 md:p-8" : "contents"}>
               <h3
-                className="font-serif-rf text-ink"
-                style={{
-                  fontSize: "var(--fs-h4)",
-                  lineHeight: 1.18,
-                  fontWeight: 400,
-                  letterSpacing: "-0.012em",
-                }}
+                className="t-h4 text-ink"
               >
                 {s.title}
               </h3>
               <p
-                className={`${s.image ? "mt-2" : "mt-4"} text-[14.5px] leading-[1.6] text-ink-soft flex-1`}
+                className={`t-body-sm ${s.image ? "mt-2" : "mt-4"} text-ink-soft flex-1`}
                 style={{ textWrap: "pretty" }}
               >
                 {s.blurb}
               </p>
               {/* Same link style as the homepage cards (normal case, underlined), easier to read than spaced capitals (Matt, 2026-11-07). */}
-              <span className="btn-link-rf self-start mt-7" style={{ fontWeight: 600 }}>
+              <span className="btn-link-rf t-ui self-start mt-7">
                 {s.cta ?? "Discover"} <span className="arr">→</span>
               </span>
               </div>

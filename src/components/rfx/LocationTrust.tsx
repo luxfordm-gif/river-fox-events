@@ -54,22 +54,16 @@ const LocationTrust = ({ reviews }: LocationTrustProps = {}) => {
         <div className="text-center mb-8 md:mb-10">
           <h2
             id="trust-heading"
-            className="font-serif-rf"
-            style={{
-              fontSize: "var(--fs-h2)",
-              lineHeight: 1.04,
-              fontWeight: 300,
-              letterSpacing: "-0.025em",
-            }}
+            className="t-h2"
           >
-            Kind <em className="italic font-light text-accent-warm">words.</em>
+            Kind <em className="t-accent">words.</em>
           </h2>
         </div>
 
         <TestimonialsCarousel reviews={reviews} />
 
         <div className="mt-14 md:mt-16 pt-10 md:pt-12 border-t border-ink/10">
-          <p className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft text-center">
+          <p className="t-eyebrow text-ink-soft text-center">
             Recent clients include
           </p>
           <ul
