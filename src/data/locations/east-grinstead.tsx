@@ -49,10 +49,10 @@ const eastGrinstead = makeLocation({
     "Lingfield",
     "Crawley Down",
     "Sharpthorne",
-    "Turners Hill",
+    "Haywards Heath",
     "West Hoathly",
     "Hartfield",
-    "Edenbridge",
+    "Tunbridge Wells",
   ],
   mapQuery: "East+Grinstead,West+Sussex,England,UK&z=11",
   jsonLdAreaServed: [

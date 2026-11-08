@@ -25,7 +25,7 @@ Targets:
 - **Meta description:** 150–160 chars. Front-load keyword + location. Same uniqueness rule — don't open two pages with the same phrase. Avoid generic openings like "Bespoke X across Surrey…" repeated verbatim across pages; vary the entry angle (trust signal, specific service, named clients, an outcome).
 - **H1:** distinct per page. Don't fall back to the "[Service] stylist, based in Surrey." pattern — it makes pages feel near-identical to both crawlers and humans.
 - **Hero sub-copy (the paragraph below the H1):** also distinct per page, ideally with a different opening word from the H1.
-- **URLs:** Netlify serves trailing-slash URLs (`/childrens-parties/`). Keep canonicals consistent with that.
+- **URLs:** Netlify serves trailing-slash URLs (`/childrens-parties/`). Keep canonicals consistent with that, and **every internal link must use the trailing slash** too (a test enforces it). Unknown addresses get `dist/404.html` with a real 404 status via the last rule in `public/_redirects`; don't put the old `/* /index.html 200` SPA fallback back, it makes Google see "soft 404s".
 
 **Banned / capped vocabulary** (applies to titles, metas, H1s and hero sub-copy):
 
@@ -114,7 +114,7 @@ Two kinds of copy live in two different places, and the update path differs:
 - If the page's topic shifted, does its title still front-load the right keyword?
 - If a page or schema type was added, run [Google's Rich Results Test](https://search.google.com/test/rich-results) before merging.
 
-Run `npm run build` locally and spot-check `dist/<slug>/index.html` before pushing. Push to `main` deploys to Netlify automatically — there's no manual deploy step, so a broken push goes live.
+Run `npm run build` locally, then `npm run check:links`, and spot-check `dist/<slug>/index.html` before pushing. `check:links` audits the built site: every internal link and `#section` jump, trailing slashes, every redirect target, canonicals, the sitemap, the 404 catch-all, and pages nothing links to. It exits with an error if anything is wrong. Push to `main` deploys to Netlify automatically — there's no manual deploy step, so a broken push goes live.
 
 ## Journal articles
 

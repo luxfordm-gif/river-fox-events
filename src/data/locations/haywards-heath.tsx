@@ -50,9 +50,9 @@ const haywardsHeath = makeLocation({
     "Wivelsfield",
     "Bolney",
     "Burgess Hill",
-    "Hassocks",
+    "Brighton & Hove",
     "Horsted Keynes",
-    "Sharpthorne",
+    "Lewes",
   ],
   mapQuery: "Haywards+Heath,West+Sussex,England,UK&z=11",
   jsonLdAreaServed: [

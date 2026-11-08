@@ -51,7 +51,7 @@ const lewes = makeLocation({
     "Plumpton",
     "Beddingham",
     "Iford",
-    "Falmer",
+    "Brighton & Hove",
     "Hamsey",
   ],
   mapQuery: "Lewes,East+Sussex,England,UK&z=11",

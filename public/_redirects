@@ -5,5 +5,8 @@
 # scripts/legacy-redirects.mjs and placed above these rules in dist/_redirects.
 # Edit that file to change where an old URL goes.
 
-# SPA fallback - must stay last so it doesn't swallow the redirects above
-/*    /index.html   200
+# Anything that isn't a real page, a file or one of the redirects above gets
+# the "page not found" page with a real 404 status. Every page is prerendered
+# to its own folder, so nothing real reaches this rule. (It used to serve the
+# homepage with a 200, which Google reports as a "soft 404".) Must stay last.
+/*    /404.html   404

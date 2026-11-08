@@ -52,7 +52,7 @@ const sevenoaks = makeLocation({
     "Ide Hill",
     "Bessels Green",
     "Dunton Green",
-    "Chipstead",
+    "Tunbridge Wells",
   ],
   mapQuery: "Sevenoaks,Kent,England,UK&z=11",
   jsonLdAreaServed: [

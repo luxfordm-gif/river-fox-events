@@ -144,6 +144,14 @@ async function main() {
       await writeRouteHtml(route, html);
       console.log(`✓ prerendered ${route.path.padEnd(30)} (${(html.length / 1024).toFixed(1)} kB)`);
     }
+
+    // The "page not found" page, served by Netlify with a real 404 status for
+    // any address that isn't a page or a redirect (see public/_redirects).
+    // Without it, unknown addresses got the homepage with a 200 status, which
+    // Google reports as a "soft 404". NotFound sets its own title and noindex.
+    const notFound = await renderRoute(browser, baseUrl, { path: "/__rfx-page-not-found__" });
+    await fs.writeFile(path.join(DIST, "404.html"), notFound, "utf8");
+    console.log(`✓ prerendered ${"404.html".padEnd(30)} (${(notFound.length / 1024).toFixed(1)} kB)`);
   } finally {
     await browser.close();
     server.close();
