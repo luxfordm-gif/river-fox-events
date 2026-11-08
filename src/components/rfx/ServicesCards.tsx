@@ -56,17 +56,21 @@ export type ServiceCardItem = {
 };
 
 /* Bento layout (the five balloon cards on /balloon-installations/, Matt 2026-11-08).
-   Desktop (1280px+), 4 columns: tile 1 is 2x2 (the hero tile), tile 2 is 2x1 top right,
-   tiles 3 and 4 are 1x1, tile 5 runs the full width along the bottom.
-   Rows have a set minimum height and the photo fills what the text leaves.
-   Tablet and small laptops: 2 equal columns. Phone: a swipe carousel with square photos and
-   the next card peeking in, dots underneath (Matt, 2026-11-08). */
+   Desktop (1280px+), 3 columns, a diagonal bento that fills with no gaps:
+     [ 1 1 | 2 ]
+     [ 1 1 | 3 ]
+     [ 4 | 5 5 ]
+   Tile 1 (the hero tile) is 2x2, tile 5 is 2x1, the rest are 1x1. The cards
+   fall into place in their listed order. Rows have a set minimum height and
+   the photo fills what the text leaves.
+   Tablet and small laptops: 2 equal columns. Phone: a swipe carousel with
+   square photos and the next card peeking in, dots underneath. */
 const BENTO_TILES = [
-  { span: "xl:col-span-2 xl:row-span-2", sizes: "(min-width: 768px) 50vw, 80vw" },
-  { span: "xl:col-span-2", sizes: "(min-width: 768px) 50vw, 80vw" },
-  { span: "", sizes: "(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 80vw" },
-  { span: "", sizes: "(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 80vw" },
-  { span: "xl:col-span-4", sizes: "(min-width: 1280px) 100vw, (min-width: 768px) 50vw, 80vw" },
+  { span: "xl:col-span-2 xl:row-span-2", sizes: "(min-width: 1280px) 60vw, (min-width: 768px) 50vw, 80vw" },
+  { span: "", sizes: "(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 80vw" },
+  { span: "", sizes: "(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 80vw" },
+  { span: "", sizes: "(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 80vw" },
+  { span: "xl:col-span-2", sizes: "(min-width: 1280px) 60vw, (min-width: 768px) 50vw, 80vw" },
 ];
 
 type ServicesCardsProps = {
@@ -156,7 +160,7 @@ const ServicesCards = ({
           className={
             bento
               ? // Phone: sideways swipe row that runs to the screen edges. Tablet up: the grid.
-                "relative flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-8 px-5 scroll-px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:mx-0 md:px-0 md:pb-0 md:overflow-visible md:grid-cols-2 md:gap-7 xl:grid-cols-4 xl:auto-rows-[minmax(clamp(300px,26vw,390px),auto)]"
+                "relative flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-8 px-5 scroll-px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:mx-0 md:px-0 md:pb-0 md:overflow-visible md:grid-cols-2 md:gap-7 xl:grid-cols-3 xl:auto-rows-[minmax(clamp(340px,31vw,450px),auto)]"
               : `grid grid-cols-1 gap-5 md:gap-7 ${items.length === 5 ? "md:grid-cols-6" : "md:grid-cols-3"}`
           }
         >

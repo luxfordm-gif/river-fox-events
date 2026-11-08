@@ -66,8 +66,9 @@ const RECENT_WORK = [
 /* Five things Laura makes with balloons. Each card links on to the
    occasion page where that piece usually lives, so balloons stay the way
    in rather than the end point. Shown as a bento grid (Matt, 2026-11-08):
-   the order matters, the first card is the big tile and the last runs
-   along the bottom, so the strongest photos sit in the largest tiles.
+   the order matters, the first card is the big tile (top left) and the
+   last is the wide tile (bottom right), so the strongest photos sit in
+   the largest tiles.
    One short line per card (Matt, 2026-11-08): the photo does the talking.
    None of these photos repeat the hero. Alts come from the gallery (one
    image, one alt). `position` keeps each subject in frame when cropped. */
