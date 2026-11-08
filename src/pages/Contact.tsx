@@ -100,25 +100,12 @@ const Contact = () => {
                   touch to talk through your plans.
                 </p>
                 <p
-                  className="t-body-sm text-ink-soft mt-5 max-w-[460px] mx-auto lg:mx-0"
-                  style={{ textWrap: "pretty" }}
-                >
-                  I only take a handful of events each month, so each one gets
-                  my full attention.
-                </p>
-                <p
-                  className="t-body-sm text-ink-soft mt-5 max-w-[460px] mx-auto lg:mx-0"
+                  className="t-body text-ink-soft mt-5 max-w-[460px] mx-auto lg:mx-0"
                   style={{ textWrap: "pretty" }}
                 >
                   Celebrations start from £300, with larger designs
                   from{" "}
                   <span className="whitespace-nowrap">£800 - £1,500+</span>.
-                </p>
-                <p
-                  className="t-body-sm text-ink mt-5 max-w-[460px] mx-auto lg:mx-0"
-                  style={{ textWrap: "pretty" }}
-                >
-                  I look forward to hearing what you have in mind.
                 </p>
 
                 <div className="hairline mt-10 max-w-[460px] mx-auto lg:mx-0" aria-hidden="true" />
@@ -133,7 +120,7 @@ const Contact = () => {
                       target="_blank"
                       rel="noreferrer"
                       aria-label="Message Laura on WhatsApp"
-                      className="t-h3 text-ink no-underline hover:underline underline-offset-4"
+                      className="t-h4 text-ink no-underline hover:underline underline-offset-4"
                     >
                       {WHATSAPP_DISPLAY}
                     </a>
@@ -144,7 +131,7 @@ const Contact = () => {
                     </div>
                     <a
                       href={`mailto:${EMAIL}`}
-                      className="t-h3 text-ink no-underline hover:underline underline-offset-4 break-all"
+                      className="t-h4 text-ink no-underline hover:underline underline-offset-4 break-all"
                     >
                       {EMAIL}
                     </a>
@@ -157,7 +144,7 @@ const Contact = () => {
                       href={INSTAGRAM_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="t-h3 text-ink no-underline hover:underline underline-offset-4"
+                      className="t-h4 text-ink no-underline hover:underline underline-offset-4"
                     >
                       {INSTAGRAM_HANDLE}
                     </a>
