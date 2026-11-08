@@ -158,7 +158,7 @@
        1440px wide, then grows with the screen and caps around 2560px:
        space above the headline, gap from the button to the photo row,
        and space below the photo row. */
-    --hero-pad-top: clamp(134px, calc(10vw - 10px), 250px);     /* Hero top · space above the home and service hero headline on big screens */
+    --hero-pad-top: clamp(134px, calc(10vw - 10px), 250px);     /* Hero top · space above the home, service and town hero headline, one setting for all three (134 tablet, grows from 1440; on phones it follows Page header top) */
     --hero-gap: clamp(56px, calc(6vw - 30px), 130px);           /* Hero gap · from the hero button down to the photo row on big screens */
     --hero-pad-bottom: clamp(44px, calc(6vw - 42px), 120px);    /* Hero bottom · cream space under the home hero photo row on big screens */
 
@@ -227,6 +227,7 @@
       --card-pad: 28px;
       --gutter: 32px;
       --page-pad-top: 112px;   /* was 106; 6px more air under the nav (Matt, 2026-11-08) */
+      --hero-pad-top: var(--page-pad-top);   /* heroes start where inner-page titles do */
       /* slightly tighter corners on small screens */
       --radius-large: 12px;
     }
@@ -309,13 +310,12 @@
     section.rfx-hero { padding-bottom: 44px; }
   }
 
-  /* Home + service heroes (.rfx-hero-scale): on wide screens the space
-     scales with the width (tokens in :root); town pages too since
-     2026-11-08. Christmas, Our work, Contact and Journal keep their fixed
-     spacing. These selectors
-     outrank the Tailwind utilities and the shared .rfx-hero rules above. */
+  /* Home, service and town heroes (.rfx-hero-scale) all take their top
+     space from one token, --hero-pad-top, at every width, so changing it
+     moves every hero together (Matt, 2026-11-08). Components never set it.
+     This selector outranks the shared .rfx-hero rules above. */
+  section.rfx-hero-scale { padding-top: var(--hero-pad-top); }
   @media (min-width: 1440px) {
-    section.rfx-hero-scale { padding-top: var(--hero-pad-top); }
     .rfx-hero-scale .rfx-hero-intro { margin-bottom: var(--hero-gap); }
     /* Home only: cream space under the three-photo row. Service heroes run
        their big image straight into the next section. */
