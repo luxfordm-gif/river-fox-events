@@ -68,7 +68,7 @@ const ServiceHero = ({
   }, []);
 
   return (
-    <section id="top" aria-labelledby={headingId} className="rfx-hero-scale pt-[106px] md:pt-[134px] pb-0">
+    <section id="top" aria-labelledby={headingId} className="rfx-hero-scale pt-[var(--page-pad-top)] md:pt-[134px] pb-0">
       {/* Text - same position and style as home page H1 */}
       <div className="container-rfx">
         <div className="rfx-hero-intro mb-10 md:mb-14 flex flex-col items-center text-center">

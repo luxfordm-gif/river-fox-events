@@ -131,7 +131,7 @@
     --radius-large: 16px;              /* Large · cards, panels, photos, videos, the map (12 on phones) */
     --radius-small: 4px;               /* Small · buttons, form fields, badges, tags */
     --radius-round: 9999px;            /* Round · pills, dots, circles */
-    --radius-panel: calc(var(--radius-large) * 2); /* Panel · rounded full-width section panels, twice Large (32, 24 on phones) */
+    --radius-panel: calc(var(--radius-large) * 2); /* Panel · rounded full-width section panels, twice Large (32; square and full width on phones) */
 
     /* ── DESIGN SYSTEM: SPACING ── (Matt, 2026-11-08)
        Comments start with the plain name /style-guide/ shows. Values are the
@@ -149,7 +149,7 @@
     --gap-title-body: 8px;
     --card-text-inset: 18px;
     --panel-inset: 24px;
-    --card-pad: 40px;                  /* Card padding · inside option and pricing cards (28 phone) */               /* Panel inset · gap from the screen edge to a rounded section panel (12 phone) */           /* Card text inset · right padding on card text so titles stay clear of the next card (0 phone) */             /* Title to text · space between a card or item title and its text, every card on the site */
+    --card-pad: 40px;                  /* Card padding · inside option and pricing cards (28 phone) */               /* Panel inset · gap from the screen edge to a rounded section panel (none on phones: full width) */           /* Card text inset · right padding on card text so titles stay clear of the next card (0 phone) */             /* Title to text · space between a card or item title and its text, every card on the site */
     --container-max: 1440px;           /* Content width · the widest the page content gets */
     --gutter: 56px;                    /* Side gutter · space at the left and right of the page content (32 phone, 8% on laptops) */
 
@@ -164,7 +164,7 @@
     /* Inner-page header (Our work, Journal, Contact, Privacy, Welcome, 404):
        a step quieter than the home/service heroes. Holds at 122px / 56px
        to ~1440px wide, then grows a little. */
-    --page-pad-top: clamp(122px, calc(6vw + 38px), 190px);       /* Page header top · space above inner-page titles (Our work, Journal, Contact) */
+    --page-pad-top: clamp(122px, calc(6vw + 38px), 190px);       /* Page header top · space above inner-page titles (Our work, Journal, Contact); on phones every hero too, home included, so all titles start at the same height (112 phone) */
     --page-pad-bottom: clamp(56px, calc(4vw), 96px);             /* Page header bottom · space under inner-page headers */
 
     /* Component library (shadcn/ui) names: aliases of the brand palette.
@@ -212,14 +212,21 @@
          make phone reading harder (Matt, 2026-11-08). */
       --lh-h2: 1.1;
       --lh-h3: 1.1;
+      /* Headings a step larger on phones, the small ones most, so card
+         titles stand clear of the 17px body (Matt, 2026-11-08). */
+      --fs-h2: 36px;
+      --fs-h3: 32px;
+      --fs-h4: 26px;
+      --fs-h5: 22px;
+      --fs-h6: 17px;
       --section-y: 64px;
       --gap-heading-content: 32px;
       --gap-text-content: 40px;
       --gap-inline: 16px;
       --card-text-inset: 0px;
-      --panel-inset: 12px;
       --card-pad: 28px;
       --gutter: 32px;
+      --page-pad-top: 112px;   /* was 106; 6px more air under the nav (Matt, 2026-11-08) */
       /* slightly tighter corners on small screens */
       --radius-large: 12px;
     }
@@ -1011,6 +1018,11 @@
     --shrink: 1;
     clip-path: inset(0 calc(var(--panel-inset) * var(--shrink)) round calc(var(--radius-panel) * var(--shrink)));
   }
+  /* Phones: the panel colour runs full width, no inset or corners (Matt,
+     2026-11-08). */
+  @media (max-width: 767px) {
+    .rfx-panel { clip-path: none; }
+  }
 
   /* Home mission line (Mission.tsx): words darken one by one on scroll. */
   .mission-line { max-width: 30ch; text-wrap: pretty; }
@@ -1110,9 +1122,9 @@
 
   /* Shared inner-page header (PageHeader.tsx): same H1 position on Our work,
      Journal, Contact, Privacy, Welcome and 404. */
-  .page-header { padding-top: 106px; padding-bottom: 40px; }
+  .page-header { padding-top: var(--page-pad-top); padding-bottom: 40px; }
   @media (min-width: 768px) {
-    .page-header { padding-top: var(--page-pad-top); padding-bottom: var(--page-pad-bottom); }
+    .page-header { padding-bottom: var(--page-pad-bottom); }
   }
   .page-header__title {
     font-family: var(--font-serif);
