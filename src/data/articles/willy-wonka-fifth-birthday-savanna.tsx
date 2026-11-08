@@ -132,7 +132,7 @@ const WillyWonkaFifthBirthdaySavannaArticle = () => (
       </p>
       <p>
         See also{" "}
-        <a href="/journal/childrens-party-themes-2026">
+        <a href="/journal/childrens-party-themes-2026/">
           the six children's party themes shaping 2026
         </a>{" "}
         for how this kind of restrained, thoughtfully styled take is showing up

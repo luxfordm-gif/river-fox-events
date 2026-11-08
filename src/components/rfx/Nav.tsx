@@ -4,14 +4,14 @@ import { ChevronDown } from "lucide-react";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 const SERVICES = [
-  { href: "/childrens-parties", label: "Children's parties" },
-  { href: "/milestone-celebrations", label: "Milestone celebrations" },
-  { href: "/corporate-brand-styling", label: "Corporate & brand" },
-  { href: "/balloon-installations", label: "Balloon installations" },
+  { href: "/childrens-parties/", label: "Children's parties" },
+  { href: "/milestone-celebrations/", label: "Milestone celebrations" },
+  { href: "/corporate-brand-styling/", label: "Corporate & brand" },
+  { href: "/balloon-installations/", label: "Balloon installations" },
 ];
 
 /* Seasonal service, set apart below a divider with a velvet bow. */
-const SEASONAL = { href: "/christmas-door-garlands", label: "Christmas door garlands" };
+const SEASONAL = { href: "/christmas-door-garlands/", label: "Christmas door garlands" };
 
 /* Desktop dropdown: the bow jingles once on hover (Matt, 2026-11-07). The
    class comes off only when the animation ends, so leaving mid-jingle lets it
@@ -26,7 +26,7 @@ const jingleBow = (e: React.MouseEvent<HTMLElement>) => {
 const ABOUT_LINKS = [
   { href: "/#about", label: "About Laura" },
   { href: "/#kindness", label: "Client reviews" },
-  { href: "/journal", label: "Read the journal" },
+  { href: "/journal/", label: "Read the journal" },
 ];
 
 /** `enquireHref`: pages with their own enquire form pass "#enquire" so the
@@ -161,7 +161,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               </div>
             </div>
           </div>
-          <a href="/contact">Contact</a>
+          <a href="/contact/">Contact</a>
         </div>
         <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto md:pt-2" aria-label="River Fox Events - home">
           <span className="text-[15px] font-medium tracking-[0.22em] leading-none">
@@ -210,14 +210,14 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
         <div className="container-rfx pt-28 pb-12 flex flex-col gap-2">
           {[
             { href: "/", label: "Home" },
-            { href: "/childrens-parties", label: "Children's parties" },
-            { href: "/milestone-celebrations", label: "Milestone celebrations" },
-            { href: "/corporate-brand-styling", label: "Corporate & brand" },
-            { href: "/balloon-installations", label: "Balloon installations" },
+            { href: "/childrens-parties/", label: "Children's parties" },
+            { href: "/milestone-celebrations/", label: "Milestone celebrations" },
+            { href: "/corporate-brand-styling/", label: "Corporate & brand" },
+            { href: "/balloon-installations/", label: "Balloon installations" },
             { href: SEASONAL.href, label: "Christmas garlands", seasonal: true },
             { href: "/our-work/", label: "Our work" },
             { href: "/#about", label: "About" },
-            { href: "/contact", label: "Contact" },
+            { href: "/contact/", label: "Contact" },
           ].map((l, i) => (
             <a
               key={l.label}
@@ -241,7 +241,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
 
           <div className="hairline mt-4" />
           <a
-            href="/journal"
+            href="/journal/"
             onClick={() => setOpen(false)}
             className="mt-6 font-mono-rf text-[11px] tracking-[0.22em] uppercase text-ink no-underline inline-flex items-center gap-2 self-start"
             style={{
