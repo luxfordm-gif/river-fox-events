@@ -52,7 +52,7 @@ const FaqList = ({ items, defaultOpen = null }: FaqListProps) => {
                   <span className="t-faq text-ink">
                     {it.q}
                   </span>
-                  <span className="faq-rf-plus inline-flex items-center justify-center text-[1.45em] text-ink" aria-hidden="true">
+                  <span className="faq-rf-plus inline-flex items-center justify-center t-icon text-ink" aria-hidden="true">
                     +
                   </span>
                 </span>

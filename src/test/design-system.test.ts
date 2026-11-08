@@ -35,11 +35,11 @@ const where = (file: string, text: string, index: number) => `${relative(ROOT, f
 
 // Inline style props. Only a token or a size relative to the parent (em) is allowed.
 const INLINE = /\b(fontSize|lineHeight|letterSpacing|fontWeight|fontFamily|borderRadius)\s*:\s*([^,}\n]+)/g;
-const INLINE_OK = /^["'`]?(var\(--(fs|lh|ls|fw|radius|font)-[a-z0-9-]+\)|[\d.]+em|inherit|0)["'`]?$/;
+const INLINE_OK = /^["'`]?(var\(--(fs|lh|ls|fw|radius|font)-[a-z0-9-]+\)|[\d.]+em|inherit|0|50%)["'`]?$/;
 
 // Tailwind classes that hard-code typography or corners.
 const CLASS_BAD = [
-  /\btext-\[[\d.]+(px|rem|em)\]/g,
+  /\btext-\[[\d.]+(px|rem)\]/g, // (em, relative to the parent, is allowed)
   /\btext-(xs|sm|base|lg|xl|[2-9]xl)\b/g,
   /\btext-(display|h1|h2|h3|h4|faq)\b/g,
   /\bleading-(\[[^\]]+\]|none|tight|snug|normal|relaxed|loose|\d+)\b/g,

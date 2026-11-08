@@ -413,7 +413,7 @@ const ChristmasDoorways = () => {
                   Matching widths, stacked. */}
               <div className="mt-8 mx-auto grid gap-3 w-fit">
                 <a href="#enquire" onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
-                  Enquire now <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
+                  Enquire now <span className="t-icon">→</span>
                 </a>
                 <a href={WHATSAPP_HREF} className="btn-ghost-rf justify-center md:hidden">
                   WhatsApp Laura now
@@ -424,7 +424,7 @@ const ChristmasDoorways = () => {
           <div className="md:hidden">
             <ScrollStrip images={[...FAN]} />
           </div>
-          <LocationHeroFan images={[FAN[0], FAN[1], FAN[2]]} spreadOnHover radius={16} />
+          <LocationHeroFan images={[FAN[0], FAN[1], FAN[2]]} spreadOnHover />
         </section>
 
         {/* What we do */}
@@ -445,7 +445,7 @@ const ChristmasDoorways = () => {
             <div ref={cardsRef} className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
               {CARDS.map((card) => (
                 <article key={card.title} className="fade-up relative">
-                  <SnowCap mode="edge" radius={12} />
+                  <SnowCap mode="edge" radius="media" />
                   {/* Laptop and up only: on narrower screens the intro text
                       above runs too wide for the note to sit beside it. */}
                   {card === CARDS[0] && <SnowHint className="xmas-snow-hint--card" />}
@@ -518,7 +518,7 @@ const ChristmasDoorways = () => {
                     <p className="xmas-option__tag">
                       {opt.popular && <span className="xmas-tag">Most popular</span>}
                     </p>
-                    <h3 className="t-h4 text-primary">
+                    <h3 className="t-h3 text-primary">
                       {opt.title}
                     </h3>
                     <p className="t-caption italic text-accent-warm mt-1">{opt.note}</p>
@@ -674,7 +674,7 @@ const ChristmasDoorways = () => {
                 data-netlify-honeypot="bot-field"
                 onSubmit={onSubmit}
               >
-                <SnowCap mode="edge" radius={14} ground="dark" />
+                <SnowCap mode="edge" radius="card" ground="dark" />
                 <input type="hidden" name="form-name" value="christmas-doorway" />
                 <p className="hidden" aria-hidden="true">
                   <label>

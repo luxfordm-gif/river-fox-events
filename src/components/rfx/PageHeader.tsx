@@ -32,11 +32,11 @@ const PageHeader = ({ title, intro, note, children, id, tone, divider }: PageHea
   // rules elsewhere reset padding with the shorthand and would undo it.
   <header className={cls}>
     <div className="container-rfx text-center">
-      <h1 id={id} className="page-header__title font-serif-rf mx-auto">
+      <h1 id={id} className="page-header__title mx-auto">
         {title}
       </h1>
       {note && (
-        <div className="page-header__note font-mono-rf text-ink-soft">{note}</div>
+        <div className="page-header__note text-ink-soft">{note}</div>
       )}
       {intro && <p className="page-header__intro mx-auto text-ink-soft">{intro}</p>}
       {children}

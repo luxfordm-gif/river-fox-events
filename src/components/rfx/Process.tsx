@@ -93,7 +93,7 @@ const Process = ({ steps = DEFAULT_STEPS }: ProcessProps = {}) => {
                   {s.n} /
                 </span>
               </div>
-              <h3 className="t-h4 mb-2">
+              <h3 className="t-h3 mb-2">
                 {s.title}
               </h3>
               <p className="t-body-sm" style={{ color: "hsl(var(--on-deep-soft))" }}>

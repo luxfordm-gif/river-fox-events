@@ -12,7 +12,9 @@ import { useEffect, useRef } from "react";
  */
 type SnowCapProps = {
   mode: "text" | "edge";
-  radius?: number;
+  /** Corner of the card it sits on: a design-system token ("card" / "media")
+   *  read live from CSS, so it follows the phone/desktop values; or 0. */
+  radius?: "card" | "media" | 0;
   /** "light" (cream backgrounds) gives the snow a soft cool edge so white reads on cream. */
   ground?: "light" | "dark";
   /** Edge mode: how deep the drift is (1 = a card's light dusting). */
@@ -37,7 +39,11 @@ const rand = (seed: number) => {
   return () => { v = (v * 1664525 + 1013904223) >>> 0; return v / 4294967296; };
 };
 
-const SnowCap = ({ mode, radius = 14, ground = "light", scale = 1, bleed = false }: SnowCapProps) => {
+/** px value of a --radius-* token at the current screen size. */
+const tokenPx = (name: "card" | "media" | 0) =>
+  name === 0 ? 0 : parseFloat(getComputedStyle(document.documentElement).getPropertyValue(`--radius-${name}`)) || 0;
+
+const SnowCap = ({ mode, radius = "media", ground = "light", scale = 1, bleed = false }: SnowCapProps) => {
   const canvas = useRef<HTMLCanvasElement>(null);
   // Deeper drifts need more room above the edge.
   const pad = Math.round(PAD * Math.max(1, scale));
@@ -56,7 +62,7 @@ const SnowCap = ({ mode, radius = 14, ground = "light", scale = 1, bleed = false
     const surface = (): Int16Array => {
       const surf = new Int16Array(W).fill(-1);
       if (mode === "edge") {
-        const top = pad, r = radius;
+        const top = pad, r = tokenPx(radius);
         if (bleed) return surf.fill(top);
         for (let x = 0; x < W; x++) {
           const cx = x - SIDE;

@@ -60,10 +60,8 @@ const Footer = () => {
               on the footer's bottom edge, no parallax push. md+: the large
               cropped watermark. Sizes live in index.css (.rfx-footer-mark). */}
           <div
-            className="rfx-footer-mark font-serif-rf whitespace-nowrap relative"
+            className="rfx-footer-mark whitespace-nowrap relative"
             style={{
-              lineHeight: 0.78,
-              letterSpacing: "-0.05em",
               color: "hsl(var(--on-deep) / 0.10)",
               transform: `translateY(calc(var(--rfx-mark-parallax) * ${Math.min(80, y * 0.025)}px)) translateX(${revealed ? 0 : -40}px)`,
               opacity: revealed ? 1 : 0,
@@ -120,7 +118,7 @@ const Footer = () => {
           {/* Footer columns */}
           <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-12 mb-16 rfx-md-stack">
             <div className="mb-8 md:mb-0">
-              <div className="text-[22px] font-medium tracking-[0.22em] leading-none whitespace-nowrap">
+              <div className="t-wordmark-lg whitespace-nowrap">
                 RIVER&nbsp;FOX&nbsp;EVENTS
               </div>
               <p
@@ -134,7 +132,7 @@ const Footer = () => {
               <div className="t-eyebrow mb-4" style={{ color: "hsl(var(--on-deep))" }}>
                 Services
               </div>
-              <div className="t-meta">
+              <div className="t-meta space-y-2">
                 <a href="/childrens-parties/" className="opacity-85 hover:opacity-100 block">Children's Parties</a>
                 <a href="/milestone-celebrations/" className="opacity-85 hover:opacity-100 block">Milestones</a>
                 <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate</a>
@@ -146,7 +144,7 @@ const Footer = () => {
               <div className="t-eyebrow mb-4" style={{ color: "hsl(var(--on-deep))" }}>
                 Locations
               </div>
-              <div className="t-meta">
+              <div className="t-meta space-y-2">
                 {visibleLocations.map((loc) => (
                   <a
                     key={loc.slug}
@@ -180,7 +178,7 @@ const Footer = () => {
               <div className="t-eyebrow mb-4" style={{ color: "hsl(var(--on-deep))" }}>
                 Studio
               </div>
-              <div className="t-meta">
+              <div className="t-meta space-y-2">
                 <a href="/our-work/" className="opacity-85 hover:opacity-100 block">Our Work</a>
                 <a href="/#about" className="opacity-85 hover:opacity-100 block">About Laura</a>
                 <a href="/#process" className="opacity-85 hover:opacity-100 block">How it works</a>
@@ -202,7 +200,7 @@ const Footer = () => {
                   className="opacity-75 -mt-px"
                 />
               </a>
-              <div className="t-meta" style={{ color: "hsl(var(--on-deep-soft))" }}>
+              <div className="t-meta space-y-2" style={{ color: "hsl(var(--on-deep-soft))" }}>
                 <a href="mailto:Riverfoxevents@gmail.com" className="hover:opacity-100 opacity-85 block">
                   Riverfoxevents@gmail.com
                 </a>

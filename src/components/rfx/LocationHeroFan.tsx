@@ -10,8 +10,6 @@ type LocationHeroFanProps = {
   images?: [FanImage, FanImage, FanImage];
   /** Fan the side cards further apart while the pointer is over the fan. */
   spreadOnHover?: boolean;
-  /** Corner radius of the cards, in px. */
-  radius?: number;
 };
 
 /**
@@ -30,7 +28,7 @@ type LocationHeroFanProps = {
  * Honours `prefers-reduced-motion`: jumps straight to the final fanned
  * state with no transition.
  */
-const LocationHeroFan = ({ images, spreadOnHover = false, radius = 10 }: LocationHeroFanProps = {}) => {
+const LocationHeroFan = ({ images, spreadOnHover = false }: LocationHeroFanProps = {}) => {
   const [fanned, setFanned] = useState(false);
   const [spread, setSpread] = useState(false);
 
@@ -82,13 +80,12 @@ const LocationHeroFan = ({ images, spreadOnHover = false, radius = 10 }: Locatio
   // canvas, horizontally centred. Rotation pivot at bottom-centre so
   // tilts don't lift the bottom edge off the line.
   const sideImg =
-    "absolute bottom-[6%] left-1/2 w-[32%] max-w-[340px] object-cover will-change-transform";
+    "absolute bottom-[6%] left-1/2 w-[32%] max-w-[340px] object-cover rounded-media will-change-transform";
   const sideStyle = {
     aspectRatio: "3 / 4" as const,
     transformOrigin: "bottom center" as const,
     transition,
     boxShadow: sideShadow,
-    borderRadius: radius,
   };
 
   return (
@@ -161,7 +158,7 @@ const LocationHeroFan = ({ images, spreadOnHover = false, radius = 10 }: Locatio
         <img
           src={centre.src}
           alt={centre.alt}
-          className="absolute bottom-[6%] left-1/2 w-[37%] max-w-[400px] object-cover"
+          className="absolute bottom-[6%] left-1/2 w-[37%] max-w-[400px] object-cover rounded-media"
           style={{
             aspectRatio: "3 / 4",
             objectPosition: centre.objectPosition,
@@ -169,7 +166,6 @@ const LocationHeroFan = ({ images, spreadOnHover = false, radius = 10 }: Locatio
             transformOrigin: "bottom center",
             transition,
             boxShadow: centerShadow,
-            borderRadius: radius,
             zIndex: 3,
           }}
           loading="eager"

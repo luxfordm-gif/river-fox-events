@@ -132,11 +132,11 @@ const LocationPage = () => {
               <div className="mt-10 mx-auto grid gap-3 w-fit md:grid-flow-col md:auto-cols-fr fade-up in">
                 <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
                   Reserve your date{" "}
-                  <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
+                  <span className="t-icon">→</span>
                 </a>
                 <a href="/our-work/" className="btn-ghost-rf justify-center">
                   See our work{" "}
-                  <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
+                  <span className="t-icon">→</span>
                 </a>
                 <a
                   href={whatsappHref(

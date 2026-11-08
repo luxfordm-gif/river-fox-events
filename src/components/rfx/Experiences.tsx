@@ -128,7 +128,7 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
           height={1280}
         />
       </div>
-      <h3 className="t-h4 exp-title mt-3 md:mt-4">
+      <h3 className="t-h3 exp-title mt-3 md:mt-4">
         {it.title}
       </h3>
       <p className="t-body-sm text-ink-soft max-w-[360px]">

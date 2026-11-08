@@ -164,7 +164,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           <a href="/contact/" className="t-ui">Contact</a>
         </div>
         <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto md:pt-2" aria-label="River Fox Events - home">
-          <span className="text-[15px] font-medium tracking-[0.22em] leading-none">
+          <span className="t-wordmark">
             RIVER&nbsp;FOX&nbsp;EVENTS
           </span>
           <span className="t-eyebrow text-ink-soft">

@@ -102,7 +102,7 @@ const ServiceHero = ({
               className="btn-solid-rf accent justify-center"
             >
               Reserve your date{" "}
-              <span style={{ fontSize: "1.35em", lineHeight: 1 }}>→</span>
+              <span className="t-icon">→</span>
             </a>
             {whatsappHref ? (
               <a href={whatsappHref} className="btn-ghost-rf justify-center md:hidden">
