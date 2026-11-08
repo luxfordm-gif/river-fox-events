@@ -72,12 +72,12 @@
     /* Headings: Heading 1 is the page title, Heading 2 every section title.
        Sizes are the ones the site had before the 2026-11-08 restructure
        (Matt: "what we had before worked"); only the names changed. */
-    --fs-h1: clamp(40px, 5vw, 80px);           /* Heading 1 · page titles: towns, journal, articles, Contact (42 phone) */
-    --fs-h2: clamp(34px, 4.4vw, 68px);         /* Heading 2 · every section title (36 phone) */
-    --fs-h3: clamp(30px, 3.4vw, 52px);         /* Heading 3 · titles under a display heading, Our work galleries (32 phone) */
-    --fs-h4: clamp(24px, 2.2vw, 32px);         /* Heading 4 · featured journal card, CTA and form headings, prices, phone menu (26 phone; was 40; brought down so H5 26 → H4 32 is a normal step, Matt 2026-11-08) */
-    --fs-h5: clamp(19px, 1.8vw, 26px);         /* Heading 5 · card titles, FAQ questions (22 phone) */
-    --fs-h6: clamp(16px, 1.45vw, 21px);        /* Heading 6 · names under photo tiles, kept to one line (17 phone) */
+    --fs-h1: clamp(42px, 5vw, 80px);           /* Heading 1 · page titles: towns, journal, articles, Contact (42 phone and tablet) */
+    --fs-h2: clamp(36px, 4.4vw, 68px);         /* Heading 2 · every section title (36 phone and tablet) */
+    --fs-h3: clamp(32px, 3.4vw, 52px);         /* Heading 3 · titles under a display heading, Our work galleries (32 phone and tablet) */
+    --fs-h4: clamp(26px, 2.2vw, 32px);         /* Heading 4 · featured journal card, CTA and form headings, prices, phone menu (26 phone and tablet; was 40; brought down so H5 26 → H4 32 is a normal step, Matt 2026-11-08) */
+    --fs-h5: clamp(22px, 1.8vw, 26px);         /* Heading 5 · card titles, FAQ questions (22 phone and tablet) */
+    --fs-h6: clamp(17px, 1.45vw, 21px);        /* Heading 6 · names under photo tiles, kept to one line (17 phone and tablet) */
     --lh-h1: 1.04;                             /* phone 1.1 */
     --lh-h2: 1.04;                             /* phone 1.1 */
     --lh-h3: 1.04;                             /* phone 1.1 */
@@ -151,6 +151,7 @@
     --panel-inset: 24px;
     --card-pad: 40px;                  /* Card padding · inside option and pricing cards (28 phone) */               /* Panel inset · gap from the screen edge to a rounded section panel (none on phones: full width) */           /* Card text inset · right padding on card text so titles stay clear of the next card (0 phone) */             /* Title to text · space between a card or item title and its text, every card on the site */
     --container-max: 1440px;           /* Content width · the widest the page content gets */
+    --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
     --gutter: 56px;                    /* Side gutter · space at the left and right of the page content (32 phone, 8% on laptops) */
 
     /* Home hero spacing on big screens. Each holds at today's value up to
@@ -210,19 +211,14 @@
       /* Body and lead stay 17px / 18px on phones: the old phone patch had
          already taken main paragraphs to 17.5px, so dropping them would
          make phone reading harder (Matt, 2026-11-08). */
-      /* The whole heading scale steps up on phones together, H1 to H6
-         (Matt, 2026-11-08): 42 / 36 / 32 / 26 / 22 / 17, the small ones
-         most so card titles stand clear of the 17px body. The three big
-         headings share line height 1.1 so two-line titles aren't cramped. */
+      /* Heading sizes need nothing here: each size token's minimum is the
+         phone size (42 / 36 / 32 / 26 / 22 / 17, Matt 2026-11-08), so phones
+         and tablets share one scale and headings never shrink as the screen
+         widens. The three big headings get line height 1.1 on phones so
+         two-line titles aren't cramped. */
       --lh-h1: 1.1;
       --lh-h2: 1.1;
       --lh-h3: 1.1;
-      --fs-h1: 42px;
-      --fs-h2: 36px;
-      --fs-h3: 32px;
-      --fs-h4: 26px;
-      --fs-h5: 22px;
-      --fs-h6: 17px;
       --section-y: 64px;
       --gap-heading-content: 32px;
       --gap-text-content: 40px;

@@ -69,6 +69,8 @@ const WIDTHS = [
   { w: 1920, label: "HD 1920" },
   { w: 1440, label: "1440" },
   { w: 1280, label: '13" 1280' },
+  { w: 1024, label: "Tablet 1024" },
+  { w: 768, label: "Tablet 768" },
   { w: 390, label: "Phone 390" },
   { w: 360, label: "Phone 360" },
 ];
@@ -229,7 +231,7 @@ const TYPE_GROUPS: { title: string; intro: string; styles: { name: string; sampl
   },
   {
     title: "Headings",
-    intro: "Heading 1 is the page title, Heading 2 every section title, then down in size. On phones (below 768px) all six step up together as one scale, and Headings 1 to 3 get line height 1.1 so two-line titles aren't cramped; the Phone columns show the sizes.",
+    intro: "Heading 1 is the page title, Heading 2 every section title, then down in size. Phones and tablets share one scale: each heading grows with the screen from its phone size and never shrinks as the screen widens. On phones (below 768px) Headings 1 to 3 get line height 1.1 so two-line titles aren't cramped.",
     styles: [
       { name: "t-h1", sample: HEADING_SAMPLE },
       { name: "t-h2", sample: HEADING_SAMPLE },
