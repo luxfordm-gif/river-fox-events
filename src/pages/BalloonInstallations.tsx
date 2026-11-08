@@ -68,6 +68,7 @@ const RECENT_WORK = [
    in rather than the end point. Shown as a bento grid (Matt, 2026-11-08):
    the order matters, the first card is the big tile and the last runs
    along the bottom, so the strongest photos sit in the largest tiles.
+   One short line per card (Matt, 2026-11-08): the photo does the talking.
    None of these photos repeat the hero. Alts come from the gallery (one
    image, one alt). `position` keeps each subject in frame when cropped. */
 const tilePhoto = (source: string, position: string, phonePosition?: string) => {
@@ -78,7 +79,7 @@ const WHAT_WE_MAKE: ServiceCardItem[] = [
   {
     title: "Organic arches",
     blurb:
-      "Loose, cloud-like arches in mixed sizes and tones, built to frame a cake table, a doorway or a backdrop. They're the piece most children's parties are built around.",
+      "Cloud-like arches to frame a cake table or doorway.",
     href: "/childrens-parties/",
     cta: "Children's parties",
     ...tilePhoto("river-fox-events-baby-shower-baby-in-bloom-arch-portrait.webp", "35% 45%"),
@@ -86,7 +87,7 @@ const WHAT_WE_MAKE: ServiceCardItem[] = [
   {
     title: "Balloon garlands",
     blurb:
-      "Garlands that trail along a fireplace, a staircase or the top of a backdrop, in a palette matched to the occasion. Lovely for 40ths, christenings and baby showers.",
+      "Trailing along a fireplace, staircase or backdrop.",
     href: "/milestone-celebrations/",
     cta: "Milestone celebrations",
     ...tilePhoto("journal/dylan-christening-first-birthday/dylan-christening-blue-gold-balloon-feature-wall.webp", "50% 40%", "38% 50%"),
@@ -94,7 +95,7 @@ const WHAT_WE_MAKE: ServiceCardItem[] = [
   {
     title: "Hoops & backdrops",
     blurb:
-      "A balloon hoop or arched backdrop board personalised with a name and wrapped in your colours. It gives every guest a photo spot to gather around.",
+      "A personalised photo spot for every guest.",
     href: "/childrens-parties/",
     cta: "Children's parties",
     ...tilePhoto("services/milestones/heart-hoop-red-blush-balloons-heart-foils.webp", "45% 55%"),
@@ -102,7 +103,7 @@ const WHAT_WE_MAKE: ServiceCardItem[] = [
   {
     title: "Number & letter stacks",
     blurb:
-      "Stacked balloon numbers and letters, sized to stand beside the cake table or greet guests at the door. A simple way to mark a first birthday, an 18th or a 50th.",
+      "Numbers and letters to mark a 1st, 18th or 50th.",
     href: "/milestone-celebrations/",
     cta: "Milestone celebrations",
     ...tilePhoto("services/milestones/18th-birthday-blue-chrome-light-up-numbers.webp", "50% 55%"),
@@ -110,7 +111,7 @@ const WHAT_WE_MAKE: ServiceCardItem[] = [
   {
     title: "Shopfront & corporate installs",
     blurb:
-      "Branded arches and window displays for salons, shops, launches and office events, matched to your brand colours. Installed before you open and collected when you're finished.",
+      "Branded arches and window displays in your colours.",
     href: "/corporate-brand-styling/",
     cta: "Corporate & brand",
     ...tilePhoto("river-fox-events-corporate-atrium-twin-balloon-arches.webp", "50% 50%", "82% 50%"),
