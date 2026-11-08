@@ -52,7 +52,7 @@ const crawley = makeLocation({
     "Copthorne",
     "Southgate",
     "Bewbush",
-    "Gossops Green",
+    "Haywards Heath",
   ],
   mapQuery: "Crawley,West+Sussex,England,UK&z=11",
   jsonLdAreaServed: [

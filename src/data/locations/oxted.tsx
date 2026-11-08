@@ -51,7 +51,7 @@ const oxted = makeLocation({
     "Reigate",
     "Lingfield",
     "Edenbridge",
-    "Westerham",
+    "Sevenoaks",
   ],
   mapQuery: "Oxted,Surrey,England,UK&z=10",
   jsonLdAreaServed: [

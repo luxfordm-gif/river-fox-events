@@ -49,7 +49,7 @@ const brightonAndHove = makeLocation({
     "Rottingdean",
     "Saltdean",
     "Brunswick",
-    "Adelaide Crescent",
+    "Lewes",
     "Seven Dials",
     "Withdean",
     "Portslade",

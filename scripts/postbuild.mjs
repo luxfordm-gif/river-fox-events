@@ -317,7 +317,7 @@ async function writeSitemap(SITE, ROUTES) {
 }
 
 // Generated old-domain rules go first (Netlify uses the first matching rule),
-// then the hand-written public/_redirects, which ends with the SPA fallback.
+// then the hand-written public/_redirects, which ends with the 404 catch-all.
 // Read from public/ rather than dist/ so running postbuild twice is harmless.
 async function writeRedirects(ROUTES) {
   const handWritten = await fs.readFile(path.join(ROOT, "public/_redirects"), "utf8");

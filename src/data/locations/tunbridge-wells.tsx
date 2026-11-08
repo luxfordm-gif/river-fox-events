@@ -52,7 +52,7 @@ const tunbridgeWells = makeLocation({
     "Goudhurst",
     "Cranbrook",
     "Tonbridge",
-    "Hawkhurst",
+    "Sevenoaks",
   ],
   mapQuery: "Tunbridge+Wells,Kent,England,UK&z=11",
   jsonLdAreaServed: [

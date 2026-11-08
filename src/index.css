@@ -104,6 +104,16 @@
   @media (max-width: 480px) {
     :root { --fs-display: clamp(36px, 11vw, 52px); }
   }
+
+  /* Phones: section titles (anything sized var(--fs-h2) or var(--fs-h2-sm))
+     get a touch more line height, so two-line titles like "Your event
+     environment / is your brand." don't sit cramped (Matt, 2026-11-08).
+     Components set their own tight line height inline (0.96-1.06), which
+     still applies from tablet up; !important is what lets this beat it.
+     Hero h1s and smaller card titles are untouched. */
+  @media (max-width: 767px) {
+    [style*="--fs-h2"] { line-height: 1.1 !important; }
+  }
 }
 
 @layer base {
