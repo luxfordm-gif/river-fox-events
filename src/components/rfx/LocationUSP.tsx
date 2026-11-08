@@ -75,23 +75,17 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
       <div className="container-rfx">
         <div className="text-center heading-to-body">
           <h2
-            className="font-serif-rf"
-            style={{
-              fontSize: "var(--fs-h2)",
-              lineHeight: 1.05,
-              fontWeight: 400,
-              letterSpacing: "-0.025em",
-              textWrap: "balance",
-            }}
+            className="t-h2"
+            style={{ textWrap: "balance" }}
           >
             Why{" "}
-            <em className="italic font-light text-accent-warm">
+            <em className="t-accent">
               River Fox Events?
             </em>
           </h2>
         </div>
         <p
-          className="mx-auto max-w-[680px] text-center text-[16px] leading-[1.75] text-ink-soft fade-up"
+          className="mx-auto max-w-[680px] text-center t-lead text-ink-soft fade-up"
           style={{ textWrap: "pretty" }}
         >
           {/* First sentence only: still unique per town, half the words (Matt, 2026-11-07). */}
@@ -138,19 +132,11 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
                 >
                   <Icon strokeWidth={1.4} size={26} />
                 </div>
-                <h3
-                  className="font-serif-rf text-ink"
-                  style={{
-                    fontSize: "20px",
-                    lineHeight: 1.15,
-                    fontWeight: 400,
-                    letterSpacing: "-0.012em",
-                  }}
-                >
+                <h3 className="t-h4 text-ink">
                   {label}
                 </h3>
                 <p
-                  className="text-[14px] leading-[1.6] text-ink-soft mt-2.5 max-w-[240px]"
+                  className="t-body-sm text-ink-soft mt-2.5 max-w-[240px]"
                   style={{ textWrap: "pretty" }}
                 >
                   {pointBody}

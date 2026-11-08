@@ -19,7 +19,7 @@ const reigate = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties are most of what we do.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         The grown-up days as well.
       </em>
     </>
@@ -100,7 +100,7 @@ const reigate = makeLocation({
     heading: (
       <>
         Fifteen minutes{" "}
-        <em className="italic font-light text-accent-warm">from us.</em>
+        <em className="t-accent">from us.</em>
       </>
     ),
     body: (

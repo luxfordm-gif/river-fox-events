@@ -57,7 +57,7 @@ export const ARTICLES: Article[] = [
       heading: (
         <>
           Dress your door{" "}
-          <em className="italic font-light text-accent-warm">for Christmas.</em>
+          <em className="t-accent">for Christmas.</em>
         </>
       ),
       body: "Fresh spruce from early November, or faux whenever you're ready. Send a photo of your door and your postcode, and I'll come back with a quote.",

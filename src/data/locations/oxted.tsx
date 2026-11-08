@@ -19,7 +19,7 @@ const oxted = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties are our home ground.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         We also style the grown-up occasions.
       </em>
     </>
@@ -92,7 +92,7 @@ const oxted = makeLocation({
     heading: (
       <>
         Local knowledge,{" "}
-        <em className="italic font-light text-accent-warm">properly used.</em>
+        <em className="t-accent">properly used.</em>
       </>
     ),
     body: (

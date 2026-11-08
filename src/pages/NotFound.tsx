@@ -39,7 +39,7 @@ const NotFound = () => {
           title={
             <>
               Looks like this page has{" "}
-              <em className="italic font-light text-accent-warm">wandered off.</em>
+              <em className="t-accent">wandered off.</em>
             </>
           }
           note="404 - Page not found"

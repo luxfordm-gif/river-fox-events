@@ -25,7 +25,7 @@
     --surface-paper: 35 30% 96%;       /* lighter warm cream: journal articles, Contact, Our work header */
 
     --ink: 120 6% 18%;                 /* softened charcoal */
-    --ink-soft: 100 4% 36%;            /* rf-ink-soft #5A6059 */
+    --ink-soft: 100 5% 29%;            /* body grey #494E46: 7.3:1 on --background, 6.9:1+ on every tint (Matt, 2026-11-08; was 100 4% 36%) */
     --ink-faint: 100 4% 61%;           /* rf-ink-faint */
 
     --on-deep: 47 22% 89%;             /* rf-on-deep #E9E6DD */
@@ -38,9 +38,16 @@
     --hair: 100 8% 10% / 0.10;
     --hair-strong: 100 8% 10% / 0.22;
 
-    /* Type scale - every heading size on the site comes from here. Don't
-       hard-code a clamp() in a component; use one of these (inline as
-       var(--fs-h2), or the matching Tailwind class text-h2).
+    /* ── DESIGN SYSTEM: TYPE ─────────────────────────────────────────────
+       Every piece of text on the site uses one of the named text styles
+       (.t-display, .t-h1 ... .t-eyebrow, defined in @layer components below),
+       which read these tokens. Components never set a font size, line height,
+       letter-spacing or weight themselves; src/test/design-system.test.ts
+       fails if one does (Matt, 2026-11-08). Phone values are the overrides in
+       the (max-width: 767px) block after :root.
+
+       Sizes. Heading curves are tuned so a 13" laptop (1280px) lands where the
+       old laptop overrides put it (hero ~72px, section titles ~56px).
        Curves are tuned so a 13" laptop (1280px) lands where the old laptop
        overrides put it (hero ~72px, section titles ~56px) with no jump at
        any breakpoint. */
@@ -52,6 +59,54 @@
     --fs-h4: clamp(20px, 1.8vw, 26px);         /* card titles */
     --fs-faq: clamp(17px, 1.7vw, 24px);        /* FAQ questions */
     --fs-caption: clamp(15px, 1.05vw, 17px);   /* photo captions (Our work gallery) */
+    --fs-lead: 18px;           /* .t-lead: intro under a section title, hero sub-copy (phone 17px) */
+    --fs-body: 17px;           /* .t-body: paragraphs, article prose, FAQ answers (phone 16px) */
+    --fs-body-sm: 15px;        /* .t-body-sm: card text, captions, form help */
+    --fs-meta: 13.5px;         /* .t-meta / .t-ui: footer, legal, dates, buttons, nav links */
+    --fs-eyebrow: 11px;        /* .t-eyebrow: small mono capitals labels */
+    /* One-off display pieces, still tokens: */
+    --fs-mega: clamp(56px, 12vw, 200px);       /* homepage "kindness" reveal word */
+    --fs-ticker: clamp(22px, 3vw, 36px);       /* scrolling ticker */
+    --fs-footer-mark: 26vw;                    /* giant footer wordmark (phone) */
+    --fs-footer-mark-lg: clamp(220px, 50vw, 880px); /* giant footer wordmark (768px+) */
+    --fs-hand: clamp(22px, 1.9vw, 28px);       /* Christmas "Move the snow" handwritten note */
+    --fs-hand-sm: clamp(19px, 1.45vw, 23px);   /* its smaller card version */
+
+    /* Line heights */
+    --lh-display: 0.98;
+    --lh-h1: 1.04;
+    --lh-h2: 1.04;             /* phone 1.1 */
+    --lh-h3: 1.15;
+    --lh-h4: 1.18;
+    --lh-quote: 1.22;
+    --lh-faq: 1.3;
+    --lh-lead: 1.6;
+    --lh-body: 1.7;
+    --lh-body-sm: 1.6;
+    --lh-meta: 1.5;
+
+    /* Letter-spacing */
+    --ls-display: -0.038em;
+    --ls-h1: -0.03em;
+    --ls-h2: -0.025em;
+    --ls-h3: -0.018em;
+    --ls-h4: -0.012em;
+    --ls-ui: 0.01em;
+    --ls-eyebrow: 0.22em;
+
+    /* Weights. Headings are Regular: Light (300) read too thin in the real
+       Fraunces (Matt, 2026-11-08). */
+    --fw-heading: 400;
+    --fw-body: 400;
+    --fw-ui: 500;              /* buttons, nav, form inputs */
+    --fw-strong: 600;          /* <strong> inside body text */
+
+    /* ── DESIGN SYSTEM: CORNERS ── Tailwind: rounded-card / -media / -chip */
+    --radius-card: 18px;       /* cards, panels, tiles with a frame */
+    --radius-media: 14px;      /* photos and videos */
+    --radius-control: 8px;     /* buttons, form fields */
+    --radius-chip: 4px;        /* tiny keys, badges, icon buttons */
+    --radius-pill: 9999px;     /* pills, dots, round buttons */
 
     /* Home hero spacing on big screens. Each holds at today's value up to
        1440px wide, then grows with the screen and caps around 2560px:
@@ -77,7 +132,7 @@
     --secondary: 38 56% 88%;
     --secondary-foreground: 100 8% 10%;
     --muted: 47 22% 88%;
-    --muted-foreground: 100 4% 36%;
+    --muted-foreground: 100 5% 29%;    /* = --ink-soft */
     --accent-bg: 12 55% 78%;
     --accent-foreground: 120 6% 18%;
     --destructive: 0 70% 45%;
@@ -100,6 +155,7 @@
     --font-serif: "Fraunces", Georgia, serif;
     --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --font-hand: "Caveat", cursive;   /* Christmas page note only */
   }
 
   /* Phones: the hero h1 scales with the screen instead of holding at 52px,
@@ -109,14 +165,18 @@
     :root { --fs-display: clamp(36px, 11vw, 52px); }
   }
 
-  /* Phones: section titles (anything sized var(--fs-h2) or var(--fs-h2-sm))
-     get a touch more line height, so two-line titles like "Your event
-     environment / is your brand." don't sit cramped (Matt, 2026-11-08).
-     Components set their own tight line height inline (0.96-1.06), which
-     still applies from tablet up; !important is what lets this beat it.
-     Hero h1s and smaller card titles are untouched. */
+  /* Phones (below 768px): bigger-reading body text drops a step, and
+     section titles get a touch more line height so two-line titles don't
+     sit cramped (Matt, 2026-11-08). */
   @media (max-width: 767px) {
-    [style*="--fs-h2"] { line-height: 1.1 !important; }
+    :root {
+      --fs-lead: 17px;
+      --fs-body: 16px;
+      --lh-h2: 1.1;
+      /* slightly tighter corners on small screens */
+      --radius-card: 14px;
+      --radius-media: 12px;
+    }
   }
 }
 
@@ -134,10 +194,11 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
-    font-size: 15px;
-    line-height: 1.55;
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-body-sm);
     overflow-x: clip;
   }
+  strong, b { font-weight: var(--fw-strong); }
   h1, h2, h3, h4, h5, h6, p {
     text-wrap: pretty;
   }
@@ -146,7 +207,7 @@
     color: hsl(var(--background));
   }
   ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-thumb { background: hsl(var(--ink) / 0.22); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--ink) / 0.22); border-radius: var(--radius-chip); }
 }
 
 @layer components {
@@ -199,24 +260,62 @@
     section.rfx-hero.rfx-hero-home { padding-bottom: var(--hero-pad-bottom); }
   }
 
+  /* Family helpers. Size, weight and spacing come from a .t-* style. */
   .font-serif-rf {
     font-family: var(--font-serif);
-    font-weight: 300;
-    letter-spacing: -0.015em;
     /* prevent italic descenders (g, y, j) being clipped */
     padding-bottom: 0.18em;
     /* preserve descender room for tight line-heights */
     overflow: visible;
   }
-  .font-mono-rf  { font-family: var(--font-mono);  font-weight: 400; }
+  .font-mono-rf  { font-family: var(--font-mono); }
 
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: hsl(var(--ink-soft));
+  /* ── Named text styles (the design system) ───────────────────────────
+     Use exactly one per text element. Each sets family, size, line height,
+     weight and letter-spacing from the tokens in :root, desktop and phone.
+     Colour, alignment and spacing stay separate utilities (text-ink,
+     text-ink-soft, text-center, mt-4...). Italic highlights inside a heading
+     use .t-accent. */
+  .t-display, .t-h1, .t-h2, .t-h2-sm, .t-h3, .t-quote, .t-h4, .t-faq, .t-caption {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-heading);
+    /* room for italic descenders (g, y, j) under tight line heights */
+    padding-bottom: 0.18em;
+    overflow: visible;
   }
+  .t-display { font-size: var(--fs-display); line-height: var(--lh-display); letter-spacing: var(--ls-display); }
+  .t-h1      { font-size: var(--fs-h1);      line-height: var(--lh-h1);      letter-spacing: var(--ls-h1); }
+  .t-h2      { font-size: var(--fs-h2);      line-height: var(--lh-h2);      letter-spacing: var(--ls-h2); }
+  .t-h2-sm   { font-size: var(--fs-h2-sm);   line-height: var(--lh-h2);      letter-spacing: var(--ls-h2); }
+  .t-h3      { font-size: var(--fs-h3);      line-height: var(--lh-h3);      letter-spacing: var(--ls-h3); }
+  .t-quote   { font-size: var(--fs-h3);      line-height: var(--lh-quote);   letter-spacing: var(--ls-h4); }
+  .t-h4      { font-size: var(--fs-h4);      line-height: var(--lh-h4);      letter-spacing: var(--ls-h4); }
+  .t-faq     { font-size: var(--fs-faq);     line-height: var(--lh-faq);     letter-spacing: var(--ls-h4); }
+  .t-caption { font-size: var(--fs-caption); line-height: var(--lh-faq);     letter-spacing: 0; padding-bottom: 0; }
+
+  .t-lead, .t-body, .t-body-sm, .t-meta, .t-ui {
+    font-family: var(--font-sans);
+    font-weight: var(--fw-body);
+    letter-spacing: 0;
+  }
+  .t-lead    { font-size: var(--fs-lead);    line-height: var(--lh-lead); }
+  .t-body    { font-size: var(--fs-body);    line-height: var(--lh-body); }
+  .t-body-sm { font-size: var(--fs-body-sm); line-height: var(--lh-body-sm); }
+  .t-meta    { font-size: var(--fs-meta);    line-height: var(--lh-meta); }
+  /* Buttons, nav and link labels */
+  .t-ui      { font-size: var(--fs-meta);    line-height: 1.2; font-weight: var(--fw-ui); letter-spacing: var(--ls-ui); }
+
+  .t-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--fs-eyebrow);
+    line-height: var(--lh-meta);
+    font-weight: var(--fw-body);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+  }
+
+  /* Italic highlight inside a heading ("styled in *Surrey.*") */
+  .t-accent { font-style: italic; font-weight: inherit; color: hsl(var(--accent-warm)); }
 
   .hairline { height: 1px; background: hsl(var(--ink) / 0.10); width: 100%; }
 
@@ -290,7 +389,8 @@
   /* Buttons */
   .btn-link-rf {
     font-family: var(--font-sans);
-    font-size: 13px;
+    font-size: var(--fs-meta);
+    letter-spacing: var(--ls-ui);
     color: hsl(var(--ink));
     background: none;
     border: none;
@@ -301,17 +401,18 @@
     padding: 10px 0;
     border-bottom: 1px solid currentColor;
     transition: gap .4s ease;
-    font-weight: 500;
+    font-weight: var(--fw-ui);
     cursor: pointer;
   }
   .btn-link-rf:hover { gap: 18px; }
-  .btn-link-rf .arr { display: inline-block; transition: transform .4s ease; font-weight: 300; }
+  .btn-link-rf .arr { display: inline-block; transition: transform .4s ease; }
   .btn-link-rf:hover .arr { transform: translateX(4px); }
 
   .btn-solid-rf {
     font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 500;
+    font-size: var(--fs-meta);
+    font-weight: var(--fw-ui);
+    letter-spacing: var(--ls-ui);
     padding: 14px 22px;
     background: hsl(var(--ink));
     color: hsl(var(--background));
@@ -322,7 +423,7 @@
     align-items: center;
     gap: 12px;
     transition: background .4s cubic-bezier(0.25, 0.46, 0.45, 0.94), gap .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border-radius: 6px;
+    border-radius: var(--radius-control);
   }
   .btn-solid-rf:hover { background: #000; gap: 18px; }
   .btn-solid-rf.accent { background: hsl(var(--accent)); color: hsl(120 6% 18%); }
@@ -330,8 +431,9 @@
 
   .btn-ghost-rf {
     font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 500;
+    font-size: var(--fs-meta);
+    font-weight: var(--fw-ui);
+    letter-spacing: var(--ls-ui);
     padding: 13px 22px;
     background: transparent;
     color: hsl(var(--ink));
@@ -341,7 +443,7 @@
     align-items: center;
     gap: 12px;
     transition: background .4s cubic-bezier(0.25, 0.46, 0.45, 0.94), color .4s cubic-bezier(0.25, 0.46, 0.45, 0.94), gap .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border-radius: 6px;
+    border-radius: var(--radius-control);
     text-decoration: none;
   }
   .btn-ghost-rf:hover { background: hsl(var(--ink)); color: hsl(var(--background)); gap: 18px; }
@@ -364,10 +466,10 @@
   }
   .ticker-item {
     font-family: var(--font-serif);
-    font-size: clamp(22px, 3vw, 36px);
-    letter-spacing: -0.01em;
+    font-size: var(--fs-ticker);
+    letter-spacing: var(--ls-h4);
     color: hsl(var(--ink));
-    font-weight: 300;
+    font-weight: var(--fw-heading);
     display: inline-flex;
     align-items: center;
     gap: 56px;
@@ -388,7 +490,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    border-radius: 6px;
+    border-radius: var(--radius-card);
     box-shadow: 0 1px 2px hsl(var(--ink) / 0.05);
     transition: transform .35s cubic-bezier(.22,.7,.2,1), box-shadow .35s ease, border-color .35s ease;
   }
@@ -401,30 +503,27 @@
     display: inline-flex;
     gap: 6px;
     color: hsl(var(--accent-warm));
-    font-size: 20px;
-    letter-spacing: 0.04em;
+    font-size: var(--fs-lead);
+    letter-spacing: var(--ls-ui);
     line-height: 1;
   }
   .tcard-quote {
     font-family: var(--font-serif);
-    font-size: 17px;
-    line-height: 1.45;
-    font-weight: 300;
-    letter-spacing: -0.012em;
+    font-size: var(--fs-body);      /* 17px, phone 16px */
+    line-height: var(--lh-lead);
+    font-weight: var(--fw-heading);
+    letter-spacing: var(--ls-h4);
     flex: 1;
     color: hsl(var(--ink));
     margin-top: 2px;
-  }
-  @media (max-width: 760px) {
-    .tcard-quote { font-size: 16px; }
   }
   .tcard-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
+    font-size: var(--fs-eyebrow);
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: hsl(var(--ink-soft));
     padding-top: 14px;
@@ -434,9 +533,9 @@
   .tcard-meta .name {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 14px;
+    font-size: var(--fs-meta);
     text-transform: none;
-    letter-spacing: -0.01em;
+    letter-spacing: var(--ls-h4);
     color: hsl(var(--ink));
   }
   .tcard-link {
@@ -450,7 +549,7 @@
   .tcard-dot {
     width: 6px;
     height: 6px;
-    border-radius: 9999px;
+    border-radius: var(--radius-pill);
     background: hsl(var(--ink) / 0.18);
     transition: background .25s ease, width .25s ease;
     padding: 0;
@@ -463,8 +562,8 @@
   }
   .tcard-readall {
     font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.2em;
+    font-size: var(--fs-eyebrow);
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: hsl(var(--ink-soft));
     border-bottom: 1px solid hsl(var(--ink) / 0.2);
@@ -481,14 +580,14 @@
     background: hsl(var(--surface-alt));
     border: 1px solid hsl(var(--ink) / 0.08);
     padding: 36px;
-    border-radius: 14px;
+    border-radius: var(--radius-card);
     box-shadow: 0 30px 80px -20px rgba(24,27,24,0.22), 0 8px 24px -10px rgba(24,27,24,0.10);
   }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; }
   .form-row {
     background: hsl(var(--background));
     border: 1.5px solid hsl(var(--ink) / 0.12);
-    border-radius: 10px;
+    border-radius: var(--radius-control);
     padding: 10px 16px 10px;
     display: flex;
     flex-direction: column;
@@ -500,31 +599,32 @@
   .form-row.full { grid-column: 1 / -1; }
   .form-row .lbl {
     font-family: var(--font-mono);
-    font-size: 9.5px;
-    letter-spacing: 0.22em;
+    font-size: var(--fs-eyebrow);
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: hsl(var(--ink-soft));
-    font-weight: 600;
+    font-weight: var(--fw-ui);
   }
   .form-row input,
   .form-row select,
   .form-row textarea {
     border: none;
     background: transparent;
-    font-size: 15px;
-    font-weight: 500;
+    /* Body size: 16px on phones, so iPhones don't zoom the page on tap. */
+    font-size: var(--fs-body);
+    font-weight: var(--fw-ui);
     font-family: var(--font-sans);
     color: hsl(var(--ink));
     outline: none;
     padding: 2px 0 2px;
     width: 100%;
-    letter-spacing: -0.005em;
+    letter-spacing: 0;
     cursor: inherit;
   }
   .form-row select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%235A6059' stroke-width='1.4' d='M1 1l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0 center; padding-right: 18px; }
   .form-row textarea { resize: vertical; min-height: 96px; cursor: text; }
   .form-row input::placeholder,
-  .form-row textarea::placeholder { color: hsl(var(--ink-faint)); font-weight: 400; }
+  .form-row textarea::placeholder { color: hsl(var(--ink-faint)); font-weight: var(--fw-body); }
   .form-row:hover { border-color: hsl(var(--ink) / 0.28); background: hsl(var(--surface-alt)); }
   .form-row:focus-within {
     border-color: hsl(var(--accent));
@@ -544,7 +644,7 @@
   .exp-card .exp-cta {
     position: absolute; left: 22px; bottom: 18px; z-index: 4;
     color: hsl(var(--background));
-    font-family: var(--font-sans); font-size: 15px; font-weight: 700;
+    font-family: var(--font-sans); font-size: var(--fs-body-sm); font-weight: var(--fw-ui);
     display: inline-flex; align-items: center; gap: 8px;
     transform: translateY(8px); opacity: 0;
     transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .5s ease;
@@ -568,7 +668,7 @@
     transition: padding 520ms cubic-bezier(0.33, 1, 0.68, 1);
   }
   .faq-rf-trigger:focus { outline: none; }
-  .faq-rf-trigger:focus-visible { outline: 2px solid hsl(var(--ink) / 0.35); outline-offset: 4px; border-radius: 4px; }
+  .faq-rf-trigger:focus-visible { outline: 2px solid hsl(var(--ink) / 0.35); outline-offset: 4px; border-radius: var(--radius-chip); }
   .faq-rf-plus { transition: transform 520ms cubic-bezier(0.33, 1, 0.68, 1); }
   .faq-rf-trigger[data-state="open"] .faq-rf-plus { transform: rotate(45deg); }
   .faq-rf-panel {
@@ -603,21 +703,20 @@
   }
   .reveal-word h3 {
     font-family: var(--font-serif);
-    font-weight: 300;
-    font-size: clamp(56px, 12vw, 200px);
-    line-height: 0.92;
-    letter-spacing: -0.04em;
+    font-weight: var(--fw-heading);
+    font-size: var(--fs-mega);
+    line-height: var(--lh-display);
+    letter-spacing: var(--ls-display);
     text-align: center;
     margin: 0;
   }
   .reveal-word em {
     font-style: italic;
-    font-weight: 300;
+    font-weight: inherit;
     color: hsl(var(--accent-warm));
   }
   @media (max-width: 760px) {
     .reveal-word { padding: 80px 0; }
-    .reveal-word h3 { font-size: clamp(48px, 14vw, 96px); }
   }
 
   /* Nav */
@@ -653,7 +752,7 @@
      so the bar doesn't read as a darker strip over the page. */
   .page-paper { background: hsl(var(--surface-paper)); }
   .nav-paper .rfx-nav { background: hsl(var(--surface-paper) / 0.82); }
-  .rfx-nav-row { display: flex; gap: 32px; font-size: 13px; letter-spacing: 0.01em; }
+  .rfx-nav-row { display: flex; gap: 32px; font-size: var(--fs-meta); letter-spacing: var(--ls-ui); }
   .rfx-nav a { color: inherit; text-decoration: none; position: relative; padding-bottom: 2px; }
   .rfx-nav a:not(.btn-solid-rf):not(.no-underline-fx)::after {
     content: "";
@@ -750,19 +849,19 @@
     background: linear-gradient(to top, hsl(0 0% 0% / 0.42), hsl(0 0% 0% / 0));
   }
   .story__bars { flex: 1; display: flex; gap: 4px; }
-  .story__bar { flex: 1; height: 3px; border-radius: 2px; background: hsl(0 0% 100% / 0.5); overflow: hidden; }
+  .story__bar { flex: 1; height: 3px; border-radius: var(--radius-pill); background: hsl(0 0% 100% / 0.5); overflow: hidden; }
   .story__fill { display: block; height: 100%; background: #fff; transform-origin: left center; transform: scaleX(0); }
   .story__fill.is-done { transform: scaleX(1); }
   .story__fill.is-on { animation-name: story-fill; animation-timing-function: linear; animation-fill-mode: forwards; }
   @keyframes story-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
   .story__pause {
-    pointer-events: auto; flex: none; width: 30px; height: 30px; border-radius: 999px; border: 0; cursor: pointer;
+    pointer-events: auto; flex: none; width: 30px; height: 30px; border-radius: var(--radius-pill); border: 0; cursor: pointer;
     display: inline-flex; align-items: center; justify-content: center; color: #fff; background: hsl(0 0% 100% / 0.22);
   }
   .story__keys { position: absolute; left: 12px; top: 12px; z-index: 4; display: flex; gap: 8px; }
   .story__key {
     position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
-    padding: 8px 12px; border-radius: 4px; border: 0; background: hsl(0 0% 100% / 0.92); color: hsl(var(--ink)); font-size: 13px;
+    padding: 8px 12px; border-radius: var(--radius-chip); border: 0; background: hsl(0 0% 100% / 0.92); color: hsl(var(--ink)); font-size: var(--fs-meta);
   }
   .story__key:focus-visible { position: static; width: auto; height: auto; clip: auto; }
   @media (prefers-reduced-motion: reduce) { .story__img { transition: none; } }
@@ -775,25 +874,25 @@
   }
   .page-header__title {
     font-size: var(--fs-h1);
-    line-height: 1.02;
-    font-weight: 400;
-    letter-spacing: -0.025em;
+    line-height: var(--lh-h1);
+    font-weight: var(--fw-heading);
+    letter-spacing: var(--ls-h1);
     text-wrap: balance;
     max-width: 18ch;
   }
   .page-header__note {
     margin-top: 20px;
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 0.28em;
+    font-family: var(--font-mono);
+    font-size: var(--fs-eyebrow);
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
   }
-  /* Same sub-copy style as the service heroes: 17px, close under the H1. */
+  /* Lead style, like the service hero sub-copy, close under the H1. */
   .page-header__intro {
     margin-top: 12px;
     max-width: 44ch;
-    font-size: 17px;
-    line-height: 1.65;
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
     text-wrap: pretty;
   }
   @media (min-width: 768px) {
@@ -825,7 +924,7 @@
      Tapping opens the viewer. */
   .work-tile {
     position: relative; display: block; width: 100%; padding: 0; border: 0;
-    background: hsl(var(--ink) / 0.05); border-radius: 10px; overflow: hidden; cursor: pointer;
+    background: hsl(var(--ink) / 0.05); border-radius: var(--radius-media); overflow: hidden; cursor: pointer;
     transition: transform .6s cubic-bezier(.2,.7,.2,1);
   }
   .work-tile img { transition: transform .9s cubic-bezier(.2,.7,.2,1); }
@@ -834,11 +933,11 @@
     background: hsl(var(--ink) / 0.28); color: #fff; opacity: 0; transition: opacity .4s ease;
   }
   .work-tile__label {
-    display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 4px;
+    display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-chip);
     background: hsl(0 0% 100% / 0.92); color: hsl(var(--ink));
   }
   .work-tile__badge {
-    position: absolute; right: 8px; bottom: 8px; display: none; width: 28px; height: 28px; border-radius: 4px;
+    position: absolute; right: 8px; bottom: 8px; display: none; width: 28px; height: 28px; border-radius: var(--radius-chip);
     align-items: center; justify-content: center; background: hsl(0 0% 100% / 0.88); color: hsl(var(--ink));
   }
   @media (hover: hover) {
@@ -858,7 +957,7 @@
   .work-dock {
     position: fixed; left: 50%; bottom: calc(72px + env(safe-area-inset-bottom)); z-index: 90;
     display: flex; gap: 4px; padding: 6px; max-width: calc(100vw - 24px);
-    border-radius: 999px; border: 1px solid hsl(var(--ink) / 0.14);
+    border-radius: var(--radius-pill); border: 1px solid hsl(var(--ink) / 0.14);
     background: hsl(var(--background) / 0.86);
     -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4);
     box-shadow: 0 20px 48px -12px hsl(var(--ink) / 0.5), 0 3px 9px hsl(var(--ink) / 0.13);
@@ -867,19 +966,19 @@
   }
   .work-dock.is-on { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
   .work-dock__link {
-    padding: 13px 24px; border-radius: 999px; white-space: nowrap;
-    font-family: var(--font-sans); font-size: 15px; font-weight: 500; color: hsl(var(--ink)); text-decoration: none;
+    padding: 13px 24px; border-radius: var(--radius-pill); white-space: nowrap;
+    font-family: var(--font-sans); font-size: var(--fs-body-sm); font-weight: var(--fw-ui); color: hsl(var(--ink)); text-decoration: none;
     transition: background-color .35s ease, color .35s ease;
   }
   .work-dock__link:hover { background: hsl(var(--ink) / 0.07); }
   .work-dock__link.is-active { background: hsl(var(--ink)); color: hsl(var(--background)); }
   @media (max-width: 480px) {
     .work-dock { bottom: calc(24px + env(safe-area-inset-bottom)); padding: 5px; gap: 2px; }
-    .work-dock__link { padding: 12px 10px; font-size: 13.5px; }
+    .work-dock__link { padding: 12px 10px; font-size: var(--fs-meta); }
   }
   @media (max-width: 370px) {
     .work-dock { gap: 0; }
-    .work-dock__link { padding: 11px 8px; font-size: 12.5px; }
+    .work-dock__link { padding: 11px 8px; }
   }
   @media (prefers-reduced-motion: reduce) {
     .work-dock { transition: opacity .2s ease; transform: translate(-50%, 0); }
@@ -898,16 +997,16 @@
     .work-fab.is-on { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
     .work-fab__btn {
       display: inline-flex; align-items: center; gap: 10px; padding: 14px 20px 14px 18px; white-space: nowrap;
-      border-radius: 999px; border: 1px solid hsl(var(--ink) / 0.14);
+      border-radius: var(--radius-pill); border: 1px solid hsl(var(--ink) / 0.14);
       background: hsl(var(--ink)); color: hsl(var(--background));
-      font-family: var(--font-sans); font-size: 15px; font-weight: 500; cursor: pointer;
+      font-family: var(--font-sans); font-size: var(--fs-body-sm); font-weight: var(--fw-ui); cursor: pointer;
       box-shadow: 0 18px 44px -12px hsl(var(--ink) / 0.55), 0 2px 6px hsl(var(--ink) / 0.12);
     }
     .work-fab__chev { opacity: .7; transition: transform .35s ease; }
     .work-fab.is-open .work-fab__chev { transform: rotate(180deg); }
     .work-fab__menu {
       position: absolute; left: 50%; bottom: calc(100% + 12px); width: min(300px, calc(100vw - 32px));
-      padding: 8px; border-radius: 22px; border: 1px solid hsl(var(--ink) / 0.12);
+      padding: 8px; border-radius: var(--radius-card); border: 1px solid hsl(var(--ink) / 0.12);
       background: hsl(var(--background) / 0.92);
       -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4);
       box-shadow: 0 24px 56px -16px hsl(var(--ink) / 0.5);
@@ -916,11 +1015,11 @@
     }
     .work-fab.is-open .work-fab__menu { transform: translate(-50%, 0) scale(1); opacity: 1; pointer-events: auto; }
     .work-fab__item {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; border-radius: 14px;
-      font-family: var(--font-sans); font-size: 16px; color: hsl(var(--ink)); text-decoration: none;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; border-radius: var(--radius-media);
+      font-family: var(--font-sans); font-size: var(--fs-body); color: hsl(var(--ink)); text-decoration: none;
     }
-    .work-fab__item.is-active { background: hsl(var(--ink) / 0.07); font-weight: 500; }
-    .work-fab__count { font-size: 13px; color: hsl(var(--muted-foreground)); }
+    .work-fab__item.is-active { background: hsl(var(--ink) / 0.07); font-weight: var(--fw-ui); }
+    .work-fab__count { font-size: var(--fs-meta); color: hsl(var(--muted-foreground)); }
   }
   @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
     .work-fab, .work-fab__menu { transition: opacity .2s ease; }
@@ -941,21 +1040,21 @@
      columns, with a gentle scroll parallax. */
   .rfx-footer-inner { padding-bottom: calc(26vw * 0.78 + 40px); }
   .rfx-footer-mark-wrap { bottom: 14px; }
-  .rfx-footer-mark { --rfx-mark-parallax: 0; font-size: 26vw; }
+  .rfx-footer-mark { --rfx-mark-parallax: 0; font-size: var(--fs-footer-mark); }
   @media (min-width: 768px) {
     .rfx-footer-inner { padding-bottom: 2.25rem; }
     .rfx-footer-mark-wrap { bottom: -8rem; }
-    .rfx-footer-mark { --rfx-mark-parallax: 1; font-size: clamp(220px, 50vw, 880px); }
+    .rfx-footer-mark { --rfx-mark-parallax: 1; font-size: var(--fs-footer-mark-lg); }
   }
   @keyframes work-viewer-in { from { opacity: 0; } to { opacity: 1; } }
   /* The stage takes all the height left after the caption, so the caption
      and counter sit in the same place for tall and wide photos alike. */
   .work-viewer__stage { flex: 1 1 0; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; }
-  .work-viewer__img { max-width: min(92vw, 1100px); max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 6px; touch-action: pan-y; user-select: none; }
+  .work-viewer__img { max-width: min(92vw, 1100px); max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: var(--radius-media); touch-action: pan-y; user-select: none; }
   .work-viewer__cap { flex: none; margin-top: 16px; min-height: 56px; text-align: center; max-width: 60ch; }
   .work-viewer__btn {
     position: absolute; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px;
-    border-radius: 4px; border: 1px solid hsl(0 0% 100% / 0.25); background: hsl(0 0% 100% / 0.06); color: inherit; cursor: pointer;
+    border-radius: var(--radius-chip); border: 1px solid hsl(0 0% 100% / 0.25); background: hsl(0 0% 100% / 0.06); color: inherit; cursor: pointer;
     transition: background .3s ease;
   }
   .work-viewer__btn:hover { background: hsl(0 0% 100% / 0.16); }
@@ -1057,7 +1156,7 @@
     /* Reduce dark Enquire section bottom padding so the gap before footer feels right */
     .rfx-enquire { padding-bottom: 40px; }
     /* Form fields wider — remove form-wrap inner padding & give fields more room */
-    .rfx-enquire .form-wrap { padding: 20px; border-radius: 12px; }
+    .rfx-enquire .form-wrap { padding: 20px; }
     /* Service cards: cap image height on mobile so title + body stay visible */
     .rfx-svc-img {
       aspect-ratio: auto !important;
@@ -1097,13 +1196,7 @@
     }
     .cp-reveal-img-wrap > div { box-shadow: 0 12px 24px -16px hsl(var(--ink) / 0.18) !important; }
 
-    /* Mobile-only: tighter corner radius for a more editorial feel */
-    .cp-reveal-img-wrap > div,
-    .exp-img-wrap,
-    .rfx-about-img,
-    .rfx-rounded-img {
-      border-radius: 12px !important;
-    }
+    /* (Phone corner sizes come from --radius-card / --radius-media.) */
 
     /* Reduce gap between adjacent CPReveal sections on mobile so related
        reveals read as a sequence — but keep enough breathing room between them. */
@@ -1117,10 +1210,7 @@
     .cp-reveal-section.cp-reveal-no-img:has(+ .cp-reveal-section) { padding-bottom: 56px !important; }
     .cp-reveal-section.cp-reveal-no-img + .cp-reveal-section { padding-top: 56px !important; }
 
-    /* Mobile body-copy bump: bump 16px paragraphs to 17.5px for readability.
-       Small/meta text (13–15px) stays as-is intentionally. */
-    .rfx-body-bump,
-    .text-\[16px\] { font-size: 17.5px !important; line-height: 1.65 !important; }
+    /* (Phone body sizes come from the --fs-lead / --fs-body tokens.) */
   }
 
   /* ============================================================
@@ -1155,7 +1245,7 @@
 
     /* RevealWord quote — capped at 64px */
     .reveal-word { padding: 90px 0; }
-    .reveal-word h3 { font-size: clamp(44px, 5.4vw, 64px) !important; }
+    .reveal-word { --fs-mega: clamp(44px, 5.4vw, 64px); }
   }
 
   /* Nav dropdown bow: one jingle on hover, swinging from the knot and
@@ -1188,7 +1278,7 @@
 
   /* Shimmer stroke — constant, very subtle animated border for the popular pricing card */
   .rfx-shimmer-stroke {
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     padding: 1.5px;
     background: linear-gradient(
       120deg,
@@ -1236,10 +1326,10 @@
   .article-prose > * + * { margin-top: 1.4em; }
   .article-prose h2 {
     font-family: var(--font-serif);
-    font-weight: 500;
+    font-weight: var(--fw-heading);
     font-size: var(--fs-h3);
-    line-height: 1.18;
-    letter-spacing: -0.012em;
+    line-height: var(--lh-h3);
+    letter-spacing: var(--ls-h3);
     margin-top: calc(2.4em + 8px);
     margin-bottom: 0.4em;
     text-wrap: balance;
@@ -1252,10 +1342,10 @@
   .article-prose h2 + * { margin-top: 5px; }
   .article-prose h3 {
     font-family: var(--font-serif);
-    font-weight: 500;
+    font-weight: var(--fw-heading);
     font-size: var(--fs-h4);
-    line-height: 1.25;
-    letter-spacing: -0.008em;
+    line-height: var(--lh-h4);
+    letter-spacing: var(--ls-h4);
     margin-top: 2em;
     margin-bottom: 0.4em;
   }
@@ -1276,7 +1366,6 @@
   .article-prose ul { list-style: disc; }
   .article-prose ol { list-style: decimal; }
   .article-prose li + li { margin-top: 0.4em; }
-  .article-prose strong { font-weight: 600; }
   .article-prose em { font-style: italic; }
 }
 
@@ -1286,7 +1375,7 @@
 .story-fan-card {
   position: absolute;
   inset: 0;
-  border-radius: 16px;
+  border-radius: var(--radius-media);
   overflow: hidden;
   cursor: pointer;
   background: hsl(var(--ink) / 0.1);

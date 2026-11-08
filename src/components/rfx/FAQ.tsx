@@ -82,18 +82,12 @@ const FAQ = () => {
         <div className="text-center heading-to-body">
           <h2
             id="faq-heading"
-            className="font-serif-rf"
-            style={{
-              fontSize: "var(--fs-h2)",
-              lineHeight: 1.06,
-              fontWeight: 300,
-              letterSpacing: "-0.025em",
-            }}
+            className="t-h2"
           >
             Questions{" "}
-            <em className="italic font-light text-accent-warm">answered.</em>
+            <em className="t-accent">answered.</em>
           </h2>
-          <p className="text-[15.5px] leading-[1.6] text-ink-soft max-w-[520px] mx-auto mt-6">
+          <p className="t-body-sm text-ink-soft max-w-[520px] mx-auto mt-6">
             If you don't see what you need here, just ask -{" "}
             <a
               href="mailto:Riverfoxevents@gmail.com"

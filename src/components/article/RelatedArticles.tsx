@@ -26,8 +26,7 @@ const RelatedArticles = ({ items }: Props) => {
     // share one left and right edge (Matt, 2026-11-07).
     <section className="max-w-[720px] mx-auto px-6 my-16 md:my-24">
       <div
-        className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-8 text-center"
-        style={{ fontWeight: 600 }}
+        className="t-eyebrow text-ink-soft mb-8 text-center"
       >
         More to read
       </div>
@@ -40,7 +39,7 @@ const RelatedArticles = ({ items }: Props) => {
           >
             {a.cardImage && (
               <div
-                className="shrink-0 w-[112px] md:w-[140px] aspect-square overflow-hidden rounded-[10px] bg-surface-alt"
+                className="shrink-0 w-[112px] md:w-[140px] aspect-square overflow-hidden rounded-media bg-surface-alt"
                 aria-hidden="true"
               >
                 <img
@@ -55,22 +54,15 @@ const RelatedArticles = ({ items }: Props) => {
             )}
             <div className="flex-1 min-w-0">
               <h3
-                className="font-serif-rf text-ink group-hover:text-accent-warm transition-colors"
-                style={{
-                  fontSize: "var(--fs-h4)",
-                  lineHeight: 1.2,
-                  fontWeight: 400,
-                  letterSpacing: "-0.012em",
-                }}
+                className="t-h4 text-ink group-hover:text-accent-warm transition-colors"
               >
                 {a.title}
               </h3>
-              <p className="mt-2 text-[14px] leading-[1.55] text-ink-soft line-clamp-3">
+              <p className="t-body-sm mt-2 text-ink-soft line-clamp-3">
                 {a.teaser}
               </p>
               <span
-                className="mt-3 inline-block font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink-soft group-hover:text-ink transition-colors"
-                style={{ fontWeight: 600 }}
+                className="t-eyebrow mt-3 inline-block text-ink-soft group-hover:text-ink transition-colors"
               >
                 Read →
               </span>

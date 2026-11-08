@@ -19,7 +19,7 @@ const waltonOnThames = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties are where we shine.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         The grown-up occasions too.
       </em>
     </>

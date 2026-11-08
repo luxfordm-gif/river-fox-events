@@ -20,7 +20,7 @@ const tunbridgeWells = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties are our main focus.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         The grown-up days too.
       </em>
     </>

@@ -35,7 +35,7 @@ const Welcome = () => {
           title={
             <>
               Welcome to{" "}
-              <em className="italic font-light text-accent-warm">River Fox Events.</em>
+              <em className="t-accent">River Fox Events.</em>
             </>
           }
           note="Formerly Lollipop Balloons"
@@ -48,7 +48,6 @@ const Welcome = () => {
             <a
               href="/journal/lollipop-balloons-to-river-fox-events/"
               className="btn-link-rf"
-              style={{ fontWeight: 600 }}
             >
               Read the rebrand story <span className="arr">→</span>
             </a>
@@ -57,8 +56,7 @@ const Welcome = () => {
 
         <section className="container-rfx pb-12 md:pb-16">
           <div
-            className="max-w-[680px] mx-auto px-6 font-serif-rf text-ink text-center space-y-6"
-            style={{ fontSize: "18px", lineHeight: 1.7 }}
+            className="max-w-[680px] mx-auto px-6 t-lead text-ink text-center space-y-6"
           >
             <p>
               If you've worked with us under the name{" "}

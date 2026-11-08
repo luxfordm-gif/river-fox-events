@@ -20,7 +20,7 @@ const crawley = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties lead the way.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         The grown-up events follow.
       </em>
     </>

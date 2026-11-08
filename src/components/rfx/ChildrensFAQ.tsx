@@ -9,8 +9,8 @@ type ChildrensFAQProps = {
   defaultOpen?: string | false;
   paddingTop?: string;
   paddingBottom?: string;
-  /** Heading size token; defaults to the section-title size. */
-  headingSize?: string;
+  /** Named text style for the heading; defaults to the section title (t-h2). */
+  headingClass?: string;
 };
 
 const DEFAULT_FAQS: FAQ[] = [
@@ -56,7 +56,7 @@ const ChildrensFAQ = ({
   defaultOpen = false,
   paddingTop,
   paddingBottom = "48px",
-  headingSize = "var(--fs-h2)",
+  headingClass = "t-h2",
 }: ChildrensFAQProps = {}) => {
   // Inject FAQPage JSON-LD scoped to this section so search engines can pick up
   // the Q&A as a rich result. We dedupe per headingId so multiple FAQ blocks
@@ -96,18 +96,12 @@ const ChildrensFAQ = ({
         <div className="text-center heading-to-body">
           <h2
             id={headingId}
-            className="font-serif-rf"
-            style={{
-              fontSize: headingSize,
-              lineHeight: 1.06,
-              fontWeight: 300,
-              letterSpacing: "-0.025em",
-            }}
+            className={headingClass}
           >
             Your questions{" "}
-            <em className="italic font-light text-accent-warm">answered.</em>
+            <em className="t-accent">answered.</em>
           </h2>
-          <p className="text-[15.5px] leading-[1.6] text-ink-soft max-w-[520px] mx-auto mt-6">
+          <p className="t-body-sm text-ink-soft max-w-[520px] mx-auto mt-6">
             Anything else on your mind?{" "}
             <a
               href="mailto:Riverfoxevents@gmail.com"

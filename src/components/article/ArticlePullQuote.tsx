@@ -13,19 +13,13 @@ type Props = {
 const ArticlePullQuote = ({ children, attribution }: Props) => (
   <blockquote className="max-w-[820px] mx-auto px-6 my-14 md:my-20 text-center">
     <p
-      className="font-serif-rf italic text-ink"
-      style={{
-        fontSize: "var(--fs-h3)",
-        lineHeight: 1.22,
-        fontWeight: 300,
-        letterSpacing: "-0.012em",
-        textWrap: "balance",
-      }}
+      className="t-quote italic text-ink"
+      style={{ textWrap: "balance" }}
     >
       “{children}”
     </p>
     {attribution && (
-      <cite className="mt-5 inline-block font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink-soft not-italic">
+      <cite className="t-eyebrow mt-5 inline-block text-ink-soft not-italic">
         - {attribution}
       </cite>
     )}

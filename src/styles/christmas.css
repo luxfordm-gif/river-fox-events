@@ -91,7 +91,7 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 /* Card image swap: the garland close-up fades in over the wide shot on
    hover, or on touch when the card is mid-screen (.is-swapped, set by the
    page). */
-.xmas-swap { position: relative; overflow: hidden; border-radius: 12px; }
+.xmas-swap { position: relative; overflow: hidden; border-radius: var(--radius-media); }
 .xmas-swap__detail { opacity: 0; transition: opacity 0.6s ease; }
 @media (hover: hover) {
   .xmas-swap:hover .xmas-swap__detail { opacity: 1; }
@@ -105,14 +105,14 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 .xmas-tag {
   display: inline-block;
   font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
+  font-weight: var(--fw-strong);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
   line-height: 1;
   /* Capitals sit high in their line box, so give a touch more room on top. */
   padding: 7px 11px 6px;
-  border-radius: 4px;
+  border-radius: var(--radius-chip);
   background: hsl(var(--xmas-tag-bg));
   color: hsl(var(--xmas-tag-fg));
   vertical-align: middle;
@@ -123,15 +123,15 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 }
 
 /* File input inside the shared .form-row field style. */
-.form-row input[type="file"] { font-size: 13px; font-weight: 400; color: hsl(var(--ink-soft)); cursor: pointer; }
+.form-row input[type="file"] { font-size: var(--fs-meta); font-weight: var(--fw-body); color: hsl(var(--ink-soft)); cursor: pointer; }
 .form-row input[type="file"]::file-selector-button {
   font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 500;
+  font-size: var(--fs-meta);
+  font-weight: var(--fw-ui);
   margin-right: 12px;
   padding: 6px 12px;
   border: 1px solid hsl(var(--ink) / 0.2);
-  border-radius: 6px;
+  border-radius: var(--radius-control);
   background: hsl(var(--surface-alt));
   color: hsl(var(--ink));
   cursor: pointer;
@@ -155,7 +155,7 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
   bottom: 24px;
   width: 320px;
   padding: 30px 20px 20px;
-  border-radius: 18px;
+  border-radius: var(--radius-card);
   background: hsl(var(--surface-alt));
   color: hsl(var(--ink));
   box-shadow: 0 30px 70px -24px hsl(var(--ink) / 0.4), 0 6px 18px -8px hsl(var(--ink) / 0.18);
@@ -200,7 +200,7 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
   width: 130px;
   height: 163px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: var(--radius-media);
   border: 4px solid hsl(0 0% 100%);
   box-shadow: 0 14px 28px -14px hsl(var(--ink) / 0.45);
   transition: transform 0.9s cubic-bezier(0.45, 0, 0.2, 1), opacity 0.9s ease;
@@ -211,8 +211,8 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 .xmas-promo__card[data-pos="3"] { z-index: 1; transform: translateX(-50%) translateX(70%) rotate(16deg) scale(0.84); opacity: 0; }
 
 .xmas-promo__body { text-align: center; }
-.xmas-promo__title { font-size: 28px; line-height: 1.08; font-weight: 400; letter-spacing: -0.02em; margin-top: 8px; }
-.xmas-promo__text { margin-top: 8px; font-size: 13.5px; line-height: 1.6; color: hsl(var(--ink-soft)); }
+.xmas-promo__title { font-size: var(--fs-h4); line-height: var(--lh-h4); font-weight: var(--fw-heading); letter-spacing: var(--ls-h4); margin-top: 8px; }
+.xmas-promo__text { margin-top: 8px; font-size: var(--fs-meta); line-height: var(--lh-body-sm); color: hsl(var(--ink-soft)); }
 .xmas-promo__cta { margin-top: 16px; width: 100%; justify-content: center; }
 
 @media (max-width: 767px) {
@@ -230,22 +230,17 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
   .xmas-promo__close { top: 6px; right: 6px; width: 26px; height: 26px; }
   .xmas-promo__deck { flex: none; width: 74px; height: 92px; margin: 0; }
   .xmas-promo__deck { margin-left: 6px; }
-  .xmas-promo__card { width: 62px; height: 80px; top: 6px; border-width: 3px; border-radius: 8px; }
+  .xmas-promo__card { width: 62px; height: 80px; top: 6px; border-width: 3px; }
   .xmas-promo__card[data-pos="1"] { transform: translateX(-50%) translateX(14%) rotate(6deg) scale(0.92); }
   .xmas-promo__card[data-pos="2"] { transform: translateX(-50%) translateX(-14%) rotate(-7deg) scale(0.88); }
   .xmas-promo__card[data-pos="3"] { transform: translateX(-50%) translateX(30%) rotate(12deg) scale(0.84); }
   .xmas-promo__body { text-align: left; padding-right: 22px; }
-  .xmas-promo .eyebrow { font-size: 9.5px; }
   .xmas-promo .xmas-promo__eyebrow { color: hsl(var(--xmas-gold-deep)); }
-  .xmas-promo__title { font-size: 20px; margin-top: 2px; }
-  .xmas-promo__link { margin-top: 4px; padding: 6px 0 4px; font-size: 13px; font-weight: 500; }
+  .xmas-promo__title { margin-top: 2px; }
+  .xmas-promo__link { margin-top: 4px; padding: 6px 0 4px; }
   /* Whole bar is tappable: the link's hit area stretches over the card,
      above the photo deck (z 1-4) and below the close button (z 7). */
   .xmas-promo__link::after { content: ""; position: absolute; inset: 0; z-index: 5; border-radius: inherit; }
-}
-/* Small phones: keep the bar slim. */
-@media (max-width: 389px) {
-  .xmas-promo__title { font-size: 18px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .xmas-promo, .xmas-promo__card { transition: none; }
@@ -258,7 +253,7 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 .xmas-option {
   position: relative;
   border: 1px solid hsl(var(--ink) / 0.28);
-  border-radius: 14px;
+  border-radius: var(--radius-card);
   /* Between this page's section cream and the main cream (#F1EFE8). */
   background: hsl(46 28% 93.5%);
   padding: 52px 32px 36px;
@@ -314,9 +309,9 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
   display: flex;
   align-items: flex-end;
   gap: 2px;
-  font-family: "Caveat", cursive;
-  font-weight: 500;
-  font-size: clamp(22px, 1.9vw, 28px);
+  font-family: var(--font-hand);
+  font-weight: var(--fw-ui);
+  font-size: var(--fs-hand);
   line-height: 1;
   color: hsl(var(--ink-soft));
   transform: rotate(-4deg);
@@ -329,7 +324,7 @@ html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
   right: auto;
   left: 6px;
   top: -64px;
-  font-size: clamp(19px, 1.45vw, 23px);
+  font-size: var(--fs-hand-sm);
 }
 .xmas-snow-hint--card svg { width: 32px; height: 53px; margin-bottom: -40px; }
 @media (min-width: 1024px) {

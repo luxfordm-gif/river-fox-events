@@ -157,9 +157,7 @@ const BalloonInstallations = () => {
           lines={[
             <>Balloon arches and installations,</>,
             <>
-              <em
-                className="italic font-normal text-accent-warm"
-              >
+              <em className="t-accent">
                 styled around your celebration.
               </em>
             </>,
@@ -177,7 +175,7 @@ const BalloonInstallations = () => {
           headline={
             <>
               It usually starts{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 with a balloon arch.
               </em>
             </>
@@ -211,7 +209,7 @@ const BalloonInstallations = () => {
           heading={
             <>
               What we{" "}
-              <em className="italic font-light text-accent-warm">make.</em>
+              <em className="t-accent">make.</em>
             </>
           }
           intro="Every piece is installed on the day and collected afterwards, and each one can be the start of a fully styled room."
@@ -223,7 +221,7 @@ const BalloonInstallations = () => {
           heading={
             <>
               Balloons as part of{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 the whole room.
               </em>
             </>
@@ -242,7 +240,7 @@ const BalloonInstallations = () => {
           heading={
             <>
               Start with the balloons,{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 or style the whole room.
               </em>
             </>
@@ -274,7 +272,7 @@ const BalloonInstallations = () => {
           heading={
             <>
               Want the whole room{" "}
-              <em className="italic font-light text-accent-warm">styled?</em>
+              <em className="t-accent">styled?</em>
             </>
           }
           intro="Balloons are one part of what I do. These are the three ways I style a full celebration, with the balloons built in."

@@ -77,7 +77,7 @@ const CPReveal = ({
     >
       {/* Inner zoom-out reveal: starts small (centred), expands to fill */}
       <div
-        className={`absolute inset-0 ph ${tone} overflow-hidden rounded-[14px]`}
+        className={`absolute inset-0 ph ${tone} overflow-hidden rounded-media`}
         style={{
           transform: visible ? "scale(1)" : "scale(0.92)",
           opacity: visible ? 1 : 0.2,
@@ -139,19 +139,13 @@ const CPReveal = ({
       }}
     >
       <h2
-        className="font-serif-rf"
-        style={{
-          fontSize: "var(--fs-h2)",
-          lineHeight: 1.0,
-          fontWeight: 400,
-          letterSpacing: "-0.025em",
-          textWrap: "balance",
-        }}
+        className="t-h2"
+        style={{ textWrap: "balance" }}
       >
         {headline}
       </h2>
       <div
-        className="cp-reveal-body mt-5 md:mt-7 text-[16px] leading-[1.7] text-ink-soft max-w-[520px] space-y-5"
+        className="cp-reveal-body t-body mt-5 md:mt-7 text-ink-soft max-w-[520px] space-y-5"
         style={{ textWrap: "pretty" }}
       >
         {children}

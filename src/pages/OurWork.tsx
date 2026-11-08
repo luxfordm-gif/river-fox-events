@@ -77,15 +77,14 @@ const EventCard = ({
       )}
       <figcaption className="mt-3">
         <span
-          className="block font-serif-rf text-ink"
-          style={{ fontSize: "var(--fs-caption)", lineHeight: 1.3, fontWeight: 400, textWrap: "balance" }}
+          className="block t-caption text-ink"
+          style={{ textWrap: "balance" }}
         >
           {event.title}
         </span>
         {event.place && (
           <span
-            className="block mt-1 font-mono-rf text-[10px] tracking-[0.2em] uppercase text-ink-soft"
-            style={{ fontWeight: 600 }}
+            className="block mt-1 t-eyebrow text-ink-soft"
           >
             {event.place}
           </span>
@@ -245,11 +244,10 @@ const Section = ({
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-10 mb-10 md:mb-14">
           <h2
             id={`${section.id}-heading`}
-            className="font-serif-rf fade-up m-0"
-            style={{ fontSize: "var(--fs-h2-sm)", lineHeight: 1.04, fontWeight: 300, letterSpacing: "-0.025em" }}
+            className="t-h2-sm fade-up m-0"
           >
             {section.titleLead}{" "}
-            <em className="italic font-light text-accent-warm">{section.titleAccent}</em>
+            <em className="t-accent">{section.titleAccent}</em>
           </h2>
         </div>
         <div
@@ -358,8 +356,8 @@ const Viewer = ({
         />
       </div>
       <div className="work-viewer__cap">
-        <div className="font-serif-rf" style={{ fontSize: "var(--fs-caption)" }}>{item.title}</div>
-        <div className="mt-1 font-mono-rf text-[10px] tracking-[0.2em] uppercase opacity-70" style={{ fontWeight: 600 }}>
+        <div className="t-caption">{item.title}</div>
+        <div className="mt-1 t-eyebrow opacity-70">
           {item.place ? `${item.place} · ` : ""}{index + 1} / {items.length}
         </div>
       </div>
@@ -546,12 +544,12 @@ const OurWork = () => {
           <div className="container-rfx text-center">
             <h2
               id="our-work-cta"
-              className="font-serif-rf fade-up m-0 mx-auto max-w-[18ch]"
-              style={{ fontSize: "var(--fs-h2)", lineHeight: 1.04, fontWeight: 300, letterSpacing: "-0.025em", textWrap: "balance" }}
+              className="t-h2 fade-up m-0 mx-auto max-w-[18ch]"
+              style={{ textWrap: "balance" }}
             >
-              Have an event <em className="italic font-light text-accent-warm">in mind?</em>
+              Have an event <em className="t-accent">in mind?</em>
             </h2>
-            <p className="mt-5 text-[15.5px] leading-[1.6] text-ink-soft max-w-[44ch] mx-auto">
+            <p className="mt-5 t-lead text-ink-soft max-w-[44ch] mx-auto">
               Message me the date and the occasion, and I'll get back to you
               with ideas and a quote.
             </p>

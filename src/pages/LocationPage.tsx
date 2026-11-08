@@ -101,23 +101,12 @@ const LocationPage = () => {
             <div className="mb-4 md:mb-9 flex flex-col items-center text-center">
               <h1
                 id={`loc-${loc.slug}-hero-heading`}
-                className="font-serif-rf max-w-[20ch] md:max-w-none mx-auto break-words text-pretty"
-                style={{
-                  // Smaller than the homepage h1 (which clamps to 120px).
-                  // Location titles like "Your Walton-on-Thames party
-                  // stylist." run ~16em wide in Fraunces, so a 120px max
-                  // overflows the 1440px container. 80px keeps every
-                  // location's first line on one row at desktop.
-                  //
-                  // Mobile max-w bumped from 14ch to 20ch so longer town
-                  // names ("Oxshott", "Walton-on-Thames") aren't forced
-                  // into a narrow column - gives the h1 more breathing
-                  // room across the typical phone viewport.
-                  fontSize: "var(--fs-h1)",
-                  lineHeight: 1.04,
-                  fontWeight: 400,
-                  letterSpacing: "-0.032em",
-                }}
+                // t-h1, not t-display: location titles like "Your
+                // Walton-on-Thames party stylist." run ~16em wide in
+                // Fraunces, so the display size overflows the container.
+                // Mobile max-w is 20ch so longer town names ("Oxshott",
+                // "Walton-on-Thames") aren't forced into a narrow column.
+                className="t-h1 max-w-[20ch] md:max-w-none mx-auto break-words text-pretty"
               >
                 {loc.hero.lines.map((line, i) => (
                   <span
@@ -134,7 +123,7 @@ const LocationPage = () => {
                 ))}
               </h1>
               {loc.hero.sub && (
-                <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-1 md:mt-5 fade-up in text-center">
+                <p className="t-lead text-ink-soft max-w-[520px] mt-1 md:mt-5 fade-up in text-center">
                   {loc.hero.sub}
                 </p>
               )}
@@ -179,7 +168,7 @@ const LocationPage = () => {
             loc.servicesHeading ?? (
               <>
                 Our signature{" "}
-                <em className="italic font-light text-accent-warm">
+                <em className="t-accent">
                   experiences.
                 </em>
               </>

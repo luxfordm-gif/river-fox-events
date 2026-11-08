@@ -256,7 +256,7 @@ const HeroEditorial = () => {
           {COLUMNS.map((col, colIdx) => (
             <div
               key={colIdx}
-              className="relative overflow-hidden ph ph-warm rounded-[14px] rfx-rounded-img"
+              className="relative overflow-hidden ph ph-warm rounded-media rfx-rounded-img"
               style={{ width: `${col.widthPct}%`, aspectRatio: col.aspect }}
             >
               {col.slides.map((slide, sIdx) => {

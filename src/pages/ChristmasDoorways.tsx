@@ -279,13 +279,7 @@ const SectionTitle = ({ children, id, light, snow }: { children: ReactNode; id: 
   return (
     <h2
       id={id}
-      className={`font-serif-rf ${light ? "" : "text-primary"}`}
-      style={{
-        fontSize: "var(--fs-h2)",
-        lineHeight: 0.98,
-        fontWeight: 300,
-        letterSpacing: "-0.03em",
-      }}
+      className={`t-h2 ${light ? "" : "text-primary"}`}
     >
       {snow ? (
         <span className="xmas-title-snow">
@@ -393,23 +387,17 @@ const ChristmasDoorways = () => {
           <HeroGarland />
           <div className="container-rfx">
             <div className="mt-2 md:mt-4 mb-4 md:mb-9 flex flex-col items-center text-center">
-              <p className="eyebrow">Christmas 2026 · Now booking</p>
+              <p className="t-eyebrow text-ink-soft">Christmas 2026 · Now booking</p>
               <h1
                 id="xmas-hero-heading"
-                className="font-serif-rf mt-5 max-w-none"
-                style={{
-                  fontSize: "var(--fs-display)",
-                  lineHeight: 0.96,
-                  fontWeight: 400,
-                  letterSpacing: "-0.038em",
-                }}
+                className="t-display mt-5 max-w-none"
               >
                 <span className="xmas-title-snow">
                   <SnowCap mode="text" />
                   <span data-snow-text>Christmas door garlands in Surrey.</span>
                 </span>
               </h1>
-              <div className="mt-5 max-w-[46ch] md:max-w-[70ch] text-[17px] leading-[1.65] text-ink-soft space-y-4">
+              <div className="mt-5 max-w-[46ch] md:max-w-[70ch] t-lead text-ink-soft space-y-4">
                 <p>
                   A garlanded doorway is one of the loveliest ways to
                   welcome Christmas.
@@ -445,9 +433,9 @@ const ChristmasDoorways = () => {
             <div className="max-w-[760px] mx-auto text-center fade-up">
               <SectionTitle id="xmas-what-heading" snow>
                 A little Christmas magic,{" "}
-                <em className="italic font-light text-accent-warm">right at your door.</em>
+                <em className="t-accent">right at your door.</em>
               </SectionTitle>
-              <p className="mt-6 text-[16px] leading-[1.7] text-ink-soft max-w-[54ch] mx-auto">
+              <p className="mt-6 t-lead text-ink-soft max-w-[54ch] mx-auto">
                 Whether it's the finishing touch to your family home or a
                 festive welcome for your customers, a beautifully styled
                 doorway sets the tone for the season.
@@ -485,13 +473,10 @@ const ChristmasDoorways = () => {
                       decoding="async"
                     />
                   </div>
-                  <h3
-                    className="font-serif-rf text-primary mt-6"
-                    style={{ fontSize: "var(--fs-h3)", lineHeight: 1.18, fontWeight: 400, letterSpacing: "-0.018em" }}
-                  >
+                  <h3 className="t-h3 text-primary mt-6">
                     {card.title}
                   </h3>
-                  <div className="mt-2 text-[15.5px] leading-[1.7] text-ink-soft max-w-[52ch] space-y-3">
+                  <div className="mt-2 t-body-sm text-ink-soft max-w-[52ch] space-y-3">
                     {card.body.map((para) => (
                       <p key={para}>{para}</p>
                     ))}
@@ -515,11 +500,11 @@ const ChristmasDoorways = () => {
                 decoding="async"
               />
               <div className="max-w-[760px] mx-auto text-center fade-up mt-8 md:mt-10">
-                <p className="eyebrow">Garland options</p>
+                <p className="t-eyebrow text-ink-soft">Garland options</p>
                 <div className="mt-5">
                   <SectionTitle id="xmas-options-heading" snow>
                     Choose your{" "}
-                    <em className="italic font-light text-accent-warm">Christmas garland.</em>
+                    <em className="t-accent">Christmas garland.</em>
                   </SectionTitle>
                 </div>
               </div>
@@ -533,17 +518,12 @@ const ChristmasDoorways = () => {
                     <p className="xmas-option__tag">
                       {opt.popular && <span className="xmas-tag">Most popular</span>}
                     </p>
-                    {/* Phones get larger titles; the desktop columns keep the
-                        tighter sizing. */}
-                    <h3
-                      className="font-serif-rf text-primary text-[28px] md:text-h4"
-                      style={{ lineHeight: 1.15, fontWeight: 400 }}
-                    >
+                    <h3 className="t-h4 text-primary">
                       {opt.title}
                     </h3>
-                    <p className="font-serif-rf italic text-accent-warm text-[19px] md:text-[17px] leading-[1.3] mt-1">{opt.note}</p>
+                    <p className="t-caption italic text-accent-warm mt-1">{opt.note}</p>
                     {/* Keep to three lines max (Matt, 2026-11-04). */}
-                    <p className="mt-4 text-[15.5px] md:text-[15px] leading-[1.75] text-ink-soft max-w-[42ch] md:max-w-[40ch]">{opt.body}</p>
+                    <p className="mt-4 t-body-sm text-ink-soft max-w-[42ch] md:max-w-[40ch]">{opt.body}</p>
                     <div className="mt-auto pt-6">
                       <a
                         href="#enquire"
@@ -553,7 +533,7 @@ const ChristmasDoorways = () => {
                           const select = document.querySelector<HTMLSelectElement>('form[name="christmas-doorway"] select[name="garland"]');
                           if (select) select.value = opt.title;
                         }}
-                        className="xmas-option__link btn-link-rf text-[14px] text-primary"
+                        className="xmas-option__link btn-link-rf text-primary"
                       >
                         {opt.link} <span className="arr">→</span>
                       </a>
@@ -572,9 +552,9 @@ const ChristmasDoorways = () => {
             <div className="max-w-[760px] mx-auto text-center fade-up">
               <SectionTitle id="xmas-ig-heading" snow>
                 A little inspiration for{" "}
-                <em className="italic font-light text-accent-warm">your Christmas doorway.</em>
+                <em className="t-accent">your Christmas doorway.</em>
               </SectionTitle>
-              <p className="mt-6 text-[16px] leading-[1.7] text-ink-soft">
+              <p className="mt-6 t-lead text-ink-soft">
                 A few favourite doorways from Christmases past.
               </p>            </div>
           </div>
@@ -592,7 +572,7 @@ const ChristmasDoorways = () => {
               <div className="max-w-[760px] mx-auto text-center fade-up">
                 <SectionTitle id="xmas-ad-heading" snow>
                   Watch the{" "}
-                  <em className="italic font-light text-accent-warm">Christmas campaign.</em>
+                  <em className="t-accent">Christmas campaign.</em>
                 </SectionTitle>
               </div>
               <div className="mt-12 md:mt-16 fade-up">
@@ -617,9 +597,9 @@ const ChristmasDoorways = () => {
             <div className="max-w-[760px] mx-auto text-center fade-up">
               <SectionTitle id="xmas-how-heading" snow>
                 Your Christmas doorway,{" "}
-                <em className="italic font-light text-accent-warm">taken care of.</em>
+                <em className="t-accent">taken care of.</em>
               </SectionTitle>
-              <p className="mt-6 text-[16px] leading-[1.7] text-ink-soft max-w-[54ch] mx-auto">
+              <p className="mt-6 t-lead text-ink-soft max-w-[54ch] mx-auto">
                 From the first conversation to the finished installation, I'll
                 take care of the details so you can simply enjoy your
                 beautifully dressed doorway throughout the festive season.
@@ -632,16 +612,13 @@ const ChristmasDoorways = () => {
                   {/* Extra tag sits by the step number so step titles stay on
                       one line, even in the narrow 4-column layout. */}
                   <div className="flex items-center gap-3 h-[22px]">
-                    <span className="font-mono-rf text-[12px] tracking-[0.18em] text-ink-soft">{s.n}</span>
+                    <span className="t-eyebrow text-ink-soft">{s.n}</span>
                     {s.extra && <span className="xmas-tag">Extra</span>}
                   </div>
-                  <h3
-                    className="font-serif-rf text-primary mt-3"
-                    style={{ fontSize: "var(--fs-h4)", lineHeight: 1.2, fontWeight: 400 }}
-                  >
+                  <h3 className="t-h4 text-primary mt-3">
                     {s.title}
                   </h3>
-                  <p className="mt-3 text-[15px] leading-[1.7] text-ink-soft">{s.body}</p>
+                  <p className="mt-3 t-body-sm text-ink-soft">{s.body}</p>
                 </li>
               ))}
             </ol>
@@ -651,7 +628,7 @@ const ChristmasDoorways = () => {
         <ChildrensFAQ
           faqs={FAQS}
           headingId="xmas-faq-heading"
-          headingSize="var(--fs-h3)"
+          headingClass="t-h3"
           paddingTop="clamp(40px, 6vw, 96px)"
           paddingBottom="clamp(150px, 12vw, 170px)"
         />
@@ -673,9 +650,9 @@ const ChristmasDoorways = () => {
               <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
                 <SectionTitle id="enquire-heading" light snow>
                   Book your{" "}
-                  <em className="italic font-light text-accent-warm">Christmas doorway.</em>
+                  <em className="t-accent">Christmas doorway.</em>
                 </SectionTitle>
-                <p className="text-[15.5px] leading-[1.7] max-w-[460px] mt-7" style={{ color: "hsl(var(--on-deep-soft))" }}>
+                <p className="t-lead max-w-[460px] mt-7" style={{ color: "hsl(var(--on-deep-soft))" }}>
                   Send a photo of your door with rough measurements and your
                   postcode, and I'll come back with ideas and a quote. Every
                   doorway is dressed by hand, so I can only take a small number
@@ -705,10 +682,7 @@ const ChristmasDoorways = () => {
                   </label>
                 </p>
                 <div className="hidden md:block mb-5 text-left">
-                  <h3
-                    className="font-serif-rf text-primary"
-                    style={{ fontSize: "var(--fs-h3)", lineHeight: 1.18, fontWeight: 400, letterSpacing: "-0.018em" }}
-                  >
+                  <h3 className="t-h3 text-primary">
                     Tell me about your door
                   </h3>
                 </div>
@@ -768,7 +742,7 @@ const ChristmasDoorways = () => {
                   </label>
                   <label className="form-row full form-check">
                     <input type="checkbox" name="takedown" value="Yes" />
-                    <span className="text-[14.5px] leading-[1.5] text-ink">
+                    <span className="t-body-sm text-ink">
                       Add January takedown
                     </span>
                     <span className="xmas-tag ml-auto">Extra</span>

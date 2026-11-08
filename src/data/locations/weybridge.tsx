@@ -19,7 +19,7 @@ const weybridge = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties first, always.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         We style the milestones too.
       </em>
     </>
@@ -99,7 +99,7 @@ const weybridge = makeLocation({
     heading: (
       <>
         Three lanes{" "}
-        <em className="italic font-light text-accent-warm">of work.</em>
+        <em className="t-accent">of work.</em>
       </>
     ),
     body: (

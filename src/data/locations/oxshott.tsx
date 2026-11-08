@@ -19,7 +19,7 @@ const oxshott = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties are what we're known for.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         We handle the milestones too.
       </em>
     </>
@@ -98,7 +98,7 @@ const oxshott = makeLocation({
     heading: (
       <>
         An at-home{" "}
-        <em className="italic font-light text-accent-warm">town.</em>
+        <em className="t-accent">town.</em>
       </>
     ),
     body: (

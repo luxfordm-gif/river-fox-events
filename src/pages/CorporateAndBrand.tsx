@@ -122,9 +122,7 @@ const CorporateAndBrand = () => {
           lines={[
             <>Corporate event styling</>,
             <>
-              <em
-                className="italic font-normal text-accent-warm"
-              >
+              <em className="t-accent">
                 and brand installations.
               </em>
             </>,
@@ -141,17 +139,11 @@ const CorporateAndBrand = () => {
           <div className="container-rfx text-center">
             <h2
               id="cb-trust-heading"
-              className="font-serif-rf text-ink-soft"
-              style={{
-                fontSize: "clamp(18px, 1.5vw, 22px)",
-                lineHeight: 1.2,
-                fontWeight: 400,
-                letterSpacing: "-0.01em",
-                marginBottom: "30px",
-              }}
+              className="t-h4 text-ink-soft"
+              style={{ marginBottom: "30px" }}
             >
               Trusted by{" "}
-              <em className="italic font-light text-accent-warm">leading brands.</em>
+              <em className="t-accent">leading brands.</em>
             </h2>
             <style>{`
               @keyframes rfx-trust-ticker {
@@ -172,12 +164,6 @@ const CorporateAndBrand = () => {
               .rfx-trust-item {
                 flex: 0 0 auto;
                 padding: 0 2.75rem;
-                font-family: var(--font-sans);
-                font-size: clamp(12px, 1.05vw, 15px);
-                font-weight: 600;
-                letter-spacing: 0.06em;
-                text-transform: uppercase;
-                line-height: 1.25;
                 color: hsl(var(--ink));
                 opacity: 0.72;
                 white-space: nowrap;
@@ -189,7 +175,7 @@ const CorporateAndBrand = () => {
             <div className="rfx-trust-ticker" aria-label="Brands we have worked with">
               <div className="rfx-trust-track">
                 {[...TRUST_LOGOS, ...TRUST_LOGOS].map((name, i) => (
-                  <span key={`${name}-${i}`} className="rfx-trust-item">
+                  <span key={`${name}-${i}`} className="rfx-trust-item t-ui uppercase">
                     {name}
                   </span>
                 ))}
@@ -210,7 +196,7 @@ const CorporateAndBrand = () => {
           headline={
             <>
               Your event environment is{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 your brand.
               </em>
             </>
@@ -240,7 +226,7 @@ const CorporateAndBrand = () => {
           headline={
             <>
               Every brief,{" "}
-              <em className="italic font-light text-accent-warm">
+              <em className="t-accent">
                 carefully considered.
               </em>
             </>

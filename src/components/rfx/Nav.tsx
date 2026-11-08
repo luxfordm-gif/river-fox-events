@@ -68,7 +68,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
     <>
       <nav className="rfx-nav">
         <div className="rfx-nav-row nav-left">
-          <a href="/">Home</a>
+          <a href="/" className="t-ui">Home</a>
           <div
             className="relative"
             onMouseEnter={handleServicesEnter}
@@ -76,7 +76,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           >
             <button
               type="button"
-              className="inline-flex items-center gap-1.5 bg-transparent border-0 p-0 cursor-pointer text-[13px] text-inherit"
+              className="inline-flex items-center gap-1.5 bg-transparent border-0 p-0 cursor-pointer t-ui text-inherit"
               aria-haspopup="true"
               aria-expanded={servicesOpen}
             >
@@ -102,7 +102,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                   <a
                     key={s.label}
                     href={s.href}
-                    className="no-underline-fx block px-5 py-2.5 text-[13px] text-ink hover:underline underline-offset-4 decoration-ink/60"
+                    className="no-underline-fx block px-5 py-2.5 t-ui text-ink hover:underline underline-offset-4 decoration-ink/60"
                   >
                     {s.label}
                   </a>
@@ -111,7 +111,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                 <a
                   href={SEASONAL.href}
                   onMouseEnter={jingleBow}
-                  className="no-underline-fx flex items-center gap-2.5 px-5 py-2.5 text-[13px] text-ink hover:underline underline-offset-4 decoration-ink/60"
+                  className="no-underline-fx flex items-center gap-2.5 px-5 py-2.5 t-ui text-ink hover:underline underline-offset-4 decoration-ink/60"
                 >
                   <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />
                   {SEASONAL.label}
@@ -119,7 +119,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               </div>
             </div>
           </div>
-          <a href="/our-work/" className="whitespace-nowrap">Our work</a>
+          <a href="/our-work/" className="t-ui whitespace-nowrap">Our work</a>
           <div
             className="relative"
             onMouseEnter={handleAboutEnter}
@@ -127,7 +127,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           >
             <button
               type="button"
-              className="inline-flex items-center gap-1.5 bg-transparent border-0 p-0 cursor-pointer text-[13px] text-inherit"
+              className="inline-flex items-center gap-1.5 bg-transparent border-0 p-0 cursor-pointer t-ui text-inherit"
               aria-haspopup="true"
               aria-expanded={aboutOpen}
             >
@@ -153,7 +153,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                   <a
                     key={s.label}
                     href={s.href}
-                    className="no-underline-fx block px-5 py-2.5 text-[13px] text-ink hover:underline underline-offset-4 decoration-ink/60"
+                    className="no-underline-fx block px-5 py-2.5 t-ui text-ink hover:underline underline-offset-4 decoration-ink/60"
                   >
                     {s.label}
                   </a>
@@ -161,18 +161,18 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               </div>
             </div>
           </div>
-          <a href="/contact/">Contact</a>
+          <a href="/contact/" className="t-ui">Contact</a>
         </div>
         <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto md:pt-2" aria-label="River Fox Events - home">
           <span className="text-[15px] font-medium tracking-[0.22em] leading-none">
             RIVER&nbsp;FOX&nbsp;EVENTS
           </span>
-          <span className="font-mono-rf text-[9.2px] tracking-[0.3em] uppercase text-ink-soft">
+          <span className="t-eyebrow text-ink-soft">
             Surrey
           </span>
         </a>
         <div className="rfx-nav-row nav-right justify-end">
-          <a href={enquireHref} onClick={handleEnquireClick} className="btn-solid-rf accent !py-2 !px-4 !text-[12px]">
+          <a href={enquireHref} onClick={handleEnquireClick} className="btn-solid-rf accent t-ui !py-2 !px-4">
             Enquire now <span>→</span>
           </a>
         </div>
@@ -183,7 +183,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((s) => !s)}
-          className="lg:hidden absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-3 px-3 h-9 font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink"
+          className="lg:hidden absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-3 px-3 h-9 t-eyebrow text-ink"
         >
           <span className="relative inline-block w-4 h-4 -mt-[2px]" aria-hidden="true">
             <span
@@ -223,7 +223,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className={`font-serif-rf text-[28px] leading-tight py-1 text-ink no-underline ${
+              className={`t-h3 py-1 text-ink no-underline ${
                 "seasonal" in l ? "flex items-center gap-3 border-y border-ink/10 py-3 my-1.5" : ""
               }`}
               style={{
@@ -243,7 +243,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           <a
             href="/journal/"
             onClick={() => setOpen(false)}
-            className="mt-6 font-mono-rf text-[11px] tracking-[0.22em] uppercase text-ink no-underline inline-flex items-center gap-2 self-start"
+            className="mt-6 t-eyebrow text-ink no-underline inline-flex items-center gap-2 self-start"
             style={{
               opacity: open ? 1 : 0,
               transform: open ? "translateY(0)" : "translateY(20px)",
@@ -255,7 +255,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           <a
             href="/#kindness"
             onClick={() => setOpen(false)}
-            className="mt-3 font-mono-rf text-[11px] tracking-[0.22em] uppercase text-ink no-underline inline-flex items-center gap-2 self-start"
+            className="mt-3 t-eyebrow text-ink no-underline inline-flex items-center gap-2 self-start"
             style={{
               opacity: open ? 1 : 0,
               transform: open ? "translateY(0)" : "translateY(20px)",
@@ -269,7 +269,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
             target="_blank"
             rel="noreferrer"
             onClick={() => setOpen(false)}
-            className="mt-3 font-mono-rf text-[11px] tracking-[0.22em] uppercase text-ink no-underline inline-flex items-center gap-2 self-start"
+            className="mt-3 t-eyebrow text-ink no-underline inline-flex items-center gap-2 self-start"
             style={{
               opacity: open ? 1 : 0,
               transform: open ? "translateY(0)" : "translateY(20px)",
@@ -278,7 +278,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           >
             Follow us on Instagram <span aria-hidden>→</span>
           </a>
-          <p className="text-sm text-ink-soft mt-6 leading-relaxed">
+          <p className="t-body-sm text-ink-soft mt-6">
             Riverfoxevents@gmail.com
             <br />
             Based in Surrey · By appointment.
@@ -290,7 +290,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               setOpen(false);
               handleEnquireClick(e);
             }}
-            className="btn-solid-rf accent mt-8 self-start"
+            className="btn-solid-rf accent t-ui mt-8 self-start"
             style={{
               opacity: open ? 1 : 0,
               transform: open ? "translateY(0)" : "translateY(20px)",

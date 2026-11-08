@@ -35,35 +35,28 @@ const ArticleHero = ({
     <header className="container-rfx pt-6 md:pt-10 pb-10 md:pb-12 text-center">
       <a
         href="/journal/"
-        className="inline-block font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink hover:opacity-70 transition-opacity"
-        style={{ fontWeight: 600 }}
+        className="t-eyebrow inline-block text-ink hover:opacity-70 transition-opacity"
       >
         Journal
       </a>
 
       <h1
-        className="font-serif-rf max-w-[20ch] mx-auto mt-7 md:mt-9"
-        style={{
-          fontSize: "var(--fs-h1)",
-          lineHeight: 1.04,
-          fontWeight: 500,
-          letterSpacing: "-0.025em",
-          textWrap: "balance",
-        }}
+        className="t-h1 max-w-[20ch] mx-auto mt-7 md:mt-9"
+        style={{ textWrap: "balance" }}
       >
         {title}
       </h1>
 
       {subtitle && (
         <p
-          className="mt-6 max-w-[44ch] mx-auto text-[18px] md:text-[20px] leading-[1.5] text-ink-soft font-serif-rf font-light italic"
+          className="t-lead mt-6 max-w-[44ch] mx-auto text-ink-soft italic"
           style={{ textWrap: "pretty" }}
         >
           {subtitle}
         </p>
       )}
 
-      <div className="mt-10 font-mono-rf text-[11px] tracking-[0.2em] uppercase text-ink-soft">
+      <div className="t-eyebrow mt-10 text-ink-soft">
         By {authorName} · {formattedDate} · {readMinutes} min read
       </div>
 

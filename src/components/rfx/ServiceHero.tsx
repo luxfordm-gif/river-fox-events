@@ -46,14 +46,13 @@ const ServiceHero = ({
             ? 1
             : Math.min(1, Math.max(0, window.scrollY / 520));
           const marginVw = 5 * (1 - progress);
-          const radius = 16 * (1 - progress);
           // Image starts slightly zoomed in (1.05) and settles to 1.0 as it
           // expands to full width - prevents the hard background edge being
           // visible during the transition.
           const scale = 1.05 - 0.05 * progress;
           el.style.marginLeft = `${marginVw}vw`;
           el.style.marginRight = `${marginVw}vw`;
-          el.style.borderRadius = `${radius}px`;
+          el.style.borderRadius = `calc(var(--radius-media) * ${1 - progress})`;
           if (img) img.style.transform = `scale(${scale})`;
         }
         raf = 0;
@@ -75,13 +74,7 @@ const ServiceHero = ({
         <div className="rfx-hero-intro mb-10 md:mb-14 flex flex-col items-center text-center">
           <h1
             id={headingId}
-            className="font-serif-rf max-w-none mx-auto break-words text-pretty"
-            style={{
-              fontSize: "var(--fs-display)",
-              lineHeight: 0.96,
-              fontWeight: 400,
-              letterSpacing: "-0.038em",
-            }}
+            className="t-display max-w-none mx-auto break-words text-pretty"
           >
             {lines.map((line, i) => (
               <span
@@ -95,7 +88,7 @@ const ServiceHero = ({
           </h1>
 
           <p
-            className={`word-reveal in delay-${lines.length} mt-3 md:mt-0 max-w-[44ch] mx-auto text-[17px] leading-[1.65] text-ink-soft text-center`}
+            className={`word-reveal in delay-${lines.length} mt-3 md:mt-0 max-w-[44ch] mx-auto t-lead text-ink-soft text-center`}
             style={{ textWrap: "pretty" } as CSSProperties}
           >
             {sub}
@@ -126,10 +119,10 @@ const ServiceHero = ({
       <div className="overflow-hidden">
         <div
           ref={imgWrapRef}
+          className="rounded-media"
           style={{
             marginLeft: "5vw",
             marginRight: "5vw",
-            borderRadius: "16px",
             overflow: "hidden",
             willChange: "margin, border-radius",
           }}

@@ -20,7 +20,7 @@ const sevenoaks = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties are the centre of it.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         We cover the rest as well.
       </em>
     </>

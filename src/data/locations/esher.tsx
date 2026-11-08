@@ -19,7 +19,7 @@ const esher = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties are our focus.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         The milestones, too.
       </em>
     </>
@@ -98,7 +98,7 @@ const esher = makeLocation({
     heading: (
       <>
         On the ground{" "}
-        <em className="italic font-light text-accent-warm">here.</em>
+        <em className="t-accent">here.</em>
       </>
     ),
     body: (

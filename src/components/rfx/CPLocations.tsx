@@ -24,7 +24,7 @@ const SLUG_BY_CITY = new Map(LOCATIONS.map((l) => [l.cityName, l.slug]));
 const DEFAULT_HEADING: ReactNode = (
   <>
     Areas we{" "}
-    <em className="italic font-light text-accent-warm">cover.</em>
+    <em className="t-accent">cover.</em>
   </>
 );
 
@@ -75,28 +75,19 @@ const CPLocations = ({
           {/* Left - copy + areas list */}
           <div className="flex flex-col items-start text-left fade-up">
             {eyebrow && (
-              <div
-                className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-4"
-                style={{ fontWeight: 600 }}
-              >
+              <div className="t-eyebrow text-ink-soft mb-4">
                 {eyebrow}
               </div>
             )}
             <h2
               id="cp-locations-heading"
-              className="font-serif-rf"
-              style={{
-                fontSize: "var(--fs-h2)",
-                lineHeight: 1.0,
-                fontWeight: 400,
-                letterSpacing: "-0.025em",
-                textWrap: "balance",
-              }}
+              className="t-h2"
+              style={{ textWrap: "balance" }}
             >
               {heading}
             </h2>
             <p
-              className="mt-6 text-[16px] leading-[1.7] text-ink-soft max-w-[520px]"
+              className="mt-6 t-lead text-ink-soft max-w-[520px]"
               style={{ textWrap: "pretty" }}
             >
               {intro}
@@ -109,9 +100,9 @@ const CPLocations = ({
                 return (
                   <li
                     key={a}
-                    className="flex items-baseline gap-3 py-3 border-b border-ink/15 font-serif-rf text-[18px] font-light tracking-[-0.012em] text-ink"
+                    className="flex items-baseline gap-3 py-3 border-b border-ink/15 t-h4 text-ink"
                   >
-                    <span className="font-mono-rf text-[10px] tracking-[0.18em] text-ink-soft">
+                    <span className="t-eyebrow text-ink-soft">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     {link ? (
@@ -131,7 +122,7 @@ const CPLocations = ({
           </div>
 
           {/* Right - map covering the whole of Surrey */}
-          <div className="w-full overflow-hidden rounded-sm border border-ink/15 shadow-[0_22px_44px_-22px_hsl(var(--ink)/0.18)] fade-up">
+          <div className="w-full overflow-hidden rounded-chip border border-ink/15 shadow-[0_22px_44px_-22px_hsl(var(--ink)/0.18)] fade-up">
             <div className="relative w-full" style={{ aspectRatio: "4/5" }}>
               <iframe
                 title={mapTitle}

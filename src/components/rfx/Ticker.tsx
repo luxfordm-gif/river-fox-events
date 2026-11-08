@@ -20,7 +20,7 @@ const Ticker = () => {
     >
       <div className="container-rfx py-6 md:py-7">
         <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 md:gap-10 items-center">
-          <div className="font-mono-rf text-[10.5px] tracking-[0.22em] uppercase text-ink-soft whitespace-nowrap text-center md:text-left">
+          <div className="t-eyebrow text-ink-soft whitespace-nowrap text-center md:text-left">
             We deliver across
           </div>
           <div className="overflow-hidden relative">
@@ -35,12 +35,7 @@ const Ticker = () => {
               {all.map((p, i) => (
                 <span
                   key={i}
-                  className="font-serif-rf text-ink inline-flex items-center gap-10"
-                  style={{
-                    fontSize: "clamp(18px, 2vw, 24px)",
-                    fontWeight: 300,
-                    letterSpacing: "-0.01em",
-                  }}
+                  className="t-h4 text-ink inline-flex items-center gap-10"
                 >
                   {p}
                   <span className="text-accent-warm text-[0.5em]">✳</span>

@@ -11,13 +11,7 @@ const Hero = () => {
 
           <h1
             id="hero-heading"
-            className="font-serif-rf max-w-none mx-auto break-words text-pretty"
-            style={{
-              fontSize: "var(--fs-display)",
-              lineHeight: 1.02,
-              fontWeight: 400,
-              letterSpacing: "-0.038em",
-            }}
+            className="t-display max-w-none mx-auto break-words text-pretty"
           >
             <span className="word-reveal in">
               <span>Balloons&nbsp;and backdrops,</span>
@@ -26,12 +20,12 @@ const Hero = () => {
             <span className="word-reveal in delay-1">
               <span>
                 styled in{" "}
-                <em className="italic font-normal text-accent-warm">Surrey.</em>
+                <em className="t-accent">Surrey.</em>
               </span>
             </span>
           </h1>
 
-          <p className="text-[16.5px] leading-[1.65] text-ink-soft max-w-[520px] mt-1 md:mt-0 fade-up in text-center">
+          <p className="t-lead text-ink-soft max-w-[520px] mt-1 md:mt-0 fade-up in text-center">
             Children's parties, milestone birthdays and brand events,
             designed by Laura, set up before guests arrive and cleared away
             after.

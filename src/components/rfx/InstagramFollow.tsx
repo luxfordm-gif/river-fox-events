@@ -13,7 +13,7 @@ const InstagramFollow = () => {
       <div className="container-rfx">
         <div className="border-t border-ink/15 pt-10 md:pt-14 fade-up rfx-instagram-inner">
           <div className="flex flex-col items-center text-center max-w-[680px] mx-auto">
-            <div className="font-mono-rf text-[10.5px] tracking-[0.28em] uppercase text-ink-soft mb-7 inline-flex items-center gap-3">
+            <div className="t-eyebrow text-ink-soft mb-7 inline-flex items-center gap-3">
               <span className="h-px w-8 bg-ink/30" aria-hidden="true" />
               Behind the scenes
               <span className="h-px w-8 bg-ink/30" aria-hidden="true" />
@@ -21,19 +21,13 @@ const InstagramFollow = () => {
 
             <h2
               id="instagram-heading"
-              className="font-serif-rf"
-              style={{
-                fontSize: "var(--fs-h2)",
-                lineHeight: 1.04,
-                fontWeight: 300,
-                letterSpacing: "-0.028em",
-              }}
+              className="t-h2"
             >
               Follow along on{" "}
-              <em className="italic font-light text-accent-warm">Instagram.</em>
+              <em className="t-accent">Instagram.</em>
             </h2>
 
-            <p className="text-[16px] leading-[1.7] text-ink-soft mt-7 max-w-[480px]">
+            <p className="t-lead text-ink-soft mt-7 max-w-[480px]">
               Sneak peeks, install days and the small details that make every
               River Fox celebration feel like itself.
             </p>

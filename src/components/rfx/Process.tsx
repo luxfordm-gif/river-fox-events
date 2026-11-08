@@ -57,16 +57,10 @@ const Process = ({ steps = DEFAULT_STEPS }: ProcessProps = {}) => {
         <div className="mb-6 md:mb-16">
           <h2
             id="process-heading"
-            className="font-serif-rf m-0 text-center md:text-left"
-            style={{
-              fontSize: "var(--fs-h2)",
-              lineHeight: 1.04,
-              fontWeight: 300,
-              letterSpacing: "-0.025em",
-            }}
+            className="t-h2 m-0 text-center md:text-left"
           >
             How it{" "}
-            <em className="italic font-light text-accent-warm">works.</em>
+            <em className="t-accent">works.</em>
           </h2>
         </div>
 
@@ -86,7 +80,7 @@ const Process = ({ steps = DEFAULT_STEPS }: ProcessProps = {}) => {
               }}
             >
               <div
-                className="font-mono-rf text-[11px] tracking-[0.22em] mb-3 font-medium overflow-hidden inline-block"
+                className="t-eyebrow mb-3 overflow-hidden inline-block"
               >
                 <span
                   className="inline-block"
@@ -99,18 +93,10 @@ const Process = ({ steps = DEFAULT_STEPS }: ProcessProps = {}) => {
                   {s.n} /
                 </span>
               </div>
-              <h3
-                className="font-serif-rf mb-2"
-                style={{
-                  fontSize: 30,
-                  fontWeight: 400,
-                  lineHeight: 1.12,
-                  letterSpacing: "-0.018em",
-                }}
-              >
+              <h3 className="t-h4 mb-2">
                 {s.title}
               </h3>
-              <p className="text-[14.5px] leading-[1.7]" style={{ color: "hsl(var(--on-deep-soft))" }}>
+              <p className="t-body-sm" style={{ color: "hsl(var(--on-deep-soft))" }}>
                 {s.body}
               </p>
             </div>

@@ -19,7 +19,7 @@ const lingfield = makeLocation({
   uniqueServicesHeading: (
     <>
       Children's parties lead our calendar.{" "}
-      <em className="italic font-light text-accent-warm">
+      <em className="t-accent">
         The grown-up days follow.
       </em>
     </>
