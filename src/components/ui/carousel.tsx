@@ -38,6 +38,72 @@ function useCarousel() {
   return context;
 }
 
+/**
+ * How far (px) a finger must travel on a carousel before we decide whether
+ * it is swiping the carousel sideways or scrolling the page.
+ */
+const SWIPE_DECIDE_PX = 10;
+
+/**
+ * Stops a carousel from swallowing page scrolls on phones.
+ *
+ * Embla picks "carousel swipe" or "page scroll" from the very first touch
+ * movement it sees. iPhones report that movement after a pixel or two, and a
+ * thumb pushing the page up usually wobbles sideways as it lands, so Embla
+ * often guessed "carousel" and blocked the page for the whole gesture: the
+ * finger moved, the page didn't, then it caught up at the end (Matt,
+ * 2026-11-08). This holds the movement back from Embla until the finger has
+ * travelled SWIPE_DECIDE_PX, then hands sideways swipes to the carousel and
+ * keeps up/down ones away from it so the browser scrolls the page. It only
+ * listens passively, so it never makes the browser wait.
+ */
+function useSwipeDirectionGuard(
+  regionRef: React.RefObject<HTMLDivElement>,
+  orientation: "horizontal" | "vertical",
+) {
+  React.useEffect(() => {
+    const el = regionRef.current;
+    if (!el) return;
+    let startX = 0;
+    let startY = 0;
+    let state: "off" | "deciding" | "carousel" | "page" = "off";
+
+    const onStart = (e: TouchEvent) => {
+      if (e.touches.length !== 1) {
+        state = "off";
+        return;
+      }
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      state = "deciding";
+    };
+    const onMove = (e: TouchEvent) => {
+      if (state === "off" || state === "carousel" || e.touches.length !== 1) return;
+      if (state === "deciding") {
+        const dx = Math.abs(e.touches[0].clientX - startX);
+        const dy = Math.abs(e.touches[0].clientY - startY);
+        if (Math.max(dx, dy) < SWIPE_DECIDE_PX) {
+          e.stopPropagation();
+          return;
+        }
+        const along = orientation === "horizontal" ? dx : dy;
+        const across = orientation === "horizontal" ? dy : dx;
+        state = along > across ? "carousel" : "page";
+        if (state === "carousel") return;
+      }
+      // Scrolling the page: Embla never hears about this gesture.
+      e.stopPropagation();
+    };
+
+    el.addEventListener("touchstart", onStart, { capture: true, passive: true });
+    el.addEventListener("touchmove", onMove, { capture: true, passive: true });
+    return () => {
+      el.removeEventListener("touchstart", onStart, { capture: true });
+      el.removeEventListener("touchmove", onMove, { capture: true });
+    };
+  }, [regionRef, orientation]);
+}
+
 const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & CarouselProps>(
   ({ orientation = "horizontal", opts, setApi, plugins, className, children, ...props }, ref) => {
     const [carouselRef, api] = useEmblaCarousel(
@@ -47,6 +113,9 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
       },
       plugins,
     );
+    const regionRef = React.useRef<HTMLDivElement>(null);
+    React.useImperativeHandle(ref, () => regionRef.current as HTMLDivElement);
+    useSwipeDirectionGuard(regionRef, orientation);
     const [canScrollPrev, setCanScrollPrev] = React.useState(false);
     const [canScrollNext, setCanScrollNext] = React.useState(false);
 
@@ -116,7 +185,7 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
         }}
       >
         <div
-          ref={ref}
+          ref={regionRef}
           onKeyDownCapture={handleKeyDown}
           className={cn("relative", className)}
           role="region"
