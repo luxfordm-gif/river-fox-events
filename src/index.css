@@ -147,7 +147,6 @@
     --gap-inline: 24px;                /* Inline gap · space between items in a row of text links (16 phone) */
     --gap-label-title: 4px;            /* Label to title · a small label (step number, overline) directly above a card or step title */
     --gap-title-body: 8px;
-    --reveal-rise: 56px;               /* Title reveal · how far a section title rises as it scrolls into view (32 phone) */
     --card-text-inset: 18px;
     --panel-inset: 24px;
     --card-pad: 40px;                  /* Card padding · inside option and pricing cards (28 phone) */               /* Panel inset · gap from the screen edge to a rounded section panel (12 phone) */           /* Card text inset · right padding on card text so titles stay clear of the next card (0 phone) */             /* Title to text · space between a card or item title and its text, every card on the site */
@@ -214,7 +213,6 @@
       --lh-h2: 1.1;
       --lh-h3: 1.1;
       --section-y: 64px;
-      --reveal-rise: 32px;
       --gap-heading-content: 32px;
       --gap-text-content: 40px;
       --gap-inline: 16px;
@@ -417,38 +415,6 @@
      elements. */
   .fade-up { opacity: 1; transform: none; transition: none; }
   .fade-up.in { opacity: 1; transform: none; }
-
-  /* Section title reveal (Matt, 2026-11-08, on trial): each section title
-     rises a little and fades in as it scrolls up the screen, the italic
-     words a beat behind. Linked to the scroll itself (CSS scroll-driven
-     animation, run by the browser's compositor), so it follows the finger
-     on phones and never plays on a timer. Browsers without support, and
-     anyone with reduced motion, see the finished title. Not on the
-     Christmas page (snow sits on its titles) or titles with their own
-     effect (mission line, pricing box). */
-  @supports (animation-timeline: view()) {
-    @media (prefers-reduced-motion: no-preference) {
-      div:not(.rfx-xmas) > main .rfx-section .t-h2:not(.mission-line, .rfx-reveal) {
-        animation: title-rise both cubic-bezier(0.2, 0.7, 0.2, 1);
-        animation-timeline: view();
-        animation-range: entry 0% cover 50%;
-      }
-      div:not(.rfx-xmas) > main .rfx-section .t-h2:not(.mission-line, .rfx-reveal) .t-accent {
-        animation: title-accent both linear;
-        animation-timeline: view();
-        animation-range: entry 10% cover 58%;
-      }
-    }
-  }
-  @keyframes title-rise {
-    from { opacity: 0; transform: translate3d(0, var(--reveal-rise), 0); }
-    to { opacity: 1; transform: none; }
-  }
-  @keyframes title-accent {
-    from { opacity: 0; }
-    45% { opacity: 0; }
-    to { opacity: 1; }
-  }
 
   /* Word-by-word reveal */
   .word-reveal {
