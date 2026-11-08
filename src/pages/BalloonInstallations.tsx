@@ -63,60 +63,24 @@ const RECENT_WORK = [
   return { src: p.large, alt: p.alt };
 });
 
-/* Five things Laura makes with balloons. Each card links on to the
-   occasion page where that piece usually lives, so balloons stay the way
-   in rather than the end point. Shown as a bento grid (Matt, 2026-11-08):
-   the order matters, the first card is the big tile (top left) and the
-   last is the wide tile (bottom right), so the strongest photos sit in
-   the largest tiles.
-   One short line per card (Matt, 2026-11-08): the photo does the talking.
-   None of these photos repeat the hero. Alts come from the gallery (one
-   image, one alt). `position` keeps each subject in frame when cropped. */
-const tilePhoto = (source: string, position: string, phonePosition?: string) => {
+/* "What we make": eight balloon pieces as small square tiles, just the
+   name, each linking on to the service page where that piece usually lives
+   (Matt, 2026-11-08). Order alternates colours so similar photos don't sit
+   side by side; on phones they pair up two across. None repeat the hero or
+   the inspiration strip. Alts come from the gallery (one image, one alt). */
+const tile = (title: string, href: string, source: string, position?: string): ServiceCardItem => {
   const p = galleryPhoto(source);
-  return { image: p.src, srcSet: p.srcSet, alt: p.alt, position, phonePosition };
+  return { title, href, image: p.src, srcSet: p.srcSet, alt: p.alt, position };
 };
 const WHAT_WE_MAKE: ServiceCardItem[] = [
-  {
-    title: "Organic arches",
-    blurb:
-      "Cloud-like arches to frame a cake table or doorway.",
-    href: "/childrens-parties/",
-    cta: "Children's parties",
-    ...tilePhoto("river-fox-events-baby-shower-baby-in-bloom-arch-portrait.webp", "35% 45%"),
-  },
-  {
-    title: "Balloon garlands",
-    blurb:
-      "Trailing along a fireplace, staircase or backdrop.",
-    href: "/milestone-celebrations/",
-    cta: "Milestone celebrations",
-    ...tilePhoto("journal/dylan-christening-first-birthday/dylan-christening-blue-gold-balloon-feature-wall.webp", "50% 40%", "38% 50%"),
-  },
-  {
-    title: "Hoops & backdrops",
-    blurb:
-      "A personalised photo spot for every guest.",
-    href: "/childrens-parties/",
-    cta: "Children's parties",
-    ...tilePhoto("services/milestones/heart-hoop-red-blush-balloons-heart-foils.webp", "45% 55%"),
-  },
-  {
-    title: "Number & letter stacks",
-    blurb:
-      "Numbers and letters to mark a 1st, 18th or 50th.",
-    href: "/milestone-celebrations/",
-    cta: "Milestone celebrations",
-    ...tilePhoto("services/milestones/18th-birthday-blue-chrome-light-up-numbers.webp", "50% 55%"),
-  },
-  {
-    title: "Shopfront & corporate installs",
-    blurb:
-      "Branded arches and window displays in your colours.",
-    href: "/corporate-brand-styling/",
-    cta: "Corporate & brand",
-    ...tilePhoto("river-fox-events-corporate-atrium-twin-balloon-arches.webp", "50% 50%", "82% 50%"),
-  },
+  tile("Organic arches", "/childrens-parties/", "river-fox-events-baby-shower-baby-in-bloom-arch-portrait.webp", "40% 50%"),
+  tile("Hoops & backdrops", "/childrens-parties/", "services/milestones/heart-hoop-red-blush-balloons-heart-foils.webp"),
+  tile("Balloon garlands", "/milestone-celebrations/", "journal/dylan-christening-first-birthday/dylan-christening-blue-gold-balloon-feature-wall.webp", "35% 50%"),
+  tile("Balloon walls", "/childrens-parties/", "services/childrens-parties/halloween-balloon-wall-bright-skeletons-bats.webp"),
+  tile("Number & letter stacks", "/milestone-celebrations/", "services/milestones/18th-birthday-blue-chrome-light-up-numbers.webp"),
+  tile("Balloon columns", "/corporate-brand-styling/", "services/corporate/casino-night-balloon-columns-red-black-gold.webp"),
+  tile("Table centrepieces", "/milestone-celebrations/", "services/milestones/navy-gold-bubble-balloon-table-centrepieces.webp"),
+  tile("Shopfront installs", "/corporate-brand-styling/", "services/corporate/shop-entrance-arch-green-white-balloons.webp"),
 ];
 
 const FAQS = [
@@ -243,7 +207,7 @@ const BalloonInstallations = () => {
           sectionId="what-we-make"
           headingId="bi-make-heading"
           items={WHAT_WE_MAKE}
-          layout="bento"
+          layout="tiles"
           heading={
             <>
               What we{" "}
