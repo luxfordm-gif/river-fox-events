@@ -2,22 +2,16 @@
    (the Christmas door garlands page). Type, spacing and layout stay on the
    shared tokens; only colour and the garland imagery change.
 
-   Three variants, switched with the review panel's "Christmas edition"
-   toggle (html[data-pref-xmas]). The live site gets the default (frost),
-   because the panel never runs there. */
+   Palette: Frost & gold, chosen by Matt and Laura on 2026-11-08 (the
+   Spruce & berry and Everyday brand trial variants were removed). */
 
 .rfx-xmas {
   /* Seasonal palette */
-  --xmas-spruce: 154 30% 15%;       /* deep spruce, replaces moss charcoal */
-  --xmas-spruce-tint: 140 22% 92%;  /* pale pine, light section tint */
-  --xmas-berry: 352 48% 40%;        /* holly berry, muted not pillar-box */
-  --xmas-berry-deep: 352 50% 33%;
   --xmas-gold: 40 50% 64%;          /* antique gold, for dark grounds */
   --xmas-gold-deep: 38 45% 42%;     /* antique gold, for cream grounds */
-  --xmas-cream: 42 45% 96%;
+  --xmas-cream: 42 45% 96%;         /* Instagram strip text on photos */
 
-  /* Frost & gold (default): stays on the brand's cream and charcoal, gold
-     carries it. */
+  /* Frost & gold: stays on the brand's cream and charcoal, gold carries it. */
   --surface-blush: 42 40% 92%;
   --accent: var(--xmas-gold);
   --accent-warm: var(--xmas-gold-deep);
@@ -25,9 +19,9 @@
 
   --xmas-btn-bg: var(--xmas-gold);
   --xmas-btn-hover: 40 50% 56%;
-  --xmas-btn-fg: 120 6% 18%;
+  --xmas-btn-fg: var(--ink);
   --xmas-tag-bg: var(--xmas-gold);
-  --xmas-tag-fg: 120 6% 18%;
+  --xmas-tag-fg: var(--ink);
 }
 
 /* Gold on dark grounds reads; the deep gold is for cream. */
@@ -43,35 +37,6 @@
   color: hsl(var(--xmas-btn-fg));
 }
 
-/* Spruce & berry: deep spruce sections and berry buttons. */
-html[data-pref-xmas="spruce"] .rfx-xmas {
-  --surface-deep: var(--xmas-spruce);
-  --on-deep-soft: 140 10% 70%;
-  --surface-blush: var(--xmas-spruce-tint);
-  --accent: var(--xmas-berry);
-  --ring: var(--xmas-berry);
-  --xmas-btn-bg: var(--xmas-berry);
-  --xmas-btn-hover: var(--xmas-berry-deep);
-  --xmas-btn-fg: var(--xmas-cream);
-}
-
-/* Everyday brand: undo every seasonal change, for side-by-side review. */
-html[data-pref-xmas="brand"] .rfx-xmas {
-  --surface-deep: 144 9% 13%;
-  --on-deep-soft: 71 4% 58%;
-  --surface-blush: 137 18% 92%;
-  --accent: 12 55% 78%;
-  --accent-warm: 12 35% 64%;
-  --ring: 12 55% 78%;
-  --xmas-btn-bg: 12 55% 78%;
-  --xmas-btn-hover: 12 55% 70%;
-  --xmas-btn-fg: 120 6% 18%;
-  --xmas-tag-bg: 12 55% 78%;
-  --xmas-tag-fg: 120 6% 18%;
-}
-html[data-pref-xmas="brand"] .rfx-xmas .rfx-section.dark,
-html[data-pref-xmas="brand"] .rfx-xmas footer { --accent-warm: 12 35% 64%; }
-html[data-pref-xmas="brand"] .rfx-xmas .xmas-garland { display: none; }
 
 /* The light sections a touch darker than the brand's #FCFBF8 on this page,
    so the white of the settled snow has something to stand out against
