@@ -72,13 +72,9 @@
         if(!on||q==="off")return;
         if(navigator.webdriver&&q===null)return;
         window.PREF_PANEL={
-          groups:[
-            {id:"xmas",label:"Christmas edition",options:[
-              {value:"frost",title:"Frost & gold",sub:"Stays on cream, antique gold accents"},
-              {value:"spruce",title:"Spruce & berry",sub:"Deep spruce sections, berry buttons, gold italics"},
-              {value:"brand",title:"Everyday brand",sub:"No Christmas changes, for comparison"}
-            ]}
-          ]
+          // Layout option groups for review. The Christmas edition toggle was
+          // removed once Frost & gold was chosen (2026-11-08).
+          groups:[]
         };
         try{
           var s=JSON.parse(localStorage.getItem("pref-panel"))||{},p=s.prefs||{};

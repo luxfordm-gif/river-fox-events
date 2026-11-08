@@ -73,6 +73,7 @@ export default {
         // Brand semantic tokens
         ink: "hsl(var(--ink))",
         "ink-soft": "hsl(var(--ink-soft))",
+        "ink-prose": "hsl(var(--ink-prose))",
         "ink-faint": "hsl(var(--ink-faint))",
         "surface-alt": "hsl(var(--surface-alt))",
         "surface-deep": "hsl(var(--surface-deep))",
