@@ -276,7 +276,7 @@ const CPIncluded = ({
     >
       <div className="container-rfx">
         <div className="text-center max-w-[760px] mx-auto">
-          <div className="t-eyebrow text-ink-soft mb-3">
+          <div className="t-overline text-ink-soft mb-3">
             {eyebrow}
           </div>
           <h2
@@ -287,7 +287,7 @@ const CPIncluded = ({
             {heading}
           </h2>
           <p
-            className="t-lead text-ink-soft mt-6 max-w-[520px] mx-auto"
+            className="t-lead text-ink-soft heading-to-text max-w-[520px] mx-auto"
             style={{ textWrap: "pretty" }}
           >
             {intro}
@@ -326,19 +326,19 @@ const CPIncluded = ({
                   width: 64,
                   height: 64,
                   borderRadius: "50%",
-                  background: "hsl(var(--surface-warm))",
-                  color: "hsl(var(--accent-warm))",
+                  background: "hsl(var(--background-warm))",
+                  color: "hsl(var(--accent-dark))",
                 }}
               >
                 <Icon strokeWidth={1.4} size={26} />
               </div>
               <h3
-                className="t-h4 text-ink"
+                className="t-h5 text-ink"
               >
                 {label}
               </h3>
               <p
-                className="t-body-sm text-ink-soft mt-2.5 max-w-[220px]"
+                className="t-small text-ink-soft title-to-text max-w-[220px]"
                 style={{ textWrap: "pretty" }}
               >
                 {body}
@@ -349,7 +349,7 @@ const CPIncluded = ({
         </div>
 
         <p
-          className="t-caption italic text-ink text-center mt-14 max-w-[560px] mx-auto"
+          className="t-small italic text-ink text-center mt-14 max-w-[560px] mx-auto"
           style={{ textWrap: "pretty" }}
         >
           {outro}

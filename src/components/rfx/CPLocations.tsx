@@ -59,8 +59,8 @@ const CPLocations = ({
   mapTitle = "Map of Surrey, England - areas covered by River Fox Events",
   eyebrow,
   heading = DEFAULT_HEADING,
-  paddingTop = "48px",
-  paddingBottom = "72px",
+  paddingTop,
+  paddingBottom,
   currentSlug,
 }: CPLocationsProps = {}) => {
   return (
@@ -75,7 +75,7 @@ const CPLocations = ({
           {/* Left - copy + areas list */}
           <div className="flex flex-col items-start text-left fade-up">
             {eyebrow && (
-              <div className="t-eyebrow text-ink-soft mb-4">
+              <div className="t-overline text-ink-soft mb-4">
                 {eyebrow}
               </div>
             )}
@@ -87,28 +87,28 @@ const CPLocations = ({
               {heading}
             </h2>
             <p
-              className="mt-6 t-lead text-ink-soft max-w-[520px]"
+              className="heading-to-text t-small text-ink-soft max-w-[520px]"
               style={{ textWrap: "pretty" }}
             >
               {intro}
             </p>
 
-            <ul className="mt-10 grid grid-cols-2 gap-x-12 w-full max-w-[520px] border-t border-ink/15">
+            <ul className="text-to-content grid grid-cols-2 gap-x-12 w-full max-w-[520px] border-t border-ink/15">
               {areas.map((a, i) => {
                 const slug = SLUG_BY_CITY.get(a);
                 const link = slug && slug !== currentSlug;
                 return (
                   <li
                     key={a}
-                    className="flex items-baseline gap-3 py-3 border-b border-ink/15 t-h4 text-ink"
+                    className="flex items-baseline gap-3 py-3 border-b border-ink/15 t-body text-ink"
                   >
-                    <span className="t-eyebrow text-ink-soft">
+                    <span className="t-overline text-ink-soft">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     {link ? (
                       <a
                         href={`/party-styling-${slug}/`}
-                        className="text-ink hover:underline underline-offset-4 decoration-ink/40"
+                        className="text-ink text-link"
                       >
                         {a}
                       </a>
@@ -122,7 +122,7 @@ const CPLocations = ({
           </div>
 
           {/* Right - map covering the whole of Surrey */}
-          <div className="w-full overflow-hidden rounded-chip border border-ink/15 shadow-[0_22px_44px_-22px_hsl(var(--ink)/0.18)] fade-up">
+          <div className="w-full overflow-hidden rounded-large border border-ink/15 shadow-[0_22px_44px_-22px_hsl(var(--text-primary)/0.18)] fade-up">
             <div className="relative w-full" style={{ aspectRatio: "4/5" }}>
               <iframe
                 title={mapTitle}

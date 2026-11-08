@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -22,6 +23,13 @@ type TestimonialsCarouselProps = {
 
 const TestimonialsCarousel = ({ reviews = REVIEWS }: TestimonialsCarouselProps = {}) => {
   const [api, setApi] = useState<CarouselApi>();
+  // Moves on by one screenful (three cards on desktop) every 6 seconds,
+  // gliding rather than jumping; pauses while the pointer is over it and
+  // never runs with reduced motion (Matt, 2026-11-08).
+  const plugins = useMemo(() => {
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return [];
+    return [Autoplay({ delay: 6000, stopOnInteraction: false, stopOnMouseEnter: true })];
+  }, []);
   const [selected, setSelected] = useState(0);
   const [count, setCount] = useState(0);
 
@@ -41,11 +49,15 @@ const TestimonialsCarousel = ({ reviews = REVIEWS }: TestimonialsCarouselProps =
   return (
     <div className="-mx-6 sm:-mx-8 md:mx-0">
       <Carousel
-        opts={{ align: "center", loop: true, containScroll: "trimSnaps" }}
+        opts={{ align: "center", loop: true, containScroll: "trimSnaps", slidesToScroll: "auto", duration: 40 }}
+        plugins={plugins}
         setApi={setApi}
-        className="md:px-16 lg:px-12"
+        className="-my-4 md:px-16 lg:px-12"
       >
-        <CarouselContent className="-ml-4 md:-ml-6">
+        {/* Vertical room inside the carousel's clipping box so the card's
+            hover lift and shadow aren't cut off; -my-4 on the carousel takes
+            it back out of the layout. */}
+        <CarouselContent className="-ml-4 md:-ml-6 py-4">
           {reviews.map((t, i) => (
             <CarouselItem
               key={i}
@@ -53,7 +65,7 @@ const TestimonialsCarousel = ({ reviews = REVIEWS }: TestimonialsCarouselProps =
             >
               <figure className="tcard fade-up h-full">
                 <Stars />
-                <blockquote className="tcard-quote text-ink-soft">
+                <blockquote className="tcard-quote t-body text-ink-soft">
                   {t.q}
                 </blockquote>
                 <figcaption className="tcard-meta">

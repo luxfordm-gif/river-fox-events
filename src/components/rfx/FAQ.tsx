@@ -79,23 +79,14 @@ const FAQ = () => {
   return (
     <section id="faq" className="rfx-section white" aria-labelledby="faq-heading">
       <div className="container-rfx">
-        <div className="text-center heading-to-body">
+        <div className="text-center heading-to-content">
           <h2
             id="faq-heading"
             className="t-h2"
           >
-            Questions{" "}
-            <em className="t-accent">answered.</em>
+            {/* "FAQs", as on the service and town pages (Matt, 2026-11-08). */}
+            FAQs
           </h2>
-          <p className="t-body-sm text-ink-soft max-w-[520px] mx-auto mt-6">
-            If you don't see what you need here, just ask -{" "}
-            <a
-              href="mailto:Riverfoxevents@gmail.com"
-              className="text-ink underline-offset-4 underline decoration-ink/30 hover:decoration-ink"
-            >
-              Riverfoxevents@gmail.com
-            </a>
-          </p>
         </div>
 
         <div className="max-w-[980px] mx-auto">

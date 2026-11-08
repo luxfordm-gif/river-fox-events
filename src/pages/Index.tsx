@@ -3,6 +3,7 @@ import Nav from "@/components/rfx/Nav";
 import Hero from "@/components/rfx/Hero";
 import InstagramFollow from "@/components/rfx/InstagramFollow";
 import Experiences from "@/components/rfx/Experiences";
+import Mission from "@/components/rfx/Mission";
 import RevealWord from "@/components/rfx/RevealWord";
 import About from "@/components/rfx/About";
 import Process from "@/components/rfx/Process";
@@ -34,13 +35,14 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen page-paper text-foreground nav-paper">
       <Nav />
       <main>
         <Hero />
-        <Experiences showBalloonLink={false} rotatePhotos />
+        <Mission />
+        <Experiences align="centre" />
         <About />
-        <Process />
+        <Process tone="cream" />
         <Testimonials noDivider />
         <InstagramFollow />
         <FAQ />

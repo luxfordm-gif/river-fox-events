@@ -20,8 +20,8 @@ const LocationLocalProse = ({
       aria-labelledby={headingId}
     >
       <div className="container-rfx">
-        <div className="text-center max-w-[760px] mx-auto heading-to-body fade-up">
-          <p className="t-eyebrow text-ink-soft mb-5">
+        <div className="text-center max-w-[760px] mx-auto fade-up">
+          <p className="t-overline text-ink-soft mb-5">
             {eyebrow}
           </p>
           <h2
@@ -34,7 +34,7 @@ const LocationLocalProse = ({
         </div>
 
         <div
-          className="max-w-[680px] mx-auto t-body text-ink-soft space-y-5 md:space-y-6 fade-up"
+          className="max-w-[680px] mx-auto t-body text-ink-soft space-y-5 md:space-y-6 heading-to-text fade-up"
           style={{ textWrap: "pretty" }}
         >
           {body}

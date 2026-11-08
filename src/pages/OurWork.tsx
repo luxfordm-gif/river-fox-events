@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, Fragment } from "react";
 import type { MouseEvent as ReactMouseEvent, RefObject } from "react";
 import { ChevronLeft, ChevronRight, ChevronUp, Expand, LayoutGrid, X } from "lucide-react";
 import Nav from "@/components/rfx/Nav";
@@ -77,14 +77,14 @@ const EventCard = ({
       )}
       <figcaption className="mt-3">
         <span
-          className="block t-caption text-ink"
+          className="block t-small text-ink"
           style={{ textWrap: "balance" }}
         >
           {event.title}
         </span>
         {event.place && (
           <span
-            className="block mt-1 t-eyebrow text-ink-soft"
+            className="block mt-1 t-overline text-ink-soft"
           >
             {event.place}
           </span>
@@ -241,10 +241,10 @@ const Section = ({
       aria-labelledby={`${section.id}-heading`}
     >
       <div className="container-rfx">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-10 mb-10 md:mb-14">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-10 heading-to-content">
           <h2
             id={`${section.id}-heading`}
-            className="t-h2-sm fade-up m-0"
+            className="t-h3 fade-up m-0"
           >
             {section.titleLead}{" "}
             <em className="t-accent">{section.titleAccent}</em>
@@ -356,8 +356,8 @@ const Viewer = ({
         />
       </div>
       <div className="work-viewer__cap">
-        <div className="t-caption">{item.title}</div>
-        <div className="mt-1 t-eyebrow opacity-70">
+        <div className="t-small">{item.title}</div>
+        <div className="mt-1 t-overline opacity-70">
           {item.place ? `${item.place} · ` : ""}{index + 1} / {items.length}
         </div>
       </div>
@@ -530,10 +530,23 @@ const OurWork = () => {
           divider
           title="Our work, by occasion."
           intro="Real parties and events Laura has styled across Surrey, grouped so you can find the kind of day you have in mind."
-        />
+        >
+          {/* Plain text links down to each occasion, between the intro and
+              the line (Matt, 2026-11-08). Not buttons. */}
+          <nav className="page-header__links" aria-label="Jump to an occasion">
+            <span className="t-small text-ink-soft">Navigate to:</span>
+            {dockSections.map((s, i) => (
+              <Fragment key={s.id}>
+                {i > 0 && <span className="page-header__sep" aria-hidden="true" />}
+                <a href={`#${s.id}`} className="t-small text-ink no-underline-fx text-link">
+                  {s.label}
+                </a>
+              </Fragment>
+            ))}
+          </nav>
+        </PageHeader>
         {/* Marker at the foot of the header: the occasion dock appears once
-            this has scrolled off the top (the header links were removed,
-            Matt 2026-11-07, as the dock already carries them). */}
+            this has scrolled off the top. */}
         <div ref={headerEndRef} aria-hidden="true" />
 
         {sections.map(({ section, events }, i) => (
@@ -549,7 +562,7 @@ const OurWork = () => {
             >
               Have an event <em className="t-accent">in mind?</em>
             </h2>
-            <p className="mt-5 t-lead text-ink-soft max-w-[44ch] mx-auto">
+            <p className="heading-to-text t-lead text-ink-soft max-w-[44ch] mx-auto">
               Message me the date and the occasion, and I'll get back to you
               with ideas and a quote.
             </p>

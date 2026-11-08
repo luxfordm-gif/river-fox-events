@@ -53,7 +53,7 @@ const ChildrensParties = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground nav-solid">
+    <div className="min-h-screen page-paper text-foreground nav-solid nav-paper">
       <Nav />
       <main>
         <ServiceHero
@@ -75,7 +75,7 @@ const ChildrensParties = () => {
           ]}
           sub={
             <>
-              <a href="/balloon-installations/" className="underline underline-offset-4 decoration-ink/30 hover:decoration-ink transition-colors">
+              <a href="/balloon-installations/" className="text-link">
                 Balloon arches
               </a>
               , themed backdrops and painted name signs, set up across Surrey
@@ -160,22 +160,19 @@ const ChildrensParties = () => {
         >
           <p>
             Whatever your space, we create custom backdrops, themed props
-            and styled details that turn it into something immersive and
+            and styled details that make it feel immersive and
             visually striking.
           </p>
           <p>
-            From popular first birthday themes such as Wild One and Berry
-            First, to epic Frozen parties and enchanting Harry Potter
-            themes - everything designed to feel special, effortless, and
-            remembered long after the day itself.
+            From first birthday themes like Wild One and Berry First to
+            Frozen and Harry Potter parties, everything is designed to be
+            remembered long after the day.
           </p>
         </CPReveal>
 
-        <InspirationStrip id="cp-inspiration" accent="your next party." images={INSPIRATION_CHILDRENS} />
+        <InspirationStrip id="cp-inspiration" accent="your party." images={INSPIRATION_CHILDRENS} />
 
-        <div id="how-it-works">
-          <Process />
-        </div>
+        <Process sectionId="how-it-works" />
 
         <CPPricing footnote="" />
 

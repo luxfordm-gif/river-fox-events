@@ -28,13 +28,13 @@ const ReadingProgress = () => {
     <div
       aria-hidden="true"
       className="fixed top-0 left-0 right-0 z-[300] h-[2px] pointer-events-none"
-      style={{ background: "hsl(var(--ink) / 0.06)" }}
+      style={{ background: "hsl(var(--text-primary) / 0.06)" }}
     >
       <div
         className="h-full"
         style={{
           width: `${pct}%`,
-          background: "hsl(var(--accent-warm))",
+          background: "hsl(var(--accent-dark))",
           transition: "width 0.08s linear",
         }}
       />

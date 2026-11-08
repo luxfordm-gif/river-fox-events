@@ -61,19 +61,19 @@ const Enquire = ({
               </em>
             </h2>
             <p
-              className="t-lead max-w-[460px] mt-7"
-              style={{ color: "hsl(var(--on-deep-soft))" }}
+              className="t-lead max-w-[460px] heading-to-text"
+              style={{ color: "hsl(var(--text-dimmed))" }}
             >
               Celebrations begin from £300, each one tailored to your
               brief.{" "}
-              <span style={{ color: "hsl(var(--on-deep))" }}>
+              <span style={{ color: "hsl(var(--text-on-dark))" }}>
                 We take on a limited number of events each month
               </span>
               , so book early to secure your date, or call Laura on{" "}
               <a
                 href="tel:+447872114191"
-                className="underline underline-offset-4 whitespace-nowrap"
-                style={{ color: "hsl(var(--on-deep))" }}
+                className="text-link whitespace-nowrap"
+                style={{ color: "hsl(var(--text-on-dark))" }}
               >
                 07872 114191
               </a>
@@ -99,10 +99,10 @@ const Enquire = ({
               </label>
             </p>
             <div className="hidden md:block mb-5 text-left">
-              <h3 className="t-h3 text-primary">
+              <h3 className="t-h4 text-primary">
                 Tell me about your celebration
               </h3>
-              <p className="hidden lg:block t-body-sm text-ink-soft mt-1">
+              <p className="hidden lg:block t-small text-ink-soft title-to-text">
                 Complete the form below and I'll be in touch to discuss
                 your event in more detail.
               </p>

@@ -1,4 +1,4 @@
-import { type CSSProperties, ReactNode, useEffect, useRef } from "react";
+import { type CSSProperties, ReactNode, useEffect, useRef, Fragment } from "react";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 type ServiceHeroProps = {
@@ -52,7 +52,7 @@ const ServiceHero = ({
           const scale = 1.05 - 0.05 * progress;
           el.style.marginLeft = `${marginVw}vw`;
           el.style.marginRight = `${marginVw}vw`;
-          el.style.borderRadius = `calc(var(--radius-media) * ${1 - progress})`;
+          el.style.borderRadius = `calc(var(--radius-large) * ${1 - progress})`;
           if (img) img.style.transform = `scale(${scale})`;
         }
         raf = 0;
@@ -76,14 +76,16 @@ const ServiceHero = ({
             id={headingId}
             className="t-display max-w-none mx-auto break-words text-pretty"
           >
+            {/* Each entry in `lines` is its own line. The break sits between
+                the reveal wrappers (inline blocks), as on the home hero; inside
+                them it didn't break the headline (Matt, 2026-11-08). */}
             {lines.map((line, i) => (
-              <span
-                key={i}
-                className={`word-reveal in${i > 0 ? ` delay-${i}` : ""}`}
-              >
-                <span>{line}</span>
+              <Fragment key={i}>
+                <span className={`word-reveal in${i > 0 ? ` delay-${i}` : ""}`}>
+                  <span>{line}</span>
+                </span>
                 {i < lines.length - 1 && <br />}
-              </span>
+              </Fragment>
             ))}
           </h1>
 
@@ -119,7 +121,7 @@ const ServiceHero = ({
       <div className="overflow-hidden">
         <div
           ref={imgWrapRef}
-          className="rounded-media"
+          className="rounded-large"
           style={{
             marginLeft: "5vw",
             marginRight: "5vw",

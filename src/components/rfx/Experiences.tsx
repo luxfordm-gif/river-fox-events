@@ -50,17 +50,18 @@ const ITEMS = [
   {
     title: "Children's party styling",
     body:
-      "Immersive themed parties designed to feel magical for children - and completely effortless for you.",
+      "Immersive themed parties, magical for children and effortless for you.",
     img: expChildren,
     alt: "Sage green dinosaur birthday backdrop with an Ayaan name sign, tropical foliage and dinosaur cutouts",
     href: "/childrens-parties/",
     cta: "See the parties",
     tone: "",
+    badge: "Most popular",
   },
   {
     title: "Milestone celebrations",
     body:
-      "Refined styling for life's biggest moments, from christenings and baby showers to 40ths and anniversaries.",
+      "Refined styling for christenings, baby showers, 40ths and anniversaries.",
     img: expMilestone,
     alt: "Rose gold light-up 40 marquee with a blush and chrome balloon installation in a hall with a wall clock",
     href: "/milestone-celebrations/",
@@ -70,7 +71,7 @@ const ITEMS = [
   {
     title: "Corporate & brand styling",
     body:
-      "Thoughtfully styled installations for launches, openings and activations. Trusted by P&G, The Range, Foxhills and more.",
+      "Launches, openings and activations. Trusted by P&G, The Range and Foxhills.",
     img: expCorporate,
     alt: "Navy, gold and cream balloons around a Children in Need Pudsey backdrop at a corporate gala",
     href: "/corporate-brand-styling/",
@@ -90,6 +91,8 @@ interface ExpItem {
   cta: string;
   tone: string;
   extraZoom?: number;
+  /** Small label on the photo, e.g. "Most popular" (Matt, 2026-11-08). */
+  badge?: string;
   srcSet?: string;
   position?: string;
 }
@@ -102,12 +105,12 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
   return (
     <a
       href={it.href}
-      className={`exp-card rfx-svc-card flex flex-col gap-2 md:gap-4 px-7 ${i > 0 ? "md:border-l" : ""} border-ink/10`}
+      className="exp-card rfx-svc-card flex flex-col"
     >
       <div
         ref={wrap}
-        className={`exp-img-wrap ph rounded-media ${it.tone} fade-up rfx-svc-img ${compact ? "rfx-svc-img--compact" : ""} relative overflow-hidden`}
-        style={{ aspectRatio: compact ? "3/2" : "4/5" }}
+        className={`exp-img-wrap ph rounded-large ${it.tone} fade-up rfx-svc-img ${compact ? "rfx-svc-img--compact" : ""} relative overflow-hidden`}
+        style={{ aspectRatio: compact ? "3/2" : "1/1" }}
       >
         {/*
           ALT TEXT: describe what is in the photo (max 125 characters, no
@@ -127,14 +130,15 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
           width={1024}
           height={1280}
         />
+        {it.badge && <span className="exp-badge t-label">{it.badge}</span>}
       </div>
-      <h3 className="t-feature exp-title mt-3 md:mt-4">
+      <h3 className="t-h5 exp-title mt-5 md:mt-8">
         {it.title}
       </h3>
-      <p className="t-body-sm text-ink-soft max-w-[360px]">
+      <p className="t-small text-ink-soft max-w-[360px] title-to-text">
         {it.body}
       </p>
-      <span className="btn-link-rf t-ui self-start mt-auto pt-4 md:pt-6">
+      <span className="btn-link-rf t-label self-start mt-auto pt-6 md:pt-9">
         {it.cta} <span className="arr">→</span>
       </span>
     </a>
@@ -144,17 +148,22 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
 type ExperiencesProps = {
   /** Override the section heading. Defaults to the homepage copy. */
   heading?: ReactNode;
-  /** Override the right-column intro paragraph. */
+  /** Intro paragraph above the "See our work" button (town pages, Balloons).
+   *  None on the homepage. */
   intro?: ReactNode;
   /** Override the section id (used for in-page anchor links). */
   sectionId?: string;
-  /** Show the "Just after a balloon arch or garland?" line under the cards.
-   *  Off on /balloon-installations/ itself. */
-  showBalloonLink?: boolean;
   /** Shorter, landscape photos (about half the height). Used on
    *  /balloon-installations/, where these cards repeat the homepage. */
   compactImages?: boolean;
-  /** Homepage: show one of four photo sets, chosen per page load. */
+  /** "centre": just a centred heading, no intro or button (homepage and
+   *  Balloons page).
+   *  "stacked": centred heading, the intro under it, then See our work (town
+   *  pages). Default "split": heading left, See our work right.
+   *  Matt, 2026-11-08. */
+  align?: "split" | "centre" | "stacked";
+  /** One of four photo sets, chosen per page load. On everywhere: this is
+   *  the one services section, the same on every page (Matt, 2026-11-08). */
   rotatePhotos?: boolean;
 };
 
@@ -162,10 +171,15 @@ const Experiences = ({
   heading,
   intro,
   sectionId = "experiences",
-  showBalloonLink = true,
   compactImages = false,
-  rotatePhotos = false,
+  rotatePhotos = true,
+  align = "split",
 }: ExperiencesProps = {}) => {
+  const title = heading ?? (
+    <>
+      Our signature <em className="t-accent">experiences.</em>
+    </>
+  );
   const [setIndex] = useState(() => (rotatePhotos ? pickHomeSet() : 0));
   const items = rotatePhotos
     ? ITEMS.map((it, i) => ({ ...it, ...HOME_SETS[setIndex][i], extraZoom: setIndex === 0 ? it.extraZoom : undefined }))
@@ -173,38 +187,54 @@ const Experiences = ({
   return (
     <section id={sectionId} className="rfx-section white" aria-labelledby="exp-heading">
       <div className="container-rfx">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-12 mb-10 md:mb-16 items-end rfx-md-stack">
+        {align === "centre" ? (
+          <div className="heading-to-content text-center">
+            <h2 id="exp-heading" className="t-h2 fade-up m-0 text-center">
+              {title}
+            </h2>
+          </div>
+        ) : align === "stacked" ? (
+          <div className="heading-to-content text-center flex flex-col items-center">
+            <h2 id="exp-heading" className="t-h2 fade-up m-0 text-center" style={{ textWrap: "balance" }}>
+              {title}
+            </h2>
+            {intro && (
+              <p className="t-lead text-ink-soft text-center max-w-[620px] heading-to-text" style={{ textWrap: "pretty" }}>{intro}</p>
+            )}
+            <div className="text-to-content">
+              <a href="/our-work/" className="btn-ghost-rf">
+                See our work <span className="t-icon">→</span>
+              </a>
+            </div>
+          </div>
+        ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-12 heading-to-content items-end rfx-md-stack">
           <h2
             id="exp-heading"
             className="t-h2 fade-up m-0 text-center md:text-left"
           >
-            {heading ?? (
-              <>
-                Our signature{" "}
-                <em className="t-accent">experiences.</em>
-              </>
-            )}
+            {title}
           </h2>
-          <p className="t-lead text-ink-soft pb-3 text-center md:text-left mx-auto md:mx-0">
-            {intro ??
-              "Our work centres on three core experiences: children's parties, milestone celebrations and corporate installations. Each one is individually designed, with a focus on aesthetic, flow and detail."}
-          </p>
+          {/* Right column: "See our work" anchored far right (Matt, 2026-11-08).
+              The homepage drops the intro line; town pages and Balloons keep
+              their own intro (unique copy for search) above the button. */}
+          <div className="flex flex-col items-center md:items-end gap-5 pb-3">
+            {intro && (
+              <p className="t-lead text-ink-soft text-center md:text-left">{intro}</p>
+            )}
+            <a href="/our-work/" className="btn-ghost-rf">
+              See our work <span className="t-icon">→</span>
+            </a>
+          </div>
         </div>
+        )}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[56px] md:gap-0 md:border-t md:border-ink/20 pt-0 md:pt-12">
+        <div className="exp-grid grid grid-cols-1 md:grid-cols-3 gap-[56px]">
           {items.map((it, i) => (
             <ExpCard key={i} it={it} i={i} compact={compactImages} />
           ))}
         </div>
 
-        {showBalloonLink ? (
-          <p className="t-body-sm mt-12 md:mt-14 text-center text-ink-soft fade-up">
-            Just after a balloon arch or garland?{" "}
-            <a href="/balloon-installations/" className="btn-link-rf t-ui ml-1">
-              Balloon installations <span className="arr">→</span>
-            </a>
-          </p>
-        ) : null}
       </div>
     </section>
   );

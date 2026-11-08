@@ -35,7 +35,7 @@ const ArticleHero = ({
     <header className="container-rfx pt-6 md:pt-10 pb-10 md:pb-12 text-center">
       <a
         href="/journal/"
-        className="t-eyebrow inline-block text-ink hover:opacity-70 transition-opacity"
+        className="t-overline inline-block text-ink hover:opacity-70 transition-opacity"
       >
         Journal
       </a>
@@ -56,7 +56,7 @@ const ArticleHero = ({
         </p>
       )}
 
-      <div className="t-eyebrow mt-10 text-ink-soft">
+      <div className="t-overline mt-10 text-ink-soft">
         By {authorName} · {formattedDate} · {readMinutes} min read
       </div>
 
@@ -64,13 +64,13 @@ const ArticleHero = ({
         <span
           className="h-px flex-1"
           aria-hidden="true"
-          style={{ background: "hsl(var(--accent-warm) / 0.45)" }}
+          style={{ background: "hsl(var(--accent-dark) / 0.45)" }}
         />
         <ArticleShareLinks url={url} title={title} />
         <span
           className="h-px flex-1"
           aria-hidden="true"
-          style={{ background: "hsl(var(--accent-warm) / 0.45)" }}
+          style={{ background: "hsl(var(--accent-dark) / 0.45)" }}
         />
       </div>
     </header>

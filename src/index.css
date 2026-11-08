@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500&text=Movethsnw%20&display=swap");
 /* Site fonts. Google Fonts needs the axes in alphabetical order (ital,opsz,wght)
    with one tuple per style; the old "opsz,wght,ital" order got a 400 error, so
-   no visitor ever got Fraunces, DM Sans or JetBrains Mono (Matt, 2026-11-08).
+   no visitor ever got Fraunces, DM Sans or the mono (Matt, 2026-11-08).
    src/test/fonts.test.ts checks this URL against the rules. */
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -14,161 +14,189 @@
 
 @layer base {
   :root {
-    /* Brand palette — Moss / warm cream */
-    --background: 47 22% 92%;          /* rf-bg #F1EFE8 */
-    --foreground: 100 8% 10%;          /* = --ink */
+    /* ── DESIGN SYSTEM: COLOUR ── Each comment starts with the colour's
+       name as Matt uses it ("Background Light"); /style-guide/ reads it.
+       Every colour on the site is one of these. The component-library names
+       further down are aliases, not new colours. Merged and renamed on
+       2026-11-08 (Matt): surface-* became background-*, ink-* became text-*,
+       paper cream folded into Background Light, two faint greys into Dimmed. */
 
-    --surface-alt: 45 36% 98%;         /* rf-bg-alt #FCFBF7 */
-    --surface-deep: 144 9% 13%;        /* rf-bg-deep #1E2420 */
-    --surface-warm: 14 38% 91%;        /* very soft peach tint */
-    --surface-blush: 137 18% 92%;      /* very soft sage tint */
-    --surface-paper: 35 30% 96%;       /* lighter warm cream: journal articles, Contact, Our work header */
+    /* Backgrounds */
+    --background: 47 22% 92%;          /* Background · cream: review cards, form fields, tinted panels (the page itself is Background Light since 2026-11-08) */
+    --background-light: 45 36% 98%;    /* Background Light · the page, sitewide */
+    --background-dark: 144 9% 13%;     /* Background Dark · dark sections, footer */
+    --background-warm: 14 42% 93%;     /* Warm · soft peach-cream #F5E9E6: About panel, pricing box, photo backgrounds (lightened from #F1E3DF, Matt 2026-11-08) */
+    --background-blush: 137 18% 92%;   /* Blush · soft sage sections */
+    --foreground: var(--text-primary);
 
-    --ink: 100 8% 10%;                 /* deep charcoal #191C17: headings and strong text. Darkened from 120 6% 18% so headings stand clear of the body grey (Matt, 2026-11-08) */
-    --ink-soft: 100 5% 29%;            /* body grey #494E46: 7.3:1 on --background, 6.9:1+ on every tint (Matt, 2026-11-08; was 100 4% 36%) */
-    --ink-faint: 100 4% 61%;           /* rf-ink-faint */
-    --ink-prose: 100 4% 36%;           /* journal article body #5A6059: lighter than --ink-soft so dark headings stand out (Matt, 2026-11-08) */
+    /* Text. On Background Dark, Primary is --text-on-dark; Dimmed is the same on both. */
+    --text-primary: 100 8% 10%;        /* Primary · headings and strong text */
+    --text-neutral: 100 5% 29%;        /* Neutral · paragraphs and body text */
+    --text-dimmed: 71 4% 58%;          /* Dimmed · placeholders, small print, quiet text on Background Dark */
+    --text-on-dark: 47 22% 89%;        /* Primary on dark · headings and text on Background Dark */
+    --text-journal: 100 4% 36%;        /* Journal body · journal article paragraphs only */
 
-    --on-deep: 47 22% 89%;             /* rf-on-deep #E9E6DD */
-    --on-deep-soft: 71 4% 58%;         /* rf-on-deep-soft #97998F */
+    /* Accent: one peach, two jobs. Fill for buttons (with a hover state);
+       the darker one for words, since the fill is too pale to read as text. */
+    --accent: 12 55% 78%;              /* Accent · button fill */
+    --accent-hover: 12 55% 70%;        /* Accent hover · button fill on hover */
+    --accent-dark: 12 32% 54%;         /* Accent Dark · italic words in headings, stars, step numbers (#AF7364: darkened from #C39083 so it passes 3:1 contrast on every background, Matt 2026-11-08) */
 
-    --accent: 12 55% 78%;              /* soft peach — primary CTA */
-    --accent-warm: 12 35% 64%;         /* dusty peach — italic highlights */
-    --accent-soft: 137 18% 70%;        /* soft sage — secondary accent */
+    --hair: var(--text-primary) / 0.10;         /* hairlines and borders */
+    --divider: var(--text-primary) / 0.15;      /* Divider · section dividing lines; lighter (10%) on white, set below */
+    --hair-strong: var(--text-primary) / 0.22;
 
-    --hair: 100 8% 10% / 0.10;
-    --hair-strong: 100 8% 10% / 0.22;
+    /* ── DESIGN SYSTEM: TYPE ── (Matt, 2026-11-08)
+       Four groups, one class per style:
+         Display   .t-display
+         Headings  .t-h1 (page title) .t-h2 (section titles) .t-h3 .t-h4 .t-h5 .t-h6
+         Quote     .t-quote
+         Body      .t-lead .t-body .t-small .t-meta .t-label .t-overline
+       Each style reads its own size / line-height / letter-spacing tokens
+       below. Sizes are fluid: clamp(phone floor, grows with the screen,
+       desktop cap). Phones only change token values (the media blocks after
+       :root), never the classes. Components never set type themselves;
+       src/test/design-system.test.ts fails if one does. Comments start with
+       the style's plain name, which /style-guide/ shows. */
 
-    /* ── DESIGN SYSTEM: TYPE ─────────────────────────────────────────────
-       Every piece of text on the site uses one of the named text styles
-       (.t-display, .t-h1 ... .t-eyebrow, defined in @layer components below),
-       which read these tokens. Components never set a font size, line height,
-       letter-spacing or weight themselves; src/test/design-system.test.ts
-       fails if one does (Matt, 2026-11-08). Phone values are the overrides in
-       the (max-width: 767px) block after :root.
+    /* Weights. Headings are Regular: Light read too thin in Fraunces. */
+    --fw-regular: 400;                         /* headings and body */
+    --fw-medium: 500;                          /* labels: buttons, nav, dropdowns, form labels and fields; the wordmark */
+    --fw-bold: 600;                            /* <strong> in body text, tags */
 
-       Sizes. Heading curves are tuned so a 13" laptop (1280px) lands where the
-       old laptop overrides put it (hero ~72px, section titles ~56px).
-       Curves are tuned so a 13" laptop (1280px) lands where the old laptop
-       overrides put it (hero ~72px, section titles ~56px) with no jump at
-       any breakpoint. */
-    --fs-display: clamp(52px, 5.6vw, 116px);   /* home + service hero h1 */
-    --fs-h1: clamp(40px, 5vw, 80px);           /* page h1: locations, journal, articles, contact */
-    --fs-h2: clamp(34px, 4.4vw, 68px);         /* every section title */
-    --fs-h2-sm: clamp(30px, 3.4vw, 52px);      /* section titles under a display H1 (Our work galleries) */
-    --fs-feature: clamp(30px, 2.6vw, 40px);    /* feature card titles: the homepage's three service cards */
-    --fs-h3: clamp(24px, 2.6vw, 36px);         /* pull quotes, CTA card + form headings */
-    --fs-h4: clamp(20px, 1.8vw, 26px);         /* card titles */
-    --fs-faq: clamp(17px, 1.7vw, 24px);        /* FAQ questions */
-    --fs-caption: clamp(15px, 1.05vw, 17px);   /* photo captions (Our work gallery) */
-    --fs-lead: 18px;           /* .t-lead: intro under a section title, hero sub-copy */
-    --fs-body: 17px;           /* .t-body: paragraphs, article prose, FAQ answers, form fields */
-    --fs-body-sm: 15px;        /* .t-body-sm: card text, captions, form help */
-    --fs-meta: 13.5px;         /* .t-meta / .t-ui: footer, legal, dates, buttons, nav links */
-    --fs-eyebrow: 11px;        /* .t-eyebrow: small mono capitals labels */
-    /* One-off display pieces, still tokens: */
+    /* Display */
+    --fs-display: clamp(52px, 5.6vw, 116px);   /* Display · home and service hero headline (phones: see the 480px block) */
+    --lh-display: 1.04;
+    --ls-display: -0.025em;
+
+    /* Headings: Heading 1 is the page title, Heading 2 every section title.
+       Sizes are the ones the site had before the 2026-11-08 restructure
+       (Matt: "what we had before worked"); only the names changed. */
+    --fs-h1: clamp(40px, 5vw, 80px);           /* Heading 1 · page titles: towns, journal, articles, Contact */
+    --fs-h2: clamp(34px, 4.4vw, 68px);         /* Heading 2 · every section title */
+    --fs-h3: clamp(30px, 3.4vw, 52px);         /* Heading 3 · titles under a display heading, Our work galleries */
+    --fs-h4: clamp(24px, 2.2vw, 32px);         /* Heading 4 · featured journal card, CTA and form headings, prices, phone menu (was 40; brought down so H5 26 → H4 32 is a normal step, Matt 2026-11-08) */
+    --fs-h5: clamp(19px, 1.8vw, 26px);         /* Heading 5 · card titles, FAQ questions */
+    --fs-h6: clamp(16px, 1.45vw, 21px);        /* Heading 6 · names under photo tiles, kept to one line */
+    --lh-h1: 1.04;
+    --lh-h2: 1.04;                             /* phone 1.1 */
+    --lh-h3: 1.04;                             /* phone 1.1 */
+    --lh-h4: 1.15;
+    --lh-h5: 1.25;
+    --lh-h6: 1.2;
+    --ls-h1: -0.025em;
+    --ls-h2: -0.025em;
+    --ls-h3: -0.025em;
+    --ls-h4: -0.018em;
+    --ls-h5: -0.012em;
+    --ls-h6: -0.012em;
+
+    /* Quote */
+    --fs-quote: clamp(24px, 2.6vw, 36px);      /* Quote · pull quotes in journal articles */
+    --lh-quote: 1.22;
+    --ls-quote: -0.012em;
+
+    /* Body (DM Sans; Overline is DM Mono). Same size on phones. */
+    --fs-lead: 18px;                           /* Lead · intro under a section title, hero sub-copy */
+    --fs-body: 17px;                           /* Body · paragraphs, FAQ answers, reviews, form fields */
+    --fs-small: 15px;                          /* Small · card text, photo captions, form help */
+    --fs-meta: 13.5px;                         /* Meta · footer, legal, dates */
+    --fs-label: 13.5px;                        /* Label · buttons, nav, link labels (medium weight) */
+    --fs-overline: 11px;                       /* Overline · small mono capitals above a heading (DM Mono, medium) */
+    --lh-lead: 1.6;
+    --lh-body: 1.7;
+    --lh-small: 1.6;
+    --lh-review: 1.5;          /* Review · line height of review card text, tighter than paragraphs (Matt, 2026-11-08) */
+    --lh-meta: 1.5;
+    --lh-label: 1.2;
+    --lh-overline: 1.5;
+    --ls-label: 0.01em;
+    --ls-overline: 0.18em;
+
+    /* Graphic type: the logo and one-off display pieces, not text styles */
+    --fs-wordmark: 15px;                       /* RIVER FOX EVENTS in the nav */
+    --fs-wordmark-lg: 22px;                    /* ...and in the footer */
+    --ls-wordmark: 0.22em;
     --fs-mega: clamp(56px, 12vw, 200px);       /* homepage "kindness" reveal word */
     --fs-ticker: clamp(22px, 3vw, 36px);       /* scrolling ticker */
     --fs-footer-mark: 26vw;                    /* giant footer wordmark (phone) */
     --fs-footer-mark-lg: clamp(220px, 50vw, 880px); /* giant footer wordmark (768px+) */
-    --fs-wordmark: 15px;       /* "RIVER FOX EVENTS" in the nav */
-    --fs-wordmark-lg: 22px;    /* ...and in the footer */
+    --ls-mark: -0.05em;
+    --lh-mark: 0.78;
     --fs-hand: clamp(22px, 1.9vw, 28px);       /* Christmas "Move the snow" handwritten note */
     --fs-hand-sm: clamp(19px, 1.45vw, 23px);   /* its smaller card version */
 
-    /* Line heights */
-    --lh-display: 1.04;        /* = --lh-h2: big headings share one rhythm (Matt, 2026-11-08) */
-    --lh-h1: 1.04;
-    --lh-h2: 1.04;             /* phone 1.1 */
-    --lh-feature: 1.12;
-    --lh-h3: 1.15;
-    --lh-h4: 1.18;
-    --lh-quote: 1.22;
-    --lh-faq: 1.3;
-    --lh-lead: 1.6;
-    --lh-body: 1.7;
-    --lh-body-sm: 1.6;
-    --lh-meta: 1.5;
-    --lh-ui: 1.2;
+    /* ── DESIGN SYSTEM: CORNERS ── three, merged on 2026-11-08 (Matt).
+       Tailwind: rounded-large / rounded-small / rounded-full. */
+    --radius-large: 16px;              /* Large · cards, panels, photos, videos, the map (12 on phones) */
+    --radius-small: 4px;               /* Small · buttons, form fields, badges, tags */
+    --radius-round: 9999px;            /* Round · pills, dots, circles */
+    --radius-panel: calc(var(--radius-large) * 2); /* Panel · rounded full-width section panels, twice Large (32, 24 on phones) */
 
-    /* Letter-spacing */
-    --ls-display: -0.025em;    /* = --ls-h2; was -0.038em, which squashed the hero letters */
-    --ls-h1: -0.025em;         /* = --ls-h2 */
-    --ls-h2: -0.025em;
-    --ls-h3: -0.018em;
-    --ls-h4: -0.012em;
-    --ls-ui: 0.01em;
-    --ls-eyebrow: 0.22em;
-    --ls-wordmark: 0.22em;
-    --ls-mark: -0.05em;        /* giant footer watermark */
-    --lh-mark: 0.78;
-
-    /* Weights. Headings are Regular: Light (300) read too thin in the real
-       Fraunces (Matt, 2026-11-08). */
-    --fw-heading: 400;
-    --fw-body: 400;
-    --fw-ui: 500;              /* buttons, nav, form inputs */
-    --fw-strong: 600;          /* <strong> inside body text */
-
-    /* ── DESIGN SYSTEM: CORNERS ── Tailwind: rounded-card / -media / -chip */
-    --radius-card: 18px;       /* cards, panels, tiles with a frame */
-    --radius-media: 14px;      /* photos and videos */
-    --radius-control: 8px;     /* buttons, form fields */
-    --radius-chip: 4px;        /* tiny keys, badges, icon buttons */
-    --radius-pill: 9999px;     /* pills, dots, round buttons */
+    /* ── DESIGN SYSTEM: SPACING ── (Matt, 2026-11-08)
+       Comments start with the plain name /style-guide/ shows. Values are the
+       ones most sections already used, so tokenising changed nothing visible;
+       phone and laptop values are in the media blocks after :root. Sections
+       whose padding isn't a token yet are flagged "off-token" in the style
+       guide, ready for Matt's notes. */
+    --section-y: 120px;                /* Section padding · top and bottom of every section (64 phone, 80 laptop, 120 from 1440) */
+    --section-gap: calc(var(--section-y) * 1.25);   /* Section gap · the single gap between two sections that share a background, a step above section padding now the whole site is one background (80 phone, 100 laptop, 150 from 1440; Matt, 2026-11-08) */
+    --gap-heading-text: 12px;          /* Heading to text · section heading to the paragraph directly under it */
+    --gap-heading-content: 40px;       /* Heading to content · section heading to a list, photos, a grid or the FAQ questions (32 phone) */
+    --gap-text-content: 48px;          /* Text to content · a paragraph down to the list or grid below it (40 phone) */
+    --gap-inline: 24px;                /* Inline gap · space between items in a row of text links (16 phone) */
+    --gap-label-title: 4px;            /* Label to title · a small label (step number, overline) directly above a card or step title */
+    --gap-title-body: 8px;
+    --card-text-inset: 18px;
+    --panel-inset: 24px;
+    --card-pad: 40px;                  /* Card padding · inside option and pricing cards (28 phone) */               /* Panel inset · gap from the screen edge to a rounded section panel (12 phone) */           /* Card text inset · right padding on card text so titles stay clear of the next card (0 phone) */             /* Title to text · space between a card or item title and its text, every card on the site */
+    --container-max: 1440px;           /* Content width · the widest the page content gets */
+    --gutter: 56px;                    /* Side gutter · space at the left and right of the page content (32 phone, 8% on laptops) */
 
     /* Home hero spacing on big screens. Each holds at today's value up to
        1440px wide, then grows with the screen and caps around 2560px:
        space above the headline, gap from the button to the photo row,
        and space below the photo row. */
-    --hero-pad-top: clamp(134px, calc(10vw - 10px), 250px);     /* 1920: ~182, 2560: 246 */
-    --hero-gap: clamp(56px, calc(6vw - 30px), 130px);           /* 1920: ~85,  2560: 124 */
-    --hero-pad-bottom: clamp(44px, calc(6vw - 42px), 120px);    /* 1920: ~73,  2560: 112 */
+    --hero-pad-top: clamp(134px, calc(10vw - 10px), 250px);     /* Hero top · space above the home and service hero headline on big screens */
+    --hero-gap: clamp(56px, calc(6vw - 30px), 130px);           /* Hero gap · from the hero button down to the photo row on big screens */
+    --hero-pad-bottom: clamp(44px, calc(6vw - 42px), 120px);    /* Hero bottom · cream space under the home hero photo row on big screens */
 
     /* Inner-page header (Our work, Journal, Contact, Privacy, Welcome, 404):
        a step quieter than the home/service heroes. Holds at 122px / 56px
        to ~1440px wide, then grows a little. */
-    --page-pad-top: clamp(122px, calc(6vw + 38px), 190px);       /* 1920: ~153, 2560: 190 */
-    --page-pad-bottom: clamp(56px, calc(4vw), 96px);             /* 1920: ~77,  2560: 96 */
+    --page-pad-top: clamp(122px, calc(6vw + 38px), 190px);       /* Page header top · space above inner-page titles (Our work, Journal, Contact) */
+    --page-pad-bottom: clamp(56px, calc(4vw), 96px);             /* Page header bottom · space under inner-page headers */
 
-    /* Card / popover / etc. shadcn tokens */
-    --card: 45 36% 98%;
-    --card-foreground: 100 8% 10%;
-    --popover: 45 36% 98%;
-    --popover-foreground: 100 8% 10%;
-    --primary: 100 8% 10%;
-    --primary-foreground: 47 22% 92%;
-    --secondary: 38 56% 88%;
-    --secondary-foreground: 100 8% 10%;
-    --muted: 47 22% 88%;
-    --muted-foreground: 100 5% 29%;    /* = --ink-soft */
-    --accent-bg: 12 55% 78%;
-    --accent-foreground: 100 8% 10%;
-    --destructive: 0 70% 45%;
-    --destructive-foreground: 47 22% 92%;
-    --border: 120 6% 18% / 0.12;
-    --input: 120 6% 18% / 0.12;
-    --ring: 12 55% 78%;
+    /* Component library (shadcn/ui) names: aliases of the brand palette.
+       Only --destructive (form error red) is a colour of its own. */
+    --card: var(--background-light);
+    --card-foreground: var(--text-primary);
+    --popover: var(--background-light);
+    --popover-foreground: var(--text-primary);
+    --primary: var(--text-primary);
+    --primary-foreground: var(--background);
+    --secondary: var(--background-warm);
+    --secondary-foreground: var(--text-primary);
+    --muted: var(--text-on-dark);
+    --muted-foreground: var(--text-neutral);
+    --accent-bg: var(--accent);
+    --accent-foreground: var(--text-primary);
+    --destructive: 0 70% 45%;          /* Error · form error messages */
+    --destructive-foreground: var(--background);
+    --border: var(--text-primary) / 0.12;
+    --input: var(--text-primary) / 0.12;
+    --ring: var(--accent);
     --radius: 0.5rem;
-
-    --sidebar-background: 45 36% 98%;
-    --sidebar-foreground: 100 8% 10%;
-    --sidebar-primary: 12 55% 78%;
-    --sidebar-primary-foreground: 100 8% 10%;
-    --sidebar-accent: 137 18% 92%;
-    --sidebar-accent-foreground: 100 8% 10%;
-    --sidebar-border: 120 6% 18% / 0.12;
-    --sidebar-ring: 12 55% 78%;
 
     /* Type families */
     --font-serif: "Fraunces", Georgia, serif;
     --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
-    --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --font-mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;   /* DM Mono replaced JetBrains Mono, which read thin and tall (Matt, 2026-11-08) */
     --font-hand: "Caveat", cursive;   /* Christmas page note only */
   }
 
-  /* Phones: the hero h1 scales with the screen instead of holding at 52px,
-     so headings like "Themed children's parties, fully styled." sit on
+  /* Phones: the hero headline scales with the screen instead of holding at
+     52px, so headings like "Themed children's parties, fully styled." sit on
      three lines, not four or five. Meets the 52px floor above at ~473px. */
   @media (max-width: 480px) {
     :root { --fs-display: clamp(36px, 11vw, 52px); }
@@ -183,11 +211,28 @@
          already taken main paragraphs to 17.5px, so dropping them would
          make phone reading harder (Matt, 2026-11-08). */
       --lh-h2: 1.1;
+      --lh-h3: 1.1;
+      --section-y: 64px;
+      --gap-heading-content: 32px;
+      --gap-text-content: 40px;
+      --gap-inline: 16px;
+      --card-text-inset: 0px;
+      --panel-inset: 12px;
+      --card-pad: 28px;
+      --gutter: 32px;
       /* slightly tighter corners on small screens */
-      --radius-card: 14px;
-      --radius-media: 12px;
+      --radius-large: 12px;
     }
   }
+  /* Laptops (768-1439px): tighter section rhythm; 768-1366px also pushes
+     content inward to ~8% each side (was the old LAPTOP BREAKPOINT block). */
+  @media (min-width: 768px) and (max-width: 1439px) {
+    :root { --section-y: 80px; }
+  }
+  @media (min-width: 768px) and (max-width: 1366px) {
+    :root { --gutter: 8vw; }
+  }
+
 }
 
 @layer base {
@@ -202,32 +247,31 @@
     scroll-padding-top: 80px;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
+    background: hsl(var(--background-light));   /* the page is Background Light sitewide (Matt, 2026-11-08) */
     font-family: var(--font-sans);
-    font-size: var(--fs-body-sm);
-    line-height: var(--lh-body-sm);
+    font-size: var(--fs-small);
+    line-height: var(--lh-small);
     overflow-x: clip;
   }
-  strong, b { font-weight: var(--fw-strong); }
+  strong, b { font-weight: var(--fw-bold); }
   h1, h2, h3, h4, h5, h6, p {
     text-wrap: pretty;
   }
   ::selection {
-    background: hsl(var(--ink));
+    background: hsl(var(--text-primary));
     color: hsl(var(--background));
   }
   ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-thumb { background: hsl(var(--ink) / 0.22); border-radius: var(--radius-chip); }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--text-primary) / 0.22); border-radius: var(--radius-small); }
 }
 
 @layer components {
   .container-rfx {
-    max-width: 1440px;
+    max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0 56px;
+    padding: 0 var(--gutter);
   }
-  @media (max-width: 960px) { .container-rfx { padding: 0 32px; } }
-  @media (max-width: 640px) { .container-rfx { padding: 0 32px; } }
 
   /* HeroEditorial track: a 40px side gutter at every desktop width keeps the
      image row inset from the screen edges (it previously went full-bleed below
@@ -259,11 +303,14 @@
   }
 
   /* Home + service heroes (.rfx-hero-scale): on wide screens the space
-     scales with the width (tokens in :root). Location pages, Christmas, Our
-     work, Contact and Journal keep their fixed spacing. These selectors
+     scales with the width (tokens in :root); town pages too since
+     2026-11-08. Christmas, Our work, Contact and Journal keep their fixed
+     spacing. These selectors
      outrank the Tailwind utilities and the shared .rfx-hero rules above. */
   @media (min-width: 1440px) {
     section.rfx-hero-scale { padding-top: var(--hero-pad-top); }
+    /* Home hero sits 12px higher than the service heroes (Matt, 2026-11-08). */
+    section.rfx-hero-home.rfx-hero-scale { padding-top: calc(var(--hero-pad-top) - 12px); }
     .rfx-hero-scale .rfx-hero-intro { margin-bottom: var(--hero-gap); }
     /* Home only: cream space under the three-photo row. Service heroes run
        their big image straight into the next section. */
@@ -281,54 +328,50 @@
   .font-mono-rf  { font-family: var(--font-mono); }
 
   /* ── Named text styles (the design system) ───────────────────────────
-     Use exactly one per text element. Each sets family, size, line height,
-     weight and letter-spacing from the tokens in :root, desktop and phone.
-     Colour, alignment and spacing stay separate utilities (text-ink,
-     text-ink-soft, text-center, mt-4...). Italic highlights inside a heading
-     use .t-accent. */
-  .t-display, .t-h1, .t-h2, .t-h2-sm, .t-feature, .t-h3, .t-quote, .t-h4, .t-faq, .t-caption {
+     One class per text element; tokens in :root. Colour, alignment and
+     spacing stay separate utilities. Italic words in a heading use .t-accent. */
+
+  /* Display, headings and quote: Fraunces */
+  .t-display, .t-h1, .t-h2, .t-h3, .t-h4, .t-h5, .t-h6, .t-quote {
     font-family: var(--font-serif);
-    font-weight: var(--fw-heading);
+    font-weight: var(--fw-regular);
     /* room for italic descenders (g, y, j) under tight line heights */
     padding-bottom: 0.18em;
     overflow: visible;
   }
   .t-display { font-size: var(--fs-display); line-height: var(--lh-display); letter-spacing: var(--ls-display); }
-  .t-h1      { font-size: var(--fs-h1);      line-height: var(--lh-h1);      letter-spacing: var(--ls-h1); }
-  .t-h2      { font-size: var(--fs-h2);      line-height: var(--lh-h2);      letter-spacing: var(--ls-h2); }
-  .t-h2-sm   { font-size: var(--fs-h2-sm);   line-height: var(--lh-h2);      letter-spacing: var(--ls-h2); }
-  .t-feature { font-size: var(--fs-feature); line-height: var(--lh-feature); letter-spacing: var(--ls-h3); }
-  .t-h3      { font-size: var(--fs-h3);      line-height: var(--lh-h3);      letter-spacing: var(--ls-h3); }
-  .t-quote   { font-size: var(--fs-h3);      line-height: var(--lh-quote);   letter-spacing: var(--ls-h4); }
-  .t-h4      { font-size: var(--fs-h4);      line-height: var(--lh-h4);      letter-spacing: var(--ls-h4); }
-  .t-faq     { font-size: var(--fs-faq);     line-height: var(--lh-faq);     letter-spacing: var(--ls-h4); }
-  .t-caption { font-size: var(--fs-caption); line-height: var(--lh-faq);     letter-spacing: 0; padding-bottom: 0; }
+  .t-h1 { font-size: var(--fs-h1); line-height: var(--lh-h1); letter-spacing: var(--ls-h1); }
+  .t-h2         { font-size: var(--fs-h2);         line-height: var(--lh-h2);         letter-spacing: var(--ls-h2); }
+  .t-h3         { font-size: var(--fs-h3);         line-height: var(--lh-h3);         letter-spacing: var(--ls-h3); }
+  .t-h4         { font-size: var(--fs-h4);         line-height: var(--lh-h4);         letter-spacing: var(--ls-h4); }
+  .t-h5         { font-size: var(--fs-h5);         line-height: var(--lh-h5);         letter-spacing: var(--ls-h5); }
+  .t-h6         { font-size: var(--fs-h6);         line-height: var(--lh-h6);         letter-spacing: var(--ls-h6); }
+  .t-quote      { font-size: var(--fs-quote);      line-height: var(--lh-quote);      letter-spacing: var(--ls-quote); }
 
-  .t-lead, .t-body, .t-body-sm, .t-meta, .t-ui {
+  /* Body: DM Sans */
+  .t-lead, .t-body, .t-small, .t-meta, .t-label {
     font-family: var(--font-sans);
-    font-weight: var(--fw-body);
+    font-weight: var(--fw-regular);
     letter-spacing: 0;
   }
   .t-lead    { font-size: var(--fs-lead);    line-height: var(--lh-lead); }
   .t-body    { font-size: var(--fs-body);    line-height: var(--lh-body); }
-  .t-body-sm { font-size: var(--fs-body-sm); line-height: var(--lh-body-sm); }
+  .t-small   { font-size: var(--fs-small);   line-height: var(--lh-small); }
   .t-meta    { font-size: var(--fs-meta);    line-height: var(--lh-meta); }
-  /* Buttons, nav and link labels */
-  .t-ui      { font-size: var(--fs-meta);    line-height: var(--lh-ui); font-weight: var(--fw-ui); letter-spacing: var(--ls-ui); }
-
-  .t-eyebrow {
+  .t-label   { font-size: var(--fs-label);   line-height: var(--lh-label); font-weight: var(--fw-medium); letter-spacing: var(--ls-label); }
+  .t-overline {
     font-family: var(--font-mono);
-    font-size: var(--fs-eyebrow);
-    line-height: var(--lh-meta);
-    font-weight: var(--fw-body);
-    letter-spacing: var(--ls-eyebrow);
+    font-size: var(--fs-overline);
+    line-height: var(--lh-overline);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-overline);
     text-transform: uppercase;
   }
 
   /* The "RIVER FOX EVENTS" wordmark (nav, footer) */
   .t-wordmark, .t-wordmark-lg {
     font-family: var(--font-sans);
-    font-weight: var(--fw-ui);
+    font-weight: var(--fw-medium);
     letter-spacing: var(--ls-wordmark);
     line-height: 1;
   }
@@ -339,14 +382,14 @@
   .t-icon { font-size: 1.4em; line-height: 1; }
 
   /* Italic highlight inside a heading ("styled in *Surrey.*") */
-  .t-accent { font-style: italic; font-weight: inherit; color: hsl(var(--accent-warm)); }
+  .t-accent { font-style: italic; font-weight: inherit; color: hsl(var(--accent-dark)); }
 
-  .hairline { height: 1px; background: hsl(var(--ink) / 0.10); width: 100%; }
+  .hairline { height: 1px; background: hsl(var(--text-primary) / 0.10); width: 100%; }
 
   /* Image placeholder texture for ph blocks (used as fallback / behind imagery) */
   .ph {
     position: relative;
-    background: hsl(var(--surface-alt));
+    background: hsl(var(--background-light));
     overflow: hidden;
   }
   .ph::before {
@@ -359,9 +402,9 @@
     pointer-events: none;
     z-index: 0;
   }
-  .ph-warm { background: hsl(var(--surface-warm)); }
-  .ph-blush { background: hsl(var(--surface-blush)); }
-  .ph-dark { background: hsl(var(--surface-deep)); }
+  .ph-warm { background: hsl(var(--background-warm)); }
+  .ph-blush { background: hsl(var(--background-blush)); }
+  .ph-dark { background: hsl(var(--background-dark)); }
 
   /* Removed numeric/label overlays on imagery */
   .ph-label, .ph-num { display: none !important; }
@@ -410,16 +453,16 @@
   .word-reveal-inner.in { transform: translateY(0); }
   .word-reveal-inner.em {
     font-style: italic;
-    color: hsl(var(--accent-warm));
+    color: hsl(var(--accent-dark));
   }
   .word-gap { display: inline-block; width: 0.28em; }
 
   /* Buttons */
   .btn-link-rf {
     font-family: var(--font-sans);
-    font-size: var(--fs-meta);
-    letter-spacing: var(--ls-ui);
-    color: hsl(var(--ink));
+    font-size: var(--fs-label);
+    letter-spacing: var(--ls-label);
+    color: hsl(var(--text-primary));
     background: none;
     border: none;
     text-decoration: none;
@@ -429,20 +472,20 @@
     padding: 10px 0;
     border-bottom: 1px solid currentColor;
     transition: gap .4s ease;
-    font-weight: var(--fw-ui);
+    font-weight: var(--fw-medium);
     cursor: pointer;
   }
-  .btn-link-rf:hover { gap: 18px; }
+  /* No growing on hover (Matt, 2026-11-08): only the arrow nudges. */
   .btn-link-rf .arr { display: inline-block; transition: transform .4s ease; }
   .btn-link-rf:hover .arr { transform: translateX(4px); }
 
   .btn-solid-rf {
     font-family: var(--font-sans);
-    font-size: var(--fs-meta);
-    font-weight: var(--fw-ui);
-    letter-spacing: var(--ls-ui);
+    font-size: var(--fs-label);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-label);
     padding: 14px 22px;
-    background: hsl(var(--ink));
+    background: hsl(var(--text-primary));
     color: hsl(var(--background));
     text-decoration: none;
     border: none;
@@ -450,37 +493,63 @@
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    transition: background .4s cubic-bezier(0.25, 0.46, 0.45, 0.94), gap .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border-radius: var(--radius-control);
+    transition: background .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: var(--radius-small);
+    --btn-fg: hsl(var(--background));
   }
-  .btn-solid-rf:hover { background: #000; gap: 18px; }
-  .btn-solid-rf.accent { background: hsl(var(--accent)); color: hsl(var(--ink)); }
-  .btn-solid-rf.accent:hover { background: hsl(12 55% 70%); color: hsl(var(--ink)); }
+  .btn-solid-rf:hover { background: #000; }
+  .btn-solid-rf.accent { background: hsl(var(--accent)); --btn-fg: hsl(var(--text-primary)); }
+  .btn-solid-rf.accent:hover { background: hsl(var(--accent-hover)); }
 
   .btn-ghost-rf {
     font-family: var(--font-sans);
-    font-size: var(--fs-meta);
-    font-weight: var(--fw-ui);
-    letter-spacing: var(--ls-ui);
+    font-size: var(--fs-label);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-label);
     padding: 13px 22px;
     background: transparent;
-    color: hsl(var(--ink));
-    border: 1px solid hsl(var(--ink) / 0.3);
+    color: hsl(var(--text-primary));
+    border: 1px solid hsl(var(--text-primary) / 0.3);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    transition: background .4s cubic-bezier(0.25, 0.46, 0.45, 0.94), color .4s cubic-bezier(0.25, 0.46, 0.45, 0.94), gap .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border-radius: var(--radius-control);
+    transition: background .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: var(--radius-small);
     text-decoration: none;
+    --btn-fg: hsl(var(--text-primary));
   }
-  .btn-ghost-rf:hover { background: hsl(var(--ink)); color: hsl(var(--background)); gap: 18px; }
+  .btn-ghost-rf:hover { background: hsl(var(--text-primary)); --btn-fg: hsl(var(--background)); }
+
+  /* Button hover: label roll (Matt chose it, 2026-11-08). The label and arrow
+     are drawn twice as text shadows, the second copy just out of sight
+     below; on hover the pair slides up, so the words roll to an identical
+     line. The button never changes size. Set --btn-fg, not color. */
+  /* Doubled classes so nothing (e.g. the nav's "a { color: inherit }") can
+     put the real text back under the rolling copy. */
+  .btn-solid-rf.btn-solid-rf, .btn-ghost-rf.btn-ghost-rf {
+    --roll: 3em;
+    overflow: hidden;
+    color: transparent;
+    text-shadow: 0 0 var(--btn-fg), 0 var(--roll) var(--btn-fg);
+    transition-property: background, text-shadow;
+    transition-duration: .4s, .45s;
+    transition-timing-function: cubic-bezier(.2,.7,.2,1);
+  }
+  .btn-solid-rf:hover, .btn-ghost-rf:hover,
+  .btn-solid-rf:focus-visible, .btn-ghost-rf:focus-visible {
+    text-shadow: 0 calc(var(--roll) * -1) var(--btn-fg), 0 0 var(--btn-fg);
+  }
+  .btn-solid-rf svg, .btn-ghost-rf svg { color: var(--btn-fg); }
+  @media (prefers-reduced-motion: reduce) {
+    .btn-solid-rf, .btn-ghost-rf { transition-property: background; }
+  }
 
   /* Marquee / ticker */
   .ticker-strip {
     overflow: hidden;
-    border-top: 1px solid hsl(var(--ink) / 0.10);
-    border-bottom: 1px solid hsl(var(--ink) / 0.10);
+    border-top: 1px solid hsl(var(--text-primary) / 0.10);
+    border-bottom: 1px solid hsl(var(--text-primary) / 0.10);
     padding: 22px 0;
     background: hsl(var(--background));
   }
@@ -495,16 +564,16 @@
   .ticker-item {
     font-family: var(--font-serif);
     font-size: var(--fs-ticker);
-    letter-spacing: var(--ls-h4);
-    color: hsl(var(--ink));
-    font-weight: var(--fw-heading);
+    letter-spacing: var(--ls-h5);
+    color: hsl(var(--text-primary));
+    font-weight: var(--fw-regular);
     display: inline-flex;
     align-items: center;
     gap: 56px;
   }
   .ticker-item::after {
     content: "✳";
-    color: hsl(var(--accent-warm));
+    color: hsl(var(--accent-dark));
     font-size: 0.45em;
   }
   @keyframes rfx-marq { to { transform: translateX(-50%); } }
@@ -513,36 +582,35 @@
   .tcard {
     position: relative;
     padding: 28px 26px 24px;
-    background: hsl(var(--surface-alt));
-    border: 1px solid hsl(var(--ink) / 0.08);
+    background: hsl(var(--background-light));   /* light card with a hairline, not cream (Matt, 2026-11-08) */
+    border: 1px solid hsl(var(--hair));
     display: flex;
     flex-direction: column;
     gap: 12px;
-    border-radius: var(--radius-card);
-    box-shadow: 0 1px 2px hsl(var(--ink) / 0.05);
+    border-radius: var(--radius-large);
+    box-shadow: 0 1px 2px hsl(var(--text-primary) / 0.05);
     transition: transform .35s cubic-bezier(.22,.7,.2,1), box-shadow .35s ease, border-color .35s ease;
   }
   .tcard:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px -8px hsl(var(--ink) / 0.16);
-    border-color: hsl(var(--ink) / 0.14);
+    box-shadow: 0 6px 18px -8px hsl(var(--text-primary) / 0.16);
+    border-color: hsl(var(--text-primary) / 0.14);
   }
   .tcard-stars {
     display: inline-flex;
     gap: 6px;
-    color: hsl(var(--accent-warm));
+    color: hsl(var(--accent-dark));
     font-size: var(--fs-lead);
-    letter-spacing: var(--ls-ui);
+    letter-spacing: var(--ls-label);
     line-height: 1;
   }
+  /* Review text is in the body sans (.t-body on the element): serif is for
+     headings, never long-form reading (Matt, 2026-11-08). */
   .tcard-quote {
-    font-family: var(--font-serif);
-    font-size: var(--fs-body);
-    line-height: var(--lh-lead);
-    font-weight: var(--fw-heading);
-    letter-spacing: var(--ls-h4);
     flex: 1;
-    color: hsl(var(--ink));
+    /* Tighter than paragraphs, so the cards read as quotes (Matt, 2026-11-08). */
+    line-height: var(--lh-review);
+    color: hsl(var(--text-primary));
     margin-top: 2px;
   }
   .tcard-meta {
@@ -550,35 +618,36 @@
     justify-content: space-between;
     align-items: center;
     font-family: var(--font-mono);
-    font-size: var(--fs-eyebrow);
-    letter-spacing: var(--ls-eyebrow);
+    font-size: var(--fs-overline);
+    letter-spacing: var(--ls-overline);
     text-transform: uppercase;
-    color: hsl(var(--ink-soft));
+    color: hsl(var(--text-neutral));
     padding-top: 14px;
-    border-top: 1px solid hsl(var(--ink) / 0.10);
+    border-top: 1px solid hsl(var(--text-primary) / 0.10);
     margin-top: 4px;
   }
+  /* Reviewer name in the body sans, not serif italic (Matt, 2026-11-08). */
   .tcard-meta .name {
-    font-family: var(--font-serif);
-    font-style: italic;
+    font-family: var(--font-sans);
+    font-weight: var(--fw-medium);
     font-size: var(--fs-meta);
     text-transform: none;
-    letter-spacing: var(--ls-h4);
-    color: hsl(var(--ink));
+    letter-spacing: var(--ls-label);
+    color: hsl(var(--text-primary));
   }
   .tcard-link {
-    color: hsl(var(--ink-soft));
+    color: hsl(var(--text-neutral));
     transition: color .25s ease;
     text-decoration: none;
   }
   .tcard-link:hover {
-    color: hsl(var(--accent-warm));
+    color: hsl(var(--accent-dark));
   }
   .tcard-dot {
     width: 6px;
     height: 6px;
-    border-radius: var(--radius-pill);
-    background: hsl(var(--ink) / 0.18);
+    border-radius: var(--radius-round);
+    background: hsl(var(--text-primary) / 0.18);
     transition: background .25s ease, width .25s ease;
     padding: 0;
     border: 0;
@@ -586,36 +655,36 @@
   }
   .tcard-dot.is-active {
     width: 18px;
-    background: hsl(var(--accent-warm));
+    background: hsl(var(--accent-dark));
   }
   .tcard-readall {
     font-family: var(--font-mono);
-    font-size: var(--fs-eyebrow);
-    letter-spacing: var(--ls-eyebrow);
+    font-size: var(--fs-overline);
+    letter-spacing: var(--ls-overline);
     text-transform: uppercase;
-    color: hsl(var(--ink-soft));
-    border-bottom: 1px solid hsl(var(--ink) / 0.2);
+    color: hsl(var(--text-neutral));
+    border-bottom: 1px solid hsl(var(--text-primary) / 0.2);
     padding-bottom: 2px;
     transition: color .25s ease, border-color .25s ease;
   }
   .tcard-readall:hover {
-    color: hsl(var(--accent-warm));
-    border-color: hsl(var(--accent-warm));
+    color: hsl(var(--accent-dark));
+    border-color: hsl(var(--accent-dark));
   }
 
   /* Form — clear field hierarchy, obvious tap targets */
   .form-wrap {
-    background: hsl(var(--surface-alt));
-    border: 1px solid hsl(var(--ink) / 0.08);
+    background: hsl(var(--background-light));
+    border: 1px solid hsl(var(--text-primary) / 0.08);
     padding: 36px;
-    border-radius: var(--radius-card);
-    box-shadow: 0 30px 80px -20px rgba(24,27,24,0.22), 0 8px 24px -10px rgba(24,27,24,0.10);
+    border-radius: var(--radius-large);
+    box-shadow: 0 30px 80px -20px hsl(var(--text-primary) / 0.22), 0 8px 24px -10px hsl(var(--text-primary) / 0.10);
   }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; }
   .form-row {
     background: hsl(var(--background));
-    border: 1.5px solid hsl(var(--ink) / 0.12);
-    border-radius: var(--radius-control);
+    border: 1.5px solid hsl(var(--text-primary) / 0.12);
+    border-radius: var(--radius-small);
     padding: 10px 16px 10px;
     display: flex;
     flex-direction: column;
@@ -627,11 +696,11 @@
   .form-row.full { grid-column: 1 / -1; }
   .form-row .lbl {
     font-family: var(--font-mono);
-    font-size: var(--fs-eyebrow);
-    letter-spacing: var(--ls-eyebrow);
+    font-size: var(--fs-overline);
+    letter-spacing: var(--ls-overline);
     text-transform: uppercase;
-    color: hsl(var(--ink-soft));
-    font-weight: var(--fw-ui);
+    color: hsl(var(--text-neutral));
+    font-weight: var(--fw-medium);
   }
   .form-row input,
   .form-row select,
@@ -640,9 +709,9 @@
     background: transparent;
     /* Body size (17px): 16px+ stops iPhones zooming the page on tap. */
     font-size: var(--fs-body);
-    font-weight: var(--fw-ui);
+    font-weight: var(--fw-medium);
     font-family: var(--font-sans);
-    color: hsl(var(--ink));
+    color: hsl(var(--text-primary));
     outline: none;
     padding: 2px 0 2px;
     width: 100%;
@@ -652,27 +721,44 @@
   .form-row select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%235A6059' stroke-width='1.4' d='M1 1l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0 center; padding-right: 18px; }
   .form-row textarea { resize: vertical; min-height: 96px; cursor: text; }
   .form-row input::placeholder,
-  .form-row textarea::placeholder { color: hsl(var(--ink-faint)); font-weight: var(--fw-body); }
-  .form-row:hover { border-color: hsl(var(--ink) / 0.28); background: hsl(var(--surface-alt)); }
+  .form-row textarea::placeholder { color: hsl(var(--text-dimmed)); font-weight: var(--fw-regular); }
+  .form-row:hover { border-color: hsl(var(--text-primary) / 0.28); background: hsl(var(--background-light)); }
   .form-row:focus-within {
     border-color: hsl(var(--accent));
     box-shadow: 0 0 0 3px hsl(var(--accent) / 0.14);
-    background: hsl(var(--surface-alt));
+    background: hsl(var(--background-light));
   }
 
   /* Experience cards — clickable hover */
   .exp-card { display: block; text-decoration: none; color: inherit; cursor: pointer; }
+  /* The three cards run edge to edge with the heading and the rule above:
+     a column gap with the divider drawn in its middle, not padding inside
+     each card, which inset the outer cards (Matt, 2026-11-08). */
+  @media (min-width: 768px) {
+    .exp-grid { column-gap: var(--gap-text-content); }
+    .exp-grid > .exp-card { position: relative; }
+    .exp-grid > .exp-card + .exp-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(var(--gap-text-content) / -2);
+      width: 1px;
+      background: hsl(var(--divider));
+    }
+  }
   .exp-card .exp-img-wrap {
     position: relative;
     overflow: hidden;
     --hover-zoom: 1;
-    transition: --hover-zoom 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: --hover-zoom 1.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .exp-card:hover .exp-img-wrap { --hover-zoom: 1.12; }
+  /* A gentle, slow zoom on hover (was 1.12, Matt 2026-11-08: "has to feel really premium"). */
+  .exp-card:hover .exp-img-wrap { --hover-zoom: 1.05; }
   .exp-card .exp-cta {
     position: absolute; left: 22px; bottom: 18px; z-index: 4;
     color: hsl(var(--background));
-    font-family: var(--font-sans); font-size: var(--fs-body-sm); font-weight: var(--fw-ui);
+    font-family: var(--font-sans); font-size: var(--fs-small); font-weight: var(--fw-medium);
     display: inline-flex; align-items: center; gap: 8px;
     transform: translateY(8px); opacity: 0;
     transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .5s ease;
@@ -680,6 +766,14 @@
   .exp-card:hover .exp-cta { transform: translateY(0); opacity: 1; }
   .exp-card .exp-title { transition: color .3s ease; }
   .exp-card:hover .exp-title { color: hsl(var(--accent)); }
+  /* "Most popular" label on a service photo (Matt, 2026-11-08). */
+  .exp-card .exp-badge {
+    position: absolute; top: 14px; left: 14px; z-index: 4;
+    padding: 6px 10px;
+    background: hsl(var(--background-light) / 0.94);
+    color: hsl(var(--text-primary));
+    border-radius: var(--radius-small);
+  }
   /* Tap feedback for touchscreens — slight image press + brief darken */
   .exp-card { transition: transform .25s cubic-bezier(.2,.7,.2,1); }
   .exp-card:active { transform: scale(0.985); }
@@ -696,7 +790,7 @@
     transition: padding 520ms cubic-bezier(0.33, 1, 0.68, 1);
   }
   .faq-rf-trigger:focus { outline: none; }
-  .faq-rf-trigger:focus-visible { outline: 2px solid hsl(var(--ink) / 0.35); outline-offset: 4px; border-radius: var(--radius-chip); }
+  .faq-rf-trigger:focus-visible { outline: 2px solid hsl(var(--text-primary) / 0.35); outline-offset: 4px; border-radius: var(--radius-small); }
   .faq-rf-plus { transition: transform 520ms cubic-bezier(0.33, 1, 0.68, 1); }
   .faq-rf-trigger[data-state="open"] .faq-rf-plus { transform: rotate(45deg); }
   .faq-rf-panel {
@@ -731,7 +825,7 @@
   }
   .reveal-word h3 {
     font-family: var(--font-serif);
-    font-weight: var(--fw-heading);
+    font-weight: var(--fw-regular);
     font-size: var(--fs-mega);
     line-height: var(--lh-display);
     letter-spacing: var(--ls-display);
@@ -741,7 +835,7 @@
   .reveal-word em {
     font-style: italic;
     font-weight: inherit;
-    color: hsl(var(--accent-warm));
+    color: hsl(var(--accent-dark));
   }
   @media (max-width: 760px) {
     .reveal-word { padding: 80px 0; }
@@ -758,9 +852,9 @@
     align-items: center;
     gap: 24px;
     transition: background .5s cubic-bezier(0.25, 0.46, 0.45, 0.94), backdrop-filter .5s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color .5s cubic-bezier(0.25, 0.46, 0.45, 0.94), color .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border-bottom: 1px solid hsl(var(--ink) / 0.06);
-    color: hsl(var(--ink));
-    background: hsl(var(--background) / 0.45);
+    border-bottom: 1px solid hsl(var(--text-primary) / 0.06);
+    color: hsl(var(--text-primary));
+    background: hsl(var(--background-light) / 0.45);   /* the page colour, sitewide (Matt, 2026-11-08) */
     backdrop-filter: blur(28px) saturate(1.1);
     -webkit-backdrop-filter: blur(28px) saturate(1.1);
     /* Force a dedicated compositor layer to prevent banded gradient artifacts
@@ -771,18 +865,22 @@
   }
   .rfx-nav.scrolled,
   .nav-solid .rfx-nav {
-    background: hsl(var(--background) / 0.82);
+    background: hsl(var(--background-light) / 0.82);
     backdrop-filter: blur(20px) saturate(1.08);
     -webkit-backdrop-filter: blur(20px) saturate(1.08);
-    border-bottom-color: hsl(var(--ink) / 0.12);
+    border-bottom-color: hsl(var(--text-primary) / 0.12);
   }
   /* Pages on the lighter cream (Contact, Our work): the nav tint matches it,
      so the bar doesn't read as a darker strip over the page. */
-  .page-paper { background: hsl(var(--surface-paper)); }
-  .nav-paper .rfx-nav { background: hsl(var(--surface-paper) / 0.82); }
+  .page-paper { background: hsl(var(--background-light)); }
+  /* Dividers read a touch lighter on white (Matt, 2026-11-08). */
+  .page-paper, .rfx-section.white { --divider: var(--text-primary) / 0.10; }
+  .nav-paper .rfx-nav { background: hsl(var(--background-light) / 0.82); }
   /* Links and dropdown buttons share one text baseline, so Home / Our work /
-     Contact line up with Services / About (Matt, 2026-11-08). */
-  .rfx-nav-row { display: flex; align-items: baseline; gap: 32px; font-size: var(--fs-meta); letter-spacing: var(--ls-ui); }
+     Contact line up with Services / About (Matt, 2026-11-08). The dropdown
+     wrappers are flex boxes too (Nav.tsx), so the button never sits on a
+     line box of its own: alignment holds even if a browser ignores baseline. */
+  .rfx-nav-row { display: flex; align-items: baseline; gap: 32px; font-size: var(--fs-meta); letter-spacing: var(--ls-label); }
   .rfx-nav a { color: inherit; text-decoration: none; position: relative; padding-bottom: 2px; }
   .rfx-nav a:not(.btn-solid-rf):not(.no-underline-fx)::after {
     content: "";
@@ -801,19 +899,56 @@
     .rfx-nav .nav-right { display: none; }
   }
 
-  .rfx-section { padding: 120px 0; }
-  /* Tighter rhythm on small/medium desktops (between mobile and ≥1440 large
-     desktop). Keeps generous 120px breathing room only on big monitors. */
-  @media (min-width: 761px) and (max-width: 1439px) {
-    .rfx-section { padding: 96px 0; }
+  .rfx-section { padding: var(--section-y) 0; }
+
+  /* ── Same background, one gap (Matt, 2026-11-08) ──
+     White sections and plain ones share a background now the page is Background
+     Light. When a section follows one with the same background, the upper one drops
+     its bottom padding and the lower one's top padding is the Section gap, so
+     every same-background boundary on the site is one gap. A change of
+     background keeps full section padding on both sides. The run of photo
+     reveals (.cp-reveal-section) and the Christmas page keep their own rhythm. */
+  div:not(.rfx-xmas) > main > .rfx-section:not(.warm, .dark, .blush, .cp-reveal-section):has(+ .rfx-section:not(.warm, .dark, .blush, .cp-reveal-section)),
+  div:not(.rfx-xmas) > main > .rfx-section.warm:has(+ .rfx-section.warm) {
+    padding-bottom: 0;
+  }
+  div:not(.rfx-xmas) > main > .rfx-section:not(.warm, .dark, .blush, .cp-reveal-section) + .rfx-section:not(.warm, .dark, .blush, .cp-reveal-section),
+  div:not(.rfx-xmas) > main > .rfx-section.warm + .rfx-section.warm {
+    padding-top: var(--section-gap);
+  }
+  /* The same rule for a hero and for the last photo-and-text reveal: when the
+     next section shares their background, it supplies the one gap. */
+  div:not(.rfx-xmas) > main > section.rfx-hero:has(+ .rfx-section:not(.warm, .dark, .blush)) { padding-bottom: 0; }
+  div:not(.rfx-xmas) > main > .cp-reveal-section:has(+ .rfx-section:not(.cp-reveal-section, .warm, .dark, .blush)) { padding-bottom: 0 !important; }
+  /* Instagram after the reviews: half the gap here, half inside (divider in the middle). */
+  div:not(.rfx-xmas) > main > .rfx-section + .rfx-section.rfx-instagram.rfx-instagram { padding-top: calc(var(--section-gap) / 2); }
+  @media (max-width: 767px) {
+    /* No divider on phones, so the whole gap sits above. */
+    div:not(.rfx-xmas) > main > .rfx-section + .rfx-section.rfx-instagram.rfx-instagram { padding-top: var(--section-gap); }
   }
 
-  /* Shared gap between a section heading and the body copy directly beneath
-     it. Single source of truth - retune here, not per-component. Used by the
-     heading-to-body-copy sections (LocationUSP, LocationLocalProse, FAQ,
-     ChildrensFAQ). 768px mirrors Tailwind's md: breakpoint. */
-  .heading-to-body { margin-bottom: 24px; }
-  @media (min-width: 768px) { .heading-to-body { margin-bottom: 28px; } }
+  /* Section heading spacing (Matt, 2026-11-08): heading -> text, heading ->
+     content (list, photos, grid, FAQ), text -> content. One token each. */
+  .heading-to-content { margin-bottom: var(--gap-heading-content); }
+  .heading-to-text { margin-top: var(--gap-heading-text); }
+  .text-to-content { margin-top: var(--gap-text-content); }
+  /* Card / item title to its text: one gap everywhere (Matt, 2026-11-08). */
+  .title-to-text { margin-top: var(--gap-title-body); }
+  .label-to-title { margin-bottom: var(--gap-label-title); }
+  .card-text { padding-right: var(--card-text-inset); }
+
+  /* Text links (Matt, 2026-11-08): underlined at rest, the underline fades on
+     hover. Works on light and dark grounds (the line is the text colour at
+     40%). Menus and the arrow CTA links (.btn-link-rf) have their own styles. */
+  .text-link {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+    transition: text-decoration-color .25s ease;
+  }
+  .text-link:hover { text-decoration-color: transparent; }
 
   /* CPReveal + About sticky images — desktop default. Aspect-ratio keeps a
      portrait shape from the column width, then max-height caps the image so
@@ -862,10 +997,87 @@
     .cp-reveal-section { padding: 100px 0 !important; }
     .cp-reveal-section + .cp-reveal-section { padding-top: 30px !important; }
   }
-  .rfx-section.dark { background: hsl(var(--surface-deep)); color: hsl(var(--on-deep)); }
-  .rfx-section.white { background: hsl(var(--surface-alt)); }
-  .rfx-section.warm { background: hsl(var(--surface-warm)); }
-  .rfx-section.blush { background: hsl(var(--surface-blush)); }
+  .rfx-section.dark { background: hsl(var(--background-dark)); color: hsl(var(--text-on-dark)); }
+  .rfx-section.white { background: hsl(var(--background-light)); }
+  .rfx-section.warm { background: hsl(var(--background-warm)); }
+  /* Rounded section panel, inset from the screen edges (home About; Matt,
+     2026-11-08). overflow: clip on .warm keeps the corners clean without
+     breaking the sticky photo. */
+  /* Rounded panel (home About). --shrink runs 0 to 1 as it scrolls in, so it
+     starts full width and draws in to its inset and corners (Matt,
+     2026-11-08); without JavaScript it sits at 1. clip-path, not margin, so
+     nothing reflows while it moves. */
+  .rfx-panel {
+    --shrink: 1;
+    clip-path: inset(0 calc(var(--panel-inset) * var(--shrink)) round calc(var(--radius-panel) * var(--shrink)));
+  }
+
+  /* Home mission line (Mission.tsx): words darken one by one on scroll. */
+  .mission-line { max-width: 30ch; text-wrap: pretty; }
+  .mission-word { display: inline; }
+  /* The divider sits in the middle of one section gap: half above it, half
+     below before the services heading (Matt, 2026-11-08). */
+  .mission-rule { margin-top: calc(var(--section-gap) / 2); border-top: 1px solid hsl(var(--divider)); }
+  div:not(.rfx-xmas) > main > #mission + .rfx-section { padding-top: calc(var(--section-gap) / 2); }
+
+  /* Pricing (CPPricing): a boxed Warm card on the page background instead of
+     a full-width band (Matt, 2026-11-08). */
+  .rfx-pricing-box { background: hsl(var(--background-warm)); padding: 88px 40px; }
+
+  /* Option cards (Matt, 2026-11-08): the Christmas garland layout as a shared
+     component. Separate bordered cards, the name as a heading, the price as an
+     accent line, a short description; the popular one gets a tag on its top
+     edge and an accent border. */
+  .option-cards { display: grid; gap: var(--gap-inline); margin-inline: auto; }
+  .option-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: calc(var(--card-pad) + var(--gap-title-body)) var(--card-pad) var(--card-pad);
+    background: hsl(var(--background-light));
+    border: 1px solid hsl(var(--hair-strong));
+    border-radius: var(--radius-large);
+  }
+  .option-card.is-popular {
+    border-color: hsl(var(--accent-dark));
+    box-shadow: 0 18px 40px -26px hsl(var(--accent-dark) / 0.55);
+  }
+  .option-card__tag { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); margin: 0; }
+  /* Small solid tag ("Most popular") */
+  .tag {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-overline);
+    letter-spacing: var(--ls-overline);
+    line-height: 1;
+    text-transform: uppercase;
+    padding: var(--gap-title-body) calc(var(--gap-title-body) * 1.5);
+    border-radius: var(--radius-small);
+    background: hsl(var(--accent));
+    color: hsl(var(--text-primary));
+    white-space: nowrap;
+  }
+  @media (max-width: 767px) {
+    .rfx-pricing-box { padding: 56px 20px; }
+  }
+
+  /* Scroll-in fade for copy: children with .rfx-reveal fade up once their
+     container gets .is-in; -2 / -3 follow a beat later. */
+  .rfx-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+  }
+  .is-in .rfx-reveal { opacity: 1; transform: none; }
+  .is-in .rfx-reveal-2 { transition-delay: .15s; }
+  .is-in .rfx-reveal-3 { transition-delay: .3s; }
+  @media (prefers-reduced-motion: reduce) {
+    .rfx-reveal { opacity: 1; transform: none; transition: none; }
+  }
+  .rfx-section.blush { background: hsl(var(--background-blush)); }
 
   /* Story-style photo carousel (StoryCarousel.tsx): bars along the bottom
      fill over each photo's turn, like Instagram stories. */
@@ -879,19 +1091,19 @@
     background: linear-gradient(to top, hsl(0 0% 0% / 0.42), hsl(0 0% 0% / 0));
   }
   .story__bars { flex: 1; display: flex; gap: 4px; }
-  .story__bar { flex: 1; height: 3px; border-radius: var(--radius-pill); background: hsl(0 0% 100% / 0.5); overflow: hidden; }
+  .story__bar { flex: 1; height: 3px; border-radius: var(--radius-round); background: hsl(0 0% 100% / 0.5); overflow: hidden; }
   .story__fill { display: block; height: 100%; background: #fff; transform-origin: left center; transform: scaleX(0); }
   .story__fill.is-done { transform: scaleX(1); }
   .story__fill.is-on { animation-name: story-fill; animation-timing-function: linear; animation-fill-mode: forwards; }
   @keyframes story-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
   .story__pause {
-    pointer-events: auto; flex: none; width: 30px; height: 30px; border-radius: var(--radius-pill); border: 0; cursor: pointer;
+    pointer-events: auto; flex: none; width: 30px; height: 30px; border-radius: var(--radius-round); border: 0; cursor: pointer;
     display: inline-flex; align-items: center; justify-content: center; color: #fff; background: hsl(0 0% 100% / 0.22);
   }
   .story__keys { position: absolute; left: 12px; top: 12px; z-index: 4; display: flex; gap: 8px; }
   .story__key {
     position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
-    padding: 8px 12px; border-radius: var(--radius-chip); border: 0; background: hsl(0 0% 100% / 0.92); color: hsl(var(--ink)); font-size: var(--fs-meta);
+    padding: 8px 12px; border-radius: var(--radius-small); border: 0; background: hsl(0 0% 100% / 0.92); color: hsl(var(--text-primary)); font-size: var(--fs-meta);
   }
   .story__key:focus-visible { position: static; width: auto; height: auto; clip: auto; }
   @media (prefers-reduced-motion: reduce) { .story__img { transition: none; } }
@@ -907,7 +1119,7 @@
     padding-bottom: 0.18em;   /* italic descenders */
     font-size: var(--fs-h1);
     line-height: var(--lh-h1);
-    font-weight: var(--fw-heading);
+    font-weight: var(--fw-regular);
     letter-spacing: var(--ls-h1);
     text-wrap: balance;
     max-width: 18ch;
@@ -915,8 +1127,8 @@
   .page-header__note {
     margin-top: 20px;
     font-family: var(--font-mono);
-    font-size: var(--fs-eyebrow);
-    letter-spacing: var(--ls-eyebrow);
+    font-size: var(--fs-overline);
+    letter-spacing: var(--ls-overline);
     text-transform: uppercase;
   }
   /* Lead style, like the service hero sub-copy, close under the H1. */
@@ -935,9 +1147,20 @@
      padding moves above the line, and the section after it opens with the
      same gap, so the line sits midway. */
   .page-header.page-header--rule { padding-bottom: 0; }
+  /* Row of plain text links under the intro (Our work occasions). */
+  .page-header__links {
+    margin-top: var(--gap-text-content);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-title-body) calc(var(--gap-inline) / 2);
+  }
+  /* Thin vertical divider between the links */
+  .page-header__sep { width: 1px; height: 0.9em; background: hsl(var(--hair-strong)); }
   .page-header__rule {
     margin-top: 40px;
-    border-top: 1px solid hsl(var(--ink) / 0.15);
+    border-top: 1px solid hsl(var(--divider));
   }
   /* Whatever follows the line (Our work galleries, Journal grid, Contact
      form) opens with the same gap. Our work has a scroll marker between. */
@@ -956,21 +1179,21 @@
      Tapping opens the viewer. */
   .work-tile {
     position: relative; display: block; width: 100%; padding: 0; border: 0;
-    background: hsl(var(--ink) / 0.05); border-radius: var(--radius-media); overflow: hidden; cursor: pointer;
+    background: hsl(var(--text-primary) / 0.05); border-radius: var(--radius-large); overflow: hidden; cursor: pointer;
     transition: transform .6s cubic-bezier(.2,.7,.2,1);
   }
   .work-tile img { transition: transform .9s cubic-bezier(.2,.7,.2,1); }
   .work-tile__over {
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-    background: hsl(var(--ink) / 0.28); color: #fff; opacity: 0; transition: opacity .4s ease;
+    background: hsl(var(--text-primary) / 0.28); color: #fff; opacity: 0; transition: opacity .4s ease;
   }
   .work-tile__label {
-    display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-chip);
-    background: hsl(0 0% 100% / 0.92); color: hsl(var(--ink));
+    display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-small);
+    background: hsl(0 0% 100% / 0.92); color: hsl(var(--text-primary));
   }
   .work-tile__badge {
-    position: absolute; right: 8px; bottom: 8px; display: none; width: 28px; height: 28px; border-radius: var(--radius-chip);
-    align-items: center; justify-content: center; background: hsl(0 0% 100% / 0.88); color: hsl(var(--ink));
+    position: absolute; right: 8px; bottom: 8px; display: none; width: 28px; height: 28px; border-radius: var(--radius-small);
+    align-items: center; justify-content: center; background: hsl(0 0% 100% / 0.88); color: hsl(var(--text-primary));
   }
   @media (hover: hover) {
     .work-tile:hover { transform: scale(0.97); }
@@ -989,21 +1212,21 @@
   .work-dock {
     position: fixed; left: 50%; bottom: calc(72px + env(safe-area-inset-bottom)); z-index: 90;
     display: flex; gap: 4px; padding: 6px; max-width: calc(100vw - 24px);
-    border-radius: var(--radius-pill); border: 1px solid hsl(var(--ink) / 0.14);
+    border-radius: var(--radius-round); border: 1px solid hsl(var(--text-primary) / 0.14);
     background: hsl(var(--background) / 0.86);
     -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4);
-    box-shadow: 0 20px 48px -12px hsl(var(--ink) / 0.5), 0 3px 9px hsl(var(--ink) / 0.13);
+    box-shadow: 0 20px 48px -12px hsl(var(--text-primary) / 0.5), 0 3px 9px hsl(var(--text-primary) / 0.13);
     transform: translate(-50%, calc(100% + 60px)); opacity: 0; pointer-events: none;
     transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
   }
   .work-dock.is-on { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
   .work-dock__link {
-    padding: 13px 24px; border-radius: var(--radius-pill); white-space: nowrap;
-    font-family: var(--font-sans); font-size: var(--fs-body-sm); font-weight: var(--fw-ui); color: hsl(var(--ink)); text-decoration: none;
+    padding: 13px 24px; border-radius: var(--radius-round); white-space: nowrap;
+    font-family: var(--font-sans); font-size: var(--fs-small); font-weight: var(--fw-medium); color: hsl(var(--text-primary)); text-decoration: none;
     transition: background-color .35s ease, color .35s ease;
   }
-  .work-dock__link:hover { background: hsl(var(--ink) / 0.07); }
-  .work-dock__link.is-active { background: hsl(var(--ink)); color: hsl(var(--background)); }
+  .work-dock__link:hover { background: hsl(var(--text-primary) / 0.07); }
+  .work-dock__link.is-active { background: hsl(var(--text-primary)); color: hsl(var(--background)); }
   @media (max-width: 480px) {
     .work-dock { bottom: calc(24px + env(safe-area-inset-bottom)); padding: 5px; gap: 2px; }
     .work-dock__link { padding: 12px 10px; font-size: var(--fs-meta); }
@@ -1029,28 +1252,28 @@
     .work-fab.is-on { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
     .work-fab__btn {
       display: inline-flex; align-items: center; gap: 10px; padding: 14px 20px 14px 18px; white-space: nowrap;
-      border-radius: var(--radius-pill); border: 1px solid hsl(var(--ink) / 0.14);
-      background: hsl(var(--ink)); color: hsl(var(--background));
-      font-family: var(--font-sans); font-size: var(--fs-body-sm); font-weight: var(--fw-ui); cursor: pointer;
-      box-shadow: 0 18px 44px -12px hsl(var(--ink) / 0.55), 0 2px 6px hsl(var(--ink) / 0.12);
+      border-radius: var(--radius-round); border: 1px solid hsl(var(--text-primary) / 0.14);
+      background: hsl(var(--text-primary)); color: hsl(var(--background));
+      font-family: var(--font-sans); font-size: var(--fs-small); font-weight: var(--fw-medium); cursor: pointer;
+      box-shadow: 0 18px 44px -12px hsl(var(--text-primary) / 0.55), 0 2px 6px hsl(var(--text-primary) / 0.12);
     }
     .work-fab__chev { opacity: .7; transition: transform .35s ease; }
     .work-fab.is-open .work-fab__chev { transform: rotate(180deg); }
     .work-fab__menu {
       position: absolute; left: 50%; bottom: calc(100% + 12px); width: min(300px, calc(100vw - 32px));
-      padding: 8px; border-radius: var(--radius-card); border: 1px solid hsl(var(--ink) / 0.12);
+      padding: 8px; border-radius: var(--radius-large); border: 1px solid hsl(var(--text-primary) / 0.12);
       background: hsl(var(--background) / 0.92);
       -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4);
-      box-shadow: 0 24px 56px -16px hsl(var(--ink) / 0.5);
+      box-shadow: 0 24px 56px -16px hsl(var(--text-primary) / 0.5);
       transform: translate(-50%, 12px) scale(.96); transform-origin: 50% 100%; opacity: 0; pointer-events: none;
       transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .25s ease;
     }
     .work-fab.is-open .work-fab__menu { transform: translate(-50%, 0) scale(1); opacity: 1; pointer-events: auto; }
     .work-fab__item {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; border-radius: var(--radius-media);
-      font-family: var(--font-sans); font-size: var(--fs-body); color: hsl(var(--ink)); text-decoration: none;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; border-radius: var(--radius-large);
+      font-family: var(--font-sans); font-size: var(--fs-body); color: hsl(var(--text-primary)); text-decoration: none;
     }
-    .work-fab__item.is-active { background: hsl(var(--ink) / 0.07); font-weight: var(--fw-ui); }
+    .work-fab__item.is-active { background: hsl(var(--text-primary) / 0.07); font-weight: var(--fw-medium); }
     .work-fab__count { font-size: var(--fs-meta); color: hsl(var(--muted-foreground)); }
   }
   @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
@@ -1061,7 +1284,7 @@
   /* Our work viewer (lightbox) */
   .work-viewer {
     /* Above the nav (100) and the cookie banner (200). */
-    position: fixed; inset: 0; z-index: 300; background: hsl(100 8% 7% / 0.97); color: #f4f1ea;
+    position: fixed; inset: 0; z-index: 300; background: hsl(100 8% 7% / 0.97); color: hsl(var(--background));
     display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 56px 16px 24px;
     animation: work-viewer-in .25s ease;
   }
@@ -1075,7 +1298,7 @@
   .rfx-footer-mark {
     --rfx-mark-parallax: 0;
     font-family: var(--font-serif);
-    font-weight: var(--fw-heading);
+    font-weight: var(--fw-regular);
     font-size: var(--fs-footer-mark);
     line-height: var(--lh-mark);
     letter-spacing: var(--ls-mark);
@@ -1090,11 +1313,11 @@
   /* The stage takes all the height left after the caption, so the caption
      and counter sit in the same place for tall and wide photos alike. */
   .work-viewer__stage { flex: 1 1 0; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; }
-  .work-viewer__img { max-width: min(92vw, 1100px); max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: var(--radius-media); touch-action: pan-y; user-select: none; }
+  .work-viewer__img { max-width: min(92vw, 1100px); max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: var(--radius-large); touch-action: pan-y; user-select: none; }
   .work-viewer__cap { flex: none; margin-top: 16px; min-height: 56px; text-align: center; max-width: 60ch; }
   .work-viewer__btn {
     position: absolute; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px;
-    border-radius: var(--radius-chip); border: 1px solid hsl(0 0% 100% / 0.25); background: hsl(0 0% 100% / 0.06); color: inherit; cursor: pointer;
+    border-radius: var(--radius-small); border: 1px solid hsl(0 0% 100% / 0.25); background: hsl(0 0% 100% / 0.06); color: inherit; cursor: pointer;
     transition: background .3s ease;
   }
   .work-viewer__btn:hover { background: hsl(0 0% 100% / 0.16); }
@@ -1147,7 +1370,7 @@
   .rfx-section.warm::before {
     width: 70vw; height: 70vw;
     top: -20vw; left: -15vw;
-    background: radial-gradient(circle, hsl(var(--surface-blush) / 0.85), hsl(var(--surface-blush) / 0) 70%);
+    background: radial-gradient(circle, hsl(var(--background-blush) / 0.85), hsl(var(--background-blush) / 0) 70%);
     animation: rfx-about-blob-a 22s ease-in-out infinite alternate;
   }
   .rfx-section.warm::after {
@@ -1171,22 +1394,12 @@
     .rfx-section.warm::before,
     .rfx-section.warm::after { animation: none; }
   }
-  /* Instagram section — slightly tighter top gap so the divider sits closer to the section above */
-  /* The divider sits midway between the Kind words carousel and "Behind the
-     scenes" (Matt, 2026-11-07): the carousel ends ~25px above the section
-     edge and #kindness adds 44px, so the section itself adds none above the
-     line and the same ~69px sits below it. section.* outranks the laptop
-     .rfx-section padding further down. */
-  section.rfx-instagram { padding: 0 0 80px; }
-  /* No bottom rule any more: the photo strip runs under the button (Matt, 2026-11-07). */
-  .rfx-instagram .rfx-instagram-inner { padding-top: 68px; padding-bottom: 0; }
-  /* Testimonials section — match Instagram's tighter rhythm so the hairline sits the same distance from section edges */
-  /* 88px above "Kind words." so it clears the dark How it works band (Matt, 2026-11-07). */
-  #kindness.rfx-section { padding: 88px 0 44px; }
+  /* Home: the Instagram divider sits halfway through the Section gap below
+     the reviews: half above it (section padding), half below (inner padding).
+     No bottom rule: the photo strip runs under the button (Matt, 2026-11-07). */
+  .rfx-instagram .rfx-instagram-inner { padding-top: calc(var(--section-gap) / 2); padding-bottom: 0; }
   #kindness .hairline { margin-bottom: 40px !important; }
   @media (max-width: 760px) {
-    .rfx-section { padding: 56px 0; }
-    .rfx-instagram { padding: 28px 0; }
     .rfx-instagram .rfx-instagram-inner {
       border-top: 0 !important;
       border-bottom: 0 !important;
@@ -1209,10 +1422,7 @@
       aspect-ratio: auto !important;
       height: 280px !important;
     }
-    /* Tighten gap between Testimonials and Instagram on mobile */
-    #kindness.rfx-section { padding-top: 56px; padding-bottom: 28px; }
-    /* Instagram: tighter top/bottom padding on mobile */
-    .rfx-instagram { padding: 16px 0 56px !important; }
+
   }
 
   /* Responsive grid stacking helper */
@@ -1234,9 +1444,9 @@
       aspect-ratio: auto !important;
       height: calc((100vw - 48px) * 18 / 25 + 48px) !important;
     }
-    .cp-reveal-img-wrap > div { box-shadow: 0 12px 24px -16px hsl(var(--ink) / 0.18) !important; }
+    .cp-reveal-img-wrap > div { box-shadow: 0 12px 24px -16px hsl(var(--text-primary) / 0.18) !important; }
 
-    /* (Phone corner sizes come from --radius-card / --radius-media.) */
+    /* (Phone corner sizes come from --radius-large / --radius-large.) */
 
     /* Reduce gap between adjacent CPReveal sections on mobile so related
        reveals read as a sequence — but keep enough breathing room between them. */
@@ -1262,11 +1472,7 @@
      Mobile (<768px) and wide desktop (>1366px) are NOT affected.
      ============================================================ */
   @media (min-width: 768px) and (max-width: 1366px) {
-    /* Wider horizontal margins — push content inward to ~8% each side */
-    .container-rfx { padding: 0 8vw; }
 
-    /* Reduce section padding so every section hints at the next */
-    .rfx-section { padding: 80px 0; }
     .cp-reveal-section { padding: 70px 0 !important; }
     .cp-reveal-section + .cp-reveal-section { padding-top: 24px !important; }
     .cp-reveal-section:has(+ .cp-reveal-section) { padding-bottom: 24px !important; }
@@ -1318,13 +1524,13 @@
 
   /* Shimmer stroke — constant, very subtle animated border for the popular pricing card */
   .rfx-shimmer-stroke {
-    border-radius: var(--radius-card);
+    border-radius: var(--radius-large);
     padding: 1.5px;
     background: linear-gradient(
       120deg,
       hsl(var(--accent) / 0) 0%,
       hsl(var(--accent) / 0) 30%,
-      hsl(var(--accent-warm) / 0.55) 48%,
+      hsl(var(--accent-dark) / 0.55) 48%,
       hsl(var(--accent) / 0.7) 52%,
       hsl(var(--accent) / 0) 70%,
       hsl(var(--accent) / 0) 100%
@@ -1349,7 +1555,6 @@
   /* Location pages — tighter mobile rhythm. Scoped via .rfx-tight-mobile on
      the page root so it doesn't affect other pages. */
   @media (max-width: 760px) {
-    .rfx-tight-mobile .rfx-section { padding: 64px 0; }
     .rfx-tight-mobile .cp-reveal-section + .cp-reveal-section { padding-top: 24px; }
   }
 
@@ -1362,17 +1567,17 @@
        .article-prose h2/h3 in-flow subheadings
        .article-prose a     subtle underline link styling
    */
-  .article-bg { background: hsl(var(--surface-paper)); }
+  .article-bg { background: hsl(var(--background-light)); }
   .article-prose > * + * { margin-top: 1.4em; }
   /* Body copy is the body grey (set on .article-prose); headings, links and
      bold text stay deep ink so they stand out (Matt, 2026-11-08). */
-  .article-prose h2, .article-prose h3, .article-prose strong { color: hsl(var(--ink)); }
+  .article-prose h2, .article-prose h3, .article-prose strong { color: hsl(var(--text-primary)); }
   .article-prose h2 {
     font-family: var(--font-serif);
-    font-weight: var(--fw-heading);
-    font-size: var(--fs-h3);
-    line-height: var(--lh-h3);
-    letter-spacing: var(--ls-h3);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-h4);
+    line-height: var(--lh-h4);
+    letter-spacing: var(--ls-h4);
     margin-top: calc(2.4em + 8px);
     margin-bottom: 0.4em;
     text-wrap: balance;
@@ -1385,23 +1590,23 @@
   .article-prose h2 + * { margin-top: 5px; }
   .article-prose h3 {
     font-family: var(--font-serif);
-    font-weight: var(--fw-heading);
-    font-size: var(--fs-h4);
-    line-height: var(--lh-h4);
-    letter-spacing: var(--ls-h4);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-h5);
+    line-height: var(--lh-h5);
+    letter-spacing: var(--ls-h5);
     margin-top: 2em;
     margin-bottom: 0.4em;
   }
   .article-prose a {
-    color: hsl(var(--ink));
+    color: hsl(var(--text-primary));
     text-decoration: underline;
-    text-decoration-color: hsl(var(--accent-warm) / 0.5);
+    text-decoration-color: hsl(var(--accent-dark) / 0.5);
     text-underline-offset: 4px;
     text-decoration-thickness: 1px;
     transition: text-decoration-color 0.15s ease;
   }
   .article-prose a:hover {
-    text-decoration-color: hsl(var(--accent-warm));
+    text-decoration-color: transparent;   /* same as .text-link: underline at rest, fades on hover */
   }
   .article-prose ul, .article-prose ol {
     padding-left: 1.4em;
@@ -1418,11 +1623,11 @@
 .story-fan-card {
   position: absolute;
   inset: 0;
-  border-radius: var(--radius-media);
+  border-radius: var(--radius-large);
   overflow: hidden;
   cursor: pointer;
-  background: hsl(var(--ink) / 0.1);
-  box-shadow: 0 18px 40px -20px hsl(var(--ink) / 0.5);
+  background: hsl(var(--text-primary) / 0.1);
+  box-shadow: 0 18px 40px -20px hsl(var(--text-primary) / 0.5);
   transform-origin: 50% 100%;
   transform: translateX(0) rotate(var(--rest));
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -1470,10 +1675,7 @@
 
 /* Inspiration carousel: 22px less space below it, before the FAQs, at every
    width the shared .rfx-section padding changes (Matt, 2026-11-07). */
-.rfx-section.rfx-inspiration { padding-bottom: 98px; }
-@media (min-width: 761px) and (max-width: 1439px) { .rfx-section.rfx-inspiration { padding-bottom: 74px; } }
-@media (min-width: 768px) and (max-width: 1366px) { .rfx-section.rfx-inspiration { padding-bottom: 58px; } }
-@media (max-width: 760px) { .rfx-section.rfx-inspiration { padding-bottom: 34px; } }
+
 
 /* Our work: cards scale gently up into view as you scroll (OurWork.tsx adds
    .gallery-anim only in a real browser without reduced motion). */

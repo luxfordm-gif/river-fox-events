@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
@@ -22,6 +23,10 @@ import CookieBanner from "@/components/rfx/CookieBanner";
 import { LOCATIONS } from "./data/locations";
 import { ARTICLES } from "./data/articles";
 import NotFound from "./pages/NotFound.tsx";
+
+// Hidden design reference (noindex). Lazy so its code and the raw stylesheet
+// it reads never download for ordinary visitors.
+const StyleGuide = lazy(() => import("./pages/StyleGuide.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -57,6 +62,7 @@ const AppShell = () => {
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/style-guide" element={<Suspense fallback={null}><StyleGuide /></Suspense>} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

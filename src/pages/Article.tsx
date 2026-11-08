@@ -111,7 +111,7 @@ const Article = () => {
         <div className="container-rfx pt-24 md:pt-28 pb-2">
           <a
             href="/journal/"
-            className="inline-flex items-center gap-2 t-eyebrow text-ink-soft hover:text-ink transition-colors group"
+            className="inline-flex items-center gap-2 t-overline text-ink-soft hover:text-ink transition-colors group"
           >
             <span
               aria-hidden="true"

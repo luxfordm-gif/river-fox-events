@@ -378,7 +378,7 @@ const ChristmasDoorways = () => {
   };
 
   return (
-    <div className="rfx-xmas min-h-screen bg-background text-foreground nav-solid">
+    <div className="rfx-xmas min-h-screen text-foreground nav-solid">
       <Nav enquireHref="#enquire" />
       <main>
         {/* Hero: garland drapes edge to edge above the headline, then the
@@ -387,14 +387,15 @@ const ChristmasDoorways = () => {
           <HeroGarland />
           <div className="container-rfx">
             <div className="mt-2 md:mt-4 mb-4 md:mb-9 flex flex-col items-center text-center">
-              <p className="t-eyebrow text-ink-soft">Christmas 2026 · Now booking</p>
+              <p className="t-overline text-ink-soft">Christmas 2026 · Now booking</p>
               <h1
                 id="xmas-hero-heading"
                 className="t-display mt-5 max-w-none"
               >
                 <span className="xmas-title-snow">
                   <SnowCap mode="text" />
-                  <span data-snow-text>Christmas door garlands in Surrey.</span>
+                  {/* Always two lines from tablet up (Matt, 2026-11-08); phones wrap naturally. */}
+                  <span data-snow-text>Christmas door garlands<br className="hidden md:inline" /> in Surrey.</span>
                 </span>
               </h1>
               <div className="mt-5 max-w-[46ch] md:max-w-[70ch] t-lead text-ink-soft space-y-4">
@@ -473,10 +474,10 @@ const ChristmasDoorways = () => {
                       decoding="async"
                     />
                   </div>
-                  <h3 className="t-h3 text-primary mt-6">
+                  <h3 className="t-h4 text-primary mt-6">
                     {card.title}
                   </h3>
-                  <div className="mt-2 t-body-sm text-ink-soft max-w-[52ch] space-y-3">
+                  <div className="title-to-text t-small text-ink-soft max-w-[52ch] space-y-3">
                     {card.body.map((para) => (
                       <p key={para}>{para}</p>
                     ))}
@@ -500,7 +501,7 @@ const ChristmasDoorways = () => {
                 decoding="async"
               />
               <div className="max-w-[760px] mx-auto text-center fade-up mt-8 md:mt-10">
-                <p className="t-eyebrow text-ink-soft">Garland options</p>
+                <p className="t-overline text-ink-soft">Garland options</p>
                 <div className="mt-5">
                   <SectionTitle id="xmas-options-heading" snow>
                     Choose your{" "}
@@ -518,12 +519,12 @@ const ChristmasDoorways = () => {
                     <p className="xmas-option__tag">
                       {opt.popular && <span className="xmas-tag">Most popular</span>}
                     </p>
-                    <h3 className="t-h3 text-primary">
+                    <h3 className="t-h4 text-primary">
                       {opt.title}
                     </h3>
-                    <p className="t-caption italic text-accent-warm mt-1">{opt.note}</p>
+                    <p className="t-small italic text-accent-warm mt-1">{opt.note}</p>
                     {/* Keep to three lines max (Matt, 2026-11-04). */}
-                    <p className="mt-4 t-body-sm text-ink-soft max-w-[42ch] md:max-w-[40ch]">{opt.body}</p>
+                    <p className="mt-4 t-small text-ink-soft max-w-[42ch] md:max-w-[40ch]">{opt.body}</p>
                     <div className="mt-auto pt-6">
                       <a
                         href="#enquire"
@@ -607,18 +608,18 @@ const ChristmasDoorways = () => {
             </div>
             <ol className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
               {STEPS.map((s) => (
-                <li key={s.n} className="fade-up border-t pt-6 relative" style={{ borderColor: "hsl(var(--ink) / 0.14)" }}>
+                <li key={s.n} className="fade-up border-t pt-6 relative" style={{ borderColor: "hsl(var(--text-primary) / 0.14)" }}>
                   <SnowCap mode="edge" radius={0} />
                   {/* Extra tag sits by the step number so step titles stay on
                       one line, even in the narrow 4-column layout. */}
                   <div className="flex items-center gap-3 h-[22px]">
-                    <span className="t-eyebrow text-ink-soft">{s.n}</span>
+                    <span className="t-overline text-ink-soft">{s.n}</span>
                     {s.extra && <span className="xmas-tag">Extra</span>}
                   </div>
-                  <h3 className="t-h4 text-primary mt-3">
+                  <h3 className="t-h5 text-primary mt-3">
                     {s.title}
                   </h3>
-                  <p className="mt-3 t-body-sm text-ink-soft">{s.body}</p>
+                  <p className="title-to-text t-small text-ink-soft">{s.body}</p>
                 </li>
               ))}
             </ol>
@@ -628,7 +629,7 @@ const ChristmasDoorways = () => {
         <ChildrensFAQ
           faqs={FAQS}
           headingId="xmas-faq-heading"
-          headingClass="t-h3"
+          heading={<>Your questions <em className="t-accent">answered.</em></>}
           paddingTop="clamp(40px, 6vw, 96px)"
           paddingBottom="clamp(150px, 12vw, 170px)"
         />
@@ -652,12 +653,12 @@ const ChristmasDoorways = () => {
                   Book your{" "}
                   <em className="t-accent">Christmas doorway.</em>
                 </SectionTitle>
-                <p className="t-lead max-w-[460px] mt-7" style={{ color: "hsl(var(--on-deep-soft))" }}>
+                <p className="t-lead max-w-[460px] mt-7" style={{ color: "hsl(var(--text-dimmed))" }}>
                   Send a photo of your door with rough measurements and your
                   postcode, and I'll come back with ideas and a quote. Every
                   doorway is dressed by hand, so I can only take a small number
                   each December. If you'd rather call me, use this number:{" "}
-                  <a href="tel:+447872114191" className="whitespace-nowrap underline underline-offset-4" style={{ color: "hsl(var(--on-deep))" }}>
+                  <a href="tel:+447872114191" className="whitespace-nowrap text-link" style={{ color: "hsl(var(--text-on-dark))" }}>
                     07872&nbsp;114191
                   </a>
                   .
@@ -682,7 +683,7 @@ const ChristmasDoorways = () => {
                   </label>
                 </p>
                 <div className="hidden md:block mb-5 text-left">
-                  <h3 className="t-h3 text-primary">
+                  <h3 className="t-h4 text-primary">
                     Tell me about your door
                   </h3>
                 </div>
@@ -742,7 +743,7 @@ const ChristmasDoorways = () => {
                   </label>
                   <label className="form-row full form-check">
                     <input type="checkbox" name="takedown" value="Yes" />
-                    <span className="t-body-sm text-ink">
+                    <span className="t-small text-ink">
                       Add January takedown
                     </span>
                     <span className="xmas-tag ml-auto">Extra</span>

@@ -78,7 +78,7 @@ const Milestones = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground nav-solid">
+    <div className="min-h-screen page-paper text-foreground nav-solid nav-paper">
       <Nav />
       <main>
         <ServiceHero
@@ -101,7 +101,7 @@ const Milestones = () => {
           sub={
             <>
               Light-up numbers,{" "}
-              <a href="/balloon-installations/" className="underline underline-offset-4 decoration-ink/30 hover:decoration-ink transition-colors">
+              <a href="/balloon-installations/" className="text-link">
                 balloon walls
               </a>{" "}
               and personalised backdrops for 30ths, 40ths, anniversaries and
@@ -120,9 +120,9 @@ const Milestones = () => {
           tone="ph-warm"
           headline={
             <>
-              Some occasions deserve more than{" "}
+              Occasions worth{" "}
               <em className="t-accent">
-                decoration.
+                marking.
               </em>
             </>
           }
@@ -163,11 +163,9 @@ const Milestones = () => {
           </p>
         </CPReveal>
 
-        <InspirationStrip id="ms-inspiration" accent="your next celebration." images={INSPIRATION_MILESTONES} />
+        <InspirationStrip id="ms-inspiration" accent="your celebration." images={INSPIRATION_MILESTONES} />
 
-        <div id="how-it-works">
-          <Process />
-        </div>
+        <Process sectionId="how-it-works" />
 
         <CPPricing
           heading={
@@ -178,8 +176,8 @@ const Milestones = () => {
               </em>
             </>
           }
+          intro="From christenings to milestone birthdays, styling starts from £300 and every quote follows a short call."
           ctaLabel="Enquire now"
-          footnote=""
         />
 
         <ChildrensFAQ faqs={FAQS} headingId="ms-faq-heading" />

@@ -7,10 +7,10 @@ import { join, relative } from "node:path";
  * the Christmas page included, takes its typography and corners from the
  * design system, never from a hard-coded value.
  *
- *   Text:    one named style per element - .t-display .t-h1 .t-h2 .t-h2-sm
- *            .t-h3 .t-quote .t-h4 .t-faq .t-caption .t-lead .t-body .t-body-sm
- *            .t-meta .t-ui .t-eyebrow (+ .t-accent for the italic highlight)
- *   Corners: rounded-card / rounded-media / rounded-control / rounded-chip
+ *   Text:    one named style per element - Display .t-display; Headings .t-h1 to .t-lead;
+ *            Quote .t-quote; Body .t-lead .t-body .t-small .t-meta .t-label .t-overline
+ *            (+ .t-accent for the italic highlight)
+ *   Corners: rounded-large / rounded-small / rounded-full
  *   Values:  tokens in src/index.css :root (--fs-*, --lh-*, --ls-*, --fw-*, --radius-*)
  *
  * If this fails, use (or add) a named style or token instead of a raw value.

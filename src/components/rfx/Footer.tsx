@@ -62,7 +62,7 @@ const Footer = () => {
           <div
             className="rfx-footer-mark whitespace-nowrap relative"
             style={{
-              color: "hsl(var(--on-deep) / 0.10)",
+              color: "hsl(var(--text-on-dark) / 0.10)",
               transform: `translateY(calc(var(--rfx-mark-parallax) * ${Math.min(80, y * 0.025)}px)) translateX(${revealed ? 0 : -40}px)`,
               opacity: revealed ? 1 : 0,
               transition: "opacity 1.6s ease, transform 1.8s cubic-bezier(.2,.7,.2,1)",
@@ -72,7 +72,7 @@ const Footer = () => {
             <em
               className="italic"
               style={{
-                color: "hsl(var(--accent-warm) / 0.22)",
+                color: "hsl(var(--accent-dark) / 0.22)",
               }}
             >
               Fox
@@ -84,7 +84,7 @@ const Footer = () => {
               className="absolute inset-0 pointer-events-none"
               style={{
                 background:
-                  "linear-gradient(100deg, transparent 35%, hsl(var(--accent-warm) / 0.18) 50%, transparent 65%)",
+                  "linear-gradient(100deg, transparent 35%, hsl(var(--accent-dark) / 0.18) 50%, transparent 65%)",
                 backgroundSize: "200% 100%",
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
@@ -111,7 +111,7 @@ const Footer = () => {
           {/* Mobile-only divider so the footer reads as a clear section break. */}
           <div
             className="md:hidden mb-12"
-            style={{ borderTop: "1px solid hsl(var(--on-deep) / 0.18)" }}
+            style={{ borderTop: "1px solid hsl(var(--text-on-dark) / 0.18)" }}
             aria-hidden="true"
           />
 
@@ -123,13 +123,13 @@ const Footer = () => {
               </div>
               <p
                 className="t-meta max-w-[360px] mt-7"
-                style={{ color: "hsl(var(--on-deep-soft))" }}
+                style={{ color: "hsl(var(--text-dimmed))" }}
               >
                 Luxury event styling across Surrey. Formerly known as Lollipop Balloons.
               </p>
             </div>
             <div>
-              <div className="t-eyebrow mb-4" style={{ color: "hsl(var(--on-deep))" }}>
+              <div className="t-overline mb-4" style={{ color: "hsl(var(--text-on-dark))" }}>
                 Services
               </div>
               <div className="t-meta space-y-2">
@@ -141,7 +141,7 @@ const Footer = () => {
               </div>
             </div>
             <div>
-              <div className="t-eyebrow mb-4" style={{ color: "hsl(var(--on-deep))" }}>
+              <div className="t-overline mb-4" style={{ color: "hsl(var(--text-on-dark))" }}>
                 Locations
               </div>
               <div className="t-meta space-y-2">
@@ -175,7 +175,7 @@ const Footer = () => {
               </div>
             </div>
             <div>
-              <div className="t-eyebrow mb-4" style={{ color: "hsl(var(--on-deep))" }}>
+              <div className="t-overline mb-4" style={{ color: "hsl(var(--text-on-dark))" }}>
                 Studio
               </div>
               <div className="t-meta space-y-2">
@@ -189,8 +189,8 @@ const Footer = () => {
             <div>
               <a
                 href="/contact/"
-                className="t-eyebrow mb-4 inline-flex items-center gap-1 no-underline hover:underline underline-offset-4 decoration-[hsl(var(--on-deep))]/50"
-                style={{ color: "hsl(var(--on-deep))" }}
+                className="t-overline mb-4 inline-flex items-center gap-1 no-underline hover:underline underline-offset-4 decoration-[hsl(var(--text-on-dark))]/50"
+                style={{ color: "hsl(var(--text-on-dark))" }}
               >
                 Contact
                 <ChevronRight
@@ -200,7 +200,7 @@ const Footer = () => {
                   className="opacity-75 -mt-px"
                 />
               </a>
-              <div className="t-meta space-y-2" style={{ color: "hsl(var(--on-deep-soft))" }}>
+              <div className="t-meta space-y-2" style={{ color: "hsl(var(--text-dimmed))" }}>
                 <a href="mailto:Riverfoxevents@gmail.com" className="hover:opacity-100 opacity-85 block">
                   Riverfoxevents@gmail.com
                 </a>
@@ -225,7 +225,7 @@ const Footer = () => {
 
           <div
             className="t-meta pt-6 border-t grid grid-cols-3 items-center gap-3"
-            style={{ borderColor: "hsl(var(--on-deep) / 0.15)", color: "hsl(var(--on-deep-soft))" }}
+            style={{ borderColor: "hsl(var(--text-on-dark) / 0.15)", color: "hsl(var(--text-dimmed))" }}
           >
             <div className="text-left">© {new Date().getFullYear()} River Fox Events</div>
             <div className="flex justify-center">
@@ -235,7 +235,7 @@ const Footer = () => {
                 rel="noreferrer"
                 aria-label="Instagram - @riverfox_events"
                 className="inline-flex items-center justify-center w-9 h-9 rounded-full border transition-opacity hover:opacity-100 opacity-85"
-                style={{ borderColor: "hsl(var(--on-deep) / 0.25)", color: "hsl(var(--on-deep))" }}
+                style={{ borderColor: "hsl(var(--text-on-dark) / 0.25)", color: "hsl(var(--text-on-dark))" }}
               >
                 <Instagram className="w-4 h-4" />
               </a>
