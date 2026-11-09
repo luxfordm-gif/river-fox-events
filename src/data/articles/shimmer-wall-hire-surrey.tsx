@@ -6,7 +6,6 @@ import ArticleTLDR from "@/components/article/ArticleTLDR";
 
 /* Laura's own shimmer walls, already on the site. Same files and alt text
    as Our work and the service-page inspiration carousels. */
-import imgFiftieth from "@/assets/services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp";
 import imgUnicorn from "@/assets/services/childrens-parties/rainbow-unicorn-party-pastel-sequin-backdrop.webp";
 import imgOfficeChristmas from "@/assets/journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp";
 
@@ -55,11 +54,11 @@ const ShimmerWallHireSurreyArticle = () => (
     </ArticleProse>
 
     <ArticleImage
-      src={imgFiftieth}
-      aspect="natural"
+      src={imgOfficeChristmas}
+      aspect="square"
       width={720}
-      alt="Gold sequin wall framed by navy and gold balloons beside blue light-up 50 numbers in a panelled room"
-      caption="A gold shimmer wall for a fiftieth, framed in navy and gold balloons with light-up numbers&nbsp;alongside."
+      alt="Gold mirror sequin wall framed by an organic garland of black and chrome gold balloons on a checkerboard floor"
+      caption="A gold sequin wall set in front of plain grey curtains for an office Christmas party, framed in black and chrome&nbsp;gold."
     />
 
     <ArticleProse>
@@ -70,8 +69,9 @@ const ShimmerWallHireSurreyArticle = () => (
         birthday, a gold wall with a deep navy and gold garland and a pair of
         light-up numbers feels glamorous without needing much else in the
         room. The numbers glow, the sequins catch the light, and guests know
-        exactly where to stand for a photo. You'll find more fiftieths,
-        sixtieths and anniversaries on my{" "}
+        exactly where to stand for a photo. There's more on that look in{" "}
+        <a href="/journal/50th-birthday-decorations-surrey/">styling a 50th that feels like them</a>,
+        and more sixtieths and anniversaries on my{" "}
         <a href="/milestone-celebrations/">milestone celebrations</a>{" "}
         page.
       </p>
@@ -126,13 +126,6 @@ const ShimmerWallHireSurreyArticle = () => (
       </p>
     </ArticleProse>
 
-    <ArticleImage
-      src={imgOfficeChristmas}
-      aspect="square"
-      width={720}
-      alt="Gold mirror sequin wall framed by an organic garland of black and chrome gold balloons on a checkerboard floor"
-      caption="A gold sequin wall set in front of plain grey curtains for an office Christmas party, framed in black and chrome&nbsp;gold."
-    />
 
     <ArticleProse>
       <p>

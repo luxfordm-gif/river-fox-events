@@ -11,6 +11,7 @@ import BabyShowerThemes2026Body from "./baby-shower-themes-2026";
 import ChristmasDecorationsSurreyBody from "./christmas-decorations-surrey";
 import ShimmerWallHireSurreyBody from "./shimmer-wall-hire-surrey";
 import HiringAnEventStylistSurreyBody from "./hiring-an-event-stylist-surrey";
+import FiftiethBirthdayDecorationsSurreyBody from "./50th-birthday-decorations-surrey";
 
 import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
 import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
@@ -23,7 +24,8 @@ import dylanChristeningCard from "@/assets/journal/dylan-christening-first-birth
 import babyShowerThemesCard from "@/assets/baby-shower-baby-in-bloom-arch-surrey.webp";
 import christmasDecorationsCard from "@/assets/journal/christmas-decorations-surrey/christmas-doorway-garland-pink-studio-east-molesey.webp";
 import hiringStylistCard from "@/assets/river-fox-events-pastel-birthday-reeva-entrance-arch.webp";
-import shimmerWallCard from "@/assets/services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp";
+import fiftiethCard from "@/assets/services/milestones/50th-birthday-pink-light-up-numbers-teal-garland.webp";
+import shimmerWallCard from "@/assets/journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp";
 
 /**
  * Master list of articles. Order = newest first.
@@ -38,12 +40,33 @@ import shimmerWallCard from "@/assets/services/milestones/50th-birthday-gold-seq
  */
 export const ARTICLES: Article[] = [
   {
+    slug: "50th-birthday-decorations-surrey",
+    title: "Styling a 50th that feels like them",
+    subtitle:
+      "How to choose a colour story for a 50th, the pieces that do the most work, and how I style it at home, in a restaurant or at a hotel.",
+    teaser:
+      "Two real 50ths, one in navy and gold and one in hot pink and teal, and what they show about choosing colours, numbers and backdrops for the room.",
+    metaDescription:
+      "Ideas for 50th birthday decorations in Surrey, from navy and gold sequin walls to hot pink light-up numbers, designed by Laura and set up before guests arrive.",
+    publishedAt: "2026-11-09",
+    readMinutes: 5,
+    relatedSlugs: [
+      "shimmer-wall-hire-surrey",
+      "garden-milestone-styling-surrey",
+      "hiring-an-event-stylist-surrey",
+    ],
+    cardImage: fiftiethCard,
+    ogImage: "/og/50th-birthday-decorations-surrey.webp",
+    category: "Guides",
+    Body: FiftiethBirthdayDecorationsSurreyBody,
+  },
+  {
     slug: "shimmer-wall-hire-surrey",
     title: "Shimmer wall hire, styled around your room",
     subtitle:
       "Where a shimmer or sequin wall works best, how I frame it with balloons and light-up numbers, and what's included from set-up to taking it all down.",
     teaser:
-      "A shimmer wall gives a party one place to gather and a backdrop for every photo. Real walls from a fiftieth, a unicorn party and an office Christmas party.",
+      "A shimmer wall gives a party one place to gather and a backdrop for every photo. Real walls from an office Christmas party and a unicorn party, and the look that suits a 50th.",
     metaDescription:
       "Shimmer wall and sequin wall hire in Surrey for milestone birthdays, children's parties and office Christmas parties, framed with balloons and set up for you.",
     publishedAt: "2026-11-09",
