@@ -17,6 +17,7 @@ import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import puppeteer from "puppeteer";
+import { isLive } from "./schedule.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -45,7 +46,8 @@ async function loadRoutes() {
   const src = await fs.readFile(path.join(ROOT, "src/seo/routes.ts"), "utf8");
   const routesMatch = src.match(/export const ROUTES: RouteSEO\[\] = (\[[\s\S]*?\n\]);/);
   if (!routesMatch) throw new Error("Could not find ROUTES in routes.ts");
-  return eval("(" + routesMatch[1] + ")");
+  // Scheduled articles stay out of live builds until their date.
+  return eval("(" + routesMatch[1] + ")").filter((r) => isLive(r.publishAt));
 }
 
 async function serveDist() {

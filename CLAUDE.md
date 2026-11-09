@@ -149,7 +149,7 @@ For the competitor-research workflow when starting a new article, see **`src/dat
 - Brand: **River Fox Events** (formerly Lollipop Balloons). The `alternateName` is preserved in JSON-LD so historic links / brand searches flow through.
 - Real contact: `07872 114191`, `riverfoxevents@gmail.com`, IG `@riverfox_events` (the account was renamed from `@lollipop_balloonsx` on 2026-07-04 - it's the same account, so historic `@lollipop_balloonsx` links still resolve, but all IG links now point at `@riverfox_events`; note the underscore, and don't "correct" it to `@riverfoxevents`). **Never** `hello@riverfoxevents.co.uk` — that address doesn't exist.
 - Studio: 15 Apsley Rd, Horley, RH6 9RX.
-- Pricing anchor: events from £300 (was £460 until 2026-11-07, lowered so balloon-only jobs aren't put off). Bigger designs £800 - £1,500+. Enquiry budget brackets: Under £300, £300 - £460, £460 - £800, £800 - £1,500, £1,500+, Not sure yet. Use these numbers consistently.
+- Pricing anchor: events from £300 (was £460 until 2026-11-07, lowered so balloon-only jobs aren't put off). Bigger designs £600 - £1,500+ (was £800 until Matt corrected it, 2026-11-09). Enquiry budget brackets: Under £300, £300 - £600, £600 - £1,000, £1,000 - £1,500, £1,500+, Not sure yet (lowered with the £600 range, Matt 2026-11-09). Use these numbers consistently.
 - Tone: calm, considered, thoughtfully styled. Never punchy/salesy. No em dashes (use hyphens), no exclamation marks.
 
 ## Working with Matt

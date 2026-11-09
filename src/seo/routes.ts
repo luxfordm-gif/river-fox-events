@@ -25,6 +25,10 @@ export type RouteSEO = {
   changefreq?: "daily" | "weekly" | "monthly" | "yearly";
   priority?: number;
   noindex?: boolean;
+  /** Scheduled journal article: YYYY-MM-DD it goes live (UK time). Must
+   *  match the article's `publishedAt`. Live builds leave the page and its
+   *  sitemap entry out until then (scripts/schedule.mjs). */
+  publishAt?: string;
 };
 
 export const SITE = {
@@ -680,6 +684,50 @@ export const ROUTES: RouteSEO[] = [
   // up the /journal/* prefix and emits the 3-level chain into static HTML
   // using the same script id as Article.tsx, so the runtime injection and
   // the static one don't double up.
+  {
+    path: "/journal/balloon-backdrop-ideas-home-parties",
+    title: "Balloon Backdrop Ideas for Home Parties | River Fox Events",
+    description:
+      "Seven balloon backdrop ideas for parties at home in Surrey, from a navy and gold kitchen panel to light-up numbers in a living room and a picnic on the lawn.",
+    breadcrumbName: "Balloon backdrop ideas for parties at home",
+    ogImage: "/og/balloon-backdrop-ideas-home-parties.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+    publishAt: "2026-12-03",
+  },
+  {
+    path: "/journal/balloon-arch-garland-or-wall",
+    title: "Balloon Arch, Garland or Wall? A Guide | River Fox Events",
+    description:
+      "Choosing between a balloon arch, garland or balloon wall in Surrey? How room size, ceiling height and where guests gather decide it, with advice from Laura.",
+    breadcrumbName: "Arch, garland or wall: which suits your room?",
+    ogImage: "/og/balloon-arch-garland-or-wall.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+    publishAt: "2026-11-26",
+  },
+  {
+    path: "/journal/questions-to-ask-a-balloon-decorator",
+    title: "Questions to Ask a Balloon Decorator | River Fox Events",
+    description:
+      "Booking a balloon decorator in Surrey? Eight questions to ask first, from what the quote covers to how long arches last indoors and outdoors, answered by Laura.",
+    breadcrumbName: "Questions to ask a balloon decorator",
+    ogImage: "/og/questions-to-ask-a-balloon-decorator.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+    publishAt: "2026-11-19",
+  },
+  {
+    path: "/journal/christmas-balloon-decorations-surrey",
+    title: "Christmas Balloon Decorations, Surrey | River Fox Events",
+    description:
+      "Christmas balloon decorations for Surrey offices, shops, salons and venues: entrance arches, Merry Christmas panels and party backdrops, set up before you open.",
+    breadcrumbName: "Christmas balloons for offices, shops and venues",
+    ogImage: "/og/christmas-balloon-decorations-surrey.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+    publishAt: "2026-11-12",
+  },
   {
     path: "/journal/50th-birthday-decorations-surrey",
     title: "50th Birthday Decorations in Surrey | River Fox Events",

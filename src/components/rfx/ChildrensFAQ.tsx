@@ -31,7 +31,7 @@ const DEFAULT_FAQS: FAQ[] = [
   },
   {
     q: "How much does children's party styling cost in Surrey?",
-    a: "Parties start from £300, with larger or more involved designs usually ranging from £800 to £1,500+.",
+    a: "Parties start from £300, with larger or more involved designs usually ranging from £600 to £1,500+.",
   },
   {
     q: "What happens on the day?",

@@ -12,6 +12,10 @@ import ChristmasDecorationsSurreyBody from "./christmas-decorations-surrey";
 import ShimmerWallHireSurreyBody from "./shimmer-wall-hire-surrey";
 import HiringAnEventStylistSurreyBody from "./hiring-an-event-stylist-surrey";
 import FiftiethBirthdayDecorationsSurreyBody from "./50th-birthday-decorations-surrey";
+import BalloonBackdropIdeasHomePartiesBody from "./balloon-backdrop-ideas-home-parties";
+import BalloonArchGarlandOrWallBody from "./balloon-arch-garland-or-wall";
+import QuestionsToAskABalloonDecoratorBody from "./questions-to-ask-a-balloon-decorator";
+import ChristmasBalloonDecorationsSurreyBody from "./christmas-balloon-decorations-surrey";
 
 import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
 import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
@@ -26,6 +30,10 @@ import christmasDecorationsCard from "@/assets/journal/christmas-decorations-sur
 import hiringStylistCard from "@/assets/river-fox-events-pastel-birthday-reeva-entrance-arch.webp";
 import fiftiethCard from "@/assets/services/milestones/50th-birthday-pink-light-up-numbers-teal-garland.webp";
 import shimmerWallCard from "@/assets/journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp";
+import backdropIdeasCard from "@/assets/services/milestones/gina-13th-birthday-navy-gold-kitchen-backdrop.webp";
+import archGarlandWallCard from "@/assets/river-fox-events-naming-ceremony-harvey-arch-side-angle.webp";
+import balloonQuestionsCard from "@/assets/services/milestones/baby-in-bloom-barn-twin-arches-dusty-blue.webp";
+import christmasBalloonsCard from "@/assets/journal/christmas-decorations-surrey/merry-christmas-panel-silver-navy-balloon-garland.webp";
 
 /**
  * Master list of articles. Order = newest first.
@@ -38,7 +46,83 @@ import shimmerWallCard from "@/assets/journal/christmas-decorations-surrey/gold-
  *   4. (Optional) Add the previous article's slug to this one's
  *      `relatedSlugs`, and vice versa.
  */
-export const ARTICLES: Article[] = [
+/* Every article, scheduled ones included. Use `ARTICLES` below. */
+export const ALL_ARTICLES: Article[] = [
+  {
+    slug: "balloon-backdrop-ideas-home-parties",
+    title: "Balloon backdrop ideas for parties at home",
+    subtitle:
+      "A kitchen wall, a living room corner, a conservatory, the hallway or the lawn: where a balloon backdrop fits at home, and how to size it to the room.",
+    teaser:
+      "Seven ways to give a party at home one place to gather, from a navy and gold kitchen panel to a blush hoop by the window, each taken from a setup I've styled.",
+    metaDescription:
+      "Seven balloon backdrop ideas for parties at home in Surrey, from a navy and gold kitchen panel to light-up numbers in a living room and a picnic on the lawn.",
+    // Scheduled: hidden on the live site until this date (see isPublished below).
+    publishedAt: "2026-12-03",
+    readMinutes: 5,
+    relatedSlugs: ["garden-milestone-styling-surrey", "50th-birthday-decorations-surrey", "childrens-party-themes-2026"],
+    cardImage: backdropIdeasCard,
+    ogImage: "/og/balloon-backdrop-ideas-home-parties.webp",
+    category: "Trends",
+    Body: BalloonBackdropIdeasHomePartiesBody,
+  },
+  {
+    slug: "balloon-arch-garland-or-wall",
+    title: "Arch, garland or wall: which suits your room?",
+    subtitle:
+      "How to choose between a balloon arch, a garland and a balloon wall by room size, ceiling height and where your guests gather, plus what makes an arch look full.",
+    teaser:
+      "What an arch, a garland, a balloon wall, a hoop and a number stack each do best, which suits homes, halls, marquees and gardens, and how to tell a full arch from a thin one.",
+    metaDescription:
+      "Choosing between a balloon arch, garland or balloon wall in Surrey? How room size, ceiling height and where guests gather decide it, with advice from Laura.",
+    // Scheduled: hidden on the live site until this date (see isPublished below).
+    publishedAt: "2026-11-26",
+    readMinutes: 6,
+    relatedSlugs: ["beyond-the-balloon-arch", "shimmer-wall-hire-surrey", "50th-birthday-decorations-surrey"],
+    cardImage: archGarlandWallCard,
+    cardImagePosition: "45% 50%",
+    ogImage: "/og/balloon-arch-garland-or-wall.webp",
+    category: "Guides",
+    Body: BalloonArchGarlandOrWallBody,
+  },
+  {
+    slug: "questions-to-ask-a-balloon-decorator",
+    title: "Questions to ask a balloon decorator before you book",
+    subtitle:
+      "What the quote should cover, how far ahead to book, colour matching, your venue, and how long balloons really last indoors, outdoors and in the wind.",
+    teaser:
+      "Eight questions worth asking any balloon decorator before you say yes, from set-up and takedown to heat, wind and helium, each with Laura's honest answer.",
+    metaDescription:
+      "Booking a balloon decorator in Surrey? Eight questions to ask first, from what the quote covers to how long arches last indoors and outdoors, answered by Laura.",
+    // Scheduled: hidden on the live site until this date (see isPublished below).
+    publishedAt: "2026-11-19",
+    readMinutes: 5,
+    relatedSlugs: ["hiring-an-event-stylist-surrey", "garden-milestone-styling-surrey", "beyond-the-balloon-arch"],
+    cardImage: balloonQuestionsCard,
+    cardImagePosition: "center 35%",
+    ogImage: "/og/questions-to-ask-a-balloon-decorator.webp",
+    category: "Guides",
+    Body: QuestionsToAskABalloonDecoratorBody,
+  },
+  {
+    slug: "christmas-balloon-decorations-surrey",
+    title: "Christmas balloons for offices, shops and venues",
+    subtitle:
+      "Balloon garlands and arches for the entrance, backdrops for the office party, and pieces for shop floors and counters, with how to get them booked for December.",
+    teaser:
+      "Entrance arches, Merry Christmas panels and counter garlands for offices, shops and venues, with real office party pieces and how to book in time for December.",
+    metaDescription:
+      "Christmas balloon decorations for Surrey offices, shops, salons and venues: entrance arches, Merry Christmas panels and party backdrops, set up before you open.",
+    // Scheduled: hidden on the live site until this date (see isPublished below).
+    publishedAt: "2026-11-12",
+    readMinutes: 5,
+    relatedSlugs: ["christmas-decorations-surrey", "shimmer-wall-hire-surrey", "hiring-an-event-stylist-surrey"],
+    cardImage: christmasBalloonsCard,
+    cardImagePosition: "center 40%",
+    ogImage: "/og/christmas-balloon-decorations-surrey.webp",
+    category: "Guides",
+    Body: ChristmasBalloonDecorationsSurreyBody,
+  },
   {
     slug: "50th-birthday-decorations-surrey",
     title: "Styling a 50th that feels like them",
@@ -301,6 +385,18 @@ export const ARTICLES: Article[] = [
     Body: LollipopRebrandBody,
   },
 ];
+
+/* Scheduled articles (Matt, 2026-11-09): an article dated after today stays
+   off the live site (journal list, its page, related links) until that date.
+   Deploy previews and local builds show everything. The date check runs at
+   build time; .github/workflows/publish-scheduled-articles.yml rebuilds the
+   site each morning an article is due. */
+const HIDE_SCHEDULED = typeof __HIDE_SCHEDULED__ !== "undefined" && __HIDE_SCHEDULED__;
+const BUILD_DATE = typeof __BUILD_DATE__ !== "undefined" ? __BUILD_DATE__ : "";
+export const isPublished = (a: Pick<Article, "publishedAt">) =>
+  !HIDE_SCHEDULED || a.publishedAt <= BUILD_DATE;
+
+export const ARTICLES: Article[] = ALL_ARTICLES.filter(isPublished);
 
 export const findArticle = (slug: string): Article | undefined =>
   ARTICLES.find((a) => a.slug === slug);

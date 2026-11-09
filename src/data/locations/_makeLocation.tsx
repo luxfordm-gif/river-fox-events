@@ -404,7 +404,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
           body: "Intimate celebrations · Single focal point installation.",
         },
         {
-          price: "From £800",
+          price: "From £600",
           label: "Full styling",
           body: "Full styling · Multiple installations · Backdrops and tablescape.",
         },
@@ -459,7 +459,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       },
       {
         q: `How much does event styling cost in ${cityName}?`,
-        a: `It depends on the type of celebration and the size of the brief. Events start from £300, with larger or more involved designs usually ranging from £800 to £1,500+.`,
+        a: `It depends on the type of celebration and the size of the brief. Events start from £300, with larger or more involved designs usually ranging from £600 to £1,500+.`,
       },
       {
         q: "Can I choose my own theme and colours?",
