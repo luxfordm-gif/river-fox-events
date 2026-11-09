@@ -7,7 +7,7 @@ const SERVICES = [
   { href: "/childrens-parties/", label: "Children's parties" },
   { href: "/milestone-celebrations/", label: "Milestone celebrations" },
   { href: "/corporate-brand-styling/", label: "Corporate & brand" },
-  { href: "/balloon-installations/", label: "Balloon installations" },
+  { href: "/balloon-installations/", label: "Balloon decorations" },
 ];
 
 /* Seasonal service, set apart below a divider with a velvet bow. */
@@ -226,7 +226,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
             { href: "/childrens-parties/", label: "Children's parties" },
             { href: "/milestone-celebrations/", label: "Milestone celebrations" },
             { href: "/corporate-brand-styling/", label: "Corporate & brand" },
-            { href: "/balloon-installations/", label: "Balloon installations" },
+            { href: "/balloon-installations/", label: "Balloon decorations" },
             { href: SEASONAL.href, label: "Christmas garlands", seasonal: true },
             { href: "/our-work/", label: "Our work" },
             { href: "/#about", label: "About" },
