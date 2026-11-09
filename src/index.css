@@ -257,6 +257,7 @@
   }
   body {
     @apply text-foreground antialiased;
+    padding-right: var(--scroll-lock-gap, 0);   /* see .rfx-nav */
     background: hsl(var(--background-light));   /* the page is Background Light sitewide (Matt, 2026-11-08) */
     font-family: var(--font-sans);
     font-size: var(--fs-small);
@@ -859,7 +860,10 @@
   /* Nav */
   .rfx-nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    /* --scroll-lock-gap is the scrollbar's width while the menu locks
+       scrolling (set in Nav.tsx), so the nav and its centred logo don't
+       shift when the scrollbar disappears (Matt, 2026-11-09). */
+    top: 0; left: 0; right: var(--scroll-lock-gap, 0);
     z-index: 100;
     padding: 14px 56px 18px;
     display: grid;
