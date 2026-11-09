@@ -7,7 +7,13 @@ import type { ArticleSummary } from "@/data/articles";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { applyMeta } from "@/seo/headTags";
 
+/* Articles shown before "Show more" (Matt, 2026-11-09). Phones: 8, then 8
+   more each press. Tablet and desktop: 12, then 12 more. Cards sit three
+   to a row on desktop and two on tablets, so 12 fills complete rows on
+   both with no empty space at the end. */
 const PAGE_SIZE = 8;
+const DESKTOP_FIRST = 12;
+const DESKTOP_MORE = 12;
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-GB", {
@@ -85,7 +91,11 @@ const Journal = () => {
   useFadeUp();
   useNavScroll();
 
-  const [visible, setVisible] = useState(PAGE_SIZE);
+  // How many times "Show more" has been pressed. Phones show PAGE_SIZE more
+  // each time; tablet and desktop show DESKTOP_FIRST, then DESKTOP_MORE more.
+  const [pages, setPages] = useState(0);
+  const visible = PAGE_SIZE * (pages + 1);
+  const visibleDesktop = DESKTOP_FIRST + DESKTOP_MORE * pages;
 
   // ARTICLES is a Article[] (with Body); strip Body for the index.
   const summaries = ARTICLES.map(summariseArticle) as (ArticleSummary & {
@@ -97,6 +107,18 @@ const Journal = () => {
   // crawlable); the ones past `visible` are hidden until "Show more".
   const shown = summaries;
   const hasMore = visible < summaries.length;
+  const hasMoreDesktop = visibleDesktop < summaries.length;
+  // Each card shows on phones, on tablet/desktop, both or neither.
+  const itemClass = (i: number) => {
+    const phone = i < visible;
+    const desk = i < visibleDesktop;
+    if (phone && desk) return "contents md:block";
+    if (desk) return "hidden md:block";
+    if (phone) return "contents md:hidden";
+    return "hidden";
+  };
+  const moreClass =
+    hasMore && hasMoreDesktop ? "flex" : hasMore ? "flex md:hidden" : "hidden md:flex";
 
   useEffect(() => {
     applyMeta({
@@ -130,7 +152,7 @@ const Journal = () => {
             className="grid gap-y-10 md:gap-y-16 gap-x-6 md:gap-x-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
           >
             {shown.map((a, i) => (
-              <li key={a.slug} className={i < visible ? "contents md:block" : "hidden"}>
+              <li key={a.slug} className={itemClass(i)}>
                 {/* On mobile we render a denser horizontal-ish layout
                     via a separate component branch; on desktop the
                     full card. Keep DOM order accessible. */}
@@ -187,11 +209,11 @@ const Journal = () => {
             ))}
           </ul>
 
-          {hasMore && (
-            <div className="mt-12 md:mt-16 flex justify-center">
+          {(hasMore || hasMoreDesktop) && (
+            <div className={`mt-12 md:mt-16 ${moreClass} justify-center`}>
               <button
                 type="button"
-                onClick={() => setVisible((v) => v + PAGE_SIZE)}
+                onClick={() => setPages((p) => p + 1)}
                 className="t-overline text-ink border border-ink/30 hover:border-ink hover:bg-ink hover:text-cream transition-colors px-7 py-3"
               >
                 Show more
