@@ -49,6 +49,16 @@
 @media (hover: none) {
   .xmas-ig__badge { display: inline-flex; }
 }
+/* Touch screens: a real scrolling row the script drifts along, so it can be
+   swiped too (InstagramStrip useSwipeDrift). No scrollbar, and a sideways
+   swipe at the end doesn't trigger the browser's back gesture. */
+.xmas-ig.is-swipe {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.xmas-ig.is-swipe::-webkit-scrollbar { display: none; }
+.xmas-ig.is-swipe .xmas-ig__track { animation: none; }
 @media (prefers-reduced-motion: reduce) {
   .xmas-ig { overflow-x: auto; }
   .xmas-ig__track { animation: none; }
