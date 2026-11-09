@@ -12,7 +12,7 @@ interface Stat {
 const STATS: Stat[] = [
   { value: 400, display: (n) => `${n}+`, label: "Events styled" },
   { value: 8, display: (n) => `${n}`, label: "Years in Surrey" },
-  { value: 100, display: (n) => `${n}%`, label: "Tailored designs" },
+  { value: 100, display: (n) => `${n}%`, label: "Individually designed" },
 ];
 
 /** Animates a number from 0 to `value` over `duration` ms once visible. */

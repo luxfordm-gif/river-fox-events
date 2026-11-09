@@ -50,7 +50,7 @@ const ITEMS = [
   {
     title: "Children's party styling",
     body:
-      "Immersive themed parties, magical for children and effortless for you.",
+      "Themed backdrops, arches and party tables, set up at home or at your venue.",
     img: expChildren,
     alt: "Sage green dinosaur birthday backdrop with an Ayaan name sign, tropical foliage and dinosaur cutouts",
     href: "/childrens-parties/",
@@ -177,7 +177,7 @@ const Experiences = ({
 }: ExperiencesProps = {}) => {
   const title = heading ?? (
     <>
-      Our signature <em className="t-accent">experiences.</em>
+      What I <em className="t-accent">style.</em>
     </>
   );
   const [setIndex] = useState(() => (rotatePhotos ? pickHomeSet() : 0));

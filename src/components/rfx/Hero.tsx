@@ -26,8 +26,8 @@ const Hero = () => {
           </h1>
 
           <p className="t-lead text-ink-soft max-w-[520px] mt-3 md:mt-4 fade-up in text-center">
-            Children's parties, milestone birthdays and brand events,
-            designed by Laura, set up before guests arrive and cleared away
+            Children's parties, milestone birthdays and brand events. I design
+            each one, set it up before your guests arrive and clear it away
             after.
           </p>
 

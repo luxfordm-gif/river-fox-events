@@ -96,22 +96,20 @@ const ChildrensParties = () => {
           tone="ph-warm"
           headline={
             <>
-              More than a party,{" "}
+              Your child's party,{" "}
               <em className="t-accent">
-                a memory in the making.
+                set up for you.
               </em>
             </>
           }
         >
           <p>
-            I design celebrations that transform your home or venue into
-            something your child and every guest will remember long after the
-            day is done.
+            I build the whole party setting: balloon arches, themed
+            backdrops, painted name signs, props and the party table.
           </p>
           <p>
-            Every River Fox Events party is individually designed,
-            tailored to your child, your space and the atmosphere you want
-            to create.
+            I set it up at your home, garden or venue before anyone arrives,
+            and clear it all away once the last guest has gone.
           </p>
         </CPReveal>
 
@@ -126,20 +124,20 @@ const ChildrensParties = () => {
           imageScale={1.07}
           headline={
             <>
-              Every milestone,{" "}
+              Sketched first,{" "}
               <em className="t-accent">
-                beautifully marked.
+                then built.
               </em>
             </>
           }
         >
           <p>
-            From initial concept to final installation, every detail is
-            carefully planned and brought together seamlessly.
+            Before the day, I send you a visual of the setup, so you can see
+            the arch, the colours and the name sign in place.
           </p>
           <p>
-            No two events are ever the same. Every detail is shaped around you,
-            your guests and the feeling you want the day to hold.
+            I'm there to install it too, so what you see in the sketch is
+            what you walk into.
           </p>
         </CPReveal>
 
@@ -153,22 +151,21 @@ const ChildrensParties = () => {
           tone="ph-warm"
           headline={
             <>
-              Whatever your vision,{" "}
+              Whatever the theme,{" "}
               <em className="t-accent">
-                we can create it.
+                I'll make it work.
               </em>
             </>
           }
         >
           <p>
-            Whatever your space, we create custom backdrops, themed props
-            and styled details that make it feel immersive and
-            visually striking.
+            Wild One, Berry First, Frozen, Harry Potter or a dinosaur phase:
+            I make the backdrop, props and signs to match, sized to fit your
+            room.
           </p>
           <p>
-            From first birthday themes like Wild One and Berry First to
-            Frozen and Harry Potter parties, everything is designed to be
-            remembered long after the day.
+            Savanna's Willy Wonka party had a chocolate-bar plinth and a gold
+            ticket with her name on it.
           </p>
         </CPReveal>
 
@@ -182,16 +179,16 @@ const ChildrensParties = () => {
           items={CHILDRENS_TILES}
           heading={
             <>
-              What we love{" "}
+              What I love{" "}
               <em className="t-accent">making.</em>
             </>
           }
-          intro="Tell us the theme and we'll build the party around it. These are the pieces families ask for most, but anything goes."
+          intro="Tell me the theme and I'll build the party around it. These are the pieces families ask for most, but anything goes."
         />
 
         <Process sectionId="how-it-works" />
 
-        <InspirationStrip id="cp-inspiration" lead="Parties we've" accent="already made." images={withoutTilePhotos(INSPIRATION_CHILDRENS, CHILDRENS_TILES)} />
+        <InspirationStrip id="cp-inspiration" lead="Parties I've" accent="already made." images={withoutTilePhotos(INSPIRATION_CHILDRENS, CHILDRENS_TILES)} />
 
         <CPPricing footnote="" />
 

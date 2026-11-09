@@ -64,12 +64,12 @@ const Enquire = ({
               className="t-lead max-w-[460px] heading-to-text"
               style={{ color: "hsl(var(--text-dimmed))" }}
             >
-              Celebrations begin from £300, each one tailored to your
+              Celebrations start from £300 and every one is quoted to your
               brief.{" "}
               <span style={{ color: "hsl(var(--text-on-dark))" }}>
-                We take on a limited number of events each month
+                I take on a limited number each month
               </span>
-              , so book early to secure your date, or call Laura on{" "}
+              , so book early, or call me on{" "}
               <a
                 href="tel:+447872114191"
                 className="text-link whitespace-nowrap"

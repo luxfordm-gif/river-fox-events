@@ -134,7 +134,7 @@ export const REVIEWS: Review[] = [
     href: "https://maps.app.goo.gl/WhEBLU9Ax3WcNdQN9",
   },
   {
-    q: "What a brilliant service. The balloon arch was incredible with really good quality balloons. Laura was so speedy at building it - in no time the kitchen was ready for a 15 year old's party. A great backdrop for many selfies. The arch came down really easily with no marks left. Absolutely wonderful - would definitely recommend.",
+    q: "The balloon arch was incredible with really good quality balloons ... The arch came down really easily with no marks left.",
     a: "Helen A",
     href: "https://maps.app.goo.gl/pxsFhE37FV92P7i19",
   },
