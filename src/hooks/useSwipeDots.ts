@@ -5,8 +5,7 @@ import { useCallback, useRef, useState } from "react";
  * `track` as the ref of the scrolling list and `onScroll` as its scroll
  * handler; `active` is the item nearest the centre, so the right dot lights
  * up, and `goTo(i)` glides item i to the centre when its dot is tapped.
- * Used by the photo tiles (ServicesCards) and the town pages' "Why River Fox
- * Events?" points (LocationUSP), so both rows behave the same.
+ * Used by the photo tiles (ServicesCards).
  */
 export const useSwipeDots = <T extends HTMLElement = HTMLUListElement>() => {
   const track = useRef<T>(null);

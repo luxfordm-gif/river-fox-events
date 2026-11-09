@@ -76,9 +76,9 @@ const LocationGallery = ({
         </div>
 
         {/* Right (desktop) / single column (mobile) - peach panel with stacked images.
-            Phones: every photo in the same 4:5 frame, so a landscape shot
-            doesn't come out shorter than the rest and break the stack (most
-            photos are 3:4, so this is also a little shallower; Matt,
+            Phones: every photo in the same square frame, so a landscape shot
+            doesn't come out shorter than the rest and break the stack, and
+            the portrait ones aren't so deep (Matt,
             2026-11-09). Desktop keeps each photo's own shape. */}
         <div
           className="flex flex-col gap-6 md:gap-10 px-6 md:px-12 py-10 md:py-16"
@@ -89,7 +89,7 @@ const LocationGallery = ({
             <img
               src={mainImage}
               alt={mainImageAlt}
-              className="w-full aspect-[4/5] object-cover block"
+              className="w-full aspect-square object-cover block"
               loading="lazy"
               decoding="async"
               width={1280}
@@ -101,7 +101,7 @@ const LocationGallery = ({
               <img
                 src={img.src}
                 alt={img.alt}
-                className="w-full aspect-[4/5] md:aspect-auto md:h-auto object-cover block"
+                className="w-full aspect-square md:aspect-auto md:h-auto object-cover block"
                 loading="lazy"
                 decoding="async"
                 width={1280}
