@@ -78,11 +78,13 @@ const ServiceHero = ({
           >
             {/* Each entry in `lines` is its own line. The break sits between
                 the reveal wrappers (inline blocks), as on the home hero; inside
-                them it didn't break the headline (Matt, 2026-11-08). */}
+                them it didn't break the headline (Matt, 2026-11-08). A line
+                too long for the screen wraps evenly ("Balloon decorations /
+                across Surrey,") instead of leaving one word on its own. */}
             {lines.map((line, i) => (
               <Fragment key={i}>
                 <span className={`word-reveal in${i > 0 ? ` delay-${i}` : ""}`}>
-                  <span>{line}</span>
+                  <span className="text-balance">{line}</span>
                 </span>
                 {i < lines.length - 1 && <br />}
               </Fragment>

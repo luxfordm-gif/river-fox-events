@@ -30,8 +30,9 @@ type ServicesCardsProps = {
   sectionId?: string;
   headingId?: string;
   /** A soft divider halfway through the gap above, separating the tiles from
-      the 50/50 sections (Matt, 2026-11-09: the three main service pages; the
-      balloon page doesn't need one). */
+      the 50/50 sections (Matt, 2026-11-09: every service page that has
+      50/50s above its tiles, the balloon page included once its intro
+      became two 50/50s). */
   divided?: boolean;
 };
 
