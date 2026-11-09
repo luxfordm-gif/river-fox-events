@@ -145,10 +145,12 @@ export const ROUTES: RouteSEO[] = [
     path: "/",
     // Title trimmed to 60 chars (Matt, 2026-11-09). The old name moved into the
     // description so people still searching "Lollipop Balloons" see it in the
-    // result; JSON-LD alternateName carries it too.
+    // result; JSON-LD alternateName carries it too. The brand is named in the
+    // description too: an SEO Vendor Insight Igniter run (2026-11-09) found AI
+    // didn't pick up "River Fox Events" as an entity when it only read "by Laura".
     title: "Party & Event Styling in Surrey | River Fox Events",
     description:
-      "Party and event styling in Surrey by Laura, formerly Lollipop Balloons: balloon arches, backdrops and whole-room styling for any celebration, from £300.",
+      "Party and event styling in Surrey by Laura at River Fox Events, formerly Lollipop Balloons: balloon arches, backdrops and whole-room styling, from £300.",
     priority: 1.0,
     changefreq: "monthly",
   },
