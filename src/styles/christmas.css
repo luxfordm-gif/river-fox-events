@@ -9,6 +9,7 @@
   /* Seasonal palette */
   --xmas-gold: 40 50% 64%;          /* Gold · button fill, accents on Background Dark */
   --xmas-gold-deep: 38 45% 42%;     /* Gold Dark · italic words in headings */
+  --xmas-pine: 155 76% 8%;          /* Pine · the floating Christmas banner, a deep spruce green so it stands off the cream page (Matt, 2026-11-09) */
   --xmas-page: 45 30% 95.5%;        /* Page (Christmas) · hero and light sections, a touch darker so settled snow shows */
   --strip-text: var(--background-light); /* Instagram strip text on photos (was its own near-identical cream) */
 
@@ -126,8 +127,9 @@
   width: 320px;
   padding: 30px 20px 20px;
   border-radius: var(--radius-large);
-  background: hsl(var(--background-light));
-  color: hsl(var(--text-primary));
+  background: hsl(var(--xmas-pine));
+  color: hsl(var(--text-on-dark));
+  --accent-dark: var(--xmas-gold); /* italic heading word, brighter on the green */
   box-shadow: 0 30px 70px -24px hsl(var(--text-primary) / 0.4), 0 6px 18px -8px hsl(var(--text-primary) / 0.18);
   opacity: 0;
   transform: translateY(28px);
@@ -150,6 +152,26 @@
   z-index: 6;
   filter: drop-shadow(0 4px 6px hsl(120 6% 12% / 0.25));
 }
+/* Lit spruce branch on the right edge; the wrapper clips it to the card's
+   corners (the bow above still overhangs). Its left edge fades into the green. */
+.xmas-promo__pine {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+.xmas-promo__pine img {
+  position: absolute;
+  top: -10%;
+  right: -18%;
+  width: 200px;
+  height: auto;
+  -webkit-mask-image: linear-gradient(to right, transparent, hsl(0 0% 0%) 35%);
+  mask-image: linear-gradient(to right, transparent, hsl(0 0% 0%) 35%);
+}
+.xmas-promo .t-overline { color: hsl(var(--xmas-gold)); }
+.xmas-promo .xmas-promo__link { color: hsl(var(--text-on-dark)); border-bottom-color: hsl(var(--xmas-gold)); }
 .xmas-promo__close {
   position: absolute;
   top: 10px;
@@ -160,11 +182,11 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  color: hsl(var(--text-neutral));
-  background: hsl(var(--background));
+  color: hsl(var(--text-on-dark));
+  background: hsl(var(--xmas-pine) / 0.85);
   transition: color 0.2s ease, background 0.2s ease;
 }
-.xmas-promo__close:hover { color: hsl(var(--text-primary)); background: hsl(var(--muted)); }
+.xmas-promo__close:hover { color: hsl(var(--xmas-pine)); background: hsl(var(--text-on-dark)); }
 /* The circle stays small but the tap area is a full Tap target, centred on
    it, so a slightly-off tap closes the banner instead of opening the
    garlands link underneath (Matt, 2026-11-08). */
@@ -197,9 +219,9 @@
 .xmas-promo__card[data-pos="2"] { z-index: 2; transform: translateX(-50%) translateX(-34%) rotate(-9deg) scale(0.88); }
 .xmas-promo__card[data-pos="3"] { z-index: 1; transform: translateX(-50%) translateX(70%) rotate(16deg) scale(0.84); opacity: 0; }
 
-.xmas-promo__body { text-align: center; }
+.xmas-promo__body { position: relative; text-align: center; }
 .xmas-promo__title { font-size: var(--fs-h5); line-height: var(--lh-h5); font-weight: var(--fw-regular); letter-spacing: var(--ls-h5); margin-top: 8px; }
-.xmas-promo__text { margin-top: 8px; font-size: var(--fs-meta); line-height: var(--lh-small); color: hsl(var(--text-neutral)); }
+.xmas-promo__text { margin-top: 8px; font-size: var(--fs-meta); line-height: var(--lh-small); color: hsl(var(--text-on-dark)); }
 .xmas-promo__cta { margin-top: 16px; width: 100%; justify-content: center; }
 
 @media (max-width: 767px) {
@@ -221,8 +243,9 @@
   .xmas-promo__card[data-pos="1"] { transform: translateX(-50%) translateX(14%) rotate(6deg) scale(0.92); }
   .xmas-promo__card[data-pos="2"] { transform: translateX(-50%) translateX(-14%) rotate(-7deg) scale(0.88); }
   .xmas-promo__card[data-pos="3"] { transform: translateX(-50%) translateX(30%) rotate(12deg) scale(0.84); }
-  .xmas-promo__body { text-align: left; padding-right: 22px; }
-  .xmas-promo .xmas-promo__eyebrow { color: hsl(var(--xmas-gold-deep)); }
+  /* Text stops short of the branch so the title wraps before the pine cone. */
+  .xmas-promo__body { text-align: left; padding-right: 64px; }
+  .xmas-promo__pine img { top: -45%; right: -10%; width: 150px; }
   .xmas-promo__title { margin-top: 2px; }
   .xmas-promo__link { margin-top: 4px; padding: 6px 0 4px; }
   /* Whole bar is tappable: the link's hit area stretches over the card,
