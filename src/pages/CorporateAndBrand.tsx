@@ -58,7 +58,7 @@ const CORPORATE_STEPS = [
     n: "03",
     title: "Installation day",
     body:
-      "Our team arrives, installs professionally before your event begins, and returns for full breakdown after the last guest leaves.",
+      "We arrive and install before your event begins, then come back for full breakdown after the last guest leaves.",
   },
 ];
 
@@ -294,8 +294,8 @@ const CorporateAndBrand = () => {
             <>
               Based in Surrey and installing regularly across London - for
               brands and businesses that care about how their event looks and
-              feels. Wherever the venue, our team installs before guests
-              arrive and returns for full breakdown afterwards.
+              feels. Wherever the venue, we install before guests arrive and
+              come back for full breakdown afterwards.
             </>
           }
           mapQuery="Surrey,England,UK&z=8"
