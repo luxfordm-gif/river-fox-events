@@ -190,7 +190,7 @@ const BalloonInstallations = () => {
           items={WHAT_WE_MAKE}
           heading={
             <>
-              Our most{" "}
+              My most{" "}
               <em className="t-accent">requested.</em>
             </>
           }
@@ -241,7 +241,7 @@ const BalloonInstallations = () => {
 
         <LocationTrust reviews={BALLOON_REVIEWS} />
 
-        <InspirationStrip id="bi-inspiration" lead="Installs we've" accent="already built." images={INSPIRATION_BALLOONS} />
+        <InspirationStrip id="bi-inspiration" lead="Installs I've" accent="already built." images={INSPIRATION_BALLOONS} />
 
         <ChildrensFAQ
           faqs={FAQS}

@@ -23,7 +23,7 @@ const SLUG_BY_CITY = new Map(LOCATIONS.map((l) => [l.cityName, l.slug]));
 
 const DEFAULT_HEADING: ReactNode = (
   <>
-    Areas we{" "}
+    Areas I{" "}
     <em className="t-accent">cover.</em>
   </>
 );
@@ -45,10 +45,9 @@ const DEFAULT_AREAS = [
 
 const DEFAULT_INTRO: ReactNode = (
   <>
-    Based in Surrey and travelling across the county and into London for
-    clients who care about the difference that detail makes. Wherever the
-    celebration, we come to you - set up before guests arrive and packed
-    down once the day is done.
+    I'm based in Horley and cover the whole of Surrey and into London.
+    Wherever the celebration is, I come to you, set everything up before
+    guests arrive and pack it all down once it's over.
   </>
 );
 

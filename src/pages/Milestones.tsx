@@ -96,7 +96,7 @@ const Milestones = () => {
             <>Milestone events,</>,
             <>
               <em className="t-accent">
-                beautifully styled.
+                styled your way.
               </em>
             </>,
           ]}
@@ -130,13 +130,12 @@ const Milestones = () => {
           }
         >
           <p>
-            A milestone birthday or anniversary isn't just another event. It's
-            a marker - a moment that deserves a setting as considered and
-            special as the person and occasion being celebrated.
+            I style 30ths, 40ths, anniversaries and christenings at home, in a
+            private room, a restaurant or a hotel.
           </p>
           <p>
-            I design special events that feel considered and personal -
-            whether at home, a private venue, restaurant or hotel.
+            Usually that means light-up numbers, a balloon garland in your
+            colours and a backdrop for the photos.
           </p>
         </CPReveal>
 
@@ -159,9 +158,9 @@ const Milestones = () => {
           }
         >
           <p>
-            Whether it's a 21st or 70th birthday, wedding anniversary, baby
-            shower or christening, each event is designed with a focus on
-            atmosphere, balance and detail.
+            From a 21st to a 70th, a baby shower to a wedding anniversary, I'll
+            ask who it's for, what they love and where it's happening, then
+            design the numbers, colours and backdrop around that.
           </p>
         </CPReveal>
 
@@ -175,7 +174,7 @@ const Milestones = () => {
           items={MILESTONE_TILES}
           heading={
             <>
-              Where we{" "}
+              Where I{" "}
               <em className="t-accent">start.</em>
             </>
           }
@@ -184,7 +183,7 @@ const Milestones = () => {
 
         <Process sectionId="how-it-works" />
 
-        <InspirationStrip id="ms-inspiration" lead="Celebrations we've" accent="already styled." images={withoutTilePhotos(INSPIRATION_MILESTONES, MILESTONE_TILES)} />
+        <InspirationStrip id="ms-inspiration" lead="Celebrations I've" accent="already styled." images={withoutTilePhotos(INSPIRATION_MILESTONES, MILESTONE_TILES)} />
 
         <CPPricing
           heading={

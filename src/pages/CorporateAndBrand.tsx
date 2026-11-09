@@ -197,27 +197,24 @@ const CorporateAndBrand = () => {
           imageScale={1.07}
           headline={
             <>
-              Spaces that speak{" "}
+              Your brand,{" "}
               <em className="t-accent">
-                your brand.
+                in the room.
               </em>
             </>
           }
         >
           <p>
-            A thoughtfully styled installation shapes how guests feel the
-            moment they walk in - and what they remember long after they
-            leave.
-          </p>
-          <p>
-            We work with brands and businesses across Surrey and London to
-            design impactful event styling - from statement installations and
-            branded backdrops, including{" "}
+            I install branded balloon displays,{" "}
             <a href="/journal/shimmer-wall-hire-surrey/" className="text-link">
               sequin and shimmer walls
             </a>
-            , to entrance displays and photo moments that stop guests in
-            their tracks.
+            , logo backdrops and entrance displays for businesses across
+            Surrey and London.
+          </p>
+          <p>
+            Each one is built in your brand colours, with your logo or
+            signage where it helps.
           </p>
         </CPReveal>
 
@@ -231,22 +228,21 @@ const CorporateAndBrand = () => {
           tone="ph-blush"
           headline={
             <>
-              Every brief,{" "}
+              In before doors open,{" "}
               <em className="t-accent">
-                carefully considered.
+                cleared after.
               </em>
             </>
           }
         >
           <p>
-            Each installation is tailored to your space and objectives,
-            ensuring it feels aligned, considered and professionally
-            executed.
+            Most of my corporate work is product launches, shop and restaurant
+            openings, office Christmas parties and award nights.
           </p>
           <p>
-            From product launches to in-store moments and brand activations,
-            we create installations designed to capture attention and elevate
-            the environment.
+            I install before your guests arrive and come back to clear
+            everything away once the event is over, so there's nothing left
+            for your staff to deal with.
           </p>
         </CPReveal>
 
@@ -260,18 +256,18 @@ const CorporateAndBrand = () => {
           items={CORPORATE_TILES}
           heading={
             <>
-              What we can{" "}
+              What I can{" "}
               <em className="t-accent">build.</em>
             </>
           }
-          intro="No two briefs look the same. These are our most requested pieces, but send us the brand and the space and we'll design around it."
+          intro="No two briefs look the same. These are my most requested pieces, but send me the brand and the space and I'll design around it."
         />
 
         <Process sectionId="how-it-works" steps={CORPORATE_STEPS} />
 
         {/* The office party sequin wall stays in the strip as well as its tile:
             it's the only corporate shimmer wall photo (Matt, 2026-11-09). */}
-        <InspirationStrip id="cb-inspiration" lead="Events we've" accent="already delivered." images={withoutTilePhotos(INSPIRATION_CORPORATE, CORPORATE_TILES.filter((t) => t.title !== "Sequin walls"))} />
+        <InspirationStrip id="cb-inspiration" lead="Events I've" accent="already delivered." images={withoutTilePhotos(INSPIRATION_CORPORATE, CORPORATE_TILES.filter((t) => t.title !== "Sequin walls"))} />
 
         <ChildrensFAQ faqs={FAQS} headingId="cb-faq-heading" />
 
@@ -292,10 +288,10 @@ const CorporateAndBrand = () => {
           ]}
           intro={
             <>
-              Based in Surrey and installing regularly across London - for
-              brands and businesses that care about how their event looks and
-              feels. Wherever the venue, we install before guests arrive and
-              come back for full breakdown afterwards.
+              I'm based in Surrey and install regularly across London, in
+              offices, showrooms, hotels and restaurants. Wherever the venue,
+              I install before guests arrive and come back for full breakdown
+              afterwards.
             </>
           }
           mapQuery="Surrey,England,UK&z=8"
