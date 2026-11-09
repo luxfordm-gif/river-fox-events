@@ -127,7 +127,7 @@ const CorporateAndBrand = () => {
               </em>
             </>,
           ]}
-          sub="Branded balloon installations, sequin walls and signage for launches, award nights and Christmas parties, installed before doors open and cleared away after."
+          sub="Branded balloon installations, sequin and shimmer walls and signage for launches, award nights and Christmas parties, installed before doors open and cleared away after."
         />
 
         {/* Client names straight under the hero (Matt, 2026-11-07) */}
@@ -210,8 +210,12 @@ const CorporateAndBrand = () => {
           <p>
             We work with brands and businesses across Surrey and London to
             design impactful event styling - from statement installations and
-            branded backdrops to entrance displays and photo moments that stop
-            guests in their tracks.
+            branded backdrops, including{" "}
+            <a href="/journal/shimmer-wall-hire-surrey/" className="text-link">
+              sequin and shimmer walls
+            </a>
+            , to entrance displays and photo moments that stop guests in
+            their tracks.
           </p>
         </CPReveal>
 

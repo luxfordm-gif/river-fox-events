@@ -9,6 +9,8 @@ import WillyWonkaFifthBirthdaySavannaBody from "./willy-wonka-fifth-birthday-sav
 import DylanChristeningFirstBirthdayBody from "./dylan-christening-first-birthday";
 import BabyShowerThemes2026Body from "./baby-shower-themes-2026";
 import ChristmasDecorationsSurreyBody from "./christmas-decorations-surrey";
+import ShimmerWallHireSurreyBody from "./shimmer-wall-hire-surrey";
+import HiringAnEventStylistSurreyBody from "./hiring-an-event-stylist-surrey";
 
 import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
 import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
@@ -20,6 +22,8 @@ import willyWonkaCard from "@/assets/willy-wonka-savanna-chocolate-arch-surrey.w
 import dylanChristeningCard from "@/assets/journal/dylan-christening-first-birthday/dylan-christening-arched-welcome-panel-balloon-garland.webp";
 import babyShowerThemesCard from "@/assets/baby-shower-baby-in-bloom-arch-surrey.webp";
 import christmasDecorationsCard from "@/assets/journal/christmas-decorations-surrey/christmas-doorway-garland-pink-studio-east-molesey.webp";
+import hiringStylistCard from "@/assets/river-fox-events-pastel-birthday-reeva-entrance-arch.webp";
+import shimmerWallCard from "@/assets/services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp";
 
 /**
  * Master list of articles. Order = newest first.
@@ -34,6 +38,48 @@ import christmasDecorationsCard from "@/assets/journal/christmas-decorations-sur
  */
 export const ARTICLES: Article[] = [
   {
+    slug: "shimmer-wall-hire-surrey",
+    title: "Shimmer wall hire, styled around your room",
+    subtitle:
+      "Where a shimmer or sequin wall works best, how I frame it with balloons and light-up numbers, and what's included from set-up to taking it all down.",
+    teaser:
+      "A shimmer wall gives a party one place to gather and a backdrop for every photo. Real walls from a fiftieth, a unicorn party and an office Christmas party.",
+    metaDescription:
+      "Shimmer wall and sequin wall hire in Surrey for milestone birthdays, children's parties and office Christmas parties, framed with balloons and set up for you.",
+    publishedAt: "2026-11-09",
+    readMinutes: 5,
+    relatedSlugs: [
+      "christmas-decorations-surrey",
+      "hiring-an-event-stylist-surrey",
+      "beyond-the-balloon-arch",
+    ],
+    cardImage: shimmerWallCard,
+    ogImage: "/og/shimmer-wall-hire-surrey.webp",
+    category: "Guides",
+    Body: ShimmerWallHireSurreyBody,
+  },
+  {
+    slug: "hiring-an-event-stylist-surrey",
+    title: "What's included when you hire an event stylist",
+    subtitle:
+      "One person from the first idea to the clear-up: the moodboard and render, set-up before guests arrive, taking it all down, and what it costs.",
+    teaser:
+      "What actually happens when you book an event stylist, from the moodboard and render to install morning, pack-down and pricing, with a real render-to-room example.",
+    metaDescription:
+      "Hiring an event stylist in Surrey? Here's what's included, from the render and palette to set-up and pack-down, what it costs and why one person does it all.",
+    publishedAt: "2026-11-09",
+    readMinutes: 5,
+    relatedSlugs: [
+      "from-design-to-delivery",
+      "shimmer-wall-hire-surrey",
+      "two-wild-safari-second-birthday",
+    ],
+    cardImage: hiringStylistCard,
+    ogImage: "/og/hiring-an-event-stylist-surrey.webp",
+    category: "Guides",
+    Body: HiringAnEventStylistSurreyBody,
+  },
+  {
     slug: "christmas-decorations-surrey",
     title: "Christmas decorations, from front door to dance floor",
     subtitle:
@@ -45,9 +91,9 @@ export const ARTICLES: Article[] = [
     publishedAt: "2026-11-03",
     readMinutes: 5,
     relatedSlugs: [
+      "shimmer-wall-hire-surrey",
       "garden-milestone-styling-surrey",
       "beyond-the-balloon-arch",
-      "from-design-to-delivery",
     ],
     cardImage: christmasDecorationsCard,
     ogImage: "/og/christmas-decorations-surrey.webp",
