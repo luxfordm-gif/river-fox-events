@@ -53,8 +53,6 @@ import igPillar from "@/assets/christmas/instagram/pink-studio-pillar-garland-de
 import imgRestaurant from "@/assets/christmas/blue-restaurant-doorway-red-bauble-garland.webp";
 import imgJewel from "@/assets/christmas/jewel-tone-bauble-arch-white-porch.webp";
 import imgBondi from "@/assets/journal/christmas-decorations-surrey/christmas-doorway-garland-pink-studio-east-molesey.webp";
-import imgSequinParty from "@/assets/journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp";
-import imgMerryPanel from "@/assets/journal/christmas-decorations-surrey/merry-christmas-panel-silver-navy-balloon-garland.webp";
 import imgGarland800 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-800.webp";
 import imgGarland1200 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-1200.webp";
 import imgGarland1440 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-1440.webp";
@@ -143,8 +141,8 @@ const FAN_BUSINESS = [
     objectPosition: "30% 50%",
   },
   {
-    src: imgRestaurant,
-    alt: "Blue shopfront doorway with a spruce garland of large red and champagne baubles running up the frame",
+    src: igReigate,
+    alt: "Blue restaurant double doors in Reigate edged with red and gold bauble garlands",
     objectPosition: "50% 50%",
   },
   {
@@ -322,6 +320,8 @@ type Card = {
   detail: string;
   detailSrcSet?: string;
   detailAlt: string;
+  /** Crop for the close-up, when the default centre misses the garland. */
+  detailPosition?: string;
   title: string;
   body: ReactNode[];
 };
@@ -354,23 +354,20 @@ const CARD_BUSINESS: Card = {
     ],
 };
 
-/* Business version only: what Laura styles inside (same files and alt text
-   as the Our work gallery). */
-const CARD_INSIDE: Card = {
-  img: imgSequinParty,
-  alt: "Gold mirror sequin wall framed by an organic garland of black and chrome gold balloons on a checkerboard floor",
-  detail: imgMerryPanel,
-  detailAlt: "Silver, navy and white balloon garland climbing a painted Merry Christmas panel beside a white tree and blue neon light",
-  title: "Inside, too",
+/* Business version: shops and salons, then restaurants (entrances only,
+   Matt 2026-11-09). Same files and alt text as elsewhere on the page. */
+const CARD_SHOPS: Card = { ...CARD_BUSINESS, title: "Shops and salons" };
+
+const CARD_RESTAURANTS: Card = {
+  img: imgRestaurant,
+  alt: "Blue shopfront doorway with a spruce garland of large red and champagne baubles running up the frame",
+  detail: igLedge,
+  detailAlt: "Restaurant window ledge lined with a spruce garland of red and cream baubles beside bistro chairs",
+  detailPosition: "50% 85%",
+  title: "Restaurants and cafés",
   body: [
-    "Christmas balloon displays for salons and shop floors, and styling for team Christmas parties, from sequin walls to balloon garlands.",
-    <>
-      There's more in my{" "}
-      <a href="/journal/christmas-decorations-surrey/" className="text-link">
-        Christmas decorations journal
-      </a>
-      .
-    </>,
+    "Dress the doorway and the window ledge, so the garland greets diners on the pavement and frames the view from their table.",
+    "Red and gold, frosted white or your own colours, styled to suit your shopfront and installed around service.",
   ],
 };
 
@@ -390,7 +387,7 @@ const CARD_BUSINESS_HOME: Card = {
 };
 
 const CARDS_HOME = [CARD_HOME, CARD_BUSINESS_HOME];
-const CARDS_BUSINESS = [CARD_BUSINESS, CARD_INSIDE];
+const CARDS_BUSINESS = [CARD_SHOPS, CARD_RESTAURANTS];
 
 /* Velvet bow used as a divider between white sections, sitting in the gap
    (the section it opens drops its top padding so the gap stays even). */
@@ -636,7 +633,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               </SectionTitle>
               <p className="mt-6 t-lead text-ink-soft max-w-[54ch] mx-auto">
                 {biz
-                  ? "A dressed entrance draws people in from the street, and a little styling inside carries the feeling through to your till, your chairs or your team party."
+                  ? "A dressed entrance draws people in from the street and tells them you're ready for Christmas, whether it's a shop door, a salon window or a restaurant doorway."
                   : "Whether it's the finishing touch to your family home or a festive welcome for your customers, a beautifully styled doorway sets the tone for the season."}
               </p>
             </div>
@@ -666,6 +663,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                       sizes="(min-width: 768px) 46vw, calc(100vw - 64px)"
                       alt={card.detailAlt}
                       className="xmas-swap__detail absolute inset-0 w-full h-full object-cover"
+                      style={card.detailPosition ? { objectPosition: card.detailPosition } : undefined}
                       width={838}
                       height={462}
                       loading="lazy"
