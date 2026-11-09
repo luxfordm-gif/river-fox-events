@@ -33,15 +33,15 @@ import imgOccasionsHover from "@/assets/river-fox-events-baby-stubbs-gender-reve
 const FAQS = [
   {
     q: "How far in advance should I book a milestone event?",
-    a: "We recommend enquiring 8–12 weeks in advance for milestone celebrations, particularly for spring and summer weekends which book quickly. If your date is sooner, you're welcome to get in touch - we'll always advise honestly on what's possible.",
+    a: "I'd suggest enquiring 8–12 weeks ahead for milestone celebrations, especially for spring and summer weekends, which book quickly. If your date is sooner, do get in touch and I'll tell you honestly what's possible.",
   },
   {
     q: "Do you travel to my home or venue?",
-    a: "Yes. We come to you - your home, garden, a private venue, restaurant or hotel. Setup happens before guests arrive and full breakdown is included afterwards, so the day feels effortless from start to finish.",
+    a: "Yes, I come to you: your home, garden, a private venue, a restaurant or a hotel. I set up before guests arrive and pack everything away once the celebration is over.",
   },
   {
     q: "Can I choose specific colours and themes?",
-    a: "Every milestone is shaped around you - bring a palette, a Pinterest board or a single reference and the design grows from there.",
+    a: "Yes. Bring a palette, a Pinterest board or a single photo and I'll design the numbers, balloons and backdrop around it.",
   },
   {
     q: "How much does milestone celebration styling cost in Surrey?",
@@ -49,11 +49,11 @@ const FAQS = [
   },
   {
     q: "What happens on the day?",
-    a: "We arrive ahead of your guests and dress the space - installations, tablescapes, signage and styled details, all in place before anyone walks in. We return afterwards to pack everything away.",
+    a: "I arrive ahead of your guests and dress the room: balloon installations, the tables, signage and light-up numbers, all in place before anyone walks in. Afterwards I come back to pack everything away.",
   },
   {
     q: "Do you style events outside Surrey?",
-    a: "Surrey is home, but we regularly travel into London and the surrounding Home Counties for the right project. Just mention your location when you enquire and we'll let you know.",
+    a: "Surrey is home, but I regularly travel into London and the surrounding Home Counties. Tell me where the celebration is when you enquire and I'll confirm.",
   },
 ];
 
