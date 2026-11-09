@@ -233,7 +233,7 @@
     padding: 14px 14px 14px 12px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 18px; /* photos to text (Matt, 2026-11-09: 4px more) */
   }
   .xmas-promo__bow { display: none; }
   .xmas-promo__close { top: 6px; right: 6px; width: 26px; height: 26px; }
