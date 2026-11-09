@@ -241,7 +241,10 @@ const BalloonInstallations = () => {
           </p>
         </CPReveal>
 
+        {/* `divided`: the same rule after the 50/50s as the other service
+            pages (Matt, 2026-11-09). */}
         <ServicesCards
+          divided
           sectionId="what-we-make"
           headingId="bi-make-heading"
           items={WHAT_WE_MAKE}
