@@ -77,7 +77,7 @@ const QuestionsToAskABalloonDecoratorArticle = () => (
       <p>
         If you'd like more than balloons, such as a backdrop, props and a
         painted name board, full party styling starts from £300, and fuller
-        designs that transform a whole room usually range from £800 to
+        designs that transform a whole room usually range from £600 to
         £1,500+. Many families start with the balloons and build the rest
         around them, and I've written about why balloons now work best as one
         part of the whole room in{" "}
@@ -126,7 +126,10 @@ const QuestionsToAskABalloonDecoratorArticle = () => (
 
       <h3>Do you set up and take it all down?</h3>
       <p>
-        With me, yes. I install everything before your guests arrive, and when
+        With me, yes. Nothing is made in advance and brought along finished:
+        every arch and garland is built on site, at your event, so it's at
+        its freshest when your guests walk in. I install everything before
+        your guests arrive, and when
         the celebration is over I come back and take it all down, so there are
         no balloons to pop, frames to dismantle or bags of decorations left in
         the hallway. You walk into a finished room, and afterwards it's simply
@@ -217,10 +220,16 @@ const QuestionsToAskABalloonDecoratorArticle = () => (
         floor&nbsp;space.
       </p>
       <p>
+        Helium balloons have a much shorter life. They don't last more than a
+        day, and heat or very cold weather can make them deflate quite
+        quickly, which is why they're best set up just before your event
+        starts. If you have your heart set on floating balloons in the
+        garden, it's worth talking it through first, as they're also the
+        pieces the wind affects most.
+      </p>
+      <p>
         I'll suggest whichever suits your design, your room and how long you'd
-        like it to last. If you have your heart set on floating balloons in
-        the garden, it's worth talking it through first, as they're the
-        pieces the wind affects most. You can see both kinds on my{" "}
+        like it to last. You can see both kinds on my{" "}
         <a href="/balloon-installations/">balloon decorations</a>&nbsp;page.
       </p>
     </ArticleProse>

@@ -219,14 +219,16 @@ const BalloonArchGarlandOrWallArticle = () => (
         <li>
           Air, not helium. Arches and garlands are filled with air, which is
           why they stay full for days indoors. Helium is for balloons that
-          need to float, and it doesn't last nearly as&nbsp;long.
+          need to float, and they last no more than a day, less in heat or
+          very cold&nbsp;weather.
         </li>
       </ul>
       <p>
         It takes more balloons, more time and more patience than most people
         expect, especially on the morning of a party. If you'd rather hand it
         over, my balloon decorations for parties are designed around your
-        colours and installed before your guests arrive, and I come back
+        colours and built on site at your event, never made in advance, so
+        they're at their best when your guests arrive. I come back
         afterwards to take everything down. If you're in Surrey and have been
         searching for "balloon arch hire near me", you can see everything I
         make on my{" "}

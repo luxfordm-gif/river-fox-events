@@ -105,7 +105,7 @@ const Contact = () => {
                 >
                   Celebrations start from £300, with larger designs
                   from{" "}
-                  <span className="whitespace-nowrap">£800 - £1,500+</span>.
+                  <span className="whitespace-nowrap">£600 - £1,500+</span>.
                 </p>
 
                 <div className="hairline mt-10 max-w-[460px] mx-auto lg:mx-0" aria-hidden="true" />

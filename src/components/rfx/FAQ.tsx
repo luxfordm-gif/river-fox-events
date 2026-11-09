@@ -28,7 +28,7 @@ const FAQS: FAQItem[] = [
   },
   {
     q: "How much does event styling cost?",
-    a: "Events start from £300. Full room setups and larger installations usually range from £800 to £1,500+. I quote every event individually, so you'll always have a clear proposal before anything is confirmed.",
+    a: "Events start from £300. Full room setups and larger installations usually range from £600 to £1,500+. I quote every event individually, so you'll always have a clear proposal before anything is confirmed.",
   },
   {
     q: "How far in advance should I book?",

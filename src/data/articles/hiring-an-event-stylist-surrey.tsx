@@ -27,7 +27,7 @@ const HiringAnEventStylistSurreyArticle = () => (
         </li>
         <li>
           Celebrations start from £300, and fuller designs that transform a
-          whole room usually range from £800 to&nbsp;£1,500+.
+          whole room usually range from £600 to&nbsp;£1,500+.
         </li>
         <li>
           Styling should feel personal to you and your space, never like a kit
@@ -165,7 +165,7 @@ const HiringAnEventStylistSurreyArticle = () => (
       </ul>
       <p>
         Celebrations start from £300, and fuller designs that transform a
-        whole room usually range from £800 to £1,500+. Every quote is shaped
+        whole room usually range from £600 to £1,500+. Every quote is shaped
         around your brief, the size of the space and what's involved on the
         day, so I'll always send you a clear proposal before anything
         is&nbsp;confirmed.
