@@ -190,11 +190,11 @@ const BalloonInstallations = () => {
           items={WHAT_WE_MAKE}
           heading={
             <>
-              What we{" "}
-              <em className="t-accent">make.</em>
+              Our most{" "}
+              <em className="t-accent">requested.</em>
             </>
           }
-          intro="Every piece is installed on the day and collected afterwards, and each one can be the start of a fully styled room."
+          intro="Arches and garlands are where most celebrations start. Every one is sized and coloured to your space, and most become part of a bigger setup."
         />
 
         <LocationGallery
@@ -241,7 +241,7 @@ const BalloonInstallations = () => {
 
         <LocationTrust reviews={BALLOON_REVIEWS} />
 
-        <InspirationStrip id="bi-inspiration" accent="your balloons." images={INSPIRATION_BALLOONS} />
+        <InspirationStrip id="bi-inspiration" lead="Installs we've" accent="already built." images={INSPIRATION_BALLOONS} />
 
         <ChildrensFAQ
           faqs={FAQS}

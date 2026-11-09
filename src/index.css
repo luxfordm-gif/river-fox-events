@@ -761,6 +761,15 @@
   }
   /* A gentle, slow zoom on hover (was 1.12, Matt 2026-11-08: "has to feel really premium"). */
   .exp-card:hover .exp-img-wrap { --hover-zoom: 1.05; }
+  /* "What we do" photo tiles that link on (ServicesCards): the same gentle
+     5% zoom as the service cards. Plain tiles don't move. */
+  .tile-link .tile-img { transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .tile-link:hover .tile-img { transform: scale(1.05); }
+  .tile-link:hover .text-link { text-decoration-color: transparent; }
+  @media (prefers-reduced-motion: reduce) {
+    .tile-link .tile-img { transition: none; }
+    .tile-link:hover .tile-img { transform: none; }
+  }
   .exp-card .exp-cta {
     position: absolute; left: 22px; bottom: 18px; z-index: 4;
     color: hsl(var(--background));

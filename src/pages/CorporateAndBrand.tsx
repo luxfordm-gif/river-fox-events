@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import InspirationStrip from "@/components/rfx/InspirationStrip";
 import { INSPIRATION_CORPORATE } from "@/data/inspiration";
+import ServicesCards from "@/components/rfx/ServicesCards";
+import { CORPORATE_TILES, withoutTilePhotos } from "@/data/serviceTiles";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
@@ -248,9 +250,25 @@ const CorporateAndBrand = () => {
           </p>
         </CPReveal>
 
-        <InspirationStrip id="cb-inspiration" accent="your event." images={INSPIRATION_CORPORATE} />
+        {/* "What we do": photo tiles like the balloon page's, linking on
+            only where a sub-service page or article exists. Sits under the last
+            50/50 section (Matt, 2026-11-09). */}
+        <ServicesCards
+          sectionId="cb-what-we-do"
+          headingId="cb-do-heading"
+          items={CORPORATE_TILES}
+          heading={
+            <>
+              What we can{" "}
+              <em className="t-accent">build.</em>
+            </>
+          }
+          intro="No two briefs look the same. These are our most requested pieces, but send us the brand and the space and we'll design around it."
+        />
 
         <Process sectionId="how-it-works" steps={CORPORATE_STEPS} />
+
+        <InspirationStrip id="cb-inspiration" lead="Events we've" accent="already delivered." images={withoutTilePhotos(INSPIRATION_CORPORATE, CORPORATE_TILES)} />
 
         <ChildrensFAQ faqs={FAQS} headingId="cb-faq-heading" />
 

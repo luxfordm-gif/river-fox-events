@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import InspirationStrip from "@/components/rfx/InspirationStrip";
 import { INSPIRATION_MILESTONES } from "@/data/inspiration";
+import ServicesCards from "@/components/rfx/ServicesCards";
+import { MILESTONE_TILES, withoutTilePhotos } from "@/data/serviceTiles";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
@@ -163,9 +165,25 @@ const Milestones = () => {
           </p>
         </CPReveal>
 
-        <InspirationStrip id="ms-inspiration" accent="your celebration." images={INSPIRATION_MILESTONES} />
+        {/* "What we do": photo tiles like the balloon page's, linking on
+            only where a sub-service page or article exists. Sits under the last
+            50/50 section (Matt, 2026-11-09). */}
+        <ServicesCards
+          sectionId="ms-what-we-do"
+          headingId="ms-do-heading"
+          items={MILESTONE_TILES}
+          heading={
+            <>
+              Where we{" "}
+              <em className="t-accent">start.</em>
+            </>
+          }
+          intro="Every milestone is individually designed around your colours and venue. These come up most, but nothing here is a package."
+        />
 
         <Process sectionId="how-it-works" />
+
+        <InspirationStrip id="ms-inspiration" lead="Celebrations we've" accent="already styled." images={withoutTilePhotos(INSPIRATION_MILESTONES, MILESTONE_TILES)} />
 
         <CPPricing
           heading={
