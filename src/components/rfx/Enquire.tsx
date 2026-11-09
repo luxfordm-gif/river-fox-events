@@ -148,9 +148,9 @@ const Enquire = ({
                 <span className="lbl">Planned investment</span>
                 <select name="budget" defaultValue="Under £300">
                   <option>Under £300</option>
-                  <option>£300 – £460</option>
-                  <option>£460 – £800</option>
-                  <option>£800 – £1,500</option>
+                  <option>£300 – £600</option>
+                  <option>£600 – £1,000</option>
+                  <option>£1,000 – £1,500</option>
                   <option>£1,500+</option>
                   <option>Not sure yet</option>
                 </select>
