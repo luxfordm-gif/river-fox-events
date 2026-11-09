@@ -198,8 +198,10 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/balloon-installations",
     title: "Balloon Decorations & Arches in Surrey | River Fox Events",
+    // "Balloon decorations for parties" (170/mo UK) and "...for weddings" (260/mo)
+    // lead the description: SEO Vendor Better Keywords AI, 2026-11-09.
     description:
-      "Balloon decorations in Surrey, from organic arches and garlands to balloon walls and number stacks, sized to your room, installed and collected by Laura.",
+      "Balloon decorations for parties, weddings and business launches across Surrey: organic arches, garlands, balloon walls and number stacks, installed by Laura.",
     breadcrumbName: "Balloon Installations",
     service: {
       // "Balloon decorations" is the phrase people search (RankLens, 2026-11-09).
