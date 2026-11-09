@@ -19,37 +19,37 @@ type ChildrensFAQProps = {
 const DEFAULT_FAQS: FAQ[] = [
   {
     q: "How far in advance should I book?",
-    a: "We recommend enquiring at least 6–8 weeks ahead for children's parties. Popular dates - particularly weekends in school holidays - book up quickly. If your date is sooner, do still get in touch; we'll always tell you honestly whether we can create something beautiful in the time available.",
+    a: "I'd suggest enquiring at least 6–8 weeks ahead for children's parties. Popular dates, especially weekends in the school holidays, book up quickly. If your date is sooner, do still get in touch, and I'll tell you honestly what I can do in the time.",
   },
   {
     q: "Do you travel to my home or venue?",
-    a: "Yes. We come to you - your home, garden, a private venue, a restaurant or a hotel. Setup happens before guests arrive and full breakdown is included afterwards, so the day feels effortless from start to finish.",
+    a: "Yes, I come to you: your home, garden, a private venue, a restaurant or a hotel. I set up before guests arrive and take everything down afterwards, so there's nothing left for you to do.",
   },
   {
     q: "Can I choose my own theme?",
-    a: "Each celebration is individually created and tailored to your style and vision. Any inspiration you have can be shared and developed into a design that feels cohesive and considered.",
+    a: "Yes. Send me a theme, a colour palette or a photo you love, and I'll design the party around it.",
   },
   {
     q: "How much does children's party styling cost in Surrey?",
-    a: "Our parties start from £300, with larger or more involved designs typically ranging from £800 to £1,500+.",
+    a: "Parties start from £300, with larger or more involved designs usually ranging from £800 to £1,500+.",
   },
   {
     q: "What happens on the day?",
-    a: "We arrive before guests and install every element - balloon installations, backdrops, the cake table, signage. You walk into a finished room. After the party we return for a quiet breakdown.",
+    a: "I arrive before your guests and install everything: the balloon installations, backdrops, the cake table and signage. You walk into a finished room, and after the party I come back to pack it all away.",
     aNode: (
       <>
-        We arrive before guests and install every element -{" "}
+        I arrive before your guests and install everything: the{" "}
         <a href="/balloon-installations/" className="text-link">
           balloon installations
         </a>
-        , backdrops, the cake table, signage. You walk into a finished room.
-        After the party we return for a quiet breakdown.
+        , backdrops, the cake table and signage. You walk into a finished
+        room, and after the party I come back to pack it all away.
       </>
     ),
   },
   {
     q: "Do you style parties outside Surrey?",
-    a: "Surrey is home, but we regularly travel into London and the surrounding Home Counties for the right project. Just mention your location when you enquire and we'll let you know.",
+    a: "Surrey is home, but I regularly travel into London and the surrounding Home Counties. Just mention your location when you enquire and I'll let you know.",
   },
 ];
 

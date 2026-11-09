@@ -46,46 +46,46 @@ const CORPORATE_STEPS = [
     n: "01",
     title: "Share your brief",
     body:
-      "Tell us about the event - date, venue, brand guidelines and objectives. A short call follows to talk through the detail.",
+      "Tell me about the event: the date, venue, brand guidelines and what you want it to do. A short call follows to go through the detail.",
   },
   {
     n: "02",
     title: "Concept & proposal",
     body:
-      "We design a brand-aligned concept with clear pricing - installations, materials and timeline mapped against your brief.",
+      "I design a concept in your brand colours with clear pricing, setting out the installations, materials and timings.",
   },
   {
     n: "03",
     title: "Installation day",
     body:
-      "We arrive and install before your event begins, then come back for full breakdown after the last guest leaves.",
+      "I arrive and install before your event begins, then come back for full breakdown after the last guest leaves.",
   },
 ];
 
 const FAQS = [
   {
     q: "What types of corporate events do you style?",
-    a: "Product launches, retail and showroom openings, PR activations, brand events, office celebrations and milestone team events. Anything where the environment matters - from a single statement entrance to a full venue activation.",
+    a: "Product launches, retail and showroom openings, PR activations, brand events, office celebrations and milestone team events. From a single branded entrance to a whole venue.",
   },
   {
     q: "Do you work with brand guidelines and specific colour palettes?",
-    a: "Yes - every corporate project is aligned to your brand. Share your guidelines, palette and any reference creative and we'll design installations that feel cohesive and on-brand throughout.",
+    a: "Yes. Send me your brand guidelines, palette and any reference creative, and I'll design the installations to match.",
   },
   {
     q: "How far in advance should we book?",
-    a: "Ideally 8–12 weeks ahead for larger activations. Shorter timelines are possible for single-zone installs - get in touch as early as you can and we'll tell you honestly what's deliverable.",
+    a: "Ideally 8–12 weeks ahead for larger installs. Shorter timelines are often possible for a single display, so get in touch as early as you can and I'll tell you honestly what I can deliver.",
   },
   {
     q: "Do you travel outside Surrey?",
-    a: "Yes. We regularly install across Surrey and London, and travel further for the right project. Mention your venue when you enquire.",
+    a: "Yes. I regularly install across Surrey and London, and travel further when the project suits. Mention your venue when you enquire.",
   },
   {
     q: "Can you provide a quote before we commit?",
-    a: "Always. After a short discovery call we send a tailored proposal with clear pricing, recommended installations and timeline - no commitment to proceed.",
+    a: "Always. After a short call I send a proposal with clear pricing, the installations I'd recommend and a timeline, with no commitment to go ahead.",
   },
   {
     q: "What's included in a corporate installation?",
-    a: "Concept design, all materials and installations, professional setup before the event and full breakdown afterwards.",
+    a: "The design, all materials and installations, setup before your event and full breakdown afterwards.",
   },
 ];
 

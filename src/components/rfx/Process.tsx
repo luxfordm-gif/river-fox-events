@@ -17,19 +17,19 @@ const DEFAULT_STEPS: ProcessStep[] = [
     n: "01",
     title: "Share your vision",
     body:
-      "Share your event details, including date, venue and any initial ideas. We'll then arrange a short call to refine the direction together.",
+      "Send me your date, venue and any ideas you have so far. I'll then give you a call to talk it through.",
   },
   {
     n: "02",
-    title: "Tailored proposal",
+    title: "Your proposal",
     body:
-      "We develop a tailored concept with moodboards, colour palettes and visuals, so you know exactly how it will look before we begin.",
+      "I put together a concept with a moodboard, colour palette and visuals, so you know exactly how it will look before anything is made.",
   },
   {
     n: "03",
     title: "Installation",
     body:
-      "We set everything up before your first guest arrives, so you walk into a finished space. Afterwards, we pack it all down and take it away.",
+      "I set everything up before your first guest arrives, so you walk into a finished space. Afterwards, I pack it all down and take it away.",
   },
 ];
 

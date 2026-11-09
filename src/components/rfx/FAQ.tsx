@@ -12,50 +12,50 @@ type FAQItem = { q: string; a: string; aNode?: ReactNode };
 const FAQS: FAQItem[] = [
   {
     q: "What areas do you cover?",
-    a: "River Fox Events is based in Surrey and primarily works across Cobham, Weybridge, Esher, Oxshott, Guildford, Reigate, Farnham and Horsham. We also travel into London and the surrounding Home Counties for the right project - just ask when you enquire.",
+    a: "I'm based in Surrey and mostly work across Cobham, Weybridge, Esher, Oxshott, Guildford, Reigate, Farnham and Horsham. I also travel into London and the surrounding Home Counties - just ask when you enquire.",
   },
   {
     q: "How much does event styling cost?",
-    a: "Our events start from £300. Full room transformations and premium installations typically range from £800 to £1,500+. Every event is tailored, so we'll always give you a clear proposal before anything is confirmed.",
+    a: "Events start from £300. Full room setups and larger installations usually range from £800 to £1,500+. I quote every event individually, so you'll always have a clear proposal before anything is confirmed.",
   },
   {
     q: "How far in advance should I book?",
-    a: "We recommend enquiring at least 6–8 weeks ahead for children's parties and milestone celebrations. Popular dates - particularly weekends in school holidays - book quickly. Corporate projects can often be accommodated with shorter lead times, so it's always worth asking.",
+    a: "I'd suggest enquiring at least 6–8 weeks ahead for children's parties and milestone celebrations. Popular dates, especially weekends in the school holidays, book quickly. Corporate projects can often be done at shorter notice, so it's always worth asking.",
     aNode: (
       <>
-        We recommend enquiring at least 6–8 weeks ahead for{" "}
+        I'd suggest enquiring at least 6–8 weeks ahead for{" "}
         <a href="/childrens-parties/" className={linkCx}>children's parties</a> and{" "}
-        <a href="/milestone-celebrations/" className={linkCx}>milestone celebrations</a>. Popular dates - particularly weekends in school holidays - book quickly.{" "}
-        <a href="/corporate-brand-styling/" className={linkCx}>Corporate projects</a> can often be accommodated with shorter lead times, so it's always worth asking.
+        <a href="/milestone-celebrations/" className={linkCx}>milestone celebrations</a>. Popular dates, especially weekends in the school holidays, book quickly.{" "}
+        <a href="/corporate-brand-styling/" className={linkCx}>Corporate projects</a> can often be done at shorter notice, so it's always worth asking.
       </>
     ),
   },
   {
     q: "Do you travel to my venue or home?",
-    a: "Yes. We come to you - whether that's your home, a private venue, a restaurant, a corporate space or a hotel. We set everything up before guests arrive and take care of full breakdown afterwards.",
+    a: "Yes, I come to you, whether that's your home, a private venue, a restaurant, an office or a hotel. I set everything up before guests arrive and take it all down afterwards.",
   },
   {
     q: "Can I see examples of your work?",
-    a: "The best way to see Laura's work is on Instagram at @riverfox_events, where you'll find a full archive of past celebrations. You can also see selected work across our services pages.",
+    a: "The best place to see my work is Instagram at @riverfox_events, where you'll find an archive of past celebrations. There are more photos on each of the service pages.",
     aNode: (
       <>
-        The best way to see Laura's work is on{" "}
-        <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className={linkCx}>Instagram at @riverfox_events</a>, where you'll find a full archive of past celebrations. You can also see selected work across our services pages.
+        The best place to see my work is{" "}
+        <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className={linkCx}>Instagram at @riverfox_events</a>, where you'll find an archive of past celebrations. There are more photos on each of the service pages.
       </>
     ),
   },
   {
     q: "How many events do you take on each month?",
-    a: "Deliberately few. Keeping our client list small means every event receives Laura's full personal attention - from design concept through to the day itself. We'd rather do fewer events exceptionally well than many events adequately.",
+    a: "Only a few. I keep the business small so I can be there for every event, from the first sketch to packing down on the day.",
   },
   {
     q: "Do you style events other than children's parties?",
-    a: "Yes - milestone celebrations (21sts, 40ths, 50ths, 70ths, baby showers, anniversaries) and corporate events are both core services. See our Signature Experiences for the full picture.",
+    a: "Yes - milestone celebrations (21sts, 40ths, 50ths, 70ths, baby showers, anniversaries) and corporate events make up a big part of my work. The services further up this page show all three.",
     aNode: (
       <>
         Yes -{" "}
         <a href="/milestone-celebrations/" className={linkCx}>milestone celebrations</a> (21sts, 40ths, 50ths, 70ths, baby showers, anniversaries) and{" "}
-        <a href="/corporate-brand-styling/" className={linkCx}>corporate events</a> are both core services. See our Signature Experiences for the full picture.
+        <a href="/corporate-brand-styling/" className={linkCx}>corporate events</a> make up a big part of my work. The services further up this page show all three.
       </>
     ),
   },
