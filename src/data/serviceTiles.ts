@@ -44,7 +44,7 @@ export const CORPORATE_TILES: ServiceCardItem[] = [
   tile("Shop openings", "services/corporate/dawghouse-pizza-takeaway-opening-garland-epsom.webp"),
   tile("Logo backdrops", "services/corporate/enterprise-mobility-branded-backdrop-black-gold-balloons.webp"),
   tile("Themed event nights", "services/corporate/casino-night-balloon-columns-red-black-gold.webp"),
-  tile("Christmas shopfronts", "christmas/instagram/pink-shopfront-red-white-window-garland.webp", "/christmas-door-garlands/"),
+  tile("Christmas shopfronts", "christmas/instagram/pink-shopfront-red-white-window-garland.webp", "/commercial-christmas-decorations/"),
   tile("Entrance displays", "services/corporate/restaurant-entrance-garland-black-gold-balloons.webp"),
 ];
 

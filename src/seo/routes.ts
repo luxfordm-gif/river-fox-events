@@ -233,6 +233,26 @@ export const ROUTES: RouteSEO[] = [
     changefreq: "weekly",
   },
   {
+    // Business version of the Christmas page, for the Business ad group
+    // (Matt, 2026-11-09). Same component, variant="business".
+    path: "/commercial-christmas-decorations",
+    title: "Commercial Christmas Decorations, Surrey | River Fox Events",
+    description:
+      "Commercial Christmas decorations in Surrey: entrance garlands for shops, salons, restaurants and offices, matched to your brand and installed by hand by Laura.",
+    breadcrumbName: "Commercial Christmas Decorations",
+    ogImage: "/og/commercial-christmas-decorations.webp",
+    service: {
+      serviceType: "Commercial Christmas Decorations",
+      areaServed: [
+        "Surrey", "Cobham", "Esher", "Weybridge", "Oxshott", "Walton-on-Thames",
+        "Kingston", "Twickenham", "East Molesey", "Kingswood", "Tadworth", "Banstead", "Epsom", "Leatherhead",
+        "Dorking", "Reigate", "Redhill", "Guildford", "Oxted", "Horley",
+      ],
+    },
+    priority: 0.7,
+    changefreq: "weekly",
+  },
+  {
     path: "/party-styling-oxted",
     ogImage: "/og/og-fairy-kayla.webp",
     title: "Oxted Party Decorations & Balloon Arches | River Fox Events",

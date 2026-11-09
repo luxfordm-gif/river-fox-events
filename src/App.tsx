@@ -43,6 +43,7 @@ const AppShell = () => {
         <Route path="/corporate-brand-styling" element={<CorporateAndBrand />} />
         <Route path="/balloon-installations" element={<BalloonInstallations />} />
         <Route path="/christmas-door-garlands" element={<ChristmasDoorways />} />
+        <Route path="/commercial-christmas-decorations" element={<ChristmasDoorways variant="business" />} />
         <Route path="/our-work" element={<OurWork />} />
         {LOCATIONS.map((loc) => (
           <Route
