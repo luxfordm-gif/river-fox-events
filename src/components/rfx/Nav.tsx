@@ -39,10 +39,21 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
   const aboutCloseTimer = useRef<number | null>(null);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
+    const root = document.documentElement;
+    const unlock = () => {
       document.body.style.overflow = "";
+      root.style.removeProperty("--scroll-lock-gap");
     };
+    if (!open) {
+      unlock();
+      return;
+    }
+    // Locking the page removes the scrollbar (where it takes up space), which
+    // widens the page and nudges the centred logo; fill its width back in.
+    const gap = window.innerWidth - root.clientWidth;
+    if (gap > 0) root.style.setProperty("--scroll-lock-gap", `${gap}px`);
+    document.body.style.overflow = "hidden";
+    return unlock;
   }, [open]);
 
   const handleServicesEnter = () => {
@@ -201,7 +212,9 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
         </button>
       </nav>
 
-      {/* Mobile drawer - scrollable so long menus / short viewports don't clip */}
+      {/* Mobile drawer - scrollable so long menus / short viewports don't clip.
+          Only the background fades in; the links arrive with it, all at once
+          (the one-by-one slide-down got repetitive, Matt 2026-11-09). */}
       <div
         className={`fixed inset-0 z-[99] bg-surface-alt overflow-y-auto overscroll-contain transition-opacity duration-500 lg:hidden ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -218,7 +231,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
             { href: "/our-work/", label: "Our work" },
             { href: "/#about", label: "About" },
             { href: "/contact/", label: "Contact" },
-          ].map((l, i) => (
+          ].map((l) => (
             <a
               key={l.label}
               href={l.href}
@@ -226,11 +239,6 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               className={`t-h4 py-1 text-ink no-underline ${
                 "seasonal" in l ? "flex items-center gap-3 border-y border-ink/10 py-3 my-1.5" : ""
               }`}
-              style={{
-                opacity: open ? 1 : 0,
-                transform: open ? "translateY(0)" : "translateY(20px)",
-                transition: `opacity .5s ease ${i * 60}ms, transform .5s ease ${i * 60}ms`,
-              }}
             >
               {"seasonal" in l && (
                 <img src={bow160} alt="" aria-hidden="true" className="w-[30px] h-auto" width={160} height={165} />
@@ -244,11 +252,6 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
             href="/journal/"
             onClick={() => setOpen(false)}
             className="mt-6 t-overline text-ink no-underline inline-flex items-center gap-2 self-start"
-            style={{
-              opacity: open ? 1 : 0,
-              transform: open ? "translateY(0)" : "translateY(20px)",
-              transition: `opacity .5s ease 420ms, transform .5s ease 420ms`,
-            }}
           >
             Read the journal <span aria-hidden>→</span>
           </a>
@@ -256,11 +259,6 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
             href="/#kindness"
             onClick={() => setOpen(false)}
             className="mt-3 t-overline text-ink no-underline inline-flex items-center gap-2 self-start"
-            style={{
-              opacity: open ? 1 : 0,
-              transform: open ? "translateY(0)" : "translateY(20px)",
-              transition: `opacity .5s ease 480ms, transform .5s ease 480ms`,
-            }}
           >
             Client reviews <span aria-hidden>→</span>
           </a>
@@ -270,11 +268,6 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
             rel="noreferrer"
             onClick={() => setOpen(false)}
             className="mt-3 t-overline text-ink no-underline inline-flex items-center gap-2 self-start"
-            style={{
-              opacity: open ? 1 : 0,
-              transform: open ? "translateY(0)" : "translateY(20px)",
-              transition: `opacity .5s ease 540ms, transform .5s ease 540ms`,
-            }}
           >
             Follow us on Instagram <span aria-hidden>→</span>
           </a>
@@ -291,11 +284,6 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               handleEnquireClick(e);
             }}
             className="btn-solid-rf accent t-label mt-8 self-start"
-            style={{
-              opacity: open ? 1 : 0,
-              transform: open ? "translateY(0)" : "translateY(20px)",
-              transition: `opacity .5s ease 600ms, transform .5s ease 600ms`,
-            }}
           >
             Enquire now <span>→</span>
           </a>
