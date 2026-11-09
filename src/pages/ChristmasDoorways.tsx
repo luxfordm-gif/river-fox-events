@@ -53,6 +53,8 @@ import igPillar from "@/assets/christmas/instagram/pink-studio-pillar-garland-de
 import imgRestaurant from "@/assets/christmas/blue-restaurant-doorway-red-bauble-garland.webp";
 import imgJewel from "@/assets/christmas/jewel-tone-bauble-arch-white-porch.webp";
 import imgBondi from "@/assets/journal/christmas-decorations-surrey/christmas-doorway-garland-pink-studio-east-molesey.webp";
+import imgSequinParty from "@/assets/journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp";
+import imgMerryPanel from "@/assets/journal/christmas-decorations-surrey/merry-christmas-panel-silver-navy-balloon-garland.webp";
 import imgGarland800 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-800.webp";
 import imgGarland1200 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-1200.webp";
 import imgGarland1440 from "@/assets/christmas/lush-garland-velvet-bows-red-gold-baubles-1440.webp";
@@ -111,6 +113,8 @@ const AD_FAN = [
 /* Hero WhatsApp button (phones): message pre-filled, they add a postcode. */
 const WHATSAPP_HREF =
   "https://wa.me/447872114191?text=Hi%20Laura%2C%20I%27d%20like%20a%20quote%20for%20a%20Christmas%20door%20garland.%20My%20postcode%20is%20";
+const WHATSAPP_HREF_BUSINESS =
+  "https://wa.me/447872114191?text=Hi%20Laura%2C%20I%27d%20like%20a%20quote%20for%20Christmas%20decorations%20for%20my%20business.%20My%20postcode%20is%20";
 
 /* Hero fan, left to right. On phones the same three run as a scroll strip. */
 const FAN = [
@@ -128,6 +132,25 @@ const FAN = [
     src: imgRestaurant,
     alt: "Blue shopfront doorway with a spruce garland of large red and champagne baubles running up the frame",
     objectPosition: "82% 50%",
+  },
+] as const;
+
+/* The business version leads with shopfronts (same files, same alt text). */
+const FAN_BUSINESS = [
+  {
+    src: igSalon,
+    alt: "Glass salon frontage with a spruce corner garland weighed down with true-red baubles",
+    objectPosition: "30% 50%",
+  },
+  {
+    src: imgRestaurant,
+    alt: "Blue shopfront doorway with a spruce garland of large red and champagne baubles running up the frame",
+    objectPosition: "50% 50%",
+  },
+  {
+    src: imgBondi,
+    alt: "Frosted fir garland with red, blush and white baubles and candy canes framing a pink pilates studio doorway",
+    objectPosition: "50% 50%",
   },
 ] as const;
 
@@ -150,8 +173,7 @@ const GARLAND_OPTIONS = [
 ];
 
 /* FAQ answers also go out as FAQPage structured data (ChildrensFAQ). */
-const FAQS = [
-  {
+const AREAS_FAQ = {
     q: "Which areas do you cover?",
     a: "All of Surrey. I dress doorways in Cobham, Esher, Weybridge, Oxshott, Walton-on-Thames, Kingston, Twickenham, East Molesey, Kingswood, Tadworth, Banstead, Epsom, Leatherhead, Dorking, Reigate, Redhill, Guildford, Oxted and Horley, where my studio is, and the villages in between. If your town isn't listed, send your postcode and I'll confirm.",
     aNode: (
@@ -169,7 +191,20 @@ const FAQS = [
         I'll confirm.
       </>
     ),
-  },
+};
+
+const FRESH_OR_FAUX_FAQ = {
+  q: "What's the difference between fresh spruce and faux?",
+  a: "Fresh spruce brings the scent and natural foliage of a real Christmas tree, and lasts through the festive season into January. Faux is beautifully full, can go up whenever you wish, and can be enjoyed year after year.",
+};
+
+const TAKEDOWN_FAQ = {
+  q: "Is the January takedown included?",
+  a: "Takedown is an optional extra. Add it when you book, or let me know before Christmas, and I'll come back in January to take everything down and leave your doorway as I found it.",
+};
+
+const FAQS_HOME = [
+  AREAS_FAQ,
   {
     q: "Do you travel outside Surrey?",
     a: "Often, yes. I regularly travel into south-west London and the neighbouring Home Counties for the right doorway. Mention your postcode when you enquire and I'll let you know.",
@@ -187,10 +222,12 @@ const FAQS = [
     a: "Yes. I dress front doors and porches for homes, and entrances for shops, salons, restaurants, clinics and offices, styled to your paintwork or brand colours. For Christmas parties and displays inside, have a look at my Christmas decorations journal.",
     aNode: (
       <>
-        Yes. I dress front doors and porches for homes, and entrances for
-        shops, salons, restaurants, clinics and offices, styled to your
-        paintwork or brand colours. For Christmas parties and displays inside,
-        have a look at my{" "}
+        Yes. I dress front doors and porches for homes, and{" "}
+        <a href="/commercial-christmas-decorations/" className="text-link">
+          entrances for shops, salons, restaurants, clinics and offices
+        </a>
+        , styled to your paintwork or brand colours. For Christmas parties and
+        displays inside, have a look at my{" "}
         <a href="/journal/christmas-decorations-surrey/" className="text-link">
           Christmas decorations journal
         </a>
@@ -198,10 +235,7 @@ const FAQS = [
       </>
     ),
   },
-  {
-    q: "What's the difference between fresh spruce and faux?",
-    a: "Fresh spruce brings the scent and natural foliage of a real Christmas tree, and lasts through the festive season into January. Faux is beautifully full, can go up whenever you wish, and can be enjoyed year after year.",
-  },
+  FRESH_OR_FAUX_FAQ,
   {
     q: "Can you match my door, brick or brand colours?",
     a: "Always. Every doorway starts with your paintwork, so the baubles, ribbon and accents are chosen to suit your door, brickwork or brand rather than taken from a set design.",
@@ -210,10 +244,45 @@ const FAQS = [
     q: "What do you need from me for a quote?",
     a: "A photo of your door, rough measurements and your postcode. I'll come back with ideas, a colour palette and a quote.",
   },
+  TAKEDOWN_FAQ,
+];
+
+/* Business version: the questions a shop, salon or restaurant asks first. */
+const FAQS_BUSINESS = [
   {
-    q: "Is the January takedown included?",
-    a: "Takedown is an optional extra. Add it when you book, or let me know before Christmas, and I'll come back in January to take everything down and leave your doorway as I found it.",
+    q: "Can you install around our opening hours?",
+    a: "Yes. Tell me your opening hours when you enquire and I'll arrange the install around them, so your customers walk up to a finished entrance.",
   },
+  {
+    q: "Can you match our brand colours?",
+    a: "Always. Every entrance starts with your shopfront and your brand, so the baubles, ribbon and accents are chosen to suit your paintwork, signage and colours rather than taken from a set design.",
+  },
+  {
+    q: "Do you decorate inside as well as the entrance?",
+    a: "Yes. Alongside entrance garlands I style Christmas balloon displays for salons and shop floors, and Christmas parties for teams, from sequin walls to balloon garlands. My corporate and brand styling page has more.",
+    aNode: (
+      <>
+        Yes. Alongside entrance garlands I style Christmas balloon displays for
+        salons and shop floors, and Christmas parties for teams, from sequin
+        walls to balloon garlands. My{" "}
+        <a href="/corporate-brand-styling/" className="text-link">
+          corporate and brand styling
+        </a>{" "}
+        page has more.
+      </>
+    ),
+  },
+  AREAS_FAQ,
+  {
+    q: "When should we book?",
+    a: "As early as you can. Install dates in late November and early December go first, and most businesses like their entrance dressed before the Christmas shopping weekends begin.",
+  },
+  FRESH_OR_FAUX_FAQ,
+  {
+    q: "What do you need from us for a quote?",
+    a: "A photo of your entrance or shopfront, rough measurements and your postcode. Your brand colours help too. I'll come back with ideas, a colour palette and a quote.",
+  },
+  TAKEDOWN_FAQ,
 ];
 
 /* Instagram strip: Laura's own doorway posts, homes and shopfronts
@@ -236,13 +305,28 @@ const INSTAGRAM = [
   { src: igPillar, alt: "Pillar garland on a pink studio front mixing red, white and gold baubles with spruce" },
 ];
 
+/* Business version: shopfronts, salons and restaurants only. */
+const INSTAGRAM_BUSINESS = INSTAGRAM.filter((img) =>
+  [igSalon, igReigate, igPilates, igMedispa, igLaura, igPinkShop, igLedge, igPillar, igDetail].includes(img.src)
+);
+
 /* "What we do" cards. Each has a wide shot and a close-up of the garland;
    the close-up fades in on hover, or on touch screens as the card reaches
    the middle of the screen. */
 const srcSet = (a: string, b: string, c: string) => `${a} 420w, ${b} 640w, ${c} 838w`;
 
-const CARDS = [
-  {
+type Card = {
+  img: string;
+  srcSet?: string;
+  alt: string;
+  detail: string;
+  detailSrcSet?: string;
+  detailAlt: string;
+  title: string;
+  body: ReactNode[];
+};
+
+const CARD_HOME: Card = {
     img: door640,
     srcSet: srcSet(door420, door640, door838),
     alt: "Black Georgian front door with a spruce garland of gold ribbons, stars and baubles arching over the fanlight",
@@ -254,8 +338,9 @@ const CARDS = [
       "From a generous sweep of greenery to a fully adorned doorway, each garland is styled around your home's character.",
       "Think lush foliage, statement baubles, rich ribbons and carefully chosen details, in a palette that feels just right for you.",
     ],
-  },
-  {
+};
+
+const CARD_BUSINESS: Card = {
     img: shop640,
     srcSet: srcSet(shop420, shop640, shop838),
     alt: "Salon shopfront with a spruce corner garland of red baubles and red berry sprays across the glass",
@@ -267,8 +352,45 @@ const CARDS = [
       "Make a festive first impression with a dressed entrance that catches the eye and welcomes customers in.",
       "Classic Christmas colours or something more contemporary, each garland is matched to your brand for a memorable seasonal backdrop.",
     ],
-  },
-];
+};
+
+/* Business version only: what Laura styles inside (same files and alt text
+   as the Our work gallery). */
+const CARD_INSIDE: Card = {
+  img: imgSequinParty,
+  alt: "Gold mirror sequin wall framed by an organic garland of black and chrome gold balloons on a checkerboard floor",
+  detail: imgMerryPanel,
+  detailAlt: "Silver, navy and white balloon garland climbing a painted Merry Christmas panel beside a white tree and blue neon light",
+  title: "Inside, too",
+  body: [
+    "Christmas balloon displays for salons and shop floors, and styling for team Christmas parties, from sequin walls to balloon garlands.",
+    <>
+      There's more in my{" "}
+      <a href="/journal/christmas-decorations-surrey/" className="text-link">
+        Christmas decorations journal
+      </a>
+      .
+    </>,
+  ],
+};
+
+/* On the home version the business card points on to the business page. */
+const CARD_BUSINESS_HOME: Card = {
+  ...CARD_BUSINESS,
+  body: [
+    ...CARD_BUSINESS.body,
+    <>
+      See{" "}
+      <a href="/commercial-christmas-decorations/" className="text-link">
+        Christmas decorations for businesses
+      </a>
+      .
+    </>,
+  ],
+};
+
+const CARDS_HOME = [CARD_HOME, CARD_BUSINESS_HOME];
+const CARDS_BUSINESS = [CARD_BUSINESS, CARD_INSIDE];
 
 /* Velvet bow used as a divider between white sections, sitting in the gap
    (the section it opens drops its top padding so the gap stays even). */
@@ -344,20 +466,46 @@ const STEPS = [
   },
 ];
 
-const ChristmasDoorways = () => {
+const STEPS_BUSINESS = [
+  {
+    n: "01",
+    title: "Send me a photo",
+    body: "Share a photo of your entrance, rough measurements, your postcode and your brand colours, and I'll come back with ideas and a quote.",
+  },
+  {
+    n: "02",
+    title: "Settle on a design",
+    body: "Together we'll choose the style, colours and details, then book an install date around your opening hours.",
+  },
+  STEPS[2],
+  STEPS[3],
+];
+
+/* One page, two versions: "home" is /christmas-door-garlands/, "business"
+   is /commercial-christmas-decorations/, written for the shops, salons and
+   restaurants the Christmas ads reach (Matt, 2026-11-09). Same design and
+   booking form; the business version swaps the words, photos and order. */
+type Variant = "home" | "business";
+
+const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
   useFadeUp();
   useNavScroll();
   const [submitting, setSubmitting] = useState(false);
+  const biz = variant === "business";
+  const routePath = biz ? "/commercial-christmas-decorations" : "/christmas-door-garlands";
+  const fan = biz ? FAN_BUSINESS : FAN;
+  const cards = biz ? CARDS_BUSINESS : CARDS_HOME;
 
   useEffect(() => {
-    const route = findRoute("/christmas-door-garlands")!;
+    const route = findRoute(routePath)!;
     applyMeta(route);
 
-    const serviceId = "rfx-jsonld-svc-christmas-door-garlands";
+    const slug = routePath.slice(1);
+    const serviceId = `rfx-jsonld-svc-${slug}`;
     const svc = routeServiceSchema(route);
     if (svc) upsertJsonLd(serviceId, svc);
 
-    const breadcrumbId = "rfx-jsonld-bc-christmas-door-garlands";
+    const breadcrumbId = `rfx-jsonld-bc-${slug}`;
     const breadcrumbs = breadcrumbSchema(route.path);
     if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
 
@@ -365,7 +513,7 @@ const ChristmasDoorways = () => {
       removeJsonLd(serviceId);
       removeJsonLd(breadcrumbId);
     };
-  }, []);
+  }, [routePath]);
 
   // Touch screens have no hover, so show the close-up as each card reaches
   // the middle band of the screen, and the wide shot again as it leaves.
@@ -414,7 +562,9 @@ const ChristmasDoorways = () => {
           <HeroGarland />
           <div className="container-rfx">
             <div className="mt-2 md:mt-4 mb-4 md:mb-9 flex flex-col items-center text-center">
-              <p className="t-overline text-ink-soft">Christmas 2026 · Now booking</p>
+              <p className="t-overline text-ink-soft">
+                {biz ? "Christmas 2026 · For businesses" : "Christmas 2026 · Now booking"}
+              </p>
               <h1
                 id="xmas-hero-heading"
                 className="t-display mt-5 max-w-none"
@@ -422,19 +572,40 @@ const ChristmasDoorways = () => {
                 <span className="xmas-title-snow">
                   <SnowCap mode="text" />
                   {/* Always two lines from tablet up (Matt, 2026-11-08); phones wrap naturally. */}
-                  <span data-snow-text>Christmas door garlands<br className="hidden md:inline" /> in Surrey.</span>
+                  {biz ? (
+                    <span data-snow-text>Christmas decorations<br className="hidden md:inline" /> for your business.</span>
+                  ) : (
+                    <span data-snow-text>Christmas door garlands<br className="hidden md:inline" /> in Surrey.</span>
+                  )}
                 </span>
               </h1>
               <div className="mt-5 max-w-[46ch] md:max-w-[70ch] t-lead text-ink-soft space-y-4">
-                <p>
-                  A garlanded doorway is one of the loveliest ways to
-                  welcome Christmas.
-                </p>
-                <p>
-                  Each garland is individually styled for your home or
-                  business and installed by hand across Surrey, with optional
-                  January&nbsp;takedown.
-                </p>
+                {biz ? (
+                  <>
+                    <p>
+                      Your entrance is the first thing customers see this
+                      Christmas.
+                    </p>
+                    <p>
+                      I dress shopfronts, salons, restaurants and offices
+                      across Surrey with garlands matched to your brand,
+                      installed by hand around your opening hours, with
+                      optional January&nbsp;takedown.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      A garlanded doorway is one of the loveliest ways to
+                      welcome Christmas.
+                    </p>
+                    <p>
+                      Each garland is individually styled for your home or
+                      business and installed by hand across Surrey, with optional
+                      January&nbsp;takedown.
+                    </p>
+                  </>
+                )}
               </div>
               {/* Enquire now everywhere; phones also get WhatsApp Laura now,
                   pre-filled so they only add a postcode (Matt, 2026-11-06).
@@ -443,16 +614,16 @@ const ChristmasDoorways = () => {
                 <a href="#enquire" onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
                   Enquire now <span className="t-icon">→</span>
                 </a>
-                <a href={WHATSAPP_HREF} className="btn-ghost-rf justify-center md:hidden">
+                <a href={biz ? WHATSAPP_HREF_BUSINESS : WHATSAPP_HREF} className="btn-ghost-rf justify-center md:hidden">
                   WhatsApp Laura now
                 </a>
               </div>
             </div>
           </div>
           <div className="md:hidden">
-            <ScrollStrip images={[...FAN]} />
+            <ScrollStrip images={[...fan]} />
           </div>
-          <LocationHeroFan images={[FAN[0], FAN[1], FAN[2]]} spreadOnHover />
+          <LocationHeroFan images={[fan[0], fan[1], fan[2]]} spreadOnHover />
         </section>
 
         {/* What we do */}
@@ -460,23 +631,23 @@ const ChristmasDoorways = () => {
           <div className="container-rfx">
             <div className="max-w-[760px] mx-auto text-center fade-up">
               <SectionTitle id="xmas-what-heading" snow>
-                A little Christmas magic,{" "}
-                <em className="t-accent">right at your door.</em>
+                {biz ? "A festive welcome," : "A little Christmas magic,"}{" "}
+                <em className="t-accent">{biz ? "from the door in." : "right at your door."}</em>
               </SectionTitle>
               <p className="mt-6 t-lead text-ink-soft max-w-[54ch] mx-auto">
-                Whether it's the finishing touch to your family home or a
-                festive welcome for your customers, a beautifully styled
-                doorway sets the tone for the season.
+                {biz
+                  ? "A dressed entrance draws people in from the street, and a little styling inside carries the feeling through to your till, your chairs or your team party."
+                  : "Whether it's the finishing touch to your family home or a festive welcome for your customers, a beautifully styled doorway sets the tone for the season."}
               </p>
             </div>
 
             <div ref={cardsRef} className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
-              {CARDS.map((card) => (
+              {cards.map((card) => (
                 <article key={card.title} className="fade-up relative">
                   <SnowCap mode="edge" radius="media" />
                   {/* Laptop and up only: on narrower screens the intro text
                       above runs too wide for the note to sit beside it. */}
-                  {card === CARDS[0] && <SnowHint className="xmas-snow-hint--card" />}
+                  {card === cards[0] && <SnowHint className="xmas-snow-hint--card" />}
                   <div className="xmas-swap">
                     <img
                       src={card.img}
@@ -505,8 +676,8 @@ const ChristmasDoorways = () => {
                     {card.title}
                   </h3>
                   <div className="title-to-text t-small text-ink-soft max-w-[52ch] space-y-3">
-                    {card.body.map((para) => (
-                      <p key={para}>{para}</p>
+                    {card.body.map((para, i) => (
+                      <p key={i}>{para}</p>
                     ))}
                   </div>
                 </article>
@@ -580,20 +751,24 @@ const ChristmasDoorways = () => {
             <div className="max-w-[760px] mx-auto text-center fade-up">
               <SectionTitle id="xmas-ig-heading" snow>
                 A little inspiration for{" "}
-                <em className="t-accent">your Christmas doorway.</em>
+                <em className="t-accent">{biz ? "your Christmas entrance." : "your Christmas doorway."}</em>
               </SectionTitle>
               <p className="mt-6 t-lead text-ink-soft">
-                A few favourite doorways from Christmases past.
-              </p>            </div>
+                {biz
+                  ? "A few favourite shopfronts, salons and restaurants from Christmases past."
+                  : "A few favourite doorways from Christmases past."}
+              </p>
+            </div>
           </div>
           <div className="mt-12 md:mt-14">
-            <InstagramStrip images={INSTAGRAM} />
+            <InstagramStrip images={biz ? INSTAGRAM_BUSINESS : INSTAGRAM} />
           </div>
         </section>
 
         {/* Christmas campaign: the ad films behind one tile. Stills from the
             DIY attempts fan out behind it on hover. */}
-        {AD_STORIES.length > 0 && (
+        {/* The films are about homes (DIY porch mishaps), so home version only. */}
+        {!biz && AD_STORIES.length > 0 && (
           <section id={AD_ANCHOR} className="rfx-section white !pt-0 overflow-x-clip" aria-labelledby="xmas-ad-heading">
             <div className="container-rfx">
               <BowDivider />
@@ -624,17 +799,17 @@ const ChristmasDoorways = () => {
             <BowDivider />
             <div className="max-w-[760px] mx-auto text-center fade-up">
               <SectionTitle id="xmas-how-heading" snow>
-                Your Christmas doorway,{" "}
+                {biz ? "Your Christmas entrance," : "Your Christmas doorway,"}{" "}
                 <em className="t-accent">taken care of.</em>
               </SectionTitle>
               <p className="mt-6 t-lead text-ink-soft max-w-[54ch] mx-auto">
-                From the first conversation to the finished installation, I'll
-                take care of the details so you can simply enjoy your
-                beautifully dressed doorway throughout the festive season.
+                {biz
+                  ? "From the first photo to the finished install, I'll work around your trading hours, so the only thing your customers notice is the garland."
+                  : "From the first conversation to the finished installation, I'll take care of the details so you can simply enjoy your beautifully dressed doorway throughout the festive season."}
               </p>
             </div>
             <ol className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-              {STEPS.map((s) => (
+              {(biz ? STEPS_BUSINESS : STEPS).map((s) => (
                 <li key={s.n} className="fade-up border-t pt-6 relative" style={{ borderColor: "hsl(var(--text-primary) / 0.14)" }}>
                   <SnowCap mode="edge" radius={0} />
                   {/* Extra tag sits by the step number so step titles stay on
@@ -654,7 +829,7 @@ const ChristmasDoorways = () => {
         </section>
 
         <ChildrensFAQ
-          faqs={FAQS}
+          faqs={biz ? FAQS_BUSINESS : FAQS_HOME}
           headingId="xmas-faq-heading"
           heading={<>Your questions <em className="t-accent">answered.</em></>}
           paddingTop="clamp(40px, 6vw, 96px)"
@@ -678,13 +853,12 @@ const ChristmasDoorways = () => {
               <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
                 <SectionTitle id="enquire-heading" light snow>
                   Book your{" "}
-                  <em className="t-accent">Christmas doorway.</em>
+                  <em className="t-accent">{biz ? "Christmas entrance." : "Christmas doorway."}</em>
                 </SectionTitle>
                 <p className="t-lead max-w-[460px] mt-7" style={{ color: "hsl(var(--text-dimmed))" }}>
-                  Send a photo of your door with rough measurements and your
-                  postcode, and I'll come back with ideas and a quote. Every
-                  doorway is dressed by hand, so I can only take a small number
-                  each December. If you'd rather call me, use this number:{" "}
+                  {biz
+                    ? "Send a photo of your entrance with rough measurements, your postcode and your brand colours, and I'll come back with ideas and a quote. Every entrance is dressed by hand, so I can only take a small number each December. If you'd rather call me, use this number: "
+                    : "Send a photo of your door with rough measurements and your postcode, and I'll come back with ideas and a quote. Every doorway is dressed by hand, so I can only take a small number each December. If you'd rather call me, use this number: "}
                   <a href="tel:+447872114191" className="whitespace-nowrap text-link" style={{ color: "hsl(var(--text-on-dark))" }}>
                     07872&nbsp;114191
                   </a>
@@ -711,7 +885,7 @@ const ChristmasDoorways = () => {
                 </p>
                 <div className="hidden md:block mb-5 text-left">
                   <h3 className="t-h4 text-primary">
-                    Tell me about your door
+                    {biz ? "Tell me about your entrance" : "Tell me about your door"}
                   </h3>
                 </div>
                 <div className="form-grid">
@@ -733,7 +907,7 @@ const ChristmasDoorways = () => {
                   </label>
                   <label className="form-row">
                     <span className="lbl">Home or business</span>
-                    <select name="property" defaultValue="Home">
+                    <select name="property" defaultValue={biz ? "Business" : "Home"}>
                       <option>Home</option>
                       <option>Business</option>
                     </select>
@@ -757,7 +931,7 @@ const ChristmasDoorways = () => {
                     </select>
                   </label>
                   <label className="form-row full">
-                    <span className="lbl">Photo of your door (optional)</span>
+                    <span className="lbl">{biz ? "Photo of your entrance (optional)" : "Photo of your door (optional)"}</span>
                     <input type="file" name="door-photo" accept="image/*" />
                   </label>
                   <label className="form-row full">
@@ -765,7 +939,7 @@ const ChristmasDoorways = () => {
                     <textarea
                       name="notes"
                       rows={3}
-                      placeholder="Colours you love, the paint colour of your door, or anything else"
+                      placeholder={biz ? "Your brand colours, your opening hours, or anything else" : "Colours you love, the paint colour of your door, or anything else"}
                     />
                   </label>
                   <label className="form-row full form-check">
