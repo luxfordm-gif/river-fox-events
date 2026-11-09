@@ -676,6 +676,16 @@ export const ROUTES: RouteSEO[] = [
   // using the same script id as Article.tsx, so the runtime injection and
   // the static one don't double up.
   {
+    path: "/journal/50th-birthday-decorations-surrey",
+    title: "50th Birthday Decorations in Surrey | River Fox Events",
+    description:
+      "Ideas for 50th birthday decorations in Surrey, from navy and gold sequin walls to hot pink light-up numbers, designed by Laura and set up before guests arrive.",
+    breadcrumbName: "Styling a 50th that feels like them",
+    ogImage: "/og/50th-birthday-decorations-surrey.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+  },
+  {
     path: "/journal/shimmer-wall-hire-surrey",
     title: "Shimmer & Sequin Wall Hire in Surrey | River Fox Events",
     description:
