@@ -138,7 +138,7 @@ const ChristmasPromo = () => {
       <div className="xmas-promo__body md:hidden">
         <h2 className="xmas-promo__title t-h5">A little Christmas magic.</h2>
         <a href={PAGE} className="btn-link-rf xmas-promo__link" tabIndex={show ? 0 : -1}>
-          Explore our garlands <span className="arr">→</span>
+          Explore garlands <span className="arr">→</span>
         </a>
       </div>
     </aside>
