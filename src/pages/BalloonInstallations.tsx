@@ -104,11 +104,11 @@ const FAQS = [
     a: "Yes, and it's what most families do. Full styling starts with the balloons and builds the backdrop, props and name board around them, from £300.",
   },
   {
-    q: "Do you do balloon decorations for adult birthdays and businesses?",
-    a: "Yes. Alongside children's parties I style 18ths, 40ths, 50ths and christenings, and branded balloon installs for shops, offices and launches.",
+    q: "Do you do balloon decorations for weddings, adult birthdays and businesses?",
+    a: "Yes. Alongside children's parties I style weddings, 18ths, 40ths, 50ths and christenings, and branded balloon installs for shops, offices and launches.",
     aNode: (
       <>
-        Yes. Alongside children's parties I style{" "}
+        Yes. Alongside children's parties I style weddings,{" "}
         <a href="/milestone-celebrations/" className="text-link">18ths, 40ths, 50ths and christenings</a>, and{" "}
         <a href="/corporate-brand-styling/" className="text-link">branded balloon installs</a>{" "}
         for shops, offices and launches.
