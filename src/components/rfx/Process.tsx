@@ -29,7 +29,7 @@ const DEFAULT_STEPS: ProcessStep[] = [
     n: "03",
     title: "Installation",
     body:
-      "Our team sets everything up before your first guest arrives, so you walk into a finished space. Afterwards, we pack down and take it away.",
+      "We set everything up before your first guest arrives, so you walk into a finished space. Afterwards, we pack it all down and take it away.",
   },
 ];
 

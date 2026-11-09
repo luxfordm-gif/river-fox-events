@@ -113,9 +113,9 @@ const esher = makeLocation({
           to genuinely large.
         </p>
         <p>
-          Different briefs, same approach: one designer, one install
-          team, one point of contact from the first call to the
-          breakdown.
+          Different briefs, same approach: the same person designs the room
+          and installs it, and you keep one point of contact from the
+          first call to the breakdown.
         </p>
       </>
     ),

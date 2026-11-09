@@ -13,7 +13,7 @@ const epsom = makeLocation({
   uniqueSeoDescription:
     "Birthday party decorators in Epsom, Ashtead and Ewell. Number balloons, character cutouts and photo backdrops, delivered, set up and collected, from £300.",
   uniqueHeroLine: <>Epsom birthday parties,</>,
-  uniqueHeroSub: <>Number balloons, character cutouts and photo backdrops for birthdays around Ashtead and Ewell, delivered, set up and collected by our install team.</>,
+  uniqueHeroSub: <>Number balloons, character cutouts and photo backdrops for birthdays around Ashtead and Ewell, which we deliver, set up and collect ourselves.</>,
   uniqueUspBody:
     "Have a celebration coming up in Epsom? River Fox Events pulls together polished styling, statement balloon installations and the small details that make something memorable. Every event is individually designed around your child, your space and your vision, leaving you with a day that feels personal, exciting and unlike anyone else's.",
   uniqueServicesHeading: (
