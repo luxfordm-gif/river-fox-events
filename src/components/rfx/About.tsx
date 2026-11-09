@@ -15,11 +15,18 @@ const STATS: Stat[] = [
   { value: 100, display: (n) => `${n}%`, label: "Individually designed" },
 ];
 
-/** Animates a number from 0 to `value` over `duration` ms once visible. */
-const useCountUp = (value: number, visible: boolean, duration = 1600) => {
-  const [n, setN] = useState(0);
+/** Animates a number from 0 to `value` over `duration` ms once visible.
+ *  Until the count-up is armed (in the browser, motion allowed) it shows the
+ *  final value, so the prerendered HTML, crawlers and no-JS visitors read
+ *  "400+", not "0+". */
+const useCountUp = (value: number, visible: boolean, armed: boolean, duration = 1600) => {
+  const [n, setN] = useState(value);
   useEffect(() => {
-    if (!visible) return;
+    if (!armed) return;
+    if (!visible) {
+      setN(0);
+      return;
+    }
     const start = performance.now();
     let raf = 0;
     const tick = (t: number) => {
@@ -31,18 +38,19 @@ const useCountUp = (value: number, visible: boolean, duration = 1600) => {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [visible, value, duration]);
+  }, [armed, visible, value, duration]);
   return n;
 };
 
-const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; delay: number }) => {
-  const n = useCountUp(stat.value, visible);
+const StatItem = ({ stat, visible, armed, delay }: { stat: Stat; visible: boolean; armed: boolean; delay: number }) => {
+  const n = useCountUp(stat.value, visible, armed);
+  const shown = visible || !armed;
   return (
     <div
       className="flex min-w-0 flex-col items-center justify-start self-baseline"
       style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(12px)",
+        opacity: shown ? 1 : 0,
+        transform: shown ? "translateY(0)" : "translateY(12px)",
         transition: `opacity .8s ease ${delay}ms, transform .8s ease ${delay}ms`,
       }}
     >
@@ -68,6 +76,9 @@ const StatItem = ({ stat, visible, delay }: { stat: Stat; visible: boolean; dela
 const About = () => {
   const statsRef = useRef<HTMLDivElement>(null);
   const [statsVisible, setStatsVisible] = useState(false);
+  // False in the prerender and with reduced motion: the stats then simply
+  // show their final numbers.
+  const [statsArmed, setStatsArmed] = useState(false);
   const studioWrap = useRef<HTMLDivElement>(null);
   // The panel starts full width and draws in to its rounded inset as it
   // scrolls up the screen (Matt, 2026-11-08).
@@ -81,6 +92,9 @@ const About = () => {
   useEffect(() => {
     const el = statsRef.current;
     if (!el) return;
+    // The prerender (navigator.webdriver) bakes the final numbers into the HTML.
+    if (navigator.webdriver || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    setStatsArmed(true);
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -175,7 +189,7 @@ const About = () => {
               style={{ alignItems: "baseline" }}
             >
               {STATS.map((s, i) => (
-                <StatItem key={s.label} stat={s} visible={statsVisible} delay={i * 140} />
+                <StatItem key={s.label} stat={s} visible={statsVisible} armed={statsArmed} delay={i * 140} />
               ))}
             </div>
           </div>

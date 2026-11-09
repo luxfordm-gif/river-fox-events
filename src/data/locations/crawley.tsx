@@ -14,7 +14,7 @@ const crawley = makeLocation({
   uniqueSeoDescription:
     "Children's birthday styling in Crawley and across West Sussex, from first birthdays to big themed parties - individually designed and installed by Laura.",
   uniqueHeroLine: <>Crawley kids' parties,</>,
-  uniqueHeroSub: <>Pound Hill, Maidenbower and Three Bridges birthdays get balloon walls, light-up letters and themed props, set up and cleared by us on the day.</>,
+  uniqueHeroSub: <>Pound Hill, Maidenbower and Three Bridges birthdays get balloon walls, light-up letters and themed props, set up and cleared by me on the day.</>,
   uniqueUspBody:
     "Celebrating in Crawley? River Fox Events combines considered styling, statement balloon installations and carefully chosen details into something your family will remember. Each event is individually designed around your child, your space and the day you have in mind, so the result feels personal, joyful and entirely your own.",
   uniqueServicesHeading: (
@@ -27,8 +27,8 @@ const crawley = makeLocation({
   ),
   uniqueServicesIntro: (
     <>
-      Most Crawley work starts with a child's birthday, and that's where we
-      spend our time. Christenings, milestone birthdays and corporate styling
+      Most Crawley work starts with a child's birthday, and that's where I
+      spend my time. Christenings, milestone birthdays and corporate styling
       are handled with the same care when you need them.
     </>
   ),
@@ -73,11 +73,11 @@ const crawley = makeLocation({
         RH10 and RH11 postcodes. Every celebration is built from
         scratch around your brief - concept, balloon installations,
         backdrops, signage, cake table and tablescape, all installed
-        and broken down by us.
+        and broken down by me.
       </p>
       <p>
-        Our studio is in Horley, ten minutes north up the A23, which
-        makes Crawley one of the closest towns we cover and the
+        My studio is in Horley, ten minutes north up the A23, which
+        makes Crawley one of the closest towns I cover and the
         natural choice for both family celebrations and Gatwick-
         corridor corporate work.
       </p>
@@ -92,7 +92,7 @@ const crawley = makeLocation({
         and corporate work along the Gatwick corridor. Brand
         activations, conference styling, product launches and award
         nights at the airport hotels and at K2 Crawley are a regular
-        thread; we scale the design to either, from a single statement
+        thread; I scale the design to either, from a single statement
         balloon arch to a full venue install.
       </p>
     </>

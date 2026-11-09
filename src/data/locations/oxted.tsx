@@ -15,19 +15,19 @@ const oxted = makeLocation({
   uniqueHeroLine: <>Oxted party decorations,</>,
   uniqueHeroSub: <>Homes and gardens from Limpsfield to Woldingham, dressed with balloon arches, painted name boards and themed props, then cleared away the same day.</>,
   uniqueUspBody:
-    "For families in Oxted looking for something a little more special, River Fox Events creates individually designed celebrations that feel personal, memorable and beautifully put together. Known for statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes, venues and event spaces across Oxted into celebrations that children and guests will remember long after the day itself.",
+    "For families in Oxted looking for something a little more special, I create individually designed celebrations that feel personal, memorable and beautifully put together. Known for statement balloon installations, bespoke backdrops and thoughtful styling, I transform homes, venues and event spaces across Oxted into celebrations that children and guests will remember long after the day itself.",
   uniqueServicesHeading: (
     <>
-      Children's parties are our home ground.{" "}
+      Children's parties are my home ground.{" "}
       <em className="t-accent">
-        We also style the grown-up occasions.
+        I also style the grown-up occasions.
       </em>
     </>
   ),
   uniqueServicesIntro: (
     <>
-      Most Oxted families come to us for a child's birthday, and that's
-      where we spend most of our time. The same eye goes into christenings,
+      Most Oxted families come to me for a child's birthday, and that's
+      where I spend most of my time. The same eye goes into christenings,
       milestone birthdays and corporate events when you need them.
     </>
   ),
@@ -69,7 +69,7 @@ const oxted = makeLocation({
         Most clients arrive with a feeling rather than a brief - a
         colour, a memory, a Pinterest board that hasn't quite
         landed. The first conversation is short and unhurried; you
-        bring the vision, we shape it into something specific and
+        bring the vision, I shape it into something specific and
         buildable. From that point you can let go: sourcing, build,
         install on the morning, breakdown on the night.
       </p>
@@ -101,7 +101,7 @@ const oxted = makeLocation({
           Oxted is mostly home work. The houses across the area sit on
           enough land that styling has to belong in the room rather
           than be imposed on it - a country house calls for different
-          decisions than a London townhouse, and we make them
+          decisions than a London townhouse, and I make them
           differently. When the celebration moves out, it tends to be
           to a private garden, a country club, or one of the village
           halls East Surrey does well.
@@ -114,7 +114,7 @@ const oxted = makeLocation({
     ),
   },
   uniquePresenceAnswer:
-    "Yes - Oxted is part of our regular East Surrey coverage, along with Limpsfield, Hurst Green, Tandridge, Godstone and the surrounding villages.",
+    "Yes - Oxted is part of my regular East Surrey coverage, along with Limpsfield, Hurst Green, Tandridge, Godstone and the surrounding villages.",
 });
 
 export default oxted;

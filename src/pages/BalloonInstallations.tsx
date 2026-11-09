@@ -171,16 +171,24 @@ const BalloonInstallations = () => {
           <p>
             That's where I started too, and plenty of people still come to me
             just for balloon arch hire or a few balloon garlands. Over eight
-            years and 400+ events, I've learned balloons look their best when
-            the room is styled around them.
+            years and 400+ events, I've learned balloons look their best when{" "}
+            <a href="/journal/beyond-the-balloon-arch/" className="text-link">
+              the room is styled around them
+            </a>
+            .
           </p>
           <p>
             So I build the whole setting: backdrops, props, name boards and
             tablescapes chosen to sit with the balloons.
           </p>
           <p>
-            From my Horley studio I cover all of Surrey, from homes in Reigate
-            and Oxted to garden parties in Cobham, Esher and Weybridge.
+            From my Horley studio I cover all of Surrey, from homes in{" "}
+            <a href="/party-styling-reigate/" className="text-link">Reigate</a>{" "}
+            and <a href="/party-styling-oxted/" className="text-link">Oxted</a>{" "}
+            to garden parties in{" "}
+            <a href="/party-styling-cobham/" className="text-link">Cobham</a>,{" "}
+            <a href="/party-styling-esher/" className="text-link">Esher</a> and{" "}
+            <a href="/party-styling-weybridge/" className="text-link">Weybridge</a>.
           </p>
         </CPReveal>
 

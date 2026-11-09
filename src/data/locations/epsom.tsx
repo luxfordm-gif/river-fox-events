@@ -13,20 +13,20 @@ const epsom = makeLocation({
   uniqueSeoDescription:
     "Birthday party decorators in Epsom, Ashtead and Ewell. Number balloons, character cutouts and photo backdrops, delivered, set up and collected, from £300.",
   uniqueHeroLine: <>Epsom birthday parties,</>,
-  uniqueHeroSub: <>Number balloons, character cutouts and photo backdrops for birthdays around Ashtead and Ewell, which we deliver, set up and collect ourselves.</>,
+  uniqueHeroSub: <>Number balloons, character cutouts and photo backdrops for birthdays around Ashtead and Ewell, which I deliver, set up and collect myself.</>,
   uniqueUspBody:
     "Have a celebration coming up in Epsom? River Fox Events pulls together polished styling, statement balloon installations and the small details that make something memorable. Every event is individually designed around your child, your space and your vision, leaving you with a day that feels personal, exciting and unlike anyone else's.",
   uniqueServicesHeading: (
     <>
-      Children's parties are our home turf.{" "}
+      Children's parties are my home turf.{" "}
       <em className="t-accent">
-        We style the rest as well.
+        I style the rest as well.
       </em>
     </>
   ),
   uniqueServicesIntro: (
     <>
-      Epsom families mostly book us for a child's birthday, and that's our
+      Epsom families mostly book me for a child's birthday, and that's my
       focus. The same eye goes into christenings, milestones and brand work
       when the occasion calls for it.
     </>
@@ -51,7 +51,7 @@ const epsom = makeLocation({
     "Cheam",
     "Sutton",
     "Chessington",
-    "Bookham",
+    "Oxshott",
   ],
   mapQuery: "Epsom,Surrey,England,UK&z=11",
   jsonLdAreaServed: [
@@ -71,12 +71,12 @@ const epsom = makeLocation({
         showers and brand installations across the KT17, KT18 and KT19
         postcodes. Every celebration is individually designed around your
         brief - concept, balloon installations, backdrops, signage,
-        cake table and tablescape, all installed and broken down by us.
+        cake table and tablescape, all installed and broken down by me.
       </p>
       <p>
-        Our studio is in Horley and Epsom sits within our regular north
+        My studio is in Horley and Epsom sits within my regular north
         Surrey coverage. Full install and breakdown handled, every
-        celebration personally led by Laura.
+        celebration personally led by me.
       </p>
     </>
   ),
@@ -86,7 +86,7 @@ const epsom = makeLocation({
         Epsom celebrations split between family at-home work along the
         roads off Epsom Common and Stamford Green, milestone events at
         private homes through Ashtead and Ewell, and venue events around
-        the Epsom Downs and Horton Country Park. We scale the styling to
+        the Epsom Downs and Horton Country Park. I scale the styling to
         either a single statement installation for an intimate party, or
         a full multi-zone styling across reception rooms, gardens and
         marquees.
@@ -94,7 +94,7 @@ const epsom = makeLocation({
     </>
   ),
   uniquePresenceAnswer:
-    "Yes - Epsom and the surrounding area sit within our regular north Surrey coverage, alongside Ewell, Ashtead, Leatherhead, Banstead and Tadworth. Whether you're at home, at one of the venues around the Downs, or at a private space in the wider KT area, share the venue or postcode in your enquiry and we'll come back with a styling proposal designed for your space.",
+    "Yes - Epsom and the surrounding area sit within my regular north Surrey coverage, alongside Ewell, Ashtead, Leatherhead, Banstead and Tadworth. Whether you're at home, at one of the venues around the Downs, or at a private space in the wider KT area, share the venue or postcode in your enquiry and I'll come back with a styling proposal designed for your space.",
 });
 
 export default epsom;

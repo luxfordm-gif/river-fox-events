@@ -93,7 +93,9 @@ const Journal = () => {
     cardImagePosition?: string;
     category?: string;
   })[];
-  const shown = summaries.slice(0, visible);
+  // Every article is rendered so its link is in the prerendered HTML (and
+  // crawlable); the ones past `visible` are hidden until "Show more".
+  const shown = summaries;
   const hasMore = visible < summaries.length;
 
   useEffect(() => {
@@ -119,7 +121,7 @@ const Journal = () => {
         <PageHeader
           divider
           title="Journal"
-          intro="Notes from the studio - trends, behind-the-scenes, and the thinking behind the celebrations we style."
+          intro="Notes from the studio - trends, behind-the-scenes, and the thinking behind the celebrations I style."
         />
 
         {/* Grid */}
@@ -128,14 +130,14 @@ const Journal = () => {
             className="grid gap-y-10 md:gap-y-16 gap-x-6 md:gap-x-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
           >
             {shown.map((a, i) => (
-              <li key={a.slug} className="contents md:block">
+              <li key={a.slug} className={i < visible ? "contents md:block" : "hidden"}>
                 {/* On mobile we render a denser horizontal-ish layout
                     via a separate component branch; on desktop the
                     full card. Keep DOM order accessible. */}
                 <div className="hidden md:block md:h-full">
                   <JournalCard
                     article={a}
-                    feature={i === 0 && shown.length > 1}
+                    feature={i === 0 && summaries.length > 1}
                   />
                 </div>
                 <div className="md:hidden">

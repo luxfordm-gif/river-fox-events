@@ -644,7 +644,7 @@ export const ROUTES: RouteSEO[] = [
     path: "/journal",
     title: "Journal | River Fox Events",
     description:
-      "Notes from the studio - event styling trends, behind-the-scenes from Surrey celebrations, and the thinking behind the rooms we style.",
+      "Notes from the studio - event styling trends, behind-the-scenes from Surrey celebrations, and the thinking behind the rooms I style.",
     breadcrumbName: "Journal",
     ogImage: "/og/beyond-the-balloon-arch.webp",
     priority: 0.7,

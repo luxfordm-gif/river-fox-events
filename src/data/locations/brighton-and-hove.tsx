@@ -28,7 +28,7 @@ const brightonAndHove = makeLocation({
   uniqueServicesIntro: (
     <>
       Most Brighton & Hove bookings begin with a child's birthday, and that's
-      where most of our time goes. Christenings, milestones and brand events
+      where most of my time goes. Christenings, milestones and brand events
       are styled with the same eye when the day calls for it.
     </>
   ),
@@ -73,13 +73,13 @@ const brightonAndHove = makeLocation({
         the BN1, BN2 and BN3 postcodes. Every celebration is individually
         designed around your brief - concept, balloon
         installations, backdrops, signage, cake table and tablescape,
-        all installed and broken down by us.
+        all installed and broken down by me.
       </p>
       <p>
-        Our studio is in Horley, around an hour and ten south on the
-        A23, and Brighton & Hove is the southern edge of our regular
+        My studio is in Horley, around an hour and ten south on the
+        A23, and Brighton & Hove is the southern edge of my regular
         coverage. Full install and breakdown handled, every detail
-        designed and managed personally by Laura.
+        designed and managed personally by me.
       </p>
     </>
   ),
@@ -92,7 +92,7 @@ const brightonAndHove = makeLocation({
         landmark milestones at the Royal Pavilion, the Grand Hotel,
         Hotel du Vin and the Old Ship Hotel, and corporate brand
         activations at the Brighton Centre, Brighton Dome and the
-        cultural-quarter spaces. We scale the styling to either: an
+        cultural-quarter spaces. I scale the styling to either: an
         intimate first-birthday installation in a Hove garden flat,
         or a full multi-zone styling for a seafront wedding.
       </p>

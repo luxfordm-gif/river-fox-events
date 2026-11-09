@@ -13,12 +13,12 @@ const lingfield = makeLocation({
   uniqueSeoDescription:
     "Village children's parties in Lingfield and along the Surrey/Sussex border - first birthdays to themed celebrations, individually designed by Laura.",
   uniqueHeroLine: <>Lingfield party styling,</>,
-  uniqueHeroSub: <>Close to our Horley studio, so parties in Dormansland and Crowhurst get early setups, balloon arches, painted signs and a same-night clear-away.</>,
+  uniqueHeroSub: <>Close to my Horley studio, so parties in Dormansland and Crowhurst get early setups, balloon arches, painted signs and a same-night clear-away.</>,
   uniqueUspBody:
     "Got a celebration planned in Lingfield? River Fox Events combines careful styling, statement balloon installations and the small touches that make a day memorable. Every event is individually designed around your child, your space and your vision, for something that feels personal, joyful and unmistakably yours.",
   uniqueServicesHeading: (
     <>
-      Children's parties lead our calendar.{" "}
+      Children's parties lead my calendar.{" "}
       <em className="t-accent">
         The grown-up days follow.
       </em>
@@ -27,7 +27,7 @@ const lingfield = makeLocation({
   uniqueServicesIntro: (
     <>
       Most Lingfield bookings begin with a child's birthday, and that's where
-      our time goes. Christenings, milestones and corporate work are handled
+      my time goes. Christenings, milestones and corporate work are handled
       with the same care when you need them.
     </>
   ),
@@ -71,11 +71,11 @@ const lingfield = makeLocation({
         the wider Surrey/Sussex border. Every celebration is individually
         designed around your brief - concept, balloon
         installations, backdrops, signage, cake table and tablescape,
-        all installed and broken down by us.
+        all installed and broken down by me.
       </p>
       <p>
-        Our studio is in Horley, fifteen minutes by road, which makes
-        Lingfield one of the closest villages we cover. That
+        My studio is in Horley, fifteen minutes by road, which makes
+        Lingfield one of the closest villages I cover. That
         proximity means flexible install windows, late-night
         breakdowns and the kind of last-minute adjustments that
         aren't realistic from a stylist further afield.
@@ -87,7 +87,7 @@ const lingfield = makeLocation({
       <p>
         Most Lingfield celebrations happen at home - first birthdays,
         christenings and milestone weekends across the village green,
-        Dormansland and the lanes towards Crowhurst. We also work
+        Dormansland and the lanes towards Crowhurst. I also work
         regularly at Lingfield Park Racecourse for corporate
         hospitality days, milestone birthdays in the function suites
         and weddings at the on-site hotel. Whether the brief is a

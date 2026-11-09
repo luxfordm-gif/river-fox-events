@@ -20,14 +20,14 @@ const guildford = makeLocation({
     <>
       Children's parties are the heart of it.{" "}
       <em className="t-accent">
-        We style the rest as well.
+        I style the rest as well.
       </em>
     </>
   ),
   uniqueServicesIntro: (
     <>
-      Guildford families mostly come to us for a birthday party, and that's
-      our focus. The same eye goes into christenings, milestones and
+      Guildford families mostly come to me for a birthday party, and that's
+      my focus. The same eye goes into christenings, milestones and
       corporate evenings when the occasion calls for it.
     </>
   ),
@@ -51,7 +51,7 @@ const guildford = makeLocation({
     "West Clandon",
     "Send",
     "Effingham",
-    "Bookham",
+    "Cobham",
   ],
   mapQuery: "Guildford,Surrey,England,UK&z=11",
   jsonLdAreaServed: [
@@ -71,12 +71,12 @@ const guildford = makeLocation({
         and GU2 postcodes and the wider GU area. Every celebration is
         individually designed around your brief - concept, balloon
         installations, backdrops, signage, cake table and tablescape,
-        all installed and broken down by us.
+        all installed and broken down by me.
       </p>
       <p>
-        Our studio is in Horley and Guildford sits within our regular
+        My studio is in Horley and Guildford sits within my regular
         Surrey coverage. Full install and breakdown handled, every
-        detail designed and managed personally by Laura.
+        detail designed and managed personally by me.
       </p>
     </>
   ),
@@ -87,7 +87,7 @@ const guildford = makeLocation({
         Castle Street townhouses, family at-home parties across the
         GU postcodes (Merrow, Burpham, Worplesdon, Shalford),
         country-house weddings at Loseley Park and corporate launches
-        through the Mandolay Hotel and G Live. We scale the styling
+        through the Mandolay Hotel and G Live. I scale the styling
         to either: a single statement installation for an intimate
         celebration, or a full multi-zone styling across reception
         rooms and gardens.

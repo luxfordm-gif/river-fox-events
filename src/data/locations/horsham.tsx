@@ -14,21 +14,21 @@ const horsham = makeLocation({
   uniqueSeoDescription:
     "Big themed birthdays and first-birthday styling in Horsham - children's parties individually designed and installed by Laura.",
   uniqueHeroLine: <>Horsham birthday balloons,</>,
-  uniqueHeroSub: <>For parties in Southwater, Warnham and Broadbridge Heath, we bring the balloon columns, light-up number stacks and theme props, and take them all away after.</>,
+  uniqueHeroSub: <>For parties in Southwater, Warnham and Broadbridge Heath, I bring the balloon columns, light-up number stacks and theme props, and take them all away after.</>,
   uniqueUspBody:
-    "For Horsham families looking for a celebration with a little more care behind it, River Fox Events designs days that feel personal, memorable and beautifully finished. Known for statement balloon installations, bespoke backdrops and thoughtful styling, we turn homes and venues across the town into days children and guests carry with them.",
+    "For Horsham families looking for a celebration with a little more care behind it, I design days that feel personal, memorable and beautifully finished. Known for statement balloon installations, bespoke backdrops and thoughtful styling, I turn homes and venues across the town into days children and guests carry with them.",
   uniqueServicesHeading: (
     <>
       Children's parties are the bulk of it.{" "}
       <em className="t-accent">
-        We style the rest as well.
+        I style the rest as well.
       </em>
     </>
   ),
   uniqueServicesIntro: (
     <>
-      Horsham families mostly come to us for a child's birthday, and that's
-      our focus. The same eye goes into christenings, milestones and corporate
+      Horsham families mostly come to me for a child's birthday, and that's
+      my focus. The same eye goes into christenings, milestones and corporate
       work when the occasion calls for it.
     </>
   ),
@@ -50,7 +50,7 @@ const horsham = makeLocation({
     "Broadbridge Heath",
     "Cowfold",
     "Lower Beeding",
-    "Faygate",
+    "Crawley",
     "Roffey",
     "Christ's Hospital",
   ],
@@ -73,11 +73,11 @@ const horsham = makeLocation({
         RH13 postcodes. Every celebration is individually designed around
         your brief - concept, balloon installations, backdrops,
         signage, cake table and tablescape, all installed and broken
-        down by us.
+        down by me.
       </p>
       <p>
-        Our studio is in Horley, around thirty minutes by road, and
-        Horsham sits firmly within our regular coverage. Same-day
+        My studio is in Horley, around thirty minutes by road, and
+        Horsham sits firmly within my regular coverage. Same-day
         install and breakdown, no travel surcharges for the standard
         celebration, and full management on the day so you don't lift
         a thing.
@@ -91,7 +91,7 @@ const horsham = makeLocation({
         around Roffey, Southwater and Broadbridge Heath, country-house
         weddings and milestone celebrations at South Lodge Hotel and
         the surrounding venues, and town-centre celebrations at the
-        Capitol theatre and Field Place. We scale the styling to the
+        Capitol theatre and Field Place. I scale the styling to the
         room - from a single focal-point installation for an intimate
         celebration to a full multi-zone install across reception
         rooms, marquees and gardens.

@@ -16,19 +16,19 @@ const sevenoaks = makeLocation({
   uniqueHeroLine: <>Sevenoaks party decorations,</>,
   uniqueHeroSub: <>Birthday decorations for Otford, Kemsing and Riverhead, with jumbo balloons, light-up numbers and a themed backdrop ready before guests arrive.</>,
   uniqueUspBody:
-    "For Sevenoaks families wanting a celebration with real care behind it, River Fox Events designs days that feel personal, memorable and beautifully put together. Known for statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes and venues across the area into celebrations children and guests remember long afterwards.",
+    "For Sevenoaks families wanting a celebration with real care behind it, I design days that feel personal, memorable and beautifully put together. Known for statement balloon installations, bespoke backdrops and thoughtful styling, I transform homes and venues across the area into celebrations children and guests remember long afterwards.",
   uniqueServicesHeading: (
     <>
       Children's parties are the centre of it.{" "}
       <em className="t-accent">
-        We cover the rest as well.
+        I cover the rest as well.
       </em>
     </>
   ),
   uniqueServicesIntro: (
     <>
       Most Sevenoaks bookings start with a child's birthday, and that's where
-      most of our time goes. The same attention goes into christenings,
+      most of my time goes. The same attention goes into christenings,
       milestones and corporate work when you need them.
     </>
   ),
@@ -73,13 +73,13 @@ const sevenoaks = makeLocation({
         TN13–TN15 postcodes. Every celebration is individually designed
         around your brief - concept, balloon installations, backdrops,
         signage, cake table and tablescape, all installed and broken
-        down by us.
+        down by me.
       </p>
       <p>
-        Our studio is in Horley, around forty-five minutes east via
-        the M25, and Sevenoaks sits within our regular west Kent
+        My studio is in Horley, around forty-five minutes east via
+        the M25, and Sevenoaks sits within my regular west Kent
         coverage. Full install and breakdown handled, every detail
-        designed and managed personally by Laura.
+        designed and managed personally by me.
       </p>
     </>
   ),
@@ -91,7 +91,7 @@ const sevenoaks = makeLocation({
         country-house weddings and milestone events at Knole, Squerryes
         Court at Westerham and Riverhill Himalayan Gardens, and
         smaller in-town celebrations through the rugby and cricket
-        club hospitality suites. We scale the styling to either: an
+        club hospitality suites. I scale the styling to either: an
         intimate cake-table install for a christening, or a full
         multi-zone styling across reception rooms and gardens.
       </p>

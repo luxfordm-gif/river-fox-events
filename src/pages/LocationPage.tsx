@@ -166,23 +166,14 @@ const LocationPage = () => {
         <Experiences
           align="stacked"
           sectionId={`loc-${loc.slug}-services`}
-          heading={
-            loc.servicesHeading ?? (
-              <>
-                Our signature{" "}
-                <em className="t-accent">
-                  experiences.
-                </em>
-              </>
-            )
-          }
+          heading={loc.servicesHeading}
           intro={
             loc.servicesIntro ?? (
               <>
                 Each event is individually designed, with a focus on
-                aesthetic, flow and detail. We work with a small number of
-                clients each month so every event receives personal
-                attention from concept to install.
+                aesthetic, flow and detail. I take on a small number of
+                clients each month so I can give every event my full
+                attention, from the first idea to the install.
               </>
             )
           }

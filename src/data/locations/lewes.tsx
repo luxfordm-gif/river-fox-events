@@ -19,15 +19,15 @@ const lewes = makeLocation({
     "Planning a birthday, christening or family celebration in Lewes? River Fox Events creates styling designed to feel personal, exciting and hard to forget. From statement balloon installations and bespoke backdrops to the finishing details, each celebration is individually designed to bring your vision to life for your child and the people there to share it.",
   uniqueServicesHeading: (
     <>
-      Children's parties are where we start.{" "}
+      Children's parties are where I start.{" "}
       <em className="t-accent">
-        We style the rest too.
+        I style the rest too.
       </em>
     </>
   ),
   uniqueServicesIntro: (
     <>
-      Most Lewes bookings begin with a child's birthday, and that's where our
+      Most Lewes bookings begin with a child's birthday, and that's where my
       time goes. Christenings, milestones and corporate work are styled with
       the same eye when the day calls for it.
     </>
@@ -73,13 +73,13 @@ const lewes = makeLocation({
         BN8 postcodes. Every celebration is individually designed around
         your brief - concept, balloon installations, backdrops,
         signage, cake table and tablescape, all installed and broken
-        down by us.
+        down by me.
       </p>
       <p>
-        Our studio is in Horley, around an hour south on the A23/A27,
-        and Lewes is part of our regular East Sussex coverage. Full
+        My studio is in Horley, around an hour south on the A23/A27,
+        and Lewes is part of my regular East Sussex coverage. Full
         install and breakdown handled, every detail designed and
-        managed personally by Laura.
+        managed personally by me.
       </p>
     </>
   ),
@@ -90,7 +90,7 @@ const lewes = makeLocation({
         the Cliffe and the residential roads above the High Street,
         country-house weddings at Glynde Place, Firle Place and
         Pelham House, and downland at-home celebrations across the
-        Ouse-side and South Downs villages. We scale the styling to
+        Ouse-side and South Downs villages. I scale the styling to
         either: an intimate cake-table install for a christening at
         home, or a full multi-zone styling across reception rooms,
         gardens and marquees.

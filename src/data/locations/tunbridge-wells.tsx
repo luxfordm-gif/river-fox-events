@@ -19,7 +19,7 @@ const tunbridgeWells = makeLocation({
     "Planning a birthday, christening or special occasion in Tunbridge Wells? River Fox Events designs styling made to feel personal, exciting and quietly unforgettable. From statement balloon installations and bespoke backdrops to the finishing touches, every celebration is individually designed to bring your vision to life for your child and your guests.",
   uniqueServicesHeading: (
     <>
-      Children's parties are our main focus.{" "}
+      Children's parties are my main focus.{" "}
       <em className="t-accent">
         The grown-up days too.
       </em>
@@ -28,7 +28,7 @@ const tunbridgeWells = makeLocation({
   uniqueServicesIntro: (
     <>
       Most Tunbridge Wells bookings are for a child's birthday, and that's
-      where our time goes. Christenings, milestones and corporate work are
+      where my time goes. Christenings, milestones and corporate work are
       styled with the same care when you need them.
     </>
   ),
@@ -73,11 +73,11 @@ const tunbridgeWells = makeLocation({
         TN1–TN4 postcodes. Every celebration is individually designed
         around your brief - concept, balloon installations, backdrops,
         signage, cake table and tablescape, all installed and broken
-        down by us.
+        down by me.
       </p>
       <p>
-        Our studio is in Horley, around fifty minutes east on the A21,
-        and Tunbridge Wells is a town we cover regularly. The travel
+        My studio is in Horley, around fifty minutes east on the A21,
+        and Tunbridge Wells is a town I cover regularly. The travel
         is built into the install schedule properly; no surcharge for
         the standard celebration, full management on the day.
       </p>
@@ -91,7 +91,7 @@ const tunbridgeWells = makeLocation({
         roads off the Pantiles, country-house weddings and milestone
         events at Salomons Estate and the venues around Speldhurst,
         and intimate dining-led celebrations at Hotel du Vin and the
-        Spa Hotel. We scale the styling to either: a single statement
+        Spa Hotel. I scale the styling to either: a single statement
         balloon installation for an intimate dinner, or a full multi-
         zone styling across reception rooms and gardens.
       </p>

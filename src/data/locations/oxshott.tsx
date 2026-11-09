@@ -15,19 +15,19 @@ const oxshott = makeLocation({
   uniqueHeroLine: <>Balloon arches in&nbsp;Oxshott,</>,
   uniqueHeroSub: <>At-home parties near Hinchley Wood and Leatherhead get arrival balloon arches, garden backdrops and themed props, with everything gone by the evening.</>,
   uniqueUspBody:
-    "For Oxshott families after a celebration that feels a cut above, River Fox Events designs days that are personal, memorable and beautifully put together. Built around statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes, gardens and venues into celebrations children and guests remember long after everyone has gone home.",
+    "For Oxshott families after a celebration that feels a cut above, I design days that are personal, memorable and beautifully put together. Built around statement balloon installations, bespoke backdrops and thoughtful styling, I transform homes, gardens and venues into celebrations children and guests remember long after everyone has gone home.",
   uniqueServicesHeading: (
     <>
-      Children's parties are what we're known for.{" "}
+      Children's parties are what I'm known for.{" "}
       <em className="t-accent">
-        We handle the milestones too.
+        I handle the milestones too.
       </em>
     </>
   ),
   uniqueServicesIntro: (
     <>
       Most Oxshott bookings start with a child's birthday, and that's where
-      most of our time goes. The same attention goes into christenings,
+      most of my time goes. The same attention goes into christenings,
       milestones and corporate work when you need them.
     </>
   ),
@@ -70,12 +70,12 @@ const oxshott = makeLocation({
         showers and at-home weddings across the KT22 postcode. Every
         celebration is individually designed around your brief -
         concept, balloon installations, backdrops, signage, cake
-        table and tablescape, all installed and broken down by us.
+        table and tablescape, all installed and broken down by me.
       </p>
       <p>
-        Our studio is in Horley and Oxshott sits firmly in our regular
+        My studio is in Horley and Oxshott sits firmly in my regular
         Surrey coverage. Most local celebrations happen at home rather
-        than at named venues - and that's the bulk of what we do here.
+        than at named venues - and that's the bulk of what I do here.
       </p>
     </>
   ),
@@ -87,7 +87,7 @@ const oxshott = makeLocation({
         properties - sit on generous plots, so most events run across
         multiple zones rather than a single room. Drawing-room and
         entrance-hall installations for arrival, garden marquees for
-        the meal, kitchen-island bars for the after-dinner. We design
+        the meal, kitchen-island bars for the after-dinner. I design
         across all of it as one piece, install in a single morning,
         and break down the same night.
       </p>
@@ -108,7 +108,7 @@ const oxshott = makeLocation({
           properties are big enough that most local celebrations move
           through the house the way guests do - a drawing-room or
           entrance-hall scheme for arrival, a marquee in the garden
-          for the meal, a kitchen-island bar for the after-dinner. We
+          for the meal, a kitchen-island bar for the after-dinner. I
           design across all of it as one piece, not as separate
           set-pieces stitched together.
         </p>

@@ -18,7 +18,7 @@ const esher = makeLocation({
     "Planning a children's party, baby shower or special event in Esher? River Fox Events creates beautifully styled celebrations designed to feel personal, exciting and completely unforgettable. From statement balloon installations and bespoke backdrops to carefully chosen finishing touches, every celebration is individually designed to bring your vision to life and create a magical experience for your child and guests.",
   uniqueServicesHeading: (
     <>
-      Children's parties are our focus.{" "}
+      Children's parties are my focus.{" "}
       <em className="t-accent">
         The milestones, too.
       </em>
@@ -27,7 +27,7 @@ const esher = makeLocation({
   uniqueServicesIntro: (
     <>
       Most Esher bookings start with a child's birthday, and that's where most
-      of our time goes. The same eye goes into christenings, milestones and
+      of my time goes. The same eye goes into christenings, milestones and
       corporate evenings when the occasion calls for it.
     </>
   ),
@@ -71,12 +71,12 @@ const esher = makeLocation({
         postcode. Every celebration is individually designed around your
         brief - concept, balloon installations, backdrops, signage,
         cake table and tablescape, all installed and broken down by
-        us.
+        me.
       </p>
       <p>
-        Our studio is in Horley and Esher sits firmly in our regular
+        My studio is in Horley and Esher sits firmly in my regular
         Surrey coverage. Full install and breakdown handled, every
-        detail designed and managed personally by Laura.
+        detail designed and managed personally by me.
       </p>
     </>
   ),
@@ -86,7 +86,7 @@ const esher = makeLocation({
         Esher celebrations split between family at-home work across
         the village, Hinchley Wood and Claygate, milestone dinners at
         the high-street restaurants, and large-scale corporate and
-        wedding work at Sandown Park. We scale the styling to either:
+        wedding work at Sandown Park. I scale the styling to either:
         a single statement installation for an intimate celebration,
         or a full multi-zone styling for a corporate hospitality day
         across multiple rooms.
@@ -104,7 +104,7 @@ const esher = makeLocation({
     body: (
       <>
         <p>
-          Sandown Park anchors a lot of our Esher work - the Eclipse
+          Sandown Park anchors a lot of my Esher work - the Eclipse
           Suite, Surrey Hall and the boxes each ask for something
           different, and a stylist who hasn't worked the building
           before learns that the hard way. The off-site work splits
