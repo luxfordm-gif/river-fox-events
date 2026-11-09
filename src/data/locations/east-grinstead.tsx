@@ -19,16 +19,16 @@ const eastGrinstead = makeLocation({
     "Planning a birthday, christening or special occasion in East Grinstead? River Fox Events creates styling designed to feel personal, exciting and unforgettable. From statement balloon installations and bespoke backdrops through to the finishing touches, each celebration is individually designed to bring your vision to life for your child and everyone there.",
   uniqueServicesHeading: (
     <>
-      Children's parties are our main work.{" "}
+      Children's parties are my main work.{" "}
       <em className="t-accent">
-        We cover the grown-up days too.
+        I cover the grown-up days too.
       </em>
     </>
   ),
   uniqueServicesIntro: (
     <>
-      Families across East Grinstead mostly book us for a child's birthday,
-      and that's our focus. The same attention goes into christenings,
+      Families across East Grinstead mostly book me for a child's birthday,
+      and that's my focus. The same attention goes into christenings,
       milestones and corporate events when you need them.
     </>
   ),
@@ -72,11 +72,11 @@ const eastGrinstead = makeLocation({
         baby showers and corporate styling across the RH19 area. Every
         celebration is individually designed around your brief - concept,
         balloon installations, backdrops, signage, cake table and
-        tablescape, all installed and broken down by us.
+        tablescape, all installed and broken down by me.
       </p>
       <p>
-        Our studio is in Horley, twenty-five minutes north up the A22,
-        which makes East Grinstead one of the closest towns we cover.
+        My studio is in Horley, twenty-five minutes north up the A22,
+        which makes East Grinstead one of the closest towns I cover.
         Same-day install and breakdown, no travel surcharges for the
         standard celebration, and the kind of last-minute flexibility
         that's only possible when the stylist isn't an hour away.
@@ -90,7 +90,7 @@ const eastGrinstead = makeLocation({
         home styling - first birthdays, christenings and milestone
         weekends in the family homes around Imberhorne, Baldwins Hill
         and the Ashurst Wood lanes - and venue work at Felbridge
-        Hotel, Standen House and Gravetye Manor at West Hoathly. We
+        Hotel, Standen House and Gravetye Manor at West Hoathly. I
         scale the design to either: a single statement balloon arch
         and dressed cake table for an intimate party, or a full multi-
         zone install with backdrops, signage and tablescape across an

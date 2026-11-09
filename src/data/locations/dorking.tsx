@@ -15,19 +15,19 @@ const dorking = makeLocation({
   uniqueHeroLine: <>Party decorations in&nbsp;Dorking,</>,
   uniqueHeroSub: <>Balloon towers, fabric backdrops and painted welcome signs for village halls in Brockham and gardens near Box Hill.</>,
   uniqueUspBody:
-    "For Dorking families after something a little more special, River Fox Events designs celebrations that feel personal, memorable and beautifully put together. Known for statement balloon installations, bespoke backdrops and thoughtful styling, we turn homes and venues around the town into days that children and guests talk about long afterwards.",
+    "For Dorking families after something a little more special, I design celebrations that feel personal, memorable and beautifully put together. Known for statement balloon installations, bespoke backdrops and thoughtful styling, I turn homes and venues around the town into days that children and guests talk about long afterwards.",
   uniqueServicesHeading: (
     <>
       Children's parties take the lead.{" "}
       <em className="t-accent">
-        We style the grown-up days too.
+        I style the grown-up days too.
       </em>
     </>
   ),
   uniqueServicesIntro: (
     <>
-      Most Dorking work starts with a child's birthday, and that's where we
-      spend our time. Christenings, milestones and corporate styling are
+      Most Dorking work starts with a child's birthday, and that's where I
+      spend my time. Christenings, milestones and corporate styling are
       handled with the same care when you need them.
     </>
   ),
@@ -71,12 +71,12 @@ const dorking = makeLocation({
         RH5 postcodes and the wider Surrey Hills. Every celebration
         is individually designed around your brief - concept, balloon
         installations, backdrops, signage, cake table and tablescape,
-        all installed and broken down by us.
+        all installed and broken down by me.
       </p>
       <p>
-        Our studio is in Horley and Dorking sits within our regular
+        My studio is in Horley and Dorking sits within my regular
         Surrey coverage. Full install and breakdown handled, every
-        detail designed and managed personally by Laura.
+        detail designed and managed personally by me.
       </p>
     </>
   ),
@@ -86,7 +86,7 @@ const dorking = makeLocation({
         Dorking celebrations split between family at-home work across
         Dorking and the surrounding villages, vineyard-style
         milestone events around Denbies Wine Estate, and country-
-        house weddings at Wotton House and Beaverbrook. We scale the
+        house weddings at Wotton House and Beaverbrook. I scale the
         styling to either: a single statement installation for an
         intimate at-home party, or a full multi-zone styling across
         reception rooms, gardens and marquees.

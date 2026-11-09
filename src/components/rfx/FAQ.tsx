@@ -13,6 +13,18 @@ const FAQS: FAQItem[] = [
   {
     q: "What areas do you cover?",
     a: "I'm based in Surrey and mostly work across Cobham, Weybridge, Esher, Oxshott, Guildford, Reigate, Farnham and Horsham. I also travel into London and the surrounding Home Counties - just ask when you enquire.",
+    aNode: (
+      <>
+        I'm based in Surrey and mostly work across{" "}
+        <a href="/party-styling-cobham/" className={linkCx}>Cobham</a>,{" "}
+        <a href="/party-styling-weybridge/" className={linkCx}>Weybridge</a>,{" "}
+        <a href="/party-styling-esher/" className={linkCx}>Esher</a>,{" "}
+        <a href="/party-styling-oxshott/" className={linkCx}>Oxshott</a>,{" "}
+        <a href="/party-styling-guildford/" className={linkCx}>Guildford</a>,{" "}
+        <a href="/party-styling-reigate/" className={linkCx}>Reigate</a>, Farnham and{" "}
+        <a href="/party-styling-horsham/" className={linkCx}>Horsham</a>. I also travel into London and the surrounding Home Counties - just ask when you enquire.
+      </>
+    ),
   },
   {
     q: "How much does event styling cost?",
@@ -36,11 +48,12 @@ const FAQS: FAQItem[] = [
   },
   {
     q: "Can I see examples of your work?",
-    a: "The best place to see my work is Instagram at @riverfox_events, where you'll find an archive of past celebrations. There are more photos on each of the service pages.",
+    a: "The best place to see my work is Instagram at @riverfox_events, where you'll find an archive of past celebrations. There are more photos on the Our work page and on each of the service pages.",
     aNode: (
       <>
         The best place to see my work is{" "}
-        <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className={linkCx}>Instagram at @riverfox_events</a>, where you'll find an archive of past celebrations. There are more photos on each of the service pages.
+        <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className={linkCx}>Instagram at @riverfox_events</a>, where you'll find an archive of past celebrations. There are more photos on the{" "}
+        <a href="/our-work/" className={linkCx}>Our work</a> page and on each of the service pages.
       </>
     ),
   },

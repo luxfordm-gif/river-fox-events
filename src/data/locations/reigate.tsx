@@ -13,12 +13,12 @@ const reigate = makeLocation({
   uniqueSeoDescription:
     "Fifteen minutes from the studio - children's party styling in Reigate, from first birthdays to big themed celebrations, individually designed by Laura.",
   uniqueHeroLine: <>Reigate birthday decorations,</>,
-  uniqueHeroSub: <>Our Horley studio is fifteen minutes away, so balloon garlands, themed backdrops and painted signs go up on the morning and come down the same night.</>,
+  uniqueHeroSub: <>My Horley studio is fifteen minutes away, so balloon garlands, themed backdrops and painted signs go up on the morning and come down the same night.</>,
   uniqueUspBody:
     "Planning a celebration in Reigate? River Fox Events draws together polished styling, statement balloon installations and the details that make a room feel considered. Each one is individually designed around your child, your space and your vision, for a day that feels personal, exciting and unlike anything off a shelf.",
   uniqueServicesHeading: (
     <>
-      Children's parties are most of what we do.{" "}
+      Children's parties are most of what I do.{" "}
       <em className="t-accent">
         The grown-up days as well.
       </em>
@@ -26,8 +26,8 @@ const reigate = makeLocation({
   ),
   uniqueServicesIntro: (
     <>
-      Reigate families mostly come to us for a child's birthday, and that's
-      our focus. Christenings, milestone birthdays and corporate work are
+      Reigate families mostly come to me for a child's birthday, and that's
+      my focus. Christenings, milestone birthdays and corporate work are
       handled with the same care when you need them.
     </>
   ),
@@ -71,11 +71,11 @@ const reigate = makeLocation({
         postcode. Every celebration is individually designed around your
         brief - concept, balloon installations, backdrops, signage,
         cake table and tablescape, all installed and broken down by
-        us.
+        me.
       </p>
       <p>
-        Our studio is in Horley, fifteen minutes south, which makes
-        Reigate one of the closest towns we cover. That proximity
+        My studio is in Horley, fifteen minutes south, which makes
+        Reigate one of the closest towns I cover. That proximity
         means flexible install windows, late-night breakdowns and the
         kind of last-minute adjustments that aren't realistic from a
         stylist further afield.
@@ -89,7 +89,7 @@ const reigate = makeLocation({
         Reigate Hill and across the Reigate Heath residential roads,
         milestone events at private homes throughout Banstead and
         Tadworth, and country-house weddings at Hartsfield Manor and
-        Nutfield Priory. We scale the styling to either: a single
+        Nutfield Priory. I scale the styling to either: a single
         statement installation for an intimate party, or a full multi-
         zone styling across reception rooms, gardens and marquees.
       </p>
@@ -100,7 +100,7 @@ const reigate = makeLocation({
     heading: (
       <>
         Fifteen minutes{" "}
-        <em className="t-accent">from us.</em>
+        <em className="t-accent">from me.</em>
       </>
     ),
     body: (

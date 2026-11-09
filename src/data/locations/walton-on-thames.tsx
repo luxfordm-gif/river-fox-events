@@ -18,7 +18,7 @@ const waltonOnThames = makeLocation({
     "Planning a celebration in Walton-on-Thames? River Fox Events brings together considered styling, statement balloon installations and the details that make a day memorable. Each event is individually designed around your child, your space and your vision, leaving a day that feels personal, exciting and one of a kind.",
   uniqueServicesHeading: (
     <>
-      Children's parties are where we shine.{" "}
+      Children's parties are where I shine.{" "}
       <em className="t-accent">
         The grown-up occasions too.
       </em>
@@ -27,7 +27,7 @@ const waltonOnThames = makeLocation({
   uniqueServicesIntro: (
     <>
       Most Walton-on-Thames work begins with a child's birthday, and that's
-      our focus. Christenings, milestones and corporate work are handled with
+      my focus. Christenings, milestones and corporate work are handled with
       the same care when you need them.
     </>
   ),
@@ -71,12 +71,12 @@ const waltonOnThames = makeLocation({
         across the KT12 postcode. Every celebration is built from
         scratch around your brief - concept, balloon installations,
         backdrops, signage, cake table and tablescape, all installed
-        and broken down by us.
+        and broken down by me.
       </p>
       <p>
-        Our studio is in Horley and Walton sits firmly in our regular
+        My studio is in Horley and Walton sits firmly in my regular
         Surrey coverage. Full install and breakdown handled, every
-        detail designed and managed personally by Laura.
+        detail designed and managed personally by me.
       </p>
     </>
   ),
@@ -86,7 +86,7 @@ const waltonOnThames = makeLocation({
         Walton celebrations split between family at-home work across
         Oatlands Park, riverside celebrations at properties along
         Walton Lane and the Thames, and corporate and milestone events
-        at Brooklands and Mercedes-Benz World just along the road. We
+        at Brooklands and Mercedes-Benz World just along the road. I
         scale the styling to either: a single statement installation
         for an intimate first-birthday or christening, or a full multi-
         zone styling for a riverside wedding across marquees, gardens

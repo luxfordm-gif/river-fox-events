@@ -16,10 +16,10 @@ const forestRow = makeLocation({
   uniqueHeroLine: <>Forest Row birthdays,</>,
   uniqueHeroSub: <>Gardens on the edge of Ashdown Forest, around Hartfield and Nutley, suit balloon hoops, woodland-themed backdrops and picnic setups for little ones.</>,
   uniqueUspBody:
-    "For Forest Row families wanting a celebration with a little more to it, River Fox Events designs days that feel personal, memorable and beautifully resolved. Built around statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes and village venues into celebrations children and guests remember well beyond the day.",
+    "For Forest Row families wanting a celebration with a little more to it, I design days that feel personal, memorable and beautifully resolved. Built around statement balloon installations, bespoke backdrops and thoughtful styling, I transform homes and village venues into celebrations children and guests remember well beyond the day.",
   uniqueServicesHeading: (
     <>
-      Children's parties are our specialism.{" "}
+      Children's parties are my specialism.{" "}
       <em className="t-accent">
         The grown-up days too.
       </em>
@@ -28,7 +28,7 @@ const forestRow = makeLocation({
   uniqueServicesIntro: (
     <>
       Most Forest Row bookings are for a child's birthday, and that's where
-      our time goes. Christenings, milestones and corporate work are styled
+      my time goes. Christenings, milestones and corporate work are styled
       with the same care when you need them.
     </>
   ),
@@ -51,7 +51,7 @@ const forestRow = makeLocation({
     "Chelwood Gate",
     "Danehill",
     "Maresfield",
-    "Fairwarp",
+    "East Grinstead",
     "Crowborough",
   ],
   mapQuery: "Forest+Row,East+Sussex,England,UK&z=11",
@@ -73,11 +73,11 @@ const forestRow = makeLocation({
         styling across the RH18 postcode and the wider forest area.
         Every celebration is individually designed around your brief -
         concept, balloon installations, backdrops, signage, cake
-        table and tablescape, all installed and broken down by us.
+        table and tablescape, all installed and broken down by me.
       </p>
       <p>
-        Our studio is in Horley, around thirty-five minutes south on
-        the A22, and the Ashdown Forest patch is part of our regular
+        My studio is in Horley, around thirty-five minutes south on
+        the A22, and the Ashdown Forest patch is part of my regular
         coverage. Full install and breakdown handled - including the
         weather-contingency planning the forest setting often asks
         for.
@@ -92,7 +92,7 @@ const forestRow = makeLocation({
         Hartfield, country-house weddings and milestones at Ashdown
         Park Hotel and the venues set into the forest, and outdoor
         celebrations across the Ashdown Forest commons and clearings.
-        We scale the styling to either: a single statement
+        I scale the styling to either: a single statement
         installation for an intimate gathering, or a full multi-zone
         styling for a forest-edge wedding across marquees, lawns and
         reception rooms.

@@ -154,6 +154,21 @@ const FAQS = [
   {
     q: "Which areas do you cover?",
     a: "All of Surrey. I dress doorways in Cobham, Esher, Weybridge, Oxshott, Walton-on-Thames, Kingston, Twickenham, East Molesey, Kingswood, Tadworth, Banstead, Epsom, Leatherhead, Dorking, Reigate, Redhill, Guildford, Oxted and Horley, where my studio is, and the villages in between. If your town isn't listed, send your postcode and I'll confirm.",
+    aNode: (
+      <>
+        All of Surrey. I dress doorways in <a href="/party-styling-cobham/" className="text-link">Cobham</a>,{" "}
+        <a href="/party-styling-esher/" className="text-link">Esher</a>, <a href="/party-styling-weybridge/" className="text-link">Weybridge</a>,{" "}
+        <a href="/party-styling-oxshott/" className="text-link">Oxshott</a>,{" "}
+        <a href="/party-styling-walton-on-thames/" className="text-link">Walton-on-Thames</a>, Kingston,
+        Twickenham, East Molesey, Kingswood, Tadworth, Banstead,{" "}
+        <a href="/party-styling-epsom/" className="text-link">Epsom</a>, Leatherhead,{" "}
+        <a href="/party-styling-dorking/" className="text-link">Dorking</a>, <a href="/party-styling-reigate/" className="text-link">Reigate</a>,
+        Redhill, <a href="/party-styling-guildford/" className="text-link">Guildford</a>,{" "}
+        <a href="/party-styling-oxted/" className="text-link">Oxted</a> and Horley, where my studio is, and the
+        villages in between. If your town isn't listed, send your postcode and
+        I'll confirm.
+      </>
+    ),
   },
   {
     q: "Do you travel outside Surrey?",
@@ -169,7 +184,19 @@ const FAQS = [
   },
   {
     q: "Do you dress doorways for businesses as well as homes?",
-    a: "Yes. I dress front doors and porches for homes, and entrances for shops, salons, restaurants, clinics and offices, styled to your paintwork or brand colours.",
+    a: "Yes. I dress front doors and porches for homes, and entrances for shops, salons, restaurants, clinics and offices, styled to your paintwork or brand colours. For Christmas parties and displays inside, have a look at my Christmas decorations journal.",
+    aNode: (
+      <>
+        Yes. I dress front doors and porches for homes, and entrances for
+        shops, salons, restaurants, clinics and offices, styled to your
+        paintwork or brand colours. For Christmas parties and displays inside,
+        have a look at my{" "}
+        <a href="/journal/christmas-decorations-surrey/" className="text-link">
+          Christmas decorations journal
+        </a>
+        .
+      </>
+    ),
   },
   {
     q: "What's the difference between fresh spruce and faux?",

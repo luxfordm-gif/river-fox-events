@@ -27,7 +27,7 @@ const cobham = makeLocation({
   uniqueServicesIntro: (
     <>
       Most Cobham bookings are for a child's birthday, and that's where most
-      of our time goes. The same care shapes christenings, milestone
+      of my time goes. The same care shapes christenings, milestone
       birthdays and corporate events when you need them.
     </>
   ),
@@ -71,10 +71,10 @@ const cobham = makeLocation({
         postcode. Every celebration is individually designed around your
         brief - concept, balloon installations, backdrops, signage,
         cake table and tablescape, all installed and broken down by
-        us.
+        me.
       </p>
       <p>
-        Our studio is in Horley and Cobham sits firmly in our
+        My studio is in Horley and Cobham sits firmly in my
         regular Surrey coverage. Same-day install and breakdown, no
         travel surcharges for the standard celebration, and full
         management on the day.
@@ -87,7 +87,7 @@ const cobham = makeLocation({
         Cobham celebrations split between family at-home work along
         the village high street, the Stoke d'Abernon end and the
         Fairmile Lane estate roads, and venue events at Painshill
-        Park, Brooklands and the surrounding hospitality spaces. We
+        Park, Brooklands and the surrounding hospitality spaces. I
         scale the styling to either: a single statement installation
         for an intimate party, or a full multi-zone styling across
         drawing rooms, gardens and marquees.
@@ -113,7 +113,7 @@ const cobham = makeLocation({
           spaces, each of which takes a styling installation differently.
         </p>
         <p>
-          Operationally the area is a quick run from us via the A3 and the
+          Operationally the area is a quick run from me via the A3 and the
           M25, which keeps the day comfortable. Same-morning installs,
           late-night breakdowns once the last guest has gone, and no
           awkward overnight returns. Oxshott, Esher, Stoke d'Abernon and
@@ -123,8 +123,8 @@ const cobham = makeLocation({
           Most enquiries arrive with a date, a venue or postcode and a
           rough feeling rather than a finished brief. From the first
           conversation we shape the rest together - palette, installations,
-          tablescape, signage, the install and the breakdown. Laura designs
-          and runs every event personally.
+          tablescape, signage, the install and the breakdown. I design
+          and run every event personally.
         </p>
       </>
     ),

@@ -15,19 +15,19 @@ const weybridge = makeLocation({
   uniqueHeroLine: <>Weybridge balloon styling,</>,
   uniqueHeroSub: <>St George's Hill gardens and Oatlands Park homes, finished with balloon hoops, painted sailboards and light-up numbers for the birthday child.</>,
   uniqueUspBody:
-    "For Weybridge families looking for something with a little more to it, River Fox Events designs celebrations that feel personal, memorable and beautifully resolved. Built around statement balloon installations, bespoke backdrops and thoughtful styling, we transform homes, gardens and venues across the town into days children and guests remember long after the last guest leaves.",
+    "For Weybridge families looking for something with a little more to it, I design celebrations that feel personal, memorable and beautifully resolved. Built around statement balloon installations, bespoke backdrops and thoughtful styling, I transform homes, gardens and venues across the town into days children and guests remember long after the last guest leaves.",
   uniqueServicesHeading: (
     <>
       Children's parties first, always.{" "}
       <em className="t-accent">
-        We style the milestones too.
+        I style the milestones too.
       </em>
     </>
   ),
   uniqueServicesIntro: (
     <>
-      Weybridge families mostly come to us for a child's birthday, and that's
-      our focus. The same eye goes into christenings, milestones and corporate
+      Weybridge families mostly come to me for a child's birthday, and that's
+      my focus. The same eye goes into christenings, milestones and corporate
       work when the occasion calls for it.
     </>
   ),
@@ -71,13 +71,13 @@ const weybridge = makeLocation({
         postcode. Every celebration is individually designed around your
         brief - concept, balloon installations, backdrops, signage,
         cake table and tablescape, all installed and broken down by
-        us.
+        me.
       </p>
       <p>
-        Our studio is in Horley and Weybridge sits firmly in our
+        My studio is in Horley and Weybridge sits firmly in my
         regular Surrey coverage. Same-day install and breakdown, full
         management on the day, and every detail designed and
-        delivered personally by Laura.
+        delivered personally by me.
       </p>
     </>
   ),
@@ -87,7 +87,7 @@ const weybridge = makeLocation({
         Weybridge celebrations split between family at-home work on
         St George's Hill and across Oatlands Park, riverside
         celebrations along the Thames, and venue events at Brooklands
-        Museum and Mercedes-Benz World. We scale the styling to
+        Museum and Mercedes-Benz World. I scale the styling to
         either: a single statement installation for an intimate
         celebration, or a full multi-zone styling across drawing
         rooms, gardens and marquees.
@@ -109,7 +109,7 @@ const weybridge = makeLocation({
           dictates what the celebration wants - a drawing room of a
           certain proportion, a garden built for a marquee, a driveway
           that handles arrival differently than a London street does.
-          Most of our Weybridge at-home work happens here or across
+          Most of my Weybridge at-home work happens here or across
           Oatlands Park, and the design conversation tends to start
           with the architecture.
         </p>

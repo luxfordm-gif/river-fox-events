@@ -157,7 +157,7 @@ type LocationInput = {
    *  snippet, so a shared value makes every location look identical.
    *  Falls back to a generic templated paragraph when omitted. */
   uniqueUspBody?: string;
-  /** Override the "Our signature experiences." services-cards heading/intro.
+  /** Override the "What I style." services-cards heading/intro.
    *  Use on children's-party-led pages to demote the block to a secondary
    *  "we also style X" framing. Falls back to the shared default. */
   uniqueServicesHeading?: ReactNode;
@@ -294,10 +294,10 @@ export function makeLocation(input: LocationInput): LocationConfig {
             ? uniqueWhatWeDoBody
             : uniqueWhatWeDoLead && <p>{uniqueWhatWeDoLead}</p>}
           <p>
-            We work with families and businesses across {cityName}
+            I work with families and businesses across {cityName}
             {villagesIntro ? `, ${villagesIntro}` : ""} and the surrounding
-            villages - individually designing celebrations around your
-            vision, then handling every detail on the day.
+            villages, designing each celebration around your ideas and
+            handling every detail on the day.
           </p>
         </>
       ),
@@ -385,7 +385,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       ],
       closingLine: (
         <>
-          We arrive before your first guest and leave once everything is
+          I arrive before your first guest and leave once everything is
           cleared. You do nothing except enjoy the day.
         </>
       ),
@@ -426,39 +426,65 @@ export function makeLocation(input: LocationInput): LocationConfig {
         q: `Do you style events in ${cityName}?`,
         a:
           uniquePresenceAnswer ??
-          `Yes - ${cityName} is part of our regular ${region} coverage, along with ${villagesFaq} and the surrounding villages.`,
+          `Yes - ${cityName} is part of my regular ${region} coverage, along with ${villagesFaq} and the surrounding villages.`,
       },
       {
         q: "Are you a party planner or party stylist? What's the difference?",
-        a: "Laura is a party stylist. She designs the decorations, brings them to your home or venue, sets everything up before guests arrive and takes it all down afterwards. That covers balloon installations, backdrops, signs and themed props. The venue, food and entertainment stay with you, or with your planner if you have one.",
+        a: "I'm a party stylist. I design the decorations, bring them to your home or venue, set everything up before guests arrive and take it all down afterwards. That covers balloon installations, backdrops, signs and themed props. The venue, food and entertainment stay with you, or with your planner if you have one.",
+        // Linked phrases go to the journal piece that's really about them,
+        // so every town page feeds the journal (2026-11-09).
+        aNode: (
+          <>
+            I'm a{" "}
+            <a href="/journal/hiring-an-event-stylist-surrey/" className="text-link">
+              party stylist
+            </a>
+            . I design the decorations, bring them to your home or venue, set
+            everything up before guests arrive and take it all down
+            afterwards. That covers balloon installations, backdrops, signs
+            and themed props. The venue, food and entertainment stay with you,
+            or with your planner if you have one.
+          </>
+        ),
       },
       {
         q: "How far in advance should I book?",
         a:
           uniqueLeadTimeAnswer ??
-          `For events in ${cityName} we recommend enquiring at least 6–8 weeks ahead, particularly for weekend dates during school holidays - these book up quickly. That said, always worth asking as last-minute availability does occasionally come up.`,
+          `For events in ${cityName}, I'd suggest enquiring at least 6–8 weeks ahead, especially for weekends in the school holidays, as these book up quickly. It's still worth asking at shorter notice, as dates do sometimes come free.`,
       },
       {
         q: "Do you travel to my home or venue?",
-        a: `Yes - whether it's your home, a village hall, a restaurant, a hotel or a private hire space in or around ${cityName}, we come to you. Setup and breakdown are fully included.`,
+        a: `Yes, I come to you, whether it's your home, a village hall, a restaurant, a hotel or a private hire space in or around ${cityName}. Setting up and taking everything down are both included.`,
       },
       {
         q: `How much does event styling cost in ${cityName}?`,
-        a: `Pricing depends on the type of celebration and the scope of the brief. Typically our events start from £300, with larger or more involved designs ranging from £800 – £1,500+.`,
+        a: `It depends on the type of celebration and the size of the brief. Events start from £300, with larger or more involved designs usually ranging from £800 to £1,500+.`,
       },
       {
         q: "Can I choose my own theme and colours?",
-        a: "Each celebration is shaped around your style and vision. Any inspiration you have can be shared and developed into a design that feels cohesive and considered.",
+        a: "Yes. Send me a theme, a colour palette or a photo you love, and I'll design the celebration around it.",
       },
       {
         q: "What happens on the day?",
-        a: `We arrive ahead of your event to install every detail - from statement installations to custom backdrops, tablescapes and styled elements - ensuring everything is in place before guests arrive. Once the celebration has finished, we return for a seamless breakdown.`,
+        a: `I arrive before your guests and install everything, from the balloon installations to the backdrops, tablescapes and signage, so it's all in place when people walk in. Once the celebration is over, I come back to pack it all away.`,
+        aNode: (
+          <>
+            I arrive before your guests and{" "}
+            <a href="/journal/from-design-to-delivery/" className="text-link">
+              install everything
+            </a>
+            , from the balloon installations to the backdrops, tablescapes and
+            signage, so it's all in place when people walk in. Once the
+            celebration is over, I come back to pack it all away.
+          </>
+        ),
       },
       ...(uniqueExtraFaq ? [uniqueExtraFaq] : []),
       ...(uniqueExtraFaqs ?? []),
     ],
     nearby: {
-      eyebrow: "Where we work",
+      eyebrow: "Where I work",
       heading: (
         <>
           Styling celebrations across{" "}
@@ -469,8 +495,8 @@ export function makeLocation(input: LocationInput): LocationConfig {
       ),
       intro: (
         <>
-          Every piece is designed and prepared at our studio in Horley,
-          then brought to you and installed on the day. We travel across
+          Every piece is designed and prepared at my studio in Horley,
+          then brought to you and installed on the day. I travel across
           Surrey and into London, so if your venue isn't listed below,
           just ask.
         </>

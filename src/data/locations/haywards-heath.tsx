@@ -21,14 +21,14 @@ const haywardsHeath = makeLocation({
     <>
       Children's parties are the main event.{" "}
       <em className="t-accent">
-        We cover the rest as well.
+        I cover the rest as well.
       </em>
     </>
   ),
   uniqueServicesIntro: (
     <>
-      Families across Haywards Heath mostly book us for a child's birthday,
-      and that's our focus. The same attention goes into christenings,
+      Families across Haywards Heath mostly book me for a child's birthday,
+      and that's my focus. The same attention goes into christenings,
       milestones and corporate events when you need them.
     </>
   ),
@@ -73,13 +73,13 @@ const haywardsHeath = makeLocation({
         and RH17 postcodes. Every celebration is individually designed
         around your brief - concept, balloon installations, backdrops,
         signage, cake table and tablescape, all installed and broken
-        down by us.
+        down by me.
       </p>
       <p>
-        Our studio is in Horley, around thirty-five minutes by road,
-        and Haywards Heath sits squarely within our regular mid-Sussex
+        My studio is in Horley, around thirty-five minutes by road,
+        and Haywards Heath sits squarely within my regular mid-Sussex
         coverage. Full install and breakdown handled, every detail
-        designed and managed personally by Laura.
+        designed and managed personally by me.
       </p>
     </>
   ),
@@ -90,7 +90,7 @@ const haywardsHeath = makeLocation({
         across Lindfield and Cuckfield village homes, country-house
         weddings and milestone events at Borde Hill Garden, Ockenden
         Manor and the venues around Bolney, and the larger county-
-        scale work at the South of England Showground at Ardingly. We
+        scale work at the South of England Showground at Ardingly. I
         scale the styling to either: an intimate cake-table install
         for a christening at home, or a full multi-zone styling for a
         wedding across reception rooms, gardens and marquees.
