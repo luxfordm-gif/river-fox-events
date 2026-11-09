@@ -50,13 +50,21 @@ const INTRO_SLIDES = [
   { src: imgRainbowFive, alt: "Rainbow balloon hoop around a light-up 5 with a pastel balloon installation" },
 ];
 
+/* Second half of the intro: one still photo of a whole styled setting (Matt
+   split the intro into two 50/50s, 2026-11-09). Chosen because no other
+   page uses it; the Two Wild photo was already on several. */
+const SETTING_PHOTO = galleryPhoto(
+  "services/childrens-parties/garden-picnic-party-pastel-balloons-low-table.webp"
+);
+
 /* "Balloons as part of the whole room": one large photo, then a column of
-   six (Matt, 2026-11-07). The gallery's 1400px copies keep the page light. */
+   five (Matt, 2026-11-07). The gallery's 1400px copies keep the page light.
+   2026-11-09: the Stubbs gender reveal sign came out, and the bunny picnic
+   (mostly table) became Peter Rabbit, where the balloons lead. */
 const RECENT_WORK = [
   "journal/dylan-christening-first-birthday/dylan-first-birthday-teddy-cutout-chrome-gold-balloons.webp",
   "services/childrens-parties/hot-air-balloon-teddy-basket-neutral.webp",
-  "services/childrens-parties/bunny-picnic-party-pink-arches-low-table.webp",
-  "river-fox-events-baby-stubbs-gender-reveal-he-or-she-arch.webp",
+  "services/childrens-parties/peter-rabbit-first-birthday-blue-balloon-backdrop.webp",
   "services/milestones/gloria-80th-birthday-table-centrepiece-burhill.webp",
   "services/milestones/13th-birthday-pink-light-up-numbers-garland.webp",
 ].map((source) => {
@@ -183,25 +191,41 @@ const BalloonInstallations = () => {
           }
         >
           {/* Short direct answer near the top, for search and AI answers
-              (SEO Vendor GEO audit, 2026-11-09). */}
+              (SEO Vendor GEO audit, 2026-11-09). The copy is shared evenly
+              between this half and the next (Matt, 2026-11-09). */}
           <p>
             I design and install balloon decorations across Surrey: organic
             arches, garlands, balloon walls, number stacks and table
-            centrepieces, each sized and coloured to your room. I set
-            everything up before your guests arrive and come back to take it
-            down afterwards.
+            centrepieces, each sized and coloured to your room.
           </p>
           <p>
             Balloon arches are where I started, and plenty of people still
-            come to me just for balloon arch hire or a few balloon garlands. Over eight
-            years and 400+ events, I've learned balloons look their best when{" "}
+            come to me just for balloon arch hire or a few balloon garlands.
+          </p>
+        </CPReveal>
+
+        <CPReveal
+          id="bi-setting"
+          imageSide="left"
+          image={SETTING_PHOTO.src}
+          alt={SETTING_PHOTO.alt}
+          tone="ph-warm"
+          headline={
+            <>
+              Then I style{" "}
+              <em className="t-accent">
+                everything around them.
+              </em>
+            </>
+          }
+        >
+          <p>
+            Over eight years and 400+ events, I've learned balloons look their
+            best when{" "}
             <a href="/journal/beyond-the-balloon-arch/" className="text-link">
               the room is styled around them
             </a>
-            .
-          </p>
-          <p>
-            So I build the whole setting: backdrops, props, name boards and
+            . So I build the whole setting: backdrops, props, name boards and
             tablescapes chosen to sit with the balloons.
           </p>
           <p>
@@ -212,6 +236,8 @@ const BalloonInstallations = () => {
             <a href="/party-styling-cobham/" className="text-link">Cobham</a>,{" "}
             <a href="/party-styling-esher/" className="text-link">Esher</a> and{" "}
             <a href="/party-styling-weybridge/" className="text-link">Weybridge</a>.
+            I set everything up before your guests arrive and come back to
+            take it down afterwards.
           </p>
         </CPReveal>
 
