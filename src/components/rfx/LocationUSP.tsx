@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ICON_REGISTRY, type IncludedIconKey } from "./CPIncluded";
+import { useSwipeDots } from "@/hooks/useSwipeDots";
 
 type LocationUSPProps = {
   cityName?: string;
@@ -46,6 +47,9 @@ const firstSentence = (text: string) => text.match(/^.*?[.?!](?=\s|$)/)?.[0] ?? 
 const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  /* Phones: the four points are a swipe row with dots, one at a time with
+     the next peeking in (Matt, 2026-11-09). Tablet: 2 x 2. Desktop: 4 across. */
+  const { track, active, onScroll, goTo } = useSwipeDots();
 
   useEffect(() => {
     const el = ref.current;
@@ -101,16 +105,18 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
           )}
         </p>
 
-        <div
-          ref={ref}
-          className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6"
+        <div ref={ref} className="mt-12 md:mt-16">
+        <ul
+          ref={track}
+          onScroll={onScroll}
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-8 px-5 scroll-px-5 list-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:mx-0 md:px-0 md:overflow-visible"
         >
           {TRUST_POINTS.map(({ icon, label, body: pointBody }, i) => {
             const Icon = ICON_REGISTRY[icon];
             return (
-              <div
+              <li
                 key={label}
-                className="flex flex-col items-center text-center px-4"
+                className="shrink-0 basis-[72%] snap-center md:basis-auto flex flex-col items-center text-center px-4"
                 style={{
                   opacity: visible ? 1 : 0,
                   transform: visible ? "translateY(0)" : "translateY(24px)",
@@ -140,9 +146,23 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
                 >
                   {pointBody}
                 </p>
-              </div>
+              </li>
             );
           })}
+        </ul>
+        <div className="flex md:hidden justify-center gap-2 mt-6" role="tablist" aria-label="Choose a reason">
+          {TRUST_POINTS.map(({ label }, i) => (
+            <button
+              key={label}
+              type="button"
+              role="tab"
+              aria-selected={i === active}
+              aria-label={`Show ${label}`}
+              onClick={() => goTo(i)}
+              className={`tcard-dot ${i === active ? "is-active" : ""}`}
+            />
+          ))}
+        </div>
         </div>
       </div>
     </section>

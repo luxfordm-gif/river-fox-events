@@ -141,6 +141,7 @@
        guide, ready for Matt's notes. */
     --section-y: 120px;                /* Section padding · top and bottom of every section (64 phone, 80 laptop, 120 from 1440) */
     --section-gap: calc(var(--section-y) * 1.25);   /* Section gap · the single gap between two sections that share a background, a step above section padding now the whole site is one background (80 phone, 100 laptop, 150 from 1440; Matt, 2026-11-08) */
+    --gap-divider: calc(var(--section-gap) / 2);   /* Divider gap · space above and below a section divider line (home mission line, service-page tiles): half a Section gap (64 phone, 50 laptop, 75 from 1440; phones raised from 40 by Matt, 2026-11-09, "it all looks really tight") */
     --gap-heading-text: 12px;          /* Heading to text · section heading to the paragraph directly under it */
     --gap-heading-content: 40px;       /* Heading to content · section heading to a list, photos, a grid or the FAQ questions (32 phone) */
     --gap-text-content: 48px;          /* Text to content · a paragraph down to the list or grid below it (40 phone) */
@@ -221,6 +222,7 @@
       --lh-h2: 1.1;
       --lh-h3: 1.1;
       --section-y: 64px;
+      --gap-divider: var(--section-y);
       --gap-heading-content: 32px;
       --gap-text-content: 40px;
       --gap-inline: 16px;
@@ -1039,14 +1041,20 @@
   /* Home mission line (Mission.tsx): words darken one by one on scroll. */
   .mission-line { max-width: 30ch; text-wrap: pretty; }
   .mission-word { display: inline; }
-  /* The divider sits in the middle of one section gap: half above it, half
-     below before the services heading (Matt, 2026-11-08). */
-  .mission-rule { margin-top: calc(var(--section-gap) / 2); border-top: 1px solid hsl(var(--divider)); }
-  div:not(.rfx-xmas) > main > #mission + .rfx-section { padding-top: calc(var(--section-gap) / 2); }
-  /* The same soft divider above a section (ServicesCards divided): half the
-     gap above the line, half below it before the heading (Matt, 2026-11-09). */
-  div:not(.rfx-xmas) > main > .rfx-section + .rfx-section.rfx-divided { padding-top: calc(var(--section-gap) / 2); }
-  .rfx-divided-rule { border-top: 1px solid hsl(var(--divider)); margin-bottom: calc(var(--section-gap) / 2); }
+  /* The divider sits in the middle of the gap: one Divider gap above it, one
+     below before the services heading (Matt, 2026-11-08; more room on
+     phones 2026-11-09). */
+  .mission-rule { margin-top: var(--gap-divider); border-top: 1px solid hsl(var(--divider)); }
+  div:not(.rfx-xmas) > main > #mission + .rfx-section { padding-top: var(--gap-divider); }
+  /* Phones: the services heading under the mission line starts at the same
+     left edge as the line above it, instead of centred (Matt, 2026-11-09). */
+  @media (max-width: 767px) {
+    div:not(.rfx-xmas) > main > #mission + .rfx-section #exp-heading { text-align: left; }
+  }
+  /* The same soft divider above a section (ServicesCards divided): one
+     Divider gap above the line, one below it before the heading (Matt, 2026-11-09). */
+  div:not(.rfx-xmas) > main > .rfx-section + .rfx-section.rfx-divided { padding-top: var(--gap-divider); }
+  .rfx-divided-rule { border-top: 1px solid hsl(var(--divider)); margin-bottom: var(--gap-divider); }
 
   /* Pricing (CPPricing): a boxed Warm card on the page background instead of
      a full-width band (Matt, 2026-11-08). */
