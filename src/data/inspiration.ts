@@ -69,10 +69,13 @@ export const INSPIRATION_MILESTONES: InstagramStripImage[] = [
   fromGallery("services/milestones/navy-gold-bubble-balloon-table-centrepieces.webp"),
 ];
 
+/* One business Christmas garland (the Reigate restaurant) among the corporate
+   installs - one Christmas photo, not more (Matt, 2026-11-09). */
 export const INSPIRATION_CORPORATE: InstagramStripImage[] = [
   { src: igOfficeChristmasBlackGoldHalfArchStreamers, alt: "Black and gold balloon half arch with gold streamers and starbursts for an office Christmas party" },
   { src: igGalaDinnerStaircaseNavyGoldBalloonGarland, alt: "Navy, white and gold balloon garland climbing a staircase entrance for a charity gala dinner" },
   fromGallery("services/corporate/casino-night-balloon-columns-red-black-gold.webp"),
+  fromGallery("christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp"),
   fromGallery("services/corporate/restaurant-entrance-garland-black-gold-balloons.webp"),
   fromGallery("services/corporate/shop-entrance-arch-green-white-balloons.webp"),
   fromGallery("services/corporate/lakeside-terrace-navy-balloon-arch.webp"),

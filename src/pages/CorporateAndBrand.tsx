@@ -254,6 +254,7 @@ const CorporateAndBrand = () => {
             only where a sub-service page or article exists. Sits under the last
             50/50 section (Matt, 2026-11-09). */}
         <ServicesCards
+          divided
           sectionId="cb-what-we-do"
           headingId="cb-do-heading"
           items={CORPORATE_TILES}
@@ -268,7 +269,9 @@ const CorporateAndBrand = () => {
 
         <Process sectionId="how-it-works" steps={CORPORATE_STEPS} />
 
-        <InspirationStrip id="cb-inspiration" lead="Events we've" accent="already delivered." images={withoutTilePhotos(INSPIRATION_CORPORATE, CORPORATE_TILES)} />
+        {/* The office party sequin wall stays in the strip as well as its tile:
+            it's the only corporate shimmer wall photo (Matt, 2026-11-09). */}
+        <InspirationStrip id="cb-inspiration" lead="Events we've" accent="already delivered." images={withoutTilePhotos(INSPIRATION_CORPORATE, CORPORATE_TILES.filter((t) => t.title !== "Sequin walls"))} />
 
         <ChildrensFAQ faqs={FAQS} headingId="cb-faq-heading" />
 

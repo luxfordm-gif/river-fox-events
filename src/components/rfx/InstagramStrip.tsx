@@ -18,27 +18,38 @@ type InstagramStripProps = {
  *
  * The set is rendered twice and the track slides by half its width
  * (rfx-marq), so the loop is seamless and there's never a gap at either end,
- * however wide the screen. Reduced motion: no animation, the row scrolls
+ * however wide the screen - as long as one set is wider than the screen.
+ * A short list is repeated until a set has at least MIN_PER_SET photos
+ * (10 x 340px tiles covers a 2560px screen); with only five photos the
+ * corporate strip left an empty stretch at the end of each loop on wide
+ * screens (Matt, 2026-11-09). Reduced motion: no animation, the row scrolls
  * sideways by hand instead.
  */
+const MIN_PER_SET = 10;
 const InstagramStrip = ({
   images,
   href = "https://www.instagram.com/riverfox_events/",
   handle = "@riverfox_events",
-}: InstagramStripProps) => (
-  <div className="xmas-ig" style={{ "--ig-duration": `${images.length * 10}s` } as CSSProperties}>
+}: InstagramStripProps) => {
+  const repeats = images.length ? Math.ceil(MIN_PER_SET / images.length) : 0;
+  const set = Array.from({ length: repeats }, () => images).flat();
+  return (
+  <div className="xmas-ig" style={{ "--ig-duration": `${set.length * 10}s` } as CSSProperties}>
     <ul className="xmas-ig__track">
       {[0, 1].map((copy) =>
-        images.map((img) => (
-          <li key={`${copy}-${img.src}`} className="xmas-ig__item" aria-hidden={copy === 1 ? true : undefined}>
+        set.map((img, i) => {
+          /* Only the first appearance of each photo is read out and tabbable. */
+          const repeat = copy === 1 || i >= images.length;
+          return (
+          <li key={`${copy}-${i}`} className="xmas-ig__item" aria-hidden={repeat ? true : undefined}>
             <a
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              tabIndex={copy === 1 ? -1 : undefined}
+              tabIndex={repeat ? -1 : undefined}
               className="xmas-ig__tile"
             >
-              <img src={img.src} alt={copy === 1 ? "" : img.alt} width={560} height={700} loading="lazy" decoding="async" />
+              <img src={img.src} alt={repeat ? "" : img.alt} width={560} height={700} loading="lazy" decoding="async" />
               <span className="sr-only">(opens Instagram, {handle})</span>
               <span className="xmas-ig__over" aria-hidden="true">
                 <Instagram size={22} strokeWidth={1.5} />
@@ -50,10 +61,12 @@ const InstagramStrip = ({
               </span>
             </a>
           </li>
-        ))
+          );
+        })
       )}
     </ul>
   </div>
-);
+  );
+};
 
 export default InstagramStrip;
