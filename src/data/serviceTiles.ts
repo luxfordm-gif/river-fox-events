@@ -30,7 +30,7 @@ export const MILESTONE_TILES: ServiceCardItem[] = [
   tile("Balloon garlands", "services/milestones/40th-birthday-champagne-gold-garland-restaurant.webp", "/balloon-installations/"),
   tile("Light-up numbers", "services/milestones/70th-birthday-sage-gold-light-up-numbers.webp"),
   tile("Christenings", "journal/dylan-christening-first-birthday/dylan-christening-arched-welcome-panel-balloon-garland.webp", "/journal/dylan-christening-first-birthday/"),
-  tile("Sequin walls", "services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp"),
+  tile("Sequin walls", "services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp", "/journal/shimmer-wall-hire-surrey/"),
   tile("Garden parties", "journal/garden-milestone-styling-surrey/garden-milestone-banquet-table-oxted.webp", "/journal/garden-milestone-styling-surrey/"),
   tile("Table centrepieces", "services/milestones/gloria-80th-birthday-table-centrepiece-burhill.webp"),
   tile("Baby showers", "services/milestones/baby-in-bloom-barn-twin-arches-dusty-blue.webp", "/journal/baby-shower-themes-2026/"),
@@ -39,7 +39,7 @@ export const MILESTONE_TILES: ServiceCardItem[] = [
 
 export const CORPORATE_TILES: ServiceCardItem[] = [
   tile("Branded balloon installs", "services/corporate/125-years-entrance-columns-green-white-gold-stars.webp", "/balloon-installations/"),
-  tile("Sequin walls", "journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp"),
+  tile("Sequin walls", "journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp", "/journal/shimmer-wall-hire-surrey/"),
   tile("Christmas parties", "journal/christmas-decorations-surrey/merry-christmas-panel-silver-navy-balloon-garland.webp", "/journal/christmas-decorations-surrey/"),
   tile("Shop openings", "services/corporate/dawghouse-pizza-takeaway-opening-garland-epsom.webp"),
   tile("Logo backdrops", "services/corporate/enterprise-mobility-branded-backdrop-black-gold-balloons.webp"),
