@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import InspirationStrip from "@/components/rfx/InspirationStrip";
 import { INSPIRATION_CHILDRENS } from "@/data/inspiration";
+import ServicesCards from "@/components/rfx/ServicesCards";
+import { CHILDRENS_TILES, withoutTilePhotos } from "@/data/serviceTiles";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
@@ -170,9 +172,25 @@ const ChildrensParties = () => {
           </p>
         </CPReveal>
 
-        <InspirationStrip id="cp-inspiration" accent="your party." images={INSPIRATION_CHILDRENS} />
+        {/* "What we do": photo tiles like the balloon page's, linking on
+            only where a sub-service page or article exists. Sits under the last
+            50/50 section (Matt, 2026-11-09). */}
+        <ServicesCards
+          sectionId="cp-what-we-do"
+          headingId="cp-do-heading"
+          items={CHILDRENS_TILES}
+          heading={
+            <>
+              What we love{" "}
+              <em className="t-accent">making.</em>
+            </>
+          }
+          intro="Tell us the theme and we'll build the party around it. These are the pieces families ask for most, but anything goes."
+        />
 
         <Process sectionId="how-it-works" />
+
+        <InspirationStrip id="cp-inspiration" lead="Parties we've" accent="already made." images={withoutTilePhotos(INSPIRATION_CHILDRENS, CHILDRENS_TILES)} />
 
         <CPPricing footnote="" />
 

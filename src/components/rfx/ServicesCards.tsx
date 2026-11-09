@@ -1,8 +1,10 @@
 import { useRef, useState, type ReactNode } from "react";
 /**
- * Photo tiles: a grid of small square photos with just the name underneath,
- * each linking on (the balloon page's "What we make"). Phones get a swipe
- * carousel with dots.
+ * Photo tiles: a grid of small square photos with just the name underneath
+ * (the balloon page's "What we make", and "What we do" on the three main
+ * service pages). A tile links on only when it has an href - a sub-service
+ * page or a journal article - and the rest stay plain names (Matt,
+ * 2026-11-09). Phones get a swipe carousel with dots.
  *
  * The old three-card services layout that lived here was retired on
  * 2026-11-08 (Matt): every "our services" section uses the homepage's
@@ -11,7 +13,8 @@ import { useRef, useState, type ReactNode } from "react";
  */
 export type ServiceCardItem = {
   title: string;
-  /** Not used: the tiles are plain, not links (2026-11-08). */
+  /** Optional: where the tile leads (a sub-service page or a journal article).
+      Leave it off and the tile is a plain name, as on the balloon page. */
   href?: string;
   image?: string;
   srcSet?: string;
@@ -85,19 +88,20 @@ const ServicesCards = ({
           </div>
         )}
 
-        {/* Small square photo and the name; plain tiles, not links, so no hover
-            (Matt, 2026-11-08). Phones: a
-            swipe carousel to the screen edges, next tile peeking in, dots
-            underneath. Tablet up: 4 across. */}
+        {/* Small square photo and the name. Plain tiles have no hover (Matt,
+            2026-11-08); a tile with an href is a link, its name underlined
+            like every text link and its photo easing in by 5% on hover.
+            Phones: a swipe carousel to the screen edges, next tile peeking
+            in, dots underneath. Tablet up: 4 across. */}
           <>
           <ul
             ref={track}
             onScroll={onTrackScroll}
             className="relative flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-8 px-5 scroll-px-5 list-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-4 md:gap-x-7 md:gap-y-10 md:max-w-[1040px] md:mx-auto md:px-0 md:overflow-visible"
           >
-            {items.map((s) => (
-              <li key={s.title} className="shrink-0 basis-[62%] snap-center md:basis-auto">
-                <div className="block">
+            {items.map((s) => {
+              const tile = (
+                <>
                   <div className="relative aspect-square overflow-hidden rounded-large">
                     {s.image && (
                       <img
@@ -107,7 +111,7 @@ const ServicesCards = ({
                         alt={s.alt ?? ""}
                         loading="lazy"
                         decoding="async"
-                        className="absolute inset-0 w-full h-full object-cover"
+                        className="tile-img absolute inset-0 w-full h-full object-cover"
                         style={s.position ? { objectPosition: s.position } : undefined}
                       />
                     )}
@@ -115,11 +119,20 @@ const ServicesCards = ({
                   <h3
                     className="t-h6 mt-3 md:mt-4 text-center text-ink"
                   >
-                    {s.title}
+                    {s.href ? <span className="text-link">{s.title}</span> : s.title}
                   </h3>
-                </div>
-              </li>
-            ))}
+                </>
+              );
+              return (
+                <li key={s.title} className="shrink-0 basis-[62%] snap-center md:basis-auto">
+                  {s.href ? (
+                    <a href={s.href} className="tile-link block">{tile}</a>
+                  ) : (
+                    <div className="block">{tile}</div>
+                  )}
+                </li>
+              );
+            })}
           </ul>
           <div className="flex md:hidden justify-center gap-2 mt-6" role="tablist" aria-label="Choose a tile">
             {items.map((s, i) => (
