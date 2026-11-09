@@ -14,7 +14,7 @@ const Hero = () => {
             className="t-display max-w-none mx-auto break-words text-pretty"
           >
             <span className="word-reveal in">
-              <span>Balloons&nbsp;and backdrops,</span>
+              <span>Parties&nbsp;and events,</span>
             </span>
             <br />
             <span className="word-reveal in delay-1">
@@ -26,9 +26,9 @@ const Hero = () => {
           </h1>
 
           <p className="t-lead text-ink-soft max-w-[520px] mt-3 md:mt-4 fade-up in text-center">
-            Children's parties, milestone birthdays and brand events. I design
-            each one, set it up before your guests arrive and clear it away
-            after.
+            Children's parties, milestone birthdays and brand events, from a
+            single balloon arch to the whole room. I design each one, set it up
+            before your guests arrive and clear it away after.
           </p>
 
           <div className="flex items-center justify-center gap-5 flex-wrap mt-10 fade-up in">

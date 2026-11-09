@@ -143,12 +143,12 @@ export const REVIEWS: Review[] = [
 export const ROUTES: RouteSEO[] = [
   {
     path: "/",
-    // Temporary (Matt, 2026-11-08): "(formerly Lollipop Balloons)" catches people
-    // still searching the old name. Over the 60-char target on purpose; trim back
-    // to "Party & Event Styling in Surrey | River Fox Events" once old-name searches fade.
-    title: "Party & Event Styling in Surrey | River Fox Events (formerly Lollipop Balloons)",
+    // Title trimmed to 60 chars (Matt, 2026-11-09). The old name moved into the
+    // description so people still searching "Lollipop Balloons" see it in the
+    // result; JSON-LD alternateName carries it too.
+    title: "Party & Event Styling in Surrey | River Fox Events",
     description:
-      "Balloon installs, backdrops and styling for parties and events across Surrey and London - tell me your idea and I'll design the room around it, from £300.",
+      "Party and event styling in Surrey by Laura, formerly Lollipop Balloons: balloon arches, backdrops and whole-room styling for any celebration, from £300.",
     priority: 1.0,
     changefreq: "monthly",
   },
