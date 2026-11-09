@@ -176,6 +176,7 @@ const ChildrensParties = () => {
             only where a sub-service page or article exists. Sits under the last
             50/50 section (Matt, 2026-11-09). */}
         <ServicesCards
+          divided
           sectionId="cp-what-we-do"
           headingId="cp-do-heading"
           items={CHILDRENS_TILES}

@@ -77,7 +77,7 @@
     --fs-h3: clamp(32px, 3.4vw, 52px);         /* Heading 3 · titles under a display heading, Our work galleries (32 phone and tablet) */
     --fs-h4: clamp(26px, 2.2vw, 32px);         /* Heading 4 · featured journal card, CTA and form headings, prices, phone menu (26 phone and tablet; was 40; brought down so H5 26 → H4 32 is a normal step, Matt 2026-11-08) */
     --fs-h5: clamp(22px, 1.8vw, 26px);         /* Heading 5 · card titles, FAQ questions (22 phone and tablet) */
-    --fs-h6: clamp(17px, 1.45vw, 21px);        /* Heading 6 · names under photo tiles, kept to one line (17 phone and tablet) */
+    --fs-h6: clamp(17px, 1.2vw, 18px);         /* Heading 6 · names under photo tiles, kept to one line (17 phone and tablet; max 18, was 21, Matt 2026-11-09) */
     --lh-h1: 1.04;                             /* phone 1.1 */
     --lh-h2: 1.04;                             /* phone 1.1 */
     --lh-h3: 1.04;                             /* phone 1.1 */
@@ -1039,6 +1039,10 @@
      below before the services heading (Matt, 2026-11-08). */
   .mission-rule { margin-top: calc(var(--section-gap) / 2); border-top: 1px solid hsl(var(--divider)); }
   div:not(.rfx-xmas) > main > #mission + .rfx-section { padding-top: calc(var(--section-gap) / 2); }
+  /* The same soft divider above a section (ServicesCards divided): half the
+     gap above the line, half below it before the heading (Matt, 2026-11-09). */
+  div:not(.rfx-xmas) > main > .rfx-section + .rfx-section.rfx-divided { padding-top: calc(var(--section-gap) / 2); }
+  .rfx-divided-rule { border-top: 1px solid hsl(var(--divider)); margin-bottom: calc(var(--section-gap) / 2); }
 
   /* Pricing (CPPricing): a boxed Warm card on the page background instead of
      a full-width band (Matt, 2026-11-08). */

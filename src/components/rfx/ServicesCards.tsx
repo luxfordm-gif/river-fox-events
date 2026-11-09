@@ -29,6 +29,10 @@ type ServicesCardsProps = {
   intro?: ReactNode;
   sectionId?: string;
   headingId?: string;
+  /** A soft divider halfway through the gap above, separating the tiles from
+      the 50/50 sections (Matt, 2026-11-09: the three main service pages; the
+      balloon page doesn't need one). */
+  divided?: boolean;
 };
 
 const ServicesCards = ({
@@ -37,6 +41,7 @@ const ServicesCards = ({
   intro,
   sectionId = "services",
   headingId = "services-cards-heading",
+  divided = false,
 }: ServicesCardsProps) => {
   /* Tiles on phones: track which tile is centred so the right dot lights up. */
   const track = useRef<HTMLUListElement>(null);
@@ -62,10 +67,11 @@ const ServicesCards = ({
   return (
     <section
       id={sectionId}
-      className="rfx-section white"
+      className={`rfx-section white${divided ? " rfx-divided" : ""}`}
       aria-labelledby={headingId}
     >
       <div className="container-rfx">
+        {divided && <div className="rfx-divided-rule" aria-hidden="true" />}
         {(heading || intro) && (
           <div className="text-center max-w-[760px] mx-auto mb-12 md:mb-16 fade-up">
             {heading && (
