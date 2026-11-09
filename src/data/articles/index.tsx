@@ -69,7 +69,7 @@ export const ARTICLES: Article[] = [
       "A shimmer wall gives a party one place to gather and a backdrop for every photo. Real walls from an office Christmas party and a unicorn party, and the look that suits a 50th.",
     metaDescription:
       "Shimmer wall and sequin wall hire in Surrey for milestone birthdays, children's parties and office Christmas parties, framed with balloons and set up for you.",
-    publishedAt: "2026-11-09",
+    publishedAt: "2026-11-07",
     readMinutes: 5,
     relatedSlugs: [
       "christmas-decorations-surrey",
@@ -90,7 +90,7 @@ export const ARTICLES: Article[] = [
       "What actually happens when you book an event stylist, from the moodboard and render to install morning, pack-down and pricing, with a real render-to-room example.",
     metaDescription:
       "Hiring an event stylist in Surrey? Here's what's included, from the render and palette to set-up and pack-down, what it costs and why one person does it all.",
-    publishedAt: "2026-11-09",
+    publishedAt: "2026-11-05",
     readMinutes: 5,
     relatedSlugs: [
       "from-design-to-delivery",
