@@ -183,9 +183,9 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/corporate-brand-styling",
-    title: "Corporate Event Decor & Brand Backdrops | River Fox Events",
+    title: "Corporate Event Styling & Decor in Surrey | River Fox Events",
     description:
-      "Corporate event decor across Surrey, with branded balloon installations, sequin walls and signage for launches and award nights. Trusted by P&G and Foxhills.",
+      "Corporate event styling in Surrey and London: branded balloon installs, sequin walls and logo backdrops for product launches and award nights, trusted by P&G.",
     breadcrumbName: "Corporate & Brand Styling",
     service: {
       serviceType: "Corporate Event Styling and Brand Installations",
@@ -197,12 +197,13 @@ export const ROUTES: RouteSEO[] = [
   },
   {
     path: "/balloon-installations",
-    title: "Balloon Arches & Installations in Surrey | River Fox Events",
+    title: "Balloon Decorations & Arches in Surrey | River Fox Events",
     description:
-      "Balloon arches, garlands and statement installs across Surrey, installed and collected by Laura, with full party styling available. Enquire for your date.",
+      "Balloon decorations in Surrey, from organic arches and garlands to balloon walls and number stacks, sized to your room, installed and collected by Laura.",
     breadcrumbName: "Balloon Installations",
     service: {
-      serviceType: "Balloon Installation",
+      // "Balloon decorations" is the phrase people search (RankLens, 2026-11-09).
+      serviceType: "Balloon Decorations and Installations",
       // Same town list as /christmas-door-garlands.
       areaServed: [
         "Surrey", "Cobham", "Esher", "Weybridge", "Oxshott", "Walton-on-Thames",

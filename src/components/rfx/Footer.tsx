@@ -136,7 +136,7 @@ const Footer = () => {
                 <a href="/childrens-parties/" className="opacity-85 hover:opacity-100 block">Children's Parties</a>
                 <a href="/milestone-celebrations/" className="opacity-85 hover:opacity-100 block">Milestones</a>
                 <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate</a>
-                <a href="/balloon-installations/" className="opacity-85 hover:opacity-100 block">Balloon Installations</a>
+                <a href="/balloon-installations/" className="opacity-85 hover:opacity-100 block">Balloon Decorations</a>
                 <a href="/christmas-door-garlands/" className="opacity-85 hover:opacity-100 block">Christmas Garlands</a>
               </div>
             </div>
