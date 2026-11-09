@@ -247,7 +247,8 @@
   .xmas-promo__body { text-align: left; padding-right: 64px; }
   .xmas-promo__pine img { top: -45%; right: -10%; width: 150px; }
   .xmas-promo__title { margin-top: 2px; }
-  .xmas-promo__link { margin-top: 4px; padding: 6px 0 4px; }
+  /* 2px from the title (Matt, 2026-11-09: 8px tighter). */
+  .xmas-promo__link { margin-top: 0; padding: 2px 0 4px; }
   /* Whole bar is tappable: the link's hit area stretches over the card,
      above the photo deck (z 1-4) and below the close button (z 7). */
   .xmas-promo__link::after { content: ""; position: absolute; inset: 0; z-index: 5; border-radius: inherit; }
