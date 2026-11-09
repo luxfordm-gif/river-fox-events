@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import studioImg from "@/assets/laura-portrait.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
@@ -16,17 +16,17 @@ const STATS: Stat[] = [
 ];
 
 /** Animates a number from 0 to `value` over `duration` ms once visible.
- *  Until the count-up is armed (in the browser, motion allowed) it shows the
- *  final value, so the prerendered HTML, crawlers and no-JS visitors read
- *  "400+", not "0+". */
+ *  Until the stats actually scroll into view the DOM holds the final value,
+ *  so the prerendered HTML, no-JS visitors and crawlers or AI readers that run
+ *  JavaScript without scrolling all read "400+", never "0+" (SEO Vendor GEO
+ *  audit, 2026-11-09). The stat is at opacity 0 until visible, and the reset
+ *  to 0 happens in a layout effect, before the browser paints, so the final
+ *  number never flashes. */
 const useCountUp = (value: number, visible: boolean, armed: boolean, duration = 1600) => {
   const [n, setN] = useState(value);
-  useEffect(() => {
-    if (!armed) return;
-    if (!visible) {
-      setN(0);
-      return;
-    }
+  useLayoutEffect(() => {
+    if (!armed || !visible) return;
+    setN(0);
     const start = performance.now();
     let raf = 0;
     const tick = (t: number) => {

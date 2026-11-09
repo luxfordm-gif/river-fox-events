@@ -80,7 +80,7 @@ const FAQS = [
     a: "Yes. I install everything before your guests arrive and come back afterwards to take it all down, so there's nothing left for you to deal with.",
   },
   {
-    q: "How much does a balloon arch cost?",
+    q: "How much do balloon decorations cost in Surrey?",
     a: "It depends on the size, the colours and where it's going, so I quote each one to your design. If you'd like the backdrop, props and name board too, full party styling starts from £300.",
   },
   {
@@ -96,14 +96,28 @@ const FAQS = [
     a: "Yes, and it's what most families do. Full styling starts with the balloons and builds the backdrop, props and name board around them, from £300.",
   },
   {
+    q: "Do you do balloon decorations for adult birthdays and businesses?",
+    a: "Yes. Alongside children's parties I style 18ths, 40ths, 50ths and christenings, and branded balloon installs for shops, offices and launches.",
+    aNode: (
+      <>
+        Yes. Alongside children's parties I style{" "}
+        <a href="/milestone-celebrations/" className="text-link">18ths, 40ths, 50ths and christenings</a>, and{" "}
+        <a href="/corporate-brand-styling/" className="text-link">branded balloon installs</a>{" "}
+        for shops, offices and launches.
+      </>
+    ),
+  },
+  {
     q: "Which areas do you cover?",
     a: "I'm based in Horley and cover all of Surrey, including Reigate, Cobham, Oxted, Esher, Weybridge and Guildford, plus nearby parts of London, Sussex and Kent. Just mention your postcode when you enquire.",
   },
 ];
 
-/* Reviews that talk about the balloons and how the whole room looked. */
+/* Reviews that talk about the balloons in the customer's own words. Helen A
+   (the arch) and Emily Stimson (the stack) added 2026-11-09 so the page's
+   reviews name the balloon pieces themselves. */
 const BALLOON_REVIEWS = REVIEWS.filter((r) =>
-  ["Samantha", "Sarah Lupinski", "Lee Dunn"].includes(r.a)
+  ["Samantha", "Sarah Lupinski", "Lee Dunn", "Helen A", "Emily Stimson"].includes(r.a)
 );
 
 const BalloonInstallations = () => {
@@ -142,14 +156,14 @@ const BalloonInstallations = () => {
             "Hi Laura, I'd like a quote for a balloon installation. My date and postcode are "
           )}
           lines={[
-            <>Balloon arches and installations,</>,
+            <>Balloon decorations across Surrey,</>,
             <>
               <em className="t-accent">
                 styled around your celebration.
               </em>
             </>,
           ]}
-          sub="Arches, garlands and number stacks installed across Surrey, with backdrops, props and name boards when you want the whole room styled."
+          sub="Organic arches, garlands, balloon walls and number stacks, sized and coloured to your room, with backdrops, props and name boards when you want the whole space styled."
         />
 
         <CPReveal
@@ -168,9 +182,18 @@ const BalloonInstallations = () => {
             </>
           }
         >
+          {/* Short direct answer near the top, for search and AI answers
+              (SEO Vendor GEO audit, 2026-11-09). */}
           <p>
-            That's where I started too, and plenty of people still come to me
-            just for balloon arch hire or a few balloon garlands. Over eight
+            I design and install balloon decorations across Surrey: organic
+            arches, garlands, balloon walls, number stacks and table
+            centrepieces, each sized and coloured to your room. I set
+            everything up before your guests arrive and come back to take it
+            down afterwards.
+          </p>
+          <p>
+            Balloon arches are where I started, and plenty of people still
+            come to me just for balloon arch hire or a few balloon garlands. Over eight
             years and 400+ events, I've learned balloons look their best when{" "}
             <a href="/journal/beyond-the-balloon-arch/" className="text-link">
               the room is styled around them
@@ -198,8 +221,8 @@ const BalloonInstallations = () => {
           items={WHAT_WE_MAKE}
           heading={
             <>
-              My most{" "}
-              <em className="t-accent">requested.</em>
+              The balloon decorations{" "}
+              <em className="t-accent">I'm asked for most.</em>
             </>
           }
           intro="Arches and garlands are where most celebrations start. Every one is sized and coloured to your space, and most become part of a bigger setup."
@@ -220,16 +243,17 @@ const BalloonInstallations = () => {
 
         <Process sectionId="how-it-works" />
 
-        {/* Heading and button only: the two price cards were taken out
-            (Matt, 2026-11-08). intro="" keeps the default quoting line off. */}
+        {/* Heading, a short direct answer and the button: the two price
+            cards were taken out (Matt, 2026-11-08); the question heading and
+            answer were added for search and AI answers (2026-11-09). */}
         <CPPricing
           heading={
             <>
-              Every balloon design,{" "}
-              <em className="t-accent">quoted to size.</em>
+              How much do balloon decorations{" "}
+              <em className="t-accent">cost?</em>
             </>
           }
-          intro=""
+          intro="Each design is quoted to its size, colours and venue, so a single garland costs much less than a full balloon wall. If you'd like the backdrop, props and name board as well, full party styling starts from £300."
           ctaLabel="Enquire now"
           footnote=""
         />

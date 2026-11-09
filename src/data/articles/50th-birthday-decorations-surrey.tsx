@@ -116,7 +116,7 @@ const FiftiethBirthdayDecorationsSurreyArticle = () => (
           A balloon garland or arch. This frames the numbers or the cake table
           and carries your colours across the room. I build each one by hand
           to the size of the space; there's more on what's possible on my{" "}
-          <a href="/balloon-installations/">balloon installations</a>&nbsp;page.
+          <a href="/balloon-installations/">balloon decorations</a>&nbsp;page.
         </li>
         <li>
           A backdrop or sequin wall. It gives guests a natural place to gather
