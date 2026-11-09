@@ -656,6 +656,26 @@ export const ROUTES: RouteSEO[] = [
   // using the same script id as Article.tsx, so the runtime injection and
   // the static one don't double up.
   {
+    path: "/journal/shimmer-wall-hire-surrey",
+    title: "Shimmer & Sequin Wall Hire in Surrey | River Fox Events",
+    description:
+      "Shimmer wall and sequin wall hire in Surrey for milestone birthdays, children's parties and office Christmas parties, framed with balloons and set up for you.",
+    breadcrumbName: "Shimmer wall hire, styled around your room",
+    ogImage: "/og/shimmer-wall-hire-surrey.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+  },
+  {
+    path: "/journal/hiring-an-event-stylist-surrey",
+    title: "Hiring an Event Stylist in Surrey | River Fox Events",
+    description:
+      "Hiring an event stylist in Surrey? Here's what's included, from the render and palette to set-up and pack-down, what it costs and why one person does it all.",
+    breadcrumbName: "What's included when you hire an event stylist",
+    ogImage: "/og/hiring-an-event-stylist-surrey.webp",
+    priority: 0.6,
+    changefreq: "monthly",
+  },
+  {
     path: "/journal/christmas-decorations-surrey",
     title: "Christmas Party Decorations in Surrey | River Fox Events",
     description:

@@ -147,6 +147,7 @@
     --gap-inline: 24px;                /* Inline gap · space between items in a row of text links (16 phone) */
     --gap-label-title: 4px;            /* Label to title · a small label (step number, overline) directly above a card or step title */
     --gap-title-body: 8px;
+    --gap-list-item: 4px;              /* List item gap · space between bullet points in article copy, same as the In short box (was 0.4em, tightened by Matt 2026-11-09) */
     --card-text-inset: 18px;
     --panel-inset: 24px;
     --card-pad: 40px;                  /* Card padding · inside option and pricing cards (28 phone) */               /* Panel inset · gap from the screen edge to a rounded section panel (none on phones: full width) */           /* Card text inset · right padding on card text so titles stay clear of the next card (0 phone) */             /* Title to text · space between a card or item title and its text, every card on the site */
@@ -1623,7 +1624,7 @@
   }
   .article-prose ul { list-style: disc; }
   .article-prose ol { list-style: decimal; }
-  .article-prose li + li { margin-top: 0.4em; }
+  .article-prose li + li { margin-top: var(--gap-list-item); }
   .article-prose em { font-style: italic; }
 }
 

@@ -40,6 +40,7 @@ Targets:
 - **"Design-led" is banned** (too industry, not consumer-friendly). Use **"thoughtfully styled"** in body copy and **"bespoke"** in SEO metas.
 - **"From scratch" is banned.** Use **"individually designed"**.
 - **"Elevated"** — use as little as possible. Allowed sparingly, never as the headline word.
+- **Bullet points start with a capital letter** (sentence case), even when the list finishes a lead-in sentence ending in a colon (Matt, 2026-11-09). `src/test/sentence-case-bullets.test.ts` fails the test run if a `<li>` opens with a lowercase letter. The space between bullets in articles is the `--gap-list-item` token.
 
 **Uniqueness rule — applies to titles, metas, H1s, hero sub-copy and image alt text.** Before writing new copy for a page, skim existing pages and make sure the first ~5 words of the new draft don't echo any other page. This protects against duplicate-content signals and keeps the writing feeling considered rather than templated.
 

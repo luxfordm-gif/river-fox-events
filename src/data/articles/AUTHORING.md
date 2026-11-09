@@ -59,6 +59,7 @@ Laura reviewed the journal in mid-2026 and asked for a **warmer tone of voice**.
 - **Sensory detail over empty adjectives.** Keep naming the actual thing — "pink scallop-edge plates, a soft zebra-print salad plate on top". Warmth must never *replace* specificity — carry both. Don't let the warmer register slide into generic filler ("truly unforgettable", "bringing the magic to life") with no concrete detail underneath.
 - **Trade-craft language, lightly.** Sightlines, scale, the brief, sourcing, install morning, render board are all welcome, but don't stack them — gloss them so a non-trade reader follows easily.
 - **Hyphens, not em dashes. Exclamation marks and emojis never.** (Laura's own Google-Doc drafts sometimes use these; strip them.)
+- **Bullet points are sentence case.** Every list item starts with a capital letter, even after a lead-in line ending in a colon ("A shimmer wall from me can include:" then "A balloon garland…", never "a balloon garland…"). A test enforces it.
 - **Quiet expertise, gently shared.** Explain *why* a choice was made, and reassure the reader rather than sell to them.
 
 ### Banned vocabulary
@@ -254,6 +255,7 @@ Validate every new entry against [Google Rich Results Test](https://search.googl
 - [ ] Voice — re-read; warm and flowing, not clipped/insider? Any stray "we" (outside genuine business-voice), "stunning", "amazing", "perfect", exclamation marks or emojis? Strip them.
 - [ ] Aesthetic gate — does every reference (theme, palette, prop) pass? If not, swap.
 - [ ] Sign-off — closing line reads `Laura x` (not `— Laura`)?
+- [ ] Bullet points — every list item starts with a capital letter?
 - [ ] Structure — TL;DR, hero image, pull quote, inline CTA, "Why I love this part", `Laura x` sign-off all present?
 - [ ] Length — 900–1300 words of prose?
 - [ ] Internal links — 2 service + 1 location (where relevant) + 1 enquire CTA?
