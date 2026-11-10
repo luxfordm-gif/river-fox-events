@@ -3,13 +3,58 @@ import { useScrollProgress } from "@/hooks/useScrollProgress";
 import "@/styles/christmas.css";
 import "@/styles/christmas-hero.css";
 
-import video169 from "@/assets/home/christmas-hero/christmas-ready-family-garland-montage-16x9.mp4";
-import video916 from "@/assets/home/christmas-hero/christmas-ready-family-garland-montage-9x16.mp4";
-import poster960 from "@/assets/home/christmas-hero/family-cheering-under-jewel-bauble-door-garland-960.webp";
-import poster1440 from "@/assets/home/christmas-hero/family-cheering-under-jewel-bauble-door-garland-1440.webp";
-import poster1920 from "@/assets/home/christmas-hero/family-cheering-under-jewel-bauble-door-garland-1920.webp";
-import posterTall480 from "@/assets/home/christmas-hero/family-cheering-under-jewel-bauble-door-garland-portrait-480.webp";
-import posterTall720 from "@/assets/home/christmas-hero/family-cheering-under-jewel-bauble-door-garland-portrait-720.webp";
+import familyVideo169 from "@/assets/home/christmas-hero/christmas-ready-family-garland-montage-16x9.mp4";
+import familyVideo916 from "@/assets/home/christmas-hero/christmas-ready-family-garland-montage-9x16.mp4";
+import familyPoster960 from "@/assets/home/christmas-hero/family-cheering-under-jewel-bauble-door-garland-960.webp";
+import familyPoster1440 from "@/assets/home/christmas-hero/family-cheering-under-jewel-bauble-door-garland-1440.webp";
+import familyPoster1920 from "@/assets/home/christmas-hero/family-cheering-under-jewel-bauble-door-garland-1920.webp";
+import familyPosterTall480 from "@/assets/home/christmas-hero/family-cheering-under-jewel-bauble-door-garland-portrait-480.webp";
+import familyPosterTall720 from "@/assets/home/christmas-hero/family-cheering-under-jewel-bauble-door-garland-portrait-720.webp";
+import bizVideo169 from "@/assets/christmas/business-hero/christmas-ready-pizzeria-garland-film-16x9.mp4";
+import bizVideo916 from "@/assets/christmas/business-hero/christmas-ready-pizzeria-garland-film-9x16.mp4";
+import bizPoster960 from "@/assets/christmas/business-hero/pizzeria-chef-cheering-under-red-gold-door-garland-960.webp";
+import bizPoster1440 from "@/assets/christmas/business-hero/pizzeria-chef-cheering-under-red-gold-door-garland-1440.webp";
+import bizPoster1920 from "@/assets/christmas/business-hero/pizzeria-chef-cheering-under-red-gold-door-garland-1920.webp";
+import bizPosterTall480 from "@/assets/christmas/business-hero/pizzeria-chef-cheering-under-red-gold-door-garland-portrait-480.webp";
+import bizPosterTall720 from "@/assets/christmas/business-hero/pizzeria-chef-cheering-under-red-gold-door-garland-portrait-720.webp";
+
+/* Two films (Matt, 2026-11-10): the family one on home and the door
+   garlands page, the pizzeria one only on the business Christmas page. Same
+   headline, each with its own sub line. */
+const FILMS = {
+  family: {
+    video169: familyVideo169,
+    video916: familyVideo916,
+    poster960: familyPoster960,
+    poster1440: familyPoster1440,
+    poster1920: familyPoster1920,
+    posterTall480: familyPosterTall480,
+    posterTall720: familyPosterTall720,
+    text: (
+      <>
+        Garlands so good your neighbours
+        <br className="hidden md:inline" /> will take it&nbsp;personally.
+      </>
+    ),
+  },
+  business: {
+    video169: bizVideo169,
+    video916: bizVideo916,
+    poster960: bizPoster960,
+    poster1440: bizPoster1440,
+    poster1920: bizPoster1920,
+    posterTall480: bizPosterTall480,
+    posterTall720: bizPosterTall720,
+    text: (
+      <>
+        Give your shopfront the Christmas it deserves.
+        {/* Three even lines from tablet up, so "your hours" isn't left alone. */}
+        <br className="hidden md:inline" /> Fresh spruce or faux garlands,
+        <br className="hidden md:inline" /> fitted around your&nbsp;hours.
+      </>
+    ),
+  },
+} as const;
 
 const PAGE = "/christmas-door-garlands/";
 
@@ -56,6 +101,8 @@ type Props = {
   ctaHref?: string;
   ctaLabel?: string;
   onCtaClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
+  /** Which film and sub line: the family one, or the pizzeria for businesses. */
+  film?: keyof typeof FILMS;
 };
 
 /* Zoom layout: the size it starts at, and how much the growth is held back
@@ -70,7 +117,10 @@ const ChristmasHero = ({
   ctaHref = PAGE,
   ctaLabel = "Book your Christmas garland",
   onCtaClick,
+  film = "family",
 }: Props) => {
+  const { video169, video916, poster960, poster1440, poster1920, posterTall480, posterTall720, text } =
+    FILMS[film];
   const zoom = variant === "zoom";
   const wrapRef = useRef<HTMLElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -126,7 +176,7 @@ const ChristmasHero = ({
     pick();
     mq.addEventListener("change", pick);
     return () => mq.removeEventListener("change", pick);
-  }, [near]);
+  }, [near, video169, video916]);
 
   // Start the flicker once the extra faces are in. Until Google's stylesheet
   // has arrived, load() finds no matching face and returns nothing, so keep
@@ -255,10 +305,7 @@ const ChristmasHero = ({
           </span>
         </h2>
         {/* One line, a step up from body text (Matt, 2026-11-10). */}
-        <p className="t-h4 xhero__text">
-          Garlands so good your neighbours
-          <br className="hidden md:inline" /> will take it&nbsp;personally.
-        </p>
+        <p className="t-h4 xhero__text">{text}</p>
         {cta && (
           <a href={ctaHref} onClick={onCtaClick} className="btn-solid-rf accent xhero__cta">
             {ctaLabel} <span className="t-icon">→</span>

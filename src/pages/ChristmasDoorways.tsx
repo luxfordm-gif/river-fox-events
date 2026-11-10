@@ -624,9 +624,10 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
           <LocationHeroFan images={[fan[0], fan[1], fan[2]]} spreadOnHover />
         </section>
 
-        {/* The home page's Christmas film, growing to full width on scroll.
-            No button here: you're already on the page (Matt, 2026-11-10). */}
-        <ChristmasHero variant="zoom" cta={false} />
+        {/* The Christmas film, growing to full width on scroll. No button
+            here: you're already on the page. The business page has its own
+            pizzeria film and sub line (Matt, 2026-11-10). */}
+        <ChristmasHero variant="zoom" cta={false} film={biz ? "business" : "family"} />
 
         {/* What we do */}
         <section className="rfx-section white" aria-labelledby="xmas-what-heading">
