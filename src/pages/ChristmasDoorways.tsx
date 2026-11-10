@@ -337,7 +337,6 @@ const CARD_HOME: Card = {
     title: "Front doors and porches",
     body: [
       "From a generous sweep of greenery to a fully adorned doorway, each garland is styled around your home's character.",
-      "Think lush foliage, statement baubles, rich ribbons and carefully chosen details, in a palette that feels just right for you.",
     ],
 };
 
@@ -357,7 +356,7 @@ const CARD_BUSINESS: Card = {
 
 /* Business version: shops and salons, then restaurants (entrances only,
    Matt 2026-11-09). Same files and alt text as elsewhere on the page. */
-const CARD_SHOPS: Card = { ...CARD_BUSINESS, title: "Shops and salons" };
+const CARD_SHOPS: Card = { ...CARD_BUSINESS, title: "Shops and salons", body: [CARD_BUSINESS.body[1]] };
 
 const CARD_RESTAURANTS: Card = {
   img: imgRestaurant,
@@ -368,17 +367,17 @@ const CARD_RESTAURANTS: Card = {
   title: "Restaurants and cafés",
   body: [
     "Dress the doorway and the window ledge, so the garland greets diners on the pavement and frames the view from their table.",
-    "Red and gold, frosted white or your own colours, styled to suit your shopfront and installed around service.",
   ],
 };
 
-/* On the home version the business card points on to the business page. */
+/* On the home version the business card keeps just its first line and points
+   on to the business page in the same paragraph (Matt, 2026-11-10: half the
+   words, a size up, no break before the link). */
 const CARD_BUSINESS_HOME: Card = {
   ...CARD_BUSINESS,
   body: [
-    ...CARD_BUSINESS.body,
     <>
-      See{" "}
+      {CARD_BUSINESS.body[0]} See{" "}
       <a href="/commercial-christmas-decorations/" className="text-link">
         Christmas decorations for businesses
       </a>
@@ -679,7 +678,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   <h3 className="t-h4 text-primary mt-6">
                     {card.title}
                   </h3>
-                  <div className="title-to-text t-small text-ink-soft max-w-[52ch] space-y-3">
+                  <div className="title-to-text t-body text-ink-soft max-w-[52ch] space-y-3">
                     {card.body.map((para, i) => (
                       <p key={i}>{para}</p>
                     ))}
