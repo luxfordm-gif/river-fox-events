@@ -371,13 +371,13 @@ const CARD_RESTAURANTS: Card = {
 };
 
 /* On the home version the business card keeps just its first line and points
-   on to the business page (Matt, 2026-11-10: half the words, a size up). */
+   on to the business page in the same paragraph (Matt, 2026-11-10: half the
+   words, a size up, no break before the link). */
 const CARD_BUSINESS_HOME: Card = {
   ...CARD_BUSINESS,
   body: [
-    CARD_BUSINESS.body[0],
     <>
-      See{" "}
+      {CARD_BUSINESS.body[0]} See{" "}
       <a href="/commercial-christmas-decorations/" className="text-link">
         Christmas decorations for businesses
       </a>
