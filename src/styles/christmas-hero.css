@@ -1,0 +1,100 @@
+/* Home Christmas hero (src/components/rfx/ChristmasHero.tsx): the family
+   montage loops full width under the nav and fills the first screen, with
+   "Christmas ready." cutting between six faces over it (Matt, 2026-11-10,
+   after getmaple.ca). Sizes and gaps come from the shared tokens. */
+
+.xhero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: calc(100svh - var(--nav-height));
+  padding: var(--section-y) 0;
+  display: grid;
+  place-items: center;
+  background: hsl(var(--background-dark));
+  color: hsl(var(--background-light));
+  text-align: center;
+}
+
+/* Home: first thing under the nav, a little short of the screen so the
+   next section's heading peeks in (Matt, 2026-11-10). */
+.xhero--top {
+  margin-top: var(--nav-height);
+  min-height: calc((100svh - var(--nav-height)) * 0.82);
+}
+
+/* Christmas pages: starts small with Large corners and grows to full width
+   as it scrolls up the screen (ChristmasHero.tsx sets --zoom and --corner
+   from the page's scroll). Without JavaScript, or with
+   reduced motion, it sits at full width. A transform, so nothing reflows
+   and the video layer just scales. */
+section.rfx-section.xhero-zoom { padding-bottom: 0; }
+.xhero--zoom {
+  min-height: calc((100svh - var(--nav-height)) * 0.85);   /* a little shorter: no button */
+  transform: scale(var(--zoom, 1));
+  transform-origin: 50% 50%;
+  border-radius: calc(var(--radius-large) * var(--corner, 0));
+  will-change: transform;
+}
+
+/* Video and poster, under a tint so the cream words read on any frame. */
+.xhero__media { position: absolute; inset: 0; z-index: -1; }
+.xhero__media img,
+.xhero__media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+.xhero__video { opacity: 0; transition: opacity 0.6s ease; }
+.xhero.is-playing .xhero__video { opacity: 1; }
+.xhero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 50%, hsl(var(--background-dark) / 0.42), transparent 75%),
+    hsl(var(--background-dark) / 0.34);
+}
+
+.xhero__content { display: flex; flex-direction: column; align-items: center; }
+
+/* ── The flicker ─────────────────────────────────────────────────────────
+   All six faces sit in one grid cell, so the box is as big as the biggest
+   and nothing below it jumps as they cut. Only the face named by data-face
+   shows. */
+.xhero__title {
+  font-size: var(--fs-flick);
+  line-height: var(--lh-flick);
+  font-weight: var(--fw-regular);
+  text-shadow: 0 2px 30px hsl(var(--background-dark) / 0.35);
+}
+.xhero__flick { display: grid; place-items: center; }
+.xhero__face { grid-area: 1 / 1; visibility: hidden; white-space: nowrap; }
+.xhero__flick[data-face="0"] > :nth-child(1),
+.xhero__flick[data-face="1"] > :nth-child(2),
+.xhero__flick[data-face="2"] > :nth-child(3),
+.xhero__flick[data-face="3"] > :nth-child(4),
+.xhero__flick[data-face="4"] > :nth-child(5),
+.xhero__flick[data-face="5"] > :nth-child(6) { visibility: visible; }
+
+/* Each face scales itself (em of the flicker size) to about the same width. */
+.xhero__face--serif  { font-family: var(--font-serif); letter-spacing: var(--ls-display); }
+.xhero__face--italic { font-family: var(--font-serif); font-style: italic; letter-spacing: var(--ls-display); font-size: 1.04em; }
+.xhero__face--poster { font-family: var(--font-flick-poster); text-transform: uppercase; font-size: 0.94em; line-height: 0.95em; }
+.xhero__face--script { font-family: var(--font-flick-script); font-size: 1.14em; line-height: 0.85em; }
+.xhero__face--sans   { font-family: var(--font-sans); font-weight: var(--fw-bold); letter-spacing: var(--ls-display); font-size: 0.83em; }
+.xhero__face--fat    { font-family: var(--font-flick-fat); font-size: 0.82em; line-height: 1em; }
+
+/* Heading to content, a step above Heading to text: the script face's
+   tails need the room. */
+.xhero__text {
+  margin-top: var(--gap-heading-content);
+  max-width: 34ch;
+  text-wrap: balance;
+  color: hsl(var(--background-light));
+  text-shadow: 0 1px 16px hsl(var(--background-dark) / 0.5);
+}
+.xhero__cta { margin-top: var(--gap-text-content); }

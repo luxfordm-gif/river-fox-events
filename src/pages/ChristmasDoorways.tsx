@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { toast } from "sonner";
 import Nav from "@/components/rfx/Nav";
+import ChristmasHero from "@/components/rfx/ChristmasHero";
 import Footer from "@/components/rfx/Footer";
 import HeroGarland from "@/components/rfx/HeroGarland";
 import LocationHeroFan from "@/components/rfx/LocationHeroFan";
@@ -622,6 +623,10 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
           </div>
           <LocationHeroFan images={[fan[0], fan[1], fan[2]]} spreadOnHover />
         </section>
+
+        {/* The home page's Christmas film, growing to full width on scroll.
+            No button here: you're already on the page (Matt, 2026-11-10). */}
+        <ChristmasHero variant="zoom" cta={false} />
 
         {/* What we do */}
         <section className="rfx-section white" aria-labelledby="xmas-what-heading">
