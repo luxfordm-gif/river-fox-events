@@ -1,13 +1,12 @@
 import { useCallback, useRef } from "react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
-import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 /**
  * Home page mission line, under the hero (Matt, 2026-11-08): one large
  * sentence saying what Laura does and where. The words start faint and
  * darken one after another as the line scrolls up the screen, driven by the
  * page's own scroll. Without JavaScript, or with reduced motion, it is
- * simply full colour.
+ * simply full colour. Centred, with no button under it (Matt, 2026-11-10).
  */
 const LEAD = "I style children's parties, milestone celebrations and brand events across Surrey and London,";
 const ACCENT = "each one individually designed.";
@@ -51,15 +50,10 @@ const Mission = () => {
   return (
     <section id="mission" className="rfx-section white" aria-label="What River Fox Events does">
       <div className="container-rfx">
-        <p ref={textRef} className="t-h2 text-ink mission-line heading-to-content">
+        <p ref={textRef} className="t-h2 text-ink mission-line">
           {split(LEAD)}
           <em className="t-accent">{split(ACCENT)}</em>
         </p>
-        <div>
-          <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-ghost-rf">
-            Book now <span className="t-icon">→</span>
-          </a>
-        </div>
         {/* Divider before the services section (Matt, 2026-11-08). */}
         <div className="mission-rule" aria-hidden="true" />
       </div>
