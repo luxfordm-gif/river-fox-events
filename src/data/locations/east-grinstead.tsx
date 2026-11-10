@@ -9,8 +9,6 @@ const eastGrinstead = makeLocation({
     galleryMain: "jungle-elephant",
     galleryThumbs: ["baby-shower-bloom", "naming-harvey-daisy", "veuve-disco"],
   },
-  seoTitleRegion: "West Sussex",
-  uniqueSeoTitle: "East Grinstead Children's Parties | River Fox Events",
   uniqueSeoDescription:
     "Kids' party styling in East Grinstead and the RH19 area - first birthdays through to big themed celebrations, individually designed and installed by Laura.",
   uniqueHeroLine: <>East Grinstead celebrations,</>,

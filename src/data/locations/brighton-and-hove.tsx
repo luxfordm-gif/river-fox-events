@@ -9,8 +9,6 @@ const brightonAndHove = makeLocation({
     galleryMain: "jungle-elephant",
     galleryThumbs: ["fairy-kayla", "baby-shower-bloom", "veuve-disco"],
   },
-  seoTitleRegion: "East Sussex",
-  uniqueSeoTitle: "Brighton & Hove Kids' Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Children's parties styled across Brighton & Hove and East Sussex, from first birthdays to themed celebrations - individually designed and installed by Laura.",
   uniqueHeroLine: <>Brighton & Hove party decor,</>,

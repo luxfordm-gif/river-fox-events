@@ -9,7 +9,6 @@ const cobham = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["baby-shower-bloom", "veuve-disco", "naming-harvey-daisy"],
   },
-  uniqueSeoTitle: "Balloon Arches & Party Decor in Cobham | River Fox Events",
   uniqueSeoDescription:
     "Balloon arches, garlands and photo backdrops for Cobham and Stoke d'Abernon parties. Designed by Laura, set up on the morning and taken down after, from £300.",
   uniqueHeroLine: <>Children's parties in&nbsp;Cobham,</>,

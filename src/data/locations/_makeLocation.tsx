@@ -110,11 +110,6 @@ type LocationInput = {
   uniqueHeroLine?: ReactNode;
   /** Override the hero subline. */
   uniqueHeroSub?: ReactNode;
-  /** Override the SEO title (≤60 chars including " | River Fox Events"). */
-  uniqueSeoTitle?: string;
-  /** Override the H1 region word ("Surrey") in seoTitle generation when
-   *  the town isn't strictly Surrey. */
-  seoTitleRegion?: string;
   /** Regional bucket, used in body copy. e.g. "Surrey", "East Surrey", "North Surrey". */
   region: string;
   /** Surrounding villages - populates the "we work across X, Y, Z" body copy and FAQs. */
@@ -184,8 +179,6 @@ export function makeLocation(input: LocationInput): LocationConfig {
     jsonLdAreaServed,
     uniqueHeroLine,
     uniqueHeroSub,
-    uniqueSeoTitle,
-    seoTitleRegion,
     uniqueSeoDescription,
     uniqueWhatWeDoLead,
     uniqueWhatWeDoBody,
@@ -249,11 +242,9 @@ export function makeLocation(input: LocationInput): LocationConfig {
     slug,
     cityName,
     region,
-    seoTitle:
-      uniqueSeoTitle ??
-      `Party Stylist ${cityName} ${
-        seoTitleRegion ?? "Surrey"
-      } | River Fox Events`,
+    // Every town page shares one title pattern (Matt, 2026-11-10). The live
+    // title comes from src/seo/routes.ts; this is only the fallback.
+    seoTitle: `Party Styling in ${cityName} | River Fox Events`,
     seoDescription:
       uniqueSeoDescription ??
       `${cityName} party stylist - tailored children's parties, milestones and corporate events across ${region} from £300. Every detail personally handled by Laura.`,

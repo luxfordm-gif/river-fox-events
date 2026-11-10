@@ -9,8 +9,6 @@ const crawley = makeLocation({
     galleryMain: "pastel-safari-anaya",
     galleryThumbs: ["fairy-kayla", "40th-rose-gold", "wonka-chocolate-arch"],
   },
-  seoTitleRegion: "West Sussex",
-  uniqueSeoTitle: "Crawley Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Children's birthday styling in Crawley and across West Sussex, from first birthdays to big themed parties - individually designed and installed by Laura.",
   uniqueHeroLine: <>Crawley kids' parties,</>,

@@ -9,8 +9,6 @@ const sevenoaks = makeLocation({
     galleryMain: "jungle-elephant",
     galleryThumbs: ["stubbs-gender-reveal", "wonka-chocolate-arch", "baby-shower-bloom"],
   },
-  seoTitleRegion: "Kent",
-  uniqueSeoTitle: "Sevenoaks Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "West Kent children's parties in Sevenoaks - first birthdays to big themed celebrations, individually designed and installed by Laura.",
   uniqueHeroLine: <>Sevenoaks party decorations,</>,

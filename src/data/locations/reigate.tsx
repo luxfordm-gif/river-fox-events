@@ -9,7 +9,6 @@ const reigate = makeLocation({
     galleryMain: "pastel-safari-anaya",
     galleryThumbs: ["naming-harvey-daisy", "jungle-elephant", "baby-shower-bloom"],
   },
-  uniqueSeoTitle: "Reigate Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Fifteen minutes from the studio - children's party styling in Reigate, from first birthdays to big themed celebrations, individually designed by Laura.",
   uniqueHeroLine: <>Reigate birthday decorations,</>,

@@ -9,7 +9,6 @@ const weybridge = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["fairy-kayla", "pastel-safari-anaya", "jungle-elephant"],
   },
-  uniqueSeoTitle: "Weybridge Birthday Decorations & Balloons | River Fox Events",
   uniqueSeoDescription:
     "Weybridge birthday decorations, from balloon hoops and light-up numbers to painted sailboards, for homes on St George's Hill and Oatlands Park. From £300.",
   uniqueHeroLine: <>Weybridge balloon styling,</>,

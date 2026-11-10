@@ -9,7 +9,6 @@ const lingfield = makeLocation({
     galleryMain: "jungle-elephant",
     galleryThumbs: ["fairy-kayla", "stubbs-gender-reveal", "baby-shower-bloom"],
   },
-  uniqueSeoTitle: "Lingfield Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Village children's parties in Lingfield and along the Surrey/Sussex border - first birthdays to themed celebrations, individually designed by Laura.",
   uniqueHeroLine: <>Lingfield party styling,</>,

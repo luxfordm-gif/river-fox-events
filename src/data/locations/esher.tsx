@@ -9,7 +9,6 @@ const esher = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["fairy-kayla", "40th-rose-gold", "veuve-disco"],
   },
-  uniqueSeoTitle: "Party Balloons & Backdrops in Esher | River Fox Events",
   uniqueSeoDescription:
     "Party balloons and backdrops in Esher, Claygate and Thames Ditton, from first birthdays to Sandown Park events. Everything set up and cleared away by Laura.",
   uniqueHeroLine: <>Kids' party decorations in&nbsp;Esher,</>,
