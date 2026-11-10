@@ -152,7 +152,7 @@ type LocationInput = {
    *  snippet, so a shared value makes every location look identical.
    *  Falls back to a generic templated paragraph when omitted. */
   uniqueUspBody?: string;
-  /** Override the "What I style." services-cards heading/intro.
+  /** Override the "Find your occasion." services-cards heading/intro.
    *  Use on children's-party-led pages to demote the block to a secondary
    *  "we also style X" framing. Falls back to the shared default. */
   uniqueServicesHeading?: ReactNode;

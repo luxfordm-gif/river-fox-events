@@ -177,7 +177,7 @@ const Experiences = ({
 }: ExperiencesProps = {}) => {
   const title = heading ?? (
     <>
-      What I <em className="t-accent">style.</em>
+      Find your <em className="t-accent">occasion.</em>
     </>
   );
   const [setIndex] = useState(() => (rotatePhotos ? pickHomeSet() : 0));
