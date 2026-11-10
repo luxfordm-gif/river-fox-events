@@ -1,5 +1,8 @@
 /* Caveat: only the letters of the Christmas page's "Move the snow" note. */
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500&text=Movethsnw%20&display=swap");
+/* Home Christmas hero: the extra faces "Be Christmas ready." flicks between,
+   only its letters (both cases, for the capitals face), a few KB in all. */
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Great+Vibes&text=BChristmaedyHRISTMAEDY.%20&display=swap");
 /* Site fonts. Google Fonts needs the axes in alphabetical order (ital,opsz,wght)
    with one tuple per style; the old "opsz,wght,ital" order got a 400 error, so
    no visitor ever got Fraunces, DM Sans or the mono (Matt, 2026-11-08).
@@ -68,6 +71,12 @@
     --fs-display: clamp(52px, 5.6vw, 116px);   /* Display · home and service hero headline (phones: see the 480px block) */
     --lh-display: 1.04;
     --ls-display: -0.025em;
+
+    /* Christmas flicker: the home Christmas hero's "Be Christmas ready.", which
+       cuts between six faces. Each face then scales itself in em (see
+       christmas-hero.css) so all six fill about the same width. */
+    --fs-flick: clamp(72px, 9vw, 200px);       /* Christmas flicker · home Christmas hero headline (72 phone, 115 at 1280, 200 cap) */
+    --lh-flick: 0.92;
 
     /* Headings: Heading 1 is the page title, Heading 2 every section title.
        Sizes are the ones the site had before the 2026-11-08 restructure
@@ -153,6 +162,7 @@
     --panel-inset: 24px;
     --card-pad: 40px;                  /* Card padding · inside option and pricing cards (28 phone) */               /* Panel inset · gap from the screen edge to a rounded section panel (none on phones: full width) */           /* Card text inset · right padding on card text so titles stay clear of the next card (0 phone) */             /* Title to text · space between a card or item title and its text, every card on the site */
     --container-max: 1440px;           /* Content width · the widest the page content gets */
+    --nav-height: 78px;                /* Nav height · the fixed nav bar (78 at every width), for anything that starts just under it */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
     --gutter: 56px;                    /* Side gutter · space at the left and right of the page content (32 phone, 8% on laptops) */
 
@@ -196,6 +206,10 @@
     --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
     --font-mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;   /* DM Mono replaced JetBrains Mono, which read thin and tall (Matt, 2026-11-08) */
     --font-hand: "Caveat", cursive;   /* Christmas page note only */
+    /* Home Christmas hero flicker only, loaded as a few letters each. */
+    --font-flick-poster: "Anton", "Impact", sans-serif;
+    --font-flick-script: "Great Vibes", cursive;
+    --font-flick-fat: "Abril Fatface", Georgia, serif;
   }
 
   /* Phones: the hero headline scales with the screen instead of holding at
@@ -319,6 +333,10 @@
      moves every hero together (Matt, 2026-11-08). Components never set it.
      This selector outranks the shared .rfx-hero rules above. */
   section.rfx-hero-scale { padding-top: var(--hero-pad-top); }
+  /* Home in the Christmas season: the video hero (ChristmasHero.tsx) takes
+     the top of the page, so the usual hero follows it one Section gap down
+     instead of clearing the nav. */
+  .xhero-top + section.rfx-hero-scale { padding-top: var(--section-gap); }
   @media (min-width: 1440px) {
     .rfx-hero-scale .rfx-hero-intro { margin-bottom: var(--hero-gap); }
     /* Home only: cream space under the three-photo row. Service heroes run

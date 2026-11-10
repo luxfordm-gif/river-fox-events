@@ -27,7 +27,8 @@ const DECK = [imgGeorgian, imgPilates, imgNavy, imgReigate];
  *
  * Shows about a second after load, once the cookie banner (which uses the
  * same corner) has been answered. Closing it is remembered. Never shows
- * on the Christmas page itself. Uses the Christmas edition's colours by
+ * on the Christmas page itself, nor while the home Christmas video hero is
+ * on screen (Matt, 2026-11-10). Uses the Christmas edition's colours by
  * carrying the .rfx-xmas class.
  */
 const ChristmasPromo = () => {
@@ -52,12 +53,30 @@ const ChristmasPromo = () => {
     // Appear about a second after load. If the cookie banner (same corner)
     // is still waiting for an answer, check again until it's been answered.
     let t = 0;
+    // While the home page's Christmas video hero is on screen the card would
+    // only repeat it, so it waits until the hero has scrolled away.
+    const hero = document.getElementById("christmas-hero");
+    let heroInView = !!hero;
+    let ready = false;
+    const update = () => setShow(ready && !heroInView);
+    const io = hero
+      ? new IntersectionObserver(([e]) => {
+          heroInView = e.isIntersecting;
+          update();
+        })
+      : null;
+    if (hero && io) io.observe(hero);
     const tryShow = () => {
-      if (consentAnswered()) setShow(true);
-      else t = window.setTimeout(tryShow, 600);
+      if (consentAnswered()) {
+        ready = true;
+        update();
+      } else t = window.setTimeout(tryShow, 600);
     };
     t = window.setTimeout(tryShow, 1100);
-    return () => window.clearTimeout(t);
+    return () => {
+      window.clearTimeout(t);
+      io?.disconnect();
+    };
   }, []);
 
   useEffect(() => {
