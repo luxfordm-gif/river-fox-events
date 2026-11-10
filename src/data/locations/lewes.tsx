@@ -9,8 +9,6 @@ const lewes = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["dinosaur-ayaan", "naming-harvey-daisy", "40th-rose-gold"],
   },
-  seoTitleRegion: "East Sussex",
-  uniqueSeoTitle: "Lewes Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Themed first birthdays and children's parties in Lewes and the East Sussex villages, individually designed and installed by Laura.",
   uniqueHeroLine: <>Lewes children's parties,</>,

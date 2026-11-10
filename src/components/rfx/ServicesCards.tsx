@@ -1,4 +1,5 @@
-import { useRef, useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
+import { useSwipeDots } from "@/hooks/useSwipeDots";
 /**
  * Photo tiles: a grid of small square photos with just the name underneath
  * (the balloon page's "What we make", and "What we do" on the three main
@@ -30,8 +31,9 @@ type ServicesCardsProps = {
   sectionId?: string;
   headingId?: string;
   /** A soft divider halfway through the gap above, separating the tiles from
-      the 50/50 sections (Matt, 2026-11-09: the three main service pages; the
-      balloon page doesn't need one). */
+      the 50/50 sections (Matt, 2026-11-09: every service page that has
+      50/50s above its tiles, the balloon page included once its intro
+      became two 50/50s). */
   divided?: boolean;
 };
 
@@ -43,26 +45,8 @@ const ServicesCards = ({
   headingId = "services-cards-heading",
   divided = false,
 }: ServicesCardsProps) => {
-  /* Tiles on phones: track which tile is centred so the right dot lights up. */
-  const track = useRef<HTMLUListElement>(null);
-  const [active, setActive] = useState(0);
-  const centreOf = (el: Element) => (el as HTMLElement).offsetLeft + (el as HTMLElement).offsetWidth / 2;
-  const onTrackScroll = () => {
-    const el = track.current;
-    if (!el) return;
-    const mid = el.scrollLeft + el.clientWidth / 2;
-    let nearest = 0;
-    Array.from(el.children).forEach((c, i) => {
-      if (Math.abs(centreOf(c) - mid) < Math.abs(centreOf(el.children[nearest]) - mid)) nearest = i;
-    });
-    setActive(nearest);
-  };
-  const goTo = (i: number) => {
-    const el = track.current;
-    const tile = el?.children[i];
-    if (!el || !tile) return;
-    el.scrollTo({ left: centreOf(tile) - el.clientWidth / 2, behavior: "smooth" });
-  };
+  /* Tiles on phones: a swipe row; the dot of the tile nearest the centre lights up. */
+  const { track, active, onScroll: onTrackScroll, goTo } = useSwipeDots();
 
   return (
     <section

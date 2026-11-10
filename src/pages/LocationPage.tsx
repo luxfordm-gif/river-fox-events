@@ -37,7 +37,9 @@ const useLocationSEO = (loc: LocationConfig) => {
     const route = findRoute(path);
 
     applyMeta({
-      title: loc.seoTitle,
+      // routes.ts is the one source for titles, so the tab title doesn't
+      // change once the page's JavaScript loads.
+      title: route?.title ?? loc.seoTitle,
       description: loc.seoDescription,
       path,
     });
@@ -129,14 +131,11 @@ const LocationPage = () => {
                 </p>
               )}
               {/* Phones also get WhatsApp Laura now, pre-filled with the
-                  town. Matching widths, stacked. */}
+                  town. Matching widths, stacked. No See our work here: the
+                  services section just below has it (Matt, 2026-11-09). */}
               <div className="mt-10 mx-auto grid gap-3 w-fit md:grid-flow-col md:auto-cols-fr fade-up in">
                 <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
                   Reserve your date{" "}
-                  <span className="t-icon">→</span>
-                </a>
-                <a href="/our-work/" className="btn-ghost-rf justify-center">
-                  See our work{" "}
                   <span className="t-icon">→</span>
                 </a>
                 <a

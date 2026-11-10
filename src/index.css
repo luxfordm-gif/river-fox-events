@@ -1,5 +1,8 @@
 /* Caveat: only the letters of the Christmas page's "Move the snow" note. */
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500&text=Movethsnw%20&display=swap");
+/* Home Christmas hero: the extra faces "Be Christmas ready." flicks between,
+   only its letters (both cases, for the capitals face), a few KB in all. */
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Great+Vibes&text=BChristmaedyHRISTMAEDY.%20&display=swap");
 /* Site fonts. Google Fonts needs the axes in alphabetical order (ital,opsz,wght)
    with one tuple per style; the old "opsz,wght,ital" order got a 400 error, so
    no visitor ever got Fraunces, DM Sans or the mono (Matt, 2026-11-08).
@@ -68,6 +71,12 @@
     --fs-display: clamp(52px, 5.6vw, 116px);   /* Display · home and service hero headline (phones: see the 480px block) */
     --lh-display: 1.04;
     --ls-display: -0.025em;
+
+    /* Christmas flicker: the home Christmas hero's "Be Christmas ready.", which
+       cuts between six faces. Each face then scales itself in em (see
+       christmas-hero.css) so all six fill about the same width. */
+    --fs-flick: clamp(72px, 9vw, 200px);       /* Christmas flicker · home Christmas hero headline (72 phone, 115 at 1280, 200 cap) */
+    --lh-flick: 0.92;
 
     /* Headings: Heading 1 is the page title, Heading 2 every section title.
        Sizes are the ones the site had before the 2026-11-08 restructure
@@ -141,6 +150,7 @@
        guide, ready for Matt's notes. */
     --section-y: 120px;                /* Section padding · top and bottom of every section (64 phone, 80 laptop, 120 from 1440) */
     --section-gap: calc(var(--section-y) * 1.25);   /* Section gap · the single gap between two sections that share a background, a step above section padding now the whole site is one background (80 phone, 100 laptop, 150 from 1440; Matt, 2026-11-08) */
+    --gap-divider: calc(var(--section-gap) / 2);   /* Divider gap · space above and below a section divider line (service-page tiles; the home mission line uses Section padding since 2026-11-10): half a Section gap (64 phone, 50 laptop, 75 from 1440; phones raised from 40 by Matt, 2026-11-09, "it all looks really tight") */
     --gap-heading-text: 12px;          /* Heading to text · section heading to the paragraph directly under it */
     --gap-heading-content: 40px;       /* Heading to content · section heading to a list, photos, a grid or the FAQ questions (32 phone) */
     --gap-text-content: 48px;          /* Text to content · a paragraph down to the list or grid below it (40 phone) */
@@ -152,6 +162,7 @@
     --panel-inset: 24px;
     --card-pad: 40px;                  /* Card padding · inside option and pricing cards (28 phone) */               /* Panel inset · gap from the screen edge to a rounded section panel (none on phones: full width) */           /* Card text inset · right padding on card text so titles stay clear of the next card (0 phone) */             /* Title to text · space between a card or item title and its text, every card on the site */
     --container-max: 1440px;           /* Content width · the widest the page content gets */
+    --nav-height: 78px;                /* Nav height · the fixed nav bar (78 at every width), for anything that starts just under it */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
     --gutter: 56px;                    /* Side gutter · space at the left and right of the page content (32 phone, 8% on laptops) */
 
@@ -195,6 +206,10 @@
     --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
     --font-mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;   /* DM Mono replaced JetBrains Mono, which read thin and tall (Matt, 2026-11-08) */
     --font-hand: "Caveat", cursive;   /* Christmas page note only */
+    /* Home Christmas hero flicker only, loaded as a few letters each. */
+    --font-flick-poster: "Anton", "Impact", sans-serif;
+    --font-flick-script: "Great Vibes", cursive;
+    --font-flick-fat: "Abril Fatface", Georgia, serif;
   }
 
   /* Phones: the hero headline scales with the screen instead of holding at
@@ -221,6 +236,7 @@
       --lh-h2: 1.1;
       --lh-h3: 1.1;
       --section-y: 64px;
+      --gap-divider: var(--section-y);
       --gap-heading-content: 32px;
       --gap-text-content: 40px;
       --gap-inline: 16px;
@@ -317,6 +333,10 @@
      moves every hero together (Matt, 2026-11-08). Components never set it.
      This selector outranks the shared .rfx-hero rules above. */
   section.rfx-hero-scale { padding-top: var(--hero-pad-top); }
+  /* Home in the Christmas season: the video hero (ChristmasHero.tsx) takes
+     the top of the page, so the usual hero follows it one Section gap down
+     instead of clearing the nav. */
+  .xhero-top + section.rfx-hero-scale { padding-top: var(--section-gap); }
   @media (min-width: 1440px) {
     .rfx-hero-scale .rfx-hero-intro { margin-bottom: var(--hero-gap); }
     /* Home only: cream space under the three-photo row. Service heroes run
@@ -1037,16 +1057,20 @@
   }
 
   /* Home mission line (Mission.tsx): words darken one by one on scroll. */
-  .mission-line { max-width: 30ch; text-wrap: pretty; }
+  /* Centred and narrower, no button under it (Matt, 2026-11-10). */
+  .mission-line { max-width: 24ch; margin-inline: auto; text-align: center; text-wrap: balance; }
   .mission-word { display: inline; }
-  /* The divider sits in the middle of one section gap: half above it, half
-     below before the services heading (Matt, 2026-11-08). */
-  .mission-rule { margin-top: calc(var(--section-gap) / 2); border-top: 1px solid hsl(var(--divider)); }
-  div:not(.rfx-xmas) > main > #mission + .rfx-section { padding-top: calc(var(--section-gap) / 2); }
-  /* The same soft divider above a section (ServicesCards divided): half the
-     gap above the line, half below it before the heading (Matt, 2026-11-09). */
-  div:not(.rfx-xmas) > main > .rfx-section + .rfx-section.rfx-divided { padding-top: calc(var(--section-gap) / 2); }
-  .rfx-divided-rule { border-top: 1px solid hsl(var(--divider)); margin-bottom: calc(var(--section-gap) / 2); }
+  /* The divider sits in the middle of the gap below the line (Matt,
+     2026-11-08). More room so it reads as its own section (Matt, 2026-11-10):
+     a Section gap above the line, and Section padding either side of the
+     divider, one step up from the Divider gap the service-page tiles keep. */
+  div:not(.rfx-xmas) > main > #mission { padding-top: var(--section-gap); }
+  .mission-rule { margin-top: var(--section-y); border-top: 1px solid hsl(var(--divider)); }
+  div:not(.rfx-xmas) > main > #mission + .rfx-section { padding-top: var(--section-y); }
+  /* The same soft divider above a section (ServicesCards divided): one
+     Divider gap above the line, one below it before the heading (Matt, 2026-11-09). */
+  div:not(.rfx-xmas) > main > .rfx-section + .rfx-section.rfx-divided { padding-top: var(--gap-divider); }
+  .rfx-divided-rule { border-top: 1px solid hsl(var(--divider)); margin-bottom: var(--gap-divider); }
 
   /* Pricing (CPPricing): a boxed Warm card on the page background instead of
      a full-width band (Matt, 2026-11-08). */

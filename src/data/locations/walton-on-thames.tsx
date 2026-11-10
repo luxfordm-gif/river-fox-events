@@ -9,7 +9,6 @@ const waltonOnThames = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["naming-harvey-daisy", "40th-rose-gold", "jungle-elephant"],
   },
-  uniqueSeoTitle: "Walton-on-Thames Kids Party Decorations | River Fox Events",
   uniqueSeoDescription:
     "Walton-on-Thames kids party decorations, with balloon garlands, soft-seat picnic setups and themed props for homes in Hersham. Rated 5.0 on Google reviews.",
   uniqueHeroLine: <>Walton-on-Thames party decor,</>,

@@ -1,0 +1,49 @@
+# Scheduled journal articles (Matt, 2026-11-09).
+#
+# Articles can be dated in the future (`publishedAt` in
+# src/data/articles/index.tsx, `publishAt` on the route in src/seo/routes.ts).
+# The live site only includes them from that date, but Netlify only rebuilds
+# when something is pushed. So each morning this checks whether an article is
+# due today (UK time) and, if one is, pushes an empty commit to main, which
+# starts Netlify's normal production deploy.
+#
+# "Run workflow" by hand with force ticked rebuilds the site straight away
+# (useful to check the chain works, or if a morning run was missed).
+name: Publish scheduled articles
+
+on:
+  schedule:
+    # 06:15 UTC = 06:15 UK in winter, 07:15 in summer.
+    - cron: "15 6 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Rebuild the site even if nothing is due today"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Rebuild the live site if an article is due today
+        env:
+          FORCE: ${{ github.event.inputs.force }}
+        run: |
+          TODAY=$(TZ=Europe/London date +%F)
+          if grep -q "publishAt: \"$TODAY\"" src/seo/routes.ts || [ "$FORCE" = "true" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit --allow-empty -m "Publish scheduled journal article ($TODAY)"
+            git push origin HEAD:main
+            echo "Pushed: Netlify will rebuild the live site."
+          else
+            echo "Nothing scheduled for $TODAY."
+          fi

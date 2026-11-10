@@ -105,7 +105,7 @@ const Contact = () => {
                 >
                   Celebrations start from £300, with larger designs
                   from{" "}
-                  <span className="whitespace-nowrap">£800 - £1,500+</span>.
+                  <span className="whitespace-nowrap">£600 - £1,500+</span>.
                 </p>
 
                 <div className="hairline mt-10 max-w-[460px] mx-auto lg:mx-0" aria-hidden="true" />
@@ -222,9 +222,9 @@ const Contact = () => {
                     <span className="lbl">Planned investment</span>
                     <select name="budget" defaultValue="Under £300">
                       <option>Under £300</option>
-                      <option>£300 – £460</option>
-                      <option>£460 – £800</option>
-                      <option>£800 – £1,500</option>
+                      <option>£300 – £600</option>
+                      <option>£600 – £1,000</option>
+                      <option>£1,000 – £1,500</option>
                       <option>£1,500+</option>
                       <option>Not sure yet</option>
                     </select>

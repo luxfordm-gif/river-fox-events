@@ -204,17 +204,21 @@ const CorporateAndBrand = () => {
             </>
           }
         >
+          {/* Short direct answer near the top, for search and AI answers
+              (SEO Vendor GEO audit, 2026-11-09). */}
           <p>
-            I install branded balloon displays,{" "}
+            Corporate event styling means dressing your venue so it looks and
+            feels like your brand: branded balloon installations,{" "}
             <a href="/journal/shimmer-wall-hire-surrey/" className="text-link">
               sequin and shimmer walls
             </a>
-            , logo backdrops and entrance displays for businesses across
-            Surrey and London.
+            , logo backdrops and entrance displays, all in your colours. I
+            design and install them for businesses across Surrey and London,
+            from a single entrance arch to a whole venue.
           </p>
           <p>
-            Each one is built in your brand colours, with your logo or
-            signage where it helps.
+            Your logo or signage goes in where it helps, and nowhere it
+            doesn't.
           </p>
         </CPReveal>
 

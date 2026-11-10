@@ -9,7 +9,7 @@ import RelatedArticles from "@/components/article/RelatedArticles";
 import NotFound from "./NotFound";
 import { findArticle, findRelated } from "@/data/articles";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
-import { SITE } from "@/seo/routes";
+import { SITE, findRoute } from "@/seo/routes";
 import { applyMeta, removeJsonLd, upsertJsonLd } from "@/seo/headTags";
 
 const Article = () => {
@@ -27,7 +27,11 @@ const Article = () => {
     const url = SITE.url + path;
 
     applyMeta({
-      title: `${article.title} | River Fox Events`,
+      // The page title comes from routes.ts (the same one the static HTML
+      // ships), not the on-page heading, so it doesn't change after load.
+      title:
+        findRoute(`/journal/${article.slug}`)?.title ??
+        `${article.title} | River Fox Events`,
       description: article.metaDescription,
       path,
       ogImage: article.ogImage,

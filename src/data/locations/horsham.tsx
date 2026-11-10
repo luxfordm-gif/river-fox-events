@@ -9,8 +9,6 @@ const horsham = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["fairy-kayla", "veuve-disco", "baby-shower-bloom"],
   },
-  seoTitleRegion: "West Sussex",
-  uniqueSeoTitle: "Horsham Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Big themed birthdays and first-birthday styling in Horsham - children's parties individually designed and installed by Laura.",
   uniqueHeroLine: <>Horsham birthday balloons,</>,

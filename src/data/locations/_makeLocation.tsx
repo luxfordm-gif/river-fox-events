@@ -110,11 +110,6 @@ type LocationInput = {
   uniqueHeroLine?: ReactNode;
   /** Override the hero subline. */
   uniqueHeroSub?: ReactNode;
-  /** Override the SEO title (≤60 chars including " | River Fox Events"). */
-  uniqueSeoTitle?: string;
-  /** Override the H1 region word ("Surrey") in seoTitle generation when
-   *  the town isn't strictly Surrey. */
-  seoTitleRegion?: string;
   /** Regional bucket, used in body copy. e.g. "Surrey", "East Surrey", "North Surrey". */
   region: string;
   /** Surrounding villages - populates the "we work across X, Y, Z" body copy and FAQs. */
@@ -157,7 +152,7 @@ type LocationInput = {
    *  snippet, so a shared value makes every location look identical.
    *  Falls back to a generic templated paragraph when omitted. */
   uniqueUspBody?: string;
-  /** Override the "What I style." services-cards heading/intro.
+  /** Override the "Find your occasion." services-cards heading/intro.
    *  Use on children's-party-led pages to demote the block to a secondary
    *  "we also style X" framing. Falls back to the shared default. */
   uniqueServicesHeading?: ReactNode;
@@ -184,8 +179,6 @@ export function makeLocation(input: LocationInput): LocationConfig {
     jsonLdAreaServed,
     uniqueHeroLine,
     uniqueHeroSub,
-    uniqueSeoTitle,
-    seoTitleRegion,
     uniqueSeoDescription,
     uniqueWhatWeDoLead,
     uniqueWhatWeDoBody,
@@ -249,11 +242,9 @@ export function makeLocation(input: LocationInput): LocationConfig {
     slug,
     cityName,
     region,
-    seoTitle:
-      uniqueSeoTitle ??
-      `Party Stylist ${cityName} ${
-        seoTitleRegion ?? "Surrey"
-      } | River Fox Events`,
+    // Every town page shares one title pattern (Matt, 2026-11-10). The live
+    // title comes from src/seo/routes.ts; this is only the fallback.
+    seoTitle: `Party Styling in ${cityName} | River Fox Events`,
     seoDescription:
       uniqueSeoDescription ??
       `${cityName} party stylist - tailored children's parties, milestones and corporate events across ${region} from £300. Every detail personally handled by Laura.`,
@@ -404,7 +395,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
           body: "Intimate celebrations · Single focal point installation.",
         },
         {
-          price: "From £800",
+          price: "From £600",
           label: "Full styling",
           body: "Full styling · Multiple installations · Backdrops and tablescape.",
         },
@@ -459,7 +450,7 @@ export function makeLocation(input: LocationInput): LocationConfig {
       },
       {
         q: `How much does event styling cost in ${cityName}?`,
-        a: `It depends on the type of celebration and the size of the brief. Events start from £300, with larger or more involved designs usually ranging from £800 to £1,500+.`,
+        a: `It depends on the type of celebration and the size of the brief. Events start from £300, with larger or more involved designs usually ranging from £600 to £1,500+.`,
       },
       {
         q: "Can I choose my own theme and colours?",

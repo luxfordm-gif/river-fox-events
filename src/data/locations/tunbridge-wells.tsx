@@ -9,8 +9,6 @@ const tunbridgeWells = makeLocation({
     galleryMain: "pastel-safari-anaya",
     galleryThumbs: ["dinosaur-ayaan", "naming-harvey-daisy", "jungle-elephant"],
   },
-  seoTitleRegion: "Kent",
-  uniqueSeoTitle: "Tunbridge Wells Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Kent children's parties in Tunbridge Wells - first birthdays to big themed celebrations, individually designed and installed by Laura.",
   uniqueHeroLine: <>Tunbridge Wells balloon decor,</>,

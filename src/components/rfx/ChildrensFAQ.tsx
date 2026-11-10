@@ -31,16 +31,16 @@ const DEFAULT_FAQS: FAQ[] = [
   },
   {
     q: "How much does children's party styling cost in Surrey?",
-    a: "Parties start from £300, with larger or more involved designs usually ranging from £800 to £1,500+.",
+    a: "Parties start from £300, with larger or more involved designs usually ranging from £600 to £1,500+.",
   },
   {
     q: "What happens on the day?",
-    a: "I arrive before your guests and install everything: the balloon installations, backdrops, the cake table and signage. You walk into a finished room, and after the party I come back to pack it all away.",
+    a: "I arrive before your guests and install everything: the balloon decorations, backdrops, the cake table and signage. You walk into a finished room, and after the party I come back to pack it all away.",
     aNode: (
       <>
         I arrive before your guests and install everything: the{" "}
         <a href="/balloon-installations/" className="text-link">
-          balloon installations
+          balloon decorations
         </a>
         , backdrops, the cake table and signage. You walk into a finished
         room, and after the party I come back to pack it all away.

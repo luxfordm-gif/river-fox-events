@@ -45,7 +45,7 @@ const FAQS = [
   },
   {
     q: "How much does milestone celebration styling cost in Surrey?",
-    a: "Milestone celebrations start from £300, with larger or more involved designs typically ranging from £800 to £1,500+.",
+    a: "Milestone celebrations start from £300, with larger or more involved designs typically ranging from £600 to £1,500+.",
   },
   {
     q: "What happens on the day?",

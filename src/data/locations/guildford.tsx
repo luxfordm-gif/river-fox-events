@@ -9,7 +9,6 @@ const guildford = makeLocation({
     galleryMain: "pastel-safari-anaya",
     galleryThumbs: ["stubbs-gender-reveal", "baby-shower-bloom", "wonka-chocolate-arch"],
   },
-  uniqueSeoTitle: "Guildford Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Themed children's parties across Guildford and the GU postcodes - first birthdays to big celebrations, individually designed and installed by Laura.",
   uniqueHeroLine: <>Guildford party decorations,</>,

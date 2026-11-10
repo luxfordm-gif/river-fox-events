@@ -12,6 +12,7 @@ import FAQ from "@/components/rfx/FAQ";
 import Enquire from "@/components/rfx/Enquire";
 import Footer from "@/components/rfx/Footer";
 import ChristmasPromo from "@/components/rfx/ChristmasPromo";
+import ChristmasHero from "@/components/rfx/ChristmasHero";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
 import {
@@ -38,6 +39,8 @@ const Index = () => {
     <div className="min-h-screen page-paper text-foreground nav-paper">
       <Nav />
       <main>
+        {/* Christmas season: the video hero takes the top of the page. */}
+        <ChristmasHero />
         <Hero />
         <Mission />
         <Experiences align="centre" />
