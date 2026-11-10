@@ -9,8 +9,6 @@ const haywardsHeath = makeLocation({
     galleryMain: "dinosaur-ayaan",
     galleryThumbs: ["naming-harvey-daisy", "jungle-elephant", "veuve-disco"],
   },
-  seoTitleRegion: "West Sussex",
-  uniqueSeoTitle: "Haywards Heath Kids' Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Kids' birthday styling across Haywards Heath, Lindfield and Cuckfield - first birthdays to themed parties, individually designed by Laura.",
   uniqueHeroLine: <>Haywards Heath party decor,</>,

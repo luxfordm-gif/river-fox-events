@@ -9,7 +9,6 @@ const epsom = makeLocation({
     galleryMain: "pastel-safari-anaya",
     galleryThumbs: ["baby-shower-bloom", "40th-rose-gold", "naming-harvey-daisy"],
   },
-  uniqueSeoTitle: "Birthday Party Decorators in Epsom | River Fox Events",
   uniqueSeoDescription:
     "Birthday party decorators in Epsom, Ashtead and Ewell. Number balloons, character cutouts and photo backdrops, delivered, set up and collected, from £300.",
   uniqueHeroLine: <>Epsom birthday parties,</>,

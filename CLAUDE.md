@@ -21,6 +21,7 @@ Per-route titles and descriptions live in `src/seo/routes.ts`. The postbuild ste
 
 Targets:
 
+- **Title patterns (Matt, 2026-11-10):** service pages `[Service] in Surrey | River Fox Events` (except `Commercial Christmas Decorations | River Fox Events`, kept under 60 characters), town pages `Party Styling in [Town] | River Fox Events` (town as the page copy writes it: "Walton-on-Thames", "Brighton & Hove"), Contact `Contact Laura | River Fox Events`, journal posts `[Post title] | River Fox Events` (post titles read like post titles; don't force title case on them). Titles live only in `routes.ts`; town and article pages re-apply that same string after load, and `src/test/page-titles.test.ts` checks the patterns. The town pages sharing "Party Styling in" is deliberate, so the uniqueness rule below doesn't apply to them.
 - **Title:** ≤ 60 chars (Google truncates beyond that on desktop; mobile is tighter). Always end `| River Fox Events`. Front-load the keyword + location. Each page's title must be visibly distinct from the others — no two pages should share their first 4–5 words.
 - **Meta description:** 150–160 chars. Front-load keyword + location. Same uniqueness rule — don't open two pages with the same phrase. Avoid generic openings like "Bespoke X across Surrey…" repeated verbatim across pages; vary the entry angle (trust signal, specific service, named clients, an outcome).
 - **H1:** distinct per page. Don't fall back to the "[Service] stylist, based in Surrey." pattern — it makes pages feel near-identical to both crawlers and humans.
@@ -65,7 +66,7 @@ Every reusable component and page, the Christmas page included, takes its typogr
 
 ## Location pages
 
-Location data lives in `src/data/locations/<slug>.tsx` and is built via the `makeLocation()` helper in `_makeLocation.tsx`. Each location must have a unique `uniqueSeoTitle`, `uniqueSeoDescription`, `uniqueHeroSub` and `uniqueWhatWeDoBody`. Location pages are the highest collision risk — there are 20+ of them and they share structure, so the copy has to work harder to feel distinct.
+Location data lives in `src/data/locations/<slug>.tsx` and is built via the `makeLocation()` helper in `_makeLocation.tsx`. Each location must have a unique `uniqueSeoDescription`, `uniqueHeroSub` and `uniqueWhatWeDoBody`. Location pages are the highest collision risk — there are 20+ of them and they share structure, so the copy has to work harder to feel distinct.
 
 **Local prose section rules:**
 

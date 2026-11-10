@@ -9,8 +9,6 @@ const forestRow = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["stubbs-gender-reveal", "jungle-elephant", "veuve-disco"],
   },
-  seoTitleRegion: "East Sussex",
-  uniqueSeoTitle: "Forest Row Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Forest-edge children's parties across the Ashdown Forest - first birthdays to big themed celebrations, individually designed and installed by Laura.",
   uniqueHeroLine: <>Forest Row birthdays,</>,

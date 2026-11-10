@@ -9,7 +9,6 @@ const oxshott = makeLocation({
     galleryMain: "pastel-safari-anaya",
     galleryThumbs: ["fairy-kayla", "jungle-elephant", "wonka-chocolate-arch"],
   },
-  uniqueSeoTitle: "Children's Party Decorators in Oxshott | River Fox Events",
   uniqueSeoDescription:
     "Children's party decorators for at-home parties in Oxshott, with balloon installations, themed backdrops and props. Rated 5.0 on Google, takedown included.",
   uniqueHeroLine: <>Balloon arches in&nbsp;Oxshott,</>,

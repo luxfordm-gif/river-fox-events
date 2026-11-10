@@ -9,7 +9,6 @@ const dorking = makeLocation({
     galleryMain: "wonka-chocolate-arch",
     galleryThumbs: ["stubbs-gender-reveal", "pastel-safari-anaya", "jungle-elephant"],
   },
-  uniqueSeoTitle: "Dorking Children's Party Styling | River Fox Events",
   uniqueSeoDescription:
     "Children's parties beneath the Surrey Hills - first birthdays to big themed celebrations in Dorking, individually designed by Laura.",
   uniqueHeroLine: <>Party decorations in&nbsp;Dorking,</>,

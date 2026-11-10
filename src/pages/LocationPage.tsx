@@ -37,7 +37,9 @@ const useLocationSEO = (loc: LocationConfig) => {
     const route = findRoute(path);
 
     applyMeta({
-      title: loc.seoTitle,
+      // routes.ts is the one source for titles, so the tab title doesn't
+      // change once the page's JavaScript loads.
+      title: route?.title ?? loc.seoTitle,
       description: loc.seoDescription,
       path,
     });
