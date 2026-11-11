@@ -1,0 +1,93 @@
+# Christmas switch-back on the homepage (Matt, 2026-11-11).
+#
+# While CHRISTMAS_CAMPAIGN is true in src/pages/Index.tsx, the homepage opens
+# with the Christmas video and hides the "Parties and events, styled in
+# Surrey" title section. On 3 January 2027 this sets it to false and pushes
+# to main, which starts Netlify's normal production deploy.
+#
+# It checks every morning from 3 to 10 January (GitHub sometimes skips a
+# scheduled run) and only acts while the switch is still on, so it changes
+# the site once. The tests run first; if they fail, nothing is pushed and
+# GitHub emails a failed run.
+#
+# "Run workflow" by hand:
+#   - dry run ticked (the default): rehearses the change and shows it,
+#     pushes nothing.
+#   - dry run unticked: switches back straight away, whatever the date.
+name: Christmas switch-back
+
+on:
+  schedule:
+    # 06:00 UTC = 06:00 UK in January.
+    - cron: "0 6 3-10 1 *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Rehearse only (push nothing)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  switchback:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Is it time, and is the switch still on?
+        id: check
+        env:
+          EVENT: ${{ github.event_name }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+        run: |
+          TODAY=$(TZ=Europe/London date +%F)
+          if ! grep -q "^const CHRISTMAS_CAMPAIGN = true;" src/pages/Index.tsx; then
+            echo "The Christmas switch is already off. Nothing to do."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          elif [ "$EVENT" = "workflow_dispatch" ] || [[ "$TODAY" > "2027-01-02" ]]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Not yet ($TODAY). The switch-back is from 2027-01-03."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+          if [ "$EVENT" = "workflow_dispatch" ] && [ "$DRY_RUN" != "false" ]; then
+            echo "push=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "push=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Turn the Christmas homepage off
+        if: steps.check.outputs.go == 'true'
+        run: |
+          sed -i 's/^const CHRISTMAS_CAMPAIGN = true;/const CHRISTMAS_CAMPAIGN = false;/' src/pages/Index.tsx
+          grep -q "^const CHRISTMAS_CAMPAIGN = false;" src/pages/Index.tsx || { echo "Could not find the switch in Index.tsx"; exit 1; }
+          git diff
+
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.go == 'true'
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Run the tests
+        if: steps.check.outputs.go == 'true'
+        run: |
+          npm ci
+          npx vitest run
+
+      - name: Push to main (Netlify deploys it)
+        if: steps.check.outputs.go == 'true' && steps.check.outputs.push == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Home: Christmas campaign over, title section back (scheduled switch-back)"
+          git push origin HEAD:main
+          echo "Pushed: Netlify will rebuild the live site."
+
+      - name: Dry run finished
+        if: steps.check.outputs.go == 'true' && steps.check.outputs.push != 'true'
+        run: echo "Dry run: the change above and the tests worked. Nothing was pushed."
