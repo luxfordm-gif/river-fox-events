@@ -164,10 +164,10 @@ const BalloonInstallations = () => {
             "Hi Laura, I'd like a quote for a balloon installation. My date and postcode are "
           )}
           lines={[
-            <>Balloon decorations across Surrey,</>,
+            <>Balloon arches across Surrey,</>,
             <>
               <em className="t-accent">
-                styled around your celebration.
+                styled around you.
               </em>
             </>,
           ]}
