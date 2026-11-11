@@ -11,8 +11,12 @@ import { useScrollProgress } from "@/hooks/useScrollProgress";
 const LEAD = "I style children's parties, milestone celebrations and brand events across Surrey and London,";
 const ACCENT = "each one individually designed.";
 
-const Mission = () => {
-  const textRef = useRef<HTMLParagraphElement>(null);
+/** `asTitle`: the line is the page's main title (h1), for while the home
+ *  title section is hidden behind the Christmas video (Matt, 2026-11-11).
+ *  It looks the same either way. */
+const Mission = ({ asTitle = false }: { asTitle?: boolean }) => {
+  const textRef = useRef<HTMLHeadingElement & HTMLParagraphElement>(null);
+  const Line = asTitle ? "h1" : "p";
   const words = useRef<HTMLSpanElement[]>([]);
 
   const onProgress = useCallback((p: number) => {
@@ -50,10 +54,10 @@ const Mission = () => {
   return (
     <section id="mission" className="rfx-section white" aria-label="What River Fox Events does">
       <div className="container-rfx">
-        <p ref={textRef} className="t-h2 text-ink mission-line">
+        <Line ref={textRef} className="t-h2 text-ink mission-line">
           {split(LEAD)}
           <em className="t-accent">{split(ACCENT)}</em>
-        </p>
+        </Line>
         {/* Divider before the services section (Matt, 2026-11-08). */}
         <div className="mission-rule" aria-hidden="true" />
       </div>

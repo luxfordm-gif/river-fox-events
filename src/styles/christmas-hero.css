@@ -22,6 +22,16 @@
   margin-top: var(--nav-height);
   min-height: calc((100svh - var(--nav-height)) * 0.82);
 }
+/* Desktop: a fifth shorter, a wide letterbox like getmaple.ca (Matt,
+   2026-11-11): lower frame and half the padding round the words, since
+   the words set the height on laptops. Phones and tablets keep the taller
+   frame. */
+@media (min-width: 1024px) {
+  .xhero--top {
+    min-height: calc((100svh - var(--nav-height)) * 0.82 * 0.8);
+    padding-block: calc(var(--section-y) / 2);
+  }
+}
 
 /* Christmas pages: starts small with Large corners and grows to full width
    as it scrolls up the screen (ChristmasHero.tsx sets --zoom and --corner
