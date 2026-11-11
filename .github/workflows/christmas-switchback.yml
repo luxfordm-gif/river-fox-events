@@ -91,4 +91,4 @@ jobs:
       - name: Dry run finished
         if: steps.check.outputs.go == 'true' && steps.check.outputs.push != 'true'
         run: |
-          echo "Dry run - the change above and the tests worked. Nothing was pushed."
+          echo "Dry run: the change above and the tests worked. Nothing was pushed."
