@@ -22,6 +22,9 @@ import {
   upsertJsonLd,
 } from "@/seo/headTags";
 
+/** On while the Christmas campaign runs: video hero, no title section. */
+const CHRISTMAS_CAMPAIGN = true;
+
 const Index = () => {
   useFadeUp();
   useNavScroll();
@@ -39,10 +42,13 @@ const Index = () => {
     <div className="min-h-screen page-paper text-foreground nav-paper">
       <Nav />
       <main>
-        {/* Christmas season: the video hero takes the top of the page. */}
-        <ChristmasHero />
-        <Hero />
-        <Mission />
+        {/* Christmas season: the video hero takes the top of the page and
+            runs straight into the mission line, which stands in as the
+            page title (Matt, 2026-11-11). After Christmas, set
+            CHRISTMAS_CAMPAIGN to false to bring the title section back. */}
+        {CHRISTMAS_CAMPAIGN && <ChristmasHero />}
+        {!CHRISTMAS_CAMPAIGN && <Hero />}
+        <Mission asTitle={CHRISTMAS_CAMPAIGN} />
         <Experiences align="centre" />
         <About />
         <Process tone="cream" />

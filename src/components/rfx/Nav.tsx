@@ -216,6 +216,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           Only the background fades in; the links arrive with it, all at once
           (the one-by-one slide-down got repetitive, Matt 2026-11-09). */}
       <div
+        data-track-location="menu"
         className={`fixed inset-0 z-[99] bg-surface-alt overflow-y-auto overscroll-contain transition-opacity duration-500 lg:hidden ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
