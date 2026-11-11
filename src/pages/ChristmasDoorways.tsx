@@ -166,7 +166,7 @@ const GARLAND_OPTIONS = [
   {
     title: "Faux",
     note: "Beautiful all season",
-    body: "A beautifully full garland, installed whenever you wish and enjoyed year after year.",
+    body: "A full, lush garland, installed whenever you wish and enjoyed year after year.",
     link: "Enquire about faux garlands",
   },
 ];
@@ -214,7 +214,7 @@ const FAQS_HOME = [
   },
   {
     q: "When will my garland go up?",
-    a: "Faux garlands can be installed whenever you wish. Fresh spruce is installed from early November and lasts beautifully through the festive season and into January. We'll agree the date when you book.",
+    a: "Faux garlands can be installed whenever you wish. Fresh spruce is installed from early November and lasts through the festive season and into January. We'll agree the date when you book.",
   },
   {
     q: "Do you dress doorways for businesses as well as homes?",
@@ -234,7 +234,8 @@ const FAQS_HOME = [
       </>
     ),
   },
-  FRESH_OR_FAUX_FAQ,
+  /* Homes wording (Matt 2026-11-09); the business page keeps the shared one. */
+  { ...FRESH_OR_FAUX_FAQ, a: FRESH_OR_FAUX_FAQ.a.replace("Faux is beautifully full", "Faux is full and lush") },
   {
     q: "Can you match my door, brick or brand colours?",
     a: "Always. Every doorway starts with your paintwork, so the baubles, ribbon and accents are chosen to suit your door, brickwork or brand rather than taken from a set design.",
@@ -808,7 +809,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               <p className="mt-6 t-lead text-ink-soft max-w-[54ch] mx-auto">
                 {biz
                   ? "From the first photo to the finished install, I'll work around your trading hours, so the only thing your customers notice is the garland."
-                  : "From the first conversation to the finished installation, I'll take care of the details so you can simply enjoy your beautifully dressed doorway throughout the festive season."}
+                  : "From the first conversation to the finished installation, I'll take care of the details so you can simply enjoy your doorway all season."}
               </p>
             </div>
             <ol className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
