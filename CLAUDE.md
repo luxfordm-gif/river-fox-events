@@ -83,6 +83,7 @@ Location data lives in `src/data/locations/<slug>.tsx` and is built via the `mak
 - **Alt text describes what's actually in the image** — not the page topic, and never the brand name (the brand is already in `<title>` and JSON-LD). Two different image files shouldn't open their alt text with the same 5 words. Bad: "Children's party styling in Surrey by River Fox Events…" repeated across multiple files. Good: each alt opens with what makes that specific photo specific (the cake table, the balloon installation, the venue, the colour palette).
 - **Never use `rishi-summer-party-bright-balloon-backdrop.webp`** (Rishi's Summer Party, turquoise/coral/lemon balloons with beach balls). Matt dislikes it (2026-11-08). Don't pick it for any new placement, strip, tile or OG image.
 - **Per-page OG images.** The global fallback is `public/social-share.jpg`; journal articles and key pages should override with `ogImage` in `routes.ts` pointing to a per-page `.webp` in `public/og/`.
+- **Where Laura's photos are.** About 370 of her photos are in `src/assets/` with one alt each in `src/data/gallery.ts`; reuse those (and their alt) first. Her Instagram (`@riverfox_events`, 554 posts in Nov 2026) is not fully mirrored: only 15 Christmas door photos are saved, in `src/assets/christmas/instagram/`. If a piece needs a post that isn't stored, name it and ask Matt to save it. The repo has no pastel balloon wall photo yet (the only one is a Halloween wall, off house style).
 
 **Compression & loading targets:**
 
@@ -143,6 +144,8 @@ When writing, editing, or reviewing any article in `src/data/articles/`, read **
 
 For the competitor-research workflow when starting a new article, see **`src/data/articles/NEW-ARTICLE.md`**.
 
+**Scheduled articles (2026-11-09).** An article can be dated in the future: set its `publishedAt` in `src/data/articles/index.tsx` **and** the same date as `publishAt` on its route in `routes.ts` (`src/test/scheduled-articles.test.ts` fails if they differ). Netlify production builds leave it out of its page, the journal list, related links and the sitemap until that date (UK time); deploy previews and local builds show everything, so Matt can read drafts. `.github/workflows/publish-scheduled-articles.yml` pushes an empty commit to `main` at 06:15 UTC on any day an article is due, which makes Netlify rebuild. Keep the articles array in date order (newest first): the journal lists them in array order, not by date. Aim for about one article a week.
+
 ## Brand & business
 
 - Brand: **River Fox Events** (formerly Lollipop Balloons). The `alternateName` is preserved in JSON-LD so historic links / brand searches flow through.
@@ -150,6 +153,9 @@ For the competitor-research workflow when starting a new article, see **`src/dat
 - Studio: 15 Apsley Rd, Horley, RH6 9RX.
 - Pricing anchor: events from £300 (was £460 until 2026-11-07, lowered so balloon-only jobs aren't put off). Bigger designs £600 - £1,500+ (was £800 until Matt corrected it, 2026-11-09). Enquiry budget brackets: Under £300, £300 - £600, £600 - £1,000, £1,000 - £1,500, £1,500+, Not sure yet (lowered with the £600 range, Matt 2026-11-09). Use these numbers consistently.
 - Tone: calm, considered, thoughtfully styled. Never punchy/salesy. No em dashes (use hyphens), no exclamation marks.
+- **Service facts Laura has confirmed** (for copy and FAQs, 2026-11-09): every arch and garland is built on site at the event, never made in advance; air-filled pieces stay full for days indoors, helium balloons last no more than a day and deflate quickly in heat or cold, so they go up just before the event; she does weddings; she happily does Christmas balloon pieces for shop counters, windows and salon floors.
+- **Google Business Profile** (signed in in the Browser pane via Google Maps): primary category "Balloon artist", plus Wedding service, Children's party service and Party equipment rental service. Its services include "Balloon decorations", balloon arches, garlands, walls, number stacks and shimmer wall hire. Keep its wording in step with the Balloon page.
+- **SEO baseline (SEO Vendor, 2026-11-09):** technical audit 42/42; GEO audit 75/100. ChatGPT (RankLens, Surrey) names River Fox first for children's parties, milestones, corporate and Christmas garlands, but never for "balloon decorations in Surrey" (it names The Party Productions, Confetti Party, Elizabeth James Events, Basically Balloons, Peachey Events). The Balloon page was reworked around "balloon decorations" that day; re-check in mid-December.
 
 ## Working with Matt
 
