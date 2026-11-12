@@ -8,6 +8,9 @@ type InstagramStripProps = {
   images: InstagramStripImage[];
   href?: string;
   handle?: string;
+  /** false: plain photos, no link out to Instagram and no "Opens Instagram"
+   *  overlay, badge or label (the two Christmas garland pages). */
+  linked?: boolean;
 };
 
 /**
@@ -128,6 +131,7 @@ const InstagramStrip = ({
   images,
   href = "https://www.instagram.com/riverfox_events/",
   handle = "@riverfox_events",
+  linked = true,
 }: InstagramStripProps) => {
   const repeats = images.length ? Math.ceil(MIN_PER_SET / images.length) : 0;
   const set = Array.from({ length: repeats }, () => images).flat();
@@ -141,6 +145,11 @@ const InstagramStrip = ({
           const repeat = copy === 1 || i >= images.length;
           return (
           <li key={`${copy}-${i}`} className="xmas-ig__item" aria-hidden={repeat ? true : undefined}>
+            {!linked ? (
+              <div className="xmas-ig__tile">
+                <img src={img.src} alt={repeat ? "" : img.alt} width={560} height={700} loading="lazy" decoding="async" />
+              </div>
+            ) : (
             <a
               href={href}
               target="_blank"
@@ -159,6 +168,7 @@ const InstagramStrip = ({
                 <Instagram size={14} strokeWidth={1.8} />
               </span>
             </a>
+            )}
           </li>
           );
         })

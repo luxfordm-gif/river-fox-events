@@ -79,6 +79,7 @@ import fanDog from "@/assets/christmas/video/woman-running-after-dragged-lit-gar
 import adThumb360 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-360.webp";
 import adThumb540 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-540.webp";
 import adThumb720 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-720.webp";
+import { trackLead } from "@/lib/track";
 
 /* Christmas ad: Laura's Instagram story videos, played full screen from one
    thumbnail tile in the inspiration section. Videos only load once the tile
@@ -541,6 +542,9 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
       if (typeof window.gtag === "function") {
         window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
       }
+      // GA4 lead, sent only after Accept on the cookie banner (src/lib/track.ts).
+      // Read before form.reset() below clears the fields.
+      trackLead(form);
       toast.success("Thank you - I've got your door details. I'll be in touch within 1-2 working days with ideas and a quote. Laura");
       form.reset();
     } catch (err) {
@@ -592,17 +596,10 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     </p>
                   </>
                 ) : (
-                  <>
-                    <p>
-                      A garlanded doorway is one of the loveliest ways to
-                      welcome Christmas.
-                    </p>
-                    <p>
-                      Each garland is individually styled for your home or
-                      business and installed by hand across Surrey, with optional
-                      January&nbsp;takedown.
-                    </p>
-                  </>
+                  <p>
+                    No ladders, no wonky garlands. I design your doorway, hang
+                    it by hand and come back in January to take it&nbsp;down.
+                  </p>
                 )}
               </div>
               {/* Enquire now everywhere; phones also get WhatsApp Laura now,
@@ -765,7 +762,8 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
             </div>
           </div>
           <div className="mt-12 md:mt-14">
-            <InstagramStrip images={biz ? INSTAGRAM_BUSINESS : INSTAGRAM} />
+            {/* Photos only, no link out to Instagram (Matt, 2026-11-12). */}
+            <InstagramStrip images={biz ? INSTAGRAM_BUSINESS : INSTAGRAM} linked={false} />
           </div>
         </section>
 

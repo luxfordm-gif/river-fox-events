@@ -55,16 +55,13 @@ const CookieBanner = () => {
       className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 md:max-w-[420px] z-[200] rounded-large bg-surface-deep text-on-deep shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.45)] px-5 py-4 md:px-6 md:py-5"
     >
       <p className="t-meta">
-        We use cookies to understand how the site is used (Google Analytics)
-        and to measure our advertising (Google Ads). Nothing loads until you
-        accept. See our{" "}
+        We use cookies for analytics and ads, only if you accept.{" "}
         <a
           href="/privacy/"
           className="text-link"
         >
-          privacy &amp; cookies
-        </a>{" "}
-        page.
+          Privacy &amp; cookies
+        </a>
       </p>
       <div className="mt-4 flex items-center gap-3">
         <button
