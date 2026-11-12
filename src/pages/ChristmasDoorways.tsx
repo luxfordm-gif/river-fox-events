@@ -598,7 +598,8 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 ) : (
                   <p>
                     No ladders, no wonky garlands. I design your doorway, hang
-                    it by hand and come back in January to take it&nbsp;down.
+                    it by hand and, as an extra, come back in January to take
+                    it&nbsp;down.
                   </p>
                 )}
               </div>
