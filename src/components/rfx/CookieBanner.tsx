@@ -63,20 +63,21 @@ const CookieBanner = () => {
           Privacy &amp; cookies
         </a>
       </p>
-      <div className="mt-4 flex items-center gap-3">
-        <button
-          type="button"
-          onClick={accept}
-          className="btn-solid-rf accent !py-2 !px-4"
-        >
-          Accept
-        </button>
+      {/* Buttons sit on the right, Accept in the far corner (Matt, 2026-11-12). */}
+      <div className="mt-4 flex items-center justify-end gap-3">
         <button
           type="button"
           onClick={decline}
           className="t-label opacity-80 hover:opacity-100 underline underline-offset-4"
         >
           Decline
+        </button>
+        <button
+          type="button"
+          onClick={accept}
+          className="btn-solid-rf accent !py-2 !px-4"
+        >
+          Accept
         </button>
       </div>
     </div>
