@@ -5,6 +5,7 @@ import Footer from "@/components/rfx/Footer";
 import PageHeader from "@/components/rfx/PageHeader";
 import { useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
+import { trackLead } from "@/lib/track";
 import {
   applyMeta,
   breadcrumbSchema,
@@ -61,6 +62,9 @@ const Contact = () => {
       if (typeof window.gtag === "function") {
         window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
       }
+      // GA4 lead, sent only after Accept on the cookie banner (src/lib/track.ts).
+      // Read before form.reset() below clears the fields.
+      trackLead(form);
       toast.success("Thank you - your enquiry has been received. I'll be in touch within 1-2 working days to discuss your event in more detail. Laura");
       form.reset();
     } catch (err) {

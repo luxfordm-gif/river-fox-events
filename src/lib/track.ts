@@ -15,9 +15,62 @@
  * page. Mark whatsapp_click and phone_click as key events in Google
  * Analytics, then import them into Google Ads as conversions.
  *
- * gtag respects the cookie banner's consent setting (index.html), so this
- * sends nothing the banner hasn't allowed.
+ * Every event here goes through trackEvent, which sends nothing until the
+ * visitor has clicked Accept on the cookie banner (Matt, 2026-11-12). The
+ * Google tag itself and its consent defaults are set up in index.html and
+ * the banner; this file doesn't touch them. In development each event is
+ * logged to the console so it can be checked.
  */
+
+/** Same key the cookie banner and index.html use for the visitor's choice. */
+export const CONSENT_KEY = "rfx-consent";
+
+/** True only once the visitor has clicked Accept on the cookie banner. */
+export function hasConsent(): boolean {
+  try {
+    return localStorage.getItem(CONSENT_KEY) === "granted";
+  } catch {
+    return false;
+  }
+}
+
+type Params = Record<string, string | number | undefined>;
+
+/** Send one GA4 event, only after Accept. Returns whether it was sent. */
+export function trackEvent(name: string, params: Params = {}): boolean {
+  const clean = Object.fromEntries(Object.entries(params).filter(([, v]) => v !== undefined && v !== ""));
+  const send = hasConsent() && typeof window !== "undefined" && typeof window.gtag === "function";
+  if (import.meta.env.DEV) {
+    console.log(`[track] ${name}${send ? "" : " (not sent: no consent)"}`, clean);
+  }
+  if (!send) return false;
+  window.gtag!("event", name, clean);
+  return true;
+}
+
+/**
+ * GA4 generate_lead, called once after a lead form's Netlify submission
+ * succeeds (enquire, christmas-doorway, contact). customer_type is "home" or
+ * "business": the garland form asks directly; the party forms count a
+ * corporate event as business. garland is only on the garland form.
+ */
+export function trackLead(form: HTMLFormElement) {
+  const data = new FormData(form);
+  const get = (k: string) => {
+    const v = data.get(k);
+    return typeof v === "string" ? v.trim() : "";
+  };
+  const property = get("property").toLowerCase();
+  const customerType = property
+    ? property === "business" ? "business" : "home"
+    : /corporate|brand/i.test(get("type")) ? "business" : "home";
+  return trackEvent("generate_lead", {
+    form_name: get("form-name") || form.getAttribute("name") || "unknown",
+    page_path: window.location.pathname,
+    customer_type: customerType,
+    garland: get("garland") || undefined,
+  });
+}
 
 export type ClickEvent =
   | "whatsapp_click"
@@ -79,8 +132,8 @@ export function installClickTracking() {
       const a = (e.target as Element | null)?.closest?.("a[href]") as HTMLAnchorElement | null;
       if (!a) return;
       const event = classifyHref(a.getAttribute("href") || "");
-      if (!event || typeof window.gtag !== "function") return;
-      window.gtag("event", event, {
+      if (!event) return;
+      trackEvent(event, {
         link_text: linkText(a),
         link_location: linkLocation(a),
         link_url: a.href,

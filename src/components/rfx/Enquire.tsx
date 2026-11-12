@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toast } from "sonner";
+import { trackLead } from "@/lib/track";
 
 type EnquireProps = {
   defaultEventType?: "Children's party" | "Milestone celebration" | "Corporate event" | "Other";
@@ -35,6 +36,9 @@ const Enquire = ({
       if (typeof window.gtag === "function") {
         window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
       }
+      // GA4 lead, sent only after Accept on the cookie banner (src/lib/track.ts).
+      // Read before form.reset() below clears the fields.
+      trackLead(form);
       toast.success("Thank you - your enquiry has been received. I'll be in touch within 1-2 working days to discuss your event in more detail. Laura");
       form.reset();
     } catch (err) {
