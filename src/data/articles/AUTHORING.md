@@ -150,6 +150,8 @@ Reference inventory (canonical): the four service pages on [lollipopballoonssurr
 - **Words to avoid as Laura's design moves:** "low florals", "floral runner", "trailing florals", "floral arch", "tablescape florals", "floral installation", "centrepieces" (when implying Laura built them), "stems we sourced", "we arranged", "fresh florals", "the florals we styled".
 - **Acceptable language (used sparingly, never leading):** "a few faux stems for texture", "the florist's pieces" (where a florist is involved and the host has booked them), planting in a garden, foliage in a venue.
 
+**One exception:** Christmas door garlands are offered in fresh spruce or faux. That is seasonal greenery for doors, not event floristry, so it's fine to say "fresh spruce" there and only there.
+
 If a topic seems to need florals to land, the topic is wrong for Laura — pick a different topic. Don't write a piece where florals are doing the heavy lifting and try to skirt around it.
 
 If a proposed topic falls in the auto-reject list, propose a different one. If it falls in the discouraged list, flag it explicitly to Matt with the reason it's worth making an exception for, and let him decide.
@@ -227,6 +229,7 @@ Per `CLAUDE.md`:
 - **Per-page OG image** in `public/og/[article-slug].webp` (1200×630), referenced from `src/seo/routes.ts`.
 
 ### When using AI image generation
+- **Last resort only** (brand book v2). Real photos from Laura's events come first (`src/data/gallery.ts`, then the graded set in Google Drive). AI images are allowed for journal articles only, never for the gallery, service pages or social, and never passed off as a real event.
 - **Hero:** 1600×900 landscape. Subject centred so a square or 4:3 crop still leads with the subject.
 - **Thumbnail:** 800×800 (square) — composed independently, not just a hero crop.
 - **OG:** 1200×630 — composed for social preview cards.
