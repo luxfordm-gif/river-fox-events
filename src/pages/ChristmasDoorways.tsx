@@ -600,11 +600,17 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     </p>
                   </>
                 ) : (
-                  <p>
-                    No ladders, no wonky garlands. I design your doorway, hang
-                    it by hand and, as an extra, come back in January to take
-                    it&nbsp;down.
-                  </p>
+                  <>
+                    <p>
+                      A garlanded doorway is one of the loveliest ways to
+                      welcome Christmas.
+                    </p>
+                    <p>
+                      Each garland is individually styled for your home or
+                      business and installed by hand across Surrey, with optional
+                      January&nbsp;takedown.
+                    </p>
+                  </>
                 )}
               </div>
               {/* Enquire now everywhere; phones also get WhatsApp Laura now,
