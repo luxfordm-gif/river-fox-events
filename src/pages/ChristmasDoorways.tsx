@@ -445,23 +445,23 @@ const STEPS = [
   {
     n: "01",
     title: "Send me a photo",
-    body: "Share a photo of your doorway, rough measurements and your postcode, and I'll come back with ideas and a personalised quote.",
+    body: "Send your door, measurements and postcode for a quote.",
   },
   {
     n: "02",
     title: "Settle on a design",
-    body: "Together we'll choose the style, colours and details, then book in your installation date.",
+    body: "We choose the style and colours, then book your date.",
   },
   {
     n: "03",
     title: "I'll bring it to life",
-    body: "I'll arrive with everything needed, dress your doorway in place and clear away afterwards.",
+    body: "I bring everything, dress your door and tidy up after.",
   },
   {
     n: "04",
     title: "January takedown",
     extra: true,
-    body: "After Christmas I'll carefully remove your garland and leave your doorway just as I found it. Add it when you book.",
+    body: "I'll take it all down in January. Add it when you book.",
   },
 ];
 
@@ -469,14 +469,18 @@ const STEPS_BUSINESS = [
   {
     n: "01",
     title: "Send me a photo",
-    body: "Share a photo of your entrance, rough measurements, your postcode and your brand colours, and I'll come back with ideas and a quote.",
+    body: "Send your entrance, colours and postcode for a quote.",
   },
   {
     n: "02",
     title: "Settle on a design",
-    body: "Together we'll choose the style, colours and details, then book an install date around your opening hours.",
+    body: "We match your brand, then book around your opening hours.",
   },
-  STEPS[2],
+  {
+    n: "03",
+    title: "I'll bring it to life",
+    body: "I bring everything, dress your entrance and tidy up.",
+  },
   STEPS[3],
 ];
 
