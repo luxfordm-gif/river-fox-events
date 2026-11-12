@@ -52,19 +52,21 @@ const CookieBanner = () => {
       role="dialog"
       aria-live="polite"
       aria-label="Cookie preferences"
-      className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 md:max-w-[420px] z-[200] rounded-large bg-surface-deep text-on-deep shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.45)] px-5 py-4 md:px-6 md:py-5"
+      className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 md:max-w-xl z-[200] rounded-large bg-surface-deep text-on-deep shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.45)] px-5 py-4 md:px-6 md:py-5 flex items-center gap-4 md:gap-6"
     >
-      <p className="t-meta">
+      {/* One row (Matt, 2026-11-12): copy on the left, buttons on the right
+          with Accept in the far corner. On phones the buttons stack, Accept
+          on top, so the copy still has room beside them. */}
+      <p className="t-meta flex-1 min-w-0">
         We use cookies for analytics and ads, only if you accept.{" "}
         <a
           href="/privacy/"
-          className="text-link"
+          className="text-link whitespace-nowrap"
         >
           Privacy &amp; cookies
         </a>
       </p>
-      {/* Buttons sit on the right, Accept in the far corner (Matt, 2026-11-12). */}
-      <div className="mt-4 flex items-center justify-end gap-3">
+      <div className="shrink-0 flex flex-col-reverse items-center gap-2 sm:flex-row sm:gap-4">
         <button
           type="button"
           onClick={decline}
