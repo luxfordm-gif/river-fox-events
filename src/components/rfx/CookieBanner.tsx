@@ -52,12 +52,12 @@ const CookieBanner = () => {
       role="dialog"
       aria-live="polite"
       aria-label="Cookie preferences"
-      className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 md:max-w-xl z-[200] rounded-large bg-surface-deep text-on-deep shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.45)] px-5 py-4 md:px-6 md:py-5 flex items-center gap-4 md:gap-6"
+      className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 md:max-w-xl z-[200] rounded-large bg-surface-deep text-on-deep shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.45)] px-5 py-4 md:px-6 md:py-5 flex flex-col gap-4 md:flex-row md:items-center md:gap-6"
     >
-      {/* One row (Matt, 2026-11-12): copy on the left, buttons on the right
-          with Accept in the far corner. On phones the buttons stack, Accept
-          on top, so the copy still has room beside them. */}
-      <p className="t-meta flex-1 min-w-0">
+      {/* Matt, 2026-11-12: Accept always sits in the far-right corner. Tablet
+          and up is one row, copy left and buttons right. On phones one row was
+          too tight, so the copy runs full width with the buttons under it. */}
+      <p className="t-meta min-w-0 md:flex-1">
         We use cookies for analytics and ads, only if you accept.{" "}
         <a
           href="/privacy/"
@@ -66,7 +66,7 @@ const CookieBanner = () => {
           Privacy &amp; cookies
         </a>
       </p>
-      <div className="shrink-0 flex flex-col-reverse items-center gap-2 sm:flex-row sm:gap-4">
+      <div className="shrink-0 self-end flex items-center gap-4 md:self-auto">
         <button
           type="button"
           onClick={decline}
