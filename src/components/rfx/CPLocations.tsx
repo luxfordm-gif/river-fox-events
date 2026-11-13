@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { LOCATIONS } from "@/data/locations";
+import { TOWNS } from "@/data/locations/towns";
 import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 
 type CPLocationsProps = {
@@ -20,7 +20,7 @@ type CPLocationsProps = {
 // bullet list into internal links wherever we have a dedicated page -
 // boosts cross-linking between every service page, every location page
 // and every other location page that shares a town.
-const SLUG_BY_CITY = new Map(LOCATIONS.map((l) => [l.cityName, l.slug]));
+const SLUG_BY_CITY = new Map(TOWNS.map((l) => [l.cityName, l.slug]));
 
 const DEFAULT_HEADING: ReactNode = (
   <>

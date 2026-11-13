@@ -12,13 +12,19 @@ import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { SITE, findRoute } from "@/seo/routes";
 import { applyMeta, removeJsonLd, upsertJsonLd } from "@/seo/headTags";
 
+// /journal/:slug or /journal/:slug/
+const slugOf = (pathname: string) => pathname.replace(/\/$/, "").replace(/^\/journal\//, "");
+
+/** Start downloading this article's text (App.tsx calls it before the page
+ *  shows, so the article appears in one go). */
+// eslint-disable-next-line react-refresh/only-export-components
+export const preloadArticle = (pathname: string) => findArticle(slugOf(pathname))?.Body.preload();
+
 const Article = () => {
   useFadeUp();
   useNavScroll();
   const { pathname } = useLocation();
-  // /journal/:slug or /journal/:slug/
-  const slug = pathname.replace(/\/$/, "").replace(/^\/journal\//, "");
-  const article = findArticle(slug);
+  const article = findArticle(slugOf(pathname));
 
   useEffect(() => {
     if (!article) return;

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, ChevronRight, Instagram } from "lucide-react";
 import { useScrollY } from "@/hooks/useRiverFox";
-import { LOCATIONS } from "@/data/locations";
+import { TOWNS } from "@/data/locations/towns";
 
 const FOOTER_LOCATIONS_VISIBLE = 5;
 
@@ -11,9 +11,9 @@ const Footer = () => {
   const [revealed, setRevealed] = useState(false);
   const [showAllLocations, setShowAllLocations] = useState(false);
   const visibleLocations = showAllLocations
-    ? LOCATIONS
-    : LOCATIONS.slice(0, FOOTER_LOCATIONS_VISIBLE);
-  const hasMoreLocations = LOCATIONS.length > FOOTER_LOCATIONS_VISIBLE;
+    ? TOWNS
+    : TOWNS.slice(0, FOOTER_LOCATIONS_VISIBLE);
+  const hasMoreLocations = TOWNS.length > FOOTER_LOCATIONS_VISIBLE;
 
   useEffect(() => {
     const el = watermarkRef.current;

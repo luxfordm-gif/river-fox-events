@@ -1,21 +1,26 @@
 import type { Article, ArticleSummary } from "./types";
-import LollipopRebrandBody from "./lollipop-balloons-to-river-fox-events";
-import BeyondTheBalloonArchBody from "./beyond-the-balloon-arch";
-import FromDesignToDeliveryBody from "./from-design-to-delivery";
-import ChildrensPartyThemes2026Body from "./childrens-party-themes-2026";
-import TwoWildSafariSecondBirthdayBody from "./two-wild-safari-second-birthday";
-import GardenMilestoneStylingSurreyBody from "./garden-milestone-styling-surrey";
-import WillyWonkaFifthBirthdaySavannaBody from "./willy-wonka-fifth-birthday-savanna";
-import DylanChristeningFirstBirthdayBody from "./dylan-christening-first-birthday";
-import BabyShowerThemes2026Body from "./baby-shower-themes-2026";
-import ChristmasDecorationsSurreyBody from "./christmas-decorations-surrey";
-import ShimmerWallHireSurreyBody from "./shimmer-wall-hire-surrey";
-import HiringAnEventStylistSurreyBody from "./hiring-an-event-stylist-surrey";
-import FiftiethBirthdayDecorationsSurreyBody from "./50th-birthday-decorations-surrey";
-import BalloonBackdropIdeasHomePartiesBody from "./balloon-backdrop-ideas-home-parties";
-import BalloonArchGarlandOrWallBody from "./balloon-arch-garland-or-wall";
-import QuestionsToAskABalloonDecoratorBody from "./questions-to-ask-a-balloon-decorator";
-import ChristmasBalloonDecorationsSurreyBody from "./christmas-balloon-decorations-surrey";
+import { lazyPage } from "@/lib/lazyPage";
+
+// Each article's text downloads only when that article is opened (speed
+// pass, 2026-11-13); the journal list and related cards need just the
+// details below. Article.tsx starts the download before the page shows.
+const LollipopRebrandBody = lazyPage(() => import("./lollipop-balloons-to-river-fox-events"));
+const BeyondTheBalloonArchBody = lazyPage(() => import("./beyond-the-balloon-arch"));
+const FromDesignToDeliveryBody = lazyPage(() => import("./from-design-to-delivery"));
+const ChildrensPartyThemes2026Body = lazyPage(() => import("./childrens-party-themes-2026"));
+const TwoWildSafariSecondBirthdayBody = lazyPage(() => import("./two-wild-safari-second-birthday"));
+const GardenMilestoneStylingSurreyBody = lazyPage(() => import("./garden-milestone-styling-surrey"));
+const WillyWonkaFifthBirthdaySavannaBody = lazyPage(() => import("./willy-wonka-fifth-birthday-savanna"));
+const DylanChristeningFirstBirthdayBody = lazyPage(() => import("./dylan-christening-first-birthday"));
+const BabyShowerThemes2026Body = lazyPage(() => import("./baby-shower-themes-2026"));
+const ChristmasDecorationsSurreyBody = lazyPage(() => import("./christmas-decorations-surrey"));
+const ShimmerWallHireSurreyBody = lazyPage(() => import("./shimmer-wall-hire-surrey"));
+const HiringAnEventStylistSurreyBody = lazyPage(() => import("./hiring-an-event-stylist-surrey"));
+const FiftiethBirthdayDecorationsSurreyBody = lazyPage(() => import("./50th-birthday-decorations-surrey"));
+const BalloonBackdropIdeasHomePartiesBody = lazyPage(() => import("./balloon-backdrop-ideas-home-parties"));
+const BalloonArchGarlandOrWallBody = lazyPage(() => import("./balloon-arch-garland-or-wall"));
+const QuestionsToAskABalloonDecoratorBody = lazyPage(() => import("./questions-to-ask-a-balloon-decorator"));
+const ChristmasBalloonDecorationsSurreyBody = lazyPage(() => import("./christmas-balloon-decorations-surrey"));
 
 import lollipopCard from "@/assets/luxury-event-stylist-surrey-river-fox-events.webp";
 import beyondTheArchCard from "@/assets/luxury-party-styling-occasions-surrey.webp";
@@ -40,7 +45,8 @@ import christmasBalloonsCard from "@/assets/journal/christmas-decorations-surrey
  *
  * To add a new article:
  *   1. Create `src/data/articles/<slug>.tsx` exporting the body component.
- *   2. Import it here and add an entry below.
+ *   2. Add a `const XBody = lazyPage(() => import("./<slug>"));` line at
+ *      the top (so its text downloads only on its own page) and an entry below.
  *   3. Add the route to `src/seo/routes.ts` so it prerenders + appears
  *      in the sitemap.
  *   4. (Optional) Add the previous article's slug to this one's
