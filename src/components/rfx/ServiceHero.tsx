@@ -100,7 +100,7 @@ const ServiceHero = ({
           </p>
 
           {/* Matching widths, stacked, as on Christmas Door Garlands. */}
-          <div className="mt-8 mx-auto grid gap-3 w-fit fade-up in">
+          <div className="text-to-action actions mx-auto grid w-fit fade-up in">
             <a
               href={ENQUIRE_HREF}
               onClick={handleEnquireClick}

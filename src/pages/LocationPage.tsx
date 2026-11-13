@@ -101,7 +101,7 @@ const LocationPage = () => {
           <div className="container-rfx">
             {/* mb tightened (was mb-10/mb-14) so the cards sit closer to
                 the CTA button - about 22px less air on both breakpoints. */}
-            <div className="mb-4 md:mb-9 flex flex-col items-center text-center">
+            <div className="rfx-hero-intro flex flex-col items-center text-center">
               <h1
                 id={`loc-${loc.slug}-hero-heading`}
                 // t-h1, not t-display: location titles like "Your
@@ -133,7 +133,7 @@ const LocationPage = () => {
               {/* Phones also get WhatsApp Laura now, pre-filled with the
                   town. Matching widths, stacked. No See our work here: the
                   services section just below has it (Matt, 2026-11-09). */}
-              <div className="mt-10 mx-auto grid gap-3 w-fit md:grid-flow-col md:auto-cols-fr fade-up in">
+              <div className="text-to-action actions mx-auto grid w-fit md:grid-flow-col md:auto-cols-fr fade-up in">
                 <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
                   Reserve your date{" "}
                   <span className="t-icon">→</span>

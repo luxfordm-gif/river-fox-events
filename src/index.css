@@ -158,6 +158,8 @@
     --gap-inline: 24px;                /* Inline gap · space between items in a row of text links (16 phone) */
     --gap-label-title: 4px;            /* Label to title · a small label (step number, overline) directly above a card or step title */
     --gap-title-body: 8px;
+    --gap-text-action: 32px;           /* Text to action · a paragraph down to the button(s) under it, e.g. hero sub-copy to Reserve your date (home and town were 40, service 32; Matt 2026-11-13) */
+    --gap-actions: 12px;               /* Action gap · between two buttons side by side or stacked (home was 20) */
     --gap-button-trust: 24px;          /* Button to trust line · hero button down to the five-star reviews line, same on every page (Matt, 2026-11-13) */
     --gap-list-item: 4px;              /* List item gap · space between bullet points in article copy, same as the In short box (was 0.4em, tightened by Matt 2026-11-09) */
     --card-text-inset: 18px;
@@ -1026,6 +1028,8 @@
   .text-to-content { margin-top: var(--gap-text-content); }
   /* Card / item title to its text: one gap everywhere (Matt, 2026-11-08). */
   .title-to-text { margin-top: var(--gap-title-body); }
+  .text-to-action { margin-top: var(--gap-text-action); }
+  .actions { gap: var(--gap-actions); }
   .label-to-title { margin-bottom: var(--gap-label-title); }
   .card-text { padding-right: var(--card-text-inset); }
 
