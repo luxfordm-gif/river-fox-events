@@ -919,7 +919,10 @@ const ChristmasDoorwaysTest = ({ variant = "home" }: { variant?: Variant }) => {
                   Book your{" "}
                   <em className="t-accent">{biz ? "Christmas entrance." : "Christmas doorway."}</em>
                 </SectionTitle>
-                <p className="t-lead max-w-[460px] mt-7" style={{ color: "hsl(var(--text-dimmed))" }}>
+                <p className="t-lead max-w-[460px] mt-7" style={{ color: "hsl(var(--text-on-dark))" }}>
+                  Late November and early December dates go fast.
+                </p>
+                <p className="t-lead max-w-[460px] mt-4" style={{ color: "hsl(var(--text-dimmed))" }}>
                   {biz
                     ? "Send a photo of your entrance and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "
                     : "Send a photo of your door and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "}
@@ -928,10 +931,9 @@ const ChristmasDoorwaysTest = ({ variant = "home" }: { variant?: Variant }) => {
                   </a>
                   .
                 </p>
-                <ul className="mt-7 t-body space-y-2 text-center lg:text-left" style={{ color: "hsl(var(--text-on-dark))" }}>
-                  <li>Late November and early December dates go fast</li>
-                  <li>I reply within 1 to 2 working days</li>
-                </ul>
+                <p className="mt-7 t-body" style={{ color: "hsl(var(--text-on-dark))" }}>
+                  I reply within 1 to 2 working days.
+                </p>
 
               </div>
 
