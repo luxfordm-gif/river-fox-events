@@ -41,7 +41,7 @@ const Welcome = () => {
           note="Formerly Lollipop Balloons"
           intro="A new name, the same hands. Same studio in Surrey. Same level of detail."
         >
-          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+          <div className="text-to-action flex flex-col sm:flex-row items-center justify-center actions">
             <a href="/our-work/" className="btn-solid-rf accent">
               Explore our work <span>→</span>
             </a>
@@ -54,9 +54,9 @@ const Welcome = () => {
           </div>
         </PageHeader>
 
-        <section className="container-rfx pb-12 md:pb-16">
+        <section className="container-rfx section-bottom">
           <div
-            className="max-w-[680px] mx-auto px-6 t-lead text-ink text-center space-y-6"
+            className="max-w-[680px] mx-auto article-pad t-lead text-ink text-center paragraphs"
           >
             <p>
               If you've worked with us under the name{" "}
@@ -78,7 +78,7 @@ const Welcome = () => {
 
         <Experiences sectionId="welcome-services" />
 
-        <section className="container-rfx py-16 md:py-20 text-center">
+        <section className="container-rfx rfx-section text-center">
           <a href="/" className="btn-solid-rf accent">
             Visit the homepage <span>→</span>
           </a>

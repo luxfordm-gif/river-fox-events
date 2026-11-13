@@ -57,7 +57,7 @@ const ServicesCards = ({
       <div className="container-rfx">
         {divided && <div className="rfx-divided-rule" aria-hidden="true" />}
         {(heading || intro) && (
-          <div className="text-center max-w-[760px] mx-auto mb-12 md:mb-16 fade-up">
+          <div className="text-center max-w-[760px] mx-auto heading-to-content fade-up">
             {heading && (
               <h2
                 id={headingId}
@@ -107,7 +107,7 @@ const ServicesCards = ({
                     )}
                   </div>
                   <h3
-                    className="t-h6 mt-3 md:mt-4 text-center text-ink"
+                    className="t-h6 photo-caption text-center text-ink"
                   >
                     {s.href ? <span className="text-link">{s.title}</span> : s.title}
                   </h3>
@@ -124,7 +124,7 @@ const ServicesCards = ({
               );
             })}
           </ul>
-          <div className="flex md:hidden justify-center gap-2 mt-6" role="tablist" aria-label="Choose a tile">
+          <div className="carousel-dots md:hidden" role="tablist" aria-label="Choose a tile">
             {items.map((s, i) => (
               <button
                 key={s.title}

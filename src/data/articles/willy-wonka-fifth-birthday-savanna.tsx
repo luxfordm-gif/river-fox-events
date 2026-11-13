@@ -9,7 +9,7 @@ import imgArch from "@/assets/willy-wonka-savanna-chocolate-arch-surrey.webp";
 const WillyWonkaFifthBirthdaySavannaArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           A Willy Wonka fifth birthday designed for{" "}
           <strong>Savanna</strong>, a returning client, at the family home in

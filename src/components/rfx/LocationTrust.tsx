@@ -51,7 +51,7 @@ const LocationTrust = ({ reviews }: LocationTrustProps = {}) => {
       aria-labelledby="trust-heading"
     >
       <div className="container-rfx">
-        <div className="text-center mb-8 md:mb-10">
+        <div className="text-center heading-to-content">
           <h2
             id="trust-heading"
             className="t-h2"
@@ -62,12 +62,12 @@ const LocationTrust = ({ reviews }: LocationTrustProps = {}) => {
 
         <TestimonialsCarousel reviews={reviews} />
 
-        <div className="mt-14 md:mt-16 pt-10 md:pt-12 border-t border-ink/10">
+        <div className="divided border-t border-ink/10">
           <p className="t-overline text-ink-soft text-center">
             Recent clients include
           </p>
           <ul
-            className="mt-8 grid grid-cols-3 items-center gap-x-6 gap-y-8 md:gap-x-12 list-none p-0 m-0"
+            className="below-heading grid grid-cols-3 items-center cards-gap list-none p-0 m-0"
             aria-label="Recent clients"
           >
             {CLIENT_LOGOS.map((c) => (

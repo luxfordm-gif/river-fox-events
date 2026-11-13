@@ -15,7 +15,7 @@ import imgTheatre from "@/assets/river-fox-events-theatre-125-anniversary-marque
 const HiringAnEventStylistSurreyArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           When you book me, one person looks after everything: the design, the
           delivery, the set-up and the clear-away at the&nbsp;end.

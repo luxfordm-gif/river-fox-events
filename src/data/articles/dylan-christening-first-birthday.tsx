@@ -11,7 +11,7 @@ import imgTeddy from "@/assets/journal/dylan-christening-first-birthday/dylan-fi
 const DylanChristeningFirstBirthdayArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           A christening and a first birthday for <strong>Dylan</strong>,
           celebrated on the same day near Walton-on-Thames, built around a

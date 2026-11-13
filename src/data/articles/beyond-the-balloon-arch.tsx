@@ -10,7 +10,7 @@ import imgInline from "@/assets/corporate-gala-styling-surrey.webp";
 const BeyondTheBalloonArchArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           The classic balloon arch is still beautiful - but it's no longer
           the headline.

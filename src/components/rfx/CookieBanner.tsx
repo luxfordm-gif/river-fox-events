@@ -52,7 +52,7 @@ const CookieBanner = () => {
       role="dialog"
       aria-live="polite"
       aria-label="Cookie preferences"
-      className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 md:max-w-[420px] z-[200] rounded-large bg-surface-deep text-on-deep shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.45)] px-5 py-4 md:px-6 md:py-5"
+      className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 md:max-w-[420px] z-[200] rounded-large bg-surface-deep text-on-deep shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.45)] toast-pad"
     >
       <p className="t-meta">
         We use cookies for analytics and ads, only if you accept.{" "}
@@ -66,11 +66,11 @@ const CookieBanner = () => {
       {/* Phones: buttons on the right, Accept in the far corner, under the
           thumb. Tablet and up keeps the original Accept-first row on the left
           (Matt, 2026-11-12). */}
-      <div className="mt-4 flex flex-row-reverse items-center gap-3 md:flex-row">
+      <div className="text-to-text flex flex-row-reverse items-center actions md:flex-row">
         <button
           type="button"
           onClick={accept}
-          className="btn-solid-rf accent !py-2 !px-4"
+          className="btn-solid-rf accent btn-compact"
         >
           Accept
         </button>

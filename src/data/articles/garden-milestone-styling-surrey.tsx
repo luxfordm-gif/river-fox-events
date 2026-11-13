@@ -10,7 +10,7 @@ import imgBanquet from "@/assets/journal/garden-milestone-styling-surrey/garden-
 const GardenPartiesDoneRightArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           A garden party only looks effortless - the best ones are carefully
           planned so the decor, the environment and the logistics all work

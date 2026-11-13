@@ -87,7 +87,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           >
             <button
               type="button"
-              className="inline-flex items-center gap-1.5 bg-transparent border-0 p-0 pb-0.5 cursor-pointer t-label text-inherit"
+              className="nav-trigger p-0 t-label text-inherit"
               aria-haspopup="true"
               aria-expanded={servicesOpen}
             >
@@ -102,27 +102,27 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               />
             </button>
             <div
-              className={`absolute left-0 top-full pt-4 transition-all duration-300 ${
+              className={`nav-menu-wrap absolute left-0 top-full transition-all duration-300 ${
                 servicesOpen
                   ? "opacity-100 translate-y-0 pointer-events-auto"
                   : "opacity-0 -translate-y-1 pointer-events-none"
               }`}
             >
-              <div className="min-w-[240px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.22)] rounded-2xl py-3 px-1">
+              <div className="min-w-[240px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.22)] nav-menu">
                 {SERVICES.map((s) => (
                   <a
                     key={s.label}
                     href={s.href}
-                    className="no-underline-fx block px-5 py-2.5 t-label text-ink hover:underline underline-offset-4 decoration-ink/60"
+                    className="no-underline-fx nav-menu__item t-label text-ink hover:underline underline-offset-4 decoration-ink/60"
                   >
                     {s.label}
                   </a>
                 ))}
-                <div className="mx-5 my-2 border-t border-ink/10" aria-hidden="true" />
+                <div className="nav-menu__rule border-t border-ink/10" aria-hidden="true" />
                 <a
                   href={SEASONAL.href}
                   onMouseEnter={jingleBow}
-                  className="no-underline-fx flex items-center gap-2.5 px-5 py-2.5 t-label text-ink hover:underline underline-offset-4 decoration-ink/60"
+                  className="no-underline-fx nav-menu__item t-label text-ink hover:underline underline-offset-4 decoration-ink/60"
                 >
                   <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />
                   {SEASONAL.label}
@@ -138,7 +138,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           >
             <button
               type="button"
-              className="inline-flex items-center gap-1.5 bg-transparent border-0 p-0 pb-0.5 cursor-pointer t-label text-inherit"
+              className="nav-trigger p-0 t-label text-inherit"
               aria-haspopup="true"
               aria-expanded={aboutOpen}
             >
@@ -153,18 +153,18 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               />
             </button>
             <div
-              className={`absolute left-0 top-full pt-4 transition-all duration-300 ${
+              className={`nav-menu-wrap absolute left-0 top-full transition-all duration-300 ${
                 aboutOpen
                   ? "opacity-100 translate-y-0 pointer-events-auto"
                   : "opacity-0 -translate-y-1 pointer-events-none"
               }`}
             >
-              <div className="min-w-[200px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.22)] rounded-2xl py-3 px-1">
+              <div className="min-w-[200px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.22)] nav-menu">
                 {ABOUT_LINKS.map((s) => (
                   <a
                     key={s.label}
                     href={s.href}
-                    className="no-underline-fx block px-5 py-2.5 t-label text-ink hover:underline underline-offset-4 decoration-ink/60"
+                    className="no-underline-fx nav-menu__item t-label text-ink hover:underline underline-offset-4 decoration-ink/60"
                   >
                     {s.label}
                   </a>
@@ -184,7 +184,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           </span>
         </a>
         <div className="rfx-nav-row nav-right justify-end">
-          <a href={enquireHref} onClick={handleEnquireClick} className="btn-solid-rf accent t-label !py-2 !px-4">
+          <a href={enquireHref} onClick={handleEnquireClick} className="btn-solid-rf accent t-label btn-compact">
             Enquire now <span>→</span>
           </a>
         </div>
@@ -195,7 +195,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((s) => !s)}
-          className="lg:hidden absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-3 px-3 h-9 t-overline text-ink"
+          className="lg:hidden absolute right-5 top-1/2 -translate-y-1/2 flex items-center icon-gap px-3 h-9 t-overline text-ink"
         >
           <span className="relative inline-block w-4 h-4 -mt-[2px]" aria-hidden="true">
             <span
@@ -222,7 +222,8 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="container-rfx pt-28 pb-12 flex flex-col gap-2">
+        <div className="container-rfx nav-sheet">
+          <div className="nav-sheet__links">
           {[
             { href: "/", label: "Home" },
             { href: "/childrens-parties/", label: "Children's parties" },
@@ -238,8 +239,8 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className={`t-h4 py-1 text-ink no-underline ${
-                "seasonal" in l ? "flex items-center gap-3 border-y border-ink/10 py-3 my-1.5" : ""
+              className={`t-h4 text-ink no-underline ${
+                "seasonal" in l ? "nav-sheet__seasonal border-y border-ink/10" : ""
               }`}
             >
               {"seasonal" in l && (
@@ -248,19 +249,21 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               {l.label}
             </a>
           ))}
+          </div>
 
-          <div className="hairline mt-4" />
+          <div className="hairline" />
+          <div className="nav-sheet__more">
           <a
             href="/journal/"
             onClick={() => setOpen(false)}
-            className="mt-6 t-overline text-ink no-underline inline-flex items-center gap-2 self-start"
+            className="t-overline text-ink no-underline inline-flex items-center icon-gap"
           >
             Read the journal <span aria-hidden>→</span>
           </a>
           <a
             href="/#kindness"
             onClick={() => setOpen(false)}
-            className="mt-3 t-overline text-ink no-underline inline-flex items-center gap-2 self-start"
+            className="t-overline text-ink no-underline inline-flex items-center icon-gap"
           >
             Client reviews <span aria-hidden>→</span>
           </a>
@@ -269,11 +272,12 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
             target="_blank"
             rel="noreferrer"
             onClick={() => setOpen(false)}
-            className="mt-3 t-overline text-ink no-underline inline-flex items-center gap-2 self-start"
+            className="t-overline text-ink no-underline inline-flex items-center icon-gap"
           >
             Follow us on Instagram <span aria-hidden>→</span>
           </a>
-          <p className="t-small text-ink-soft mt-6">
+          </div>
+          <p className="t-small text-ink-soft">
             Riverfoxevents@gmail.com
             <br />
             Based in Surrey · By appointment.
@@ -285,7 +289,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               setOpen(false);
               handleEnquireClick(e);
             }}
-            className="btn-solid-rf accent t-label mt-8 self-start"
+            className="btn-solid-rf accent t-label self-start"
           >
             Enquire now <span>→</span>
           </a>

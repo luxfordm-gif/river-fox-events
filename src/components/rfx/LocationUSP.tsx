@@ -103,14 +103,14 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
 
         <div
           ref={ref}
-          className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6"
+          className="text-to-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 cards-gap"
         >
           {TRUST_POINTS.map(({ icon, label, body: pointBody }, i) => {
             const Icon = ICON_REGISTRY[icon];
             return (
               <div
                 key={label}
-                className="flex flex-col items-center text-center px-4"
+                className="flex flex-col items-center text-center card-inset"
                 style={{
                   opacity: visible ? 1 : 0,
                   transform: visible ? "translateY(0)" : "translateY(24px)",
@@ -120,7 +120,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
                 }}
               >
                 <div
-                  className="flex items-center justify-center mb-5"
+                  className="flex items-center justify-center icon-above"
                   style={{
                     width: 64,
                     height: 64,

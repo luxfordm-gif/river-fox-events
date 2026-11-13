@@ -158,6 +158,14 @@
     --gap-inline: 24px;                /* Inline gap · space between items in a row of text links (16 phone) */
     --gap-label-title: 4px;            /* Label to title · a small label (step number, overline) directly above a card or step title */
     --gap-title-body: 8px;
+    --gap-text-action: 32px;           /* Text to action · a paragraph down to the button(s) under it, e.g. hero sub-copy to Reserve your date (home and town were 40, service 32; Matt 2026-11-13) */
+    --gap-actions: 12px;               /* Action gap · between two buttons side by side or stacked (home was 20) */
+    --gap-columns: 64px;               /* Column gap · between the two halves of a split layout: text and form, text and photo (48 phone; Enquire used 64, Contact 80; Matt 2026-11-13) */
+    --gap-cards: 40px;                 /* Card gap · between cards in a grid or row: steps, tiles, related articles (32 phone) */
+    --gap-paragraph: 20px;             /* Paragraph gap · one paragraph to the next (was 16 or 20; Matt 2026-11-13) */
+    --gap-stack: 16px;                 /* Stack gap · between small stacked items, e.g. Contact's WhatsApp / Email / Instagram */
+    --gap-form: 20px;                  /* Form gap · form title down to the first field, and the last field down to the buttons (Contact was 24) */
+    --gap-field: 12px;                 /* Field gap · between form fields in every direction, and before the "more details" extras (were 12 / 14 / 20) */
     --gap-button-trust: 24px;          /* Button to trust line · hero button down to the five-star reviews line, same on every page (Matt, 2026-11-13) */
     --gap-list-item: 4px;              /* List item gap · space between bullet points in article copy, same as the In short box (was 0.4em, tightened by Matt 2026-11-09) */
     --card-text-inset: 18px;
@@ -169,6 +177,22 @@
     --nav-height: 78px;                /* Nav height · the fixed nav bar, exactly this tall, for anything that starts just under it (64 phone, Matt 2026-11-13) */
     --nav-pad-x: 40px;                 /* Nav side padding · space at the left and right of the nav bar (was 56; 32 on tablets, 1024-1366; Matt 2026-11-13) */
     --nav-link-gap: 32px;              /* Nav link gap · space between Home, Services, Our work... (28 on tablets, 1024-1366) */
+    /* Menus: the nav's desktop dropdowns and the phone menu (Matt, 2026-11-13). */
+    --menu-offset: 16px;               /* Menu offset · from a nav item down to its dropdown */
+    --menu-pad: 12px 4px;              /* Menu padding · inside a dropdown, around its links */
+    --menu-item-pad: 10px 20px;        /* Menu item padding · around each dropdown link */
+    --menu-rule-gap: 8px;              /* Menu rule gap · above and below the line in a dropdown, and between the phone menu's main links */
+    --menu-section-gap: 32px;          /* Menu section gap · between the blocks of the phone menu: links, extra links, contact, button */
+    --gap-icon: 8px;                   /* Icon gap · between text and its icon: chevrons, arrows, the Christmas bow (were 6 to 12) */
+    --btn-compact-pad: 8px 16px;       /* Compact button padding · the nav's Enquire now button */
+    --gap-link-list: 8px;
+    --gap-eyebrow: 20px;               /* Eyebrow to title · a small label above a hero or article title, e.g. CHRISTMAS 2026 · NOW BOOKING, JOURNAL (article was 28 / 36) */
+    --article-gap: 64px;               /* Article gap · between the blocks of a journal article: header, In short, photos, quotes, enquire box, related (48 phone; were 48 to 96) */
+    --article-pad-x: 24px;
+    --list-indent: 20px;
+    --gap-media: 20px;                 /* Media gap · a photo or icon down to a card title under it (were 16 to 32) */
+    --gap-caption: 12px;               /* Caption gap · a photo down to its caption, close so it reads as the photo's label (Our work, tile names, article photos) */
+    --gap-photos: 12px;                /* Photo gap · between photos in a grid or strip (8 phone; were 8 / 12 / 16) */               /* List indent · how far bullet text sits in from the bullet's edge (In short lists) */             /* Article side padding · inside narrow article blocks */              /* Link list gap · between links in a list, e.g. a footer column */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
     --gutter: 56px;                    /* Side gutter · space at the left and right of the page content (32 phone, 8% on laptops) */
 
@@ -246,6 +270,10 @@
       --gap-divider: var(--section-y);
       --gap-heading-content: 32px;
       --gap-text-content: 40px;
+      --gap-columns: 48px;
+      --gap-cards: 32px;
+      --article-gap: 48px;
+      --gap-photos: 8px;
       --gap-inline: 16px;
       --card-text-inset: 0px;
       --card-pad: 28px;
@@ -749,7 +777,10 @@
     border-radius: var(--radius-large);
     box-shadow: 0 30px 80px -20px hsl(var(--text-primary) / 0.22), 0 8px 24px -10px hsl(var(--text-primary) / 0.10);
   }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 14px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-field); }
+  .form-title { margin-bottom: var(--gap-form); }
+  .form-more { margin-top: var(--gap-field); }
+  .form-actions { margin-top: var(--gap-form); gap: var(--gap-actions); }
   .form-row {
     background: hsl(var(--background));
     border: 1.5px solid hsl(var(--text-primary) / 0.12);
@@ -970,7 +1001,76 @@
      wrappers are flex boxes too (Nav.tsx), so the button never sits on a
      line box of its own: alignment holds even if a browser ignores baseline. */
   .rfx-nav-row { display: flex; align-items: baseline; gap: var(--nav-link-gap); font-size: var(--fs-meta); letter-spacing: var(--ls-label); }
-  .rfx-nav a { color: inherit; text-decoration: none; position: relative; padding-bottom: 2px; }
+  .rfx-nav a, .rfx-nav .nav-trigger { color: inherit; text-decoration: none; position: relative; padding-bottom: 2px; }
+  /* Desktop dropdowns (Services, About): one shared style. */
+  .nav-trigger { display: inline-flex; align-items: center; gap: var(--gap-icon); background: transparent; border: 0; cursor: pointer; }
+  .nav-menu-wrap { padding-top: var(--menu-offset); }
+  .nav-menu { padding: var(--menu-pad); border-radius: var(--radius-large); }
+  .nav-menu__item { display: flex; align-items: center; gap: var(--gap-icon); padding: var(--menu-item-pad); }
+  .nav-menu__rule { margin: var(--menu-rule-gap) 20px; }
+  .btn-compact { padding: var(--btn-compact-pad) !important; }
+  /* Phone menu: the first link sits one Menu section gap under the nav, the
+     same gap as between the menu's blocks, so it follows the nav height
+     (it was a fixed 112px, 48px under the 64px phone nav; Matt 2026-11-13). */
+  .nav-sheet { padding-top: calc(var(--nav-height) + var(--menu-section-gap)); padding-bottom: var(--section-y); display: flex; flex-direction: column; gap: var(--menu-section-gap); }
+  .nav-sheet__links { display: flex; flex-direction: column; gap: var(--menu-rule-gap); }
+  .nav-sheet__links > a { padding-block: 4px; }
+  .nav-sheet__links > a.nav-sheet__seasonal { display: flex; align-items: center; gap: var(--gap-icon); padding-block: var(--gap-actions); }
+  .nav-sheet__more { display: flex; flex-direction: column; align-items: flex-start; gap: var(--gap-stack); }
+  .icon-gap { gap: var(--gap-icon); }
+  .link-list > * + * { margin-top: var(--gap-link-list); }
+  .list-items > * + * { margin-top: var(--gap-list-item); }
+  /* Bullet list: one shared style for every In short list (was the same three
+     classes copied into 17 articles). */
+  .bullet-list { list-style: disc; padding-left: var(--list-indent); }
+  .bullet-list > li + li { margin-top: var(--gap-list-item); }
+  .label-to-list { margin-bottom: var(--gap-stack); }
+  .eyebrow-to-title { margin-top: var(--gap-eyebrow); }
+  .media-to-title { margin-top: var(--gap-media); }
+  .icon-above { margin-bottom: var(--gap-media); }
+  .photo-caption { margin-top: var(--gap-caption); }
+  .eyebrow-above { margin-bottom: var(--gap-eyebrow); }
+  .paragraphs > * + * { margin-top: var(--gap-paragraph); }
+  .meta-below { margin-top: var(--gap-label-title); }
+  .card-action { padding-top: var(--gap-text-action); }
+  .card-inset { padding-inline: var(--gap-stack); }
+  .button-trust-gap { gap: var(--gap-button-trust); }
+  .photos-gap { gap: var(--gap-photos); }
+  .photos-gap-top { margin-top: var(--gap-photos); }
+  .col-gap { column-gap: var(--gap-columns); }
+  .row-pad-y { padding-block: var(--gap-actions); }
+  .divider-gap { margin-bottom: var(--gap-divider); }
+  .divided { margin-top: var(--gap-divider); padding-top: var(--gap-divider); }
+  .rule-to-content { padding-top: var(--gap-heading-content); }
+  .subsection-gap { margin-top: var(--section-y); }
+  .section-compact { padding-block: var(--gap-heading-content) !important; }
+  .after-page-header { padding-top: var(--page-pad-bottom); }
+  .hero-foot { padding-bottom: var(--gap-inline); }
+  .hero-under-nav { padding-top: var(--nav-height) !important; }
+  .hero-gap-below { margin-bottom: var(--hero-gap); }
+  .strip-pad { padding-block: var(--gap-inline); }
+  .toast-pad { padding: var(--gap-stack) var(--gap-paragraph); }
+  .carousel-dots { display: flex; justify-content: center; gap: var(--gap-icon); margin-top: var(--gap-paragraph); }
+  .card-meta { padding-top: var(--gap-actions); }
+  .row-pad { padding-bottom: var(--gap-paragraph); }
+  .inline-gap { gap: var(--gap-inline); }
+  .rows-gap { row-gap: var(--gap-text-content); }
+  .section-bottom { padding-bottom: var(--section-y); }
+  .box-pad { padding: var(--card-pad); }
+  .panel-pad { padding: var(--gap-text-content) var(--card-pad); }
+  /* Journal articles: one Article gap between every block. */
+  .article-top { padding-top: var(--page-pad-top); }
+  .article-hero { padding-top: var(--gap-heading-content); padding-bottom: var(--article-gap); }
+  .article-block { margin-block: var(--article-gap); }
+  .article-block-after { margin-bottom: var(--article-gap); }
+  .article-pad { padding-inline: var(--article-pad-x); }
+  /* Footer: starts like every section (Section padding), not a one-off 54 / 96. */
+  .footer-top { padding-top: var(--section-y); }
+  .footer-divider { margin-bottom: var(--gap-columns); }
+  .footer-grid { margin-bottom: var(--gap-columns); }
+  .footer-title { margin-bottom: var(--gap-stack); }
+  .footer-bar { padding-top: var(--gap-paragraph); gap: var(--gap-actions); }
+  @media (max-width: 767px) { .footer-brand { margin-bottom: var(--gap-paragraph); } }
   .rfx-nav a:not(.btn-solid-rf):not(.no-underline-fx)::after {
     content: "";
     position: absolute;
@@ -1019,6 +1119,9 @@
   /* Section heading spacing (Matt, 2026-11-08): heading -> text, heading ->
      content (list, photos, grid, FAQ), text -> content. One token each. */
   .heading-to-content { margin-bottom: var(--gap-heading-content); }
+  /* The same gap, set on the block below when the heading sits in a
+     separate wrapper (photo strips, card rows, films). */
+  .below-heading { margin-top: var(--gap-heading-content); }
   .heading-to-text { margin-top: var(--gap-heading-text); }
   /* Looser than t-meta's own line height: on phones it wraps to two lines
      and read tight (Matt, 2026-11-13). */
@@ -1026,6 +1129,12 @@
   .text-to-content { margin-top: var(--gap-text-content); }
   /* Card / item title to its text: one gap everywhere (Matt, 2026-11-08). */
   .title-to-text { margin-top: var(--gap-title-body); }
+  .text-to-action { margin-top: var(--gap-text-action); }
+  .text-to-text { margin-top: var(--gap-paragraph); }
+  .stack-gap { gap: var(--gap-stack); }
+  .actions { gap: var(--gap-actions); }
+  .columns-gap { gap: var(--gap-columns); }
+  .cards-gap { gap: var(--gap-cards); }
   .label-to-title { margin-bottom: var(--gap-label-title); }
   .card-text { padding-right: var(--card-text-inset); }
 
@@ -1534,7 +1643,7 @@
     .rfx-md-stack { grid-template-columns: 1fr !important; gap: 24px !important; }
     .rfx-md-full { grid-column: 1 / -1 !important; }
     .rfx-md-static { position: static !important; }
-    .form-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+    .form-grid { grid-template-columns: 1fr !important; }
     /* Form card on phones: run the white card out towards the screen edges
        (16px gutter instead of 32px) and slim its inner padding, so the fields
        get the width rather than sitting in a narrow card-within-a-card. */

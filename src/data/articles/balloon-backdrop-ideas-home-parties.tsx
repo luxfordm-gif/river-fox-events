@@ -16,7 +16,7 @@ import imgGarden from "@/assets/services/childrens-parties/garden-picnic-party-p
 const BalloonBackdropIdeasHomePartiesArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           A balloon backdrop gives a party at home one clear focal point:
           somewhere for the cake, the birthday song and every&nbsp;photo.

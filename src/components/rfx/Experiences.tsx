@@ -132,13 +132,13 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
         />
         {it.badge && <span className="exp-badge t-label">{it.badge}</span>}
       </div>
-      <h3 className="t-h5 exp-title mt-5 md:mt-8">
+      <h3 className="t-h5 exp-title media-to-title">
         {it.title}
       </h3>
       <p className="t-small text-ink-soft max-w-[360px] title-to-text">
         {it.body}
       </p>
-      <span className="btn-link-rf t-label self-start mt-auto pt-6 md:pt-9">
+      <span className="btn-link-rf t-label self-start mt-auto card-action">
         {it.cta} <span className="arr">→</span>
       </span>
     </a>
@@ -208,7 +208,7 @@ const Experiences = ({
             </div>
           </div>
         ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-12 heading-to-content items-end rfx-md-stack">
+        <div className="grid grid-cols-1 md:grid-cols-2 columns-gap heading-to-content items-end rfx-md-stack">
           <h2
             id="exp-heading"
             className="t-h2 fade-up m-0 text-center md:text-left"
@@ -218,7 +218,7 @@ const Experiences = ({
           {/* Right column: "See our work" anchored far right (Matt, 2026-11-08).
               The homepage drops the intro line; town pages and Balloons keep
               their own intro (unique copy for search) above the button. */}
-          <div className="flex flex-col items-center md:items-end gap-5 pb-3">
+          <div className="flex flex-col items-center md:items-end actions pb-3">
             {intro && (
               <p className="t-lead text-ink-soft text-center md:text-left">{intro}</p>
             )}

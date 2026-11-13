@@ -8,7 +8,7 @@ import imgBloomPortrait from "@/assets/river-fox-events-baby-shower-baby-in-bloo
 const BabyShowerThemes2026Article = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           Ten baby shower themes I'm expecting to see across 2026, from
           timeless neutrals to playful, colour-led celebrations.

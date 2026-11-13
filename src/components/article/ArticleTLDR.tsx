@@ -12,9 +12,9 @@ type Props = {
 const ArticleTLDR = ({ children }: Props) => (
   // Top margin tighter than bottom - pulls the card up close to the
   // social-share row at the foot of the article hero.
-  <aside className="max-w-[720px] mx-auto mt-6 mb-12 md:mt-10 md:mb-16 px-6">
+  <aside className="max-w-[720px] mx-auto article-block-after article-pad">
     <div
-      className="rounded-large px-6 md:px-8 py-6 md:py-7 border"
+      className="rounded-large box-pad border"
       style={{
         // Pinky-peach surface at 20% opacity - soft fill, full-strength stroke.
         background: "hsl(var(--background-warm) / 0.20)",
@@ -22,12 +22,12 @@ const ArticleTLDR = ({ children }: Props) => (
       }}
     >
       <div
-        className="t-overline mb-3"
+        className="t-overline label-to-list"
         style={{ color: "hsl(var(--text-primary))" }}
       >
         In short
       </div>
-      <div className="t-small text-ink space-y-1.5">
+      <div className="t-small text-ink list-items">
         {children}
       </div>
     </div>

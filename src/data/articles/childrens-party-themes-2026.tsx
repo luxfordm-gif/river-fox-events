@@ -9,7 +9,7 @@ import imgLead from "@/assets/jungle-themed-childrens-party-styling-surrey.webp"
 const ChildrensPartyThemes2026Article = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           The brief from Surrey parents has shifted - themes are still
           everything, but the look is more grown-up and more personal.

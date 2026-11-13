@@ -11,7 +11,7 @@ import imgFinished from "@/assets/journal/two-wild-safari-second-birthday/two-wi
 const TwoWildSafariSecondBirthdayArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           A "Two Wild" safari second birthday designed for{" "}
           <strong>Amiya</strong> at Horley Community Centre, with a

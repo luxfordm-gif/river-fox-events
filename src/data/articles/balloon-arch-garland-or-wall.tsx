@@ -14,7 +14,7 @@ import imgBlushHoop from "@/assets/services/milestones/blush-rose-hoop-garland-l
 const BalloonArchGarlandOrWallArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           An arch frames a moment you walk through or stand beneath: a front
           door, an entrance, a cake table or a welcome&nbsp;sign.

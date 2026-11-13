@@ -42,7 +42,7 @@ const ArticleImage = ({
   const cap = width === "full" ? "100%" : `${width}px`;
   return (
     <figure
-      className="mx-auto px-6 md:px-12 my-12 md:my-16"
+      className="mx-auto article-pad md:px-12 article-block"
       style={{ maxWidth: cap }}
     >
       {aspect === "natural" ? (
@@ -69,7 +69,7 @@ const ArticleImage = ({
         </div>
       )}
       {caption && (
-        <figcaption className="t-meta mt-4 text-center italic text-ink-soft max-w-[640px] mx-auto">
+        <figcaption className="t-meta photo-caption text-center italic text-ink-soft max-w-[640px] mx-auto">
           {caption}
         </figcaption>
       )}

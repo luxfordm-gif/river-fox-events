@@ -62,7 +62,7 @@ const Process = ({ steps = DEFAULT_STEPS, tone = "white", sectionId = "process" 
   return (
     <section id={sectionId} className={`rfx-section ${tone === "white" ? "white" : ""}`} aria-labelledby="process-heading">
       <div className="container-rfx">
-        <div className="mb-6 md:mb-10">
+        <div className="heading-to-content">
           <h2
             id="process-heading"
             className="t-h2 m-0 text-center text-ink"
@@ -74,7 +74,7 @@ const Process = ({ steps = DEFAULT_STEPS, tone = "white", sectionId = "process" 
 
         <div
           ref={stepsRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 border-t border-divider pt-8 md:pt-10"
+          className="grid grid-cols-1 md:grid-cols-3 cards-gap border-t border-divider rule-to-content"
         >
           {steps.map((s, i) => (
             <div

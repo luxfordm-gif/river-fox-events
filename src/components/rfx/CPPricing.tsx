@@ -70,7 +70,7 @@ const CPPricing = ({
           margins (Matt, 2026-11-08). */}
       <div className="container-rfx">
         <div ref={boxRef} className={`rfx-pricing-box rounded-large ${inView ? "is-in" : ""}`}>
-        <div className="text-center mb-10 md:mb-12">
+        <div className="text-center heading-to-content">
           <h2
             id="cp-pricing-heading"
             className="t-h2 rfx-reveal max-w-[20ch] mx-auto"
@@ -90,7 +90,7 @@ const CPPricing = ({
           <div
             className={`option-cards grid-cols-1 ${
               tiers.length === 2 ? "md:grid-cols-2 max-w-[960px]" : "md:grid-cols-3"
-            } mb-10 md:mb-12 rfx-reveal rfx-reveal-2`}
+            } rfx-reveal rfx-reveal-2`}
           >
             {tiers.map((t) => (
               <div key={t.label} className={`option-card${t.note ? " is-popular" : ""}`}>
@@ -103,7 +103,7 @@ const CPPricing = ({
           </div>
         ) : null}
 
-        <div className="text-center rfx-reveal rfx-reveal-3 flex flex-col items-center gap-6">
+        <div className="text-center text-to-content rfx-reveal rfx-reveal-3 flex flex-col items-center button-trust-gap">
           <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent t-label">
             {ctaLabel} <span>→</span>
           </a>

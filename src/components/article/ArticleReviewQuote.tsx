@@ -14,7 +14,7 @@ type Props = {
  * an article quotes the client whose event it documents.
  */
 const ArticleReviewQuote = ({ children, author, href }: Props) => (
-  <figure className="tcard fade-up max-w-[640px] mx-auto my-14 md:my-20">
+  <figure className="tcard fade-up max-w-[640px] mx-auto article-block">
     <span className="tcard-stars" aria-label="Five stars">
       {"★★★★★"}
     </span>

@@ -5,7 +5,7 @@ import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 const Hero = () => {
   return (
-    <section id="top" className="rfx-hero rfx-hero-home rfx-hero-scale pb-4 md:pb-6" aria-labelledby="hero-heading">
+    <section id="top" className="rfx-hero rfx-hero-home rfx-hero-scale hero-foot" aria-labelledby="hero-heading">
       <div className="container-rfx">
         {/* Centered editorial intro */}
         <div className="rfx-hero-intro flex flex-col items-center text-center">
@@ -32,7 +32,7 @@ const Hero = () => {
             before your guests arrive and clear it away after.
           </p>
 
-          <div className="flex items-center justify-center gap-5 flex-wrap mt-10 fade-up in">
+          <div className="text-to-action actions flex items-center justify-center flex-wrap fade-up in">
             <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
               Reserve your date <span className="t-icon">→</span>
             </a>

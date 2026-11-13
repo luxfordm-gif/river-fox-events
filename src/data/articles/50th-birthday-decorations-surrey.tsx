@@ -13,7 +13,7 @@ import imgPinkFiftieth from "@/assets/services/milestones/50th-birthday-pink-lig
 const FiftiethBirthdayDecorationsSurreyArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           A 50th looks best when the decorations follow one colour story, not
           a mix of party-shop&nbsp;pieces.

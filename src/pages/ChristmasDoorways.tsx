@@ -401,7 +401,7 @@ const BowDivider = () => (
     sizes="72px"
     alt=""
     aria-hidden="true"
-    className="block mx-auto w-[60px] md:w-[72px] h-auto mb-14 md:mb-20"
+    className="block mx-auto w-[60px] md:w-[72px] h-auto divider-gap"
     width={320}
     height={330}
     loading="lazy"
@@ -569,16 +569,16 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
       <main>
         {/* Hero: garland drapes edge to edge above the headline, then the
             photo fan (scroll strip on phones), as on the location pages. */}
-        <section aria-labelledby="xmas-hero-heading" className="rfx-hero pt-[76px] md:pt-[76px] pb-4 md:pb-6">
+        <section aria-labelledby="xmas-hero-heading" className="rfx-hero hero-under-nav hero-foot">
           <HeroGarland />
           <div className="container-rfx">
-            <div className="mt-2 md:mt-4 mb-4 md:mb-9 flex flex-col items-center text-center">
+            <div className="mt-2 md:mt-4 hero-gap-below flex flex-col items-center text-center">
               <p className="t-overline text-ink-soft">
                 {biz ? "Christmas 2026 · For businesses" : "Christmas 2026 · Now booking"}
               </p>
               <h1
                 id="xmas-hero-heading"
-                className="t-display mt-5 max-w-none"
+                className="t-display eyebrow-to-title max-w-none"
               >
                 <span className="xmas-title-snow">
                   <SnowCap mode="text" />
@@ -590,7 +590,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   )}
                 </span>
               </h1>
-              <div className="heading-to-text max-w-[46ch] md:max-w-[70ch] t-lead text-ink-soft space-y-4">
+              <div className="heading-to-text max-w-[46ch] md:max-w-[70ch] t-lead text-ink-soft paragraphs">
                 {biz ? (
                   <>
                     <p>
@@ -621,7 +621,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               {/* Enquire now everywhere; phones also get WhatsApp Laura now,
                   pre-filled so they only add a postcode (Matt, 2026-11-06).
                   Matching widths, stacked. */}
-              <div className="mt-8 mx-auto grid gap-3 w-fit">
+              <div className="text-to-action actions mx-auto grid w-fit">
                 <a href="#enquire" onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
                   Enquire now <span className="t-icon">→</span>
                 </a>
@@ -660,7 +660,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               </p>
             </div>
 
-            <div ref={cardsRef} className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+            <div ref={cardsRef} className="text-to-content grid grid-cols-1 md:grid-cols-2 cards-gap">
               {cards.map((card) => (
                 <article key={card.title} className="fade-up relative">
                   <SnowCap mode="edge" radius="media" />
@@ -692,10 +692,10 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                       decoding="async"
                     />
                   </div>
-                  <h3 className="t-h4 text-primary mt-6">
+                  <h3 className="t-h4 text-primary media-to-title">
                     {card.title}
                   </h3>
-                  <div className="title-to-text t-body text-ink-soft max-w-[52ch] space-y-3">
+                  <div className="title-to-text t-body text-ink-soft max-w-[52ch] paragraphs">
                     {card.body.map((para, i) => (
                       <p key={i}>{para}</p>
                     ))}
@@ -706,7 +706,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
 
             {/* Fresh or faux: a garland cutout (transparent WebP, shadow from
                 CSS), the section heading under it, then the two options. */}
-            <div className="mt-20 md:mt-28 max-w-[1040px] mx-auto">
+            <div className="subsection-gap max-w-[1040px] mx-auto">
               <img
                 src={imgGarland1200}
                 srcSet={`${imgGarland800} 800w, ${imgGarland1200} 1200w, ${imgGarland1440} 1440w`}
@@ -718,9 +718,9 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 loading="lazy"
                 decoding="async"
               />
-              <div className="max-w-[760px] mx-auto text-center fade-up mt-8 md:mt-10">
+              <div className="max-w-[760px] mx-auto text-center fade-up below-heading">
                 <p className="t-overline text-ink-soft">Garland options</p>
-                <div className="mt-5">
+                <div className="eyebrow-to-title">
                   <SectionTitle id="xmas-options-heading" snow>
                     Choose your{" "}
                     <em className="t-accent">Christmas garland.</em>
@@ -730,7 +730,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               {/* Two equal cards; Most popular gets the gold border (Matt, 2026-11-07).
                   Each card is a flex stack so the Enquire links line up, and the
                   link stretches over the whole card, so the card itself is clickable. */}
-              <div className="xmas-options mt-6 md:mt-14 mx-auto grid grid-cols-1 md:grid-cols-2 text-center">
+              <div className="xmas-options below-heading mx-auto grid grid-cols-1 md:grid-cols-2 text-center">
                 {GARLAND_OPTIONS.map((opt) => (
                   <div key={opt.title} className={`xmas-option fade-up flex flex-col items-center${opt.popular ? " is-popular" : ""}`}>
                     <SnowCap mode="edge" />
@@ -740,10 +740,10 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     <h3 className="t-h4 text-primary">
                       {opt.title}
                     </h3>
-                    <p className="t-small italic text-accent-warm mt-1">{opt.note}</p>
+                    <p className="t-small italic text-accent-warm meta-below">{opt.note}</p>
                     {/* Keep to three lines max (Matt, 2026-11-04). */}
-                    <p className="mt-4 t-small text-ink-soft max-w-[42ch] md:max-w-[40ch]">{opt.body}</p>
-                    <div className="mt-auto pt-6">
+                    <p className="title-to-text t-small text-ink-soft max-w-[42ch] md:max-w-[40ch]">{opt.body}</p>
+                    <div className="mt-auto card-action">
                       <a
                         href="#enquire"
                         onClick={(e) => {
@@ -780,7 +780,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               </p>
             </div>
           </div>
-          <div className="mt-12 md:mt-14">
+          <div className="text-to-content">
             {/* Photos only, no link out to Instagram (Matt, 2026-11-12). */}
             <InstagramStrip images={biz ? INSTAGRAM_BUSINESS : INSTAGRAM} linked={false} />
           </div>
@@ -799,7 +799,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   <em className="t-accent">Christmas campaign.</em>
                 </SectionTitle>
               </div>
-              <div className="mt-12 md:mt-16 fade-up">
+              <div className="below-heading fade-up">
                 <StoryVideos
                   stories={AD_STORIES}
                   thumb={AD_THUMB.src}
@@ -829,17 +829,17 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   : "From the first conversation to the finished installation, I'll take care of the details so you can simply enjoy your doorway all season."}
               </p>
             </div>
-            <ol className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+            <ol className="text-to-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 cards-gap">
               {(biz ? STEPS_BUSINESS : STEPS).map((s) => (
-                <li key={s.n} className="fade-up border-t pt-6 relative" style={{ borderColor: "hsl(var(--text-primary) / 0.14)" }}>
+                <li key={s.n} className="fade-up border-t rule-to-content relative" style={{ borderColor: "hsl(var(--text-primary) / 0.14)" }}>
                   <SnowCap mode="edge" radius={0} />
                   {/* Extra tag sits by the step number so step titles stay on
                       one line, even in the narrow 4-column layout. */}
-                  <div className="flex items-center gap-3 h-[22px]">
+                  <div className="flex items-center icon-gap label-to-title h-[22px]">
                     <span className="t-overline text-ink-soft">{s.n}</span>
                     {s.extra && <span className="xmas-tag">Extra</span>}
                   </div>
-                  <h3 className="t-h5 text-primary mt-3">
+                  <h3 className="t-h5 text-primary">
                     {s.title}
                   </h3>
                   <p className="title-to-text t-small text-ink-soft">{s.body}</p>
@@ -876,7 +876,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               reduced motion, where the snow stays still). */}
           <SnowHint />
           <div className="container-rfx">
-            <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] columns-gap items-start">
               <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
                 <SectionTitle id="enquire-heading" light snow>
                   Book your{" "}
@@ -885,7 +885,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 <p className="t-lead max-w-[460px] heading-to-text" style={{ color: "hsl(var(--text-on-dark))" }}>
                   Late November and early December dates go fast.
                 </p>
-                <p className="t-lead max-w-[460px] mt-4" style={{ color: "hsl(var(--text-dimmed))" }}>
+                <p className="t-lead max-w-[460px] text-to-text" style={{ color: "hsl(var(--text-dimmed))" }}>
                   {biz
                     ? "Send a photo of your entrance and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "
                     : "Send a photo of your door and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "}
@@ -898,7 +898,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   </a>
                   .
                 </p>
-                <p className="mt-7 t-body" style={{ color: "hsl(var(--text-on-dark))" }}>
+                <p className="text-to-text t-body" style={{ color: "hsl(var(--text-on-dark))" }}>
                   {/* 24 hours here, not the site's 1 to 2 working days: it's so close
                       to Christmas (Matt, 2026-11-13). */}
                   I reply within 24 hours.
@@ -922,7 +922,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     Don't fill this out: <input name="bot-field" />
                   </label>
                 </p>
-                <div className="hidden md:block mb-5 text-left">
+                <div className="hidden md:block form-title text-left">
                   <h3 className="t-h4 text-primary">
                     {biz ? "Tell me about your entrance" : "Tell me about your door"}
                   </h3>
@@ -936,11 +936,11 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                       I've got your {biz ? "entrance" : "door"} details. I'll be in touch within 24 hours
                       with ideas, a colour palette and a quote.
                     </p>
-                    <p className="mt-4 t-body text-ink-soft">
+                    <p className="text-to-text t-body text-ink-soft">
                       If it's easier, send me a message on WhatsApp too.
                       Laura
                     </p>
-                    <div className="mt-6">
+                    <div className="text-to-action">
                       <a href={biz ? WHATSAPP_HREF_BUSINESS : WHATSAPP_HREF} className="btn-ghost-rf">
                         WhatsApp Laura now
                       </a>
@@ -986,7 +986,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 {/* Optional extras, folded away. Hidden fields still send, so
                     the defaults reach the same Netlify inbox as before. */}
                 <div id="xmas-more-details" hidden={!moreOpen}>
-                <div className="form-grid mt-5">
+                <div className="form-grid form-more">
                   <label className="form-row full">
                     <span className="lbl">{biz ? "Photo of your entrance" : "Photo of your door"}</span>
                     <input type="file" name="door-photo" accept="image/*" />
@@ -1020,7 +1020,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 </div>
                 {/* The toggle and the button share one row, so the button
                     sits straight under the message. */}
-                <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="form-actions flex flex-col sm:flex-row sm:items-center sm:justify-between">
                   <button
                     type="button"
                     aria-expanded={moreOpen}
