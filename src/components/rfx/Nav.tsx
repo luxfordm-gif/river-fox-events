@@ -174,11 +174,12 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           </div>
           <a href="/contact/" className="t-label">Contact</a>
         </div>
-        <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto md:pt-2" aria-label="River Fox Events - home">
+        <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto" aria-label="River Fox Events - home">
           <span className="t-wordmark">
             RIVER&nbsp;FOX&nbsp;EVENTS
           </span>
-          <span className="t-overline text-ink-soft">
+          {/* Phones show the name on one line (Matt, 2026-11-13). */}
+          <span className="t-overline text-ink-soft hidden md:block">
             Surrey
           </span>
         </a>
