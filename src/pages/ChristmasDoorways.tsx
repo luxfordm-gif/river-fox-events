@@ -621,7 +621,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               {/* Enquire now everywhere; phones also get WhatsApp Laura now,
                   pre-filled so they only add a postcode (Matt, 2026-11-06).
                   Matching widths, stacked. */}
-              <div className="mt-8 mx-auto grid gap-3 w-fit">
+              <div className="text-to-action actions mx-auto grid w-fit">
                 <a href="#enquire" onClick={handleEnquireClick} className="btn-solid-rf accent justify-center">
                   Enquire now <span className="t-icon">→</span>
                 </a>
@@ -660,7 +660,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               </p>
             </div>
 
-            <div ref={cardsRef} className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+            <div ref={cardsRef} className="text-to-content grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
               {cards.map((card) => (
                 <article key={card.title} className="fade-up relative">
                   <SnowCap mode="edge" radius="media" />
@@ -730,7 +730,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               {/* Two equal cards; Most popular gets the gold border (Matt, 2026-11-07).
                   Each card is a flex stack so the Enquire links line up, and the
                   link stretches over the whole card, so the card itself is clickable. */}
-              <div className="xmas-options mt-6 md:mt-14 mx-auto grid grid-cols-1 md:grid-cols-2 text-center">
+              <div className="xmas-options below-heading mx-auto grid grid-cols-1 md:grid-cols-2 text-center">
                 {GARLAND_OPTIONS.map((opt) => (
                   <div key={opt.title} className={`xmas-option fade-up flex flex-col items-center${opt.popular ? " is-popular" : ""}`}>
                     <SnowCap mode="edge" />
@@ -780,7 +780,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               </p>
             </div>
           </div>
-          <div className="mt-12 md:mt-14">
+          <div className="text-to-content">
             {/* Photos only, no link out to Instagram (Matt, 2026-11-12). */}
             <InstagramStrip images={biz ? INSTAGRAM_BUSINESS : INSTAGRAM} linked={false} />
           </div>
@@ -799,7 +799,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   <em className="t-accent">Christmas campaign.</em>
                 </SectionTitle>
               </div>
-              <div className="mt-12 md:mt-16 fade-up">
+              <div className="below-heading fade-up">
                 <StoryVideos
                   stories={AD_STORIES}
                   thumb={AD_THUMB.src}
@@ -829,7 +829,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   : "From the first conversation to the finished installation, I'll take care of the details so you can simply enjoy your doorway all season."}
               </p>
             </div>
-            <ol className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+            <ol className="text-to-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
               {(biz ? STEPS_BUSINESS : STEPS).map((s) => (
                 <li key={s.n} className="fade-up border-t pt-6 relative" style={{ borderColor: "hsl(var(--text-primary) / 0.14)" }}>
                   <SnowCap mode="edge" radius={0} />

@@ -70,7 +70,7 @@ const CPPricing = ({
           margins (Matt, 2026-11-08). */}
       <div className="container-rfx">
         <div ref={boxRef} className={`rfx-pricing-box rounded-large ${inView ? "is-in" : ""}`}>
-        <div className="text-center mb-10 md:mb-12">
+        <div className="text-center heading-to-content">
           <h2
             id="cp-pricing-heading"
             className="t-h2 rfx-reveal max-w-[20ch] mx-auto"

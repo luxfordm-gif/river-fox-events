@@ -24,7 +24,7 @@ const BASELINE = {
   // were behind the uneven heading and hero gaps found on 2026-11-13. The
   // token migration moves them onto spacing tokens a batch at a time; lower
   // this number after each batch so it can't creep back up.
-  tailwindScaleSpacing: 444,
+  tailwindScaleSpacing: 423,
 };
 
 const SRC = join(__dirname, "..");

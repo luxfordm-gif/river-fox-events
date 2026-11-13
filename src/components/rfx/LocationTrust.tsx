@@ -51,7 +51,7 @@ const LocationTrust = ({ reviews }: LocationTrustProps = {}) => {
       aria-labelledby="trust-heading"
     >
       <div className="container-rfx">
-        <div className="text-center mb-8 md:mb-10">
+        <div className="text-center heading-to-content">
           <h2
             id="trust-heading"
             className="t-h2"

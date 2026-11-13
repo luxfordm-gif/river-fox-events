@@ -1021,6 +1021,9 @@
   /* Section heading spacing (Matt, 2026-11-08): heading -> text, heading ->
      content (list, photos, grid, FAQ), text -> content. One token each. */
   .heading-to-content { margin-bottom: var(--gap-heading-content); }
+  /* The same gap, set on the block below when the heading sits in a
+     separate wrapper (photo strips, card rows, films). */
+  .below-heading { margin-top: var(--gap-heading-content); }
   .heading-to-text { margin-top: var(--gap-heading-text); }
   /* Looser than t-meta's own line height: on phones it wraps to two lines
      and read tight (Matt, 2026-11-13). */

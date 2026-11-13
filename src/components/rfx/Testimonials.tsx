@@ -25,14 +25,14 @@ const Testimonials = ({
         {!noDivider && (
           <div className="hairline mb-12 md:mb-16 hidden md:block" aria-hidden="true" />
         )}
-        <div className="text-center mb-8 md:mb-10">
+        <div className="text-center heading-to-content">
           <h2
             id="kindness-heading"
             className="t-h2"
           >
             Kind <em className="t-accent">words.</em>
           </h2>
-          <div className="mt-4">
+          <div className="heading-to-text">
             <a
               href="https://maps.app.goo.gl/dcLgoJHXnhjjzJKP6"
               target="_blank"

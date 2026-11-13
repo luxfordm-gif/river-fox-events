@@ -30,7 +30,7 @@ const InspirationStrip = ({ id, accent, lead = "Ideas for", images }: Inspiratio
         </h2>
       </div>
     </div>
-    <div className="mt-12 md:mt-14">
+    <div className="below-heading">
       <InstagramStrip images={images} />
     </div>
   </section>
