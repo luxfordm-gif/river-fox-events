@@ -272,7 +272,7 @@ const HeroEditorial = () => {
                       transform: "translate3d(0,0,0) scale(1.02)",
                       // Parallax transform updates use a quick easing; opacity
                       // is a separate, slower transition for the crossfade.
-                      transition: `opacity ${FADE_DURATION_MS}ms ease ${colIdx * STAGGER_PER_COL_MS}ms, transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94)`,
+                      transition: `opacity ${FADE_DURATION_MS}ms ease ${colIdx * STAGGER_PER_COL_MS}ms, transform var(--motion-instant) var(--ease-reveal)`,
                       opacity: active ? 1 : 0,
                     }}
                     // First slide of every column is eager so the hero is

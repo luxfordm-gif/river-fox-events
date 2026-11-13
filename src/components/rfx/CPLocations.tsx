@@ -111,7 +111,7 @@ const CPLocations = ({
           </div>
 
           {/* Right - map covering the whole of Surrey */}
-          <div className="w-full overflow-hidden rounded-large border border-divider shadow-[0_22px_44px_-22px_hsl(var(--text-primary)/0.18)] fade-up">
+          <div className="w-full overflow-hidden rounded-large border border-divider shadow-soft fade-up">
             <div className="relative w-full" style={{ aspectRatio: "4/5" }}>
               <iframe
                 title={mapTitle}

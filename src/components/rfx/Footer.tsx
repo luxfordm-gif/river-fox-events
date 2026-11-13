@@ -64,7 +64,7 @@ const Footer = () => {
             style={{
               transform: `translateY(calc(var(--rfx-mark-parallax) * ${Math.min(80, y * 0.025)}px)) translateX(${revealed ? 0 : -40}px)`,
               opacity: revealed ? 1 : 0,
-              transition: "opacity 1.6s ease, transform 1.8s cubic-bezier(.2,.7,.2,1)",
+              transition: "opacity var(--motion-drift) ease, transform var(--motion-drift) var(--ease-soft)",
             }}
           >
             River&nbsp;
@@ -150,7 +150,7 @@ const Footer = () => {
                       size={12}
                       strokeWidth={1.25}
                       aria-hidden="true"
-                      className={`transition-transform duration-300 ${
+                      className={`transition-transform duration-quick ${
                         showAllLocations ? "rotate-180" : ""
                       }`}
                     />

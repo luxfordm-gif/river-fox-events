@@ -82,7 +82,7 @@ const PageTransition = () => {
 
     // 2. On next frame, animate the overlay back out to reveal the new page
     const raf = window.requestAnimationFrame(() => {
-      el.style.transition = "opacity .38s ease-out";
+      el.style.transition = "opacity var(--motion-base) ease-out";
       el.style.opacity = "0";
     });
     return () => {
@@ -100,7 +100,7 @@ const PageTransition = () => {
     <div
       ref={ref}
       aria-hidden="true"
-      className="fixed inset-0 z-[200] pointer-events-none bg-background"
+      className="fixed inset-0 z-modal pointer-events-none bg-background"
       style={{ opacity: 0 }}
     />
   );

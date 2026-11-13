@@ -124,7 +124,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 95;   /* under the nav (100) and the cookie banner */
+  z-index: var(--layer-overlay);   /* under the nav (100) and the cookie banner */
   background: hsl(var(--background-light) / 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -151,7 +151,7 @@
   color: hsl(var(--text-neutral));
   text-decoration: none;
   white-space: nowrap;
-  transition: background .25s ease, color .25s ease;
+  transition: background var(--motion-quick) ease, color var(--motion-quick) ease;
 }
 .sg-chip:hover { background: hsl(var(--text-primary) / 0.06); color: hsl(var(--text-primary)); }
 .sg-chip.is-active { background: hsl(var(--text-primary)); color: hsl(var(--background)); }
@@ -220,3 +220,11 @@
 .sg-group + .sg-group { margin-top: 96px; padding-top: 8px; border-top: 1px solid hsl(var(--hair-strong)); }
 .sg-group .sg-subhead { margin-top: 32px; }
 .sg-group:first-of-type .sg-subhead { margin-top: 0; }
+
+/* Effects block (E): shadow swatches, motion demos */
+.sg-effect-text { display: grid; place-items: center; height: 100%; }
+.sg-corner-box:has(.sg-effect-text) { background: hsl(var(--background-dark)); }
+.sg-effects-gap { margin-top: var(--section-y); }
+.sg-motion-track { position: relative; height: var(--tap-target); border-radius: var(--radius-round); background: hsl(var(--background)); container-type: inline-size; }
+.sg-motion-dot { position: absolute; top: var(--gap-icon); bottom: var(--gap-icon); left: var(--gap-icon); aspect-ratio: 1; border-radius: var(--radius-round); background: hsl(var(--accent)); transition-property: transform; }
+.sg-motion:hover .sg-motion-dot { transform: translateX(calc(100cqw - var(--tap-target))); }

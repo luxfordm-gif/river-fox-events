@@ -96,19 +96,19 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                 size={12}
                 strokeWidth={1.25}
                 aria-hidden="true"
-                className={`transition-transform duration-300 opacity-70 mt-px ${
+                className={`transition-transform duration-quick opacity-70 mt-px ${
                   servicesOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
             <div
-              className={`nav-menu-wrap absolute left-0 top-full transition-all duration-300 ${
+              className={`nav-menu-wrap absolute left-0 top-full transition-all duration-quick ${
                 servicesOpen
                   ? "opacity-100 translate-y-0 pointer-events-auto"
                   : "opacity-0 -translate-y-1 pointer-events-none"
               }`}
             >
-              <div className="min-w-[240px] bg-surface-alt border border-hair shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.22)] nav-menu">
+              <div className="min-w-[240px] bg-surface-alt border border-hair shadow-menu nav-menu">
                 {SERVICES.map((s) => (
                   <a
                     key={s.label}
@@ -147,19 +147,19 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                 size={12}
                 strokeWidth={1.25}
                 aria-hidden="true"
-                className={`transition-transform duration-300 opacity-70 mt-px ${
+                className={`transition-transform duration-quick opacity-70 mt-px ${
                   aboutOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
             <div
-              className={`nav-menu-wrap absolute left-0 top-full transition-all duration-300 ${
+              className={`nav-menu-wrap absolute left-0 top-full transition-all duration-quick ${
                 aboutOpen
                   ? "opacity-100 translate-y-0 pointer-events-auto"
                   : "opacity-0 -translate-y-1 pointer-events-none"
               }`}
             >
-              <div className="min-w-[200px] bg-surface-alt border border-hair shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.22)] nav-menu">
+              <div className="min-w-[200px] bg-surface-alt border border-hair shadow-menu nav-menu">
                 {ABOUT_LINKS.map((s) => (
                   <a
                     key={s.label}
@@ -199,12 +199,12 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
         >
           <span className="relative inline-block w-4 h-4 -mt-[2px]" aria-hidden="true">
             <span
-              className={`absolute left-0 right-0 top-1/2 h-px bg-ink transition-transform duration-300 ${
+              className={`absolute left-0 right-0 top-1/2 h-px bg-ink transition-transform duration-quick ${
                 open ? "rotate-45" : "-translate-y-[3px]"
               }`}
             />
             <span
-              className={`absolute left-0 right-0 top-1/2 h-px bg-ink transition-transform duration-300 ${
+              className={`absolute left-0 right-0 top-1/2 h-px bg-ink transition-transform duration-quick ${
                 open ? "-rotate-45" : "translate-y-[3px]"
               }`}
             />
@@ -218,7 +218,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           (the one-by-one slide-down got repetitive, Matt 2026-11-09). */}
       <div
         data-track-location="menu"
-        className={`fixed inset-0 z-[99] bg-surface-alt overflow-y-auto overscroll-contain transition-opacity duration-500 lg:hidden ${
+        className={`fixed inset-0 z-menu bg-surface-alt overflow-y-auto overscroll-contain transition-opacity duration-slow lg:hidden ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >

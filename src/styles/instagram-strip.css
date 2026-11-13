@@ -29,7 +29,7 @@
   color: hsl(var(--strip-text, var(--background)));
   background: hsl(120 6% 12% / 0.55);
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity var(--motion-base) ease;
 }
 .xmas-ig__handle { font-family: var(--font-sans); font-weight: var(--fw-bold); font-size: var(--fs-meta); letter-spacing: var(--ls-label); }
 .xmas-ig__note { font-family: var(--font-sans); font-size: var(--fs-meta); opacity: 0.85; }

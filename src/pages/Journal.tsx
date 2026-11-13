@@ -49,7 +49,7 @@ const JournalCard = ({ article, feature = false }: CardProps) => {
             src={article.cardImage}
             alt=""
             loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-reveal ease-soft group-hover:scale-[1.03]"
             style={
               article.cardImagePosition
                 ? { objectPosition: article.cardImagePosition }

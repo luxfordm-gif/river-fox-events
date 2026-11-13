@@ -109,9 +109,9 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
                 style={{
                   opacity: visible ? 1 : 0,
                   transform: visible ? "translateY(0)" : "translateY(24px)",
-                  transition: `opacity .9s cubic-bezier(.22,.7,.2,1) ${
+                  transition: `opacity var(--motion-reveal) var(--ease-soft) ${
                     i * 120
-                  }ms, transform .9s cubic-bezier(.22,.7,.2,1) ${i * 120}ms`,
+                  }ms, transform var(--motion-reveal) var(--ease-soft) ${i * 120}ms`,
                 }}
               >
                 <div className="flex items-center justify-center icon-above w-16 h-16 rounded-full bg-surface-warm text-accent-warm">

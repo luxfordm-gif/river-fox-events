@@ -29,8 +29,8 @@ export default defineConfig(({ mode }) => ({
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   build: {
     // One stylesheet for the whole site, as before the page split: split
-    // styles load in a different order and change which rule wins (the
-    // Christmas headline lost its script face). It's ~25KB and cached once.
+    // stylesheets can load in a different order and change which rule wins.
+    // It's ~25KB and cached once.
     cssCodeSplit: false,
     rollupOptions: {
       output: {

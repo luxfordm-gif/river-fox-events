@@ -295,6 +295,17 @@ const styleSpec = (name: string) => {
   };
 };
 
+/* ---------- effects: shadows, layers, motion (2026-11-13) ---------- */
+
+/** Every token with this prefix, in stylesheet order, with its plain name. */
+const effectTokens = (prefix: string) =>
+  SHEET.tokens
+    .filter((t) => t.name.startsWith(prefix))
+    .map((t) => {
+      const [label, ...rest] = t.note.includes(" · ") ? t.note.split(" · ") : [t.name, t.note];
+      return { ...t, label, use: rest.join(" · ") };
+    });
+
 /* ---------- corners, buttons, spacing ---------- */
 
 const CORNERS = [
@@ -507,6 +518,7 @@ const FOUNDATIONS = [
   { href: "#sg-colours", label: "Colours" },
   { href: "#sg-type", label: "Type" },
   { href: "#sg-corners", label: "Corners" },
+  { href: "#sg-effects", label: "Effects" },
   { href: "#sg-buttons", label: "Buttons" },
   { href: "#sg-spacing", label: "Spacing" },
 ];
@@ -919,6 +931,63 @@ const StyleGuide = () => {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* Effects: shadows, page layers, motion */}
+        <section id="sg-effects" className="sg-block">
+          <div className="container-rfx">
+            <BlockHead code="E · Effects" title="Shadows, layers and motion">
+              Every shadow, page layer and animation timing on the site. Hover a motion card to see it move. src/test/effects.test.ts fails on a hand-written one.
+            </BlockHead>
+            <h3 className="t-h5 heading-to-content">Shadows</h3>
+            <div className="sg-corners">
+              {effectTokens("--shadow-").map((t, i) => (
+                <div key={t.name} className="sg-corner">
+                  <div
+                    className="sg-corner-box rounded-large"
+                    style={t.name.startsWith("--shadow-text") ? undefined : { boxShadow: `var(${t.name})` }}
+                  >
+                    {t.name.startsWith("--shadow-text") && (
+                      <span className="t-h4 text-on-deep sg-effect-text" style={{ textShadow: `var(${t.name})` }}>Aa</span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="sg-id">E{i + 1}</span>
+                    <span className="sg-code t-small">{t.name}</span>
+                  </div>
+                  <p className="t-meta text-ink">{t.label}</p>
+                  <p className="t-meta text-ink-soft">{t.use}</p>
+                </div>
+              ))}
+            </div>
+            <h3 className="t-h5 heading-to-content sg-effects-gap">Page layers, bottom to top</h3>
+            <ul className="t-small link-list">
+              {effectTokens("--layer-").map((t) => (
+                <li key={t.name}>
+                  <span className="sg-code">{t.name}</span> {t.value} · {t.label}: {t.use}
+                </li>
+              ))}
+            </ul>
+            <h3 className="t-h5 heading-to-content sg-effects-gap">Motion</h3>
+            <div className="sg-corners">
+              {[...effectTokens("--motion-"), ...effectTokens("--ease-")].map((t) => (
+                <div key={t.name} className="sg-corner sg-motion">
+                  <div className="sg-motion-track">
+                    <span
+                      className="sg-motion-dot"
+                      style={{
+                        transitionDuration: t.name.startsWith("--ease-") ? "var(--motion-slow)" : `var(${t.name})`,
+                        transitionTimingFunction: t.name.startsWith("--ease-") ? `var(${t.name})` : "var(--ease-soft)",
+                      }}
+                    />
+                  </div>
+                  <span className="sg-code t-small">{t.name}</span>
+                  <p className="t-meta text-ink">{t.label} · {t.value}</p>
+                  <p className="t-meta text-ink-soft">{t.use}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
