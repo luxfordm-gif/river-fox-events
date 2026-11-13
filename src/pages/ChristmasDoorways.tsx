@@ -660,7 +660,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               </p>
             </div>
 
-            <div ref={cardsRef} className="text-to-content grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+            <div ref={cardsRef} className="text-to-content grid grid-cols-1 md:grid-cols-2 cards-gap">
               {cards.map((card) => (
                 <article key={card.title} className="fade-up relative">
                   <SnowCap mode="edge" radius="media" />
@@ -829,7 +829,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   : "From the first conversation to the finished installation, I'll take care of the details so you can simply enjoy your doorway all season."}
               </p>
             </div>
-            <ol className="text-to-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+            <ol className="text-to-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 cards-gap">
               {(biz ? STEPS_BUSINESS : STEPS).map((s) => (
                 <li key={s.n} className="fade-up border-t pt-6 relative" style={{ borderColor: "hsl(var(--text-primary) / 0.14)" }}>
                   <SnowCap mode="edge" radius={0} />
@@ -876,7 +876,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               reduced motion, where the snow stays still). */}
           <SnowHint />
           <div className="container-rfx">
-            <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] columns-gap items-start">
               <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
                 <SectionTitle id="enquire-heading" light snow>
                   Book your{" "}

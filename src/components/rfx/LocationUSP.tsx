@@ -103,7 +103,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
 
         <div
           ref={ref}
-          className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6"
+          className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 cards-gap"
         >
           {TRUST_POINTS.map(({ icon, label, body: pointBody }, i) => {
             const Icon = ICON_REGISTRY[icon];

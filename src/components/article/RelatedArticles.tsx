@@ -30,7 +30,7 @@ const RelatedArticles = ({ items }: Props) => {
       >
         More to read
       </div>
-      <div className="grid grid-cols-1 gap-8 md:gap-10">
+      <div className="grid grid-cols-1 cards-gap">
         {items.map((a) => (
           <a
             key={a.slug}

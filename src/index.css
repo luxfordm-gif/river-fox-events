@@ -160,6 +160,8 @@
     --gap-title-body: 8px;
     --gap-text-action: 32px;           /* Text to action · a paragraph down to the button(s) under it, e.g. hero sub-copy to Reserve your date (home and town were 40, service 32; Matt 2026-11-13) */
     --gap-actions: 12px;               /* Action gap · between two buttons side by side or stacked (home was 20) */
+    --gap-columns: 64px;               /* Column gap · between the two halves of a split layout: text and form, text and photo (48 phone; Enquire used 64, Contact 80; Matt 2026-11-13) */
+    --gap-cards: 40px;                 /* Card gap · between cards in a grid or row: steps, tiles, related articles (32 phone) */
     --gap-button-trust: 24px;          /* Button to trust line · hero button down to the five-star reviews line, same on every page (Matt, 2026-11-13) */
     --gap-list-item: 4px;              /* List item gap · space between bullet points in article copy, same as the In short box (was 0.4em, tightened by Matt 2026-11-09) */
     --card-text-inset: 18px;
@@ -248,6 +250,8 @@
       --gap-divider: var(--section-y);
       --gap-heading-content: 32px;
       --gap-text-content: 40px;
+      --gap-columns: 48px;
+      --gap-cards: 32px;
       --gap-inline: 16px;
       --card-text-inset: 0px;
       --card-pad: 28px;
@@ -1033,6 +1037,8 @@
   .title-to-text { margin-top: var(--gap-title-body); }
   .text-to-action { margin-top: var(--gap-text-action); }
   .actions { gap: var(--gap-actions); }
+  .columns-gap { gap: var(--gap-columns); }
+  .cards-gap { gap: var(--gap-cards); }
   .label-to-title { margin-bottom: var(--gap-label-title); }
   .card-text { padding-right: var(--card-text-inset); }
 

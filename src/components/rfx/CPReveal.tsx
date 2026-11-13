@@ -161,7 +161,7 @@ const CPReveal = ({
       aria-labelledby={id ? `${id}-h` : undefined}
     >
       <div className="container-rfx">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 items-center rfx-md-stack">
+        <div className="grid grid-cols-1 md:grid-cols-2 columns-gap items-center rfx-md-stack">
           {imageSide === "left" ? (
             <>
               {imageBlock}

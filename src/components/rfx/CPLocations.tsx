@@ -70,7 +70,7 @@ const CPLocations = ({
       aria-labelledby="cp-locations-heading"
     >
       <div className="container-rfx">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 columns-gap items-center">
           {/* Left - copy + areas list */}
           <div className="flex flex-col items-start text-left fade-up">
             {eyebrow && (

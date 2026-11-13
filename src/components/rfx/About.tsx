@@ -113,7 +113,7 @@ const About = () => {
   return (
     <section ref={panelRef} id="about" className="rfx-section warm rfx-panel" aria-labelledby="about-heading">
       <div className="container-rfx">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-12 md:gap-20 rfx-md-stack">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] columns-gap rfx-md-stack">
           <div className="md:sticky md:top-24 md:self-start fade-up rfx-md-static">
             <div
               ref={studioWrap}
