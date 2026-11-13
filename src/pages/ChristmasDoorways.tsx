@@ -10,6 +10,7 @@ import InstagramStrip from "@/components/rfx/InstagramStrip";
 import SnowCap from "@/components/rfx/SnowCap";
 import StoryVideos, { type Story } from "@/components/rfx/StoryVideos";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
+import TrustLine from "@/components/rfx/TrustLine";
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
 import bow320 from "@/assets/christmas/burgundy-velvet-bow-320.webp";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
@@ -494,6 +495,8 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
   useFadeUp();
   useNavScroll();
   const [submitting, setSubmitting] = useState(false);
+  const [sentTo, setSentTo] = useState<string | null>(null);
+  const [moreOpen, setMoreOpen] = useState(false);
   const biz = variant === "business";
   const routePath = biz ? "/commercial-christmas-decorations" : "/christmas-door-garlands";
   const fan = biz ? FAN_BUSINESS : FAN;
@@ -543,13 +546,15 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
       data.set("page", window.location.pathname);
       const res = await fetch("/", { method: "POST", body: data });
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
-      if (typeof window.gtag === "function") {
+      // Only on the live site, so deploy-preview tests never count as a Google Ads conversion.
+      if (typeof window.gtag === "function" && window.location.hostname === "riverfoxevents.co.uk") {
         window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
       }
       // GA4 lead, sent only after Accept on the cookie banner (src/lib/track.ts).
       // Read before form.reset() below clears the fields.
       trackLead(form);
-      toast.success("Thank you - I've got your door details. I'll be in touch within 1-2 working days with ideas and a quote. Laura");
+      const first = String(new FormData(form).get("name") || "").trim().split(" ")[0];
+      setSentTo(first || "there");
       form.reset();
     } catch (err) {
       toast.error("Sorry - something went wrong. Please email Riverfoxevents@gmail.com directly.");
@@ -624,6 +629,9 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   WhatsApp Laura now
                 </a>
               </div>
+              {/* Trust line: real numbers from the brand facts. Not linked on
+                  this ad landing page, so visitors stay (Matt, 2026-11-13). */}
+              <TrustLine />
             </div>
           </div>
           <div className="md:hidden">
@@ -784,7 +792,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
         {!biz && AD_STORIES.length > 0 && (
           <section id={AD_ANCHOR} className="rfx-section white !pt-0 overflow-x-clip" aria-labelledby="xmas-ad-heading">
             <div className="container-rfx">
-              <BowDivider />
+              {/* No bow here: the page is long enough (Matt, 2026-11-13). */}
               <div className="max-w-[760px] mx-auto text-center fade-up">
                 <SectionTitle id="xmas-ad-heading" snow>
                   Watch the{" "}
@@ -838,6 +846,12 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 </li>
               ))}
             </ol>
+            {/* A button after the last main section, before the FAQs (Matt, 2026-11-13). */}
+            <div className="text-to-content flex justify-center">
+              <a href="#enquire" onClick={handleEnquireClick} className="btn-solid-rf accent">
+                Enquire now <span className="t-icon">→</span>
+              </a>
+            </div>
           </div>
         </section>
 
@@ -868,14 +882,20 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   Book your{" "}
                   <em className="t-accent">{biz ? "Christmas entrance." : "Christmas doorway."}</em>
                 </SectionTitle>
-                <p className="t-lead max-w-[460px] mt-7" style={{ color: "hsl(var(--text-dimmed))" }}>
+                <p className="t-lead max-w-[460px] mt-7" style={{ color: "hsl(var(--text-on-dark))" }}>
+                  Late November and early December dates go fast.
+                </p>
+                <p className="t-lead max-w-[460px] mt-4" style={{ color: "hsl(var(--text-dimmed))" }}>
                   {biz
-                    ? "Send a photo of your entrance with rough measurements, your postcode and your brand colours, and I'll come back with ideas and a quote. Every entrance is dressed by hand, so I can only take a small number each December. If you'd rather call me, use this number: "
-                    : "Send a photo of your door with rough measurements and your postcode, and I'll come back with ideas and a quote. Every doorway is dressed by hand, so I can only take a small number each December. If you'd rather call me, use this number: "}
+                    ? "Send a photo of your entrance and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "
+                    : "Send a photo of your door and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "}
                   <a href="tel:+447872114191" className="whitespace-nowrap text-link" style={{ color: "hsl(var(--text-on-dark))" }}>
                     07872&nbsp;114191
                   </a>
                   .
+                </p>
+                <p className="mt-7 t-body" style={{ color: "hsl(var(--text-on-dark))" }}>
+                  I reply within 1 to 2 working days.
                 </p>
 
               </div>
@@ -901,22 +921,60 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     {biz ? "Tell me about your entrance" : "Tell me about your door"}
                   </h3>
                 </div>
+                {sentTo ? (
+                  /* Thank-you panel instead of a toast (Matt, 2026-11-13). Same words as
+                     before, plus the next step and a faster route. */
+                  <div className="text-left" role="status">
+                    <h3 className="t-h4 text-primary">Thank you, {sentTo}.</h3>
+                    <p className="title-to-text t-body text-ink-soft">
+                      I've got your {biz ? "entrance" : "door"} details. I'll be in touch within 1 to 2
+                      working days with ideas, a colour palette and a quote.
+                    </p>
+                    <p className="mt-4 t-body text-ink-soft">
+                      If it's easier, send me a message on WhatsApp too.
+                      Laura
+                    </p>
+                    <div className="mt-6">
+                      <a href={biz ? WHATSAPP_HREF_BUSINESS : WHATSAPP_HREF} className="btn-ghost-rf">
+                        WhatsApp Laura now
+                      </a>
+                    </div>
+                  </div>
+                ) : (
+                <>
                 <div className="form-grid">
                   <label className="form-row">
                     <span className="lbl">Full name</span>
-                    <input type="text" name="name" placeholder="Your full name" required />
+                    <input type="text" name="name" placeholder="Your full name" autoComplete="name" required />
                   </label>
                   <label className="form-row">
                     <span className="lbl">Email address</span>
-                    <input type="email" name="email" placeholder="you@example.com" required />
+                    <input type="email" name="email" placeholder="you@example.com" autoComplete="email" required />
                   </label>
                   <label className="form-row">
                     <span className="lbl">Phone number (optional)</span>
-                    <input type="tel" name="phone" placeholder="07…" />
+                    <input type="tel" name="phone" placeholder="07…" autoComplete="tel" />
                   </label>
                   <label className="form-row">
                     <span className="lbl">Postcode</span>
-                    <input type="text" name="postcode" placeholder="e.g. KT8 9AB" required />
+                    <input type="text" name="postcode" placeholder="e.g. KT8 9AB" autoComplete="postal-code" required />
+                  </label>
+                  <label className="form-row full">
+                    <span className="lbl">Message</span>
+                    <textarea
+                      name="notes"
+                      rows={3}
+                      placeholder={biz ? "Your brand colours, your opening hours, or anything else" : "Colours you love, the paint colour of your door, or anything else"}
+                    />
+                  </label>
+                </div>
+                {/* Optional extras, folded away. Hidden fields still send, so
+                    the defaults reach the same Netlify inbox as before. */}
+                <div id="xmas-more-details" hidden={!moreOpen}>
+                <div className="form-grid mt-5">
+                  <label className="form-row full">
+                    <span className="lbl">{biz ? "Photo of your entrance" : "Photo of your door"}</span>
+                    <input type="file" name="door-photo" accept="image/*" />
                   </label>
                   <label className="form-row">
                     <span className="lbl">Home or business</span>
@@ -935,25 +993,13 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   </label>
                   <label className="form-row full">
                     <span className="lbl">Install</span>
-                    <select name="install" defaultValue="Early November">
+                    <select name="install" defaultValue="Flexible">
                       <option>Early November</option>
                       <option>Late November</option>
                       <option>First week of December</option>
                       <option>Second week of December</option>
                       <option>Flexible</option>
                     </select>
-                  </label>
-                  <label className="form-row full">
-                    <span className="lbl">{biz ? "Photo of your entrance (optional)" : "Photo of your door (optional)"}</span>
-                    <input type="file" name="door-photo" accept="image/*" />
-                  </label>
-                  <label className="form-row full">
-                    <span className="lbl">Colours or ideas</span>
-                    <textarea
-                      name="notes"
-                      rows={3}
-                      placeholder={biz ? "Your brand colours, your opening hours, or anything else" : "Colours you love, the paint colour of your door, or anything else"}
-                    />
                   </label>
                   <label className="form-row full form-check">
                     <input type="checkbox" name="takedown" value="Yes" />
@@ -963,12 +1009,25 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     <span className="xmas-tag ml-auto">Extra</span>
                   </label>
                 </div>
-                <div className="flex justify-center lg:justify-end items-center mt-6">
-                  {/* Full width on phones to match the fields above; natural width from sm up. */}
-                  <button type="submit" disabled={submitting} className="btn-solid-rf accent w-full sm:w-auto justify-center disabled:opacity-60">
-                    {submitting ? "Sending…" : "Request a quote"} <span>→</span>
+                </div>
+                {/* The toggle and the button share one row, so the button
+                    sits straight under the message. */}
+                <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <button
+                    type="button"
+                    aria-expanded={moreOpen}
+                    aria-controls="xmas-more-details"
+                    onClick={() => setMoreOpen((o) => !o)}
+                    className="t-label text-primary text-left"
+                  >
+                    {moreOpen ? "− Fewer details" : "+ Add more details for a quicker quote (optional)"}
+                  </button>
+                  <button type="submit" disabled={submitting} className="btn-solid-rf accent w-full sm:w-auto justify-center shrink-0 disabled:opacity-60">
+                    {submitting ? "Sending…" : "Request my quote"} <span>→</span>
                   </button>
                 </div>
+                </>
+                )}
               </form>
             </div>
           </div>

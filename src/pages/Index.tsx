@@ -46,7 +46,7 @@ const Index = () => {
             runs straight into the mission line, which stands in as the
             page title (Matt, 2026-11-11). After Christmas, set
             CHRISTMAS_CAMPAIGN to false to bring the title section back. */}
-        {CHRISTMAS_CAMPAIGN && <ChristmasHero />}
+        {CHRISTMAS_CAMPAIGN && <ChristmasHero trust />}
         {!CHRISTMAS_CAMPAIGN && <Hero />}
         <Mission asTitle={CHRISTMAS_CAMPAIGN} />
         <Experiences align="centre" />
