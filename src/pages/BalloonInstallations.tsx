@@ -164,7 +164,9 @@ const BalloonInstallations = () => {
             "Hi Laura, I'd like a quote for a balloon installation. My date and postcode are "
           )}
           lines={[
-            <>Balloon decorations across Surrey,</>,
+            /* No "across Surrey" in the heading (Matt, 2026-11-13): the title,
+               description and intro still carry the location. */
+            <>Balloon decorations,</>,
             <>
               <em className="t-accent">
                 styled around your celebration.
