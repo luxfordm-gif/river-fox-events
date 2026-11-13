@@ -781,6 +781,10 @@
   .form-row textarea { resize: vertical; min-height: 80px; cursor: text; }
   .form-row input::placeholder,
   .form-row textarea::placeholder { color: hsl(var(--text-dimmed)); font-weight: var(--fw-regular); }
+  /* A dropdown still on "Choose one" reads as a hint, like a placeholder,
+     not as an answer (Matt, 2026-11-13). The open list keeps normal text. */
+  .form-row select:has(option[value=""]:checked) { color: hsl(var(--text-dimmed)); font-weight: var(--fw-regular); }
+  .form-row select option { color: hsl(var(--text-primary)); }
   .form-row:hover { border-color: hsl(var(--text-primary) / 0.28); background: hsl(var(--background-light)); }
   .form-row:focus-within {
     border-color: hsl(var(--accent));

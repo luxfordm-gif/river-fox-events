@@ -24,7 +24,6 @@ const INSTAGRAM_URL = "https://www.instagram.com/riverfox_events/";
 const Contact = () => {
   useNavScroll();
   const [submitting, setSubmitting] = useState(false);
-  const [moreOpen, setMoreOpen] = useState(false);
 
   useEffect(() => {
     const route = findRoute("/contact")!;
@@ -172,6 +171,10 @@ const Contact = () => {
                     Don't fill this out: <input name="bot-field" />
                   </label>
                 </p>
+                {/* The full form here: people come to Contact on purpose. The
+                    short form with "Add more details" is for the home and
+                    service pages (Matt, 2026-11-13). Dropdowns start blank, so
+                    Laura only sees answers the customer chose. */}
                 <div className="form-grid">
                   <label className="form-row">
                     <span className="lbl">Full name</span>
@@ -190,73 +193,56 @@ const Contact = () => {
                     <input type="date" name="date" />
                   </label>
                   <label className="form-row full">
-                    <span className="lbl">Message</span>
+                    <span className="lbl">Event location / venue</span>
+                    <input type="text" name="venue" placeholder="e.g. at home in Cobham" />
+                  </label>
+                  <label className="form-row full">
+                    <span className="lbl">Type of event</span>
+                    <select name="type" defaultValue="">
+                      <option value="">Choose one</option>
+                      <option>Children's party</option>
+                      <option>Milestone celebration</option>
+                      <option>Corporate / brand event</option>
+                    </select>
+                  </label>
+                  <label className="form-row full">
+                    <span className="lbl">Tell me about your vision</span>
                     <textarea
                       name="vision"
-                      rows={3}
+                      rows={4}
                       placeholder="Theme, colours, inspiration, or anything you already have in mind"
                     />
                   </label>
+                  <label className="form-row">
+                    <span className="lbl">Planned investment</span>
+                    <select name="budget" defaultValue="">
+                      <option value="">Choose one</option>
+                      <option>Under £300</option>
+                      <option>£300 – £600</option>
+                      <option>£600 – £1,000</option>
+                      <option>£1,000 – £1,500</option>
+                      <option>£1,500+</option>
+                      <option>Not sure yet</option>
+                    </select>
+                  </label>
+                  <label className="form-row">
+                    <span className="lbl">How did you hear about us?</span>
+                    <select name="referral" defaultValue="">
+                      <option value="">Choose one</option>
+                      <option>Google</option>
+                      <option>Recommendation</option>
+                      <option>Facebook</option>
+                      <option>Instagram</option>
+                      <option>Used before</option>
+                      <option>Other</option>
+                    </select>
+                  </label>
                 </div>
-                {/* Optional extras, folded away, as on the home Enquire form
-                    (Matt, 2026-11-13). Untouched ones send blank, so Laura
-                    never sees an answer the customer didn't choose. */}
-                <div id="contact-more-details" hidden={!moreOpen}>
-                  <div className="form-grid mt-5">
-                    <label className="form-row full">
-                      <span className="lbl">Event location / venue</span>
-                      <input type="text" name="venue" placeholder="e.g. at home in Cobham" />
-                    </label>
-                    <label className="form-row full">
-                      <span className="lbl">Type of event</span>
-                      <select name="type" defaultValue="">
-                        <option value="">Choose one</option>
-                        <option>Children's party</option>
-                        <option>Milestone celebration</option>
-                        <option>Corporate / brand event</option>
-                      </select>
-                    </label>
-                    <label className="form-row">
-                      <span className="lbl">Planned investment</span>
-                      <select name="budget" defaultValue="">
-                        <option value="">Choose one</option>
-                        <option>Under £300</option>
-                        <option>£300 – £600</option>
-                        <option>£600 – £1,000</option>
-                        <option>£1,000 – £1,500</option>
-                        <option>£1,500+</option>
-                        <option>Not sure yet</option>
-                      </select>
-                    </label>
-                    <label className="form-row">
-                      <span className="lbl">How did you hear about us?</span>
-                      <select name="referral" defaultValue="">
-                        <option value="">Choose one</option>
-                        <option>Google</option>
-                        <option>Recommendation</option>
-                        <option>Facebook</option>
-                        <option>Instagram</option>
-                        <option>Used before</option>
-                        <option>Other</option>
-                      </select>
-                    </label>
-                  </div>
-                </div>
-                {/* The toggle and the button share one row, as on the home form. */}
-                <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <button
-                    type="button"
-                    aria-expanded={moreOpen}
-                    aria-controls="contact-more-details"
-                    onClick={() => setMoreOpen((o) => !o)}
-                    className="t-label text-primary w-full sm:w-auto text-left text-pretty py-3 sm:py-0"
-                  >
-                    {moreOpen ? "− Fewer details" : "+ Add more details for a quicker quote (optional)"}
-                  </button>
+                <div className="flex justify-center lg:justify-end mt-6">
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="btn-solid-rf accent w-full sm:w-auto justify-center shrink-0 disabled:opacity-60"
+                    className="btn-solid-rf accent w-full sm:w-auto justify-center disabled:opacity-60"
                   >
                     {submitting ? "Sending…" : "Send enquiry"} <span>→</span>
                   </button>
