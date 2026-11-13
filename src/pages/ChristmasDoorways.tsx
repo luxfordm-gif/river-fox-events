@@ -646,7 +646,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
         {/* What we do */}
         <section className="rfx-section white" aria-labelledby="xmas-what-heading">
           <div className="container-rfx">
-            <div className="max-w-[760px] mx-auto text-center fade-up">
+            <div className="text-center fade-up">
               <SectionTitle id="xmas-what-heading" snow>
                 {biz ? "A festive welcome," : "A little Christmas magic,"}{" "}
                 <em className="t-accent">{biz ? "from the door in." : "right at your door."}</em>
@@ -693,7 +693,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   <h3 className="t-h4 text-primary media-to-title">
                     {card.title}
                   </h3>
-                  <div className="title-to-text t-body text-ink-soft max-w-[52ch] paragraphs">
+                  <div className="title-to-text t-body text-ink-soft measure-lead paragraphs">
                     {card.body.map((para, i) => (
                       <p key={i}>{para}</p>
                     ))}
@@ -704,7 +704,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
 
             {/* Fresh or faux: a garland cutout (transparent WebP, shadow from
                 CSS), the section heading under it, then the two options. */}
-            <div className="subsection-gap max-w-[1040px] mx-auto">
+            <div className="subsection-gap container-narrow mx-auto">
               <img
                 src={imgGarland1200}
                 srcSet={`${imgGarland800} 800w, ${imgGarland1200} 1200w, ${imgGarland1440} 1440w`}
@@ -716,7 +716,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 loading="lazy"
                 decoding="async"
               />
-              <div className="max-w-[760px] mx-auto text-center fade-up below-heading">
+              <div className="text-center fade-up below-heading">
                 <p className="t-overline text-ink-soft">Garland options</p>
                 <div className="eyebrow-to-title">
                   <SectionTitle id="xmas-options-heading" snow>
@@ -740,7 +740,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     </h3>
                     <p className="t-small italic text-accent-warm meta-below">{opt.note}</p>
                     {/* Keep to three lines max (Matt, 2026-11-04). */}
-                    <p className="title-to-text t-small text-ink-soft max-w-[42ch] md:max-w-[40ch]">{opt.body}</p>
+                    <p className="title-to-text t-small text-ink-soft measure-card">{opt.body}</p>
                     <div className="mt-auto card-action">
                       <a
                         href="#enquire"
@@ -766,7 +766,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
         <section className="rfx-section white !pt-0" aria-labelledby="xmas-ig-heading">
           <div className="container-rfx">
             <BowDivider />
-            <div className="max-w-[760px] mx-auto text-center fade-up">
+            <div className="text-center fade-up">
               <SectionTitle id="xmas-ig-heading" snow>
                 A little inspiration for{" "}
                 <em className="t-accent">{biz ? "your Christmas entrance." : "your Christmas doorway."}</em>
@@ -791,7 +791,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
           <section id={AD_ANCHOR} className="rfx-section white !pt-0 overflow-x-clip" aria-labelledby="xmas-ad-heading">
             <div className="container-rfx">
               {/* No bow here: the page is long enough (Matt, 2026-11-13). */}
-              <div className="max-w-[760px] mx-auto text-center fade-up">
+              <div className="text-center fade-up">
                 <SectionTitle id="xmas-ad-heading" snow>
                   Watch the{" "}
                   <em className="t-accent">Christmas campaign.</em>
@@ -816,7 +816,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
         <section id="how-it-works" className="rfx-section white !pt-0" aria-labelledby="xmas-how-heading">
           <div className="container-rfx">
             <BowDivider />
-            <div className="max-w-[760px] mx-auto text-center fade-up">
+            <div className="text-center fade-up">
               <SectionTitle id="xmas-how-heading" snow>
                 {biz ? "Your Christmas entrance," : "Your Christmas doorway,"}{" "}
                 <em className="t-accent">taken care of.</em>
@@ -879,10 +879,10 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   Book your{" "}
                   <em className="t-accent">{biz ? "Christmas entrance." : "Christmas doorway."}</em>
                 </SectionTitle>
-                <p className="t-lead max-w-[460px] heading-to-text text-on-deep">
+                <p className="t-lead measure-lead heading-to-text text-on-deep">
                   Late November and early December dates go fast.
                 </p>
-                <p className="t-lead max-w-[460px] text-to-text text-ink-faint">
+                <p className="t-lead measure-lead text-to-text text-ink-faint">
                   {biz
                     ? "Send a photo of your entrance and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "
                     : "Send a photo of your door and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "}

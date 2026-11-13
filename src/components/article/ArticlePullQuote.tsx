@@ -11,7 +11,7 @@ type Props = {
  * between the two scales.
  */
 const ArticlePullQuote = ({ children, attribution }: Props) => (
-  <blockquote className="max-w-[820px] mx-auto article-pad article-block text-center">
+  <blockquote className="measure-quote mx-auto article-pad article-block text-center">
     <p
       className="t-quote italic text-ink"
       style={{ textWrap: "balance" }}

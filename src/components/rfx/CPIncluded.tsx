@@ -276,7 +276,7 @@ const CPIncluded = ({
       aria-labelledby={headingId}
     >
       <div className="container-rfx">
-        <div className="text-center max-w-[760px] mx-auto">
+        <div className="text-center">
           <div className="t-overline text-ink-soft eyebrow-above">
             {eyebrow}
           </div>
@@ -319,7 +319,7 @@ const CPIncluded = ({
                 {label}
               </h3>
               <p
-                className="t-small text-ink-soft title-to-text max-w-[220px]"
+                className="t-small text-ink-soft title-to-text measure-card"
                 style={{ textWrap: "pretty" }}
               >
                 {body}
@@ -330,7 +330,7 @@ const CPIncluded = ({
         </div>
 
         <p
-          className="t-small italic text-ink text-center text-to-content max-w-[560px] mx-auto"
+          className="t-small italic text-ink text-center text-to-content measure-lead mx-auto"
           style={{ textWrap: "pretty" }}
         >
           {outro}

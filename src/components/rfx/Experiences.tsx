@@ -136,7 +136,7 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
       <h3 className="t-h5 exp-title media-to-title">
         {it.title}
       </h3>
-      <p className="t-small text-ink-soft max-w-[360px] title-to-text">
+      <p className="t-small text-ink-soft measure-card title-to-text">
         {it.body}
       </p>
       <span className="btn-link-rf t-label self-start mt-auto card-action">

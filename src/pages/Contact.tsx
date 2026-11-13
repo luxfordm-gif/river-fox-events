@@ -97,14 +97,14 @@ const Contact = () => {
               {/* Left: intro copy + direct contact methods */}
               <div className="text-center lg:text-left">
                 <p
-                  className="t-body text-ink max-w-[460px] mx-auto lg:mx-0"
+                  className="t-body text-ink measure-lead mx-auto lg:mx-0"
                   style={{ textWrap: "pretty" }}
                 >
                   Share a few details in the enquiry form and I'll be in
                   touch to talk through your plans.
                 </p>
                 <p
-                  className="t-body text-ink text-to-text max-w-[460px] mx-auto lg:mx-0"
+                  className="t-body text-ink text-to-text measure-lead mx-auto lg:mx-0"
                   style={{ textWrap: "pretty" }}
                 >
                   Celebrations start from £300, with larger designs
@@ -112,7 +112,7 @@ const Contact = () => {
                   <span className="whitespace-nowrap">£600 - £1,500+</span>.
                 </p>
 
-                <div className="hairline text-to-content max-w-[460px] mx-auto lg:mx-0" aria-hidden="true" />
+                <div className="hairline text-to-content measure-lead mx-auto lg:mx-0" aria-hidden="true" />
 
                 <ul className="text-to-content flex flex-col stack-gap items-center lg:items-start">
                   <li>

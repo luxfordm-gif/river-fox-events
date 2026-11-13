@@ -41,7 +41,7 @@ const ArticleHero = ({
       </a>
 
       <h1
-        className="t-h1 max-w-[20ch] mx-auto eyebrow-to-title"
+        className="t-h1 measure-headline mx-auto eyebrow-to-title"
         style={{ textWrap: "balance" }}
       >
         {title}
@@ -49,7 +49,7 @@ const ArticleHero = ({
 
       {subtitle && (
         <p
-          className="t-lead heading-to-text max-w-[44ch] mx-auto text-ink-soft italic"
+          className="t-lead heading-to-text measure-lead mx-auto text-ink-soft italic"
           style={{ textWrap: "pretty" }}
         >
           {subtitle}
@@ -60,7 +60,7 @@ const ArticleHero = ({
         By {authorName} · {formattedDate} · {readMinutes} min read
       </div>
 
-      <div className="text-to-action flex items-center inline-gap max-w-[460px] mx-auto">
+      <div className="text-to-action flex items-center inline-gap measure-lead mx-auto">
         <span
           className="h-px flex-1 bg-accent-warm/45"
           aria-hidden="true"

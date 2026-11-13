@@ -26,7 +26,7 @@ const Hero = () => {
             </span>
           </h1>
 
-          <p className="t-lead text-ink-soft max-w-[520px] heading-to-text fade-up in text-center">
+          <p className="t-lead text-ink-soft measure-lead heading-to-text fade-up in text-center">
             Children's parties, milestone birthdays and brand events, from a
             single balloon arch to the whole room. I design each one, set it up
             before your guests arrive and clear it away after.

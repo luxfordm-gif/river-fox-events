@@ -82,7 +82,7 @@ const CPLocations = ({
             <SectionHeading id="cp-locations-heading" align="left">{heading}</SectionHeading>
             <SectionIntro size="small" align="left">{intro}</SectionIntro>
 
-            <ul className="text-to-content grid grid-cols-2 col-gap w-full max-w-[520px] border-t border-divider">
+            <ul className="text-to-content grid grid-cols-2 col-gap w-full measure-lead border-t border-divider">
               {areas.map((a, i) => {
                 const slug = SLUG_BY_CITY.get(a);
                 const link = slug && slug !== currentSlug;

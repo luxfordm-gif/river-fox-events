@@ -68,7 +68,7 @@ const FaqList = ({ items, defaultOpen = null }: FaqListProps) => {
             >
               <div className="faq-rf-panel__inner">
                 <div className="grid grid-cols-[42px_1fr_40px] inline-gap max-md:grid-cols-[22px_1fr_32px] max-md:gap-3.5">
-                  <p className="col-start-2 t-body text-ink-soft max-w-[680px] pt-2 pb-6">
+                  <p className="col-start-2 t-body text-ink-soft measure-reading pt-2 pb-6">
                     {it.aNode ?? it.a}
                   </p>
                 </div>

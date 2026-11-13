@@ -24,7 +24,7 @@ const RelatedArticles = ({ items }: Props) => {
   return (
     // Same 720px column as the article text and the end panel, so all three
     // share one left and right edge (Matt, 2026-11-07).
-    <section className="max-w-[720px] mx-auto article-pad article-block">
+    <section className="measure-reading mx-auto article-pad article-block">
       <div
         className="t-overline text-ink-soft heading-to-content text-center"
       >

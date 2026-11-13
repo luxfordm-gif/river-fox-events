@@ -70,7 +70,7 @@ const CPPricing = ({
             {ctaLabel} <span>→</span>
           </a>
           {footnote ? (
-            <p className="t-meta text-ink-soft max-w-[560px] mx-auto">
+            <p className="t-meta text-ink-soft measure-lead mx-auto">
               {footnote}
             </p>
           ) : null}
