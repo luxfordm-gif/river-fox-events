@@ -1018,7 +1018,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     aria-expanded={moreOpen}
                     aria-controls="xmas-more-details"
                     onClick={() => setMoreOpen((o) => !o)}
-                    className="t-label text-primary w-full sm:w-auto text-center sm:text-left px-4 py-3 sm:p-0 border sm:border-0 border-[hsl(var(--text-primary)/0.3)] rounded-small"
+                    className="t-label text-primary w-full sm:w-auto text-left text-pretty py-3 sm:py-0"
                   >
                     {moreOpen ? "− Fewer details" : "+ Add more details for a quicker quote (optional)"}
                   </button>
