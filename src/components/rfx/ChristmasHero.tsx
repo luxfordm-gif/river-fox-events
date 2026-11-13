@@ -1,3 +1,4 @@
+import TrustLine from "./TrustLine";
 import { useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import "@/styles/christmas.css";
@@ -98,6 +99,8 @@ type Props = {
   variant?: "top" | "zoom";
   /** false hides the button. */
   cta?: boolean;
+  /** Show the five-star trust line under the button. */
+  trust?: boolean;
   ctaHref?: string;
   ctaLabel?: string;
   onCtaClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
@@ -114,6 +117,7 @@ const ZOOM_EASE = 1.3;
 const ChristmasHero = ({
   variant = "top",
   cta = true,
+  trust = false,
   ctaHref = PAGE,
   ctaLabel = "Book your Christmas garland",
   onCtaClick,
@@ -311,6 +315,8 @@ const ChristmasHero = ({
             {ctaLabel} <span className="t-icon">→</span>
           </a>
         )}
+        {/* Trust line, on the homepage only (Matt, 2026-11-13). */}
+        {trust && <TrustLine linked onDark className="xhero__trust" />}
       </div>
     </div>
   );

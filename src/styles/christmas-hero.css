@@ -108,3 +108,11 @@ section.rfx-section.xhero-zoom { padding-bottom: 0; }
   text-shadow: 0 1px 16px hsl(var(--background-dark) / 0.5);
 }
 .xhero__cta { margin-top: var(--gap-text-content); }
+
+/* Trust line under the video hero's button: light text over the film. */
+.xhero__trust { margin-top: var(--gap-title-body); }
+.trust-line--dark {
+  color: hsl(var(--background-light));
+  text-shadow: 0 1px 16px hsl(var(--background-dark) / 0.5);
+}
+.trust-line--dark a { color: inherit; }

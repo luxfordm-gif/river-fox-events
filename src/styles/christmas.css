@@ -344,7 +344,3 @@
 @media (prefers-reduced-motion: reduce) {
   .xmas-snow-hint { display: none !important; }
 }
-
-/* Test page only (/christmas-door-garlands-test/): the campaign film tile
-   at 70% of its size, so the section is about 30% shorter (Matt, 2026-11-13). */
-.xmas-ad-compact .story-fan { zoom: 0.7; }

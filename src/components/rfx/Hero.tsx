@@ -1,5 +1,6 @@
 import ScrollStrip from "@/components/rfx/ScrollStrip";
 import HeroEditorial, { HERO_EDITORIAL_IMAGES } from "@/components/rfx/HeroEditorial";
+import TrustLine from "./TrustLine";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 const Hero = () => {
@@ -36,6 +37,7 @@ const Hero = () => {
               Reserve your date <span className="t-icon">→</span>
             </a>
           </div>
+          <TrustLine linked className="mt-6 text-center fade-up in" />
         </div>
       </div>
 

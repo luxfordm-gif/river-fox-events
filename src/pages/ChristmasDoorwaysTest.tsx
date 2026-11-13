@@ -3,13 +3,12 @@
    in the sitemap, linked from nowhere). Changes from the live page, from the
    landing page checklist audit:
      1. A trust line under the hero buttons (real numbers only)
-     2. "Kind words": Laura's real Google reviews, the Christmas salon one first
-     3. "Dates go fast" and reply time next to the booking form
-     4. An Enquire button after "taken care of"
-     5. Shorter form: name, email, phone, postcode and message up front, the
+     2. "Dates go fast" and reply time next to the booking form
+     3. An Enquire button after "taken care of"
+     4. Shorter form: name, email, phone, postcode and message up front, the
         rest under "Add more details for a quicker quote"
-     6. A thank-you panel with next steps and WhatsApp, instead of a toast
-     7. The campaign film tile 30% smaller, a shorter booking intro */
+     5. A thank-you panel with next steps and WhatsApp, instead of a toast
+     6. A shorter booking intro */
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { toast } from "sonner";
 import Nav from "@/components/rfx/Nav";
@@ -22,8 +21,7 @@ import InstagramStrip from "@/components/rfx/InstagramStrip";
 import SnowCap from "@/components/rfx/SnowCap";
 import StoryVideos, { type Story } from "@/components/rfx/StoryVideos";
 import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
-import TestimonialsCarousel from "@/components/rfx/TestimonialsCarousel";
-import { REVIEWS } from "@/seo/routes";
+import TrustLine from "@/components/rfx/TrustLine";
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
 import bow320 from "@/assets/christmas/burgundy-velvet-bow-320.webp";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
@@ -123,12 +121,6 @@ const AD_FAN = [
   { src: fanSnowball, story: 2 },
   { src: fanDog, story: 5 },
 ];
-
-/* Three real Google reviews, word for word: the Christmas salon display,
-   a business install in Horley, and the balloons that lasted to December. */
-const XMAS_REVIEWS = ["Danielle Wayman", "Suzy Dorran", "Rupi Heron"].map(
-  (name) => REVIEWS.find((r) => r.a === name)!
-);
 
 /* Hero WhatsApp button (phones): message pre-filled, they add a postcode. */
 const WHATSAPP_HREF =
@@ -649,10 +641,7 @@ const ChristmasDoorwaysTest = ({ variant = "home" }: { variant?: Variant }) => {
                 </a>
               </div>
               {/* Trust line: real numbers from the brand facts. */}
-              <p className="mt-6 t-meta text-ink-soft">
-                <span className="text-accent-warm" aria-hidden="true">★★★★★</span>{" "}
-                Google reviews · 400+ events styled · 8 years in Surrey
-              </p>
+              <TrustLine className="mt-6" />
             </div>
           </div>
           <div className="md:hidden">
@@ -807,21 +796,6 @@ const ChristmasDoorwaysTest = ({ variant = "home" }: { variant?: Variant }) => {
           </div>
         </section>
 
-        {/* NEW: Kind words. Real reviews only, never edited. */}
-        <section id="kind-words" className="rfx-section white !pt-0" aria-labelledby="xmas-reviews-heading">
-          <div className="container-rfx">
-            <BowDivider />
-            <div className="max-w-[760px] mx-auto text-center fade-up">
-              <SectionTitle id="xmas-reviews-heading" snow>
-                Kind <em className="t-accent">words.</em>
-              </SectionTitle>
-            </div>
-            <div className="heading-to-content fade-up">
-              <TestimonialsCarousel reviews={XMAS_REVIEWS} />
-            </div>
-          </div>
-        </section>
-
         {/* Christmas campaign: the ad films behind one tile. Stills from the
             DIY attempts fan out behind it on hover. */}
         {/* The films are about homes (DIY porch mishaps), so home version only. */}
@@ -835,8 +809,7 @@ const ChristmasDoorwaysTest = ({ variant = "home" }: { variant?: Variant }) => {
                   <em className="t-accent">Christmas campaign.</em>
                 </SectionTitle>
               </div>
-              {/* Test: the film tile 30% shorter (Matt, 2026-11-13). */}
-              <div className="mt-12 md:mt-16 fade-up xmas-ad-compact">
+              <div className="mt-12 md:mt-16 fade-up">
                 <StoryVideos
                   stories={AD_STORIES}
                   thumb={AD_THUMB.src}

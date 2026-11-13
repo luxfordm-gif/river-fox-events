@@ -1,4 +1,5 @@
 import { type CSSProperties, ReactNode, useEffect, useRef, Fragment } from "react";
+import TrustLine from "./TrustLine";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 type ServiceHeroProps = {
@@ -114,6 +115,7 @@ const ServiceHero = ({
               </a>
             ) : null}
           </div>
+          <TrustLine linked className="mt-6 text-center fade-up in" />
         </div>
       </div>
 
