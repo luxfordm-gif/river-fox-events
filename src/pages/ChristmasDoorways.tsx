@@ -899,7 +899,9 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   .
                 </p>
                 <p className="mt-7 t-body" style={{ color: "hsl(var(--text-on-dark))" }}>
-                  I reply within 1 to 2 working days.
+                  {/* 24 hours here, not the site's 1 to 2 working days: it's so close
+                      to Christmas (Matt, 2026-11-13). */}
+                  I reply within 24 hours.
                 </p>
 
               </div>
@@ -931,8 +933,8 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   <div className="text-left" role="status">
                     <h3 className="t-h4 text-primary">Thank you, {sentTo}.</h3>
                     <p className="title-to-text t-body text-ink-soft">
-                      I've got your {biz ? "entrance" : "door"} details. I'll be in touch within 1 to 2
-                      working days with ideas, a colour palette and a quote.
+                      I've got your {biz ? "entrance" : "door"} details. I'll be in touch within 24 hours
+                      with ideas, a colour palette and a quote.
                     </p>
                     <p className="mt-4 t-body text-ink-soft">
                       If it's easier, send me a message on WhatsApp too.
