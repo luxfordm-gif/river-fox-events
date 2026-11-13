@@ -4,12 +4,12 @@
    landing page checklist audit:
      1. A trust line under the hero buttons (real numbers only)
      2. "Kind words": Laura's real Google reviews, the Christmas salon one first
-     3. A returning-customer line and price / offer placeholders for Laura
+     3. "Dates go fast" and reply time next to the booking form
      4. An Enquire button after "taken care of"
-     5. Shorter form: 5 fields up front, the rest under "Add more details"
+     5. Shorter form: name, email, phone, postcode and message up front, the
+        rest under "Add more details for a quicker quote"
      6. A thank-you panel with next steps and WhatsApp, instead of a toast
-   Placeholders are marked with a dashed outline and must be replaced with
-   Laura's own facts before any of this goes live. */
+     7. The campaign film tile 30% smaller, a shorter booking intro */
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { toast } from "sonner";
 import Nav from "@/components/rfx/Nav";
@@ -128,12 +128,6 @@ const AD_FAN = [
    a business install in Horley, and the balloons that lasted to December. */
 const XMAS_REVIEWS = ["Danielle Wayman", "Suzy Dorran", "Rupi Heron"].map(
   (name) => REVIEWS.find((r) => r.a === name)!
-);
-
-/* Placeholder for a fact Laura needs to supply. Dashed outline so it can't
-   be mistaken for finished copy. */
-const Todo = ({ children }: { children: ReactNode }) => (
-  <mark className="xmas-placeholder">{children}</mark>
 );
 
 /* Hero WhatsApp button (phones): message pre-filled, they add a postcode. */
@@ -521,6 +515,7 @@ const ChristmasDoorwaysTest = ({ variant = "home" }: { variant?: Variant }) => {
   useNavScroll();
   const [submitting, setSubmitting] = useState(false);
   const [sentTo, setSentTo] = useState<string | null>(null);
+  const [moreOpen, setMoreOpen] = useState(false);
   const biz = variant === "business";
   const routePath = "/christmas-door-garlands-test";
   const fan = biz ? FAN_BUSINESS : FAN;
@@ -820,11 +815,6 @@ const ChristmasDoorwaysTest = ({ variant = "home" }: { variant?: Variant }) => {
               <SectionTitle id="xmas-reviews-heading" snow>
                 Kind <em className="t-accent">words.</em>
               </SectionTitle>
-              <p className="heading-to-text t-lead text-ink-soft">
-                I've dressed one Twickenham doorway for{" "}
-                <Todo>three or four</Todo> Christmases running.{" "}
-                <Todo>Doorways from £___</Todo>
-              </p>
             </div>
             <div className="heading-to-content fade-up">
               <TestimonialsCarousel reviews={XMAS_REVIEWS} />
@@ -845,7 +835,8 @@ const ChristmasDoorwaysTest = ({ variant = "home" }: { variant?: Variant }) => {
                   <em className="t-accent">Christmas campaign.</em>
                 </SectionTitle>
               </div>
-              <div className="mt-12 md:mt-16 fade-up">
+              {/* Test: the film tile 30% shorter (Matt, 2026-11-13). */}
+              <div className="mt-12 md:mt-16 fade-up xmas-ad-compact">
                 <StoryVideos
                   stories={AD_STORIES}
                   thumb={AD_THUMB.src}
@@ -930,17 +921,15 @@ const ChristmasDoorwaysTest = ({ variant = "home" }: { variant?: Variant }) => {
                 </SectionTitle>
                 <p className="t-lead max-w-[460px] mt-7" style={{ color: "hsl(var(--text-dimmed))" }}>
                   {biz
-                    ? "Send a photo of your entrance with rough measurements, your postcode and your brand colours, and I'll come back with ideas and a quote. Every entrance is dressed by hand, so I can only take a small number each December. If you'd rather call me, use this number: "
-                    : "Send a photo of your door with rough measurements and your postcode, and I'll come back with ideas and a quote. Every doorway is dressed by hand, so I can only take a small number each December. If you'd rather call me, use this number: "}
+                    ? "Send a photo of your entrance and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "
+                    : "Send a photo of your door and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "}
                   <a href="tel:+447872114191" className="whitespace-nowrap text-link" style={{ color: "hsl(var(--text-on-dark))" }}>
                     07872&nbsp;114191
                   </a>
                   .
                 </p>
-                {/* NEW: a true reason to book now. Laura to choose the offer. */}
                 <ul className="mt-7 t-body space-y-2 text-center lg:text-left" style={{ color: "hsl(var(--text-on-dark))" }}>
-                  <li>Late November and early December dates go first</li>
-                  <li><Todo>Offer for Laura to choose, e.g. free January takedown if booked by 30 November</Todo></li>
+                  <li>Late November and early December dates go fast</li>
                   <li>I reply within 1 to 2 working days</li>
                 </ul>
 
@@ -1006,15 +995,22 @@ const ChristmasDoorwaysTest = ({ variant = "home" }: { variant?: Variant }) => {
                     <input type="text" name="postcode" placeholder="e.g. KT8 9AB" autoComplete="postal-code" required />
                   </label>
                   <label className="form-row full">
-                    <span className="lbl">{biz ? "Photo of your entrance (optional)" : "Photo of your door (optional)"}</span>
-                    <input type="file" name="door-photo" accept="image/*" />
+                    <span className="lbl">Message</span>
+                    <textarea
+                      name="notes"
+                      rows={3}
+                      placeholder={biz ? "Your brand colours, your opening hours, or anything else" : "Colours you love, the paint colour of your door, or anything else"}
+                    />
                   </label>
                 </div>
-                {/* NEW: everything else is optional, folded away. Same field
-                    names, so the form still lands in the same Netlify inbox. */}
-                <details className="mt-5 text-left">
-                  <summary className="t-label text-primary cursor-pointer">Add more details (optional)</summary>
-                  <div className="form-grid mt-5">
+                {/* Optional extras, folded away. Hidden fields still send, so
+                    the defaults reach the same Netlify inbox as before. */}
+                <div id="xmas-more-details" hidden={!moreOpen}>
+                <div className="form-grid mt-5">
+                  <label className="form-row full">
+                    <span className="lbl">{biz ? "Photo of your entrance" : "Photo of your door"}</span>
+                    <input type="file" name="door-photo" accept="image/*" />
+                  </label>
                   <label className="form-row">
                     <span className="lbl">Home or business</span>
                     <select name="property" defaultValue={biz ? "Business" : "Home"}>
@@ -1040,14 +1036,6 @@ const ChristmasDoorwaysTest = ({ variant = "home" }: { variant?: Variant }) => {
                       <option>Flexible</option>
                     </select>
                   </label>
-                  <label className="form-row full">
-                    <span className="lbl">Colours or ideas</span>
-                    <textarea
-                      name="notes"
-                      rows={3}
-                      placeholder={biz ? "Your brand colours, your opening hours, or anything else" : "Colours you love, the paint colour of your door, or anything else"}
-                    />
-                  </label>
                   <label className="form-row full form-check">
                     <input type="checkbox" name="takedown" value="Yes" />
                     <span className="t-small text-ink">
@@ -1055,15 +1043,23 @@ const ChristmasDoorwaysTest = ({ variant = "home" }: { variant?: Variant }) => {
                     </span>
                     <span className="xmas-tag ml-auto">Extra</span>
                   </label>
-                  </div>
-                </details>
-                <div className="flex flex-col items-center lg:items-end mt-6 gap-3">
-                  <button type="submit" disabled={submitting} className="btn-solid-rf accent w-full sm:w-auto justify-center disabled:opacity-60">
+                </div>
+                </div>
+                {/* The toggle and the button share one row, so the button
+                    sits straight under the message. */}
+                <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <button
+                    type="button"
+                    aria-expanded={moreOpen}
+                    aria-controls="xmas-more-details"
+                    onClick={() => setMoreOpen((o) => !o)}
+                    className="t-label text-primary text-left"
+                  >
+                    {moreOpen ? "− Fewer details" : "+ Add more details for a quicker quote (optional)"}
+                  </button>
+                  <button type="submit" disabled={submitting} className="btn-solid-rf accent w-full sm:w-auto justify-center shrink-0 disabled:opacity-60">
                     {submitting ? "Sending…" : "Request my quote"} <span>→</span>
                   </button>
-                  <p className="t-meta text-ink-soft">
-                    No obligation. I'll only use your details to reply about your doorway.
-                  </p>
                 </div>
                 </>
                 )}

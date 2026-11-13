@@ -345,13 +345,6 @@
   .xmas-snow-hint { display: none !important; }
 }
 
-/* Test page only (/christmas-door-garlands-test/): a fact Laura still needs
-   to supply, outlined so it can't pass for finished copy. */
-.xmas-placeholder {
-  background: transparent;
-  color: inherit;
-  outline: 1px dashed hsl(var(--xmas-gold-deep));
-  outline-offset: 0.15em;
-  border-radius: var(--radius-small);
-  padding: 0 0.2em;
-}
+/* Test page only (/christmas-door-garlands-test/): the campaign film tile
+   at 70% of its size, so the section is about 30% shorter (Matt, 2026-11-13). */
+.xmas-ad-compact .story-fan { zoom: 0.7; }
