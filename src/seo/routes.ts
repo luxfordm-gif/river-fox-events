@@ -884,6 +884,15 @@ export const ROUTES: RouteSEO[] = [
     noindex: true,
   },
   {
+    // Test copy of the garland page for a deploy preview (Matt, 2026-11-13).
+    // noindex keeps it out of search and the sitemap; nothing links to it.
+    path: "/christmas-door-garlands-test",
+    title: "Christmas Door Garlands Test | River Fox Events",
+    description:
+      "Test version of the Christmas door garlands page with reviews, a shorter booking form and a thank-you step, for comparison before any change goes live.",
+    noindex: true,
+  },
+  {
     // Hidden design reference for Matt (2026-11-08): every token, text style
     // and reusable section. noindex keeps it out of search and the sitemap;
     // nothing links to it.

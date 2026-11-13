@@ -18,6 +18,7 @@ import Welcome from "./pages/Welcome.tsx";
 import Contact from "./pages/Contact.tsx";
 import Privacy from "./pages/Privacy.tsx";
 import ChristmasDoorways from "./pages/ChristmasDoorways.tsx";
+import ChristmasDoorwaysTest from "./pages/ChristmasDoorwaysTest.tsx";
 import OurWork from "./pages/OurWork.tsx";
 import CookieBanner from "@/components/rfx/CookieBanner";
 import { LOCATIONS } from "./data/locations";
@@ -43,6 +44,8 @@ const AppShell = () => {
         <Route path="/corporate-brand-styling" element={<CorporateAndBrand />} />
         <Route path="/balloon-installations" element={<BalloonInstallations />} />
         <Route path="/christmas-door-garlands" element={<ChristmasDoorways />} />
+        {/* Test copy for a deploy preview (Matt, 2026-11-13). noindex, linked from nowhere. */}
+        <Route path="/christmas-door-garlands-test" element={<ChristmasDoorwaysTest />} />
         <Route path="/commercial-christmas-decorations" element={<ChristmasDoorways variant="business" />} />
         <Route path="/our-work" element={<OurWork />} />
         {LOCATIONS.map((loc) => (

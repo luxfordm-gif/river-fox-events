@@ -344,3 +344,14 @@
 @media (prefers-reduced-motion: reduce) {
   .xmas-snow-hint { display: none !important; }
 }
+
+/* Test page only (/christmas-door-garlands-test/): a fact Laura still needs
+   to supply, outlined so it can't pass for finished copy. */
+.xmas-placeholder {
+  background: transparent;
+  color: inherit;
+  outline: 1px dashed hsl(var(--xmas-gold-deep));
+  outline-offset: 0.15em;
+  border-radius: var(--radius-small);
+  padding: 0 0.2em;
+}
