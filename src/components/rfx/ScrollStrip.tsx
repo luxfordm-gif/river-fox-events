@@ -131,7 +131,6 @@ const ScrollStrip = ({ images }: ScrollStripProps = {}) => {
       ref={sectionRef}
       aria-label="River Fox Events imagery"
       className="lg:hidden overflow-hidden py-[20px]"
-      style={{ background: "hsl(var(--linen))" }}
     >
       <div
         ref={trackRef}

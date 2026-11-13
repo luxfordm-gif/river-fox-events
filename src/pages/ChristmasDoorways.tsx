@@ -829,7 +829,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
             </div>
             <ol className="text-to-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 cards-gap">
               {(biz ? STEPS_BUSINESS : STEPS).map((s) => (
-                <li key={s.n} className="fade-up border-t rule-to-content relative" style={{ borderColor: "hsl(var(--text-primary) / 0.14)" }}>
+                <li key={s.n} className="fade-up border-t rule-to-content relative border-divider">
                   <SnowCap mode="edge" radius={0} />
                   {/* Extra tag sits by the step number so step titles stay on
                       one line, even in the narrow 4-column layout. */}
@@ -879,23 +879,23 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   Book your{" "}
                   <em className="t-accent">{biz ? "Christmas entrance." : "Christmas doorway."}</em>
                 </SectionTitle>
-                <p className="t-lead max-w-[460px] heading-to-text" style={{ color: "hsl(var(--text-on-dark))" }}>
+                <p className="t-lead max-w-[460px] heading-to-text text-on-deep">
                   Late November and early December dates go fast.
                 </p>
-                <p className="t-lead max-w-[460px] text-to-text" style={{ color: "hsl(var(--text-dimmed))" }}>
+                <p className="t-lead max-w-[460px] text-to-text text-ink-faint">
                   {biz
                     ? "Send a photo of your entrance and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "
                     : "Send a photo of your door and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "}
-                  <a href="tel:+447872114191" className="whitespace-nowrap text-link" style={{ color: "hsl(var(--text-on-dark))" }}>
+                  <a href="tel:+447872114191" className="whitespace-nowrap text-link text-on-deep">
                     07872&nbsp;114191
                   </a>{" "}
                   or{" "}
-                  <a href={biz ? WHATSAPP_HREF_BUSINESS : WHATSAPP_HREF} className="whitespace-nowrap text-link" style={{ color: "hsl(var(--text-on-dark))" }}>
+                  <a href={biz ? WHATSAPP_HREF_BUSINESS : WHATSAPP_HREF} className="whitespace-nowrap text-link text-on-deep">
                     message me on WhatsApp
                   </a>
                   .
                 </p>
-                <p className="text-to-text t-body" style={{ color: "hsl(var(--text-on-dark))" }}>
+                <p className="text-to-text t-body text-on-deep">
                   {/* 24 hours here, not the site's 1 to 2 working days: it's so close
                       to Christmas (Matt, 2026-11-13). */}
                   I reply within 24 hours.

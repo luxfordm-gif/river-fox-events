@@ -14,16 +14,11 @@ const ArticleTLDR = ({ children }: Props) => (
   // social-share row at the foot of the article hero.
   <aside className="max-w-[720px] mx-auto article-block-after article-pad">
     <div
-      className="rounded-large box-pad border"
-      style={{
-        // Pinky-peach surface at 20% opacity - soft fill, full-strength stroke.
-        background: "hsl(var(--background-warm) / 0.20)",
-        borderColor: "hsl(var(--accent-dark))",
-      }}
+      // Pinky-peach surface at 20% opacity - soft fill, full-strength stroke.
+      className="rounded-large box-pad border bg-surface-warm/20 border-accent-warm"
     >
       <div
-        className="t-overline label-to-list"
-        style={{ color: "hsl(var(--text-primary))" }}
+        className="t-overline label-to-list text-ink"
       >
         In short
       </div>

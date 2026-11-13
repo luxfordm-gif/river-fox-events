@@ -60,38 +60,23 @@ const Footer = () => {
               on the footer's bottom edge, no parallax push. md+: the large
               cropped watermark. Sizes live in index.css (.rfx-footer-mark). */}
           <div
-            className="rfx-footer-mark whitespace-nowrap relative"
+            className="rfx-footer-mark whitespace-nowrap relative text-on-deep/10"
             style={{
-              color: "hsl(var(--text-on-dark) / 0.10)",
               transform: `translateY(calc(var(--rfx-mark-parallax) * ${Math.min(80, y * 0.025)}px)) translateX(${revealed ? 0 : -40}px)`,
               opacity: revealed ? 1 : 0,
               transition: "opacity 1.6s ease, transform 1.8s cubic-bezier(.2,.7,.2,1)",
             }}
           >
             River&nbsp;
-            <em
-              className="italic"
-              style={{
-                color: "hsl(var(--accent-dark) / 0.22)",
-              }}
-            >
+            <em className="italic text-accent-warm/[0.22]">
               Fox
             </em>
             {/* Animated sheen sweep, clipped to the letters so it never
                 shows as a box behind them. */}
             <span
               aria-hidden="true"
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(100deg, transparent 35%, hsl(var(--accent-dark) / 0.18) 50%, transparent 65%)",
-                backgroundSize: "200% 100%",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                color: "transparent",
-                animation: revealed ? "rfx-sheen 6s ease-in-out infinite" : undefined,
-                mixBlendMode: "screen",
-              }}
+              className="rfx-footer-sheen absolute inset-0 pointer-events-none"
+              style={{ animation: revealed ? "rfx-sheen 6s ease-in-out infinite" : undefined }}
             >
               River&nbsp;<em className="italic">Fox</em>
             </span>
@@ -122,14 +107,13 @@ const Footer = () => {
                 RIVER&nbsp;FOX&nbsp;EVENTS
               </div>
               <p
-                className="t-meta max-w-[360px] heading-to-text"
-                style={{ color: "hsl(var(--text-dimmed))" }}
+                className="t-meta max-w-[360px] heading-to-text text-ink-faint"
               >
                 Luxury event styling across Surrey. Formerly known as Lollipop Balloons.
               </p>
             </div>
             <div>
-              <div className="t-overline footer-title" style={{ color: "hsl(var(--text-on-dark))" }}>
+              <div className="t-overline footer-title text-on-deep">
                 Services
               </div>
               <div className="t-meta link-list">
@@ -141,7 +125,7 @@ const Footer = () => {
               </div>
             </div>
             <div>
-              <div className="t-overline footer-title" style={{ color: "hsl(var(--text-on-dark))" }}>
+              <div className="t-overline footer-title text-on-deep">
                 Locations
               </div>
               <div className="t-meta link-list">
@@ -175,7 +159,7 @@ const Footer = () => {
               </div>
             </div>
             <div>
-              <div className="t-overline footer-title" style={{ color: "hsl(var(--text-on-dark))" }}>
+              <div className="t-overline footer-title text-on-deep">
                 Studio
               </div>
               <div className="t-meta link-list">
@@ -189,8 +173,7 @@ const Footer = () => {
             <div>
               <a
                 href="/contact/"
-                className="t-overline footer-title inline-flex items-center icon-gap no-underline hover:underline underline-offset-4 decoration-[hsl(var(--text-on-dark))]/50"
-                style={{ color: "hsl(var(--text-on-dark))" }}
+                className="t-overline footer-title inline-flex items-center icon-gap no-underline hover:underline underline-offset-4 decoration-on-deep/50 text-on-deep"
               >
                 Contact
                 <ChevronRight
@@ -200,7 +183,7 @@ const Footer = () => {
                   className="opacity-75 -mt-px"
                 />
               </a>
-              <div className="t-meta link-list" style={{ color: "hsl(var(--text-dimmed))" }}>
+              <div className="t-meta link-list text-ink-faint">
                 <a href="mailto:Riverfoxevents@gmail.com" className="hover:opacity-100 opacity-85 block">
                   Riverfoxevents@gmail.com
                 </a>
@@ -224,8 +207,7 @@ const Footer = () => {
           </div>
 
           <div
-            className="t-meta footer-bar border-t grid grid-cols-3 items-center"
-            style={{ borderColor: "hsl(var(--text-on-dark) / 0.15)", color: "hsl(var(--text-dimmed))" }}
+            className="t-meta footer-bar border-t grid grid-cols-3 items-center border-on-deep/15 text-ink-faint"
           >
             <div className="text-left">© {new Date().getFullYear()} River Fox Events</div>
             <div className="flex justify-center">
@@ -234,8 +216,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram - @riverfox_events"
-                className="inline-flex items-center justify-center w-9 h-9 rounded-full border transition-opacity hover:opacity-100 opacity-85"
-                style={{ borderColor: "hsl(var(--text-on-dark) / 0.25)", color: "hsl(var(--text-on-dark))" }}
+                className="inline-flex items-center justify-center w-9 h-9 rounded-full border transition-opacity hover:opacity-100 opacity-85 border-on-deep/25 text-on-deep"
               >
                 <Instagram className="w-4 h-4" />
               </a>

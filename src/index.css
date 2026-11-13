@@ -574,7 +574,7 @@
     border-radius: var(--radius-small);
     --btn-fg: hsl(var(--background));
   }
-  .btn-solid-rf:hover { background: #000; }
+  .btn-solid-rf:hover { background: hsl(var(--background-dark)); }   /* was pure black, off-palette (2026-11-13) */
   .btn-solid-rf.accent { background: hsl(var(--accent)); --btn-fg: hsl(var(--text-primary)); }
   .btn-solid-rf.accent:hover { background: hsl(var(--accent-hover)); }
 
@@ -1019,6 +1019,16 @@
   .nav-sheet__links > a.nav-sheet__seasonal { display: flex; align-items: center; gap: var(--gap-icon); padding-block: var(--gap-actions); }
   .nav-sheet__more { display: flex; flex-direction: column; align-items: flex-start; gap: var(--gap-stack); }
   .icon-gap { gap: var(--gap-icon); }
+  /* Footer watermark sheen: a soft gold sweep clipped to the letters (the
+     animation switches on from Footer.tsx when the mark is revealed). */
+  .rfx-footer-sheen {
+    background: linear-gradient(100deg, transparent 35%, hsl(var(--accent-dark) / 0.18) 50%, transparent 65%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    mix-blend-mode: screen;
+  }
   .link-list > * + * { margin-top: var(--gap-link-list); }
   .list-items > * + * { margin-top: var(--gap-list-item); }
   /* Bullet list: one shared style for every In short list (was the same three

@@ -63,6 +63,8 @@ export default {
         // Brand semantic tokens
         ink: "hsl(var(--text-primary))",
         divider: "hsl(var(--divider))",
+        hair: "hsl(var(--hair))",
+        "hair-strong": "hsl(var(--hair-strong))",
         "ink-soft": "hsl(var(--text-neutral))",
         "ink-prose": "hsl(var(--text-journal))",
         "ink-faint": "hsl(var(--text-dimmed))",

@@ -71,19 +71,17 @@ const Enquire = ({
               </em>
             </SectionHeading>
             <p
-              className="t-lead measure-lead heading-to-text"
-              style={{ color: "hsl(var(--text-dimmed))" }}
+              className="t-lead measure-lead heading-to-text text-ink-faint"
             >
               Celebrations start from £300 and every one is quoted to your
               brief.{" "}
-              <span style={{ color: "hsl(var(--text-on-dark))" }}>
+              <span className="text-on-deep">
                 I take on a limited number each month
               </span>
               , so book early, or call me on{" "}
               <a
                 href="tel:+447872114191"
-                className="text-link whitespace-nowrap"
-                style={{ color: "hsl(var(--text-on-dark))" }}
+                className="text-link whitespace-nowrap text-on-deep"
               >
                 07872 114191
               </a>

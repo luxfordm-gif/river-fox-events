@@ -108,7 +108,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                   : "opacity-0 -translate-y-1 pointer-events-none"
               }`}
             >
-              <div className="min-w-[240px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.22)] nav-menu">
+              <div className="min-w-[240px] bg-surface-alt border border-hair shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.22)] nav-menu">
                 {SERVICES.map((s) => (
                   <a
                     key={s.label}
@@ -118,7 +118,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                     {s.label}
                   </a>
                 ))}
-                <div className="nav-menu__rule border-t border-ink/10" aria-hidden="true" />
+                <div className="nav-menu__rule border-t border-hair" aria-hidden="true" />
                 <a
                   href={SEASONAL.href}
                   onMouseEnter={jingleBow}
@@ -159,7 +159,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                   : "opacity-0 -translate-y-1 pointer-events-none"
               }`}
             >
-              <div className="min-w-[200px] bg-surface-alt border border-ink/10 shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.22)] nav-menu">
+              <div className="min-w-[200px] bg-surface-alt border border-hair shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.22)] nav-menu">
                 {ABOUT_LINKS.map((s) => (
                   <a
                     key={s.label}
@@ -240,7 +240,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               href={l.href}
               onClick={() => setOpen(false)}
               className={`t-h4 text-ink no-underline ${
-                "seasonal" in l ? "nav-sheet__seasonal border-y border-ink/10" : ""
+                "seasonal" in l ? "nav-sheet__seasonal border-y border-hair" : ""
               }`}
             >
               {"seasonal" in l && (
