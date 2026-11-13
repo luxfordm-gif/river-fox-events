@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>River Fox Events - Brand book v3</title>
-<meta name="description" content="River Fox Events brand book, version 3 (13 November 2026): voice, words, colour, type, photos and SEO, brand facts, logo and social.">
+<title>River Fox Events - Brand book v4.1 and social brand pack v1.2</title>
+<meta name="description" content="River Fox Events brand book, version 4.1, and social brand pack, version 1.2 (13 November 2026): voice, words, colour, type, photos and SEO, brand facts, logo, social layout rules and templates.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
-  /* Colours are the website's own (brand book v3, chapter 03). */
+  /* Colours are the website's own (brand book v4.1, chapter 03). */
   :root {
     --background-light: #FCFBF8;
     --background: #EFEDE6;
@@ -19,12 +19,12 @@
     --accent: #E6B4A8;
     --accent-hover: #DD9988;
     --hair: rgba(25, 28, 23, 0.10);
-    --radius-small: 4px;
+    --radius-small: 6px;
     --page-max: 800px;
     --gutter: 16px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; scroll-padding-top: 112px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 152px; }
   body {
     font-family: "DM Sans", system-ui, -apple-system, sans-serif;
     font-size: 15px;
@@ -75,6 +75,20 @@
     transition: background 0.2s;
   }
   .download:hover { background: var(--accent-hover); }
+  .download.ghost { background: transparent; box-shadow: inset 0 0 0 1px var(--text-primary); }
+  .download.ghost:hover { background: var(--background); }
+  .downloads { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+  .page { margin-left: auto; margin-right: auto; }
+  .part {
+    margin: 48px 0 24px;
+    font-family: "DM Mono", ui-monospace, monospace;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-align: center;
+  }
   .chapters {
     display: flex;
     gap: 4px 16px;
@@ -114,6 +128,10 @@
   .note a { color: var(--text-primary); }
   @media (max-width: 520px) {
     .title span { display: none; }
+    /* Phones: title on its own line, the two downloads side by side under it. */
+    .bar-top { flex-wrap: wrap; }
+    .title { flex-basis: 100%; }
+    .downloads { justify-content: flex-start; }
   }
 </style>
 </head>
@@ -121,8 +139,11 @@
 <header class="bar">
   <div class="bar-inner">
     <div class="bar-top">
-      <p class="title">Brand book v3 <span>· 13 Nov 2026</span></p>
-      <a class="download" href="river-fox-events-brand-book.pdf" download="River Fox Events - Brand book v3 (Nov 2026).pdf">Download PDF</a>
+      <p class="title">Brand book v4.1 <span>· 13 Nov 2026</span></p>
+      <div class="downloads">
+        <a class="download" href="river-fox-events-brand-book.pdf" download="River Fox Events - Brand book v4.1 (13 Nov 2026).pdf">Brand book PDF</a>
+        <a class="download ghost" href="river-fox-events-social-brand-pack.pdf" download="River Fox Events - Social brand pack v1.2 (13 Nov 2026).pdf">Social pack PDF</a>
+      </div>
     </div>
     <ul class="chapters" aria-label="Chapters">
       <li><a href="#voice">01 Voice</a></li>
@@ -132,52 +153,194 @@
       <li><a href="#photos-seo">05 Photos and SEO</a></li>
       <li><a href="#facts">06 Facts</a></li>
       <li><a href="#logo-social">07 Logo and social</a></li>
+      <li><a href="#social-layout">08 Social layout</a></li>
+      <li><a href="#social-pack">Social pack</a></li>
     </ul>
   </div>
 </header>
 
 <main>
   <img class="page" id="cover"
-       src="brand-book-v3-page-1-800.webp"
-       srcset="brand-book-v3-page-1-800.webp 800w, brand-book-v3-page-1-1600.webp 1600w"
-       sizes="(max-width: 800px) 100vw, 800px" width="800" height="1132"
-       fetchpriority="high"
-       alt="Cover: River Fox Events brand book, version 3, a reference for design, copy, SEO and social">
+       src="brand-book-v4-1-page-1-800.webp"
+       srcset="brand-book-v4-1-page-1-800.webp 800w, brand-book-v4-1-page-1-1600.webp 1600w"
+       sizes="(max-width: 800px) 100vw, 800px" width="800" height="1132" fetchpriority="high"
+       alt="Cover: River Fox Events brand book, version 4.1, a reference for design, copy, SEO and social">
   <img class="page" id="voice"
-       src="brand-book-v3-page-2-800.webp"
-       srcset="brand-book-v3-page-2-800.webp 800w, brand-book-v3-page-2-1600.webp 1600w"
+       src="brand-book-v4-1-page-2-800.webp"
+       srcset="brand-book-v4-1-page-2-800.webp 800w, brand-book-v4-1-page-2-1600.webp 1600w"
        sizes="(max-width: 800px) 100vw, 800px" width="800" height="2574" loading="lazy"
        alt="Chapter 01, brand and voice: what River Fox is, who it is for, three promises, seven voice rules and button labels">
   <img class="page" id="words"
-       src="brand-book-v3-page-3-800.webp"
-       srcset="brand-book-v3-page-3-800.webp 800w, brand-book-v3-page-3-1600.webp 1600w"
+       src="brand-book-v4-1-page-3-800.webp"
+       srcset="brand-book-v4-1-page-3-800.webp 800w, brand-book-v4-1-page-3-1600.webp 1600w"
        sizes="(max-width: 800px) 100vw, 800px" width="800" height="3152" loading="lazy"
        alt="Chapter 02, words: banned, capped and preferred words, search terms, what Laura supplies and the floral rule">
   <img class="page" id="colour"
-       src="brand-book-v3-page-4-800.webp"
-       srcset="brand-book-v3-page-4-800.webp 800w, brand-book-v3-page-4-1600.webp 1600w"
+       src="brand-book-v4-1-page-4-800.webp"
+       srcset="brand-book-v4-1-page-4-800.webp 800w, brand-book-v4-1-page-4-1600.webp 1600w"
        sizes="(max-width: 800px) 100vw, 800px" width="800" height="2395" loading="lazy"
        alt="Chapter 03, colour: website surfaces, text and soft peach accent swatches with hex values, plus logo-only colours">
   <img class="page" id="type"
-       src="brand-book-v3-page-5-800.webp"
-       srcset="brand-book-v3-page-5-800.webp 800w, brand-book-v3-page-5-1600.webp 1600w"
+       src="brand-book-v4-1-page-5-800.webp"
+       srcset="brand-book-v4-1-page-5-800.webp 800w, brand-book-v4-1-page-5-1600.webp 1600w"
        sizes="(max-width: 800px) 100vw, 800px" width="800" height="3562" loading="lazy"
-       alt="Chapter 04, type and layout: Fraunces, DM Sans and DM Mono, fourteen text styles, page frame, corners and buttons">
+       alt="Chapter 04, type and layout: three font families, fourteen text styles, page frame, spacing, corners, buttons and motion">
   <img class="page" id="photos-seo"
-       src="brand-book-v3-page-6-800.webp"
-       srcset="brand-book-v3-page-6-800.webp 800w, brand-book-v3-page-6-1600.webp 1600w"
-       sizes="(max-width: 800px) 100vw, 800px" width="800" height="3239" loading="lazy"
+       src="brand-book-v4-1-page-6-800.webp"
+       srcset="brand-book-v4-1-page-6-800.webp 800w, brand-book-v4-1-page-6-1600.webp 1600w"
+       sizes="(max-width: 800px) 100vw, 800px" width="800" height="3275" loading="lazy"
        alt="Chapter 05, photos and SEO: real events only, the house grade, image names and alt text, titles, descriptions and schema">
   <img class="page" id="facts"
-       src="brand-book-v3-page-7-800.webp"
-       srcset="brand-book-v3-page-7-800.webp 800w, brand-book-v3-page-7-1600.webp 1600w"
+       src="brand-book-v4-1-page-7-800.webp"
+       srcset="brand-book-v4-1-page-7-800.webp 800w, brand-book-v4-1-page-7-1600.webp 1600w"
        sizes="(max-width: 800px) 100vw, 800px" width="800" height="1990" loading="lazy"
-       alt="Chapter 06, brand facts: the business, contact details, prices and service facts confirmed by Laura">
+       alt="Chapter 06, brand facts: the business, contact details, prices, reply times and service facts confirmed by Laura">
   <img class="page" id="logo-social"
-       src="brand-book-v3-page-8-800.webp"
-       srcset="brand-book-v3-page-8-800.webp 800w, brand-book-v3-page-8-1600.webp 1600w"
+       src="brand-book-v4-1-page-8-800.webp"
+       srcset="brand-book-v4-1-page-8-800.webp 800w, brand-book-v4-1-page-8-1600.webp 1600w"
        sizes="(max-width: 800px) 100vw, 800px" width="800" height="3216" loading="lazy"
        alt="Chapter 07, logo and social: stacked, horizontal and monogram logos, brown on pink, profile, reel covers and sizes">
+  <img class="page" id="social-layout"
+       src="brand-book-v4-1-page-9-800.webp"
+       srcset="brand-book-v4-1-page-9-800.webp 800w, brand-book-v4-1-page-9-1600.webp 1600w"
+       sizes="(max-width: 800px) 100vw, 800px" width="800" height="1246" loading="lazy"
+       alt="Chapter 08, social layout rules: margins, safe areas and how long copy fits a template">
+  <img class="page"
+       src="brand-book-v4-1-page-10-800.webp"
+       srcset="brand-book-v4-1-page-10-800.webp 800w, brand-book-v4-1-page-10-1600.webp 1600w"
+       sizes="(max-width: 800px) 100vw, 800px" width="800" height="1892" loading="lazy"
+       alt="Chapter 08, continued: space above a button, versioning every export, and the template set at a glance">
+  <p class="part" id="social-pack">Social brand pack v1.2 · 13 Nov 2026</p>
+  <img class="page"
+       src="social-pack-v1-2-page-1-800.webp"
+       srcset="social-pack-v1-2-page-1-800.webp 800w, social-pack-v1-2-page-1-1600.webp 1600w"
+       sizes="(max-width: 800px) 100vw, 800px" width="800" height="550" loading="lazy"
+       alt="Cover and contents of the social brand pack">
+  <img class="page"
+       src="social-pack-v1-2-page-2-800.webp"
+       srcset="social-pack-v1-2-page-2-800.webp 800w, social-pack-v1-2-page-2-1600.webp 1600w"
+       sizes="(max-width: 800px) 100vw, 800px" width="800" height="960" loading="lazy"
+       alt="Brand sheet: colours, type and the two-line cover rules">
+  <img class="page"
+       src="social-pack-v1-2-page-3-800.webp"
+       srcset="social-pack-v1-2-page-3-800.webp 800w, social-pack-v1-2-page-3-1600.webp 1600w"
+       sizes="(max-width: 800px) 100vw, 800px" width="800" height="350" loading="lazy"
+       alt="Logos: stacked, horizontal and RF monogram on logo pink">
+  <img class="page"
+       src="social-pack-v1-2-page-4-800.webp"
+       srcset="social-pack-v1-2-page-4-800.webp 800w, social-pack-v1-2-page-4-1600.webp 1600w"
+       sizes="(max-width: 800px) 100vw, 800px" width="800" height="386" loading="lazy"
+       alt="Logo, horizontal: RIVER FOX EVENTS in spaced capitals">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-5-800.webp"
+       srcset="social-pack-v1-2-page-5-800.webp 800w, social-pack-v1-2-page-5-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="800" loading="lazy"
+       alt="Profile picture: the stacked logo cut for a circle">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-6-800.webp"
+       srcset="social-pack-v1-2-page-6-800.webp 800w, social-pack-v1-2-page-6-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="800" loading="lazy"
+       alt="Profile picture without EVENTS">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-7-800.webp"
+       srcset="social-pack-v1-2-page-7-800.webp 800w, social-pack-v1-2-page-7-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="800" loading="lazy"
+       alt="Instagram highlight cover: Doors">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-8-800.webp"
+       srcset="social-pack-v1-2-page-8-800.webp 800w, social-pack-v1-2-page-8-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="800" loading="lazy"
+       alt="Instagram highlight cover: Stacks">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-9-800.webp"
+       srcset="social-pack-v1-2-page-9-800.webp 800w, social-pack-v1-2-page-9-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="800" loading="lazy"
+       alt="Instagram highlight cover: Boards">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-10-800.webp"
+       srcset="social-pack-v1-2-page-10-800.webp 800w, social-pack-v1-2-page-10-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="800" loading="lazy"
+       alt="Instagram highlight cover: Bubbles">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-11-800.webp"
+       srcset="social-pack-v1-2-page-11-800.webp 800w, social-pack-v1-2-page-11-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="800" loading="lazy"
+       alt="Instagram highlight cover: Garlands">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-12-800.webp"
+       srcset="social-pack-v1-2-page-12-800.webp 800w, social-pack-v1-2-page-12-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="800" loading="lazy"
+       alt="Instagram highlight cover: Hoops">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-13-800.webp"
+       srcset="social-pack-v1-2-page-13-800.webp 800w, social-pack-v1-2-page-13-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="800" loading="lazy"
+       alt="Instagram highlight cover: Walls">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-14-800.webp"
+       srcset="social-pack-v1-2-page-14-800.webp 800w, social-pack-v1-2-page-14-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="800" loading="lazy"
+       alt="Instagram highlight cover: RF monogram">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-15-800.webp"
+       srcset="social-pack-v1-2-page-15-800.webp 800w, social-pack-v1-2-page-15-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="1423" loading="lazy"
+       alt="Reel cover, The reveal: a pastel balloon arch over a front door">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-16-800.webp"
+       srcset="social-pack-v1-2-page-16-800.webp 800w, social-pack-v1-2-page-16-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="1423" loading="lazy"
+       alt="Reel cover, Install morning: 125 light-up numbers on a theatre staircase">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-17-800.webp"
+       srcset="social-pack-v1-2-page-17-800.webp 800w, social-pack-v1-2-page-17-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="1423" loading="lazy"
+       alt="Reel cover, The brief: palette, scale, sightlines on logo pink">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-18-800.webp"
+       srcset="social-pack-v1-2-page-18-800.webp 800w, social-pack-v1-2-page-18-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="1423" loading="lazy"
+       alt="Reel cover, Ask Laura: Laura in a bluebell wood">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-19-800.webp"
+       srcset="social-pack-v1-2-page-19-800.webp 800w, social-pack-v1-2-page-19-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="1000" loading="lazy"
+       alt="Carousel cover: a rose gold 40th, start to finish">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-20-800.webp"
+       srcset="social-pack-v1-2-page-20-800.webp 800w, social-pack-v1-2-page-20-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="1000" loading="lazy"
+       alt="Review post template on logo pink">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-21-800.webp"
+       srcset="social-pack-v1-2-page-21-800.webp 800w, social-pack-v1-2-page-21-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="1000" loading="lazy"
+       alt="Carousel end card with an Enquire now button">
+  <img class="page"
+       src="social-pack-v1-2-page-22-800.webp"
+       srcset="social-pack-v1-2-page-22-800.webp 800w, social-pack-v1-2-page-22-1600.webp 1600w"
+       sizes="(max-width: 800px) 100vw, 800px" width="800" height="446" loading="lazy"
+       alt="Reference: how the covers sit together on the Instagram grid">
+  <img class="page"
+       src="social-pack-v1-2-page-23-800.webp"
+       srcset="social-pack-v1-2-page-23-800.webp 800w, social-pack-v1-2-page-23-1600.webp 1600w"
+       sizes="(max-width: 800px) 100vw, 800px" width="800" height="305" loading="lazy"
+       alt="Facebook cover on logo pink">
+  <img class="page"
+       src="social-pack-v1-2-page-24-800.webp"
+       srcset="social-pack-v1-2-page-24-800.webp 800w, social-pack-v1-2-page-24-1600.webp 1600w"
+       sizes="(max-width: 800px) 100vw, 800px" width="800" height="305" loading="lazy"
+       alt="Facebook cover over an event photo">
+  <img class="page" style="max-width:540px"
+       src="social-pack-v1-2-page-25-800.webp"
+       srcset="social-pack-v1-2-page-25-800.webp 800w, social-pack-v1-2-page-25-1600.webp 1600w"
+       sizes="(max-width: 540px) 100vw, 540px" width="800" height="800" loading="lazy"
+       alt="Facebook profile picture: the stacked logo">
+  <img class="page" style="max-width:600px"
+       src="social-pack-v1-2-page-26-800.webp"
+       srcset="social-pack-v1-2-page-26-800.webp 800w, social-pack-v1-2-page-26-1600.webp 1600w"
+       sizes="(max-width: 600px) 100vw, 600px" width="800" height="420" loading="lazy"
+       alt="Link and share image: Let's create something beautiful">
   <p class="note">The website code is the source of truth. If this book and the site disagree, the site wins and the book gets a new version.</p>
 </main>
 </body>
