@@ -200,7 +200,17 @@
     --field-pad: 8px 14px;             /* Field padding · inside each form field, around its label and input */
     --card-pad-sm: 28px 26px 24px;     /* Small card padding · review cards */
     --card-inner-gap: 12px;            /* Card inner gap · between the parts of a small card: stars, quote, name line */
-    --tag-pad: 6px 10px;               /* Tag padding · small labels and badges: EXTRA, photo counts, Most popular (the Christmas tag was 7px 11px) */       /* Compact button padding · the nav's Enquire now button */
+    --tag-pad: 6px 10px;
+    --reveal-y: 100px;                 /* Reveal padding · above and below a run of photo reveals (70 on laptops, 768-1366) */
+    --reveal-join: 30px;               /* Reveal join · between two photo reveals in a row, above and below (24 laptops, 40 phones; town pages 24 on phones) */
+    --reveal-intro-join: 56px;         /* Reveal intro join · on phones, between a text-only reveal and the photo reveal after it */
+    --pricing-pad: 88px 40px;          /* Pricing box padding · inside the warm pricing box (56px 20px on phones) */
+    --quote-y: 140px;                  /* Quote section padding · above and below the big RevealWord quote (90 laptops, 80 phones) */
+    --photo-row-inset: 40px;           /* Photo row inset · side padding of the home hero's photo row */
+    --gallery-gap-x: 24px;             /* Gallery column gap · Our work photo columns (32 from tablet, 40 from 1280) */
+    --gallery-gap-y: 48px;             /* Gallery row gap · between events in an Our work column (56 from tablet) */
+    --gallery-compact-x: 16px;         /* Compact gallery column gap · the Christmas doorway gallery (24 from tablet) */
+    --gallery-compact-y: 32px;         /* Compact gallery row gap · (44 from tablet) */               /* Tag padding · small labels and badges: EXTRA, photo counts, Most popular (the Christmas tag was 7px 11px) */       /* Compact button padding · the nav's Enquire now button */
     --gap-link-list: 8px;              /* Link list gap · between links in a list, e.g. a footer column */
     --gap-eyebrow: 20px;               /* Eyebrow to title · a small label above a hero or article title, e.g. CHRISTMAS 2026 · NOW BOOKING, JOURNAL (article was 28 / 36) */
     --article-gap: 64px;               /* Article gap · between the blocks of a journal article: header, In short, photos, quotes, enquire box, related (48 phone; were 48 to 96) */
@@ -290,6 +300,10 @@
       --gap-cards: 32px;
       --article-gap: 48px;
       --form-pad: 22px 16px;
+      --reveal-join: 40px;
+      --pricing-pad: 56px 20px;
+      --quote-y: 80px;
+      --page-pad-bottom: 40px; /* phones: the inner-page header's bottom, its rule and the gap after it */
       --gap-photos: 8px;
       --gap-inline: 16px;
       --card-text-inset: 0px;
@@ -309,7 +323,7 @@
     :root { --section-y: 80px; }
   }
   @media (min-width: 768px) and (max-width: 1366px) {
-    :root { --gutter: 8vw; }
+    :root { --gutter: 8vw; --reveal-y: 70px; --reveal-join: 24px; --quote-y: 90px; }
   }
   /* Tablets in landscape and small laptops: the nav runs closer to the screen
      edges, so the links don't crowd the centred logo (Matt, 2026-11-13). */
@@ -366,25 +380,16 @@
   .rfx-hero-edl-track {
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 var(--photo-row-inset);
   }
   @media (min-width: 1440px) {
     .rfx-hero-edl-track {
       max-width: 1600px;
-      padding: 0 40px;
+      padding: 0 var(--photo-row-inset);
     }
-    /* Wider viewports get more breathing room below the editorial row
-       so the cream background reads as space, not a hairline edge.
-       Element+class selector to outrank Tailwind's .md\:pb-6 utility. */
-    section.rfx-hero { padding-bottom: 72px; }
-  }
-
-  /* Tall + wide viewports were leaving the hero CTA floating too far
-     above the editorial image row. Trim 28px back at min-height 900px
-     so the button sits closer to the imagery on big monitors; shorter
-     viewports keep the standard breathing room. */
-  @media (min-width: 1440px) and (min-height: 900px) {
-    section.rfx-hero { padding-bottom: 44px; }
+    /* Large screens: every hero (home, town) takes Hero bottom under its
+       photos, growing with the screen (was 72px, or 44px on tall windows). */
+    section.rfx-hero { padding-bottom: var(--hero-pad-bottom); }
   }
 
   /* Home, service and town heroes (.rfx-hero-scale) all take their top
@@ -497,10 +502,8 @@
   }
   .ph-warm { background: hsl(var(--background-warm)); }
   .ph-blush { background: hsl(var(--background-blush)); }
-  .ph-dark { background: hsl(var(--background-dark)); }
 
   /* Removed numeric/label overlays on imagery */
-  .ph-label, .ph-num { display: none !important; }
 
   /* Scroll-reveal disabled site-wide — content shows at full opacity
      immediately. Class kept (instead of stripped from JSX) so the
@@ -642,36 +645,7 @@
   }
 
   /* Marquee / ticker */
-  .ticker-strip {
-    overflow: hidden;
-    border-top: 1px solid hsl(var(--text-primary) / 0.10);
-    border-bottom: 1px solid hsl(var(--text-primary) / 0.10);
-    padding: 22px 0;
-    background: hsl(var(--background));
-  }
-  .ticker-track {
-    display: flex;
-    gap: 56px;
-    white-space: nowrap;
-    animation: rfx-marq 60s linear infinite;
-    will-change: transform;
-    width: max-content;
-  }
-  .ticker-item {
-    font-family: var(--font-serif);
-    font-size: var(--fs-ticker);
-    letter-spacing: var(--ls-h5);
-    color: hsl(var(--text-primary));
-    font-weight: var(--fw-regular);
-    display: inline-flex;
-    align-items: center;
-    gap: 56px;
-  }
-  .ticker-item::after {
-    content: "✳";
-    color: hsl(var(--accent-dark));
-    font-size: 0.45em;
-  }
+
   @keyframes rfx-marq { to { transform: translateX(-50%); } }
 
   /* Testimonial card — refined editorial */
@@ -885,15 +859,7 @@
     .tile-link .tile-img { transition: none; }
     .tile-link:hover .tile-img { transform: none; }
   }
-  .exp-card .exp-cta {
-    position: absolute; left: 22px; bottom: 18px; z-index: 4;
-    color: hsl(var(--background));
-    font-family: var(--font-sans); font-size: var(--fs-small); font-weight: var(--fw-medium);
-    display: inline-flex; align-items: center; gap: 8px;
-    transform: translateY(8px); opacity: 0;
-    transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .5s ease;
-  }
-  .exp-card:hover .exp-cta { transform: translateY(0); opacity: 1; }
+
   .exp-card .exp-title { transition: color .3s ease; }
   .exp-card:hover .exp-title { color: hsl(var(--accent)); }
   /* "Most popular" label on a service photo (Matt, 2026-11-08). */
@@ -950,7 +916,7 @@
   /* Reveal-word section */
   .reveal-word {
     display: flex; justify-content: center; align-items: center;
-    padding: 140px 0;
+    padding: var(--quote-y) 0;
     overflow: hidden;
   }
   .reveal-word h3 {
@@ -968,7 +934,6 @@
     color: hsl(var(--accent-dark));
   }
   @media (max-width: 767px) {
-    .reveal-word { padding: 80px 0; }
   }
 
   /* Nav */
@@ -1075,7 +1040,7 @@
   .hero-foot { padding-bottom: var(--gap-inline); }
   .hero-under-nav { padding-top: var(--nav-height) !important; }
   .hero-gap-below { margin-bottom: var(--hero-gap); }
-  .strip-pad { padding-block: var(--gap-inline); }
+
   .toast-pad { padding: var(--gap-stack) var(--gap-paragraph); }
   .carousel-dots { display: flex; justify-content: center; gap: var(--gap-icon); margin-top: var(--gap-paragraph); }
   .card-meta { padding-top: var(--gap-actions); }
@@ -1212,19 +1177,14 @@
       opacity: 1;
     }
   }
-  /* Children's Parties alternating reveal sections — tighter, fixed desktop rhythm.
-     First section keeps full 100px top; subsequent ones tighten so the gap
-     between consecutive reveals stays ≤60px on large monitors. */
+  /* Photo reveals (CPReveal): their own rhythm. Reveal padding above and below
+     a run (tablet up; phones use Section padding), Reveal join between two in a
+     row so they read as a sequence. Values per width are on the tokens. */
   @media (min-width: 768px) {
-    .cp-reveal-section { padding: 100px 0 !important; }
-    .cp-reveal-section + .cp-reveal-section { padding-top: 30px !important; }
-    .cp-reveal-section:has(+ .cp-reveal-section) { padding-bottom: 30px !important; }
+    .cp-reveal-section { padding: var(--reveal-y) 0 !important; }
   }
-  /* Children's Parties alternating reveal sections — tighter, fixed desktop rhythm */
-  @media (min-width: 768px) {
-    .cp-reveal-section { padding: 100px 0 !important; }
-    .cp-reveal-section + .cp-reveal-section { padding-top: 30px !important; }
-  }
+  .cp-reveal-section + .cp-reveal-section { padding-top: var(--reveal-join) !important; }
+  .cp-reveal-section:has(+ .cp-reveal-section) { padding-bottom: var(--reveal-join) !important; }
   .rfx-section.dark { background: hsl(var(--background-dark)); color: hsl(var(--text-on-dark)); }
   .rfx-section.white { background: hsl(var(--background-light)); }
   .rfx-section.warm { background: hsl(var(--background-warm)); }
@@ -1272,7 +1232,7 @@
 
   /* Pricing (CPPricing): a boxed Warm card on the page background instead of
      a full-width band (Matt, 2026-11-08). */
-  .rfx-pricing-box { background: hsl(var(--background-warm)); padding: 88px 40px; }
+  .rfx-pricing-box { background: hsl(var(--background-warm)); padding: var(--pricing-pad); }
 
   /* Option cards (Matt, 2026-11-08): the Christmas garland layout as a shared
      component. Separate bordered cards, the name as a heading, the price as an
@@ -1292,9 +1252,6 @@
     background: hsl(var(--accent));
     color: hsl(var(--text-primary));
     white-space: nowrap;
-  }
-  @media (max-width: 767px) {
-    .rfx-pricing-box { padding: 56px 20px; }
   }
 
   /* Scroll-in fade for copy: children with .rfx-reveal fade up once their
@@ -1343,7 +1300,7 @@
 
   /* Shared inner-page header (PageHeader.tsx): same H1 position on Our work,
      Journal, Contact, Privacy, Welcome and 404. */
-  .page-header { padding-top: var(--page-pad-top); padding-bottom: 40px; }
+  .page-header { padding-top: var(--page-pad-top); padding-bottom: var(--page-pad-bottom); }
   @media (min-width: 768px) {
     .page-header { padding-bottom: var(--page-pad-bottom); }
   }
@@ -1388,20 +1345,15 @@
   /* Thin vertical divider between the links */
   .page-header__sep { width: 1px; height: 0.9em; background: hsl(var(--hair-strong)); }
   .page-header__rule {
-    margin-top: 40px;
+    margin-top: var(--page-pad-bottom);
     border-top: 1px solid hsl(var(--divider));
   }
   /* Whatever follows the line (Our work galleries, Journal grid, Contact
      form) opens with the same gap. Our work has a scroll marker between. */
   .page-header--rule + section,
-  .page-header--rule + div[aria-hidden] + section { padding-top: 40px; }
+  .page-header--rule + div[aria-hidden] + section { padding-top: var(--page-pad-bottom); }
   @media (min-width: 768px) {
-    .page-header__rule { margin-top: var(--page-pad-bottom); }
-    .page-header--rule + section,
-    .page-header--rule + div[aria-hidden] + section { padding-top: var(--page-pad-bottom); }
   }
-
-
 
   /* Our work photo tiles: on hover the frame pinches in slightly while the
      photo eases forward, and an expand icon appears (icon only, no copy).
@@ -1561,21 +1513,16 @@
   /* Our work (/our-work/): photos keep their own shape in balanced columns.
      OurWork.tsx places events row by row (shortest column first) so the
      newest work fills the top row. */
-  .gallery-cols { display: grid; column-gap: 24px; align-items: start; }
-  .gallery-col { display: flex; flex-direction: column; gap: 48px; min-width: 0; }
+  .gallery-cols { display: grid; column-gap: var(--gallery-gap-x); align-items: start; }
+  .gallery-col { display: flex; flex-direction: column; gap: var(--gallery-gap-y); min-width: 0; }
   @media (min-width: 768px) {
-    .gallery-cols { column-gap: 32px; }
-    .gallery-col { gap: 56px; }
+    :root { --gallery-gap-x: 32px; --gallery-gap-y: 56px; --gallery-compact-x: 24px; --gallery-compact-y: 44px; }
   }
-  @media (min-width: 1280px) { .gallery-cols { column-gap: 40px; } }
+  @media (min-width: 1280px) { :root { --gallery-gap-x: 40px; } }
   /* Christmas doorways: smaller tiles, each photo at its own shape (never
      cropped) so the whole garland shows. */
-  .gallery-cols--compact { column-gap: 16px; }
-  .gallery-cols--compact .gallery-col { gap: 32px; }
-  @media (min-width: 768px) {
-    .gallery-cols--compact { column-gap: 24px; }
-    .gallery-cols--compact .gallery-col { gap: 44px; }
-  }
+  .gallery-cols--compact { column-gap: var(--gallery-compact-x); }
+  .gallery-cols--compact .gallery-col { gap: var(--gallery-compact-y); }
   .gallery-section { scroll-margin-top: 72px; }
 
   /* Subtle drifting gradient — applied to every warm/pink section.
@@ -1627,7 +1574,7 @@
      the reviews: half above it (section padding), half below (inner padding).
      No bottom rule: the photo strip runs under the button (Matt, 2026-11-07). */
   .rfx-instagram .rfx-instagram-inner { padding-top: calc(var(--section-gap) / 2); padding-bottom: 0; }
-  #kindness .hairline { margin-bottom: 40px !important; }
+  #kindness .hairline { margin-bottom: var(--gap-heading-content) !important; }
   @media (max-width: 767px) {
     .rfx-instagram .rfx-instagram-inner {
       border-top: 0 !important;
@@ -1636,7 +1583,7 @@
       padding-bottom: 0 !important;
     }
     /* Reduce dark Enquire section bottom padding so the gap before footer feels right */
-    .rfx-enquire { padding-bottom: 40px; }
+    .rfx-enquire { padding-bottom: var(--gap-text-content); }
     /* Service cards: cap image height on mobile so title + body stay visible */
     .rfx-svc-img {
       aspect-ratio: auto !important;
@@ -1655,15 +1602,14 @@
   /* Responsive grid stacking helper */
   @media (max-width: 767px) {
     .rfx-md-stack { grid-template-columns: 1fr !important; gap: var(--gap-stacked) !important; }
-    .rfx-md-full { grid-column: 1 / -1 !important; }
+
     .rfx-md-static { position: static !important; }
     .form-grid { grid-template-columns: 1fr !important; }
     /* Form card on phones: run the white card out towards the screen edges
        (16px gutter instead of 32px) and slim its inner padding, so the fields
        get the width rather than sitting in a narrow card-within-a-card. */
     .form-wrap { margin-inline: calc(var(--gutter) / -2); width: auto !important; padding: var(--form-pad) !important; }
-    .rfx-mosaic { grid-template-columns: 1fr !important; grid-auto-rows: auto !important; }
-    .rfx-mosaic > div { grid-column: 1 / -1 !important; grid-row: auto !important; transform: none !important; }
+
     .rfx-svc-card { padding: 0 !important; border-left: none !important; }
     /* CPReveal: always put image first on mobile, reduce image height + soften shadow */
     .cp-reveal-img-wrap {
@@ -1675,17 +1621,13 @@
 
     /* (Phone corner sizes come from --radius-large / --radius-large.) */
 
-    /* Reduce gap between adjacent CPReveal sections on mobile so related
-       reveals read as a sequence — but keep enough breathing room between them. */
-    .cp-reveal-section + .cp-reveal-section { padding-top: 40px !important; }
-    .cp-reveal-section:has(+ .cp-reveal-section) { padding-bottom: 40px !important; }
 
     /* Text-only intro section (image hidden on mobile): centre copy and
        restore full spacing into the first image section below it. */
     .cp-reveal-no-img .cp-reveal-content { text-align: center; }
     .cp-reveal-no-img .cp-reveal-body { margin-left: auto; margin-right: auto; }
-    .cp-reveal-section.cp-reveal-no-img:has(+ .cp-reveal-section) { padding-bottom: 56px !important; }
-    .cp-reveal-section.cp-reveal-no-img + .cp-reveal-section { padding-top: 56px !important; }
+    .cp-reveal-section.cp-reveal-no-img:has(+ .cp-reveal-section) { padding-bottom: var(--reveal-intro-join) !important; }
+    .cp-reveal-section.cp-reveal-no-img + .cp-reveal-section { padding-top: var(--reveal-intro-join) !important; }
 
     /* (Phone body sizes come from the --fs-lead / --fs-body tokens.) */
   }
@@ -1700,24 +1642,16 @@
      ============================================================ */
   @media (min-width: 768px) and (max-width: 1366px) {
 
-    .cp-reveal-section { padding: 70px 0 !important; }
-    .cp-reveal-section + .cp-reveal-section { padding-top: 24px !important; }
-    .cp-reveal-section:has(+ .cp-reveal-section) { padding-bottom: 24px !important; }
 
     /* Hero — grow naturally so the editorial image row is fully visible
        (was capped at 85vh for the "peek-through" effect; that clipped
        the image row when images are sized to their natural aspect). */
-    .rfx-hero {
-      min-height: auto;
-      padding-top: 110px;
-      padding-bottom: 28px;
-    }
+    .rfx-hero { min-height: auto; }
     /* Hero and section-title sizes for this range now come from the type
        tokens in :root (--fs-display, --fs-h2), so there are no overrides
        here. */
 
     /* RevealWord quote — capped at 64px */
-    .reveal-word { padding: 90px 0; }
     .reveal-word { --fs-mega: clamp(44px, 5.4vw, 64px); }
   }
 
@@ -1740,49 +1674,23 @@
   @media (prefers-reduced-motion: reduce) { .bow-jingle { animation: none; } }
 
   /* Hero scroll-down cue — soft bouncing chevron */
-  .rfx-scroll-cue {
-    display: inline-flex;
-    animation: rfx-scroll-bounce 2.2s cubic-bezier(.5, 0, .5, 1) infinite;
-  }
+
   @keyframes rfx-scroll-bounce {
     0%, 100% { transform: translateY(0); opacity: 0.8; }
     50% { transform: translateY(8px); opacity: 1; }
   }
 
   /* Shimmer stroke — constant, very subtle animated border for the popular pricing card */
-  .rfx-shimmer-stroke {
-    border-radius: var(--radius-large);
-    padding: 1.5px;
-    background: linear-gradient(
-      120deg,
-      hsl(var(--accent) / 0) 0%,
-      hsl(var(--accent) / 0) 30%,
-      hsl(var(--accent-dark) / 0.55) 48%,
-      hsl(var(--accent) / 0.7) 52%,
-      hsl(var(--accent) / 0) 70%,
-      hsl(var(--accent) / 0) 100%
-    );
-    background-size: 250% 100%;
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-            mask-composite: exclude;
-    animation: rfx-shimmer-sweep 5.5s linear infinite;
-    opacity: 0.85;
-  }
+
   @keyframes rfx-shimmer-sweep {
     0%   { background-position: 200% 0; }
     100% { background-position: -100% 0; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .rfx-shimmer-stroke { animation: none; opacity: 0.4; }
   }
 
   /* Location pages — tighter mobile rhythm. Scoped via .rfx-tight-mobile on
      the page root so it doesn't affect other pages. */
   @media (max-width: 767px) {
-    .rfx-tight-mobile .cp-reveal-section + .cp-reveal-section { padding-top: 24px; }
+    .rfx-tight-mobile { --reveal-join: 24px; }
   }
 
   /* Article (Journal) styles. ChatGPT-style editorial layout: narrow
@@ -1902,7 +1810,6 @@
 
 /* Inspiration carousel: 22px less space below it, before the FAQs, at every
    width the shared .rfx-section padding changes (Matt, 2026-11-07). */
-
 
 /* Our work: cards scale gently up into view as you scroll (OurWork.tsx adds
    .gallery-anim only in a real browser without reduced motion). */
