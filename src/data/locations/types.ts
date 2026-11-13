@@ -13,7 +13,6 @@ export type LocationRevealSection = {
   tone?: string;
 };
 
-export type PricingTier = { price: string; label: string; body: string };
 
 export type LocationFAQ = { q: string; a: string; aNode?: ReactNode };
 
@@ -54,7 +53,6 @@ export type LocationConfig = {
   };
   pricing: {
     heading: ReactNode;
-    tiers: PricingTier[];
     footnote: string;
   };
   /** Optional bespoke paragraph for the "Why choose River Fox Events?"
