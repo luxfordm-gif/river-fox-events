@@ -79,7 +79,6 @@ const Process = ({ steps = DEFAULT_STEPS, tone = "white", sectionId = "process" 
           {steps.map((s, i) => (
             <div
               key={s.n}
-              className="pr-3"
               style={{
                 opacity: stepsIn ? 1 : 0,
                 transform: stepsIn ? "translateX(0)" : "translateX(-32px)",
@@ -103,7 +102,7 @@ const Process = ({ steps = DEFAULT_STEPS, tone = "white", sectionId = "process" 
               <h3 className="t-h5 text-ink">
                 {s.title}
               </h3>
-              <p className="t-small text-ink-soft title-to-text">
+              <p className="t-small text-ink-soft title-to-text text-wrap">
                 {s.body}
               </p>
             </div>

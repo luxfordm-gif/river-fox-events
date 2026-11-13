@@ -428,7 +428,7 @@ const SectionTitle = ({ children, id, light, snow }: { children: ReactNode; id: 
   return (
     <h2
       id={id}
-      className={`t-h2 ${light ? "" : "text-primary"}`}
+      className={`t-h2 measure-title mx-auto ${light ? "lg:mx-0" : "text-primary"}`}
     >
       {snow ? (
         <span className="xmas-title-snow">
@@ -590,7 +590,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   )}
                 </span>
               </h1>
-              <div className="mt-5 max-w-[46ch] md:max-w-[70ch] t-lead text-ink-soft space-y-4">
+              <div className="heading-to-text max-w-[46ch] md:max-w-[70ch] t-lead text-ink-soft space-y-4">
                 {biz ? (
                   <>
                     <p>
@@ -653,7 +653,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 {biz ? "A festive welcome," : "A little Christmas magic,"}{" "}
                 <em className="t-accent">{biz ? "from the door in." : "right at your door."}</em>
               </SectionTitle>
-              <p className="mt-6 t-lead text-ink-soft max-w-[54ch] mx-auto">
+              <p className="heading-to-text t-lead text-ink-soft measure-lead mx-auto">
                 {biz
                   ? "A dressed entrance draws people in from the street and tells them you're ready for Christmas, whether it's a shop door, a salon window or a restaurant doorway."
                   : "Whether it's the finishing touch to your family home or a festive welcome for your customers, a beautifully styled doorway sets the tone for the season."}
@@ -773,7 +773,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 A little inspiration for{" "}
                 <em className="t-accent">{biz ? "your Christmas entrance." : "your Christmas doorway."}</em>
               </SectionTitle>
-              <p className="mt-6 t-lead text-ink-soft">
+              <p className="heading-to-text t-lead text-ink-soft measure-lead mx-auto">
                 {biz
                   ? "A few favourite shopfronts, salons and restaurants from Christmases past."
                   : "A few favourite doorways from Christmases past."}
@@ -823,7 +823,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 {biz ? "Your Christmas entrance," : "Your Christmas doorway,"}{" "}
                 <em className="t-accent">taken care of.</em>
               </SectionTitle>
-              <p className="mt-6 t-lead text-ink-soft max-w-[54ch] mx-auto">
+              <p className="heading-to-text t-lead text-ink-soft measure-lead mx-auto">
                 {biz
                   ? "From the first photo to the finished install, I'll work around your trading hours, so the only thing your customers notice is the garland."
                   : "From the first conversation to the finished installation, I'll take care of the details so you can simply enjoy your doorway all season."}
@@ -882,7 +882,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   Book your{" "}
                   <em className="t-accent">{biz ? "Christmas entrance." : "Christmas doorway."}</em>
                 </SectionTitle>
-                <p className="t-lead max-w-[460px] mt-7" style={{ color: "hsl(var(--text-on-dark))" }}>
+                <p className="t-lead max-w-[460px] heading-to-text" style={{ color: "hsl(var(--text-on-dark))" }}>
                   Late November and early December dates go fast.
                 </p>
                 <p className="t-lead max-w-[460px] mt-4" style={{ color: "hsl(var(--text-dimmed))" }}>
@@ -891,11 +891,17 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     : "Send a photo of your door and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "}
                   <a href="tel:+447872114191" className="whitespace-nowrap text-link" style={{ color: "hsl(var(--text-on-dark))" }}>
                     07872&nbsp;114191
+                  </a>{" "}
+                  or{" "}
+                  <a href={biz ? WHATSAPP_HREF_BUSINESS : WHATSAPP_HREF} className="whitespace-nowrap text-link" style={{ color: "hsl(var(--text-on-dark))" }}>
+                    message me on WhatsApp
                   </a>
                   .
                 </p>
                 <p className="mt-7 t-body" style={{ color: "hsl(var(--text-on-dark))" }}>
-                  I reply within 1 to 2 working days.
+                  {/* 24 hours here, not the site's 1 to 2 working days: it's so close
+                      to Christmas (Matt, 2026-11-13). */}
+                  I reply within 24 hours.
                 </p>
 
               </div>
@@ -927,8 +933,8 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   <div className="text-left" role="status">
                     <h3 className="t-h4 text-primary">Thank you, {sentTo}.</h3>
                     <p className="title-to-text t-body text-ink-soft">
-                      I've got your {biz ? "entrance" : "door"} details. I'll be in touch within 1 to 2
-                      working days with ideas, a colour palette and a quote.
+                      I've got your {biz ? "entrance" : "door"} details. I'll be in touch within 24 hours
+                      with ideas, a colour palette and a quote.
                     </p>
                     <p className="mt-4 t-body text-ink-soft">
                       If it's easier, send me a message on WhatsApp too.
@@ -952,7 +958,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     <input type="email" name="email" placeholder="you@example.com" autoComplete="email" required />
                   </label>
                   <label className="form-row">
-                    <span className="lbl">Phone number (optional)</span>
+                    <span className="lbl">Phone (optional)</span>
                     <input type="tel" name="phone" placeholder="07…" autoComplete="tel" />
                   </label>
                   <label className="form-row">

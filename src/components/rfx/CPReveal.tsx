@@ -145,7 +145,7 @@ const CPReveal = ({
         {headline}
       </h2>
       <div
-        className="cp-reveal-body t-body heading-to-text text-ink-soft max-w-[520px] space-y-5"
+        className="cp-reveal-body t-body heading-to-text text-ink-soft measure-lead space-y-5"
         style={{ textWrap: "pretty" }}
       >
         {children}
