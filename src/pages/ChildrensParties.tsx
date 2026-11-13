@@ -11,7 +11,7 @@ import ServiceHero from "@/components/rfx/ServiceHero";
 import CPReveal from "@/components/rfx/CPReveal";
 import CPPricing from "@/components/rfx/CPPricing";
 import CPLocations from "@/components/rfx/CPLocations";
-import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
+import FaqSection from "@/components/rfx/FaqSection";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { whatsappHref } from "@/lib/whatsapp";
 import { findRoute } from "@/seo/routes";
@@ -192,7 +192,7 @@ const ChildrensParties = () => {
 
         <CPPricing footnote="" />
 
-        <ChildrensFAQ />
+        <FaqSection />
 
         <CPLocations />
 

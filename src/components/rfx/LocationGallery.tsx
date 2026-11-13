@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 
 export type GalleryImage = { src: string; alt: string };
 
@@ -38,21 +39,10 @@ const LocationGallery = ({
               </div>
             )}
             {heading && (
-              <h2
-                id={`${id}-heading`}
-                className="t-h2"
-                style={{ textWrap: "balance" }}
-              >
-                {heading}
-              </h2>
+              <SectionHeading id={`${id}-heading`}>{heading}</SectionHeading>
             )}
             {intro && (
-              <p
-                className="t-lead text-ink-soft heading-to-text max-w-[560px] mx-auto"
-                style={{ textWrap: "pretty" }}
-              >
-                {intro}
-              </p>
+              <SectionIntro>{intro}</SectionIntro>
             )}
           </div>
         </div>

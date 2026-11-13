@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { LOCATIONS } from "@/data/locations";
+import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 
 type CPLocationsProps = {
   areas?: string[];
@@ -78,19 +79,8 @@ const CPLocations = ({
                 {eyebrow}
               </div>
             )}
-            <h2
-              id="cp-locations-heading"
-              className="t-h2"
-              style={{ textWrap: "balance" }}
-            >
-              {heading}
-            </h2>
-            <p
-              className="heading-to-text t-small text-ink-soft max-w-[520px]"
-              style={{ textWrap: "pretty" }}
-            >
-              {intro}
-            </p>
+            <SectionHeading id="cp-locations-heading" align="left">{heading}</SectionHeading>
+            <SectionIntro size="small" align="left">{intro}</SectionIntro>
 
             <ul className="text-to-content grid grid-cols-2 col-gap w-full max-w-[520px] border-t border-ink/15">
               {areas.map((a, i) => {

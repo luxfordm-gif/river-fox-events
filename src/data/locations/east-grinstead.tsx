@@ -19,7 +19,7 @@ const eastGrinstead = makeLocation({
     <>
       Children's parties are my main work.{" "}
       <em className="t-accent">
-        I cover the grown-up days too.
+        I cover the grown‑up days too.
       </em>
     </>
   ),

@@ -19,7 +19,7 @@ const brightonAndHove = makeLocation({
     <>
       Children's parties first.{" "}
       <em className="t-accent">
-        The grown-up occasions when you need them.
+        The grown‑up occasions when you need them.
       </em>
     </>
   ),

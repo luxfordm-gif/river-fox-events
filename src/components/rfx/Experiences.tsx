@@ -4,6 +4,7 @@ import expMilestone from "@/assets/40th-birthday-rose-gold-marquee-surrey.webp";
 import expCorporate from "@/assets/corporate-gala-styling-surrey.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
 import { galleryPhoto } from "@/data/gallery";
+import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 
 type CardPhoto = { img: string; srcSet?: string; alt: string; position?: string };
 const fromGallery = (source: string, position?: string): CardPhoto => {
@@ -189,18 +190,16 @@ const Experiences = ({
       <div className="container-rfx">
         {align === "centre" ? (
           <div className="heading-to-content text-center">
-            <h2 id="exp-heading" className="t-h2 fade-up m-0 text-center">
+            <SectionHeading id="exp-heading" className="fade-up">
               {title}
-            </h2>
+            </SectionHeading>
           </div>
         ) : align === "stacked" ? (
           <div className="heading-to-content text-center flex flex-col items-center">
-            <h2 id="exp-heading" className="t-h2 fade-up m-0 text-center" style={{ textWrap: "balance" }}>
+            <SectionHeading id="exp-heading" className="fade-up">
               {title}
-            </h2>
-            {intro && (
-              <p className="t-lead text-ink-soft text-center max-w-[620px] heading-to-text" style={{ textWrap: "pretty" }}>{intro}</p>
-            )}
+            </SectionHeading>
+            {intro && <SectionIntro>{intro}</SectionIntro>}
             <div className="text-to-content">
               <a href="/our-work/" className="btn-ghost-rf">
                 See our work <span className="t-icon">→</span>
@@ -209,12 +208,9 @@ const Experiences = ({
           </div>
         ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 columns-gap heading-to-content items-end rfx-md-stack">
-          <h2
-            id="exp-heading"
-            className="t-h2 fade-up m-0 text-center md:text-left"
-          >
+          <SectionHeading id="exp-heading" align="md-left" className="fade-up text-center md:text-left">
             {title}
-          </h2>
+          </SectionHeading>
           {/* Right column: "See our work" anchored far right (Matt, 2026-11-08).
               The homepage drops the intro line; town pages and Balloons keep
               their own intro (unique copy for search) above the button. */}

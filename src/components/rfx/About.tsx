@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import studioImg from "@/assets/laura-portrait.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { SectionHeading } from "@/components/rfx/SectionHeading";
 
 interface Stat {
   value: number;
@@ -147,12 +148,12 @@ const About = () => {
               Meet Laura, Founder
             </div>
 
-            <h2 id="about-heading" className="t-h2">
+            <SectionHeading id="about-heading" align="left">
               Personally designed.{" "}
               <em className="t-accent">
                 Personally delivered.
               </em>
-            </h2>
+            </SectionHeading>
 
             <div className="t-body heading-to-text paragraphs text-ink-soft max-w-[560px]">
               <p className="text-ink">

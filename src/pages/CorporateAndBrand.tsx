@@ -10,7 +10,7 @@ import Enquire from "@/components/rfx/Enquire";
 import ServiceHero from "@/components/rfx/ServiceHero";
 import CPReveal from "@/components/rfx/CPReveal";
 import CPLocations from "@/components/rfx/CPLocations";
-import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
+import FaqSection from "@/components/rfx/FaqSection";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
 import {
@@ -273,7 +273,7 @@ const CorporateAndBrand = () => {
             it's the only corporate shimmer wall photo (Matt, 2026-11-09). */}
         <InspirationStrip id="cb-inspiration" lead="Events I've" accent="already delivered." images={withoutTilePhotos(INSPIRATION_CORPORATE, CORPORATE_TILES.filter((t) => t.title !== "Sequin walls"))} />
 
-        <ChildrensFAQ faqs={FAQS} headingId="cb-faq-heading" />
+        <FaqSection faqs={FAQS} headingId="cb-faq-heading" />
 
         <CPLocations
           areas={[

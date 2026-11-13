@@ -9,7 +9,7 @@ import ScrollStrip from "@/components/rfx/ScrollStrip";
 import InstagramStrip from "@/components/rfx/InstagramStrip";
 import SnowCap from "@/components/rfx/SnowCap";
 import StoryVideos, { type Story } from "@/components/rfx/StoryVideos";
-import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
+import FaqSection from "@/components/rfx/FaqSection";
 import TrustLine from "@/components/rfx/TrustLine";
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
 import bow320 from "@/assets/christmas/burgundy-velvet-bow-320.webp";
@@ -81,6 +81,7 @@ import adThumb360 from "@/assets/christmas/video/cream-house-door-lit-jewel-baub
 import adThumb540 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-540.webp";
 import adThumb720 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-720.webp";
 import { trackLead } from "@/lib/track";
+import { SectionHeading } from "@/components/rfx/SectionHeading";
 
 /* Christmas ad: Laura's Instagram story videos, played full screen from one
    thumbnail tile in the inspiration section. Videos only load once the tile
@@ -173,7 +174,7 @@ const GARLAND_OPTIONS = [
   },
 ];
 
-/* FAQ answers also go out as FAQPage structured data (ChildrensFAQ). */
+/* FAQ answers also go out as FAQPage structured data (FaqSection). */
 const AREAS_FAQ = {
     q: "Which areas do you cover?",
     a: "All of Surrey. I dress doorways in Cobham, Esher, Weybridge, Oxshott, Walton-on-Thames, Kingston, Twickenham, East Molesey, Kingswood, Tadworth, Banstead, Epsom, Leatherhead, Dorking, Reigate, Redhill, Guildford, Oxted and Horley, where my studio is, and the villages in between. If your town isn't listed, send your postcode and I'll confirm.",
@@ -426,10 +427,7 @@ const SnowHint = ({ className = "" }: { className?: string }) => (
    pushes it off (SnowCap). */
 const SectionTitle = ({ children, id, light, snow }: { children: ReactNode; id: string; light?: boolean; snow?: boolean }) => {
   return (
-    <h2
-      id={id}
-      className={`t-h2 measure-title mx-auto ${light ? "lg:mx-0" : "text-primary"}`}
-    >
+    <SectionHeading id={id} align={light ? "lg-left" : "centre"} className={light ? "" : "text-primary"}>
       {snow ? (
         <span className="xmas-title-snow">
           <SnowCap mode="text" ground={light ? "dark" : "light"} />
@@ -438,7 +436,7 @@ const SectionTitle = ({ children, id, light, snow }: { children: ReactNode; id: 
       ) : (
         children
       )}
-    </h2>
+    </SectionHeading>
   );
 };
 
@@ -855,12 +853,11 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
           </div>
         </section>
 
-        <ChildrensFAQ
+        <FaqSection
           faqs={biz ? FAQS_BUSINESS : FAQS_HOME}
           headingId="xmas-faq-heading"
           heading={<>Your questions <em className="t-accent">answered.</em></>}
-          paddingTop="clamp(40px, 6vw, 96px)"
-          paddingBottom="clamp(150px, 12vw, 170px)"
+          className="xmas-faq"
         />
 
         {/* Booking form + contact */}

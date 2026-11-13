@@ -1,6 +1,7 @@
 import { Instagram } from "lucide-react";
 import InstagramStrip from "@/components/rfx/InstagramStrip";
 import { INSPIRATION_HOME } from "@/data/inspiration";
+import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 
 /** Instagram CTA block, then an endless strip of recent work (same strip as the Christmas and service pages). */
 const InstagramFollow = () => {
@@ -19,18 +20,15 @@ const InstagramFollow = () => {
               <span className="h-px w-8 bg-ink/30" aria-hidden="true" />
             </div>
 
-            <h2
-              id="instagram-heading"
-              className="t-h2"
-            >
+            <SectionHeading id="instagram-heading">
               Follow along on{" "}
               <em className="t-accent">Instagram.</em>
-            </h2>
+            </SectionHeading>
 
-            <p className="t-lead text-ink-soft heading-to-text max-w-[480px]">
+            <SectionIntro>
               Sneak peeks, install days and the small details that make every
               River Fox celebration feel like itself.
-            </p>
+            </SectionIntro>
 
             <a
               href="https://www.instagram.com/riverfox_events/"

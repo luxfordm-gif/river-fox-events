@@ -19,7 +19,7 @@ const crawley = makeLocation({
     <>
       Children's parties lead the way.{" "}
       <em className="t-accent">
-        The grown-up events follow.
+        The grown‑up events follow.
       </em>
     </>
   ),

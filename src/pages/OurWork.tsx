@@ -10,6 +10,7 @@ import { applyMeta, breadcrumbSchema, removeJsonLd, upsertJsonLd } from "@/seo/h
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 import { GALLERY, orderedEvents, resolvePhoto } from "@/data/gallery";
 import type { GalleryEvent, GallerySection, ResolvedPhoto } from "@/data/gallery";
+import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 
 /**
  * /our-work/ - a curated gallery of Laura's real events, grouped by occasion.
@@ -555,17 +556,13 @@ const OurWork = () => {
 
         <section ref={endRef} className="rfx-section" aria-labelledby="our-work-cta">
           <div className="container-rfx text-center">
-            <h2
-              id="our-work-cta"
-              className="t-h2 fade-up m-0 mx-auto max-w-[18ch]"
-              style={{ textWrap: "balance" }}
-            >
+            <SectionHeading id="our-work-cta" className="fade-up">
               Have an event <em className="t-accent">in mind?</em>
-            </h2>
-            <p className="heading-to-text t-lead text-ink-soft max-w-[44ch] mx-auto">
+            </SectionHeading>
+            <SectionIntro>
               Message me the date and the occasion, and I'll get back to you
               with ideas and a quote.
-            </p>
+            </SectionIntro>
             <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent text-to-action">
               Reserve your date <span>→</span>
             </a>

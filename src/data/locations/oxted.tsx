@@ -19,7 +19,7 @@ const oxted = makeLocation({
     <>
       Children's parties are my home ground.{" "}
       <em className="t-accent">
-        I also style the grown-up occasions.
+        I also style the grown‑up occasions.
       </em>
     </>
   ),

@@ -11,6 +11,8 @@
   --xmas-gold-deep: 38 45% 42%;     /* Gold Dark · italic words in headings */
   --xmas-pine: 155 76% 8%;          /* Pine · the floating Christmas banner, a deep spruce green so it stands off the cream page (Matt, 2026-11-09) */
   --xmas-page: 45 30% 95.5%;        /* Page (Christmas) · hero and light sections, a touch darker so settled snow shows */
+  --xmas-faq-top: clamp(40px, 6vw, 96px);      /* FAQ top (Christmas) · space above the FAQs, after the campaign films */
+  --xmas-faq-bottom: clamp(150px, 12vw, 170px); /* FAQ bottom (Christmas) · room under the FAQs for the booking section's snow edge */
   --strip-text: var(--background-light); /* Instagram strip text on photos (was its own near-identical cream) */
 
   /* Frost & gold: stays on the brand's cream and charcoal, gold carries it. */
@@ -29,6 +31,7 @@
 /* One colour for the whole page, hero included: the same frosted cream as
    the light sections (Matt, 2026-11-08). */
 .rfx-xmas { background: hsl(var(--xmas-page)); }
+.rfx-xmas .rfx-section.xmas-faq { padding-top: var(--xmas-faq-top); padding-bottom: var(--xmas-faq-bottom); }
 .rfx-xmas .rfx-nav.scrolled, .rfx-xmas.nav-solid .rfx-nav { background: hsl(var(--xmas-page) / 0.82); }
 
 /* Gold on dark grounds reads; the deep gold is for cream. */

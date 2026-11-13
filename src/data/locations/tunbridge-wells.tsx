@@ -19,7 +19,7 @@ const tunbridgeWells = makeLocation({
     <>
       Children's parties are my main focus.{" "}
       <em className="t-accent">
-        The grown-up days too.
+        The grown‑up days too.
       </em>
     </>
   ),
