@@ -154,7 +154,7 @@ const Enquire = ({
                 <input type="email" name="email" placeholder="you@example.com" autoComplete="email" required />
               </label>
               <label className="form-row">
-                <span className="lbl">Phone number (optional)</span>
+                <span className="lbl">Phone (optional)</span>
                 <input type="tel" name="phone" placeholder="07…" autoComplete="tel" />
               </label>
               <label className="form-row">

@@ -24,6 +24,7 @@ const INSTAGRAM_URL = "https://www.instagram.com/riverfox_events/";
 const Contact = () => {
   useNavScroll();
   const [submitting, setSubmitting] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
 
   useEffect(() => {
     const route = findRoute("/contact")!;
@@ -174,82 +175,88 @@ const Contact = () => {
                 <div className="form-grid">
                   <label className="form-row">
                     <span className="lbl">Full name</span>
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="Your full name"
-                      required
-                    />
+                    <input type="text" name="name" placeholder="Your full name" autoComplete="name" required />
                   </label>
                   <label className="form-row">
                     <span className="lbl">Email address</span>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="you@example.com"
-                      required
-                    />
+                    <input type="email" name="email" placeholder="you@example.com" autoComplete="email" required />
                   </label>
                   <label className="form-row">
-                    <span className="lbl">Phone number (optional)</span>
-                    <input type="tel" name="phone" placeholder="07…" />
+                    <span className="lbl">Phone (optional)</span>
+                    <input type="tel" name="phone" placeholder="07…" autoComplete="tel" />
                   </label>
                   <label className="form-row">
                     <span className="lbl">Event date</span>
                     <input type="date" name="date" />
                   </label>
                   <label className="form-row full">
-                    <span className="lbl">Event location / venue</span>
-                    <input
-                      type="text"
-                      name="venue"
-                      placeholder="e.g. at home in Cobham"
-                    />
-                  </label>
-                  <label className="form-row full">
-                    <span className="lbl">Type of event</span>
-                    <select name="type" defaultValue="Children's party">
-                      <option>Children's party</option>
-                      <option>Milestone celebration</option>
-                      <option>Corporate / brand event</option>
-                    </select>
-                  </label>
-                  <label className="form-row full">
-                    <span className="lbl">Tell me about your vision</span>
+                    <span className="lbl">Message</span>
                     <textarea
                       name="vision"
-                      rows={5}
+                      rows={3}
                       placeholder="Theme, colours, inspiration, or anything you already have in mind"
                     />
                   </label>
-                  <label className="form-row">
-                    <span className="lbl">Planned investment</span>
-                    <select name="budget" defaultValue="Under £300">
-                      <option>Under £300</option>
-                      <option>£300 – £600</option>
-                      <option>£600 – £1,000</option>
-                      <option>£1,000 – £1,500</option>
-                      <option>£1,500+</option>
-                      <option>Not sure yet</option>
-                    </select>
-                  </label>
-                  <label className="form-row">
-                    <span className="lbl">How did you hear about us? (optional)</span>
-                    <select name="referral" defaultValue="Google">
-                      <option>Google</option>
-                      <option>Recommendation</option>
-                      <option>Facebook</option>
-                      <option>Instagram</option>
-                      <option>Used before</option>
-                      <option>Other</option>
-                    </select>
-                  </label>
                 </div>
-                <div className="flex justify-center lg:justify-end mt-6">
+                {/* Optional extras, folded away, as on the home Enquire form
+                    (Matt, 2026-11-13). Untouched ones send blank, so Laura
+                    never sees an answer the customer didn't choose. */}
+                <div id="contact-more-details" hidden={!moreOpen}>
+                  <div className="form-grid mt-5">
+                    <label className="form-row full">
+                      <span className="lbl">Event location / venue</span>
+                      <input type="text" name="venue" placeholder="e.g. at home in Cobham" />
+                    </label>
+                    <label className="form-row full">
+                      <span className="lbl">Type of event</span>
+                      <select name="type" defaultValue="">
+                        <option value="">Choose one</option>
+                        <option>Children's party</option>
+                        <option>Milestone celebration</option>
+                        <option>Corporate / brand event</option>
+                      </select>
+                    </label>
+                    <label className="form-row">
+                      <span className="lbl">Planned investment</span>
+                      <select name="budget" defaultValue="">
+                        <option value="">Choose one</option>
+                        <option>Under £300</option>
+                        <option>£300 – £600</option>
+                        <option>£600 – £1,000</option>
+                        <option>£1,000 – £1,500</option>
+                        <option>£1,500+</option>
+                        <option>Not sure yet</option>
+                      </select>
+                    </label>
+                    <label className="form-row">
+                      <span className="lbl">How did you hear about us?</span>
+                      <select name="referral" defaultValue="">
+                        <option value="">Choose one</option>
+                        <option>Google</option>
+                        <option>Recommendation</option>
+                        <option>Facebook</option>
+                        <option>Instagram</option>
+                        <option>Used before</option>
+                        <option>Other</option>
+                      </select>
+                    </label>
+                  </div>
+                </div>
+                {/* The toggle and the button share one row, as on the home form. */}
+                <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <button
+                    type="button"
+                    aria-expanded={moreOpen}
+                    aria-controls="contact-more-details"
+                    onClick={() => setMoreOpen((o) => !o)}
+                    className="t-label text-primary w-full sm:w-auto text-left text-pretty py-3 sm:py-0"
+                  >
+                    {moreOpen ? "− Fewer details" : "+ Add more details for a quicker quote (optional)"}
+                  </button>
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="btn-solid-rf accent disabled:opacity-60"
+                    className="btn-solid-rf accent w-full sm:w-auto justify-center shrink-0 disabled:opacity-60"
                   >
                     {submitting ? "Sending…" : "Send enquiry"} <span>→</span>
                   </button>

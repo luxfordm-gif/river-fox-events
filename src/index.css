@@ -138,7 +138,7 @@
     /* ── DESIGN SYSTEM: CORNERS ── three, merged on 2026-11-08 (Matt).
        Tailwind: rounded-large / rounded-small / rounded-full. */
     --radius-large: 16px;              /* Large · cards, panels, photos, videos, the map (12 on phones) */
-    --radius-small: 4px;               /* Small · buttons, form fields, badges, tags */
+    --radius-small: 6px;               /* Small · buttons, form fields, badges, tags (was 4, softened 2026-11-13) */
     --radius-round: 9999px;            /* Round · pills, dots, circles */
     --radius-panel: calc(var(--radius-large) * 2); /* Panel · rounded full-width section panels, twice Large (32; square and full width on phones) */
 
@@ -163,6 +163,8 @@
     --panel-inset: 24px;
     --card-pad: 40px;                  /* Card padding · inside option and pricing cards (28 phone) */               /* Panel inset · gap from the screen edge to a rounded section panel (none on phones: full width) */           /* Card text inset · right padding on card text so titles stay clear of the next card (0 phone) */             /* Title to text · space between a card or item title and its text, every card on the site */
     --container-max: 1440px;           /* Content width · the widest the page content gets */
+    --measure-title: 18ch;             /* Title width · widest a centred section title runs before it wraps, with balanced lines (Matt, 2026-11-13) */
+    --measure-lead: 44ch;              /* Intro width · widest the intro paragraph under a section title runs (Matt, 2026-11-13) */
     --nav-height: 78px;                /* Nav height · the fixed nav bar (78 at every width), for anything that starts just under it */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
     --gutter: 56px;                    /* Side gutter · space at the left and right of the page content (32 phone, 8% on laptops) */
@@ -711,12 +713,12 @@
     border-radius: var(--radius-large);
     box-shadow: 0 30px 80px -20px hsl(var(--text-primary) / 0.22), 0 8px 24px -10px hsl(var(--text-primary) / 0.10);
   }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 14px; }
   .form-row {
     background: hsl(var(--background));
     border: 1.5px solid hsl(var(--text-primary) / 0.12);
     border-radius: var(--radius-small);
-    padding: 10px 16px 10px;
+    padding: 8px 14px;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -750,7 +752,7 @@
     cursor: inherit;
   }
   .form-row select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%235A6059' stroke-width='1.4' d='M1 1l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0 center; padding-right: 18px; }
-  .form-row textarea { resize: vertical; min-height: 96px; cursor: text; }
+  .form-row textarea { resize: vertical; min-height: 80px; cursor: text; }
   .form-row input::placeholder,
   .form-row textarea::placeholder { color: hsl(var(--text-dimmed)); font-weight: var(--fw-regular); }
   .form-row:hover { border-color: hsl(var(--text-primary) / 0.28); background: hsl(var(--background-light)); }
@@ -1065,6 +1067,9 @@
 
   /* Home mission line (Mission.tsx): words darken one by one on scroll. */
   /* Centred and narrower, no button under it (Matt, 2026-11-10). */
+  /* Section title and intro widths (see --measure-title / --measure-lead). */
+  .measure-title { max-width: var(--measure-title); text-wrap: balance; }
+  .measure-lead { max-width: var(--measure-lead); }
   .mission-line { max-width: 24ch; margin-inline: auto; text-align: center; text-wrap: balance; }
   .mission-word { display: inline; }
   /* The divider sits in the middle of the gap below the line (Matt,
@@ -1181,7 +1186,7 @@
     font-weight: var(--fw-regular);
     letter-spacing: var(--ls-h1);
     text-wrap: balance;
-    max-width: 18ch;
+    max-width: var(--measure-title);
   }
   .page-header__note {
     margin-top: 20px;
@@ -1193,7 +1198,7 @@
   /* Lead style, like the service hero sub-copy, close under the H1. */
   .page-header__intro {
     margin-top: 12px;
-    max-width: 44ch;
+    max-width: var(--measure-lead);
     font-size: var(--fs-lead);
     line-height: var(--lh-lead);
     text-wrap: pretty;
