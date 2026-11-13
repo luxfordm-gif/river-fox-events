@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useImageParallax } from "@/hooks/useImageParallax";
 import StoryCarousel, { type StorySlide } from "@/components/rfx/StoryCarousel";
+import { SectionHeading } from "@/components/rfx/SectionHeading";
 
 interface CPRevealProps {
   /** "left" => image on left column. "right" => image on right column. */
@@ -138,12 +139,7 @@ const CPReveal = ({
           "opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 180ms, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 180ms",
       }}
     >
-      <h2
-        className="t-h2"
-        style={{ textWrap: "balance" }}
-      >
-        {headline}
-      </h2>
+      <SectionHeading align="left">{headline}</SectionHeading>
       <div
         className="cp-reveal-body t-body heading-to-text text-ink-soft measure-lead paragraphs"
         style={{ textWrap: "pretty" }}

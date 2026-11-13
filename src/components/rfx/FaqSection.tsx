@@ -1,14 +1,21 @@
 import { useEffect, type ReactNode } from "react";
 import FaqList from "@/components/rfx/FaqList";
+import { removeJsonLd, upsertJsonLd } from "@/seo/headTags";
+import type { FaqItem } from "@/data/homeFaqs";
 
-type FAQ = { q: string; a: string; aNode?: ReactNode };
-type ChildrensFAQProps = {
-  faqs?: FAQ[];
+/**
+ * The FAQ section: one component for every page (home, service, town and
+ * Christmas), replacing the two near-identical FAQ components on 2026-11-13.
+ * Questions come from the page; with none it shows the children's party
+ * questions below.
+ */
+type FaqSectionProps = {
+  faqs?: FaqItem[];
   headingId?: string;
   /** Item to open by default. Pass `false` to start with all closed. */
   defaultOpen?: string | false;
-  paddingTop?: string;
-  paddingBottom?: string;
+  /** Extra class on the section, e.g. the Christmas page's own padding (.xmas-faq). */
+  className?: string;
   /** Named text style for the heading; defaults to the section title (t-h2). */
   headingClass?: string;
   /** Section title. "FAQs" on the service and town pages; the Christmas page
@@ -16,7 +23,7 @@ type ChildrensFAQProps = {
   heading?: ReactNode;
 };
 
-const DEFAULT_FAQS: FAQ[] = [
+const DEFAULT_FAQS: FaqItem[] = [
   {
     q: "How far in advance should I book?",
     a: "I'd suggest enquiring at least 6–8 weeks ahead for children's parties. Popular dates, especially weekends in the school holidays, book up quickly. If your date is sooner, do still get in touch, and I'll tell you honestly what I can do in the time.",
@@ -53,28 +60,20 @@ const DEFAULT_FAQS: FAQ[] = [
   },
 ];
 
-const ChildrensFAQ = ({
+const FaqSection = ({
   faqs = DEFAULT_FAQS,
   headingId = "cp-faq-heading",
   defaultOpen = false,
-  paddingTop,
-  paddingBottom,
+  className = "",
   headingClass = "t-h2",
   heading = "FAQs",
-}: ChildrensFAQProps = {}) => {
+}: FaqSectionProps = {}) => {
   // Inject FAQPage JSON-LD scoped to this section so search engines can pick up
   // the Q&A as a rich result. We dedupe per headingId so multiple FAQ blocks
   // don't collide.
   useEffect(() => {
     const id = `rfx-jsonld-faq-${headingId}`;
-    let script = document.getElementById(id) as HTMLScriptElement | null;
-    if (!script) {
-      script = document.createElement("script");
-      script.id = id;
-      script.type = "application/ld+json";
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify({
+    upsertJsonLd(id, {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       mainEntity: faqs.map((f) => ({
@@ -83,17 +82,13 @@ const ChildrensFAQ = ({
         acceptedAnswer: { "@type": "Answer", text: f.a },
       })),
     });
-    return () => {
-      const el = document.getElementById(id);
-      if (el) el.remove();
-    };
+    return () => removeJsonLd(id);
   }, [faqs, headingId]);
 
   return (
     <section
       id="faq"
-      className="rfx-section white"
-      style={{ paddingTop, paddingBottom }}
+      className={`rfx-section white ${className}`}
       aria-labelledby={headingId}
     >
       <div className="container-rfx">
@@ -114,4 +109,4 @@ const ChildrensFAQ = ({
   );
 };
 
-export default ChildrensFAQ;
+export default FaqSection;

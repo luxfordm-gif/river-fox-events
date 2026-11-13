@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { useSwipeDots } from "@/hooks/useSwipeDots";
+import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 /**
  * Photo tiles: a grid of small square photos with just the name underneath
  * (the balloon page's "What we make", and "What we do" on the three main
@@ -57,24 +58,9 @@ const ServicesCards = ({
       <div className="container-rfx">
         {divided && <div className="rfx-divided-rule" aria-hidden="true" />}
         {(heading || intro) && (
-          <div className="text-center max-w-[760px] mx-auto heading-to-content fade-up">
-            {heading && (
-              <h2
-                id={headingId}
-                className="t-h2"
-                style={{ textWrap: "balance" }}
-              >
-                {heading}
-              </h2>
-            )}
-            {intro && (
-              <p
-                className="t-lead heading-to-text max-w-[560px] mx-auto text-ink-soft"
-                style={{ textWrap: "pretty" }}
-              >
-                {intro}
-              </p>
-            )}
+          <div className="text-center heading-to-content fade-up">
+            {heading && <SectionHeading id={headingId}>{heading}</SectionHeading>}
+            {intro && <SectionIntro>{intro}</SectionIntro>}
           </div>
         )}
 

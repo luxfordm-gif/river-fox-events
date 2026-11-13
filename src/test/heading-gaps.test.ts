@@ -22,7 +22,7 @@ const walk = (dir: string): string[] =>
   });
 
 // Closing heading, then optional JSX comments / whitespace, then the next tag.
-const AFTER_HEADING = /<\/(h1|h2|SectionTitle)>\s*(?:\{\/\*[\s\S]*?\*\/\}\s*)*<(p|div)\b([^>]*)>/g;
+const AFTER_HEADING = /<\/(h1|h2|SectionTitle|SectionHeading)>\s*(?:\{\/\*[\s\S]*?\*\/\}\s*)*<(p|div)\b([^>]*)>/g;
 const TEXT_ROLE = /\bt-(lead|body|small)\b/;
 const OWN_MARGIN = /(?:^|[\s"'`{])(?:[a-z]+:)*!?-?mt-/;
 
@@ -41,5 +41,16 @@ describe("heading to text: one gap, from the token", () => {
       }
     }
     expect(offenders, `Use className="heading-to-text" instead of a margin:\n${offenders.join("\n")}`).toEqual([]);
+  });
+
+  it("section titles use the shared SectionHeading, not a hand-built <h2 className=\"t-h2\">", () => {
+    // Deliberate exceptions: the home mission line (its own width and word
+    // reveal) and the About counter (a number in the heading size).
+    const ALLOWED = ["components/rfx/Mission.tsx", "components/rfx/About.tsx", "components/rfx/SectionHeading.tsx"];
+    const offenders = walk(SRC)
+      .filter((f) => !ALLOWED.some((a) => f.endsWith(a)))
+      .filter((f) => /<h2[^>]*className=\{?["`][^"`]*\bt-h2\b/.test(readFileSync(f, "utf8")))
+      .map((f) => relative(SRC, f));
+    expect(offenders, `Use <SectionHeading> (src/components/rfx/SectionHeading.tsx):\n${offenders.join("\n")}`).toEqual([]);
   });
 });

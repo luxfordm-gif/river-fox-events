@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ICON_REGISTRY, type IncludedIconKey } from "./CPIncluded";
+import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 
 type LocationUSPProps = {
   cityName?: string;
@@ -73,20 +74,14 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
     >
       <div className="container-rfx">
         <div className="text-center">
-          <h2
-            className="t-h2"
-            style={{ textWrap: "balance" }}
-          >
+          <SectionHeading>
             Why{" "}
             <em className="t-accent">
               River Fox Events?
             </em>
-          </h2>
+          </SectionHeading>
         </div>
-        <p
-          className="mx-auto max-w-[680px] text-center t-lead text-ink-soft heading-to-text fade-up"
-          style={{ textWrap: "pretty" }}
-        >
+        <SectionIntro className="text-center text-ink-soft fade-up">
           {/* First sentence only: still unique per town, half the words (Matt, 2026-11-07). */}
           {body ? firstSentence(body) : (
             <>
@@ -99,7 +94,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
               considered, distinctive and ready to be enjoyed.
             </>
           )}
-        </p>
+        </SectionIntro>
 
         <div
           ref={ref}

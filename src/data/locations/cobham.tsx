@@ -19,7 +19,7 @@ const cobham = makeLocation({
     <>
       Children's parties come first.{" "}
       <em className="t-accent">
-        The grown-up occasions, too.
+        The grown‑up occasions, too.
       </em>
     </>
   ),

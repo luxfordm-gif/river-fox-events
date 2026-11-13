@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { trackLead } from "@/lib/track";
 import { whatsappHref } from "@/lib/whatsapp";
+import { SectionHeading } from "@/components/rfx/SectionHeading";
 
 /* WhatsApp button beside the form, on every device: it opens WhatsApp Web on
    a computer, where the phone number can't be tapped (Matt, 2026-11-13). */
@@ -63,17 +64,14 @@ const Enquire = ({
           {/* Left: heading + intro + availability card. Sticky on desktop so it
               follows the reader down the long form. */}
           <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
-            <h2
-              id="enquire-heading"
-              className="t-h2"
-            >
+            <SectionHeading id="enquire-heading" align="lg-left">
               Let's create something{" "}
               <em className="t-accent">
                 beautiful.
               </em>
-            </h2>
+            </SectionHeading>
             <p
-              className="t-lead max-w-[460px] heading-to-text"
+              className="t-lead measure-lead heading-to-text"
               style={{ color: "hsl(var(--text-dimmed))" }}
             >
               Celebrations start from £300 and every one is quoted to your

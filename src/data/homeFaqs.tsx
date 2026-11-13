@@ -1,15 +1,14 @@
-import { useEffect, type ReactNode } from "react";
-import FaqList from "@/components/rfx/FaqList";
-import { removeJsonLd, upsertJsonLd } from "@/seo/headTags";
+import type { ReactNode } from "react";
+
+export type FaqItem = { q: string; a: string; aNode?: ReactNode };
 
 const linkCx =
   "text-ink underline-offset-4 underline decoration-ink/30 hover:decoration-ink";
 
 const INSTAGRAM_URL = "https://www.instagram.com/riverfox_events/";
 
-type FAQItem = { q: string; a: string; aNode?: ReactNode };
-
-const FAQS: FAQItem[] = [
+/** Home page FAQs (were built into the old FAQ component). */
+export const HOME_FAQS: FaqItem[] = [
   {
     q: "What areas do you cover?",
     a: "I'm based in Surrey and mostly work across Cobham, Weybridge, Esher, Oxshott, Guildford, Reigate, Farnham and Horsham. I also travel into London and the surrounding Home Counties - just ask when you enquire.",
@@ -73,41 +72,3 @@ const FAQS: FAQItem[] = [
     ),
   },
 ];
-
-const FAQ = () => {
-  useEffect(() => {
-    const id = "rfx-jsonld-faq-home";
-    upsertJsonLd(id, {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: FAQS.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-    });
-    return () => removeJsonLd(id);
-  }, []);
-
-  return (
-    <section id="faq" className="rfx-section white" aria-labelledby="faq-heading">
-      <div className="container-rfx">
-        <div className="text-center heading-to-content">
-          <h2
-            id="faq-heading"
-            className="t-h2"
-          >
-            {/* "FAQs", as on the service and town pages (Matt, 2026-11-08). */}
-            FAQs
-          </h2>
-        </div>
-
-        <div className="max-w-[980px] mx-auto">
-          <FaqList items={FAQS} />
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default FAQ;

@@ -19,7 +19,7 @@ const forestRow = makeLocation({
     <>
       Children's parties are my specialism.{" "}
       <em className="t-accent">
-        The grown-up days too.
+        The grown‑up days too.
       </em>
     </>
   ),

@@ -8,7 +8,7 @@ import Process from "@/components/rfx/Process";
 import Enquire from "@/components/rfx/Enquire";
 import CPLocations from "@/components/rfx/CPLocations";
 import CPPricing from "@/components/rfx/CPPricing";
-import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
+import FaqSection from "@/components/rfx/FaqSection";
 import Experiences from "@/components/rfx/Experiences";
 import LocationGallery from "@/components/rfx/LocationGallery";
 import LocationUSP from "@/components/rfx/LocationUSP";
@@ -202,7 +202,7 @@ const LocationPage = () => {
 
         <InspirationStrip id={`loc-${loc.slug}-inspiration`} accent="your celebration." images={INSPIRATION_TOWNS} />
 
-        <ChildrensFAQ
+        <FaqSection
           faqs={loc.faqs}
           headingId={`loc-${loc.slug}-faq-heading`}
           defaultOpen={false}

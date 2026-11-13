@@ -8,7 +8,8 @@ import RevealWord from "@/components/rfx/RevealWord";
 import About from "@/components/rfx/About";
 import Process from "@/components/rfx/Process";
 import Testimonials from "@/components/rfx/Testimonials";
-import FAQ from "@/components/rfx/FAQ";
+import FaqSection from "@/components/rfx/FaqSection";
+import { HOME_FAQS } from "@/data/homeFaqs";
 import Enquire from "@/components/rfx/Enquire";
 import Footer from "@/components/rfx/Footer";
 import ChristmasPromo from "@/components/rfx/ChristmasPromo";
@@ -54,7 +55,7 @@ const Index = () => {
         <Process tone="cream" />
         <Testimonials noDivider />
         <InstagramFollow />
-        <FAQ />
+        <FaqSection faqs={HOME_FAQS} headingId="faq-heading" />
         <Enquire />
       </main>
       <Footer />

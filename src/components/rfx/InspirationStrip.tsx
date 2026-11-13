@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import InstagramStrip, { type InstagramStripImage } from "@/components/rfx/InstagramStrip";
+import { SectionHeading } from "@/components/rfx/SectionHeading";
 
 type InspirationStripProps = {
   id: string;
@@ -20,14 +21,10 @@ type InspirationStripProps = {
 const InspirationStrip = ({ id, accent, lead = "Ideas for", images }: InspirationStripProps) => (
   <section className="rfx-section white rfx-inspiration" aria-labelledby={`${id}-heading`}>
     <div className="container-rfx">
-      <div className="max-w-[760px] mx-auto text-center fade-up">
-        <h2
-          id={`${id}-heading`}
-          className="t-h2"
-          style={{ textWrap: "balance" }}
-        >
+      <div className="text-center fade-up">
+        <SectionHeading id={`${id}-heading`}>
           {lead} <em className="t-accent">{accent}</em>
-        </h2>
+        </SectionHeading>
       </div>
     </div>
     <div className="below-heading">

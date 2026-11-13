@@ -1,4 +1,5 @@
 import { ComponentType, ReactNode, useEffect, useRef, useState } from "react";
+import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 
 type IconProps = { size?: number; strokeWidth?: number };
 
@@ -279,19 +280,8 @@ const CPIncluded = ({
           <div className="t-overline text-ink-soft eyebrow-above">
             {eyebrow}
           </div>
-          <h2
-            id={headingId}
-            className="t-h2"
-            style={{ textWrap: "balance" }}
-          >
-            {heading}
-          </h2>
-          <p
-            className="t-lead text-ink-soft heading-to-text max-w-[520px] mx-auto"
-            style={{ textWrap: "pretty" }}
-          >
-            {intro}
-          </p>
+          <SectionHeading id={headingId}>{heading}</SectionHeading>
+          <SectionIntro>{intro}</SectionIntro>
         </div>
 
         <div

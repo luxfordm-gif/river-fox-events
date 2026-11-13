@@ -43,8 +43,8 @@ import Testimonials from "@/components/rfx/Testimonials";
 import LocationTrust from "@/components/rfx/LocationTrust";
 import InspirationStrip from "@/components/rfx/InspirationStrip";
 import InstagramFollow from "@/components/rfx/InstagramFollow";
-import FAQ from "@/components/rfx/FAQ";
-import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
+import { HOME_FAQS } from "@/data/homeFaqs";
+import FaqSection from "@/components/rfx/FaqSection";
 import CPLocations from "@/components/rfx/CPLocations";
 import Enquire from "@/components/rfx/Enquire";
 
@@ -496,8 +496,8 @@ const SECTIONS: Section[] = [
   { id: "S14", title: "Reviews (town and balloon pages)", component: "LocationTrust", render: () => <LocationTrust /> },
   { id: "S15", title: "Inspiration strip", component: "InspirationStrip", render: () => <InspirationStrip id="sg-inspiration" accent="your party." images={INSPIRATION_CHILDRENS} /> },
   { id: "S16", title: "Instagram follow", component: "InstagramFollow", render: () => <InstagramFollow /> },
-  { id: "S17", title: "FAQ (homepage)", component: "FAQ", render: () => <FAQ /> },
-  { id: "S18", title: "FAQ (service and town pages)", component: "ChildrensFAQ", note: "Children's parties questions", render: () => <ChildrensFAQ headingId="sg-faq-heading" /> },
+  { id: "S17", title: "FAQ (homepage)", component: "FaqSection", note: "Home page questions", render: () => <FaqSection faqs={HOME_FAQS} headingId="sg-home-faq-heading" /> },
+  { id: "S18", title: "FAQ (service and town pages)", component: "FaqSection", note: "Children's parties questions", render: () => <FaqSection headingId="sg-faq-heading" /> },
   { id: "S19", title: "Areas we cover", component: "CPLocations", render: () => <CPLocations /> },
   { id: "S20", title: "Enquiry form", component: "Enquire", render: () => <Enquire /> },
   { id: "S21", title: "Footer", component: "Footer", render: () => <Footer /> },

@@ -951,7 +951,7 @@
     font-weight: inherit;
     color: hsl(var(--accent-dark));
   }
-  @media (max-width: 760px) {
+  @media (max-width: 767px) {
     .reveal-word { padding: 80px 0; }
   }
 
@@ -1161,7 +1161,7 @@
      the bottom. min-height stops the image collapsing on unusually short
      windows. The mobile override below replaces these with width-based
      calcs. */
-  @media (min-width: 761px) {
+  @media (min-width: 768px) {
     .cp-reveal-img-wrap {
       aspect-ratio: 4 / 5;
       width: 100%;
@@ -1181,7 +1181,7 @@
     transition: opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
     pointer-events: none;
   }
-  @media (hover: hover) and (min-width: 761px) {
+  @media (hover: hover) and (min-width: 768px) {
     .cp-reveal-img-wrap:hover .cp-reveal-hover-img {
       opacity: 1;
     }
@@ -1189,13 +1189,13 @@
   /* Children's Parties alternating reveal sections — tighter, fixed desktop rhythm.
      First section keeps full 100px top; subsequent ones tighten so the gap
      between consecutive reveals stays ≤60px on large monitors. */
-  @media (min-width: 761px) {
+  @media (min-width: 768px) {
     .cp-reveal-section { padding: 100px 0 !important; }
     .cp-reveal-section + .cp-reveal-section { padding-top: 30px !important; }
     .cp-reveal-section:has(+ .cp-reveal-section) { padding-bottom: 30px !important; }
   }
   /* Children's Parties alternating reveal sections — tighter, fixed desktop rhythm */
-  @media (min-width: 761px) {
+  @media (min-width: 768px) {
     .cp-reveal-section { padding: 100px 0 !important; }
     .cp-reveal-section + .cp-reveal-section { padding-top: 30px !important; }
   }
@@ -1613,7 +1613,7 @@
      No bottom rule: the photo strip runs under the button (Matt, 2026-11-07). */
   .rfx-instagram .rfx-instagram-inner { padding-top: calc(var(--section-gap) / 2); padding-bottom: 0; }
   #kindness .hairline { margin-bottom: 40px !important; }
-  @media (max-width: 760px) {
+  @media (max-width: 767px) {
     .rfx-instagram .rfx-instagram-inner {
       border-top: 0 !important;
       border-bottom: 0 !important;
@@ -1640,7 +1640,7 @@
   }
 
   /* Responsive grid stacking helper */
-  @media (max-width: 760px) {
+  @media (max-width: 767px) {
     .rfx-md-stack { grid-template-columns: 1fr !important; gap: var(--gap-stacked) !important; }
     .rfx-md-full { grid-column: 1 / -1 !important; }
     .rfx-md-static { position: static !important; }
@@ -1768,7 +1768,7 @@
 
   /* Location pages — tighter mobile rhythm. Scoped via .rfx-tight-mobile on
      the page root so it doesn't affect other pages. */
-  @media (max-width: 760px) {
+  @media (max-width: 767px) {
     .rfx-tight-mobile .cp-reveal-section + .cp-reveal-section { padding-top: 24px; }
   }
 

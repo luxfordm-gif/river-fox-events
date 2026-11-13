@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { SectionHeading } from "@/components/rfx/SectionHeading";
 
 type ProcessStep = { n: string; title: string; body: string };
 
@@ -63,13 +64,10 @@ const Process = ({ steps = DEFAULT_STEPS, tone = "white", sectionId = "process" 
     <section id={sectionId} className={`rfx-section ${tone === "white" ? "white" : ""}`} aria-labelledby="process-heading">
       <div className="container-rfx">
         <div className="heading-to-content">
-          <h2
-            id="process-heading"
-            className="t-h2 m-0 text-center text-ink"
-          >
+          <SectionHeading id="process-heading" className="text-center text-ink">
             How it{" "}
             <em className="t-accent">works.</em>
-          </h2>
+          </SectionHeading>
         </div>
 
         <div

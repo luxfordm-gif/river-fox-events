@@ -19,7 +19,7 @@ const waltonOnThames = makeLocation({
     <>
       Children's parties are where I shine.{" "}
       <em className="t-accent">
-        The grown-up occasions too.
+        The grown‑up occasions too.
       </em>
     </>
   ),

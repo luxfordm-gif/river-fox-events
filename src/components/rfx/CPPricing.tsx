@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
+import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 
 export type PricingTier = {
   label: string;
@@ -71,17 +72,9 @@ const CPPricing = ({
       <div className="container-rfx">
         <div ref={boxRef} className={`rfx-pricing-box rounded-large ${inView ? "is-in" : ""}`}>
         <div className="text-center heading-to-content">
-          <h2
-            id="cp-pricing-heading"
-            className="t-h2 rfx-reveal max-w-[20ch] mx-auto"
-            style={{ textWrap: "balance" }}
-          >
-            {heading}
-          </h2>
+          <SectionHeading id="cp-pricing-heading" className="rfx-reveal">{heading}</SectionHeading>
           {body ? (
-            <p className="t-body text-ink-soft max-w-[460px] mx-auto heading-to-text rfx-reveal rfx-reveal-2">
-              {body}
-            </p>
+            <SectionIntro size="body" className="text-ink-soft rfx-reveal rfx-reveal-2">{body}</SectionIntro>
           ) : null}
         </div>
 

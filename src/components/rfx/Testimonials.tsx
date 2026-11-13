@@ -1,5 +1,6 @@
 import TestimonialsCarousel from "./TestimonialsCarousel";
 import { REVIEWS } from "@/seo/routes";
+import { SectionHeading } from "@/components/rfx/SectionHeading";
 
 export const QUOTES = REVIEWS;
 
@@ -26,12 +27,9 @@ const Testimonials = ({
           <div className="hairline divider-gap hidden md:block" aria-hidden="true" />
         )}
         <div className="text-center heading-to-content">
-          <h2
-            id="kindness-heading"
-            className="t-h2"
-          >
+          <SectionHeading id="kindness-heading">
             Kind <em className="t-accent">words.</em>
-          </h2>
+          </SectionHeading>
           <div className="heading-to-text">
             <a
               href="https://maps.app.goo.gl/dcLgoJHXnhjjzJKP6"

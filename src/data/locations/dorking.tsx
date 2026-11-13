@@ -19,7 +19,7 @@ const dorking = makeLocation({
     <>
       Children's parties take the lead.{" "}
       <em className="t-accent">
-        I style the grown-up days too.
+        I style the grown‑up days too.
       </em>
     </>
   ),

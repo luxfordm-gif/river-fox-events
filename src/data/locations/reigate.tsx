@@ -19,7 +19,7 @@ const reigate = makeLocation({
     <>
       Children's parties are most of what I do.{" "}
       <em className="t-accent">
-        The grown-up days as well.
+        The grown‑up days as well.
       </em>
     </>
   ),

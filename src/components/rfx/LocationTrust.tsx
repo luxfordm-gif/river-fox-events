@@ -3,6 +3,7 @@ import type { Review } from "@/seo/routes";
 import logoPg from "@/assets/client-pg.webp";
 import logoTheRange from "@/assets/client-the-range.webp";
 import logoFoxhills from "@/assets/client-foxhills.webp";
+import { SectionHeading } from "@/components/rfx/SectionHeading";
 
 /**
  * Logos sit at different bounding-box heights on purpose. P&G is a
@@ -52,12 +53,9 @@ const LocationTrust = ({ reviews }: LocationTrustProps = {}) => {
     >
       <div className="container-rfx">
         <div className="text-center heading-to-content">
-          <h2
-            id="trust-heading"
-            className="t-h2"
-          >
+          <SectionHeading id="trust-heading">
             Kind <em className="t-accent">words.</em>
-          </h2>
+          </SectionHeading>
         </div>
 
         <TestimonialsCarousel reviews={reviews} />

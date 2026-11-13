@@ -8,7 +8,7 @@ import Enquire from "@/components/rfx/Enquire";
 import ServiceHero from "@/components/rfx/ServiceHero";
 import CPReveal from "@/components/rfx/CPReveal";
 import CPPricing from "@/components/rfx/CPPricing";
-import ChildrensFAQ from "@/components/rfx/ChildrensFAQ";
+import FaqSection from "@/components/rfx/FaqSection";
 import ServicesCards from "@/components/rfx/ServicesCards";
 import { WHAT_WE_MAKE } from "@/data/balloonTiles";
 import LocationGallery from "@/components/rfx/LocationGallery";
@@ -306,7 +306,7 @@ const BalloonInstallations = () => {
 
         <InspirationStrip id="bi-inspiration" lead="Installs I've" accent="already built." images={INSPIRATION_BALLOONS} />
 
-        <ChildrensFAQ
+        <FaqSection
           faqs={FAQS}
           headingId="bi-faq-heading"
         />
