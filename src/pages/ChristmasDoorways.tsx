@@ -973,6 +973,15 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                       placeholder={biz ? "Your brand colours, your opening hours, or anything else" : "Colours you love, the paint colour of your door, or anything else"}
                     />
                   </label>
+                  {/* The one extra that changes the quote, so it shows by default;
+                      the rest stays under "Add more details" (Matt, 2026-11-13). */}
+                  <label className="form-row full form-check">
+                    <input type="checkbox" name="takedown" value="Yes" />
+                    <span className="t-small text-ink">
+                      Add January takedown
+                    </span>
+                    <span className="xmas-tag ml-auto">Extra</span>
+                  </label>
                 </div>
                 {/* Optional extras, folded away. Hidden fields still send, so
                     the defaults reach the same Netlify inbox as before. */}
@@ -1006,13 +1015,6 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                       <option>Second week of December</option>
                       <option>Flexible</option>
                     </select>
-                  </label>
-                  <label className="form-row full form-check">
-                    <input type="checkbox" name="takedown" value="Yes" />
-                    <span className="t-small text-ink">
-                      Add January takedown
-                    </span>
-                    <span className="xmas-tag ml-auto">Extra</span>
                   </label>
                 </div>
                 </div>

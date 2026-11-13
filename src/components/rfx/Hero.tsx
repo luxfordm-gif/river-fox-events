@@ -8,7 +8,7 @@ const Hero = () => {
     <section id="top" className="rfx-hero rfx-hero-home rfx-hero-scale pb-4 md:pb-6" aria-labelledby="hero-heading">
       <div className="container-rfx">
         {/* Centered editorial intro */}
-        <div className="rfx-hero-intro mb-10 md:mb-14 flex flex-col items-center text-center">
+        <div className="rfx-hero-intro flex flex-col items-center text-center">
 
           <h1
             id="hero-heading"

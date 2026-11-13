@@ -166,8 +166,8 @@
     --container-max: 1440px;           /* Content width · the widest the page content gets */
     --measure-title: 18ch;             /* Title width · widest a centred section title runs before it wraps, with balanced lines (Matt, 2026-11-13) */
     --measure-lead: 44ch;              /* Intro width · widest the intro paragraph under a section title runs (Matt, 2026-11-13) */
-    --nav-height: 78px;                /* Nav height · the fixed nav bar (78 at every width), for anything that starts just under it */
-    --nav-pad-x: 56px;                 /* Nav side padding · space at the left and right of the nav bar (32 on tablets, 1024-1366) */
+    --nav-height: 78px;                /* Nav height · the fixed nav bar, exactly this tall, for anything that starts just under it (64 phone, Matt 2026-11-13) */
+    --nav-pad-x: 40px;                 /* Nav side padding · space at the left and right of the nav bar (was 56; 32 on tablets, 1024-1366; Matt 2026-11-13) */
     --nav-link-gap: 32px;              /* Nav link gap · space between Home, Services, Our work... (28 on tablets, 1024-1366) */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
     --gutter: 56px;                    /* Side gutter · space at the left and right of the page content (32 phone, 8% on laptops) */
@@ -177,7 +177,8 @@
        space above the headline, gap from the button to the photo row,
        and space below the photo row. */
     --hero-pad-top: clamp(134px, calc(10vw - 10px), 250px);     /* Hero top · space above the home, service and town hero headline, one setting for all three (134 tablet, grows from 1440; on phones it follows Page header top) */
-    --hero-gap: clamp(56px, calc(6vw - 30px), 130px);           /* Hero gap · from the hero button down to the photo row on big screens */
+    --hero-gap: clamp(56px, calc(6vw - 30px), 130px);           /* Hero gap · the visible space around a hero: trust line down to the photo, and (from tablet up) nav down to the headline's letters (40 phone) */
+    --hero-ink-trim: calc(var(--fs-display) * 0.34 - 9px);      /* Hero ink trim · the headline's own built-in space above its letters, taken off the top padding so the space you see above the headline equals Hero gap below (Matt, 2026-11-13) */
     --hero-pad-bottom: clamp(44px, calc(6vw - 42px), 120px);    /* Hero bottom · cream space under the home hero photo row on big screens */
 
     /* Inner-page header (Our work, Journal, Contact, Privacy, Welcome, 404):
@@ -249,8 +250,10 @@
       --card-text-inset: 0px;
       --card-pad: 28px;
       --gutter: 32px;
-      --page-pad-top: 112px;   /* was 106; 6px more air under the nav (Matt, 2026-11-08) */
+      --nav-height: 64px;      /* a shallower bar on phones (was 78, Matt 2026-11-13) */
+      --page-pad-top: 98px;    /* nav + 34px: titles keep the same space under the nav as before (was 112 with the 78 nav) */
       --hero-pad-top: var(--page-pad-top);   /* heroes start where inner-page titles do */
+      --hero-gap: 40px;
       /* slightly tighter corners on small screens */
       --radius-large: 12px;
     }
@@ -280,7 +283,7 @@
        2026-11-07). Same-page anchor links glide via useSmoothScroll; this
        padding stops the fixed nav covering the top of the section. */
     scroll-behavior: auto;
-    scroll-padding-top: 80px;
+    scroll-padding-top: var(--nav-height);   /* jumps to #sections land just under the nav, at every width */
   }
   body {
     @apply text-foreground antialiased;
@@ -344,12 +347,19 @@
      moves every hero together (Matt, 2026-11-08). Components never set it.
      This selector outranks the shared .rfx-hero rules above. */
   section.rfx-hero-scale { padding-top: var(--hero-pad-top); }
+  /* Service and home heroes (the big Display headline), tablet up: the space
+     above the headline's letters matches the space below the trust line
+     (Matt, 2026-11-13). Both come from --hero-gap, so they can't drift apart.
+     Phones keep Hero top, so every title starts at the same height. */
+  @media (min-width: 768px) {
+    section.rfx-hero-scale:has(.t-display) { padding-top: calc(var(--nav-height) + var(--hero-gap) - var(--hero-ink-trim)); }
+  }
+  .rfx-hero-scale .rfx-hero-intro { margin-bottom: var(--hero-gap); }
   /* Home in the Christmas season: the video hero (ChristmasHero.tsx) takes
      the top of the page, so the usual hero follows it one Section gap down
      instead of clearing the nav. */
   .xhero-top + section.rfx-hero-scale { padding-top: var(--section-gap); }
   @media (min-width: 1440px) {
-    .rfx-hero-scale .rfx-hero-intro { margin-bottom: var(--hero-gap); }
     /* Home only: cream space under the three-photo row. Service heroes run
        their big image straight into the next section. */
     section.rfx-hero.rfx-hero-home { padding-bottom: var(--hero-pad-bottom); }
@@ -781,6 +791,10 @@
   .form-row textarea { resize: vertical; min-height: 80px; cursor: text; }
   .form-row input::placeholder,
   .form-row textarea::placeholder { color: hsl(var(--text-dimmed)); font-weight: var(--fw-regular); }
+  /* A dropdown still on "Choose one" reads as a hint, like a placeholder,
+     not as an answer (Matt, 2026-11-13). The open list keeps normal text. */
+  .form-row select:has(option[value=""]:checked) { color: hsl(var(--text-dimmed)); font-weight: var(--fw-regular); }
+  .form-row select option { color: hsl(var(--text-primary)); }
   .form-row:hover { border-color: hsl(var(--text-primary) / 0.28); background: hsl(var(--background-light)); }
   .form-row:focus-within {
     border-color: hsl(var(--accent));
@@ -917,7 +931,11 @@
        shift when the scrollbar disappears (Matt, 2026-11-09). */
     top: 0; left: 0; right: var(--scroll-lock-gap, 0);
     z-index: 100;
-    padding: 14px var(--nav-pad-x) 18px;
+    /* Exactly Nav height at every width, contents centred: before, the
+       height was padding plus contents, so it came out 79px on phones and
+       desktop but 87px on tablets (Matt, 2026-11-13). */
+    height: var(--nav-height);
+    padding: 0 var(--nav-pad-x);
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
@@ -965,7 +983,7 @@
   }
   .rfx-nav a:not(.btn-solid-rf):not(.no-underline-fx):hover::after { transform: scaleX(1); }
   @media (max-width: 1023px) {
-    .rfx-nav { padding: 22px 22px 18px; grid-template-columns: 1fr auto; }
+    .rfx-nav { padding: 0 22px; grid-template-columns: 1fr auto; }
     .rfx-nav .nav-left { display: none; }
     .rfx-nav .nav-right { display: none; }
   }
