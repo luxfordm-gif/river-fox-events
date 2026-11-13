@@ -590,7 +590,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   )}
                 </span>
               </h1>
-              <div className="mt-5 max-w-[46ch] md:max-w-[70ch] t-lead text-ink-soft space-y-4">
+              <div className="heading-to-text max-w-[46ch] md:max-w-[70ch] t-lead text-ink-soft space-y-4">
                 {biz ? (
                   <>
                     <p>
@@ -653,7 +653,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 {biz ? "A festive welcome," : "A little Christmas magic,"}{" "}
                 <em className="t-accent">{biz ? "from the door in." : "right at your door."}</em>
               </SectionTitle>
-              <p className="mt-6 t-lead text-ink-soft measure-lead mx-auto">
+              <p className="heading-to-text t-lead text-ink-soft measure-lead mx-auto">
                 {biz
                   ? "A dressed entrance draws people in from the street and tells them you're ready for Christmas, whether it's a shop door, a salon window or a restaurant doorway."
                   : "Whether it's the finishing touch to your family home or a festive welcome for your customers, a beautifully styled doorway sets the tone for the season."}
@@ -773,7 +773,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 A little inspiration for{" "}
                 <em className="t-accent">{biz ? "your Christmas entrance." : "your Christmas doorway."}</em>
               </SectionTitle>
-              <p className="mt-6 t-lead text-ink-soft measure-lead mx-auto">
+              <p className="heading-to-text t-lead text-ink-soft measure-lead mx-auto">
                 {biz
                   ? "A few favourite shopfronts, salons and restaurants from Christmases past."
                   : "A few favourite doorways from Christmases past."}
@@ -823,7 +823,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 {biz ? "Your Christmas entrance," : "Your Christmas doorway,"}{" "}
                 <em className="t-accent">taken care of.</em>
               </SectionTitle>
-              <p className="mt-6 t-lead text-ink-soft measure-lead mx-auto">
+              <p className="heading-to-text t-lead text-ink-soft measure-lead mx-auto">
                 {biz
                   ? "From the first photo to the finished install, I'll work around your trading hours, so the only thing your customers notice is the garland."
                   : "From the first conversation to the finished installation, I'll take care of the details so you can simply enjoy your doorway all season."}
@@ -882,7 +882,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   Book your{" "}
                   <em className="t-accent">{biz ? "Christmas entrance." : "Christmas doorway."}</em>
                 </SectionTitle>
-                <p className="t-lead max-w-[460px] mt-7" style={{ color: "hsl(var(--text-on-dark))" }}>
+                <p className="t-lead max-w-[460px] heading-to-text" style={{ color: "hsl(var(--text-on-dark))" }}>
                   Late November and early December dates go fast.
                 </p>
                 <p className="t-lead max-w-[460px] mt-4" style={{ color: "hsl(var(--text-dimmed))" }}>

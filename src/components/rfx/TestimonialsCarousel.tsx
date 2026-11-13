@@ -56,12 +56,15 @@ const TestimonialsCarousel = ({ reviews = REVIEWS }: TestimonialsCarouselProps =
       >
         {/* Vertical room inside the carousel's clipping box so the card's
             hover lift and shadow aren't cut off; -my-4 on the carousel takes
-            it back out of the layout. */}
-        <CarouselContent className="-ml-4 md:-ml-6 py-4">
+            it back out of the layout. From tablet up the cards also sit
+            12px in from both sides of that box (half the 24px gap each
+            side), so the outer cards' outlines are never on the clipping
+            edge and don't vanish mid-slide (Matt, 2026-11-13). */}
+        <CarouselContent className="-ml-4 md:ml-0 py-4">
           {reviews.map((t, i) => (
             <CarouselItem
               key={i}
-              className="pl-4 md:pl-6 basis-[86%] md:basis-1/2 lg:basis-1/3"
+              className="pl-4 md:px-3 basis-[86%] md:basis-1/2 lg:basis-1/3"
             >
               <figure className="tcard fade-up h-full">
                 <Stars />

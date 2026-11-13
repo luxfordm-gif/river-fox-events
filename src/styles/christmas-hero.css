@@ -98,8 +98,9 @@ section.rfx-section.xhero-zoom { padding-bottom: 0; }
 .xhero__face--sans   { font-family: var(--font-sans); font-weight: var(--fw-bold); letter-spacing: var(--ls-display); font-size: 0.83em; }
 .xhero__face--fat    { font-family: var(--font-flick-fat); font-size: 0.82em; line-height: 1em; }
 
-/* Heading to content, a step above Heading to text: the script face's
-   tails need the room. */
+/* The one deliberate exception to Heading to text: Heading to content, a
+   step above, because the script face's tails hang below the title and
+   would touch the line at the normal gap (checked 2026-11-13). */
 .xhero__text {
   margin-top: var(--gap-heading-content);
   max-width: 34ch;

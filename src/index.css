@@ -151,7 +151,8 @@
     --section-y: 120px;                /* Section padding · top and bottom of every section (64 phone, 80 laptop, 120 from 1440) */
     --section-gap: calc(var(--section-y) * 1.25);   /* Section gap · the single gap between two sections that share a background, a step above section padding now the whole site is one background (80 phone, 100 laptop, 150 from 1440; Matt, 2026-11-08) */
     --gap-divider: calc(var(--section-gap) / 2);   /* Divider gap · space above and below a section divider line (service-page tiles; the home mission line uses Section padding since 2026-11-10): half a Section gap (64 phone, 50 laptop, 75 from 1440; phones raised from 40 by Matt, 2026-11-09, "it all looks really tight") */
-    --gap-heading-text: 12px;          /* Heading to text · section heading to the paragraph directly under it */
+    --review-lines: 7;                 /* Review length · longest a review card's quote runs before it ends in an ellipsis; the whole card opens the full review on Google (Matt, 2026-11-13) */
+    --gap-heading-text: 20px;          /* Heading to text · any heading (hero H1 or section title) to the paragraph directly under it; one value everywhere (was 12, and heroes used 0-28 one-offs; Matt 2026-11-13) */
     --gap-heading-content: 40px;       /* Heading to content · section heading to a list, photos, a grid or the FAQ questions (32 phone) */
     --gap-text-content: 48px;          /* Text to content · a paragraph down to the list or grid below it (40 phone) */
     --gap-inline: 24px;                /* Inline gap · space between items in a row of text links (16 phone) */
@@ -652,6 +653,15 @@
     line-height: var(--lh-review);
     color: hsl(var(--text-primary));
     margin-top: 2px;
+    /* Long reviews stop at --review-lines with an ellipsis, so one long
+       review doesn't stretch every card and leave the short ones half
+       empty. The words aren't edited: the full text stays in the page for
+       screen readers and search, and the card opens it on Google. */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--review-lines);
+    line-clamp: var(--review-lines);
+    overflow: hidden;
   }
   .tcard-meta {
     display: flex;
@@ -680,8 +690,17 @@
     transition: color .25s ease;
     text-decoration: none;
   }
-  .tcard-link:hover {
+  .tcard-link:hover,
+  .tcard:hover .tcard-link {
     color: hsl(var(--accent-dark));
+  }
+  /* The "via Google" link covers the whole card, so a tap anywhere on it
+     opens the full review. */
+  .tcard-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-large);
   }
   .tcard-dot {
     width: 6px;
@@ -1196,7 +1215,7 @@
     max-width: var(--measure-title);
   }
   .page-header__note {
-    margin-top: 20px;
+    margin-top: var(--gap-heading-text);
     font-family: var(--font-mono);
     font-size: var(--fs-overline);
     letter-spacing: var(--ls-overline);
@@ -1204,15 +1223,11 @@
   }
   /* Lead style, like the service hero sub-copy, close under the H1. */
   .page-header__intro {
-    margin-top: 12px;
+    margin-top: var(--gap-heading-text);
     max-width: var(--measure-lead);
     font-size: var(--fs-lead);
     line-height: var(--lh-lead);
     text-wrap: pretty;
-  }
-  @media (min-width: 768px) {
-    .page-header__note { margin-top: 24px; }
-    .page-header__intro { margin-top: 4px; }
   }
   /* Optional hairline under the intro (Our work, Contact, Journal). The header's bottom
      padding moves above the line, and the section after it opens with the
