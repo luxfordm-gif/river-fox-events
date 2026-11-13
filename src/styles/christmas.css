@@ -85,7 +85,7 @@
   text-transform: uppercase;
   line-height: 1;
   /* Capitals sit high in their line box, so give a touch more room on top. */
-  padding: 7px 11px 6px;
+  padding: var(--tag-pad);
   border-radius: var(--radius-small);
   background: hsl(var(--xmas-tag-bg));
   color: hsl(var(--xmas-tag-fg));
@@ -93,7 +93,7 @@
 }
 /* Where supported, trim the line box to the capitals for exact centring. */
 @supports (text-box: trim-both cap alphabetic) {
-  .xmas-tag { text-box: trim-both cap alphabetic; padding: 7px 11px; }
+  .xmas-tag { text-box: trim-both cap alphabetic; padding: var(--tag-pad); }
 }
 
 /* File input inside the shared .form-row field style. */

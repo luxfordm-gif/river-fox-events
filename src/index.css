@@ -191,7 +191,16 @@
     --menu-rule-gap: 8px;              /* Menu rule gap · above and below the line in a dropdown, and between the phone menu's main links */
     --menu-section-gap: 32px;          /* Menu section gap · between the blocks of the phone menu: links, extra links, contact, button */
     --gap-icon: 8px;                   /* Icon gap · between text and its icon: chevrons, arrows, the Christmas bow (were 6 to 12) */
-    --btn-compact-pad: 8px 16px;       /* Compact button padding · the nav's Enquire now button */
+    --btn-compact-pad: 8px 16px;
+    --btn-pad-y: 14px;                 /* Button padding (top and bottom) · solid buttons; outlined buttons take 1px less for their outline, so both are the same height */
+    --btn-pad-x: 22px;                 /* Button padding (sides) · solid and outlined buttons */
+    --btn-gap: 12px;                   /* Button gap · a button's or text link's label to its arrow (text links were 10) */
+    --btn-link-pad: 10px 0;            /* Text link padding · above and below an underlined text link (See our work, Enquire about...) */
+    --form-pad: 36px;                  /* Form padding · inside the white form card (22px 16px on phones, where the card runs out towards the screen edge) */
+    --field-pad: 8px 14px;             /* Field padding · inside each form field, around its label and input */
+    --card-pad-sm: 28px 26px 24px;     /* Small card padding · review cards */
+    --card-inner-gap: 12px;            /* Card inner gap · between the parts of a small card: stars, quote, name line */
+    --tag-pad: 6px 10px;               /* Tag padding · small labels and badges: EXTRA, photo counts, Most popular (the Christmas tag was 7px 11px) */       /* Compact button padding · the nav's Enquire now button */
     --gap-link-list: 8px;              /* Link list gap · between links in a list, e.g. a footer column */
     --gap-eyebrow: 20px;               /* Eyebrow to title · a small label above a hero or article title, e.g. CHRISTMAS 2026 · NOW BOOKING, JOURNAL (article was 28 / 36) */
     --article-gap: 64px;               /* Article gap · between the blocks of a journal article: header, In short, photos, quotes, enquire box, related (48 phone; were 48 to 96) */
@@ -280,6 +289,7 @@
       --gap-columns: 48px;
       --gap-cards: 32px;
       --article-gap: 48px;
+      --form-pad: 22px 16px;
       --gap-photos: 8px;
       --gap-inline: 16px;
       --card-text-inset: 0px;
@@ -551,8 +561,8 @@
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 0;
+    gap: var(--btn-gap);
+    padding: var(--btn-link-pad);
     border-bottom: 1px solid currentColor;
     transition: gap .4s ease;
     font-weight: var(--fw-medium);
@@ -567,7 +577,7 @@
     font-size: var(--fs-label);
     font-weight: var(--fw-medium);
     letter-spacing: var(--ls-label);
-    padding: 14px 22px;
+    padding: var(--btn-pad-y) var(--btn-pad-x);
     background: hsl(var(--text-primary));
     color: hsl(var(--background));
     text-decoration: none;
@@ -575,7 +585,7 @@
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--btn-gap);
     transition: background .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border-radius: var(--radius-small);
     --btn-fg: hsl(var(--background));
@@ -589,14 +599,14 @@
     font-size: var(--fs-label);
     font-weight: var(--fw-medium);
     letter-spacing: var(--ls-label);
-    padding: 13px 22px;
+    padding: calc(var(--btn-pad-y) - 1px) var(--btn-pad-x);
     background: transparent;
     color: hsl(var(--text-primary));
     border: 1px solid hsl(var(--text-primary) / 0.3);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--btn-gap);
     transition: background .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border-radius: var(--radius-small);
     text-decoration: none;
@@ -667,12 +677,12 @@
   /* Testimonial card — refined editorial */
   .tcard {
     position: relative;
-    padding: 28px 26px 24px;
+    padding: var(--card-pad-sm);
     background: hsl(var(--background-light));   /* light card with a hairline, not cream (Matt, 2026-11-08) */
     border: 1px solid hsl(var(--hair));
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--card-inner-gap);
     border-radius: var(--radius-large);
     box-shadow: 0 1px 2px hsl(var(--text-primary) / 0.05);
     transition: transform .35s cubic-bezier(.22,.7,.2,1), box-shadow .35s ease, border-color .35s ease;
@@ -717,9 +727,9 @@
     letter-spacing: var(--ls-overline);
     text-transform: uppercase;
     color: hsl(var(--text-neutral));
-    padding-top: 14px;
+    padding-top: var(--card-inner-gap);
     border-top: 1px solid hsl(var(--text-primary) / 0.10);
-    margin-top: 4px;
+    margin-top: var(--gap-label-title);
   }
   /* Reviewer name in the body sans, not serif italic (Matt, 2026-11-08). */
   .tcard-meta .name {
@@ -780,7 +790,7 @@
   .form-wrap {
     background: hsl(var(--background-light));
     border: 1px solid hsl(var(--text-primary) / 0.08);
-    padding: 36px;
+    padding: var(--form-pad);
     border-radius: var(--radius-large);
     box-shadow: 0 30px 80px -20px hsl(var(--text-primary) / 0.22), 0 8px 24px -10px hsl(var(--text-primary) / 0.10);
   }
@@ -792,7 +802,7 @@
     background: hsl(var(--background));
     border: 1.5px solid hsl(var(--text-primary) / 0.12);
     border-radius: var(--radius-small);
-    padding: 8px 14px;
+    padding: var(--field-pad);
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -889,7 +899,7 @@
   /* "Most popular" label on a service photo (Matt, 2026-11-08). */
   .exp-card .exp-badge {
     position: absolute; top: 14px; left: 14px; z-index: 4;
-    padding: 6px 10px;
+    padding: var(--tag-pad);
     background: hsl(var(--background-light) / 0.94);
     color: hsl(var(--text-primary));
     border-radius: var(--radius-small);
@@ -1627,8 +1637,6 @@
     }
     /* Reduce dark Enquire section bottom padding so the gap before footer feels right */
     .rfx-enquire { padding-bottom: 40px; }
-    /* Form fields wider — remove form-wrap inner padding & give fields more room */
-    .rfx-enquire .form-wrap { padding: 20px; }
     /* Service cards: cap image height on mobile so title + body stay visible */
     .rfx-svc-img {
       aspect-ratio: auto !important;
@@ -1653,7 +1661,7 @@
     /* Form card on phones: run the white card out towards the screen edges
        (16px gutter instead of 32px) and slim its inner padding, so the fields
        get the width rather than sitting in a narrow card-within-a-card. */
-    .form-wrap { margin-inline: -16px; width: auto !important; padding: 22px 16px !important; }
+    .form-wrap { margin-inline: calc(var(--gutter) / -2); width: auto !important; padding: var(--form-pad) !important; }
     .rfx-mosaic { grid-template-columns: 1fr !important; grid-auto-rows: auto !important; }
     .rfx-mosaic > div { grid-column: 1 / -1 !important; grid-row: auto !important; transform: none !important; }
     .rfx-svc-card { padding: 0 !important; border-left: none !important; }
