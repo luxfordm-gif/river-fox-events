@@ -87,9 +87,8 @@ const Process = ({ steps = DEFAULT_STEPS, tone = "white", sectionId = "process" 
                 className="t-overline label-to-title overflow-hidden inline-block"
               >
                 <span
-                  className="inline-block"
+                  className="inline-block text-accent-warm"
                   style={{
-                    color: "hsl(var(--accent-dark))",
                     transform: stepsIn ? "translateX(0)" : "translateX(-110%)",
                     transition: `transform 1s cubic-bezier(.22,.7,.2,1) ${i * 180 + 80}ms`,
                   }}

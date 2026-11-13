@@ -165,7 +165,7 @@ const Journal = () => {
                 <div className="md:hidden">
                   <a
                     href={`/journal/${a.slug}/`}
-                    className="group flex stack-gap items-stretch border-b border-ink/10 row-pad"
+                    className="group flex stack-gap items-stretch border-b border-hair row-pad"
                   >
                     <div className="relative w-[40%] aspect-[4/5] overflow-hidden bg-ink/5 flex-shrink-0">
                       {a.cardImage && (
@@ -214,7 +214,7 @@ const Journal = () => {
               <button
                 type="button"
                 onClick={() => setPages((p) => p + 1)}
-                className="t-overline text-ink border border-ink/30 hover:border-ink hover:bg-ink hover:text-cream transition-colors px-7 py-3"
+                className="t-overline text-ink border border-hair-strong hover:border-ink hover:bg-ink hover:text-cream transition-colors px-7 py-3"
               >
                 Show more
               </button>

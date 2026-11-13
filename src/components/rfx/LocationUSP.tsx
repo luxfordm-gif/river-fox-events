@@ -114,16 +114,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
                   }ms, transform .9s cubic-bezier(.22,.7,.2,1) ${i * 120}ms`,
                 }}
               >
-                <div
-                  className="flex items-center justify-center icon-above"
-                  style={{
-                    width: 64,
-                    height: 64,
-                    borderRadius: "50%",
-                    background: "hsl(var(--background-warm))",
-                    color: "hsl(var(--accent-dark))",
-                  }}
-                >
+                <div className="flex items-center justify-center icon-above w-16 h-16 rounded-full bg-surface-warm text-accent-warm">
                   <Icon strokeWidth={1.4} size={26} />
                 </div>
                 <h3 className="t-h6 text-ink">

@@ -71,8 +71,7 @@ const LocationGallery = ({
             the portrait ones aren't so deep (Matt,
             2026-11-09). Desktop keeps each photo's own shape. */}
         <div
-          className="flex flex-col cards-gap panel-pad"
-          style={{ background: "hsl(var(--background-warm))" }}
+          className="flex flex-col cards-gap panel-pad bg-surface-warm"
         >
           {/* Mobile only - main image rendered first inside the peach panel */}
           <div className="md:hidden overflow-hidden">

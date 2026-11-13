@@ -33,7 +33,7 @@ const FaqList = ({ items, defaultOpen = null }: FaqListProps) => {
           <div
             key={i}
             data-state={state}
-            className="faq-rf-item border-t border-ink/20 last:border-b last:border-ink/20"
+            className="faq-rf-item border-t border-hair-strong last:border-b last:border-hair-strong"
           >
             <h3 className="flex">
               <button

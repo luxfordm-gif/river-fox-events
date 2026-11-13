@@ -186,7 +186,7 @@ const About = () => {
 
             <div
               ref={statsRef}
-              className="divided grid grid-cols-3 inline-gap items-baseline border-t border-ink/20 max-w-[560px]"
+              className="divided grid grid-cols-3 inline-gap items-baseline border-t border-hair-strong max-w-[560px]"
               style={{ alignItems: "baseline" }}
             >
               {STATS.map((s, i) => (

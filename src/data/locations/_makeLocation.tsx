@@ -388,23 +388,6 @@ export function makeLocation(input: LocationInput): LocationConfig {
           <em className="t-accent">from £300.</em>
         </>
       ),
-      tiers: [
-        {
-          price: "From £300",
-          label: "Intimate",
-          body: "Intimate celebrations · Single focal point installation.",
-        },
-        {
-          price: "From £600",
-          label: "Full styling",
-          body: "Full styling · Multiple installations · Backdrops and tablescape.",
-        },
-        {
-          price: "From £1,500",
-          label: "Premium",
-          body: "Large-scale events · Premium full-venue transformation.",
-        },
-      ],
       footnote:
         "All pricing is indicative - every proposal is tailored.",
     },

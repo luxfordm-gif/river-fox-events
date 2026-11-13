@@ -100,11 +100,8 @@ const PageTransition = () => {
     <div
       ref={ref}
       aria-hidden="true"
-      className="fixed inset-0 z-[200] pointer-events-none"
-      style={{
-        background: "hsl(var(--background))",
-        opacity: 0,
-      }}
+      className="fixed inset-0 z-[200] pointer-events-none bg-background"
+      style={{ opacity: 0 }}
     />
   );
 };

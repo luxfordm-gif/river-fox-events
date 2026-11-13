@@ -52,8 +52,7 @@ const ArticleCta = ({
         </h2>
         {body && (
           <p
-            className="t-small heading-to-text max-w-[440px] mx-auto"
-            style={{ color: "hsl(var(--text-dimmed))" }}
+            className="t-small heading-to-text max-w-[440px] mx-auto text-ink-faint"
           >
             {body}
           </p>

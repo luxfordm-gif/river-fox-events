@@ -62,15 +62,13 @@ const ArticleHero = ({
 
       <div className="text-to-action flex items-center inline-gap max-w-[460px] mx-auto">
         <span
-          className="h-px flex-1"
+          className="h-px flex-1 bg-accent-warm/45"
           aria-hidden="true"
-          style={{ background: "hsl(var(--accent-dark) / 0.45)" }}
         />
         <ArticleShareLinks url={url} title={title} />
         <span
-          className="h-px flex-1"
+          className="h-px flex-1 bg-accent-warm/45"
           aria-hidden="true"
-          style={{ background: "hsl(var(--accent-dark) / 0.45)" }}
         />
       </div>
     </header>

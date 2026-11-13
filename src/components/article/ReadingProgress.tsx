@@ -27,8 +27,7 @@ const ReadingProgress = () => {
   return (
     <div
       aria-hidden="true"
-      className="fixed top-0 left-0 right-0 z-[300] h-[2px] pointer-events-none"
-      style={{ background: "hsl(var(--text-primary) / 0.06)" }}
+      className="fixed top-0 left-0 right-0 z-[300] h-[2px] pointer-events-none bg-ink/[0.06]"
     >
       <div
         className="h-full"
