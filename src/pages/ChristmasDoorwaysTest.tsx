@@ -802,7 +802,7 @@ const ChristmasDoorwaysTest = ({ variant = "home" }: { variant?: Variant }) => {
         {!biz && AD_STORIES.length > 0 && (
           <section id={AD_ANCHOR} className="rfx-section white !pt-0 overflow-x-clip" aria-labelledby="xmas-ad-heading">
             <div className="container-rfx">
-              <BowDivider />
+              {/* No bow here on the test page: the page is long enough (Matt, 2026-11-13). */}
               <div className="max-w-[760px] mx-auto text-center fade-up">
                 <SectionTitle id="xmas-ad-heading" snow>
                   Watch the{" "}
