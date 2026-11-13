@@ -166,7 +166,7 @@
     --container-max: 1440px;           /* Content width · the widest the page content gets */
     --measure-title: 18ch;             /* Title width · widest a centred section title runs before it wraps, with balanced lines (Matt, 2026-11-13) */
     --measure-lead: 44ch;              /* Intro width · widest the intro paragraph under a section title runs (Matt, 2026-11-13) */
-    --nav-height: 78px;                /* Nav height · the fixed nav bar (78 at every width), for anything that starts just under it */
+    --nav-height: 78px;                /* Nav height · the fixed nav bar, exactly this tall, for anything that starts just under it (64 phone, Matt 2026-11-13) */
     --nav-pad-x: 40px;                 /* Nav side padding · space at the left and right of the nav bar (was 56; 32 on tablets, 1024-1366; Matt 2026-11-13) */
     --nav-link-gap: 32px;              /* Nav link gap · space between Home, Services, Our work... (28 on tablets, 1024-1366) */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
@@ -250,7 +250,8 @@
       --card-text-inset: 0px;
       --card-pad: 28px;
       --gutter: 32px;
-      --page-pad-top: 112px;   /* was 106; 6px more air under the nav (Matt, 2026-11-08) */
+      --nav-height: 64px;      /* a shallower bar on phones (was 78, Matt 2026-11-13) */
+      --page-pad-top: 98px;    /* nav + 34px: titles keep the same space under the nav as before (was 112 with the 78 nav) */
       --hero-pad-top: var(--page-pad-top);   /* heroes start where inner-page titles do */
       --hero-gap: 40px;
       /* slightly tighter corners on small screens */
@@ -282,7 +283,7 @@
        2026-11-07). Same-page anchor links glide via useSmoothScroll; this
        padding stops the fixed nav covering the top of the section. */
     scroll-behavior: auto;
-    scroll-padding-top: 80px;
+    scroll-padding-top: var(--nav-height);   /* jumps to #sections land just under the nav, at every width */
   }
   body {
     @apply text-foreground antialiased;
