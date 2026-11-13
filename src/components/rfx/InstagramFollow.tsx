@@ -13,7 +13,7 @@ const InstagramFollow = () => {
     >
       <div className="container-rfx">
         <div className="border-t border-divider rule-to-content fade-up rfx-instagram-inner">
-          <div className="flex flex-col items-center text-center max-w-[680px] mx-auto">
+          <div className="flex flex-col items-center text-center measure-reading mx-auto">
             <div className="t-overline text-ink-soft eyebrow-above inline-flex items-center icon-gap">
               <span className="h-px w-8 bg-ink/30" aria-hidden="true" />
               Behind the scenes

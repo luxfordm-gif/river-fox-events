@@ -56,7 +56,7 @@ const Welcome = () => {
 
         <section className="container-rfx section-bottom">
           <div
-            className="max-w-[680px] mx-auto article-pad t-lead text-ink text-center paragraphs"
+            className="measure-reading mx-auto article-pad t-lead text-ink text-center paragraphs"
           >
             <p>
               If you've worked with us under the name{" "}

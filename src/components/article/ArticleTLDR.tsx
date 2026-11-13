@@ -12,7 +12,7 @@ type Props = {
 const ArticleTLDR = ({ children }: Props) => (
   // Top margin tighter than bottom - pulls the card up close to the
   // social-share row at the foot of the article hero.
-  <aside className="max-w-[720px] mx-auto article-block-after article-pad">
+  <aside className="measure-reading mx-auto article-block-after article-pad">
     <div
       // Pinky-peach surface at 20% opacity - soft fill, full-strength stroke.
       className="rounded-large box-pad border bg-surface-warm/20 border-accent-warm"

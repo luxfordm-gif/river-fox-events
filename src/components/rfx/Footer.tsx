@@ -107,7 +107,7 @@ const Footer = () => {
                 RIVER&nbsp;FOX&nbsp;EVENTS
               </div>
               <p
-                className="t-meta max-w-[360px] heading-to-text text-ink-faint"
+                className="t-meta measure-card heading-to-text text-ink-faint"
               >
                 Luxury event styling across Surrey. Formerly known as Lollipop Balloons.
               </p>

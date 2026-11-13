@@ -101,7 +101,7 @@ const FaqSection = ({
           </h2>
         </div>
 
-        <div className="max-w-[980px] mx-auto">
+        <div className="container-narrow mx-auto">
           <FaqList items={faqs} defaultOpen={defaultOpen === false ? null : Number(defaultOpen.replace("item-", ""))} />
         </div>
       </div>

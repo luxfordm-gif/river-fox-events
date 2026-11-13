@@ -109,7 +109,7 @@ const LocationPage = () => {
                 // Fraunces, so the display size overflows the container.
                 // Mobile max-w is 20ch so longer town names ("Oxshott",
                 // "Walton-on-Thames") aren't forced into a narrow column.
-                className="t-h1 max-w-[20ch] md:max-w-none mx-auto break-words text-pretty"
+                className="t-h1 measure-headline md:max-w-none mx-auto break-words text-pretty"
               >
                 {loc.hero.lines.map((line, i) => (
                   <span
@@ -126,7 +126,7 @@ const LocationPage = () => {
                 ))}
               </h1>
               {loc.hero.sub && (
-                <p className="t-lead text-ink-soft max-w-[520px] heading-to-text fade-up in text-center">
+                <p className="t-lead text-ink-soft measure-lead heading-to-text fade-up in text-center">
                   {loc.hero.sub}
                 </p>
               )}

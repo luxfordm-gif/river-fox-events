@@ -29,7 +29,7 @@ const ArticleCta = ({
 }: Props) => {
   if (variant === "inline") {
     return (
-      <div className="article-block max-w-[720px] mx-auto article-pad text-center">
+      <div className="article-block measure-reading mx-auto article-pad text-center">
         <a href={href} onClick={handleEnquireClick} className="btn-solid-rf accent">
           {label} <span>→</span>
         </a>
@@ -38,9 +38,9 @@ const ArticleCta = ({
   }
 
   return (
-    <aside className="max-w-[720px] mx-auto article-block article-pad">
+    <aside className="measure-reading mx-auto article-block article-pad">
       <div className="rounded-large bg-surface-deep text-on-deep panel-pad text-center">
-        <h2 className="t-h4 max-w-[20ch] mx-auto">
+        <h2 className="t-h4 measure-headline mx-auto">
           {heading ?? (
             <>
               Plan your{" "}
@@ -52,7 +52,7 @@ const ArticleCta = ({
         </h2>
         {body && (
           <p
-            className="t-small heading-to-text max-w-[440px] mx-auto text-ink-faint"
+            className="t-small heading-to-text measure-lead mx-auto text-ink-faint"
           >
             {body}
           </p>

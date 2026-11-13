@@ -19,6 +19,11 @@ const BASELINE = {
   stylesheetRawSpacing: 123, // padding / margin / gap declarations with a px, rem, vw or vh value and no var()
   arbitrarySpacingClasses: 6, // Tailwind pt-[134px], gap-[56px] ...
   inlineSpacingStyles: 6, // style={{ paddingTop: ... }}
+  // One-off widths max-w-[460px], max-w-[44ch] ... (2026-11-13: 59 -> 5). The 5
+  // left are deliberate: the town hero photo fan's two photo sizes and the
+  // Christmas hero intro (46ch on phones, 70ch from tablet so the button
+  // stays in view). Use --measure-* / --container-narrow instead.
+  oneOffWidths: 5,
   // Tailwind's own spacing scale in a className: mt-6, mb-10, gap-3, px-4 ...
   // (0 is neutral and not counted). These slipped past the checks above and
   // were behind the uneven heading and hero gaps found on 2026-11-13. The
@@ -82,6 +87,11 @@ describe("spacing: no new hard-coded values", () => {
   it("components don't gain Tailwind scale spacing like mt-6 or gap-3 (use a token class)", () => {
     const n = countScale(components);
     expect(n, `Tailwind scale spacing classes: ${n} (baseline ${BASELINE.tailwindScaleSpacing}). Use a spacing token class (.heading-to-text, .text-to-content ...) instead.`).toBeLessThanOrEqual(BASELINE.tailwindScaleSpacing);
+  });
+
+  it("components don't gain one-off widths like max-w-[460px] (use a width token)", () => {
+    const n = count(components, /(?<![\w-])(?:[a-z]+:)*max-w-\[(?!var\()[^\]]+\]/g);
+    expect(n, `one-off max-widths: ${n} (baseline ${BASELINE.oneOffWidths}). Use measure-lead / measure-card / measure-reading / measure-headline / container-narrow.`).toBeLessThanOrEqual(BASELINE.oneOffWidths);
   });
 
   it("components don't gain inline spacing styles", () => {

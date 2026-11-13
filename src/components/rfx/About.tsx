@@ -155,7 +155,7 @@ const About = () => {
               </em>
             </SectionHeading>
 
-            <div className="t-body heading-to-text paragraphs text-ink-soft max-w-[560px]">
+            <div className="t-body heading-to-text paragraphs text-ink-soft measure-lead">
               <p className="text-ink">
                 <strong>
                   I started River Fox Events after running a teepee sleepover
@@ -186,7 +186,7 @@ const About = () => {
 
             <div
               ref={statsRef}
-              className="divided grid grid-cols-3 inline-gap items-baseline border-t border-hair-strong max-w-[560px]"
+              className="divided grid grid-cols-3 inline-gap items-baseline border-t border-hair-strong measure-lead"
               style={{ alignItems: "baseline" }}
             >
               {STATS.map((s, i) => (
