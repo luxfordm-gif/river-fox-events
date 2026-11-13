@@ -37,7 +37,7 @@ const Hero = () => {
               Reserve your date <span className="t-icon">→</span>
             </a>
           </div>
-          <TrustLine linked className="mt-6 text-center fade-up in" />
+          <TrustLine linked className="text-center fade-up in" />
         </div>
       </div>
 

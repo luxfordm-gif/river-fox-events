@@ -19,7 +19,7 @@ const TrustLine = ({ linked = false, onDark = false, className = "" }: TrustLine
     "Google reviews"
   );
   return (
-    <p className={`t-meta ${onDark ? "trust-line--dark" : "text-ink-soft"} ${className}`}>
+    <p className={`trust-line t-meta ${onDark ? "trust-line--dark" : "text-ink-soft"} ${className}`}>
       <span className={onDark ? "" : "text-accent-warm"} aria-hidden="true">★★★★★</span>{" "}
       <span className="sr-only">Five-star </span>
       {reviews}

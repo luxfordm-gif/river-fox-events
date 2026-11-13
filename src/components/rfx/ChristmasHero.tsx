@@ -316,7 +316,7 @@ const ChristmasHero = ({
           </a>
         )}
         {/* Trust line, on the homepage only (Matt, 2026-11-13). */}
-        {trust && <TrustLine linked onDark className="xhero__trust" />}
+        {trust && <TrustLine linked onDark />}
       </div>
     </div>
   );

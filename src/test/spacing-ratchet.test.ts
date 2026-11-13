@@ -30,9 +30,7 @@ const walk = (dir: string, ext: RegExp): string[] =>
   });
 
 const sheets = [join(SRC, "index.css"), ...walk(join(SRC, "styles"), /\.css$/)].filter((f) => !f.endsWith("style-guide.css"));
-// ChristmasDoorwaysTest.tsx is a temporary copy of the live page for a deploy
-// preview (2026-11-13), so its inherited one-offs aren't counted twice.
-const components = walk(SRC, /\.tsx$/).filter((f) => !f.endsWith("StyleGuide.tsx") && !f.endsWith("ChristmasDoorwaysTest.tsx"));
+const components = walk(SRC, /\.tsx$/).filter((f) => !f.endsWith("StyleGuide.tsx"));
 
 const DECL = /(?<![\w-])(padding|margin|gap|row-gap|column-gap|padding-(?:top|bottom|left|right)|margin-(?:top|bottom|left|right))\s*:\s*([^;}]+)/g;
 const ARBITRARY = /(?<![\w-])!?(?:[a-z]+:)*!?(?:p|px|py|pt|pb|pl|pr|m|mx|my|mt|mb|ml|mr|gap|gap-x|gap-y|space-y|space-x)-\[[^\]]*\d+(?:px|rem)[^\]]*\]/g;
