@@ -548,6 +548,9 @@
     --btn-fg: hsl(var(--text-primary));
   }
   .btn-ghost-rf:hover { background: hsl(var(--text-primary)); --btn-fg: hsl(var(--background)); }
+  /* Ghost button on a dark section (the enquire panel). */
+  .btn-ghost-rf.on-dark { border-color: hsl(var(--text-on-dark) / 0.4); --btn-fg: hsl(var(--text-on-dark)); }
+  .btn-ghost-rf.on-dark:hover { background: hsl(var(--text-on-dark)); --btn-fg: hsl(var(--text-primary)); }
 
   /* Button hover: label roll (Matt chose it, 2026-11-08). The label and arrow
      are drawn twice as text shadows, the second copy just out of sight
@@ -971,7 +974,9 @@
      content (list, photos, grid, FAQ), text -> content. One token each. */
   .heading-to-content { margin-bottom: var(--gap-heading-content); }
   .heading-to-text { margin-top: var(--gap-heading-text); }
-  .trust-line { margin-top: var(--gap-button-trust); }
+  /* Looser than t-meta's own line height: on phones it wraps to two lines
+     and read tight (Matt, 2026-11-13). */
+  .trust-line { margin-top: var(--gap-button-trust); line-height: var(--lh-body); }
   .text-to-content { margin-top: var(--gap-text-content); }
   /* Card / item title to its text: one gap everywhere (Matt, 2026-11-08). */
   .title-to-text { margin-top: var(--gap-title-body); }

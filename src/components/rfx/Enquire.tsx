@@ -1,17 +1,24 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { trackLead } from "@/lib/track";
+import { whatsappHref } from "@/lib/whatsapp";
+
+/* WhatsApp button beside the form, on every device: it opens WhatsApp Web on
+   a computer, where the phone number can't be tapped (Matt, 2026-11-13). */
+const ENQUIRE_WHATSAPP = whatsappHref("Hi Laura, I'd like a quote for an event. My date and postcode are ");
 
 type EnquireProps = {
-  defaultEventType?: "Children's party" | "Milestone celebration" | "Corporate event" | "Other";
+  defaultEventType?: "" | "Children's party" | "Milestone celebration" | "Corporate event" | "Other";
   venuePlaceholder?: string;
 };
 
 const Enquire = ({
-  defaultEventType = "Children's party",
+  defaultEventType = "",
   venuePlaceholder = "e.g. at home in Cobham",
 }: EnquireProps = {}) => {
   const [submitting, setSubmitting] = useState(false);
+  const [sentTo, setSentTo] = useState<string | null>(null);
+  const [moreOpen, setMoreOpen] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,13 +40,14 @@ const Enquire = ({
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
       // Google Ads conversion - only fires on a confirmed submission, and the
       // typeof guard means it no-ops when the Google tag is blocked by consent.
-      if (typeof window.gtag === "function") {
+      if (typeof window.gtag === "function" && window.location.hostname === "riverfoxevents.co.uk") {
         window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
       }
       // GA4 lead, sent only after Accept on the cookie banner (src/lib/track.ts).
       // Read before form.reset() below clears the fields.
       trackLead(form);
-      toast.success("Thank you - your enquiry has been received. I'll be in touch within 1-2 working days to discuss your event in more detail. Laura");
+      const first = String(new FormData(form).get("name") || "").trim().split(" ")[0];
+      setSentTo(first || "there");
       form.reset();
     } catch (err) {
       toast.error("Sorry - something went wrong. Please email Riverfoxevents@gmail.com directly.");
@@ -83,6 +91,11 @@ const Enquire = ({
               </a>
               .
             </p>
+            <div className="mt-7">
+              <a href={ENQUIRE_WHATSAPP} className="btn-ghost-rf on-dark">
+                WhatsApp Laura
+              </a>
+            </div>
           </div>
 
           {/* Right: form - wired to Netlify Forms (see index.html for build-time
@@ -111,46 +124,73 @@ const Enquire = ({
                 your event in more detail.
               </p>
             </div>
+            {sentTo ? (
+              /* Thank-you panel instead of a toast, as on the Christmas
+                 pages (Matt, 2026-11-13). */
+              <div className="text-left" role="status">
+                <h3 className="t-h4 text-primary">Thank you, {sentTo}.</h3>
+                <p className="title-to-text t-body text-ink-soft">
+                  Your enquiry has been received. I'll be in touch within 1 to
+                  2 working days to discuss your event in more detail.
+                </p>
+                <p className="mt-4 t-body text-ink-soft">
+                  If it's easier, send me a message on WhatsApp too. Laura
+                </p>
+                <div className="mt-6">
+                  <a href={ENQUIRE_WHATSAPP} className="btn-ghost-rf">
+                    WhatsApp Laura
+                  </a>
+                </div>
+              </div>
+            ) : (
+            <>
             <div className="form-grid">
               <label className="form-row">
                 <span className="lbl">Full name</span>
-                <input type="text" name="name" placeholder="Your full name" required />
+                <input type="text" name="name" placeholder="Your full name" autoComplete="name" required />
               </label>
               <label className="form-row">
                 <span className="lbl">Email address</span>
-                <input type="email" name="email" placeholder="you@example.com" required />
+                <input type="email" name="email" placeholder="you@example.com" autoComplete="email" required />
               </label>
               <label className="form-row">
                 <span className="lbl">Phone number (optional)</span>
-                <input type="tel" name="phone" placeholder="07…" />
+                <input type="tel" name="phone" placeholder="07…" autoComplete="tel" />
               </label>
               <label className="form-row">
                 <span className="lbl">Event date</span>
                 <input type="date" name="date" />
               </label>
               <label className="form-row full">
+                <span className="lbl">Message</span>
+                <textarea
+                  name="vision"
+                  rows={3}
+                  placeholder="Theme, colours, inspiration, or anything you already have in mind"
+                />
+              </label>
+            </div>
+            {/* Optional extras, folded away. Untouched ones send blank, so
+                Laura never sees an answer the customer didn't choose. */}
+            <div id="enquire-more-details" hidden={!moreOpen}>
+            <div className="form-grid mt-5">
+              <label className="form-row full">
                 <span className="lbl">Event location / venue</span>
                 <input type="text" name="venue" placeholder={venuePlaceholder} />
               </label>
               <label className="form-row full">
                 <span className="lbl">Type of event</span>
-                <select name="type" defaultValue={defaultEventType}>
+                <select name="type" defaultValue={defaultEventType === "Corporate event" ? "Corporate / brand event" : defaultEventType}>
+                  <option value="">Choose one</option>
                   <option>Children's party</option>
                   <option>Milestone celebration</option>
                   <option>Corporate / brand event</option>
                 </select>
               </label>
-              <label className="form-row full">
-                <span className="lbl">Tell me about your vision</span>
-                <textarea
-                  name="vision"
-                  rows={4}
-                  placeholder="Theme, colours, inspiration, or anything you already have in mind"
-                />
-              </label>
               <label className="form-row">
                 <span className="lbl">Planned investment</span>
-                <select name="budget" defaultValue="Under £300">
+                <select name="budget" defaultValue="">
+                  <option value="">Choose one</option>
                   <option>Under £300</option>
                   <option>£300 – £600</option>
                   <option>£600 – £1,000</option>
@@ -160,8 +200,9 @@ const Enquire = ({
                 </select>
               </label>
               <label className="form-row">
-                <span className="lbl">How did you hear about us? (optional)</span>
-                <select name="referral" defaultValue="Google">
+                <span className="lbl">How did you hear about us?</span>
+                <select name="referral" defaultValue="">
+                  <option value="">Choose one</option>
                   <option>Google</option>
                   <option>Recommendation</option>
                   <option>Facebook</option>
@@ -171,15 +212,28 @@ const Enquire = ({
                 </select>
               </label>
             </div>
-            <div className="flex justify-center lg:justify-end items-center mt-6 gap-4 flex-wrap text-center">
+            </div>
+            {/* The toggle and the button share one row, as on the Christmas form. */}
+            <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <button
+                type="button"
+                aria-expanded={moreOpen}
+                aria-controls="enquire-more-details"
+                onClick={() => setMoreOpen((o) => !o)}
+                className="t-label text-primary w-full sm:w-auto text-left text-pretty py-3 sm:py-0"
+              >
+                {moreOpen ? "− Fewer details" : "+ Add more details for a quicker quote (optional)"}
+              </button>
               <button
                 type="submit"
                 disabled={submitting}
-                className="btn-solid-rf accent disabled:opacity-60"
+                className="btn-solid-rf accent w-full sm:w-auto justify-center shrink-0 disabled:opacity-60"
               >
-                {submitting ? "Sending…" : "Send enquiry"} <span>→</span>
+                {submitting ? "Sending…" : "Request my quote"} <span>→</span>
               </button>
             </div>
+            </>
+            )}
           </form>
         </div>
       </div>
