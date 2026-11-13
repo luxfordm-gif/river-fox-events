@@ -95,7 +95,7 @@ const LocationPage = () => {
             <Hero /> on the homepage so location pages feel of-a-piece. */}
         <section
           id="top"
-          className="rfx-hero rfx-hero-scale pb-4 md:pb-6"
+          className="rfx-hero rfx-hero-scale hero-foot"
           aria-labelledby={`loc-${loc.slug}-hero-heading`}
         >
           <div className="container-rfx">

@@ -62,7 +62,7 @@ const EventCard = ({
     <figure className="gallery-event fade-up m-0" data-title={event.title}>
       <Tile photo={lead} sizes={compact ? COMPACT_SIZES : GRID_SIZES} onOpen={() => open(firstIndex)} eager={eager} />
       {extras.length > 0 && (
-        <div className={`grid gap-2 md:gap-3 mt-2 md:mt-3 ${extras.length === 1 ? "grid-cols-1" : "grid-cols-2"}`}>
+        <div className={`grid photos-gap photos-gap-top ${extras.length === 1 ? "grid-cols-1" : "grid-cols-2"}`}>
           {extras.map((p, i) => (
             <Tile
               key={p.source}
@@ -75,7 +75,7 @@ const EventCard = ({
           ))}
         </div>
       )}
-      <figcaption className="mt-3">
+      <figcaption className="photo-caption">
         <span
           className="block t-small text-ink"
           style={{ textWrap: "balance" }}
@@ -84,7 +84,7 @@ const EventCard = ({
         </span>
         {event.place && (
           <span
-            className="block mt-1 t-overline text-ink-soft"
+            className="block meta-below t-overline text-ink-soft"
           >
             {event.place}
           </span>
@@ -241,7 +241,7 @@ const Section = ({
       aria-labelledby={`${section.id}-heading`}
     >
       <div className="container-rfx">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-10 heading-to-content">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between cards-gap heading-to-content">
           <h2
             id={`${section.id}-heading`}
             className="t-h3 fade-up m-0"
@@ -262,7 +262,7 @@ const Section = ({
           ))}
         </div>
         {hidden > 0 && (
-          <div className="mt-10 md:mt-14 flex justify-center">
+          <div className="text-to-content flex justify-center">
             <button type="button" className="btn-ghost-rf" onClick={() => setExpanded(true)}>
               Show {hidden} more <span aria-hidden="true">↓</span>
             </button>
@@ -357,7 +357,7 @@ const Viewer = ({
       </div>
       <div className="work-viewer__cap">
         <div className="t-small">{item.title}</div>
-        <div className="mt-1 t-overline opacity-70">
+        <div className="meta-below t-overline opacity-70">
           {item.place ? `${item.place} · ` : ""}{index + 1} / {items.length}
         </div>
       </div>
@@ -566,7 +566,7 @@ const OurWork = () => {
               Message me the date and the occasion, and I'll get back to you
               with ideas and a quote.
             </p>
-            <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent mt-8">
+            <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent text-to-action">
               Reserve your date <span>→</span>
             </a>
           </div>

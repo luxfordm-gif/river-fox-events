@@ -24,7 +24,13 @@ const BASELINE = {
   // were behind the uneven heading and hero gaps found on 2026-11-13. The
   // token migration moves them onto spacing tokens a batch at a time; lower
   // this number after each batch so it can't creep back up.
-  tailwindScaleSpacing: 238,
+  tailwindScaleSpacing: 53,
+  // The 53 left on 2026-11-13 are deliberate component internals, not layout:
+  // the film player's controls and badges (StoryVideos), the reviews
+  // carousel's edge bleed (TestimonialsCarousel), tap-area padding on small
+  // buttons, 1-2px optical nudges (nav chevrons, bow, logo line, footer
+  // arrow), article photos' wider desktop inset, the phone swipe row of
+  // service tiles, the FAQ row grid and the Journal "Show more" button.
 };
 
 const SRC = join(__dirname, "..");

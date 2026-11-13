@@ -401,7 +401,7 @@ const BowDivider = () => (
     sizes="72px"
     alt=""
     aria-hidden="true"
-    className="block mx-auto w-[60px] md:w-[72px] h-auto mb-14 md:mb-20"
+    className="block mx-auto w-[60px] md:w-[72px] h-auto divider-gap"
     width={320}
     height={330}
     loading="lazy"
@@ -569,10 +569,10 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
       <main>
         {/* Hero: garland drapes edge to edge above the headline, then the
             photo fan (scroll strip on phones), as on the location pages. */}
-        <section aria-labelledby="xmas-hero-heading" className="rfx-hero pt-[76px] md:pt-[76px] pb-4 md:pb-6">
+        <section aria-labelledby="xmas-hero-heading" className="rfx-hero hero-under-nav hero-foot">
           <HeroGarland />
           <div className="container-rfx">
-            <div className="mt-2 md:mt-4 mb-4 md:mb-9 flex flex-col items-center text-center">
+            <div className="mt-2 md:mt-4 hero-gap-below flex flex-col items-center text-center">
               <p className="t-overline text-ink-soft">
                 {biz ? "Christmas 2026 · For businesses" : "Christmas 2026 · Now booking"}
               </p>
@@ -590,7 +590,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   )}
                 </span>
               </h1>
-              <div className="heading-to-text max-w-[46ch] md:max-w-[70ch] t-lead text-ink-soft space-y-4">
+              <div className="heading-to-text max-w-[46ch] md:max-w-[70ch] t-lead text-ink-soft paragraphs">
                 {biz ? (
                   <>
                     <p>
@@ -692,10 +692,10 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                       decoding="async"
                     />
                   </div>
-                  <h3 className="t-h4 text-primary mt-6">
+                  <h3 className="t-h4 text-primary media-to-title">
                     {card.title}
                   </h3>
-                  <div className="title-to-text t-body text-ink-soft max-w-[52ch] space-y-3">
+                  <div className="title-to-text t-body text-ink-soft max-w-[52ch] paragraphs">
                     {card.body.map((para, i) => (
                       <p key={i}>{para}</p>
                     ))}
@@ -706,7 +706,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
 
             {/* Fresh or faux: a garland cutout (transparent WebP, shadow from
                 CSS), the section heading under it, then the two options. */}
-            <div className="mt-20 md:mt-28 max-w-[1040px] mx-auto">
+            <div className="subsection-gap max-w-[1040px] mx-auto">
               <img
                 src={imgGarland1200}
                 srcSet={`${imgGarland800} 800w, ${imgGarland1200} 1200w, ${imgGarland1440} 1440w`}
@@ -718,9 +718,9 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 loading="lazy"
                 decoding="async"
               />
-              <div className="max-w-[760px] mx-auto text-center fade-up mt-8 md:mt-10">
+              <div className="max-w-[760px] mx-auto text-center fade-up below-heading">
                 <p className="t-overline text-ink-soft">Garland options</p>
-                <div className="mt-5">
+                <div className="eyebrow-to-title">
                   <SectionTitle id="xmas-options-heading" snow>
                     Choose your{" "}
                     <em className="t-accent">Christmas garland.</em>
@@ -740,10 +740,10 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     <h3 className="t-h4 text-primary">
                       {opt.title}
                     </h3>
-                    <p className="t-small italic text-accent-warm mt-1">{opt.note}</p>
+                    <p className="t-small italic text-accent-warm meta-below">{opt.note}</p>
                     {/* Keep to three lines max (Matt, 2026-11-04). */}
-                    <p className="mt-4 t-small text-ink-soft max-w-[42ch] md:max-w-[40ch]">{opt.body}</p>
-                    <div className="mt-auto pt-6">
+                    <p className="title-to-text t-small text-ink-soft max-w-[42ch] md:max-w-[40ch]">{opt.body}</p>
+                    <div className="mt-auto card-action">
                       <a
                         href="#enquire"
                         onClick={(e) => {
@@ -831,15 +831,15 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
             </div>
             <ol className="text-to-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 cards-gap">
               {(biz ? STEPS_BUSINESS : STEPS).map((s) => (
-                <li key={s.n} className="fade-up border-t pt-6 relative" style={{ borderColor: "hsl(var(--text-primary) / 0.14)" }}>
+                <li key={s.n} className="fade-up border-t rule-to-content relative" style={{ borderColor: "hsl(var(--text-primary) / 0.14)" }}>
                   <SnowCap mode="edge" radius={0} />
                   {/* Extra tag sits by the step number so step titles stay on
                       one line, even in the narrow 4-column layout. */}
-                  <div className="flex items-center gap-3 h-[22px]">
+                  <div className="flex items-center icon-gap label-to-title h-[22px]">
                     <span className="t-overline text-ink-soft">{s.n}</span>
                     {s.extra && <span className="xmas-tag">Extra</span>}
                   </div>
-                  <h3 className="t-h5 text-primary mt-3">
+                  <h3 className="t-h5 text-primary">
                     {s.title}
                   </h3>
                   <p className="title-to-text t-small text-ink-soft">{s.body}</p>

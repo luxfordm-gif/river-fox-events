@@ -11,7 +11,7 @@ import imgDetail from "@/assets/journal/from-design-to-delivery/dinosaur-party-d
 const FromDesignToDeliveryArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           Every setup starts long before the day itself - usually with a
           hand-drawn concept render and a tight&nbsp;palette.

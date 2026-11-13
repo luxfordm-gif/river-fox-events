@@ -57,7 +57,7 @@ const galleryImages = [
 const LollipopRebrandArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           <strong>Lollipop Balloons</strong> is now{" "}
           <strong>River Fox Events</strong>.

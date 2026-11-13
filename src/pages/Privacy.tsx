@@ -108,7 +108,7 @@ const Privacy = () => {
           </p>
         </ArticleProse>
 
-        <div className="pb-24 md:pb-32" />
+        <div className="section-bottom" />
       </main>
       <Footer />
     </div>

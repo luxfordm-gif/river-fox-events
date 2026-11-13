@@ -87,7 +87,7 @@ const ArticleImageCarousel = ({
                 />
               </div>
               {img.caption && (
-                <figcaption className="t-meta media-to-caption text-center italic text-ink-soft max-w-[640px] mx-auto">
+                <figcaption className="t-meta photo-caption text-center italic text-ink-soft max-w-[640px] mx-auto">
                   {img.caption}
                 </figcaption>
               )}
@@ -99,7 +99,7 @@ const ArticleImageCarousel = ({
       </Carousel>
 
       <div
-        className="flex justify-center icon-gap media-to-caption"
+        className="carousel-dots"
         role="tablist"
         aria-label="Gallery pagination"
       >

@@ -276,7 +276,7 @@ const CPIncluded = ({
     >
       <div className="container-rfx">
         <div className="text-center max-w-[760px] mx-auto">
-          <div className="t-overline text-ink-soft mb-3">
+          <div className="t-overline text-ink-soft eyebrow-above">
             {eyebrow}
           </div>
           <h2
@@ -296,7 +296,7 @@ const CPIncluded = ({
 
         <div
           ref={ref}
-          className={`mt-14 md:mt-20 grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-6 ${
+          className={`text-to-content grid grid-cols-1 sm:grid-cols-2 cards-gap ${
             items.length >= 5 ? "lg:grid-cols-5" : items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
           }`}
         >
@@ -309,7 +309,7 @@ const CPIncluded = ({
             return (
             <div
               key={label}
-              className={`flex flex-col items-center text-center px-4 ${
+              className={`flex flex-col items-center text-center card-inset ${
                 isOrphanInTwoCol ? "sm:col-span-2 lg:col-span-1" : ""
               }`}
               style={{
@@ -321,7 +321,7 @@ const CPIncluded = ({
               }}
             >
               <div
-                className="flex items-center justify-center mb-5"
+                className="flex items-center justify-center icon-above"
                 style={{
                   width: 64,
                   height: 64,
@@ -349,7 +349,7 @@ const CPIncluded = ({
         </div>
 
         <p
-          className="t-small italic text-ink text-center mt-14 max-w-[560px] mx-auto"
+          className="t-small italic text-ink text-center text-to-content max-w-[560px] mx-auto"
           style={{ textWrap: "pretty" }}
         >
           {outro}

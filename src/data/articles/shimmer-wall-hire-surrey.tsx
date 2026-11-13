@@ -12,7 +12,7 @@ import imgOfficeChristmas from "@/assets/journal/christmas-decorations-surrey/go
 const ShimmerWallHireSurreyArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           A shimmer wall, also known as a sequin wall, gives a party one clear
           focal point: somewhere to gather, a backdrop for the cake table and a place for every&nbsp;photo.

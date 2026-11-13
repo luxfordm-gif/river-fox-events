@@ -13,7 +13,7 @@ import imgChristening from "@/assets/christening-blessing-styling-surrey.webp";
 const QuestionsToAskABalloonDecoratorArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           Before you book any balloon decorator, ask what the quote includes:
           the design, delivery, set-up and taking it all down&nbsp;afterwards.

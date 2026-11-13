@@ -21,7 +21,7 @@ const LocationLocalProse = ({
     >
       <div className="container-rfx">
         <div className="text-center max-w-[760px] mx-auto fade-up">
-          <p className="t-overline text-ink-soft mb-5">
+          <p className="t-overline text-ink-soft eyebrow-above">
             {eyebrow}
           </p>
           <h2
@@ -34,7 +34,7 @@ const LocationLocalProse = ({
         </div>
 
         <div
-          className="max-w-[680px] mx-auto t-body text-ink-soft space-y-5 md:space-y-6 heading-to-text fade-up"
+          className="max-w-[680px] mx-auto t-body text-ink-soft paragraphs heading-to-text fade-up"
           style={{ textWrap: "pretty" }}
         >
           {body}

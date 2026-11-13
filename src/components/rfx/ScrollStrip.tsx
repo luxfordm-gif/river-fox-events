@@ -135,7 +135,7 @@ const ScrollStrip = ({ images }: ScrollStripProps = {}) => {
     >
       <div
         ref={trackRef}
-        className={`flex gap-3 md:gap-4 will-change-transform${fill ? " rfx-strip-fill" : ""}`}
+        className={`flex photos-gap will-change-transform${fill ? " rfx-strip-fill" : ""}`}
         style={{
           transform: "translate3d(0, 0, 0)",
         }}

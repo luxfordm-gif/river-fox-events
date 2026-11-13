@@ -30,10 +30,10 @@ const LocationGallery = ({
       aria-labelledby={`${id}-heading`}
     >
       {(heading || eyebrow || intro) && (
-        <div className="container-rfx mb-14 md:mb-20">
+        <div className="container-rfx heading-to-content">
           <div className="text-center max-w-[1000px] mx-auto fade-up">
             {eyebrow && (
-              <div className="t-overline text-ink-soft mb-4">
+              <div className="t-overline text-ink-soft eyebrow-above">
                 {eyebrow}
               </div>
             )}
@@ -81,7 +81,7 @@ const LocationGallery = ({
             the portrait ones aren't so deep (Matt,
             2026-11-09). Desktop keeps each photo's own shape. */}
         <div
-          className="flex flex-col gap-6 md:gap-10 px-6 md:px-12 py-10 md:py-16"
+          className="flex flex-col cards-gap panel-pad"
           style={{ background: "hsl(var(--background-warm))" }}
         >
           {/* Mobile only - main image rendered first inside the peach panel */}

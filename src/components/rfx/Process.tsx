@@ -74,7 +74,7 @@ const Process = ({ steps = DEFAULT_STEPS, tone = "white", sectionId = "process" 
 
         <div
           ref={stepsRef}
-          className="grid grid-cols-1 md:grid-cols-3 cards-gap border-t border-divider pt-8 md:pt-10"
+          className="grid grid-cols-1 md:grid-cols-3 cards-gap border-t border-divider rule-to-content"
         >
           {steps.map((s, i) => (
             <div

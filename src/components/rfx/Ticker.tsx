@@ -18,14 +18,14 @@ const Ticker = () => {
       aria-label="Areas we deliver to"
       className="border-y border-ink/10 bg-background"
     >
-      <div className="container-rfx py-6 md:py-7">
-        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 md:gap-10 items-center">
+      <div className="container-rfx strip-pad">
+        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] inline-gap items-center">
           <div className="t-overline text-ink-soft whitespace-nowrap text-center md:text-left">
             We deliver across
           </div>
           <div className="overflow-hidden relative">
             <div
-              className="flex gap-10 whitespace-nowrap"
+              className="flex cards-gap whitespace-nowrap"
               style={{
                 animation: "rfx-marq 45s linear infinite",
                 width: "max-content",
@@ -35,7 +35,7 @@ const Ticker = () => {
               {all.map((p, i) => (
                 <span
                   key={i}
-                  className="t-h5 text-ink inline-flex items-center gap-10"
+                  className="t-h5 text-ink inline-flex items-center cards-gap"
                 >
                   {p}
                   <span className="text-accent-warm text-[0.5em]">✳</span>

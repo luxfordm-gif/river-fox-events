@@ -96,7 +96,7 @@ const TestimonialsCarousel = ({ reviews = REVIEWS }: TestimonialsCarouselProps =
       </Carousel>
 
       <div
-        className="flex md:hidden justify-center gap-2 mt-6"
+        className="carousel-dots md:hidden"
         role="tablist"
         aria-label="Reviews pagination"
       >

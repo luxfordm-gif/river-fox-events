@@ -74,7 +74,7 @@ const CPLocations = ({
           {/* Left - copy + areas list */}
           <div className="flex flex-col items-start text-left fade-up">
             {eyebrow && (
-              <div className="t-overline text-ink-soft mb-4">
+              <div className="t-overline text-ink-soft eyebrow-above">
                 {eyebrow}
               </div>
             )}
@@ -92,14 +92,14 @@ const CPLocations = ({
               {intro}
             </p>
 
-            <ul className="text-to-content grid grid-cols-2 gap-x-12 w-full max-w-[520px] border-t border-ink/15">
+            <ul className="text-to-content grid grid-cols-2 col-gap w-full max-w-[520px] border-t border-ink/15">
               {areas.map((a, i) => {
                 const slug = SLUG_BY_CITY.get(a);
                 const link = slug && slug !== currentSlug;
                 return (
                   <li
                     key={a}
-                    className="flex items-baseline gap-3 py-3 border-b border-ink/15 t-body text-ink"
+                    className="flex items-baseline icon-gap row-pad-y border-b border-ink/15 t-body text-ink"
                   >
                     <span className="t-overline text-ink-soft">
                       {String(i + 1).padStart(2, "0")}

@@ -69,7 +69,7 @@ const ArticleImage = ({
         </div>
       )}
       {caption && (
-        <figcaption className="t-meta media-to-caption text-center italic text-ink-soft max-w-[640px] mx-auto">
+        <figcaption className="t-meta photo-caption text-center italic text-ink-soft max-w-[640px] mx-auto">
           {caption}
         </figcaption>
       )}

@@ -23,7 +23,7 @@ const Testimonials = ({
     >
       <div className="container-rfx">
         {!noDivider && (
-          <div className="hairline mb-12 md:mb-16 hidden md:block" aria-hidden="true" />
+          <div className="hairline divider-gap hidden md:block" aria-hidden="true" />
         )}
         <div className="text-center heading-to-content">
           <h2

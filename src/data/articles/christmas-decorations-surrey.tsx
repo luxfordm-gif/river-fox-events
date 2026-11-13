@@ -33,7 +33,7 @@ const doorways = [
 const ChristmasDecorationsSurreyArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           Christmas decorations make the biggest difference in three places:
           the front door, the shop or office entrance, and the room where the

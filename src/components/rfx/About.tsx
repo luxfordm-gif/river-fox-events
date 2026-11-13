@@ -66,7 +66,7 @@ const StatItem = ({ stat, visible, armed, delay }: { stat: Stat; visible: boolea
       >
         {stat.display(n)}
       </div>
-      <div className="t-overline mt-3 text-center text-ink-soft">
+      <div className="t-overline photo-caption text-center text-ink-soft">
         {stat.label}
       </div>
     </div>
@@ -143,7 +143,7 @@ const About = () => {
           </div>
 
           <div className="fade-up">
-            <div className="t-overline text-ink-soft mb-6">
+            <div className="t-overline text-ink-soft eyebrow-above">
               Meet Laura, Founder
             </div>
 
@@ -154,7 +154,7 @@ const About = () => {
               </em>
             </h2>
 
-            <div className="t-body heading-to-text space-y-5 text-ink-soft max-w-[560px]">
+            <div className="t-body heading-to-text paragraphs text-ink-soft max-w-[560px]">
               <p className="text-ink">
                 <strong>
                   I started River Fox Events after running a teepee sleepover
@@ -176,7 +176,7 @@ const About = () => {
 
             <a
               href="/journal/"
-              className="btn-link-rf t-label mt-8"
+              className="btn-link-rf t-label text-to-action"
               aria-label="Read the River Fox Events journal - notes, behind the scenes and trends from the studio"
             >
               Inside the studio · read the journal{" "}
@@ -185,7 +185,7 @@ const About = () => {
 
             <div
               ref={statsRef}
-              className="mt-12 grid grid-cols-3 gap-3 sm:gap-6 items-baseline border-t border-ink/20 pt-8 max-w-[560px]"
+              className="divided grid grid-cols-3 inline-gap items-baseline border-t border-ink/20 max-w-[560px]"
               style={{ alignItems: "baseline" }}
             >
               {STATS.map((s, i) => (

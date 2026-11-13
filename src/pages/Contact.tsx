@@ -90,7 +90,7 @@ const Contact = () => {
             </>
           }
         />
-        <section className="pt-6 md:pt-10 pb-24 md:pb-32" aria-labelledby="contact-heading">
+        <section className="after-page-header section-bottom" aria-labelledby="contact-heading">
           <div className="container-rfx">
 
             <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] columns-gap items-start">

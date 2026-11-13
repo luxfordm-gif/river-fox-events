@@ -34,7 +34,7 @@ const NotFound = () => {
   return (
     <div className="min-h-screen flex flex-col page-paper text-foreground nav-solid nav-paper">
       <Nav />
-      <main className="flex-1 pb-24 md:pb-32">
+      <main className="flex-1 section-bottom">
         <PageHeader
           title={
             <>
@@ -45,7 +45,7 @@ const NotFound = () => {
           note="404 - Page not found"
           intro="It may have moved, or perhaps it never existed. Head back home, or send us a note about your event - we reply personally."
         >
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="text-to-action flex flex-col sm:flex-row actions justify-center items-center">
             <a href="/" className="btn-solid-rf">
               Back to homepage <span>→</span>
             </a>

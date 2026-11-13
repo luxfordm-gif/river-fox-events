@@ -11,9 +11,9 @@ const InstagramFollow = () => {
       aria-labelledby="instagram-heading"
     >
       <div className="container-rfx">
-        <div className="border-t border-divider pt-10 md:pt-14 fade-up rfx-instagram-inner">
+        <div className="border-t border-divider rule-to-content fade-up rfx-instagram-inner">
           <div className="flex flex-col items-center text-center max-w-[680px] mx-auto">
-            <div className="t-overline text-ink-soft mb-7 inline-flex items-center gap-3">
+            <div className="t-overline text-ink-soft eyebrow-above inline-flex items-center icon-gap">
               <span className="h-px w-8 bg-ink/30" aria-hidden="true" />
               Behind the scenes
               <span className="h-px w-8 bg-ink/30" aria-hidden="true" />
@@ -36,7 +36,7 @@ const InstagramFollow = () => {
               href="https://www.instagram.com/riverfox_events/"
               target="_blank"
               rel="noreferrer"
-              className="btn-solid-rf accent mt-10"
+              className="btn-solid-rf accent text-to-action"
               aria-label="Follow River Fox Events on Instagram"
             >
               <Instagram size={16} aria-hidden="true" />
@@ -46,7 +46,7 @@ const InstagramFollow = () => {
           </div>
         </div>
       </div>
-      <div className="mt-12 md:mt-14">
+      <div className="text-to-content">
         <InstagramStrip images={INSPIRATION_HOME} />
       </div>
     </section>

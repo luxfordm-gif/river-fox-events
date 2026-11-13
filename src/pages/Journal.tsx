@@ -64,7 +64,7 @@ const JournalCard = ({ article, feature = false }: CardProps) => {
       </div>
 
       {/* Fills the card so the date line sits at the foot, level across a row (Matt, 2026-11-08). */}
-      <div className="media-to-caption card-text flex-1 flex flex-col">
+      <div className="media-to-title card-text flex-1 flex flex-col">
         {article.category && (
           <div className="t-overline text-ink-soft label-to-title">
             {article.category}

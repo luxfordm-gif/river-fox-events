@@ -14,7 +14,7 @@ import imgSalon from "@/assets/christmas/instagram/glass-salon-true-red-corner-g
 const ChristmasBalloonDecorationsSurreyArticle = () => (
   <>
     <ArticleTLDR>
-      <ul className="list-disc pl-5 space-y-1">
+      <ul className="bullet-list">
         <li>
           Christmas balloons work hardest in three places at work: the
           entrance, the party backdrop and the shop floor or&nbsp;counter.

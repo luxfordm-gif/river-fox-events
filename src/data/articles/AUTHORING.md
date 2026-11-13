@@ -165,6 +165,7 @@ Every article follows this shape. Use the existing components in `src/components
 ```
 1. <ArticleTLDR>
    ↳ 4 bullets, each a complete thought.
+   ↳ Bullets go in <ul className="bullet-list">, the shared list style (no spacing classes in articles).
    ↳ Last bullet is often the philosophy line that gets reused as the pull quote.
 
 2. <ArticleProse> — opening

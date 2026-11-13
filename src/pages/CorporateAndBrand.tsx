@@ -136,7 +136,7 @@ const CorporateAndBrand = () => {
         <section
           id="cb-trust"
           aria-labelledby="cb-trust-heading"
-          className="rfx-section white !pt-10 !pb-6 md:!pt-14 md:!pb-8"
+          className="rfx-section white section-compact"
         >
           <div className="container-rfx text-center">
             <h2

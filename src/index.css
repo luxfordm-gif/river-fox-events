@@ -188,7 +188,11 @@
     --gap-link-list: 8px;
     --gap-eyebrow: 20px;               /* Eyebrow to title · a small label above a hero or article title, e.g. CHRISTMAS 2026 · NOW BOOKING, JOURNAL (article was 28 / 36) */
     --article-gap: 64px;               /* Article gap · between the blocks of a journal article: header, In short, photos, quotes, enquire box, related (48 phone; were 48 to 96) */
-    --article-pad-x: 24px;             /* Article side padding · inside narrow article blocks */              /* Link list gap · between links in a list, e.g. a footer column */
+    --article-pad-x: 24px;
+    --list-indent: 20px;
+    --gap-media: 20px;                 /* Media gap · a photo or icon down to a card title under it (were 16 to 32) */
+    --gap-caption: 12px;               /* Caption gap · a photo down to its caption, close so it reads as the photo's label (Our work, tile names, article photos) */
+    --gap-photos: 12px;                /* Photo gap · between photos in a grid or strip (8 phone; were 8 / 12 / 16) */               /* List indent · how far bullet text sits in from the bullet's edge (In short lists) */             /* Article side padding · inside narrow article blocks */              /* Link list gap · between links in a list, e.g. a footer column */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
     --gutter: 56px;                    /* Side gutter · space at the left and right of the page content (32 phone, 8% on laptops) */
 
@@ -269,6 +273,7 @@
       --gap-columns: 48px;
       --gap-cards: 32px;
       --article-gap: 48px;
+      --gap-photos: 8px;
       --gap-inline: 16px;
       --card-text-inset: 0px;
       --card-pad: 28px;
@@ -1015,9 +1020,37 @@
   .icon-gap { gap: var(--gap-icon); }
   .link-list > * + * { margin-top: var(--gap-link-list); }
   .list-items > * + * { margin-top: var(--gap-list-item); }
+  /* Bullet list: one shared style for every In short list (was the same three
+     classes copied into 17 articles). */
+  .bullet-list { list-style: disc; padding-left: var(--list-indent); }
+  .bullet-list > li + li { margin-top: var(--gap-list-item); }
   .label-to-list { margin-bottom: var(--gap-stack); }
   .eyebrow-to-title { margin-top: var(--gap-eyebrow); }
-  .media-to-caption { margin-top: var(--gap-stack); }
+  .media-to-title { margin-top: var(--gap-media); }
+  .icon-above { margin-bottom: var(--gap-media); }
+  .photo-caption { margin-top: var(--gap-caption); }
+  .eyebrow-above { margin-bottom: var(--gap-eyebrow); }
+  .paragraphs > * + * { margin-top: var(--gap-paragraph); }
+  .meta-below { margin-top: var(--gap-label-title); }
+  .card-action { padding-top: var(--gap-text-action); }
+  .card-inset { padding-inline: var(--gap-stack); }
+  .button-trust-gap { gap: var(--gap-button-trust); }
+  .photos-gap { gap: var(--gap-photos); }
+  .photos-gap-top { margin-top: var(--gap-photos); }
+  .col-gap { column-gap: var(--gap-columns); }
+  .row-pad-y { padding-block: var(--gap-actions); }
+  .divider-gap { margin-bottom: var(--gap-divider); }
+  .divided { margin-top: var(--gap-divider); padding-top: var(--gap-divider); }
+  .rule-to-content { padding-top: var(--gap-heading-content); }
+  .subsection-gap { margin-top: var(--section-y); }
+  .section-compact { padding-block: var(--gap-heading-content) !important; }
+  .after-page-header { padding-top: var(--page-pad-bottom); }
+  .hero-foot { padding-bottom: var(--gap-inline); }
+  .hero-under-nav { padding-top: var(--nav-height) !important; }
+  .hero-gap-below { margin-bottom: var(--hero-gap); }
+  .strip-pad { padding-block: var(--gap-inline); }
+  .toast-pad { padding: var(--gap-stack) var(--gap-paragraph); }
+  .carousel-dots { display: flex; justify-content: center; gap: var(--gap-icon); margin-top: var(--gap-paragraph); }
   .card-meta { padding-top: var(--gap-actions); }
   .row-pad { padding-bottom: var(--gap-paragraph); }
   .inline-gap { gap: var(--gap-inline); }
