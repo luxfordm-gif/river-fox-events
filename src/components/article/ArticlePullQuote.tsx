@@ -11,7 +11,7 @@ type Props = {
  * between the two scales.
  */
 const ArticlePullQuote = ({ children, attribution }: Props) => (
-  <blockquote className="max-w-[820px] mx-auto px-6 my-14 md:my-20 text-center">
+  <blockquote className="max-w-[820px] mx-auto article-pad article-block text-center">
     <p
       className="t-quote italic text-ink"
       style={{ textWrap: "balance" }}
@@ -19,7 +19,7 @@ const ArticlePullQuote = ({ children, attribution }: Props) => (
       “{children}”
     </p>
     {attribution && (
-      <cite className="t-overline mt-5 inline-block text-ink-soft not-italic">
+      <cite className="t-overline text-to-text inline-block text-ink-soft not-italic">
         - {attribution}
       </cite>
     )}

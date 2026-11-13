@@ -24,9 +24,9 @@ const RelatedArticles = ({ items }: Props) => {
   return (
     // Same 720px column as the article text and the end panel, so all three
     // share one left and right edge (Matt, 2026-11-07).
-    <section className="max-w-[720px] mx-auto px-6 my-16 md:my-24">
+    <section className="max-w-[720px] mx-auto article-pad article-block">
       <div
-        className="t-overline text-ink-soft mb-8 text-center"
+        className="t-overline text-ink-soft heading-to-content text-center"
       >
         More to read
       </div>
@@ -35,7 +35,7 @@ const RelatedArticles = ({ items }: Props) => {
           <a
             key={a.slug}
             href={`/journal/${a.slug}/`}
-            className="group flex gap-4 md:gap-5 items-start"
+            className="group flex stack-gap items-start"
           >
             {a.cardImage && (
               <div
@@ -62,7 +62,7 @@ const RelatedArticles = ({ items }: Props) => {
                 {a.teaser}
               </p>
               <span
-                className="t-overline mt-3 inline-block text-ink-soft group-hover:text-ink transition-colors"
+                className="t-overline title-to-text inline-block text-ink-soft group-hover:text-ink transition-colors"
               >
                 Read →
               </span>

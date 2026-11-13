@@ -64,14 +64,14 @@ const JournalCard = ({ article, feature = false }: CardProps) => {
       </div>
 
       {/* Fills the card so the date line sits at the foot, level across a row (Matt, 2026-11-08). */}
-      <div className="mt-4 md:mt-5 card-text flex-1 flex flex-col">
+      <div className="media-to-caption card-text flex-1 flex flex-col">
         {article.category && (
-          <div className="t-overline text-ink-soft">
+          <div className="t-overline text-ink-soft label-to-title">
             {article.category}
           </div>
         )}
         <h2
-          className={`${feature ? "t-h4" : "t-h5"} text-ink group-hover:text-accent-warm transition-colors mt-2 md:mt-3`}
+          className={`${feature ? "t-h4" : "t-h5"} text-ink group-hover:text-accent-warm transition-colors`}
           style={{ textWrap: "balance" }}
         >
           {article.title}
@@ -79,7 +79,7 @@ const JournalCard = ({ article, feature = false }: CardProps) => {
         <p className="title-to-text t-small text-ink-soft">
           {article.teaser}
         </p>
-        <div className="mt-auto pt-3 md:pt-4 t-overline text-ink-soft">
+        <div className="mt-auto card-meta t-overline text-ink-soft">
           {formatDate(article.publishedAt)} · {article.readMinutes} min read
         </div>
       </div>
@@ -147,9 +147,9 @@ const Journal = () => {
         />
 
         {/* Grid */}
-        <section className="container-rfx pb-20 md:pb-28">
+        <section className="container-rfx section-bottom">
           <ul
-            className="grid gap-y-10 md:gap-y-16 gap-x-6 md:gap-x-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+            className="grid cards-gap rows-gap grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
           >
             {shown.map((a, i) => (
               <li key={a.slug} className={itemClass(i)}>
@@ -165,7 +165,7 @@ const Journal = () => {
                 <div className="md:hidden">
                   <a
                     href={`/journal/${a.slug}/`}
-                    className="group flex gap-4 items-stretch border-b border-ink/10 pb-6"
+                    className="group flex stack-gap items-stretch border-b border-ink/10 row-pad"
                   >
                     <div className="relative w-[40%] aspect-[4/5] overflow-hidden bg-ink/5 flex-shrink-0">
                       {a.cardImage && (
@@ -184,12 +184,12 @@ const Journal = () => {
                     </div>
                     <div className="flex-1 min-w-0 flex flex-col">
                       {a.category && (
-                        <div className="t-overline text-ink-soft">
+                        <div className="t-overline text-ink-soft label-to-title">
                           {a.category}
                         </div>
                       )}
                       <h2
-                        className="t-h5 text-ink mt-1.5"
+                        className="t-h5 text-ink"
                         style={{ textWrap: "balance" }}
                       >
                         {a.title}
@@ -198,7 +198,7 @@ const Journal = () => {
                         {a.teaser}
                       </p>
                       <div
-                        className="mt-auto pt-2 t-overline text-ink-soft"
+                        className="mt-auto card-meta t-overline text-ink-soft"
                       >
                         {formatDate(a.publishedAt)} · {a.readMinutes} min
                       </div>
@@ -210,7 +210,7 @@ const Journal = () => {
           </ul>
 
           {(hasMore || hasMoreDesktop) && (
-            <div className={`mt-12 md:mt-16 ${moreClass} justify-center`}>
+            <div className={`text-to-content ${moreClass} justify-center`}>
               <button
                 type="button"
                 onClick={() => setPages((p) => p + 1)}

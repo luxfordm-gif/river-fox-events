@@ -112,10 +112,10 @@ const Article = () => {
       <ReadingProgress />
       <Nav />
       <main>
-        <div className="container-rfx pt-24 md:pt-28 pb-2">
+        <div className="container-rfx article-top">
           <a
             href="/journal/"
-            className="inline-flex items-center gap-2 t-overline text-ink-soft hover:text-ink transition-colors group"
+            className="inline-flex items-center icon-gap t-overline text-ink-soft hover:text-ink transition-colors group"
           >
             <span
               aria-hidden="true"

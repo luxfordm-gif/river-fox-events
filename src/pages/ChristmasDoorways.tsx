@@ -578,7 +578,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               </p>
               <h1
                 id="xmas-hero-heading"
-                className="t-display mt-5 max-w-none"
+                className="t-display eyebrow-to-title max-w-none"
               >
                 <span className="xmas-title-snow">
                   <SnowCap mode="text" />

@@ -29,7 +29,7 @@ const ArticleCta = ({
 }: Props) => {
   if (variant === "inline") {
     return (
-      <div className="my-12 max-w-[720px] mx-auto px-6 text-center">
+      <div className="article-block max-w-[720px] mx-auto article-pad text-center">
         <a href={href} onClick={handleEnquireClick} className="btn-solid-rf accent">
           {label} <span>→</span>
         </a>
@@ -38,8 +38,8 @@ const ArticleCta = ({
   }
 
   return (
-    <aside className="max-w-[720px] mx-auto my-16 md:my-24 px-6">
-      <div className="rounded-large bg-surface-deep text-on-deep px-8 md:px-14 py-10 md:py-16 text-center">
+    <aside className="max-w-[720px] mx-auto article-block article-pad">
+      <div className="rounded-large bg-surface-deep text-on-deep panel-pad text-center">
         <h2 className="t-h4 max-w-[20ch] mx-auto">
           {heading ?? (
             <>
@@ -52,13 +52,13 @@ const ArticleCta = ({
         </h2>
         {body && (
           <p
-            className="t-small mt-5 max-w-[440px] mx-auto"
+            className="t-small heading-to-text max-w-[440px] mx-auto"
             style={{ color: "hsl(var(--text-dimmed))" }}
           >
             {body}
           </p>
         )}
-        <a href={href} onClick={handleEnquireClick} className="btn-solid-rf accent mt-8 inline-flex">
+        <a href={href} onClick={handleEnquireClick} className="btn-solid-rf accent text-to-action inline-flex">
           {label} <span>→</span>
         </a>
       </div>

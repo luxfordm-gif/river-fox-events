@@ -32,7 +32,7 @@ const ArticleHero = ({
   });
 
   return (
-    <header className="container-rfx pt-6 md:pt-10 pb-10 md:pb-12 text-center">
+    <header className="container-rfx article-hero text-center">
       <a
         href="/journal/"
         className="t-overline inline-block text-ink hover:opacity-70 transition-opacity"
@@ -41,7 +41,7 @@ const ArticleHero = ({
       </a>
 
       <h1
-        className="t-h1 max-w-[20ch] mx-auto mt-7 md:mt-9"
+        className="t-h1 max-w-[20ch] mx-auto eyebrow-to-title"
         style={{ textWrap: "balance" }}
       >
         {title}
@@ -49,18 +49,18 @@ const ArticleHero = ({
 
       {subtitle && (
         <p
-          className="t-lead mt-6 max-w-[44ch] mx-auto text-ink-soft italic"
+          className="t-lead heading-to-text max-w-[44ch] mx-auto text-ink-soft italic"
           style={{ textWrap: "pretty" }}
         >
           {subtitle}
         </p>
       )}
 
-      <div className="t-overline mt-10 text-ink-soft">
+      <div className="t-overline text-to-content text-ink-soft">
         By {authorName} · {formattedDate} · {readMinutes} min read
       </div>
 
-      <div className="mt-7 md:mt-9 flex items-center gap-5 max-w-[460px] mx-auto px-2">
+      <div className="text-to-action flex items-center inline-gap max-w-[460px] mx-auto">
         <span
           className="h-px flex-1"
           aria-hidden="true"

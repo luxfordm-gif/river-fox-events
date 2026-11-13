@@ -185,7 +185,10 @@
     --menu-section-gap: 32px;          /* Menu section gap · between the blocks of the phone menu: links, extra links, contact, button */
     --gap-icon: 8px;                   /* Icon gap · between text and its icon: chevrons, arrows, the Christmas bow (were 6 to 12) */
     --btn-compact-pad: 8px 16px;       /* Compact button padding · the nav's Enquire now button */
-    --gap-link-list: 8px;              /* Link list gap · between links in a list, e.g. a footer column */
+    --gap-link-list: 8px;
+    --gap-eyebrow: 20px;               /* Eyebrow to title · a small label above a hero or article title, e.g. CHRISTMAS 2026 · NOW BOOKING, JOURNAL (article was 28 / 36) */
+    --article-gap: 64px;               /* Article gap · between the blocks of a journal article: header, In short, photos, quotes, enquire box, related (48 phone; were 48 to 96) */
+    --article-pad-x: 24px;             /* Article side padding · inside narrow article blocks */              /* Link list gap · between links in a list, e.g. a footer column */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
     --gutter: 56px;                    /* Side gutter · space at the left and right of the page content (32 phone, 8% on laptops) */
 
@@ -265,6 +268,7 @@
       --gap-text-content: 40px;
       --gap-columns: 48px;
       --gap-cards: 32px;
+      --article-gap: 48px;
       --gap-inline: 16px;
       --card-text-inset: 0px;
       --card-pad: 28px;
@@ -1010,6 +1014,23 @@
   .nav-sheet__more { display: flex; flex-direction: column; align-items: flex-start; gap: var(--gap-stack); }
   .icon-gap { gap: var(--gap-icon); }
   .link-list > * + * { margin-top: var(--gap-link-list); }
+  .list-items > * + * { margin-top: var(--gap-list-item); }
+  .label-to-list { margin-bottom: var(--gap-stack); }
+  .eyebrow-to-title { margin-top: var(--gap-eyebrow); }
+  .media-to-caption { margin-top: var(--gap-stack); }
+  .card-meta { padding-top: var(--gap-actions); }
+  .row-pad { padding-bottom: var(--gap-paragraph); }
+  .inline-gap { gap: var(--gap-inline); }
+  .rows-gap { row-gap: var(--gap-text-content); }
+  .section-bottom { padding-bottom: var(--section-y); }
+  .box-pad { padding: var(--card-pad); }
+  .panel-pad { padding: var(--gap-text-content) var(--card-pad); }
+  /* Journal articles: one Article gap between every block. */
+  .article-top { padding-top: var(--page-pad-top); }
+  .article-hero { padding-top: var(--gap-heading-content); padding-bottom: var(--article-gap); }
+  .article-block { margin-block: var(--article-gap); }
+  .article-block-after { margin-bottom: var(--article-gap); }
+  .article-pad { padding-inline: var(--article-pad-x); }
   /* Footer: starts like every section (Section padding), not a one-off 54 / 96. */
   .footer-top { padding-top: var(--section-y); }
   .footer-divider { margin-bottom: var(--gap-columns); }

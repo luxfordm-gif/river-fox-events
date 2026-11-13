@@ -36,7 +36,7 @@ const ArticleShareLinks = ({ url, title }: Props) => {
     "inline-flex items-center justify-center w-9 h-9 rounded-full border border-ink/20 text-ink hover:bg-ink hover:text-background transition-colors";
 
   return (
-    <div className="inline-flex items-center gap-3" aria-label="Share this article">
+    <div className="inline-flex items-center actions" aria-label="Share this article">
       <a href={x} target="_blank" rel="noreferrer" className={iconClass} aria-label="Share on X">
         <Twitter className="w-4 h-4" />
       </a>
