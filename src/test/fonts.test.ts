@@ -37,4 +37,11 @@ describe("Google Fonts request", () => {
     });
     expect(tuples, "tuples must be in ascending order").toEqual(sorted);
   });
+
+  it("index.html preloads exactly the main font request", () => {
+    const html = readFileSync(join(__dirname, "..", "..", "index.html"), "utf8");
+    const preload = /<link rel="preload" as="style" href="([^"]+)"/.exec(html)?.[1]?.replace(/&amp;/g, "&");
+    const main = urls.find((u) => u.includes("family=Fraunces"));
+    expect(preload, "the preload must match the Fraunces @import in index.css, or the fonts download twice").toBe(main);
+  });
 });

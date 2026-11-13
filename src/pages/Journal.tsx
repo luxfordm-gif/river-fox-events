@@ -30,9 +30,11 @@ type CardProps = {
   };
   /** First card spans wider on desktop for editorial feel. */
   feature?: boolean;
+  /** First row: on screen when the page opens, so it loads straight away. */
+  eager?: boolean;
 };
 
-const JournalCard = ({ article, feature = false }: CardProps) => {
+const JournalCard = ({ article, feature = false, eager = false }: CardProps) => {
   const href = `/journal/${article.slug}/`;
   return (
     <a
@@ -48,7 +50,7 @@ const JournalCard = ({ article, feature = false }: CardProps) => {
           <img
             src={article.cardImage}
             alt=""
-            loading="lazy"
+            loading={eager ? "eager" : "lazy"}
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-reveal ease-soft group-hover:scale-[1.03]"
             style={
               article.cardImagePosition
@@ -160,6 +162,7 @@ const Journal = () => {
                   <JournalCard
                     article={a}
                     feature={i === 0 && summaries.length > 1}
+                    eager={i < 3}
                   />
                 </div>
                 <div className="md:hidden">
@@ -172,7 +175,8 @@ const Journal = () => {
                         <img
                           src={a.cardImage}
                           alt=""
-                          loading="lazy"
+                          // The first three rows are on screen when the page opens.
+                          loading={i < 3 ? "eager" : "lazy"}
                           className="absolute inset-0 w-full h-full object-cover"
                           style={
                             a.cardImagePosition

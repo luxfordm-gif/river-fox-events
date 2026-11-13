@@ -106,7 +106,8 @@ const CPReveal = ({
           alt={alt}
           className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
           style={{ transform: `translate3d(0,0,0) scale(${imageScale})` }}
-          loading="eager"
+          // Always below the hero, so it waits until it's nearly on screen.
+          loading="lazy"
           decoding="async"
           width={1280}
           height={1600}

@@ -939,7 +939,7 @@ const StyleGuide = () => {
         <section id="sg-effects" className="sg-block">
           <div className="container-rfx">
             <BlockHead code="E · Effects" title="Shadows, layers and motion">
-              Every shadow, page layer and animation timing on the site. Hover a motion card to see it move. src/test/effects.test.ts fails on a hand-written one.
+              Every shadow, page layer and animation timing on the site. Hover or tap a motion card to see its dot move at that speed or with that curve. src/test/effects.test.ts fails on a hand-written one.
             </BlockHead>
             <h3 className="t-h5 heading-to-content">Shadows</h3>
             <div className="sg-corners">
@@ -973,7 +973,7 @@ const StyleGuide = () => {
             <h3 className="t-h5 heading-to-content sg-effects-gap">Motion</h3>
             <div className="sg-corners">
               {[...effectTokens("--motion-"), ...effectTokens("--ease-")].map((t) => (
-                <div key={t.name} className="sg-corner sg-motion">
+                <div key={t.name} className="sg-corner sg-motion" tabIndex={0} aria-label={`Play ${t.label}`}>
                   <div className="sg-motion-track">
                     <span
                       className="sg-motion-dot"

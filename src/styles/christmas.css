@@ -63,8 +63,85 @@
 .rfx-xmas .rfx-section.white { background: hsl(var(--xmas-page)); }
 
 /* Hero garland (src/components/rfx/HeroGarland.tsx). Static, so the
-   filtered layer is rasterised once, not every frame. */
-.xmas-garland { pointer-events: none; filter: var(--xmas-shadow-garland); }
+   filtered layer is rasterised once, not every frame.
+
+   Laid out in CSS so the prerendered page is right at every width before
+   any code runs (Matt, 2026-11-13). The same sums the component used to do
+   in JavaScript, with 100cqw as the garland's width:
+     drapes across (--garland-n): about one per 480px, one per 360px on
+     768-1366 tablets; drawn 18% smaller on phones (--garland-scale).
+     Full-size drape sets the block height, so the title below never moves.
+     A bow sits over every join and both edges. */
+.xmas-garland {
+  pointer-events: none;
+  filter: var(--xmas-shadow-garland);
+  container-type: inline-size;
+  overflow: hidden;
+  --garland-n: 1;
+  --garland-scale: 0.82;
+  --garland-ratio: 0.28637;        /* drape height / width (622 / 2172) */
+  --garland-join: 0.09646;         /* drape ends' height, share of drape (60 / 622) */
+  --garland-bow-ratio: 1.02817;    /* bow height / width (1168 / 1136) */
+  --garland-knot: 0.24;            /* the bow's knot, share of its height */
+  --garland-bow-min: 60px;
+  --garland-bow-max: 120px;
+  --garland-air-top: 4px;
+  --garland-air-bottom: 6px;
+}
+@media (min-width: 768px)  { .xmas-garland { --garland-n: 2; --garland-scale: 1; } }
+@media (min-width: 900px)  { .xmas-garland { --garland-n: 3; } }
+@media (min-width: 1260px) { .xmas-garland { --garland-n: 4; } }
+@media (min-width: 1367px) { .xmas-garland { --garland-n: 3; } }
+@media (min-width: 1680px) { .xmas-garland { --garland-n: 4; } }
+@media (min-width: 2160px) { .xmas-garland { --garland-n: 5; } }
+@media (min-width: 2640px) { .xmas-garland { --garland-n: 6; } }
+
+.xmas-garland__inner {
+  position: relative;
+  /* Full size (sets the height) */
+  --full-tile: calc(100cqw / var(--garland-n));
+  --full-tile-h: calc(var(--full-tile) * var(--garland-ratio));
+  --full-bow: clamp(var(--garland-bow-min), calc(var(--full-tile) * 0.2), var(--garland-bow-max));
+  --full-pad: calc(max(0px, var(--full-bow) * var(--garland-bow-ratio) * var(--garland-knot) - var(--full-tile-h) * var(--garland-join)) + var(--garland-air-top));
+  height: calc(var(--full-pad) + var(--full-tile-h) + var(--garland-air-bottom));
+  /* Drawn size */
+  --tile: calc(var(--full-tile) * var(--garland-scale));
+  --tile-h: calc(var(--tile) * var(--garland-ratio));
+  --offset: calc((100cqw - var(--garland-n) * var(--tile)) / 2);
+  --overlap: calc(var(--tile) * 0.02);  /* drapes tuck slightly under each other at the join */
+  --bow: calc(var(--full-bow) * var(--garland-scale));
+  --bow-h: calc(var(--bow) * var(--garland-bow-ratio));
+  --join-y: calc(var(--tile-h) * var(--garland-join));
+  --pad: calc(max(0px, var(--bow-h) * var(--garland-knot) - var(--join-y)) + var(--garland-air-top));
+}
+.xmas-garland__inner img { position: absolute; display: none; max-width: none; height: auto; }
+.xmas-garland__drapes img {
+  left: calc(var(--offset) + var(--i) * var(--tile) - var(--overlap) / 2);
+  top: var(--pad);
+  width: calc(var(--tile) + var(--overlap));
+}
+.xmas-garland__bows img {
+  left: calc(var(--offset) + var(--i) * var(--tile) - var(--bow) / 2);
+  top: calc(var(--pad) + var(--join-y) - var(--bow-h) * var(--garland-knot));
+  width: var(--bow);
+}
+/* Show as many drapes as fit, and one more bow than drapes. */
+.xmas-garland__drapes img:nth-child(-n+1), .xmas-garland__bows img:nth-child(-n+2) { display: block; }
+@media (min-width: 768px) {
+  .xmas-garland__drapes img:nth-child(-n+2), .xmas-garland__bows img:nth-child(-n+3) { display: block; }
+}
+@media (min-width: 900px) {
+  .xmas-garland__drapes img:nth-child(-n+3), .xmas-garland__bows img:nth-child(-n+4) { display: block; }
+}
+@media (min-width: 1260px) and (max-width: 1366px), (min-width: 1680px) {
+  .xmas-garland__drapes img:nth-child(-n+4), .xmas-garland__bows img:nth-child(-n+5) { display: block; }
+}
+@media (min-width: 2160px) {
+  .xmas-garland__drapes img:nth-child(-n+5), .xmas-garland__bows img:nth-child(-n+6) { display: block; }
+}
+@media (min-width: 2640px) {
+  .xmas-garland__drapes img:nth-child(-n+6), .xmas-garland__bows img:nth-child(-n+7) { display: block; }
+}
 
 /* Garland cutout image: a clean CSS shadow in place of the one baked into
    the source photo. */

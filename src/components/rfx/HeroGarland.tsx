@@ -1,5 +1,3 @@
-import { useEffect, useRef, useState } from "react";
-
 import drape700 from "@/assets/christmas/garland-swag-red-gold-baubles-berries-700.webp";
 import drape1050 from "@/assets/christmas/garland-swag-red-gold-baubles-berries-1050.webp";
 import drape1400 from "@/assets/christmas/garland-swag-red-gold-baubles-berries-1400.webp";
@@ -15,91 +13,60 @@ import bow320 from "@/assets/christmas/burgundy-velvet-bow-320.webp";
  * The number of drapes follows the width (about one per 480px, one per 360px
  * on tablets and small laptops), so each one stays a sensible size from a
  * phone to an ultra-wide screen.
+ *
+ * Laid out entirely in CSS (.xmas-garland in christmas.css), so the
+ * prerendered page already has the right garland at every width and the
+ * browser picks the right image size straight away (Matt, 2026-11-13: the
+ * wreaths took a few seconds). Before, the code measured the width after
+ * loading and redrew it, sometimes downloading a second, bigger drape.
+ * The markup always carries MAX_DRAPES drapes; CSS shows as many as fit.
  */
+const MAX_DRAPES = 6;
 
-const DRAPE_RATIO = 622 / 2172; // height / width of the trimmed drape
-const JOIN_Y = 60 / 622; // where the drape ends meet, as a share of its height
-const BOW_RATIO = 1168 / 1136; // height / width of the trimmed bow
-const KNOT = { x: 0.5, y: 0.24 }; // knot position within the bow
+// The drawn drape width at each screen width, for the browser's image choice;
+// matches the --garland-n steps in christmas.css.
+const DRAPE_SIZES =
+  "(max-width: 767px) 82vw, (max-width: 899px) 50vw, (max-width: 1259px) 34vw, (max-width: 1366px) 25vw, (max-width: 1679px) 34vw, (max-width: 2159px) 25vw, (max-width: 2639px) 20vw, 17vw";
+const BOW_SIZES = "(max-width: 767px) 66px, 120px";
 
-const HeroGarland = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [w, setW] = useState(1440);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const measure = () => setW(el.clientWidth || 1440);
-    measure();
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-
-  // Tablets and small laptops (768-1366px) get a drape about every 360px
-  // instead of 480, so the swags are shallower and the hero's button comes
-  // up into view on an iPad (Matt, 2026-11-13).
-  const n = Math.max(1, Math.round(w / (w >= 768 && w <= 1366 ? 360 : 480)));
-
-  // Full-size layout: sets the block's height, so the eyebrow and h1 below
-  // sit in the same place whatever the garland's drawn size.
-  const fullTileW = w / n;
-  const fullTileH = fullTileW * DRAPE_RATIO;
-  const fullBowW = Math.min(120, Math.max(60, fullTileW * 0.2));
-  const fullPadTop = Math.max(0, fullBowW * BOW_RATIO * KNOT.y - fullTileH * JOIN_Y) + 4;
-  const blockH = fullPadTop + fullTileH + 6;
-
-  // Phones: draw the garland 18% smaller, centred, for a little more air
-  // between it and the eyebrow (Matt, 2026-11-07).
-  const scale = w < 768 ? 0.82 : 1;
-  const tileW = fullTileW * scale;
-  const tileH = tileW * DRAPE_RATIO;
-  const offsetX = (w - n * tileW) / 2;
-  const overlap = tileW * 0.02; // drapes tuck slightly under each other at the join
-  const bowW = fullBowW * scale;
-  const bowH = bowW * BOW_RATIO;
-  const joinY = tileH * JOIN_Y;
-  const padTop = Math.max(0, bowH * KNOT.y - joinY) + 4;
-
-  return (
-    <div
-      ref={ref}
-      className="xmas-garland relative w-full overflow-hidden"
-      style={{ height: blockH }}
-      aria-hidden="true"
-    >
-      {Array.from({ length: n }, (_, i) => (
-        <img
-          key={`d${i}`}
-          src={drape1050}
-          srcSet={`${drape700} 700w, ${drape1050} 1050w, ${drape1400} 1400w`}
-          sizes={`${Math.ceil(tileW + overlap)}px`}
-          alt=""
-          className="absolute block max-w-none"
-          style={{ left: offsetX + i * tileW - overlap / 2, top: padTop, width: tileW + overlap, height: "auto" }}
-          width={1400}
-          height={401}
-          loading="eager"
-          decoding="async"
-        />
-      ))}
-      {Array.from({ length: n + 1 }, (_, i) => (
-        <img
-          key={`b${i}`}
-          src={bow160}
-          srcSet={`${bow160} 160w, ${bow320} 320w`}
-          sizes={`${Math.ceil(bowW)}px`}
-          alt=""
-          className="absolute block max-w-none"
-          style={{ left: offsetX + i * tileW - bowW * KNOT.x, top: padTop + joinY - bowH * KNOT.y, width: bowW, height: "auto" }}
-          width={320}
-          height={330}
-          loading="eager"
-          decoding="async"
-        />
-      ))}
+const HeroGarland = () => (
+  <div className="xmas-garland" aria-hidden="true">
+    <div className="xmas-garland__inner">
+      <div className="xmas-garland__drapes">
+        {Array.from({ length: MAX_DRAPES }, (_, i) => (
+          <img
+            key={i}
+            src={drape1050}
+            srcSet={`${drape700} 700w, ${drape1050} 1050w, ${drape1400} 1400w`}
+            sizes={DRAPE_SIZES}
+            alt=""
+            style={{ "--i": i } as React.CSSProperties}
+            width={1400}
+            height={401}
+            loading="eager"
+            fetchPriority={i === 0 ? "high" : undefined}
+            decoding="async"
+          />
+        ))}
+      </div>
+      <div className="xmas-garland__bows">
+        {Array.from({ length: MAX_DRAPES + 1 }, (_, i) => (
+          <img
+            key={i}
+            src={bow160}
+            srcSet={`${bow160} 160w, ${bow320} 320w`}
+            sizes={BOW_SIZES}
+            alt=""
+            style={{ "--i": i } as React.CSSProperties}
+            width={320}
+            height={330}
+            loading="eager"
+            decoding="async"
+          />
+        ))}
+      </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default HeroGarland;

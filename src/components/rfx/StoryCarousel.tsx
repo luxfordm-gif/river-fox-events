@@ -102,7 +102,8 @@ const StoryCarousel = ({
           aria-hidden={i === index ? undefined : true}
           className={`story__img ${i === index ? "is-on" : ""}`}
           style={s.position ? { objectPosition: s.position } : undefined}
-          loading={i === 0 ? "eager" : "lazy"}
+          // Only used in the photo reveal, below the hero: all wait until near.
+          loading="lazy"
           decoding="async"
           draggable={false}
         />
