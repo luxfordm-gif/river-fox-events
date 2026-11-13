@@ -40,7 +40,7 @@ const Enquire = ({
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
       // Google Ads conversion - only fires on a confirmed submission, and the
       // typeof guard means it no-ops when the Google tag is blocked by consent.
-      if (typeof window.gtag === "function") {
+      if (typeof window.gtag === "function" && window.location.hostname === "riverfoxevents.co.uk") {
         window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
       }
       // GA4 lead, sent only after Accept on the cookie banner (src/lib/track.ts).
