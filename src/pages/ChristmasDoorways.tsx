@@ -885,7 +885,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 <p className="t-lead max-w-[460px] heading-to-text" style={{ color: "hsl(var(--text-on-dark))" }}>
                   Late November and early December dates go fast.
                 </p>
-                <p className="t-lead max-w-[460px] mt-4" style={{ color: "hsl(var(--text-dimmed))" }}>
+                <p className="t-lead max-w-[460px] text-to-text" style={{ color: "hsl(var(--text-dimmed))" }}>
                   {biz
                     ? "Send a photo of your entrance and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "
                     : "Send a photo of your door and your postcode, and I'll come back with ideas and a quote. Prefer to talk? Call me on "}
@@ -898,7 +898,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   </a>
                   .
                 </p>
-                <p className="mt-7 t-body" style={{ color: "hsl(var(--text-on-dark))" }}>
+                <p className="text-to-text t-body" style={{ color: "hsl(var(--text-on-dark))" }}>
                   {/* 24 hours here, not the site's 1 to 2 working days: it's so close
                       to Christmas (Matt, 2026-11-13). */}
                   I reply within 24 hours.
@@ -922,7 +922,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     Don't fill this out: <input name="bot-field" />
                   </label>
                 </p>
-                <div className="hidden md:block mb-5 text-left">
+                <div className="hidden md:block form-title text-left">
                   <h3 className="t-h4 text-primary">
                     {biz ? "Tell me about your entrance" : "Tell me about your door"}
                   </h3>
@@ -936,11 +936,11 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                       I've got your {biz ? "entrance" : "door"} details. I'll be in touch within 24 hours
                       with ideas, a colour palette and a quote.
                     </p>
-                    <p className="mt-4 t-body text-ink-soft">
+                    <p className="text-to-text t-body text-ink-soft">
                       If it's easier, send me a message on WhatsApp too.
                       Laura
                     </p>
-                    <div className="mt-6">
+                    <div className="text-to-action">
                       <a href={biz ? WHATSAPP_HREF_BUSINESS : WHATSAPP_HREF} className="btn-ghost-rf">
                         WhatsApp Laura now
                       </a>
@@ -986,7 +986,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 {/* Optional extras, folded away. Hidden fields still send, so
                     the defaults reach the same Netlify inbox as before. */}
                 <div id="xmas-more-details" hidden={!moreOpen}>
-                <div className="form-grid mt-5">
+                <div className="form-grid form-more">
                   <label className="form-row full">
                     <span className="lbl">{biz ? "Photo of your entrance" : "Photo of your door"}</span>
                     <input type="file" name="door-photo" accept="image/*" />
@@ -1020,7 +1020,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 </div>
                 {/* The toggle and the button share one row, so the button
                     sits straight under the message. */}
-                <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="form-actions flex flex-col sm:flex-row sm:items-center sm:justify-between">
                   <button
                     type="button"
                     aria-expanded={moreOpen}

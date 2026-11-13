@@ -104,7 +104,7 @@ const Contact = () => {
                   touch to talk through your plans.
                 </p>
                 <p
-                  className="t-body text-ink mt-5 max-w-[460px] mx-auto lg:mx-0"
+                  className="t-body text-ink text-to-text max-w-[460px] mx-auto lg:mx-0"
                   style={{ textWrap: "pretty" }}
                 >
                   Celebrations start from £300, with larger designs
@@ -112,11 +112,11 @@ const Contact = () => {
                   <span className="whitespace-nowrap">£600 - £1,500+</span>.
                 </p>
 
-                <div className="hairline mt-10 max-w-[460px] mx-auto lg:mx-0" aria-hidden="true" />
+                <div className="hairline text-to-content max-w-[460px] mx-auto lg:mx-0" aria-hidden="true" />
 
-                <ul className="mt-8 flex flex-col gap-4 items-center lg:items-start">
+                <ul className="text-to-content flex flex-col stack-gap items-center lg:items-start">
                   <li>
-                    <div className="t-overline text-ink-soft mb-1.5">
+                    <div className="t-overline text-ink-soft label-to-title">
                       WhatsApp
                     </div>
                     <a
@@ -130,7 +130,7 @@ const Contact = () => {
                     </a>
                   </li>
                   <li>
-                    <div className="t-overline text-ink-soft mb-1.5">
+                    <div className="t-overline text-ink-soft label-to-title">
                       Email
                     </div>
                     <a
@@ -141,7 +141,7 @@ const Contact = () => {
                     </a>
                   </li>
                   <li>
-                    <div className="t-overline text-ink-soft mb-1.5">
+                    <div className="t-overline text-ink-soft label-to-title">
                       Instagram
                     </div>
                     <a
@@ -238,7 +238,7 @@ const Contact = () => {
                     </select>
                   </label>
                 </div>
-                <div className="flex justify-center lg:justify-end mt-6">
+                <div className="form-actions flex justify-center lg:justify-end">
                   <button
                     type="submit"
                     disabled={submitting}

@@ -59,10 +59,10 @@ const Enquire = ({
   return (
     <section id="enquire" className="rfx-section dark rfx-enquire" aria-labelledby="enquire-heading">
       <div className="container-rfx">
-        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] columns-gap items-start rfx-md-stack">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] columns-gap items-start">
           {/* Left: heading + intro + availability card. Sticky on desktop so it
               follows the reader down the long form. */}
-          <div className="pt-2 mb-6 lg:mb-0 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
+          <div className="pt-2 text-center lg:text-left flex flex-col items-center lg:items-stretch lg:sticky lg:top-28 lg:self-start">
             <h2
               id="enquire-heading"
               className="t-h2"
@@ -91,7 +91,7 @@ const Enquire = ({
               </a>
               .
             </p>
-            <div className="mt-7">
+            <div className="text-to-action">
               <a href={ENQUIRE_WHATSAPP} className="btn-ghost-rf on-dark">
                 WhatsApp Laura
               </a>
@@ -115,7 +115,7 @@ const Enquire = ({
                 Don't fill this out: <input name="bot-field" />
               </label>
             </p>
-            <div className="hidden md:block mb-5 text-left">
+            <div className="hidden md:block form-title text-left">
               <h3 className="t-h4 text-primary">
                 Tell me about your celebration
               </h3>
@@ -133,10 +133,10 @@ const Enquire = ({
                   Your enquiry has been received. I'll be in touch within 1 to
                   2 working days to discuss your event in more detail.
                 </p>
-                <p className="mt-4 t-body text-ink-soft">
+                <p className="text-to-text t-body text-ink-soft">
                   If it's easier, send me a message on WhatsApp too. Laura
                 </p>
-                <div className="mt-6">
+                <div className="text-to-action">
                   <a href={ENQUIRE_WHATSAPP} className="btn-ghost-rf">
                     WhatsApp Laura
                   </a>
@@ -173,7 +173,7 @@ const Enquire = ({
             {/* Optional extras, folded away. Untouched ones send blank, so
                 Laura never sees an answer the customer didn't choose. */}
             <div id="enquire-more-details" hidden={!moreOpen}>
-            <div className="form-grid mt-5">
+            <div className="form-grid form-more">
               <label className="form-row full">
                 <span className="lbl">Event location / venue</span>
                 <input type="text" name="venue" placeholder={venuePlaceholder} />
@@ -214,7 +214,7 @@ const Enquire = ({
             </div>
             </div>
             {/* The toggle and the button share one row, as on the Christmas form. */}
-            <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="form-actions flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <button
                 type="button"
                 aria-expanded={moreOpen}
