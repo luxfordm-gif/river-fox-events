@@ -157,20 +157,21 @@
     --gap-text-content: 48px;          /* Text to content · a paragraph down to the list or grid below it (40 phone) */
     --gap-inline: 24px;                /* Inline gap · space between items in a row of text links (16 phone) */
     --gap-label-title: 4px;            /* Label to title · a small label (step number, overline) directly above a card or step title */
-    --gap-title-body: 8px;
+    --gap-title-body: 8px;             /* Title to text · a card or item title down to its text, every card on the site */
     --gap-text-action: 32px;           /* Text to action · a paragraph down to the button(s) under it, e.g. hero sub-copy to Reserve your date (home and town were 40, service 32; Matt 2026-11-13) */
     --gap-actions: 12px;               /* Action gap · between two buttons side by side or stacked (home was 20) */
     --gap-columns: 64px;               /* Column gap · between the two halves of a split layout: text and form, text and photo (48 phone; Enquire used 64, Contact 80; Matt 2026-11-13) */
     --gap-cards: 40px;                 /* Card gap · between cards in a grid or row: steps, tiles, related articles (32 phone) */
+    --gap-stacked: 24px;               /* Stacked gap · on phones, between the two halves of a .rfx-md-stack layout once they stack (About, reveals, service header, footer); was a hand-set 24 */
     --gap-paragraph: 20px;             /* Paragraph gap · one paragraph to the next (was 16 or 20; Matt 2026-11-13) */
     --gap-stack: 16px;                 /* Stack gap · between small stacked items, e.g. Contact's WhatsApp / Email / Instagram */
     --gap-form: 20px;                  /* Form gap · form title down to the first field, and the last field down to the buttons (Contact was 24) */
     --gap-field: 12px;                 /* Field gap · between form fields in every direction, and before the "more details" extras (were 12 / 14 / 20) */
     --gap-button-trust: 24px;          /* Button to trust line · hero button down to the five-star reviews line, same on every page (Matt, 2026-11-13) */
     --gap-list-item: 4px;              /* List item gap · space between bullet points in article copy, same as the In short box (was 0.4em, tightened by Matt 2026-11-09) */
-    --card-text-inset: 18px;
-    --panel-inset: 24px;
-    --card-pad: 40px;                  /* Card padding · inside option and pricing cards (28 phone) */               /* Panel inset · gap from the screen edge to a rounded section panel (none on phones: full width) */           /* Card text inset · right padding on card text so titles stay clear of the next card (0 phone) */             /* Title to text · space between a card or item title and its text, every card on the site */
+    --card-text-inset: 18px;           /* Card text inset · right padding on card text so titles stay clear of the next card (0 phone) */
+    --panel-inset: 24px;               /* Panel inset · gap from the screen edge to a rounded section panel (none on phones: full width) */
+    --card-pad: 40px;                  /* Card padding · inside option, pricing and In short boxes (28 phone) */
     --container-max: 1440px;           /* Content width · the widest the page content gets */
     --measure-title: 18ch;             /* Title width · widest a centred section title runs before it wraps, with balanced lines (Matt, 2026-11-13) */
     --measure-lead: 44ch;              /* Intro width · widest the intro paragraph under a section title runs (Matt, 2026-11-13) */
@@ -185,11 +186,11 @@
     --menu-section-gap: 32px;          /* Menu section gap · between the blocks of the phone menu: links, extra links, contact, button */
     --gap-icon: 8px;                   /* Icon gap · between text and its icon: chevrons, arrows, the Christmas bow (were 6 to 12) */
     --btn-compact-pad: 8px 16px;       /* Compact button padding · the nav's Enquire now button */
-    --gap-link-list: 8px;
+    --gap-link-list: 8px;              /* Link list gap · between links in a list, e.g. a footer column */
     --gap-eyebrow: 20px;               /* Eyebrow to title · a small label above a hero or article title, e.g. CHRISTMAS 2026 · NOW BOOKING, JOURNAL (article was 28 / 36) */
     --article-gap: 64px;               /* Article gap · between the blocks of a journal article: header, In short, photos, quotes, enquire box, related (48 phone; were 48 to 96) */
-    --article-pad-x: 24px;
-    --list-indent: 20px;
+    --article-pad-x: 24px;             /* Article side padding · inside narrow article blocks: In short, quotes, enquire boxes, related */
+    --list-indent: 20px;               /* List indent · how far bullet text sits in from the bullet edge (In short lists) */
     --gap-media: 20px;                 /* Media gap · a photo or icon down to a card title under it (were 16 to 32) */
     --gap-caption: 12px;               /* Caption gap · a photo down to its caption, close so it reads as the photo's label (Our work, tile names, article photos) */
     --gap-photos: 12px;                /* Photo gap · between photos in a grid or strip (8 phone; were 8 / 12 / 16) */               /* List indent · how far bullet text sits in from the bullet's edge (In short lists) */             /* Article side padding · inside narrow article blocks */              /* Link list gap · between links in a list, e.g. a footer column */
@@ -1640,7 +1641,7 @@
 
   /* Responsive grid stacking helper */
   @media (max-width: 760px) {
-    .rfx-md-stack { grid-template-columns: 1fr !important; gap: 24px !important; }
+    .rfx-md-stack { grid-template-columns: 1fr !important; gap: var(--gap-stacked) !important; }
     .rfx-md-full { grid-column: 1 / -1 !important; }
     .rfx-md-static { position: static !important; }
     .form-grid { grid-template-columns: 1fr !important; }
