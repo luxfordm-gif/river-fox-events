@@ -12,8 +12,9 @@ import bow320 from "@/assets/christmas/burgundy-velvet-bow-320.webp";
  * bare). The drape's two ends sit at the same height, so neighbouring drapes
  * meet cleanly under the bow.
  *
- * The number of drapes follows the width (about one per 480px), so each one
- * stays a sensible size from a phone to an ultra-wide screen.
+ * The number of drapes follows the width (about one per 480px, one per 360px
+ * on tablets and small laptops), so each one stays a sensible size from a
+ * phone to an ultra-wide screen.
  */
 
 const DRAPE_RATIO = 622 / 2172; // height / width of the trimmed drape
@@ -35,7 +36,10 @@ const HeroGarland = () => {
     return () => ro.disconnect();
   }, []);
 
-  const n = Math.max(1, Math.round(w / 480));
+  // Tablets and small laptops (768-1366px) get a drape about every 360px
+  // instead of 480, so the swags are shallower and the hero's button comes
+  // up into view on an iPad (Matt, 2026-11-13).
+  const n = Math.max(1, Math.round(w / (w >= 768 && w <= 1366 ? 360 : 480)));
 
   // Full-size layout: sets the block's height, so the eyebrow and h1 below
   // sit in the same place whatever the garland's drawn size.
