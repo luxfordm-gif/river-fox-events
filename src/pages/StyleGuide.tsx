@@ -363,7 +363,23 @@ const BUTTONS: { name: string; use: string; tone?: string; render: () => ReactNo
   },
 ];
 
-const SPACING_TOKENS = ["--section-y", "--section-gap", "--gap-heading-text", "--gap-heading-content", "--gap-text-content", "--gap-inline", "--gap-label-title", "--gap-title-body", "--card-text-inset", "--panel-inset", "--gutter", "--container-max", "--hero-pad-top", "--hero-gap", "--hero-pad-bottom", "--page-pad-top", "--page-pad-bottom"];
+const SPACING_TOKENS = [
+  "--section-y", "--section-gap", "--gap-heading-text", "--gap-heading-content", "--gap-text-content", "--gap-inline", "--gap-label-title", "--gap-title-body", "--card-text-inset", "--panel-inset", "--gutter", "--container-max", "--hero-pad-top", "--hero-gap", "--hero-pad-bottom", "--page-pad-top", "--page-pad-bottom",
+  // Added by the token migration (2026-11-13). New ones go on the end so P codes never shift.
+  "--gap-paragraph", "--gap-stack", "--gap-text-action", "--gap-actions", "--gap-button-trust", "--gap-columns", "--gap-stacked", "--gap-cards", "--gap-media", "--gap-caption", "--gap-photos", "--gap-eyebrow", "--gap-divider", "--gap-list-item", "--gap-link-list", "--gap-icon", "--gap-form", "--gap-field", "--card-pad", "--article-gap", "--article-pad-x", "--list-indent", "--hero-ink-trim", "--measure-title", "--measure-lead", "--nav-height", "--nav-pad-x", "--nav-link-gap", "--menu-offset", "--menu-pad", "--menu-item-pad", "--menu-rule-gap", "--menu-section-gap", "--btn-compact-pad", "--tap-target",
+];
+
+/* A spacing token's value at a width, in px: references to other tokens are
+   worked out first, and two-part values ("12px 4px") show both parts. */
+const spacingAt = (name: string, w: number): string => {
+  const raw = tokenAt(SHEET, name, w);
+  if (!raw) return "-";
+  const v = resolveVars(SHEET, raw, w).trim();
+  if (/\dch$/.test(v)) return v;
+  const parts = v.match(/(?:[^\s(]+|\([^)]*\))+(?:\([^)]*\))?/g) ?? [v];
+  const isSingle = parts.length === 1 || /^(clamp|calc|min|max)\(/.test(v);
+  return isSingle ? fmt(pxAt(v, w)) : parts.map((x) => fmt(pxAt(x, w))).join(" / ");
+};
 
 /* ---------- the live sections ---------- */
 
@@ -972,7 +988,7 @@ const StyleGuide = () => {
                           <b className="text-ink">{t?.note.includes(" · ") ? t.note.split(" · ")[0] : name}</b>{" "}
                           <span className="sg-code text-ink-faint">{name}</span>
                         </td>
-                        {WIDTHS.map(({ w, label }) => <td key={label}>{fmt(pxAt(tokenAt(SHEET, name, w) ?? "", w))}</td>)}
+                        {WIDTHS.map(({ w, label }) => <td key={label}>{spacingAt(name, w)}</td>)}
                         <td className="text-ink-soft">{t?.note.includes(" · ") ? t.note.split(" · ").slice(1).join(" · ") : t?.value}</td>
                       </tr>
                     );
