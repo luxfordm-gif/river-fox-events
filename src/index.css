@@ -177,6 +177,15 @@
     --nav-height: 78px;                /* Nav height · the fixed nav bar, exactly this tall, for anything that starts just under it (64 phone, Matt 2026-11-13) */
     --nav-pad-x: 40px;                 /* Nav side padding · space at the left and right of the nav bar (was 56; 32 on tablets, 1024-1366; Matt 2026-11-13) */
     --nav-link-gap: 32px;              /* Nav link gap · space between Home, Services, Our work... (28 on tablets, 1024-1366) */
+    /* Menus: the nav's desktop dropdowns and the phone menu (Matt, 2026-11-13). */
+    --menu-offset: 16px;               /* Menu offset · from a nav item down to its dropdown */
+    --menu-pad: 12px 4px;              /* Menu padding · inside a dropdown, around its links */
+    --menu-item-pad: 10px 20px;        /* Menu item padding · around each dropdown link */
+    --menu-rule-gap: 8px;              /* Menu rule gap · above and below the line in a dropdown, and between the phone menu's main links */
+    --menu-section-gap: 32px;          /* Menu section gap · between the blocks of the phone menu: links, extra links, contact, button */
+    --gap-icon: 8px;                   /* Icon gap · between text and its icon: chevrons, arrows, the Christmas bow (were 6 to 12) */
+    --btn-compact-pad: 8px 16px;       /* Compact button padding · the nav's Enquire now button */
+    --gap-link-list: 8px;              /* Link list gap · between links in a list, e.g. a footer column */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
     --gutter: 56px;                    /* Side gutter · space at the left and right of the page content (32 phone, 8% on laptops) */
 
@@ -983,7 +992,29 @@
      wrappers are flex boxes too (Nav.tsx), so the button never sits on a
      line box of its own: alignment holds even if a browser ignores baseline. */
   .rfx-nav-row { display: flex; align-items: baseline; gap: var(--nav-link-gap); font-size: var(--fs-meta); letter-spacing: var(--ls-label); }
-  .rfx-nav a { color: inherit; text-decoration: none; position: relative; padding-bottom: 2px; }
+  .rfx-nav a, .rfx-nav .nav-trigger { color: inherit; text-decoration: none; position: relative; padding-bottom: 2px; }
+  /* Desktop dropdowns (Services, About): one shared style. */
+  .nav-trigger { display: inline-flex; align-items: center; gap: var(--gap-icon); background: transparent; border: 0; cursor: pointer; }
+  .nav-menu-wrap { padding-top: var(--menu-offset); }
+  .nav-menu { padding: var(--menu-pad); border-radius: var(--radius-large); }
+  .nav-menu__item { display: flex; align-items: center; gap: var(--gap-icon); padding: var(--menu-item-pad); }
+  .nav-menu__rule { margin: var(--menu-rule-gap) 20px; }
+  .btn-compact { padding: var(--btn-compact-pad) !important; }
+  /* Phone menu: starts where page titles start, so it follows the nav height. */
+  .nav-sheet { padding-top: var(--page-pad-top); padding-bottom: var(--section-y); display: flex; flex-direction: column; gap: var(--menu-section-gap); }
+  .nav-sheet__links { display: flex; flex-direction: column; gap: var(--menu-rule-gap); }
+  .nav-sheet__links > a { padding-block: 4px; }
+  .nav-sheet__links > a.nav-sheet__seasonal { display: flex; align-items: center; gap: var(--gap-icon); padding-block: var(--gap-actions); }
+  .nav-sheet__more { display: flex; flex-direction: column; align-items: flex-start; gap: var(--gap-stack); }
+  .icon-gap { gap: var(--gap-icon); }
+  .link-list > * + * { margin-top: var(--gap-link-list); }
+  /* Footer: starts like every section (Section padding), not a one-off 54 / 96. */
+  .footer-top { padding-top: var(--section-y); }
+  .footer-divider { margin-bottom: var(--gap-columns); }
+  .footer-grid { margin-bottom: var(--gap-columns); }
+  .footer-title { margin-bottom: var(--gap-stack); }
+  .footer-bar { padding-top: var(--gap-paragraph); gap: var(--gap-actions); }
+  @media (max-width: 767px) { .footer-brand { margin-bottom: var(--gap-paragraph); } }
   .rfx-nav a:not(.btn-solid-rf):not(.no-underline-fx)::after {
     content: "";
     position: absolute;

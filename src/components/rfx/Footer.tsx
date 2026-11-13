@@ -35,7 +35,7 @@ const Footer = () => {
 
   return (
     <footer className="relative overflow-hidden bg-surface-deep text-on-deep">
-      <div className="rfx-footer-inner relative pt-[54px] md:pt-24 overflow-hidden">
+      <div className="rfx-footer-inner footer-top relative overflow-hidden">
         {/* Big watermark - slow drift, parallax, masked sheen. The fade-in
             mask sits on a layer the size of the footer, so it always starts
             from clear at the footer's top edge. (On the text itself it was
@@ -110,29 +110,29 @@ const Footer = () => {
         <div className="container-rfx relative">
           {/* Mobile-only divider so the footer reads as a clear section break. */}
           <div
-            className="md:hidden mb-12"
+            className="md:hidden footer-divider"
             style={{ borderTop: "1px solid hsl(var(--text-on-dark) / 0.18)" }}
             aria-hidden="true"
           />
 
           {/* Footer columns */}
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-12 mb-16 rfx-md-stack">
-            <div className="mb-8 md:mb-0">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr_1fr] cards-gap footer-grid rfx-md-stack">
+            <div className="footer-brand">
               <div className="t-wordmark-lg whitespace-nowrap">
                 RIVER&nbsp;FOX&nbsp;EVENTS
               </div>
               <p
-                className="t-meta max-w-[360px] mt-7"
+                className="t-meta max-w-[360px] heading-to-text"
                 style={{ color: "hsl(var(--text-dimmed))" }}
               >
                 Luxury event styling across Surrey. Formerly known as Lollipop Balloons.
               </p>
             </div>
             <div>
-              <div className="t-overline mb-4" style={{ color: "hsl(var(--text-on-dark))" }}>
+              <div className="t-overline footer-title" style={{ color: "hsl(var(--text-on-dark))" }}>
                 Services
               </div>
-              <div className="t-meta space-y-2">
+              <div className="t-meta link-list">
                 <a href="/childrens-parties/" className="opacity-85 hover:opacity-100 block">Children's Parties</a>
                 <a href="/milestone-celebrations/" className="opacity-85 hover:opacity-100 block">Milestones</a>
                 <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate</a>
@@ -141,10 +141,10 @@ const Footer = () => {
               </div>
             </div>
             <div>
-              <div className="t-overline mb-4" style={{ color: "hsl(var(--text-on-dark))" }}>
+              <div className="t-overline footer-title" style={{ color: "hsl(var(--text-on-dark))" }}>
                 Locations
               </div>
-              <div className="t-meta space-y-2">
+              <div className="t-meta link-list">
                 {visibleLocations.map((loc) => (
                   <a
                     key={loc.slug}
@@ -159,7 +159,7 @@ const Footer = () => {
                     type="button"
                     onClick={() => setShowAllLocations((s) => !s)}
                     aria-expanded={showAllLocations}
-                    className="mt-2 inline-flex items-center gap-1.5 bg-transparent border-0 p-0 cursor-pointer t-meta opacity-70 hover:opacity-100 text-inherit"
+                    className="inline-flex items-center icon-gap bg-transparent border-0 p-0 cursor-pointer t-meta opacity-70 hover:opacity-100 text-inherit"
                   >
                     {showAllLocations ? "Show less" : "Show more"}
                     <ChevronDown
@@ -175,10 +175,10 @@ const Footer = () => {
               </div>
             </div>
             <div>
-              <div className="t-overline mb-4" style={{ color: "hsl(var(--text-on-dark))" }}>
+              <div className="t-overline footer-title" style={{ color: "hsl(var(--text-on-dark))" }}>
                 Studio
               </div>
-              <div className="t-meta space-y-2">
+              <div className="t-meta link-list">
                 <a href="/our-work/" className="opacity-85 hover:opacity-100 block">Our Work</a>
                 <a href="/#about" className="opacity-85 hover:opacity-100 block">About Laura</a>
                 <a href="/#process" className="opacity-85 hover:opacity-100 block">How it works</a>
@@ -189,7 +189,7 @@ const Footer = () => {
             <div>
               <a
                 href="/contact/"
-                className="t-overline mb-4 inline-flex items-center gap-1 no-underline hover:underline underline-offset-4 decoration-[hsl(var(--text-on-dark))]/50"
+                className="t-overline footer-title inline-flex items-center icon-gap no-underline hover:underline underline-offset-4 decoration-[hsl(var(--text-on-dark))]/50"
                 style={{ color: "hsl(var(--text-on-dark))" }}
               >
                 Contact
@@ -200,7 +200,7 @@ const Footer = () => {
                   className="opacity-75 -mt-px"
                 />
               </a>
-              <div className="t-meta space-y-2" style={{ color: "hsl(var(--text-dimmed))" }}>
+              <div className="t-meta link-list" style={{ color: "hsl(var(--text-dimmed))" }}>
                 <a href="mailto:Riverfoxevents@gmail.com" className="hover:opacity-100 opacity-85 block">
                   Riverfoxevents@gmail.com
                 </a>
@@ -224,7 +224,7 @@ const Footer = () => {
           </div>
 
           <div
-            className="t-meta pt-6 border-t grid grid-cols-3 items-center gap-3"
+            className="t-meta footer-bar border-t grid grid-cols-3 items-center"
             style={{ borderColor: "hsl(var(--text-on-dark) / 0.15)", color: "hsl(var(--text-dimmed))" }}
           >
             <div className="text-left">© {new Date().getFullYear()} River Fox Events</div>
