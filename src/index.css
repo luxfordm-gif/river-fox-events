@@ -1000,8 +1000,10 @@
   .nav-menu__item { display: flex; align-items: center; gap: var(--gap-icon); padding: var(--menu-item-pad); }
   .nav-menu__rule { margin: var(--menu-rule-gap) 20px; }
   .btn-compact { padding: var(--btn-compact-pad) !important; }
-  /* Phone menu: starts where page titles start, so it follows the nav height. */
-  .nav-sheet { padding-top: var(--page-pad-top); padding-bottom: var(--section-y); display: flex; flex-direction: column; gap: var(--menu-section-gap); }
+  /* Phone menu: the first link sits one Menu section gap under the nav, the
+     same gap as between the menu's blocks, so it follows the nav height
+     (it was a fixed 112px, 48px under the 64px phone nav; Matt 2026-11-13). */
+  .nav-sheet { padding-top: calc(var(--nav-height) + var(--menu-section-gap)); padding-bottom: var(--section-y); display: flex; flex-direction: column; gap: var(--menu-section-gap); }
   .nav-sheet__links { display: flex; flex-direction: column; gap: var(--menu-rule-gap); }
   .nav-sheet__links > a { padding-block: 4px; }
   .nav-sheet__links > a.nav-sheet__seasonal { display: flex; align-items: center; gap: var(--gap-icon); padding-block: var(--gap-actions); }
