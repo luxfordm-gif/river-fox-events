@@ -52,7 +52,7 @@ const CookieBanner = () => {
       role="dialog"
       aria-live="polite"
       aria-label="Cookie preferences"
-      className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 toast-width z-[200] rounded-large bg-surface-deep text-on-deep shadow-[0_24px_60px_-20px_hsl(var(--text-primary)/0.45)] toast-pad"
+      className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 toast-width z-modal rounded-large bg-surface-deep text-on-deep shadow-card toast-pad"
     >
       <p className="t-meta">
         We use cookies for analytics and ads, only if you accept.{" "}

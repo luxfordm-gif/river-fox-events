@@ -1,4 +1,5 @@
-import type { ComponentType, ReactNode } from "react";
+import type { ReactNode } from "react";
+import type { LazyPage } from "@/lib/lazyPage";
 
 /**
  * Lightweight metadata for an article - used by the journal index, related
@@ -40,10 +41,11 @@ export type ArticleSummary = {
 };
 
 /**
- * Full article = summary + the JSX body component. Body is pulled in via
- * static import (not lazy / code-split) so prerender can capture it. */
+ * Full article = summary + the JSX body component. Body is code-split: it
+ * downloads only on its own page (lazyPage), and the prerender waits for it,
+ * so the static HTML still carries the whole article. */
 export type Article = ArticleSummary & {
-  Body: ComponentType;
+  Body: LazyPage;
   /** Optional override for the dark end-of-article CTA card, e.g. to send
    *  a seasonal article's readers to its own landing page. Any field left
    *  out falls back to the default "Plan your celebration" card. */

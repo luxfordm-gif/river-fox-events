@@ -83,7 +83,7 @@ const CPReveal = ({
           transform: visible ? "scale(1)" : "scale(0.92)",
           opacity: visible ? 1 : 0.2,
           transition:
-            "transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            "transform var(--motion-reveal) var(--ease-reveal), opacity var(--motion-reveal) var(--ease-reveal), box-shadow var(--motion-reveal) var(--ease-reveal)",
           transformOrigin: "center center",
           willChange: "transform, opacity",
           boxShadow: visible
@@ -106,7 +106,8 @@ const CPReveal = ({
           alt={alt}
           className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
           style={{ transform: `translate3d(0,0,0) scale(${imageScale})` }}
-          loading="eager"
+          // Always below the hero, so it waits until it's nearly on screen.
+          loading="lazy"
           decoding="async"
           width={1280}
           height={1600}
@@ -136,7 +137,7 @@ const CPReveal = ({
         opacity: visible ? 1 : 0.2,
         transform: visible ? "translateY(0)" : "translateY(20px)",
         transition:
-          "opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 180ms, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 180ms",
+          "opacity var(--motion-reveal) var(--ease-reveal) calc(var(--motion-stagger) * 1.5), transform var(--motion-reveal) var(--ease-reveal) calc(var(--motion-stagger) * 1.5)",
       }}
     >
       <SectionHeading align="left">{headline}</SectionHeading>

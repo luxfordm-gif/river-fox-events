@@ -130,7 +130,10 @@ const ChristmasPromo = () => {
               data-pos={pos}
               width={560}
               height={700}
-              loading="lazy"
+              // On screen as soon as the card slides in (after about a
+              // second), so fetched straight away but behind the hero.
+              loading="eager"
+              fetchPriority="low"
               decoding="async"
             />
           );

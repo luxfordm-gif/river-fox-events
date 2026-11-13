@@ -27,10 +27,24 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  build: {
+    // One stylesheet for the whole site, as before the page split: split
+    // stylesheets can load in a different order and change which rule wins.
+    // It's ~25KB and cached once.
+    cssCodeSplit: false,
+    rollupOptions: {
+      output: {
+        // Pages load their own code (speed pass, 2026-11-13). Without this the
+        // split leaves dozens of tiny files (some just one photo's address);
+        // fold anything under 10KB into the files that use it.
+        experimentalMinChunkSize: 10_000,
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-    dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime", "@tanstack/react-query", "@tanstack/query-core"],
+    dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
   },
 }));

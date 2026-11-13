@@ -12,6 +12,16 @@
   --xmas-pine: 155 76% 8%;          /* Pine · the floating Christmas banner, a deep spruce green so it stands off the cream page (Matt, 2026-11-09) */
   --xmas-page: 45 30% 95.5%;        /* Page (Christmas) · hero and light sections, a touch darker so settled snow shows */
   --xmas-faq-top: clamp(40px, 6vw, 96px);      /* FAQ top (Christmas) · space above the FAQs, after the campaign films */
+  --xmas-shadow-garland: drop-shadow(0 10px 10px hsl(150 30% 10% / 0.2));  /* Garland shadow (Christmas) · the hero garland swags */
+  --xmas-shadow-cutout: drop-shadow(0 18px 16px hsl(150 30% 10% / 0.16)) drop-shadow(0 4px 4px hsl(150 30% 10% / 0.12)); /* Cutout shadow (Christmas) · fresh or faux garland cutouts */
+  --xmas-shadow-bow: drop-shadow(0 4px 6px hsl(120 6% 12% / 0.25));       /* Bow shadow (Christmas) · the bow on the floating card */
+  --xmas-shadow-promo: 0 30px 70px -24px hsl(var(--text-primary) / 0.4), 0 6px 18px -8px hsl(var(--text-primary) / 0.18); /* Floating card shadow (Christmas) */
+  --xmas-shadow-card: 0 14px 28px -14px hsl(var(--text-primary) / 0.45);  /* Card shadow (Christmas) · photo cards in the floating card */
+  --xmas-shadow-gold: 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55); /* Gold glow (Christmas) · a garland option on hover or chosen */
+  --xmas-option-edge: inset 0 0 0 1px hsl(var(--text-primary) / 0.28);    /* Option edge (Christmas) · hairline round a garland option */
+  --xmas-option-edge-off: inset 0 0 0 0 hsl(var(--text-primary) / 0.28);
+  --xmas-option-edge-gold: inset 0 0 0 1px hsl(var(--xmas-gold-deep));
+  --xmas-option-edge-gold-off: inset 0 0 0 0 hsl(var(--xmas-gold-deep));
   --xmas-faq-bottom: clamp(150px, 12vw, 170px); /* FAQ bottom (Christmas) · room under the FAQs for the booking section's snow edge */
   --strip-text: var(--background-light); /* Instagram strip text on photos (was its own near-identical cream) */
 
@@ -53,20 +63,97 @@
 .rfx-xmas .rfx-section.white { background: hsl(var(--xmas-page)); }
 
 /* Hero garland (src/components/rfx/HeroGarland.tsx). Static, so the
-   filtered layer is rasterised once, not every frame. */
-.xmas-garland { pointer-events: none; filter: drop-shadow(0 10px 10px hsl(150 30% 10% / 0.2)); }
+   filtered layer is rasterised once, not every frame.
+
+   Laid out in CSS so the prerendered page is right at every width before
+   any code runs (Matt, 2026-11-13). The same sums the component used to do
+   in JavaScript, with 100cqw as the garland's width:
+     drapes across (--garland-n): about one per 480px, one per 360px on
+     768-1366 tablets; drawn 18% smaller on phones (--garland-scale).
+     Full-size drape sets the block height, so the title below never moves.
+     A bow sits over every join and both edges. */
+.xmas-garland {
+  pointer-events: none;
+  filter: var(--xmas-shadow-garland);
+  container-type: inline-size;
+  overflow: hidden;
+  --garland-n: 1;
+  --garland-scale: 0.82;
+  --garland-ratio: 0.28637;        /* drape height / width (622 / 2172) */
+  --garland-join: 0.09646;         /* drape ends' height, share of drape (60 / 622) */
+  --garland-bow-ratio: 1.02817;    /* bow height / width (1168 / 1136) */
+  --garland-knot: 0.24;            /* the bow's knot, share of its height */
+  --garland-bow-min: 60px;
+  --garland-bow-max: 120px;
+  --garland-air-top: 4px;
+  --garland-air-bottom: 6px;
+}
+@media (min-width: 768px)  { .xmas-garland { --garland-n: 2; --garland-scale: 1; } }
+@media (min-width: 900px)  { .xmas-garland { --garland-n: 3; } }
+@media (min-width: 1260px) { .xmas-garland { --garland-n: 4; } }
+@media (min-width: 1367px) { .xmas-garland { --garland-n: 3; } }
+@media (min-width: 1680px) { .xmas-garland { --garland-n: 4; } }
+@media (min-width: 2160px) { .xmas-garland { --garland-n: 5; } }
+@media (min-width: 2640px) { .xmas-garland { --garland-n: 6; } }
+
+.xmas-garland__inner {
+  position: relative;
+  /* Full size (sets the height) */
+  --full-tile: calc(100cqw / var(--garland-n));
+  --full-tile-h: calc(var(--full-tile) * var(--garland-ratio));
+  --full-bow: clamp(var(--garland-bow-min), calc(var(--full-tile) * 0.2), var(--garland-bow-max));
+  --full-pad: calc(max(0px, var(--full-bow) * var(--garland-bow-ratio) * var(--garland-knot) - var(--full-tile-h) * var(--garland-join)) + var(--garland-air-top));
+  height: calc(var(--full-pad) + var(--full-tile-h) + var(--garland-air-bottom));
+  /* Drawn size */
+  --tile: calc(var(--full-tile) * var(--garland-scale));
+  --tile-h: calc(var(--tile) * var(--garland-ratio));
+  --offset: calc((100cqw - var(--garland-n) * var(--tile)) / 2);
+  --overlap: calc(var(--tile) * 0.02);  /* drapes tuck slightly under each other at the join */
+  --bow: calc(var(--full-bow) * var(--garland-scale));
+  --bow-h: calc(var(--bow) * var(--garland-bow-ratio));
+  --join-y: calc(var(--tile-h) * var(--garland-join));
+  --pad: calc(max(0px, var(--bow-h) * var(--garland-knot) - var(--join-y)) + var(--garland-air-top));
+}
+.xmas-garland__inner img { position: absolute; display: none; max-width: none; height: auto; }
+.xmas-garland__drapes img {
+  left: calc(var(--offset) + var(--i) * var(--tile) - var(--overlap) / 2);
+  top: var(--pad);
+  width: calc(var(--tile) + var(--overlap));
+}
+.xmas-garland__bows img {
+  left: calc(var(--offset) + var(--i) * var(--tile) - var(--bow) / 2);
+  top: calc(var(--pad) + var(--join-y) - var(--bow-h) * var(--garland-knot));
+  width: var(--bow);
+}
+/* Show as many drapes as fit, and one more bow than drapes. */
+.xmas-garland__drapes img:nth-child(-n+1), .xmas-garland__bows img:nth-child(-n+2) { display: block; }
+@media (min-width: 768px) {
+  .xmas-garland__drapes img:nth-child(-n+2), .xmas-garland__bows img:nth-child(-n+3) { display: block; }
+}
+@media (min-width: 900px) {
+  .xmas-garland__drapes img:nth-child(-n+3), .xmas-garland__bows img:nth-child(-n+4) { display: block; }
+}
+@media (min-width: 1260px) and (max-width: 1366px), (min-width: 1680px) {
+  .xmas-garland__drapes img:nth-child(-n+4), .xmas-garland__bows img:nth-child(-n+5) { display: block; }
+}
+@media (min-width: 2160px) {
+  .xmas-garland__drapes img:nth-child(-n+5), .xmas-garland__bows img:nth-child(-n+6) { display: block; }
+}
+@media (min-width: 2640px) {
+  .xmas-garland__drapes img:nth-child(-n+6), .xmas-garland__bows img:nth-child(-n+7) { display: block; }
+}
 
 /* Garland cutout image: a clean CSS shadow in place of the one baked into
    the source photo. */
 .xmas-cutout {
-  filter: drop-shadow(0 18px 16px hsl(150 30% 10% / 0.16)) drop-shadow(0 4px 4px hsl(150 30% 10% / 0.12));
+  filter: var(--xmas-shadow-cutout);
 }
 
 /* Card image swap: the garland close-up fades in over the wide shot on
    hover, or on touch when the card is mid-screen (.is-swapped, set by the
    page). */
 .xmas-swap { position: relative; overflow: hidden; border-radius: var(--radius-large); }
-.xmas-swap__detail { opacity: 0; transition: opacity 0.6s ease; }
+.xmas-swap__detail { opacity: 0; transition: opacity var(--motion-slow) ease; }
 @media (hover: hover) {
   .xmas-swap:hover .xmas-swap__detail { opacity: 1; }
 }
@@ -124,7 +211,7 @@
    Bottom-right card on desktop, a slim bar along the bottom on phones. */
 .xmas-promo {
   position: fixed;
-  z-index: 150;
+  z-index: var(--layer-promo);
   right: 24px;
   bottom: 24px;
   width: 320px;
@@ -133,17 +220,17 @@
   background: hsl(var(--xmas-pine));
   color: hsl(var(--text-on-dark));
   --accent-dark: var(--xmas-gold); /* italic heading word, brighter on the green */
-  box-shadow: 0 30px 70px -24px hsl(var(--text-primary) / 0.4), 0 6px 18px -8px hsl(var(--text-primary) / 0.18);
+  box-shadow: var(--xmas-shadow-promo);
   opacity: 0;
   transform: translateY(28px);
   pointer-events: none;
   /* Leaving is quick so the close feels instant (Matt, 2026-11-08); the
      slow, gentle entrance is on .is-shown below. */
-  transition: opacity 0.2s ease, transform 0.25s ease-in;
+  transition: opacity var(--motion-quick) ease, transform var(--motion-quick) ease-in;
 }
 .xmas-promo.is-shown {
   opacity: 1; transform: none; pointer-events: auto;
-  transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.22, 0.7, 0.2, 1);
+  transition: opacity var(--motion-slow) ease, transform var(--motion-reveal) var(--ease-soft);
 }
 .xmas-promo__bow {
   position: absolute;
@@ -153,7 +240,7 @@
   height: auto;
   transform: translateX(-50%);
   z-index: 6;
-  filter: drop-shadow(0 4px 6px hsl(120 6% 12% / 0.25));
+  filter: var(--xmas-shadow-bow);
 }
 /* Lit spruce branch on the right edge; the wrapper clips it to the card's
    corners (the bow above still overhangs). Its left edge fades into the green. */
@@ -187,7 +274,7 @@
   border-radius: 50%;
   color: hsl(var(--text-on-dark));
   background: hsl(var(--xmas-pine) / 0.85);
-  transition: color 0.2s ease, background 0.2s ease;
+  transition: color var(--motion-quick) ease, background var(--motion-quick) ease;
 }
 .xmas-promo__close:hover { color: hsl(var(--xmas-pine)); background: hsl(var(--text-on-dark)); }
 /* The circle stays small but the tap area is a full Tap target, centred on
@@ -214,8 +301,8 @@
   object-fit: cover;
   border-radius: var(--radius-large);
   border: 4px solid hsl(0 0% 100%);
-  box-shadow: 0 14px 28px -14px hsl(var(--text-primary) / 0.45);
-  transition: transform 0.9s cubic-bezier(0.45, 0, 0.2, 1), opacity 0.9s ease;
+  box-shadow: var(--xmas-shadow-card);
+  transition: transform var(--motion-reveal) var(--ease-swing), opacity var(--motion-reveal) ease;
 }
 .xmas-promo__card[data-pos="0"] { z-index: 4; transform: translateX(-50%) rotate(-2deg); }
 .xmas-promo__card[data-pos="1"] { z-index: 3; transform: translateX(-50%) translateX(34%) rotate(7deg) scale(0.92); }
@@ -275,18 +362,18 @@
 /* One movement only: the card eases up 4px. (Scoped tighter than .fade-up,
    which sets transition: none and made the card jump.) */
 .xmas-options > .xmas-option {
-  transition: transform .45s cubic-bezier(.45,0,.25,1), box-shadow .45s cubic-bezier(.45,0,.25,1);
-  box-shadow: inset 0 0 0 0 hsl(var(--text-primary) / 0.28);
+  transition: transform var(--motion-base) var(--ease-swing), box-shadow var(--motion-base) var(--ease-swing);
+  box-shadow: var(--xmas-option-edge-off);
 }
 .xmas-options > .xmas-option.is-popular {
-  box-shadow: inset 0 0 0 0 hsl(var(--xmas-gold-deep)), 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
+  box-shadow: var(--xmas-option-edge-gold-off), var(--xmas-shadow-gold);
 }
 /* On hover the border thickens 1px inwards (an inset ring, so nothing shifts). */
 .xmas-options > .xmas-option:hover, .xmas-options > .xmas-option:focus-within {
-  box-shadow: inset 0 0 0 1px hsl(var(--text-primary) / 0.28);
+  box-shadow: var(--xmas-option-edge);
 }
 .xmas-options > .xmas-option.is-popular:hover, .xmas-options > .xmas-option.is-popular:focus-within {
-  box-shadow: inset 0 0 0 1px hsl(var(--xmas-gold-deep)), 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
+  box-shadow: var(--xmas-option-edge-gold), var(--xmas-shadow-gold);
 }
 /* The link doesn't grow or nudge its arrow here; the card's lift is the hover. */
 .xmas-option .xmas-option__link, .xmas-option .xmas-option__link .arr { transition: none; }
@@ -294,7 +381,7 @@
 .xmas-option .xmas-option__link:hover .arr { transform: none; }
 .xmas-option.is-popular {
   border: 1.5px solid hsl(var(--xmas-gold-deep));
-  box-shadow: 0 18px 40px -26px hsl(var(--xmas-gold-deep) / 0.55);
+  box-shadow: var(--xmas-shadow-gold);
 }
 .xmas-options > .xmas-option:hover, .xmas-options > .xmas-option:focus-within { transform: translateY(-4px); }
 .xmas-option__link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }

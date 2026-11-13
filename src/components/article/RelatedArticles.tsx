@@ -47,7 +47,7 @@ const RelatedArticles = ({ items }: Props) => {
                   alt=""
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  className="w-full h-full object-cover transition-transform duration-slow group-hover:scale-[1.04]"
                   style={{ objectPosition: a.cardImagePosition ?? "center" }}
                 />
               </div>

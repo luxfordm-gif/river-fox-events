@@ -67,8 +67,8 @@ const LocationHeroFan = ({ images, spreadOnHover = false }: LocationHeroFanProps
   // spread uses a slow-in, slow-out ease so it opens and closes smoothly.
   const [settled, setSettled] = useState(false);
   const transition = settled
-    ? "transform 1.2s cubic-bezier(0.45, 0, 0.2, 1)"
-    : "transform 1.4s cubic-bezier(0.22, 0.7, 0.2, 1) 0.15s";
+    ? "transform var(--motion-long) var(--ease-swing)"
+    : "transform var(--motion-long) var(--ease-soft) var(--motion-stagger)";
   const onEnter = spreadOnHover ? () => { setSettled(true); setSpread(true); } : undefined;
   const onLeave = spreadOnHover ? () => setSpread(false) : undefined;
   const sideX = spread ? 14.5 : 12; // vw

@@ -259,7 +259,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
         ref={triggerRef}
         type="button"
         onClick={() => openAt(0)}
-        className="story-fan-front group absolute inset-0 z-[3] block w-full h-full rounded-large overflow-hidden shadow-[0_18px_40px_-18px_hsl(var(--text-primary)/0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+        className="story-fan-front group absolute inset-0 z-[3] block w-full h-full rounded-large overflow-hidden shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
         aria-haspopup="dialog"
         aria-label={hideCta ? cta : undefined}
       >
@@ -268,7 +268,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
           srcSet={thumbSrcSet}
           sizes="(min-width: 1280px) 420px, (min-width: 1024px) 380px, (min-width: 768px) 320px, 240px"
           alt={thumbAlt}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-slow group-hover:scale-[1.03]"
           style={{ objectPosition: thumbPosition }}
           loading="lazy"
           decoding="async"
@@ -279,7 +279,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
         {/* Play mark */}
         <span
           aria-hidden="true"
-          className={`absolute left-1/2 ${hideCta ? "top-1/2" : "top-[42%]"} -translate-x-1/2 -translate-y-1/2 grid place-items-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110`}
+          className={`absolute left-1/2 ${hideCta ? "top-1/2" : "top-[42%]"} -translate-x-1/2 -translate-y-1/2 grid place-items-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm shadow-on-photo transition-transform duration-quick group-hover:scale-110`}
         >
           <svg viewBox="0 0 24 24" className="w-6 h-6 md:w-9 md:h-9 ml-1 fill-[hsl(var(--text-primary))]">
             <path d="M8 5.5v13l11-6.5z" />
@@ -308,7 +308,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
           role="dialog"
           aria-modal="true"
           aria-label={cta}
-          className="fixed inset-0 z-[200] grid place-items-center bg-black/95 touch-none"
+          className="fixed inset-0 z-modal grid place-items-center bg-black/95 touch-none"
           onClick={(e) => {
             if (e.target === e.currentTarget) close();
           }}
@@ -354,7 +354,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
               {stories.map((s, i) => (
                 <span key={s.src} className="h-[4px] md:h-[5px] flex-1 rounded-full bg-white/40 overflow-hidden">
                   <span
-                    className="block h-full bg-white transition-[width] duration-200 ease-linear"
+                    className="block h-full bg-white transition-[width] duration-quick ease-linear"
                     style={{ width: `${i < index ? 100 : i === index ? progress * 100 : 0}%` }}
                   />
                 </span>
@@ -390,7 +390,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
               <div className="pointer-events-none absolute inset-x-0 bottom-[max(1.25rem,env(safe-area-inset-bottom))] flex flex-col items-center gap-2.5">
                 <span
                   aria-hidden="true"
-                  className={`rounded-full bg-black/45 px-4 py-2 t-meta text-white transition-opacity duration-500 ${showTip ? "opacity-100" : "opacity-0"}`}
+                  className={`rounded-full bg-black/45 px-4 py-2 t-meta text-white transition-opacity duration-slow ${showTip ? "opacity-100" : "opacity-0"}`}
                 >
                   Tap or swipe for the next video
                 </span>
@@ -409,7 +409,7 @@ const StoryVideos = ({ stories, thumb, thumbSrcSet, thumbAlt, cta, thumbPosition
             {!single && index < stories.length - 1 && (
               <span
                 aria-hidden="true"
-                className={`md:hidden pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 grid place-items-center w-11 h-11 rounded-full bg-black/40 text-white transition-opacity duration-500 ${hint ? "opacity-100" : "opacity-0"}`}
+                className={`md:hidden pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 grid place-items-center w-11 h-11 rounded-full bg-black/40 text-white transition-opacity duration-slow ${hint ? "opacity-100" : "opacity-0"}`}
               >
                 <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
               </span>

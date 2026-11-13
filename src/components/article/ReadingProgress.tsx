@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 /**
  * Thin reading-progress bar fixed to the very top of the viewport. Width
  * tracks the user's vertical scroll position as a percentage of the
- * document. Sits above the nav (z-300) and the page-transition overlay.
+ * document. Sits above the nav (Layer nav) and the page-transition overlay.
  */
 const ReadingProgress = () => {
   const [pct, setPct] = useState(0);
@@ -27,7 +27,7 @@ const ReadingProgress = () => {
   return (
     <div
       aria-hidden="true"
-      className="fixed top-0 left-0 right-0 z-[300] h-[2px] pointer-events-none bg-ink/[0.06]"
+      className="fixed top-0 left-0 right-0 z-top h-[2px] pointer-events-none bg-ink/[0.06]"
     >
       <div
         className="h-full"

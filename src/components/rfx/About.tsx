@@ -52,7 +52,7 @@ const StatItem = ({ stat, visible, armed, delay }: { stat: Stat; visible: boolea
       style={{
         opacity: shown ? 1 : 0,
         transform: shown ? "translateY(0)" : "translateY(12px)",
-        transition: `opacity .8s ease ${delay}ms, transform .8s ease ${delay}ms`,
+        transition: `opacity var(--motion-reveal) ease ${delay}ms, transform var(--motion-reveal) ease ${delay}ms`,
       }}
     >
       <div

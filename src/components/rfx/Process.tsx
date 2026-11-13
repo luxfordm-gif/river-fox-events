@@ -80,7 +80,7 @@ const Process = ({ steps = DEFAULT_STEPS, tone = "white", sectionId = "process" 
               style={{
                 opacity: stepsIn ? 1 : 0,
                 transform: stepsIn ? "translateX(0)" : "translateX(-32px)",
-                transition: `opacity .9s cubic-bezier(.22,.7,.2,1) ${i * 180}ms, transform .9s cubic-bezier(.22,.7,.2,1) ${i * 180}ms`,
+                transition: `opacity var(--motion-reveal) var(--ease-soft) ${i * 180}ms, transform var(--motion-reveal) var(--ease-soft) ${i * 180}ms`,
               }}
             >
               <div
@@ -90,7 +90,7 @@ const Process = ({ steps = DEFAULT_STEPS, tone = "white", sectionId = "process" 
                   className="inline-block text-accent-warm"
                   style={{
                     transform: stepsIn ? "translateX(0)" : "translateX(-110%)",
-                    transition: `transform 1s cubic-bezier(.22,.7,.2,1) ${i * 180 + 80}ms`,
+                    transition: `transform var(--motion-reveal) var(--ease-soft) ${i * 180 + 80}ms`,
                   }}
                 >
                   {s.n} /

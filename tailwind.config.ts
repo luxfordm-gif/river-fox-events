@@ -84,6 +84,40 @@ export default {
         large: "var(--radius-large)",
         small: "var(--radius-small)",
       },
+      // Shadows, page layers and motion (tokens in src/index.css, 2026-11-13).
+      boxShadow: {
+        rest: "var(--shadow-rest)",
+        lift: "var(--shadow-lift)",
+        soft: "var(--shadow-soft)",
+        card: "var(--shadow-card)",
+        menu: "var(--shadow-menu)",
+        panel: "var(--shadow-panel)",
+        float: "var(--shadow-float)",
+        "on-photo": "var(--shadow-on-photo)",
+      },
+      zIndex: {
+        float: "var(--layer-float)",
+        menu: "var(--layer-menu)",
+        nav: "var(--layer-nav)",
+        promo: "var(--layer-promo)",
+        modal: "var(--layer-modal)",
+        top: "var(--layer-top)",
+      },
+      transitionDuration: {
+        instant: "var(--motion-instant)",
+        quick: "var(--motion-quick)",
+        base: "var(--motion-base)",
+        slow: "var(--motion-slow)",
+        reveal: "var(--motion-reveal)",
+        long: "var(--motion-long)",
+        drift: "var(--motion-drift)",
+      },
+      transitionTimingFunction: {
+        soft: "var(--ease-soft)",
+        reveal: "var(--ease-reveal)",
+        glide: "var(--ease-glide)",
+        swing: "var(--ease-swing)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
