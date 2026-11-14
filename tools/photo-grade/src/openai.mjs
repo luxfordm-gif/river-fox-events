@@ -4,7 +4,7 @@ import { costFromUsage } from './cost.mjs';
 
 let client;
 function openai() {
-  if (!config.openaiKey) throw new Error('No OPENAI_API_KEY found (tools/photo-grade/.env or ~/Projects/invicta-photo-editor/.env).');
+  if (!config.openaiKey) throw new Error('No OPENAI_API_KEY found (tools/photo-grade/.env here or in the main river-fox-events folder, or ~/Projects/invicta-photo-editor/.env).');
   if (!client) client = new OpenAI({ apiKey: config.openaiKey, maxRetries: 0, timeout: 300_000 });
   return client;
 }
