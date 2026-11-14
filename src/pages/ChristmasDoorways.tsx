@@ -495,6 +495,15 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
   useNavScroll();
   const [submitting, setSubmitting] = useState(false);
   const [sentTo, setSentTo] = useState<string | null>(null);
+  const thanksRef = useRef<HTMLHeadingElement>(null);
+
+  /* The card shrinks from a long form to a few lines, so bring the thank-you
+     into view (it can end up above the screen on a phone). */
+  useEffect(() => {
+    if (!sentTo || !thanksRef.current) return;
+    thanksRef.current.focus({ preventScroll: true });
+    thanksRef.current.closest("form")?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }, [sentTo]);
   const [moreOpen, setMoreOpen] = useState(false);
   const biz = variant === "business";
   const routePath = biz ? "/commercial-christmas-decorations" : "/christmas-door-garlands";
@@ -917,32 +926,25 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     Don't fill this out: <input name="bot-field" />
                   </label>
                 </p>
+                {sentTo ? (
+                  /* Once sent, the thank-you is the whole card: no form heading
+                     and no buttons (Matt, 2026-11-14). */
+                  <div className="text-left" role="status" data-track-location="enquire-thank-you">
+                    <h3 ref={thanksRef} tabIndex={-1} className="t-h4 text-primary outline-none">
+                      Thank you, {sentTo}.
+                    </h3>
+                    <p className="title-to-text t-body text-ink-soft">
+                      I've got your {biz ? "entrance" : "door"} details. I'll be in touch within 24 hours
+                      with ideas, a colour palette and a quote. Laura
+                    </p>
+                  </div>
+                ) : (
+                <>
                 <div className="hidden md:block form-title text-left">
                   <h3 className="t-h4 text-primary">
                     {biz ? "Tell me about your entrance" : "Tell me about your door"}
                   </h3>
                 </div>
-                {sentTo ? (
-                  /* Thank-you panel instead of a toast (Matt, 2026-11-13). Same words as
-                     before, plus the next step and a faster route. */
-                  <div className="text-left" role="status" data-track-location="enquire-thank-you">
-                    <h3 className="t-h4 text-primary">Thank you, {sentTo}.</h3>
-                    <p className="title-to-text t-body text-ink-soft">
-                      I've got your {biz ? "entrance" : "door"} details. I'll be in touch within 24 hours
-                      with ideas, a colour palette and a quote.
-                    </p>
-                    <p className="text-to-text t-body text-ink-soft">
-                      If it's easier, send me a message on WhatsApp too.
-                      Laura
-                    </p>
-                    <div className="text-to-action">
-                      <a href={biz ? WHATSAPP_HREF_BUSINESS : WHATSAPP_HREF} className="btn-ghost-rf">
-                        WhatsApp Laura now
-                      </a>
-                    </div>
-                  </div>
-                ) : (
-                <>
                 <div className="form-grid">
                   <label className="form-row">
                     <span className="lbl">Full name</span>
