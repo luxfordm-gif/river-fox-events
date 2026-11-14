@@ -129,7 +129,7 @@ function status() {
   const m = loadManifest();
   const all = loadPhotos().photos.filter((p) => !p.skip && graded(p));
   const by = (s) => all.filter((p) => (m.images[p.key]?.status || 'pending') === s).length;
-  console.log(`${all.length} site photos · done ${by('done')} · failed ${by('failed')} · pending ${by('pending')} · spend $${m.spendUsd.toFixed(2)}`);
+  console.log(`${all.length} photos · done ${by('done')} · failed ${by('failed')} · pending ${by('pending')} · spend $${m.spendUsd.toFixed(2)}`);
   for (const p of all) {
     const e = m.images[p.key];
     if (e?.status === 'done') console.log(`  ${e.applied ? 'applied' : 'ready  '} ${p.key}  ${e.metrics.flags.join(', ') || 'ok'}`);
@@ -181,6 +181,7 @@ async function apply() {
   for (const p of photos) {
     const lead = p.copyOf || p.derived || p.key;
     if (only && !matches(p)) continue; // --only: swap just these in
+    if (p.extra) continue; // review-only photos that aren't on the site
     if (p.skip || !ok(lead)) { left.push(p.key); continue; }
     const e = m.images[lead];
     const png = path.join(dirs.ai, `${lead}.png`);

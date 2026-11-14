@@ -85,7 +85,15 @@ function readRepoFile(rel) {
   if (!SOURCE_REF) throw new Error(`Missing ${rel} (merge the gallery PR, or set SOURCE_REF=origin/<branch>)`);
   return execFileSync('git', ['show', `${SOURCE_REF}:${rel}`], { cwd: REPO, maxBuffer: 64 << 20 });
 }
-export const readSource = (src) => readRepoFile(`src/assets/${src}`);
+// Photos not on the site (an Instagram post for Google Business, say) go in state/inbox/, in a folder per job.
+// Their src is "inbox/<folder>/<file>"; they are graded and exported like any other, and apply never touches them.
+export const INBOX = path.join(STATE, 'inbox');
+export const readSource = (src) => (src.startsWith('inbox/') ? fs.readFileSync(path.join(STATE, src)) : readRepoFile(`src/assets/${src}`));
+function inboxPhotos() {
+  if (!fs.existsSync(INBOX)) return [];
+  const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]));
+  return walk(INBOX).filter((f) => /\.(webp|jpe?g|png|heic)$/i.test(f)).map((f) => `inbox/${path.relative(INBOX, f).split(path.sep).join('/')}`);
+}
 
 /**
  * The photos are every image the site shows: imported by a page, component or data file under src/,
@@ -100,7 +108,9 @@ export const readSource = (src) => readRepoFile(`src/assets/${src}`);
  * - Byte-identical files are graded once (`copyOf`).
  */
 export const keyOf = (src) => path.basename(src, path.extname(src));
-const EXCLUDE = /(^|\/)(christmas\/video)\/|client-|business-cards|placeholder/i;
+// christmas-hero/ and business-hero/ hold the Christmas hero videos and their poster frames: a graded poster
+// would jump when its video starts, and the model would redraw the faces in them.
+const EXCLUDE = /(^|\/)(christmas\/video|christmas-hero|business-hero)\/|client-|business-cards|placeholder/i;
 function siteImageRefs() {
   const SRC = path.join(REPO, 'src');
   const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]));
@@ -114,14 +124,17 @@ export function loadPhotos() {
   const gallery = [...new Set([...data.matchAll(/source:\s*"([^"]+)"/g)].map((m) => m[1]))];
   const over = JSON.parse(fs.readFileSync(path.join(TOOL, 'photos.json'), 'utf8'));
   const heroes = new Set(over.heroes || []);
-  const all = [...new Set([...siteImageRefs(), ...gallery])].filter((src) => !EXCLUDE.test(src) && !/\/gallery\//.test(src)).sort();
+  const onSite = new Set([...siteImageRefs(), ...gallery]);
+  // extra: photos not on the site (e.g. a new Instagram post), graded for review only; apply leaves them alone
+  const extras = new Set([...(over.extra || []), ...inboxPhotos()].filter((src) => !onSite.has(src)));
+  const all = [...new Set([...onSite, ...extras])].filter((src) => !EXCLUDE.test(src) && !/\/gallery\//.test(src)).sort();
   const photos = [], byHash = {}, sets = {};
   for (const src of all) {
     let buf; try { buf = readSource(src); } catch { continue; }
     // see-through cut-outs (bows, garland swags) are decorations, not photos
-    if (/\.png$/i.test(src) || buf.includes(Buffer.from('ALPH'))) continue;
+    if (!src.startsWith('inbox/') && (/\.png$/i.test(src) || buf.includes(Buffer.from('ALPH')))) continue;
     const key = keyOf(src);
-    const p = { src, key, gallery: gallery.includes(src), hero: heroes.has(key), ...(over.photos?.[key] || {}) };
+    const p = { src, key, gallery: gallery.includes(src), hero: heroes.has(key), extra: extras.has(src), ...(over.photos?.[key] || {}) };
     const h = crypto.createHash('sha1').update(buf).digest('hex');
     if (byHash[h]) p.copyOf = byHash[h]; else byHash[h] = key;
     const r = src.match(/^(.*)-(\d{3,4})\.webp$/);
