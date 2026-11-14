@@ -259,6 +259,7 @@
     --article-gap: 64px;               /* Article gap · between the blocks of a journal article: header, In short, photos, quotes, enquire box, related (48 phone; were 48 to 96) */
     --article-pad-x: 24px;             /* Article side padding · inside narrow article blocks: In short, quotes, enquire boxes, related */
     --list-indent: 20px;               /* List indent · how far bullet text sits in from the bullet edge (In short lists) */
+    --tile-swipe-width: 62%;           /* Swipe tile width · on phones, one photo tile in the ServicesCards swipe row, so the next one peeks in; the first and last tile are padded to sit centred (Matt, 2026-11-14) */
     --gap-media: 20px;                 /* Media gap · a photo or icon down to a card title under it (were 16 to 32) */
     --gap-caption: 12px;               /* Caption gap · a photo down to its caption, close so it reads as the photo's label (Our work, tile names, article photos) */
     --gap-photos: 12px;                /* Photo gap · between photos in a grid or strip (8 phone; were 8 / 12 / 16) */               /* List indent · how far bullet text sits in from the bullet's edge (In short lists) */             /* Article side padding · inside narrow article blocks */              /* Link list gap · between links in a list, e.g. a footer column */
@@ -1085,8 +1086,18 @@
   .hero-gap-below { margin-bottom: var(--hero-gap); }
 
   .toast-pad { padding: var(--gap-stack) var(--gap-paragraph); }
-  .carousel-dots { display: flex; justify-content: center; gap: var(--gap-icon); margin-top: var(--gap-paragraph); }
-  .card-meta { padding-top: var(--gap-actions); }
+  /* Every carousel's dots (photo tiles, reviews, article photos) sit a clear
+     step below the row, so they read as its control: 32, was 20 (Matt,
+     2026-11-14). */
+  .carousel-dots { display: flex; justify-content: center; gap: var(--gap-icon); margin-top: var(--gap-text-action); }
+  /* Photo tiles' phone swipe row (ServicesCards only; other carousels start
+     at the left): the first and last tile get enough room beside them to
+     sit in the middle of the screen, not hard against the edge. The margin
+     is half of what the tile leaves of the row (Matt, 2026-11-14). */
+  @media (max-width: 767px) {
+    .tile-swipe > li:first-child { margin-inline-start: calc((100% - var(--tile-swipe-width)) / 2); }
+    .tile-swipe > li:last-child { margin-inline-end: calc((100% - var(--tile-swipe-width)) / 2); }
+  }  .card-meta { padding-top: var(--gap-actions); }
   .row-pad { padding-bottom: var(--gap-paragraph); }
   .inline-gap { gap: var(--gap-inline); }
   .rows-gap { row-gap: var(--gap-text-content); }

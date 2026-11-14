@@ -68,12 +68,13 @@ const ServicesCards = ({
             2026-11-08); a tile with an href is a link, its name underlined
             like every text link and its photo easing in by 5% on hover.
             Phones: a swipe carousel to the screen edges, next tile peeking
-            in, dots underneath. Tablet up: 4 across. */}
+            in, dots underneath; the first tile starts centred (.tile-swipe).
+            Tablet up: 4 across. */}
           <>
           <ul
             ref={track}
             onScroll={onTrackScroll}
-            className="relative flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-8 px-5 scroll-px-5 list-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-4 md:gap-x-7 md:gap-y-10 md:max-w-[var(--container-narrow)] md:mx-auto md:px-0 md:overflow-visible"
+            className="tile-swipe relative flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-8 px-5 scroll-px-5 list-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-4 md:gap-x-7 md:gap-y-10 md:max-w-[var(--container-narrow)] md:mx-auto md:px-0 md:overflow-visible"
           >
             {items.map((s) => {
               const tile = (
@@ -100,7 +101,7 @@ const ServicesCards = ({
                 </>
               );
               return (
-                <li key={s.title} className="shrink-0 basis-[62%] snap-center md:basis-auto">
+                <li key={s.title} className="shrink-0 basis-[var(--tile-swipe-width)] snap-center md:basis-auto">
                   {s.href ? (
                     <a href={s.href} className="tile-link block">{tile}</a>
                   ) : (
