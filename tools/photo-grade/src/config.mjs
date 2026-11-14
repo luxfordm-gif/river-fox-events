@@ -21,12 +21,23 @@ function readEnv(file) {
   return out;
 }
 const local = readEnv(path.join(TOOL, '.env'));
-// The API key is shared with the Invicta photo editor, so nothing needs setting up on this machine.
+/** The main River Fox folder, found through git, so a session working in a fresh copy (a worktree) still finds the key saved there. */
+function mainCheckout() {
+  try {
+    const common = execFileSync('git', ['rev-parse', '--path-format=absolute', '--git-common-dir'], { cwd: TOOL, encoding: 'utf8' }).trim();
+    return path.dirname(common);
+  } catch {
+    return null;
+  }
+}
+const mainRoot = mainCheckout();
+const main = mainRoot && mainRoot !== REPO ? readEnv(path.join(mainRoot, 'tools', 'photo-grade', '.env')) : {};
+// Last resort: the Invicta photo editor's own key.
 const invicta = readEnv(path.join(os.homedir(), 'Projects', 'invicta-photo-editor', '.env'));
-const env = (k, d) => process.env[k] || local[k] || d;
+const env = (k, d) => process.env[k] || local[k] || main[k] || d;
 
 export const config = {
-  openaiKey: process.env.OPENAI_API_KEY || local.OPENAI_API_KEY || invicta.OPENAI_API_KEY || '',
+  openaiKey: process.env.OPENAI_API_KEY || local.OPENAI_API_KEY || main.OPENAI_API_KEY || invicta.OPENAI_API_KEY || '',
   model: env('OPENAI_IMAGE_MODEL', 'gpt-image-2.5-sunburst'),
   quality: env('OPENAI_IMAGE_QUALITY', 'high'),
   maxSpendUsd: Number(env('MAX_SPEND_USD', 20)),
