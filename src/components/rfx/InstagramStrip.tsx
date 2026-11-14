@@ -155,6 +155,7 @@ const InstagramStrip = ({
               target="_blank"
               rel="noopener noreferrer"
               tabIndex={repeat ? -1 : undefined}
+              data-track-text={img.alt}
               className="xmas-ig__tile"
             >
               <img src={img.src} alt={repeat ? "" : img.alt} width={560} height={700} loading="lazy" decoding="async" />

@@ -81,6 +81,7 @@ import adThumb360 from "@/assets/christmas/video/cream-house-door-lit-jewel-baub
 import adThumb540 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-540.webp";
 import adThumb720 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-720.webp";
 import { trackLead } from "@/lib/track";
+import { whatsappHref } from "@/lib/whatsapp";
 import { SectionHeading } from "@/components/rfx/SectionHeading";
 
 /* Christmas ad: Laura's Instagram story videos, played full screen from one
@@ -113,10 +114,10 @@ const AD_FAN = [
 ];
 
 /* Hero WhatsApp button (phones): message pre-filled, they add a postcode. */
-const WHATSAPP_HREF =
-  "https://wa.me/447872114191?text=Hi%20Laura%2C%20I%27d%20like%20a%20quote%20for%20a%20Christmas%20door%20garland.%20My%20postcode%20is%20";
-const WHATSAPP_HREF_BUSINESS =
-  "https://wa.me/447872114191?text=Hi%20Laura%2C%20I%27d%20like%20a%20quote%20for%20Christmas%20decorations%20for%20my%20business.%20My%20postcode%20is%20";
+const WHATSAPP_HREF = whatsappHref("Hi Laura, I'd like a quote for a Christmas door garland. My postcode is ");
+const WHATSAPP_HREF_BUSINESS = whatsappHref(
+  "Hi Laura, I'd like a quote for Christmas decorations for my business. My postcode is "
+);
 
 /* Hero fan, left to right. On phones the same three run as a scroll strip. */
 const FAN = [
@@ -544,7 +545,9 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
       data.set("page", window.location.pathname);
       const res = await fetch("/", { method: "POST", body: data });
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
-      // Only on the live site, so deploy-preview tests never count as a Google Ads conversion.
+      // Google Ads conversion - only on the live site, so deploy-preview tests
+      // never count. Sent whether or not the visitor accepted cookies: without
+      // Accept, Consent Mode sends Google a cookieless ping instead.
       if (typeof window.gtag === "function" && window.location.hostname === "riverfoxevents.co.uk") {
         window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
       }
@@ -927,7 +930,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 {sentTo ? (
                   /* Thank-you panel instead of a toast (Matt, 2026-11-13). Same words as
                      before, plus the next step and a faster route. */
-                  <div className="text-left" role="status">
+                  <div className="text-left" role="status" data-track-location="enquire-thank-you">
                     <h3 className="t-h4 text-primary">Thank you, {sentTo}.</h3>
                     <p className="title-to-text t-body text-ink-soft">
                       I've got your {biz ? "entrance" : "door"} details. I'll be in touch within 24 hours
