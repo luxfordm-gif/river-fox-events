@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown, ChevronRight, Instagram } from "lucide-react";
 import { useScrollY } from "@/hooks/useRiverFox";
 import { TOWNS } from "@/data/locations/towns";
+import { whatsappHref } from "@/lib/whatsapp";
 
 const FOOTER_LOCATIONS_VISIBLE = 5;
 
@@ -188,7 +189,7 @@ const Footer = () => {
                   Riverfoxevents@gmail.com
                 </a>
                 <a
-                  href="https://wa.me/447872114191?text=Hi%20Laura%2C%20I%27m%20enquiring%20about%20River%20Fox%20Events"
+                  href={whatsappHref("Hi Laura, I'm enquiring about River Fox Events")}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Message Laura on WhatsApp"

@@ -48,6 +48,43 @@ describe("click tracking", () => {
     }));
   });
 
+  it("uses a link's own report text and a block's own place name", () => {
+    const gtag = vi.fn();
+    window.gtag = gtag;
+    localStorage.setItem(CONSENT_KEY, "granted");
+    document.body.innerHTML = `
+      <section id="enquire"><div role="status" data-track-location="enquire-thank-you">
+        <a href="${whatsappHref("Hi")}">WhatsApp Laura</a></div></section>
+      <section id="instagram"><a href="https://www.instagram.com/riverfox_events/" data-track-text="Pink balloon arch">
+        <img alt="" /><span class="sr-only">(opens Instagram, @riverfox_events)</span>Opens Instagram</a></section>`;
+    installClickTracking();
+    const links = document.querySelectorAll("a");
+    links.forEach((a) => a.addEventListener("click", (e) => e.preventDefault()));
+    links.forEach((a) => a.click());
+    expect(gtag).toHaveBeenCalledWith("event", "whatsapp_click", expect.objectContaining({
+      link_location: "enquire-thank-you",
+    }));
+    expect(gtag).toHaveBeenCalledWith("event", "instagram_click", expect.objectContaining({
+      link_text: "Pink balloon arch",
+      link_location: "instagram",
+    }));
+  });
+
+  it("counts a middle-click (new tab) but not a right-click", () => {
+    const gtag = vi.fn();
+    window.gtag = gtag;
+    localStorage.setItem(CONSENT_KEY, "granted");
+    document.body.innerHTML = `<footer><a href="${whatsappHref("Hi")}">WhatsApp Laura</a></footer>`;
+    installClickTracking();
+    const a = document.querySelector("a")!;
+    a.dispatchEvent(new MouseEvent("auxclick", { bubbles: true, button: 2 }));
+    expect(gtag).not.toHaveBeenCalled();
+    a.dispatchEvent(new MouseEvent("auxclick", { bubbles: true, button: 1 }));
+    expect(gtag).toHaveBeenCalledWith("event", "whatsapp_click", expect.objectContaining({
+      link_location: "footer",
+    }));
+  });
+
   it("sends nothing before Accept, or after Decline", () => {
     const gtag = vi.fn();
     window.gtag = gtag;

@@ -12,7 +12,10 @@
  *
  * Each event carries link_text (the button's words) and link_location
  * ("nav", "footer", or the id of the section it sits in), and GA adds the
- * page. Mark whatsapp_click and phone_click as key events in Google
+ * page. A link can name its own report text with data-track-text, and a
+ * block can name its place with data-track-location (the thank-you panels
+ * are "enquire-thank-you", the Contact page list "contact-details"). A
+ * middle-click (open in a new tab) counts as a click too (Matt, 2026-11-14). Mark whatsapp_click and phone_click as key events in Google
  * Analytics, then import them into Google Ads as conversions.
  *
  * Every event here goes through trackEvent, which sends nothing until the
@@ -107,12 +110,14 @@ export function linkLocation(el: Element): string {
   return heading ? heading.toLowerCase().slice(0, 60) : "page";
 }
 
-/** What the visitor tapped: a photo link sends the photo's description
+/** What the visitor tapped: the link's own data-track-text if it has one,
+ *  else a photo link sends the photo's description
  *  (which Instagram post), anything else the words on it as seen (not
  *  screen-reader extras), falling back to the full text when it's folded
  *  away (a closed FAQ) and then the link's label. */
 function linkText(a: HTMLAnchorElement): string {
   const text =
+    a.getAttribute("data-track-text") ||
     a.querySelector("img")?.getAttribute("alt") ||
     tidy(a.innerText) ||
     tidy(a.textContent) ||
@@ -122,24 +127,30 @@ function linkText(a: HTMLAnchorElement): string {
 
 let installed = false;
 
+function onLinkClick(e: MouseEvent) {
+  const a = (e.target as Element | null)?.closest?.("a[href]") as HTMLAnchorElement | null;
+  if (!a) return;
+  const event = classifyHref(a.getAttribute("href") || "");
+  if (!event) return;
+  trackEvent(event, {
+    link_text: linkText(a),
+    link_location: linkLocation(a),
+    link_url: a.href,
+    // Send straight away: WhatsApp, phone and email links leave the page.
+    transport_type: "beacon",
+  });
+}
+
 /** Start listening. Safe to call more than once; does nothing without a browser. */
 export function installClickTracking() {
   if (installed || typeof document === "undefined") return;
   installed = true;
+  document.addEventListener("click", onLinkClick, { capture: true });
+  // Middle-click opens the link in a new tab without a "click" event.
   document.addEventListener(
-    "click",
+    "auxclick",
     (e) => {
-      const a = (e.target as Element | null)?.closest?.("a[href]") as HTMLAnchorElement | null;
-      if (!a) return;
-      const event = classifyHref(a.getAttribute("href") || "");
-      if (!event) return;
-      trackEvent(event, {
-        link_text: linkText(a),
-        link_location: linkLocation(a),
-        link_url: a.href,
-        // Send straight away: WhatsApp, phone and email links leave the page.
-        transport_type: "beacon",
-      });
+      if (e.button === 1) onLinkClick(e);
     },
     { capture: true },
   );

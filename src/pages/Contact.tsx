@@ -6,6 +6,7 @@ import PageHeader from "@/components/rfx/PageHeader";
 import { useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
 import { trackLead } from "@/lib/track";
+import { whatsappHref } from "@/lib/whatsapp";
 import {
   applyMeta,
   breadcrumbSchema,
@@ -14,9 +15,8 @@ import {
   upsertJsonLd,
 } from "@/seo/headTags";
 
-const WHATSAPP_NUMBER = "447872114191";
 const WHATSAPP_DISPLAY = "07872 114191";
-const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Laura%2C%20I%27m%20enquiring%20about%20River%20Fox%20Events`;
+const WHATSAPP_HREF = whatsappHref("Hi Laura, I'm enquiring about River Fox Events");
 const EMAIL = "Riverfoxevents@gmail.com";
 const INSTAGRAM_HANDLE = "@riverfox_events";
 const INSTAGRAM_URL = "https://www.instagram.com/riverfox_events/";
@@ -57,8 +57,10 @@ const Contact = () => {
         body,
       });
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
-      // Google Ads conversion - only fires on a confirmed submission, and the
-      // typeof guard means it no-ops when the Google tag is blocked by consent.
+      // Google Ads conversion - only fires on a confirmed submission, and only
+      // on the live site. It is sent whether or not the visitor accepted
+      // cookies: without Accept, Consent Mode sends Google a cookieless ping
+      // instead, so Ads can count more leads than GA4 (which waits for Accept).
       if (typeof window.gtag === "function" && window.location.hostname === "riverfoxevents.co.uk") {
         window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
       }
@@ -114,7 +116,7 @@ const Contact = () => {
 
                 <div className="hairline text-to-content measure-lead mx-auto lg:mx-0" aria-hidden="true" />
 
-                <ul className="text-to-content flex flex-col stack-gap items-center lg:items-start">
+                <ul className="text-to-content flex flex-col stack-gap items-center lg:items-start" data-track-location="contact-details">
                   <li>
                     <div className="t-overline text-ink-soft label-to-title">
                       WhatsApp

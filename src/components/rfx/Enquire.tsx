@@ -39,8 +39,10 @@ const Enquire = ({
         body,
       });
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
-      // Google Ads conversion - only fires on a confirmed submission, and the
-      // typeof guard means it no-ops when the Google tag is blocked by consent.
+      // Google Ads conversion - only fires on a confirmed submission, and only
+      // on the live site. It is sent whether or not the visitor accepted
+      // cookies: without Accept, Consent Mode sends Google a cookieless ping
+      // instead, so Ads can count more leads than GA4 (which waits for Accept).
       if (typeof window.gtag === "function" && window.location.hostname === "riverfoxevents.co.uk") {
         window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
       }
@@ -123,7 +125,7 @@ const Enquire = ({
             {sentTo ? (
               /* Thank-you panel instead of a toast, as on the Christmas
                  pages (Matt, 2026-11-13). */
-              <div className="text-left" role="status">
+              <div className="text-left" role="status" data-track-location="enquire-thank-you">
                 <h3 className="t-h4 text-primary">Thank you, {sentTo}.</h3>
                 <p className="title-to-text t-body text-ink-soft">
                   Your enquiry has been received. I'll be in touch within 1 to
