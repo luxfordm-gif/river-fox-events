@@ -9,7 +9,8 @@
     "status": "node src/cli.mjs status",
     "review": "node src/cli.mjs review",
     "apply": "node src/cli.mjs apply",
-    "audit": "node src/audit.mjs"
+    "audit": "node src/audit.mjs",
+    "export": "node src/export.mjs"
   },
   "dependencies": {
     "openai": "^7.53.0",
