@@ -1086,7 +1086,10 @@
   .hero-gap-below { margin-bottom: var(--hero-gap); }
 
   .toast-pad { padding: var(--gap-stack) var(--gap-paragraph); }
-  .carousel-dots { display: flex; justify-content: center; gap: var(--gap-icon); margin-top: var(--gap-paragraph); }
+  /* Every carousel's dots (photo tiles, reviews, article photos) sit a clear
+     step below the row, so they read as its control: 32, was 20 (Matt,
+     2026-11-14). */
+  .carousel-dots { display: flex; justify-content: center; gap: var(--gap-icon); margin-top: var(--gap-text-action); }
   /* Photo tiles' phone swipe row (ServicesCards only; other carousels start
      at the left): the first and last tile get enough room beside them to
      sit in the middle of the screen, not hard against the edge. The margin
@@ -1094,8 +1097,7 @@
   @media (max-width: 767px) {
     .tile-swipe > li:first-child { margin-inline-start: calc((100% - var(--tile-swipe-width)) / 2); }
     .tile-swipe > li:last-child { margin-inline-end: calc((100% - var(--tile-swipe-width)) / 2); }
-  }
-  .card-meta { padding-top: var(--gap-actions); }
+  }  .card-meta { padding-top: var(--gap-actions); }
   .row-pad { padding-bottom: var(--gap-paragraph); }
   .inline-gap { gap: var(--gap-inline); }
   .rows-gap { row-gap: var(--gap-text-content); }
