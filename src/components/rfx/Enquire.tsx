@@ -18,7 +18,6 @@ const Enquire = ({
   venuePlaceholder = "e.g. at home in Cobham",
 }: EnquireProps = {}) => {
   const [submitting, setSubmitting] = useState(false);
-  const [sentTo, setSentTo] = useState<string | null>(null);
   const [moreOpen, setMoreOpen] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,8 +42,8 @@ const Enquire = ({
       // after a confirmed send (src/lib/track.ts). Read before form.reset()
       // below clears the fields.
       trackFormSent(form);
-      const first = String(new FormData(form).get("name") || "").trim().split(" ")[0];
-      setSentTo(first || "there");
+      /* A toast, so the form card keeps its height (Matt, 2026-11-14). */
+      toast.success("Thank you - your enquiry has been received. I'll be in touch within 1 to 2 working days to discuss your event in more detail. Laura");
       form.reset();
     } catch (err) {
       toast.error("Sorry - something went wrong. Please email Riverfoxevents@gmail.com directly.");
@@ -116,26 +115,6 @@ const Enquire = ({
                 your event in more detail.
               </p>
             </div>
-            {sentTo ? (
-              /* Thank-you panel instead of a toast, as on the Christmas
-                 pages (Matt, 2026-11-13). */
-              <div className="text-left" role="status" data-track-location="enquire-thank-you">
-                <h3 className="t-h4 text-primary">Thank you, {sentTo}.</h3>
-                <p className="title-to-text t-body text-ink-soft">
-                  Your enquiry has been received. I'll be in touch within 1 to
-                  2 working days to discuss your event in more detail.
-                </p>
-                <p className="text-to-text t-body text-ink-soft">
-                  If it's easier, send me a message on WhatsApp too. Laura
-                </p>
-                <div className="text-to-action">
-                  <a href={ENQUIRE_WHATSAPP} className="btn-ghost-rf">
-                    WhatsApp Laura
-                  </a>
-                </div>
-              </div>
-            ) : (
-            <>
             <div className="form-grid">
               <label className="form-row">
                 <span className="lbl">Full name</span>
@@ -225,8 +204,6 @@ const Enquire = ({
                 {submitting ? "Sending…" : "Request my quote"} <span>→</span>
               </button>
             </div>
-            </>
-            )}
           </form>
         </div>
       </div>

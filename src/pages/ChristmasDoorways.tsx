@@ -494,7 +494,6 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
   useFadeUp();
   useNavScroll();
   const [submitting, setSubmitting] = useState(false);
-  const [sentTo, setSentTo] = useState<string | null>(null);
   const [moreOpen, setMoreOpen] = useState(false);
   const biz = variant === "business";
   const routePath = biz ? "/commercial-christmas-decorations" : "/christmas-door-garlands";
@@ -549,8 +548,8 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
       // count) and GA4 generate_lead, only after a confirmed send
       // (src/lib/track.ts). Read before form.reset() below clears the fields.
       trackFormSent(form);
-      const first = String(new FormData(form).get("name") || "").trim().split(" ")[0];
-      setSentTo(first || "there");
+      /* A toast, so the form card keeps its height (Matt, 2026-11-14). */
+      toast.success(`Thank you - I've got your ${biz ? "entrance" : "door"} details. I'll be in touch within 24 hours with ideas, a colour palette and a quote. Laura`);
       form.reset();
     } catch (err) {
       toast.error("Sorry - something went wrong. Please email Riverfoxevents@gmail.com directly.");
@@ -922,27 +921,6 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     {biz ? "Tell me about your entrance" : "Tell me about your door"}
                   </h3>
                 </div>
-                {sentTo ? (
-                  /* Thank-you panel instead of a toast (Matt, 2026-11-13). Same words as
-                     before, plus the next step and a faster route. */
-                  <div className="text-left" role="status" data-track-location="enquire-thank-you">
-                    <h3 className="t-h4 text-primary">Thank you, {sentTo}.</h3>
-                    <p className="title-to-text t-body text-ink-soft">
-                      I've got your {biz ? "entrance" : "door"} details. I'll be in touch within 24 hours
-                      with ideas, a colour palette and a quote.
-                    </p>
-                    <p className="text-to-text t-body text-ink-soft">
-                      If it's easier, send me a message on WhatsApp too.
-                      Laura
-                    </p>
-                    <div className="text-to-action">
-                      <a href={biz ? WHATSAPP_HREF_BUSINESS : WHATSAPP_HREF} className="btn-ghost-rf">
-                        WhatsApp Laura now
-                      </a>
-                    </div>
-                  </div>
-                ) : (
-                <>
                 <div className="form-grid">
                   <label className="form-row">
                     <span className="lbl">Full name</span>
@@ -1030,8 +1008,6 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     {submitting ? "Sending…" : "Request my quote"} <span>→</span>
                   </button>
                 </div>
-                </>
-                )}
               </form>
             </div>
           </div>
