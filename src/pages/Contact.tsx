@@ -5,7 +5,7 @@ import Footer from "@/components/rfx/Footer";
 import PageHeader from "@/components/rfx/PageHeader";
 import { useNavScroll } from "@/hooks/useRiverFox";
 import { findRoute } from "@/seo/routes";
-import { trackLead } from "@/lib/track";
+import { trackFormSent } from "@/lib/track";
 import { whatsappHref } from "@/lib/whatsapp";
 import {
   applyMeta,
@@ -57,16 +57,10 @@ const Contact = () => {
         body,
       });
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
-      // Google Ads conversion - only fires on a confirmed submission, and only
-      // on the live site. It is sent whether or not the visitor accepted
-      // cookies: without Accept, Consent Mode sends Google a cookieless ping
-      // instead, so Ads can count more leads than GA4 (which waits for Accept).
-      if (typeof window.gtag === "function" && window.location.hostname === "riverfoxevents.co.uk") {
-        window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
-      }
-      // GA4 lead, sent only after Accept on the cookie banner (src/lib/track.ts).
-      // Read before form.reset() below clears the fields.
-      trackLead(form);
+      // Google Ads conversion (live site only) and GA4 generate_lead, only
+      // after a confirmed send (src/lib/track.ts). Read before form.reset()
+      // below clears the fields.
+      trackFormSent(form);
       toast.success("Thank you - your enquiry has been received. I'll be in touch within 1-2 working days to discuss your event in more detail. Laura");
       form.reset();
     } catch (err) {
@@ -165,6 +159,7 @@ const Contact = () => {
                 method="POST"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
+                data-track-location="contact-form"
                 onSubmit={onSubmit}
               >
                 <input type="hidden" name="form-name" value="contact" />

@@ -127,6 +127,15 @@ if (rules[rules.length - 1]?.from !== "/*") P("the /* catch-all must be the last
 if (!fileExists("/404.html")) P("dist/404.html is missing");
 else if (!/<meta name="robots" content="[^"]*noindex/.test(readFileSync(join(DIST, "404.html"), "utf8"))) P("404.html is not marked noindex");
 
+// --- analytics: the <title> must come before the Google tag, so GA4's
+// page_view reads the page's real title (tracking audit, 2026-11-14)
+for (const [pg, { html }] of pages) {
+  const t = html.indexOf("<title>");
+  const g = html.indexOf("googletagmanager.com/gtag/js");
+  if (t < 0) P(`${pg}: no <title>`);
+  else if (g >= 0 && t > g) P(`${pg}: <title> comes after the Google tag`);
+}
+
 // --- heading structure: one h1 per page, no skipped levels (h2 -> h4)
 for (const [pg, { html, noindex }] of pages) {
   if (/brand-book/.test(pg)) continue;

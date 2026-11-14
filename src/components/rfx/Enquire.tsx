@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import { trackLead } from "@/lib/track";
+import { trackFormSent } from "@/lib/track";
 import { whatsappHref } from "@/lib/whatsapp";
 import { SectionHeading } from "@/components/rfx/SectionHeading";
 
@@ -39,16 +39,10 @@ const Enquire = ({
         body,
       });
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
-      // Google Ads conversion - only fires on a confirmed submission, and only
-      // on the live site. It is sent whether or not the visitor accepted
-      // cookies: without Accept, Consent Mode sends Google a cookieless ping
-      // instead, so Ads can count more leads than GA4 (which waits for Accept).
-      if (typeof window.gtag === "function" && window.location.hostname === "riverfoxevents.co.uk") {
-        window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
-      }
-      // GA4 lead, sent only after Accept on the cookie banner (src/lib/track.ts).
-      // Read before form.reset() below clears the fields.
-      trackLead(form);
+      // Google Ads conversion (live site only) and GA4 generate_lead, only
+      // after a confirmed send (src/lib/track.ts). Read before form.reset()
+      // below clears the fields.
+      trackFormSent(form);
       const first = String(new FormData(form).get("name") || "").trim().split(" ")[0];
       setSentTo(first || "there");
       form.reset();
@@ -216,6 +210,7 @@ const Enquire = ({
               <button
                 type="button"
                 aria-expanded={moreOpen}
+                data-form-extras
                 aria-controls="enquire-more-details"
                 onClick={() => setMoreOpen((o) => !o)}
                 className="t-label text-primary w-full sm:w-auto text-left text-pretty py-3 sm:py-0"

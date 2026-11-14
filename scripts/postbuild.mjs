@@ -289,11 +289,19 @@ function injectIntoHead(html, headFragment, jsonLdFragment) {
     })
     .join("\n    ");
 
-  const parts = [headFragment];
+  // The title, description and share tags go straight after the viewport
+  // tag, ahead of the Google tag, so GA4's first page_view always reads the
+  // page's real title (tracking audit, 2026-11-14). Preloads and any missing
+  // JSON-LD stay at the end of <head>.
+  const viewport = /<meta\s+name=["']viewport["'][^>]*>/i;
+  const parts = [];
+  if (viewport.test(out)) out = out.replace(viewport, (tag) => `${tag}\n    ${headFragment}`);
+  else parts.push(headFragment);
   if (heroPreloads) parts.push(heroPreloads);
   if (missingJsonLd) parts.push(missingJsonLd);
+  if (!parts.length) return out;
   const fragment = parts.join("\n    ");
-  return out.replace(/<\/head>/i, `    ${fragment}\n  </head>`);
+  return out.replace(/<\/head>/i, () => `    ${fragment}\n  </head>`);
 }
 
 async function writeRouteHtml(route, html) {

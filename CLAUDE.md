@@ -137,6 +137,14 @@ import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 The handler smooth-scrolls to `#enquire` when it's on the current page, and otherwise navigates to `/#enquire` so the home page enquire form gets focus. Bare `<a href="#enquire">` looks fine on home but is silently broken on every page that doesn't render the Enquire section — don't use it.
 
+## Analytics (GA4 G-L2YVNSW0ZQ, Google Ads AW-18210626936)
+
+All events live in `src/lib/track.ts` (tracking audit, 2026-11-14), started once in `main.tsx`; page-wide listeners cover new buttons and forms without wiring. Events: `whatsapp_click`, `phone_click`, `email_click`, `instagram_click`, `cta_click` (any link to `#enquire`), `nav_click` (internal links in the nav, phone menu and footer), `form_start`, `form_extras_open`, `form_abandon` (on page hide, best effort), `scroll_depth` (25/50/75/90), `generate_lead`. Every event carries `page_path` and `location` (`nav`, `footer`, `hero`, `form`, `body`); clicks add `section`, `link_text`, `link_url`. Mark a block with `data-track-location="..."` for a clearer `section`, a link with `data-track-text`, an "Add more details" toggle with `data-form-extras`.
+
+- **Privacy:** never send what a visitor types. `trackEvent` scrubs email addresses and phone numbers from every value; `link_url` drops WhatsApp messages, numbers and addresses.
+- **Consent:** GA4 events send nothing until Accept on the cookie banner. The Ads conversion (in `trackFormSent`, called after a successful Netlify send) fires on `riverfoxevents.co.uk` only, with or without Accept (Consent Mode makes it cookieless), and never when the hidden `bot-field` is filled.
+- **Page titles:** postbuild puts `<title>` before the Google tag so `page_view` reads it; `check:links` fails if it doesn't.
+
 ## Maintenance & change process
 
 Two kinds of copy live in two different places, and the update path differs:

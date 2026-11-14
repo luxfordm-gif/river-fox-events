@@ -80,7 +80,7 @@ import fanDog from "@/assets/christmas/video/woman-running-after-dragged-lit-gar
 import adThumb360 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-360.webp";
 import adThumb540 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-540.webp";
 import adThumb720 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-720.webp";
-import { trackLead } from "@/lib/track";
+import { trackFormSent } from "@/lib/track";
 import { whatsappHref } from "@/lib/whatsapp";
 import { SectionHeading } from "@/components/rfx/SectionHeading";
 
@@ -545,15 +545,10 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
       data.set("page", window.location.pathname);
       const res = await fetch("/", { method: "POST", body: data });
       if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
-      // Google Ads conversion - only on the live site, so deploy-preview tests
-      // never count. Sent whether or not the visitor accepted cookies: without
-      // Accept, Consent Mode sends Google a cookieless ping instead.
-      if (typeof window.gtag === "function" && window.location.hostname === "riverfoxevents.co.uk") {
-        window.gtag("event", "conversion", { send_to: "AW-18210626936/xqXACO264L0cEPi6wOtD" });
-      }
-      // GA4 lead, sent only after Accept on the cookie banner (src/lib/track.ts).
-      // Read before form.reset() below clears the fields.
-      trackLead(form);
+      // Google Ads conversion (live site only, so deploy-preview tests never
+      // count) and GA4 generate_lead, only after a confirmed send
+      // (src/lib/track.ts). Read before form.reset() below clears the fields.
+      trackFormSent(form);
       const first = String(new FormData(form).get("name") || "").trim().split(" ")[0];
       setSentTo(first || "there");
       form.reset();
@@ -1024,6 +1019,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   <button
                     type="button"
                     aria-expanded={moreOpen}
+                    data-form-extras
                     aria-controls="xmas-more-details"
                     onClick={() => setMoreOpen((o) => !o)}
                     className="t-label text-primary w-full sm:w-auto text-left text-pretty py-3 sm:py-0"
