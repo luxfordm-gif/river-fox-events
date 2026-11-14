@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 import { trackFormSent } from "@/lib/track";
 import { whatsappHref } from "@/lib/whatsapp";
@@ -18,17 +18,7 @@ const Enquire = ({
   venuePlaceholder = "e.g. at home in Cobham",
 }: EnquireProps = {}) => {
   const [submitting, setSubmitting] = useState(false);
-  const [sentTo, setSentTo] = useState<string | null>(null);
   const [moreOpen, setMoreOpen] = useState(false);
-  const thanksRef = useRef<HTMLHeadingElement>(null);
-
-  /* The card shrinks from a long form to a few lines, so bring the thank-you
-     into view (it can end up above the screen on a phone). */
-  useEffect(() => {
-    if (!sentTo || !thanksRef.current) return;
-    thanksRef.current.focus({ preventScroll: true });
-    thanksRef.current.closest("form")?.scrollIntoView({ block: "nearest", behavior: "smooth" });
-  }, [sentTo]);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -52,8 +42,8 @@ const Enquire = ({
       // after a confirmed send (src/lib/track.ts). Read before form.reset()
       // below clears the fields.
       trackFormSent(form);
-      const first = String(new FormData(form).get("name") || "").trim().split(" ")[0];
-      setSentTo(first || "there");
+      /* A toast, so the form card keeps its height (Matt, 2026-11-14). */
+      toast.success("Thank you - your enquiry has been received. I'll be in touch within 1 to 2 working days to discuss your event in more detail. Laura");
       form.reset();
     } catch (err) {
       toast.error("Sorry - something went wrong. Please email Riverfoxevents@gmail.com directly.");
@@ -116,20 +106,6 @@ const Enquire = ({
                 Don't fill this out: <input name="bot-field" />
               </label>
             </p>
-            {sentTo ? (
-              /* Once sent, the thank-you is the whole card: no form heading,
-                 no intro line, no buttons (Matt, 2026-11-14). */
-              <div className="text-left" role="status" data-track-location="enquire-thank-you">
-                <h3 ref={thanksRef} tabIndex={-1} className="t-h4 text-primary outline-none">
-                  Thank you, {sentTo}.
-                </h3>
-                <p className="title-to-text t-body text-ink-soft">
-                  Your enquiry has been received. I'll be in touch within 1 to
-                  2 working days to discuss your event in more detail. Laura
-                </p>
-              </div>
-            ) : (
-            <>
             <div className="hidden md:block form-title text-left">
               <h3 className="t-h4 text-primary">
                 Tell me about your celebration
@@ -228,8 +204,6 @@ const Enquire = ({
                 {submitting ? "Sending…" : "Request my quote"} <span>→</span>
               </button>
             </div>
-            </>
-            )}
           </form>
         </div>
       </div>
