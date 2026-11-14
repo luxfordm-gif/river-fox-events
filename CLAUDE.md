@@ -22,7 +22,7 @@ Site for **Laura** at River Fox Events (luxury event styling, Surrey). Live at `
 
 The active local repo is **`~/Documents/river-fox-events/`** only. A duplicate Lovable-synced clone at `~/Documents/Claude/lauras site/` was deleted on 2026-05-02 — don't recreate it. If Laura/Matt re-engage Lovable, point Lovable at the same GitHub repo, never let it spin up a parallel folder.
 
-`_salvaged-from-old-folder/` (gitignored) holds three unsorted asset files rescued from the deleted clone. Matt hasn't reviewed them yet; they're not wired up anywhere.
+`archive/` (gitignored, local only, tidied 2026-11-14) holds old files that aren't part of the site: the three unreviewed files rescued from the deleted clone (`archive/salvaged-from-old-folder/`), the June `new-images` drop, an old build, and copies of unused images removed from the code. Nothing reads from it. Put anything no longer needed there rather than leaving it at the top level; `README.md` explains every top-level file for Matt.
 
 ## SEO — `src/seo/routes.ts` is the single source of truth
 
