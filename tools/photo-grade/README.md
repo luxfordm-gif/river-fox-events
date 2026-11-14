@@ -51,9 +51,10 @@ Name the target and it knows the shape, size and format (`npm run export -- --li
 
 | `--for` | Shape and size | Format |
 |---|---|---|
-| `google-business` (default) | Square 1200x1200 | JPG |
-| `instagram` / `facebook` | Portrait 4:5, 1080x1350 | JPG |
+| `google-business` (default) | 4:3, 1200x900 | JPG |
+| `instagram` | Portrait 3:4, 1080x1440 (the tallest Instagram keeps; fills the grid tile) | JPG |
 | `instagram-square` | Square 1080x1080 | JPG |
+| `facebook` | Portrait 4:5, 1440x1800 (Meta's Feed guide) | JPG |
 | `story` | 9:16, 1080x1920 (stories, reel covers) | JPG |
 | `pinterest` | 2:3, 1000x1500 | JPG |
 | `full` | Whole photo, 1080 wide | JPG |
@@ -63,13 +64,18 @@ Name the target and it knows the shape, size and format (`npm run export -- --li
 | `website-hero-phone` | 9:16, 480 / 720 wide | WebP |
 | `share` | 1200x630 link preview (`public/og/`) | WebP |
 
-Several at once: `--for=google-business,instagram` (one subfolder each). `--out=<folder>` writes the images
+Several at once: `--for=instagram,facebook,story` (one subfolder each, named as the Drive's campaign folders are:
+`Instagram post 3x4 (1080x1440)`, `Facebook post 4x5 (1440x1800)`, `Instagram story 9x16 (1080x1920)`).
+Sizes and every overlay, review-post and social layout rule come from the newest Brand book, Social brand pack and
+Automation build brief in Drive (Brand › Brand book, Automation; never their Archive folders). If they change, the
+targets here follow. `--out=<folder>` writes the images
 straight into a folder, e.g. the synced Google Drive one; the check sheet (`sheet.jpg`, one row per target) and the
 receipt data (`export.json`: files, sizes, quality, brightness lifts) always go to `state/exports/<job>/`.
 
-- **Why square for Google Business:** Google publishes one photo size for Business Profiles, 720x720 recommended
-  (JPG or PNG, 10 KB to 5 MB, 250x250 minimum), and nothing specific to posts; "4:3 1200x900" comes from
-  third-party guides. A square also shows most of a tall garland or arch.
+- **Why these sizes** (checked against each platform's own help pages, 14 Nov 2026): Google publishes no post
+  size (only 720x720 for profile photos), and posts show in a centre-cropped 4:3 frame, so we make the 4:3 crop
+  ourselves. Instagram keeps 1.91:1 to 3:4 at 1080 wide, so 1080x1440 is the tallest and fills the grid tile.
+  Facebook's Feed guide asks for 4:5 at 1440x1800. Pinterest's specs say 2:3, 1000x1500.
 - **Crops** keep the photo's full width and start low (each target has its own default, override with
   `--top=0..1`), so a shop sign above a doorway drops out and the garland fills the frame. A target taller than the
   photo keeps the full height and is centred (`--left=0..1`). Wide targets (hero, card, share) cut from a tall

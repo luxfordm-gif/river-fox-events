@@ -5,6 +5,8 @@
 //
 // --for picks the target (one or several, comma separated); each has one fixed shape, size and format, so nobody
 // has to remember them. Defaults to google-business. `npm run export -- --list` prints them.
+//   folder: the subfolder name when several targets are exported at once, matching the Drive's own naming
+//     ("Instagram post 4x5 (1080x1350)"; Matt, 2026-11-14)
 //   aspect: width / height of the crop (null = keep the photo's own shape)
 //   widths: one file per width (several = a responsive set named <name>-<width>.webp, as the site's srcsets expect)
 //   budgetKB: quality steps down (never below 66) until each file fits (the site's targets: gallery 200, heroes 480,
@@ -12,29 +14,36 @@
 //     run up to 316 KB).
 //   upscale: false = never enlarge (gallery sets, like the site's script). Other targets are made at their exact
 //     sizes, since the site imports those file names; an enlarged file is marked in export.json.
+// The social sizes follow the newest Brand book and Social brand pack in Drive (Brand › Brand book) and the newest
+// Automation build brief (Automation). Those documents are the source; if they change a size, change it here too.
 const TARGETS = {
   // Social. JPG, sRGB, one file per photo.
-  // Google publishes one photo size for Business Profiles: JPG or PNG, 10 KB to 5 MB, 720x720 recommended
-  // (square), 250x250 minimum. Nothing post-specific; "4:3 1200x900" is from third-party guides. A square also
-  // shows most of a tall garland or arch, and where Google trims a post wider, the middle of the square survives.
-  'google-business': { aspect: 1, widths: [1200], format: 'jpg', top: 0.45, budgetKB: 5000, label: 'Google Business post: square 1200x1200 JPG' },
-  'instagram': { aspect: 4 / 5, widths: [1080], format: 'jpg', top: 0.4, label: 'Instagram feed post: portrait 4:5, 1080x1350 JPG' },
-  'instagram-square': { aspect: 1, widths: [1080], format: 'jpg', top: 0.45, label: 'Instagram square post: 1080x1080 JPG' },
-  'facebook': { aspect: 4 / 5, widths: [1080], format: 'jpg', top: 0.4, label: 'Facebook feed post: portrait 4:5, 1080x1350 JPG' },
-  'story': { aspect: 9 / 16, widths: [1080], format: 'jpg', top: 0.5, label: 'Instagram / Facebook story or reel cover: 9:16, 1080x1920 JPG' },
-  'pinterest': { aspect: 2 / 3, widths: [1000], format: 'jpg', top: 0.4, label: 'Pinterest pin: 2:3, 1000x1500 JPG' },
-  'full': { aspect: null, widths: [1080], format: 'jpg', label: 'Whole photo, uncropped, 1080 wide JPG' },
+  // Checked against each platform's own help pages, 14 Nov 2026 (Matt asked for the guidelines to decide):
+  // - Google publishes no post size, only 720x720 recommended for Business Profile photos in general (JPG/PNG,
+  //   10 KB-5 MB). Posts show in a 4:3 frame, centre-cropped (most guides), so we make the 4:3 crop ourselves and
+  //   choose where it sits. Matches the brand book and the Automation build brief.
+  // - Instagram keeps 1.91:1 to 3:4 at 1080 wide (help.instagram.com/1631821640426723): 1080x1440 is the tallest,
+  //   and the profile grid tile is 3:4, so nothing is lost there.
+  // - Facebook Feed: 4:5, 1440x1800 recommended (facebook.com/business/ads-guide, Facebook Feed image).
+  // - Pinterest: 2:3, 1000x1500 (help.pinterest.com, product specs).
+  'google-business': { folder: 'Google Business post 4x3 (1200x900)', aspect: 4 / 3, widths: [1200], format: 'jpg', top: 0.28, budgetKB: 5000, label: 'Google Business post: 4:3 1200x900 JPG' },
+  'instagram': { folder: 'Instagram post 3x4 (1080x1440)', aspect: 3 / 4, widths: [1080], format: 'jpg', top: 0.4, label: 'Instagram feed post: portrait 3:4, 1080x1440 JPG (the tallest Instagram keeps; fills the grid tile)' },
+  'instagram-square': { folder: 'Instagram post square (1080x1080)', aspect: 1, widths: [1080], format: 'jpg', top: 0.45, label: 'Instagram square post: 1080x1080 JPG' },
+  'facebook': { folder: 'Facebook post 4x5 (1440x1800)', aspect: 4 / 5, widths: [1440], format: 'jpg', top: 0.4, label: 'Facebook feed post: portrait 4:5, 1440x1800 JPG (Meta Feed guide)' },
+  'story': { folder: 'Instagram story 9x16 (1080x1920)', aspect: 9 / 16, widths: [1080], format: 'jpg', top: 0.5, label: 'Instagram / Facebook story or reel cover: 9:16, 1080x1920 JPG' },
+  'pinterest': { folder: 'Pinterest pin 2x3 (1000x1500)', aspect: 2 / 3, widths: [1000], format: 'jpg', top: 0.4, label: 'Pinterest pin: 2:3, 1000x1500 JPG' },
+  'full': { folder: 'Full photo (1080 wide)', aspect: null, widths: [1080], format: 'jpg', label: 'Whole photo, uncropped, 1080 wide JPG' },
   // Website. WebP responsive sets matching what the site's srcsets use (measured 2026-11-14). Never upscaled.
   // For photos already on the site, `npm run apply` is the way in; these are for new photos being added.
-  'website': { aspect: null, widths: [400, 700, 1000, 1400], format: 'webp', quality: { 400: 78, 700: 78, 1000: 72, 1400: 70 }, budgetKB: 200, fixedQuality: true, upscale: false,
+  'website': { folder: 'Website gallery (400-1400 wide)', aspect: null, widths: [400, 700, 1000, 1400], format: 'webp', quality: { 400: 78, 700: 78, 1000: 72, 1400: 70 }, budgetKB: 200, fixedQuality: true, upscale: false,
     label: 'Website gallery / content photo: own shape, WebP 400, 700, 1000, 1400 wide (as scripts/gallery-images.mjs)' },
-  'website-card': { aspect: 838 / 462, widths: [420, 640, 838], format: 'webp', quality: 78, budgetKB: 100, top: 0.4,
+  'website-card': { folder: 'Website card (838x462)', aspect: 838 / 462, widths: [420, 640, 838], format: 'webp', quality: 78, budgetKB: 100, top: 0.4,
     label: 'Website card / tile: wide 838x462 crop, WebP 420, 640, 838 wide (as the Christmas cards)' },
-  'website-hero': { aspect: 16 / 9, widths: [960, 1440, 1920], format: 'webp', quality: 80, budgetKB: 480, top: 0.4,
+  'website-hero': { folder: 'Website hero 16x9 (960-1920 wide)', aspect: 16 / 9, widths: [960, 1440, 1920], format: 'webp', quality: 80, budgetKB: 480, top: 0.4,
     label: 'Website hero, laptop and tablet: 16:9, WebP 960, 1440, 1920 wide' },
-  'website-hero-phone': { aspect: 9 / 16, widths: [480, 720], format: 'webp', quality: 80, budgetKB: 200, top: 0.5,
+  'website-hero-phone': { folder: 'Website hero phone 9x16 (480-720 wide)', aspect: 9 / 16, widths: [480, 720], format: 'webp', quality: 80, budgetKB: 200, top: 0.5,
     label: 'Website hero, phones: 9:16, WebP 480, 720 wide' },
-  'share': { aspect: 1200 / 630, widths: [1200], format: 'webp', quality: 80, budgetKB: 200, top: 0.4,
+  'share': { folder: 'Link preview (1200x630)', aspect: 1200 / 630, widths: [1200], format: 'webp', quality: 80, budgetKB: 200, top: 0.4,
     label: 'Link preview (Open Graph, public/og/): 1200x630 WebP' },
 };
 //
@@ -94,7 +103,8 @@ const sources = await Promise.all(photos.map(async (p) => {
 }));
 const brightest = Math.max(...sources.map((s) => s.luma));
 
-const dirOf = (t) => (targets.length > 1 ? path.join(out, t) : out);
+// several targets: one subfolder each, named the way the Drive's campaign folders are (Social › Christmas 2026 › Images)
+const dirOf = (t) => (targets.length > 1 ? path.join(out, TARGETS[t].folder) : out);
 fs.rmSync(work, { recursive: true, force: true });
 fs.mkdirSync(work, { recursive: true });
 for (const t of targets) fs.mkdirSync(dirOf(t), { recursive: true });
