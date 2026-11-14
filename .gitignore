@@ -28,7 +28,8 @@ dist-ssr
 
 .claude/
 
-_salvaged-from-old-folder/
+# Old files kept on Matt's Mac only (see README)
+archive/
 
 # Source image inbox — original PNG/JPEG drops that get converted into src/assets/.
 # Keep originals on disk for re-cropping; only commit the optimised WebPs.
