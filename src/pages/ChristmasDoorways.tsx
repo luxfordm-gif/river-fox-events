@@ -701,7 +701,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
 
             {/* Fresh or faux: a garland cutout (transparent WebP, shadow from
                 CSS), the section heading under it, then the two options. */}
-            <div className="subsection-gap container-narrow mx-auto">
+            <div id="garland-options" className="subsection-gap container-narrow mx-auto">
               <img
                 src={imgGarland1200}
                 srcSet={`${imgGarland800} 800w, ${imgGarland1200} 1200w, ${imgGarland1440} 1440w`}
