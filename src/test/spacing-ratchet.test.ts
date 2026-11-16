@@ -29,7 +29,7 @@ const BASELINE = {
   // were behind the uneven heading and hero gaps found on 2026-11-13. The
   // token migration moves them onto spacing tokens a batch at a time; lower
   // this number after each batch so it can't creep back up.
-  tailwindScaleSpacing: 53,
+  tailwindScaleSpacing: 51,
   // The 53 left on 2026-11-13 are deliberate component internals, not layout:
   // the film player's controls and badges (StoryVideos), the reviews
   // carousel's edge bleed (TestimonialsCarousel), tap-area padding on small

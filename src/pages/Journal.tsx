@@ -1,3 +1,4 @@
+import ShowMoreButton from "@/components/rfx/ShowMoreButton";
 import { useEffect, useState } from "react";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
@@ -214,15 +215,7 @@ const Journal = () => {
           </ul>
 
           {(hasMore || hasMoreDesktop) && (
-            <div className={`text-to-content ${moreClass} justify-center`}>
-              <button
-                type="button"
-                onClick={() => setPages((p) => p + 1)}
-                className="t-overline text-ink border border-hair-strong hover:border-ink hover:bg-ink hover:text-cream transition-colors px-7 py-3"
-              >
-                Show more
-              </button>
-            </div>
+            <ShowMoreButton onClick={() => setPages((p) => p + 1)} className={moreClass} />
           )}
         </section>
       </main>

@@ -177,6 +177,7 @@ const LocationPage = () => {
 
         <LocationPhotoGrid
           id="loc-gallery"
+          wide
           slug={loc.slug}
           eyebrow={loc.gallery.eyebrow}
           heading={loc.gallery.heading}
