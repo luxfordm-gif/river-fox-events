@@ -99,7 +99,7 @@ const CPLocations = ({
                         href={`/party-styling-${slug}/`}
                         className="text-ink text-link"
                       >
-                        Party styling in {a}
+                        {a}
                       </a>
                     ) : (
                       a
