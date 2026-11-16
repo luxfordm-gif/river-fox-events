@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import InspirationStrip from "@/components/rfx/InspirationStrip";
 import { INSPIRATION_TOWNS } from "@/data/inspiration";
 import { useLocation } from "react-router-dom";
 import Nav from "@/components/rfx/Nav";
+import TrustLine from "@/components/rfx/TrustLine";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
 import Enquire from "@/components/rfx/Enquire";
@@ -104,25 +105,18 @@ const LocationPage = () => {
             <div className="rfx-hero-intro flex flex-col items-center text-center">
               <h1
                 id={`loc-${loc.slug}-hero-heading`}
-                // t-h1, not t-display: location titles like "Your
-                // Walton-on-Thames party stylist." run ~16em wide in
-                // Fraunces, so the display size overflows the container.
-                // Mobile max-w is 20ch so longer town names ("Oxshott",
-                // "Walton-on-Thames") aren't forced into a narrow column.
-                className="t-h1 measure-headline md:max-w-none mx-auto break-words text-pretty"
+                // Display, the same headline style as the home and service
+                // pages (Matt, 2026-11-16). Each line is its own line, with
+                // the break between the reveal wrappers, as on ServiceHero.
+                className="t-display max-w-none mx-auto break-words text-pretty"
               >
                 {loc.hero.lines.map((line, i) => (
-                  <span
-                    key={i}
-                    className={`word-reveal in${i > 0 ? ` delay-${i}` : ""}`}
-                  >
-                    <span>{line}</span>
-                    {/* Use a plain space between segments - let the
-                        browser wrap naturally instead of forcing a hard
-                        line break that orphans words at certain
-                        breakpoints. */}
-                    {i < loc.hero.lines.length - 1 && " "}
-                  </span>
+                  <Fragment key={i}>
+                    <span className={`word-reveal in${i > 0 ? ` delay-${i}` : ""}`}>
+                      <span className="text-balance">{line}</span>
+                    </span>
+                    {i < loc.hero.lines.length - 1 && <br />}
+                  </Fragment>
                 ))}
               </h1>
               {loc.hero.sub && (
@@ -147,6 +141,7 @@ const LocationPage = () => {
                   WhatsApp Laura now
                 </a>
               </div>
+              <TrustLine linked className="text-center fade-up in" />
             </div>
           </div>
 
@@ -182,13 +177,11 @@ const LocationPage = () => {
 
         <LocationPhotoGrid
           id="loc-gallery"
+          slug={loc.slug}
           eyebrow={loc.gallery.eyebrow}
           heading={loc.gallery.heading}
           intro={loc.gallery.intro}
-          images={[
-            { src: loc.gallery.mainImage, alt: loc.gallery.mainImageAlt },
-            ...loc.gallery.images,
-          ]}
+          picks={[{ alt: loc.gallery.mainImageAlt }, ...loc.gallery.images]}
         />
 
         <Process sectionId="how-it-works" />

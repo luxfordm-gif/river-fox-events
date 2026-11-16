@@ -68,7 +68,7 @@
     --fw-bold: 600;                            /* <strong> in body text, tags */
 
     /* Display */
-    --fs-display: clamp(52px, 5.6vw, 116px);   /* Display · home and service hero headline (phones: see the 480px block) */
+    --fs-display: clamp(52px, 5.6vw, 116px);   /* Display · home, service and town hero headline (phones: see the 480px block) */
     --lh-display: 1.04;
     --ls-display: -0.025em;
 
@@ -81,7 +81,7 @@
     /* Headings: Heading 1 is the page title, Heading 2 every section title.
        Sizes are the ones the site had before the 2026-11-08 restructure
        (Matt: "what we had before worked"); only the names changed. */
-    --fs-h1: clamp(42px, 5vw, 80px);           /* Heading 1 · page titles: towns, journal, articles, Contact (42 phone and tablet) */
+    --fs-h1: clamp(42px, 5vw, 80px);           /* Heading 1 · page titles: journal, articles, Contact (42 phone and tablet) */
     --fs-h2: clamp(36px, 4.4vw, 68px);         /* Heading 2 · every section title (36 phone and tablet) */
     --fs-h3: clamp(32px, 3.4vw, 52px);         /* Heading 3 · titles under a display heading, Our work galleries (32 phone and tablet) */
     --fs-h4: clamp(26px, 2.2vw, 32px);         /* Heading 4 · featured journal card, CTA and form headings, prices, phone menu (26 phone and tablet; was 40; brought down so H5 26 → H4 32 is a normal step, Matt 2026-11-08) */
@@ -217,7 +217,7 @@
     --card-pad: 40px;                  /* Card padding · inside option, pricing and In short boxes (28 phone) */
     --container-max: 1440px;           /* Content width · the widest the page content gets */
     --measure-title: 18ch;             /* Title width · widest a centred section title runs before it wraps, with balanced lines (Matt, 2026-11-13) */
-    --measure-headline: 20ch;          /* Headline width · widest a page title (article H1, town hero on phones) or a callout heading runs */
+    --measure-headline: 20ch;          /* Headline width · widest a page title (article H1) or a callout heading runs */
     --measure-card: 36ch;              /* Card text width · widest the text inside a card runs (icon cards, service cards, garland options, footer tagline; were 220px to 52ch) */
     --measure-reading: 720px;          /* Reading width · the journal's reading column: prose, In short, captions, quotes, enquire boxes, related; also Welcome and FAQ answers (were 640 / 680 / 720) */
     --measure-quote: 820px;            /* Quote width · journal pull quotes, a step wider for the large quote type */
@@ -441,7 +441,7 @@
      moves every hero together (Matt, 2026-11-08). Components never set it.
      This selector outranks the shared .rfx-hero rules above. */
   section.rfx-hero-scale { padding-top: var(--hero-pad-top); }
-  /* Service and home heroes (the big Display headline), tablet up: the space
+  /* Home, service and town heroes (the big Display headline), tablet up: the space
      above the headline's letters matches the space below the trust line
      (Matt, 2026-11-13). Both come from --hero-gap, so they can't drift apart.
      Phones keep Hero top, so every title starts at the same height. */
