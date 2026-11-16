@@ -1668,6 +1668,12 @@
     .form-wrap { margin-inline: calc(var(--gutter) / -2); width: auto !important; padding: var(--form-pad) !important; }
 
     .rfx-svc-card { padding: 0 !important; border-left: none !important; }
+    /* Service card photo grows from 92% to full size as it scrolls in
+       (--card-grow runs 0 to 1, set by Experiences.tsx; 1 without script). */
+    .rfx-svc-img {
+      transform: scale(calc(0.92 + 0.08 * var(--card-grow, 1)));
+      transform-origin: center center;
+    }
     /* CPReveal: always put image first on mobile, reduce image height + soften shadow */
     .cp-reveal-img-wrap {
       order: -1 !important;
