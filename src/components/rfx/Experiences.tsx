@@ -3,6 +3,7 @@ import expChildren from "@/assets/dinosaur-childrens-party-styling-surrey.webp";
 import expMilestone from "@/assets/40th-birthday-rose-gold-marquee-surrey.webp";
 import expCorporate from "@/assets/corporate-gala-styling-surrey.webp";
 import { useImageParallax } from "@/hooks/useImageParallax";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { galleryPhoto } from "@/data/gallery";
 import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 
@@ -103,6 +104,17 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
   const img = useRef<HTMLImageElement>(null);
   const baseScale = 1.14 * (it.extraZoom ?? 1);
   useImageParallax(wrap, img, { intensity: 7, scale: baseScale });
+  // Phones only: the photo starts a little smaller and grows to full size as
+  // the card scrolls up, like the photos on the service pages (Matt,
+  // 2026-11-16). Follows the scroll, finished state with reduced motion.
+  useScrollProgress(
+    wrap,
+    (p) => {
+      const phone = window.matchMedia("(max-width: 767px)").matches;
+      wrap.current?.style.setProperty("--card-grow", String(phone ? p : 1));
+    },
+    { from: 1, to: 0.55 }
+  );
   return (
     <a
       href={it.href}
@@ -110,7 +122,7 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
     >
       <div
         ref={wrap}
-        className={`exp-img-wrap ph rounded-large ${it.tone} fade-up rfx-svc-img ${compact ? "rfx-svc-img--compact" : ""} relative overflow-hidden`}
+        className={`exp-img-wrap ph rounded-large ${it.tone} rfx-svc-img ${compact ? "rfx-svc-img--compact" : ""} relative overflow-hidden`}
         style={{ aspectRatio: compact ? "3/2" : "1/1" }}
       >
         {/*
