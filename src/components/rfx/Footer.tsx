@@ -118,11 +118,11 @@ const Footer = () => {
                 Services
               </div>
               <div className="t-meta link-list">
-                <a href="/childrens-parties/" className="opacity-85 hover:opacity-100 block">Children's Parties</a>
-                <a href="/milestone-celebrations/" className="opacity-85 hover:opacity-100 block">Milestones</a>
-                <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate</a>
+                <a href="/childrens-parties/" className="opacity-85 hover:opacity-100 block">Children's Party Styling</a>
+                <a href="/milestone-celebrations/" className="opacity-85 hover:opacity-100 block">Milestone Celebration Styling</a>
+                <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate Event Styling</a>
                 <a href="/balloon-installations/" className="opacity-85 hover:opacity-100 block">Balloon Decorations</a>
-                <a href="/christmas-door-garlands/" className="opacity-85 hover:opacity-100 block">Christmas Garlands</a>
+                <a href="/christmas-door-garlands/" className="opacity-85 hover:opacity-100 block">Christmas Door Garlands</a>
               </div>
             </div>
             <div>
@@ -136,7 +136,7 @@ const Footer = () => {
                     href={`/party-styling-${loc.slug}/`}
                     className="opacity-85 hover:opacity-100 block"
                   >
-                    {loc.cityName}
+                    Party Styling in {loc.cityName}
                   </a>
                 ))}
                 {hasMoreLocations && (

@@ -4,9 +4,9 @@ import { ChevronDown } from "lucide-react";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 const SERVICES = [
-  { href: "/childrens-parties/", label: "Children's parties" },
-  { href: "/milestone-celebrations/", label: "Milestone celebrations" },
-  { href: "/corporate-brand-styling/", label: "Corporate & brand" },
+  { href: "/childrens-parties/", label: "Children's party styling" },
+  { href: "/milestone-celebrations/", label: "Milestone celebration styling" },
+  { href: "/corporate-brand-styling/", label: "Corporate event styling" },
   { href: "/balloon-installations/", label: "Balloon decorations" },
 ];
 
@@ -226,11 +226,11 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
           <div className="nav-sheet__links">
           {[
             { href: "/", label: "Home" },
-            { href: "/childrens-parties/", label: "Children's parties" },
-            { href: "/milestone-celebrations/", label: "Milestone celebrations" },
-            { href: "/corporate-brand-styling/", label: "Corporate & brand" },
+            { href: "/childrens-parties/", label: "Children's party styling" },
+            { href: "/milestone-celebrations/", label: "Milestone celebration styling" },
+            { href: "/corporate-brand-styling/", label: "Corporate event styling" },
             { href: "/balloon-installations/", label: "Balloon decorations" },
-            { href: SEASONAL.href, label: "Christmas garlands", seasonal: true },
+            { href: SEASONAL.href, label: "Christmas door garlands", seasonal: true },
             { href: "/our-work/", label: "Our work" },
             { href: "/#about", label: "About" },
             { href: "/contact/", label: "Contact" },
