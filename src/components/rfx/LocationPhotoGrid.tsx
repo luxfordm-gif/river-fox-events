@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
+import ShowMoreButton from "@/components/rfx/ShowMoreButton";
 import { Tile, Viewer } from "@/components/rfx/PhotoViewer";
 import type { ViewerItem } from "@/components/rfx/PhotoViewer";
 import { GALLERY, orderedEvents, resolvePhoto } from "@/data/gallery";
@@ -11,7 +12,7 @@ import { GALLERY, orderedEvents, resolvePhoto } from "@/data/gallery";
  *
  * Each row's photos take widths in proportion to their shape, so every photo
  * in a row has the same height, nothing is cropped, and both edges line up.
- * Three rows on tablet and up, rows of two on phones. Every photo opens
+ * Three rows on tablet and up, rows of two on phones. `wide` runs the photos almost full width (town pages and the Balloons page, Matt 2026-11-16). Every photo opens
  * the same full-screen viewer as /our-work/.
  *
  * The town's own picks (by their one canonical alt) come first; the grid is
@@ -32,6 +33,12 @@ type Props = {
   /** How many photos in all (10 = three rows of 3 or 4). */
   count?: number;
   id?: string;
+  /** Run the photos almost full width, with a small margin each side. */
+  wide?: boolean;
+  /** Fill any gap in `count` from the children's parties gallery (town pages). Off where every photo must be chosen. */
+  topUp?: boolean;
+  /** Show this many rows, then a "Show more" button for this many more. The photos are shuffled on every load, and laid out a fixed number of photos per row (2 phone, 3 tablet, 4 laptop and up). Off on town pages. */
+  pageRows?: number;
 };
 
 const SIZES = "(min-width: 1280px) 30vw, (min-width: 768px) 38vw, 46vw";
@@ -46,7 +53,7 @@ const allEntries = (): { item: ViewerItem; section: string }[] =>
 
 const hashOf = (s: string) => [...s].reduce((n, c) => n + c.charCodeAt(0), 0);
 
-const choosePhotos = (slug: string, picks: Pick[], count: number): ViewerItem[] => {
+const choosePhotos = (slug: string, picks: Pick[], count: number, topUp: boolean): ViewerItem[] => {
   const all = allEntries();
   const chosen: ViewerItem[] = [];
   const seen = new Set<string>();
@@ -67,7 +74,7 @@ const choosePhotos = (slug: string, picks: Pick[], count: number): ViewerItem[] 
     .map((e) => e.item);
   const leads = pool.filter((p, i) => i === pool.findIndex((q) => q.title === p.title));
   const start = hashOf(slug) % Math.max(leads.length, 1);
-  for (let k = 0; k < leads.length && chosen.length < count; k++) {
+  for (let k = 0; topUp && k < leads.length && chosen.length < count; k++) {
     const p = leads[(start + k) % leads.length];
     if (!seen.has(p.source)) {
       chosen.push(p);
@@ -118,10 +125,47 @@ const useWide = () => {
   return wide;
 };
 
-const LocationPhotoGrid = ({ eyebrow, heading, intro, slug, picks, count = 10, id = "loc-gallery" }: Props) => {
-  const photos = useMemo(() => choosePhotos(slug, picks, count), [slug, picks, count]);
+/** Photos per row in "Show more" mode: 2 on phones, 3 on tablets, 4 from 1280. */
+const useColumns = () => {
+  const count = () =>
+    typeof window === "undefined" ? 4 : window.matchMedia("(min-width: 1280px)").matches ? 4 : window.matchMedia("(min-width: 768px)").matches ? 3 : 2;
+  const [cols, setCols] = useState(count);
+  useEffect(() => {
+    const on = () => setCols(count());
+    window.addEventListener("resize", on);
+    return () => window.removeEventListener("resize", on);
+  }, []);
+  return cols;
+};
+
+const shuffled = <T,>(items: T[]): T[] => {
+  const a = [...items];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+
+const LocationPhotoGrid = ({ eyebrow, heading, intro, slug, picks, count = 10, id = "loc-gallery", wide: fullWidth = false, topUp = true, pageRows }: Props) => {
+  const chosen = useMemo(() => choosePhotos(slug, picks, count, topUp), [slug, picks, count, topUp]);
+  // "Show more" mode: a different order on every load (the page is not
+  // hydrated from the prerendered HTML, so this can't mismatch).
+  const [order] = useState(() => (pageRows ? shuffled(chosen) : chosen));
+  const photos = pageRows ? order : chosen;
   const wide = useWide();
-  const rows = useMemo(() => splitRows(photos, wide ? 3 : Math.floor(photos.length / 2)), [photos, wide]);
+  const cols = useColumns();
+  const [pages, setPages] = useState(1);
+  const rows = useMemo(() => {
+    if (!pageRows) return splitRows(photos, wide ? 3 : Math.floor(photos.length / 2));
+    const all: ViewerItem[][] = [];
+    // Only whole rows: a short last row would stretch its photos across the page.
+    for (let i = 0; i + cols <= photos.length; i += cols) all.push(photos.slice(i, i + cols));
+    return all;
+  }, [photos, wide, pageRows, cols]);
+  const shownRows = pageRows ? rows.slice(0, pageRows * pages) : rows;
+  const shown = shownRows.flat();
+  const hasMore = !!pageRows && shownRows.length < rows.length;
   const [open, setOpen] = useState<number | null>(null);
   let index = -1;
 
@@ -135,8 +179,10 @@ const LocationPhotoGrid = ({ eyebrow, heading, intro, slug, picks, count = 10, i
             {intro && <SectionIntro>{intro}</SectionIntro>}
           </div>
         )}
+        </div>
+        <div className={fullWidth ? "container-wide" : "container-rfx"}>
         <div className="flex flex-col photos-gap">
-          {rows.map((row, r) => (
+          {shownRows.map((row, r) => (
             <div key={r} className="flex photos-gap">
               {row.map((p) => {
                 const i = ++index;
@@ -149,9 +195,10 @@ const LocationPhotoGrid = ({ eyebrow, heading, intro, slug, picks, count = 10, i
             </div>
           ))}
         </div>
-      </div>
+        {hasMore && <ShowMoreButton onClick={() => setPages((n) => n + 1)} />}
+        </div>
       {open !== null && (
-        <Viewer items={photos} index={open} onIndex={setOpen} onClose={() => setOpen(null)} />
+        <Viewer items={shown} index={open} onIndex={setOpen} onClose={() => setOpen(null)} />
       )}
     </section>
   );

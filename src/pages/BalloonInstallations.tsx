@@ -10,8 +10,8 @@ import CPReveal from "@/components/rfx/CPReveal";
 import CPPricing from "@/components/rfx/CPPricing";
 import FaqSection from "@/components/rfx/FaqSection";
 import ServicesCards from "@/components/rfx/ServicesCards";
-import { WHAT_WE_MAKE } from "@/data/balloonTiles";
-import LocationGallery from "@/components/rfx/LocationGallery";
+import { WHAT_WE_MAKE, WHAT_WE_MAKE_SOURCES } from "@/data/balloonTiles";
+import LocationPhotoGrid from "@/components/rfx/LocationPhotoGrid";
 import Experiences from "@/components/rfx/Experiences";
 import LocationTrust from "@/components/rfx/LocationTrust";
 import { LATEST_WORK } from "@/data/locations/_makeLocation";
@@ -31,10 +31,11 @@ import imgHero from "@/assets/pastel-safari-anaya-two-wild-ballroom-surrey.webp"
 import imgHeroMobile from "@/assets/river-fox-events-fairy-first-birthday-kayla-arch-marquee-portrait.webp";
 import imgRainbowFive from "@/assets/cp-celebrations.webp";
 import imgRoseGold40 from "@/assets/40th-birthday-rose-gold-marquee-surrey.webp";
-import imgDinosaurFinished from "@/assets/journal/from-design-to-delivery/dinosaur-party-styling-surrey-finished.webp";
 
 /* Photos from the Our work gallery: its resized copies and its one alt per photo. */
+const INTRO_SOURCES = new Set<string>();
 const fromGallery = (source: string) => {
+  INTRO_SOURCES.add(source);
   const p = galleryPhoto(source);
   return { src: p.src, srcSet: p.srcSet, alt: p.alt, position: p.position };
 };
@@ -53,24 +54,48 @@ const INTRO_SLIDES = [
 /* Second half of the intro: one still photo of a whole styled setting (Matt
    split the intro into two 50/50s, 2026-11-09). Chosen because no other
    page uses it; the Two Wild photo was already on several. */
-const SETTING_PHOTO = galleryPhoto(
-  "services/childrens-parties/garden-picnic-party-pastel-balloons-low-table.webp"
-);
+const SETTING_SOURCE = "services/childrens-parties/garden-picnic-party-pastel-balloons-low-table.webp";
+INTRO_SOURCES.add(SETTING_SOURCE);
+const SETTING_PHOTO = galleryPhoto(SETTING_SOURCE);
 
-/* "Balloons as part of the whole room": one large photo, then a column of
-   five (Matt, 2026-11-07). The gallery's 1400px copies keep the page light.
-   2026-11-09: the Stubbs gender reveal sign came out, and the bunny picnic
-   (mostly table) became Peter Rabbit, where the balloons lead. */
+/* "Recent work": the town-page photo grid, run almost full width (Matt,
+   2026-11-16). 32 balloon-led photos picked by hand, shuffled on every load;
+   four rows show first, then "Show more" adds four more rows at a time. */
 const RECENT_WORK = [
-  "journal/dylan-christening-first-birthday/dylan-first-birthday-teddy-cutout-chrome-gold-balloons.webp",
-  "services/childrens-parties/hot-air-balloon-teddy-basket-neutral.webp",
+  "dinosaur-ayaan-arch-surrey.webp",
+  "river-fox-events-willy-wonka-savanna-chocolate-bar-arch.webp",
+  "river-fox-events-pastel-birthday-reeva-entrance-arch.webp",
+  "river-fox-events-pastel-entrance-decor-arch.webp",
   "services/childrens-parties/peter-rabbit-first-birthday-blue-balloon-backdrop.webp",
-  "services/milestones/gloria-80th-birthday-table-centrepiece-burhill.webp",
+  "journal/dylan-christening-first-birthday/dylan-first-birthday-teddy-cutout-chrome-gold-balloons.webp",
+  "journal/dylan-christening-first-birthday/dylan-christening-arched-welcome-panel-balloon-garland.webp",
+  "services/corporate/lakeside-terrace-navy-balloon-arch.webp",
+  "services/childrens-parties/hot-air-balloon-teddy-basket-neutral.webp",
+  "services/childrens-parties/garden-picnic-party-pastel-balloons-low-table.webp",
+  "services/childrens-parties/bell-tent-picnic-pastel-balloons-garden.webp",
   "services/milestones/13th-birthday-pink-light-up-numbers-garland.webp",
-].map((source) => {
-  const p = galleryPhoto(source);
-  return { src: p.large, alt: p.alt };
-});
+  "river-fox-events-veuve-cliquot-angela-georgia-arch-wide.webp",
+  "services/milestones/heart-hoop-red-blush-balloons-heart-foils.webp",
+  "services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp",
+  "services/milestones/70th-birthday-sage-gold-light-up-numbers.webp",
+  "journal/garden-milestone-styling-surrey/garden-milestone-balloon-arch.webp",
+  "services/milestones/baby-in-bloom-barn-twin-arches-dusty-blue.webp",
+  "services/milestones/50th-birthday-pink-light-up-numbers-teal-garland.webp",
+  "services/milestones/40th-birthday-champagne-gold-garland-restaurant.webp",
+  "services/milestones/baby-shower-sage-gold-balloons-baby-blocks.webp",
+  "services/milestones/blush-rose-hoop-garland-living-room.webp",
+  "services/milestones/gloria-80th-birthday-table-centrepiece-burhill.webp",
+  "services/corporate/125-years-entrance-columns-green-white-gold-stars.webp",
+  "services/corporate/enterprise-mobility-branded-backdrop-black-gold-balloons.webp",
+  "river-fox-events-nxtgen-corporate-entrance-columns-side-angle.webp",
+  "services/corporate/bocketts-farm-easter-bunny-booth-balloon-garland.webp",
+  "river-fox-events-corporate-atrium-twin-balloon-arches.webp",
+  "services/corporate/restaurant-entrance-garland-black-gold-balloons.webp",
+  "services/corporate/shop-entrance-arch-green-white-balloons.webp",
+  // Nothing already shown higher up the page: not in "I'm asked for most", not in the intro.
+]
+  .filter((source) => !WHAT_WE_MAKE_SOURCES.has(source) && !INTRO_SOURCES.has(source))
+  .map((source) => ({ alt: galleryPhoto(source).alt }));
 
 /* "What we make": eight balloon pieces as small square tiles, just the
    name, each linking on to the service page where that piece usually lives
@@ -259,17 +284,20 @@ const BalloonInstallations = () => {
           intro="Arches and garlands are where most celebrations start. Every one is sized and coloured to your space, and most become part of a bigger setup."
         />
 
-        <LocationGallery
+        <LocationPhotoGrid
           id="bi-gallery"
+          wide
+          topUp={false}
+          count={RECENT_WORK.length}
+          pageRows={4}
+          slug="balloon-installations"
           heading={
             <>
               Recent <em className="t-accent">work.</em>
             </>
           }
           intro="A few recent setups where the arch or garland is one layer of the styling, alongside the backdrop, the props and the table."
-          mainImage={imgDinosaurFinished}
-          mainImageAlt="Finished dinosaur party in a Surrey home: sage balloon arch, AYAAN name sign, dinosaur cutouts and wooden explorer crates"
-          images={RECENT_WORK}
+          picks={RECENT_WORK}
         />
 
         <Process sectionId="how-it-works" />
