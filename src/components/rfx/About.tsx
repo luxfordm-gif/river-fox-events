@@ -155,7 +155,7 @@ const About = () => {
               </em>
             </SectionHeading>
 
-            <div className="t-body heading-to-text paragraphs text-ink-soft measure-lead">
+            <div data-nosnippet className="t-body heading-to-text paragraphs text-ink-soft measure-lead">
               <p className="text-ink">
                 <strong>
                   I started River Fox Events after running a teepee sleepover
