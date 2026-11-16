@@ -63,10 +63,9 @@ const CookieBanner = () => {
           Privacy &amp; cookies
         </a>
       </p>
-      {/* Phones: buttons on the right, Accept in the far corner, under the
-          thumb. Tablet and up keeps the original Accept-first row on the left
-          (Matt, 2026-11-12). */}
-      <div className="text-to-text flex flex-row-reverse items-center actions md:flex-row">
+      {/* Every width: Accept first, on the far left, Decline after it
+          (Matt, 2026-11-16, reverting the phone right-hand layout). */}
+      <div className="text-to-text flex flex-row items-center actions">
         <button
           type="button"
           onClick={accept}
