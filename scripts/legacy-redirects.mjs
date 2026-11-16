@@ -72,6 +72,10 @@ export const TOWN_FALLBACKS = {
   elmbridge: "weybridge",
   felbridge: "east-grinstead",
   kingswood: "epsom",
+  // Page removed Nov 2026: Laura does not work in Brighton (Matt)
+  "brighton-and-hove": "lewes",
+  brighton: "lewes",
+  hove: "lewes",
 };
 
 /**

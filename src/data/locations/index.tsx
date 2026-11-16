@@ -18,7 +18,6 @@ import tunbridgeWells from "./tunbridge-wells";
 import sevenoaks from "./sevenoaks";
 import forestRow from "./forest-row";
 import lewes from "./lewes";
-import brightonAndHove from "./brighton-and-hove";
 
 export const LOCATIONS: LocationConfig[] = [
   // Surrey
@@ -42,7 +41,6 @@ export const LOCATIONS: LocationConfig[] = [
   sevenoaks,
   forestRow,
   lewes,
-  brightonAndHove,
 ];
 
 export const findLocation = (slug: string): LocationConfig | undefined =>

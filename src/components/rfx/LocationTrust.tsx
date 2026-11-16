@@ -65,7 +65,7 @@ const LocationTrust = ({ reviews }: LocationTrustProps = {}) => {
             Recent clients include
           </p>
           <ul
-            className="below-heading grid grid-cols-3 items-center cards-gap list-none p-0 m-0"
+            className="text-to-content grid grid-cols-3 items-center cards-gap list-none p-0"
             aria-label="Recent clients"
           >
             {CLIENT_LOGOS.map((c) => (

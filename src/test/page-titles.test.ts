@@ -13,11 +13,9 @@ import { ROUTES } from "@/seo/routes";
  */
 const SUFFIX = " | River Fox Events";
 
-// Hyphens become spaces, except in names that are hyphenated themselves; the
-// ampersand in "Brighton & Hove" matches the page copy (Matt, 2026-11-10).
+// Hyphens become spaces, except in names that are hyphenated themselves.
 const TOWN_NAMES: Record<string, string> = {
   "walton-on-thames": "Walton-on-Thames",
-  "brighton-and-hove": "Brighton & Hove",
 };
 const townFromSlug = (slug: string) =>
   TOWN_NAMES[slug] ??
