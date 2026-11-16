@@ -154,7 +154,7 @@ export const ROUTES: RouteSEO[] = [
     // didn't pick up "River Fox Events" as an entity when it only read "by Laura".
     title: "Party & Event Styling in Surrey | River Fox Events",
     description:
-      "Party and event styling in Surrey by Laura at River Fox Events, formerly Lollipop Balloons: balloon arches, backdrops and whole-room styling, from £300.",
+      "River Fox Events is a Surrey styling studio run by Laura, formerly Lollipop Balloons. Balloon arches, backdrops and party styling, built on site, from £300.",
     priority: 1.0,
     changefreq: "monthly",
   },
