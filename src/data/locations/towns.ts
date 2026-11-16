@@ -31,5 +31,4 @@ export const TOWNS: Town[] = [
   { slug: "sevenoaks", cityName: "Sevenoaks" },
   { slug: "forest-row", cityName: "Forest Row" },
   { slug: "lewes", cityName: "Lewes" },
-  { slug: "brighton-and-hove", cityName: "Brighton & Hove" },
 ];

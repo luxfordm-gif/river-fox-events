@@ -48,7 +48,6 @@ const haywardsHeath = makeLocation({
     "Wivelsfield",
     "Bolney",
     "Burgess Hill",
-    "Brighton & Hove",
     "Horsted Keynes",
     "Lewes",
   ],

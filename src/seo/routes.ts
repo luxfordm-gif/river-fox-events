@@ -628,29 +628,6 @@ export const ROUTES: RouteSEO[] = [
     changefreq: "monthly",
   },
   {
-    path: "/party-styling-brighton-and-hove",
-    ogImage: "/og/og-jungle-elephant.webp",
-    title: "Party Styling in Brighton & Hove | River Fox Events",
-    description:
-      "Children's parties styled across Brighton & Hove and East Sussex, from first birthdays to themed celebrations - individually designed and installed by Laura.",
-    breadcrumbName: "Party Styling Brighton & Hove",
-    service: {
-      serviceType: "Event Styling",
-      areaServed: [
-        "Brighton",
-        "Hove",
-        "Kemp Town",
-        "Preston Park",
-        "Rottingdean",
-        "Saltdean",
-        "East Sussex",
-      ],
-      lowPrice: "300",
-    },
-    priority: 0.7,
-    changefreq: "monthly",
-  },
-  {
     path: "/contact",
     title: "Contact Laura | River Fox Events",
     description:

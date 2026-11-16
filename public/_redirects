@@ -5,6 +5,9 @@
 # scripts/legacy-redirects.mjs and placed above these rules in dist/_redirects.
 # Edit that file to change where an old URL goes.
 
+# Brighton & Hove page removed (Laura doesn't work there); nearest page is Lewes.
+/party-styling-brighton-and-hove    /party-styling-lewes/    301
+
 # Anything that isn't a real page, a file or one of the redirects above gets
 # the "page not found" page with a real 404 status. Every page is prerendered
 # to its own folder, so nothing real reaches this rule. (It used to serve the
