@@ -10,7 +10,7 @@ import CPLocations from "@/components/rfx/CPLocations";
 import CPPricing from "@/components/rfx/CPPricing";
 import FaqSection from "@/components/rfx/FaqSection";
 import Experiences from "@/components/rfx/Experiences";
-import LocationGallery from "@/components/rfx/LocationGallery";
+import LocationPhotoGrid from "@/components/rfx/LocationPhotoGrid";
 import LocationUSP from "@/components/rfx/LocationUSP";
 import LocationTrust from "@/components/rfx/LocationTrust";
 import ScrollStrip from "@/components/rfx/ScrollStrip";
@@ -180,14 +180,15 @@ const LocationPage = () => {
 
         <LocationUSP cityName={loc.cityName} body={loc.uspBody} />
 
-        <LocationGallery
+        <LocationPhotoGrid
           id="loc-gallery"
           eyebrow={loc.gallery.eyebrow}
           heading={loc.gallery.heading}
           intro={loc.gallery.intro}
-          mainImage={loc.gallery.mainImage}
-          mainImageAlt={loc.gallery.mainImageAlt}
-          images={loc.gallery.images}
+          images={[
+            { src: loc.gallery.mainImage, alt: loc.gallery.mainImageAlt },
+            ...loc.gallery.images,
+          ]}
         />
 
         <Process sectionId="how-it-works" />
