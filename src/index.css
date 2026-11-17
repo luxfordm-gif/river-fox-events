@@ -45,6 +45,7 @@
     --accent-hover: 12 55% 70%;        /* Accent hover · button fill on hover */
     --accent-dark: 12 32% 54%;         /* Accent Dark · italic words in headings, stars, step numbers (#AF7364: darkened from #C39083 so it passes 3:1 contrast on every background, Matt 2026-11-08) */
     --accent-deep: 12 30% 40%;         /* Accent Deep · the phone booking bar's fill, a dark blush so cream text passes 4.5:1 (#85584A, Matt 2026-11-17) */
+    --bar-height: 44px;                /* Top bar height · the phone booking strip above the nav (BookingBar.tsx) */
 
     --hair: var(--text-primary) / 0.10;         /* hairlines and borders */
     --divider: var(--text-primary) / 0.15;      /* Divider · section dividing lines; lighter (10%) on white, set below */
@@ -1478,35 +1479,20 @@
     .work-dock { transition: opacity var(--motion-quick) ease; transform: translate(-50%, 0); }
   }
 
-  /* Phone booking bar: a dark blush pill that lifts up from the bottom once
-     the visitor scrolls past the first screen (BookingBar.tsx). Below the
-     cookie notice (200). Phones only. */
-  .booking-bar { display: none; }
+  /* Phone top bar: a dark blush strip above the nav, scrolls away with the
+     page (BookingBar.tsx). The fixed nav starts below it and slides up. */
+  .top-bar { display: none; }
   @media (max-width: 767px) {
-    .booking-bar {
-      display: flex; align-items: center; gap: var(--gap-stack);
-      position: fixed; left: var(--gutter); right: var(--gutter);
-      bottom: calc(var(--gap-stack) + env(safe-area-inset-bottom)); z-index: var(--layer-float);
-      padding: var(--tag-pad); padding-left: var(--btn-pad-x);
-      border-radius: var(--radius-round);
+    html[data-top-bar="on"] body { padding-top: var(--bar-height); }
+    html[data-top-bar="on"] .rfx-nav { top: var(--bar-offset, 0px); }
+    .top-bar {
+      display: flex; align-items: center; justify-content: center;
+      position: absolute; top: 0; left: 0; right: 0; height: var(--bar-height);
+      padding: 0 var(--gutter);
       background: hsl(var(--accent-deep)); color: hsl(var(--text-on-dark));
-      box-shadow: var(--shadow-float);
-      transform: translateY(calc(100% + 60px)); opacity: 0; pointer-events: none;
-      transition: transform var(--motion-slow) var(--ease-soft), opacity var(--motion-base) ease;
     }
-    .booking-bar.is-shown { transform: translateY(0); opacity: 1; pointer-events: auto; }
-    .booking-bar__msg { flex: 1; white-space: nowrap; }
-    .booking-bar__close { margin-left: calc(var(--gap-icon) * -1); }
-    .booking-bar__btn {
-      display: inline-flex; align-items: center; gap: var(--btn-gap); white-space: nowrap; text-decoration: none;
-      padding: var(--btn-pad-y) var(--btn-pad-x); border-radius: var(--radius-round);
-      background: hsl(var(--accent)); color: hsl(var(--text-primary));
-    }
-    .booking-bar__btn:hover { background: hsl(var(--accent-hover)); }
-    .booking-bar__close { display: inline-flex; padding: var(--tag-pad); color: hsl(var(--text-on-dark)); opacity: .7; background: none; border: 0; cursor: pointer; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .booking-bar { transition: opacity var(--motion-quick) ease; transform: none; }
+    .top-bar__link { color: inherit; text-decoration: none; white-space: nowrap; }
+    .top-bar__link { display: inline-flex; align-items: center; gap: var(--gap-icon); }
   }
 
   /* Phones: the full bar is too tight, so a single floating button shows

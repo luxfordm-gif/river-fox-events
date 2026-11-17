@@ -1,94 +1,65 @@
-import { useEffect, useRef, useState } from "react";
-import { X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronRight } from "lucide-react";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
-const DISMISS_KEY = "rfx-booking-bar-dismissed";
-
-/* Pages where the bar would repeat something already there: these have their
-   own booking button, a different bottom bar, or aren't for visitors. */
-const SKIP = ["/contact", "/our-work", "/christmas-door-garlands", "/style-guide", "/brand-book"];
+/* Pages where the bar would repeat a booking button already there, or isn't
+   for visitors. */
+const SKIP = ["/contact", "/christmas-door-garlands", "/style-guide", "/brand-book"];
 
 /**
- * Floating booking bar, phones only (Matt, 2026-11-17). A slim rounded bar
- * lifts up from the bottom once the visitor has scrolled past the first
- * screen, on every page, so the enquiry form is always one tap away. The tap
- * scrolls to the form on pages that have one and otherwise opens the home
- * page form (`handleEnquireClick`).
+ * Booking strip at the very top of every page, phones only (Matt,
+ * 2026-11-17, like Wispr Flow's announcement bar). It sits above the nav and
+ * scrolls away with the page; the fixed nav starts below it and slides up to
+ * the top as the strip leaves (`--bar-offset`, set here). The whole strip is
+ * the link: one tap to the enquiry form, which `handleEnquireClick` scrolls
+ * to on pages that have one and otherwise opens on the home page.
  *
- * Stays out of the way: hidden while the enquiry form is on screen, while
- * the cookie notice is unanswered, while the home page's Christmas card is
- * open (same slot), and for the rest of the visit once closed.
+ * While <html data-top-bar="on"> the page is pushed down by `--bar-height`
+ * (index.css). Hidden while the phone menu is open.
  */
 const BookingBar = () => {
-  const [show, setShow] = useState(false);
-  const closed = useRef(false);
+  const [on, setOn] = useState(false);
 
   useEffect(() => {
-    try {
-      if (sessionStorage.getItem(DISMISS_KEY)) closed.current = true;
-    } catch {
-      /* storage blocked: still fine to show */
-    }
+    const root = document.documentElement;
     const phone = window.matchMedia("(max-width: 767px)");
     const update = () => {
-      if (closed.current) return;
-      const path = window.location.pathname;
-      const skipped = SKIP.some((p) => path.startsWith(p));
-      let consent = true;
-      try {
-        const c = localStorage.getItem("rfx-consent");
-        consent = c === "granted" || c === "denied";
-      } catch {
-        /* storage blocked */
-      }
-      const form = document.getElementById("enquire")?.getBoundingClientRect();
-      const formInView = !!form && form.top < window.innerHeight && form.bottom > 0;
-      const xmasOpen = !!document.querySelector(".xmas-promo.is-shown");
-      setShow(
-        phone.matches && !skipped && consent && !formInView && !xmasOpen &&
-          window.scrollY > window.innerHeight * 0.8
-      );
+      const skipped = SKIP.some((p) => window.location.pathname.startsWith(p));
+      const menuOpen = document.body.style.overflow === "hidden";
+      const show = phone.matches && !skipped && !menuOpen;
+      setOn(show);
+      if (show) root.setAttribute("data-top-bar", "on");
+      else root.removeAttribute("data-top-bar");
+      const bar = parseFloat(getComputedStyle(root).getPropertyValue("--bar-height")) || 0;
+      root.style.setProperty("--bar-offset", `${show ? Math.max(0, bar - window.scrollY) : 0}px`);
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
-    const poll = window.setInterval(update, 1000); // cookie answer, Christmas card, page changes
+    const mo = new MutationObserver(update);
+    mo.observe(document.body, { attributes: true, attributeFilter: ["style"] });
+    const poll = window.setInterval(update, 800); // page changes inside the site
     return () => {
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
+      mo.disconnect();
       window.clearInterval(poll);
+      root.removeAttribute("data-top-bar");
+      root.style.removeProperty("--bar-offset");
     };
   }, []);
 
-  const dismiss = () => {
-    closed.current = true;
-    setShow(false);
-    try {
-      sessionStorage.setItem(DISMISS_KEY, "1");
-    } catch {
-      /* not remembered, that's all */
-    }
-  };
-
+  if (!on) return null;
   return (
-    <aside
-      className={`booking-bar${show ? " is-shown" : ""}`}
-      aria-label="Book Laura"
-      aria-hidden={show ? undefined : true}
-    >
-      <span className="booking-bar__msg t-meta">Limited dates<br />each month</span>
+    <aside className="top-bar" aria-label="Book Laura">
       <a
         href={ENQUIRE_HREF}
         onClick={handleEnquireClick}
-        className="booking-bar__btn t-label"
-        data-track-location="booking-bar"
-        tabIndex={show ? undefined : -1}
+        className="top-bar__link t-label"
+        data-track-location="top-bar"
       >
-        Reserve your date <span aria-hidden="true">→</span>
+        Limited dates each month. Reserve your date <ChevronRight size={16} aria-hidden="true" className="top-bar__chev" />
       </a>
-      <button type="button" className="booking-bar__close" aria-label="Close" onClick={dismiss} tabIndex={show ? undefined : -1}>
-        <X size={16} aria-hidden="true" />
-      </button>
     </aside>
   );
 };
