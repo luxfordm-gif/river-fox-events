@@ -30,6 +30,8 @@ import PageHeader from "@/components/rfx/PageHeader";
 import LocationHeroFan from "@/components/rfx/LocationHeroFan";
 import ScrollStrip from "@/components/rfx/ScrollStrip";
 import Experiences from "@/components/rfx/Experiences";
+import { AnnouncementBarView } from "@/components/rfx/AnnouncementBar";
+import { christmasLine, defaultLine, pageLines, type BarLine } from "@/data/announcementBar";
 import Mission from "@/components/rfx/Mission";
 import ServicesCards from "@/components/rfx/ServicesCards";
 import { WHAT_WE_MAKE } from "@/data/balloonTiles";
@@ -378,6 +380,8 @@ const SPACING_TOKENS = [
   "--section-y", "--section-gap", "--gap-heading-text", "--gap-heading-content", "--gap-text-content", "--gap-inline", "--gap-label-title", "--gap-title-body", "--card-text-inset", "--panel-inset", "--gutter", "--container-max", "--hero-pad-top", "--hero-gap", "--hero-pad-bottom", "--page-pad-top", "--page-pad-bottom",
   // Added by the token migration (2026-11-13). New ones go on the end so P codes never shift.
   "--gap-paragraph", "--gap-stack", "--gap-text-action", "--gap-actions", "--gap-button-trust", "--gap-columns", "--gap-stacked", "--gap-cards", "--gap-media", "--gap-caption", "--gap-photos", "--gap-eyebrow", "--gap-divider", "--gap-list-item", "--gap-link-list", "--gap-icon", "--gap-form", "--gap-field", "--card-pad", "--article-gap", "--article-pad-x", "--list-indent", "--hero-ink-trim", "--measure-title", "--measure-lead", "--nav-height", "--nav-pad-x", "--nav-link-gap", "--menu-offset", "--menu-pad", "--menu-item-pad", "--menu-rule-gap", "--menu-section-gap", "--btn-compact-pad", "--tap-target",
+  // Announcement bar (2026-11-17)
+  "--announcement-height", "--announcement-pad-x",
 ];
 
 /* A spacing token's value at a width, in px: references to other tokens are
@@ -512,6 +516,19 @@ const SECTIONS: Section[] = [
   { id: "S19", title: "Areas we cover", component: "CPLocations", render: () => <CPLocations /> },
   { id: "S20", title: "Enquiry form", component: "Enquire", render: () => <Enquire /> },
   { id: "S21", title: "Footer", component: "Footer", render: () => <Footer /> },
+  {
+    id: "S23",
+    title: "Announcement bar",
+    component: "AnnouncementBarView",
+    note: "Pinned to the top of every page on phones. Words live in src/data/announcementBar.ts. Every line here, one under another",
+    render: () => (
+      <div className="stack-gap flex flex-col">
+        {[christmasLine, defaultLine, ...Object.values(pageLines).filter((l): l is BarLine => !!l)].map((l) => (
+          <AnnouncementBarView key={l.text} line={l} href={l.link} />
+        ))}
+      </div>
+    ),
+  },
 ];
 
 const FOUNDATIONS = [

@@ -44,8 +44,9 @@
     --accent: 12 55% 78%;              /* Accent · button fill */
     --accent-hover: 12 55% 70%;        /* Accent hover · button fill on hover */
     --accent-dark: 12 32% 54%;         /* Accent Dark · italic words in headings, stars, step numbers (#AF7364: darkened from #C39083 so it passes 3:1 contrast on every background, Matt 2026-11-08) */
-    --accent-deep: 12 30% 40%;         /* Accent Deep · the phone booking bar's fill, a dark blush so cream text passes 4.5:1 (#85584A, Matt 2026-11-17) */
-    --bar-height: 44px;                /* Top bar height · the phone booking strip above the nav (BookingBar.tsx) */
+    --accent-deep: 12 30% 40%;         /* Accent Deep · the announcement bar's fill, a dark blush so cream text passes 4.5:1 (#85584A, Matt 2026-11-17) */
+    --announcement-height: 44px;       /* Announcement bar height · the strip pinned above the nav on phones (AnnouncementBar.tsx) */
+    --announcement-pad-x: var(--gap-stack);   /* Announcement bar padding · space either side of its line, 16px */
 
     --hair: var(--text-primary) / 0.10;         /* hairlines and borders */
     --divider: var(--text-primary) / 0.15;      /* Divider · section dividing lines; lighter (10%) on white, set below */
@@ -1479,24 +1480,29 @@
     .work-dock { transition: opacity var(--motion-quick) ease; transform: translate(-50%, 0); }
   }
 
-  /* Phone top bar: a dark blush strip pinned above the nav (BookingBar.tsx).
-     The nav, phone menu and #section jumps all sit below it. */
-  .top-bar { display: none; }
-  @media (max-width: 767px) {
-    html[data-top-bar="on"] body { padding-top: var(--bar-height); }
-    html[data-top-bar="on"] .rfx-nav { top: var(--bar-height); }
-    html[data-top-bar="on"] { scroll-padding-top: calc(var(--nav-height) + var(--bar-height)); }
-    html[data-top-bar="on"] .nav-sheet { padding-top: calc(var(--nav-height) + var(--bar-height) + var(--menu-section-gap)); }
-    .top-bar {
-      display: flex; align-items: center; justify-content: center;
-      position: fixed; top: 0; left: 0; right: 0; height: var(--bar-height); z-index: var(--layer-nav);
-      padding: 0 var(--gap-stack);
-      background: hsl(var(--accent-deep)); color: hsl(var(--text-on-dark));
-    }
-    .top-bar__link { color: inherit; text-decoration: none; text-align: center; white-space: nowrap; }
-    @media (max-width: 349px) { .top-bar__link { white-space: normal; text-wrap: balance; } }
-    .top-bar__go { white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; }
+  /* Announcement bar (AnnouncementBar.tsx): a dark blush strip with one line
+     and an underlined link. Pinned to the top on phones, with the nav, phone
+     menu and #section jumps moving down by its height. Unpinned (the style
+     guide) it is an ordinary block at any width. */
+  .announcement-bar {
+    display: flex; align-items: center; justify-content: center;
+    height: var(--announcement-height); padding: 0 var(--announcement-pad-x);
+    background: hsl(var(--accent-deep)); color: hsl(var(--text-on-dark));
   }
+  .announcement-bar__link { color: inherit; text-decoration: none; text-align: center; white-space: nowrap; }
+  .announcement-bar__go { white-space: nowrap; text-decoration: underline; text-underline-offset: 0.3em; }
+  .announcement-bar--pinned { display: none; }
+  @media (max-width: 767px) {
+    .announcement-bar--pinned {
+      display: flex; position: fixed; top: 0; left: 0; right: 0; z-index: var(--layer-nav);
+    }
+    html[data-announcement-bar="on"] body { padding-top: var(--announcement-height); }
+    html[data-announcement-bar="on"] .rfx-nav { top: var(--announcement-height); }
+    html[data-announcement-bar="on"] { scroll-padding-top: calc(var(--nav-height) + var(--announcement-height)); }
+    html[data-announcement-bar="on"] .nav-sheet { padding-top: calc(var(--nav-height) + var(--announcement-height) + var(--menu-section-gap)); }
+  }
+  /* Very narrow phones (under 350px): let the line wrap rather than run off. */
+  @media (max-width: 349px) { .announcement-bar__link { white-space: normal; text-wrap: balance; } }
 
   /* Phones: the full bar is too tight, so a single floating button shows
      the current section and opens a menu of all of them. */

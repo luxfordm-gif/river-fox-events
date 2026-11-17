@@ -1,6 +1,6 @@
 /**
  * Announcement bar copy: the strip pinned to the top of every page on phones
- * (BookingBar.tsx). Edit the lines here; no component needs touching.
+ * (AnnouncementBar.tsx). Edit the lines here; no component needs touching.
  *
  * How a line works:
  *  - "text" is the whole line. Everything after the first full stop or
