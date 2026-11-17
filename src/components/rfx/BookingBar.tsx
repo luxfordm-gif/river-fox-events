@@ -3,6 +3,13 @@ import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 /* Pages where the bar would repeat a booking button already there, or isn't
    for visitors. */
+/* The message follows the season (Matt, 2026-11-17). Until 3 January 2027,
+   the same day the home page's Christmas switch turns off, it is about the
+   garlands and opens their booking form; after that it is the year-round
+   line and opens the enquiry form. */
+const CHRISTMAS_ENDS = new Date("2027-01-03T00:00:00Z");
+const christmas = () => Date.now() < CHRISTMAS_ENDS.getTime();
+
 const SKIP = ["/contact", "/christmas-door-garlands", "/style-guide", "/brand-book"];
 
 /**
@@ -39,17 +46,20 @@ const BookingBar = () => {
   }, []);
 
   if (!on) return null;
+  const garlands = christmas();
   return (
     <aside className="top-bar" aria-label="Book Laura">
       <a
-        href={ENQUIRE_HREF}
-        onClick={handleEnquireClick}
+        href={garlands ? "/christmas-door-garlands/#enquire" : ENQUIRE_HREF}
+        onClick={garlands ? undefined : handleEnquireClick}
         className="top-bar__link t-label"
         data-track-location="top-bar"
       >
-        <span>Limited dates each month</span>
-        <span className="top-bar__btn">
-          Book your event <span aria-hidden="true">→</span>
+        {garlands
+          ? "Christmas door garlands: December install dates filling up."
+          : "Now booking 2027 weddings and events."}{" "}
+        <span className="top-bar__go">
+          Check your date <span aria-hidden="true">→</span>
         </span>
       </a>
     </aside>

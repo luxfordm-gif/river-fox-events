@@ -45,7 +45,7 @@
     --accent-hover: 12 55% 70%;        /* Accent hover · button fill on hover */
     --accent-dark: 12 32% 54%;         /* Accent Dark · italic words in headings, stars, step numbers (#AF7364: darkened from #C39083 so it passes 3:1 contrast on every background, Matt 2026-11-08) */
     --accent-deep: 12 30% 40%;         /* Accent Deep · the phone booking bar's fill, a dark blush so cream text passes 4.5:1 (#85584A, Matt 2026-11-17) */
-    --bar-height: 44px;                /* Top bar height · the phone booking strip above the nav (BookingBar.tsx) */
+    --bar-height: 56px;                /* Top bar height · the phone booking strip above the nav (BookingBar.tsx) */
 
     --hair: var(--text-primary) / 0.10;         /* hairlines and borders */
     --divider: var(--text-primary) / 0.15;      /* Divider · section dividing lines; lighter (10%) on white, set below */
@@ -1493,13 +1493,8 @@
       padding: 0 var(--gutter);
       background: hsl(var(--accent-deep)); color: hsl(var(--text-on-dark));
     }
-    .top-bar__link { color: inherit; text-decoration: none; white-space: nowrap; }
-    .top-bar__link { display: inline-flex; align-items: center; gap: var(--gap-stack); }
-    .top-bar__btn {
-      display: inline-flex; align-items: center; gap: var(--gap-icon);
-      padding: var(--gap-icon) var(--gap-stack); border-radius: var(--radius-round);
-      background: hsl(var(--accent)); color: hsl(var(--text-primary));
-    }
+    .top-bar__link { color: inherit; text-decoration: none; text-align: center; text-wrap: balance; }
+    .top-bar__go { white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; }
   }
 
   /* Phones: the full bar is too tight, so a single floating button shows
