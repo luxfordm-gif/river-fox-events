@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { christmasLine, defaultLine, pageLines } from "@/data/announcementBar";
-import { lineFor, splitLine, targetFor } from "@/lib/announcementBar";
+import { christmasOn, lineFor, splitLine, targetFor } from "@/lib/announcementBar";
 
 describe("announcement bar lines", () => {
   it("shows the Christmas line on home and the garlands page only while christmasMode is on", () => {
@@ -9,6 +9,13 @@ describe("announcement bar lines", () => {
     expect(lineFor("/", false)).toBe(defaultLine);
     expect(lineFor("/christmas-door-garlands/", false)).toBe(defaultLine);
     expect(lineFor("/childrens-parties/", true)?.text).toMatch(/^Planning a birthday\?/);
+  });
+
+  it("switches Christmas mode off by itself on 3 January 2027 (UK time)", () => {
+    expect(christmasOn(new Date("2026-12-25T12:00:00Z"))).toBe(true);
+    expect(christmasOn(new Date("2027-01-02T23:30:00Z"))).toBe(true);
+    expect(christmasOn(new Date("2027-01-03T00:30:00Z"))).toBe(false);
+    expect(christmasOn(new Date("2027-02-01T12:00:00Z"))).toBe(false);
   });
 
   it("uses the default line for every page that isn't listed", () => {
@@ -40,6 +47,6 @@ describe("announcement bar lines", () => {
       expect(s.link.length).toBeGreaterThan(3);
       expect(s.arrow).toBe(true);
     }
-    expect(splitLine("Got a date in mind? Check we're free →")).toEqual({ lead: "Got a date in mind?", link: "Check we're free", arrow: true });
+    expect(splitLine("Got a date in mind? Check we're free ›")).toEqual({ lead: "Got a date in mind?", link: "Check we're free", arrow: true });
   });
 });

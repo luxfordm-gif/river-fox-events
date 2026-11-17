@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ChevronRight } from "lucide-react";
 import { handleEnquireClick } from "@/lib/enquire";
 import { lineFor, splitLine, targetFor } from "@/lib/announcementBar";
 import { trackEvent } from "@/lib/track";
@@ -6,7 +7,7 @@ import type { BarLine } from "@/data/announcementBar";
 
 /**
  * Announcement bar (Matt, 2026-11-17, like Wispr Flow's). One slim strip with a
- * short lead-in and an underlined link; the whole bar is tappable.
+ * short lead-in and a link ending in a chevron; the whole bar is tappable.
  *
  * Two parts:
  *  - `AnnouncementBarView` is just the look: a line, a link, and (when
@@ -45,7 +46,7 @@ export const AnnouncementBarView = ({
         {lead && <>{lead} </>}
         <span className="announcement-bar__go">
           {link}
-          {arrow && <> <span aria-hidden="true">→</span></>}
+          {arrow && <ChevronRight className="announcement-bar__chev" size={16} aria-hidden="true" />}
         </span>
       </a>
     </aside>
@@ -86,7 +87,7 @@ const AnnouncementBar = () => {
       href={href}
       onClick={(e) => {
         trackEvent("announcement_bar_click", {
-          line_text: line.text.replace(/\s*→$/, ""),
+          line_text: line.text.replace(/\s*[→›>]$/, ""),
           transport_type: "beacon",
         });
         if (samePage) handleEnquireClick(e);

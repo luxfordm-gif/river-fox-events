@@ -145,8 +145,12 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
         />
         {it.badge && <span className="exp-badge t-label">{it.badge}</span>}
       </div>
+      {/* The last word drops to its own line so the title doesn't run wide
+          at this size (Matt, 2026-11-17). */}
       <h3 className="t-h4 exp-title media-to-title text-pretty">
-        {it.title}
+        {it.title.slice(0, it.title.lastIndexOf(" "))}
+        <br />
+        {it.title.slice(it.title.lastIndexOf(" ") + 1)}
       </h3>
       <p className="t-small text-ink-soft measure-card title-to-text">
         {it.body}
