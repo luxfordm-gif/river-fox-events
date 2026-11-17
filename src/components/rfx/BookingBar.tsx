@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { ChevronRight } from "lucide-react";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 /* Pages where the bar would repeat a booking button already there, or isn't
@@ -48,7 +47,10 @@ const BookingBar = () => {
         className="top-bar__link t-label"
         data-track-location="top-bar"
       >
-        Limited dates each month. Reserve your date <ChevronRight size={16} aria-hidden="true" className="top-bar__chev" />
+        <span>Limited dates each month</span>
+        <span className="top-bar__btn">
+          Book your event <span aria-hidden="true">→</span>
+        </span>
       </a>
     </aside>
   );
