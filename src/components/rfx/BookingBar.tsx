@@ -56,8 +56,8 @@ const BookingBar = () => {
         data-track-location="top-bar"
       >
         {garlands
-          ? "Christmas door garlands: December install dates filling up."
-          : "Now booking 2027 weddings and events."}{" "}
+          ? "Garland install dates filling up."
+          : "Now booking 2027 events."}{" "}
         <span className="top-bar__go">
           Check your date <span aria-hidden="true">→</span>
         </span>
