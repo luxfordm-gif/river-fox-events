@@ -1,20 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, ChevronRight, Instagram } from "lucide-react";
+import { ChevronRight, Instagram } from "lucide-react";
 import { useScrollY } from "@/hooks/useRiverFox";
-import { TOWNS } from "@/data/locations/towns";
 import { whatsappHref } from "@/lib/whatsapp";
-
-const FOOTER_LOCATIONS_VISIBLE = 5;
 
 const Footer = () => {
   const y = useScrollY();
   const watermarkRef = useRef<HTMLDivElement>(null);
   const [revealed, setRevealed] = useState(false);
-  const [showAllLocations, setShowAllLocations] = useState(false);
-  const visibleLocations = showAllLocations
-    ? TOWNS
-    : TOWNS.slice(0, FOOTER_LOCATIONS_VISIBLE);
-  const hasMoreLocations = TOWNS.length > FOOTER_LOCATIONS_VISIBLE;
 
   useEffect(() => {
     const el = watermarkRef.current;
@@ -125,41 +117,6 @@ const Footer = () => {
                 <a href="/christmas-door-garlands/" className="opacity-85 hover:opacity-100 block">Christmas Door Garlands</a>
               </div>
             </div>
-            {/* On phones the columns read Services, The studio, Locations, Contact. */}
-            <div className="max-md:order-3">
-              <div className="t-overline footer-title text-on-deep">
-                Locations
-              </div>
-              <div className="t-meta link-list">
-                {visibleLocations.map((loc) => (
-                  <a
-                    key={loc.slug}
-                    href={`/party-styling-${loc.slug}/`}
-                    className="opacity-85 hover:opacity-100 block"
-                  >
-                    Party Styling in {loc.cityName}
-                  </a>
-                ))}
-                {hasMoreLocations && (
-                  <button
-                    type="button"
-                    onClick={() => setShowAllLocations((s) => !s)}
-                    aria-expanded={showAllLocations}
-                    className="inline-flex items-center icon-gap bg-transparent border-0 p-0 cursor-pointer t-meta opacity-70 hover:opacity-100 text-inherit"
-                  >
-                    {showAllLocations ? "Show less" : "Show more"}
-                    <ChevronDown
-                      size={12}
-                      strokeWidth={1.25}
-                      aria-hidden="true"
-                      className={`transition-transform duration-quick ${
-                        showAllLocations ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                )}
-              </div>
-            </div>
             <div>
               <div className="t-overline footer-title text-on-deep">
                 The studio
@@ -172,7 +129,30 @@ const Footer = () => {
                 <a href="/journal/" className="opacity-85 hover:opacity-100 block">Journal</a>
               </div>
             </div>
-            <div className="max-md:order-4">
+            {/* Same order on every screen: Services, The studio, Areas I cover, Contact. */}
+            <div>
+              <a
+                href="/areas-we-cover/"
+                className="t-overline footer-title inline-flex items-center icon-gap no-underline hover:underline underline-offset-4 decoration-on-deep/50 text-on-deep"
+              >
+                Areas I cover
+                <ChevronRight
+                  size={11}
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                  className="opacity-75 -mt-px"
+                />
+              </a>
+              <div className="t-meta link-list text-ink-faint">
+                <p className="measure-card">
+                  Surrey and London, plus Sussex and west Kent.
+                </p>
+                <a href="/areas-we-cover/" className="opacity-85 hover:opacity-100 block">
+                  See every town
+                </a>
+              </div>
+            </div>
+            <div>
               <a
                 href="/contact/"
                 className="t-overline footer-title inline-flex items-center icon-gap no-underline hover:underline underline-offset-4 decoration-on-deep/50 text-on-deep"

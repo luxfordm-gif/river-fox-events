@@ -81,23 +81,23 @@ export const breadcrumbSchema = (path: string): SchemaJson | null => {
   if (path === "/") return null;
   const route = findRoute(path);
   if (!route?.breadcrumbName) return null;
+  const parent = route.breadcrumbParent ? findRoute(route.breadcrumbParent) : undefined;
+  const trail = [
+    { name: "Home", item: SITE.url + "/" },
+    ...(parent?.breadcrumbName
+      ? [{ name: parent.breadcrumbName, item: SITE.url + canonicalPath(parent.path) }]
+      : []),
+    { name: route.breadcrumbName, item: SITE.url + canonicalPath(path) },
+  ];
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: SITE.url + "/",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: route.breadcrumbName,
-        item: SITE.url + canonicalPath(path),
-      },
-    ],
+    itemListElement: trail.map((t, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: t.name,
+      item: t.item,
+    })),
   };
 };
 
