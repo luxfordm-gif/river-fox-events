@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, matchRoutes } from "react-router-dom";
 import PageTransition from "@/components/PageTransition";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import CookieBanner from "@/components/rfx/CookieBanner";
+import AnnouncementBar from "@/components/rfx/AnnouncementBar";
 import { TOWNS } from "./data/locations/towns";
 import { lazyPage } from "./lib/lazyPage";
 
@@ -135,6 +136,7 @@ const App = () => (
   <>
     <LateToaster />
     <AppShell />
+    <AnnouncementBar />
     <CookieBanner />
   </>
 );

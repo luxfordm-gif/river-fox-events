@@ -34,7 +34,7 @@ const HOME_SETS: CardPhoto[][] = [
   ],
   [
     fromGallery("river-fox-events-willy-wonka-savanna-chocolate-bar-arch.webp"),
-    fromGallery("services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp", "96% 50%"),
+    fromGallery("services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp", "100% 50%"),
     fromGallery("services/corporate/enterprise-mobility-branded-backdrop-black-gold-balloons.webp"),
   ],
 ];
@@ -50,30 +50,30 @@ const pickHomeSet = () => {
 
 const ITEMS = [
   {
-    title: "Children's party styling",
+    title: "Children's party decorations",
     body:
-      "Themed backdrops, arches and party tables, set up at home or at your venue.",
+      "Themed backdrops, balloon arches and party tables, set up at home or at your venue. From £300.",
     img: expChildren,
     alt: "Sage green dinosaur birthday backdrop with an Ayaan name sign, tropical foliage and dinosaur cutouts",
     href: "/childrens-parties/",
-    cta: "See the parties",
+    cta: "See party ideas",
     tone: "",
     badge: "Most popular",
   },
   {
-    title: "Milestone celebrations",
+    title: "Milestone birthday decorations",
     body:
-      "Refined styling for christenings, baby showers, 40ths and anniversaries.",
+      "Styling for 18ths, 40ths, 50ths, christenings and baby showers, built on site. From £300.",
     img: expMilestone,
     alt: "Rose gold light-up 40 marquee with a blush and chrome balloon installation in a hall with a wall clock",
     href: "/milestone-celebrations/",
-    cta: "See the celebrations",
+    cta: "See milestone ideas",
     tone: "ph-warm",
   },
   {
-    title: "Corporate & brand styling",
+    title: "Corporate event styling",
     body:
-      "Launches, openings and activations. Trusted by P&G, The Range and Foxhills.",
+      "Launches, openings and brand activations, quoted to your brief. Trusted by P&G, The Range and Foxhills.",
     img: expCorporate,
     alt: "Navy, gold and cream balloons around a Children in Need Pudsey backdrop at a corporate gala",
     href: "/corporate-brand-styling/",
@@ -123,7 +123,7 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
       <div
         ref={wrap}
         className={`exp-img-wrap ph rounded-large ${it.tone} rfx-svc-img ${compact ? "rfx-svc-img--compact" : ""} relative overflow-hidden`}
-        style={{ aspectRatio: compact ? "3/2" : "1/1" }}
+        style={{ aspectRatio: compact ? "3/2" : "var(--service-photo-ratio)" }}
       >
         {/*
           ALT TEXT: describe what is in the photo (max 125 characters, no
@@ -145,8 +145,12 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
         />
         {it.badge && <span className="exp-badge t-label">{it.badge}</span>}
       </div>
-      <h3 className="t-h5 exp-title media-to-title">
-        {it.title}
+      {/* The last word drops to its own line so the title doesn't run wide
+          at this size (Matt, 2026-11-17). */}
+      <h3 className="t-h4 exp-title media-to-title text-pretty">
+        {it.title.slice(0, it.title.lastIndexOf(" "))}
+        <br />
+        {it.title.slice(it.title.lastIndexOf(" ") + 1)}
       </h3>
       <p className="t-small text-ink-soft measure-card title-to-text">
         {it.body}
@@ -190,7 +194,7 @@ const Experiences = ({
 }: ExperiencesProps = {}) => {
   const title = heading ?? (
     <>
-      Find your <em className="t-accent">occasion.</em>
+      Party styling for every <em className="t-accent">occasion.</em>
     </>
   );
   const [setIndex] = useState(() => (rotatePhotos ? pickHomeSet() : 0));
@@ -201,10 +205,11 @@ const Experiences = ({
     <section id={sectionId} className="rfx-section white" aria-labelledby="exp-heading">
       <div className="container-rfx">
         {align === "centre" ? (
-          <div className="heading-to-content text-center">
+          <div className="heading-to-content text-center flex flex-col items-center">
             <SectionHeading id="exp-heading" className="fade-up">
               {title}
             </SectionHeading>
+            {intro && <SectionIntro>{intro}</SectionIntro>}
           </div>
         ) : align === "stacked" ? (
           <div className="heading-to-content text-center flex flex-col items-center">
