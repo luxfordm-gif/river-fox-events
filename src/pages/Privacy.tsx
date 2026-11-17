@@ -70,8 +70,8 @@ const Privacy = () => {
             lead to an enquiry, so we spend our advertising budget well.
           </p>
           <p>
-            These cookies only load if you click <em>Accept</em> on the cookie
-            banner. If you click <em>Decline</em>, or ignore the banner, no
+            These cookies only load if you click <em>Agree</em> on the cookie
+            banner. If you click <em>No thanks</em>, or ignore the banner, no
             analytics or advertising cookie is set. You can change your mind at
             any time by clearing this site's cookies in your browser - the
             banner will reappear on your next visit.
