@@ -14,6 +14,10 @@ export type RouteSEO = {
   description: string;
   /** Visible breadcrumb name (used in BreadcrumbList JSON-LD). Omit for "/". */
   breadcrumbName?: string;
+  /** Path of the page this one sits under in the breadcrumb (Home > Parent >
+   *  this page), when that isn't visible in the URL. Town pages sit under
+   *  /areas-we-cover. */
+  breadcrumbParent?: string;
   /** Service schema config. When set, postbuild emits a Service JSON-LD
    *  block with the shared BUSINESS as `provider`. */
   service?: {
@@ -268,6 +272,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Party decorations in Oxted, Limpsfield and Hurst Green. Balloon arches, painted name boards and themed props, installed and collected by Laura, from £300.",
     breadcrumbName: "Party Styling Oxted",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: ["Oxted", "Limpsfield", "Hurst Green", "Tandridge", "Godstone", "Caterham", "Surrey"],
@@ -283,6 +288,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Balloon arches, garlands and photo backdrops for Cobham and Stoke d'Abernon parties. Designed by Laura, set up on the morning and taken down after, from £300.",
     breadcrumbName: "Party Styling Cobham",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: ["Cobham", "Oxshott", "Stoke d'Abernon", "Downside", "Effingham", "Surrey"],
@@ -298,6 +304,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Weybridge birthday decorations, from balloon hoops and light-up numbers to painted sailboards, for homes on St George's Hill and Oatlands Park. From £300.",
     breadcrumbName: "Party Styling Weybridge",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: ["Weybridge", "Walton-on-Thames", "Hersham", "Oatlands", "Whiteley Village", "Surrey"],
@@ -313,6 +320,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Party balloons and backdrops in Esher, Claygate and Thames Ditton, from first birthdays to Sandown Park events. Everything set up and cleared away by Laura.",
     breadcrumbName: "Party Styling Esher",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: ["Esher", "Claygate", "Hinchley Wood", "Long Ditton", "Thames Ditton", "Surrey"],
@@ -328,6 +336,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Fifteen minutes from the studio - children's party styling in Reigate, from first birthdays to big themed celebrations, individually designed by Laura.",
     breadcrumbName: "Party Styling Reigate",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: ["Reigate", "Redhill", "Banstead", "Tadworth", "Betchworth", "Surrey"],
@@ -343,6 +352,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Children's party decorators for at-home parties in Oxshott, with balloon installations, themed backdrops and props. Rated 5.0 on Google, takedown included.",
     breadcrumbName: "Party Styling Oxshott",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: ["Oxshott", "Cobham", "Esher", "Stoke d'Abernon", "Leatherhead", "Surrey"],
@@ -358,6 +368,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Themed children's parties across Guildford and the GU postcodes - first birthdays to big celebrations, individually designed and installed by Laura.",
     breadcrumbName: "Party Styling Guildford",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: ["Guildford", "Godalming", "Shalford", "Compton", "Merrow", "Surrey"],
@@ -373,6 +384,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Walton-on-Thames kids party decorations, with balloon garlands, soft-seat picnic setups and themed props for homes in Hersham. Rated 5.0 on Google reviews.",
     breadcrumbName: "Party Styling Walton-on-Thames",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: ["Walton-on-Thames", "Hersham", "Oatlands", "Sunbury", "Shepperton", "Surrey"],
@@ -388,6 +400,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Children's parties beneath the Surrey Hills - first birthdays to big themed celebrations in Dorking, individually designed by Laura.",
     breadcrumbName: "Party Styling Dorking",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: ["Dorking", "Westcott", "Brockham", "Mickleham", "Wotton", "Surrey"],
@@ -403,6 +416,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Birthday party decorators in Epsom, Ashtead and Ewell. Number balloons, character cutouts and photo backdrops, delivered, set up and collected, from £300.",
     breadcrumbName: "Party Styling Epsom",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: [
@@ -428,6 +442,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Kids' party styling in East Grinstead and the RH19 area - first birthdays through to big themed celebrations, individually designed and installed by Laura.",
     breadcrumbName: "Party Styling East Grinstead",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: [
@@ -451,6 +466,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Village children's parties in Lingfield and along the Surrey/Sussex border - first birthdays to themed celebrations, individually designed by Laura.",
     breadcrumbName: "Party Styling Lingfield",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: [
@@ -473,6 +489,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Children's birthday styling in Crawley and across West Sussex, from first birthdays to big themed parties - individually designed and installed by Laura.",
     breadcrumbName: "Party Styling Crawley",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: [
@@ -496,6 +513,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Big themed birthdays and first-birthday styling in Horsham - children's parties individually designed and installed by Laura.",
     breadcrumbName: "Party Styling Horsham",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: [
@@ -519,6 +537,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Kids' birthday styling across Haywards Heath, Lindfield and Cuckfield - first birthdays to themed parties, individually designed by Laura.",
     breadcrumbName: "Party Styling Haywards Heath",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: [
@@ -542,6 +561,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Kent children's parties in Tunbridge Wells - first birthdays to big themed celebrations, individually designed and installed by Laura.",
     breadcrumbName: "Party Styling Tunbridge Wells",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: [
@@ -565,6 +585,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "West Kent children's parties in Sevenoaks - first birthdays to big themed celebrations, individually designed and installed by Laura.",
     breadcrumbName: "Party Styling Sevenoaks",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: [
@@ -588,6 +609,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Forest-edge children's parties across the Ashdown Forest - first birthdays to big themed celebrations, individually designed and installed by Laura.",
     breadcrumbName: "Party Styling Forest Row",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: [
@@ -611,6 +633,7 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Themed first birthdays and children's parties in Lewes and the East Sussex villages, individually designed and installed by Laura.",
     breadcrumbName: "Party Styling Lewes",
+    breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
       areaServed: [
@@ -635,6 +658,15 @@ export const ROUTES: RouteSEO[] = [
     breadcrumbName: "Contact",
     priority: 0.7,
     changefreq: "yearly",
+  },
+  {
+    path: "/areas-we-cover",
+    title: "Areas We Cover in Surrey & Sussex | River Fox Events",
+    description:
+      "Every town I style parties and events in, across Surrey, London, Sussex and west Kent, with a map and a page for each. Based in Horley, I travel to you.",
+    breadcrumbName: "Areas We Cover",
+    priority: 0.7,
+    changefreq: "monthly",
   },
   {
     path: "/our-work",

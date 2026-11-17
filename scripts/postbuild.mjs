@@ -161,8 +161,8 @@ function buildJsonLdBlocks({ SITE, BUSINESS, ROUTES, REVIEWS, route, absUrl }) {
     // For nested paths (e.g. /journal/<slug>), insert the parent section
     // (Journal) between Home and the leaf so Google sees the real site
     // hierarchy rather than two flat hops.
-    if (segments.length > 1) {
-      const parentPath = "/" + segments.slice(0, -1).join("/");
+    if (route.breadcrumbParent || segments.length > 1) {
+      const parentPath = route.breadcrumbParent || "/" + segments.slice(0, -1).join("/");
       const parent = ROUTES.find((r) => r.path === parentPath);
       if (parent?.breadcrumbName) {
         itemListElement.push({
