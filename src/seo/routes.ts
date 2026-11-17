@@ -25,6 +25,8 @@ export type RouteSEO = {
   changefreq?: "daily" | "weekly" | "monthly" | "yearly";
   priority?: number;
   noindex?: boolean;
+  /** With noindex: also tell crawlers not to follow the page's links. */
+  nofollow?: boolean;
   /** Scheduled journal article: YYYY-MM-DD it goes live (UK time). Must
    *  match the article's `publishedAt`. Live builds leave the page and its
    *  sitemap entry out until then (scripts/schedule.mjs). */
@@ -869,6 +871,14 @@ export const ROUTES: RouteSEO[] = [
     description:
       "Internal design reference for River Fox Events: colour tokens, named text styles, corners, buttons and every reusable section.",
     noindex: true,
+  },
+  {
+    // Throwaway homepage layout prototype. Not linked, not in the sitemap.
+    path: "/scratch/homepage-v2",
+    title: "Homepage Prototype | River Fox Events",
+    description: "Scratch page for testing a new homepage layout. Not part of the live site.",
+    noindex: true,
+    nofollow: true,
   },
 ];
 

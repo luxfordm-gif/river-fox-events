@@ -28,6 +28,8 @@ const Privacy = lazyPage(() => import("./pages/Privacy.tsx"));
 const NotFound = lazyPage(() => import("./pages/NotFound.tsx"));
 // Hidden design reference (noindex).
 const StyleGuide = lazyPage(() => import("./pages/StyleGuide.tsx"));
+// Throwaway homepage layout prototype (noindex, nofollow).
+const ScratchHomepageV2 = lazyPage(() => import("./pages/ScratchHomepageV2.tsx"));
 
 // Articles also fetch their own text, so the article arrives in one go.
 let preloadArticle: ((pathname: string) => Promise<void> | undefined) | undefined;
@@ -72,6 +74,7 @@ const PAGES: PageRoute[] = [
   page("/contact", Contact, <Contact />),
   page("/privacy", Privacy, <Privacy />),
   page("/style-guide", StyleGuide, <StyleGuide />),
+  page("/scratch/homepage-v2", ScratchHomepageV2, <ScratchHomepageV2 />),
   // ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE
   page("*", NotFound, <NotFound />),
 ];

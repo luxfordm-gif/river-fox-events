@@ -1,0 +1,99 @@
+/* Throwaway prototype styles for /scratch/homepage-v2/. Hardcoded on purpose. */
+
+/* ---- 2. Occasion cards: swipe row on phones (next card peeks in) ---- */
+@media (max-width: 767px) {
+  .sx-swipe .exp-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
+    padding: 0 var(--gutter);
+    scroll-padding: 0 var(--gutter);
+    scrollbar-width: none;
+  }
+  .sx-swipe .exp-grid::-webkit-scrollbar { display: none; }
+  .sx-swipe .exp-grid > .exp-card {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+  }
+}
+
+/* ---- 3. Recent events ---- */
+.sx-events { display: grid; grid-template-columns: 1fr; gap: 40px; }
+.sx-event__photo { overflow: hidden; aspect-ratio: 4 / 5; background: hsl(var(--background)); }
+.sx-event__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sx-event__type { margin-top: 16px; margin-bottom: 8px; }
+@media (min-width: 768px) {
+  .sx-events { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+}
+
+/* ---- 5. How it works ---- */
+.sx-steps { list-style: none; margin: 0; padding: 0; }
+.sx-step__media { overflow: hidden; background: hsl(var(--background)); }
+.sx-step__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sx-step__ph {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: #d9d9d6; color: #55554f; text-align: center;
+}
+.sx-step__timing { margin-top: 4px; }
+.sx-process-cta { margin-top: 56px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+
+/* Phones: vertical timeline, numbers down a thin line on the left */
+@media (max-width: 767px) {
+  .sx-steps { position: relative; padding-left: 56px; display: flex; flex-direction: column; gap: 40px; }
+  .sx-steps::before {
+    content: ""; position: absolute; left: 17px; top: 18px; bottom: 18px; width: 1px;
+    background: hsl(var(--text-primary) / 0.25);
+  }
+  .sx-step { position: relative; display: grid; grid-template-columns: 1fr 96px; gap: 16px; align-items: start; }
+  .sx-step__num {
+    position: absolute; left: -56px; top: 0; width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: hsl(var(--background-light)); border: 1px solid hsl(var(--text-primary) / 0.25);
+  }
+  .sx-step__media { grid-column: 2; grid-row: 1; width: 96px; height: 96px; }
+  .sx-step__text { grid-column: 1; grid-row: 1; }
+}
+/* Desktop: three columns, image above the text */
+@media (min-width: 768px) {
+  .sx-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .sx-step { display: flex; flex-direction: column; }
+  .sx-step__num { order: 0; margin-bottom: 12px; }
+  .sx-step__media { order: 1; aspect-ratio: 4 / 3; margin-bottom: 20px; }
+  .sx-step__text { order: 2; }
+}
+
+/* ---- 6. Meet Laura (slim) ---- */
+.sx-laura { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+.sx-laura__photo { overflow: hidden; aspect-ratio: 5 / 6; max-height: 420px; }
+.sx-laura__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; display: block; }
+@media (min-width: 768px) {
+  .sx-laura { grid-template-columns: 0.8fr 1.2fr; gap: 64px; }
+}
+
+.sx-form-note { margin-top: 12px; }
+
+/* ---- Sticky bottom bar, phones only ---- */
+.sx-sticky { display: none; }
+@media (max-width: 767px) {
+  .sx-sticky {
+    display: flex; gap: 8px;
+    position: fixed; left: 0; right: 0; bottom: 0;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: hsl(var(--background-light));
+    box-shadow: var(--shadow-menu);
+    z-index: var(--layer-float);          /* below the cookie banner (modal) */
+    transform: translateY(110%);
+    transition: transform var(--motion-base) var(--ease-soft);
+    pointer-events: none;
+  }
+  .sx-sticky.is-on { transform: none; pointer-events: auto; }
+  .sx-sticky a { flex: 1; justify-content: center; text-align: center; }
+  .sx-page { padding-bottom: 80px; }
+}
+
+.sx-extras { padding: 12px 0; }
+@media (min-width: 640px) { .sx-extras { padding: 0; } }

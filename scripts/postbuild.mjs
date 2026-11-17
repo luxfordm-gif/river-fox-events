@@ -76,7 +76,7 @@ function buildHeadTags({ SITE, route, absUrl, ogImageAbs }) {
   return [
     `<title>${title}</title>`,
     `<meta name="description" content="${desc}" />`,
-    route.noindex ? `<meta name="robots" content="noindex, follow" />` : `<meta name="robots" content="index, follow" />`,
+    route.noindex ? `<meta name="robots" content="noindex, ${route.nofollow ? "nofollow" : "follow"}" />` : `<meta name="robots" content="index, follow" />`,
     `<link rel="canonical" href="${url}" />`,
     `<meta property="og:type" content="website" />`,
     `<meta property="og:site_name" content="${escapeHtml(SITE.name)}" />`,
