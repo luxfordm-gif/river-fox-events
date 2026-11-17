@@ -1479,15 +1479,17 @@
     .work-dock { transition: opacity var(--motion-quick) ease; transform: translate(-50%, 0); }
   }
 
-  /* Phone top bar: a dark blush strip above the nav, scrolls away with the
-     page (BookingBar.tsx). The fixed nav starts below it and slides up. */
+  /* Phone top bar: a dark blush strip pinned above the nav (BookingBar.tsx).
+     The nav, phone menu and #section jumps all sit below it. */
   .top-bar { display: none; }
   @media (max-width: 767px) {
     html[data-top-bar="on"] body { padding-top: var(--bar-height); }
-    html[data-top-bar="on"] .rfx-nav { top: var(--bar-offset, 0px); }
+    html[data-top-bar="on"] .rfx-nav { top: var(--bar-height); }
+    html[data-top-bar="on"] { scroll-padding-top: calc(var(--nav-height) + var(--bar-height)); }
+    html[data-top-bar="on"] .nav-sheet { padding-top: calc(var(--nav-height) + var(--bar-height) + var(--menu-section-gap)); }
     .top-bar {
       display: flex; align-items: center; justify-content: center;
-      position: absolute; top: 0; left: 0; right: 0; height: var(--bar-height);
+      position: fixed; top: 0; left: 0; right: 0; height: var(--bar-height); z-index: var(--layer-nav);
       padding: 0 var(--gutter);
       background: hsl(var(--accent-deep)); color: hsl(var(--text-on-dark));
     }
