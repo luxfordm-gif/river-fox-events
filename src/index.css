@@ -160,6 +160,34 @@
     --shadow-menu: 0 24px 60px -20px hsl(var(--text-primary) / 0.22);  /* Shadow menu · nav dropdowns, the sent note */
     --shadow-panel: 0 30px 80px -20px hsl(var(--text-primary) / 0.22), 0 8px 24px -10px hsl(var(--text-primary) / 0.10); /* Shadow panel · the enquiry form card */
     --shadow-float: 0 20px 48px -12px hsl(var(--text-primary) / 0.5), 0 3px 9px hsl(var(--text-primary) / 0.13); /* Shadow float · Our work's floating dock, button and menu */
+
+    --recent-card-phone: 80%;          /* Recent events · card width in the phone swipe row */
+    --recent-max: 70rem;               /* Recent events · widest the bento grows */
+    --about-phone-gap: 48px;           /* Meet Laura · phones: space above and below the panel = padding inside it */
+    --about-photo-max: 34rem;          /* Meet Laura · tallest the photo grows on larger screens */
+    --reveal-shift: 10px;              /* Rise of a text block as it fades in */
+    --hiw-chat-height: 17rem;          /* How it works · height of the chat box on phones */
+    /* Chat demo · the mocked WhatsApp chat in "How it works" (ChatDemo, chat-demo.css) */
+    --chat-gap: 20px;                  /* Chat gap · space between messages (px: ChatDemo reads it) */
+    --chat-bleed: 14px;                /* Chat bleed · room under the last message for its shadow */
+    --chat-pill-w: 72px;               /* Chat pill width · the "..." pill a bubble grows from */
+    --chat-pill-h: 43px;               /* Chat pill height */
+    --chat-pad-y: 16px;                /* Chat bubble padding, top and bottom */
+    --chat-pad-x: 20px;                /* Chat bubble padding, sides */
+    --chat-dot: 7px;                   /* Chat dot size */
+    --chat-dot-gap: 5px;               /* Chat dot spacing */
+    --chat-avatar: 38px;               /* Chat call avatar */
+    --chat-button: 32px;               /* Chat call buttons */
+    --chat-call-gap: 12px;             /* Chat call card, space between its parts */
+    --chat-call-pad-y: 12px;
+    --chat-call-pad-x: 14px;
+    --chat-call-gap-phone: 10px;       /* Chat call card on phones */
+    --chat-call-pad-phone-y: 10px;
+    --chat-call-pad-phone-x: 12px;
+    --drop-bubble: drop-shadow(0 1px 2px hsl(var(--text-primary) / 0.06)); /* Bubble shadow · barely there */
+    --shadow-bubble-them: inset 0 1px 0 hsl(var(--background-light) / 0.8);
+    --shadow-bubble-me: inset 0 1px 0 hsl(var(--background-light) / 0.4);
+    --shadow-call: inset 0 1px 0 hsl(var(--background-light) / 0.1);
     --shadow-on-photo: 0 8px 24px -8px hsl(var(--background-dark) / 0.5); /* Shadow on photo · play buttons over a video */
     --shadow-text-photo: 0 1px 16px hsl(var(--background-dark) / 0.5);  /* Text on photo · small text over the Christmas video */
     --shadow-text-photo-lg: 0 2px 30px hsl(var(--background-dark) / 0.35); /* Text on photo large · the headline over the Christmas video */
@@ -221,7 +249,6 @@
     --gap-button-trust: 24px;          /* Button to trust line · hero button down to the five-star reviews line, same on every page (Matt, 2026-11-13) */
     --gap-list-item: 4px;              /* List item gap · space between bullet points in article copy, same as the In short box (was 0.4em, tightened by Matt 2026-11-09) */
     --card-text-inset: 18px;           /* Card text inset · right padding on card text so titles stay clear of the next card (0 phone) */
-    --panel-inset: 24px;               /* Panel inset · gap from the screen edge to a rounded section panel (none on phones: full width) */
     --card-pad: 40px;                  /* Card padding · inside option, pricing and In short boxes (28 phone) */
     --container-wide: 2400px;          /* Wide content · the widest a near-full-width photo wall gets */
     --gutter-wide: clamp(16px, 1.5vw, 40px);               /* Wide gutter · the small margin at each side of a near-full-width photo wall */
@@ -1240,11 +1267,6 @@
       max-height: calc(100vh - 160px);
       min-height: 420px;
     }
-    .rfx-about-img {
-      width: 100%;
-      max-height: calc(100vh - 160px);
-      min-height: 420px;
-    }
   }
   /* Optional second image that crossfades in on cursor hover. Desktop only —
      gated by (hover: hover) so touch devices never see the swap. */
@@ -1269,23 +1291,6 @@
   .rfx-section.dark { background: hsl(var(--background-dark)); color: hsl(var(--text-on-dark)); }
   .rfx-section.white { background: hsl(var(--background-light)); }
   .rfx-section.warm { background: hsl(var(--background-warm)); }
-  /* Rounded section panel, inset from the screen edges (home About; Matt,
-     2026-11-08). overflow: clip on .warm keeps the corners clean without
-     breaking the sticky photo. */
-  /* Rounded panel (home About). --shrink runs 0 to 1 as it scrolls in, so it
-     starts full width and draws in to its inset and corners (Matt,
-     2026-11-08); without JavaScript it sits at 1. clip-path, not margin, so
-     nothing reflows while it moves. */
-  .rfx-panel {
-    --shrink: 1;
-    clip-path: inset(0 calc(var(--panel-inset) * var(--shrink)) round calc(var(--radius-panel) * var(--shrink)));
-  }
-  /* Phones: the panel colour runs full width, no inset or corners (Matt,
-     2026-11-08). */
-  @media (max-width: 767px) {
-    .rfx-panel { clip-path: none; }
-  }
-
   /* Home mission line (Mission.tsx): words darken one by one on scroll. */
   /* Centred and narrower, no button under it (Matt, 2026-11-10). */
   /* Section title and intro widths (see --measure-title / --measure-lead). */
@@ -1688,19 +1693,12 @@
        phones too (it used to be capped at 268px, which read shallow). */
     /* /balloon-installations/ repeats these cards: about half height. */
     .rfx-svc-img.rfx-svc-img--compact { aspect-ratio: auto !important; height: 150px !important; }
-    /* About founder image: cap at 280px on mobile, crop neatly */
-    .rfx-about-img {
-      aspect-ratio: auto !important;
-      height: 280px !important;
-    }
-
   }
 
   /* Responsive grid stacking helper */
   @media (max-width: 767px) {
     .rfx-md-stack { grid-template-columns: 1fr !important; gap: var(--gap-stacked) !important; }
 
-    .rfx-md-static { position: static !important; }
     .form-grid { grid-template-columns: 1fr !important; }
     /* Form card on phones: run the white card out towards the screen edges
        (16px gutter instead of 32px) and slim its inner padding, so the fields

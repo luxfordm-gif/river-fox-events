@@ -7,6 +7,7 @@ import Mission from "@/components/rfx/Mission";
 import RevealWord from "@/components/rfx/RevealWord";
 import About from "@/components/rfx/About";
 import Process from "@/components/rfx/Process";
+import RecentEvents from "@/components/rfx/RecentEvents";
 import Testimonials from "@/components/rfx/Testimonials";
 import FaqSection from "@/components/rfx/FaqSection";
 import { HOME_FAQS } from "@/data/homeFaqs";
@@ -54,9 +55,10 @@ const Index = () => {
           align="centre"
           intro="Tell me what you're celebrating and I'll design around it, from one balloon arch to a full room."
         />
-        <About />
-        <Process tone="cream" />
+        <RecentEvents />
         <Testimonials noDivider />
+        <Process tone="cream" />
+        <About />
         <InstagramFollow />
         <FaqSection faqs={HOME_FAQS} headingId="faq-heading" />
         <Enquire />

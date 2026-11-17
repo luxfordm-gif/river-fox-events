@@ -6,6 +6,7 @@ import { CORPORATE_TILES, withoutTilePhotos } from "@/data/serviceTiles";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
+import { SCENARIOS } from "@/data/howItWorks";
 import Enquire from "@/components/rfx/Enquire";
 import ServiceHero from "@/components/rfx/ServiceHero";
 import CPReveal from "@/components/rfx/CPReveal";
@@ -267,7 +268,7 @@ const CorporateAndBrand = () => {
           intro="No two briefs look the same. These are my most requested pieces, but send me the brand and the space and I'll design around it."
         />
 
-        <Process sectionId="how-it-works" steps={CORPORATE_STEPS} />
+        <Process sectionId="how-it-works" steps={CORPORATE_STEPS} scenario={SCENARIOS.restaurant} />
 
         {/* The office party sequin wall stays in the strip as well as its tile:
             it's the only corporate shimmer wall photo (Matt, 2026-11-09). */}

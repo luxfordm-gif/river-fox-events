@@ -1,0 +1,40 @@
+/* "How it works" (src/components/rfx/Process.tsx): three steps, each with a
+   picture over its title; the enquiry button sits under them. */
+
+.hiw-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .hiw-steps { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Every picture is the same 3:2 shape, so the three titles line up. */
+.hiw-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  background: hsl(var(--background-warm));
+}
+.hiw-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+/* The chat needs more height than 3:2 gives it on a phone. */
+@media (max-width: 767px) {
+  .hiw-media-chat { aspect-ratio: auto; height: var(--hiw-chat-height); }
+}
+
+.hiw-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-stack);
+  text-align: center;
+}
+.hiw-cta p { margin: 0; }

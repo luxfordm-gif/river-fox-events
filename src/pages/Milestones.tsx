@@ -6,6 +6,7 @@ import { MILESTONE_TILES, withoutTilePhotos } from "@/data/serviceTiles";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
+import { SCENARIOS } from "@/data/howItWorks";
 import Enquire from "@/components/rfx/Enquire";
 import ServiceHero from "@/components/rfx/ServiceHero";
 import CPReveal from "@/components/rfx/CPReveal";
@@ -181,7 +182,7 @@ const Milestones = () => {
           intro="Every milestone is individually designed around your colours and venue. These come up most, but nothing here is a package."
         />
 
-        <Process sectionId="how-it-works" />
+        <Process sectionId="how-it-works" scenario={SCENARIOS.fifty} />
 
         <InspirationStrip id="ms-inspiration" lead="Celebrations I've" accent="already styled." images={withoutTilePhotos(INSPIRATION_MILESTONES, MILESTONE_TILES)} />
 

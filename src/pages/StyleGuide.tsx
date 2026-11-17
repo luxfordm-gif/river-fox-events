@@ -314,7 +314,7 @@ const CORNERS = [
   { token: "--radius-large", cls: "rounded-large", use: "Cards, panels, photos, videos, the map" },
   { token: "--radius-small", cls: "rounded-small", use: "Buttons, form fields, badges, tags" },
   { token: "--radius-round", cls: "rounded-full", use: "Pills, dots, circles" },
-  { token: "--radius-panel", cls: "rfx-panel", use: "Rounded full-width section panels (home About)" },
+  { token: "--radius-panel", cls: "about-card", use: "Rounded section panels (home Meet Laura)" },
 ];
 
 const BUTTONS: { name: string; use: string; tone?: string; render: () => ReactNode }[] = [
@@ -377,7 +377,7 @@ const BUTTONS: { name: string; use: string; tone?: string; render: () => ReactNo
 ];
 
 const SPACING_TOKENS = [
-  "--section-y", "--section-gap", "--gap-heading-text", "--gap-heading-content", "--gap-text-content", "--gap-inline", "--gap-label-title", "--gap-title-body", "--card-text-inset", "--panel-inset", "--gutter", "--container-max", "--hero-pad-top", "--hero-gap", "--hero-pad-bottom", "--page-pad-top", "--page-pad-bottom",
+  "--section-y", "--section-gap", "--gap-heading-text", "--gap-heading-content", "--gap-text-content", "--gap-inline", "--gap-label-title", "--gap-title-body", "--card-text-inset", "--about-phone-gap", "--gutter", "--container-max", "--hero-pad-top", "--hero-gap", "--hero-pad-bottom", "--page-pad-top", "--page-pad-bottom",
   // Added by the token migration (2026-11-13). New ones go on the end so P codes never shift.
   "--gap-paragraph", "--gap-stack", "--gap-text-action", "--gap-actions", "--gap-button-trust", "--gap-columns", "--gap-stacked", "--gap-cards", "--gap-media", "--gap-caption", "--gap-photos", "--gap-eyebrow", "--gap-divider", "--gap-list-item", "--gap-link-list", "--gap-icon", "--gap-form", "--gap-field", "--card-pad", "--article-gap", "--article-pad-x", "--list-indent", "--hero-ink-trim", "--measure-title", "--measure-lead", "--nav-height", "--nav-pad-x", "--nav-link-gap", "--menu-offset", "--menu-pad", "--menu-item-pad", "--menu-rule-gap", "--menu-section-gap", "--btn-compact-pad", "--tap-target",
   // Announcement bar (2026-11-17)

@@ -125,7 +125,8 @@ const Footer = () => {
                 <a href="/christmas-door-garlands/" className="opacity-85 hover:opacity-100 block">Christmas Door Garlands</a>
               </div>
             </div>
-            <div>
+            {/* On phones the columns read Services, The studio, Locations, Contact. */}
+            <div className="max-md:order-3">
               <div className="t-overline footer-title text-on-deep">
                 Locations
               </div>
@@ -161,7 +162,7 @@ const Footer = () => {
             </div>
             <div>
               <div className="t-overline footer-title text-on-deep">
-                Studio
+                The studio
               </div>
               <div className="t-meta link-list">
                 <a href="/our-work/" className="opacity-85 hover:opacity-100 block">Our Work</a>
@@ -171,7 +172,7 @@ const Footer = () => {
                 <a href="/journal/" className="opacity-85 hover:opacity-100 block">Journal</a>
               </div>
             </div>
-            <div>
+            <div className="max-md:order-4">
               <a
                 href="/contact/"
                 className="t-overline footer-title inline-flex items-center icon-gap no-underline hover:underline underline-offset-4 decoration-on-deep/50 text-on-deep"

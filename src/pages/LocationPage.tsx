@@ -6,6 +6,8 @@ import Nav from "@/components/rfx/Nav";
 import TrustLine from "@/components/rfx/TrustLine";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
+import { scenarioForTown } from "@/data/howItWorks";
+import { TOWNS } from "@/data/locations/towns";
 import Enquire from "@/components/rfx/Enquire";
 import CPLocations from "@/components/rfx/CPLocations";
 import CPPricing from "@/components/rfx/CPPricing";
@@ -185,7 +187,7 @@ const LocationPage = () => {
           picks={[{ alt: loc.gallery.mainImageAlt }, ...loc.gallery.images]}
         />
 
-        <Process sectionId="how-it-works" />
+        <Process sectionId="how-it-works" scenario={scenarioForTown(TOWNS.findIndex((t) => t.slug === loc.slug))} />
 
         <CPPricing
           heading={loc.pricing.heading}
