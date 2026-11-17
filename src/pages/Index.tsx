@@ -50,7 +50,10 @@ const Index = () => {
         {CHRISTMAS_CAMPAIGN && <ChristmasHero trust />}
         {!CHRISTMAS_CAMPAIGN && <Hero />}
         <Mission asTitle={CHRISTMAS_CAMPAIGN} />
-        <Experiences align="centre" />
+        <Experiences
+          align="centre"
+          intro="Tell me what you're celebrating and I'll design around it, from one balloon arch to a full room."
+        />
         <About />
         <Process tone="cream" />
         <Testimonials noDivider />

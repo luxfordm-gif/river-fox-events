@@ -50,30 +50,30 @@ const pickHomeSet = () => {
 
 const ITEMS = [
   {
-    title: "Children's party styling",
+    title: "Children's party decorations",
     body:
-      "Themed backdrops, arches and party tables, set up at home or at your venue.",
+      "Themed backdrops, balloon arches and party tables, set up at home or at your venue. From £300.",
     img: expChildren,
     alt: "Sage green dinosaur birthday backdrop with an Ayaan name sign, tropical foliage and dinosaur cutouts",
     href: "/childrens-parties/",
-    cta: "See the parties",
+    cta: "See party ideas",
     tone: "",
     badge: "Most popular",
   },
   {
-    title: "Milestone celebrations",
+    title: "Milestone birthday decorations",
     body:
-      "Refined styling for christenings, baby showers, 40ths and anniversaries.",
+      "Styling for 18ths, 40ths, 50ths, christenings and baby showers, built on site. From £300.",
     img: expMilestone,
     alt: "Rose gold light-up 40 marquee with a blush and chrome balloon installation in a hall with a wall clock",
     href: "/milestone-celebrations/",
-    cta: "See the celebrations",
+    cta: "See milestone ideas",
     tone: "ph-warm",
   },
   {
-    title: "Corporate & brand styling",
+    title: "Corporate event styling",
     body:
-      "Launches, openings and activations. Trusted by P&G, The Range and Foxhills.",
+      "Launches, openings and brand activations, quoted to your brief. Trusted by P&G, The Range and Foxhills.",
     img: expCorporate,
     alt: "Navy, gold and cream balloons around a Children in Need Pudsey backdrop at a corporate gala",
     href: "/corporate-brand-styling/",
@@ -190,7 +190,7 @@ const Experiences = ({
 }: ExperiencesProps = {}) => {
   const title = heading ?? (
     <>
-      Find your <em className="t-accent">occasion.</em>
+      Party styling for every <em className="t-accent">occasion.</em>
     </>
   );
   const [setIndex] = useState(() => (rotatePhotos ? pickHomeSet() : 0));
@@ -201,10 +201,11 @@ const Experiences = ({
     <section id={sectionId} className="rfx-section white" aria-labelledby="exp-heading">
       <div className="container-rfx">
         {align === "centre" ? (
-          <div className="heading-to-content text-center">
+          <div className="heading-to-content text-center flex flex-col items-center">
             <SectionHeading id="exp-heading" className="fade-up">
               {title}
             </SectionHeading>
+            {intro && <SectionIntro>{intro}</SectionIntro>}
           </div>
         ) : align === "stacked" ? (
           <div className="heading-to-content text-center flex flex-col items-center">
