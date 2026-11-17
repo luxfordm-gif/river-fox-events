@@ -34,7 +34,7 @@ const HOME_SETS: CardPhoto[][] = [
   ],
   [
     fromGallery("river-fox-events-willy-wonka-savanna-chocolate-bar-arch.webp"),
-    fromGallery("services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp", "96% 50%"),
+    fromGallery("services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp", "100% 50%"),
     fromGallery("services/corporate/enterprise-mobility-branded-backdrop-black-gold-balloons.webp"),
   ],
 ];
@@ -123,7 +123,7 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
       <div
         ref={wrap}
         className={`exp-img-wrap ph rounded-large ${it.tone} rfx-svc-img ${compact ? "rfx-svc-img--compact" : ""} relative overflow-hidden`}
-        style={{ aspectRatio: compact ? "3/2" : "1/1" }}
+        style={{ aspectRatio: compact ? "3/2" : "var(--service-photo-ratio)" }}
       >
         {/*
           ALT TEXT: describe what is in the photo (max 125 characters, no
@@ -145,7 +145,7 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
         />
         {it.badge && <span className="exp-badge t-label">{it.badge}</span>}
       </div>
-      <h3 className="t-h5 exp-title media-to-title">
+      <h3 className="t-h4 exp-title media-to-title text-pretty">
         {it.title}
       </h3>
       <p className="t-small text-ink-soft measure-card title-to-text">

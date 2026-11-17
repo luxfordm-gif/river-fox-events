@@ -45,6 +45,7 @@
     --accent-hover: 12 55% 70%;        /* Accent hover · button fill on hover */
     --accent-dark: 12 32% 54%;         /* Accent Dark · italic words in headings, stars, step numbers (#AF7364: darkened from #C39083 so it passes 3:1 contrast on every background, Matt 2026-11-08) */
     --accent-deep: 12 30% 40%;         /* Accent Deep · the announcement bar's fill, a dark blush so cream text passes 4.5:1 (#85584A, Matt 2026-11-17) */
+    --service-photo-ratio: 4 / 5;      /* Service photo shape · the photo on each services card, portrait so the cards feel full (was square, 268px high on phones; Matt 2026-11-17) */
     --announcement-height: 44px;       /* Announcement bar height · the strip pinned above the nav on phones (AnnouncementBar.tsx) */
     --announcement-pad-x: var(--gap-stack);   /* Announcement bar padding · space either side of its line, 16px */
 
@@ -1668,13 +1669,10 @@
     }
     /* Reduce dark Enquire section bottom padding so the gap before footer feels right */
     .rfx-enquire { padding-bottom: var(--gap-text-content); }
-    /* Service cards: cap image height on mobile so title + body stay visible */
-    .rfx-svc-img {
-      aspect-ratio: auto !important;
-      height: 268px !important;
-    }
+    /* Service cards: the photo takes its depth from --service-photo-ratio on
+       phones too (it used to be capped at 268px, which read shallow). */
     /* /balloon-installations/ repeats these cards: about half height. */
-    .rfx-svc-img.rfx-svc-img--compact { height: 150px !important; }
+    .rfx-svc-img.rfx-svc-img--compact { aspect-ratio: auto !important; height: 150px !important; }
     /* About founder image: cap at 280px on mobile, crop neatly */
     .rfx-about-img {
       aspect-ratio: auto !important;
