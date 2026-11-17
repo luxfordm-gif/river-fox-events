@@ -25,9 +25,9 @@ const jingleBow = (e: React.MouseEvent<HTMLElement>) => {
 
 const ABOUT_LINKS = [
   { href: "/#about", label: "About Laura" },
+  { href: "/journal/", label: "Read the journal" },
   { href: "/#kindness", label: "Client reviews" },
   { href: "/areas-we-cover/", label: "Areas we cover" },
-  { href: "/journal/", label: "Read the journal" },
 ];
 
 /** A link inside a desktop dropdown. */
