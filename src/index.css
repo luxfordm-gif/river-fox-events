@@ -206,6 +206,9 @@
     --gap-inline: 24px;                /* Inline gap · space between items in a row of text links (16 phone) */
     --gap-label-title: 4px;            /* Label to title · a small label (step number, overline) directly above a card or step title */
     --gap-title-body: 8px;             /* Title to text · a card or item title down to its text, every card on the site */
+    --gap-service-title-body: 4px;     /* Service card title to text · phones only, the homepage-style services cards (Matt, 2026-11-17) */
+    --card-arrow-width: 56px;          /* Card arrow · the long hairline arrow at the right of a service card title, phones only */
+    --card-arrow-height: 24px;
     --gap-text-action: 32px;           /* Text to action · a paragraph down to the button(s) under it, e.g. hero sub-copy to Reserve your date (home and town were 40, service 32; Matt 2026-11-13) */
     --gap-actions: 12px;               /* Action gap · between two buttons side by side or stacked (home was 20) */
     --gap-columns: 64px;               /* Column gap · between the two halves of a split layout: text and form, text and photo (48 phone; Enquire used 64, Contact 80; Matt 2026-11-13) */
@@ -1086,6 +1089,19 @@
   .paragraphs > * + * { margin-top: var(--gap-paragraph); }
   .meta-below { margin-top: var(--gap-label-title); }
   .card-action { padding-top: var(--gap-text-action); }
+
+  /* Service cards, phones only: a hairline arrow at the right of the title
+     replaces the text link under the card. Tablet up keeps the text link. */
+  .exp-arrow { display: none; }
+  .exp-title-row { display: contents; }
+  @media (max-width: 767px) {
+    .exp-title-row { display: flex; align-items: center; justify-content: space-between; gap: var(--gap-stack); }
+    .exp-title-row .exp-title { margin: 0; }
+    .exp-arrow { display: block; flex: none; color: hsl(var(--text-primary)); }
+    .exp-arrow svg { display: block; width: var(--card-arrow-width); height: var(--card-arrow-height); stroke-width: 1; }
+    .exp-card .title-to-text { margin-top: var(--gap-service-title-body); }
+    .exp-link-tablet-up { display: none; }
+  }
   .card-inset { padding-inline: var(--gap-stack); }
   .button-trust-gap { gap: var(--gap-button-trust); }
   .photos-gap { gap: var(--gap-photos); }

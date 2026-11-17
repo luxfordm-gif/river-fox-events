@@ -99,6 +99,20 @@ interface ExpItem {
   position?: string;
 }
 
+/* Phones only: each card ends in a hairline arrow at the right of its title
+   and the text link under the card is hidden (Matt, 2026-11-17). From tablet
+   up the text link stays. Set to false to bring the text link back on phones
+   too; the full old version is also kept on the branch
+   backup/services-cards-text-links. */
+const PHONE_ARROWS = true;
+const Arrow = () => (
+  <span className="exp-arrow" aria-hidden="true">
+    <svg viewBox="0 0 56 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M1 12h53M43 2.5 54 12 43 21.5" />
+    </svg>
+  </span>
+);
+
 const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean }) => {
   const wrap = useRef<HTMLDivElement>(null);
   const img = useRef<HTMLImageElement>(null);
@@ -147,15 +161,18 @@ const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean
       </div>
       {/* The last word drops to its own line so the title doesn't run wide
           at this size (Matt, 2026-11-17). */}
+      <div className={PHONE_ARROWS ? "exp-title-row media-to-title" : "contents"}>
       <h3 className="t-h4 exp-title media-to-title text-pretty">
         {it.title.slice(0, it.title.lastIndexOf(" "))}
         <br />
         {it.title.slice(it.title.lastIndexOf(" ") + 1)}
       </h3>
+      {PHONE_ARROWS && <Arrow />}
+      </div>
       <p className="t-small text-ink-soft measure-card title-to-text">
         {it.body}
       </p>
-      <span className="btn-link-rf t-label self-start mt-auto card-action">
+      <span className={`btn-link-rf t-label self-start mt-auto card-action ${PHONE_ARROWS ? "exp-link-tablet-up" : ""}`}>
         {it.cta} <span className="arr">→</span>
       </span>
     </a>
