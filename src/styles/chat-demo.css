@@ -54,7 +54,9 @@
   /* The space above the first message scrolls away with the chat, so older
      messages can run right up to the box edge and fade out there. */
   padding-top: var(--chat-box-y);
-  transition: transform var(--motion-slow) var(--ease-soft);
+  /* Quicker than a row's height easing, so older messages are already moving up
+     as a new bubble grows and it never pokes out of the bottom. */
+  transition: transform var(--motion-base) var(--ease-soft);
 }
 
 /* A row's height eases as its message appears (the component sets the height). */

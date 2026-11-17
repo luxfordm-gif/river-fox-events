@@ -148,7 +148,8 @@ const ChatDemo = ({ lines }: ChatDemoProps) => {
     if (!view || !list) return;
     const total = heights.current.reduce((sum, h) => sum + h, 0) + parseFloat(getComputedStyle(list).paddingTop);
     // The view's bottom padding is only there for shadows; messages stop above it.
-    const visibleHeight = view.clientHeight - parseFloat(getComputedStyle(view).paddingBottom);
+    const pad = getComputedStyle(view);
+    const visibleHeight = view.clientHeight - parseFloat(pad.paddingBottom) - parseFloat(pad.paddingTop);
     const offset = Math.max(0, total - visibleHeight);
     list.style.transform = `translateY(${-offset}px)`;
     view.classList.toggle("lifted", offset > 0);
@@ -202,6 +203,7 @@ const ChatDemo = ({ lines }: ChatDemoProps) => {
         await wait(TIMING.fade);
         if (stopped) return;
         setPhase("resetting");
+        setThinking(-1);
         setShown(opening());
         await wait(TIMING.restart);
         setPhase("fading");

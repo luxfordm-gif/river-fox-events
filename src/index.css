@@ -161,12 +161,11 @@
     --shadow-panel: 0 30px 80px -20px hsl(var(--text-primary) / 0.22), 0 8px 24px -10px hsl(var(--text-primary) / 0.10); /* Shadow panel · the enquiry form card */
     --shadow-float: 0 20px 48px -12px hsl(var(--text-primary) / 0.5), 0 3px 9px hsl(var(--text-primary) / 0.13); /* Shadow float · Our work's floating dock, button and menu */
 
-    --recent-card-phone: 80%;          /* Recent events · card width in the phone swipe row */
-    --recent-max: 70rem;               /* Recent events · widest the bento grows */
     --about-phone-gap: 48px;           /* Meet Laura · phones: space above and below the panel = padding inside it */
     --about-photo-max: 34rem;          /* Meet Laura · tallest the photo grows on larger screens */
     --reveal-shift: 10px;              /* Rise of a text block as it fades in */
-    --hiw-chat-height: 17rem;          /* How it works · height of the chat box on phones */
+    --hiw-media-ratio: 4 / 3;          /* How it works · shape of the three pictures (was 3 / 2, a little deeper) */
+    --hiw-chat-height: 20rem;          /* How it works · height of the chat box on phones */
     /* Chat demo · the mocked WhatsApp chat in "How it works" (ChatDemo, chat-demo.css) */
     --chat-box-y: 32px;                /* Chat box padding · space above the first and below the last message: more pushes them up into the fade */
     --chat-gap: 16px;                  /* Chat gap · space between messages (px: ChatDemo reads it) */
