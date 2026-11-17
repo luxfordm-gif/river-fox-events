@@ -168,7 +168,7 @@
     --reveal-shift: 10px;              /* Rise of a text block as it fades in */
     --hiw-chat-height: 17rem;          /* How it works · height of the chat box on phones */
     /* Chat demo · the mocked WhatsApp chat in "How it works" (ChatDemo, chat-demo.css) */
-    --chat-gap: 20px;                  /* Chat gap · space between messages (px: ChatDemo reads it) */
+    --chat-gap: 16px;                  /* Chat gap · space between messages (px: ChatDemo reads it) */
     --chat-bleed: 14px;                /* Chat bleed · room under the last message for its shadow */
     --chat-pill-w: 72px;               /* Chat pill width · the "..." pill a bubble grows from */
     --chat-pill-h: 43px;               /* Chat pill height */
