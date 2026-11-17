@@ -7,35 +7,38 @@ import type { BarLine } from "@/data/announcementBar";
 
 /**
  * Announcement bar (Matt, 2026-11-17, like Wispr Flow's). One slim strip with a
- * short lead-in and a link ending in a chevron; the whole bar is tappable.
+ * short lead-in and a link ending in a chevron; the whole bar is tappable. It
+ * sits at the very top of the page and scrolls away with it (it is meant to
+ * hide on scroll); the fixed nav starts under it and slides up to the top of
+ * the screen as the bar leaves (`--announcement-offset`, set below).
  *
  * Two parts:
  *  - `AnnouncementBarView` is just the look: a line, a link, and (when
- *    `pinned`) fixed to the top of the screen. The style guide uses it too.
+ *    `atTop`) placed at the top of the page. The style guide uses it too.
  *  - `AnnouncementBar` (default export) is the site-wide one, mounted once in
  *    App.tsx. It picks the line for the page from `src/data/announcementBar.ts`,
  *    works out where a tap goes, and sends `announcement_bar_click` (page path
  *    and the line) after cookie consent like every other event.
  *
- * Phones only. While <html data-announcement-bar="on"> the page, nav, phone
- * menu and #section jumps all move down by `--announcement-height` (index.css).
+ * Phones only. While <html data-announcement-bar="on"> the page and the phone
+ * menu make room for it (`--announcement-height`, index.css).
  * Colours, height and padding are tokens in `:root`; nothing here is a one-off.
  */
 export const AnnouncementBarView = ({
   line,
   href,
-  pinned = false,
+  atTop = false,
   onClick,
 }: {
   line: BarLine;
   href: string;
-  /** Fixed to the top of the screen, phones only. Off = an ordinary block. */
-  pinned?: boolean;
+  /** At the top of the page, phones only, scrolling away with it. Off = an ordinary block. */
+  atTop?: boolean;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }) => {
   const { lead, link, arrow } = splitLine(line.text);
   return (
-    <aside className={`announcement-bar${pinned ? " announcement-bar--pinned" : ""}`} aria-label="Announcement">
+    <aside className={`announcement-bar${atTop ? " announcement-bar--top" : ""}`} aria-label="Announcement">
       <a
         href={href}
         onClick={onClick}
@@ -67,13 +70,22 @@ const AnnouncementBar = () => {
       if (phone.matches && lineFor(p)) root.setAttribute("data-announcement-bar", "on");
       else root.removeAttribute("data-announcement-bar");
     };
+    // The nav slides up to the top of the screen as the bar scrolls away.
+    const slide = () => {
+      const h = parseFloat(getComputedStyle(root).getPropertyValue("--announcement-height")) || 0;
+      root.style.setProperty("--announcement-offset", `${Math.max(0, h - window.scrollY)}px`);
+    };
     update();
+    slide();
+    window.addEventListener("scroll", slide, { passive: true });
     window.addEventListener("resize", update);
     const poll = window.setInterval(update, 800); // page changes inside the site
     return () => {
+      window.removeEventListener("scroll", slide);
       window.removeEventListener("resize", update);
       window.clearInterval(poll);
       root.removeAttribute("data-announcement-bar");
+      root.style.removeProperty("--announcement-offset");
     };
   }, []);
 
@@ -82,7 +94,7 @@ const AnnouncementBar = () => {
   const { href, samePage } = targetFor(line, path, hasForm);
   return (
     <AnnouncementBarView
-      pinned
+      atTop
       line={line}
       href={href}
       onClick={(e) => {
