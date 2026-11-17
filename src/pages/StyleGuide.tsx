@@ -381,7 +381,7 @@ const SPACING_TOKENS = [
   // Added by the token migration (2026-11-13). New ones go on the end so P codes never shift.
   "--gap-paragraph", "--gap-stack", "--gap-text-action", "--gap-actions", "--gap-button-trust", "--gap-columns", "--gap-stacked", "--gap-cards", "--gap-media", "--gap-caption", "--gap-photos", "--gap-eyebrow", "--gap-divider", "--gap-list-item", "--gap-link-list", "--gap-icon", "--gap-form", "--gap-field", "--card-pad", "--article-gap", "--article-pad-x", "--list-indent", "--hero-ink-trim", "--measure-title", "--measure-lead", "--nav-height", "--nav-pad-x", "--nav-link-gap", "--menu-offset", "--menu-pad", "--menu-item-pad", "--menu-rule-gap", "--menu-section-gap", "--btn-compact-pad", "--tap-target",
   // Announcement bar (2026-11-17)
-  "--announcement-height", "--announcement-pad-x",
+  "--announcement-height", "--announcement-pad-x", "--service-photo-ratio",
 ];
 
 /* A spacing token's value at a width, in px: references to other tokens are
@@ -389,6 +389,7 @@ const SPACING_TOKENS = [
 const spacingAt = (name: string, w: number): string => {
   const raw = tokenAt(SHEET, name, w);
   if (!raw) return "-";
+  if (/^\d+\s*\/\s*\d+$/.test(raw.trim())) return raw.trim(); // a shape (width / height), not a length
   const v = resolveVars(SHEET, raw, w).trim();
   if (/\dch$/.test(v)) return v;
   const parts = v.match(/(?:[^\s(]+|\([^)]*\))+(?:\([^)]*\))?/g) ?? [v];
