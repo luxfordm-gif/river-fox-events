@@ -30,7 +30,9 @@ const TIMING = {
   callSettle: 400,
   /** The finished chat stays put before replaying. */
   hold: 7000,
-  restart: 500,
+  restart: 650,
+  /** The chat fading out or in at the replay (matches --motion-base). */
+  fade: 400,
 } as const;
 
 const CALLER = "Laura";
@@ -145,7 +147,8 @@ const ChatDemo = ({ lines }: ChatDemoProps) => {
     if (!view || !list) return;
     const total = heights.current.reduce((sum, h) => sum + h, 0);
     // The view's bottom padding is only there for shadows; messages stop above it.
-    const visibleHeight = view.clientHeight - parseFloat(getComputedStyle(view).paddingBottom);
+    const pad = getComputedStyle(view);
+    const visibleHeight = view.clientHeight - parseFloat(pad.paddingBottom) - parseFloat(pad.paddingTop);
     const offset = Math.max(0, total - visibleHeight);
     list.style.transform = `translateY(${-offset}px)`;
     view.classList.toggle("lifted", offset > 0);
@@ -182,8 +185,15 @@ const ChatDemo = ({ lines }: ChatDemoProps) => {
         set(lines.length, 1);
         await wait(TIMING.callSettle + TIMING.hold);
         if (stopped) return;
+        // Fade out, reset while it's invisible, fade back in.
+        rootRef.current?.classList.add("resetting");
+        await wait(TIMING.fade);
+        if (stopped) return;
+        setThinking(-1);
         setShown(opening());
         await wait(TIMING.restart);
+        rootRef.current?.classList.remove("resetting");
+        await wait(TIMING.fade);
       }
     };
 
