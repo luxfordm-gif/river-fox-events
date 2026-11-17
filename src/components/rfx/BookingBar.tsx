@@ -1,38 +1,31 @@
 import { useEffect, useState } from "react";
-import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
-
-/* Pages where the bar would repeat a booking button already there, or isn't
-   for visitors. */
-/* The message follows the season (Matt, 2026-11-17). Until 3 January 2027,
-   the same day the home page's Christmas switch turns off, it is about the
-   garlands and opens their booking form; after that it is the year-round
-   line and opens the enquiry form. */
-const CHRISTMAS_ENDS = new Date("2027-01-03T00:00:00Z");
-const christmas = () => Date.now() < CHRISTMAS_ENDS.getTime();
-
-const SKIP = ["/contact", "/christmas-door-garlands", "/style-guide", "/brand-book"];
+import { handleEnquireClick } from "@/lib/enquire";
+import { lineFor, splitLine, targetFor } from "@/lib/announcementBar";
+import { trackEvent } from "@/lib/track";
 
 /**
- * Booking strip pinned to the very top of every page, phones only (Matt,
- * 2026-11-17, like Wispr Flow's announcement bar). It stays put while the
- * page scrolls and the fixed nav sits just under it. The whole strip is
- * the link: one tap to the enquiry form, which `handleEnquireClick` scrolls
- * to on pages that have one and otherwise opens on the home page.
+ * Announcement bar pinned to the very top of every page, phones only (Matt,
+ * 2026-11-17, like Wispr Flow's). It stays put while the page scrolls and the
+ * fixed nav sits just under it. The words live in `src/data/announcementBar.ts`;
+ * this only shows them. The whole bar is the link, and the part after the
+ * first full stop or question mark is underlined.
  *
  * While <html data-top-bar="on"> the page, nav, menu and #section jumps all
- * move down by `--bar-height` (index.css).
+ * move down by `--bar-height` (index.css). A tap sends `announcement_bar_click`
+ * (page path and the line), after cookie consent like every other event.
  */
 const BookingBar = () => {
-  const [on, setOn] = useState(false);
+  const [path, setPath] = useState("");
+  const [hasForm, setHasForm] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;
     const phone = window.matchMedia("(max-width: 767px)");
     const update = () => {
-      const skipped = SKIP.some((p) => window.location.pathname.startsWith(p));
-      const show = phone.matches && !skipped;
-      setOn(show);
-      if (show) root.setAttribute("data-top-bar", "on");
+      const p = window.location.pathname;
+      setPath(p);
+      setHasForm(!!document.getElementById("enquire"));
+      if (phone.matches && lineFor(p)) root.setAttribute("data-top-bar", "on");
       else root.removeAttribute("data-top-bar");
     };
     update();
@@ -45,21 +38,28 @@ const BookingBar = () => {
     };
   }, []);
 
-  if (!on) return null;
-  const garlands = christmas();
+  const line = path ? lineFor(path) : null;
+  if (!line || (typeof window !== "undefined" && !window.matchMedia("(max-width: 767px)").matches)) return null;
+  const { href, samePage } = targetFor(line, path, hasForm);
+  const { lead, link, arrow } = splitLine(line.text);
   return (
-    <aside className="top-bar" aria-label="Book Laura">
+    <aside className="top-bar" aria-label="Announcement">
       <a
-        href={garlands ? "/christmas-door-garlands/#enquire" : ENQUIRE_HREF}
-        onClick={garlands ? undefined : handleEnquireClick}
+        href={href}
+        onClick={(e) => {
+          trackEvent("announcement_bar_click", {
+            line_text: line.text.replace(/\s*→$/, ""),
+            transport_type: "beacon",
+          });
+          if (samePage) handleEnquireClick(e);
+        }}
         className="top-bar__link t-label"
-        data-track-location="top-bar"
+        data-track-skip
       >
-        {garlands
-          ? "Garland install dates filling up."
-          : "Now booking 2027 events."}{" "}
+        {lead && <>{lead} </>}
         <span className="top-bar__go">
-          Check your date <span aria-hidden="true">→</span>
+          {link}
+          {arrow && <> <span aria-hidden="true">→</span></>}
         </span>
       </a>
     </aside>

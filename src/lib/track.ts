@@ -312,6 +312,8 @@ function onLinkClick(e: MouseEvent) {
   if (e.type === "click") onExtrasClick(target);
   const a = target.closest("a[href]") as HTMLAnchorElement | null;
   if (!a) return;
+  // The announcement bar sends its own event (announcement_bar_click).
+  if (a.closest("[data-track-skip]")) return;
   const event = classifyLink(a);
   if (!event) return;
   trackEvent(event, {
