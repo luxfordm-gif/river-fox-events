@@ -229,7 +229,7 @@
     --measure-reading: 720px;          /* Reading width · the journal's reading column: prose, In short, captions, quotes, enquire boxes, related; also Welcome and FAQ answers (were 640 / 680 / 720) */
     --measure-quote: 820px;            /* Quote width · journal pull quotes, a step wider for the large quote type */
     --container-narrow: 1000px;        /* Narrow container · blocks narrower than the page: the FAQ list, the Christmas garland options (were 980 / 1000 / 1040) */
-    --toast-width: 420px;              /* Toast width · the cookie banner's width from tablet up */
+    --toast-width: 360px;             /* Toast width · the cookie banner's width from tablet up */
     --measure-lead: 44ch;              /* Intro width · widest the intro paragraph under a section title runs (Matt, 2026-11-13) */
     --nav-height: 78px;                /* Nav height · the fixed nav bar, exactly this tall, for anything that starts just under it (72 phone, Matt 2026-11-13) */
     --nav-pad-x: 40px;                 /* Nav side padding · space at the left and right of the nav bar (was 56; 32 on tablets, 1024-1366; Matt 2026-11-13) */
@@ -242,6 +242,7 @@
     --menu-section-gap: 32px;          /* Menu section gap · between the blocks of the phone menu: links, extra links, contact, button */
     --gap-icon: 8px;                   /* Icon gap · between text and its icon: chevrons, arrows, the Christmas bow (were 6 to 12) */
     --btn-compact-pad: 8px 16px;
+    --cookie-agree-pad: 8px 28px;     /* Cookie Agree button padding · same height as the compact button, wider sides so Agree is the bigger target (Matt, 2026-11-17) */
     --btn-pad-y: 14px;                 /* Button padding (top and bottom) · solid buttons; outlined buttons take 1px less for their outline, so both are the same height */
     --btn-pad-x: 22px;                 /* Button padding (sides) · solid and outlined buttons */
     --btn-gap: 12px;                   /* Button gap · a button's or text link's label to its arrow (text links were 10) */
@@ -1050,6 +1051,7 @@
   .nav-menu__item { display: flex; align-items: center; gap: var(--gap-icon); padding: var(--menu-item-pad); }
   .nav-menu__rule { margin: var(--menu-rule-gap) 20px; }
   .btn-compact { padding: var(--btn-compact-pad) !important; }
+  .cookie-agree { padding: var(--cookie-agree-pad) !important; }
   /* Phone menu: the first link sits one Menu section gap under the nav, the
      same gap as between the menu's blocks, so it follows the nav height
      (it was a fixed 112px, 48px under the 64px phone nav; Matt 2026-11-13). */

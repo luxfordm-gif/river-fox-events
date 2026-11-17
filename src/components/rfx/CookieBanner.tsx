@@ -52,10 +52,10 @@ const CookieBanner = () => {
       role="dialog"
       aria-live="polite"
       aria-label="Cookie preferences"
-      className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 toast-width z-modal rounded-large bg-surface-deep text-on-deep shadow-card toast-pad"
+      className="fixed left-4 right-4 bottom-4 md:left-auto md:right-6 md:bottom-6 toast-width z-modal rounded-large bg-surface-deep text-on-deep shadow-card toast-pad text-center md:text-left"
     >
       <p className="t-meta">
-        We use cookies for analytics and ads, only if you accept.{" "}
+        We use cookies for analytics and ads, only if you agree.{" "}
         <a
           href="/privacy/"
           className="text-link"
@@ -63,22 +63,22 @@ const CookieBanner = () => {
           Privacy &amp; cookies
         </a>
       </p>
-      {/* Every width: Accept first, on the far left, Decline after it
-          (Matt, 2026-11-16, reverting the phone right-hand layout). */}
-      <div className="text-to-text flex flex-row items-center actions">
+      {/* Phones: copy and buttons centred. Tablet up: left-aligned. Agree
+          first, then No thanks (Matt, 2026-11-17). */}
+      <div className="text-to-text flex flex-row items-center justify-center md:justify-start actions">
         <button
           type="button"
           onClick={accept}
-          className="btn-solid-rf accent btn-compact"
+          className="btn-solid-rf accent btn-compact cookie-agree"
         >
-          Accept
+          Agree
         </button>
         <button
           type="button"
           onClick={decline}
-          className="t-label opacity-80 hover:opacity-100 underline underline-offset-4"
+          className="t-label opacity-80 hover:opacity-100"
         >
-          Decline
+          No thanks
         </button>
       </div>
     </div>
