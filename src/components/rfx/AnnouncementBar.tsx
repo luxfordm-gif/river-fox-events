@@ -8,13 +8,12 @@ import type { BarLine } from "@/data/announcementBar";
 /**
  * Announcement bar (Matt, 2026-11-17, like Wispr Flow's). One slim strip with a
  * short lead-in and a link ending in a chevron; the whole bar is tappable. It
- * sits at the very top of the page and scrolls away with it (it is meant to
- * hide on scroll); the fixed nav starts under it and slides up to the top of
- * the screen as the bar leaves (`--announcement-offset`, set below).
+ * is pinned to the top of the screen and stays there as you scroll; the fixed
+ * nav sits directly under it (Matt, 2026-11-17: it first scrolled away).
  *
  * Two parts:
  *  - `AnnouncementBarView` is just the look: a line, a link, and (when
- *    `atTop`) placed at the top of the page. The style guide uses it too.
+ *    `atTop`) pinned to the top of the screen. The style guide uses it too.
  *  - `AnnouncementBar` (default export) is the site-wide one, mounted once in
  *    App.tsx. It picks the line for the page from `src/data/announcementBar.ts`,
  *    works out where a tap goes, and sends `announcement_bar_click` (page path
@@ -32,7 +31,7 @@ export const AnnouncementBarView = ({
 }: {
   line: BarLine;
   href: string;
-  /** At the top of the page, phones only, scrolling away with it. Off = an ordinary block. */
+  /** Pinned to the top of the screen, phones only. Off = an ordinary block. */
   atTop?: boolean;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }) => {
@@ -70,22 +69,13 @@ const AnnouncementBar = () => {
       if (phone.matches && lineFor(p)) root.setAttribute("data-announcement-bar", "on");
       else root.removeAttribute("data-announcement-bar");
     };
-    // The nav slides up to the top of the screen as the bar scrolls away.
-    const slide = () => {
-      const h = parseFloat(getComputedStyle(root).getPropertyValue("--announcement-height")) || 0;
-      root.style.setProperty("--announcement-offset", `${Math.max(0, h - window.scrollY)}px`);
-    };
     update();
-    slide();
-    window.addEventListener("scroll", slide, { passive: true });
     window.addEventListener("resize", update);
     const poll = window.setInterval(update, 800); // page changes inside the site
     return () => {
-      window.removeEventListener("scroll", slide);
       window.removeEventListener("resize", update);
       window.clearInterval(poll);
       root.removeAttribute("data-announcement-bar");
-      root.style.removeProperty("--announcement-offset");
     };
   }, []);
 

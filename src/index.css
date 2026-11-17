@@ -44,9 +44,9 @@
     --accent: 12 55% 78%;              /* Accent · button fill */
     --accent-hover: 12 55% 70%;        /* Accent hover · button fill on hover */
     --accent-dark: 12 32% 54%;         /* Accent Dark · italic words in headings, stars, step numbers (#AF7364: darkened from #C39083 so it passes 3:1 contrast on every background, Matt 2026-11-08) */
-    --accent-deep: 12 30% 40%;         /* Accent Deep · the announcement bar's fill, a dark blush so cream text passes 4.5:1 (#855447, Matt 2026-11-17) */
+    --announcement-fill: 155 76% 8%;   /* Announcement Fill · the announcement bar's background, the same deep pine as the floating Christmas card; cream text on it is above 15:1 (Matt 2026-11-17) */
     --service-photo-ratio: 4 / 5;      /* Service photo shape · the photo on each services card, portrait so the cards feel full (8 / 9 on phones, 10% shallower; was square, 268px high on phones; Matt 2026-11-17) */
-    --announcement-height: 40px;       /* Announcement bar height · the strip at the top of the page on phones, above the nav (AnnouncementBar.tsx) */
+    --announcement-height: 34px;       /* Announcement bar height · the strip pinned to the top of the screen on phones, with the nav directly under it (AnnouncementBar.tsx; was 44, then 40 then 36, Matt 2026-11-17) */
     --announcement-pad-x: var(--gap-stack);   /* Announcement bar padding · space either side of its line, 16px */
 
     --hair: var(--text-primary) / 0.10;         /* hairlines and borders */
@@ -69,7 +69,7 @@
     /* Weights. Headings are Regular: Light read too thin in Fraunces. */
     --fw-regular: 400;                         /* headings and body */
     --fw-medium: 500;                          /* labels: buttons, nav, dropdowns, form labels and fields; the wordmark */
-    --fw-bold: 600;                            /* <strong> in body text, tags */
+    --fw-bold: 600;                            /* <strong> in body text, tags, the announcement bar */
 
     /* Display */
     --fs-display: clamp(52px, 5.6vw, 116px);   /* Display · home, service and town hero headline (phones: see the 480px block) */
@@ -115,6 +115,7 @@
     --fs-small: 15px;                          /* Small · card text, photo captions, form help */
     --fs-meta: 13.5px;                         /* Meta · footer, legal, dates */
     --fs-label: 13.5px;                        /* Label · buttons, nav, link labels (medium weight) */
+    --fs-announcement: 13px;                   /* Announcement · the line in the phone announcement bar (semibold, --fw-bold), a touch smaller than Label so it sits tight in a 34px strip (Matt 2026-11-17) */
     --fs-overline: 11px;                       /* Overline · small mono capitals above a heading (DM Mono, medium) */
     --lh-lead: 1.6;
     --lh-body: 1.7;
@@ -1482,24 +1483,23 @@
     .work-dock { transition: opacity var(--motion-quick) ease; transform: translate(-50%, 0); }
   }
 
-  /* Announcement bar (AnnouncementBar.tsx): a dark blush strip with one line
-     and a link ending in a chevron. On phones it sits at the very top of the
-     page and scrolls away with it; the fixed nav starts under it and slides up
-     to the top as the bar leaves (--announcement-offset, set as you scroll).
+  /* Announcement bar (AnnouncementBar.tsx): a deep pine strip with one line
+     and a link ending in a chevron. On phones it is pinned to the top of the
+     screen and stays there as you scroll, with the fixed nav directly under it.
      Not at the top (the style guide) it is an ordinary block at any width. */
   .announcement-bar {
     display: flex; align-items: center; justify-content: center;
     height: var(--announcement-height); padding: 0 var(--announcement-pad-x);
-    background: hsl(var(--accent-deep)); color: hsl(var(--text-on-dark));
+    background: hsl(var(--announcement-fill)); color: hsl(var(--text-on-dark));
   }
-  .announcement-bar__link { color: inherit; text-decoration: none; text-align: center; text-wrap: balance; }
+  .announcement-bar__link { font-size: var(--fs-announcement); font-weight: var(--fw-bold); color: inherit; text-decoration: none; text-align: center; text-wrap: balance; }
   .announcement-bar__go { display: inline-flex; align-items: center; gap: var(--gap-icon); white-space: nowrap; }
   .announcement-bar--top { display: none; }
   @media (max-width: 767px) {
-    .announcement-bar--top { display: flex; position: absolute; top: 0; left: 0; right: 0; z-index: var(--layer-nav); }
+    .announcement-bar--top { display: flex; position: fixed; top: 0; left: 0; right: 0; z-index: var(--layer-nav); }
     html[data-announcement-bar="on"] body { padding-top: var(--announcement-height); }
-    html[data-announcement-bar="on"] .rfx-nav { top: var(--announcement-offset, var(--announcement-height)); }
-    html[data-announcement-bar="on"] .nav-sheet { padding-top: calc(var(--nav-height) + var(--announcement-offset, var(--announcement-height)) + var(--menu-section-gap)); }
+    html[data-announcement-bar="on"] .rfx-nav { top: var(--announcement-height); }
+    html[data-announcement-bar="on"] .nav-sheet { padding-top: calc(var(--nav-height) + var(--announcement-height) + var(--menu-section-gap)); }
   }
 
   /* Phones: the full bar is too tight, so a single floating button shows
