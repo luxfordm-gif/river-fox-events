@@ -94,8 +94,8 @@ const Footer = () => {
           />
 
           {/* Footer columns */}
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr_1fr] cards-gap footer-grid rfx-md-stack">
-            <div className="footer-brand">
+          <div className="grid grid-cols-1 md:grid-cols-[repeat(4,auto)] xl:grid-cols-[repeat(5,auto)] md:justify-between cards-gap footer-grid rfx-md-stack">
+            <div className="footer-brand md:col-span-4 xl:col-span-1">
               <div className="t-wordmark-lg whitespace-nowrap">
                 RIVER&nbsp;FOX&nbsp;EVENTS
               </div>
