@@ -39,6 +39,12 @@ type Props = {
   topUp?: boolean;
   /** Show this many rows, then a "Show more" button for this many more. The photos are shuffled on every load, and laid out a fixed number of photos per row (2 phone, 3 tablet, 4 laptop and up). Off on town pages. */
   pageRows?: number;
+  /** With `pageRows`: instead of "Show more", end on a "See more" link to this page. */
+  moreHref?: string;
+  /** Photos that come first, in this order, ahead of the gallery picks (newest work not in the gallery yet). */
+  lead?: ViewerItem[];
+  /** With `pageRows`: keep the order given instead of shuffling on every load. */
+  keepOrder?: boolean;
 };
 
 const SIZES = "(min-width: 1280px) 30vw, (min-width: 768px) 38vw, 46vw";
@@ -147,11 +153,11 @@ const shuffled = <T,>(items: T[]): T[] => {
   return a;
 };
 
-const LocationPhotoGrid = ({ eyebrow, heading, intro, slug, picks, count = 10, id = "loc-gallery", wide: fullWidth = false, topUp = true, pageRows }: Props) => {
-  const chosen = useMemo(() => choosePhotos(slug, picks, count, topUp), [slug, picks, count, topUp]);
+const LocationPhotoGrid = ({ eyebrow, heading, intro, slug, picks, count = 10, id = "loc-gallery", wide: fullWidth = false, topUp = true, pageRows, moreHref, lead = [], keepOrder = false }: Props) => {
+  const chosen = useMemo(() => [...lead, ...choosePhotos(slug, picks, count, topUp)], [slug, picks, count, topUp, lead]);
   // "Show more" mode: a different order on every load (the page is not
   // hydrated from the prerendered HTML, so this can't mismatch).
-  const [order] = useState(() => (pageRows ? shuffled(chosen) : chosen));
+  const [order] = useState(() => (pageRows && !keepOrder ? shuffled(chosen) : chosen));
   const photos = pageRows ? order : chosen;
   const wide = useWide();
   const cols = useColumns();
@@ -195,7 +201,14 @@ const LocationPhotoGrid = ({ eyebrow, heading, intro, slug, picks, count = 10, i
             </div>
           ))}
         </div>
-        {hasMore && <ShowMoreButton onClick={() => setPages((n) => n + 1)} />}
+        {hasMore && !moreHref && <ShowMoreButton onClick={() => setPages((n) => n + 1)} />}
+        {moreHref && (
+          <div className="text-to-content flex justify-center">
+            <a href={moreHref} className="btn-ghost-rf">
+              See more <span className="t-icon">→</span>
+            </a>
+          </div>
+        )}
         </div>
       {open !== null && (
         <Viewer items={shown} index={open} onIndex={setOpen} onClose={() => setOpen(null)} />
