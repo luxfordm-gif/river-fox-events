@@ -7,9 +7,15 @@
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
+  gap: var(--gap-steps);
 }
-@media (min-width: 768px) {
-  .hiw-steps { grid-template-columns: repeat(3, 1fr); }
+/* Phones and tablets: one column, kept to a comfortable width and centred. */
+@media (max-width: 1023px) {
+  .hiw-steps { max-width: var(--measure-step); margin-inline: auto; }
+}
+/* Laptops up: three across. */
+@media (min-width: 1024px) {
+  .hiw-steps { grid-template-columns: repeat(3, 1fr); gap: var(--gap-cards); }
 }
 
 /* Every picture is the same 3:2 shape, so the three titles line up. */

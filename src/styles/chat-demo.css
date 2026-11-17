@@ -10,21 +10,50 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: var(--gap-stack) var(--gap-cards);
+  padding: 0 var(--gap-cards);
 }
 .chat-view {
   flex: 1;
   min-height: 0;
   overflow: hidden;
-  /* Room below the last message so its shadow isn't clipped. */
-  margin-bottom: calc(-1 * var(--chat-bleed));
-  padding-bottom: var(--chat-bleed);
+  /* The scrolling area runs to the box edge, so nothing is sliced by a hard
+     line mid-air. This padding is the space under the last message (and room
+     for its shadow). */
+  padding-bottom: var(--chat-box-y);
 }
-.chat-view.lifted {
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 26%);
-  mask-image: linear-gradient(180deg, transparent 0, #000 26%);
+/* The top edge: older messages dissolve through an eased alpha mask (a smooth
+   curve, not a straight ramp). --chat-fade eases 0 -> 1 when the chat first
+   lifts, so the fade grows in instead of popping on. */
+@property --chat-fade {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
 }
+.chat-view {
+  --chat-fade: 0;
+  transition: --chat-fade var(--motion-slow) var(--ease-soft);
+  -webkit-mask-image: linear-gradient(180deg,
+    rgb(0 0 0 / calc(1 - var(--chat-fade))) 0,
+    rgb(0 0 0 / 0.1) calc(var(--chat-fade) * 5%),
+    rgb(0 0 0 / 0.3) calc(var(--chat-fade) * 10%),
+    rgb(0 0 0 / 0.6) calc(var(--chat-fade) * 17%),
+    rgb(0 0 0 / 0.85) calc(var(--chat-fade) * 24%),
+    rgb(0 0 0 / 0.96) calc(var(--chat-fade) * 30%),
+    #000 calc(var(--chat-fade) * 34%));
+  mask-image: linear-gradient(180deg,
+    rgb(0 0 0 / calc(1 - var(--chat-fade))) 0,
+    rgb(0 0 0 / 0.1) calc(var(--chat-fade) * 5%),
+    rgb(0 0 0 / 0.3) calc(var(--chat-fade) * 10%),
+    rgb(0 0 0 / 0.6) calc(var(--chat-fade) * 17%),
+    rgb(0 0 0 / 0.85) calc(var(--chat-fade) * 24%),
+    rgb(0 0 0 / 0.96) calc(var(--chat-fade) * 30%),
+    #000 calc(var(--chat-fade) * 34%));
+}
+.chat-view.lifted { --chat-fade: 1; }
 .chat-list {
+  /* The space above the first message scrolls away with the chat, so older
+     messages can run right up to the box edge and fade out there. */
+  padding-top: var(--chat-box-y);
   transition: transform var(--motion-slow) var(--ease-soft);
 }
 
@@ -51,6 +80,7 @@
   max-width: 82%;
   padding: var(--chat-pad-y) var(--chat-pad-x);
   color: hsl(var(--text-primary));
+  line-height: var(--chat-lh);
   opacity: 0;
   transition: opacity var(--motion-quick) var(--ease-soft), clip-path var(--motion-slow) var(--ease-soft);
 }
@@ -172,7 +202,7 @@
 
 /* Phones: a little tighter so the call card fits beside its buttons. */
 @media (max-width: 767px) {
-  .chat-demo { padding: var(--gap-stack); }
+  .chat-demo { padding: 0 var(--gap-stack); }
   .chat-call { gap: var(--chat-call-gap-phone); padding: var(--chat-call-pad-phone-y) var(--chat-call-pad-phone-x); }
 }
 
@@ -182,3 +212,9 @@
   .chat-dots { display: none; }
   .chat-dots i, .chat-call-avatar i, .chat-call-button.accept { animation: none; }
 }
+
+/* Loop restart: the whole chat fades out, resets unseen, then fades back in. */
+.chat-demo { transition: opacity var(--motion-slow) var(--ease-soft); }
+.chat-demo.is-fading { opacity: 0; }
+.chat-demo.is-resetting,
+.chat-demo.is-resetting * { transition: none !important; }
