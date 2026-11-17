@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
 import { ChevronDown } from "lucide-react";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
@@ -29,14 +29,66 @@ const ABOUT_LINKS = [
   { href: "/journal/", label: "Read the journal" },
 ];
 
+/** A link inside a desktop dropdown. */
+const MENU_ITEM = "no-underline-fx nav-menu__item t-label text-ink hover:underline underline-offset-4 decoration-ink/60";
+
+/** The phone menu's main links: the same pages as the desktop menus, plus Home, Our work and Contact. */
+const PHONE_LINKS = [
+  { href: "/", label: "Home" },
+  ...SERVICES,
+  { href: SEASONAL.href, label: "Christmas garlands", seasonal: true },
+  { href: "/our-work/", label: "Our work" },
+  { href: "/#about", label: "About" },
+  { href: "/contact/", label: "Contact" },
+];
+
+/** The phone menu's smaller links. */
+const PHONE_MORE = [
+  { href: "/journal/", label: "Read the journal" },
+  { href: "/#kindness", label: "Client reviews" },
+  { href: "https://www.instagram.com/riverfox_events/", label: "Follow us on Instagram", external: true },
+];
+
+/** A desktop dropdown: opens on hover and stays a moment after the pointer
+    leaves, so crossing the gap to the menu doesn't close it. */
+const NavDropdown = ({ label, menuWidth, children }: { label: string; menuWidth: string; children: ReactNode }) => {
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef<number | null>(null);
+
+  const enter = () => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+  const leave = () => {
+    closeTimer.current = window.setTimeout(() => setOpen(false), 140);
+  };
+
+  return (
+    <div className="relative flex" onMouseEnter={enter} onMouseLeave={leave}>
+      <button type="button" className="nav-trigger p-0 t-label text-inherit" aria-haspopup="true" aria-expanded={open}>
+        {label}
+        <ChevronDown
+          size={12}
+          strokeWidth={1.25}
+          aria-hidden="true"
+          className={`transition-transform duration-quick opacity-70 mt-px ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      <div
+        className={`nav-menu-wrap absolute left-0 top-full transition-all duration-quick ${
+          open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-1 pointer-events-none"
+        }`}
+      >
+        <div className={`${menuWidth} bg-surface-alt border border-hair shadow-menu nav-menu`}>{children}</div>
+      </div>
+    </div>
+  );
+};
+
 /** `enquireHref`: pages with their own enquire form pass "#enquire" so the
     button never points at the home page form. */
 const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
   const [open, setOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
-  const servicesCloseTimer = useRef<number | null>(null);
-  const aboutCloseTimer = useRef<number | null>(null);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -56,122 +108,31 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
     return unlock;
   }, [open]);
 
-  const handleServicesEnter = () => {
-    if (servicesCloseTimer.current)
-      window.clearTimeout(servicesCloseTimer.current);
-    setServicesOpen(true);
-  };
-  const handleServicesLeave = () => {
-    servicesCloseTimer.current = window.setTimeout(
-      () => setServicesOpen(false),
-      140
-    );
-  };
-  const handleAboutEnter = () => {
-    if (aboutCloseTimer.current) window.clearTimeout(aboutCloseTimer.current);
-    setAboutOpen(true);
-  };
-  const handleAboutLeave = () => {
-    aboutCloseTimer.current = window.setTimeout(() => setAboutOpen(false), 140);
-  };
-
   return (
     <>
       <nav className="rfx-nav">
         <div className="rfx-nav-row nav-left">
           <a href="/" className="t-label">Home</a>
-          <div
-            className="relative flex"
-            onMouseEnter={handleServicesEnter}
-            onMouseLeave={handleServicesLeave}
-          >
-            <button
-              type="button"
-              className="nav-trigger p-0 t-label text-inherit"
-              aria-haspopup="true"
-              aria-expanded={servicesOpen}
-            >
-              Services
-              <ChevronDown
-                size={12}
-                strokeWidth={1.25}
-                aria-hidden="true"
-                className={`transition-transform duration-quick opacity-70 mt-px ${
-                  servicesOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-            <div
-              className={`nav-menu-wrap absolute left-0 top-full transition-all duration-quick ${
-                servicesOpen
-                  ? "opacity-100 translate-y-0 pointer-events-auto"
-                  : "opacity-0 -translate-y-1 pointer-events-none"
-              }`}
-            >
-              <div className="min-w-[240px] bg-surface-alt border border-hair shadow-menu nav-menu">
-                {SERVICES.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    className="no-underline-fx nav-menu__item t-label text-ink hover:underline underline-offset-4 decoration-ink/60"
-                  >
-                    {s.label}
-                  </a>
-                ))}
-                <div className="nav-menu__rule border-t border-hair" aria-hidden="true" />
-                <a
-                  href={SEASONAL.href}
-                  onMouseEnter={jingleBow}
-                  className="no-underline-fx nav-menu__item t-label text-ink hover:underline underline-offset-4 decoration-ink/60"
-                >
-                  <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />
-                  {SEASONAL.label}
-                </a>
-              </div>
-            </div>
-          </div>
+          <NavDropdown label="Services" menuWidth="min-w-[240px]">
+            {SERVICES.map((l) => (
+              <a key={l.label} href={l.href} className={MENU_ITEM}>
+                {l.label}
+              </a>
+            ))}
+            <div className="nav-menu__rule border-t border-hair" aria-hidden="true" />
+            <a href={SEASONAL.href} onMouseEnter={jingleBow} className={MENU_ITEM}>
+              <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />
+              {SEASONAL.label}
+            </a>
+          </NavDropdown>
           <a href="/our-work/" className="t-label whitespace-nowrap">Our work</a>
-          <div
-            className="relative flex"
-            onMouseEnter={handleAboutEnter}
-            onMouseLeave={handleAboutLeave}
-          >
-            <button
-              type="button"
-              className="nav-trigger p-0 t-label text-inherit"
-              aria-haspopup="true"
-              aria-expanded={aboutOpen}
-            >
-              About
-              <ChevronDown
-                size={12}
-                strokeWidth={1.25}
-                aria-hidden="true"
-                className={`transition-transform duration-quick opacity-70 mt-px ${
-                  aboutOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-            <div
-              className={`nav-menu-wrap absolute left-0 top-full transition-all duration-quick ${
-                aboutOpen
-                  ? "opacity-100 translate-y-0 pointer-events-auto"
-                  : "opacity-0 -translate-y-1 pointer-events-none"
-              }`}
-            >
-              <div className="min-w-[200px] bg-surface-alt border border-hair shadow-menu nav-menu">
-                {ABOUT_LINKS.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    className="no-underline-fx nav-menu__item t-label text-ink hover:underline underline-offset-4 decoration-ink/60"
-                  >
-                    {s.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
+          <NavDropdown label="About" menuWidth="min-w-[200px]">
+            {ABOUT_LINKS.map((l) => (
+              <a key={l.label} href={l.href} className={MENU_ITEM}>
+                {l.label}
+              </a>
+            ))}
+          </NavDropdown>
           <a href="/contact/" className="t-label">Contact</a>
         </div>
         <a href="/" className="no-underline-fx flex flex-col items-start md:items-center gap-1 justify-self-start md:justify-self-auto" aria-label="River Fox Events - home">
@@ -224,58 +185,34 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
       >
         <div className="container-rfx nav-sheet">
           <div className="nav-sheet__links">
-          {[
-            { href: "/", label: "Home" },
-            { href: "/childrens-parties/", label: "Children's parties" },
-            { href: "/milestone-celebrations/", label: "Milestone celebrations" },
-            { href: "/corporate-brand-styling/", label: "Corporate & brand" },
-            { href: "/balloon-installations/", label: "Balloon decorations" },
-            { href: SEASONAL.href, label: "Christmas garlands", seasonal: true },
-            { href: "/our-work/", label: "Our work" },
-            { href: "/#about", label: "About" },
-            { href: "/contact/", label: "Contact" },
-          ].map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className={`t-h4 text-ink no-underline ${
-                "seasonal" in l ? "nav-sheet__seasonal border-y border-hair" : ""
-              }`}
-            >
-              {"seasonal" in l && (
-                <img src={bow160} alt="" aria-hidden="true" className="w-[30px] h-auto" width={160} height={165} />
-              )}
-              {l.label}
-            </a>
-          ))}
+            {PHONE_LINKS.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className={`t-h4 text-ink no-underline ${"seasonal" in l ? "nav-sheet__seasonal border-y border-hair" : ""}`}
+              >
+                {"seasonal" in l && (
+                  <img src={bow160} alt="" aria-hidden="true" className="w-[30px] h-auto" width={160} height={165} />
+                )}
+                {l.label}
+              </a>
+            ))}
           </div>
 
           <div className="hairline" />
           <div className="nav-sheet__more">
-          <a
-            href="/journal/"
-            onClick={() => setOpen(false)}
-            className="t-overline text-ink no-underline inline-flex items-center icon-gap"
-          >
-            Read the journal <span aria-hidden>→</span>
-          </a>
-          <a
-            href="/#kindness"
-            onClick={() => setOpen(false)}
-            className="t-overline text-ink no-underline inline-flex items-center icon-gap"
-          >
-            Client reviews <span aria-hidden>→</span>
-          </a>
-          <a
-            href="https://www.instagram.com/riverfox_events/"
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => setOpen(false)}
-            className="t-overline text-ink no-underline inline-flex items-center icon-gap"
-          >
-            Follow us on Instagram <span aria-hidden>→</span>
-          </a>
+            {PHONE_MORE.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                {...("external" in l ? { target: "_blank", rel: "noreferrer" } : {})}
+                onClick={() => setOpen(false)}
+                className="t-overline text-ink no-underline inline-flex items-center icon-gap"
+              >
+                {l.label} <span aria-hidden>→</span>
+              </a>
+            ))}
           </div>
           <p className="t-small text-ink-soft">
             Riverfoxevents@gmail.com

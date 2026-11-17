@@ -43,7 +43,6 @@ export const AnnouncementBarView = ({
         onClick={onClick}
         className="announcement-bar__link t-label"
         data-track-skip
-       
       >
         {lead && <>{lead} </>}
         <span className="announcement-bar__go">
@@ -55,33 +54,37 @@ export const AnnouncementBarView = ({
   );
 };
 
+/** What the site-wide bar knows about the page, read once the page is on screen. */
+type PageState = { path: string; phone: boolean; hasForm: boolean };
+
 const AnnouncementBar = () => {
-  const [path, setPath] = useState("");
-  const [hasForm, setHasForm] = useState(false);
+  // Null until the page has rendered, so the prerendered HTML and the first
+  // client render match (no bar in either).
+  const [page, setPage] = useState<PageState | null>(null);
 
   useEffect(() => {
     const root = document.documentElement;
-    const phone = window.matchMedia("(max-width: 767px)");
+    const phoneQuery = window.matchMedia("(max-width: 767px)");
     const update = () => {
-      const p = window.location.pathname;
-      setPath(p);
-      setHasForm(!!document.getElementById("enquire"));
-      if (phone.matches && lineFor(p)) root.setAttribute("data-announcement-bar", "on");
+      const path = window.location.pathname;
+      const phone = phoneQuery.matches;
+      setPage({ path, phone, hasForm: !!document.getElementById("enquire") });
+      if (phone && lineFor(path)) root.setAttribute("data-announcement-bar", "on");
       else root.removeAttribute("data-announcement-bar");
     };
     update();
-    window.addEventListener("resize", update);
-    const poll = window.setInterval(update, 800); // page changes inside the site
+    // Every link on the site is an ordinary page load, so the page only
+    // changes under the bar when the screen crosses the phone breakpoint.
+    phoneQuery.addEventListener("change", update);
     return () => {
-      window.removeEventListener("resize", update);
-      window.clearInterval(poll);
+      phoneQuery.removeEventListener("change", update);
       root.removeAttribute("data-announcement-bar");
     };
   }, []);
 
-  const line = path ? lineFor(path) : null;
-  if (!line || (typeof window !== "undefined" && !window.matchMedia("(max-width: 767px)").matches)) return null;
-  const { href, samePage } = targetFor(line, path, hasForm);
+  const line = page?.phone ? lineFor(page.path) : null;
+  if (!page || !line) return null;
+  const { href, samePage } = targetFor(line, page.path, page.hasForm);
   return (
     <AnnouncementBarView
       atTop
