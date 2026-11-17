@@ -1483,7 +1483,7 @@
   }
 
   /* Announcement bar (AnnouncementBar.tsx): a dark blush strip with one line
-     and an underlined link. Pinned to the top on phones, with the nav, phone
+     and a link ending in a chevron. Pinned to the top on phones, with the nav, phone
      menu and #section jumps moving down by its height. Unpinned (the style
      guide) it is an ordinary block at any width. */
   .announcement-bar {
@@ -1491,7 +1491,7 @@
     height: var(--announcement-height); padding: 0 var(--announcement-pad-x);
     background: hsl(var(--accent-deep)); color: hsl(var(--text-on-dark));
   }
-  .announcement-bar__link { color: inherit; text-decoration: none; text-align: center; white-space: nowrap; }
+  .announcement-bar__link { color: inherit; text-decoration: none; text-align: center; text-wrap: balance; }
   .announcement-bar__go { display: inline-flex; align-items: center; gap: var(--gap-icon); white-space: nowrap; }
   .announcement-bar--pinned { display: none; }
   @media (max-width: 767px) {
@@ -1503,8 +1503,6 @@
     html[data-announcement-bar="on"] { scroll-padding-top: calc(var(--nav-height) + var(--announcement-height)); }
     html[data-announcement-bar="on"] .nav-sheet { padding-top: calc(var(--nav-height) + var(--announcement-height) + var(--menu-section-gap)); }
   }
-  /* Very narrow phones (under 350px): let the line wrap rather than run off. */
-  @media (max-width: 349px) { .announcement-bar__link { white-space: normal; text-wrap: balance; } }
 
   /* Phones: the full bar is too tight, so a single floating button shows
      the current section and opens a menu of all of them. */
