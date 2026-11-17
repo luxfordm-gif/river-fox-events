@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import PageHeader from "@/components/rfx/PageHeader";
+import TrustLine from "@/components/rfx/TrustLine";
+import Enquire from "@/components/rfx/Enquire";
 import { useNavScroll } from "@/hooks/useRiverFox";
 import { TOWNS } from "@/data/locations/towns";
 import { findRoute } from "@/seo/routes";
@@ -48,7 +50,9 @@ const AreasWeCover = () => {
             </>
           }
           intro="Based in Horley, I style parties and events across Surrey and London, and into Sussex and west Kent. Wherever the celebration is, I come to you."
-        />
+        >
+          <TrustLine linked className="text-to-action" />
+        </PageHeader>
         <section className="after-page-header section-bottom" aria-labelledby="areas-heading">
           <div className="container-rfx">
             <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] columns-gap items-start">
@@ -93,6 +97,7 @@ const AreasWeCover = () => {
             </div>
           </div>
         </section>
+        <Enquire venuePlaceholder="e.g. at home in Cobham" />
       </main>
       <Footer />
     </div>
