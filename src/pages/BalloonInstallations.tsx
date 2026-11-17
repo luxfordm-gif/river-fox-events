@@ -4,6 +4,7 @@ import { INSPIRATION_BALLOONS } from "@/data/inspiration";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
+import { SCENARIOS } from "@/data/howItWorks";
 import Enquire from "@/components/rfx/Enquire";
 import ServiceHero from "@/components/rfx/ServiceHero";
 import CPReveal from "@/components/rfx/CPReveal";
@@ -300,7 +301,7 @@ const BalloonInstallations = () => {
           picks={RECENT_WORK}
         />
 
-        <Process sectionId="how-it-works" />
+        <Process sectionId="how-it-works" scenario={SCENARIOS.pastelArch} />
 
         {/* Heading, a short direct answer and the button: the two price
             cards were taken out (Matt, 2026-11-08); the question heading and

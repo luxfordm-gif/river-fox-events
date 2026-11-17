@@ -1,10 +1,15 @@
-import { useEffect, useRef, useState } from "react";
 import { SectionHeading } from "@/components/rfx/SectionHeading";
+import ChatDemo from "@/components/rfx/ChatDemo";
+import { SCENARIOS, type Scenario } from "@/data/howItWorks";
+import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
+import "@/styles/how-it-works.css";
 
 type ProcessStep = { n: string; title: string; body: string };
 
 type ProcessProps = {
   steps?: ProcessStep[];
+  /** The example party shown in the three steps (chat, sketch, finished photo). */
+  scenario?: Scenario;
   /** Background, matching the section below so there's no colour band
    *  (Matt, 2026-11-08): "white" before pricing / FAQs, "cream" before the
    *  homepage reviews. */
@@ -34,31 +39,43 @@ const DEFAULT_STEPS: ProcessStep[] = [
   },
 ];
 
-/* "How it works": centred heading and three steps. The intro line beside the
-   heading was removed (Matt, 2026-11-07). No dark band since 2026-11-08: the
-   section shares its neighbours' background, and the same-background rule in
-   index.css gives it one Section gap above and below. */
-const Process = ({ steps = DEFAULT_STEPS, tone = "white", sectionId = "process" }: ProcessProps = {}) => {
-  const stepsRef = useRef<HTMLDivElement>(null);
-  const [stepsIn, setStepsIn] = useState(false);
+/** The line under the button. Set-up is included; take-down is an extra, so it isn't promised here. */
+const REASSURANCE = "No obligation · Proposal in a day or two · Set‑up included";
 
-  useEffect(() => {
-    const el = stepsRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setStepsIn(true);
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.25 }
+/* "How it works" (redesigned 2026-11-17): the heading, then three steps, each
+   with a picture over its title. The pictures tell one story: step 1 a short
+   WhatsApp-style chat with Laura, step 2 the hand-drawn concept she sends, step
+   3 the finished event. They come from a scenario (src/data/howItWorks.ts), so
+   each page shows a party that suits it. Steps stack on phones, three across
+   from tablet up; the enquiry button sits under them.
+   No dark band: the section shares its neighbours' background, and the
+   same-background rule in index.css gives it one Section gap above and below. */
+const Process = ({
+  steps = DEFAULT_STEPS,
+  scenario = SCENARIOS.dinosaur,
+  tone = "white",
+  sectionId = "process",
+}: ProcessProps = {}) => {
+  const { chat, sketch, photo } = scenario;
+
+  /** The picture for step 1, 2 or 3 (steps after the third have none). */
+  const media = (index: number) => {
+    if (index === 0) return <ChatDemo lines={chat} />;
+    const picture = index === 1 ? sketch : index === 2 ? photo : null;
+    if (!picture) return null;
+    return (
+      <img
+        src={picture.src}
+        srcSet={picture.srcSet}
+        sizes="(min-width: 768px) 33vw, 100vw"
+        alt={picture.alt}
+        loading="lazy"
+        decoding="async"
+        width={1100}
+        height={733}
+      />
     );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+  };
 
   return (
     <section id={sectionId} className={`rfx-section ${tone === "white" ? "white" : ""}`} aria-labelledby="process-heading">
@@ -70,40 +87,25 @@ const Process = ({ steps = DEFAULT_STEPS, tone = "white", sectionId = "process" 
           </SectionHeading>
         </div>
 
-        <div
-          ref={stepsRef}
-          className="grid grid-cols-1 md:grid-cols-3 cards-gap border-t border-divider rule-to-content"
-        >
+        <ol className="hiw-steps cards-gap">
           {steps.map((s, i) => (
-            <div
-              key={s.n}
-              style={{
-                opacity: stepsIn ? 1 : 0,
-                transform: stepsIn ? "translateX(0)" : "translateX(-32px)",
-                transition: `opacity var(--motion-reveal) var(--ease-soft) ${i * 180}ms, transform var(--motion-reveal) var(--ease-soft) ${i * 180}ms`,
-              }}
-            >
-              <div
-                className="t-overline label-to-title overflow-hidden inline-block"
-              >
-                <span
-                  className="inline-block text-accent-warm"
-                  style={{
-                    transform: stepsIn ? "translateX(0)" : "translateX(-110%)",
-                    transition: `transform var(--motion-reveal) var(--ease-soft) ${i * 180 + 80}ms`,
-                  }}
-                >
-                  {s.n} /
-                </span>
-              </div>
-              <h3 className="t-h5 text-ink">
-                {s.title}
+            <li key={s.n}>
+              {i < 3 && (
+                <div className={`hiw-media rounded-large ${i === 0 ? "hiw-media-chat" : ""}`}>{media(i)}</div>
+              )}
+              <h3 className="t-h5 text-ink media-to-title">
+                <span className="text-accent-warm">{s.n}.</span> {s.title}
               </h3>
-              <p className="t-small text-ink-soft title-to-text text-wrap">
-                {s.body}
-              </p>
-            </div>
+              <p className="t-small text-ink-soft title-to-text text-wrap">{s.body}</p>
+            </li>
           ))}
+        </ol>
+
+        <div className="hiw-cta text-to-action">
+          <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
+            Enquire now <span className="t-icon">→</span>
+          </a>
+          <p className="t-meta text-ink-soft text-balance">{REASSURANCE}</p>
         </div>
       </div>
     </section>

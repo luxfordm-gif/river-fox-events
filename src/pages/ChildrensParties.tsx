@@ -6,6 +6,7 @@ import { CHILDRENS_TILES, withoutTilePhotos } from "@/data/serviceTiles";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
+import { SCENARIOS } from "@/data/howItWorks";
 import Enquire from "@/components/rfx/Enquire";
 import ServiceHero from "@/components/rfx/ServiceHero";
 import CPReveal from "@/components/rfx/CPReveal";
@@ -186,7 +187,7 @@ const ChildrensParties = () => {
           intro="Tell me the theme and I'll build the party around it. These are the pieces families ask for most, but anything goes."
         />
 
-        <Process sectionId="how-it-works" />
+        <Process sectionId="how-it-works" scenario={SCENARIOS.rodeo} />
 
         <InspirationStrip id="cp-inspiration" lead="Parties I've" accent="already made." images={withoutTilePhotos(INSPIRATION_CHILDRENS, CHILDRENS_TILES)} />
 

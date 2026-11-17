@@ -1,0 +1,127 @@
+/* Home page sections: Recent events (RecentEvents.tsx) and Meet Laura (About.tsx). */
+
+/* ---------- Recent events ----------
+   Phones: a swipe row, each card 80% wide so the next one peeks in. */
+.recent-grid {
+  display: flex;
+  gap: var(--gap-stack);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: var(--gutter);
+  scrollbar-width: none;
+  margin-left: calc(-1 * var(--gutter));
+  margin-right: calc(-1 * var(--gutter));
+  padding: 0 var(--gutter);
+}
+.recent-grid::-webkit-scrollbar { display: none; }
+.recent-event {
+  flex: 0 0 var(--recent-card-phone);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+.recent-img { aspect-ratio: 1; overflow: hidden; }
+.recent-img img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.recent-copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-field);
+  margin-top: var(--gap-stack);
+}
+.recent-copy p { margin: 0; }
+
+/* Tablet and up: the bento. A large lead photo on the left stretches to the
+   height of the two cards beside it, so both columns end together. */
+@media (min-width: 768px) {
+  .recent-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: var(--gap-cards) var(--gap-columns);
+    max-width: var(--recent-max);
+    margin: 0 auto;
+    padding: 0;
+    overflow: visible;
+  }
+  .recent-event { flex: none; }
+  .recent-lead { grid-row: 1 / span 2; }
+  .recent-lead .recent-img { position: relative; flex: 1; min-height: 0; aspect-ratio: auto; }
+  .recent-lead .recent-img img { position: absolute; inset: 0; }
+  .recent-event:not(.recent-lead) .recent-img { aspect-ratio: 16 / 10; }
+}
+
+/* ---------- Meet Laura ----------
+   A rounded panel with the photo inset (own corners) and the text beside it.
+   On phones the panel runs edge to edge. */
+.about-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap-cards);
+  align-items: center;
+  padding: var(--gap-cards);
+  background: hsl(var(--background-warm));
+  overflow: hidden;
+  margin-left: calc(-1 * var(--gutter));
+  margin-right: calc(-1 * var(--gutter));
+}
+.about-photo { position: relative; aspect-ratio: 4 / 5; }
+.about-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+}
+/* On phones, the gap above the panel and below it equals the padding inside it. */
+@media (max-width: 767px) {
+  .about-section,
+  .about-section + .rfx-section {
+    --section-gap: var(--about-phone-gap);
+  }
+  .about-card { padding: var(--about-phone-gap) var(--gap-cards); }
+}
+@media (min-width: 768px) {
+  .about-card {
+    grid-template-columns: 0.85fr 1fr;
+    gap: var(--gap-columns);
+    padding: var(--gap-columns);
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: var(--radius-panel);
+  }
+  .about-photo { max-height: var(--about-photo-max); }
+}
+
+/* The rest of the story opens in place: height first, then the words fade up. */
+.about-more {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--motion-slow) var(--ease-soft);
+}
+.about-more.open { grid-template-rows: 1fr; }
+.about-more-inner {
+  overflow: hidden;
+  min-height: 0;
+  padding-top: 0;
+  transition: padding-top var(--motion-slow) var(--ease-soft);
+}
+.about-more.open .about-more-inner { padding-top: var(--gap-paragraph); }
+.about-more-inner > div {
+  opacity: 0;
+  transform: translateY(var(--reveal-shift));
+  transition: opacity var(--motion-base) var(--ease-soft), transform var(--motion-slow) var(--ease-soft);
+}
+.about-more.open .about-more-inner > div {
+  opacity: 1;
+  transform: none;
+  transition-delay: var(--motion-stagger);
+}
+.about-plus {
+  display: inline-block;
+  transition: transform var(--motion-slow) var(--ease-soft);
+}
+.about-plus.open { transform: rotate(135deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .about-more, .about-more-inner, .about-more-inner > div, .about-plus { transition: none; }
+}
