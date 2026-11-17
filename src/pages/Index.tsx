@@ -4,7 +4,6 @@ import Hero from "@/components/rfx/Hero";
 import InstagramFollow from "@/components/rfx/InstagramFollow";
 import Experiences from "@/components/rfx/Experiences";
 import Mission from "@/components/rfx/Mission";
-import RevealWord from "@/components/rfx/RevealWord";
 import About from "@/components/rfx/About";
 import Process from "@/components/rfx/Process";
 import RecentEvents from "@/components/rfx/RecentEvents";
@@ -64,7 +63,7 @@ const Index = () => {
         <Enquire />
       </main>
       <Footer />
-      {/* Mock-up: Christmas garlands card, home page only for review. */}
+      {/* Floating Christmas garlands card, home page only. */}
       <ChristmasPromo />
     </div>
   );

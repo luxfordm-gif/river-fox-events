@@ -113,7 +113,7 @@ const Arrow = () => (
   </span>
 );
 
-const ExpCard = ({ it, i, compact }: { it: ExpItem; i: number; compact?: boolean }) => {
+const ExpCard = ({ it, compact }: { it: ExpItem; compact?: boolean }) => {
   const wrap = useRef<HTMLDivElement>(null);
   const img = useRef<HTMLImageElement>(null);
   const baseScale = 1.14 * (it.extraZoom ?? 1);
@@ -260,8 +260,8 @@ const Experiences = ({
         )}
 
         <div className="exp-grid grid grid-cols-1 md:grid-cols-3 gap-[56px]">
-          {items.map((it, i) => (
-            <ExpCard key={i} it={it} i={i} compact={compactImages} />
+          {items.map((it) => (
+            <ExpCard key={it.href} it={it} compact={compactImages} />
           ))}
         </div>
 
