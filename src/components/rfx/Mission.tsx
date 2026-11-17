@@ -8,8 +8,13 @@ import { useScrollProgress } from "@/hooks/useScrollProgress";
  * page's own scroll. Without JavaScript, or with reduced motion, it is
  * simply full colour. Centred, with no button under it (Matt, 2026-11-10).
  */
-const LEAD = "I style children's parties, milestone celebrations and brand events across Surrey and London,";
+const LEAD = "Children's parties, milestone celebrations and brand events across Surrey and London,";
 const ACCENT = "each one individually designed.";
+
+/** Small label above the line while it is the page title (Matt, 2026-11-17):
+ *  with the Christmas video up top there is no normal heading, so this tells
+ *  a first-time visitor what the site is. Event-based, not balloons. */
+const EYEBROW = "Party & event styling in Surrey";
 
 /** `asTitle`: the line is the page's main title (h1), for while the home
  *  title section is hidden behind the Christmas video (Matt, 2026-11-11).
@@ -54,6 +59,7 @@ const Mission = ({ asTitle = false }: { asTitle?: boolean }) => {
   return (
     <section id="mission" className="rfx-section white" aria-label="What River Fox Events does">
       <div className="container-rfx">
+        {asTitle && <p className="t-overline text-ink-soft text-center eyebrow-above">{EYEBROW}</p>}
         <Line ref={textRef} className="t-h2 text-ink mission-line">
           {split(LEAD)}
           <em className="t-accent">{split(ACCENT)}</em>
