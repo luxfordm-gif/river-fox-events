@@ -12,11 +12,11 @@
   .hiw-steps { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Every picture is the same 3:2 shape, so the three titles line up. */
+/* Every picture is the same shape (--hiw-media-ratio), so the three titles line up. */
 .hiw-media {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: var(--hiw-media-ratio);
   background: hsl(var(--background-warm));
 }
 .hiw-media img {
