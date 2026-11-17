@@ -133,7 +133,7 @@ const Footer = () => {
             <div>
               <a
                 href="/areas-we-cover/"
-                className="t-overline footer-title inline-flex items-center icon-gap no-underline hover:underline underline-offset-4 decoration-on-deep/50 text-on-deep"
+                className="t-overline footer-title flex w-fit items-center icon-gap no-underline hover:underline underline-offset-4 decoration-on-deep/50 text-on-deep"
               >
                 Areas I cover
                 <ChevronRight
@@ -155,7 +155,7 @@ const Footer = () => {
             <div>
               <a
                 href="/contact/"
-                className="t-overline footer-title inline-flex items-center icon-gap no-underline hover:underline underline-offset-4 decoration-on-deep/50 text-on-deep"
+                className="t-overline footer-title flex w-fit items-center icon-gap no-underline hover:underline underline-offset-4 decoration-on-deep/50 text-on-deep"
               >
                 Contact
                 <ChevronRight
