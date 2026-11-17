@@ -76,7 +76,7 @@ const CookieBanner = () => {
         <button
           type="button"
           onClick={decline}
-          className="t-label opacity-80 hover:opacity-100"
+          className="t-label opacity-60 hover:opacity-100"
         >
           No thanks
         </button>
