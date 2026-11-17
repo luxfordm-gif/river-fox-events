@@ -1497,6 +1497,11 @@
   @media (max-width: 767px) {
     .announcement-bar--pinned {
       display: flex; position: fixed; top: 0; left: 0; right: 0; z-index: var(--layer-nav);
+      /* Its own layer, like .rfx-nav: the nav's blur sits right beside it, and
+         without this Chrome on Android can drop a fixed neighbour while the
+         page scrolls (Matt, 2026-11-17: the bar vanished on scroll). */
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
     }
     html[data-announcement-bar="on"] body { padding-top: var(--announcement-height); }
     html[data-announcement-bar="on"] .rfx-nav { top: var(--announcement-height); }
