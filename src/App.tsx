@@ -23,6 +23,7 @@ const OurWork = lazyPage(() => import("./pages/OurWork.tsx"));
 const LocationPage = lazyPage(() => import("./pages/LocationPage.tsx"));
 const Journal = lazyPage(() => import("./pages/Journal.tsx"));
 const Welcome = lazyPage(() => import("./pages/Welcome.tsx"));
+const AreasWeCover = lazyPage(() => import("./pages/AreasWeCover.tsx"));
 const Contact = lazyPage(() => import("./pages/Contact.tsx"));
 const Privacy = lazyPage(() => import("./pages/Privacy.tsx"));
 const NotFound = lazyPage(() => import("./pages/NotFound.tsx"));
@@ -69,6 +70,7 @@ const PAGES: PageRoute[] = [
     preload: (pathname) => Article.preload().then(() => preloadArticle?.(pathname)),
   },
   page("/welcome", Welcome, <Welcome />),
+  page("/areas-we-cover", AreasWeCover, <AreasWeCover />),
   page("/contact", Contact, <Contact />),
   page("/privacy", Privacy, <Privacy />),
   page("/style-guide", StyleGuide, <StyleGuide />),
