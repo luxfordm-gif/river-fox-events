@@ -27,6 +27,7 @@ const Contact = lazyPage(() => import("./pages/Contact.tsx"));
 const Privacy = lazyPage(() => import("./pages/Privacy.tsx"));
 const NotFound = lazyPage(() => import("./pages/NotFound.tsx"));
 // Hidden design reference (noindex).
+const HomeTest = lazyPage(() => import("./pages/HomeTest.tsx"));
 const StyleGuide = lazyPage(() => import("./pages/StyleGuide.tsx"));
 
 // Articles also fetch their own text, so the article arrives in one go.
@@ -72,6 +73,7 @@ const PAGES: PageRoute[] = [
   page("/contact", Contact, <Contact />),
   page("/privacy", Privacy, <Privacy />),
   page("/style-guide", StyleGuide, <StyleGuide />),
+  page("/home-test", HomeTest, <HomeTest />),
   // ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE
   page("*", NotFound, <NotFound />),
 ];

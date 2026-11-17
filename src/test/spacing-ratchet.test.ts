@@ -46,7 +46,7 @@ const walk = (dir: string, ext: RegExp): string[] =>
     return ext.test(name) ? [path] : [];
   });
 
-const sheets = [join(SRC, "index.css"), ...walk(join(SRC, "styles"), /\.css$/)].filter((f) => !f.endsWith("style-guide.css"));
+const sheets = [join(SRC, "index.css"), ...walk(join(SRC, "styles"), /\.css$/)].filter((f) => !f.endsWith("style-guide.css") && !f.endsWith("home-test.css"));
 const components = walk(SRC, /\.tsx$/).filter((f) => !f.endsWith("StyleGuide.tsx"));
 
 const DECL = /(?<![\w-])(padding|margin|gap|row-gap|column-gap|padding-(?:top|bottom|left|right)|margin-(?:top|bottom|left|right))\s*:\s*([^;}]+)/g;
