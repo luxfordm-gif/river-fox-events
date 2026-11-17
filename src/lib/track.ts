@@ -19,6 +19,9 @@
  *                     sending it (best effort: sent as the page is closed)
  *   scroll_depth      25, 50, 75 and 90 percent down the page, once each
  *   generate_lead     a form was sent (trackFormSent, after Netlify says OK)
+ *   announcement_bar_click  a tap on the phone announcement bar (sent by the bar
+ *                     itself, with the line's text; its link is marked
+ *                     data-track-skip so it isn't also a cta_click)
  *
  * Every event carries page_path and location ("nav", "footer", "hero",
  * "form" or "body"). Clicks add link_text, link_url and section (the
