@@ -521,7 +521,7 @@ const SECTIONS: Section[] = [
     id: "S23",
     title: "Announcement bar",
     component: "AnnouncementBarView",
-    note: "Pinned to the top of every page on phones. Words live in src/data/announcementBar.ts. Every line here, one under another",
+    note: "At the top of every page on phones; it scrolls away and the nav slides up. Words live in src/data/announcementBar.ts. Every line here, one under another",
     render: () => (
       <div className="stack-gap flex flex-col">
         {[christmasLine, defaultLine, ...Object.values(pageLines).filter((l): l is BarLine => !!l)].map((l) => (
