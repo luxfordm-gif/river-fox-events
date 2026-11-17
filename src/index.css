@@ -298,7 +298,8 @@
     --article-pad-x: 24px;             /* Article side padding · inside narrow article blocks: In short, quotes, enquire boxes, related */
     --list-indent: 20px;               /* List indent · how far bullet text sits in from the bullet edge (In short lists) */
     --tile-swipe-width: calc((100vw - 2 * var(--gutter)) * 0.62); /* Swipe tile width · on phones, one photo tile in the ServicesCards swipe row, centred with the next and previous tiles peeking in (centred 2026-11-14, left 2026-11-16, centred again 2026-11-16 because left-aligned tiles landed off-centre when swiped) */
-    --gap-media: 20px;                 /* Media gap · a photo or icon down to a card title under it (were 16 to 32) */
+    --gap-steps: 40px;                 /* Step gap · between the "How it works" steps once they stack on phones (picture, title, text, then the next step); 64 phone */
+    --gap-media: 20px;                /* Media gap · a photo or icon down to a card title under it (were 16 to 32) */
     --gap-caption: 12px;               /* Caption gap · a photo down to its caption, close so it reads as the photo's label (Our work, tile names, article photos) */
     --gap-photos: 12px;                /* Photo gap · between photos in a grid or strip (8 phone; were 8 / 12 / 16) */               /* List indent · how far bullet text sits in from the bullet's edge (In short lists) */             /* Article side padding · inside narrow article blocks */              /* Link list gap · between links in a list, e.g. a footer column */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
@@ -380,6 +381,7 @@
       --gap-text-content: 40px;
       --gap-columns: 48px;
       --gap-cards: 32px;
+      --gap-steps: 64px;
       --article-gap: 48px;
       --form-pad: 22px 16px;
       --reveal-join: 40px;

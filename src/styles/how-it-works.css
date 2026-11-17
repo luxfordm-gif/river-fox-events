@@ -7,6 +7,8 @@
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
+  row-gap: var(--gap-steps);
+  column-gap: var(--gap-cards);
 }
 @media (min-width: 768px) {
   .hiw-steps { grid-template-columns: repeat(3, 1fr); }

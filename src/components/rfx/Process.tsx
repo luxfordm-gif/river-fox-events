@@ -87,7 +87,7 @@ const Process = ({
           </SectionHeading>
         </div>
 
-        <ol className="hiw-steps cards-gap">
+        <ol className="hiw-steps">
           {steps.map((s, i) => (
             <li key={s.n}>
               {i < 3 && (
