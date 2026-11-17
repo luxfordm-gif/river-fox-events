@@ -26,8 +26,6 @@ import {
 
 import imgHero from "@/assets/river-fox-events-jungle-theme-fourever-wild-full-setup.webp";
 import imgHeroMobile from "@/assets/river-fox-events-jungle-theme-safari-tablescape-elephant.webp";
-import imgCelebrations from "@/assets/dinosaur-ayaan-arch-surrey.webp";
-import imgCelebrationsHover from "@/assets/river-fox-events-dinosaur-theme-ayaan-arch-close-up-portrait.webp";
 import imgOccasions from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-tablescape.webp";
 import imgOccasionsHover from "@/assets/river-fox-events-pastel-safari-anaya-two-wild-marquee-close-up.webp";
 import imgThemes from "@/assets/willy-wonka-savanna-chocolate-arch-surrey.webp";
@@ -115,41 +113,13 @@ const ChildrensParties = () => {
         </CPReveal>
 
         <CPReveal
-          id="cp-occasions"
-          imageSide="left"
-          image={imgCelebrations}
-          alt="Ayaan's dinosaur birthday arch with sage balloons, a personalised name sign and wooden crate props"
-          hoverImage={imgCelebrationsHover}
-          hoverAlt="Close-up of Ayaan's dinosaur arch, with sage and cream balloons, tropical foliage and a personalised sign"
-          tone="ph-blush"
-          imageScale={1.07}
-          headline={
-            <>
-              Sketched first,{" "}
-              <em className="t-accent">
-                then built.
-              </em>
-            </>
-          }
-        >
-          <p>
-            Before the day, I send you a visual of the setup, so you can see
-            the arch, the colours and the name sign in place.
-          </p>
-          <p>
-            I'm there to install it too, so what you see in the sketch is
-            what you walk into.
-          </p>
-        </CPReveal>
-
-        <CPReveal
           id="cp-themes"
-          imageSide="right"
+          imageSide="left"
           image={imgThemes}
           alt="Purple and lilac balloon arch with a gold Savanna ticket panel, cocoa-bar plinth, lollipop swirls and a number 5 column"
           hoverImage={imgThemesHover}
           hoverAlt="Close-up of the chocolate-bar prop with lilac balloons, a lollipop foil and mushroom props at Savanna's Wonka party"
-          tone="ph-warm"
+          tone="ph-blush"
           headline={
             <>
               Whatever the theme,{" "}
