@@ -3,12 +3,9 @@ import { galleryPhoto } from "@/data/gallery";
 
 /* Balloon page "What we make" photo tiles (also shown on /style-guide/).
    Plain names, no links (Matt, 2026-11-08). Sixteen since 2026-11-16, picked against a competitor's list (Matt): sixteen so desktop's four across end on a full row, names short enough for one line in a phone tile (about 200px, Fraunces 17px), and sentence case. */
-/* The gallery sources the tiles use, so the page's "Recent work" can leave them out. */
-export const WHAT_WE_MAKE_SOURCES = new Set<string>();
 const tile = (title: string, source: string, position?: string): ServiceCardItem => {
-  WHAT_WE_MAKE_SOURCES.add(source);
   const p = galleryPhoto(source);
-  return { title, image: p.src, srcSet: p.srcSet, alt: p.alt, position };
+  return { ...p, title, position: position ?? p.position };
 };
 export const WHAT_WE_MAKE: ServiceCardItem[] = [
   tile("Sailboard backdrops", "river-fox-events-baby-shower-baby-in-bloom-arch-portrait.webp", "40% 50%"),

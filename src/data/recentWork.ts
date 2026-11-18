@@ -11,47 +11,6 @@ import uni700 from "@/assets/home/recent/unicorn-rainbow-party-ava-name-sign-shi
 import uni1000 from "@/assets/home/recent/unicorn-rainbow-party-ava-name-sign-shimmer-wall-pastel-balloons-1000.webp";
 
 /**
- * "Recent work" photo walls.
- *
- * Balloons page (Matt, 2026-11-16): 29 hand-picked balloon-led setups across
- * children's parties, milestones and corporate. Each is a gallery source
- * file; the grid looks up its alt text there.
- */
-export const BALLOON_WORK_SOURCES = [
-  "dinosaur-ayaan-arch-surrey.webp",
-  "river-fox-events-willy-wonka-savanna-chocolate-bar-arch.webp",
-  "river-fox-events-pastel-birthday-reeva-entrance-arch.webp",
-  "river-fox-events-pastel-entrance-decor-arch.webp",
-  "services/childrens-parties/peter-rabbit-first-birthday-blue-balloon-backdrop.webp",
-  "journal/dylan-christening-first-birthday/dylan-first-birthday-teddy-cutout-chrome-gold-balloons.webp",
-  "journal/dylan-christening-first-birthday/dylan-christening-arched-welcome-panel-balloon-garland.webp",
-  "services/corporate/lakeside-terrace-navy-balloon-arch.webp",
-  "services/childrens-parties/hot-air-balloon-teddy-basket-neutral.webp",
-  "services/childrens-parties/garden-picnic-party-pastel-balloons-low-table.webp",
-  "services/childrens-parties/bell-tent-picnic-pastel-balloons-garden.webp",
-  "services/milestones/13th-birthday-pink-light-up-numbers-garland.webp",
-  "river-fox-events-veuve-cliquot-angela-georgia-arch-wide.webp",
-  "services/milestones/heart-hoop-red-blush-balloons-heart-foils.webp",
-  "services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp",
-  "services/milestones/70th-birthday-sage-gold-light-up-numbers.webp",
-  "journal/garden-milestone-styling-surrey/garden-milestone-balloon-arch.webp",
-  "services/milestones/baby-in-bloom-barn-twin-arches-dusty-blue.webp",
-  "services/milestones/50th-birthday-pink-light-up-numbers-teal-garland.webp",
-  "services/milestones/40th-birthday-champagne-gold-garland-restaurant.webp",
-  "services/milestones/baby-shower-sage-gold-balloons-baby-blocks.webp",
-  "services/milestones/blush-rose-hoop-garland-living-room.webp",
-  "services/milestones/gloria-80th-birthday-table-centrepiece-burhill.webp",
-  "services/corporate/125-years-entrance-columns-green-white-gold-stars.webp",
-  "services/corporate/enterprise-mobility-branded-backdrop-black-gold-balloons.webp",
-  "river-fox-events-nxtgen-corporate-entrance-columns-side-angle.webp",
-  "services/corporate/bocketts-farm-easter-bunny-booth-balloon-garland.webp",
-  "river-fox-events-corporate-atrium-twin-balloon-arches.webp",
-  "services/corporate/restaurant-entrance-garland-black-gold-balloons.webp",
-  "services/corporate/shop-entrance-arch-green-white-balloons.webp",
-  // Nothing already shown higher up the page: not in "I'm asked for most", not in the intro.
-];
-
-/**
  * Home page "Recent work" (Matt, 2026-11-17): Laura's latest work, newest
  * first, a mix of everything she does (not only balloons).
  *

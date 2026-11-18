@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import InspirationStrip from "@/components/rfx/InspirationStrip";
 import { INSPIRATION_CORPORATE } from "@/data/inspiration";
 import ServicesCards from "@/components/rfx/ServicesCards";
+import Testimonials from "@/components/rfx/Testimonials";
+import { CORPORATE_REVIEWS } from "@/data/reviewOrder";
 import { CORPORATE_TILES, withoutTilePhotos } from "@/data/serviceTiles";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
@@ -267,6 +269,8 @@ const CorporateAndBrand = () => {
           }
           intro="No two briefs look the same. These are my most requested pieces, but send me the brand and the space and I'll design around it."
         />
+
+        <Testimonials reviews={CORPORATE_REVIEWS} noDivider />
 
         <Process sectionId="how-it-works" steps={CORPORATE_STEPS} scenario={SCENARIOS.restaurant} />
 

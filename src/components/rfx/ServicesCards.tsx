@@ -1,4 +1,5 @@
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useState, type PointerEvent, type ReactNode } from "react";
+import { Viewer, type ViewerItem } from "@/components/rfx/PhotoViewer";
 import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 /**
  * Service tile cards (Matt, 2026-11-18): "what I make" on the Balloons page and
@@ -10,25 +11,19 @@ import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
  * Phones: a left-aligned swipe row, about 1.6 cards in view with the next one
  * peeking in (`--tile-card-width`), and pagination dots under it. Tablet up: a
  * grid, four across, all tiles shown. Tiles are 12 or 16 so rows end full.
- * A tile links on only when it has an href - a sub-service page or a journal
- * article - and the rest stay plain names (Matt, 2026-11-09).
+ * Tiles are plain names, never links (Matt, 2026-11-18: a tap that opened a
+ * journal article was unexpected). A tap opens the photo larger in the same
+ * full-screen viewer as /our-work/ and the town pages (arrows, swipe, Esc).
+ * On a mouse, a card lifts and tilts toward the pointer.
  *
  * History: a centred swipe row with one tile in view was replaced by a two-across
  * grid of small side-photo cards (2026-11-18), which was too small, and then by
  * this. The older three-card services layout was retired on 2026-11-08: every
  * "our services" block uses the homepage's Experiences component.
  */
-export type ServiceCardItem = {
-  title: string;
-  /** Optional: where the tile leads (a sub-service page or a journal article).
-      Leave it off and the tile is a plain name. */
-  href?: string;
-  image?: string;
-  srcSet?: string;
-  alt?: string;
-  /** CSS object-position, to keep the subject in frame when the photo is cropped. */
-  position?: string;
-};
+/* A tile is a resolved Our work photo plus its short name, so the same item opens
+   in the full-screen viewer. */
+export type ServiceCardItem = ViewerItem;
 
 type ServicesCardsProps = {
   items: ServiceCardItem[];
@@ -40,9 +35,8 @@ type ServicesCardsProps = {
       the 50/50 sections (Matt, 2026-11-09: every service page that has
       50/50s above its tiles). */
   divided?: boolean;
-  /** An optional last card with no photo (soft peach, serif words), e.g. "Fully bespoke
-      to your needs." It closes the row and is not a link. */
-  endCard?: ReactNode;
+  /** Optional content under the tiles, centred (e.g. a "See our work" button). */
+  footer?: ReactNode;
 };
 
 /* Two cards per dot, so twelve or sixteen cards don't make a wall of dots. */
@@ -55,12 +49,12 @@ const ServicesCards = ({
   sectionId = "services",
   headingId = "services-cards-heading",
   divided = false,
-  endCard,
+  footer,
 }: ServicesCardsProps) => {
   const track = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
-  const total = items.length + (endCard ? 1 : 0);
-  const dots = Math.ceil(total / CARDS_PER_DOT);
+  const [open, setOpen] = useState<number | null>(null);
+  const dots = Math.ceil(items.length / CARDS_PER_DOT);
 
   /* The lit dot follows how far along the row you've swiped. */
   const onScroll = () => {
@@ -74,6 +68,22 @@ const ServicesCards = ({
     if (!el) return;
     const max = el.scrollWidth - el.clientWidth;
     el.scrollTo({ left: (i / (dots - 1)) * max, behavior: "smooth" });
+  };
+
+  const openAt = (i: number) => () => setOpen(i);
+
+  /* Mouse only: lean the card toward the pointer (a fraction -0.5 to 0.5 across
+     the card, which the CSS multiplies by --tile-card-tilt). */
+  const tilt = (e: PointerEvent<HTMLElement>) => {
+    if (e.pointerType !== "mouse") return;
+    const el = e.currentTarget;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--tilt-x", String(-((e.clientY - r.top) / r.height - 0.5)));
+    el.style.setProperty("--tilt-y", String((e.clientX - r.left) / r.width - 0.5));
+  };
+  const untilt = (e: PointerEvent<HTMLElement>) => {
+    e.currentTarget.style.setProperty("--tilt-x", "0");
+    e.currentTarget.style.setProperty("--tilt-y", "0");
   };
 
   return (
@@ -92,43 +102,26 @@ const ServicesCards = ({
         )}
 
         <ul ref={track} onScroll={onScroll} className="tile-card-row">
-          {items.map((s) => {
-            const card = (
-              <>
+          {items.map((s, i) => (
+            <li key={s.title}>
+              <div className="tile-card" onClick={openAt(i)} onPointerMove={tilt} onPointerLeave={untilt}>
                 <div className="relative aspect-square overflow-hidden rounded-large">
-                  {s.image && (
-                    <img
-                      src={s.image}
-                      srcSet={s.srcSet}
-                      sizes="(min-width: 1100px) 240px, (min-width: 768px) 22vw, 60vw"
-                      alt={s.alt ?? ""}
-                      loading="lazy"
-                      decoding="async"
-                      className="tile-img absolute inset-0 w-full h-full object-cover"
-                      style={s.position ? { objectPosition: s.position } : undefined}
-                    />
-                  )}
+                  <img
+                    src={s.src}
+                    srcSet={s.srcSet}
+                    sizes="(min-width: 1100px) 320px, (min-width: 768px) 22vw, 60vw"
+                    alt={s.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={s.position ? { objectPosition: s.position } : undefined}
+                  />
+                  <button type="button" className="absolute inset-0" aria-label={`View larger: ${s.title}`} />
                 </div>
-                <h3 className="t-small text-ink">
-                  {s.href ? <span className="text-link">{s.title}</span> : s.title}
-                </h3>
-              </>
-            );
-            return (
-              <li key={s.title}>
-                {s.href ? (
-                  <a href={s.href} className="tile-link tile-card">{card}</a>
-                ) : (
-                  <div className="tile-card">{card}</div>
-                )}
-              </li>
-            );
-          })}
-          {endCard && (
-            <li>
-              <div className="tile-card tile-card--end">{endCard}</div>
+                <h3 className="t-small text-ink">{s.title}</h3>
+              </div>
             </li>
-          )}
+          ))}
         </ul>
         <div className="carousel-dots md:hidden" role="tablist" aria-label="Choose a tile">
           {Array.from({ length: dots }, (_, i) => (
@@ -137,13 +130,17 @@ const ServicesCards = ({
               type="button"
               role="tab"
               aria-selected={i === active}
-              aria-label={`Show tiles ${i * CARDS_PER_DOT + 1} to ${Math.min((i + 1) * CARDS_PER_DOT, total)}`}
+              aria-label={`Show tiles ${i * CARDS_PER_DOT + 1} to ${Math.min((i + 1) * CARDS_PER_DOT, items.length)}`}
               onClick={() => goTo(i)}
               className={`tcard-dot ${i === active ? "is-active" : ""}`}
             />
           ))}
         </div>
+        {footer && <div className="text-to-action flex justify-center">{footer}</div>}
       </div>
+      {open !== null && (
+        <Viewer items={items} index={open} onIndex={setOpen} onClose={() => setOpen(null)} />
+      )}
     </section>
   );
 };
