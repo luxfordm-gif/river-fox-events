@@ -310,10 +310,12 @@
     --article-gap: 64px;               /* Article gap · between the blocks of a journal article: header, In short, photos, quotes, enquire box, related (48 phone; were 48 to 96) */
     --article-pad-x: 24px;             /* Article side padding · inside narrow article blocks: In short, quotes, enquire boxes, related */
     --list-indent: 20px;               /* List indent · how far bullet text sits in from the bullet edge (In short lists) */
-    --tile-swipe-width: calc((100vw - 2 * var(--gutter)) * 0.62); /* Swipe tile width · on phones, one photo tile in the ServicesCards swipe row, centred with the next and previous tiles peeking in (centred 2026-11-14, left 2026-11-16, centred again 2026-11-16 because left-aligned tiles landed off-centre when swiped) */
     --gap-steps: 64px;                 /* Step gap · between the stacked "How it works" steps (phones and tablets; laptops use Card gap) */
     --gap-media: 20px;                /* Media gap · a photo or icon down to a card title under it (were 16 to 32) */
     --gap-caption: 12px;               /* Caption gap · a photo down to its caption, close so it reads as the photo's label (Our work, tile names, article photos) */
+    --tile-card-lh: 1.4;               /* Tile card line height · the name in a tile card, a little tighter than body so two lines sit close */
+    --tile-card-photo: 48px;           /* Tile card photo · the small square photo in a tile card */
+    --tile-card-pad: 6px;             /* Tile card padding · inside a tile card, round the photo */
     --gap-photos: 12px;                /* Photo gap · between photos in a grid or strip (8 phone; were 8 / 12 / 16) */               /* List indent · how far bullet text sits in from the bullet's edge (In short lists) */             /* Article side padding · inside narrow article blocks */              /* Link list gap · between links in a list, e.g. a footer column */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
     --gutter: 56px;                    /* Side gutter · space at the left and right of the page content (32 phone, 8% on laptops) */
@@ -956,6 +958,42 @@
   .exp-card:hover .exp-img-wrap { --hover-zoom: 1.05; }
   /* "What we do" photo tiles that link on (ServicesCards): the same gentle
      5% zoom as the service cards. Plain tiles don't move. */
+  /* Tile cards: small photo on the left, name on the right, two across and wider than the page margin */
+  .tile-card-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-photos); list-style: none; padding: 0;
+    margin-inline: calc(var(--gutter-wide) - var(--gutter));
+  }
+  @media (min-width: 768px) {
+    .tile-card-grid { gap: var(--gap-stack); max-width: var(--container-narrow); margin-inline: auto; }
+  }
+  @media (min-width: 1100px) {
+    .tile-card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  .tile-card-grid > li { display: flex; }
+  .tile-card {
+    display: flex; align-items: center; gap: var(--gap-photos);
+    width: 100%;
+    padding: var(--tile-card-pad);
+    border: 1px solid hsl(var(--hair));
+    border-radius: var(--radius-large);
+    background: linear-gradient(180deg, hsl(var(--background-light)), hsl(var(--background) / 0.45));
+    box-shadow: var(--shadow-rest);
+  }
+  .tile-card > div:first-child { flex: none; width: var(--tile-card-photo); border-radius: var(--radius-small); }
+  .tile-card h3 { min-width: 0; line-height: var(--tile-card-lh); }
+  .tile-more {
+    display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden;
+    transition: grid-template-rows var(--motion-slow) var(--ease-soft), opacity var(--motion-base) ease, visibility 0s linear var(--motion-slow);
+  }
+  .tile-more[data-state="open"] {
+    grid-template-rows: 1fr; opacity: 1; visibility: visible;
+    transition: grid-template-rows var(--motion-slow) var(--ease-soft), opacity var(--motion-base) ease 80ms, visibility 0s;
+  }
+  .tile-more__inner { min-height: 0; overflow: hidden; }
+  .tile-more { margin-inline: calc(var(--gutter-wide) - var(--gutter)); }
+  .tile-more .tile-card-grid { margin-inline: 0; max-width: none; margin-top: var(--gap-photos); }
+  @media (min-width: 768px) { .tile-more { max-width: var(--container-narrow); margin-inline: auto; } .tile-more .tile-card-grid { margin-top: var(--gap-stack); } }
+  @media (prefers-reduced-motion: reduce) { .tile-more, .tile-more[data-state="open"] { transition: none; } }
   .tile-link .tile-img { transition: transform var(--motion-drift) var(--ease-glide); }
   .tile-link:hover .tile-img { transform: scale(1.05); }
   .tile-link:hover .text-link { text-decoration-color: transparent; }
@@ -1094,6 +1132,7 @@
   .nav-menu { padding: var(--menu-pad); border-radius: var(--radius-large); }
   .nav-menu__item { display: flex; align-items: center; gap: var(--gap-icon); padding: var(--menu-item-pad); }
   .nav-menu__rule { margin: var(--menu-rule-gap) 20px; }
+  .btn-ghost-rf.btn-hair { border-color: hsl(var(--hair)); }   /* Hairline outline · a ghost button with the same stroke as a tile card */
   .btn-compact { padding: var(--btn-compact-pad) !important; }
   .cookie-agree { padding: var(--cookie-agree-pad) !important; }
   /* Phone menu: the first link sits one Menu section gap under the nav, the
