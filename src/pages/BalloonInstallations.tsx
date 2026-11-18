@@ -11,9 +11,9 @@ import CPReveal from "@/components/rfx/CPReveal";
 import CPPricing from "@/components/rfx/CPPricing";
 import FaqSection from "@/components/rfx/FaqSection";
 import ServicesCards from "@/components/rfx/ServicesCards";
-import { WHAT_WE_MAKE, WHAT_WE_MAKE_SOURCES } from "@/data/balloonTiles";
-import { BALLOON_WORK_SOURCES } from "@/data/recentWork";
-import LocationPhotoGrid from "@/components/rfx/LocationPhotoGrid";
+import Testimonials from "@/components/rfx/Testimonials";
+import { BALLOON_REVIEWS } from "@/data/reviewOrder";
+import { WHAT_WE_MAKE } from "@/data/balloonTiles";
 import Experiences from "@/components/rfx/Experiences";
 import LocationTrust from "@/components/rfx/LocationTrust";
 import { LATEST_WORK } from "@/data/locations/_makeLocation";
@@ -35,9 +35,7 @@ import imgRainbowFive from "@/assets/cp-celebrations.webp";
 import imgRoseGold40 from "@/assets/40th-birthday-rose-gold-marquee-surrey.webp";
 
 /* Photos from the Our work gallery: its resized copies and its one alt per photo. */
-const INTRO_SOURCES = new Set<string>();
 const fromGallery = (source: string) => {
-  INTRO_SOURCES.add(source);
   const p = galleryPhoto(source);
   return { src: p.src, srcSet: p.srcSet, alt: p.alt, position: p.position };
 };
@@ -57,15 +55,7 @@ const INTRO_SLIDES = [
    split the intro into two 50/50s, 2026-11-09). Chosen because no other
    page uses it; the Two Wild photo was already on several. */
 const SETTING_SOURCE = "services/childrens-parties/garden-picnic-party-pastel-balloons-low-table.webp";
-INTRO_SOURCES.add(SETTING_SOURCE);
 const SETTING_PHOTO = galleryPhoto(SETTING_SOURCE);
-
-/* "Recent work": the town-page photo grid, run almost full width (Matt,
-   2026-11-16). 32 balloon-led photos picked by hand, shuffled on every load;
-   four rows show first, then "Show more" adds four more rows at a time. */
-const RECENT_WORK = BALLOON_WORK_SOURCES
-  .filter((source) => !WHAT_WE_MAKE_SOURCES.has(source) && !INTRO_SOURCES.has(source))
-  .map((source) => ({ alt: galleryPhoto(source).alt }));
 
 /* "What we make": eight balloon pieces as small square tiles, just the
    name, each linking on to the service page where that piece usually lives
@@ -245,6 +235,11 @@ const BalloonInstallations = () => {
           sectionId="what-we-make"
           headingId="bi-make-heading"
           items={WHAT_WE_MAKE}
+          footer={
+            <a href="/our-work/" className="btn-ghost-rf">
+              See our work <span className="t-icon">→</span>
+            </a>
+          }
           heading={
             <>
               The balloon decorations{" "}
@@ -254,23 +249,9 @@ const BalloonInstallations = () => {
           intro="Arches and garlands are where most celebrations start. Every one is sized and coloured to your space, and most become part of a bigger setup."
         />
 
-        <LocationPhotoGrid
-          id="bi-gallery"
-          wide
-          topUp={false}
-          count={RECENT_WORK.length}
-          pageRows={4}
-          slug="balloon-installations"
-          heading={
-            <>
-              Recent <em className="t-accent">work.</em>
-            </>
-          }
-          intro="A few recent setups where the arch or garland is one layer of the styling, alongside the backdrop, the props and the table."
-          picks={RECENT_WORK}
-        />
-
         <Process sectionId="how-it-works" scenario={SCENARIOS.pastelArch} />
+
+        <Testimonials reviews={BALLOON_REVIEWS} noDivider />
 
         {/* Heading, a short direct answer and the button: the two price
             cards were taken out (Matt, 2026-11-08); the question heading and

@@ -1,6 +1,6 @@
 /**
  * The one "Show more" button: the ghost button under a list or grid that
- * reveals more of it (the Journal, the Balloons page's "Recent work").
+ * reveals more of it (the Journal, the home page's "Recent work").
  * `className` only controls when the row shows (e.g. "flex md:hidden"), so a
  * page can show it on phones only; spacing and look come from the design
  * system. The footer's town list is a text toggle, a different control.

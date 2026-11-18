@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import InspirationStrip from "@/components/rfx/InspirationStrip";
 import { INSPIRATION_MILESTONES } from "@/data/inspiration";
 import ServicesCards from "@/components/rfx/ServicesCards";
+import Testimonials from "@/components/rfx/Testimonials";
+import { MILESTONE_REVIEWS } from "@/data/reviewOrder";
 import { MILESTONE_TILES, withoutTilePhotos } from "@/data/serviceTiles";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
@@ -183,6 +185,8 @@ const Milestones = () => {
         />
 
         <Process sectionId="how-it-works" scenario={SCENARIOS.fifty} />
+
+        <Testimonials reviews={MILESTONE_REVIEWS} noDivider />
 
         <InspirationStrip id="ms-inspiration" lead="Celebrations I've" accent="already styled." images={withoutTilePhotos(INSPIRATION_MILESTONES, MILESTONE_TILES)} />
 

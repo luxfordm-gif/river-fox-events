@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import InspirationStrip from "@/components/rfx/InspirationStrip";
 import { INSPIRATION_CHILDRENS } from "@/data/inspiration";
 import ServicesCards from "@/components/rfx/ServicesCards";
+import Testimonials from "@/components/rfx/Testimonials";
+import { CHILDRENS_REVIEWS } from "@/data/reviewOrder";
 import { CHILDRENS_TILES, withoutTilePhotos } from "@/data/serviceTiles";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
@@ -148,11 +150,6 @@ const ChildrensParties = () => {
           sectionId="cp-what-we-do"
           headingId="cp-do-heading"
           items={CHILDRENS_TILES}
-          endCard={
-            <p className="t-h4">
-              Fully bespoke <em className="t-accent">to your needs.</em>
-            </p>
-          }
           heading={
             <>
               What I love{" "}
@@ -163,6 +160,8 @@ const ChildrensParties = () => {
         />
 
         <Process sectionId="how-it-works" scenario={SCENARIOS.rodeo} />
+
+        <Testimonials reviews={CHILDRENS_REVIEWS} noDivider />
 
         <InspirationStrip id="cp-inspiration" lead="Parties I've" accent="already made." images={withoutTilePhotos(INSPIRATION_CHILDRENS, CHILDRENS_TILES)} />
 

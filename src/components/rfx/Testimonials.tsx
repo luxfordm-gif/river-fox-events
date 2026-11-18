@@ -1,16 +1,19 @@
 import TestimonialsCarousel from "./TestimonialsCarousel";
-import { REVIEWS } from "@/seo/routes";
+import { REVIEWS, type Review } from "@/seo/routes";
 import { SectionHeading } from "@/components/rfx/SectionHeading";
 
 export const QUOTES = REVIEWS;
 
 type TestimonialsProps = {
+  /** A chosen order or subset; defaults to every review. */
+  reviews?: Review[];
   noDivider?: boolean;
   paddingTop?: string;
   paddingBottom?: string;
 };
 
 const Testimonials = ({
+  reviews,
   noDivider = false,
   paddingTop,
   paddingBottom,
@@ -42,7 +45,7 @@ const Testimonials = ({
           </div>
         </div>
 
-        <TestimonialsCarousel />
+        <TestimonialsCarousel reviews={reviews} />
 
       </div>
     </section>

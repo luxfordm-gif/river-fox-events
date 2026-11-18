@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import InspirationStrip from "@/components/rfx/InspirationStrip";
 import { INSPIRATION_CORPORATE } from "@/data/inspiration";
 import ServicesCards from "@/components/rfx/ServicesCards";
+import Testimonials from "@/components/rfx/Testimonials";
+import { CORPORATE_REVIEWS } from "@/data/reviewOrder";
 import { CORPORATE_TILES, withoutTilePhotos } from "@/data/serviceTiles";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
@@ -269,6 +271,8 @@ const CorporateAndBrand = () => {
         />
 
         <Process sectionId="how-it-works" steps={CORPORATE_STEPS} scenario={SCENARIOS.restaurant} />
+
+        <Testimonials reviews={CORPORATE_REVIEWS} noDivider />
 
         {/* The office party sequin wall stays in the strip as well as its tile:
             it's the only corporate shimmer wall photo (Matt, 2026-11-09). */}
