@@ -1175,7 +1175,8 @@
   @media (max-width: 767px) {
     .footer-brand { margin-bottom: var(--gap-paragraph); }
     /* Phones: more air between the stacked link groups (Services, The studio, ...) */
-    .footer-grid.cards-gap { row-gap: var(--gap-columns); }
+    /* !important and the double class beat .rfx-md-stack's own phone gap. */
+    .footer-grid.rfx-md-stack { row-gap: var(--gap-columns) !important; }
   }
   .rfx-nav a:not(.btn-solid-rf):not(.no-underline-fx)::after {
     content: "";
