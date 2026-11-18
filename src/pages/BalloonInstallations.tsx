@@ -12,7 +12,6 @@ import CPPricing from "@/components/rfx/CPPricing";
 import FaqSection from "@/components/rfx/FaqSection";
 import ServicesCards from "@/components/rfx/ServicesCards";
 import Testimonials from "@/components/rfx/Testimonials";
-import { BALLOON_REVIEWS } from "@/data/reviewOrder";
 import { WHAT_WE_MAKE } from "@/data/balloonTiles";
 import Experiences from "@/components/rfx/Experiences";
 import LocationTrust from "@/components/rfx/LocationTrust";
