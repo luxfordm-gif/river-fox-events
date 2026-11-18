@@ -133,7 +133,9 @@
     --ls-wordmark: 0.22em;
     --fs-mega: clamp(56px, 12vw, 200px);       /* homepage "kindness" reveal word */
     --fs-ticker: clamp(22px, 3vw, 36px);       /* scrolling ticker */
-    --fs-footer-mark: 26vw;                    /* giant footer wordmark (phone) */
+    --fs-footer-mark: 31vw;                    /* giant footer wordmark (phone) */
+    --footer-mark-gap: 29px;                   /* Footer mark gap · phones: space between the copyright row and the top of the giant wordmark (Matt 2026-11-18) */
+    --footer-mark-sink: 0.28;                  /* Footer mark sink · phones: how far the wordmark box drops below the footer edge, as a share of its font size (0.18 is its own bottom padding, so the rest crops the bottom of the letters slightly) */
     --fs-footer-mark-lg: clamp(220px, 50vw, 880px); /* giant footer wordmark (768px+) */
     --ls-mark: -0.05em;
     --lh-mark: 0.78;
@@ -171,19 +173,28 @@
     --chat-gap: 16px;                  /* Chat gap · space between messages (px: ChatDemo reads it) */
     --chat-pill-w: 72px;               /* Chat pill width · the "..." pill a bubble grows from */
     --chat-pill-h: 43px;               /* Chat pill height */
-    --chat-lh: 1.35;                   /* Chat line height · message text, tighter than Meta (1.5) */
+    --chat-lh: 1.15;                   /* Chat line height · message text in the chat bubbles, tighter than Meta (1.5) (Matt, 2026-11-18) */
     --chat-pad-y: 16px;                /* Chat bubble padding, top and bottom */
     --chat-pad-x: 20px;                /* Chat bubble padding, sides */
     --chat-dot: 7px;                   /* Chat dot size */
     --chat-dot-gap: 5px;               /* Chat dot spacing */
-    --chat-avatar: 38px;               /* Chat call avatar */
-    --chat-button: 32px;               /* Chat call buttons */
-    --chat-call-gap: 12px;             /* Chat call card, space between its parts */
-    --chat-call-pad-y: 12px;
-    --chat-call-pad-x: 14px;
-    --chat-call-gap-phone: 10px;       /* Chat call card on phones */
-    --chat-call-pad-phone-y: 10px;
-    --chat-call-pad-phone-x: 12px;
+    --chat-avatar-lg: 88px;            /* Chat call avatar · the RF monogram on the call screen */
+    --chat-button-lg: 37px;          /* Chat call controls */
+    --chat-control-icon: 16px;       /* Chat call control icon */
+    --chat-doodle-cell: 30px;          /* Chat doodle cell · spacing of the wallpaper icons */
+    --chat-monogram-fill: 24 47% 94%;  /* Chat monogram fill · the logo pink (#F7EEE9) the favicon sits on, so the letters can shrink inside the circle */
+    --chat-monogram-nudge-x: 3%;       /* Chat monogram nudge · the R and F ink sits ~3% left and ~3.5% above the artwork centre, so shift it back to look centred */
+    --chat-monogram-nudge-y: 3.5%;
+    --chat-monogram-scale: 0.78;       /* Chat monogram size · letters as a share of the circle */
+    --chat-answer: 145 55% 36%;        /* Chat answer green · the green "answer" button on the call screen, dark enough for a white icon */
+    --chat-monogram-drop: 8px;         /* Chat monogram drop · how far the monogram sits below its slot, so it moves down without moving the name or controls */
+    --chat-call-text-pull: 4px;        /* Chat call screen · how far "WhatsApp calling" is pulled up under the name */
+    --chat-call-shift: 0px;            /* Chat call screen · how far the whole group sits below centre */
+    --chat-call-name-gap: 20px;        /* Chat call screen · extra space between the monogram and the name */
+    --chat-call-controls-gap: 4px;     /* Chat call screen · space between "WhatsApp calling" and the controls (on top of the stack gap) */
+    --chat-doodle-big: 26px;           /* Chat doodle, large icon */
+    --chat-doodle-small: 13px;         /* Chat doodle, small filler icon */
+    --chat-doodle-dot: 5px;            /* Chat doodle, tiny dot or ring */
     --drop-bubble: drop-shadow(0 1px 2px hsl(var(--text-primary) / 0.06)); /* Bubble shadow · barely there */
     --shadow-bubble-them: inset 0 1px 0 hsl(var(--background-light) / 0.8);
     --shadow-bubble-me: inset 0 1px 0 hsl(var(--background-light) / 0.4);
@@ -241,7 +252,8 @@
     --gap-actions: 12px;               /* Action gap · between two buttons side by side or stacked (home was 20) */
     --gap-columns: 64px;               /* Column gap · between the two halves of a split layout: text and form, text and photo (48 phone; Enquire used 64, Contact 80; Matt 2026-11-13) */
     --measure-step: 560px;             /* Step width · widest a stacked How it works step gets on tablets */
-    --gap-cards: 40px;                /* Card gap · between cards in a grid or row: steps, tiles, related articles (32 phone) */
+    --gap-cards: 40px;                 /* Card gap · between cards in a grid or row: steps, tiles, related articles (32 phone) */
+    --footer-brand-gap: 6px;           /* Footer brand gap · phones: extra space under the brand text, on top of the 48px row gap, before Services (54 in all, was 68; Matt 2026-11-18) */
     --gap-stacked: 24px;               /* Stacked gap · on phones, between the two halves of a .rfx-md-stack layout once they stack (About, reveals, service header, footer); was a hand-set 24 */
     --gap-paragraph: 20px;             /* Paragraph gap · one paragraph to the next (was 16 or 20; Matt 2026-11-13) */
     --gap-stack: 16px;                 /* Stack gap · between small stacked items, e.g. Contact's WhatsApp / Email / Instagram */
@@ -1172,7 +1184,13 @@
   .footer-grid { margin-bottom: var(--gap-columns); }
   .footer-title { margin-bottom: var(--gap-stack); }
   .footer-bar { padding-top: var(--gap-paragraph); gap: var(--gap-actions); }
-  @media (max-width: 767px) { .footer-brand { margin-bottom: var(--gap-paragraph); } }
+  @media (max-width: 767px) {
+    /* Brand text to Services: row gap 48 + this = 54, 20% less than the old 68 (Matt 2026-11-18). */
+    .footer-brand { margin-bottom: var(--footer-brand-gap); }
+    /* Phones: more air between the stacked link groups (Services, The studio, ...) */
+    /* !important and the double class beat .rfx-md-stack's own phone gap. */
+    .footer-grid.rfx-md-stack { row-gap: var(--gap-columns) !important; }
+  }
   .rfx-nav a:not(.btn-solid-rf):not(.no-underline-fx)::after {
     content: "";
     position: absolute;
@@ -1581,8 +1599,8 @@
      sits behind text (the footer's bottom padding makes room for it; the
      line box is 0.78em tall). md+: the large cropped version behind the
      columns, with a gentle scroll parallax. */
-  .rfx-footer-inner { padding-bottom: calc(26vw * 0.78 + 40px); }
-  .rfx-footer-mark-wrap { bottom: 14px; }
+  .rfx-footer-inner { padding-bottom: calc(var(--fs-footer-mark) * (0.96 - var(--footer-mark-sink)) + var(--footer-mark-gap)); }
+  .rfx-footer-mark-wrap { bottom: calc(var(--fs-footer-mark) * var(--footer-mark-sink) * -1); }
   .rfx-footer-mark {
     --rfx-mark-parallax: 0;
     font-family: var(--font-serif);
