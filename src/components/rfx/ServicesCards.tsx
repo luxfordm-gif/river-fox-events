@@ -1,23 +1,22 @@
-import { useState, type ReactNode } from "react";
-import ShowMoreButton from "@/components/rfx/ShowMoreButton";
+import { useRef, useState, type ReactNode } from "react";
 import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 /**
  * Service tile cards (Matt, 2026-11-18): "what I make" on the Balloons page and
  * "what I love making" on the three main service pages. A light card per tile
- * (hairline stroke, faint gradient), a small square photo on the left and the
- * name on the right. The name is an h3 in body text (t-small), so it keeps its
- * weight for search without shouting. Two across on phones and tablets, four
- * across from 1100px, running wider than the page margin.
+ * (hairline stroke, faint gradient): the photo on top, square and large, and the
+ * name under it. The name is an h3 in body text (t-small), so it keeps its
+ * weight for search without shouting.
  *
- * `initialCount` shows that many, then a compact "Show more" slides the rest
- * down. Keep the tile count even so every row ends full (12 or 16; the main
- * pages use 8 shown). A tile links on only when it has an href - a sub-service
- * page or a journal article - and the rest stay plain names (Matt, 2026-11-09).
- * Names must fit two lines at 360px wide: check no h3 overflows.
+ * Phones: a left-aligned swipe row, about 1.6 cards in view with the next one
+ * peeking in (`--tile-card-width`), and pagination dots under it. Tablet up: a
+ * grid, four across, all tiles shown. Tiles are 12 or 16 so rows end full.
+ * A tile links on only when it has an href - a sub-service page or a journal
+ * article - and the rest stay plain names (Matt, 2026-11-09).
  *
- * This replaced the phone swipe carousel on 2026-11-18, and the older
- * three-card services layout before it (retired 2026-11-08). Don't bring either
- * back: every "our services" block uses the homepage's Experiences component.
+ * History: a centred swipe row with one tile in view was replaced by a two-across
+ * grid of small side-photo cards (2026-11-18), which was too small, and then by
+ * this. The older three-card services layout was retired on 2026-11-08: every
+ * "our services" block uses the homepage's Experiences component.
  */
 export type ServiceCardItem = {
   title: string;
@@ -41,9 +40,13 @@ type ServicesCardsProps = {
       the 50/50 sections (Matt, 2026-11-09: every service page that has
       50/50s above its tiles). */
   divided?: boolean;
-  /** Show this many, then a "Show more" that slides the rest down. */
-  initialCount?: number;
+  /** An optional last card with no photo (soft peach, serif words), e.g. "Fully bespoke
+      to your needs." It closes the row and is not a link. */
+  endCard?: ReactNode;
 };
+
+/* Two cards per dot, so twelve or sixteen cards don't make a wall of dots. */
+const CARDS_PER_DOT = 2;
 
 const ServicesCards = ({
   items,
@@ -52,43 +55,25 @@ const ServicesCards = ({
   sectionId = "services",
   headingId = "services-cards-heading",
   divided = false,
-  initialCount,
+  endCard,
 }: ServicesCardsProps) => {
-  const [expanded, setExpanded] = useState(false);
-  const firstItems = initialCount ? items.slice(0, initialCount) : items;
-  const moreItems = initialCount ? items.slice(initialCount) : [];
+  const track = useRef<HTMLUListElement>(null);
+  const [active, setActive] = useState(0);
+  const total = items.length + (endCard ? 1 : 0);
+  const dots = Math.ceil(total / CARDS_PER_DOT);
 
-  const renderItem = (s: ServiceCardItem) => {
-    const card = (
-      <>
-        <div className="relative aspect-square overflow-hidden rounded-large">
-          {s.image && (
-            <img
-              src={s.image}
-              srcSet={s.srcSet}
-              sizes="96px"
-              alt={s.alt ?? ""}
-              loading="lazy"
-              decoding="async"
-              className="tile-img absolute inset-0 w-full h-full object-cover"
-              style={s.position ? { objectPosition: s.position } : undefined}
-            />
-          )}
-        </div>
-        <h3 className="t-small text-ink">
-          {s.href ? <span className="text-link">{s.title}</span> : s.title}
-        </h3>
-      </>
-    );
-    return (
-      <li key={s.title}>
-        {s.href ? (
-          <a href={s.href} className="tile-link tile-card">{card}</a>
-        ) : (
-          <div className="tile-card">{card}</div>
-        )}
-      </li>
-    );
+  /* The lit dot follows how far along the row you've swiped. */
+  const onScroll = () => {
+    const el = track.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setActive(max > 0 ? Math.round((el.scrollLeft / max) * (dots - 1)) : 0);
+  };
+  const goTo = (i: number) => {
+    const el = track.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    el.scrollTo({ left: (i / (dots - 1)) * max, behavior: "smooth" });
   };
 
   return (
@@ -106,19 +91,58 @@ const ServicesCards = ({
           </div>
         )}
 
-        <ul className="tile-card-grid">{firstItems.map(renderItem)}</ul>
-        {moreItems.length > 0 && (
-          <>
-            <div className="tile-more" data-state={expanded ? "open" : "closed"}>
-              <div className="tile-more__inner">
-                <ul className="tile-card-grid" aria-hidden={!expanded}>
-                  {moreItems.map(renderItem)}
-                </ul>
-              </div>
-            </div>
-            {!expanded && <ShowMoreButton compact onClick={() => setExpanded(true)} />}
-          </>
-        )}
+        <ul ref={track} onScroll={onScroll} className="tile-card-row">
+          {items.map((s) => {
+            const card = (
+              <>
+                <div className="relative aspect-square overflow-hidden rounded-large">
+                  {s.image && (
+                    <img
+                      src={s.image}
+                      srcSet={s.srcSet}
+                      sizes="(min-width: 1100px) 240px, (min-width: 768px) 22vw, 60vw"
+                      alt={s.alt ?? ""}
+                      loading="lazy"
+                      decoding="async"
+                      className="tile-img absolute inset-0 w-full h-full object-cover"
+                      style={s.position ? { objectPosition: s.position } : undefined}
+                    />
+                  )}
+                </div>
+                <h3 className="t-small text-ink">
+                  {s.href ? <span className="text-link">{s.title}</span> : s.title}
+                </h3>
+              </>
+            );
+            return (
+              <li key={s.title}>
+                {s.href ? (
+                  <a href={s.href} className="tile-link tile-card">{card}</a>
+                ) : (
+                  <div className="tile-card">{card}</div>
+                )}
+              </li>
+            );
+          })}
+          {endCard && (
+            <li>
+              <div className="tile-card tile-card--end">{endCard}</div>
+            </li>
+          )}
+        </ul>
+        <div className="carousel-dots md:hidden" role="tablist" aria-label="Choose a tile">
+          {Array.from({ length: dots }, (_, i) => (
+            <button
+              key={i}
+              type="button"
+              role="tab"
+              aria-selected={i === active}
+              aria-label={`Show tiles ${i * CARDS_PER_DOT + 1} to ${Math.min((i + 1) * CARDS_PER_DOT, total)}`}
+              onClick={() => goTo(i)}
+              className={`tcard-dot ${i === active ? "is-active" : ""}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
