@@ -210,12 +210,12 @@ export function makeLocation(input: LocationInput): LocationConfig {
         .join(", ")}.`
     );
   }
-  const heroFanImages = images
-    ? (images.heroFan.map((k) => LATEST_WORK[k]) as [
-        { src: string; alt: string },
-        { src: string; alt: string },
-        { src: string; alt: string }
-      ])
+  const heroFanImages: [
+    { src: string; alt: string },
+    { src: string; alt: string },
+    { src: string; alt: string }
+  ] | undefined = images
+    ? [LATEST_WORK[images.heroFan[0]], LATEST_WORK[images.heroFan[1]], LATEST_WORK[images.heroFan[2]]]
     : undefined;
   const galMain = images
     ? LATEST_WORK[images.galleryMain]
