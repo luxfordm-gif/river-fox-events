@@ -256,7 +256,6 @@ const CorporateAndBrand = () => {
             50/50 section (Matt, 2026-11-09). */}
         <ServicesCards
           divided
-          initialCount={8}
           sectionId="cb-what-we-do"
           headingId="cb-do-heading"
           items={CORPORATE_TILES}

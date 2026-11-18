@@ -314,8 +314,10 @@
     --gap-media: 20px;                /* Media gap · a photo or icon down to a card title under it (were 16 to 32) */
     --gap-caption: 12px;               /* Caption gap · a photo down to its caption, close so it reads as the photo's label (Our work, tile names, article photos) */
     --tile-card-lh: 1.4;               /* Tile card line height · the name in a tile card, a little tighter than body so two lines sit close */
-    --tile-card-photo: 48px;           /* Tile card photo · the small square photo in a tile card */
-    --tile-card-pad: 6px;             /* Tile card padding · inside a tile card, round the photo */
+    --tile-card-width: calc((100vw - 2 * var(--gutter)) * 0.62); /* Tile card width · on phones, one tile card in the swipe row: about 1.6 cards in view, the next one peeking in. Raise the 0.62 for fewer cards in view */
+    --tile-card-fill: 0 0% 100%;       /* Tile card fill · plain white, the one place the site uses pure white as a surface: a tile card sits a touch lighter than the warm off-white page, with its hairline stroke defining the edge */
+    --tile-end-measure: 14ch;          /* Tile end card line · how wide the line under "Anything's possible." may run, so it wraps onto two balanced lines */
+    --tile-card-pad: 12px;            /* Tile card padding · inside a tile card, round the photo */
     --gap-photos: 12px;                /* Photo gap · between photos in a grid or strip (8 phone; were 8 / 12 / 16) */               /* List indent · how far bullet text sits in from the bullet's edge (In short lists) */             /* Article side padding · inside narrow article blocks */              /* Link list gap · between links in a list, e.g. a footer column */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
     --gutter: 56px;                    /* Side gutter · space at the left and right of the page content (32 phone, 8% on laptops) */
@@ -607,7 +609,7 @@
     z-index: 0;
   }
   .ph-warm { background: hsl(var(--background-warm)); }
-  .ph-blush { background: hsl(var(--background-blush)); }
+  .ph-blush { background: hsl(var(--background-warm)); }
 
   /* Removed numeric/label overlays on imagery */
 
@@ -958,42 +960,41 @@
   .exp-card:hover .exp-img-wrap { --hover-zoom: 1.05; }
   /* "What we do" photo tiles that link on (ServicesCards): the same gentle
      5% zoom as the service cards. Plain tiles don't move. */
-  /* Tile cards: small photo on the left, name on the right, two across and wider than the page margin */
-  .tile-card-grid {
-    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-photos); list-style: none; padding: 0;
-    margin-inline: calc(var(--gutter-wide) - var(--gutter));
+  /* Tile cards: a light card with the photo on top and the name under it.
+     Phones: a left-aligned swipe row, the next card peeking in, dots below.
+     Tablet up: a grid, four across. */
+  .tile-card-row {
+    display: flex; gap: var(--gap-stack); list-style: none; padding: 0;
+    overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter);
   }
+  .tile-card-row::-webkit-scrollbar { display: none; }
+  .tile-card-row > li { flex: none; width: var(--tile-card-width); scroll-snap-align: start; display: flex; }
   @media (min-width: 768px) {
-    .tile-card-grid { gap: var(--gap-stack); max-width: var(--container-narrow); margin-inline: auto; }
+    .tile-card-row {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap-cards);
+      overflow: visible; margin-inline: auto; padding-inline: 0; max-width: var(--container-narrow);
+    }
+    .tile-card-row > li { width: auto; }
   }
-  @media (min-width: 1100px) {
-    .tile-card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  }
-  .tile-card-grid > li { display: flex; }
   .tile-card {
-    display: flex; align-items: center; gap: var(--gap-photos);
-    width: 100%;
+    display: block; width: 100%;
     padding: var(--tile-card-pad);
     border: 1px solid hsl(var(--hair));
     border-radius: var(--radius-large);
-    background: linear-gradient(180deg, hsl(var(--background-light)), hsl(var(--background) / 0.45));
+    background: hsl(var(--tile-card-fill));
     box-shadow: var(--shadow-rest);
   }
-  .tile-card > div:first-child { flex: none; width: var(--tile-card-photo); border-radius: var(--radius-small); }
-  .tile-card h3 { min-width: 0; line-height: var(--tile-card-lh); }
-  .tile-more {
-    display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden;
-    transition: grid-template-rows var(--motion-slow) var(--ease-soft), opacity var(--motion-base) ease, visibility 0s linear var(--motion-slow);
+  .tile-card > div:first-child { border-radius: var(--radius-small); }
+  /* The closing card: soft peach (Warm) with a white glow, no photo, words only, as tall as its neighbours. */
+  .tile-card--end {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    gap: var(--gap-title-body);
+    /* A soft white glow in the middle, over the Warm peach */
+    background: radial-gradient(ellipse at 50% 50%, hsl(var(--tile-card-fill) / 0.85), hsl(var(--tile-card-fill) / 0) 72%), hsl(var(--background-warm));
   }
-  .tile-more[data-state="open"] {
-    grid-template-rows: 1fr; opacity: 1; visibility: visible;
-    transition: grid-template-rows var(--motion-slow) var(--ease-soft), opacity var(--motion-base) ease 80ms, visibility 0s;
-  }
-  .tile-more__inner { min-height: 0; overflow: hidden; }
-  .tile-more { margin-inline: calc(var(--gutter-wide) - var(--gutter)); }
-  .tile-more .tile-card-grid { margin-inline: 0; max-width: none; margin-top: var(--gap-photos); }
-  @media (min-width: 768px) { .tile-more { max-width: var(--container-narrow); margin-inline: auto; } .tile-more .tile-card-grid { margin-top: var(--gap-stack); } }
-  @media (prefers-reduced-motion: reduce) { .tile-more, .tile-more[data-state="open"] { transition: none; } }
+  .tile-card--end p { max-width: var(--tile-end-measure); text-wrap: balance; }
+  .tile-card h3 { line-height: var(--tile-card-lh); text-align: center; padding: var(--gap-stack) var(--gap-icon) var(--gap-icon); }
   .tile-link .tile-img { transition: transform var(--motion-drift) var(--ease-glide); }
   .tile-link:hover .tile-img { transform: scale(1.05); }
   .tile-link:hover .text-link { text-decoration-color: transparent; }
@@ -1132,7 +1133,6 @@
   .nav-menu { padding: var(--menu-pad); border-radius: var(--radius-large); }
   .nav-menu__item { display: flex; align-items: center; gap: var(--gap-icon); padding: var(--menu-item-pad); }
   .nav-menu__rule { margin: var(--menu-rule-gap) 20px; }
-  .btn-ghost-rf.btn-hair { border-color: hsl(var(--hair)); }   /* Hairline outline · a ghost button with the same stroke as a tile card */
   .btn-compact { padding: var(--btn-compact-pad) !important; }
   .cookie-agree { padding: var(--cookie-agree-pad) !important; }
   /* Phone menu: the first link sits one Menu section gap under the nav, the
@@ -1412,7 +1412,7 @@
   @media (prefers-reduced-motion: reduce) {
     .rfx-reveal { opacity: 1; transform: none; transition: none; }
   }
-  .rfx-section.blush { background: hsl(var(--background-blush)); }
+  .rfx-section.blush { background: hsl(var(--background-warm)); }
 
   /* Story-style photo carousel (StoryCarousel.tsx): bars along the bottom
      fill over each photo's turn, like Instagram stories. */
