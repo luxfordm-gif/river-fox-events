@@ -268,9 +268,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-oxted",
     ogImage: "/og/og-fairy-kayla.webp",
-    title: "Party Styling in Oxted | River Fox Events",
+    title: "Party Planner Oxted | Kids’ Party Styling | River Fox Events",
     description:
-      "Party decorations in Oxted, Limpsfield and Hurst Green. Balloon arches, painted name boards and themed props, installed and collected by Laura, from £300.",
+      "Party planner in Oxted, Limpsfield and Hurst Green. Balloon arches, painted name boards and themed props, installed and collected by Laura.",
     breadcrumbName: "Party Styling Oxted",
     breadcrumbParent: "/areas-we-cover",
     service: {
@@ -284,9 +284,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-cobham",
     ogImage: "/og/og-wonka-chocolate-arch.webp",
-    title: "Party Styling in Cobham | River Fox Events",
+    title: "Party Planner Cobham | Kids’ Party Styling | River Fox Events",
     description:
-      "Balloon arches, garlands and photo backdrops for Cobham and Stoke d'Abernon parties. Designed by Laura, set up on the morning and taken down after, from £300.",
+      "Party planner in Cobham and Stoke d’Abernon. Balloon arches, garlands and photo backdrops, designed by Laura, set up on the morning and taken down after.",
     breadcrumbName: "Party Styling Cobham",
     breadcrumbParent: "/areas-we-cover",
     service: {
@@ -332,9 +332,9 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/party-styling-reigate",
     ogImage: "/og/og-naming-harvey-daisy.webp",
-    title: "Party Styling in Reigate | River Fox Events",
+    title: "Party Planner Reigate | Kids’ Party Styling | River Fox Events",
     description:
-      "Fifteen minutes from the studio - children's party styling in Reigate, from first birthdays to big themed celebrations, individually designed by Laura.",
+      "Party planner in Reigate, fifteen minutes from the studio. Children’s party styling from first birthdays to big themed celebrations, designed by Laura.",
     breadcrumbName: "Party Styling Reigate",
     breadcrumbParent: "/areas-we-cover",
     service: {

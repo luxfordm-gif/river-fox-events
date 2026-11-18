@@ -24,11 +24,23 @@ const townFromSlug = (slug: string) =>
     .map((w) => w[0].toUpperCase() + w.slice(1))
     .join(" ");
 
+// Matt, 2026-11-18: these three towns use "Party Planner [Town] | Kids' Party
+// Styling | River Fox Events" instead of the usual town pattern.
+const CUSTOM_TOWN_TITLES: Record<string, string> = {
+  "/party-styling-cobham": "Party Planner Cobham | Kids’ Party Styling | River Fox Events",
+  "/party-styling-oxted": "Party Planner Oxted | Kids’ Party Styling | River Fox Events",
+  "/party-styling-reigate": "Party Planner Reigate | Kids’ Party Styling | River Fox Events",
+};
+
 describe("page titles", () => {
   it("every town page reads 'Party Styling in [Town] | River Fox Events'", () => {
     const towns = ROUTES.filter((r) => r.path.startsWith("/party-styling-"));
     expect(towns.length).toBeGreaterThan(0);
     for (const r of towns) {
+      if (CUSTOM_TOWN_TITLES[r.path]) {
+        expect(r.title, r.path).toBe(CUSTOM_TOWN_TITLES[r.path]);
+        continue;
+      }
       const town = townFromSlug(r.path.replace("/party-styling-", ""));
       expect(r.title, r.path).toBe(`Party Styling in ${town}${SUFFIX}`);
     }
