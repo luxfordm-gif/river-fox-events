@@ -1172,7 +1172,12 @@
   .footer-grid { margin-bottom: var(--gap-columns); }
   .footer-title { margin-bottom: var(--gap-stack); }
   .footer-bar { padding-top: var(--gap-paragraph); gap: var(--gap-actions); }
-  @media (max-width: 767px) { .footer-brand { margin-bottom: var(--gap-paragraph); } }
+  @media (max-width: 767px) {
+    .footer-brand { margin-bottom: var(--gap-paragraph); }
+    /* Phones: more air between the stacked link groups (Services, The studio, ...) */
+    /* !important and the double class beat .rfx-md-stack's own phone gap. */
+    .footer-grid.rfx-md-stack { row-gap: var(--gap-columns) !important; }
+  }
   .rfx-nav a:not(.btn-solid-rf):not(.no-underline-fx)::after {
     content: "";
     position: absolute;
