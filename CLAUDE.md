@@ -24,6 +24,7 @@ Key rules, all detailed in the brief:
 - Ask which platform first (Instagram, Facebook, Google Business, or all), then file as the brief's Filing section says.
 - Google Business photo posts have no overlay and no text. Plain photo only.
 - Review images use the pack's review template, with the quote in Fraunces italic.
+- **Instagram Stories and Reels** (Laura's clips, captioned, 18 November 2026): the style, transcription step and build script live only in the `instagram-story` skill on Matt's Mac (`~/.claude/skills/instagram-story/`); don't copy its rules here. The social pack has no page for it yet, so tell Matt it needs a new version (the skill ends with text ready to paste). Finished stories go in Drive > Social > Instagram stories.
 
 On Matt's Mac the River Fox folder is synced at `~/Library/CloudStorage/GoogleDrive-luxfordm@gmail.com/.shortcut-targets-by-id/15xXTgs2DbOgYjchcf10XYQBGHprCfmOs/River Fox Events/`.
 
