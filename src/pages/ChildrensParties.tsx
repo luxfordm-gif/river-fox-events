@@ -114,7 +114,7 @@ const ChildrensParties = () => {
 
         <CPReveal
           id="cp-themes"
-          imageSide="right"
+          imageSide="left"
           image={imgThemes}
           alt="Purple and lilac balloon arch with a gold Savanna ticket panel, cocoa-bar plinth, lollipop swirls and a number 5 column"
           hoverImage={imgThemesHover}
