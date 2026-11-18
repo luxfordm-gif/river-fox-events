@@ -6,6 +6,8 @@ import {
   resetTrackingState,
   scrub,
   trackFormSent,
+  trackPhotoNavigate,
+  trackTileSwipe,
 } from "@/lib/track";
 import { whatsappHref } from "@/lib/whatsapp";
 
@@ -294,5 +296,65 @@ describe("scroll_depth", () => {
     accept();
     scrollTo(1400);
     expect(named("scroll_depth").map((p) => p.percent)).toEqual([25, 50]);
+  });
+});
+
+describe("photos", () => {
+  const page = () => {
+    document.body.innerHTML = `
+      <section id="recent-work"><h2>Recent work</h2>
+        <button data-track-photo="gallery/cobham-arch.webp"><img alt="Pastel arch at a Cobham party" /></button>
+        <div data-track-photo="a/b/sailboards.webp" data-track-text="Sailboards"><h3>Sailboards</h3></div>
+        <button data-show-more>Show more</button>
+        <ul id="row"></ul>
+      </section>
+      <form name="enquire"><input type="hidden" name="form-name" value="enquire" /></form>`;
+  };
+  const click = (sel: string) => (document.querySelector(sel) as HTMLElement).click();
+
+  it("sends photo_open with the file name, tile name and section", () => {
+    accept();
+    page();
+    click("button[data-track-photo]");
+    click("h3");
+    expect(named("photo_open")).toEqual([
+      expect.objectContaining({ photo: "cobham-arch", photo_name: "Pastel arch at a Cobham party", section: "recent-work", location: "body" }),
+      expect.objectContaining({ photo: "sailboards", photo_name: "Sailboards", section: "recent-work" }),
+    ]);
+  });
+
+  it("sends viewer steps, show more and the first tile swipe only", () => {
+    accept();
+    page();
+    click("button[data-track-photo]");
+    trackPhotoNavigate("gallery/sailboards.webp", "next", 2);
+    click("[data-show-more]");
+    const row = document.querySelector("#row")!;
+    trackTileSwipe(row);
+    trackTileSwipe(row);
+    expect(named("photo_viewer_navigate")).toEqual([
+      expect.objectContaining({ photo: "sailboards", direction: "next", position: 2, section: "recent-work" }),
+    ]);
+    expect(named("show_more_click")).toEqual([expect.objectContaining({ section: "recent-work" })]);
+    expect(named("tile_swipe")).toEqual([expect.objectContaining({ section: "recent-work" })]);
+  });
+
+  it("adds the last photo and the count to generate_lead", () => {
+    accept();
+    page();
+    click("button[data-track-photo]");
+    click("h3");
+    trackFormSent(document.querySelector("form")!);
+    expect(named("generate_lead")).toEqual([
+      expect.objectContaining({ last_photo: "sailboards", photos_opened: 2 }),
+    ]);
+  });
+
+  it("sends nothing before Accept", () => {
+    page();
+    click("button[data-track-photo]");
+    click("[data-show-more]");
+    trackPhotoNavigate("x.webp", "next", 1);
+    expect(gtag).not.toHaveBeenCalled();
   });
 });

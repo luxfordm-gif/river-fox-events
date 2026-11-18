@@ -1,5 +1,6 @@
 import { useRef, useState, type PointerEvent, type ReactNode } from "react";
 import { Viewer, type ViewerItem } from "@/components/rfx/PhotoViewer";
+import { trackTileSwipe } from "@/lib/track";
 import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 /**
  * Service tile cards (Matt, 2026-11-18): "what I make" on the Balloons page and
@@ -61,6 +62,7 @@ const ServicesCards = ({
     const el = track.current;
     if (!el) return;
     const max = el.scrollWidth - el.clientWidth;
+    if (el.scrollLeft > 24) trackTileSwipe(el);
     setActive(max > 0 ? Math.round((el.scrollLeft / max) * (dots - 1)) : 0);
   };
   const goTo = (i: number) => {
@@ -104,7 +106,7 @@ const ServicesCards = ({
         <ul ref={track} onScroll={onScroll} className="tile-card-row">
           {items.map((s, i) => (
             <li key={s.title}>
-              <div className="tile-card" onClick={openAt(i)} onPointerMove={tilt} onPointerLeave={untilt}>
+              <div className="tile-card" data-track-photo={s.source} data-track-text={s.title} onClick={openAt(i)} onPointerMove={tilt} onPointerLeave={untilt}>
                 <div className="relative aspect-square overflow-hidden rounded-large">
                   <img
                     src={s.src}

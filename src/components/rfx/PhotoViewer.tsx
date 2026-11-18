@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
 import type { ResolvedPhoto } from "@/data/gallery";
+import { trackPhotoNavigate } from "@/lib/track";
 
 /* The photo tile and full-screen viewer used by /our-work/ and the town
    pages' photo grid. Moved out of OurWork.tsx so both share one look. */
@@ -11,7 +12,7 @@ export type ViewerItem = ResolvedPhoto & { title: string; place?: string };
 export const Tile = ({
   photo, sizes, onOpen, crop, eager,
 }: { photo: ResolvedPhoto; sizes: string; onOpen: () => void; crop?: string; eager?: boolean }) => (
-  <button type="button" className="work-tile" onClick={onOpen} aria-label={`View larger: ${photo.alt}`}>
+  <button type="button" className="work-tile" data-track-photo={photo.source} onClick={onOpen} aria-label={`View larger: ${photo.alt}`}>
     <img
       src={photo.src}
       srcSet={photo.srcSet}
@@ -43,8 +44,12 @@ export const Viewer = ({
   const closeRef = useRef<HTMLButtonElement>(null);
   const startX = useRef<number | null>(null);
   const go = useCallback(
-    (d: number) => onIndex((index + d + items.length) % items.length),
-    [index, items.length, onIndex]
+    (d: number) => {
+      const next = (index + d + items.length) % items.length;
+      trackPhotoNavigate(items[next].source, d > 0 ? "next" : "previous", next + 1);
+      onIndex(next);
+    },
+    [index, items, onIndex]
   );
 
   useEffect(() => {

@@ -22,6 +22,18 @@
  *   announcement_bar_click  a tap on the phone announcement bar (sent by the bar
  *                     itself, with the line's text; its link is marked
  *                     data-track-skip so it isn't also a cta_click)
+ *   photo_open        a tap on a photo tile (any element marked
+ *                     data-track-photo="file-name"; the tile name comes from
+ *                     data-track-text, else the photo's alt). Adds photo,
+ *                     photo_name, section, location
+ *   photo_viewer_navigate  next or previous in the full-screen viewer (arrows,
+ *                     keys or swipe), with photo, direction, position, section
+ *   show_more_click   any "Show more" button (ShowMoreButton carries
+ *                     data-show-more), with section
+ *   tile_swipe        first swipe of a service tile row on a phone (sent once
+ *                     per row by ServicesCards), with section
+ *   generate_lead also carries last_photo and photos_opened when the visitor
+ *                     opened any photo before sending the form
  *
  * Every event carries page_path and location ("nav", "footer", "hero",
  * "form" or "body"). Clicks add link_text, link_url and section (the
@@ -181,6 +193,56 @@ export function classifyLink(a: HTMLAnchorElement): ClickEvent | "nav_click" | n
   return null;
 }
 
+/* ---------- Photos ---------- */
+
+/** "gallery/cobham-arch.webp" or a URL: just "cobham-arch". */
+const photoId = (v: string) => v.replace(/[?#].*$/, "").replace(/^.*\//, "").replace(/\.[a-z0-9]+$/i, "");
+
+/** The photo the visitor opened last, and how many they've opened this visit:
+ *  sent with generate_lead, so an enquiry says which photos came before it. */
+let lastPhoto: { id: string; section: string } | null = null;
+let photosOpened = 0;
+const swipedRows = new WeakSet<Element>();
+
+function onPhotoClick(target: Element) {
+  const el = target.closest("[data-track-photo]");
+  if (!el) return;
+  const id = photoId(el.getAttribute("data-track-photo") || "");
+  if (!id) return;
+  const name = tidy(el.getAttribute("data-track-text") || el.querySelector("img")?.getAttribute("alt"));
+  const section = sectionOf(el);
+  if (trackEvent("photo_open", { photo: id, photo_name: name, location: areaOf(el), section })) {
+    photosOpened += 1;
+  }
+  // Remembered even before consent, so the viewer's events know where it opened.
+  lastPhoto = { id, section };
+}
+
+/** The viewer calls this when someone steps to another photo. `file` is the
+ *  photo now showing; `position` is 1-based. */
+export function trackPhotoNavigate(file: string, direction: "next" | "previous", position: number) {
+  trackEvent("photo_viewer_navigate", {
+    photo: photoId(file),
+    direction,
+    position,
+    location: "body",
+    section: lastPhoto?.section,
+  });
+}
+
+/** ServicesCards calls this on a row's scroll; only the first real swipe
+ *  along each row is sent. */
+export function trackTileSwipe(row: Element) {
+  if (swipedRows.has(row)) return;
+  if (trackEvent("tile_swipe", { location: areaOf(row), section: sectionOf(row) })) swipedRows.add(row);
+}
+
+function onShowMoreClick(target: Element) {
+  const el = target.closest("[data-show-more]");
+  if (!el) return;
+  trackEvent("show_more_click", { location: areaOf(el), section: sectionOf(el) });
+}
+
 /* ---------- Forms ---------- */
 
 type FormState = { fields: Set<string>; last: string; extras: boolean };
@@ -277,6 +339,8 @@ export function trackFormSent(form: HTMLFormElement) {
     ...formParams(form),
     customer_type: customerType,
     garland: get("garland") || undefined,
+    last_photo: lastPhoto?.id,
+    photos_opened: photosOpened || undefined,
   });
 }
 
@@ -312,7 +376,11 @@ function onScroll() {
 function onLinkClick(e: MouseEvent) {
   const target = e.target as Element | null;
   if (!target?.closest) return;
-  if (e.type === "click") onExtrasClick(target);
+  if (e.type === "click") {
+    onExtrasClick(target);
+    onPhotoClick(target);
+    onShowMoreClick(target);
+  }
   const a = target.closest("a[href]") as HTMLAnchorElement | null;
   if (!a) return;
   // The announcement bar sends its own event (announcement_bar_click).
@@ -355,4 +423,6 @@ export function installTracking() {
 export function resetTrackingState() {
   started.clear();
   scrollSent.clear();
+  lastPhoto = null;
+  photosOpened = 0;
 }

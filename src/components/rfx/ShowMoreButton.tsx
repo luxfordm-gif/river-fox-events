@@ -9,7 +9,7 @@ type Props = { onClick: () => void; className?: string };
 
 const ShowMoreButton = ({ onClick, className = "flex" }: Props) => (
   <div className={`text-to-content justify-center ${className}`}>
-    <button type="button" onClick={onClick} className="btn-ghost-rf">
+    <button type="button" data-show-more onClick={onClick} className="btn-ghost-rf">
       Show more
     </button>
   </div>
