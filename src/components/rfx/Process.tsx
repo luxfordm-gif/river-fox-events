@@ -46,8 +46,8 @@ const REASSURANCE = "No obligation · Proposal in a day or two · Set‑up inclu
    with a picture over its title. The pictures tell one story: step 1 a short
    WhatsApp-style chat with Laura, step 2 the hand-drawn concept she sends, step
    3 the finished event. They come from a scenario (src/data/howItWorks.ts), so
-   each page shows a party that suits it. Steps stack on phones, three across
-   from tablet up; the enquiry button sits under them.
+   each page shows a party that suits it. Steps stack on phones and tablets (one column, at most
+   --measure-step wide), three across from 1024px up; the enquiry button sits under them.
    No dark band: the section shares its neighbours' background, and the
    same-background rule in index.css gives it one Section gap above and below. */
 const Process = ({
@@ -67,7 +67,7 @@ const Process = ({
       <img
         src={picture.src}
         srcSet={picture.srcSet}
-        sizes="(min-width: 768px) 33vw, 100vw"
+        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 560px, 100vw"
         alt={picture.alt}
         loading="lazy"
         decoding="async"
@@ -87,7 +87,7 @@ const Process = ({
           </SectionHeading>
         </div>
 
-        <ol className="hiw-steps cards-gap">
+        <ol className="hiw-steps">
           {steps.map((s, i) => (
             <li key={s.n}>
               {i < 3 && (
@@ -96,7 +96,7 @@ const Process = ({
               <h3 className="t-h5 text-ink media-to-title">
                 <span className="text-accent-warm">{s.n}.</span> {s.title}
               </h3>
-              <p className="t-small text-ink-soft title-to-text text-wrap">{s.body}</p>
+              <p className="t-small text-ink-soft title-to-text">{s.body}</p>
             </li>
           ))}
         </ol>

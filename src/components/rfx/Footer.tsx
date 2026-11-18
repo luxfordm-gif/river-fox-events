@@ -1,20 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, ChevronRight, Instagram } from "lucide-react";
+import { ChevronRight, Instagram } from "lucide-react";
 import { useScrollY } from "@/hooks/useRiverFox";
-import { TOWNS } from "@/data/locations/towns";
 import { whatsappHref } from "@/lib/whatsapp";
-
-const FOOTER_LOCATIONS_VISIBLE = 5;
 
 const Footer = () => {
   const y = useScrollY();
   const watermarkRef = useRef<HTMLDivElement>(null);
   const [revealed, setRevealed] = useState(false);
-  const [showAllLocations, setShowAllLocations] = useState(false);
-  const visibleLocations = showAllLocations
-    ? TOWNS
-    : TOWNS.slice(0, FOOTER_LOCATIONS_VISIBLE);
-  const hasMoreLocations = TOWNS.length > FOOTER_LOCATIONS_VISIBLE;
 
   useEffect(() => {
     const el = watermarkRef.current;
@@ -102,8 +94,8 @@ const Footer = () => {
           />
 
           {/* Footer columns */}
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr_1fr] cards-gap footer-grid rfx-md-stack">
-            <div className="footer-brand">
+          <div className="grid grid-cols-1 md:grid-cols-[repeat(4,auto)] xl:grid-cols-[repeat(5,auto)] md:justify-between cards-gap footer-grid rfx-md-stack">
+            <div className="footer-brand md:col-span-4 xl:col-span-1">
               <div className="t-wordmark-lg whitespace-nowrap">
                 RIVER&nbsp;FOX&nbsp;EVENTS
               </div>
@@ -118,46 +110,11 @@ const Footer = () => {
                 Services
               </div>
               <div className="t-meta link-list">
-                <a href="/childrens-parties/" className="opacity-85 hover:opacity-100 block">Children's Party Styling</a>
-                <a href="/milestone-celebrations/" className="opacity-85 hover:opacity-100 block">Milestone Celebration Styling</a>
-                <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate Event Styling</a>
-                <a href="/balloon-installations/" className="opacity-85 hover:opacity-100 block">Balloon Decorations</a>
-                <a href="/christmas-door-garlands/" className="opacity-85 hover:opacity-100 block">Christmas Door Garlands</a>
-              </div>
-            </div>
-            {/* On phones the columns read Services, The studio, Locations, Contact. */}
-            <div className="max-md:order-3">
-              <div className="t-overline footer-title text-on-deep">
-                Locations
-              </div>
-              <div className="t-meta link-list">
-                {visibleLocations.map((loc) => (
-                  <a
-                    key={loc.slug}
-                    href={`/party-styling-${loc.slug}/`}
-                    className="opacity-85 hover:opacity-100 block"
-                  >
-                    Party Styling in {loc.cityName}
-                  </a>
-                ))}
-                {hasMoreLocations && (
-                  <button
-                    type="button"
-                    onClick={() => setShowAllLocations((s) => !s)}
-                    aria-expanded={showAllLocations}
-                    className="inline-flex items-center icon-gap bg-transparent border-0 p-0 cursor-pointer t-meta opacity-70 hover:opacity-100 text-inherit"
-                  >
-                    {showAllLocations ? "Show less" : "Show more"}
-                    <ChevronDown
-                      size={12}
-                      strokeWidth={1.25}
-                      aria-hidden="true"
-                      className={`transition-transform duration-quick ${
-                        showAllLocations ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                )}
+                <a href="/childrens-parties/" className="opacity-85 hover:opacity-100 block">Children's party styling</a>
+                <a href="/milestone-celebrations/" className="opacity-85 hover:opacity-100 block">Milestone celebration styling</a>
+                <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate event styling</a>
+                <a href="/balloon-installations/" className="opacity-85 hover:opacity-100 block">Balloon decorations</a>
+                <a href="/christmas-door-garlands/" className="opacity-85 hover:opacity-100 block">Christmas door garlands</a>
               </div>
             </div>
             <div>
@@ -165,17 +122,40 @@ const Footer = () => {
                 The studio
               </div>
               <div className="t-meta link-list">
-                <a href="/our-work/" className="opacity-85 hover:opacity-100 block">Our Work</a>
+                <a href="/our-work/" className="opacity-85 hover:opacity-100 block">Our work</a>
                 <a href="/#about" className="opacity-85 hover:opacity-100 block">About Laura</a>
                 <a href="/#process" className="opacity-85 hover:opacity-100 block">How it works</a>
                 <a href="/#faq" className="opacity-85 hover:opacity-100 block">FAQ</a>
                 <a href="/journal/" className="opacity-85 hover:opacity-100 block">Journal</a>
               </div>
             </div>
-            <div className="max-md:order-4">
+            {/* Same order on every screen: Services, The studio, Areas I cover, Contact. */}
+            <div>
+              <a
+                href="/areas-we-cover/"
+                className="t-overline footer-title flex w-fit items-center icon-gap no-underline hover:underline underline-offset-4 decoration-on-deep/50 text-on-deep"
+              >
+                Areas I cover
+                <ChevronRight
+                  size={11}
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                  className="opacity-75 -mt-px"
+                />
+              </a>
+              <div className="t-meta link-list text-ink-faint">
+                <p className="measure-card">
+                  Surrey and London, plus Sussex and west Kent.
+                </p>
+                <a href="/areas-we-cover/" className="opacity-85 hover:opacity-100 block">
+                  See every town
+                </a>
+              </div>
+            </div>
+            <div>
               <a
                 href="/contact/"
-                className="t-overline footer-title inline-flex items-center icon-gap no-underline hover:underline underline-offset-4 decoration-on-deep/50 text-on-deep"
+                className="t-overline footer-title flex w-fit items-center icon-gap no-underline hover:underline underline-offset-4 decoration-on-deep/50 text-on-deep"
               >
                 Contact
                 <ChevronRight

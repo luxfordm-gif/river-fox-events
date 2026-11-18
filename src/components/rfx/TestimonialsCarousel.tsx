@@ -4,8 +4,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { REVIEWS, type Review } from "@/seo/routes";
@@ -49,17 +47,18 @@ const TestimonialsCarousel = ({ reviews = REVIEWS }: TestimonialsCarouselProps =
   return (
     <div className="-mx-6 sm:-mx-8 md:mx-0">
       <Carousel
-        opts={{ align: "center", loop: true, containScroll: "trimSnaps", slidesToScroll: "auto", duration: 40 }}
+        opts={{ align: "center", loop: true, containScroll: "trimSnaps", slidesToScroll: "auto", duration: 40, breakpoints: { "(min-width: 768px)": { align: "start" } } }}
         plugins={plugins}
         setApi={setApi}
-        className="-my-4 md:px-16 lg:px-12"
+        className="-my-4 md:-mx-3"
       >
         {/* Vertical room inside the carousel's clipping box so the card's
             hover lift and shadow aren't cut off; -my-4 on the carousel takes
-            it back out of the layout. From tablet up the cards also sit
-            12px in from both sides of that box (half the 24px gap each
-            side), so the outer cards' outlines are never on the clipping
-            edge and don't vanish mid-slide (Matt, 2026-11-13). */}
+            it back out of the layout. From tablet up the cards sit 12px in
+            from both sides of the box (so outlines never touch the clipping
+            edge) and the box is pulled out 12px each side, so the outer
+            cards line up with the page content like every other section.
+            No arrows: dots at every width (Matt, 2026-11-17). */}
         <CarouselContent className="-ml-4 md:ml-0 py-4">
           {reviews.map((t, i) => (
             <CarouselItem
@@ -91,12 +90,10 @@ const TestimonialsCarousel = ({ reviews = REVIEWS }: TestimonialsCarouselProps =
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="hidden md:flex sm:left-2 lg:-left-6" />
-        <CarouselNext className="hidden md:flex sm:right-2 lg:-right-6" />
       </Carousel>
 
       <div
-        className="carousel-dots md:hidden"
+        className="carousel-dots"
         role="tablist"
         aria-label="Reviews pagination"
       >

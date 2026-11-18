@@ -1,22 +1,28 @@
-import type { ReactNode } from "react";
-import { useSwipeDots } from "@/hooks/useSwipeDots";
+import { useState, type ReactNode } from "react";
+import ShowMoreButton from "@/components/rfx/ShowMoreButton";
 import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 /**
- * Photo tiles: a grid of small square photos with just the name underneath
- * (the balloon page's "What we make", and "What we do" on the three main
- * service pages). A tile links on only when it has an href - a sub-service
- * page or a journal article - and the rest stay plain names (Matt,
- * 2026-11-09). Phones get a swipe carousel with dots.
+ * Service tile cards (Matt, 2026-11-18): "what I make" on the Balloons page and
+ * "what I love making" on the three main service pages. A light card per tile
+ * (hairline stroke, faint gradient), a small square photo on the left and the
+ * name on the right. The name is an h3 in body text (t-small), so it keeps its
+ * weight for search without shouting. Two across on phones and tablets, four
+ * across from 1100px, running wider than the page margin.
  *
- * The old three-card services layout that lived here was retired on
- * 2026-11-08 (Matt): every "our services" section uses the homepage's
- * Experiences component, with its rotating photos, so it looks the same
- * everywhere. Don't bring a second version back.
+ * `initialCount` shows that many, then a compact "Show more" slides the rest
+ * down. Keep the tile count even so every row ends full (12 or 16; the main
+ * pages use 8 shown). A tile links on only when it has an href - a sub-service
+ * page or a journal article - and the rest stay plain names (Matt, 2026-11-09).
+ * Names must fit two lines at 360px wide: check no h3 overflows.
+ *
+ * This replaced the phone swipe carousel on 2026-11-18, and the older
+ * three-card services layout before it (retired 2026-11-08). Don't bring either
+ * back: every "our services" block uses the homepage's Experiences component.
  */
 export type ServiceCardItem = {
   title: string;
   /** Optional: where the tile leads (a sub-service page or a journal article).
-      Leave it off and the tile is a plain name, as on the balloon page. */
+      Leave it off and the tile is a plain name. */
   href?: string;
   image?: string;
   srcSet?: string;
@@ -33,9 +39,10 @@ type ServicesCardsProps = {
   headingId?: string;
   /** A soft divider halfway through the gap above, separating the tiles from
       the 50/50 sections (Matt, 2026-11-09: every service page that has
-      50/50s above its tiles, the balloon page included once its intro
-      became two 50/50s). */
+      50/50s above its tiles). */
   divided?: boolean;
+  /** Show this many, then a "Show more" that slides the rest down. */
+  initialCount?: number;
 };
 
 const ServicesCards = ({
@@ -45,9 +52,44 @@ const ServicesCards = ({
   sectionId = "services",
   headingId = "services-cards-heading",
   divided = false,
+  initialCount,
 }: ServicesCardsProps) => {
-  /* Tiles on phones: a swipe row; the dot of the tile nearest the centre lights up. */
-  const { track, active, onScroll: onTrackScroll, goTo } = useSwipeDots();
+  const [expanded, setExpanded] = useState(false);
+  const firstItems = initialCount ? items.slice(0, initialCount) : items;
+  const moreItems = initialCount ? items.slice(initialCount) : [];
+
+  const renderItem = (s: ServiceCardItem) => {
+    const card = (
+      <>
+        <div className="relative aspect-square overflow-hidden rounded-large">
+          {s.image && (
+            <img
+              src={s.image}
+              srcSet={s.srcSet}
+              sizes="96px"
+              alt={s.alt ?? ""}
+              loading="lazy"
+              decoding="async"
+              className="tile-img absolute inset-0 w-full h-full object-cover"
+              style={s.position ? { objectPosition: s.position } : undefined}
+            />
+          )}
+        </div>
+        <h3 className="t-small text-ink">
+          {s.href ? <span className="text-link">{s.title}</span> : s.title}
+        </h3>
+      </>
+    );
+    return (
+      <li key={s.title}>
+        {s.href ? (
+          <a href={s.href} className="tile-link tile-card">{card}</a>
+        ) : (
+          <div className="tile-card">{card}</div>
+        )}
+      </li>
+    );
+  };
 
   return (
     <section
@@ -64,67 +106,19 @@ const ServicesCards = ({
           </div>
         )}
 
-        {/* Small square photo and the name. Plain tiles have no hover (Matt,
-            2026-11-08); a tile with an href is a link, its name underlined
-            like every text link and its photo easing in by 5% on hover.
-            Phones: a swipe carousel to the screen edges, next tile peeking
-            in, dots underneath; the tile in view is centred.
-            Tablet up: 4 across. */}
+        <ul className="tile-card-grid">{firstItems.map(renderItem)}</ul>
+        {moreItems.length > 0 && (
           <>
-          <ul
-            ref={track}
-            onScroll={onTrackScroll}
-            className="tile-swipe relative flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-8 px-[calc((100vw-var(--tile-swipe-width))/2)] list-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-4 md:gap-x-7 md:gap-y-10 md:max-w-[var(--container-narrow)] md:mx-auto md:px-0 md:overflow-visible"
-          >
-            {items.map((s) => {
-              const tile = (
-                <>
-                  <div className="relative aspect-square overflow-hidden rounded-large">
-                    {s.image && (
-                      <img
-                        src={s.image}
-                        srcSet={s.srcSet}
-                        sizes="(min-width: 1100px) 240px, (min-width: 768px) 22vw, 60vw"
-                        alt={s.alt ?? ""}
-                        loading="lazy"
-                        decoding="async"
-                        className="tile-img absolute inset-0 w-full h-full object-cover"
-                        style={s.position ? { objectPosition: s.position } : undefined}
-                      />
-                    )}
-                  </div>
-                  <h3
-                    className="t-h6 photo-caption text-center text-ink"
-                  >
-                    {s.href ? <span className="text-link">{s.title}</span> : s.title}
-                  </h3>
-                </>
-              );
-              return (
-                <li key={s.title} className="shrink-0 basis-[var(--tile-swipe-width)] snap-center md:basis-auto">
-                  {s.href ? (
-                    <a href={s.href} className="tile-link block">{tile}</a>
-                  ) : (
-                    <div className="block">{tile}</div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-          <div className="carousel-dots md:hidden" role="tablist" aria-label="Choose a tile">
-            {items.map((s, i) => (
-              <button
-                key={s.title}
-                type="button"
-                role="tab"
-                aria-selected={i === active}
-                aria-label={`Show ${s.title}`}
-                onClick={() => goTo(i)}
-                className={`tcard-dot ${i === active ? "is-active" : ""}`}
-              />
-            ))}
-          </div>
+            <div className="tile-more" data-state={expanded ? "open" : "closed"}>
+              <div className="tile-more__inner">
+                <ul className="tile-card-grid" aria-hidden={!expanded}>
+                  {moreItems.map(renderItem)}
+                </ul>
+              </div>
+            </div>
+            {!expanded && <ShowMoreButton compact onClick={() => setExpanded(true)} />}
           </>
+        )}
       </div>
     </section>
   );

@@ -6,7 +6,8 @@ import Experiences from "@/components/rfx/Experiences";
 import Mission from "@/components/rfx/Mission";
 import About from "@/components/rfx/About";
 import Process from "@/components/rfx/Process";
-import RecentEvents from "@/components/rfx/RecentEvents";
+import LocationPhotoGrid from "@/components/rfx/LocationPhotoGrid";
+import { HOME_RECENT_LEAD, homeRecentPicks } from "@/data/recentWork";
 import Testimonials from "@/components/rfx/Testimonials";
 import FaqSection from "@/components/rfx/FaqSection";
 import { HOME_FAQS } from "@/data/homeFaqs";
@@ -25,6 +26,8 @@ import {
 
 /** On while the Christmas campaign runs: video hero, no title section. */
 const CHRISTMAS_CAMPAIGN = true;
+
+const RECENT_WORK_PICKS = homeRecentPicks(13);
 
 const Index = () => {
   useFadeUp();
@@ -54,7 +57,24 @@ const Index = () => {
           align="centre"
           intro="Tell me what you're celebrating and I'll design around it, from one balloon arch to a full room."
         />
-        <RecentEvents />
+        {/* The Balloons page's photo wall, but newest work first and a mix of everything: three rows, then a link to Our work (Matt, 2026-11-17). */}
+        <LocationPhotoGrid
+          id="recent-work"
+          wide
+          topUp={false}
+          pageRows={3}
+          moreHref="/our-work/"
+          keepOrder
+          lead={HOME_RECENT_LEAD}
+          count={HOME_RECENT_LEAD.length + RECENT_WORK_PICKS.length}
+          slug="home"
+          heading={
+            <>
+              Recent <em className="t-accent">work.</em>
+            </>
+          }
+          picks={RECENT_WORK_PICKS}
+        />
         <Testimonials noDivider />
         <Process tone="cream" />
         <About />

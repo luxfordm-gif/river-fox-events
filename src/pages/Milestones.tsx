@@ -170,6 +170,7 @@ const Milestones = () => {
             50/50 section (Matt, 2026-11-09). */}
         <ServicesCards
           divided
+          initialCount={8}
           sectionId="ms-what-we-do"
           headingId="ms-do-heading"
           items={MILESTONE_TILES}

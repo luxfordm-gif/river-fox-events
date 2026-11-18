@@ -602,10 +602,6 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                 ) : (
                   <>
                     <p>
-                      A garlanded doorway is one of the loveliest ways to
-                      welcome Christmas.
-                    </p>
-                    <p>
                       Each garland is individually styled for your home or
                       business and installed by hand across Surrey, with optional
                       January&nbsp;takedown.
@@ -1000,9 +996,9 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     data-form-extras
                     aria-controls="xmas-more-details"
                     onClick={() => setMoreOpen((o) => !o)}
-                    className="t-label text-primary w-full sm:w-auto text-left text-pretty py-3 sm:py-0"
+                    className="t-label text-primary w-full sm:w-auto text-center sm:text-left text-pretty py-3 sm:py-0"
                   >
-                    {moreOpen ? "− Fewer details" : "+ Add more details for a quicker quote (optional)"}
+                    {moreOpen ? "− Fewer details" : "+ Add more details for a quicker quote"}
                   </button>
                   <button type="submit" disabled={submitting} className="btn-solid-rf accent w-full sm:w-auto justify-center shrink-0 disabled:opacity-60">
                     {submitting ? "Sending…" : "Request my quote"} <span>→</span>

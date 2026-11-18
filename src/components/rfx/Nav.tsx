@@ -25,8 +25,9 @@ const jingleBow = (e: React.MouseEvent<HTMLElement>) => {
 
 const ABOUT_LINKS = [
   { href: "/#about", label: "About Laura" },
-  { href: "/#kindness", label: "Client reviews" },
   { href: "/journal/", label: "Read the journal" },
+  { href: "/#kindness", label: "Client reviews" },
+  { href: "/areas-we-cover/", label: "Areas we cover" },
 ];
 
 /** A link inside a desktop dropdown. */
@@ -46,6 +47,7 @@ const PHONE_LINKS = [
 const PHONE_MORE = [
   { href: "/journal/", label: "Read the journal" },
   { href: "/#kindness", label: "Client reviews" },
+  { href: "/areas-we-cover/", label: "Areas we cover" },
   { href: "https://www.instagram.com/riverfox_events/", label: "Follow us on Instagram", external: true },
 ];
 
