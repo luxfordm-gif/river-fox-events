@@ -24,7 +24,7 @@ export type BarLine = { text: string; link: string };
 /** Shown only while christmasMode is on, on these pages. */
 export const christmasPaths = ["/", "/christmas-door-garlands/"];
 export const christmasLine: BarLine = {
-  text: "Garland dates filling up. Check yours ›",
+  text: "December dates now booking. Check yours ›",
   link: "/christmas-door-garlands/#enquire",
 };
 

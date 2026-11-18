@@ -115,6 +115,7 @@ const Footer = () => {
                 <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate event styling</a>
                 <a href="/balloon-installations/" className="opacity-85 hover:opacity-100 block">Balloon decorations</a>
                 <a href="/christmas-door-garlands/" className="opacity-85 hover:opacity-100 block">Christmas door garlands</a>
+                <a href="/commercial-christmas-decorations/" className="opacity-85 hover:opacity-100 block">Christmas for businesses</a>
               </div>
             </div>
             <div>

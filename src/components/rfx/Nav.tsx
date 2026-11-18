@@ -12,6 +12,7 @@ const SERVICES = [
 
 /* Seasonal service, set apart below a divider with a velvet bow. */
 const SEASONAL = { href: "/christmas-door-garlands/", label: "Christmas door garlands" };
+const SEASONAL_BUSINESS = { href: "/commercial-christmas-decorations/", label: "Christmas for businesses" };
 
 /* Desktop dropdown: the bow jingles once on hover (Matt, 2026-11-07). The
    class comes off only when the animation ends, so leaving mid-jingle lets it
@@ -38,6 +39,7 @@ const PHONE_LINKS = [
   { href: "/", label: "Home" },
   ...SERVICES,
   { href: SEASONAL.href, label: "Christmas garlands", seasonal: true },
+  { ...SEASONAL_BUSINESS, seasonal: true },
   { href: "/our-work/", label: "Our work" },
   { href: "/#about", label: "About" },
   { href: "/contact/", label: "Contact" },
@@ -126,6 +128,10 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
               <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />
               {SEASONAL.label}
             </a>
+            <a href={SEASONAL_BUSINESS.href} onMouseEnter={jingleBow} className={MENU_ITEM}>
+              <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />
+              {SEASONAL_BUSINESS.label}
+            </a>
           </NavDropdown>
           <a href="/our-work/" className="t-label whitespace-nowrap">Our work</a>
           <NavDropdown label="About" menuWidth="min-w-[200px]">
@@ -192,7 +198,11 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                 key={l.label}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className={`t-h4 text-ink no-underline ${"seasonal" in l ? "nav-sheet__seasonal border-y border-hair" : ""}`}
+                className={`t-h4 text-ink no-underline ${
+                  "seasonal" in l
+                    ? `nav-sheet__seasonal border-hair ${l.href === SEASONAL.href ? "border-y" : "border-b"}`
+                    : ""
+                }`}
               >
                 {"seasonal" in l && (
                   <img src={bow160} alt="" aria-hidden="true" className="w-[30px] h-auto" width={160} height={165} />

@@ -62,6 +62,17 @@
           });
         }
       } catch (e) {}
+      // Internal visitor flag: open any page with ?rf_internal=1 once on a
+      // device to mark it as internal traffic (?rf_internal=0 clears it).
+      // Set before the config calls so page_view carries traffic_type.
+      try {
+        var rfi = new URLSearchParams(location.search).get('rf_internal');
+        if (rfi === '1') localStorage.setItem('rf_internal', '1');
+        else if (rfi === '0') localStorage.removeItem('rf_internal');
+        if (localStorage.getItem('rf_internal') === '1') {
+          gtag('set', { traffic_type: 'internal' });
+        }
+      } catch (e) {}
       gtag('js', new Date());
       gtag('config', 'G-L2YVNSW0ZQ');
       gtag('config', 'AW-18210626936');
