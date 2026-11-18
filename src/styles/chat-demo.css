@@ -61,6 +61,8 @@
   max-width: 82%;
   padding: var(--chat-pad-y) var(--chat-pad-x);
   color: hsl(var(--text-primary));
+  /* On the bubble itself: the paragraph's own line height sets the line spacing, not its inline spans. */
+  line-height: var(--chat-lh);
   opacity: 0;
   transition: opacity var(--motion-quick) var(--ease-soft), clip-path var(--motion-slow) var(--ease-soft);
 }
@@ -121,56 +123,206 @@
 .chat-dots i:nth-child(2) { animation-delay: var(--motion-stagger); }
 .chat-dots i:nth-child(3) { animation-delay: calc(var(--motion-stagger) * 2); }
 
-/* Laura's incoming call: the card runs the full width of the chat. */
-.chat-call-wrap { width: 100%; }
-.chat-call {
-  width: 100%;
+/* WhatsApp-style doodle wallpaper behind the chat, tiled from icons. */
+.chat-demo { position: relative; }
+.chat-doodles {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--chat-doodle-cell));
+  grid-auto-rows: var(--chat-doodle-cell);
+  justify-content: center;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  color: hsl(var(--text-primary) / 0.085);
+}
+.chat-doodle, .chat-doodle-dot { transform: translate(var(--dx), var(--dy)) rotate(var(--r)); }
+.chat-doodle.big { width: var(--chat-doodle-big); height: var(--chat-doodle-big); }
+.chat-doodle.small { width: var(--chat-doodle-small); height: var(--chat-doodle-small); }
+.chat-doodle-dot { width: var(--chat-doodle-dot); height: var(--chat-doodle-dot); border-radius: 50%; background: currentColor; }
+.chat-doodle-dot.hollow { background: none; border: 1px solid currentColor; }
+.chat-view {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  /* Room below the last message for its shadow; it reaches down into the box's
+     padding too, so a bubble that is still growing is never cut by a hard edge. */
+  margin-bottom: calc(-1 * (var(--chat-bleed) + var(--chat-box-pad-y)));
+  padding-bottom: calc(var(--chat-bleed) + var(--chat-box-pad-y));
+  /* Reaches up into the box's own padding, so older messages fade out there
+     instead of being cut off by a hard edge. */
+  margin-top: calc(-1 * var(--chat-box-pad-y));
+  padding-top: var(--chat-box-pad-y);
+}
+.chat-view.lifted {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, transparent 4%, #000 30%);
+  mask-image: linear-gradient(180deg, transparent 0, transparent 4%, #000 30%);
+}
+/* The whole chat eases out and back in when it replays, instead of snapping. */
+.chat-demo { transition: opacity var(--motion-base) var(--ease-soft); }
+.chat-demo.resetting { opacity: 0; }
+.chat-list {
+  /* Quicker than a row's height easing, so the older messages are already
+     moving up as a new bubble grows and it never pokes out of the bottom. */
+  transition: transform var(--motion-base) var(--ease-soft);
+}
+
+/* A row's height eases as its message appears (the component sets the height). */
+.chat-row {
+  position: relative;
+  transition: height var(--motion-slow) var(--ease-soft);
+}
+.chat-row-in {
+  position: absolute;
+  top: var(--chat-gap);
+  left: 0;
+  right: 0;
+  display: flex;
+  filter: var(--drop-bubble);
+}
+.chat-row-first .chat-row-in { top: 0; }
+.chat-row-in.chat-me { justify-content: flex-end; }
+
+/* Bubbles. Each starts as the "..." pill (clipped small) and grows to full size. */
+.chat-bubble {
+  position: relative;
+  margin: 0;
+  max-width: 82%;
+  padding: var(--chat-pad-y) var(--chat-pad-x);
+  color: hsl(var(--text-primary));
+  opacity: 0;
+  transition: opacity var(--motion-quick) var(--ease-soft), clip-path var(--motion-slow) var(--ease-soft);
+}
+.chat-bubble > span { position: relative; }
+.chat-bubble.think,
+.chat-bubble.on { opacity: 1; }
+.chat-ghost { visibility: hidden; }
+
+/* A soft highlight across the top. */
+.chat-bubble::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, hsl(var(--background-light) / 0.3) 0%, hsl(var(--background-light) / 0.06) 40%, transparent 58%);
+}
+.chat-bubble.chat-them {
+  background: hsl(var(--background-light));
+  box-shadow: var(--shadow-bubble-them);
+  clip-path: inset(0 calc(100% - var(--chat-pill-w)) calc(100% - var(--chat-pill-h)) 0 round var(--radius-large) var(--radius-large) var(--radius-large) var(--radius-small));
+}
+.chat-bubble.chat-me {
+  background: hsl(var(--accent));
+  box-shadow: var(--shadow-bubble-me);
+  clip-path: inset(0 0 calc(100% - var(--chat-pill-h)) calc(100% - var(--chat-pill-w)) round var(--radius-large) var(--radius-large) var(--radius-small) var(--radius-large));
+}
+.chat-bubble.chat-me::before {
+  background: linear-gradient(180deg, hsl(var(--background-light) / 0.14) 0%, transparent 45%);
+}
+.chat-bubble.chat-them.on { clip-path: inset(0 0 0 0 round var(--radius-large) var(--radius-large) var(--radius-large) var(--radius-small)); }
+.chat-bubble.chat-me.on { clip-path: inset(0 0 0 0 round var(--radius-large) var(--radius-large) var(--radius-small) var(--radius-large)); }
+
+/* The three dots sit on the pill. */
+.chat-dots {
+  position: absolute;
+  top: 0;
+  width: var(--chat-pill-w);
+  height: var(--chat-pill-h);
   display: flex;
   align-items: center;
-  gap: var(--chat-call-gap);
-  padding: var(--chat-call-pad-y) var(--chat-call-pad-x);
-  border-radius: var(--radius-large);
-  background: hsl(var(--background-dark));
-  color: hsl(var(--text-on-dark));
-  box-shadow: var(--shadow-call);
+  justify-content: center;
+  gap: var(--chat-dot-gap);
   opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-quick) var(--ease-soft);
 }
-.chat-call.on { opacity: 1; animation: chat-rise var(--motion-slow) var(--ease-soft) both; }
-.chat-call-avatar {
+.chat-dots.chat-them { left: 0; }
+.chat-dots.chat-me { right: 0; }
+.chat-dots.show { opacity: 1; }
+.chat-dots i {
+  width: var(--chat-dot);
+  height: var(--chat-dot);
+  border-radius: 50%;
+  background: hsl(var(--text-primary) / 0.6);
+  animation: chat-bob var(--motion-long) infinite var(--ease-soft);
+}
+.chat-dots i:nth-child(2) { animation-delay: var(--motion-stagger); }
+.chat-dots i:nth-child(3) { animation-delay: calc(var(--motion-stagger) * 2); }
+
+/* WhatsApp-style doodle wallpaper behind the chat, tiled from icons. */
+.chat-demo { position: relative; }
+.chat-doodles {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--chat-doodle-cell));
+  grid-auto-rows: var(--chat-doodle-cell);
+  justify-content: center;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  color: hsl(var(--text-primary) / 0.085);
+}
+.chat-doodle { width: var(--chat-doodle-icon); height: var(--chat-doodle-icon); }
+.chat-doodle:nth-child(3n) { transform: rotate(-14deg); }
+.chat-doodle:nth-child(3n + 1) { transform: rotate(12deg) scale(0.85); }
+.chat-doodle:nth-child(5n) { transform: rotate(28deg); }
+.chat-view { position: relative; transition: opacity var(--motion-slow) var(--ease-soft); }
+.chat-demo.calling .chat-view { opacity: 0; }
+
+/* The call screen: the chat has faded, the same pink shows through. */
+.chat-callscreen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--chat-call-shift);
+  gap: var(--gap-stack);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-slow) var(--ease-soft);
+}
+.chat-callscreen.on { opacity: 1; }
+.chat-callscreen-avatar {
   position: relative;
-  flex: none;
-  width: var(--chat-avatar);
-  height: var(--chat-avatar);
+  width: var(--chat-avatar-lg);
+  height: var(--chat-avatar-lg);
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: hsl(var(--accent));
-  color: hsl(var(--text-primary));
+  margin-bottom: var(--chat-call-name-gap);
+  top: var(--chat-monogram-drop);
 }
-.chat-call-avatar b { position: relative; font-weight: var(--fw-medium); }
-.chat-call-avatar i {
+.chat-callscreen-avatar { background: hsl(var(--chat-monogram-fill)); box-shadow: var(--shadow-soft); border: 1px solid hsl(var(--hair)); }
+.chat-callscreen-avatar img { position: relative; width: 100%; height: 100%; border-radius: 50%; transform: translate(var(--chat-monogram-nudge-x), var(--chat-monogram-nudge-y)) scale(var(--chat-monogram-scale)); }
+.chat-callscreen-avatar i {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 1px solid hsl(var(--accent) / 0.7);
+  border: 1px solid hsl(var(--accent));
   opacity: 0;
 }
-.chat-call.on .chat-call-avatar i { animation: chat-ring var(--motion-drift) var(--ease-soft) infinite; }
-.chat-call.on .chat-call-avatar i:nth-child(2) { animation-delay: calc(var(--motion-stagger) * 4); }
-.chat-call-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.chat-call-text .t-meta { color: hsl(var(--text-on-dark) / 0.7); white-space: nowrap; }
-.chat-call-buttons { flex: none; display: flex; gap: var(--chat-call-gap); }
-.chat-call-button {
-  width: var(--chat-button);
-  height: var(--chat-button);
+.chat-callscreen.on .chat-callscreen-avatar i { animation: chat-ring var(--motion-drift) var(--ease-soft) infinite; }
+.chat-callscreen.on .chat-callscreen-avatar i:nth-child(2) { animation-delay: calc(var(--motion-stagger) * 4); }
+.chat-callscreen-text { display: flex; flex-direction: column; align-items: center; color: hsl(var(--text-primary)); }
+.chat-callscreen-text .t-meta { color: hsl(var(--text-neutral)); margin-top: calc(-1 * var(--chat-call-text-pull)); }
+.chat-callscreen-controls { display: flex; gap: var(--gap-field); margin-top: var(--chat-call-controls-gap); }
+.chat-control {
+  width: var(--chat-button-lg);
+  height: var(--chat-button-lg);
   display: grid;
   place-items: center;
   border-radius: 50%;
+  background: hsl(var(--background-light) / 0.75);
+  color: hsl(var(--text-primary));
 }
-.chat-call-button svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.chat-call-button.decline { background: hsl(var(--text-on-dark) / 0.16); color: hsl(var(--text-on-dark)); }
-.chat-call-button.accept { background: hsl(var(--accent)); color: hsl(var(--text-primary)); }
-.chat-call.on .chat-call-button.accept { animation: chat-nudge var(--motion-drift) var(--ease-soft) infinite; }
+.chat-control svg { width: var(--chat-control-icon); height: var(--chat-control-icon); stroke-width: 1.6; }
+.chat-control.answer { background: hsl(var(--chat-answer)); color: hsl(var(--background-light)); }
+.chat-callscreen.on .chat-control.answer { animation: chat-nudge var(--motion-drift) var(--ease-soft) infinite; }
 
 @keyframes chat-bob {
   0%, 70%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
@@ -183,12 +335,11 @@
 /* Phones: a little tighter so the call card fits beside its buttons. */
 @media (max-width: 767px) {
   .chat-demo { padding: var(--chat-box-pad-y) var(--gap-stack); }
-  .chat-call { gap: var(--chat-call-gap-phone); padding: var(--chat-call-pad-phone-y) var(--chat-call-pad-phone-x); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .chat-bubble, .chat-bubble.on { opacity: 1; transition: none; }
-  .chat-call, .chat-call.on { opacity: 1; animation: none; }
+  .chat-callscreen { display: none; }
   .chat-dots { display: none; }
-  .chat-dots i, .chat-call-avatar i, .chat-call-button.accept { animation: none; }
+  .chat-dots i, .chat-callscreen i, .chat-control.answer { animation: none; }
 }
