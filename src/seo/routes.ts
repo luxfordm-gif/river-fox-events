@@ -94,7 +94,7 @@ export const REVIEWS: Review[] = [
   {
     q: "Laura is absolutely fantastic. It was such a smooth and seamless process, from our initial conversation to the design of my son's birthday backdrop and tablescape, and it all brought the wow factor. I highly recommend her and will be using her always.",
     a: "Tolu Balogun",
-    href: "https://maps.app.goo.gl/dcLgoJHXnhjjzJKP6",
+    href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2toR2FUUjJOVkpvTUZoUGREbEdZVGR3WW1ObWRVRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
     q: "Laura designed us the most beautiful balloons and install for our recent business development day in Horley. Everyone commented on them and they were stunning. Efficient, professional and superb with her communication throughout the booking process. I would recommend her to anyone.",
@@ -114,7 +114,7 @@ export const REVIEWS: Review[] = [
   {
     q: "An absolutely fabulous display including a balloon garland and kiddies seating area. Would highly recommend and will be reusing Laura.",
     a: "Lee Dunn",
-    href: "https://maps.app.goo.gl/dcLgoJHXnhjjzJKP6",
+    href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUR4MWRuQ2NnEAE!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
     q: "The lovely Laura did an amazing job at transforming my salon with a gorgeous Christmas balloon display - she really thought about colours that tie in with my branding. I have had so many lovely compliments. My two boys also loved the brilliant Halloween balloons for their party. Can't wait for our next events.",
