@@ -184,9 +184,9 @@ const Milestones = () => {
           intro="Every milestone is individually designed around your colours and venue. These come up most, but nothing here is a package."
         />
 
-        <Testimonials reviews={MILESTONE_REVIEWS} noDivider />
-
         <Process sectionId="how-it-works" scenario={SCENARIOS.fifty} />
+
+        <Testimonials reviews={MILESTONE_REVIEWS} noDivider />
 
         <InspirationStrip id="ms-inspiration" lead="Celebrations I've" accent="already styled." images={withoutTilePhotos(INSPIRATION_MILESTONES, MILESTONE_TILES)} />
 

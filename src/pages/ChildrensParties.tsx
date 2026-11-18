@@ -159,9 +159,9 @@ const ChildrensParties = () => {
           intro="Tell me the theme and I'll build the party around it. These are the pieces families ask for most, but anything goes."
         />
 
-        <Testimonials reviews={CHILDRENS_REVIEWS} noDivider />
-
         <Process sectionId="how-it-works" scenario={SCENARIOS.rodeo} />
+
+        <Testimonials reviews={CHILDRENS_REVIEWS} noDivider />
 
         <InspirationStrip id="cp-inspiration" lead="Parties I've" accent="already made." images={withoutTilePhotos(INSPIRATION_CHILDRENS, CHILDRENS_TILES)} />
 

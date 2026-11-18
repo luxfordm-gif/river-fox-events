@@ -249,9 +249,9 @@ const BalloonInstallations = () => {
           intro="Arches and garlands are where most celebrations start. Every one is sized and coloured to your space, and most become part of a bigger setup."
         />
 
-        <Testimonials reviews={BALLOON_REVIEWS} noDivider />
-
         <Process sectionId="how-it-works" scenario={SCENARIOS.pastelArch} />
+
+        <Testimonials reviews={BALLOON_REVIEWS} noDivider />
 
         {/* Heading, a short direct answer and the button: the two price
             cards were taken out (Matt, 2026-11-08); the question heading and

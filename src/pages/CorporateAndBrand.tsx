@@ -270,9 +270,9 @@ const CorporateAndBrand = () => {
           intro="No two briefs look the same. These are my most requested pieces, but send me the brand and the space and I'll design around it."
         />
 
-        <Testimonials reviews={CORPORATE_REVIEWS} noDivider />
-
         <Process sectionId="how-it-works" steps={CORPORATE_STEPS} scenario={SCENARIOS.restaurant} />
+
+        <Testimonials reviews={CORPORATE_REVIEWS} noDivider />
 
         {/* The office party sequin wall stays in the strip as well as its tile:
             it's the only corporate shimmer wall photo (Matt, 2026-11-09). */}
