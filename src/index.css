@@ -316,7 +316,9 @@
     --tile-card-lh: 1.4;               /* Tile card line height · the name in a tile card, a little tighter than body so two lines sit close */
     --tile-card-width: calc((100vw - 2 * var(--gutter)) * 0.62); /* Tile card width · on phones, one tile card in the swipe row: about 1.6 cards in view, the next one peeking in. Raise the 0.62 for fewer cards in view */
     --tile-card-fill: 0 0% 100%;       /* Tile card fill · plain white, the one place the site uses pure white as a surface: a tile card sits a touch lighter than the warm off-white page, with its hairline stroke defining the edge */
-    --tile-end-measure: 14ch;          /* Tile end card line · how wide the line under "Anything's possible." may run, so it wraps onto two balanced lines */
+    --tile-card-tilt: 8deg;            /* Tile card tilt · how far a tile card leans toward the mouse at its edge */
+    --tile-card-perspective: 900px;    /* Tile card perspective · how deep the lean looks */
+    --tile-card-lift: -4px;            /* Tile card lift · how far a tile card rises on hover (mouse only) */
     --tile-card-pad: 12px;            /* Tile card padding · inside a tile card, round the photo */
     --gap-photos: 12px;                /* Photo gap · between photos in a grid or strip (8 phone; were 8 / 12 / 16) */               /* List indent · how far bullet text sits in from the bullet's edge (In short lists) */             /* Article side padding · inside narrow article blocks */              /* Link list gap · between links in a list, e.g. a footer column */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
@@ -972,36 +974,30 @@
   .tile-card-row > li { flex: none; width: var(--tile-card-width); scroll-snap-align: start; display: flex; }
   @media (min-width: 768px) {
     .tile-card-row {
-      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap-cards);
-      overflow: visible; margin-inline: auto; padding-inline: 0; max-width: var(--container-narrow);
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap-stack);
+      overflow: visible; margin-inline: 0; padding-inline: 0;
     }
     .tile-card-row > li { width: auto; }
   }
   .tile-card {
-    display: block; width: 100%;
+    display: block; width: 100%; cursor: pointer;
     padding: var(--tile-card-pad);
     border: 1px solid hsl(var(--hair));
     border-radius: var(--radius-large);
     background: hsl(var(--tile-card-fill));
     box-shadow: var(--shadow-rest);
+    transform: perspective(var(--tile-card-perspective)) translateY(var(--tile-y, 0px)) rotateX(calc(var(--tilt-x, 0) * var(--tile-card-tilt))) rotateY(calc(var(--tilt-y, 0) * var(--tile-card-tilt)));
+    transition: transform var(--motion-quick) var(--ease-soft), box-shadow var(--motion-base) var(--ease-soft);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .tile-card:hover { --tile-y: var(--tile-card-lift); box-shadow: var(--shadow-lift); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tile-card { transition: none; }
+    .tile-card, .tile-card:hover { transform: none; }
   }
   .tile-card > div:first-child { border-radius: var(--radius-small); }
-  /* The closing card: soft peach (Warm) with a white glow, no photo, words only, as tall as its neighbours. */
-  .tile-card--end {
-    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-    gap: var(--gap-title-body);
-    /* A soft white glow in the middle, over the Warm peach */
-    background: radial-gradient(ellipse at 50% 50%, hsl(var(--tile-card-fill) / 0.85), hsl(var(--tile-card-fill) / 0) 72%), hsl(var(--background-warm));
-  }
-  .tile-card--end p { max-width: var(--tile-end-measure); text-wrap: balance; }
   .tile-card h3 { line-height: var(--tile-card-lh); text-align: center; padding: var(--gap-stack) var(--gap-icon) var(--gap-icon); }
-  .tile-link .tile-img { transition: transform var(--motion-drift) var(--ease-glide); }
-  .tile-link:hover .tile-img { transform: scale(1.05); }
-  .tile-link:hover .text-link { text-decoration-color: transparent; }
-  @media (prefers-reduced-motion: reduce) {
-    .tile-link .tile-img { transition: none; }
-    .tile-link:hover .tile-img { transform: none; }
-  }
 
   .exp-card .exp-title { transition: color var(--motion-quick) ease; }
   .exp-card:hover .exp-title { color: hsl(var(--accent)); }
