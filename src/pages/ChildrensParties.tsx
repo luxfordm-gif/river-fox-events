@@ -145,10 +145,14 @@ const ChildrensParties = () => {
             50/50 section (Matt, 2026-11-09). */}
         <ServicesCards
           divided
-          initialCount={8}
           sectionId="cp-what-we-do"
           headingId="cp-do-heading"
           items={CHILDRENS_TILES}
+          endCard={
+            <p className="t-h4">
+              Fully bespoke <em className="t-accent">to your needs.</em>
+            </p>
+          }
           heading={
             <>
               What I love{" "}

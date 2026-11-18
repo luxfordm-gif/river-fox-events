@@ -383,7 +383,7 @@ const SPACING_TOKENS = [
   // Announcement bar (2026-11-17)
   "--announcement-height", "--announcement-pad-x", "--service-photo-ratio", "--gap-steps",
   // Tile cards (2026-11-18)
-  "--tile-card-photo", "--tile-card-pad",
+  "--tile-card-width", "--tile-card-pad",
 ];
 
 /* A spacing token's value at a width, in px: references to other tokens are
@@ -461,7 +461,6 @@ const SECTIONS: Section[] = [
     note: "Service tile cards: Balloons, Children's parties, Milestones, Corporate",
     render: () => (
       <ServicesCards
-        initialCount={8}
         sectionId="sg-tiles"
         headingId="sg-tiles-heading"
         items={WHAT_WE_MAKE}

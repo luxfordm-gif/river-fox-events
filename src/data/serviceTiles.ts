@@ -27,7 +27,6 @@ export const CHILDRENS_TILES: ServiceCardItem[] = [
   tile("Character cutouts", "services/childrens-parties/peter-rabbit-first-birthday-blue-balloon-backdrop.webp"),
   tile("Themed backdrops", "services/childrens-parties/onederland-first-birthday-ava-garden-backdrop.webp"),
   tile("Themed props", "services/childrens-parties/hot-air-balloon-teddy-basket-neutral.webp"),
-  tile("Dinosaur parties", "services/childrens-parties/kai-one-o-saurus-first-birthday-dinosaur-backdrop.webp"),
 ];
 
 export const MILESTONE_TILES: ServiceCardItem[] = [
