@@ -831,7 +831,7 @@ export const ROUTES: RouteSEO[] = [
   {
     path: "/journal/childrens-party-themes-2026",
     title:
-      "Children's Party Themes 2026: Six Trending Briefs from a Surrey Studio | River Fox Events",
+      "Kids Party Themes 2026: 6 Trending Ideas | River Fox Events",
     description:
       "The six children's party themes Surrey parents are asking for in 2026 - Chateaucore, Bluey done well, soft maximalism, charm-bracelet stations, woodland and Toy Story 5.",
     breadcrumbName: "Six children's party themes shaping 2026",

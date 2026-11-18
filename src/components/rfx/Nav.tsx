@@ -12,6 +12,7 @@ const SERVICES = [
 
 /* Seasonal service, set apart below a divider with a velvet bow. */
 const SEASONAL = { href: "/christmas-door-garlands/", label: "Christmas door garlands" };
+const SEASONAL_BUSINESS = { href: "/commercial-christmas-decorations/", label: "Christmas for businesses" };
 
 /* Desktop dropdown: the bow jingles once on hover (Matt, 2026-11-07). The
    class comes off only when the animation ends, so leaving mid-jingle lets it
@@ -38,6 +39,7 @@ const PHONE_LINKS = [
   { href: "/", label: "Home" },
   ...SERVICES,
   { href: SEASONAL.href, label: "Christmas garlands", seasonal: true },
+  SEASONAL_BUSINESS,
   { href: "/our-work/", label: "Our work" },
   { href: "/#about", label: "About" },
   { href: "/contact/", label: "Contact" },
@@ -125,6 +127,9 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
             <a href={SEASONAL.href} onMouseEnter={jingleBow} className={MENU_ITEM}>
               <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />
               {SEASONAL.label}
+            </a>
+            <a href={SEASONAL_BUSINESS.href} className={MENU_ITEM}>
+              {SEASONAL_BUSINESS.label}
             </a>
           </NavDropdown>
           <a href="/our-work/" className="t-label whitespace-nowrap">Our work</a>
