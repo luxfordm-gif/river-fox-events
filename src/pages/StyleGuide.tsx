@@ -382,6 +382,8 @@ const SPACING_TOKENS = [
   "--gap-paragraph", "--gap-stack", "--gap-text-action", "--gap-actions", "--gap-button-trust", "--gap-columns", "--gap-stacked", "--gap-cards", "--gap-media", "--gap-caption", "--gap-photos", "--gap-eyebrow", "--gap-divider", "--gap-list-item", "--gap-link-list", "--gap-icon", "--gap-form", "--gap-field", "--card-pad", "--article-gap", "--article-pad-x", "--list-indent", "--hero-ink-trim", "--measure-title", "--measure-lead", "--nav-height", "--nav-pad-x", "--nav-link-gap", "--menu-offset", "--menu-pad", "--menu-item-pad", "--menu-rule-gap", "--menu-section-gap", "--btn-compact-pad", "--tap-target",
   // Announcement bar (2026-11-17)
   "--announcement-height", "--announcement-pad-x", "--service-photo-ratio", "--gap-steps",
+  // Tile cards (2026-11-18)
+  "--tile-card-photo", "--tile-card-pad",
 ];
 
 /* A spacing token's value at a width, in px: references to other tokens are
@@ -456,9 +458,10 @@ const SECTIONS: Section[] = [
     id: "S6",
     title: "Photo tiles",
     component: "ServicesCards",
-    note: "Balloon page \"What we make\"",
+    note: "Service tile cards: Balloons, Children's parties, Milestones, Corporate",
     render: () => (
       <ServicesCards
+        initialCount={8}
         sectionId="sg-tiles"
         headingId="sg-tiles-heading"
         items={WHAT_WE_MAKE}

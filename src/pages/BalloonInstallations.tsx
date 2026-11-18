@@ -242,6 +242,7 @@ const BalloonInstallations = () => {
             pages (Matt, 2026-11-09). */}
         <ServicesCards
           divided
+          initialCount={8}
           sectionId="what-we-make"
           headingId="bi-make-heading"
           items={WHAT_WE_MAKE}
