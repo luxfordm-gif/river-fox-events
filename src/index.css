@@ -168,10 +168,9 @@
     --reveal-shift: 10px;              /* Rise of a text block as it fades in */
     --hiw-media-ratio: 4 / 3;          /* How it works · shape of the three pictures (was 3 / 2, a little deeper) */
     --hiw-chat-height: 20rem;          /* How it works · height of the chat box on phones */
-    --chat-box-pad-y: 28px;            /* Chat box padding · space above and below the messages */
     /* Chat demo · the mocked WhatsApp chat in "How it works" (ChatDemo, chat-demo.css) */
+    --chat-box-y: 32px;                /* Chat box padding · space above the first and below the last message: more pushes them up into the fade */
     --chat-gap: 16px;                  /* Chat gap · space between messages (px: ChatDemo reads it) */
-    --chat-bleed: 14px;                /* Chat bleed · room under the last message for its shadow */
     --chat-pill-w: 72px;               /* Chat pill width · the "..." pill a bubble grows from */
     --chat-pill-h: 43px;               /* Chat pill height */
     --chat-lh: 1.15;                   /* Chat line height · message text in the chat bubbles, tighter than Meta (1.5) (Matt, 2026-11-18) */
@@ -252,6 +251,7 @@
     --gap-text-action: 32px;           /* Text to action · a paragraph down to the button(s) under it, e.g. hero sub-copy to Reserve your date (home and town were 40, service 32; Matt 2026-11-13) */
     --gap-actions: 12px;               /* Action gap · between two buttons side by side or stacked (home was 20) */
     --gap-columns: 64px;               /* Column gap · between the two halves of a split layout: text and form, text and photo (48 phone; Enquire used 64, Contact 80; Matt 2026-11-13) */
+    --measure-step: 560px;             /* Step width · widest a stacked How it works step gets on tablets */
     --gap-cards: 40px;                 /* Card gap · between cards in a grid or row: steps, tiles, related articles (32 phone) */
     --footer-brand-gap: 6px;           /* Footer brand gap · phones: extra space under the brand text, on top of the 48px row gap, before Services (54 in all, was 68; Matt 2026-11-18) */
     --gap-stacked: 24px;               /* Stacked gap · on phones, between the two halves of a .rfx-md-stack layout once they stack (About, reveals, service header, footer); was a hand-set 24 */
@@ -310,7 +310,7 @@
     --article-gap: 64px;               /* Article gap · between the blocks of a journal article: header, In short, photos, quotes, enquire box, related (48 phone; were 48 to 96) */
     --article-pad-x: 24px;             /* Article side padding · inside narrow article blocks: In short, quotes, enquire boxes, related */
     --list-indent: 20px;               /* List indent · how far bullet text sits in from the bullet edge (In short lists) */
-    --gap-steps: 40px;                 /* Step gap · between the "How it works" steps once they stack on phones (picture, title, text, then the next step); 64 phone */
+    --gap-steps: 64px;                 /* Step gap · between the stacked "How it works" steps (phones and tablets; laptops use Card gap) */
     --gap-media: 20px;                /* Media gap · a photo or icon down to a card title under it (were 16 to 32) */
     --gap-caption: 12px;               /* Caption gap · a photo down to its caption, close so it reads as the photo's label (Our work, tile names, article photos) */
     --tile-card-lh: 1.4;               /* Tile card line height · the name in a tile card, a little tighter than body so two lines sit close */
@@ -396,7 +396,6 @@
       --gap-text-content: 40px;
       --gap-columns: 48px;
       --gap-cards: 32px;
-      --gap-steps: 64px;
       --article-gap: 48px;
       --form-pad: 22px 16px;
       --reveal-join: 40px;

@@ -10,31 +10,52 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: var(--chat-box-pad-y) var(--gap-cards);
+  padding: 0 var(--gap-cards);
 }
 .chat-view {
   flex: 1;
   min-height: 0;
   overflow: hidden;
-  /* Room below the last message for its shadow; it reaches down into the box's
-     padding too, so a bubble that is still growing is never cut by a hard edge. */
-  margin-bottom: calc(-1 * (var(--chat-bleed) + var(--chat-box-pad-y)));
-  padding-bottom: calc(var(--chat-bleed) + var(--chat-box-pad-y));
-  /* Reaches up into the box's own padding, so older messages fade out there
-     instead of being cut off by a hard edge. */
-  margin-top: calc(-1 * var(--chat-box-pad-y));
-  padding-top: var(--chat-box-pad-y);
+  /* The scrolling area runs to the box edge, so nothing is sliced by a hard
+     line mid-air. This padding is the space under the last message (and room
+     for its shadow). */
+  padding-bottom: var(--chat-box-y);
 }
-.chat-view.lifted {
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, transparent 4%, #000 30%);
-  mask-image: linear-gradient(180deg, transparent 0, transparent 4%, #000 30%);
+/* The top edge: older messages dissolve through an eased alpha mask (a smooth
+   curve, not a straight ramp). --chat-fade eases 0 -> 1 when the chat first
+   lifts, so the fade grows in instead of popping on. */
+@property --chat-fade {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
 }
-/* The whole chat eases out and back in when it replays, instead of snapping. */
-.chat-demo { transition: opacity var(--motion-base) var(--ease-soft); }
-.chat-demo.resetting { opacity: 0; }
+.chat-view {
+  --chat-fade: 0;
+  transition: --chat-fade var(--motion-slow) var(--ease-soft);
+  -webkit-mask-image: linear-gradient(180deg,
+    rgb(0 0 0 / calc(1 - var(--chat-fade))) 0,
+    rgb(0 0 0 / 0.1) calc(var(--chat-fade) * 5%),
+    rgb(0 0 0 / 0.3) calc(var(--chat-fade) * 10%),
+    rgb(0 0 0 / 0.6) calc(var(--chat-fade) * 17%),
+    rgb(0 0 0 / 0.85) calc(var(--chat-fade) * 24%),
+    rgb(0 0 0 / 0.96) calc(var(--chat-fade) * 30%),
+    #000 calc(var(--chat-fade) * 34%));
+  mask-image: linear-gradient(180deg,
+    rgb(0 0 0 / calc(1 - var(--chat-fade))) 0,
+    rgb(0 0 0 / 0.1) calc(var(--chat-fade) * 5%),
+    rgb(0 0 0 / 0.3) calc(var(--chat-fade) * 10%),
+    rgb(0 0 0 / 0.6) calc(var(--chat-fade) * 17%),
+    rgb(0 0 0 / 0.85) calc(var(--chat-fade) * 24%),
+    rgb(0 0 0 / 0.96) calc(var(--chat-fade) * 30%),
+    #000 calc(var(--chat-fade) * 34%));
+}
+.chat-view.lifted { --chat-fade: 1; }
 .chat-list {
-  /* Quicker than a row's height easing, so the older messages are already
-     moving up as a new bubble grows and it never pokes out of the bottom. */
+  /* The space above the first message scrolls away with the chat, so older
+     messages can run right up to the box edge and fade out there. */
+  padding-top: var(--chat-box-y);
+  /* Quicker than a row's height easing, so older messages are already moving up
+     as a new bubble grows and it never pokes out of the bottom. */
   transition: transform var(--motion-base) var(--ease-soft);
 }
 
@@ -142,31 +163,6 @@
 .chat-doodle.small { width: var(--chat-doodle-small); height: var(--chat-doodle-small); }
 .chat-doodle-dot { width: var(--chat-doodle-dot); height: var(--chat-doodle-dot); border-radius: 50%; background: currentColor; }
 .chat-doodle-dot.hollow { background: none; border: 1px solid currentColor; }
-.chat-view {
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-  /* Room below the last message for its shadow; it reaches down into the box's
-     padding too, so a bubble that is still growing is never cut by a hard edge. */
-  margin-bottom: calc(-1 * (var(--chat-bleed) + var(--chat-box-pad-y)));
-  padding-bottom: calc(var(--chat-bleed) + var(--chat-box-pad-y));
-  /* Reaches up into the box's own padding, so older messages fade out there
-     instead of being cut off by a hard edge. */
-  margin-top: calc(-1 * var(--chat-box-pad-y));
-  padding-top: var(--chat-box-pad-y);
-}
-.chat-view.lifted {
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, transparent 4%, #000 30%);
-  mask-image: linear-gradient(180deg, transparent 0, transparent 4%, #000 30%);
-}
-/* The whole chat eases out and back in when it replays, instead of snapping. */
-.chat-demo { transition: opacity var(--motion-base) var(--ease-soft); }
-.chat-demo.resetting { opacity: 0; }
-.chat-list {
-  /* Quicker than a row's height easing, so the older messages are already
-     moving up as a new bubble grows and it never pokes out of the bottom. */
-  transition: transform var(--motion-base) var(--ease-soft);
-}
 
 /* A row's height eases as its message appears (the component sets the height). */
 .chat-row {
@@ -269,7 +265,7 @@
 .chat-doodle:nth-child(3n) { transform: rotate(-14deg); }
 .chat-doodle:nth-child(3n + 1) { transform: rotate(12deg) scale(0.85); }
 .chat-doodle:nth-child(5n) { transform: rotate(28deg); }
-.chat-view { position: relative; transition: opacity var(--motion-slow) var(--ease-soft); }
+.chat-view { position: relative; transition: --chat-fade var(--motion-slow) var(--ease-soft), opacity var(--motion-slow) var(--ease-soft); }
 .chat-demo.calling .chat-view { opacity: 0; }
 
 /* The call screen: the chat has faded, the same pink shows through. */
@@ -334,7 +330,7 @@
 
 /* Phones: a little tighter so the call card fits beside its buttons. */
 @media (max-width: 767px) {
-  .chat-demo { padding: var(--chat-box-pad-y) var(--gap-stack); }
+  .chat-demo { padding: 0 var(--gap-stack); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -343,3 +339,8 @@
   .chat-dots { display: none; }
   .chat-dots i, .chat-callscreen i, .chat-control.answer { animation: none; }
 }
+
+/* Loop restart: the whole chat fades out, resets unseen, then fades back in. */
+.chat-demo.is-fading { opacity: 0; }
+.chat-demo.is-resetting,
+.chat-demo.is-resetting * { transition: none !important; }
