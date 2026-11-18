@@ -31,9 +31,9 @@ const TIMING = {
   callSettle: 400,
   /** The finished chat stays put before replaying. */
   hold: 7000,
-  restart: 650,
-  /** The chat fading out or in at the replay (matches --motion-base). */
-  fade: 400,
+  /** Fading out and back in around the reset. */
+  fade: 600,
+  restart: 300,
 } as const;
 
 const CALLER = "Laura";
@@ -174,13 +174,14 @@ const ChatDemo = ({ lines }: ChatDemoProps) => {
   const [shown, setShown] = useState<number[]>(() => (reduced ? finished() : opening()));
   const [thinking, setThinking] = useState(-1);
   const [calling, setCalling] = useState(false);
+  const [phase, setPhase] = useState<"" | "fading" | "resetting">("");
 
   /** Lift the list so the newest row sits at the bottom once the chat outgrows its box. */
   const lift = () => {
     const view = viewRef.current;
     const list = listRef.current;
     if (!view || !list) return;
-    const total = heights.current.reduce((sum, h) => sum + h, 0);
+    const total = heights.current.reduce((sum, h) => sum + h, 0) + parseFloat(getComputedStyle(list).paddingTop);
     // The view's bottom padding is only there for shadows; messages stop above it.
     const pad = getComputedStyle(view);
     const visibleHeight = view.clientHeight - parseFloat(pad.paddingBottom) - parseFloat(pad.paddingTop);
@@ -192,6 +193,18 @@ const ChatDemo = ({ lines }: ChatDemoProps) => {
     heights.current[index] = height;
     lift();
   }).current;
+
+  // Keep the lift right when the box resizes or the real fonts arrive late
+  // (text wraps differently, so the bubbles change height).
+  useEffect(() => {
+    const view = viewRef.current;
+    if (!view) return;
+    const observer = new ResizeObserver(() => lift());
+    observer.observe(view);
+    document.fonts?.ready.then(() => window.dispatchEvent(new Event("resize")));
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -222,14 +235,17 @@ const ChatDemo = ({ lines }: ChatDemoProps) => {
         await wait(TIMING.callSettle + TIMING.hold);
         if (stopped) return;
         // Fade out, reset while it's invisible, fade back in.
-        rootRef.current?.classList.add("resetting");
+        setPhase("fading");
         await wait(TIMING.fade);
         if (stopped) return;
+        setPhase("resetting");
         setThinking(-1);
         setCalling(false);
         setShown(opening());
         await wait(TIMING.restart);
-        rootRef.current?.classList.remove("resetting");
+        setPhase("fading");
+        await wait(50);
+        setPhase("");
         await wait(TIMING.fade);
       }
     };
@@ -253,7 +269,7 @@ const ChatDemo = ({ lines }: ChatDemoProps) => {
   }, [lines, reduced, rowCount]);
 
   return (
-    <div ref={rootRef} className={`chat-demo ${calling ? "calling" : ""}`} role="img" aria-label="Example of an enquiry sent to Laura by WhatsApp">
+    <div ref={rootRef} className={`chat-demo ${calling ? "calling" : ""} ${phase === "fading" ? "is-fading" : phase === "resetting" ? "is-fading is-resetting" : ""}`} role="img" aria-label="Example of an enquiry sent to Laura by WhatsApp">
       <Doodles />
       <div ref={viewRef} className="chat-view">
         <div ref={listRef} className="chat-list">
