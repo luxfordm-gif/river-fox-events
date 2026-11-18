@@ -12,6 +12,7 @@ import CPPricing from "@/components/rfx/CPPricing";
 import FaqSection from "@/components/rfx/FaqSection";
 import ServicesCards from "@/components/rfx/ServicesCards";
 import Testimonials from "@/components/rfx/Testimonials";
+import { BALLOON_REVIEWS } from "@/data/reviewOrder";
 import { WHAT_WE_MAKE } from "@/data/balloonTiles";
 import Experiences from "@/components/rfx/Experiences";
 import LocationTrust from "@/components/rfx/LocationTrust";
@@ -19,7 +20,7 @@ import { LATEST_WORK } from "@/data/locations/_makeLocation";
 import { galleryPhoto } from "@/data/gallery";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { whatsappHref } from "@/lib/whatsapp";
-import { findRoute, REVIEWS } from "@/seo/routes";
+import { findRoute } from "@/seo/routes";
 import {
   applyMeta,
   breadcrumbSchema,
@@ -105,11 +106,10 @@ const FAQS = [
   },
 ];
 
-/* Reviews that talk about the balloons in the customer's own words. Helen A
-   (the arch) and Emily Stimson (the stack) added 2026-11-09 so the page's
-   reviews name the balloon pieces themselves. */
-const BALLOON_REVIEWS = REVIEWS.filter((r) =>
-  ["Samantha", "Sarah Lupinski", "Lee Dunn", "Helen A", "Emily Stimson"].includes(r.a)
+/* The shared Balloons review order (src/data/reviewOrder.ts), leaving out any
+   review without a first name ("LP") or marked NAME NEEDED (Matt, 2026-11-18). */
+const BALLOON_PAGE_REVIEWS = BALLOON_REVIEWS.filter(
+  (r) => /[a-z]{2,}/.test(r.a) && !/name needed/i.test(r.a)
 );
 
 const BalloonInstallations = () => {
@@ -250,7 +250,7 @@ const BalloonInstallations = () => {
 
         <Process sectionId="how-it-works" scenario={SCENARIOS.pastelArch} />
 
-        <Testimonials reviews={BALLOON_REVIEWS} noDivider />
+        <Testimonials reviews={BALLOON_PAGE_REVIEWS} noDivider />
 
         {/* Heading, a short direct answer and the button: the two price
             cards were taken out (Matt, 2026-11-08); the question heading and
@@ -280,7 +280,7 @@ const BalloonInstallations = () => {
           }
         />
 
-        <LocationTrust reviews={BALLOON_REVIEWS} />
+        <LocationTrust reviews={BALLOON_PAGE_REVIEWS} />
 
         <InspirationStrip id="bi-inspiration" lead="Installs I've" accent="already built." images={INSPIRATION_BALLOONS} />
 
