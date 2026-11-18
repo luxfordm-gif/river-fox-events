@@ -89,7 +89,7 @@ export const REVIEWS: Review[] = [
     // Trimmed for length, her own words kept (Matt, 2026-11-08).
     q: "Laura created a beautiful balloon hoop garland for my son's Christening. We received loads of compliments about it. It really transformed the event hall. I would highly recommend this company for event decor.",
     a: "Samantha",
-    href: "https://goo.gl/maps/3U8ddozdYipptXt16?g_st=ac",
+    href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2tGWk1WVndXbXMxTldFek4yMUhSMGQyTjJSMlUxRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
     q: "Laura is absolutely fantastic. It was such a smooth and seamless process, from our initial conversation to the design of my son's birthday backdrop and tablescape, and it all brought the wow factor. I highly recommend her and will be using her always.",
@@ -99,17 +99,17 @@ export const REVIEWS: Review[] = [
   {
     q: "Laura designed us the most beautiful balloons and install for our recent business development day in Horley. Everyone commented on them and they were stunning. Efficient, professional and superb with her communication throughout the booking process. I would recommend her to anyone.",
     a: "Suzy Dorran",
-    href: "https://maps.app.goo.gl/yae87fhpe2Bxe7VE9",
+    href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnTURJek0zRzNnRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
     q: "Brilliant service by Laura - asked for something suitable for an 18 year old boy with a horse racing theme. Great stack delivered on the day, everyone loved it. Definitely will use again.",
     a: "LP",
-    href: "https://maps.app.goo.gl/9ULznEtm7Ps61MVDA",
+    href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnTUNROU0taXdBRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
     q: "I would wholly recommend Laura - she did a fantastic job at supplying the decorations for my daughter's birthday party. The balloons looked absolutely stunning and transformed the room.",
     a: "Sarah Lupinski",
-    href: "https://maps.app.goo.gl/fmjXnbTQLsiG36As5",
+    href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnTURRX2V2UEdnEAE!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
     q: "An absolutely fabulous display including a balloon garland and kiddies seating area. Would highly recommend and will be reusing Laura.",
@@ -119,32 +119,32 @@ export const REVIEWS: Review[] = [
   {
     q: "The lovely Laura did an amazing job at transforming my salon with a gorgeous Christmas balloon display - she really thought about colours that tie in with my branding. I have had so many lovely compliments. My two boys also loved the brilliant Halloween balloons for their party. Can't wait for our next events.",
     a: "Danielle Wayman",
-    href: "https://maps.app.goo.gl/an2en7jjetSNTGr27",
+    href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUQtdTdlSHZBRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
     q: "Laura made an amazing display of balloons for my son's 8th birthday back in October. The balloons were still standing in December - such great quality, and an amazing gaming design that my son absolutely loved. Back to her for his 10th birthday soon.",
     a: "Rupi Heron",
-    href: "https://maps.app.goo.gl/ZUgNNKsYvjgfjg8G8",
+    href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNCcHEyRGJREAE!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
     q: "We had the most beautiful backdrop made for our engagement party - exactly what we asked for. Great service.",
     a: "Emily",
-    href: "https://maps.app.goo.gl/N6oQgGKV8R8aLw249",
+    href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnTUR3anF5V3dRRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
     q: "I've worked with Laura a couple of times and her work is always impeccable. From decorating my salon to elf arrival balloons, we are always so pleased with everything.",
     a: "Nicola Hewitson",
-    href: "https://maps.app.goo.gl/qdUkADHTbZKKj9JM6",
+    href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUQtdTQtYnVBRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
     q: "Amazing balloon stack for my son's first birthday - and with very short notice. Thank you so much Laura.",
     a: "Emily Stimson",
-    href: "https://maps.app.goo.gl/WhEBLU9Ax3WcNdQN9",
+    href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURCdGRpTWVREAE!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
     q: "The balloon arch was incredible with really good quality balloons ... The arch came down really easily with no marks left.",
     a: "Helen A",
-    href: "https://maps.app.goo.gl/pxsFhE37FV92P7i19",
+    href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT21sTlRtTnNRMVp5UldGcGFXcFdZWHA0TTFCalUxRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
 ];
 
