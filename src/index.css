@@ -306,7 +306,8 @@
     --gallery-compact-x: 16px;         /* Compact gallery column gap · the Christmas doorway gallery (24 from tablet) */
     --gallery-compact-y: 32px;         /* Compact gallery row gap · (44 from tablet) */               /* Tag padding · small labels and badges: EXTRA, photo counts, Most popular (the Christmas tag was 7px 11px) */       /* Compact button padding · the nav's Enquire now button */
     --gap-link-list: 8px;              /* Link list gap · between links in a list, e.g. a footer column */
-    --gap-eyebrow: 20px;               /* Eyebrow to title · a small label above a hero or article title, e.g. CHRISTMAS 2026 · NOW BOOKING, JOURNAL (article was 28 / 36) */
+    --gap-eyebrow-tight: 12px;         /* Eyebrow to title, tight · the Christmas pages' phone hero only, to bring the photos up (Matt, 2026-11-19) */
+    --gap-eyebrow: 20px;              /* Eyebrow to title · a small label above a hero or article title, e.g. CHRISTMAS 2026 · NOW BOOKING, JOURNAL (article was 28 / 36) */
     --article-gap: 64px;               /* Article gap · between the blocks of a journal article: header, In short, photos, quotes, enquire box, related (48 phone; were 48 to 96) */
     --article-pad-x: 24px;             /* Article side padding · inside narrow article blocks: In short, quotes, enquire boxes, related */
     --list-indent: 20px;               /* List indent · how far bullet text sits in from the bullet edge (In short lists) */

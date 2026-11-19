@@ -65,7 +65,8 @@
 /* With no garland on phones, the hero text starts where every other phone
    hero's title does (page top space minus the nav it already clears). */
 @media (max-width: 767px) {
-  .rfx-xmas .xmas-hero-text { margin-top: calc(var(--page-pad-top) - var(--nav-height)); }
+  .rfx-xmas .xmas-hero-text { margin-top: var(--gap-eyebrow); }
+  .rfx-xmas .xmas-hero-text .eyebrow-to-title { margin-top: var(--gap-eyebrow-tight); }
 }
 
 /* Hero garland (src/components/rfx/HeroGarland.tsx). Static, so the
