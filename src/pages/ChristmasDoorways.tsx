@@ -620,11 +620,18 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               </div>
               {/* Trust line: real numbers from the brand facts. Not linked on
                   this ad landing page, so visitors stay (Matt, 2026-11-13). */}
-              <TrustLine />
+              <div className="hidden md:block">
+                <TrustLine />
+              </div>
             </div>
           </div>
           <div className="md:hidden">
             <ScrollStrip images={[...fan]} />
+            {/* Phones: the trust line sits under the photos so the photos
+                come up the screen (Matt, 2026-11-19). */}
+            <div className="container-rfx text-center text-to-action">
+              <TrustLine />
+            </div>
           </div>
           <LocationHeroFan images={[fan[0], fan[1], fan[2]]} spreadOnHover />
         </section>
