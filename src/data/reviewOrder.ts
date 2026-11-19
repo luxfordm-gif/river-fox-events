@@ -17,10 +17,10 @@ const reviewsLeadingWith = (authors: string[]): Review[] => {
 export const CHILDRENS_REVIEWS = reviewsLeadingWith(["Tolu Balogun", "Sarah Lupinski", "Rupi Heron", "Emily Stimson", "Lee Dunn"]);
 
 /* A Christening, an 18th, an engagement party, then the birthdays. */
-export const MILESTONE_REVIEWS = reviewsLeadingWith(["Samantha", "LP", "Emily", "Rupi Heron", "Sarah Lupinski"]);
+export const MILESTONE_REVIEWS = reviewsLeadingWith(["Sam", "L P", "Emily", "Rupi Heron", "Sarah Lupinski"]);
 
 /* A business day, two salons, then the stacks and arches. */
-export const CORPORATE_REVIEWS = reviewsLeadingWith(["Suzy Dorran", "Danielle Wayman", "Nicola Hewitson", "Helen A", "LP"]);
+export const CORPORATE_REVIEWS = reviewsLeadingWith(["Suzy Dorran", "Danielle Wayman", "Nicola Hewitson", "Helen A", "L P"]);
 
 /* The balloon pieces themselves: an arch, a hoop garland, a stack, a garland. */
-export const BALLOON_REVIEWS = reviewsLeadingWith(["Helen A", "Samantha", "Emily Stimson", "Rupi Heron", "Lee Dunn"]);
+export const BALLOON_REVIEWS = reviewsLeadingWith(["Helen A", "Sam", "Emily Stimson", "Rupi Heron", "Lee Dunn"]);

@@ -156,11 +156,12 @@ const ChristmasBalloonDecorationsSurreyArticle = () => (
 
     <ArticleReviewQuote
       author="Danielle Wayman"
-      href="https://maps.app.goo.gl/an2en7jjetSNTGr27"
+      href="https://maps.app.goo.gl/PTQcmkmnAcGUEzim8"
     >
-      The lovely Laura did an amazing job at transforming my salon with a
-      gorgeous Christmas balloon display - she really thought about colours
-      that tie in with my branding. I have had so many lovely compliments.
+      The lovely Laura did an amazing job at transforming my salon with
+      gorgeous Christmas ballon display, she really thought about colours
+      that tie in with the salon and my branding colours, I have had so many
+      lovely compliments!
     </ArticleReviewQuote>
 
     <ArticleProse>

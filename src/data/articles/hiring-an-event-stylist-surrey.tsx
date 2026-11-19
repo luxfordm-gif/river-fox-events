@@ -140,12 +140,12 @@ const HiringAnEventStylistSurreyArticle = () => (
 
     <ArticleReviewQuote
       author="Tolu Balogun"
-      href="https://maps.app.goo.gl/dcLgoJHXnhjjzJKP6"
+      href="https://maps.app.goo.gl/7cnTU2zd82QJjWxX9"
     >
-      Laura is absolutely fantastic. It was such a smooth and seamless
-      process, from our initial conversation to the design of my son's
-      birthday backdrop and tablescape, and it all brought the wow factor. I
-      highly recommend her and will be using her always.
+      Laura is absolutely fantastic! It was such a smooth and seamless
+      process. From our initial conversation to execution of the design fort
+      son’s birthday backdrop and tablescape, all brought the wow factor! I
+      highly recommend and will be using her alwaysssssss. TB x
     </ArticleReviewQuote>
 
     <ArticleCta variant="inline" label="Reserve your date" />

@@ -141,15 +141,15 @@ const DylanChristeningFirstBirthdayArticle = () => (
     </ArticleProse>
 
     <ArticleReviewQuote
-      author="Samantha"
-      href="https://goo.gl/maps/3U8ddozdYipptXt16?g_st=ac"
+      author="Sam"
+      href="https://maps.app.goo.gl/XEjTHPuV7ZSyFVa2A"
     >
-      Laura created a beautiful balloon hoop garland for my son's
+      Laura created a beautiful balloon hoop garland for my son’s
       Christening. It was a beautiful piece of decor and we received loads
       of compliments about it. It really transformed the event hall and was
       stunning. Laura was really easy to communicate with and had great
       creative vision for the event. I would highly recommend this company
-      for event&nbsp;decor.
+      for event decor .
     </ArticleReviewQuote>
 
     <ArticleProse>
