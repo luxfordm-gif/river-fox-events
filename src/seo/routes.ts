@@ -86,63 +86,62 @@ export type Review = { q: string; a: string; href?: string };
  *  array as text. */
 export const REVIEWS: Review[] = [
   {
-    // Trimmed for length, her own words kept (Matt, 2026-11-08).
-    q: "Laura created a beautiful balloon hoop garland for my son's Christening. We received loads of compliments about it. It really transformed the event hall. I would highly recommend this company for event decor.",
+    q: "Laura created a beautiful balloon hoop garland for my son’s Christening. It was a beautiful piece of decor and we received loads of compliments about it. It really transformed the event hall and was stunning. Laura was really easy to communicate with and had great creative vision for the event. I would highly recommend this company for event decor .",
     a: "Samantha",
     href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2tGWk1WVndXbXMxTldFek4yMUhSMGQyTjJSMlUxRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
-    q: "Laura is absolutely fantastic. It was such a smooth and seamless process, from our initial conversation to the design of my son's birthday backdrop and tablescape, and it all brought the wow factor. I highly recommend her and will be using her always.",
+    q: "Laura is absolutely fantastic! It was such a smooth and seamless process. From our initial conversation to execution of the design fort son’s birthday backdrop and tablescape, all brought the wow factor! I highly recommend and will be using her alwaysssssss. TB x",
     a: "Tolu Balogun",
     href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2toR2FUUjJOVkpvTUZoUGREbEdZVGR3WW1ObWRVRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
-    q: "Laura designed us the most beautiful balloons and install for our recent business development day in Horley. Everyone commented on them and they were stunning. Efficient, professional and superb with her communication throughout the booking process. I would recommend her to anyone.",
+    q: "Laura designed us the most beautiful balloons & install for our recent business development day in Horley.\nEveryone commented on them and they were stunning!\n\nLaura was efficient, professional & superb with her communication throughout the booking process.\n\nI would recommend her to anyone & will most definitely use her again in the future!\n\nThank you Laura xxx",
     a: "Suzy Dorran",
     href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnTURJek0zRzNnRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
-    q: "Brilliant service by Laura - asked for something suitable for an 18 year old boy with a horse racing theme. Great stack delivered on the day, everyone loved it. Definitely will use again.",
+    q: "Brilliant service by Laura - asked for something suitable for 18 year old boy with horse racing theme - great stack delivered on the day - everyone loved it - definitely will use again - Thank you",
     a: "LP",
     href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnTUNROU0taXdBRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
-    q: "I would wholly recommend Laura - she did a fantastic job at supplying the decorations for my daughter's birthday party. The balloons looked absolutely stunning and transformed the room.",
+    q: "I would wholly recommend Laura, she did a fantastic job at supplying the decorations for my daughter’s birthday party; the balloons looked absolutely stunning and transformed the room!",
     a: "Sarah Lupinski",
     href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnTURRX2V2UEdnEAE!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
-    q: "An absolutely fabulous display including a balloon garland and kiddies seating area. Would highly recommend and will be reusing Laura.",
+    q: "An absolutely fabulous display including a balloon garland and kiddies seating area. Would highly recommend and will be reusing Laura!",
     a: "Lee Dunn",
     href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUR4MWRuQ2NnEAE!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
-    q: "The lovely Laura did an amazing job at transforming my salon with a gorgeous Christmas balloon display - she really thought about colours that tie in with my branding. I have had so many lovely compliments. My two boys also loved the brilliant Halloween balloons for their party. Can't wait for our next events.",
+    q: "The lovely Laura did an amazing job at transforming my salon with gorgeous Christmas ballon display, she really thought about colours that tie in with the salon and my branding colours, I have had so many lovely compliments!\nMy two boys also loved the brilliant Halloween balloons for their Halloween party. Can’t wait for our next events! Thankyou!",
     a: "Danielle Wayman",
     href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUQtdTdlSHZBRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
-    q: "Laura made an amazing display of balloons for my son's 8th birthday back in October. The balloons were still standing in December - such great quality, and an amazing gaming design that my son absolutely loved. Back to her for his 10th birthday soon.",
+    q: "Laura from Lollipop balloons, made an amazing display of balloons for my son’s 8th Birthday back in October. The balloons are still standing in December! They are of such great quality and Laura made us amazing gaming design that my son absolutely loved. Thanks so much Laura. I’m back to you for my son’s 10th birthday balloons soon! X",
     a: "Rupi Heron",
     href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNCcHEyRGJREAE!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
-    q: "We had the most beautiful backdrop made for our engagement party - exactly what we asked for. Great service.",
+    q: "We had the most beautiful backdrop made for our engagement party and was just what we asked for! Great service!",
     a: "Emily",
     href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnTUR3anF5V3dRRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
-    q: "I've worked with Laura a couple of times and her work is always impeccable. From decorating my salon to elf arrival balloons, we are always so pleased with everything.",
+    q: "I’ve worked with Laura a couple of times and her work is always impeccable. From decorating my salon to elf arrival balloons always we are always so pleased with everything!",
     a: "Nicola Hewitson",
     href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUQtdTQtYnVBRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
-    q: "Amazing balloon stack for my son's first birthday - and with very short notice. Thank you so much Laura.",
+    q: "Amazing balloon stack for my sons first birthday and with very short notice! Thank you so much Laura",
     a: "Emily Stimson",
     href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURCdGRpTWVREAE!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
   {
-    q: "The balloon arch was incredible with really good quality balloons ... The arch came down really easily with no marks left.",
+    q: "What a brilliant service . The balloon arch was incredible with really good quality balloons. Laura was so speedy at building it and in no time it was up and made the kitchen look ready for a 15 year old girls party . Of course she loved it and was a great back drop for many selfies . Thank you it was absolutely wonderful . I would definitely recommend it . Just a note the arch came down really easily with no marks left as command hooks were used .",
     a: "Helen A",
     href: "https://www.google.com/maps/reviews/@51.1799261,-0.1460664,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT21sTlRtTnNRMVp5UldGcGFXcFdZWHA0TTFCalUxRRAB!2m1!1s0x4875fb6e982fa66d:0x8bd0f326b0bd3f23",
   },
