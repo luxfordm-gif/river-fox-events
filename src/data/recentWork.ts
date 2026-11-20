@@ -3,6 +3,9 @@ import type { ViewerItem } from "@/components/rfx/PhotoViewer";
 import xmas400 from "@/assets/home/recent/christmas-spruce-door-garland-beauty-salon-entrance-red-berries-white-baubles-400.webp";
 import xmas700 from "@/assets/home/recent/christmas-spruce-door-garland-beauty-salon-entrance-red-berries-white-baubles-700.webp";
 import xmas1000 from "@/assets/home/recent/christmas-spruce-door-garland-beauty-salon-entrance-red-berries-white-baubles-1000.webp";
+import porch400 from "@/assets/gallery/porch-garland-arch-wreath-front-wide-house-view-400.webp";
+import porch700 from "@/assets/gallery/porch-garland-arch-wreath-front-wide-house-view-700.webp";
+import porch1000 from "@/assets/gallery/porch-garland-arch-wreath-front-wide-house-view-1000.webp";
 import game400 from "@/assets/home/recent/gaming-party-duke-level-8-tron-fortnite-marshmello-backdrop-blue-black-balloons-400.webp";
 import game700 from "@/assets/home/recent/gaming-party-duke-level-8-tron-fortnite-marshmello-backdrop-blue-black-balloons-700.webp";
 import game1000 from "@/assets/home/recent/gaming-party-duke-level-8-tron-fortnite-marshmello-backdrop-blue-black-balloons-1000.webp";
@@ -14,7 +17,7 @@ import uni1000 from "@/assets/home/recent/unicorn-rainbow-party-ava-name-sign-sh
  * Home page "Recent work" (Matt, 2026-11-17): Laura's latest work, newest
  * first, a mix of everything she does (not only balloons).
  *
- * The first three are her newest Instagram posts that aren't in the gallery
+ * The first four are her newest Instagram posts that aren't in the gallery
  * yet (already graded, in src/assets/home/recent/); to refresh, replace one
  * with her next post, newest first. After them come the first events of
  * Children's parties, Milestones and Corporate, taking turns: those sections
@@ -28,6 +31,8 @@ const lead = (
 });
 
 export const HOME_RECENT_LEAD: ViewerItem[] = [
+  // Christmas porch garland, Worplesdon (20 Nov 2026); same file as the Our work photo
+  lead("christmas/porch/porch-garland-arch-wreath-front-wide-house-view.webp", "Timber porch garland", "Wide view of a white house with a spruce and gold bauble garland over its porch and a wreath on the door", [porch400, porch700, porch1000], 1324),
   // Instagram post of 13 Nov 2026
   lead("recent/christmas-door-garland-salon", "Christmas door garland", "Spruce door garland with red berries and white and silver baubles framing a beauty salon entrance", [xmas400, xmas700, xmas1000], 1329),
   // Instagram post of 13 Jul 2026
