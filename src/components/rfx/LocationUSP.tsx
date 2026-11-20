@@ -52,24 +52,25 @@ const TRUST_POINTS: { icon: { s1: string; s2: string }; label: string; body: str
 const firstSentence = (text: string) => text.match(/^.*?[.?!](?=\s|$)/)?.[0] ?? text;
 
 const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [shown, setShown] = useState<boolean[]>(() => TRUST_POINTS.map(() => false));
+  // Side by side from 1024px up: stagger them. Stacked on phones and tablets: each fades as it scrolls in.
+  const [inRow, setInRow] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    setInRow(window.matchMedia("(min-width: 1024px)").matches);
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setVisible(true);
-            io.unobserve(e.target);
-          }
+          if (!e.isIntersecting) return;
+          const i = itemRefs.current.indexOf(e.target as HTMLDivElement);
+          if (i >= 0) setShown((prev) => prev.map((v, j) => (j === i ? true : v)));
+          io.unobserve(e.target);
         });
       },
-      { threshold: 0.18 }
+      { threshold: 0.4 }
     );
-    io.observe(el);
+    itemRefs.current.forEach((el) => el && io.observe(el));
     return () => io.disconnect();
   }, []);
 
@@ -104,20 +105,21 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
         </SectionIntro>
 
         <div
-          ref={ref}
           className="text-to-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 cards-gap"
         >
           {TRUST_POINTS.map(({ icon, label, body: pointBody }, i) => {
             return (
               <div
                 key={label}
-                className="flex flex-col items-center text-center card-inset"
+                ref={(el) => {
+                  itemRefs.current[i] = el;
+                }}
+                className="flex flex-col items-center text-center card-inset motion-reduce:!opacity-100"
                 style={{
-                  opacity: visible ? 1 : 0,
-                  transform: visible ? "translateY(0)" : "translateY(24px)",
-                  transition: `opacity var(--motion-reveal) var(--ease-soft) ${
-                    i * 120
-                  }ms, transform var(--motion-reveal) var(--ease-soft) ${i * 120}ms`,
+                  opacity: shown[i] ? 1 : 0,
+                  transition: `opacity var(--motion-reveal) var(--ease-soft) calc(var(--motion-stagger) * ${
+                    inRow ? i : 0
+                  })`,
                 }}
               >
                 <img
