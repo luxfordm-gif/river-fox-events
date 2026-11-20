@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { ICON_REGISTRY, type IncludedIconKey } from "./CPIncluded";
+import badge128 from "@/assets/usp-icons/eight-years-in-surrey-icon-128.webp";
+import badge256 from "@/assets/usp-icons/eight-years-in-surrey-icon-256.webp";
+import palette128 from "@/assets/usp-icons/full-service-styling-icon-128.webp";
+import palette256 from "@/assets/usp-icons/full-service-styling-icon-256.webp";
+import heart128 from "@/assets/usp-icons/calm-from-start-to-finish-icon-128.webp";
+import heart256 from "@/assets/usp-icons/calm-from-start-to-finish-icon-256.webp";
+import sparkle128 from "@/assets/usp-icons/setup-and-collection-icon-128.webp";
+import sparkle256 from "@/assets/usp-icons/setup-and-collection-icon-256.webp";
 import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 
 type LocationUSPProps = {
@@ -19,24 +26,24 @@ type LocationUSPProps = {
  * which is the text Google uses for search snippets. The "eight years" and
  * "400+ events" figures match the homepage About stats - keep them in sync.
  */
-const TRUST_POINTS: { icon: IncludedIconKey; label: string; body: string }[] = [
+const TRUST_POINTS: { icon: { s1: string; s2: string }; label: string; body: string }[] = [
   {
-    icon: "badge",
+    icon: { s1: badge128, s2: badge256 },
     label: "Eight years in Surrey",
     body: "More than 400 events styled across Surrey.",
   },
   {
-    icon: "palette",
+    icon: { s1: palette128, s2: palette256 },
     label: "Full-service styling",
     body: "Concept, design and every detail, in-house.",
   },
   {
-    icon: "heart",
+    icon: { s1: heart128, s2: heart256 },
     label: "Calm from start to finish",
     body: "One point of contact, from first idea to the day.",
   },
   {
-    icon: "sparkle",
+    icon: { s1: sparkle128, s2: sparkle256 },
     label: "Setup and collection",
     body: "Installed before guests arrive, cleared away after.",
   },
@@ -101,7 +108,6 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
           className="text-to-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 cards-gap"
         >
           {TRUST_POINTS.map(({ icon, label, body: pointBody }, i) => {
-            const Icon = ICON_REGISTRY[icon];
             return (
               <div
                 key={label}
@@ -114,9 +120,16 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
                   }ms, transform var(--motion-reveal) var(--ease-soft) ${i * 120}ms`,
                 }}
               >
-                <div className="flex items-center justify-center icon-above w-16 h-16 rounded-full bg-surface-warm text-accent-warm">
-                  <Icon strokeWidth={1.4} size={26} />
-                </div>
+                <img
+                  src={icon.s1}
+                  srcSet={`${icon.s1} 128w, ${icon.s2} 256w`}
+                  sizes="64px"
+                  alt=""
+                  width={64}
+                  height={64}
+                  loading="lazy"
+                  className="icon-above w-16 h-16 rounded-full"
+                />
                 <h3 className="t-h6 text-ink">
                   {label}
                 </h3>
