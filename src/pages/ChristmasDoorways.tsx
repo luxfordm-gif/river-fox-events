@@ -565,9 +565,13 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
         {/* Hero: garland drapes edge to edge above the headline, then the
             photo fan (scroll strip on phones), as on the location pages. */}
         <section aria-labelledby="xmas-hero-heading" className="rfx-hero hero-under-nav hero-foot">
-          <HeroGarland />
+          {/* Tablet up only: on phones it pushed the buttons below the fold
+              (Matt, 2026-11-18). */}
+          <div className="hidden md:block">
+            <HeroGarland />
+          </div>
           <div className="container-rfx">
-            <div className="mt-2 md:mt-4 hero-gap-below flex flex-col items-center text-center">
+            <div className="xmas-hero-text mt-2 md:mt-4 hero-gap-below flex flex-col items-center text-center">
               <p className="t-overline text-ink-soft">
                 {biz ? "Christmas 2026 · For businesses" : "Christmas 2026 · Now booking"}
               </p>
@@ -587,18 +591,12 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               </h1>
               <div className="heading-to-text max-w-[46ch] md:max-w-[70ch] t-lead text-ink-soft paragraphs">
                 {biz ? (
-                  <>
-                    <p>
-                      Your entrance is the first thing customers see this
-                      Christmas.
-                    </p>
-                    <p>
-                      I dress shopfronts, salons, restaurants and offices
-                      across Surrey with garlands matched to your brand,
-                      installed by hand around your opening hours, with
-                      optional January&nbsp;takedown.
-                    </p>
-                  </>
+                  <p>
+                    I dress shopfronts, salons, restaurants and offices
+                    across Surrey with garlands matched to your brand,
+                    installed by hand around your opening hours, with
+                    optional January&nbsp;takedown.
+                  </p>
                 ) : (
                   <>
                     <p>
@@ -622,11 +620,18 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
               </div>
               {/* Trust line: real numbers from the brand facts. Not linked on
                   this ad landing page, so visitors stay (Matt, 2026-11-13). */}
-              <TrustLine />
+              <div className="hidden md:block">
+                <TrustLine />
+              </div>
             </div>
           </div>
           <div className="md:hidden">
             <ScrollStrip images={[...fan]} />
+            {/* Phones: the trust line sits under the photos so the photos
+                come up the screen (Matt, 2026-11-19). */}
+            <div className="container-rfx text-center text-to-action">
+              <TrustLine />
+            </div>
           </div>
           <LocationHeroFan images={[fan[0], fan[1], fan[2]]} spreadOnHover />
         </section>

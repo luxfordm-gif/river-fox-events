@@ -47,6 +47,21 @@ section.rfx-section.xhero-zoom { padding-bottom: 0; }
   will-change: transform;
 }
 
+/* Phones: no growing. The film sits at its widest with a small gutter each
+   side and Large corners, so the spacing above and below stays even
+   (Matt, 2026-11-19). The scroll code still runs but the transform is off. */
+@media (max-width: 767px) {
+  /* Trust line to film = photos to trust line (32 each): the hero's own
+     bottom padding plus this. */
+  section.rfx-section.xhero-zoom { padding-top: var(--gap-inline); }
+  .xhero--zoom {
+    transform: none;
+    will-change: auto;
+    margin-inline: var(--gutter-wide);
+    border-radius: var(--radius-large);
+  }
+}
+
 /* Video and poster, under a tint so the cream words read on any frame. */
 .xhero__media { position: absolute; inset: 0; z-index: -1; }
 .xhero__media img,

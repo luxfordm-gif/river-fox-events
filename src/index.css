@@ -306,11 +306,13 @@
     --gallery-compact-x: 16px;         /* Compact gallery column gap · the Christmas doorway gallery (24 from tablet) */
     --gallery-compact-y: 32px;         /* Compact gallery row gap · (44 from tablet) */               /* Tag padding · small labels and badges: EXTRA, photo counts, Most popular (the Christmas tag was 7px 11px) */       /* Compact button padding · the nav's Enquire now button */
     --gap-link-list: 8px;              /* Link list gap · between links in a list, e.g. a footer column */
-    --gap-eyebrow: 20px;               /* Eyebrow to title · a small label above a hero or article title, e.g. CHRISTMAS 2026 · NOW BOOKING, JOURNAL (article was 28 / 36) */
+    --gap-eyebrow-tight: 12px;         /* Eyebrow to title, tight · the Christmas pages' phone hero only, to bring the photos up (Matt, 2026-11-19) */
+    --gap-eyebrow: 20px;              /* Eyebrow to title · a small label above a hero or article title, e.g. CHRISTMAS 2026 · NOW BOOKING, JOURNAL (article was 28 / 36) */
     --article-gap: 64px;               /* Article gap · between the blocks of a journal article: header, In short, photos, quotes, enquire box, related (48 phone; were 48 to 96) */
     --article-pad-x: 24px;             /* Article side padding · inside narrow article blocks: In short, quotes, enquire boxes, related */
     --list-indent: 20px;               /* List indent · how far bullet text sits in from the bullet edge (In short lists) */
     --gap-steps: 64px;                 /* Step gap · between the stacked "How it works" steps (phones and tablets; laptops use Card gap) */
+    --gap-usp-title-body: 4px;        /* Why-us title to text · the title under a Why River Fox icon down to its line of text (was Title to text, 8) */
     --gap-media: 20px;                /* Media gap · a photo or icon down to a card title under it (were 16 to 32) */
     --gap-caption: 12px;               /* Caption gap · a photo down to its caption, close so it reads as the photo's label (Our work, tile names, article photos) */
     --tile-card-lh: 1.4;               /* Tile card line height · the name in a tile card, a little tighter than body so two lines sit close */
@@ -411,7 +413,7 @@
       --card-text-inset: 0px;
       --card-pad: 28px;
       --gutter: 32px;
-      --service-photo-ratio: 8 / 9;   /* phone: 10% shallower than 4 / 5 */
+      --service-photo-ratio: 5 / 4;   /* phone: shorter again, wider than tall (was 10 / 9, 80 / 81, 8 / 9, 4 / 5); Matt 2026-11-20 */
       --nav-height: 72px;      /* phone bar (was 78, then 64; 8px chunkier, Matt 2026-11-13) */
       --page-pad-top: 106px;   /* nav + 34px: titles keep the same space under the nav */
       --hero-pad-top: var(--page-pad-top);   /* heroes start where inner-page titles do */
@@ -1284,6 +1286,7 @@
   .text-to-content { margin-top: var(--gap-text-content); }
   /* Card / item title to its text: one gap everywhere (Matt, 2026-11-08). */
   .title-to-text { margin-top: var(--gap-title-body); }
+  .usp-title-to-text { margin-top: var(--gap-usp-title-body); }
   .text-to-action { margin-top: var(--gap-text-action); }
   .text-to-text { margin-top: var(--gap-paragraph); }
   .stack-gap { gap: var(--gap-stack); }
