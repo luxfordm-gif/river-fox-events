@@ -1181,6 +1181,9 @@
     .exp-link-tablet-up { display: none; }
   }
   .card-inset { padding-inline: var(--gap-stack); }
+  /* Why-us item: icon, title and text sit on three rows shared with its neighbours (subgrid), so the texts
+     start level even when one title wraps. The grid's own gap is dropped inside the item. */
+  .usp-item { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; justify-items: center; align-content: start; }
   .button-trust-gap { gap: var(--gap-button-trust); }
   .photos-gap { gap: var(--gap-photos); }
   .photos-gap-top { margin-top: var(--gap-photos); }
