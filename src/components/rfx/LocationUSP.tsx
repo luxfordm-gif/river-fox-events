@@ -68,7 +68,8 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
           io.unobserve(e.target);
         });
       },
-      { threshold: 0.4 }
+      // Wait until most of the item is on screen and clear of the bottom edge, so the fade is seen.
+      { threshold: 0.6, rootMargin: "0px 0px -15% 0px" }
     );
     itemRefs.current.forEach((el) => el && io.observe(el));
     return () => io.disconnect();
