@@ -25,12 +25,6 @@ import {
 } from "@/seo/headTags";
 import "@/styles/christmas.css";
 
-import door420 from "@/assets/christmas/black-front-door-gold-ribbon-garland-red-brick-420.webp";
-import door640 from "@/assets/christmas/black-front-door-gold-ribbon-garland-red-brick-640.webp";
-import door838 from "@/assets/christmas/black-front-door-gold-ribbon-garland-red-brick-838.webp";
-import goldDetail420 from "@/assets/christmas/gold-star-pine-cone-bauble-spruce-detail-420.webp";
-import goldDetail640 from "@/assets/christmas/gold-star-pine-cone-bauble-spruce-detail-640.webp";
-import goldDetail838 from "@/assets/christmas/gold-star-pine-cone-bauble-spruce-detail-838.webp";
 import shop420 from "@/assets/christmas/salon-shopfront-red-bauble-corner-garland-420.webp";
 import shop640 from "@/assets/christmas/salon-shopfront-red-bauble-corner-garland-640.webp";
 import shop838 from "@/assets/christmas/salon-shopfront-red-bauble-corner-garland-838.webp";
@@ -51,6 +45,15 @@ import igGeorgian from "@/assets/christmas/instagram/georgian-door-gold-champagn
 import igPinkShop from "@/assets/christmas/instagram/pink-shopfront-red-white-window-garland.webp";
 import igDetail from "@/assets/christmas/instagram/pink-doorframe-red-silver-bauble-detail.webp";
 import igLedge from "@/assets/christmas/instagram/restaurant-window-ledge-red-bauble-garland.webp";
+import porchDrive from "@/assets/gallery/porch-garland-arch-whole-house-gravel-drive-700.webp";
+import porchNight from "@/assets/gallery/porch-garland-arch-night-fairy-lights-dusk-front-700.webp";
+import porchHydrangeas from "@/assets/gallery/porch-garland-arch-wreath-front-hydrangeas-700.webp";
+import porchTall from "@/assets/gallery/porch-garland-arch-left-angle-close-tall-700.webp";
+import porchWide400 from "@/assets/gallery/porch-garland-arch-wreath-front-wide-house-view-400.webp";
+import porchWide700 from "@/assets/gallery/porch-garland-arch-wreath-front-wide-house-view-700.webp";
+import porchWide1000 from "@/assets/gallery/porch-garland-arch-wreath-front-wide-house-view-1000.webp";
+import porchTall400 from "@/assets/gallery/porch-garland-arch-left-angle-close-tall-400.webp";
+import porchTall1000 from "@/assets/gallery/porch-garland-arch-left-angle-close-tall-1000.webp";
 import igPillar from "@/assets/christmas/instagram/pink-studio-pillar-garland-detail.webp";
 import imgRestaurant from "@/assets/christmas/blue-restaurant-doorway-red-bauble-garland.webp";
 import imgJewel from "@/assets/christmas/jewel-tone-bauble-arch-white-porch.webp";
@@ -293,17 +296,21 @@ const FAQS_BUSINESS = [
    alternating. */
 const INSTAGRAM = [
   { src: igNavy, alt: "Navy front door beneath a spruce arch crowded with pink, purple, teal and gold baubles" },
+  { src: porchDrive, alt: "Black-timbered porch on a white house, arched in spruce with gold and sage baubles, seen from the gravel drive" },
   { src: igSalon, alt: "Glass salon frontage with a spruce corner garland weighed down with true-red baubles" },
   { src: igPillars, alt: "Brick porch pillars wound with red, gold and green garlands either side of a sage door" },
   { src: igReigate, alt: "Blue restaurant double doors in Reigate edged with red and gold bauble garlands" },
   { src: igBlueDoor, alt: "Blue front door framed in real spruce with blue, white and silver baubles" },
+  { src: porchNight, alt: "Porch garland glowing with warm fairy lights at dusk around a black timber door and a small wreath" },
   { src: igPilates, alt: "Pink pilates studio doorway in East Molesey dressed in spruce with blush, white and red baubles" },
   { src: igCream, alt: "Cream front door under a brick porch, framed by spruce with jewel-toned baubles" },
   { src: igMedispa, alt: "Medispa entrance framed in frosted spruce with white and silver baubles" },
+  { src: porchHydrangeas, alt: "Door wreath and porch garland in front view, with dried hydrangeas in the border beside the house" },
   { src: igWhiteDoor, alt: "White front door edged in a spruce garland of pink, plum, gold and red baubles" },
   { src: igLaura, alt: "Laura with arms out beside a blue restaurant doorway dressed in red and gold bauble garlands" },
   { src: igGeorgian, alt: "Georgian black door at number 16 framed in spruce with gold and champagne baubles and stars" },
   { src: igPinkShop, alt: "Pink shopfront with a spruce garland of red and white baubles running along the window base" },
+  { src: porchTall, alt: "Tall close view of spruce, gold and sage baubles curving around a black timber porch frame" },
   { src: igDetail, alt: "Detail of a spruce garland on a pink door frame with red, silver and gold baubles" },
   { src: igLedge, alt: "Restaurant window ledge lined with a spruce garland of red and cream baubles beside bistro chairs" },
   { src: igPillar, alt: "Pillar garland on a pink studio front mixing red, white and gold baubles with spruce" },
@@ -333,12 +340,12 @@ type Card = {
 };
 
 const CARD_HOME: Card = {
-    img: door640,
-    srcSet: srcSet(door420, door640, door838),
-    alt: "Black Georgian front door with a spruce garland of gold ribbons, stars and baubles arching over the fanlight",
-    detail: goldDetail640,
-    detailSrcSet: srcSet(goldDetail420, goldDetail640, goldDetail838),
-    detailAlt: "Gold star, frosted pine cone and gold bauble tucked into spruce with a gold ribbon bow",
+    img: porchWide700,
+    srcSet: `${porchWide400} 400w, ${porchWide700} 700w, ${porchWide1000} 1000w`,
+    alt: "Wide view of a white house with a spruce and gold bauble garland over its porch and a wreath on the door",
+    detail: porchTall,
+    detailSrcSet: `${porchTall400} 400w, ${porchTall} 700w, ${porchTall1000} 1000w`,
+    detailAlt: "Tall close view of spruce, gold and sage baubles curving around a black timber porch frame",
     title: "Front doors and porches",
     body: [
       "From a generous sweep of greenery to a fully adorned doorway, each garland is styled around your home's character.",

@@ -696,6 +696,38 @@ export const GALLERY: GallerySection[] = [
     compact: true,
     events: [
       {
+        title: "Timber porch garland",
+        place: "Worplesdon",
+        photos: [
+          {
+            source: "christmas/porch/porch-garland-arch-whole-house-gravel-drive.webp",
+            alt: "Black-timbered porch on a white house, arched in spruce with gold and sage baubles, seen from the gravel drive",
+          },
+          {
+            source: "christmas/porch/porch-garland-arch-wreath-front-wide-house-view.webp",
+            alt: "Wide view of a white house with a spruce and gold bauble garland over its porch and a wreath on the door",
+          },
+          {
+            source: "christmas/porch/porch-garland-arch-wreath-front-hydrangeas.webp",
+            alt: "Door wreath and porch garland in front view, with dried hydrangeas in the border beside the house",
+          },
+        ],
+      },
+      {
+        title: "Porch garland at dusk",
+        place: "Worplesdon",
+        photos: [
+          {
+            source: "christmas/porch/porch-garland-arch-night-fairy-lights-dusk-front.webp",
+            alt: "Porch garland glowing with warm fairy lights at dusk around a black timber door and a small wreath",
+          },
+          {
+            source: "christmas/porch/porch-garland-arch-left-angle-close-tall.webp",
+            alt: "Tall close view of spruce, gold and sage baubles curving around a black timber porch frame",
+          },
+        ],
+      },
+      {
         title: "Restaurant doorway",
         place: "Reigate",
         photos: [

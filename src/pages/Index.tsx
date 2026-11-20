@@ -27,7 +27,7 @@ import {
 /** On while the Christmas campaign runs: video hero, no title section. */
 const CHRISTMAS_CAMPAIGN = true;
 
-const RECENT_WORK_PICKS = homeRecentPicks(13);
+const RECENT_WORK_PICKS = homeRecentPicks(12);
 
 const Index = () => {
   useFadeUp();
