@@ -803,6 +803,8 @@
     -webkit-line-clamp: var(--review-lines);
     line-clamp: var(--review-lines);
     overflow: hidden;
+    /* Keep the reviewer's own line breaks, as on Google. */
+    white-space: pre-line;
   }
   .tcard-meta {
     display: flex;
