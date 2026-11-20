@@ -44,7 +44,8 @@ function plan(p, width, height) {
   return { W, H, size, outW: Math.round(width * k), outH: Math.round(height * k) };
 }
 const graded = (p) => !p.derived && !p.copyOf; // the ones that actually go to the API
-const matches = (p, keys = only) => !keys || keys.some((k) => p.key === k || p.key.includes(k));
+// --only takes a photo name, part of a name, or an inbox job folder (state/inbox/<job>/)
+const matches = (p, keys = only) => !keys || keys.some((k) => p.key === k || p.key.includes(k) || p.src.includes(`/${k}/`));
 
 function selected() {
   const { photos, trial } = loadPhotos();
