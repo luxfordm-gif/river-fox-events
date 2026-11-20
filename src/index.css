@@ -45,7 +45,7 @@
     --accent-hover: 12 55% 70%;        /* Accent hover · button fill on hover */
     --accent-dark: 12 32% 54%;         /* Accent Dark · italic words in headings, stars, step numbers (#AF7364: darkened from #C39083 so it passes 3:1 contrast on every background, Matt 2026-11-08) */
     --announcement-fill: 155 76% 8%;   /* Announcement Fill · the announcement bar's background, the same deep pine as the floating Christmas card; cream text on it is above 15:1 (Matt 2026-11-17) */
-    --service-photo-ratio: 4 / 5;      /* Service photo shape · the photo on each services card, portrait so the cards feel full (8 / 9 on phones, 10% shallower; was square, 268px high on phones; Matt 2026-11-17) */
+    --service-photo-ratio: 1 / 1;      /* Service photo shape · the photo on each services card: square from tablet up, 20% shallower than the 4 / 5 it was (the section read too deep on tablets; Matt 2026-11-20). Phones have their own, 5 / 4, set below */
     --announcement-height: 34px;       /* Announcement bar height · the strip pinned to the top of the screen on phones, with the nav directly under it (AnnouncementBar.tsx; was 44, then 40 then 36, Matt 2026-11-17) */
     --announcement-pad-x: var(--gap-stack);   /* Announcement bar padding · space either side of its line, 16px */
 
@@ -253,6 +253,7 @@
     --gap-columns: 64px;               /* Column gap · between the two halves of a split layout: text and form, text and photo (48 phone; Enquire used 64, Contact 80; Matt 2026-11-13) */
     --measure-step: 560px;             /* Step width · widest a stacked How it works step gets on tablets */
     --gap-cards: 40px;                 /* Card gap · between cards in a grid or row: steps, tiles, related articles (32 phone) */
+    --gap-service-cards: 56px;         /* Services card gap · between the three services cards, and where the divider line between them is drawn (it sits at half of this). Was a one-off 56 in the markup while the divider was drawn for 48, so it sat 4px off centre; Matt 2026-11-20 */
     --footer-brand-gap: 6px;           /* Footer brand gap · phones: extra space under the brand text, on top of the 48px row gap, before Services (54 in all, was 68; Matt 2026-11-18) */
     --gap-stacked: 24px;               /* Stacked gap · on phones, between the two halves of a .rfx-md-stack layout once they stack (About, reveals, service header, footer); was a hand-set 24 */
     --gap-paragraph: 20px;             /* Paragraph gap · one paragraph to the next (was 16 or 20; Matt 2026-11-13) */
@@ -941,16 +942,18 @@
   /* The three cards run edge to edge with the heading and the rule above:
      a column gap with the divider drawn in its middle, not padding inside
      each card, which inset the outer cards (Matt, 2026-11-08). */
+  .exp-grid { gap: var(--gap-service-cards); }
   @media (min-width: 768px) {
-    .exp-grid { column-gap: var(--gap-text-content); }
     .exp-grid > .exp-card { position: relative; }
+    /* The line's own centre sits at half the gap, so it is exactly midway between the two cards. */
     .exp-grid > .exp-card + .exp-card::before {
       content: "";
       position: absolute;
       top: 0;
       bottom: 0;
-      left: calc(var(--gap-text-content) / -2);
+      left: calc(var(--gap-service-cards) / -2);
       width: 1px;
+      transform: translateX(-50%);
       background: hsl(var(--divider));
     }
   }
@@ -1183,6 +1186,9 @@
     .exp-link-tablet-up { display: none; }
   }
   .card-inset { padding-inline: var(--gap-stack); }
+  /* Why-us item: icon, title and text sit on three rows shared with its neighbours (subgrid), so the texts
+     start level even when one title wraps. The grid's own gap is dropped inside the item. */
+  .usp-item { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; justify-items: center; align-content: start; }
   .button-trust-gap { gap: var(--gap-button-trust); }
   .photos-gap { gap: var(--gap-photos); }
   .photos-gap-top { margin-top: var(--gap-photos); }

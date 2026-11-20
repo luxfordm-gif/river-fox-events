@@ -17,7 +17,7 @@ import { join } from "node:path";
  */
 const BASELINE = {
   stylesheetRawSpacing: 60, // padding / margin / gap declarations with a px, rem, vw or vh value and no var()
-  arbitrarySpacingClasses: 6, // Tailwind pt-[134px], gap-[56px] ...
+  arbitrarySpacingClasses: 5, // Tailwind pt-[134px], gap-[56px] ...
   inlineSpacingStyles: 6, // style={{ paddingTop: ... }}
   // One-off widths max-w-[460px], max-w-[44ch] ... (2026-11-13: 59 -> 5). The 5
   // left are deliberate: the town hero photo fan's two photo sizes and the
