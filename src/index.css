@@ -312,6 +312,7 @@
     --article-pad-x: 24px;             /* Article side padding · inside narrow article blocks: In short, quotes, enquire boxes, related */
     --list-indent: 20px;               /* List indent · how far bullet text sits in from the bullet edge (In short lists) */
     --gap-steps: 64px;                 /* Step gap · between the stacked "How it works" steps (phones and tablets; laptops use Card gap) */
+    --gap-usp-title-body: 4px;        /* Why-us title to text · the title under a Why River Fox icon down to its line of text (was Title to text, 8) */
     --gap-media: 20px;                /* Media gap · a photo or icon down to a card title under it (were 16 to 32) */
     --gap-caption: 12px;               /* Caption gap · a photo down to its caption, close so it reads as the photo's label (Our work, tile names, article photos) */
     --tile-card-lh: 1.4;               /* Tile card line height · the name in a tile card, a little tighter than body so two lines sit close */
@@ -1285,6 +1286,7 @@
   .text-to-content { margin-top: var(--gap-text-content); }
   /* Card / item title to its text: one gap everywhere (Matt, 2026-11-08). */
   .title-to-text { margin-top: var(--gap-title-body); }
+  .usp-title-to-text { margin-top: var(--gap-usp-title-body); }
   .text-to-action { margin-top: var(--gap-text-action); }
   .text-to-text { margin-top: var(--gap-paragraph); }
   .stack-gap { gap: var(--gap-stack); }

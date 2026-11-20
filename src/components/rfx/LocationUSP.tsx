@@ -130,11 +130,11 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
                   loading="lazy"
                   className="icon-above w-16 h-16 rounded-full"
                 />
-                <h3 className="t-h6 text-ink">
+                <h3 className="t-h5 text-ink">
                   {label}
                 </h3>
                 <p
-                  className="t-small text-ink-soft title-to-text measure-card"
+                  className="t-small text-ink-soft usp-title-to-text measure-card"
                   style={{ textWrap: "pretty" }}
                 >
                   {pointBody}
