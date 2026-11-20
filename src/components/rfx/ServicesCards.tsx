@@ -9,7 +9,7 @@ import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
  * name under it. The name is an h3 in body text (t-small), so it keeps its
  * weight for search without shouting.
  *
- * Phones: a left-aligned swipe row, about 1.6 cards in view with the next one
+ * Phones: a centred swipe row, about 1.6 cards in view with the next one
  * peeking in (`--tile-card-width`), and pagination dots under it. Tablet up: a
  * grid, four across, all tiles shown. Tiles are 12 or 16 so rows end full.
  * Tiles are plain names, never links (Matt, 2026-11-18: a tap that opened a

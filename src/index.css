@@ -970,10 +970,12 @@
   .tile-card-row {
     display: flex; gap: var(--gap-stack); list-style: none; padding: 0;
     overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
-    margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter);
+    margin-inline: calc(-1 * var(--gutter));
+    /* Centred: the card in view sits in the middle of the screen, the neighbours peek in on both sides (Matt 2026-11-20) */
+    padding-inline: calc((100vw - var(--tile-card-width)) / 2);
   }
   .tile-card-row::-webkit-scrollbar { display: none; }
-  .tile-card-row > li { flex: none; width: var(--tile-card-width); scroll-snap-align: start; display: flex; }
+  .tile-card-row > li { flex: none; width: var(--tile-card-width); scroll-snap-align: center; display: flex; }
   @media (min-width: 768px) {
     .tile-card-row {
       display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap-stack);
