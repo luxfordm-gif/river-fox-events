@@ -1,3 +1,6 @@
+// SUPERSEDED (21 Nov 2026) by tools/river-fox/text/thumb.cjs: covers and post images are now ONE big Classic-font headline
+// plus only the small handle at the bottom, no small caps line, in the safe areas. Kept for reference; do not use for new jobs.
+//
 // Puts the River Fox cover text (the "hook") on ONE chosen photo per format: an Instagram post (3:4) and/or a
 // Story / Reel cover (9:16). The look is the Social brand pack's cover rules; read the newest pack in Drive before
 // each job, and change the numbers below if it moves (the pack wins, never this file).

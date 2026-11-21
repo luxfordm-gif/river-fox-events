@@ -3,7 +3,7 @@
 const puppeteer = require(require('path').join(__dirname,'../../photo-grade/node_modules/puppeteer-core'));
 const dir = process.argv[2];
 const FONT = '<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,144,900,100,0;1,144,900,100,1&display=block" rel="stylesheet">';
-const BASE = 'html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:transparent}.w,.w *{font-family:Fraunces,serif;font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:900;color:#FCFBF8}';
+const BASE = 'html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:transparent}.w,.w *{font-family:Fraunces,serif;font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:900;color:#FCFBFB}';
 const SH = 'text-shadow:0 4px 34px rgba(30,16,10,.55),0 2px 8px rgba(30,16,10,.3)';
 const PAGES = {
   // headline on the gravel: small italic line over a big word, with the light fade
