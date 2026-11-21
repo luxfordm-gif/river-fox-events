@@ -12,7 +12,7 @@ Site for **Laura** at River Fox Events (luxury event styling, Surrey). Live at `
 
 ## Social, overlay and brand rules
 
-Don't copy rules here. Before every social, image or review-post task, read the newest Brand book and Social brand pack in Drive > River Fox Events > Brand > Brand book (never the `_Archive` folder), and check for newer versions each time. The Automation folder and its build brief were retired on 21 November 2026 (moved to the top-level `_Archive`): Laura uploads photos and Matt edits them with Claude, using the `river-fox-photo-job` skill on his Mac, which holds the filing and build steps.
+Don't copy rules here. Before every social, image or review-post task, read the newest Brand book and Social brand pack in Drive > River Fox Events > Brand > Brand book (never the `_Archive` folder), and check for newer versions each time. The Automation folder and its build brief were retired on 21 November 2026 (moved to the top-level `_Archive`): Laura uploads photos and Matt edits them with Claude, using the one `river-fox` skill on his Mac, which holds the filing and build steps.
 
 If a skill disagrees with the book or the pack, the book and the pack win. Tell me the skill needs updating.
 
