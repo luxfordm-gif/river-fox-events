@@ -68,7 +68,7 @@ text.capbig { font: 400 60px Fraunces, serif; }
 @keyframes wordstay { 0% { opacity: 0; transform: translateY(18px); } 30%, 100% { opacity: 1; transform: none; } }
 @keyframes curs { to { transform: translateX(336px); } }
 @keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes stretch { 0% { opacity: 0; } 1%, 99% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes stretch { 0% { opacity: 0; } 1%, 93% { opacity: 1; } 94%, 100% { opacity: 0; } }
 @keyframes dropOut { to { transform: translateY(260px); opacity: 0; } }
 @keyframes moveX { to { transform: translateX(var(--tx)); } }
 @keyframes hookMove { 45% { transform: translate(calc(var(--tx) * .5), -170px) rotate(-6deg); } 100% { transform: translateX(var(--tx)); } }
@@ -236,14 +236,17 @@ const SCENES = [
         return best ? `<g style="--tx:${tx}px;animation: ${i === 7 ? "hookMove" : "moveX"} .9s cubic-bezier(.6,0,.3,1) ${i === 7 ? 5.2 : 4.5}s both">${inner}</g>` : `<g style="animation: dropOut .6s ease-in ${(3.6 + i * .05).toFixed(2)}s both">${inner}</g>`; }).join("")}
       <g style="animation: sweep 2.4s linear .8s both, hide .3s ease 3.4s both"><path class="ac" d="M376 262 V580"/><path class="pk thin" d="M362 240 h28 l-14 22 z"/></g>
       ${pill(806, 250, 150, "Hook", "ik", 6.1)}` },
-  { id: "captions", title: "Captions, cover, <em>end screen.</em>", say: "Speech becomes animated captions, in three styles. If Laura stretches a word, so does the caption. A cover goes on the front, and an end screen on the back.",
+  { id: "captions",
+    // The camera: [seconds, centre x, centre y, zoom]. In on each phone in turn, then back out.
+    cam: [[0, 960, 460, 1], [1.2, 960, 460, 1], [2, 560, 500, 1.7], [3.7, 560, 500, 1.7], [4.4, 960, 500, 1.7], [6.4, 960, 500, 1.7], [7.1, 1360, 500, 1.7], [8.2, 1360, 500, 1.7], [9, 960, 460, 1]],
+    title: "Captions, cover, <em>end screen.</em>", say: "Speech becomes animated captions, in three styles. If Laura stretches a word, so does the caption. A cover goes on the front, and an end screen on the back.",
     sfx: [["pop", .2, .2], ["pop", .45, .2], ["pop", .7, .2], ["tick", 1.6, .12], ["tick", 2.0, .12], ["tick", 2.4, .12], ["tick", 2.8, .12], ["whoosh", 5.6, .5], ["whoosh", 6.2, .5]],
     art: [0, 1, 2].map((i) => `<g class="pop" style="--d:${.1 + i * .25}s">${phone(430 + i * 400, 150, 260, 520)}<path class="eq faint" d="M${540 + i * 400} 340 v50"/><path class="eq faint" style="animation-delay:-.25s" d="M${560 + i * 400} 315 v100"/><path class="eq faint" style="animation-delay:-.5s" d="M${580 + i * 400} 345 v40"/></g>`).join("") +
-      `<text class="cap" x="560" y="560" text-anchor="middle">${["I", "love", "it"].map((w2, i) => `<tspan style="animation: say .01s linear ${1.6 + i * .4}s both">${w2}</tspan>`).join(" ")}</text>
-      ${["love", "loove", "looove", "loooove"].map((w2, i) => `<text class="capbig" style="font-size:36px;animation: stretch .32s linear ${1.6 + i * .3}s both" x="960" y="566" text-anchor="middle">${w2}</text>`).join("")}<text class="capbig it" style="font-size:36px;animation: show .01s linear 2.8s both" x="960" y="566" text-anchor="middle">looooove it</text>
-      <g class="up" style="--d:1.8s"><rect class="pk" x="1262" y="520" width="196" height="62" rx="10"/><text class="cap" style="fill:var(--ink)" x="1360" y="560" text-anchor="middle">I love it</text></g>
-      <g class="up" style="--d:5.6s"><rect class="cr" x="462" y="230" width="196" height="130" rx="10"/><text class="serif s" x="560" y="286" text-anchor="middle">A fifth</text><text class="serif s it" x="560" y="324" text-anchor="middle">birthday</text></g>
-      <g class="up" style="--d:6.2s"><rect class="w" x="1262" y="230" width="196" height="130" rx="10"/><text class="serif s" x="1360" y="286" text-anchor="middle">River Fox</text><text class="serif s" x="1360" y="324" text-anchor="middle">Events</text></g>` },
+      `<text class="cap" x="560" y="560" text-anchor="middle">${["I", "love", "it"].map((w2, i) => `<tspan style="animation: say .25s ease ${2.2 + i * .45}s both">${w2}</tspan>`).join(" ")}</text>
+      ${["love", "loove", "looove", "loooove"].map((w2, i) => `<text class="capbig" style="font-size:36px;animation: stretch .32s linear ${4.5 + i * .3}s both" x="960" y="566" text-anchor="middle">${w2}</text>`).join("")}<text class="capbig it" style="font-size:36px;animation: show .01s linear 5.72s both" x="960" y="566" text-anchor="middle">looooove it</text>
+      <g class="up" style="--d:7.2s"><rect class="pk" x="1262" y="520" width="196" height="62" rx="10"/><text class="cap" style="fill:var(--ink)" x="1360" y="560" text-anchor="middle">I love it</text></g>
+      <g class="up" style="--d:9.1s"><rect class="cr" x="462" y="230" width="196" height="130" rx="10"/><text class="serif s" x="560" y="286" text-anchor="middle">A fifth</text><text class="serif s it" x="560" y="324" text-anchor="middle">birthday</text></g>
+      <g class="up" style="--d:9.6s"><rect class="w" x="1262" y="230" width="196" height="130" rx="10"/><text class="serif s" x="1360" y="286" text-anchor="middle">River Fox</text><text class="serif s" x="1360" y="324" text-anchor="middle">Events</text></g>` },
   { id: "review", title: "Reviews, <em>tidied not rewritten.</em>", say: "A Google review works from a screenshot or pasted text. Spelling slips are fixed and apostrophes made curly. The client's words are otherwise untouched. Then it becomes a card for each platform.",
     art: `<g class="pop" style="--d:.1s">${box(300, 190, 640, 380, 22)}${[0, 1, 2, 3, 4].map((i) => `<path class="pk thin" transform="translate(${362 + i * 44} 250)" d="M0 -15 l5 10 l11 1 l-8 8 l2 11 l-10 -6 l-10 6 l2 -11 l-8 -8 l11 -1 z"/>`).join("")}</g>
       <g class="fade" style="--d:.6s"><text class="rev" x="346" y="342">The balloon arch looked</text><text class="rev" x="346" y="398">absolutely</text><path class="thin faint" d="M346 520 h160"/></g>
@@ -309,7 +312,7 @@ const SCENES = [
 // ---------- timeline ----------
 const LEAD = .6, TAIL = .8, PAN = .35;
 // Shortest a scene may be, so its animation has time to finish even after a short line.
-const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 8.2, captions: 7.8, review: 10, copy: 8.8, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 6.2, end: 5 };
+const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 8.2, captions: 11.4, review: 10, copy: 8.8, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 6.2, end: 5 };
 const VOICE = globalThis.TIMELINE || {}; // seconds of voice per line, written by film.mjs
 let at = 0;
 const lines = [], events = [];
@@ -353,8 +356,12 @@ window.seek = (t) => {
     const vis = local > -PAN && (last || local < s.dur + PAN);
     g.style.display = vis ? "" : "none";
     const x = (i ? 1920 * (1 - inOut(P(local, -PAN, PAN * 2))) : 0) - (last ? 0 : 1920 * inOut(P(local, s.dur - PAN, PAN * 2)));
-    const zoom = i ? 1 + .04 * cl(local / s.dur) : 1; // a slow push-in on every scene
-    g.setAttribute("transform", `translate(${x} ${5 * Math.sin(t * 1.1 + i)}) translate(960 460) scale(${zoom}) translate(-960 -460)`);
+    let zoom = i ? 1 + .04 * cl(local / s.dur) : 1, cx = 960, cy = 460; // a slow push-in on every scene
+    if (s.cam) { // or a scene's own camera moves
+      const ta = Math.max(0, (local + .15) / (s.k || 1)), n = s.cam.findIndex((c) => c[0] > ta), a = n < 0 ? s.cam.at(-1) : s.cam[Math.max(0, n - 1)], b = n < 0 ? s.cam.at(-1) : s.cam[n];
+      const k = b[0] > a[0] ? inOut(P(ta, a[0], b[0] - a[0])) : 1; cx = mix(a[1], b[1], k); cy = mix(a[2], b[2], k); zoom = mix(a[3], b[3], k);
+    }
+    g.setAttribute("transform", `translate(${x} ${5 * Math.sin(t * 1.1 + i)}) translate(960 460) scale(${zoom}) translate(${-cx} ${-cy})`);
     if (vis && s.update) s.update(Math.max(0, local));
     (s.titles || [[s.title, .1, s.dur - PAN]]).forEach(([, a, b], k) => { const el = $(`t-${s.id}-${k}`);
       el.style.opacity = local > a - .05 ? 1 - P(local, b, .3) : 0; el.style.transform = `translateY(${-P(local, b, .3) * 20}px)`;
