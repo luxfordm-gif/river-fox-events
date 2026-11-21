@@ -199,7 +199,7 @@ const tiles = [[330, 524, 718, 912], 330];
 const SCENES = [
   { id: "open", fixed: 14.5, update: openUpdate, art: openArt, sfx: openSfx,
     titles: [["Laura <em>shoots the job.</em>", .3, GATHER - .1], ["They land in <em>one folder.</em>", GATHER + .4, TO_DRIVE], ["It syncs to <em>Google Drive.</em>", TO_DRIVE + .5, 14.5 - .35]],
-    say: [[.5, "Laura styles an event, then takes roughly four hundred photos of it. As you do."], [5.5, "Every last one goes into a single folder."], [9.8, "Which syncs to Google Drive. Very modern."]] },
+    say: [[.5, "Laura styles an event, then takes roughly four hundred photos of it. As you do."], [5.5, "She adds the lot to one folder."], [9.8, "Which is set to sync. How modern."]] },
   { id: "skill", title: "Matt, <em>the legend.</em>", say: "She tells Matt. And Matt, the legend that he is, runs the skill.",
     sfx: [...Array.from({ length: 10 }, (_, i) => ["key", 1.3 + i * .09, .3]), ["thud", 2.4, .5], ["sparkle", 2.6, .4], ["tick", 3.0, .12], ["tick", 3.5, .12], ["tick", 4.0, .12]],
     art: `<g class="pop" style="--d:.1s">${box(520, 200, 880, 440, 28, "ik")}<circle class="pk ns" cx="572" cy="250" r="10"/><circle class="pk ns" cx="606" cy="250" r="10"/><circle class="pk ns" cx="640" cy="250" r="10"/></g>
@@ -326,13 +326,15 @@ const SCENES = [
       <g class="pop" style="--d:3.1s"><path class="cr" d="M832 322 h246 a28 28 0 0 1 28 28 v90 a28 28 0 0 1 -28 28 h-258 l-16 12 v-130 a28 28 0 0 1 28 -28 z"/><text class="chip" style="font-size:27px" x="830" y="366">On it. Graded,</text><text class="chip" style="font-size:27px" x="830" y="402">captioned, filed.</text><text class="lab" x="830" y="444" style="font-size:17px">ONE REEL · READY</text></g>
       <g class="pop" style="--d:4.2s"><path class="pk" d="M976 508 h112 a28 28 0 0 1 28 28 v46 l-16 -12 h-124 a28 28 0 0 1 -28 -28 v-6 a28 28 0 0 1 28 -28 z"/><text class="chip" style="font-size:27px" x="978" y="550">Love it</text></g>
       ${confetti(960, 380, 30, 1.6, true)}${star(1310, 180, 1.4, "pk", 4.4)}${star(610, 260, 1, "w", 4.6)}${star(1360, 520, .8, "w", 4.8)}${star(580, 560, 1.2, "pk", 4.9)}` },
-  { id: "end", title: "", say: "More parties. Less cropping. Matt's bill is in the post. Go smash it, Lobby.",
+  { id: "end", title: "", fixed: 9,
+    say: [[.5, "More parties. Less cropping."], [null, "Built by Matt, husband of the year."], [null, "Self-nominated."], [null, "His bill is in the post."], [null, "Go smash it, Lobby."]],
     // Laura's stacked logo (Drive > Logo > Stacked outlined.svg), in its own logo brown.
-    art: `<g class="up" style="--d:.3s"><image href="logo-stacked.svg" x="650" y="185" width="620" height="514"/></g>
-      <text class="lab fade" style="--d:1.3s" x="960" y="795" text-anchor="middle">MORE PARTIES · LESS CROPPING</text>
-      <g class="up" style="--d:1.6s"><text class="serif" x="960" y="872" text-anchor="middle">Matt’s bill is in the post.</text></g>
-      <g class="pop" style="--d:2.6s"><text class="serif it" style="font-size:52px" x="960" y="940" text-anchor="middle">Go smash it, Lobby.</text></g>
-      ${star(520, 315, 1.4, "pk", 1)}${star(1420, 355, 1, "w", 1.2)}${star(1380, 655, 1.3, "pk", 1.4)}${star(560, 615, .8, "w", 1.6)}` },
+    art: `<g class="up" style="--d:.3s"><image href="logo-stacked.svg" x="690" y="160" width="540" height="448"/></g>
+      <text class="lab fade" data-line="0" x="960" y="690" text-anchor="middle">MORE PARTIES · LESS CROPPING</text>
+      <g class="up" data-line="1"><text class="serif" x="960" y="790" text-anchor="middle">Built by Matt, husband of the year.</text></g>
+      <text class="lab" x="960" y="840" text-anchor="middle"><tspan data-line="2" style="animation: show .3s ease 0s both">SELF-NOMINATED</tspan><tspan data-line="3" style="animation: show .3s ease 0s both"> · BILL IN THE POST</tspan></text>
+      <g class="pop" data-line="4"><text class="serif it" style="font-size:56px" x="960" y="922" text-anchor="middle">Go smash it, Lobby.</text></g>
+      ${star(560, 290, 1.4, "pk", 1)}${star(1360, 320, 1, "w", 1.2)}${star(1330, 560, 1.3, "pk", 1.4)}${star(600, 540, .8, "w", 1.6)}` },
 ];
 
 // ---------- timeline ----------
@@ -345,7 +347,11 @@ let at = 0;
 const lines = [], events = [];
 SCENES.forEach((s, i) => {
   s.start = at;
-  if (s.fixed) { s.dur = s.fixed; s.say.forEach(([o, text], k) => lines.push({ id: `${s.id}-${k}`, text, at: at + o })); }
+  if (s.fixed) {
+    let cursor = 0; s.lineAt = [];
+    s.say.forEach(([o, text], k) => { const id = `${s.id}-${k}`, st = o ?? cursor + .35; lines.push({ id, text, at: at + st }); s.lineAt[k] = st; cursor = st + (VOICE[id] ?? 1.5); });
+    s.dur = Math.max(s.fixed, cursor + TAIL + 1.4);
+  }
   else { const id = s.id; s.dur = Math.max(LEAD + (VOICE[id] ?? 4) + TAIL, MIN[id] || 0); lines.push({ id, text: s.say, at: at + LEAD }); }
   if (i) events.push(["bigwhoosh", at - .3, .45]);
   for (const [type, o, gain, extra] of s.sfx || []) events.push([type, at + (extra === "late" || o < 0 ? s.dur + o : o), gain, typeof extra === "number" ? extra : 0]);
@@ -363,6 +369,8 @@ SCENES.forEach((s) => $("g-" + s.id).querySelectorAll("[data-late]").forEach((el
   const d = s.dur - el.dataset.late;
   el.style.animationDelay = el.dataset.late2 ? `${d}s, ${s.dur - el.dataset.late2}s` : `${d}s`;
 }));
+// Things tied to a spoken line ([data-line]) start exactly when that line is said.
+SCENES.forEach((s) => s.lineAt && $("g-" + s.id).querySelectorAll("[data-line]").forEach((el) => { el.style.animationDelay = `${s.lineAt[+el.dataset.line] + (+el.dataset.off || 0)}s`; }));
 let anims;
 window.seek = (t) => {
   anims ||= document.getAnimations().map((a) => ({ a, s: SCENES.find((s) => $("g-" + s.id).contains(a.effect.target)) })).filter((x) => x.s);
@@ -370,7 +378,7 @@ window.seek = (t) => {
     // Stretch each scene's animation so things keep happening for as long as the voice is talking.
     for (const s of SCENES) {
       const ends = anims.filter((x) => x.s === s && !x.a.effect.target.closest("[data-late]")).map((x) => x.a.effect.getComputedTiming().endTime).filter(Number.isFinite);
-      s.k = ends.length ? Math.min(1.6, Math.max(1, (s.dur - 1.2) / (Math.max(...ends) / 1000))) : 1;
+      s.k = s.fixed ? 1 : ends.length ? Math.min(1.6, Math.max(1, (s.dur - 1.2) / (Math.max(...ends) / 1000))) : 1;
       $("g-" + s.id).querySelectorAll("[data-late]").forEach((el) => { const d = (s.dur - el.dataset.late) / s.k;
         el.style.animationDelay = el.dataset.late2 ? `${d}s, ${(s.dur - el.dataset.late2) / s.k}s` : `${d}s`; });
     }
