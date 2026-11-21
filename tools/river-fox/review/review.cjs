@@ -3,7 +3,8 @@
 // Run: node tools/river-fox/review/review.cjs '<JSON list of cards>'
 //   Instagram 1080x1440:       {"w":1080,"h":1440,"fs":60,"lh":70,"mw":900,"mark":233,"gap":75,"ngap":102,"dy":-12,"quote":"...","name":"Sarah, Worplesdon","out":"post.png"}
 //   Google Business 1200x1200: {"w":1200,"h":1200,"fs":78,"lh":90,"mw":850,"mark":213,"mh":52,"markTop":-27,"gap":84,"ngap":92,"ns":29.4,"dy":-8,"quote":"...","name":"...","out":"photo.png"}
-// A long review (about 200 characters): fs 55 / lh 77 / mw 890 / gap 78 / ngap 104 (Instagram) and fs 59 / lh 83 / mw 930 / ngap 96 (Google Business).
+// A long review (about 200 characters): fs 55 / lh 77 / mw 888 / gap 78 / ngap 104 (Instagram) and fs 64 / lh 90 / mw 1008 / ngap 96 (Google Business).
+// The size rules are in the Brand book, chapter 08 ("More copy" and "Reviews"): check the newest book before each job.
 // Laura's brand is elegant: a long quote gets slightly smaller text, open line spacing and plenty of pink around it, never bigger text and never much smaller (Matt, 2026-11-21).
 // Check the wrap after any size change: lines stay even, with no short tail line.
 // Judge the size at phone size (the card shown 390px wide), not at full size on a computer screen.
@@ -16,7 +17,7 @@ const html = (c) => `<!doctype html><meta charset="utf-8">
 .wrap{display:flex;flex-direction:column;align-items:center;transform:translateY(${c.dy||0}px)}
 .m{font-family:Fraunces;font-size:${c.mark||200}px;line-height:1;height:${c.mh||57}px;color:#C69490;overflow:visible;display:block}
 .m span{display:block;margin-top:${c.markTop||-30}px}
-.q{font-family:Fraunces;font-weight:400;font-size:${c.fs}px;line-height:${c.lh}px;color:#191C17;text-align:center;max-width:${c.mw||880}px;margin:${c.gap||88}px 0 0;text-wrap:balance;letter-spacing:-0.01em}
+.q{font-family:Fraunces;font-weight:400;font-size:${c.fs}px;line-height:${c.lh}px;color:#191C17;text-align:center;max-width:${c.mw||880}px;margin:${c.gap||88}px 0 0;text-wrap:balance;letter-spacing:-0.015em}
 .n{font-family:'DM Sans';font-weight:500;font-size:${c.ns||21.5}px;letter-spacing:0.16em;color:#494E46;margin-top:${c.ngap||96}px;text-transform:uppercase;line-height:1}
 </style><div class="wrap"><div class="m"><span>“</span></div><p class="q">${c.quote}</p><div class="n">${c.name}</div></div>`;
 (async () => {
