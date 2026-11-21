@@ -209,9 +209,12 @@ const SCENES = [
       ${star(1450, 190, 1.4, "pk", 2.6)}${star(1520, 290, .8, "w", 2.8)}${star(470, 610, 1, "pk", 2.9)}${star(430, 250, .7, "w", 3)}` },
   { id: "grade", title: "Every photo, <em>graded.</em>", say: "Every photo gets the house look. Bright, airy, true to colour. No orange skin. Nobody wants orange skin.",
     sfx: [["pop", .3, .2], ["bigwhoosh", 1.4, .5], ["sparkle", 3.3, .4]],
-    art: `<g class="pop" style="--d:.1s">${photo(740, 150, 440, 540)}</g>
-      <rect class="dull" x="740" y="150" width="440" height="540" rx="14" style="transform-origin:1180px 0;animation: show .3s ease .5s both, wipe 2s cubic-bezier(.6,0,.3,1) 1.4s both"/>
-      <g style="animation: show .3s ease 1s both, handle 2s cubic-bezier(.6,0,.3,1) 1.4s both"><path style="stroke-width:6" d="M740 120 V720"/><circle class="pk" cx="740" cy="420" r="26"/><path class="thin" d="M732 410 l-8 10 l8 10 M748 410 l8 10 l-8 10"/></g>
+    art: `<defs><filter id="bad" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="9"/><feColorMatrix type="saturate" values=".35"/><feComponentTransfer><feFuncR type="linear" slope=".42"/><feFuncG type="linear" slope=".42"/><feFuncB type="linear" slope=".46"/></feComponentTransfer></filter>
+        <clipPath id="badclip"><rect x="740" y="150" width="440" height="540" style="transform-box:view-box;transform-origin:1180px 0;animation: wipe 2.2s cubic-bezier(.6,0,.3,1) 1.6s both"/></clipPath></defs>
+      <g class="pop" style="--d:.1s">${photo(740, 150, 440, 540)}</g>
+      <g clip-path="url(#badclip)"><g class="fade" style="--d:.1s" filter="url(#bad)">${photo(740, 150, 440, 540)}</g></g>
+      <text class="lab fade" style="--d:.8s;animation-name:show,hide;animation-duration:.4s,.3s;animation-delay:.8s,1.6s" x="1240" y="425">BEFORE</text>
+      <g style="animation: show .3s ease 1s both, handle 2.2s cubic-bezier(.6,0,.3,1) 1.6s both"><path style="stroke-width:6" d="M740 120 V720"/><circle class="pk" cx="740" cy="420" r="26"/><path class="thin" d="M732 410 l-8 10 l8 10 M748 410 l8 10 l-8 10"/></g>
       ${star(1290, 250, 1.5, "pk", 3.3)}${star(1360, 370, .8, "w", 3.5)}${star(630, 560, 1, "pk", 3.6)}${star(590, 300, .7, "w", 3.7)}` },
   { id: "best", title: "The best shot <em>wins.</em>", say: "Near-duplicates are compared, and only the best one survives. The others are let go. Quietly. They never find out.",
     sfx: [["pop", .2, .2], ["pop", .4, .2], ["pop", .6, .2], ["whoosh", 2.9, .5], ["whoosh", 3.1, .5], ["chime", 3.3, .4]],
@@ -286,6 +289,19 @@ const SCENES = [
         ${[[540, 250], [980, 250], [1200, 250], [760, 490], [1200, 490]].map(([x, y]) => `<rect class="cr thin" x="${x}" y="${y}" width="180" height="${y < 400 ? 210 : 200}" rx="10"/>`).join("")}</g>
       ${[[760, 250, 210], [540, 490, 200], [980, 490, 200]].map(([x, y, h], i) => `<g class="pop" style="--d:${1.5 + i * .3}s"><rect class="pk thin" x="${x}" y="${y}" width="180" height="${h}" rx="10"/>${miniArch(x + 90, y + h * .65, 44)}</g>`).join("")}
       <g class="pop" style="--d:2.5s"><circle class="ik" cx="1420" cy="730" r="54"/><g class="spin"><path class="onk" d="M1394 722 a28 28 0 0 1 48 -10 m3 -16 v18 h-18 M1446 738 a28 28 0 0 1 -48 10 m-3 16 v-18 h18"/></g></g>` },
+  { id: "kit", title: "Her brand kit, <em>on tap.</em>", say: "There's also a brand kit, built in Claude: her colours, fonts and logo, ready for every platform, posters included. She just asks for a post for this, or an advert for that, and it designs one in her style. And the more she uses it, the better it gets. Which is more than can be said for most of us.",
+    art: `<g class="pop" style="--d:.1s">${box(250, 140, 400, 520, 24)}<text class="lab" x="290" y="196">BRAND KIT</text>
+        <image href="logo-stacked.svg" x="330" y="222" width="240" height="199"/>
+        ${["--pink", "--warm", "--cream", "--ink"].map((c, i) => `<circle class="pop thin" style="--d:${(.6 + i * .15).toFixed(2)}s;fill:var(${c})" cx="${318 + i * 88}" cy="482" r="30"/>`).join("")}
+        <text class="serif fade" style="--d:1.3s;font-size:64px" x="290" y="610">Aa</text><text class="lab fade" style="--d:1.4s" x="400" y="584">FRAUNCES</text><text class="lab fade" style="--d:1.5s" x="400" y="614">DM SANS</text></g>
+      <g class="pop" style="--d:2.4s"><path class="pk" d="M790 150 h820 a32 32 0 0 1 32 32 v44 a32 32 0 0 1 -32 32 h-790 l-30 22 v-98 a32 32 0 0 1 32 -32 z" transform="translate(-32 0)"/>
+        <text class="chip" x="800" y="216">${"I need a poster for the Christmas garlands".split("").map((ch, i) => `<tspan style="animation: show .01s linear ${(2.7 + i * .035).toFixed(3)}s both">${ch === " " ? "&#160;" : ch}</tspan>`).join("")}</text></g>
+      <path class="d dash" pathLength="1" style="--d:4.3s;stroke-dasharray:none;opacity:.5" d="M670 420 h70 m-18 -16 l18 16 l-18 16"/>
+      ${[[770, 320, 210, 296, "POSTER"], [1012, 340, 200, 250, "POST"], [1244, 316, 150, 266, "STORY"], [1426, 400, 250, 160, "ADVERT"]].map(([x, y, w, h, n], i) => `<g class="pop" style="--d:${(4.6 + i * .35).toFixed(2)}s">${box(x, y, w, h, 12, "wm")}
+        <rect class="pk ns" x="${x + 14}" y="${y + 14}" width="${w - 28}" height="${h * .48}" rx="8"/>${miniArch(x + w / 2, y + 14 + h * .4, Math.min(w, h) * .16)}
+        <path class="thin" d="M${x + 22} ${y + h * .62 + 18} h${w * .5}"/><path class="thin faint" d="M${x + 22} ${y + h * .62 + 40} h${w * .66}"/><circle class="pk thin" cx="${x + w - 26}" cy="${y + h - 24}" r="9"/></g>
+        <text class="lab fade" style="--d:${(4.8 + i * .35).toFixed(2)}s" x="${x + w / 2}" y="650" text-anchor="middle">${n}</text>`).join("")}
+      ${pill(1224, 730, 330, "Better every time", "ik", 7.6)}${star(1420, 700, .9, "pk", 7.9)}${star(1030, 760, .6, "w", 8.1)}` },
   { id: "why", title: "Why it <em>matters.</em>", say: "The point? Laura gets her evenings back, her brand stays consistent, and she keeps posting. Even in January.",
     sfx: [["pop", 1.4, .3], ["pop", 3.2, .3], ["pop", 5, .3]],
     art: `<g class="pop" style="--d:1.3s"><circle class="sh" cx="530" cy="402" r="130"/><circle class="w" cx="520" cy="390" r="130"/><path style="stroke-width:6" d="M520 300 v90 l56 36"/><circle class="pk" cx="520" cy="390" r="12"/></g>
@@ -323,7 +339,7 @@ const SCENES = [
 const LEAD = .6, TAIL = .8, PAN = .35;
 const DROP_Y = 48; // moves every drawing down so it sits in the middle of the space above the title
 // Shortest a scene may be, so its animation has time to finish even after a short line.
-const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 8.2, captions: 11.4, review: 10, copy: 8.8, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 7, end: 7.5 };
+const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 8.2, captions: 11.4, review: 10, copy: 8.8, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 7, end: 7.5, kit: 12 };
 const VOICE = globalThis.TIMELINE || {}; // seconds of voice per line, written by film.mjs
 let at = 0;
 const lines = [], events = [];
