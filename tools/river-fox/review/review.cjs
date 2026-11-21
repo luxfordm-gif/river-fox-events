@@ -3,7 +3,8 @@
 // Run: node tools/river-fox/review/review.cjs '<JSON list of cards>'
 //   Instagram 1080x1440:       {"w":1080,"h":1440,"fs":60,"lh":70,"mw":900,"mark":233,"gap":75,"ngap":102,"dy":-12,"quote":"...","name":"Sarah, Worplesdon","out":"post.png"}
 //   Google Business 1200x1200: {"w":1200,"h":1200,"fs":78,"lh":90,"mw":850,"mark":213,"mh":52,"markTop":-27,"gap":84,"ngap":92,"ns":29.4,"dy":-8,"quote":"...","name":"...","out":"photo.png"}
-// A long review (about 200 characters) drops to fs 52 / lh 64 (Instagram) and fs 60 / lh 72 / mw 940 (Google Business).
+// A long review (about 200 characters): fs 62 / lh 82 / mw 890 / gap 80 / ngap 110 (Instagram) and fs 66 / lh 86 / mw 970 / ngap 96 (Google Business).
+// Keep long quotes big with open line spacing and let the block run taller, rather than shrinking the text (Matt, 2026-11-21).
 // The quote is the full review, word for word (emojis left off). Join the last two words with &nbsp; so the last line is never one word.
 const { chromium } = require('playwright');
 const cards = JSON.parse(process.argv[2]);
