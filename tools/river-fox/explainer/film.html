@@ -310,10 +310,12 @@ const SCENES = [
       <g class="pop" style="--d:3.1s"><path class="cr" d="M832 322 h246 a28 28 0 0 1 28 28 v90 a28 28 0 0 1 -28 28 h-258 l-16 12 v-130 a28 28 0 0 1 28 -28 z"/><text class="chip" style="font-size:27px" x="830" y="366">On it. Graded,</text><text class="chip" style="font-size:27px" x="830" y="402">captioned, filed.</text><text class="lab" x="830" y="444" style="font-size:17px">ONE REEL · READY</text></g>
       <g class="pop" style="--d:4.2s"><path class="pk" d="M976 508 h112 a28 28 0 0 1 28 28 v46 l-16 -12 h-124 a28 28 0 0 1 -28 -28 v-6 a28 28 0 0 1 28 -28 z"/><text class="chip" style="font-size:27px" x="978" y="550">Love it</text></g>
       ${confetti(960, 380, 30, 1.6, true)}${star(1310, 180, 1.4, "pk", 4.4)}${star(610, 260, 1, "w", 4.6)}${star(1360, 520, .8, "w", 4.8)}${star(580, 560, 1.2, "pk", 4.9)}` },
-  { id: "end", title: "", say: "More parties. Less cropping.",
+  { id: "end", title: "", say: "More parties. Less cropping. Matt's bill is in the post. Go smash it, Lobby.",
     // Laura's stacked logo (Drive > Logo > Stacked outlined.svg), in its own logo brown.
     art: `<g class="up" style="--d:.3s"><image href="logo-stacked.svg" x="650" y="185" width="620" height="514"/></g>
       <text class="lab fade" style="--d:1.3s" x="960" y="795" text-anchor="middle">MORE PARTIES · LESS CROPPING</text>
+      <g class="up" style="--d:1.6s"><text class="serif" x="960" y="872" text-anchor="middle">Matt’s bill is in the post.</text></g>
+      <g class="pop" style="--d:2.6s"><text class="serif it" style="font-size:52px" x="960" y="940" text-anchor="middle">Go smash it, Lobby.</text></g>
       ${star(520, 315, 1.4, "pk", 1)}${star(1420, 355, 1, "w", 1.2)}${star(1380, 655, 1.3, "pk", 1.4)}${star(560, 615, .8, "w", 1.6)}` },
 ];
 
@@ -321,7 +323,7 @@ const SCENES = [
 const LEAD = .6, TAIL = .8, PAN = .35;
 const DROP_Y = 48; // moves every drawing down so it sits in the middle of the space above the title
 // Shortest a scene may be, so its animation has time to finish even after a short line.
-const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 8.2, captions: 11.4, review: 10, copy: 8.8, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 7, end: 5 };
+const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 8.2, captions: 11.4, review: 10, copy: 8.8, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 7, end: 7.5 };
 const VOICE = globalThis.TIMELINE || {}; // seconds of voice per line, written by film.mjs
 let at = 0;
 const lines = [], events = [];
