@@ -269,7 +269,7 @@ const SCENES = [
   { id: "review",
     // The camera: in on the spelling fix, across to the apostrophe, back out; then the doc slides in.
     cam: [[0, 960, 460, 1], [1.4, 960, 460, 1], [2.2, 935, 420, 1.8], [3.9, 935, 420, 1.8], [4.6, 890, 440, 1.8], [5.8, 890, 440, 1.8], [6.5, 960, 460, 1]],
-    title: "Reviews, <em>tidied not rewritten.</em>", say: "Google reviews work from a screenshot or pasted text. Spelling slips are fixed, apostrophes are made properly curly, and the client's words are otherwise left well alone. Then it writes the post copy for every platform.",
+    title: "Reviews, <em>tidied not rewritten.</em>", say: "Google reviews work from a screenshot or pasted text. Spelling slips are fixed, apostrophes are made properly curly, and the client's words are otherwise left well alone. Then it becomes a quote in her font and house style, made at every size for every platform.",
     art: `<g style="animation: slideL .9s cubic-bezier(.6,0,.3,1) 6.7s both">
         <g class="pop" style="--d:.1s">${box(640, 200, 640, 380, 22)}${[0, 1, 2, 3, 4].map((i) => `<path class="pk thin" transform="translate(${702 + i * 44} 260)" d="M0 -15 l5 10 l11 1 l-8 8 l2 11 l-10 -6 l-10 6 l2 -11 l-8 -8 l11 -1 z"/>`).join("")}</g>
         <g class="fade" style="--d:.6s"><text class="rev" x="686" y="352">The balloon arch looked</text><text class="rev" x="686" y="408">absolutely</text><path class="thin faint" d="M686 530 h160"/></g>
@@ -279,15 +279,16 @@ const SCENES = [
         <text class="rev" style="animation: show .25s ease 5.05s both" x="686" y="464">and we can<tspan class="it" style="font-style:normal">’</tspan>t wait to rebook.</text>
         <g style="animation: hide .4s ease 6s forwards"><circle class="ac" style="fill:none;stroke-width:3;transform-box:fill-box;transform-origin:center;animation: pop .45s cubic-bezier(.2,1.5,.4,1) 5.1s both" cx="866" cy="447" r="20"/></g>
       </g>
-      <g style="animation: slideInR 1s cubic-bezier(.2,.9,.3,1) 6.9s both">
-        <rect class="sh" x="1110" y="132" width="540" height="560" rx="14"/><rect class="w" x="1100" y="120" width="540" height="560" rx="14"/>
-        <path class="thin" d="M1100 184 h540"/><rect class="pk thin" x="1124" y="138" width="28" height="34" rx="4"/><path class="thin" d="M1131 150 h14 M1131 158 h14 M1131 166 h9"/>
-        <text class="chip" style="font-size:22px" x="1166" y="162">Post copy - review post</text>
-        ${[["Instagram", "Kind words from a lovely client!", 7.8], ["Facebook", "Reviews like this make our week.", 9.1], ["Google Business", "Thank you for choosing River Fox.", 10.4]].map(([n, line, t], i) => `
-          <text class="serif fade" style="--d:${(t - .25).toFixed(2)}s;font-size:30px" x="1136" y="${252 + i * 140}">${n}</text>
-          <text class="chip" style="font-size:24px" x="1136" y="${294 + i * 140}">${line.split("").map((ch, k) => `<tspan style="animation: show .01s linear ${(t + k * .03).toFixed(3)}s both">${ch === " " ? "&#160;" : ch}</tspan>`).join("")}</text>
-          <path class="thin faint" d="M1136 ${318 + i * 140} h${300 - i * 40}"/>`).join("")}
-      </g>` },
+      <path class="d" pathLength="1" style="--d:7.4s" d="M900 390 h50 m-16 -14 l16 14 l-16 14"/>
+      ${[[980, 180, 220, 293, "INSTAGRAM", "wm"], [1230, 196, 220, 275, "FACEBOOK", "cr"], [1480, 222, 240, 240, "GOOGLE", "wm"]].map(([x, y, w, h, n, bg], i) => {
+        const lines = h > 260 ? ["“The balloon arch", "looked absolutely", "beautiful, and we", "can’t wait to", "rebook.”"] : ["“The balloon arch looked", "absolutely beautiful, and", "we can’t wait to rebook.”"];
+        const fs = h > 260 ? 21 : 17, top = y + 62;
+        return `<g class="pop" style="--d:${(7.7 + i * .45).toFixed(2)}s">${box(x, y, w, h, 14, bg)}
+          ${[0, 1, 2, 3, 4].map((k) => `<circle class="pk ns" cx="${x + w / 2 - 32 + k * 16}" cy="${y + 34}" r="5"/>`).join("")}
+          ${lines.map((l, k) => `<text class="serif" style="font-size:${fs}px" x="${x + w / 2}" y="${top + k * (fs + 9)}" text-anchor="middle">${l}</text>`).join("")}
+          <path class="thin faint" d="M${x + w / 2 - 22} ${y + h - 46} h44"/><text class="lab" style="font-size:12px" x="${x + w / 2}" y="${y + h - 22}" text-anchor="middle">RIVER FOX EVENTS</text></g>
+          <text class="lab fade" style="--d:${(7.9 + i * .45).toFixed(2)}s" x="${x + w / 2}" y="530" text-anchor="middle">${n}</text>`; }).join("")}
+      ${star(1700, 170, 1.1, "pk", 9.2)}${star(960, 560, .7, "w", 9.4)}` },
   { id: "copy", title: "Post copy, <em>in her own words.</em>", say: "And it's not just reviews. Every photo and every video gets its post copy written, in each style. Polished for the website. Friendly but proper for Google. And for Instagram and Facebook, full Laura, emojis and all. It's read every post she's ever written, so it knows exactly how she talks. Slightly unnerving.",
     art: `<g class="pop" style="--d:.1s">${photo(230, 130, 300, 225)}</g>
       <g class="pop" style="--d:.6s">${box(380, 250, 300, 225, 14)}<rect class="thin wm" x="396" y="266" width="268" height="193" rx="8"/><circle class="ik" cx="530" cy="362" r="36"/><path class="w ns" d="M518 342 l32 20 l-32 20 z"/></g>
