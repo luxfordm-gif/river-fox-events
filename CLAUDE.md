@@ -12,16 +12,13 @@ Site for **Laura** at River Fox Events (luxury event styling, Surrey). Live at `
 
 ## Social, overlay and brand rules
 
-Don't copy rules here. Before every social, image or review-post task, read the newest of each of these in Drive > River Fox Events (never the Archive folders), and check for newer versions each time:
+Don't copy rules here. Before every social, image or review-post task, read the newest Brand book and Social brand pack in Drive > River Fox Events > Brand > Brand book (never the `_Archive` folder), and check for newer versions each time. The Automation folder and its build brief were retired on 21 November 2026 (moved to the top-level `_Archive`): Laura uploads photos and Matt edits them with Claude, using the `river-fox-photo-job` skill on his Mac, which holds the filing and build steps.
 
-- Brand > Brand book: the Brand book and the Social brand pack
-- Automation: the Automation build brief (currently v1.15)
+If a skill disagrees with the book or the pack, the book and the pack win. Tell me the skill needs updating.
 
-If a skill disagrees with those documents, the documents win. Tell me the skill needs updating.
+Key rules:
 
-Key rules, all detailed in the brief:
-
-- Ask which platform first (Instagram, Facebook, Google Business, or all), then file as the brief's Filing section says.
+- Ask which platform first (Instagram, Facebook, Google Business, or all), then file as the `river-fox-photo-job` skill says.
 - Google Business photo posts have no overlay and no text. Plain photo only.
 - Review images use the pack's review template, with the quote in Fraunces italic.
 - **Instagram Stories and Reels** (Laura's clips, captioned, 18 November 2026): the style, transcription step and build script live only in the `instagram-story` skill on Matt's Mac (`~/.claude/skills/instagram-story/`); don't copy its rules here. The social pack has no page for it yet, so tell Matt it needs a new version (the skill ends with text ready to paste). Every shoot gives the captioned video, a thumbnail and a set of stills (Story headline and plain at 1080x1920, Post at 1080x1440), all filed in Drive > Social > Instagram > Stories and reels (final output in the folder, older cuts in `_Archive`). Make a low-quality `--draft` first and get Matt's yes before the full render; the skill's lessons log holds every piece of feedback so far.
