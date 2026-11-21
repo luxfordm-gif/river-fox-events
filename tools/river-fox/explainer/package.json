@@ -1,0 +1,15 @@
+{
+  "name": "river-fox-explainer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "voice": "node voice.mjs",
+    "render": "node render.mjs",
+    "build": "node voice.mjs && node render.mjs"
+  },
+  "dependencies": {
+    "@fontsource/dm-mono": "^5.0.0",
+    "@fontsource/dm-sans": "^5.0.0",
+    "@fontsource/fraunces": "^5.0.0"
+  }
+}
