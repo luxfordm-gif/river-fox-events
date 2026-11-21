@@ -9,6 +9,7 @@
  *   phone_click       any tel: link
  *   email_click       any mailto: link
  *   instagram_click   any instagram.com link
+ *   facebook_click    any facebook.com link
  *   cta_click         any link to the enquiry form (#enquire, /#enquire):
  *                     Reserve your date, Enquire now, article links
  *   nav_click         any other link to a page of this site, in the nav,
@@ -107,6 +108,7 @@ export type ClickEvent =
   | "phone_click"
   | "email_click"
   | "instagram_click"
+  | "facebook_click"
   | "cta_click";
 
 /** Which event a link's href belongs to, or null (nav_click is decided by
@@ -117,6 +119,7 @@ export function classifyHref(href: string): ClickEvent | null {
   if (h.startsWith("mailto:")) return "email_click";
   if (/^https?:\/\/(api\.)?(wa\.me|whatsapp\.com)\b/.test(h)) return "whatsapp_click";
   if (/^https?:\/\/(www\.)?instagram\.com\b/.test(h)) return "instagram_click";
+  if (/^https?:\/\/(www\.)?facebook\.com\b/.test(h)) return "facebook_click";
   if (h.endsWith("#enquire")) return "cta_click";
   return null;
 }

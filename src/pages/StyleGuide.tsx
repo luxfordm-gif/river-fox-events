@@ -384,6 +384,8 @@ const SPACING_TOKENS = [
   "--announcement-height", "--announcement-pad-x", "--service-photo-ratio", "--gap-steps",
   // Tile cards (2026-11-18)
   "--tile-card-width", "--tile-card-pad",
+  // Services cards (2026-11-20)
+  "--gap-service-cards",
 ];
 
 /* A spacing token's value at a width, in px: references to other tokens are

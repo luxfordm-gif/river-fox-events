@@ -39,7 +39,7 @@ const TRUST_POINTS: { icon: { s1: string; s2: string }; label: string; body: str
   },
   {
     icon: { s1: heart128, s2: heart256 },
-    label: "Calm from start to finish",
+    label: "Calm throughout",
     body: "One point of contact, from first idea to the day.",
   },
   {
@@ -115,7 +115,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
                 ref={(el) => {
                   itemRefs.current[i] = el;
                 }}
-                className="flex flex-col items-center text-center card-inset motion-reduce:!opacity-100"
+                className="usp-item text-center card-inset motion-reduce:!opacity-100"
                 style={{
                   opacity: shown[i] ? 1 : 0,
                   transition: `opacity var(--motion-reveal) var(--ease-soft) calc(var(--motion-stagger) * ${
@@ -133,7 +133,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
                   loading="lazy"
                   className="icon-above w-16 h-16 rounded-full"
                 />
-                <h3 className="t-h5 text-ink">
+                <h3 className="t-h5 text-ink text-balance">
                   {label}
                 </h3>
                 <p

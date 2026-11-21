@@ -57,4 +57,4 @@ export const pageLines: Record<string, BarLine | null> = {
 };
 
 /** Pages that never show the bar (hidden pages, not for visitors). */
-export const noBarPaths = ["/style-guide/", "/brand-book/"];
+export const noBarPaths = ["/style-guide/"];

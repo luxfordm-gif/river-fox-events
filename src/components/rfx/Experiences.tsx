@@ -259,7 +259,7 @@ const Experiences = ({
         </div>
         )}
 
-        <div className="exp-grid grid grid-cols-1 md:grid-cols-3 gap-[56px]">
+        <div className="exp-grid grid grid-cols-1 md:grid-cols-3">
           {items.map((it) => (
             <ExpCard key={it.href} it={it} compact={compactImages} />
           ))}
