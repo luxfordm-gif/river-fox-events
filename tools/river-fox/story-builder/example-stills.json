@@ -1,0 +1,76 @@
+{
+ "clips": "/path/to/clips",
+ "work": "/path/to/work",
+ "out": "/path/to/output folder",
+ "grade": true,
+ "stills": [
+  {
+   "clip": "c10.mp4",
+   "t": 1.0,
+   "name": "boot full of greenery",
+   "focus": 0.55,
+   "headline": {
+    "line1": "Boot's full.",
+    "line2": "Here we go."
+   }
+  },
+  {
+   "clip": "c05.mp4",
+   "t": 6,
+   "name": "making the base",
+   "focus": 0.5,
+   "headline": {
+    "line1": "Let's make",
+    "line2": "a&nbsp;wreath."
+   }
+  },
+  {
+   "clip": "c06.mp4",
+   "t": 9,
+   "name": "shaping the garland",
+   "focus": 0.35,
+   "headline": {
+    "line1": "Snip, tuck,",
+    "line2": "repeat."
+   }
+  },
+  {
+   "clip": "c11.mp4",
+   "t": 12.5,
+   "name": "halfway there hoop",
+   "focus": 0.45,
+   "headline": {
+    "line1": "Halfway",
+    "line2": "there."
+   }
+  },
+  {
+   "clip": "c03.mp4",
+   "t": 5.6,
+   "name": "finished with foliage",
+   "focus": 0.3,
+   "headline": {
+    "line1": "Finished,",
+    "line2": "with&nbsp;foliage."
+   }
+  },
+  {
+   "clip": "c03.mp4",
+   "t": 19.9,
+   "name": "smile through the wreath",
+   "focus": 0.0,
+   "headline": {
+    "kind": "finale",
+    "line1": "Ta-da.",
+    "line2": "Your&nbsp;door's&nbsp;sorted.",
+    "caps": "CHRISTMAS DOOR GARLANDS &nbsp;·&nbsp; @RIVERFOX_EVENTS"
+   }
+  },
+  {
+   "clip": "c03.mp4",
+   "t": 27.3,
+   "name": "Laura smiling to camera",
+   "focus": 0.05
+  }
+ ]
+}

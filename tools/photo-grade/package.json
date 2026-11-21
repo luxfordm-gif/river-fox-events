@@ -10,10 +10,13 @@
     "review": "node src/cli.mjs review",
     "apply": "node src/cli.mjs apply",
     "audit": "node src/audit.mjs",
-    "export": "node src/export.mjs"
+    "export": "node src/export.mjs",
+    "overlay": "node src/overlay.mjs",
+    "large": "node src/large.mjs"
   },
   "dependencies": {
     "openai": "^7.53.0",
+    "puppeteer-core": "^25.18.1",
     "sharp": "^0.35.5"
   }
 }
