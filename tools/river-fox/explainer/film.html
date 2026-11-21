@@ -198,6 +198,7 @@ const openSfx = [...Array.from({ length: 11 }, (_, i) => ["pop", .27 + i * .07, 
 // say: [seconds into the scene, spoken line] (fixed) or a single line (the scene lasts as long as the line).
 // sfx: [sound, seconds into the scene, loudness]. "late" times count back from the end of the scene.
 const tiles = [[330, 524, 718, 912], 330];
+const typed = (text, t0, step = .03) => [...text].map((ch, k) => `<tspan style="animation: show .01s linear ${(t0 + k * step).toFixed(3)}s both">${ch === " " ? "&#160;" : ch}</tspan>`).join("");
 const SCENES = [
   { id: "open", fixed: 14.5, update: openUpdate, art: openArt, sfx: openSfx,
     titles: [["Laura <em>shoots the job.</em>", .3, GATHER - .1], ["They land in <em>one folder.</em>", GATHER + .4, TO_DRIVE], ["It syncs to <em>Google Drive.</em>", TO_DRIVE + .5, 14.5 - .35]],
@@ -278,15 +279,21 @@ const SCENES = [
           <text class="chip" style="font-size:24px" x="1136" y="${294 + i * 140}">${line.split("").map((ch, k) => `<tspan style="animation: show .01s linear ${(t + k * .03).toFixed(3)}s both">${ch === " " ? "&#160;" : ch}</tspan>`).join("")}</text>
           <path class="thin faint" d="M1136 ${318 + i * 140} h${300 - i * 40}"/>`).join("")}
       </g>` },
-  { id: "copy", title: "The words are <em>written too.</em>", say: "Google Business gets plain photos, no text. All that's left is copy, paste, prosecco o'clock.",
-    sfx: [["pop", .2, .2], ["pop", 1.2, .3], ["whoosh", 3.4, .5], ["tick", 4.3, .12], ["tick", 4.8, .12], ["tick", 5.3, .12], ["pop", 6.2, .3], ["inflate", -2.3, .4, "late"], ["balloonpop", -1.2, .8, "late"]],
-    art: `<g class="pop" style="--d:.1s">${photo(330, 270, 440, 330)}</g>
-      <g class="pop" style="--d:1.1s"><path class="pk" d="M770 190 a44 44 0 0 1 44 44 c0 34 -44 76 -44 76 c0 0 -44 -42 -44 -76 a44 44 0 0 1 44 -44 z"/><circle class="w" cx="770" cy="234" r="15"/></g>
-      <g class="up" style="--d:3.4s"><path class="sh" transform="translate(10 12)" d="M990 130 h330 l80 80 v500 h-410 z"/><path class="w" d="M990 130 h330 l80 80 v500 h-410 z"/><path d="M1320 130 v80 h80"/></g>
-      ${["Instagram", "Facebook", "Google Business"].map((n, i) => `<g class="fade" style="--d:${4.2 + i * .5}s"><text class="serif" x="1040" y="${300 + i * 140}">${n}</text><path class="faint" d="M1040 ${330 + i * 140} h300 M1040 ${358 + i * 140} h${220 - i * 30}"/></g>`).join("")}
-      ${pill(1420, 300, 150, "Copy", "ik", 6.1)}
-      <g data-late="2.3" style="transform-origin:960px 420px;animation: inflate 1.1s cubic-bezier(.3,0,.9,.6) 0s both, hide .01s linear 0s both" data-late2="1.2"><circle class="pk" cx="960" cy="420" r="230"/><path class="hl" d="M830 380 a150 150 0 0 1 90 -100"/></g>
-      ${confetti(960, 420, 26, 1.2, true)}` },
+  { id: "copy", title: "Captions, <em>in her own words.</em>", say: "For Google Business, it writes a proper post, so that page never goes quiet. And every set of photos comes with captions in Laura's own words. Polished for the website. Friendly but proper for Google. And for Instagram and Facebook, full Laura, emojis and all. It's read every post she's ever written, so it knows exactly how she talks. Slightly unnerving.",
+    art: `<g class="pop" style="--d:.1s">${photo(250, 150, 400, 300)}</g>
+      <g class="pop" style="--d:.8s"><path class="pk" d="M650 100 a40 40 0 0 1 40 40 c0 30 -40 68 -40 68 c0 0 -40 -38 -40 -68 a40 40 0 0 1 40 -40 z"/><circle class="w" cx="650" cy="140" r="14"/></g>
+      ${pill(450, 512, 300, "Google post written", "ik", 1.6)}
+      <g class="up" style="--d:2.6s"><path class="sh" transform="translate(10 12)" d="M860 110 h740 a16 16 0 0 1 16 16 v574 a16 16 0 0 1 -16 16 h-740 a16 16 0 0 1 -16 -16 v-574 a16 16 0 0 1 16 -16 z"/>
+        <path class="w" d="M860 110 h740 a16 16 0 0 1 16 16 v574 a16 16 0 0 1 -16 16 h-740 a16 16 0 0 1 -16 -16 v-574 a16 16 0 0 1 16 -16 z"/>
+        <path class="thin" d="M844 172 h772"/><rect class="pk thin" x="868" y="126" width="28" height="34" rx="4"/><path class="thin" d="M875 138 h14 M875 146 h14 M875 154 h9"/><text class="chip" style="font-size:22px" x="910" y="150">Captions - Cobham first birthday</text></g>
+      ${[["WEBSITE · POLISHED", "A pastel balloon arch for a first birthday in Cobham.", "serif", 3.4], ["GOOGLE BUSINESS · FRIENDLY BUT PROPER", "Another lovely first birthday in Cobham this weekend!", "chip", 5.6], ["INSTAGRAM & FACEBOOK · FULL LAURA", "Looooove how this one came out!! 🎈💕✨", "chip", 7.8]].map(([lab, text, cls, t], i) => `
+        <text class="lab fade" style="--d:${(t - .3).toFixed(2)}s;font-size:18px" x="892" y="${232 + i * 166}">${lab}</text>
+        <text class="${cls}" style="font-size:28px" x="892" y="${280 + i * 166}">${typed(text, t)}</text>
+        <path class="thin faint fade" style="--d:${(t - .3).toFixed(2)}s" d="M892 ${306 + i * 166} h${640 - i * 80}"/>`).join("")}
+      <g class="fade" style="--d:10.2s">${Array.from({ length: 12 }, (_, i) => `<rect class="${["wm", "pk", "cr"][i % 3]} thin" x="${262 + (i % 6) * 64}" y="${590 + Math.floor(i / 6) * 64}" width="52" height="52" rx="6"/>`).join("")}
+        <text class="lab" x="450" y="740" text-anchor="middle" style="font-size:16px">EVERY POST SHE’S WRITTEN</text></g>
+      <path class="d" pathLength="1" style="--d:10.8s" d="M670 650 q90 0 150 -60 m-34 2 l34 -2 l-2 34"/>
+      ${star(820, 560, 1, "pk", 11.2)}` },
   { id: "folders", title: "Filed, <em>newest first.</em>", say: "Everything's filed by platform, and number one is always the newest job. Tidier than most sock drawers.",
     sfx: [["pop", .3, .2], ["pop", .5, .2], ["pop", .7, .2], ["bigwhoosh", 3, .6], ["thud", 3.9, .5], ["chime", 4, .3]],
     art: pill(640, 170, 220, "Instagram", "w", .2) + pill(890, 170, 210, "Facebook", "w", .4) + pill(1190, 170, 310, "Google Business", "w", .6) +
@@ -354,7 +361,7 @@ const SCENES = [
 const LEAD = .6, TAIL = .8, PAN = .35;
 const DROP_Y = 48; // moves every drawing down so it sits in the middle of the space above the title
 // Shortest a scene may be, so its animation has time to finish even after a short line.
-const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 8.2, captions: 11.4, review: 10, copy: 8.8, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 7, end: 7.5, kit: 12 };
+const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 8.2, captions: 11.4, review: 10, copy: 14, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 7, end: 7.5, kit: 12 };
 const VOICE = globalThis.TIMELINE || {}; // seconds of voice per line, written by film.mjs
 let at = 0;
 const lines = [], events = [];
