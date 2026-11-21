@@ -51,6 +51,7 @@ describe("link clicks", () => {
     expect(classifyHref("tel:+447872114191")).toBe("phone_click");
     expect(classifyHref("mailto:riverfoxevents@gmail.com")).toBe("email_click");
     expect(classifyHref("https://www.instagram.com/riverfox_events/")).toBe("instagram_click");
+    expect(classifyHref("https://www.facebook.com/riverfoxeventssurrey")).toBe("facebook_click");
     expect(classifyHref("/#enquire")).toBe("cta_click");
     expect(classifyHref("#enquire")).toBe("cta_click");
     expect(classifyHref("/childrens-parties/")).toBeNull();

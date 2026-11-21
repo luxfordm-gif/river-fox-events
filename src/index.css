@@ -1228,8 +1228,12 @@
   .footer-divider { margin-bottom: var(--gap-columns); }
   .footer-grid { margin-bottom: var(--gap-columns); }
   .footer-title { margin-bottom: var(--gap-stack); }
-  .footer-bar { padding-top: var(--gap-paragraph); gap: var(--gap-actions); }
+  .footer-bar { padding-top: var(--gap-paragraph); gap: var(--gap-actions); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .footer-bar-social { justify-content: center; }
   @media (max-width: 767px) {
+    /* Phones: the social icons get their own row, then copyright and privacy share one line (Matt 2026-11-21). */
+    .footer-bar { grid-template-columns: 1fr auto; row-gap: var(--gap-paragraph); }
+    .footer-bar-social { grid-column: 1 / -1; order: -1; justify-content: flex-start; }
     /* Brand text to Services: row gap 48 + this = 54, 20% less than the old 68 (Matt 2026-11-18). */
     .footer-brand { margin-bottom: var(--footer-brand-gap); }
     /* Phones: more air between the stacked link groups (Services, The studio, ...) */

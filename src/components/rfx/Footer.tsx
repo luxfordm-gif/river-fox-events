@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronRight, Instagram } from "lucide-react";
+import { ChevronRight, Facebook, Instagram } from "lucide-react";
 import { useScrollY } from "@/hooks/useRiverFox";
 import { whatsappHref } from "@/lib/whatsapp";
 
@@ -185,15 +185,18 @@ const Footer = () => {
                 <a href="https://www.instagram.com/riverfox_events/" target="_blank" rel="noreferrer" className="hover:opacity-100 opacity-85 block">
                   @riverfox_events
                 </a>
+                <a href="https://www.facebook.com/riverfoxeventssurrey" target="_blank" rel="noreferrer" className="hover:opacity-100 opacity-85 block">
+                  Facebook
+                </a>
               </div>
             </div>
           </div>
 
           <div
-            className="t-meta footer-bar border-t grid grid-cols-3 items-center border-on-deep/15 text-ink-faint"
+            className="t-meta footer-bar border-t grid items-center border-on-deep/15 text-ink-faint"
           >
             <div className="text-left">© {new Date().getFullYear()} River Fox Events</div>
-            <div className="flex justify-center">
+            <div className="footer-bar-social flex actions">
               <a
                 href="https://www.instagram.com/riverfox_events/"
                 target="_blank"
@@ -202,6 +205,15 @@ const Footer = () => {
                 className="inline-flex items-center justify-center w-9 h-9 rounded-full border transition-opacity hover:opacity-100 opacity-85 border-on-deep/25 text-on-deep"
               >
                 <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.facebook.com/riverfoxeventssurrey"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook - River Fox Events"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-full border transition-opacity hover:opacity-100 opacity-85 border-on-deep/25 text-on-deep"
+              >
+                <Facebook className="w-4 h-4" />
               </a>
             </div>
             <div className="text-right">
