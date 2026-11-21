@@ -90,7 +90,6 @@ text.letter { transform-box: fill-box; transform-origin: 50% 80%; animation: let
 </style>
 </head>
 <body>
-<div class="brand">RIVER FOX EVENTS</div>
 <svg viewBox="0 0 1920 1080" id="svg"></svg>
 <div id="titles"></div>
 <div id="flash"></div>
@@ -148,7 +147,7 @@ const openArt = `
     <g id="badge"><circle class="pk" cx="262" cy="-246" r="36"/><text class="num" id="count" x="262" y="-235" text-anchor="middle">1</text></g></g>
   <path id="link" class="dash" d="M820 470 Q1010 360 1180 450" style="opacity:0"/>
   <g>${[0, 1, 2, 3, 4].map((i) => `<rect id="d${i}" class="${i % 2 ? "w" : "pk"} thin" x="-15" y="-19" width="30" height="38" rx="5" opacity="0"/>`).join("")}</g>
-  <g id="cloud" opacity="0"><path class="sh" transform="translate(12 14)" d="M-140 90 a80 80 0 0 1 -6 -160 a112 112 0 0 1 214 -22 a100 100 0 0 1 72 182 z"/><path class="w" d="M-140 90 a80 80 0 0 1 -6 -160 a112 112 0 0 1 214 -22 a100 100 0 0 1 72 182 z"/>
+  <g id="cloud" opacity="0"><path class="sh" transform="translate(31 22)" d="M-140 90 a80 80 0 0 1 -6 -160 a112 112 0 0 1 214 -22 a100 100 0 0 1 72 182 z"/><path class="w" transform="translate(19 8)" d="M-140 90 a80 80 0 0 1 -6 -160 a112 112 0 0 1 214 -22 a100 100 0 0 1 72 182 z"/>
     <g id="arrows"><path d="M-44 6 a44 44 0 0 1 76 -32 m4 -24 v26 h-26"/><path d="M44 6 a44 44 0 0 1 -76 32 m-4 24 v-26 h26"/></g>
     <g id="tickwrap" opacity="0"><circle class="pk" cx="0" cy="6" r="56"/><path id="tick" pathLength="1" stroke-dasharray="1" d="M-26 8 l18 20 l34 -42" style="stroke-width:7"/></g></g>
   <text id="dlabel" class="lab" x="1370" y="640" text-anchor="middle" opacity="0">GOOGLE DRIVE</text>
@@ -203,8 +202,8 @@ const tiles = [[330, 524, 718, 912], 330];
 const typed = (text, t0, step = .03) => [...text].map((ch, k) => `<tspan style="animation: show .01s linear ${(t0 + k * step).toFixed(3)}s both">${ch === " " ? "&#160;" : ch}</tspan>`).join("");
 const SCENES = [
   { id: "open", fixed: 14.5, update: openUpdate, art: openArt, sfx: openSfx,
-    titles: [["Laura <em>shoots the job.</em>", .3, GATHER - .1], ["They land in <em>one folder.</em>", GATHER + .4, TO_DRIVE], ["It syncs to <em>Google Drive.</em>", TO_DRIVE + .5, 14.5 - .35]],
-    say: [[.5, "Laura styles an event, then takes roughly four hundred photos of it. As you do."], [5.5, "She adds the lot to one folder."], [9.8, "Which is set to sync. How modern."]] },
+    titles: [["Laura <em>shoots the job.</em>", .3, GATHER - .1], ["They land in <em>one folder.</em>", GATHER + .4, TO_DRIVE], ["Synced with <em>Matt.</em>", TO_DRIVE + .5, 14.5 - .35]],
+    say: [[.5, "Laura styles an event, then takes roughly four hundred photos of it. As you do."], [5.5, "She uploads the lot to a Google Drive folder."], [9.8, "That's synced with Matt. How modern."]] },
   { id: "skill", title: "Matt, <em>the legend.</em>", say: "She tells Matt. And Matt, the legend that he is, runs the skill.",
     sfx: [...Array.from({ length: 10 }, (_, i) => ["key", 1.3 + i * .09, .3]), ["thud", 2.4, .5], ["sparkle", 2.6, .4], ["tick", 3.0, .12], ["tick", 3.5, .12], ["tick", 4.0, .12]],
     art: `<g class="pop" style="--d:.1s">${box(520, 200, 880, 440, 28, "ik")}<circle class="pk ns" cx="572" cy="250" r="10"/><circle class="pk ns" cx="606" cy="250" r="10"/><circle class="pk ns" cx="640" cy="250" r="10"/></g>
@@ -221,14 +220,14 @@ const SCENES = [
       <text class="lab fade" style="--d:.8s;animation-name:show,hide;animation-duration:.4s,.3s;animation-delay:.8s,1.6s" x="1240" y="425">BEFORE</text>
       <g style="animation: show .3s ease 1s both, handle 2.2s cubic-bezier(.6,0,.3,1) 1.6s both"><path style="stroke-width:6" d="M740 120 V720"/><circle class="pk" cx="740" cy="420" r="26"/><path class="thin" d="M732 410 l-8 10 l8 10 M748 410 l8 10 l-8 10"/></g>
       ${star(1290, 250, 1.5, "pk", 3.3)}${star(1360, 370, .8, "w", 3.5)}${star(630, 560, 1, "pk", 3.6)}${star(590, 300, .7, "w", 3.7)}` },
-  { id: "best", title: "The best shot <em>wins.</em>", say: "When a few shots look almost the same, only the best one survives. The others are let go. Quietly. They never find out.",
+  { id: "best", title: "The best shot <em>wins.</em>", say: "When a few shots look almost the same, only the best one survives. The others are dropped, never to be seen again.",
     sfx: [["pop", .2, .2], ["pop", .4, .2], ["pop", .6, .2], ["whoosh", 2.9, .5], ["whoosh", 3.1, .5], ["chime", 3.3, .4]],
     art: `<g style="animation: fallL .9s cubic-bezier(.5,0,.8,.4) 2.9s both"><g class="pop" style="--d:.1s">${photo(400, 230, 310, 390)}</g></g>
       <g style="animation: fallR .9s cubic-bezier(.5,0,.8,.4) 3.1s both"><g class="pop" style="--d:.5s">${photo(1210, 230, 310, 390, "cr")}</g></g>
       <g style="transform-origin:960px 425px;animation: grow .7s cubic-bezier(.3,1.4,.5,1) 3.2s both"><g class="pop" style="--d:.3s">${photo(805, 230, 310, 390, "pk")}</g>
         <path class="d ac" pathLength="1" style="--d:4s" d="M840 320 v-54 h54 M1026 266 h54 v54 M1080 530 v54 h-54 M894 584 h-54 v-54"/>
         <g class="pop" style="--d:3.3s"><circle class="pk" cx="1115" cy="230" r="44"/><path style="stroke-width:6" d="M1095 230 l15 17 l28 -34"/></g></g>` },
-  { id: "cover", title: "Cover text <em>goes on.</em>", say: "The winner gets the cover text. As is only fair.",
+  { id: "cover", title: "Cover text <em>goes on.</em>", say: "The best image of the event gets the cover text.",
     sfx: [["pop", .2, .2], ["whoosh", 1.2, .5], ["sparkle", 1.9, .35]],
     art: `<g class="pop" style="--d:.1s">${photo(780, 110, 360, 640)}</g>
       <g class="up" style="--d:1.3s"><rect class="cr" x="812" y="160" width="296" height="170" rx="10"/><text class="lab" x="960" y="208" text-anchor="middle" style="font-size:16px">RIVER FOX EVENTS</text>
@@ -260,7 +259,7 @@ const SCENES = [
   { id: "captions",
     // The camera: [seconds, centre x, centre y, zoom]. In on each phone in turn, then back out.
     cam: [[0, 960, 460, 1], [1.2, 960, 460, 1], [2, 560, 500, 1.7], [3.7, 560, 500, 1.7], [4.4, 960, 500, 1.7], [6.4, 960, 500, 1.7], [7.1, 1360, 500, 1.7], [8.2, 1360, 500, 1.7], [9, 960, 460, 1]],
-    title: "Captions, cover, <em>end screen.</em>", say: "Anyone talking gets animated captions, in three styles. If Laura says she looooves it, so does the caption. Then a cover on the front, and an end screen on the back.",
+    title: "Captions, cover, <em>end screen.</em>", say: "Anyone talking gets animated captions, with three styles to choose from. If Laura says she looooves it, so does the caption. Then a cover on the front, and an end screen on the back.",
     sfx: [["pop", .2, .2], ["pop", .45, .2], ["pop", .7, .2], ["tick", 1.6, .12], ["tick", 2.0, .12], ["tick", 2.4, .12], ["tick", 2.8, .12], ["whoosh", 5.6, .5], ["whoosh", 6.2, .5]],
     art: [0, 1, 2].map((i) => `<g class="pop" style="--d:${.1 + i * .25}s">${phone(430 + i * 400, 150, 260, 520)}<path class="eq faint" d="M${540 + i * 400} 340 v50"/><path class="eq faint" style="animation-delay:-.25s" d="M${560 + i * 400} 315 v100"/><path class="eq faint" style="animation-delay:-.5s" d="M${580 + i * 400} 345 v40"/></g>`).join("") +
       `<text class="cap" x="560" y="560" text-anchor="middle">${["I", "love", "it"].map((w2, i) => `<tspan style="animation: say .25s ease ${2.2 + i * .45}s both">${w2}</tspan>`).join(" ")}</text>
@@ -271,7 +270,7 @@ const SCENES = [
   { id: "review",
     // The camera: in on the spelling fix, across to the apostrophe, back out; then the doc slides in.
     cam: [[0, 960, 460, 1], [1.4, 960, 460, 1], [2.2, 935, 420, 1.8], [3.9, 935, 420, 1.8], [4.6, 890, 440, 1.8], [5.8, 890, 440, 1.8], [6.5, 960, 460, 1]],
-    title: "Reviews, <em>tidied not rewritten.</em>", say: "Google reviews work from a screenshot or pasted text. Spelling slips are fixed, apostrophes are made properly curly, and the client's words are otherwise left well alone. Then it becomes a quote in her font and house style, made at every size for every platform.",
+    title: "Reviews, <em>tidied not rewritten.</em>", say: "Google reviews get styled too. It works from a screenshot or pasted text. Spelling slips are fixed, apostrophes are made properly curly, and the client's words are otherwise left well alone. Then it becomes a quote in her font and house style, made at every size for every platform.",
     art: `<g style="animation: slideL .9s cubic-bezier(.6,0,.3,1) 6.7s both">
         <g class="pop" style="--d:.1s">${box(640, 200, 640, 380, 22)}${[0, 1, 2, 3, 4].map((i) => `<path class="pk thin" transform="translate(${702 + i * 44} 260)" d="M0 -15 l5 10 l11 1 l-8 8 l2 11 l-10 -6 l-10 6 l2 -11 l-8 -8 l11 -1 z"/>`).join("")}</g>
         <g class="fade" style="--d:.6s"><text class="rev" x="686" y="352">The balloon arch looked</text><text class="rev" x="686" y="408">absolutely</text><path class="thin faint" d="M686 530 h160"/></g>
@@ -320,7 +319,7 @@ const SCENES = [
         ${[[540, 250], [980, 250], [1200, 250], [760, 490], [1200, 490]].map(([x, y]) => `<rect class="cr thin" x="${x}" y="${y}" width="180" height="${y < 400 ? 210 : 200}" rx="10"/>`).join("")}</g>
       ${[[760, 250, 210], [540, 490, 200], [980, 490, 200]].map(([x, y, h], i) => `<g class="pop" style="--d:${1.5 + i * .3}s"><rect class="pk thin" x="${x}" y="${y}" width="180" height="${h}" rx="10"/>${miniArch(x + 90, y + h * .65, 44)}</g>`).join("")}
       <g class="pop" style="--d:2.5s"><circle class="ik" cx="1420" cy="730" r="54"/><g class="spin"><path class="onk" d="M1394 722 a28 28 0 0 1 48 -10 m3 -16 v18 h-18 M1446 738 a28 28 0 0 1 -48 10 m-3 16 v-18 h18"/></g></g>` },
-  { id: "kit", title: "Her brand kit, <em>on tap.</em>", say: "There's also a brand kit, built in Claude: her colours, fonts and logo, ready for every platform, posters included. She just asks for a post for this, or an advert for that, and it designs one in her style. And the more she uses it, the better it gets. Which is more than can be said for most of us.",
+  { id: "kit", title: "Her brand kit, <em>on tap.</em>", say: "Outside the skill, there's also a brand kit in Claude, to help her make new content: her colours, fonts and logo, ready for every platform, posters included. She just asks for a post for this, or an advert for that, and it designs one in her style. And the more she uses it, the better it gets. Which is more than can be said for most of us.",
     art: `<g class="pop" style="--d:.1s">${box(250, 140, 400, 520, 24)}<text class="lab" x="290" y="196">BRAND KIT</text>
         <image href="logo-stacked.svg" x="330" y="222" width="240" height="199"/>
         ${["--pink", "--warm", "--cream", "--ink"].map((c, i) => `<circle class="pop thin" style="--d:${(.6 + i * .15).toFixed(2)}s;fill:var(${c})" cx="${318 + i * 88}" cy="482" r="30"/>`).join("")}
@@ -333,10 +332,10 @@ const SCENES = [
         <path class="thin" d="M${x + 22} ${y + h * .62 + 18} h${w * .5}"/><path class="thin faint" d="M${x + 22} ${y + h * .62 + 40} h${w * .66}"/><circle class="pk thin" cx="${x + w - 26}" cy="${y + h - 24}" r="9"/></g>
         <text class="lab fade" style="--d:${(4.8 + i * .35).toFixed(2)}s" x="${x + w / 2}" y="650" text-anchor="middle">${n}</text>`).join("")}
       ${pill(1224, 730, 330, "Better every time", "ik", 7.6)}${star(1420, 700, .9, "pk", 7.9)}${star(1030, 760, .6, "w", 8.1)}` },
-  { id: "why", title: "Why it <em>matters.</em>", say: "The point? Laura gets her evenings back, her brand stays consistent, and she keeps posting. Even in January.",
+  { id: "why", title: "Why it <em>matters.</em>", say: "The point? Less wrestling with AI. It's a tested process that lifts her creativity across every platform, keeps her brand consistent, and keeps her posting. Even in January.",
     sfx: [["pop", 1.4, .3], ["pop", 3.2, .3], ["pop", 5, .3]],
-    art: `<g class="pop" style="--d:1.3s"><circle class="sh" cx="530" cy="402" r="130"/><circle class="w" cx="520" cy="390" r="130"/><path style="stroke-width:6" d="M520 300 v90 l56 36"/><circle class="pk" cx="520" cy="390" r="12"/></g>
-      <text class="serif fade" style="--d:1.6s" x="520" y="620" text-anchor="middle">Time back</text>
+    art: `<g class="pop" style="--d:1.3s"><circle class="sh" cx="530" cy="402" r="130"/><circle class="w" cx="520" cy="390" r="130"/><g class="tw"><path class="pk" d="M520 300 l20 62 l62 28 l-62 28 l-20 62 l-20 -62 l-62 -28 l62 -28 z"/></g><path class="thin" d="M600 300 l18 -18 M612 330 l26 -6 M590 282 l6 -26"/></g>
+      <text class="serif fade" style="--d:1.6s" x="520" y="620" text-anchor="middle">Creativity, boosted</text>
       <g class="pop" style="--d:3.1s">${box(840, 262, 112, 150, 12)}${box(968, 262, 112, 150, 12, "pk")}${box(840, 428, 112, 100, 12, "wm")}${box(968, 428, 112, 100, 12)}</g>
       <text class="serif fade" style="--d:3.4s" x="960" y="620" text-anchor="middle">One look</text>
       <g class="pop" style="--d:4.9s">${box(1270, 270, 260, 260, 18)}<path d="M1270 334 h260 M1330 246 v48 M1470 246 v48"/>${[0, 1, 2, 3, 4, 5].map((i) => `<circle class="pk thin" cx="${1322 + (i % 3) * 78}" cy="${388 + Math.floor(i / 3) * 78}" r="24"/><path class="thin" d="M${1311 + (i % 3) * 78} ${388 + Math.floor(i / 3) * 78} l8 9 l15 -18"/>`).join("")}</g>
@@ -360,17 +359,17 @@ const SCENES = [
         <text class="lab" x="830" y="484" style="font-size:15px">1 REEL · 24 PHOTOS</text></g>
       ${star(1310, 200, 1.2, "pk", 3.6)}${star(620, 280, .9, "w", 3.8)}${star(1340, 520, .8, "w", 4)}` },
   { id: "end", title: "", fixed: 9,
-    say: [[.5, "More parties. Less cropping."], [null, "Built by Matt, husband of the year."], [null, "Self-nominated."], ["+.6", "And, in Matt's words."], [null, "Go smash it, Lobby."], ["+1.3", "Who the fuck is Lobby?"]],
+    say: [[.5, "More parties. Less cropping."], [null, "Built by Matt, husband of the year."], ["+1.4", "And, in Matt's words."], [null, "Go smash it, Lobby."], ["+1.3", "Who the fuck is Lobby?"]],
     // Screen one: Laura's stacked logo (Drive > Logo > Stacked outlined.svg). Screen two: Matt's sign-off.
-    art: `<g data-line="3" data-off="-.1" style="animation: hide .45s ease 0s both">
+    art: `<g data-line="2" data-off="-.1" style="animation: hide .45s ease 0s both">
         <g class="up" style="--d:.3s"><image href="logo-stacked.svg" x="710" y="120" width="500" height="415"/></g>
         <text class="lab fade" data-line="0" x="960" y="610" text-anchor="middle">MORE PARTIES · LESS CROPPING</text>
         <g class="up" data-line="1"><text class="serif" x="960" y="700" text-anchor="middle">Built by Matt, husband of the year.</text></g>
-        <g class="fade" data-line="2"><text class="serif it" style="font-size:30px" x="960" y="752" text-anchor="middle">(self-nominated)</text></g>
+        <g class="fade" data-line="1" data-off="2.1"><text class="serif it" style="font-size:30px" x="960" y="752" text-anchor="middle">(self-nominated)</text></g>
         ${star(590, 250, 1.4, "pk", 1)}${star(1330, 270, 1, "w", 1.2)}${star(1320, 480, 1.3, "pk", 1.4)}${star(610, 470, .8, "w", 1.6)}
       </g>
-      <text class="lab fade" data-line="3" data-off=".35" x="960" y="300" text-anchor="middle">IN MATT’S WORDS</text>
-      <text class="serif it letters" data-line="4" style="font-size:132px" x="960" y="470" text-anchor="middle">Go smash it, Lobby.</text>` },
+      <text class="lab fade" data-line="2" data-off=".35" x="960" y="300" text-anchor="middle">IN MATT’S WORDS</text>
+      <text class="serif it letters" data-line="3" style="font-size:132px" x="960" y="470" text-anchor="middle">Go smash it, Lobby.</text>` },
 ];
 
 // ---------- timeline ----------
