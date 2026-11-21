@@ -14,7 +14,7 @@
 //     run up to 316 KB).
 //   upscale: false = never enlarge (gallery sets, like the site's script). Other targets are made at their exact
 //     sizes, since the site imports those file names; an enlarged file is marked in export.json.
-// The social sizes follow the newest Brand book and Social brand pack in Drive (Brand › Brand book) and the newest
+// The social sizes follow the newest Brand book and Brand pack in Drive (Brand › Brand book) and the newest
 // Automation build brief (Automation). Those documents are the source; if they change a size, change it here too.
 const TARGETS = {
   // Social. JPG, sRGB, one file per photo.

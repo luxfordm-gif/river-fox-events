@@ -2,7 +2,7 @@
 // plus only the small handle at the bottom, no small caps line, in the safe areas. Kept for reference; do not use for new jobs.
 //
 // Puts the River Fox cover text (the "hook") on ONE chosen photo per format: an Instagram post (3:4) and/or a
-// Story / Reel cover (9:16). The look is the Social brand pack's cover rules; read the newest pack in Drive before
+// Story / Reel cover (9:16). The look is the Brand pack's cover rules; read the newest pack in Drive before
 // each job, and change the numbers below if it moves (the pack wins, never this file).
 //
 //   npm run overlay -- --job=<export folder> --hook1="A Worplesdon" --hook2="welcome." \
@@ -31,7 +31,7 @@ const CHROME = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Conte
 const EXP = path.join(STATE, 'exports', job);
 const OUT = opt('out') || path.join(EXP, 'overlays');
 
-// Numbers from Social brand pack v1.18/v1.19: hook Fraunces Regular 400, tracking -0.03em, line height 0.98;
+// Numbers from the Brand pack (cover pages): hook Fraunces Regular 400, tracking -0.03em, line height 0.98;
 // caps line DM Sans 600; handle DM Sans 500 on Stories and Reel covers only; feed posts keep 96px clear, Reels 64px;
 // text stays inside the middle 1080x1440 (the profile grid crops 240px top and bottom); white text on a soft moss-black
 // fade (up to about 58% at the foot) or a band (about 42%) in the middle, with a soft shadow, no boxes.
