@@ -78,6 +78,8 @@ text.capbig { font: 400 60px Fraunces, serif; }
 .eq { transform-box: fill-box; transform-origin: center; animation: eq .6s ease-in-out 0s infinite alternate; }
 @keyframes tw { 50% { transform: scale(1.22) rotate(24deg); } }
 @keyframes eq { to { transform: scaleY(.3); } }
+@keyframes slideL { to { transform: translateX(-380px); } }
+@keyframes slideInR { from { transform: translateX(1100px); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes rowDown { to { transform: translateY(104px); } }
 @keyframes rowIn { from { opacity: 0; transform: translateY(-100px); } to { opacity: 1; transform: none; } }
 @keyframes inflate { from { transform: scale(0); } to { transform: scale(1); } }
@@ -254,19 +256,28 @@ const SCENES = [
       <g class="up" style="--d:7.2s"><rect class="pk" x="1262" y="520" width="196" height="62" rx="10"/><text class="cap" style="fill:var(--ink)" x="1360" y="560" text-anchor="middle">I love it</text></g>
       <g class="up" style="--d:9.1s"><rect class="cr" x="462" y="230" width="196" height="130" rx="10"/><text class="serif s" x="560" y="286" text-anchor="middle">A fifth</text><text class="serif s it" x="560" y="324" text-anchor="middle">birthday</text></g>
       <g class="up" style="--d:9.6s"><rect class="w" x="1262" y="230" width="196" height="130" rx="10"/><text class="serif s" x="1360" y="286" text-anchor="middle">River Fox</text><text class="serif s" x="1360" y="324" text-anchor="middle">Events</text></g>` },
-  { id: "review", title: "Reviews, <em>tidied not rewritten.</em>", say: "Google reviews work from a screenshot or pasted text. Spelling slips are fixed, apostrophes are made properly curly, and the client's words are otherwise left well alone. Then it's a card for every platform.",
-    art: `<g class="pop" style="--d:.1s">${box(300, 190, 640, 380, 22)}${[0, 1, 2, 3, 4].map((i) => `<path class="pk thin" transform="translate(${362 + i * 44} 250)" d="M0 -15 l5 10 l11 1 l-8 8 l2 11 l-10 -6 l-10 6 l2 -11 l-8 -8 l11 -1 z"/>`).join("")}</g>
-      <g class="fade" style="--d:.6s"><text class="rev" x="346" y="342">The balloon arch looked</text><text class="rev" x="346" y="398">absolutely</text><path class="thin faint" d="M346 520 h160"/></g>
-      <g style="animation: hide .3s ease 3.4s both"><text class="rev fade" style="--d:.6s" x="528" y="398">beatiful</text><path class="d ac" pathLength="1" style="--d:2.8s;stroke-width:4" d="M524 388 h128"/></g>
-      <text class="rev it" style="animation: show .4s ease 3.6s both" x="528" y="398">beautiful</text>
-      <text class="rev" style="animation: show .4s ease .6s both, hide .3s ease 5s both" x="346" y="454">and we can't wait to rebook.</text>
-      <text class="rev" style="animation: show .3s ease 5.1s both" x="346" y="454">and we can’t wait to rebook.</text>
-      <g class="pop" style="--d:4.4s">${box(480, 620, 280, 130, 18)}<path class="thin" d="M596 686 h44 m-14 -12 l14 12 l-14 12"/></g>
-      <text class="glyph" style="animation: show .3s ease 4.6s both, dimto .3s ease 5s both" x="540" y="740" text-anchor="middle">'</text>
-      <text class="glyph it" style="font-style:normal;animation: show .3s ease 5s both" x="700" y="740" text-anchor="middle">’</text>
-      ${[[1040, 230, 190, 254, "INSTAGRAM"], [1260, 230, 190, 254, "FACEBOOK"], [1480, 264, 220, 220, "GOOGLE"]].map(([x, y, w, h, n], i) => `<g class="pop" style="--d:${6.6 + i * .35}s">${box(x, y, w, h, 14, "wm")}
-        ${[0, 1, 2, 3, 4].map((k) => `<circle class="pk ns" cx="${x + w / 2 - 40 + k * 20}" cy="${y + 46}" r="6"/>`).join("")}<path class="thin faint" d="M${x + 30} ${y + 90} h${w - 60} M${x + 30} ${y + 116} h${w - 60} M${x + 30} ${y + 142} h${w - 100}"/><path class="thin" d="M${x + w / 2 - 24} ${y + h - 40} h48"/></g>
-        <text class="lab fade" style="--d:${6.8 + i * .35}s" x="${x + w / 2}" y="538" text-anchor="middle">${n}</text>`).join("")}` },
+  { id: "review",
+    // The camera: in on the spelling fix, across to the apostrophe, back out; then the doc slides in.
+    cam: [[0, 960, 460, 1], [1.4, 960, 460, 1], [2.2, 935, 420, 1.8], [3.9, 935, 420, 1.8], [4.6, 890, 440, 1.8], [5.8, 890, 440, 1.8], [6.5, 960, 460, 1]],
+    title: "Reviews, <em>tidied not rewritten.</em>", say: "Google reviews work from a screenshot or pasted text. Spelling slips are fixed, apostrophes are made properly curly, and the client's words are otherwise left well alone. Then it writes a caption for every platform.",
+    art: `<g style="animation: slideL .9s cubic-bezier(.6,0,.3,1) 6.7s both">
+        <g class="pop" style="--d:.1s">${box(640, 200, 640, 380, 22)}${[0, 1, 2, 3, 4].map((i) => `<path class="pk thin" transform="translate(${702 + i * 44} 260)" d="M0 -15 l5 10 l11 1 l-8 8 l2 11 l-10 -6 l-10 6 l2 -11 l-8 -8 l11 -1 z"/>`).join("")}</g>
+        <g class="fade" style="--d:.6s"><text class="rev" x="686" y="352">The balloon arch looked</text><text class="rev" x="686" y="408">absolutely</text><path class="thin faint" d="M686 530 h160"/></g>
+        <g style="animation: hide .3s ease 3.2s both"><text class="rev fade" style="--d:.6s" x="868" y="408">beatiful</text><path class="d ac" pathLength="1" style="--d:2.6s;stroke-width:4" d="M864 398 h128"/></g>
+        <text class="rev it" style="animation: show .4s ease 3.3s both" x="868" y="408">beautiful</text>
+        <text class="rev" style="animation: show .4s ease .6s both, hide .25s ease 5s both" x="686" y="464">and we can't wait to rebook.</text>
+        <text class="rev" style="animation: show .25s ease 5.05s both" x="686" y="464">and we can<tspan class="it" style="font-style:normal">’</tspan>t wait to rebook.</text>
+        <g style="animation: hide .4s ease 6s forwards"><circle class="ac" style="fill:none;stroke-width:3;transform-box:fill-box;transform-origin:center;animation: pop .45s cubic-bezier(.2,1.5,.4,1) 5.1s both" cx="866" cy="447" r="20"/></g>
+      </g>
+      <g style="animation: slideInR 1s cubic-bezier(.2,.9,.3,1) 6.9s both">
+        <rect class="sh" x="1110" y="132" width="540" height="560" rx="14"/><rect class="w" x="1100" y="120" width="540" height="560" rx="14"/>
+        <path class="thin" d="M1100 184 h540"/><rect class="pk thin" x="1124" y="138" width="28" height="34" rx="4"/><path class="thin" d="M1131 150 h14 M1131 158 h14 M1131 166 h9"/>
+        <text class="chip" style="font-size:22px" x="1166" y="162">Captions - review post</text>
+        ${[["Instagram", "Kind words from a lovely client!", 7.8], ["Facebook", "Reviews like this make our week.", 9.1], ["Google Business", "Thank you for choosing River Fox.", 10.4]].map(([n, line, t], i) => `
+          <text class="serif fade" style="--d:${(t - .25).toFixed(2)}s;font-size:30px" x="1136" y="${252 + i * 140}">${n}</text>
+          <text class="chip" style="font-size:24px" x="1136" y="${294 + i * 140}">${line.split("").map((ch, k) => `<tspan style="animation: show .01s linear ${(t + k * .03).toFixed(3)}s both">${ch === " " ? "&#160;" : ch}</tspan>`).join("")}</text>
+          <path class="thin faint" d="M1136 ${318 + i * 140} h${300 - i * 40}"/>`).join("")}
+      </g>` },
   { id: "copy", title: "The words are <em>written too.</em>", say: "Google Business gets plain photos, no text. And it even writes the captions. All that's left is copy, paste, kettle on.",
     sfx: [["pop", .2, .2], ["pop", 1.2, .3], ["whoosh", 3.4, .5], ["tick", 4.3, .12], ["tick", 4.8, .12], ["tick", 5.3, .12], ["pop", 6.2, .3], ["inflate", -2.3, .4, "late"], ["balloonpop", -1.2, .8, "late"]],
     art: `<g class="pop" style="--d:.1s">${photo(330, 270, 440, 330)}</g>
