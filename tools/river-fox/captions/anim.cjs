@@ -16,8 +16,8 @@ const GROUPS = [
 const FONT = '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,144,400..900,0..100,0..1&display=block" rel="stylesheet">';
 const SH = 'text-shadow:0 4px 34px rgba(30,16,10,.55),0 2px 8px rgba(30,16,10,.3)';
 const CSS = {
-  wild: `.g{position:absolute;left:0;right:0;top:290px;text-align:center;color:#FCFBFB;font-family:Fraunces,serif;font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:900;font-size:110px;line-height:1.02;letter-spacing:-.025em;${SH}}.l{display:block;white-space:nowrap}`,
-  classic: `.g{position:absolute;left:0;right:0;top:290px;text-align:center;color:#FCFBFB;font-family:Fraunces,serif;font-weight:500;font-size:106px;line-height:1.04;letter-spacing:-.03em;${SH}}.l{display:block;white-space:nowrap}`,
+  wild: `.g{position:absolute;left:0;right:0;top:290px;text-align:center;color:#FCFBF8;font-family:Fraunces,serif;font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:900;font-size:110px;line-height:1.02;letter-spacing:-.025em;${SH}}.l{display:block;white-space:nowrap}`,
+  classic: `.g{position:absolute;left:0;right:0;top:290px;text-align:center;color:#FCFBF8;font-family:Fraunces,serif;font-weight:500;font-size:106px;line-height:1.04;letter-spacing:-.03em;${SH}}.l{display:block;white-space:nowrap}`,
   box: `.g{position:absolute;left:0;right:0;top:300px;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:Inter,sans-serif;font-weight:600;font-size:60px;line-height:1.1;letter-spacing:-.015em;color:#191C17}.l{display:inline-block;background:#F7EEE9;border-radius:4px;padding:14px 26px 17px;white-space:nowrap}`,
 };
 const BIG = {
