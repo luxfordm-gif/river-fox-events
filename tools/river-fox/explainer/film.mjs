@@ -10,9 +10,9 @@ import { pathToFileURL } from "node:url";
 const { chromium } = createRequire(import.meta.url)("playwright");
 
 const FPS = 30, WORKERS = 4;
-const VOICE = process.env.VOICE || "sage";
-const STYLE = "A British woman from the south of England talking to a colleague, both adults. Plain, relaxed and fairly quick, the way people really talk. Flat, even delivery: no performing, no sing-song, no emphasis on words, no smile in the voice.";
-const TEMPO = 1.18; // speeds the voice up a little without changing its pitch
+const VOICE = process.env.VOICE || "shimmer" /* voice B, chosen by Matt 2026-11-21 */;
+const STYLE = "An adult British woman from the south of England talking to another adult, a colleague. Calm, natural and matter-of-fact, at a normal conversational pace. Understated and dry. Not upbeat, not sing-song, no exaggerated emphasis, never patronising.";
+const TEMPO = 1.08; // speeds the voice up a little without changing its pitch
 const SFX = process.env.SFX === "1"; // sound effects are off unless asked for (Matt, 2026-11-21: the generated ones sounded wrong)
 const key = process.env.OPENAI_API_KEY || "sk-proxy";
 mkdirSync("out/film/voice", { recursive: true });

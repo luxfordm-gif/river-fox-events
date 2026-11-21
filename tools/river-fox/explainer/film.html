@@ -36,6 +36,7 @@ text.serif { font: 400 40px Fraunces, serif; } text.serif.s { font-size: 30px; }
 text.it, tspan.it { font-style: italic; fill: var(--accent-dark); }
 text.term { font: 500 56px "DM Mono", monospace; fill: var(--cream); } tspan.tp { fill: var(--pink); }
 text.mono { font: 500 34px "DM Mono", monospace; fill: var(--accent-dark); }
+text.rev { font: 500 34px "DM Sans", sans-serif; } text.glyph { font: 400 110px Fraunces, serif; }
 text.cap { font: 500 26px "DM Sans", sans-serif; fill: var(--neutral); } text.cap tspan { opacity: .3; }
 text.capbig { font: 400 60px Fraunces, serif; }
 
@@ -65,6 +66,12 @@ text.capbig { font: 400 60px Fraunces, serif; }
 @keyframes wordstay { 0% { opacity: 0; transform: translateY(18px); } 30%, 100% { opacity: 1; transform: none; } }
 @keyframes curs { to { transform: translateX(336px); } }
 @keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes stretch { 0% { opacity: 0; } 1%, 99% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes dropOut { to { transform: translateY(260px); opacity: 0; } }
+@keyframes moveX { to { transform: translateX(var(--tx)); } }
+@keyframes hookMove { 45% { transform: translate(calc(var(--tx) * .5), -170px) rotate(-6deg); } 100% { transform: translateX(var(--tx)); } }
+@keyframes sweep { to { transform: translateX(1168px); } }
+@keyframes dimto { to { opacity: .25; } }
 @keyframes rowDown { to { transform: translateY(104px); } }
 @keyframes rowIn { from { opacity: 0; transform: translateY(-100px); } to { opacity: 1; transform: none; } }
 @keyframes inflate { from { transform: scale(0); } to { transform: scale(1); } }
@@ -213,21 +220,37 @@ const SCENES = [
     sfx: [["pop", .3, .25], ["pop", .9, .25], ["pop", 1.5, .25]],
     art: `<g class="pop" style="--d:.2s">${photo(430, 190, 290, 516)}</g><g class="pop" style="--d:.8s">${photo(790, 266, 330, 440, "pk")}</g><g class="pop" style="--d:1.4s">${photo(1190, 391, 420, 315, "cr")}</g>
       <text class="lab fade" style="--d:.6s" x="575" y="766" text-anchor="middle">STORY</text><text class="lab fade" style="--d:1.2s" x="955" y="766" text-anchor="middle">POST</text><text class="lab fade" style="--d:1.8s" x="1400" y="766" text-anchor="middle">GOOGLE</text>` },
-  { id: "reel", title: "Videos become <em>reels.</em>", say: "For video, it studies every clip, finds the hook, usually the finished reveal, and moves it to the front.",
-    sfx: [["pop", .2, .2], ["pop", .35, .2], ["pop", .5, .2], ["pop", .65, .2], ["pop", .8, .2], ["bigwhoosh", 2.6, .7], ["thud", 3.4, .5], ["pop", 3.9, .3], ["chime", 5.2, .35]],
-    art: `<g style="animation: shiftR .9s cubic-bezier(.6,0,.3,1) 2.6s both">${[0, 1, 2, 3].map((i) => `<g class="pop" style="--d:${.1 + i * .15}s">${box(250 + i * 194, 320, 170, 220, 14)}<path class="thin faint" d="M${285 + i * 194} 500 h${60 + i * 12}"/></g>`).join("")}</g>
-      <g style="animation: toFront .9s cubic-bezier(.6,0,.3,1) 2.6s both"><g class="pop" style="--d:.7s">${box(1026, 320, 170, 220, 14, "pk")}<path class="w" d="M1111 388 l13 28 l31 4 l-23 21 l6 31 l-27 -15 l-27 15 l6 -31 l-23 -21 l31 -4 z"/></g></g>
-      ${pill(335, 250, 150, "Hook", "ik", 3.8)}
-      <path class="d" pathLength="1" style="--d:4.4s" d="M1260 430 h80 m-22 -20 l22 20 l-22 20"/>
-      <g class="pop" style="--d:4.8s">${phone(1410, 200, 250, 470)}<circle class="pk" cx="1535" cy="435" r="54"/><path class="w" d="M1518 405 l48 30 l-48 30 z"/></g>` },
-  { id: "captions", title: "Captions, cover, <em>end screen.</em>", say: "Speech becomes animated captions, in three styles. A cover goes on the front, and an end screen on the back.",
+  { id: "reel", title: "Best bits, <em>hook first.</em>", say: "For video, it studies every clip and marks the best moments. Then it finds the hook, usually the finished reveal, and moves it to the front.",
+    art: `<g class="pop" style="--d:.1s">${box(346, 290, 1228, 270, 20)}</g>
+      <g style="animation: hide .3s ease 3.6s both"><g class="fade" style="--d:.4s"><path class="thin faint" d="${Array.from({ length: 17 }, (_, i) => `M${376 + i * 73} 268 v${i % 2 ? -10 : -18}`).join(" ")}"/></g></g>
+      ${[0, 1, 2, 3, 4, 5, 6, 7].map((i) => { const x = 376 + i * 146, best = [2, 5, 7].includes(i), lit = (.8 + (i * 146 + 65) / 1168 * 2.4).toFixed(2), tx = { 2: 219, 5: -73, 7: -657 }[i];
+        const inner = `<g class="pop" style="--d:${(.3 + i * .06).toFixed(2)}s"><rect class="cr thin" x="${x}" y="330" width="130" height="190" rx="10"/><path class="thin faint" d="M${x + 22} 490 h${50 + (i * 17) % 40}"/>` +
+          (best ? `<rect class="pk thin" x="${x}" y="330" width="130" height="190" rx="10" style="animation: show .25s ease ${lit}s both"/>` : "") +
+          (i === 7 ? `<path class="w thin" style="animation: show .25s ease ${lit}s both" d="M${x + 65} 385 l11 24 l26 3 l-19 18 l5 26 l-23 -13 l-23 13 l5 -26 l-19 -18 l26 -3 z"/>` : "") + `</g>`;
+        return best ? `<g style="--tx:${tx}px;animation: ${i === 7 ? "hookMove" : "moveX"} .9s cubic-bezier(.6,0,.3,1) ${i === 7 ? 5.2 : 4.5}s both">${inner}</g>` : `<g style="animation: dropOut .6s ease-in ${(3.6 + i * .05).toFixed(2)}s both">${inner}</g>`; }).join("")}
+      <g style="animation: sweep 2.4s linear .8s both, hide .3s ease 3.4s both"><path class="ac" d="M376 262 V580"/><path class="pk thin" d="M362 240 h28 l-14 22 z"/></g>
+      ${pill(806, 250, 150, "Hook", "ik", 6.1)}` },
+  { id: "captions", title: "Captions, cover, <em>end screen.</em>", say: "Speech becomes animated captions, in three styles. If Laura stretches a word, so does the caption. A cover goes on the front, and an end screen on the back.",
     sfx: [["pop", .2, .2], ["pop", .45, .2], ["pop", .7, .2], ["tick", 1.6, .12], ["tick", 2.0, .12], ["tick", 2.4, .12], ["tick", 2.8, .12], ["whoosh", 5.6, .5], ["whoosh", 6.2, .5]],
     art: [0, 1, 2].map((i) => `<g class="pop" style="--d:${.1 + i * .25}s">${phone(430 + i * 400, 150, 260, 520)}<path d="M${540 + i * 400} 340 v50 M${560 + i * 400} 315 v100 M${580 + i * 400} 345 v40" class="faint"/></g>`).join("") +
-      `<text class="cap" x="560" y="560" text-anchor="middle">${["Here", "is", "the", "arch"].map((w2, i) => `<tspan style="animation: say .01s linear ${1.6 + i * .4}s both">${w2}</tspan>`).join(" ")}</text>
-      ${["Here", "is", "the"].map((w2, i) => `<text class="capbig" style="animation: word .42s ease ${1.6 + i * .42}s both" x="960" y="566" text-anchor="middle">${w2}</text>`).join("")}<text class="capbig it" style="animation: wordstay .42s ease 2.86s both" x="960" y="566" text-anchor="middle">arch</text>
-      <g class="up" style="--d:1.8s"><rect class="pk" x="1262" y="520" width="196" height="62" rx="10"/><text class="cap" style="fill:var(--ink)" x="1360" y="560" text-anchor="middle">Here is the arch</text></g>
+      `<text class="cap" x="560" y="560" text-anchor="middle">${["I", "love", "it"].map((w2, i) => `<tspan style="animation: say .01s linear ${1.6 + i * .4}s both">${w2}</tspan>`).join(" ")}</text>
+      ${["love", "loove", "looove", "loooove"].map((w2, i) => `<text class="capbig" style="font-size:36px;animation: stretch .32s linear ${1.6 + i * .3}s both" x="960" y="566" text-anchor="middle">${w2}</text>`).join("")}<text class="capbig it" style="font-size:36px;animation: show .01s linear 2.8s both" x="960" y="566" text-anchor="middle">looooove it</text>
+      <g class="up" style="--d:1.8s"><rect class="pk" x="1262" y="520" width="196" height="62" rx="10"/><text class="cap" style="fill:var(--ink)" x="1360" y="560" text-anchor="middle">I love it</text></g>
       <g class="up" style="--d:5.6s"><rect class="cr" x="462" y="230" width="196" height="130" rx="10"/><text class="serif s" x="560" y="286" text-anchor="middle">A fifth</text><text class="serif s it" x="560" y="324" text-anchor="middle">birthday</text></g>
       <g class="up" style="--d:6.2s"><rect class="w" x="1262" y="230" width="196" height="130" rx="10"/><text class="serif s" x="1360" y="286" text-anchor="middle">River Fox</text><text class="serif s" x="1360" y="324" text-anchor="middle">Events</text></g>` },
+  { id: "review", title: "Reviews, <em>tidied not rewritten.</em>", say: "A Google review works from a screenshot or pasted text. Spelling slips are fixed and apostrophes made curly. The client's words are otherwise untouched. Then it becomes a card for each platform.",
+    art: `<g class="pop" style="--d:.1s">${box(300, 190, 640, 380, 22)}${[0, 1, 2, 3, 4].map((i) => `<path class="pk thin" transform="translate(${362 + i * 44} 250)" d="M0 -15 l5 10 l11 1 l-8 8 l2 11 l-10 -6 l-10 6 l2 -11 l-8 -8 l11 -1 z"/>`).join("")}</g>
+      <g class="fade" style="--d:.6s"><text class="rev" x="346" y="342">The balloon arch looked</text><text class="rev" x="346" y="398">absolutely</text><path class="thin faint" d="M346 520 h160"/></g>
+      <g style="animation: hide .3s ease 3.4s both"><text class="rev fade" style="--d:.6s" x="528" y="398">beatiful</text><path class="d ac" pathLength="1" style="--d:2.8s;stroke-width:4" d="M524 388 h128"/></g>
+      <text class="rev it" style="animation: show .4s ease 3.6s both" x="528" y="398">beautiful</text>
+      <text class="rev" style="animation: show .4s ease .6s both, hide .3s ease 5s both" x="346" y="454">and we can't wait to rebook.</text>
+      <text class="rev" style="animation: show .3s ease 5.1s both" x="346" y="454">and we can’t wait to rebook.</text>
+      <g class="pop" style="--d:4.4s">${box(480, 620, 280, 130, 18)}<path class="thin" d="M596 686 h44 m-14 -12 l14 12 l-14 12"/></g>
+      <text class="glyph" style="animation: show .3s ease 4.6s both, dimto .3s ease 5s both" x="540" y="740" text-anchor="middle">'</text>
+      <text class="glyph it" style="font-style:normal;animation: show .3s ease 5s both" x="700" y="740" text-anchor="middle">’</text>
+      ${[[1040, 230, 190, 254, "INSTAGRAM"], [1260, 230, 190, 254, "FACEBOOK"], [1480, 264, 220, 220, "GOOGLE"]].map(([x, y, w, h, n], i) => `<g class="pop" style="--d:${6.6 + i * .35}s">${box(x, y, w, h, 14, "wm")}
+        ${[0, 1, 2, 3, 4].map((k) => `<circle class="pk ns" cx="${x + w / 2 - 40 + k * 20}" cy="${y + 46}" r="6"/>`).join("")}<path class="thin faint" d="M${x + 30} ${y + 90} h${w - 60} M${x + 30} ${y + 116} h${w - 60} M${x + 30} ${y + 142} h${w - 100}"/><path class="thin" d="M${x + w / 2 - 24} ${y + h - 40} h48"/></g>
+        <text class="lab fade" style="--d:${6.8 + i * .35}s" x="${x + w / 2}" y="538" text-anchor="middle">${n}</text>`).join("")}` },
   { id: "copy", title: "The words are <em>written too.</em>", say: "Google Business gets plain crops with no text. And it writes the caption for every platform, ready to paste.",
     sfx: [["pop", .2, .2], ["pop", 1.2, .3], ["whoosh", 3.4, .5], ["tick", 4.3, .12], ["tick", 4.8, .12], ["tick", 5.3, .12], ["pop", 6.2, .3], ["inflate", -2.3, .4, "late"], ["balloonpop", -1.2, .8, "late"]],
     art: `<g class="pop" style="--d:.1s">${photo(330, 270, 440, 330)}</g>
@@ -281,7 +304,7 @@ const SCENES = [
 // ---------- timeline ----------
 const LEAD = .6, TAIL = .8, PAN = .35;
 // Shortest a scene may be, so its animation has time to finish even after a short line.
-const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 6.6, captions: 7.4, copy: 8.8, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 6.2, end: 3.5 };
+const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 8.2, captions: 7.8, review: 10, copy: 8.8, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 6.2, end: 3.5 };
 const VOICE = globalThis.TIMELINE || {}; // seconds of voice per line, written by film.mjs
 let at = 0;
 const lines = [], events = [];
