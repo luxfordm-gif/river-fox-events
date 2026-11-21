@@ -13,7 +13,6 @@ const FPS = 30, WORKERS = 4;
 const VOICE = process.env.VOICE || "shimmer" /* voice B, chosen by Matt 2026-11-21 */;
 const STYLE = "An adult British woman from the south of England talking to another adult, a colleague. Calm, natural and matter-of-fact, at a normal conversational pace. Understated and dry. Not upbeat, not sing-song, no exaggerated emphasis, never patronising.";
 const TEMPO = 1.08; // speeds the voice up a little without changing its pitch
-const SFX = process.env.SFX === "1"; // sound effects are off unless asked for (Matt, 2026-11-21: the generated ones sounded wrong)
 const key = process.env.OPENAI_API_KEY || "sk-proxy";
 mkdirSync("out/film/voice", { recursive: true });
 const ff = (...a) => execFileSync("ffmpeg", ["-y", "-v", "error", ...a]);
@@ -28,16 +27,25 @@ const open = async () => {
 };
 
 // 1. Voice: one clip per line, reused while its words stay the same.
+// ElevenLabs by default (George, a British male storyteller, Matt 2026-11-21); TTS=openai for the old voice.
+const USE_EL = process.env.TTS !== "openai";
+const EL_VOICE = process.env.EL_VOICE || "JBFqnCBsd6RMkjVDRZzb"; // George
+const EL_SETTINGS = { stability: 0.45, similarity_boost: 0.75, style: 0.15, use_speaker_boost: true };
 if (!existsSync("out/film/timeline.js")) writeFileSync("out/film/timeline.js", "");
 let page = await open();
 const timeline = {}, clips = {};
 for (const { id, text } of await page.evaluate("window.LINES")) {
-  const hash = createHash("sha1").update(VOICE + STYLE + TEMPO + text).digest("hex").slice(0, 8);
-  const raw = `out/film/voice/${id}-${hash}.wav`, clean = `out/film/voice/${id}-${hash}-trim.wav`;
-  if (!existsSync(raw)) execFileSync("curl", ["-sS", "--fail-with-body", "https://api.openai.com/v1/audio/speech", "-H", `Authorization: Bearer ${key}`,
-    "-H", "Content-Type: application/json", "-o", raw, "-d", JSON.stringify({ model: "gpt-4o-mini-tts", voice: VOICE, input: text, instructions: STYLE, response_format: "wav" })]);
+  const tag = USE_EL ? "el" + EL_VOICE + JSON.stringify(EL_SETTINGS) : VOICE + STYLE + TEMPO;
+  const hash = createHash("sha1").update(tag + text).digest("hex").slice(0, 8);
+  const raw = `out/film/voice/${id}-${hash}.${USE_EL ? "mp3" : "wav"}`, clean = `out/film/voice/${id}-${hash}-trim.wav`;
+  if (!existsSync(raw)) {
+    if (USE_EL) execFileSync("curl", ["-sS", "--fail-with-body", `https://api.elevenlabs.io/v1/text-to-speech/${EL_VOICE}?output_format=mp3_44100_128`, "-H", "xi-api-key: proxy-injected",
+      "-H", "Content-Type: application/json", "-o", raw, "-d", JSON.stringify({ text, model_id: "eleven_multilingual_v2", voice_settings: EL_SETTINGS })]);
+    else execFileSync("curl", ["-sS", "--fail-with-body", "https://api.openai.com/v1/audio/speech", "-H", `Authorization: Bearer ${key}`,
+      "-H", "Content-Type: application/json", "-o", raw, "-d", JSON.stringify({ model: "gpt-4o-mini-tts", voice: VOICE, input: text, instructions: STYLE, response_format: "wav" })]);
+  }
   const trim = "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05";
-  if (!existsSync(clean)) ff("-i", raw, "-af", `${trim},areverse,${trim},areverse,atempo=${TEMPO}`, "-ar", "48000", clean);
+  if (!existsSync(clean)) ff("-i", raw, "-af", `${trim},areverse,${trim},areverse${USE_EL ? "" : `,atempo=${TEMPO}`}`, "-ar", "48000", "-ac", "1", clean);
   timeline[id] = +secs(clean).toFixed(3);
   clips[id] = clean;
 }
@@ -59,12 +67,27 @@ if (process.argv.includes("--stills")) {
   process.exit(0);
 }
 
-// 2. Sound effects, then one audio track: voice over the effects.
-writeFileSync("out/film/events.json", JSON.stringify(events));
-if (SFX) execFileSync("python3", ["film-sound.py", String(duration)], { stdio: "inherit" });
-else ff("-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", "1", "out/film/sfx.wav");
-const inputs = ["-i", "out/film/sfx.wav"], filters = ["[0:a]volume=0.5[s]"], names = ["[s]"];
-lines.forEach(({ id, at }, i) => { inputs.push("-i", clips[id]); filters.push(`[${i + 1}:a]adelay=${Math.round(at * 1000)}[v${i}]`); names.push(`[v${i}]`); });
+// 2. Sound: the voice, a few real sound effects and a quiet music bed (all from ElevenLabs, in sounds/).
+// Matt, 2026-11-21: real sounds only, no whooshes. Set SFX=0 for voice only.
+const info = await page.evaluate("window.SCENE_INFO");
+const at = (id, d) => { const s = info.find((x) => x.id === id); return s.start + Math.max(0, d * s.k - .15); };
+const SOUNDS = process.env.SFX === "0" ? [] : [
+  ...[1.9, 2.8, 3.6].map((t) => ["shutter", t, 0.9]),           // the three camera flashes
+  ["chime", 12.7, 0.5],                                          // the Drive sync tick
+  ["typing", at("skill", 1.3), 0.7],                             // Matt types the command
+  ...[1.1, 3.1, 4.2].map((d) => ["ping", at("ask", d), 0.5]),    // the chat messages
+  ["chime", at("end", .3), 0.55],                                // the logo
+];
+const inputs = [], filters = [], names = [];
+const add = (file, delay, gain) => { const i = inputs.length / 2; inputs.push("-i", file); filters.push(`[${i}:a]aresample=48000,aformat=channel_layouts=mono,volume=${gain},adelay=${Math.round(delay * 1000)}[a${i}]`); names.push(`[a${i}]`); };
+lines.forEach(({ id, at: t }) => add(clips[id], t, 1));
+SOUNDS.forEach(([n, t, g]) => add(`sounds/${n}.mp3`, t, g));
+if (process.env.SFX !== "0" && existsSync("sounds/music-loop.mp3")) {
+  const i = inputs.length / 2;
+  inputs.push("-stream_loop", "-1", "-i", "sounds/music-loop.mp3");
+  filters.push(`[${i}:a]aresample=48000,aformat=channel_layouts=mono,atrim=0:${duration},volume=0.13,afade=t=in:d=1.5,afade=t=out:st=${duration - 3}:d=3[m]`);
+  names.push("[m]");
+}
 ff(...inputs, "-filter_complex", `${filters.join(";")};${names.join("")}amix=inputs=${names.length}:normalize=0,alimiter=limit=0.95,apad[a]`, "-map", "[a]", "-t", String(duration), "out/film/audio.wav");
 
 // 3. Record every frame (four browser pages share the work) and join with the audio.
