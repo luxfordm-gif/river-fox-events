@@ -300,17 +300,16 @@ const SCENES = [
       <g class="pop" style="--d:3.4s"><rect class="pk" x="980" y="530" width="180" height="76" rx="28"/><text class="chip" x="1010" y="580">Love it</text></g>
       ${confetti(960, 420, 30, 1.6, true)}${star(1330, 220, 1.4, "pk", 3.6)}${star(590, 300, 1, "w", 3.8)}${star(1380, 560, .8, "w", 4)}${star(560, 600, 1.2, "pk", 4.1)}` },
   { id: "end", title: "", say: "More parties, less cropping.",
-    sfx: [...Array.from({ length: 9 }, (_, i) => ["pop", .32 + i * .07, .16, 520 + i * 55]), ["chime", 1.1, .4]],
-    art: Array.from({ length: 9 }, (_, i) => { const a = Math.PI - i / 8 * Math.PI, b = { x: 960 + Math.cos(a) * 200, y: 470 - Math.sin(a) * 200, r: 46 + (i * 7 % 3) * 7, c: ["pk", "w", "wm"][i % 3] };
-      return `<g transform="translate(${b.x} ${b.y})"><g class="pop" style="--d:${.2 + i * .07}s">${balloon(b)}</g></g>`; }).join("") +
-      `<path class="d" pathLength="1" style="--d:.2s" d="M660 470 h600"/><text class="serif l fade" style="--d:.9s" x="960" y="660" text-anchor="middle">River Fox Events</text>
-      <text class="lab fade" style="--d:1.5s" x="960" y="740" text-anchor="middle">MORE PARTIES · LESS CROPPING</text>` },
+    // Laura's stacked logo (Drive > Logo > Stacked outlined.svg), in its own logo brown.
+    art: `<g class="up" style="--d:.3s"><image href="logo-stacked.svg" x="650" y="150" width="620" height="514"/></g>
+      <text class="lab fade" style="--d:1.3s" x="960" y="760" text-anchor="middle">MORE PARTIES · LESS CROPPING</text>
+      ${star(520, 260, 1.4, "pk", 1)}${star(1420, 300, 1, "w", 1.2)}${star(1380, 600, 1.3, "pk", 1.4)}${star(560, 560, .8, "w", 1.6)}` },
 ];
 
 // ---------- timeline ----------
 const LEAD = .6, TAIL = .8, PAN = .35;
 // Shortest a scene may be, so its animation has time to finish even after a short line.
-const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 8.2, captions: 7.8, review: 10, copy: 8.8, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 6.2, end: 3.5 };
+const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 8.2, captions: 7.8, review: 10, copy: 8.8, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 6.2, end: 5 };
 const VOICE = globalThis.TIMELINE || {}; // seconds of voice per line, written by film.mjs
 let at = 0;
 const lines = [], events = [];
@@ -365,7 +364,7 @@ window.seek = (t) => {
   if (t > SCENES[0].dur) $("flash").style.opacity = 0;
   $("bar").style.width = `${cl(t / window.DURATION) * 1920}px`;
 };
-document.fonts.ready.then(() => { seek(0); window.READY = true; });
+Promise.all([document.fonts.ready, new Promise((r) => { const im = new Image(); im.onload = im.onerror = r; im.src = "logo-stacked.svg"; })]).then(() => { seek(0); window.READY = true; });
 </script>
 </body>
 </html>
