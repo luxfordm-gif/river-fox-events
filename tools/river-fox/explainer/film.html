@@ -258,7 +258,7 @@ const SCENES = [
   { id: "captions",
     // The camera: [seconds, centre x, centre y, zoom]. In on each phone in turn, then back out.
     cam: [[0, 960, 460, 1], [1.2, 960, 460, 1], [2, 560, 500, 1.7], [3.7, 560, 500, 1.7], [4.4, 960, 500, 1.7], [6.4, 960, 500, 1.7], [7.1, 1360, 500, 1.7], [8.2, 1360, 500, 1.7], [9, 960, 460, 1]],
-    title: "Subtitles, cover, <em>end screen.</em>", say: "Anyone talking gets animated subtitles, in three styles. If Laura says she looooves it, so do the subtitles. Then a cover on the front, and an end screen on the back.",
+    title: "Captions, cover, <em>end screen.</em>", say: "Anyone talking gets animated captions, in three styles. If Laura says she looooves it, so does the caption. Then a cover on the front, and an end screen on the back.",
     sfx: [["pop", .2, .2], ["pop", .45, .2], ["pop", .7, .2], ["tick", 1.6, .12], ["tick", 2.0, .12], ["tick", 2.4, .12], ["tick", 2.8, .12], ["whoosh", 5.6, .5], ["whoosh", 6.2, .5]],
     art: [0, 1, 2].map((i) => `<g class="pop" style="--d:${.1 + i * .25}s">${phone(430 + i * 400, 150, 260, 520)}<path class="eq faint" d="M${540 + i * 400} 340 v50"/><path class="eq faint" style="animation-delay:-.25s" d="M${560 + i * 400} 315 v100"/><path class="eq faint" style="animation-delay:-.5s" d="M${580 + i * 400} 345 v40"/></g>`).join("") +
       `<text class="cap" x="560" y="560" text-anchor="middle">${["I", "love", "it"].map((w2, i) => `<tspan style="animation: say .25s ease ${2.2 + i * .45}s both">${w2}</tspan>`).join(" ")}</text>
@@ -269,7 +269,7 @@ const SCENES = [
   { id: "review",
     // The camera: in on the spelling fix, across to the apostrophe, back out; then the doc slides in.
     cam: [[0, 960, 460, 1], [1.4, 960, 460, 1], [2.2, 935, 420, 1.8], [3.9, 935, 420, 1.8], [4.6, 890, 440, 1.8], [5.8, 890, 440, 1.8], [6.5, 960, 460, 1]],
-    title: "Reviews, <em>tidied not rewritten.</em>", say: "Google reviews work from a screenshot or pasted text. Spelling slips are fixed, apostrophes are made properly curly, and the client's words are otherwise left well alone. Then it writes a caption for every platform.",
+    title: "Reviews, <em>tidied not rewritten.</em>", say: "Google reviews work from a screenshot or pasted text. Spelling slips are fixed, apostrophes are made properly curly, and the client's words are otherwise left well alone. Then it writes the post copy for every platform.",
     art: `<g style="animation: slideL .9s cubic-bezier(.6,0,.3,1) 6.7s both">
         <g class="pop" style="--d:.1s">${box(640, 200, 640, 380, 22)}${[0, 1, 2, 3, 4].map((i) => `<path class="pk thin" transform="translate(${702 + i * 44} 260)" d="M0 -15 l5 10 l11 1 l-8 8 l2 11 l-10 -6 l-10 6 l2 -11 l-8 -8 l11 -1 z"/>`).join("")}</g>
         <g class="fade" style="--d:.6s"><text class="rev" x="686" y="352">The balloon arch looked</text><text class="rev" x="686" y="408">absolutely</text><path class="thin faint" d="M686 530 h160"/></g>
@@ -282,19 +282,19 @@ const SCENES = [
       <g style="animation: slideInR 1s cubic-bezier(.2,.9,.3,1) 6.9s both">
         <rect class="sh" x="1110" y="132" width="540" height="560" rx="14"/><rect class="w" x="1100" y="120" width="540" height="560" rx="14"/>
         <path class="thin" d="M1100 184 h540"/><rect class="pk thin" x="1124" y="138" width="28" height="34" rx="4"/><path class="thin" d="M1131 150 h14 M1131 158 h14 M1131 166 h9"/>
-        <text class="chip" style="font-size:22px" x="1166" y="162">Captions - review post</text>
+        <text class="chip" style="font-size:22px" x="1166" y="162">Post copy - review post</text>
         ${[["Instagram", "Kind words from a lovely client!", 7.8], ["Facebook", "Reviews like this make our week.", 9.1], ["Google Business", "Thank you for choosing River Fox.", 10.4]].map(([n, line, t], i) => `
           <text class="serif fade" style="--d:${(t - .25).toFixed(2)}s;font-size:30px" x="1136" y="${252 + i * 140}">${n}</text>
           <text class="chip" style="font-size:24px" x="1136" y="${294 + i * 140}">${line.split("").map((ch, k) => `<tspan style="animation: show .01s linear ${(t + k * .03).toFixed(3)}s both">${ch === " " ? "&#160;" : ch}</tspan>`).join("")}</text>
           <path class="thin faint" d="M1136 ${318 + i * 140} h${300 - i * 40}"/>`).join("")}
       </g>` },
-  { id: "copy", title: "Captions, <em>in her own words.</em>", say: "And it's not just reviews. Every photo and every video gets a caption in each style. Polished for the website. Friendly but proper for Google. And for Instagram and Facebook, full Laura, emojis and all. It's read every post she's ever written, so it knows exactly how she talks. Slightly unnerving.",
+  { id: "copy", title: "Post copy, <em>in her own words.</em>", say: "And it's not just reviews. Every photo and every video gets its post copy written, in each style. Polished for the website. Friendly but proper for Google. And for Instagram and Facebook, full Laura, emojis and all. It's read every post she's ever written, so it knows exactly how she talks. Slightly unnerving.",
     art: `<g class="pop" style="--d:.1s">${photo(230, 130, 300, 225)}</g>
       <g class="pop" style="--d:.6s">${box(380, 250, 300, 225, 14)}<rect class="thin wm" x="396" y="266" width="268" height="193" rx="8"/><circle class="ik" cx="530" cy="362" r="36"/><path class="w ns" d="M518 342 l32 20 l-32 20 z"/></g>
       <text class="lab fade" style="--d:1.2s" x="455" y="520" text-anchor="middle">EVERY PHOTO AND VIDEO</text>
       <g class="up" style="--d:2.6s"><path class="sh" transform="translate(10 12)" d="M860 110 h740 a16 16 0 0 1 16 16 v574 a16 16 0 0 1 -16 16 h-740 a16 16 0 0 1 -16 -16 v-574 a16 16 0 0 1 16 -16 z"/>
         <path class="w" d="M860 110 h740 a16 16 0 0 1 16 16 v574 a16 16 0 0 1 -16 16 h-740 a16 16 0 0 1 -16 -16 v-574 a16 16 0 0 1 16 -16 z"/>
-        <path class="thin" d="M844 172 h772"/><rect class="pk thin" x="868" y="126" width="28" height="34" rx="4"/><path class="thin" d="M875 138 h14 M875 146 h14 M875 154 h9"/><text class="chip" style="font-size:22px" x="910" y="150">Captions - Cobham first birthday</text></g>
+        <path class="thin" d="M844 172 h772"/><rect class="pk thin" x="868" y="126" width="28" height="34" rx="4"/><path class="thin" d="M875 138 h14 M875 146 h14 M875 154 h9"/><text class="chip" style="font-size:22px" x="910" y="150">Post copy - Cobham first birthday</text></g>
       <path class="d" pathLength="1" style="--d:2.4s" d="M700 360 h110 m-20 -16 l20 16 l-20 16"/>
       ${[["WEBSITE · POLISHED", "A pastel balloon arch for a first birthday in Cobham.", "serif", 3.4], ["GOOGLE BUSINESS · FRIENDLY BUT PROPER", "Another lovely first birthday in Cobham this weekend!", "chip", 5.6], ["INSTAGRAM & FACEBOOK · FULL LAURA", "Looooove how this one came out!! 🎈💕✨", "chip", 7.8]].map(([lab, text, cls, t], i) => `
         <text class="lab fade" style="--d:${(t - .3).toFixed(2)}s;font-size:18px" x="892" y="${232 + i * 166}">${lab}</text>
