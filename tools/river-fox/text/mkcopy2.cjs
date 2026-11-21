@@ -3,17 +3,24 @@
 //   node mkcopy2.cjs hl-stack out.png                       "A" "Worplesdon" "welcome."
 //   node mkcopy2.cjs finale   out.png                       "Ta-da." "Your door's sorted." "A GARLAND ARCH AND WREATH"
 //   node mkcopy2.cjs handle   out.png                       (@RIVERFOX_EVENTS, always the same size and place)
+// Text for VIDEO only (covers and thumbnails are thumb.cjs). After drawing, it measures where the lettering really sits and
+// refuses to write a file whose lettering is outside the Instagram safe area: Reels x 70 to 940, y 240 to 1450 on 1080x1920
+// (STORY=1 for Stories, y 250 to 1670). WIDTH is how wide the headline is fitted, 760 unless set: the rule for video is
+// "at most about 800, centred", and 760 leaves room for the letters' own overhang (900, the old default, put the Worplesdon
+// headline 53px past the right line). ALLOW_UNSAFE=1 writes the file anyway and says so.
+// With nothing set, each kind lands inside the safe area at the places used on the Worplesdon reel (HEADTOP 1160, FINBOTTOM 470);
+// the handle needs HANDLETOP=300 for video (without it, it sits at the bottom, for stills).
 const puppeteer = require(require('path').join(__dirname,'../../photo-grade/node_modules/puppeteer-core'));
 const [mode, out, a, b, c] = process.argv.slice(2);
 const FONTS = '<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=block" rel="stylesheet">';
 const SHADOW = 'text-shadow:0 2px 26px rgba(0,0,0,.5),0 1px 4px rgba(0,0,0,.42)';
 const HFADE = '.s{position:absolute;bottom:0;left:0;right:0;height:1050px;background:linear-gradient(rgba(20,16,12,0),rgba(20,16,12,.30) 55%,rgba(20,16,12,.40))}';
-const WT = process.env.WEIGHT || 400, WIDTH = Number(process.env.WIDTH || 900);
+const WT = process.env.WEIGHT || 400, WIDTH = Number(process.env.WIDTH || 760);
 const SERIF = `font-family:Fraunces,serif;font-weight:${WT};letter-spacing:-.035em;margin:0;white-space:nowrap`;
 const CSS = {
-  'hl-two': HFADE + `.t{position:absolute;top:${process.env.HEADTOP||1260}px;left:0;right:0;text-align:center;color:#FCFBF8;${SHADOW}}h1{${SERIF};font-size:124px;line-height:.98}h1 em{font-style:italic;display:block}`,
-  'hl-stack': HFADE + `.t{position:absolute;top:1130px;left:0;right:0;text-align:center;color:#FCFBF8;${SHADOW}}.l1{${SERIF};font-size:150px;line-height:.9}.l2{${SERIF};font-size:230px;line-height:.9}.l3{${SERIF};font-style:italic;font-size:130px;line-height:.95}`,
-  finale: '.s{position:absolute;bottom:0;left:0;right:0;height:1000px;background:linear-gradient(rgba(20,16,12,0),rgba(20,16,12,.42))}' + `.t{position:absolute;bottom:${process.env.FINBOTTOM||260}px;left:0;right:0;text-align:center;color:#FCFBF8;${SHADOW}}h1{${SERIF};font-size:300px;line-height:.9;letter-spacing:-.04em}h2{${SERIF};font-style:italic;font-size:120px;line-height:.98;margin:8px 0 0}p{font-family:"DM Sans",sans-serif;font-weight:600;font-size:26px;letter-spacing:.18em;margin:34px 0 0}`,
+  'hl-two': HFADE + `.t{position:absolute;top:${process.env.HEADTOP||1160}px;left:0;right:0;text-align:center;color:#FCFBF8;${SHADOW}}h1{${SERIF};font-size:124px;line-height:.98}h1 em{font-style:italic;display:block}`,
+  'hl-stack': HFADE + `.t{position:absolute;top:${process.env.HEADTOP||1115}px;left:0;right:0;text-align:center;color:#FCFBF8;${SHADOW}}.l1{${SERIF};font-size:150px;line-height:.9}.l2{${SERIF};font-size:230px;line-height:.9}.l3{${SERIF};font-style:italic;font-size:130px;line-height:.95}`,
+  finale: '.s{position:absolute;bottom:0;left:0;right:0;height:1000px;background:linear-gradient(rgba(20,16,12,0),rgba(20,16,12,.42))}' + `.t{position:absolute;bottom:${process.env.FINBOTTOM||470}px;left:0;right:0;text-align:center;color:#FCFBF8;${SHADOW}}h1{${SERIF};font-size:300px;line-height:.9;letter-spacing:-.04em}h2{${SERIF};font-style:italic;font-size:120px;line-height:.98;margin:8px 0 0}p{font-family:"DM Sans",sans-serif;font-weight:600;font-size:26px;letter-spacing:.18em;margin:34px 0 0}`,
   handle: `.f{position:absolute;top:0;left:0;right:0;height:520px;background:linear-gradient(rgba(20,16,12,.42),rgba(20,16,12,0))}.u{position:absolute;left:0;right:0;${process.env.HANDLETOP?`top:${process.env.HANDLETOP}px;`:'bottom:120px;'}text-align:center;color:#FCFBF8;font-family:"DM Sans",sans-serif;font-weight:600;font-size:26px;letter-spacing:.18em;${SHADOW}}`,
 };
 const BODY = {
@@ -32,10 +39,31 @@ const BODY = {
     const wid = (el) => { const r = document.createRange(); r.selectNodeContents(el); return r.getBoundingClientRect().width; };
     const fit = (el, target, max) => { const fs = parseFloat(getComputedStyle(el).fontSize); el.style.fontSize = Math.min(max, fs * target / wid(el)) + 'px'; };
     if (mode === 'hl-two') { const h1 = document.querySelector('h1'); const w = Math.max(wid(h1.firstChild), wid(h1.querySelector('em'))); h1.style.fontSize = Math.min(260, 124 * WIDTH / w) + 'px'; }
-    if (mode === 'hl-stack') { const l2 = document.querySelector('.l2'); fit(l2, 880, 260); const fs = parseFloat(l2.style.fontSize); document.querySelector('.l1').style.fontSize = (fs * 0.62) + 'px'; document.querySelector('.l3').style.fontSize = (fs * 0.55) + 'px'; }
+    if (mode === 'hl-stack') { const l2 = document.querySelector('.l2'); fit(l2, WIDTH, 260); const fs = parseFloat(l2.style.fontSize); document.querySelector('.l1').style.fontSize = (fs * 0.62) + 'px'; document.querySelector('.l3').style.fontSize = (fs * 0.55) + 'px'; }
     if (mode === 'finale') { fit(document.querySelector('h1'), 600, 330); fit(document.querySelector('h2'), 760, 150); }
   }, [mode, WIDTH]);
-  await pg.screenshot({ path: out, omitBackground: true, type: 'png' });
+  const png = await pg.screenshot({ omitBackground: true, type: 'png' });
+  // where the lettering really is: solid, near-white pixels (the soft fade and the shadow are neither)
+  const ink = await pg.evaluate(async (b64) => {
+    const im = new Image(); im.src = 'data:image/png;base64,' + b64; await im.decode();
+    const c = document.createElement('canvas'); c.width = 1080; c.height = 1920;
+    const cx = c.getContext('2d'); cx.drawImage(im, 0, 0);
+    const d = cx.getImageData(0, 0, 1080, 1920).data;
+    let x0 = 1e9, x1 = -1, y0 = 1e9, y1 = -1;
+    for (let y = 0; y < 1920; y++) for (let x = 0; x < 1080; x++) {
+      const i = (y * 1080 + x) * 4;
+      if (d[i + 3] > 200 && Math.min(d[i], d[i + 1], d[i + 2]) > 200) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+    }
+    return { x0, x1, y0, y1 };
+  }, Buffer.from(png).toString('base64'));
   await br.close();
-  console.log('wrote', out);
+  const SAFE = process.env.STORY ? { x0: 70, x1: 940, y0: 250, y1: 1670 } : { x0: 70, x1: 940, y0: 240, y1: 1450 };
+  const outside = [['left', ink.x0 < SAFE.x0], ['right', ink.x1 > SAFE.x1], ['top', ink.y0 < SAFE.y0], ['bottom', ink.y1 > SAFE.y1]].filter((s) => s[1]).map((s) => s[0]);
+  console.log(`lettering x ${ink.x0} to ${ink.x1}, y ${ink.y0} to ${ink.y1}, ${ink.x1 - ink.x0 + 1} wide; safe area x ${SAFE.x0} to ${SAFE.x1}, y ${SAFE.y0} to ${SAFE.y1}`);
+  if (outside.length && !process.env.ALLOW_UNSAFE) {
+    console.error(`NOT WRITTEN: the lettering is outside the safe area on the ${outside.join(' and ')}. Make WIDTH smaller or move it (HEADTOP, FINBOTTOM, HANDLETOP).`);
+    process.exit(1);
+  }
+  require('fs').writeFileSync(out, png);
+  console.log(outside.length ? `wrote ${out} although it is OUTSIDE the safe area on the ${outside.join(' and ')} (ALLOW_UNSAFE)` : `wrote ${out}, inside the safe area`);
 })();
