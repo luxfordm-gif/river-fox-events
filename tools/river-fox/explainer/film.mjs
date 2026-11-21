@@ -82,10 +82,13 @@ const inputs = [], filters = [], names = [];
 const add = (file, delay, gain) => { const i = inputs.length / 2; inputs.push("-i", file); filters.push(`[${i}:a]aresample=48000,aformat=channel_layouts=mono,volume=${gain},adelay=${Math.round(delay * 1000)}[a${i}]`); names.push(`[a${i}]`); };
 lines.forEach(({ id, at: t }) => add(clips[id], t, 1));
 SOUNDS.forEach(([n, t, g]) => add(`sounds/${n}.mp3`, t, g));
-if (process.env.SFX !== "0" && existsSync("sounds/music-loop.mp3")) {
+// Music: Matt's own soundtrack if one is in sounds/ (soundtrack.mp3, .m4a or .wav; not saved to GitHub), else the ElevenLabs loop.
+const TRACK = ["mp3", "m4a", "wav", "aac"].map((e) => `sounds/soundtrack.${e}`).find(existsSync) || "sounds/music-loop.mp3";
+const MUSIC_START = +(process.env.MUSIC_START || 0); // seconds into the track to start from
+if (process.env.SFX !== "0" && existsSync(TRACK)) {
   const i = inputs.length / 2;
-  inputs.push("-stream_loop", "-1", "-i", "sounds/music-loop.mp3");
-  filters.push(`[${i}:a]aresample=48000,aformat=channel_layouts=mono,atrim=0:${duration},volume=0.13,afade=t=in:d=1.5,afade=t=out:st=${duration - 3}:d=3[m]`);
+  inputs.push("-stream_loop", "-1", "-ss", String(MUSIC_START), "-i", TRACK);
+  filters.push(`[${i}:a]aresample=48000,aformat=channel_layouts=mono,atrim=0:${duration},volume=${TRACK.includes("soundtrack") ? 0.16 : 0.13},afade=t=in:d=1.5,afade=t=out:st=${duration - 3}:d=3[m]`);
   names.push("[m]");
 }
 ff(...inputs, "-filter_complex", `${filters.join(";")};${names.join("")}amix=inputs=${names.length}:normalize=0,alimiter=limit=0.95,apad[a]`, "-map", "[a]", "-t", String(duration), "out/film/audio.wav");

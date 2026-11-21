@@ -236,6 +236,15 @@ const SCENES = [
     sfx: [["pop", .3, .25], ["pop", .9, .25], ["pop", 1.5, .25]],
     art: `<g class="pop" style="--d:.2s">${photo(430, 190, 290, 516)}</g><g class="pop" style="--d:.8s">${photo(790, 266, 330, 440, "pk")}</g><g class="pop" style="--d:1.4s">${photo(1190, 391, 420, 315, "cr")}</g>
       <text class="lab fade" style="--d:.6s" x="575" y="766" text-anchor="middle">STORY</text><text class="lab fade" style="--d:1.2s" x="955" y="766" text-anchor="middle">POST</text><text class="lab fade" style="--d:1.8s" x="1400" y="766" text-anchor="middle">GOOGLE</text>` },
+  { id: "google", title: "Google Business, <em>kept busy.</em>", say: "Google Business gets its own set too. No text on those, because Google won't allow it. And it writes a proper Google post, so that page never goes quiet.",
+    art: `<g class="pop" style="--d:.1s">${photo(380, 170, 460, 345)}</g>
+      <g class="pop" style="--d:.7s"><path class="pk" d="M840 110 a42 42 0 0 1 42 42 c0 32 -42 72 -42 72 c0 0 -42 -40 -42 -72 a42 42 0 0 1 42 -42 z"/><circle class="w" cx="840" cy="152" r="15"/></g>
+      <g class="pop" style="--d:1.8s">${box(1020, 150, 190, 150, 18)}<text class="serif" style="font-size:72px" x="1115" y="250" text-anchor="middle">Aa</text></g>
+      <path class="d ac" pathLength="1" style="--d:2.4s;stroke-width:7" d="M1040 284 L1190 166"/>
+      <text class="lab fade" style="--d:2.6s" x="1115" y="344" text-anchor="middle">NO TEXT · GOOGLE’S RULES</text>
+      <g class="up" style="--d:4.2s">${box(1020, 400, 560, 210, 18)}<circle class="pk thin" cx="1066" cy="446" r="18"/><text class="chip" style="font-size:22px" x="1096" y="454">Google Business · New post</text>
+        <path class="thin faint" d="M1048 500 h480 M1048 532 h420 M1048 564 h300"/></g>
+      ${pill(1450, 400, 220, "Post written", "ik", 5.4)}${star(1560, 330, 1, "pk", 5.6)}` },
   { id: "reel", title: "Best bits, <em>hook first.</em>", say: "For video, it goes through every clip and picks out the best moments. Then it puts the big reveal first. The arch is the star, after all.",
     art: `<g class="pop" style="--d:.1s">${box(346, 290, 1228, 270, 20)}</g>
       <g style="animation: hide .3s ease 3.6s both"><g class="fade" style="--d:.4s"><path class="thin faint" d="${Array.from({ length: 17 }, (_, i) => `M${376 + i * 73} 268 v${i % 2 ? -10 : -18}`).join(" ")}"/></g></g>
@@ -249,7 +258,7 @@ const SCENES = [
   { id: "captions",
     // The camera: [seconds, centre x, centre y, zoom]. In on each phone in turn, then back out.
     cam: [[0, 960, 460, 1], [1.2, 960, 460, 1], [2, 560, 500, 1.7], [3.7, 560, 500, 1.7], [4.4, 960, 500, 1.7], [6.4, 960, 500, 1.7], [7.1, 1360, 500, 1.7], [8.2, 1360, 500, 1.7], [9, 960, 460, 1]],
-    title: "Captions, cover, <em>end screen.</em>", say: "Anyone talking gets animated captions, in three styles. If Laura says she looooves it, so does the caption. Then a cover on the front, and an end screen on the back.",
+    title: "Subtitles, cover, <em>end screen.</em>", say: "Anyone talking gets animated subtitles, in three styles. If Laura says she looooves it, so do the subtitles. Then a cover on the front, and an end screen on the back.",
     sfx: [["pop", .2, .2], ["pop", .45, .2], ["pop", .7, .2], ["tick", 1.6, .12], ["tick", 2.0, .12], ["tick", 2.4, .12], ["tick", 2.8, .12], ["whoosh", 5.6, .5], ["whoosh", 6.2, .5]],
     art: [0, 1, 2].map((i) => `<g class="pop" style="--d:${.1 + i * .25}s">${phone(430 + i * 400, 150, 260, 520)}<path class="eq faint" d="M${540 + i * 400} 340 v50"/><path class="eq faint" style="animation-delay:-.25s" d="M${560 + i * 400} 315 v100"/><path class="eq faint" style="animation-delay:-.5s" d="M${580 + i * 400} 345 v40"/></g>`).join("") +
       `<text class="cap" x="560" y="560" text-anchor="middle">${["I", "love", "it"].map((w2, i) => `<tspan style="animation: say .25s ease ${2.2 + i * .45}s both">${w2}</tspan>`).join(" ")}</text>
@@ -279,13 +288,14 @@ const SCENES = [
           <text class="chip" style="font-size:24px" x="1136" y="${294 + i * 140}">${line.split("").map((ch, k) => `<tspan style="animation: show .01s linear ${(t + k * .03).toFixed(3)}s both">${ch === " " ? "&#160;" : ch}</tspan>`).join("")}</text>
           <path class="thin faint" d="M1136 ${318 + i * 140} h${300 - i * 40}"/>`).join("")}
       </g>` },
-  { id: "copy", title: "Captions, <em>in her own words.</em>", say: "For Google Business, it writes a proper post, so that page never goes quiet. And every set of photos comes with captions in Laura's own words. Polished for the website. Friendly but proper for Google. And for Instagram and Facebook, full Laura, emojis and all. It's read every post she's ever written, so it knows exactly how she talks. Slightly unnerving.",
-    art: `<g class="pop" style="--d:.1s">${photo(250, 150, 400, 300)}</g>
-      <g class="pop" style="--d:.8s"><path class="pk" d="M650 100 a40 40 0 0 1 40 40 c0 30 -40 68 -40 68 c0 0 -40 -38 -40 -68 a40 40 0 0 1 40 -40 z"/><circle class="w" cx="650" cy="140" r="14"/></g>
-      ${pill(450, 512, 300, "Google post written", "ik", 1.6)}
+  { id: "copy", title: "Captions, <em>in her own words.</em>", say: "And it's not just reviews. Every photo and every video gets a caption in each style. Polished for the website. Friendly but proper for Google. And for Instagram and Facebook, full Laura, emojis and all. It's read every post she's ever written, so it knows exactly how she talks. Slightly unnerving.",
+    art: `<g class="pop" style="--d:.1s">${photo(230, 130, 300, 225)}</g>
+      <g class="pop" style="--d:.6s">${box(380, 250, 300, 225, 14)}<rect class="thin wm" x="396" y="266" width="268" height="193" rx="8"/><circle class="ik" cx="530" cy="362" r="36"/><path class="w ns" d="M518 342 l32 20 l-32 20 z"/></g>
+      <text class="lab fade" style="--d:1.2s" x="455" y="520" text-anchor="middle">EVERY PHOTO AND VIDEO</text>
       <g class="up" style="--d:2.6s"><path class="sh" transform="translate(10 12)" d="M860 110 h740 a16 16 0 0 1 16 16 v574 a16 16 0 0 1 -16 16 h-740 a16 16 0 0 1 -16 -16 v-574 a16 16 0 0 1 16 -16 z"/>
         <path class="w" d="M860 110 h740 a16 16 0 0 1 16 16 v574 a16 16 0 0 1 -16 16 h-740 a16 16 0 0 1 -16 -16 v-574 a16 16 0 0 1 16 -16 z"/>
         <path class="thin" d="M844 172 h772"/><rect class="pk thin" x="868" y="126" width="28" height="34" rx="4"/><path class="thin" d="M875 138 h14 M875 146 h14 M875 154 h9"/><text class="chip" style="font-size:22px" x="910" y="150">Captions - Cobham first birthday</text></g>
+      <path class="d" pathLength="1" style="--d:2.4s" d="M700 360 h110 m-20 -16 l20 16 l-20 16"/>
       ${[["WEBSITE · POLISHED", "A pastel balloon arch for a first birthday in Cobham.", "serif", 3.4], ["GOOGLE BUSINESS · FRIENDLY BUT PROPER", "Another lovely first birthday in Cobham this weekend!", "chip", 5.6], ["INSTAGRAM & FACEBOOK · FULL LAURA", "Looooove how this one came out!! 🎈💕✨", "chip", 7.8]].map(([lab, text, cls, t], i) => `
         <text class="lab fade" style="--d:${(t - .3).toFixed(2)}s;font-size:18px" x="892" y="${232 + i * 166}">${lab}</text>
         <text class="${cls}" style="font-size:28px" x="892" y="${280 + i * 166}">${typed(text, t)}</text>
@@ -361,7 +371,7 @@ const SCENES = [
 const LEAD = .6, TAIL = .8, PAN = .35;
 const DROP_Y = 48; // moves every drawing down so it sits in the middle of the space above the title
 // Shortest a scene may be, so its animation has time to finish even after a short line.
-const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 8.2, captions: 11.4, review: 10, copy: 14, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 7, end: 7.5, kit: 12 };
+const MIN = { skill: 5, grade: 4.8, best: 5.4, cover: 3.2, resize: 3, reel: 8.2, captions: 11.4, review: 10, copy: 14, google: 8, folders: 5.2, website: 3.6, why: 6.4, loop: 6.6, ask: 7, end: 7.5, kit: 12 };
 const VOICE = globalThis.TIMELINE || {}; // seconds of voice per line, written by film.mjs
 let at = 0;
 const lines = [], events = [];
