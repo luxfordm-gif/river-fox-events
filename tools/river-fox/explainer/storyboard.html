@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Storyboard</title>
+<style>
+@font-face { font-family: Fraunces; font-weight: 400; src: url(node_modules/@fontsource/fraunces/files/fraunces-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: Fraunces; font-weight: 400; font-style: italic; src: url(node_modules/@fontsource/fraunces/files/fraunces-latin-400-italic.woff2) format("woff2"); }
+@font-face { font-family: "DM Sans"; font-weight: 400; src: url(node_modules/@fontsource/dm-sans/files/dm-sans-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "DM Sans"; font-weight: 500; src: url(node_modules/@fontsource/dm-sans/files/dm-sans-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "DM Mono"; font-weight: 500; src: url(node_modules/@fontsource/dm-mono/files/dm-mono-latin-500-normal.woff2) format("woff2"); }
+:root { --cream: hsl(47 22% 92%); --light: hsl(45 36% 98%); --warm: hsl(14 42% 93%); --ink: hsl(100 8% 10%); --neutral: hsl(100 5% 29%); --pink: hsl(12 55% 78%); --accent-dark: hsl(12 32% 54%); }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--cream); color: var(--ink); font-family: "DM Sans", sans-serif; }
+.top { position: absolute; top: 56px; left: 80px; right: 80px; display: flex; justify-content: space-between; font: 500 20px "DM Mono", monospace; letter-spacing: .16em; color: var(--neutral); }
+svg { position: absolute; left: 50%; top: 90px; width: 1280px; height: 640px; margin-left: -640px; overflow: visible; }
+h2 { position: absolute; top: 760px; left: 120px; right: 120px; text-align: center; font: 400 76px/1.08 Fraunces, serif; letter-spacing: -.01em; text-wrap: balance; }
+h2 em { color: var(--accent-dark); }
+p { position: absolute; top: 950px; left: 200px; right: 200px; text-align: center; font: 400 34px/1.35 "DM Sans", sans-serif; color: var(--neutral); text-wrap: balance; }
+body.two h2 { top: 730px; }
+svg * { stroke: var(--ink); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+svg text, svg tspan { stroke: none; fill: var(--ink); font-family: "DM Sans", sans-serif; }
+.f-white { fill: var(--light); } .f-pink { fill: var(--pink); } .f-warm { fill: var(--warm); } .f-cream { fill: var(--cream); } .f-ink { fill: var(--ink); }
+.ns { stroke: none; } .soft { opacity: .35; }
+svg text.lab { font: 500 17px "DM Mono", monospace; letter-spacing: .14em; fill: var(--neutral); }
+svg text.chip { font: 500 22px "DM Sans", sans-serif; } svg text.onink { fill: var(--cream); }
+svg text.meme { font: 400 34px Fraunces, serif; } svg text.zz { font: italic 400 40px Fraunces, serif; fill: var(--accent-dark); }
+</style>
+</head>
+<body>
+<div class="top"><span>RIVER FOX EVENTS</span><span>HOW LAURA'S POSTS GET MADE</span></div>
+<svg viewBox="0 0 960 480" id="art"></svg>
+<h2 id="h"></h2><p id="p"></p>
+<script>
+// A little line-drawn person. Origin is the hips.
+const person = (x, y, o = {}) => {
+  const { s = 1, hair = 0, arms = "up", legs = "jump", face = "joy", tilt = 0 } = o;
+  const hairs = [
+    `<circle class="f-pink" cx="0" cy="-124" r="11"/>`,
+    `<path d="M-22 -100 q-8 30 -4 52 M22 -100 q8 30 4 52"/>`,
+    `<path d="M-16 -112 l-4 -14 l10 8 l4 -14 l8 12 l8 -10 l2 14"/>`,
+    `<path class="f-pink" d="M-23 -92 a23 23 0 0 1 46 0 q-23 -16 -46 0 z"/>`,
+    `<circle cx="-16" cy="-112" r="9"/><circle cx="0" cy="-119" r="9"/><circle cx="16" cy="-112" r="9"/>`,
+    `<path d="M-22 -102 q22 -26 44 0 M20 -106 q16 4 14 22"/>`,
+  ][hair];
+  const arm = { up: `<path d="M0 -58 L-34 -84 L-44 -122 M0 -58 L34 -84 L44 -122"/>`,
+    wave: `<path d="M0 -58 L-36 -70 L-58 -104 M0 -58 L32 -88 L50 -120"/>`,
+    cheeks: `<path d="M0 -58 L-34 -62 L-26 -88 M0 -58 L34 -62 L26 -88"/>`,
+    down: `<path d="M0 -58 L-26 -24 M0 -58 L26 -24"/>` }[arms];
+  const leg = { jump: `<path d="M0 0 L-22 28 L-42 12 M0 0 L22 28 L42 12"/>`,
+    star: `<path d="M0 0 L-34 38 M0 0 L34 38"/>`, stand: `<path d="M0 0 L-12 56 M0 0 L12 56"/>` }[legs];
+  const f = { joy: `<circle class="f-ink" cx="-8" cy="-100" r="2"/><circle class="f-ink" cx="8" cy="-100" r="2"/><path class="f-pink" d="M-10 -91 q10 14 20 0 z"/>`,
+    wow: `<circle cx="-8" cy="-100" r="4"/><circle cx="8" cy="-100" r="4"/><circle class="f-pink" cx="0" cy="-86" r="5"/>`,
+    calm: `<path d="M-11 -100 q3 -4 6 0 M5 -100 q3 -4 6 0 M-7 -88 q7 6 14 0"/>` }[face];
+  return `<g transform="translate(${x} ${y}) scale(${s}) rotate(${tilt})"><circle class="f-white" cx="0" cy="-95" r="23"/>${hairs}${f}<path d="M0 -72 V0"/>${arm}${leg}</g>`;
+};
+const confetti = (n, x0, x1, y0, y1) => Array.from({ length: n }, (_, i) => {
+  const x = x0 + ((i * 97) % 100) / 100 * (x1 - x0), y = y0 + ((i * 61) % 100) / 100 * (y1 - y0), r = (i * 47) % 180;
+  return i % 3 === 0 ? `<circle class="f-pink" cx="${x}" cy="${y}" r="6"/>` : i % 3 === 1 ? `<rect class="f-white" x="${x}" y="${y}" width="14" height="8" rx="2" transform="rotate(${r} ${x} ${y})"/>` : `<path d="M${x} ${y} q8 -10 0 -18 q-8 -8 0 -16"/>`;
+}).join("");
+const star = (x, y, s = 1, c = "f-pink") => `<path class="${c}" transform="translate(${x} ${y}) scale(${s})" d="M0 -22 l6 16 l16 6 l-16 6 l-6 16 l-6 -16 l-16 -6 l16 -6 z"/>`;
+const jumpLines = (x, y) => `<path class="soft" d="M${x - 26} ${y} v16 M${x} ${y + 6} v18 M${x + 26} ${y} v16"/>`;
+const arch = (cx, by, r, n = 9) => Array.from({ length: n }, (_, i) => { const a = Math.PI - i / (n - 1) * Math.PI; return `<circle class="${["f-pink", "f-white", "f-warm"][i % 3]}" cx="${cx + Math.cos(a) * r}" cy="${by - Math.sin(a) * r}" r="${r * (0.2 + (i * 7 % 3) * .035)}"/>`; }).join("");
+
+const SCREENS = [
+  { h: "Laura styles the party. <em>The robot does the boring bit.</em>",
+    p: "A short, silly tour of what happens to her photos and videos after every job.",
+    art: arch(360, 400, 190, 11) + `<path d="M120 400 h720"/>` + person(360, 350, { s: 0.9, hair: 0, arms: "wave", legs: "stand", face: "joy" }) +
+      `<g transform="translate(700 250)"><rect class="f-white" x="-60" y="-60" width="120" height="100" rx="18"/><circle class="f-pink" cx="-24" cy="-14" r="11"/><circle class="f-pink" cx="24" cy="-14" r="11"/><path d="M-20 16 h40 M0 -60 v-28"/><circle class="f-pink" cx="0" cy="-94" r="8"/><rect class="f-white" x="-44" y="52" width="88" height="70" rx="12"/><path d="M-44 70 l-34 -30 M44 70 l40 -44 M-20 122 v28 M20 122 v28"/><rect class="f-pink" x="78" y="-14" width="60" height="42" rx="6" transform="rotate(12 108 6)"/></g>` + star(830, 150) + star(880, 210, .6, "f-white") },
+  { h: "Before: a full day's job, <em>then an evening of cropping.</em>",
+    p: "Nobody became an event stylist to resize photos at midnight.",
+    art: `<path d="M160 400 h640"/><rect class="f-white" x="250" y="330" width="460" height="18" rx="6"/><path d="M290 348 v52 M670 348 v52"/>
+      <path class="f-white" d="M420 330 l20 -110 h170 l20 110 z"/><path d="M455 250 h140 M450 275 h150 M446 300 h160" class="soft"/>
+      <circle class="f-white" cx="350" cy="300" r="34"/><path d="M336 302 q6 5 12 0 M354 302 q6 5 12 0"/><circle class="f-pink" cx="330" cy="268" r="14"/><path d="M372 322 q40 20 70 4 M318 320 q-30 30 -20 76"/>
+      <rect class="f-white" x="640" y="290" width="34" height="40" rx="4"/><rect class="f-white" x="646" y="254" width="34" height="40" rx="4" transform="rotate(-6 663 274)"/><rect class="f-pink" x="640" y="218" width="34" height="40" rx="4" transform="rotate(5 657 238)"/>
+      <path class="f-warm" d="M770 70 a60 60 0 1 0 50 96 a48 48 0 0 1 -50 -96 z"/>` + star(660, 90, .5, "f-white") + star(560, 130, .4, "f-white") +
+      `<text class="zz" x="270" y="230">z</text><text class="zz" x="240" y="190" style="font-size:54px">z</text><text class="zz" x="200" y="140" style="font-size:70px">z</text><text class="lab" x="480" y="446" text-anchor="middle">23:47 · STILL CROPPING</text>` },
+  { h: "Wait. <em>It does the captions too?</em>",
+    p: "Graded, cropped, covered, resized, captioned and filed. From one folder.",
+    art: `<path class="f-white" d="M370 250 a110 120 0 0 0 220 0 z"/><path class="f-white" d="M360 170 a120 86 0 0 1 240 0 z" transform="rotate(-10 480 170) translate(0 -60)"/>
+      <circle class="f-white" cx="438" cy="286" r="20"/><circle class="f-white" cx="522" cy="286" r="20"/><circle class="f-ink" cx="438" cy="286" r="5"/><circle class="f-ink" cx="522" cy="286" r="5"/><ellipse class="f-pink" cx="480" cy="336" rx="16" ry="20"/>
+      <path d="M372 300 q-40 20 -30 70 M588 300 q40 20 30 70 M480 372 v60"/>
+      <circle class="f-pink" cx="430" cy="196" r="22"/><circle class="f-warm" cx="476" cy="176" r="26"/><circle class="f-white" cx="526" cy="198" r="20"/><circle class="f-pink" cx="540" cy="150" r="14"/>
+      <path d="M300 200 l-60 -40 M270 280 l-70 6 M660 200 l60 -40 M690 280 l70 6 M330 130 l-34 -56 M630 130 l34 -56"/>` +
+      star(210, 130) + star(760, 120, 1.2) + star(180, 330, .6, "f-white") + star(790, 340, .7, "f-white") + star(480, 60, .7) +
+      `<g transform="rotate(-6 150 420)"><rect class="f-ink" x="60" y="398" width="190" height="46" rx="23"/><text class="chip onink" x="155" y="429" text-anchor="middle">Mind: blown</text></g>` },
+  { h: "Laura, when the reel <em>is already filed.</em>",
+    p: "The whole gang, every time the folder comes back finished.",
+    art: confetti(34, 90, 870, 10, 190) + `<path d="M100 420 h760"/>` +
+      person(190, 330, { s: 1.15, hair: 1, arms: "up", legs: "jump", tilt: -6 }) + jumpLines(190, 380) +
+      person(310, 300, { s: 1.15, hair: 2, arms: "up", legs: "star" }) + jumpLines(310, 360) +
+      person(430, 340, { s: 1.15, hair: 0, arms: "wave", legs: "jump", tilt: 5 }) + jumpLines(430, 390) +
+      person(550, 295, { s: 1.15, hair: 5, arms: "up", legs: "jump", tilt: -4 }) + jumpLines(550, 350) +
+      person(670, 335, { s: 1.15, hair: 3, arms: "up", legs: "star", tilt: 6 }) + jumpLines(670, 392) +
+      person(790, 305, { s: 1.15, hair: 4, arms: "wave", legs: "jump" }) + jumpLines(790, 360) },
+  { h: "Why bother? <em>Three good reasons.</em>",
+    p: "She gets her evenings back, her feed looks like one brand, and the posts keep coming.",
+    art: `<g transform="translate(-50 0)"><circle class="f-white" cx="180" cy="210" r="96"/><path d="M180 150 v60 l40 26"/><circle class="f-pink" cx="180" cy="210" r="8"/><text class="meme" x="180" y="372" text-anchor="middle">Saves her time</text><text class="lab" x="180" y="408" text-anchor="middle">EVENINGS: RETURNED</text></g>
+      <g><rect class="f-white" x="400" y="120" width="76" height="100" rx="8"/><rect class="f-pink" x="484" y="120" width="76" height="100" rx="8"/><rect class="f-warm" x="400" y="228" width="76" height="72" rx="8"/><rect class="f-white" x="484" y="228" width="76" height="72" rx="8"/><text class="meme" x="480" y="372" text-anchor="middle">One consistent look</text><text class="lab" x="480" y="408" text-anchor="middle">A FEED THAT MATCHES</text></g>
+      <g transform="translate(50 0)"><rect class="f-white" x="690" y="120" width="180" height="180" rx="12"/><path d="M690 164 h180 M730 104 v32 M830 104 v32"/>${[0, 1, 2, 3, 4, 5].map(i => `<circle class="${i === 4 ? "f-white" : "f-pink"}" cx="${726 + (i % 3) * 54}" cy="${204 + Math.floor(i / 3) * 52}" r="16"/><path d="M${718 + (i % 3) * 54} ${204 + Math.floor(i / 3) * 52} l6 7 l11 -13"/>`).join("")}<text class="meme" x="780" y="372" text-anchor="middle">Posting regularly</text><text class="lab" x="780" y="408" text-anchor="middle">REELS AND GOOGLE BUSINESS</text></g>` },
+  { h: "For now, <em>Matt is the test pilot.</em>",
+    p: "When something comes out wonky, he asks why and teaches the skill, so it goes right next time.",
+    art: `<path d="M330 150 a170 150 0 0 1 300 0 m-4 -34 l6 36 l-36 2 M660 300 a170 150 0 0 1 -150 120 m30 -22 l-32 22 l26 26 M440 418 a170 150 0 0 1 -140 -130 m-22 30 l22 -32 l30 22"/>
+      <g><rect class="f-white" x="360" y="40" width="240" height="52" rx="26"/><text class="chip" x="480" y="74" text-anchor="middle">Something looks off</text></g>
+      <g><rect class="f-pink" x="640" y="226" width="200" height="52" rx="26"/><text class="chip" x="740" y="260" text-anchor="middle">Matt asks why</text></g>
+      <g><rect class="f-ink" x="100" y="226" width="240" height="52" rx="26"/><text class="chip onink" x="220" y="260" text-anchor="middle">The skill gets smarter</text></g>` +
+      person(480, 300, { s: 1.25, hair: 2, arms: "cheeks", legs: "stand", face: "wow" }) +
+      `<circle class="f-white" cx="560" cy="160" r="26"/><text class="meme" x="560" y="172" text-anchor="middle">?</text>` },
+  { h: "The end goal: <em>Laura just asks.</em>",
+    p: "No Matt in the middle. She sends a message, and it's done.",
+    art: `<rect class="f-white" x="330" y="0" width="300" height="470" rx="34"/><path d="M450 24 h60"/>
+      <rect class="f-pink" x="400" y="70" width="210" height="84" rx="20"/><text class="chip" x="418" y="104">Can you do</text><text class="chip" x="418" y="134">Saturday's party?</text>
+      <rect class="f-cream" x="350" y="176" width="230" height="140" rx="20"/><text class="chip" x="368" y="212">On it. Graded,</text><text class="chip" x="368" y="242">cropped, captioned</text><text class="chip" x="368" y="272">and filed.</text><text class="lab" x="368" y="300">ONE REEL · READY</text>
+      <rect class="f-pink" x="470" y="338" width="140" height="54" rx="20"/><text class="chip" x="488" y="373">Love it</text>` +
+      person(170, 330, { s: 1.4, hair: 0, arms: "up", legs: "jump", tilt: -5 }) + jumpLines(170, 400) + star(770, 120, 1.3) + star(840, 210, .7, "f-white") + star(740, 300, .8) + confetti(10, 680, 900, 330, 440) },
+];
+const n = +(location.hash.slice(1) || 0);
+window.COUNT = SCREENS.length;
+const show = (i) => { const s = SCREENS[i]; art.innerHTML = s.art; h.innerHTML = s.h; p.textContent = s.p; document.body.classList.toggle("two", h.offsetHeight > 100); };
+window.show = show; show(n);
+document.fonts.ready.then(() => { show(n); window.READY = true; });
+</script>
+</body>
+</html>
