@@ -3,8 +3,9 @@
 // Run: node tools/river-fox/review/review.cjs '<JSON list of cards>'
 //   Instagram 1080x1440:       {"w":1080,"h":1440,"fs":60,"lh":70,"mw":900,"mark":233,"gap":75,"ngap":102,"dy":-12,"quote":"...","name":"Sarah, Worplesdon","out":"post.png"}
 //   Google Business 1200x1200: {"w":1200,"h":1200,"fs":78,"lh":90,"mw":850,"mark":213,"mh":52,"markTop":-27,"gap":84,"ngap":92,"ns":29.4,"dy":-8,"quote":"...","name":"...","out":"photo.png"}
-// A long review (about 200 characters): fs 60 / lh 78 / mw 880 / gap 78 / ngap 106 (Instagram: the same text size as the short cards, never bigger) and fs 66 / lh 86 / mw 970 / ngap 96 (Google Business).
-// Keep long quotes big with open line spacing and let the block run taller, rather than shrinking the text (Matt, 2026-11-21).
+// A long review (about 200 characters): fs 52 / lh 74 / mw 840 / gap 78 / ngap 104 (Instagram) and fs 56 / lh 80 / mw 900 / ngap 96 (Google Business).
+// Laura's brand is elegant: a long quote gets smaller text, open line spacing and plenty of pink around it, never bigger text (Matt, 2026-11-21).
+// Judge the size at phone size (the card shown 390px wide), not at full size on a computer screen.
 // The quote is the full review, word for word (emojis left off). Join the last two words with &nbsp; so the last line is never one word.
 const { chromium } = require('playwright');
 const cards = JSON.parse(process.argv[2]);
