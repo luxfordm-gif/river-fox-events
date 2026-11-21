@@ -1,0 +1,18 @@
+{
+  "_note": "The look Matt approved on 19 Nov 2026 (wreath Reel). Start every new Reel from this; change only what Matt asks, using the Reel Style Sheet page.",
+  "caption_style": "words",
+  "caption_animation": "rise",
+  "caption_position": "low",
+  "caption_bg": "#F7EEE9",
+  "caption_fg": "#191C17",
+  "headline": "Let's make|a wreath.",
+  "tighter_crop": 1.3,
+  "music": "none",
+  "making_beat_seconds": 2.5,
+  "making_speed": 2,
+  "finale": "tada",
+  "cover": "smile",
+  "stills": 4,
+  "end_card": false,
+  "audio_clean_up": true
+}
