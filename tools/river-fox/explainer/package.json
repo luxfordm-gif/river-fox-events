@@ -3,9 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "voice": "node voice.mjs",
-    "render": "node render.mjs",
-    "build": "node voice.mjs && node render.mjs"
+    "build": "node film.mjs",
+    "stills": "node film.mjs --stills"
   },
   "dependencies": {
     "@fontsource/dm-mono": "^5.0.0",

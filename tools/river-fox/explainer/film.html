@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>How Laura's posts get made</title>
+<style>
+@font-face { font-family: Fraunces; font-weight: 400; src: url(node_modules/@fontsource/fraunces/files/fraunces-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: Fraunces; font-weight: 400; font-style: italic; src: url(node_modules/@fontsource/fraunces/files/fraunces-latin-400-italic.woff2) format("woff2"); }
+@font-face { font-family: "DM Mono"; font-weight: 500; src: url(node_modules/@fontsource/dm-mono/files/dm-mono-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "DM Sans"; font-weight: 500; src: url(node_modules/@fontsource/dm-sans/files/dm-sans-latin-500-normal.woff2) format("woff2"); }
+/* Laura's website colours (src/index.css) */
+:root { --cream: hsl(47 22% 92%); --light: hsl(45 36% 98%); --warm: hsl(14 42% 93%); --ink: hsl(100 8% 10%); --neutral: hsl(100 5% 29%); --pink: hsl(12 55% 78%); --accent-dark: hsl(12 32% 54%); }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--cream); color: var(--ink); }
+.brand { position: absolute; top: 56px; left: 80px; font: 500 20px "DM Mono", monospace; letter-spacing: .16em; color: var(--neutral); }
+svg#svg { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+.title { position: absolute; left: 0; right: 0; top: 888px; text-align: center; opacity: 0; font: 400 84px/1.05 Fraunces, serif; letter-spacing: -.012em; }
+.title em { color: var(--accent-dark); }
+#flash { position: absolute; inset: 0; background: #fff; opacity: 0; }
+#bar { position: absolute; left: 0; bottom: 0; height: 8px; background: var(--pink); width: 0; }
+svg * { stroke: var(--ink); stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+svg text { stroke: none; fill: var(--ink); }
+svg tspan { stroke: none; fill: inherit; }
+.w { fill: var(--light); } .pk { fill: var(--pink); } .wm { fill: var(--warm); } .cr { fill: var(--cream); } .ik { fill: var(--ink); }
+.sh { fill: var(--ink); stroke: none; opacity: .09; }
+.hl { stroke: var(--light); stroke-width: 5; } .hl.d { stroke: var(--ink); opacity: .25; stroke-width: 3; }
+.thin { stroke-width: 3; } .ns { stroke: none; } .faint { opacity: .3; }
+.dash { stroke-dasharray: 2 16; stroke-width: 5; opacity: .5; }
+.dull { fill: var(--ink); stroke: none; opacity: .3; }
+.ac { stroke: var(--accent-dark); stroke-width: 6; }
+.onk { stroke: var(--cream); }
+text.lab { font: 500 22px "DM Mono", monospace; letter-spacing: .18em; fill: var(--neutral); }
+text.num { font: 500 30px "DM Sans", sans-serif; }
+text.chip { font: 500 30px "DM Sans", sans-serif; } text.onink { fill: var(--cream); }
+text.serif { font: 400 40px Fraunces, serif; } text.serif.s { font-size: 30px; } text.serif.l { font-size: 120px; letter-spacing: -.012em; }
+text.it, tspan.it { font-style: italic; fill: var(--accent-dark); }
+text.term { font: 500 56px "DM Mono", monospace; fill: var(--cream); } tspan.tp { fill: var(--pink); }
+text.mono { font: 500 34px "DM Mono", monospace; fill: var(--accent-dark); }
+text.cap { font: 500 26px "DM Sans", sans-serif; fill: var(--neutral); } text.cap tspan { opacity: .3; }
+text.capbig { font: 400 60px Fraunces, serif; }
+
+/* Scene animations: --d is the delay in seconds from the start of the scene */
+.d { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw .7s cubic-bezier(.6,0,.2,1) var(--d,0s) both, show .01s linear var(--d,0s) both; }
+.pop { transform-box: fill-box; transform-origin: center; animation: pop .55s cubic-bezier(.2,1.5,.4,1) var(--d,0s) both; }
+.fade { animation: show .45s ease var(--d,0s) both; }
+.up { animation: up .6s cubic-bezier(.2,.9,.3,1) var(--d,0s) both; }
+.spin { transform-box: fill-box; transform-origin: center; animation: spin 4s linear 0s infinite; }
+.bob { animation: bob 3s ease-in-out 0s infinite; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes show { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hide { from { opacity: 1; } to { opacity: 0; } }
+@keyframes pop { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: none; } }
+@keyframes up { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes bob { 50% { transform: translateY(-10px); } }
+@keyframes wipe { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@keyframes handle { from { transform: translateX(0); } to { transform: translateX(440px); } }
+@keyframes fallL { to { transform: translate(-120px, 900px) rotate(-40deg); opacity: 0; } }
+@keyframes fallR { to { transform: translate(120px, 900px) rotate(40deg); opacity: 0; } }
+@keyframes grow { to { transform: scale(1.14); } }
+@keyframes shiftR { to { transform: translateX(194px); } }
+@keyframes toFront { 0% { transform: none; } 45% { transform: translate(-330px,-130px) rotate(-8deg); } 100% { transform: translateX(-776px); } }
+@keyframes say { to { opacity: 1; fill: var(--ink); } }
+@keyframes word { 0% { opacity: 0; transform: translateY(18px); } 30%, 99% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes wordstay { 0% { opacity: 0; transform: translateY(18px); } 30%, 100% { opacity: 1; transform: none; } }
+@keyframes curs { to { transform: translateX(336px); } }
+@keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes rowDown { to { transform: translateY(104px); } }
+@keyframes rowIn { from { opacity: 0; transform: translateY(-100px); } to { opacity: 1; transform: none; } }
+@keyframes inflate { from { transform: scale(0); } to { transform: scale(1); } }
+@keyframes burst { 0% { opacity: 0; transform: translate(0,0) scale(.3); } 8% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1); } }
+@keyframes rise { from { transform: translateY(0); } to { transform: translateY(-1500px); } }
+</style>
+</head>
+<body>
+<div class="brand">RIVER FOX EVENTS</div>
+<svg viewBox="0 0 1920 1080" id="svg"></svg>
+<div id="titles"></div>
+<div id="flash"></div>
+<div id="bar"></div>
+<script src="out/film/timeline.js"></script>
+<script>
+const cl = (x) => Math.max(0, Math.min(1, x));
+const P = (t, s, d) => cl((t - s) / d);
+const outCubic = (x) => 1 - (1 - x) ** 3, inCubic = (x) => x ** 3;
+const inOut = (x) => (x < .5 ? 4 * x ** 3 : 1 - (-2 * x + 2) ** 3 / 2);
+const outBack = (x) => 1 + 2.70158 * (x - 1) ** 3 + 1.70158 * (x - 1) ** 2;
+const mix = (a, b, k) => a + (b - a) * k;
+const bump = (x) => Math.sin(Math.PI * cl(x));
+const $ = (id) => document.getElementById(id);
+const tf = (el, x, y, sx = 1, sy = sx, r = 0) => el.setAttribute("transform", `translate(${x} ${y}) rotate(${r}) scale(${sx} ${sy})`);
+
+// ---------- drawing helpers ----------
+const miniArch = (cx, by, r, n = 7) => Array.from({ length: n }, (_, i) => { const a = Math.PI - i / (n - 1) * Math.PI;
+  return `<circle class="thin ${["pk", "w", "wm"][i % 3]}" cx="${cx + Math.cos(a) * r}" cy="${by - Math.sin(a) * r}" r="${r * .27}"/>`; }).join("") + `<path class="thin" d="M${cx - r * 1.3} ${by} h${r * 2.6}"/>`;
+const box = (x, y, w, h, rx, cls = "w", extra = "") => `<rect class="sh" x="${x + 10}" y="${y + 12}" width="${w}" height="${h}" rx="${rx}"/><rect class="${cls}" x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" ${extra}/>`;
+const photo = (x, y, w, h, tint = "wm") => box(x, y, w, h, 14) + `<rect class="thin ${tint}" x="${x + 16}" y="${y + 16}" width="${w - 32}" height="${h - 32}" rx="8"/>` + miniArch(x + w / 2, y + h * .68, Math.min(w, h) * .24);
+const phone = (x, y, w, h) => box(x, y, w, h, 40) + `<rect class="wm thin" x="${x + 16}" y="${y + 34}" width="${w - 32}" height="${h - 68}" rx="18"/><rect class="ik ns" x="${x + w / 2 - 26}" y="${y + 12}" width="52" height="10" rx="5"/>`;
+const star = (x, y, s = 1, cls = "pk", d = 0) => `<g transform="translate(${x} ${y}) scale(${s})"><path class="pop thin ${cls}" style="--d:${d}s" d="M0 -26 l7 19 l19 7 l-19 7 l-7 19 l-7 -19 l-19 -7 l19 -7 z"/></g>`;
+const pill = (cx, cy, w, text, cls = "w", d = 0) => `<g class="pop" style="--d:${d}s"><rect class="sh" x="${cx - w / 2 + 6}" y="${cy - 26}" width="${w}" height="64" rx="32"/><rect class="${cls}" x="${cx - w / 2}" y="${cy - 32}" width="${w}" height="64" rx="32"/><text class="chip ${cls === "ik" ? "onink" : ""}" x="${cx}" y="${cy + 10}" text-anchor="middle">${text}</text></g>`;
+const confetti = (cx, cy, n, d, late = false) => Array.from({ length: n }, (_, i) => { const a = i / n * Math.PI * 2 + (i % 3) * .3, dist = 260 + (i * 53 % 240);
+  const st = `--x:${Math.cos(a) * dist}px;--y:${Math.sin(a) * dist * .8 - 60}px;--r:${(i * 97 % 360)}deg;animation:burst 1.3s cubic-bezier(.1,.7,.3,1) ${d}s both`;
+  const sh = i % 3 === 0 ? `<circle class="pk thin" cx="${cx}" cy="${cy}" r="10"/>` : i % 3 === 1 ? `<rect class="w thin" x="${cx - 12}" y="${cy - 7}" width="24" height="14" rx="3"/>` : `<path class="thin" d="M${cx} ${cy} q12 -12 0 -24 q-12 -12 0 -24"/>`;
+  return `<g style="${st}" ${late ? `data-late="${d}"` : ""}>${sh}</g>`; }).join("");
+
+// ---------- scene 0: photos, folder, Google Drive (hand-animated) ----------
+const FLASH = [1.9, 2.8, 3.6], VIDEO = 4.3, GATHER = 5.0, DROP = [6.7, 7.2, 7.7, 8.2], TO_DRIVE = 9.2, SYNC = 10.2, DONE = 12.7;
+const ARCH = { cx: 700, by: 650, r: 265 };
+const balloons = Array.from({ length: 11 }, (_, i) => { const a = Math.PI - i / 10 * Math.PI, r = 60 + (i * 7 % 3) * 9;
+  return { x: ARCH.cx + Math.cos(a) * ARCH.r, y: ARCH.by - Math.sin(a) * ARCH.r, r, c: ["pk", "w", "wm"][i % 3] }; });
+const balloon = (b) => `<circle class="${b.c}" r="${b.r}"/><path class="hl ${b.c === "w" ? "d" : ""}" d="M${-b.r * .55} ${-b.r * .2} a${b.r * .6} ${b.r * .6} 0 0 1 ${b.r * .32} ${-b.r * .38}"/>`;
+const cardSvg = (i) => `<g id="c${i}" opacity="0"><rect class="sh" x="-77" y="-93" width="170" height="210" rx="12"/><rect class="w" x="-85" y="-105" width="170" height="210" rx="12"/>
+  <rect class="thin ${["wm", "pk", "cr", "wm"][i]}" x="-69" y="-89" width="138" height="146" rx="6"/>${i < 3 ? miniArch(0, 30, 40) : `<circle class="ik" cx="0" cy="-16" r="34"/><path class="w ns" d="M-11 -34 l30 18 l-30 18 z"/>`}
+  <path class="thin faint" d="M-50 80 h${i < 3 ? 70 : 100}"/></g>`;
+const openArt = `
+  <g id="job"><ellipse class="sh" cx="700" cy="668" rx="390" ry="16"/><path d="M300 650 h800" id="ground"/>
+    ${balloons.map((b, i) => `<g id="b${i}">${balloon(b)}</g>`).join("")}
+    <g id="phone"><rect class="sh" x="-101" y="-204" width="230" height="440" rx="40"/><rect class="w" x="-115" y="-220" width="230" height="440" rx="40"/>
+      <rect class="wm thin" x="-97" y="-186" width="194" height="318" rx="20"/><rect class="ik ns" x="-26" y="-208" width="52" height="10" rx="5"/>${miniArch(0, 40, 58)}
+      <path class="thin" d="M-80 -140 v-28 h28 M52 -168 h28 v28 M80 86 v28 h-28 M-52 114 h-28 v-28"/>
+      <circle class="w" cx="0" cy="176" r="27"/><circle class="pk thin" id="btn" cx="0" cy="176" r="18"/>
+      <g id="burst" opacity="0"><path d="M130 -236 l44 -44 M150 -190 l60 -12 M92 -252 l10 -58"/></g></g></g>
+  <g id="fback"><ellipse class="sh" cx="0" cy="18" rx="300" ry="16"/><path class="w" d="M-262 0 V-316 q0 -18 18 -18 h150 l42 44 h296 q18 0 18 18 V0 z"/></g>
+  <g id="cards">${[0, 1, 2, 3].map(cardSvg).join("")}</g>
+  <g id="ffront"><path class="wm" d="M-294 -236 q-4 -18 16 -18 h556 q20 0 16 18 l-30 220 q-2 16 -18 16 h-492 q-16 0 -18 -16 z"/>
+    <rect class="w thin" x="-70" y="-150" width="140" height="56" rx="8"/><path class="thin faint" d="M-44 -122 h88"/>
+    <g id="badge"><circle class="pk" cx="262" cy="-246" r="36"/><text class="num" id="count" x="262" y="-235" text-anchor="middle">1</text></g></g>
+  <path id="link" class="dash" d="M820 470 Q1010 360 1180 450" style="opacity:0"/>
+  <g>${[0, 1, 2, 3, 4].map((i) => `<rect id="d${i}" class="${i % 2 ? "w" : "pk"} thin" x="-15" y="-19" width="30" height="38" rx="5" opacity="0"/>`).join("")}</g>
+  <g id="cloud" opacity="0"><path class="sh" transform="translate(12 14)" d="M-140 90 a80 80 0 0 1 -6 -160 a112 112 0 0 1 214 -22 a100 100 0 0 1 72 182 z"/><path class="w" d="M-140 90 a80 80 0 0 1 -6 -160 a112 112 0 0 1 214 -22 a100 100 0 0 1 72 182 z"/>
+    <g id="arrows"><path d="M-44 6 a44 44 0 0 1 76 -32 m4 -24 v26 h-26"/><path d="M44 6 a44 44 0 0 1 -76 32 m-4 24 v-26 h26"/></g>
+    <g id="tickwrap" opacity="0"><circle class="pk" cx="0" cy="6" r="56"/><path id="tick" pathLength="1" stroke-dasharray="1" d="M-26 8 l18 20 l34 -42" style="stroke-width:7"/></g></g>
+  <text id="dlabel" class="lab" x="1370" y="640" text-anchor="middle" opacity="0">GOOGLE DRIVE</text>
+  <g>${[[1150, 250, 1], [1590, 300, .8], [1620, 560, .6], [1130, 620, .55]].map(([x, y, s], k) => `<path id="k${k}" class="${k % 2 ? "w" : "pk"} thin" data-x="${x}" data-y="${y}" data-s="${s}" d="M0 -26 l7 19 l19 7 l-19 7 l-7 19 l-7 -19 l-19 -7 l19 -7 z"/>`).join("")}</g>`;
+const PHONE = { x: 1310, y: 450 }, PILE = [[1590, 770, -10], [1612, 756, 7], [1580, 744, -3], [1620, 730, 12]];
+const FAN = [0, 1, 2, 3].map((i) => [960 + (i - 1.5) * 200, 290 + Math.abs(i - 1.5) * 28, (i - 1.5) * 9]);
+const bez = (u) => [(1 - u) ** 2 * 820 + 2 * (1 - u) * u * 1010 + u * u * 1180, (1 - u) ** 2 * 470 + 2 * (1 - u) * u * 360 + u * u * 450];
+const openUpdate = (t) => {
+  const leave = inOut(P(t, GATHER, 1));
+  $("job").setAttribute("transform", `translate(${-1500 * leave} 0)`); $("job").setAttribute("opacity", 1 - P(t, GATHER + .5, .5));
+  $("ground").style.strokeDasharray = 800; $("ground").style.strokeDashoffset = 800 * (1 - inOut(P(t, 0, .7)));
+  balloons.forEach((b, i) => { const k = P(t, .15 + i * .07, .5); tf($("b" + i), b.x, b.y + 3 * Math.sin(t * 1.6 + i * 1.3), k ? outBack(k) * (1 + .015 * Math.sin(t * 2.2 + i)) : 0); });
+  const shot = Math.max(...FLASH.map((f) => bump((t - f + .08) / .3)));
+  tf($("phone"), mix(2150, PHONE.x, outBack(P(t, .8, .7))), PHONE.y + 7 * Math.sin(t * 2) + 10 * shot, 1 - .03 * shot, 1 - .03 * shot, -6 + 2 * Math.sin(t * 1.3));
+  $("btn").setAttribute("r", 18 - 6 * shot);
+  $("flash").style.opacity = .88 * Math.max(...FLASH.map((f) => (t < f ? 0 : t < f + .04 ? (t - f) / .04 : Math.max(0, 1 - (t - f - .04) / .32))));
+  $("burst").setAttribute("opacity", Math.max(...FLASH.map((f) => bump((t - f) / .35))));
+  const born = [...FLASH.map((f) => f + .06), VIDEO];
+  [0, 1, 2, 3].forEach((i) => { const el = $("c" + i);
+    if (t < born[i]) return el.setAttribute("opacity", 0);
+    const a = outCubic(P(t, born[i], .65)), g = inOut(P(t, GATHER + i * .08, .95)), d = inCubic(P(t, DROP[i], .45));
+    let x = mix(PHONE.x, PILE[i][0], a), y = mix(PHONE.y - 30, PILE[i][1], a) - 150 * bump(a) * (1 - a * .4), r = mix(-6, PILE[i][2], a) + 40 * (1 - a) * (i % 2 ? 1 : -1), s = mix(.35, 1, a);
+    x = mix(x, FAN[i][0], g); y = mix(y, FAN[i][1], g) - 60 * bump(g); r = mix(r, FAN[i][2], g);
+    if (g >= 1 && d === 0) y += 8 * Math.sin(t * 3 + i * 1.4);
+    x = mix(x, 960, d); y = mix(y, 600, d) - 70 * bump(d) * (1 - d); r = mix(r, 0, d); s = mix(s, .72, d);
+    tf(el, x, y, s, s, r); el.setAttribute("opacity", 1 - P(t, DROP[i] + .36, .1)); });
+  const fin = P(t, GATHER + .5, .6), move = inOut(P(t, TO_DRIVE, .9)), sq = Math.max(...DROP.map((d) => bump((t - d - .38) / .32)));
+  const fs = mix(.6, 1, outBack(fin)) * mix(1, .8, move), fx = mix(960, 560, move), fy = mix(650, 610, move);
+  for (const id of ["fback", "ffront"]) { tf($(id), fx, fy, fs * (1 + .05 * sq), fs * (1 - .08 * sq)); $(id).setAttribute("opacity", fin ? cl(fin * 3) : 0); }
+  const landed = DROP.filter((d) => t >= d + .4).length; $("count").textContent = landed || 1;
+  $("badge").setAttribute("transform", `translate(262 -246) scale(${landed ? 1 + .25 * Math.max(...DROP.map((d) => bump((t - d - .4) / .3))) : 0}) translate(-262 246)`);
+  const cin = P(t, TO_DRIVE + .4, .6), done = P(t, DONE, .3);
+  $("cloud").setAttribute("opacity", cl(cin * 3)); tf($("cloud"), 1370, 440 + 6 * Math.sin(t * 1.5), outBack(cin) * (1 + .1 * bump((t - DONE) / .4)));
+  $("dlabel").setAttribute("opacity", P(t, TO_DRIVE + .8, .4));
+  $("link").style.opacity = .5 * P(t, TO_DRIVE + .7, .4) * (1 - P(t, DONE - .2, .4) * .6); $("link").style.strokeDashoffset = -t * 40;
+  $("arrows").setAttribute("transform", `translate(0 6) rotate(${Math.max(0, t - SYNC) * 300}) scale(${1 - done}) translate(0 -6)`); $("arrows").setAttribute("opacity", P(t, TO_DRIVE + .7, .3));
+  $("tickwrap").setAttribute("opacity", done ? 1 : 0); $("tickwrap").setAttribute("transform", `translate(0 6) scale(${outBack(done)}) translate(0 -6)`);
+  $("tick").style.strokeDashoffset = 1 - outCubic(P(t, DONE + .15, .35));
+  [0, 1, 2, 3, 4].forEach((i) => { const u = (t - SYNC) / 1.1 - i * .4, el = $("d" + i);
+    if (u <= 0 || u >= 1 || t > DONE + .3) return el.setAttribute("opacity", 0);
+    const [x, y] = bez(inOut(u)); tf(el, x, y, .7 + .5 * bump(u), .7 + .5 * bump(u), u * 200 - 60); el.setAttribute("opacity", cl(bump(u) * 6)); });
+  [0, 1, 2, 3].forEach((k) => { const el = $("k" + k); tf(el, +el.dataset.x, +el.dataset.y, outBack(P(t, DONE + .1 + k * .1, .45)) * el.dataset.s * (1 + .15 * Math.sin(t * 5 + k)), undefined, t * 30); });
+};
+const openSfx = [...Array.from({ length: 11 }, (_, i) => ["pop", .27 + i * .07, .16, 520 + i * 45]), ...FLASH.flatMap((f) => [["shutter", f, .6], ["whoosh", f + .08, .5]]),
+  ["blip", VIDEO, .25], ["whoosh", VIDEO + .02, .5], ["bigwhoosh", GATHER, .8], ...DROP.flatMap((d) => [["whoosh", d, .55], ["thud", d + .4, .6]]),
+  ["bigwhoosh", TO_DRIVE, .8], ...[0, 1, 2, 3, 4].map((i) => ["tick", SYNC + .3 + i * .44, .1]), ["chime", DONE, .55]];
+
+// ---------- the scenes ----------
+// say: [seconds into the scene, spoken line] (fixed) or a single line (the scene lasts as long as the line).
+// sfx: [sound, seconds into the scene, loudness]. "late" times count back from the end of the scene.
+const tiles = [[330, 524, 718, 912], 330];
+const SCENES = [
+  { id: "open", fixed: 14.5, update: openUpdate, art: openArt, sfx: openSfx,
+    titles: [["Laura <em>takes the photos.</em>", .3, GATHER - .1], ["They land in <em>one folder.</em>", GATHER + .4, TO_DRIVE], ["It syncs to <em>Google Drive.</em>", TO_DRIVE + .5, 14.5 - .35]],
+    say: [[.5, "Laura styles the party, and snaps her photos and videos."], [5.5, "They all pile into one folder."], [9.8, "And that folder syncs straight to Google Drive."]] },
+  { id: "skill", title: "Matt says <em>the magic words.</em>", say: "Laura tells Matt, and Matt says the magic words.",
+    sfx: [...Array.from({ length: 10 }, (_, i) => ["key", 1.3 + i * .09, .3]), ["thud", 2.4, .5], ["sparkle", 2.6, .4], ["tick", 3.0, .12], ["tick", 3.5, .12], ["tick", 4.0, .12]],
+    art: `<g class="pop" style="--d:.1s">${box(520, 200, 880, 440, 28, "ik")}<circle class="pk ns" cx="572" cy="250" r="10"/><circle class="pk ns" cx="606" cy="250" r="10"/><circle class="pk ns" cx="640" cy="250" r="10"/></g>
+      <text class="term" x="590" y="390"><tspan class="tp fade" style="--d:1s">&gt; </tspan>${"/river-fox".split("").map((c, i) => `<tspan class="fade" style="--d:${(1.3 + i * .09).toFixed(2)}s;animation-duration:.01s">${c}</tspan>`).join("")}</text>
+      <rect class="pk ns" x="660" y="342" width="26" height="60" style="animation: show .01s linear 1s both, curs .9s steps(10) 1.3s both"/>
+      ${[0, 1, 2].map((i) => `<g class="fade" style="--d:${2.6 + i * .5}s"><rect class="onk thin" x="590" y="${460 + i * 48}" width="${520 - i * 90}" height="18" rx="9"/><rect class="pk ns" x="590" y="${460 + i * 48}" width="${520 - i * 90}" height="18" rx="9" style="transform-box:fill-box;transform-origin:left;animation:fill .5s ease ${2.7 + i * .5}s both"/></g>`).join("")}
+      ${star(1450, 190, 1.4, "pk", 2.6)}${star(1520, 290, .8, "w", 2.8)}${star(470, 610, 1, "pk", 2.9)}${star(430, 250, .7, "w", 3)}` },
+  { id: "grade", title: "Every photo, <em>graded.</em>", say: "Every photo gets the house look. Bright, airy, and true to colour.",
+    sfx: [["pop", .3, .2], ["bigwhoosh", 1.4, .5], ["sparkle", 3.3, .4]],
+    art: `<g class="pop" style="--d:.1s">${photo(740, 150, 440, 540)}</g>
+      <rect class="dull" x="740" y="150" width="440" height="540" rx="14" style="transform-origin:1180px 0;animation: show .3s ease .5s both, wipe 2s cubic-bezier(.6,0,.3,1) 1.4s both"/>
+      <g style="animation: show .3s ease 1s both, handle 2s cubic-bezier(.6,0,.3,1) 1.4s both"><path style="stroke-width:6" d="M740 120 V720"/><circle class="pk" cx="740" cy="420" r="26"/><path class="thin" d="M732 410 l-8 10 l8 10 M748 410 l8 10 l-8 10"/></g>
+      ${star(1290, 250, 1.5, "pk", 3.3)}${star(1360, 370, .8, "w", 3.5)}${star(630, 560, 1, "pk", 3.6)}${star(590, 300, .7, "w", 3.7)}` },
+  { id: "best", title: "The best shot <em>wins.</em>", say: "Three nearly identical shots? It keeps the best one. The other two never find out.",
+    sfx: [["pop", .2, .2], ["pop", .4, .2], ["pop", .6, .2], ["whoosh", 2.9, .5], ["whoosh", 3.1, .5], ["chime", 3.3, .4]],
+    art: `<g style="animation: fallL .9s cubic-bezier(.5,0,.8,.4) 2.9s both"><g class="pop" style="--d:.1s">${photo(400, 230, 310, 390)}</g></g>
+      <g style="animation: fallR .9s cubic-bezier(.5,0,.8,.4) 3.1s both"><g class="pop" style="--d:.5s">${photo(1210, 230, 310, 390, "cr")}</g></g>
+      <g style="transform-origin:960px 425px;animation: grow .7s cubic-bezier(.3,1.4,.5,1) 3.2s both"><g class="pop" style="--d:.3s">${photo(805, 230, 310, 390, "pk")}</g>
+        <path class="d ac" pathLength="1" style="--d:4s" d="M840 320 v-54 h54 M1026 266 h54 v54 M1080 530 v54 h-54 M894 584 h-54 v-54"/>
+        <g class="pop" style="--d:3.3s"><circle class="pk" cx="1115" cy="230" r="44"/><path style="stroke-width:6" d="M1095 230 l15 17 l28 -34"/></g></g>` },
+  { id: "cover", title: "Cover text <em>goes on.</em>", say: "The winner gets the cover text.",
+    sfx: [["pop", .2, .2], ["whoosh", 1.2, .5], ["sparkle", 1.9, .35]],
+    art: `<g class="pop" style="--d:.1s">${photo(780, 110, 360, 640)}</g>
+      <g class="up" style="--d:1.3s"><rect class="cr" x="812" y="160" width="296" height="170" rx="10"/><text class="lab" x="960" y="208" text-anchor="middle" style="font-size:16px">RIVER FOX EVENTS</text>
+        <text class="serif" x="960" y="258" text-anchor="middle">A balloon arch</text><text class="serif it" x="960" y="304" text-anchor="middle">in Surrey</text></g>
+      ${star(1250, 220, 1.4, "pk", 1.9)}${star(1320, 330, .8, "w", 2.1)}${star(660, 520, 1, "pk", 2.2)}` },
+  { id: "resize", title: "Resized <em>for everything.</em>", say: "Then it's resized for stories, posts and Google Business.",
+    sfx: [["pop", .3, .25], ["pop", .9, .25], ["pop", 1.5, .25]],
+    art: `<g class="pop" style="--d:.2s">${photo(430, 190, 290, 516)}</g><g class="pop" style="--d:.8s">${photo(790, 266, 330, 440, "pk")}</g><g class="pop" style="--d:1.4s">${photo(1190, 391, 420, 315, "cr")}</g>
+      <text class="lab fade" style="--d:.6s" x="575" y="766" text-anchor="middle">STORY</text><text class="lab fade" style="--d:1.2s" x="955" y="766" text-anchor="middle">POST</text><text class="lab fade" style="--d:1.8s" x="1400" y="766" text-anchor="middle">GOOGLE</text>` },
+  { id: "reel", title: "Videos become <em>reels.</em>", say: "Videos too. It finds the hook, puts the big reveal first, and cuts a reel.",
+    sfx: [["pop", .2, .2], ["pop", .35, .2], ["pop", .5, .2], ["pop", .65, .2], ["pop", .8, .2], ["bigwhoosh", 2.6, .7], ["thud", 3.4, .5], ["pop", 3.9, .3], ["chime", 5.2, .35]],
+    art: `<g style="animation: shiftR .9s cubic-bezier(.6,0,.3,1) 2.6s both">${[0, 1, 2, 3].map((i) => `<g class="pop" style="--d:${.1 + i * .15}s">${box(250 + i * 194, 320, 170, 220, 14)}<path class="thin faint" d="M${285 + i * 194} 500 h${60 + i * 12}"/></g>`).join("")}</g>
+      <g style="animation: toFront .9s cubic-bezier(.6,0,.3,1) 2.6s both"><g class="pop" style="--d:.7s">${box(1026, 320, 170, 220, 14, "pk")}<path class="w" d="M1111 388 l13 28 l31 4 l-23 21 l6 31 l-27 -15 l-27 15 l6 -31 l-23 -21 l31 -4 z"/></g></g>
+      ${pill(335, 250, 150, "Hook", "ik", 3.8)}
+      <path class="d" pathLength="1" style="--d:4.4s" d="M1260 430 h80 m-22 -20 l22 20 l-22 20"/>
+      <g class="pop" style="--d:4.8s">${phone(1410, 200, 250, 470)}<circle class="pk" cx="1535" cy="435" r="54"/><path class="w" d="M1518 405 l48 30 l-48 30 z"/></g>` },
+  { id: "captions", title: "Captions, cover, <em>end screen.</em>", say: "Anyone talking gets animated captions. Three styles, because why not. Plus a cover and an end screen.",
+    sfx: [["pop", .2, .2], ["pop", .45, .2], ["pop", .7, .2], ["tick", 1.6, .12], ["tick", 2.0, .12], ["tick", 2.4, .12], ["tick", 2.8, .12], ["whoosh", 5.6, .5], ["whoosh", 6.2, .5]],
+    art: [0, 1, 2].map((i) => `<g class="pop" style="--d:${.1 + i * .25}s">${phone(430 + i * 400, 150, 260, 520)}<path d="M${540 + i * 400} 340 v50 M${560 + i * 400} 315 v100 M${580 + i * 400} 345 v40" class="faint"/></g>`).join("") +
+      `<text class="cap" x="560" y="560" text-anchor="middle">${["Here", "is", "the", "arch"].map((w2, i) => `<tspan style="animation: say .01s linear ${1.6 + i * .4}s both">${w2}</tspan>`).join(" ")}</text>
+      ${["Here", "is", "the"].map((w2, i) => `<text class="capbig" style="animation: word .42s ease ${1.6 + i * .42}s both" x="960" y="566" text-anchor="middle">${w2}</text>`).join("")}<text class="capbig it" style="animation: wordstay .42s ease 2.86s both" x="960" y="566" text-anchor="middle">arch</text>
+      <g class="up" style="--d:1.8s"><rect class="pk" x="1262" y="520" width="196" height="62" rx="10"/><text class="cap" style="fill:var(--ink)" x="1360" y="560" text-anchor="middle">Here is the arch</text></g>
+      <g class="up" style="--d:5.6s"><rect class="cr" x="462" y="230" width="196" height="130" rx="10"/><text class="serif s" x="560" y="286" text-anchor="middle">A fifth</text><text class="serif s it" x="560" y="324" text-anchor="middle">birthday</text></g>
+      <g class="up" style="--d:6.2s"><rect class="w" x="1262" y="230" width="196" height="130" rx="10"/><text class="serif s" x="1360" y="286" text-anchor="middle">River Fox</text><text class="serif s" x="1360" y="324" text-anchor="middle">Events</text></g>` },
+  { id: "copy", title: "The words are <em>written too.</em>", say: "Google Business gets its own plain crops. And it even writes the words for every platform. Copy, paste, done.",
+    sfx: [["pop", .2, .2], ["pop", 1.2, .3], ["whoosh", 3.4, .5], ["tick", 4.3, .12], ["tick", 4.8, .12], ["tick", 5.3, .12], ["pop", 6.2, .3], ["inflate", -2.3, .4, "late"], ["balloonpop", -1.2, .8, "late"]],
+    art: `<g class="pop" style="--d:.1s">${photo(330, 270, 440, 330)}</g>
+      <g class="pop" style="--d:1.1s"><path class="pk" d="M770 190 a44 44 0 0 1 44 44 c0 34 -44 76 -44 76 c0 0 -44 -42 -44 -76 a44 44 0 0 1 44 -44 z"/><circle class="w" cx="770" cy="234" r="15"/></g>
+      <g class="up" style="--d:3.4s"><path class="sh" transform="translate(10 12)" d="M990 130 h330 l80 80 v500 h-410 z"/><path class="w" d="M990 130 h330 l80 80 v500 h-410 z"/><path d="M1320 130 v80 h80"/></g>
+      ${["Instagram", "Facebook", "Google Business"].map((n, i) => `<g class="fade" style="--d:${4.2 + i * .5}s"><text class="serif" x="1040" y="${300 + i * 140}">${n}</text><path class="faint" d="M1040 ${330 + i * 140} h300 M1040 ${358 + i * 140} h${220 - i * 30}"/></g>`).join("")}
+      ${pill(1420, 300, 150, "Copy", "ik", 6.1)}
+      <g data-late="2.3" style="transform-origin:960px 420px;animation: inflate 1.1s cubic-bezier(.3,0,.9,.6) 0s both, hide .01s linear 0s both" data-late2="1.2"><circle class="pk" cx="960" cy="420" r="230"/><path class="hl" d="M830 380 a150 150 0 0 1 90 -100"/></g>
+      ${confetti(960, 420, 26, 1.2, true)}` },
+  { id: "folders", title: "Filed, <em>newest first.</em>", say: "Everything's filed by platform, and number one is always the newest job.",
+    sfx: [["pop", .3, .2], ["pop", .5, .2], ["pop", .7, .2], ["bigwhoosh", 3, .6], ["thud", 3.9, .5], ["chime", 4, .3]],
+    art: pill(640, 170, 220, "Instagram", "w", .2) + pill(890, 170, 210, "Facebook", "w", .4) + pill(1190, 170, 310, "Google Business", "w", .6) +
+      `<g class="fade" style="--d:.9s"><g style="animation: rowDown .8s cubic-bezier(.6,0,.3,1) 3s both">${[0, 1, 2].map((i) => `<g>${box(620, 262 + i * 104, 680, 84, 16)}<path class="wm thin" d="M650 ${284 + i * 104} h30 l10 10 h40 v32 h-80 z"/><path class="faint" d="M830 ${306 + i * 104} h${300 - i * 60}"/>
+        <text class="mono" style="animation: hide .3s ease 3s both" x="760" y="${316 + i * 104}">0${i + 1}</text><text class="mono" style="animation: show .3s ease 3.5s both" x="760" y="${316 + i * 104}">0${i + 2}</text></g>`).join("")}</g></g>
+      <g style="animation: rowIn .8s cubic-bezier(.3,1.3,.5,1) 3.5s both">${box(600, 256, 720, 96, 18, "pk")}<path class="w thin" d="M632 284 h34 l11 11 h46 v36 h-91 z"/><text class="mono" style="fill:var(--ink)" x="756" y="316">01</text><text class="chip" x="830" y="316">The new job</text></g>` },
+  { id: "website", title: "The website <em>gets them too.</em>", say: "And new photos go on the website as well.",
+    sfx: [["pop", .2, .2], ["pop", 1.5, .25], ["pop", 1.8, .25], ["pop", 2.1, .25], ["chime", 2.5, .35]],
+    art: `<g class="pop" style="--d:.1s">${box(500, 130, 920, 600, 22)}<path d="M500 214 h920"/><circle class="pk ns" cx="546" cy="172" r="10"/><circle class="pk ns" cx="578" cy="172" r="10"/><circle class="pk ns" cx="610" cy="172" r="10"/>
+        <rect class="cr thin" x="670" y="148" width="560" height="48" rx="24"/><text class="lab" x="950" y="180" text-anchor="middle" style="letter-spacing:.06em">riverfoxevents.co.uk</text>
+        ${[[540, 250], [980, 250], [1200, 250], [760, 490], [1200, 490]].map(([x, y]) => `<rect class="cr thin" x="${x}" y="${y}" width="180" height="${y < 400 ? 210 : 200}" rx="10"/>`).join("")}</g>
+      ${[[760, 250, 210], [540, 490, 200], [980, 490, 200]].map(([x, y, h], i) => `<g class="pop" style="--d:${1.5 + i * .3}s"><rect class="pk thin" x="${x}" y="${y}" width="180" height="${h}" rx="10"/>${miniArch(x + 90, y + h * .65, 44)}</g>`).join("")}
+      <g class="pop" style="--d:2.5s"><circle class="ik" cx="1420" cy="730" r="54"/><g class="spin"><path class="onk" d="M1394 722 a28 28 0 0 1 48 -10 m3 -16 v18 h-18 M1446 738 a28 28 0 0 1 -48 10 m-3 16 v-18 h18"/></g></g>` },
+  { id: "why", title: "Why <em>bother?</em>", say: "Why bother? Laura gets her evenings back, her feed looks like one brand, and the posts keep coming.",
+    sfx: [["pop", 1.4, .3], ["pop", 3.2, .3], ["pop", 5, .3]],
+    art: `<g class="pop" style="--d:1.3s"><circle class="sh" cx="530" cy="402" r="130"/><circle class="w" cx="520" cy="390" r="130"/><path style="stroke-width:6" d="M520 300 v90 l56 36"/><circle class="pk" cx="520" cy="390" r="12"/></g>
+      <text class="serif fade" style="--d:1.6s" x="520" y="620" text-anchor="middle">Time back</text>
+      <g class="pop" style="--d:3.1s">${box(840, 262, 112, 150, 12)}${box(968, 262, 112, 150, 12, "pk")}${box(840, 428, 112, 100, 12, "wm")}${box(968, 428, 112, 100, 12)}</g>
+      <text class="serif fade" style="--d:3.4s" x="960" y="620" text-anchor="middle">One look</text>
+      <g class="pop" style="--d:4.9s">${box(1270, 270, 260, 260, 18)}<path d="M1270 334 h260 M1330 246 v48 M1470 246 v48"/>${[0, 1, 2, 3, 4, 5].map((i) => `<circle class="pk thin" cx="${1322 + (i % 3) * 78}" cy="${388 + Math.floor(i / 3) * 78}" r="24"/><path class="thin" d="M${1311 + (i % 3) * 78} ${388 + Math.floor(i / 3) * 78} l8 9 l15 -18"/>`).join("")}</g>
+      <text class="serif fade" style="--d:5.2s" x="1400" y="620" text-anchor="middle">Regular posts</text>` },
+  { id: "loop", title: "Matt is still <em>fine-tuning it.</em>", say: "For now, Matt's the test pilot. If something comes out wonky, he asks why, and the skill gets smarter.",
+    sfx: [["pop", .3, .2], ["pop", 2.6, .3], ["pop", 4, .3], ["pop", 5.4, .3], ["sparkle", 5.6, .35]],
+    art: `<g class="pop" style="--d:.2s"><g class="spin"><path class="w" d="M960 330 l22 -4 l10 -30 l34 14 l-6 30 l18 18 l30 -6 l14 34 l-30 10 l-4 22 l4 22 l30 10 l-14 34 l-30 -6 l-18 18 l6 30 l-34 14 l-10 -30 l-22 -4 l-22 4 l-10 30 l-34 -14 l6 -30 l-18 -18 l-30 6 l-14 -34 l30 -10 l4 -22 l-4 -22 l-30 -10 l14 -34 l30 6 l18 -18 l-6 -30 l34 -14 l10 30 z"/><circle class="pk" cx="960" cy="440" r="44"/></g></g>
+      <path class="d" pathLength="1" style="--d:2.2s" d="M1130 300 a260 230 0 0 1 60 100 m14 -34 l-12 38 l-36 -14"/><path class="d" pathLength="1" style="--d:3.6s" d="M1140 640 a260 230 0 0 1 -360 0 m36 6 l-40 -8 l6 40"/><path class="d" pathLength="1" style="--d:5s" d="M730 400 a260 230 0 0 1 60 -100 m-38 4 l40 -6 l2 40"/>
+      ${pill(960, 190, 360, "Something looks off", "w", 2.5)}${pill(1300, 520, 280, "Matt asks why", "pk", 3.9)}${pill(600, 520, 360, "The skill gets smarter", "ik", 5.3)}` },
+  { id: "ask", title: "Soon, Laura <em>just asks.</em>", say: "The end goal? Laura just sends a message, and it's done.",
+    sfx: [["pop", .2, .2], ["blip", 1.2, .3], ["blip", 2.4, .3], ["blip", 3.5, .3], ["balloonpop", -1.6, .5, "late"], ["chime", -1.5, .5, "late"]],
+    art: `<g class="pop" style="--d:.1s">${box(720, 90, 480, 680, 48)}<rect class="ik ns" x="920" y="112" width="80" height="12" rx="6"/></g>
+      <g class="pop" style="--d:1.1s"><rect class="pk" x="850" y="170" width="310" height="124" rx="28"/><text class="chip" x="880" y="222">Can you do</text><text class="chip" x="880" y="262">Saturday's party?</text></g>
+      <g class="pop" style="--d:2.3s"><rect class="cr" x="760" y="330" width="330" height="164" rx="28"/><text class="chip" x="790" y="382">On it. Graded,</text><text class="chip" x="790" y="422">captioned, filed.</text><text class="lab" x="790" y="466" style="font-size:18px">ONE REEL · READY</text></g>
+      <g class="pop" style="--d:3.4s"><rect class="pk" x="980" y="530" width="180" height="76" rx="28"/><text class="chip" x="1010" y="580">Love it</text></g>
+      ${confetti(960, 420, 30, 1.6, true)}${star(1330, 220, 1.4, "pk", 3.6)}${star(590, 300, 1, "w", 3.8)}${star(1380, 560, .8, "w", 4)}${star(560, 600, 1.2, "pk", 4.1)}` },
+  { id: "end", title: "", say: "That's it. More parties, less cropping.",
+    sfx: [...Array.from({ length: 9 }, (_, i) => ["pop", .32 + i * .07, .16, 520 + i * 55]), ["chime", 1.1, .4]],
+    art: Array.from({ length: 9 }, (_, i) => { const a = Math.PI - i / 8 * Math.PI, b = { x: 960 + Math.cos(a) * 200, y: 470 - Math.sin(a) * 200, r: 46 + (i * 7 % 3) * 7, c: ["pk", "w", "wm"][i % 3] };
+      return `<g transform="translate(${b.x} ${b.y})"><g class="pop" style="--d:${.2 + i * .07}s">${balloon(b)}</g></g>`; }).join("") +
+      `<path class="d" pathLength="1" style="--d:.2s" d="M660 470 h600"/><text class="serif l fade" style="--d:.9s" x="960" y="660" text-anchor="middle">River Fox Events</text>
+      <text class="lab fade" style="--d:1.5s" x="960" y="740" text-anchor="middle">MORE PARTIES · LESS CROPPING</text>` },
+];
+
+// ---------- timeline ----------
+const LEAD = .6, TAIL = .8, PAN = .35;
+const VOICE = globalThis.TIMELINE || {}; // seconds of voice per line, written by film.mjs
+let at = 0;
+const lines = [], events = [];
+SCENES.forEach((s, i) => {
+  s.start = at;
+  if (s.fixed) { s.dur = s.fixed; s.say.forEach(([o, text], k) => lines.push({ id: `${s.id}-${k}`, text, at: at + o })); }
+  else { const id = s.id; s.dur = LEAD + (VOICE[id] ?? 4) + TAIL; lines.push({ id, text: s.say, at: at + LEAD }); }
+  if (i) events.push(["bigwhoosh", at - .3, .45]);
+  for (const [type, o, gain, extra] of s.sfx || []) events.push([type, at + (extra === "late" || o < 0 ? s.dur + o : o), gain, typeof extra === "number" ? extra : 0]);
+  at += s.dur;
+});
+window.DURATION = at + .6; window.LINES = lines; window.EVENTS = events; window.STARTS = SCENES.map((s) => [s.start, s.dur]);
+
+svg.innerHTML = SCENES.map((s) => `<g id="g-${s.id}">${s.art}</g>`).join("");
+$("titles").innerHTML = SCENES.flatMap((s) => (s.titles || [[s.title]]).map((x, k) => `<div class="title" id="t-${s.id}-${k}">${x[0]}</div>`)).join("");
+// Things that happen near the end of a scene ("late") get their delay from the scene's length.
+SCENES.forEach((s) => $("g-" + s.id).querySelectorAll("[data-late]").forEach((el) => {
+  const d = s.dur - el.dataset.late;
+  el.style.animationDelay = el.dataset.late2 ? `${d}s, ${s.dur - el.dataset.late2}s` : `${d}s`;
+}));
+let anims;
+window.seek = (t) => {
+  anims ||= document.getAnimations().map((a) => ({ a, s: SCENES.find((s) => $("g-" + s.id).contains(a.effect.target)) })).filter((x) => x.s);
+  SCENES.forEach((s, i) => {
+    const local = t - s.start, g = $("g-" + s.id), last = i === SCENES.length - 1;
+    const vis = local > -PAN && (last || local < s.dur + PAN);
+    g.style.display = vis ? "" : "none";
+    const x = (i ? 1920 * (1 - inOut(P(local, -PAN, PAN * 2))) : 0) - (last ? 0 : 1920 * inOut(P(local, s.dur - PAN, PAN * 2)));
+    g.setAttribute("transform", `translate(${x} 0)`);
+    if (vis && s.update) s.update(Math.max(0, local));
+    (s.titles || [[s.title, .1, s.dur - PAN]]).forEach(([, a, b], k) => { const el = $(`t-${s.id}-${k}`), k1 = outCubic(P(local, a, .5));
+      el.style.opacity = k1 * (1 - P(local, b, .3)); el.style.transform = `translateY(${(1 - k1) * 30 - P(local, b, .3) * 20}px)`; });
+  });
+  for (const { a, s } of anims) { a.pause(); a.currentTime = Math.max(0, (t - s.start + .15) * 1000); }
+  if (t > SCENES[0].dur) $("flash").style.opacity = 0;
+  $("bar").style.width = `${cl(t / window.DURATION) * 1920}px`;
+};
+document.fonts.ready.then(() => { seek(0); window.READY = true; });
+</script>
+</body>
+</html>
