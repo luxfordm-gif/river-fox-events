@@ -12,7 +12,7 @@ const { chromium } = createRequire(import.meta.url)("playwright");
 const FPS = 30, WORKERS = 4;
 const VOICE = process.env.VOICE || "sage";
 const STYLE = "A British woman from the south of England talking to a colleague, both adults. Plain, relaxed and fairly quick, the way people really talk. Flat, even delivery: no performing, no sing-song, no emphasis on words, no smile in the voice.";
-const TEMPO = 1.1; // speeds the voice up a little without changing its pitch
+const TEMPO = 1.18; // speeds the voice up a little without changing its pitch
 const SFX = process.env.SFX === "1"; // sound effects are off unless asked for (Matt, 2026-11-21: the generated ones sounded wrong)
 const key = process.env.OPENAI_API_KEY || "sk-proxy";
 mkdirSync("out/film/voice", { recursive: true });
@@ -65,7 +65,7 @@ if (SFX) execFileSync("python3", ["film-sound.py", String(duration)], { stdio: "
 else ff("-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", "1", "out/film/sfx.wav");
 const inputs = ["-i", "out/film/sfx.wav"], filters = ["[0:a]volume=0.5[s]"], names = ["[s]"];
 lines.forEach(({ id, at }, i) => { inputs.push("-i", clips[id]); filters.push(`[${i + 1}:a]adelay=${Math.round(at * 1000)}[v${i}]`); names.push(`[v${i}]`); });
-ff(...inputs, "-filter_complex", `${filters.join(";")};${names.join("")}amix=inputs=${names.length}:normalize=0,alimiter=limit=0.95[a]`, "-map", "[a]", "-t", String(duration), "out/film/audio.wav");
+ff(...inputs, "-filter_complex", `${filters.join(";")};${names.join("")}amix=inputs=${names.length}:normalize=0,alimiter=limit=0.95,apad[a]`, "-map", "[a]", "-t", String(duration), "out/film/audio.wav");
 
 // 3. Record every frame (four browser pages share the work) and join with the audio.
 const pages = [page, ...(await Promise.all(Array.from({ length: WORKERS - 1 }, open)))];
