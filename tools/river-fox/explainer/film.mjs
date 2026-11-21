@@ -75,7 +75,7 @@ const SOUNDS = process.env.SFX === "0" ? [] : [
   ...[1.9, 2.8, 3.6].map((t) => ["shutter", t, 0.9]),           // the three camera flashes
   ["chime", 12.7, 0.5],                                          // the Drive sync tick
   ["typing", at("skill", 1.3), 0.7],                             // Matt types the command
-  ...[1.1, 3.1, 4.2].map((d) => ["ping", at("ask", d), 0.5]),    // the chat messages
+  ...[1.1, 3.1].map((d) => ["ping", at("ask", d), 0.5]),    // the chat messages
   ["chime", at("end", .3), 0.55],                                // the logo
 ];
 const inputs = [], filters = [], names = [];

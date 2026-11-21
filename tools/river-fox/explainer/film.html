@@ -80,6 +80,8 @@ text.capbig { font: 400 60px Fraunces, serif; }
 @keyframes eq { to { transform: scaleY(.3); } }
 @keyframes slideL { to { transform: translateX(-380px); } }
 @keyframes slideInR { from { transform: translateX(1100px); opacity: 0; } to { transform: none; opacity: 1; } }
+text.letter { transform-box: fill-box; transform-origin: 50% 80%; animation: letterIn .55s cubic-bezier(.2,1.5,.4,1) 0s both; }
+@keyframes letterIn { from { opacity: 0; transform: translateY(46px) rotate(-10deg) scale(.6); } to { opacity: 1; transform: none; } }
 @keyframes rowDown { to { transform: translateY(104px); } }
 @keyframes rowIn { from { opacity: 0; transform: translateY(-100px); } to { opacity: 1; transform: none; } }
 @keyframes inflate { from { transform: scale(0); } to { transform: scale(1); } }
@@ -344,28 +346,32 @@ const SCENES = [
     art: `<g class="pop" style="--d:.2s"><g class="spin">${gear(960, 440, 8, 122, 90)}<circle class="pk" cx="960" cy="440" r="44"/></g></g>
       <path class="d" pathLength="1" style="--d:2.2s" d="M1130 300 a260 230 0 0 1 60 100 m14 -34 l-12 38 l-36 -14"/><path class="d" pathLength="1" style="--d:3.6s" d="M1140 640 a260 230 0 0 1 -360 0 m36 6 l-40 -8 l6 40"/><path class="d" pathLength="1" style="--d:5s" d="M730 400 a260 230 0 0 1 60 -100 m-38 4 l40 -6 l2 40"/>
       ${pill(960, 190, 360, "Something looks off", "w", 2.5)}${pill(1300, 520, 280, "Matt asks why", "pk", 3.9)}${pill(600, 520, 360, "The skill gets smarter", "ik", 5.3)}` },
-  { id: "ask", title: "Soon, Laura <em>just asks.</em>", say: "The plan is to hand it over, so Laura can simply ask for it. Politely, ideally.",
+  { id: "ask", title: "Soon, Laura <em>just asks.</em>", say: "The plan is to hand it over, so Laura can simply ask for what she needs, and Claude delivers.",
     art: `<g class="pop" style="--d:.1s"><path class="ik ns" d="M1150 250 h8 v90 h-8 z M762 220 h8 v54 h-8 z M762 296 h8 v54 h-8 z"/>
         <rect class="sh" x="782" y="34" width="380" height="720" rx="60"/><rect class="ik" x="770" y="20" width="380" height="720" rx="60"/><rect class="w ns" x="784" y="34" width="352" height="692" rx="46"/>
         <rect class="ik ns" x="912" y="48" width="96" height="24" rx="12"/><path style="stroke-width:5" d="M910 708 h100"/>
-        <circle class="pk thin" cx="826" cy="118" r="22"/><path class="thin" d="M862 110 h110"/><path class="thin faint" d="M862 128 h70 M784 158 h352"/>
+        <circle class="pk thin" cx="826" cy="118" r="22"/><text class="chip" style="font-size:22px" x="862" y="126">Claude</text><path class="thin faint" d="M784 158 h352"/>
         <rect class="cr thin" x="804" y="630" width="252" height="52" rx="26"/><path class="thin faint" d="M828 656 h90"/><circle class="pk thin" cx="1094" cy="656" r="26"/><path class="thin" d="M1094 668 v-24 m-10 10 l10 -10 l10 10"/></g>
-      <g class="pop" style="--d:1.1s"><path class="pk" d="M854 186 h234 a28 28 0 0 1 28 28 v84 l-16 -12 h-246 a28 28 0 0 1 -28 -28 v-44 a28 28 0 0 1 28 -28 z"/><text class="chip" style="font-size:27px" x="852" y="230">Can you do</text><text class="chip" style="font-size:27px" x="852" y="266">Saturday’s party?</text></g>
-      <g style="animation: hide .2s ease 3s both"><g class="pop" style="--d:1.9s"><rect class="cr" x="804" y="322" width="110" height="56" rx="28"/>${[0, 1, 2].map((i) => `<circle class="ik ns eq" style="animation-delay:-${i * .2}s" cx="${834 + i * 25}" cy="350" r="6"/>`).join("")}</g></g>
-      <g class="pop" style="--d:3.1s"><path class="cr" d="M832 322 h246 a28 28 0 0 1 28 28 v90 a28 28 0 0 1 -28 28 h-258 l-16 12 v-130 a28 28 0 0 1 28 -28 z"/><text class="chip" style="font-size:27px" x="830" y="366">On it. Graded,</text><text class="chip" style="font-size:27px" x="830" y="402">captioned, filed.</text><text class="lab" x="830" y="444" style="font-size:17px">ONE REEL · READY</text></g>
-      <g class="pop" style="--d:4.2s"><path class="pk" d="M976 508 h112 a28 28 0 0 1 28 28 v46 l-16 -12 h-124 a28 28 0 0 1 -28 -28 v-6 a28 28 0 0 1 28 -28 z"/><text class="chip" style="font-size:27px" x="978" y="550">Love it</text></g>
-      ${confetti(960, 380, 30, 1.6, true)}${star(1310, 180, 1.4, "pk", 4.4)}${star(610, 260, 1, "w", 4.6)}${star(1360, 520, .8, "w", 4.8)}${star(580, 560, 1.2, "pk", 4.9)}` },
+      <g class="pop" style="--d:1.1s"><path class="pk" d="M836 186 h252 a28 28 0 0 1 28 28 v100 l-16 -12 h-264 a28 28 0 0 1 -28 -28 v-60 a28 28 0 0 1 28 -28 z"/>
+        <text class="chip" style="font-size:23px" x="834" y="226">Hi Claude, could you do</text><text class="chip" style="font-size:23px" x="834" y="258">the posts for Saturday’s</text><text class="chip" style="font-size:23px" x="834" y="290">party, please?</text></g>
+      <g style="animation: hide .2s ease 3s both"><g class="pop" style="--d:1.9s"><rect class="cr" x="804" y="338" width="110" height="56" rx="28"/>${[0, 1, 2].map((i) => `<circle class="ik ns eq" style="animation-delay:-${i * .2}s" cx="${834 + i * 25}" cy="366" r="6"/>`).join("")}</g></g>
+      <g class="pop" style="--d:3.1s"><path class="cr" d="M832 338 h246 a28 28 0 0 1 28 28 v118 a28 28 0 0 1 -28 28 h-258 l-16 12 v-158 a28 28 0 0 1 28 -28 z"/>
+        <text class="chip" style="font-size:23px" x="830" y="378">Of course. Graded,</text><text class="chip" style="font-size:23px" x="830" y="410">cropped, written and</text><text class="chip" style="font-size:23px" x="830" y="442">filed in Drive.</text>
+        <text class="lab" x="830" y="484" style="font-size:15px">1 REEL · 24 PHOTOS</text></g>
+      ${star(1310, 200, 1.2, "pk", 3.6)}${star(620, 280, .9, "w", 3.8)}${star(1340, 520, .8, "w", 4)}` },
   { id: "end", title: "", fixed: 9,
-    say: [[.5, "More parties. Less cropping."], [null, "Built by Matt, husband of the year."], [null, "Self-nominated."], ["+.5", "And, in Matt's words."], [null, "Go smash it, Lobby."], ["+1.3", "Who the fuck is Lobby?"]],
-    // Laura's stacked logo (Drive > Logo > Stacked outlined.svg), in its own logo brown.
-    art: `<g class="up" style="--d:.3s"><image href="logo-stacked.svg" x="738" y="110" width="444" height="368"/></g>
-      <text class="lab fade" data-line="0" x="960" y="550" text-anchor="middle">MORE PARTIES · LESS CROPPING</text>
-      <g class="up" data-line="1"><text class="serif" x="960" y="640" text-anchor="middle">Built by Matt, husband of the year.</text></g>
-      <text class="lab fade" data-line="2" x="960" y="688" text-anchor="middle">SELF-NOMINATED</text>
-      <text class="lab fade" data-line="3" x="960" y="770" text-anchor="middle">IN MATT’S WORDS</text>
-      <g class="pop" data-line="4"><text class="serif it" style="font-size:60px" x="960" y="840" text-anchor="middle">Go smash it, Lobby.</text></g>
-      <g class="up" data-line="5"><text class="serif" style="font-size:30px" x="960" y="910" text-anchor="middle">Who the f*** is Lobby?</text></g>
-      ${star(600, 230, 1.4, "pk", 1)}${star(1320, 250, 1, "w", 1.2)}${star(1310, 440, 1.3, "pk", 1.4)}${star(620, 430, .8, "w", 1.6)}` },
+    say: [[.5, "More parties. Less cropping."], [null, "Built by Matt, husband of the year."], [null, "Self-nominated."], ["+.6", "And, in Matt's words."], [null, "Go smash it, Lobby."], ["+1.3", "Who the fuck is Lobby?"]],
+    // Screen one: Laura's stacked logo (Drive > Logo > Stacked outlined.svg). Screen two: Matt's sign-off.
+    art: `<g data-line="3" data-off="-.1" style="animation: hide .45s ease 0s both">
+        <g class="up" style="--d:.3s"><image href="logo-stacked.svg" x="710" y="120" width="500" height="415"/></g>
+        <text class="lab fade" data-line="0" x="960" y="610" text-anchor="middle">MORE PARTIES · LESS CROPPING</text>
+        <g class="up" data-line="1"><text class="serif" x="960" y="700" text-anchor="middle">Built by Matt, husband of the year.</text></g>
+        <g class="fade" data-line="2"><text class="serif it" style="font-size:30px" x="960" y="752" text-anchor="middle">(self-nominated)</text></g>
+        ${star(590, 250, 1.4, "pk", 1)}${star(1330, 270, 1, "w", 1.2)}${star(1320, 480, 1.3, "pk", 1.4)}${star(610, 470, .8, "w", 1.6)}
+      </g>
+      <text class="lab fade" data-line="3" data-off=".35" x="960" y="300" text-anchor="middle">IN MATT’S WORDS</text>
+      <text class="serif it letters" data-line="4" style="font-size:132px" x="960" y="470" text-anchor="middle">Go smash it, Lobby.</text>
+      <g class="up" data-line="5"><text class="serif" style="font-size:40px" x="960" y="600" text-anchor="middle">Who the f*** is Lobby?</text></g>` },
 ];
 
 // ---------- timeline ----------
@@ -438,7 +444,18 @@ window.seek = (t) => {
   if (t > SCENES[0].dur) $("flash").style.opacity = 0;
   $("bar").style.width = `${cl(t / window.DURATION) * 1920}px`;
 };
-Promise.all([document.fonts.ready, new Promise((r) => { const im = new Image(); im.onload = im.onerror = r; im.src = "logo-stacked.svg"; })]).then(() => { seek(0); window.READY = true; });
+const splitLetters = () => document.querySelectorAll("text.letters").forEach((el) => {
+  const base = parseFloat(el.style.animationDelay) || 0, chars = [...el.textContent];
+  chars.forEach((ch, i) => {
+    if (ch === " ") return;
+    const p = el.getStartPositionOfChar(i), t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    t.setAttribute("class", el.getAttribute("class").replace("letters", "letter"));
+    t.setAttribute("style", `${el.getAttribute("style").replace(/animation-delay:[^;]*;?/, "")};animation-delay:${(base + i * .045).toFixed(3)}s`);
+    t.setAttribute("x", p.x); t.setAttribute("y", p.y); t.textContent = ch; el.parentNode.insertBefore(t, el);
+  });
+  el.remove();
+});
+Promise.all([document.fonts.ready, new Promise((r) => { const im = new Image(); im.onload = im.onerror = r; im.src = "logo-stacked.svg"; })]).then(() => { splitLetters(); seek(0); window.READY = true; });
 </script>
 </body>
 </html>
