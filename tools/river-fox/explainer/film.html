@@ -301,9 +301,9 @@ const SCENES = [
       ${confetti(960, 420, 30, 1.6, true)}${star(1330, 220, 1.4, "pk", 3.6)}${star(590, 300, 1, "w", 3.8)}${star(1380, 560, .8, "w", 4)}${star(560, 600, 1.2, "pk", 4.1)}` },
   { id: "end", title: "", say: "More parties, less cropping.",
     // Laura's stacked logo (Drive > Logo > Stacked outlined.svg), in its own logo brown.
-    art: `<g class="up" style="--d:.3s"><image href="logo-stacked.svg" x="650" y="150" width="620" height="514"/></g>
-      <text class="lab fade" style="--d:1.3s" x="960" y="760" text-anchor="middle">MORE PARTIES · LESS CROPPING</text>
-      ${star(520, 260, 1.4, "pk", 1)}${star(1420, 300, 1, "w", 1.2)}${star(1380, 600, 1.3, "pk", 1.4)}${star(560, 560, .8, "w", 1.6)}` },
+    art: `<g class="up" style="--d:.3s"><image href="logo-stacked.svg" x="650" y="205" width="620" height="514"/></g>
+      <text class="lab fade" style="--d:1.3s" x="960" y="815" text-anchor="middle">MORE PARTIES · LESS CROPPING</text>
+      ${star(520, 315, 1.4, "pk", 1)}${star(1420, 355, 1, "w", 1.2)}${star(1380, 655, 1.3, "pk", 1.4)}${star(560, 615, .8, "w", 1.6)}` },
 ];
 
 // ---------- timeline ----------
@@ -347,7 +347,7 @@ window.seek = (t) => {
     window.FITTED = true;
   }
   AMB.forEach((a, i) => { const y = 1140 - ((a.y + t * a.v) % 1240); tf($("am" + i), a.x + 26 * Math.sin(t * .35 + i), y, 1, 1, t * (a.kind === 2 ? 25 : 0));
-    $("am" + i).style.opacity = .32 * cl((800 - y) / 120) * cl((y - 90) / 80); }); // gone before the title and the top label
+    $("am" + i).style.opacity = .32 * cl((800 - y) / 120) * cl((y - 90) / 80) * (1 - P(t, SCENES.at(-1).start - .4, .5)); }); // gone before the title and the top label
   SCENES.forEach((s, i) => {
     const local = t - s.start, g = $("g-" + s.id), last = i === SCENES.length - 1;
     const vis = local > -PAN && (last || local < s.dur + PAN);
