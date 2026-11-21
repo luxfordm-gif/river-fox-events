@@ -20,7 +20,7 @@ Key rules:
 
 - Ask which platform first (Instagram, Facebook, Google Business, or all), then file as the `river-fox` skill says.
 - Google Business photo posts have no overlay and no text. Plain photo only.
-- Review images use the pack's review template, with the quote in Fraunces italic.
+- Review images use the pack's review template, with the quote in Fraunces Regular, upright (Matt, 2026-11-21: it was italic, upright is easier to read). **Always the full review, word for word, unless Matt says otherwise** (emojis left off, typos stay); name line is first name and town. Make both sizes every time: Instagram 1080x1440 and Google Business 1200x1200, with `tools/river-fox/review/review.cjs`. The quote sizes by length are in the Brand book, chapter 08 ("More copy" and "Reviews"), and the pack's review pages: read them first. No caption (captions are for video). A review for a job that has its own folder goes in a `Review - <first name>` folder inside that job's folder, holding both sizes; otherwise file by channel (`Social/Instagram/Review posts`, `Social/Google Business/Review posts`).
 - **Instagram Stories and Reels** (Laura's clips, captioned, 18 November 2026): the rules live only in the `river-fox` skill on Matt's Mac (`~/.claude/skills/river-fox/`); don't copy them here. The social pack has no page for it yet, so tell Matt it needs a new version (the skill ends with text ready to paste). Every shoot gives the captioned video, a thumbnail and a set of stills (Story headline and plain at 1080x1920, Post at 1080x1440), all filed in Drive > Social > Instagram > Stories and reels (final output in the folder, older cuts in `_Archive`). Make a low-quality `--draft` first and get Matt's yes before the full render; the skill's lessons log holds every piece of feedback so far.
 - **A whole job of Laura's photos** (a folder of new photos, 20 November 2026): the steps live only in the `river-fox` skill on Matt's Mac (`~/.claude/skills/river-fox/`); its tools are in `tools/river-fox/` and `tools/photo-grade/`. Don't copy its rules here. It asks for the location and any wording first, grades with `tools/photo-grade`, makes the website set and every social size, puts the cover text on the best photo per format (`npm run overlay`, Fraunces Regular), makes a large master (`npm run large`) and files everything in Drive.
 
@@ -217,6 +217,7 @@ For the competitor-research workflow when starting a new article, see **`src/dat
 ## Working with Matt
 
 - Explain what's happening as you go. Don't run silent for several tool calls — Matt is non-technical and reads the running narration to follow what you're doing.
+- **Small social jobs (a review card, a resize): come back with the finished job filed in Drive and say where it is** (Matt, 2026-11-21). Don't stop to offer versions or ask what the notes already answer; make the sensible assumption, say what it was, and finish.
 - Confirm before destructive or shared-state actions (deleting files, force pushes, sending emails, changing DNS). One-time approval doesn't carry to next time.
 - When updating SEO copy across multiple pages, present the proposed values in a table for review **before** writing any code. Matt wants to decide before edits land.
 
