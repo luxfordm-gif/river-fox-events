@@ -16,6 +16,8 @@ html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--
 svg#svg { position: absolute; inset: 0; width: 1920px; height: 1080px; }
 .title { position: absolute; left: 0; right: 0; top: 888px; text-align: center; opacity: 0; font: 400 84px/1.05 Fraunces, serif; letter-spacing: -.012em; }
 .title em { color: var(--accent-dark); }
+.title .wd { display: inline-block; }
+#amb * { stroke-width: 3; }
 #flash { position: absolute; inset: 0; background: #fff; opacity: 0; }
 #bar { position: absolute; left: 0; bottom: 0; height: 8px; background: var(--pink); width: 0; }
 svg * { stroke: var(--ink); stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
@@ -72,6 +74,10 @@ text.capbig { font: 400 60px Fraunces, serif; }
 @keyframes hookMove { 45% { transform: translate(calc(var(--tx) * .5), -170px) rotate(-6deg); } 100% { transform: translateX(var(--tx)); } }
 @keyframes sweep { to { transform: translateX(1168px); } }
 @keyframes dimto { to { opacity: .25; } }
+.tw { transform-box: fill-box; transform-origin: center; animation: tw 2.4s ease-in-out 0s infinite; }
+.eq { transform-box: fill-box; transform-origin: center; animation: eq .6s ease-in-out 0s infinite alternate; }
+@keyframes tw { 50% { transform: scale(1.22) rotate(24deg); } }
+@keyframes eq { to { transform: scaleY(.3); } }
 @keyframes rowDown { to { transform: translateY(104px); } }
 @keyframes rowIn { from { opacity: 0; transform: translateY(-100px); } to { opacity: 1; transform: none; } }
 @keyframes inflate { from { transform: scale(0); } to { transform: scale(1); } }
@@ -103,7 +109,7 @@ const miniArch = (cx, by, r, n = 7) => Array.from({ length: n }, (_, i) => { con
 const box = (x, y, w, h, rx, cls = "w", extra = "") => `<rect class="sh" x="${x + 10}" y="${y + 12}" width="${w}" height="${h}" rx="${rx}"/><rect class="${cls}" x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" ${extra}/>`;
 const photo = (x, y, w, h, tint = "wm") => box(x, y, w, h, 14) + `<rect class="thin ${tint}" x="${x + 16}" y="${y + 16}" width="${w - 32}" height="${h - 32}" rx="8"/>` + miniArch(x + w / 2, y + h * .68, Math.min(w, h) * .24);
 const phone = (x, y, w, h) => box(x, y, w, h, 40) + `<rect class="wm thin" x="${x + 16}" y="${y + 34}" width="${w - 32}" height="${h - 68}" rx="18"/><rect class="ik ns" x="${x + w / 2 - 26}" y="${y + 12}" width="52" height="10" rx="5"/>`;
-const star = (x, y, s = 1, cls = "pk", d = 0) => `<g transform="translate(${x} ${y}) scale(${s})"><path class="pop thin ${cls}" style="--d:${d}s" d="M0 -26 l7 19 l19 7 l-19 7 l-7 19 l-7 -19 l-19 -7 l19 -7 z"/></g>`;
+const star = (x, y, s = 1, cls = "pk", d = 0) => `<g transform="translate(${x} ${y}) scale(${s})"><g class="tw" style="animation-delay:-${((x % 7) / 3).toFixed(2)}s"><path class="pop thin ${cls}" style="--d:${d}s" d="M0 -26 l7 19 l19 7 l-19 7 l-7 19 l-7 -19 l-19 -7 l19 -7 z"/></g></g>`;
 const pill = (cx, cy, w, text, cls = "w", d = 0) => `<g class="pop" style="--d:${d}s"><rect class="sh" x="${cx - w / 2 + 6}" y="${cy - 26}" width="${w}" height="64" rx="32"/><rect class="${cls}" x="${cx - w / 2}" y="${cy - 32}" width="${w}" height="64" rx="32"/><text class="chip ${cls === "ik" ? "onink" : ""}" x="${cx}" y="${cy + 10}" text-anchor="middle">${text}</text></g>`;
 const confetti = (cx, cy, n, d, late = false) => Array.from({ length: n }, (_, i) => { const a = i / n * Math.PI * 2 + (i % 3) * .3, dist = 260 + (i * 53 % 240);
   const st = `--x:${Math.cos(a) * dist}px;--y:${Math.sin(a) * dist * .8 - 60}px;--r:${(i * 97 % 360)}deg;animation:burst 1.3s cubic-bezier(.1,.7,.3,1) ${d}s both`;
@@ -232,7 +238,7 @@ const SCENES = [
       ${pill(806, 250, 150, "Hook", "ik", 6.1)}` },
   { id: "captions", title: "Captions, cover, <em>end screen.</em>", say: "Speech becomes animated captions, in three styles. If Laura stretches a word, so does the caption. A cover goes on the front, and an end screen on the back.",
     sfx: [["pop", .2, .2], ["pop", .45, .2], ["pop", .7, .2], ["tick", 1.6, .12], ["tick", 2.0, .12], ["tick", 2.4, .12], ["tick", 2.8, .12], ["whoosh", 5.6, .5], ["whoosh", 6.2, .5]],
-    art: [0, 1, 2].map((i) => `<g class="pop" style="--d:${.1 + i * .25}s">${phone(430 + i * 400, 150, 260, 520)}<path d="M${540 + i * 400} 340 v50 M${560 + i * 400} 315 v100 M${580 + i * 400} 345 v40" class="faint"/></g>`).join("") +
+    art: [0, 1, 2].map((i) => `<g class="pop" style="--d:${.1 + i * .25}s">${phone(430 + i * 400, 150, 260, 520)}<path class="eq faint" d="M${540 + i * 400} 340 v50"/><path class="eq faint" style="animation-delay:-.25s" d="M${560 + i * 400} 315 v100"/><path class="eq faint" style="animation-delay:-.5s" d="M${580 + i * 400} 345 v40"/></g>`).join("") +
       `<text class="cap" x="560" y="560" text-anchor="middle">${["I", "love", "it"].map((w2, i) => `<tspan style="animation: say .01s linear ${1.6 + i * .4}s both">${w2}</tspan>`).join(" ")}</text>
       ${["love", "loove", "looove", "loooove"].map((w2, i) => `<text class="capbig" style="font-size:36px;animation: stretch .32s linear ${1.6 + i * .3}s both" x="960" y="566" text-anchor="middle">${w2}</text>`).join("")}<text class="capbig it" style="font-size:36px;animation: show .01s linear 2.8s both" x="960" y="566" text-anchor="middle">looooove it</text>
       <g class="up" style="--d:1.8s"><rect class="pk" x="1262" y="520" width="196" height="62" rx="10"/><text class="cap" style="fill:var(--ink)" x="1360" y="560" text-anchor="middle">I love it</text></g>
@@ -318,8 +324,11 @@ SCENES.forEach((s, i) => {
 });
 window.DURATION = at + .6; window.LINES = lines; window.EVENTS = events; window.STARTS = SCENES.map((s) => [s.start, s.dur]);
 
-svg.innerHTML = SCENES.map((s) => `<g id="g-${s.id}">${s.art}</g>`).join("");
-$("titles").innerHTML = SCENES.flatMap((s) => (s.titles || [[s.title]]).map((x, k) => `<div class="title" id="t-${s.id}-${k}">${x[0]}</div>`)).join("");
+// Small things drifting up behind every scene, so the frame is never still.
+const AMB = Array.from({ length: 8 }, (_, i) => ({ x: 90 + (i * 233) % 1760, y: (i * 277) % 1200, v: 14 + (i * 7) % 16, r: 10 + (i * 5) % 14, kind: i % 3 }));
+svg.innerHTML = `<g id="amb">${AMB.map((a, i) => a.kind === 2 ? `<path id="am${i}" class="w" d="M0 -16 l4 12 l12 4 l-12 4 l-4 12 l-4 -12 l-12 -4 l12 -4 z"/>` : `<circle id="am${i}" class="${a.kind ? "pk" : "w"}" r="${a.r}"/>`).join("")}</g>` + SCENES.map((s) => `<g id="g-${s.id}">${s.art}</g>`).join("");
+const words = (h) => h.split(/(<\/?em>)/).map((tok) => (tok.startsWith("<") ? tok : tok.split(" ").map((w) => (w ? `<span class="wd">${w}</span>` : "")).join(" "))).join("");
+$("titles").innerHTML = SCENES.flatMap((s) => (s.titles || [[s.title]]).map((x, k) => `<div class="title" id="t-${s.id}-${k}">${words(x[0])}</div>`)).join("");
 // Things that happen near the end of a scene ("late") get their delay from the scene's length.
 SCENES.forEach((s) => $("g-" + s.id).querySelectorAll("[data-late]").forEach((el) => {
   const d = s.dur - el.dataset.late;
@@ -328,17 +337,31 @@ SCENES.forEach((s) => $("g-" + s.id).querySelectorAll("[data-late]").forEach((el
 let anims;
 window.seek = (t) => {
   anims ||= document.getAnimations().map((a) => ({ a, s: SCENES.find((s) => $("g-" + s.id).contains(a.effect.target)) })).filter((x) => x.s);
+  if (!window.FITTED) {
+    // Stretch each scene's animation so things keep happening for as long as the voice is talking.
+    for (const s of SCENES) {
+      const ends = anims.filter((x) => x.s === s && !x.a.effect.target.closest("[data-late]")).map((x) => x.a.effect.getComputedTiming().endTime).filter(Number.isFinite);
+      s.k = ends.length ? Math.min(1.6, Math.max(1, (s.dur - 1.2) / (Math.max(...ends) / 1000))) : 1;
+      $("g-" + s.id).querySelectorAll("[data-late]").forEach((el) => { const d = (s.dur - el.dataset.late) / s.k;
+        el.style.animationDelay = el.dataset.late2 ? `${d}s, ${(s.dur - el.dataset.late2) / s.k}s` : `${d}s`; });
+    }
+    window.FITTED = true;
+  }
+  AMB.forEach((a, i) => { const y = 1140 - ((a.y + t * a.v) % 1240); tf($("am" + i), a.x + 26 * Math.sin(t * .35 + i), y, 1, 1, t * (a.kind === 2 ? 25 : 0));
+    $("am" + i).style.opacity = .32 * cl((800 - y) / 120) * cl((y - 90) / 80); }); // gone before the title and the top label
   SCENES.forEach((s, i) => {
     const local = t - s.start, g = $("g-" + s.id), last = i === SCENES.length - 1;
     const vis = local > -PAN && (last || local < s.dur + PAN);
     g.style.display = vis ? "" : "none";
     const x = (i ? 1920 * (1 - inOut(P(local, -PAN, PAN * 2))) : 0) - (last ? 0 : 1920 * inOut(P(local, s.dur - PAN, PAN * 2)));
-    g.setAttribute("transform", `translate(${x} 0)`);
+    const zoom = i ? 1 + .04 * cl(local / s.dur) : 1; // a slow push-in on every scene
+    g.setAttribute("transform", `translate(${x} ${5 * Math.sin(t * 1.1 + i)}) translate(960 460) scale(${zoom}) translate(-960 -460)`);
     if (vis && s.update) s.update(Math.max(0, local));
-    (s.titles || [[s.title, .1, s.dur - PAN]]).forEach(([, a, b], k) => { const el = $(`t-${s.id}-${k}`), k1 = outCubic(P(local, a, .5));
-      el.style.opacity = k1 * (1 - P(local, b, .3)); el.style.transform = `translateY(${(1 - k1) * 30 - P(local, b, .3) * 20}px)`; });
+    (s.titles || [[s.title, .1, s.dur - PAN]]).forEach(([, a, b], k) => { const el = $(`t-${s.id}-${k}`);
+      el.style.opacity = local > a - .05 ? 1 - P(local, b, .3) : 0; el.style.transform = `translateY(${-P(local, b, .3) * 20}px)`;
+      [...el.querySelectorAll(".wd")].forEach((w, j) => { const kk = outCubic(P(local, a + j * .09, .45)); w.style.opacity = kk; w.style.transform = `translateY(${(1 - kk) * 36}px) rotate(${(1 - kk) * 4}deg)`; }); });
   });
-  for (const { a, s } of anims) { a.pause(); a.currentTime = Math.max(0, (t - s.start + .15) * 1000); }
+  for (const { a, s } of anims) { a.pause(); a.currentTime = Math.max(0, (t - s.start + .15) * 1000 / (s.k || 1)); }
   if (t > SCENES[0].dur) $("flash").style.opacity = 0;
   $("bar").style.width = `${cl(t / window.DURATION) * 1920}px`;
 };
