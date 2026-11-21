@@ -16,6 +16,7 @@ Run from a working folder for the job and set `WORK` to it, e.g. `WORK=~/river-f
 | `reels/` | The reel build scripts (ffmpeg): `reel-F-pink-box-build.sh` (the default), `reel-F-wild-build.sh`, `reel-F-classic-build.sh`, `reel-E-timelapse-build.sh`. Edit one for a new job. |
 | `audio/` | `extract.sh` pulls only the sound from clips; `transcribe.sh` sends audio to OpenAI whisper-1 (ask Matt first, every job). |
 | `reference-board/board.cjs` | Makes the numbered reference board (one image of example frames and covers) that goes with a brand pack update prompt. Set `JOB` to the job folder and `WILD` to a wild card still. |
+| `review/review.cjs` | Review cards in the pack's review template, Instagram 1080x1440 and Google Business 1200x1200. Settings for each size are at the top of the file. Needs Playwright. |
 | `storyboard/` | Builds the stills-only storyboard page and the decisions page. Examples to copy from, not finished tools. |
 
 The scripts came out of the Worplesdon job (20 Nov 2026) and still carry some of its values. Read a script before reusing it.
