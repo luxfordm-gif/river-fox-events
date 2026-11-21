@@ -8,7 +8,7 @@
 // Laura's brand is elegant: a long quote gets slightly smaller text, open line spacing and plenty of pink around it, never bigger text and never much smaller (Matt, 2026-11-21).
 // Check the wrap after any size change: lines stay even, with no short tail line.
 // Judge the size at phone size (the card shown 390px wide), not at full size on a computer screen.
-// The quote is the full review, word for word (emojis left off). Join the last two words with &nbsp; so the last line is never one word.
+// The quote is the full review in the client's own words (emojis left off), spelling and grammar checked first: fix clear slips only, never reword, and tell Matt each change. Join the last two words with &nbsp; so the last line is never one word.
 const { chromium } = require('playwright');
 const cards = JSON.parse(process.argv[2]);
 const html = (c) => `<!doctype html><meta charset="utf-8">
