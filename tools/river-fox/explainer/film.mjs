@@ -11,7 +11,9 @@ const { chromium } = createRequire(import.meta.url)("playwright");
 
 const FPS = 30, WORKERS = 4;
 const VOICE = process.env.VOICE || "sage";
-const STYLE = "A bright, friendly woman from the south of England, speaking British English. Light and playful, with a smile in her voice, at a natural lively pace. Dry sense of humour.";
+const STYLE = "A British woman from the south of England talking to a colleague, both adults. Plain, relaxed and fairly quick, the way people really talk. Flat, even delivery: no performing, no sing-song, no emphasis on words, no smile in the voice.";
+const TEMPO = 1.1; // speeds the voice up a little without changing its pitch
+const SFX = process.env.SFX === "1"; // sound effects are off unless asked for (Matt, 2026-11-21: the generated ones sounded wrong)
 const key = process.env.OPENAI_API_KEY || "sk-proxy";
 mkdirSync("out/film/voice", { recursive: true });
 const ff = (...a) => execFileSync("ffmpeg", ["-y", "-v", "error", ...a]);
@@ -30,12 +32,12 @@ if (!existsSync("out/film/timeline.js")) writeFileSync("out/film/timeline.js", "
 let page = await open();
 const timeline = {}, clips = {};
 for (const { id, text } of await page.evaluate("window.LINES")) {
-  const hash = createHash("sha1").update(VOICE + STYLE + text).digest("hex").slice(0, 8);
+  const hash = createHash("sha1").update(VOICE + STYLE + TEMPO + text).digest("hex").slice(0, 8);
   const raw = `out/film/voice/${id}-${hash}.wav`, clean = `out/film/voice/${id}-${hash}-trim.wav`;
   if (!existsSync(raw)) execFileSync("curl", ["-sS", "--fail-with-body", "https://api.openai.com/v1/audio/speech", "-H", `Authorization: Bearer ${key}`,
     "-H", "Content-Type: application/json", "-o", raw, "-d", JSON.stringify({ model: "gpt-4o-mini-tts", voice: VOICE, input: text, instructions: STYLE, response_format: "wav" })]);
   const trim = "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05";
-  if (!existsSync(clean)) ff("-i", raw, "-af", `${trim},areverse,${trim},areverse`, "-ar", "48000", clean);
+  if (!existsSync(clean)) ff("-i", raw, "-af", `${trim},areverse,${trim},areverse,atempo=${TEMPO}`, "-ar", "48000", clean);
   timeline[id] = +secs(clean).toFixed(3);
   clips[id] = clean;
 }
@@ -59,7 +61,8 @@ if (process.argv.includes("--stills")) {
 
 // 2. Sound effects, then one audio track: voice over the effects.
 writeFileSync("out/film/events.json", JSON.stringify(events));
-execFileSync("python3", ["film-sound.py", String(duration)], { stdio: "inherit" });
+if (SFX) execFileSync("python3", ["film-sound.py", String(duration)], { stdio: "inherit" });
+else ff("-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", "1", "out/film/sfx.wav");
 const inputs = ["-i", "out/film/sfx.wav"], filters = ["[0:a]volume=0.5[s]"], names = ["[s]"];
 lines.forEach(({ id, at }, i) => { inputs.push("-i", clips[id]); filters.push(`[${i + 1}:a]adelay=${Math.round(at * 1000)}[v${i}]`); names.push(`[v${i}]`); });
 ff(...inputs, "-filter_complex", `${filters.join(";")};${names.join("")}amix=inputs=${names.length}:normalize=0,alimiter=limit=0.95[a]`, "-map", "[a]", "-t", String(duration), "out/film/audio.wav");
