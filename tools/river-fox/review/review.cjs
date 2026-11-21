@@ -8,9 +8,17 @@
 // Laura's brand is elegant: a long quote gets slightly smaller text, open line spacing and plenty of pink around it, never bigger text and never much smaller (Matt, 2026-11-21).
 // Check the wrap after any size change: lines stay even, with no short tail line.
 // Judge the size at phone size (the card shown 390px wide), not at full size on a computer screen.
-// The quote is the full review, word for word (emojis left off). Join the last two words with &nbsp; so the last line is never one word.
+// The quote is the full review in the client's own words (emojis left off), spelling and grammar checked first: fix clear slips only, never reword, and tell Matt each change. Join the last two words with &nbsp; so the last line is never one word.
 const { chromium } = require('playwright');
-const cards = JSON.parse(process.argv[2]);
+// Straight quote marks and apostrophes are always turned into curly ones (Matt, 2026-11-21); the run prints how many it changed.
+const curly = (s) => String(s)
+  .replace(/(^|[\s(\[>-]|&nbsp;)"/g, '$1“').replace(/"/g, '”')
+  .replace(/(^|[\s(\[>-]|&nbsp;)'/g, '$1‘').replace(/'/g, '’');
+const cards = JSON.parse(process.argv[2]).map((c) => {
+  const straight = ((c.quote + c.name).match(/['"]/g) || []).length;
+  console.log(`${c.out}: ${straight} straight quote mark(s) or apostrophe(s) made curly`);
+  return { ...c, quote: curly(c.quote), name: curly(c.name) };
+});
 const html = (c) => `<!doctype html><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&family=Fraunces:opsz,wght@9..144,400&display=swap" rel="stylesheet">
 <style>html,body{margin:0}body{width:${c.w}px;height:${c.h}px;background:#F7EEE9;display:flex;flex-direction:column;align-items:center;justify-content:center;}
