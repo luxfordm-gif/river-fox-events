@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { toast } from "sonner";
 import Nav from "@/components/rfx/Nav";
 import ChristmasHero from "@/components/rfx/ChristmasHero";
@@ -84,6 +84,7 @@ import adThumb360 from "@/assets/christmas/video/cream-house-door-lit-jewel-baub
 import adThumb540 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-540.webp";
 import adThumb720 from "@/assets/christmas/video/cream-house-door-lit-jewel-bauble-garland-720.webp";
 import { trackFormSent } from "@/lib/track";
+import { christmasOn } from "@/lib/announcementBar";
 import { whatsappHref } from "@/lib/whatsapp";
 import { SectionHeading } from "@/components/rfx/SectionHeading";
 
@@ -204,12 +205,38 @@ const FRESH_OR_FAUX_FAQ = {
   a: "Fresh spruce brings the scent and natural foliage of a real Christmas tree, and lasts through the festive season into January. Faux is beautifully full, can go up whenever you wish, and can be enjoyed year after year.",
 };
 
+/* Three questions that follow "fresh spruce or faux" on both pages (Matt,
+   2026-11-22). The December dates one is only true this season, so it goes
+   with the Christmas switch-off (christmasEndsOn in
+   src/data/announcementBar.ts, 3 January 2027). */
+const WREATH_FAQ = {
+  q: "Can you make a Christmas wreath to match my door garland?",
+  a: "Yes. I make wreaths to match your garland, using the same baubles, ribbon and colours so the two look like one design. Add it to your enquiry along with a photo of your door.",
+};
+
+const AT_HOME_FAQ = {
+  q: "Do I need to be home when my garland goes up?",
+  a: "No. I can set up while you're out. The one thing I can't do is plug the lights in, so you'll need to switch them on yourself when you're home.",
+};
+
+const DECEMBER_DATES_FAQ = {
+  q: "Do you still have December dates?",
+  a: "Yes, I have dates available in December. Send me a photo of your door and your postcode and I'll confirm a date with your quote.",
+};
+
+/** The questions that sit straight after "fresh spruce or faux". */
+const afterFreshOrFaux = (christmas: boolean) => [
+  WREATH_FAQ,
+  AT_HOME_FAQ,
+  ...(christmas ? [DECEMBER_DATES_FAQ] : []),
+];
+
 const TAKEDOWN_FAQ = {
   q: "Is the January takedown included?",
   a: "Takedown is an optional extra. Add it when you book, or let me know before Christmas, and I'll come back in January to take everything down and leave your doorway as I found it.",
 };
 
-const FAQS_HOME = [
+const faqsHome = (christmas: boolean) => [
   AREAS_FAQ,
   {
     q: "Do you travel outside Surrey?",
@@ -243,6 +270,7 @@ const FAQS_HOME = [
   },
   /* Homes wording (Matt 2026-11-09); the business page keeps the shared one. */
   { ...FRESH_OR_FAUX_FAQ, a: FRESH_OR_FAUX_FAQ.a.replace("Faux is beautifully full", "Faux is full and lush") },
+  ...afterFreshOrFaux(christmas),
   {
     q: "Can you match my door, brick or brand colours?",
     a: "Always. Every doorway starts with your paintwork, so the baubles, ribbon and accents are chosen to suit your door, brickwork or brand rather than taken from a set design.",
@@ -255,7 +283,7 @@ const FAQS_HOME = [
 ];
 
 /* Business version: the questions a shop, salon or restaurant asks first. */
-const FAQS_BUSINESS = [
+const faqsBusiness = (christmas: boolean) => [
   {
     q: "Can you install around our opening hours?",
     a: "Yes. Tell me your opening hours when you enquire and I'll arrange the install around them, so your customers walk up to a finished entrance.",
@@ -285,6 +313,7 @@ const FAQS_BUSINESS = [
     a: "As early as you can. Install dates in late November and early December go first, and most businesses like their entrance dressed before the Christmas shopping weekends begin.",
   },
   FRESH_OR_FAUX_FAQ,
+  ...afterFreshOrFaux(christmas),
   {
     q: "What do you need from us for a quote?",
     a: "A photo of your entrance or shopfront, rough measurements and your postcode. Your brand colours help too. I'll come back with ideas, a colour palette and a quote.",
@@ -506,6 +535,8 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
   const routePath = biz ? "/commercial-christmas-decorations" : "/christmas-door-garlands";
   const fan = biz ? FAN_BUSINESS : FAN;
   const cards = biz ? CARDS_BUSINESS : CARDS_HOME;
+  // Worked out once, so the list keeps its identity between renders.
+  const faqs = useMemo(() => (biz ? faqsBusiness : faqsHome)(christmasOn()), [biz]);
 
   useEffect(() => {
     const route = findRoute(routePath)!;
@@ -859,7 +890,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
         </section>
 
         <FaqSection
-          faqs={biz ? FAQS_BUSINESS : FAQS_HOME}
+          faqs={faqs}
           headingId="xmas-faq-heading"
           heading={<>Your questions <em className="t-accent">answered.</em></>}
           className="xmas-faq"
@@ -960,6 +991,14 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     <input type="checkbox" name="takedown" value="Yes" />
                     <span className="t-small text-ink">
                       Add January takedown
+                    </span>
+                    <span className="xmas-tag ml-auto">Extra</span>
+                  </label>
+                  {/* A wreath to match the garland (Matt, 2026-11-22). */}
+                  <label className="form-row full form-check">
+                    <input type="checkbox" name="wreath" value="Yes" />
+                    <span className="t-small text-ink">
+                      Add a matching wreath
                     </span>
                     <span className="xmas-tag ml-auto">Extra</span>
                   </label>
