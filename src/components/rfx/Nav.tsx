@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
 import { ChevronDown } from "lucide-react";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
+import { christmasOn } from "@/lib/announcementBar";
 
 const SERVICES = [
   { href: "/childrens-parties/", label: "Children's parties" },
@@ -35,11 +36,19 @@ const ABOUT_LINKS = [
 const MENU_ITEM = "no-underline-fx nav-menu__item t-label text-ink hover:underline underline-offset-4 decoration-ink/60";
 
 /** The phone menu's main links: the same pages as the desktop menus, plus Home, Our work and Contact. */
+/* The two Christmas links show in season only; from christmasEndsOn
+   (src/data/announcementBar.ts) they leave the menus (Matt, 2026-11-22). */
+const IN_SEASON = christmasOn();
+
 const PHONE_LINKS = [
   { href: "/", label: "Home" },
   ...SERVICES,
-  { href: SEASONAL.href, label: "Christmas garlands", seasonal: true },
-  { ...SEASONAL_BUSINESS, seasonal: true },
+  ...(IN_SEASON
+    ? [
+        { href: SEASONAL.href, label: "Christmas garlands", seasonal: true },
+        { ...SEASONAL_BUSINESS, seasonal: true },
+      ]
+    : []),
   { href: "/our-work/", label: "Our work" },
   { href: "/#about", label: "About" },
   { href: "/contact/", label: "Contact" },
@@ -123,15 +132,19 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                 {l.label}
               </a>
             ))}
-            <div className="nav-menu__rule border-t border-hair" aria-hidden="true" />
-            <a href={SEASONAL.href} onMouseEnter={jingleBow} className={MENU_ITEM}>
-              <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />
-              {SEASONAL.label}
-            </a>
-            <a href={SEASONAL_BUSINESS.href} onMouseEnter={jingleBow} className={MENU_ITEM}>
-              <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />
-              {SEASONAL_BUSINESS.label}
-            </a>
+            {IN_SEASON && (
+              <>
+                <div className="nav-menu__rule border-t border-hair" aria-hidden="true" />
+                <a href={SEASONAL.href} onMouseEnter={jingleBow} className={MENU_ITEM}>
+                  <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />
+                  {SEASONAL.label}
+                </a>
+                <a href={SEASONAL_BUSINESS.href} onMouseEnter={jingleBow} className={MENU_ITEM}>
+                  <img src={bow160} alt="" aria-hidden="true" className="w-[18px] h-auto -my-1" width={160} height={165} />
+                  {SEASONAL_BUSINESS.label}
+                </a>
+              </>
+            )}
           </NavDropdown>
           <a href="/our-work/" className="t-label whitespace-nowrap">Our work</a>
           <NavDropdown label="About" menuWidth="min-w-[200px]">

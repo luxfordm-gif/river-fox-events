@@ -321,7 +321,7 @@ function onPageHide() {
  *
  * customer_type is "home" or "business": the garland form asks directly; the
  * party forms count a corporate event as business. garland is only on the
- * garland form.
+ * garland form, as are wreath and takedown ("yes" / "no": the two extras).
  */
 export function trackFormSent(form: HTMLFormElement) {
   finished.add(form);
@@ -342,6 +342,10 @@ export function trackFormSent(form: HTMLFormElement) {
     ...formParams(form),
     customer_type: customerType,
     garland: get("garland") || undefined,
+    // The garland form's two paid extras, so wreath leads can be told apart.
+    ...(form.getAttribute("name") === "christmas-doorway"
+      ? { wreath: get("wreath") ? "yes" : "no", takedown: get("takedown") ? "yes" : "no" }
+      : {}),
     last_photo: lastPhoto?.id,
     photos_opened: photosOpened || undefined,
   });

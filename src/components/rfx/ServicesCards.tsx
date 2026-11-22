@@ -1,4 +1,5 @@
-import { useRef, useState, type PointerEvent, type ReactNode } from "react";
+import { useEffect, useState, type PointerEvent, type ReactNode } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { Viewer, type ViewerItem } from "@/components/rfx/PhotoViewer";
 import { trackTileSwipe } from "@/lib/track";
 import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
@@ -9,8 +10,10 @@ import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
  * name under it. The name is an h3 in body text (t-small), so it keeps its
  * weight for search without shouting.
  *
- * Phones: a centred swipe row, about 1.6 cards in view with the next one
- * peeking in (`--tile-card-width`), and pagination dots under it. Tablet up: a
+ * Phones: a centred swipe row, about 1.6 cards in view with a neighbour
+ * peeking in on both sides (`--tile-card-width`), and pagination dots under
+ * it. The row loops like "Kind words": the last card sits to the left of the
+ * first, so there is never an empty space (Matt, 2026-11-22). Tablet up: a
  * grid, four across, all tiles shown. Tiles are 12 or 16 so rows end full.
  * Tiles are plain names, never links (Matt, 2026-11-18: a tap that opened a
  * journal article was unexpected). A tap opens the photo larger in the same
@@ -52,25 +55,34 @@ const ServicesCards = ({
   divided = false,
   footer,
 }: ServicesCardsProps) => {
-  const track = useRef<HTMLUListElement>(null);
+  /* The same looping carousel as the reviews, on phones only: from tablet up
+     it is switched off and the row is a plain grid. */
+  const [viewport, api] = useEmblaCarousel({
+    align: "center",
+    loop: true,
+    breakpoints: { "(min-width: 768px)": { active: false } },
+  });
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState<number | null>(null);
   const dots = Math.ceil(items.length / CARDS_PER_DOT);
 
-  /* The lit dot follows how far along the row you've swiped. */
-  const onScroll = () => {
-    const el = track.current;
-    if (!el) return;
-    const max = el.scrollWidth - el.clientWidth;
-    if (el.scrollLeft > 24) trackTileSwipe(el);
-    setActive(max > 0 ? Math.round((el.scrollLeft / max) * (dots - 1)) : 0);
-  };
-  const goTo = (i: number) => {
-    const el = track.current;
-    if (!el) return;
-    const max = el.scrollWidth - el.clientWidth;
-    el.scrollTo({ left: (i / (dots - 1)) * max, behavior: "smooth" });
-  };
+  /* The lit dot follows the card in the middle; the first move along a row
+     is counted once (tile_swipe). */
+  useEffect(() => {
+    if (!api) return;
+    const onSelect = () => {
+      const i = api.selectedScrollSnap();
+      setActive(Math.floor(i / CARDS_PER_DOT));
+      if (i > 0) trackTileSwipe(api.containerNode());
+    };
+    api.on("select", onSelect);
+    api.on("reInit", onSelect);
+    return () => {
+      api.off("select", onSelect);
+      api.off("reInit", onSelect);
+    };
+  }, [api]);
+  const goTo = (i: number) => api?.scrollTo(i * CARDS_PER_DOT);
 
   const openAt = (i: number) => () => setOpen(i);
 
@@ -103,7 +115,8 @@ const ServicesCards = ({
           </div>
         )}
 
-        <ul ref={track} onScroll={onScroll} className="tile-card-row">
+        <div ref={viewport} className="tile-card-viewport">
+        <ul className="tile-card-row">
           {items.map((s, i) => (
             <li key={s.title}>
               <div className="tile-card" data-track-photo={s.source} data-track-text={s.title} onClick={openAt(i)} onPointerMove={tilt} onPointerLeave={untilt}>
@@ -125,6 +138,7 @@ const ServicesCards = ({
             </li>
           ))}
         </ul>
+        </div>
         <div className="carousel-dots md:hidden" role="tablist" aria-label="Choose a tile">
           {Array.from({ length: dots }, (_, i) => (
             <button

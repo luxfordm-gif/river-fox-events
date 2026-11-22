@@ -253,11 +253,21 @@ describe("forms", () => {
         <input type="hidden" name="form-name" value="christmas-doorway" />
         <select name="property"><option selected>Home</option></select>
         <select name="garland"><option selected>Fresh spruce</option></select>
+        <input type="checkbox" name="takedown" value="Yes" />
+        <input type="checkbox" name="wreath" value="Yes" checked />
       </form></section>`;
     trackFormSent(document.querySelector("form")!);
     expect(named("generate_lead")).toEqual([
-      expect.objectContaining({ form_name: "christmas-doorway", customer_type: "home", garland: "Fresh spruce" }),
+      expect.objectContaining({
+        form_name: "christmas-doorway", customer_type: "home", garland: "Fresh spruce", wreath: "yes", takedown: "no",
+      }),
     ]);
+  });
+
+  it("leaves the garland extras off the party forms", () => {
+    accept();
+    trackFormSent(enquireForm());
+    expect(named("generate_lead")[0]).not.toHaveProperty("wreath");
   });
 
   it("is not sent before Accept", () => {

@@ -968,23 +968,18 @@
   /* "What we do" photo tiles that link on (ServicesCards): the same gentle
      5% zoom as the service cards. Plain tiles don't move. */
   /* Tile cards: a light card with the photo on top and the name under it.
-     Phones: a left-aligned swipe row, the next card peeking in, dots below.
-     Tablet up: a grid, four across. */
-  .tile-card-row {
-    display: flex; gap: var(--gap-stack); list-style: none; padding: 0;
-    overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
-    margin-inline: calc(-1 * var(--gutter));
-    /* Centred: the card in view sits in the middle of the screen, the neighbours peek in on both sides (Matt 2026-11-20) */
-    padding-inline: calc((100vw - var(--tile-card-width)) / 2);
-  }
-  .tile-card-row::-webkit-scrollbar { display: none; }
-  .tile-card-row > li { flex: none; width: var(--tile-card-width); scroll-snap-align: center; display: flex; }
+     Phones: a centred swipe row that loops (the carousel in ServicesCards
+     moves it), a neighbour peeking in on both sides, dots below (Matt
+     2026-11-20, looping since 2026-11-22). Tablet up: a grid, four across. */
+  .tile-card-viewport { overflow: hidden; margin-inline: calc(-1 * var(--gutter)); }
+  .tile-card-row { display: flex; list-style: none; padding: 0; touch-action: pan-y pinch-zoom; }
+  /* The gap is a margin on each card, not a flex gap, so the join between
+     the last card and the first is spaced like the rest. */
+  .tile-card-row > li { flex: none; width: var(--tile-card-width); margin-inline-end: var(--gap-stack); display: flex; }
   @media (min-width: 768px) {
-    .tile-card-row {
-      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap-stack);
-      overflow: visible; margin-inline: 0; padding-inline: 0;
-    }
-    .tile-card-row > li { width: auto; }
+    .tile-card-viewport { overflow: visible; margin-inline: 0; }
+    .tile-card-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap-stack); }
+    .tile-card-row > li { width: auto; margin-inline-end: 0; }
   }
   .tile-card {
     display: block; width: 100%; cursor: pointer;

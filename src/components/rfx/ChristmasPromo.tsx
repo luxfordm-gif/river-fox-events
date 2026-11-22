@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import "@/styles/christmas.css";
+import { christmasOn } from "@/lib/announcementBar";
 
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
 import pine160 from "@/assets/christmas/pine-branch-fairy-lights-frosted-cone-160.webp";
@@ -36,6 +37,8 @@ const ChristmasPromo = () => {
   const [front, setFront] = useState(0);
 
   useEffect(() => {
+    // Gone with the rest of the Christmas campaign (3 January 2027).
+    if (!christmasOn()) return;
     if (window.location.pathname.startsWith("/christmas-door-garlands")) return;
     try {
       if (localStorage.getItem(DISMISS_KEY)) return;
