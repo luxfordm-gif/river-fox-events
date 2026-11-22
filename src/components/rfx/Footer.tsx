@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronRight, Facebook, Instagram } from "lucide-react";
 import { useScrollY } from "@/hooks/useRiverFox";
 import { whatsappHref } from "@/lib/whatsapp";
+import { christmasOn } from "@/lib/announcementBar";
 
 const Footer = () => {
   const y = useScrollY();
@@ -114,8 +115,13 @@ const Footer = () => {
                 <a href="/milestone-celebrations/" className="opacity-85 hover:opacity-100 block">Milestone celebration styling</a>
                 <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate event styling</a>
                 <a href="/balloon-installations/" className="opacity-85 hover:opacity-100 block">Balloon decorations</a>
-                <a href="/christmas-door-garlands/" className="opacity-85 hover:opacity-100 block">Christmas door garlands</a>
-                <a href="/commercial-christmas-decorations/" className="opacity-85 hover:opacity-100 block">Christmas for businesses</a>
+                {/* In season only (Matt, 2026-11-22). */}
+                {christmasOn() && (
+                  <>
+                    <a href="/christmas-door-garlands/" className="opacity-85 hover:opacity-100 block">Christmas door garlands</a>
+                    <a href="/commercial-christmas-decorations/" className="opacity-85 hover:opacity-100 block">Christmas for businesses</a>
+                  </>
+                )}
               </div>
             </div>
             <div>

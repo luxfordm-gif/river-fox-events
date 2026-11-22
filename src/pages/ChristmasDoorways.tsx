@@ -224,12 +224,36 @@ const DECEMBER_DATES_FAQ = {
   a: "Yes, I have dates available in December. Send me a photo of your door and your postcode and I'll confirm a date with your quote.",
 };
 
+/* The same three for the business page, in a shop's words (Matt, 2026-11-22). */
+const WREATH_FAQ_BUSINESS = {
+  q: "Can you make a wreath to match our entrance garland?",
+  a: "Yes. I make wreaths to match your garland, using the same baubles, ribbon and colours so the two look like one design. Add it to your enquiry along with a photo of your entrance.",
+};
+
+const ON_SITE_FAQ_BUSINESS = {
+  q: "Do we need to be there when the garland goes up?",
+  a: "No. I can set up while you're closed. The one thing I can't do is plug the lights in, so you'll need to switch them on yourself when you open.",
+};
+
+const DECEMBER_DATES_FAQ_BUSINESS = {
+  q: "Do you still have December dates for businesses?",
+  a: "Yes, I have dates available in December. Send me a photo of your entrance and your postcode and I'll confirm a date with your quote.",
+};
+
 /** The questions that sit straight after "fresh spruce or faux". */
-const afterFreshOrFaux = (christmas: boolean) => [
-  WREATH_FAQ,
-  AT_HOME_FAQ,
-  ...(christmas ? [DECEMBER_DATES_FAQ] : []),
+const afterFreshOrFaux = (christmas: boolean, biz = false) => [
+  biz ? WREATH_FAQ_BUSINESS : WREATH_FAQ,
+  biz ? ON_SITE_FAQ_BUSINESS : AT_HOME_FAQ,
+  ...(christmas ? [biz ? DECEMBER_DATES_FAQ_BUSINESS : DECEMBER_DATES_FAQ] : []),
 ];
+
+/* Out of season (from christmasEndsOn, 3 January 2027) both pages stay up
+   for next year: the menu and footer links, the home banner and the pop-out
+   card go, and these lines say when garlands are back (Matt, 2026-11-22).
+   Each autumn: move christmasEndsOn on a year and update these three. */
+const SEASON_YEAR = 2026;
+const NEXT_SEASON_YEAR = SEASON_YEAR + 1;
+const OFF_SEASON_NOTE = `Christmas ${SEASON_YEAR} has been and gone. ${NEXT_SEASON_YEAR} garlands open in early November.`;
 
 const TAKEDOWN_FAQ = {
   q: "Is the January takedown included?",
@@ -313,7 +337,7 @@ const faqsBusiness = (christmas: boolean) => [
     a: "As early as you can. Install dates in late November and early December go first, and most businesses like their entrance dressed before the Christmas shopping weekends begin.",
   },
   FRESH_OR_FAUX_FAQ,
-  ...afterFreshOrFaux(christmas),
+  ...afterFreshOrFaux(christmas, true),
   {
     q: "What do you need from us for a quote?",
     a: "A photo of your entrance or shopfront, rough measurements and your postcode. Your brand colours help too. I'll come back with ideas, a colour palette and a quote.",
@@ -536,7 +560,8 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
   const fan = biz ? FAN_BUSINESS : FAN;
   const cards = biz ? CARDS_BUSINESS : CARDS_HOME;
   // Worked out once, so the list keeps its identity between renders.
-  const faqs = useMemo(() => (biz ? faqsBusiness : faqsHome)(christmasOn()), [biz]);
+  const inSeason = useMemo(() => christmasOn(), []);
+  const faqs = useMemo(() => (biz ? faqsBusiness : faqsHome)(inSeason), [biz, inSeason]);
 
   useEffect(() => {
     const route = findRoute(routePath)!;
@@ -587,7 +612,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
       // (src/lib/track.ts). Read before form.reset() below clears the fields.
       trackFormSent(form);
       /* A toast, so the form card keeps its height (Matt, 2026-11-14). */
-      toast.success(`Thank you - I've got your ${biz ? "entrance" : "door"} details. I'll be in touch within 24 hours with ideas, a colour palette and a quote. Laura`);
+      toast.success(`Thank you - I've got your ${biz ? "entrance" : "door"} details. I'll be in touch${inSeason ? " within 24 hours" : ""} with ideas, a colour palette and a quote. Laura`);
       form.reset();
     } catch (err) {
       toast.error("Sorry - something went wrong. Please email Riverfoxevents@gmail.com directly.");
@@ -611,7 +636,9 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
           <div className="container-rfx">
             <div className="xmas-hero-text mt-2 md:mt-4 hero-gap-below flex flex-col items-center text-center">
               <p className="t-overline text-ink-soft">
-                {biz ? "Christmas 2026 · For businesses" : "Christmas 2026 · Now booking"}
+                {inSeason
+                  ? `Christmas ${SEASON_YEAR} · ${biz ? "For businesses" : "Now booking"}`
+                  : `Christmas ${NEXT_SEASON_YEAR} · Opens early November`}
               </p>
               <h1
                 id="xmas-hero-heading"
@@ -644,6 +671,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                     </p>
                   </>
                 )}
+                {!inSeason && <p>{OFF_SEASON_NOTE}</p>}
               </div>
               {/* Enquire now everywhere; phones also get WhatsApp Laura now,
                   pre-filled so they only add a postcode (Matt, 2026-11-06).
@@ -916,7 +944,7 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   <em className="t-accent">{biz ? "Christmas entrance." : "Christmas doorway."}</em>
                 </SectionTitle>
                 <p className="t-lead measure-lead heading-to-text text-on-deep">
-                  Late November and early December dates go fast.
+                  {inSeason ? "Late November and early December dates go fast." : OFF_SEASON_NOTE}
                 </p>
                 <p className="t-lead measure-lead text-to-text text-ink-faint">
                   {biz
@@ -931,11 +959,13 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
                   </a>
                   .
                 </p>
-                <p className="text-to-text t-body text-on-deep">
-                  {/* 24 hours here, not the site's 1 to 2 working days: it's so close
-                      to Christmas (Matt, 2026-11-13). */}
-                  I reply within 24 hours.
-                </p>
+                {/* 24 hours here, not the site's 1 to 2 working days: it's so close
+                    to Christmas (Matt, 2026-11-13). In season only. */}
+                {inSeason && (
+                  <p className="text-to-text t-body text-on-deep">
+                    I reply within 24 hours.
+                  </p>
+                )}
 
               </div>
 
