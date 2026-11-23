@@ -27,7 +27,8 @@ The code for riverfoxevents.co.uk. Anything merged into `main` on GitHub goes li
 | `vitest.config.ts` | The automatic checks |
 | `components.json` | shadcn/ui, only used when adding a new ready-made component |
 | `netlify.toml` | Netlify's build settings |
-| `CLAUDE.md` | The project rules Claude follows (brand, copy, design system, SEO) |
+| `CLAUDE.md` | The short core rules Claude reads every session; detail is in `docs/claude/` |
+| `docs/claude/` | The full project rules (brand, copy, design system, SEO, build), one file per area |
 
 **Made by the computer, safe to ignore**
 
