@@ -107,7 +107,7 @@ const FAQS = [
 ];
 
 /* The shared Balloons review order (src/data/reviewOrder.ts), leaving out any
-   review without a first name ("LP") or marked NAME NEEDED (Matt, 2026-11-18). */
+   review without a first name ("L P") or marked NAME NEEDED (Matt, 2026-11-18). */
 const BALLOON_PAGE_REVIEWS = BALLOON_REVIEWS.filter(
   (r) => /[a-z]{2,}/.test(r.a) && !/name needed/i.test(r.a)
 );
