@@ -18,7 +18,7 @@ const About = () => {
           <div className="about-photo rounded-large">
             {/*
               SEO REMINDER: alt text must describe what is in the photo
-              (max 125 characters, no brand name - CLAUDE.md).
+              (max 125 characters, no brand name - docs/claude/content-and-images.md).
             */}
             <img
               src={studioImg}

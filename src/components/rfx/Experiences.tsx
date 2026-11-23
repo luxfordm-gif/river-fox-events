@@ -141,7 +141,7 @@ const ExpCard = ({ it, compact }: { it: ExpItem; compact?: boolean }) => {
       >
         {/*
           ALT TEXT: describe what is in the photo (max 125 characters, no
-          brand name - CLAUDE.md). One image file, one alt across the site:
+          brand name - docs/claude/content-and-images.md). One image file, one alt across the site:
           reuse the alt the same file has elsewhere.
         */}
         <img

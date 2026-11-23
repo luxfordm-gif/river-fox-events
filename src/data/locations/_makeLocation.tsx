@@ -8,7 +8,7 @@ import imgGallery2 from "@/assets/corporate-gala-styling-surrey.webp";
 
 // Latest Work - shared image pool for location pages. Each entry has a single
 // canonical alt that describes the photo (no per-town interpolation, per the
-// "one image, one alt" rule in CLAUDE.md). Towns pick 6 of these 10 keys via
+// "one image, one alt" rule in docs/claude/content-and-images.md). Towns pick 6 of these 10 keys via
 // the optional `images` override on makeLocation.
 import lw40thRoseGold from "@/assets/river-fox-events-40th-birthday-rose-gold-marquee-sunlit.webp";
 import lwBabyShowerBloom from "@/assets/river-fox-events-baby-shower-baby-in-bloom-arch-portrait.webp";

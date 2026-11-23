@@ -81,7 +81,7 @@ Trade / legal jargon — never use when writing about a character or branded the
 
 It's industry-side language that pulls the article out of Laura's voice and into stylist-trade-talk, and it raises a legal frame the brand doesn't need to invite. Refer to it as "the theme" or name the specific theme. Custom-built props are "painted in-studio" or "built in-studio" — the design point (palette discipline, personalisation, restraint) lands without needing to name the licensing question at all.
 
-Capped vocabulary (per `CLAUDE.md`):
+Capped vocabulary (per `docs/claude/seo.md`):
 - "Bespoke" — **free to use in body copy** (it's Laura's own word), but still banned from titles and capped at once per meta description (an SEO duplicate-content guard, not a tone rule)
 - "Luxury" — max twice across all page titles site-wide
 - "From £300" — appears in max 6 page metas site-wide
@@ -205,7 +205,7 @@ The `Laura x` sign-off and the "Why I love this part" section are the soul of th
 - **Target: 900–1300 words** of body prose (excluding TL;DR and captions).
 - **Paragraphs: 2–4 sentences max.** Break often.
 - **Sections: 3–5 `<h2>` headings**, including the closing "Why I love this part".
-- **One named local entity per paragraph max.** Town name appears max 3 times in the prose, 8–10 times across the whole page (per CLAUDE.md location-page rules — apply same discipline here).
+- **One named local entity per paragraph max.** Town name appears max 3 times in the prose, 8–10 times across the whole page (per the location-page rules in docs/claude/seo.md — apply same discipline here).
 
 ---
 
@@ -222,7 +222,7 @@ Use `<a href="/#enquire">` in MDX-style content. Components handle the smooth-sc
 
 ## 6. Images
 
-Per `CLAUDE.md`:
+Per `docs/claude/content-and-images.md`:
 - **Format: WebP.** Compressed before commit.
 - **Hero < 500 KB, supporting < 200 KB.** Lossy quality 75–85.
 - **Filenames** describe content, not page: `cobham-balloon-arch-pastel.webp`, not `journal-image-1.webp`.
