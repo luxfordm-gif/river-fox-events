@@ -1,6 +1,6 @@
 # River Fox content tools
 
-Scripts the `river-fox` skill uses to turn Laura's photos and videos into finished posts. The skill (`~/.claude/skills/river-fox/`) says what to do; these are the tools it runs. The photo editing with OpenAI's image model is next door in `tools/photo-grade/`.
+Scripts the `river-fox` skill uses to turn Laura's photos and videos into finished posts. The skill (`.claude/skills/river-fox/` in this repo) says what to do; these are the tools it runs. The photo editing with OpenAI's image model is next door in `tools/photo-grade/`.
 
 Run from a working folder for the job and set `WORK` to it, e.g. `WORK=~/river-fox-work/worplesdon`. **The working folder is kept, on the Mac, not in Drive and not in a temporary folder** (the reel scripts refuse one): it holds Laura's clips, the text images, the caption frames and `plates/`, the picture with no text on it, so a later re-cut is never made from a finished video. Fonts load from Google Fonts, so a network connection is needed. Chrome must be installed on the Mac.
 
