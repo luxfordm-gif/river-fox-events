@@ -3,6 +3,8 @@ name: instagram-story
 description: Make a captioned River Fox Instagram Story (or Reel) from Laura's clips - cut around what she says, subtitle her words in logo-pink boxes, a top headline in the pack's serif, a big finale word, house colour grade, a thumbnail, and a set of stills for Stories and Posts. Use when Matt says "Instagram story", "story", "reel", "add captions to these videos", "subtitles", "cut these clips for Instagram", or sends Laura's WhatsApp clips. First made 18 Nov 2026 from Laura's Christmas garland making clips; Matt approved the style.
 ---
 
+> **History only (23 Nov 2026).** Any size, font, colour, position or safe area written below is a record of what was done at the time, not a rule. Brand and social rules live in the Brand Pack canvas; the tools' values are in `tools/river-fox/brand-pack.json`.
+
 # Instagram Story / Reel (River Fox)
 
 **The style is defined here and only here.** The brand book and social pack (Drive › Brand › Brand book) do not yet cover Stories or Reels with captions: tell Matt the social pack needs a new version with the "Story and Reel captions" page below. Check the newest pack for a video page before each job; if it disagrees with this file, the pack wins and this file gets updated. Matt edits the pack himself; never edit its PDF.

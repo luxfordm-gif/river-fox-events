@@ -3,6 +3,8 @@ name: google-business-post
 description: Turn Laura's latest Instagram post into a ready-to-publish Google Business Profile post for River Fox Events. Fetches her newest photo post from @riverfox_events, grades the photos (edit-laura-photos skill), writes the post in Laura's own words, saves the images and post text to Google Drive, and sends Matt a receipt. Use when Matt says "Google Business post", "GBP post", "post her latest to Google", "make a Google post from her Instagram", or similar.
 ---
 
+> **History only (23 Nov 2026).** Any size, font, colour, position or safe area written below is a record of what was done at the time, not a rule. Brand and social rules live in the Brand Pack canvas; the tools' values are in `tools/river-fox/brand-pack.json`.
+
 # Google Business post from Laura's latest Instagram
 
 Six steps, done end to end without asking Matt to run anything. He is often on his phone: narrate in a line as

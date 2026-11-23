@@ -3,6 +3,8 @@ name: edit-laura-videos
 description: Colour grade Laura's River Fox Events videos in the house look, cut several clips into one short video, open it on a strong still (so that's the thumbnail) and close it on the River Fox end card (pink, Laura's stacked logo, a two-line serif hook, a line of capitals, the web address). Exports for Google Business, Instagram Reels, Stories or Facebook. Use when Matt says "edit Laura's video for Google Business" (or for Instagram, Facebook), or asks to grade, edit, cut, join, trim or "tidy up" videos or reels of Laura's work, add an end card or end frame to a video, or pick a video thumbnail. Photos go to edit-laura-photos instead.
 ---
 
+> **History only (23 Nov 2026).** Any size, font, colour, position or safe area written below is a record of what was done at the time, not a rule. Brand and social rules live in the Brand Pack canvas; the tools' values are in `tools/river-fox/brand-pack.json`.
+
 # Edit Laura's videos
 
 > **Filing and naming (Matt, 20 Nov):** a campaign piece is a folder `NN - Video - <short name>` (01 = newest) with an orange Finder tag; archives are `_Archive`; one folder per piece directly in the campaign. See `river-fox-photo-job`. **This skill and `instagram-story` are to be merged into one video skill** (Matt: "surely they should be one"); until then, use `instagram-story` for captioned Reels and Stories and this one for grading and joining clips, and ask about the end card: `instagram-story` says no end card.

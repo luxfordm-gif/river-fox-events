@@ -4,6 +4,10 @@
 // becomes "looove" and its letters arrive one by one across the hold. Layout is fixed from the first frame, so nothing jumps.
 const puppeteer = require(require('path').join(__dirname,'../../photo-grade/node_modules/puppeteer-core'));
 const fs = require('fs');
+// The caption looks (font, weight, size, box colours, corner) come from ../brand-pack.json, which names the Brand Pack
+// canvas board they were copied from. The timings below are build detail and are not on the canvas.
+const B = require('../brand-pack.json');
+const K = B.captions, WHITE = B.colour.warmWhite;
 const [style, dir, secs = '6.5'] = process.argv.slice(2);
 fs.mkdirSync(dir, { recursive: true });
 // groups: lines of words; a word is [text, onset] or [text, [char onsets]]
@@ -16,9 +20,9 @@ const GROUPS = [
 const FONT = '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,144,400..900,0..100,0..1&display=block" rel="stylesheet">';
 const SH = 'text-shadow:0 4px 34px rgba(30,16,10,.55),0 2px 8px rgba(30,16,10,.3)';
 const CSS = {
-  wild: `.g{position:absolute;left:0;right:0;top:290px;text-align:center;color:#FCFBF8;font-family:Fraunces,serif;font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:900;font-size:110px;line-height:1.02;letter-spacing:-.025em;${SH}}.l{display:block;white-space:nowrap}`,
-  classic: `.g{position:absolute;left:0;right:0;top:290px;text-align:center;color:#FCFBF8;font-family:Fraunces,serif;font-weight:500;font-size:106px;line-height:1.04;letter-spacing:-.03em;${SH}}.l{display:block;white-space:nowrap}`,
-  box: `.g{position:absolute;left:0;right:0;top:300px;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:Inter,sans-serif;font-weight:600;font-size:60px;line-height:1.1;letter-spacing:-.015em;color:#191C17}.l{display:inline-block;background:#F7EEE9;border-radius:4px;padding:14px 26px 17px;white-space:nowrap}`,
+  wild: `.g{position:absolute;left:0;right:0;top:290px;text-align:center;color:${WHITE};font-family:${K.wild.font},serif;font-variation-settings:"SOFT" ${K.wild.soft},"WONK" 1;font-weight:${K.wild.weight};font-size:${K.wild.px}px;line-height:1.02;letter-spacing:-.025em;${SH}}.l{display:block;white-space:nowrap}`,
+  classic: `.g{position:absolute;left:0;right:0;top:290px;text-align:center;color:${WHITE};font-family:${K.classic.font},serif;font-weight:${K.classic.weight};font-size:${K.classic.px}px;line-height:1.04;letter-spacing:-.03em;${SH}}.l{display:block;white-space:nowrap}`,
+  box: `.g{position:absolute;left:0;right:0;top:300px;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:${K.box.font},sans-serif;font-weight:${K.box.weight};font-size:${K.box.px}px;line-height:1.1;letter-spacing:-.015em;color:${K.box.text}}.l{display:inline-block;background:${K.box.fill};border-radius:${K.box.radius}px;padding:14px 26px 17px;white-space:nowrap}`,
 };
 const BIG = {
   wild: '#g1{top:235px}#g1 .l:nth-child(2){font-size:230px;line-height:.95;letter-spacing:-.04em}',
