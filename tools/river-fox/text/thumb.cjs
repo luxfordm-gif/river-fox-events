@@ -7,7 +7,10 @@ const [photo, out, W, H, l1, l2, weight = '500', fit = '940'] = process.argv.sli
 const w = +W, h = +H;
 const tall = h / w > 1.7;                           // 9:16 only; 4:5 Facebook and 3:4 posts are not cropped by a grid
 const k = w / 1080;                                  // scale handle and margins for other widths (Facebook is 1440 wide)                               // 9:16 cover: the profile grid crops the top and bottom 240px
-const handleBottom = Math.round((tall ? 405 : 100) * k);               // 9:16 cover: Facebook shows only the middle 4:5 (y 285 to 1635), the profile grid the middle 3:4. Handle about y 1500, as on the wreath cover (Matt, 21 Nov 2026: at 320 it sat on the bottom edge on Facebook)
+const fb = Math.abs(h / w - 1.25) < 0.02;           // 4:5 Facebook post cover
+// Handle height from the Brand Pack canvas ("Covers and thumbnails"): 3:4 post 238px from the bottom, 4:5 Facebook 297px at 1440 wide (223 at 1080).
+// Until 23 Nov 2026 both were 100px, which put the handle near the bottom edge; Matt chose the canvas position from an A and B sheet.
+const handleBottom = Math.round((tall ? 405 : fb ? 223 : 238) * k);               // 9:16 cover: Facebook shows only the middle 4:5 (y 285 to 1635), the profile grid the middle 3:4. Handle about y 1500, as on the wreath cover (Matt, 21 Nov 2026: at 320 it sat on the bottom edge on Facebook)
 const hookBottom = handleBottom + Math.round((tall ? 75 : 110) * k);                       // handle tucked close under the headline on a 9:16 cover
 const img = 'data:image/jpeg;base64,' + fs.readFileSync(photo).toString('base64');
 const html = `<!doctype html><meta charset=utf-8>
