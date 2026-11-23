@@ -38,7 +38,7 @@ On Matt's Mac the River Fox folder is synced at `~/Library/CloudStorage/GoogleDr
 
 ## Repo layout — one canonical local copy
 
-The active local repo is **`~/Documents/river-fox-events/`** only. A duplicate Lovable-synced clone at `~/Documents/Claude/lauras site/` was deleted on 2026-05-02 — don't recreate it. If Laura/Matt re-engage Lovable, point Lovable at the same GitHub repo, never let it spin up a parallel folder.
+The active local repo is **`~/Projects/river-fox-events/`** only (it moved from `~/Documents/river-fox-events/`, which no longer exists; checked 2026-11-23). A duplicate Lovable-synced clone at `~/Documents/Claude/lauras site/` was deleted on 2026-05-02 — don't recreate it. If Laura/Matt re-engage Lovable, point Lovable at the same GitHub repo, never let it spin up a parallel folder.
 
 `archive/` (gitignored, local only, tidied 2026-11-14) holds old files that aren't part of the site: the three unreviewed files rescued from the deleted clone (`archive/salvaged-from-old-folder/`), the June `new-images` drop, an old build, and copies of unused images removed from the code. Nothing reads from it. Put anything no longer needed there rather than leaving it at the top level; `README.md` explains every top-level file for Matt.
 
