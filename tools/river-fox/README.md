@@ -10,7 +10,7 @@ Fonts load from Google Fonts, so a network connection is needed. Chrome must be 
 |---|---|
 | `../photo-grade/` | Grades Laura's photos with the OpenAI image model (`npm run run`), exports every platform size (`npm run export`), makes the title overlay (`npm run overlay`) and the website large master (`npm run large`). Has its own README. |
 | `brand-pack.json` | The one config file: every value the tools draw with, and the canvas board each came from. Values marked `toolOwn` are choices the canvas leaves open. |
-| `text/thumb.cjs` | The thumbnail or cover: the two-line headline and the small handle, as the canvas's two cover boards draw them. Prints the fade, whether the hook was treated as long or short, every size and position, and refuses a hook that does not fit. |
+| `text/thumb.cjs` | The thumbnail or cover: the two-line headline and the small handle, as the canvas's two cover boards draw them. Prints the fade, the hook's word count and whether it was treated as long or short, every size and position, and refuses a hook that does not fit. |
 | `text/mkcopy2.cjs` | Headline and finale text images for reels (`HEADTOP`, `FINBOTTOM`, `HANDLETOP`, `WEIGHT`, `WIDTH` settings; the defaults come from `brand-pack.json`). It measures where the lettering really sits, prints it, and will not write a file whose lettering is outside the Instagram safe area. |
 | `text/wild_text.cjs` | The same text in the Wild font. |
 | `captions/anim.cjs` | Animated captions as a PNG sequence: each word fades in as she says it, a held word spells long ("looove") and gets a big frame. Styles: `classic`, `wild`, `box` (pink boxes). |

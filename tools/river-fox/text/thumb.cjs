@@ -1,14 +1,14 @@
 // Thumbnail / cover: one big two-line headline and the small handle. Nothing else.
-//   node thumb.cjs <photo> <out> <w> <h> "Line1" "Line2" [--fade=auto|light|standard] [--hook=auto|long|short]
+//   node thumb.cjs <photo> <out> <w> <h> "Line1" "Line2" [--hook=auto|long|short]
 //
 // No brand value is written in this file. Every size, colour, font setting and position comes from
 // ../brand-pack.json, which names the Brand Pack canvas board each one was copied from. To change the look,
 // change the canvas, then that file.
 //
 // What it decides itself, and prints every time:
-//   fade  - every cover gets the canvas's whole-image eased gradient (the canvas does not say how light a "light photo"
-//           is, so the tool does not guess); --fade=standard gives the older straight one. The photo's brightness is printed.
-//   hook  - a long hook gets line 2 smaller than line 1; a short hook stays one size; --hook=long or --hook=short overrides.
+//   fade  - every photo cover, light or dark, gets the canvas's one gradient over the whole image. There is no other fade.
+//   hook  - a hook of more words than the canvas allows at one size is long (line 2 smaller than line 1); a shorter
+//           one stays one size. The word count is printed; --hook=long or --hook=short overrides.
 // It then measures the lettering and will not write a cover whose words fall outside the fitted width or, on a
 // 9:16 cover, outside what the profile grid shows (ALLOW_UNSAFE=1 writes it anyway and says so).
 const path = require('path');
@@ -20,7 +20,7 @@ const argv = process.argv.slice(2);
 const flag = (n, d) => (argv.find((a) => a.startsWith(`--${n}=`)) || `--${n}=${d}`).split('=')[1];
 const [photo, out, W, H, raw1, raw2] = argv.filter((a) => !a.startsWith('--'));
 if (!photo || !out || !W || !H || !raw1 || !raw2) {
-  console.log('usage: node thumb.cjs <photo> <out> <w> <h> "Line1" "Line2" [--fade=auto|light|standard] [--hook=auto|long|short]');
+  console.log('usage: node thumb.cjs <photo> <out> <w> <h> "Line1" "Line2" [--hook=auto|long|short]');
   process.exit(1);
 }
 const curly = (s) => s.replace(/(^|[\s(])"/g, '$1“').replace(/"/g, '”').replace(/(^|[\s(])'/g, '$1‘').replace(/'/g, '’');
@@ -29,6 +29,12 @@ const w = +W, h = +H, k = w / 1080;
 const shape = h / w > 1.7 ? '9x16' : Math.abs(h / w - 1.25) < 0.02 ? '4x5' : '3x4';
 const C = B.cover, L = C.layout[shape], T = C.type, ink = B.colour.inkRgb, white = B.colour.warmWhite;
 const fit = C.fit.widthAt1080 * k;
+const F = C.fade;
+const words = `${raw1} ${raw2}`.replace(/&[a-z]+;/g, ' ').trim().split(/\s+/).filter((x) => /[\p{L}\p{N}]/u.test(x)).length;
+const hookAsk = flag('hook', 'auto');
+if (!['auto', 'long', 'short'].includes(hookAsk)) { console.error(`unknown --hook=${hookAsk}`); process.exit(1); }
+if (argv.some((a) => a.startsWith('--fade'))) { console.error('--fade was removed: every photo cover gets the one whole-image gradient (Brand Pack canvas).'); process.exit(1); }
+const long = hookAsk === 'auto' ? words > C.longHook.moreThanWords : hookAsk === 'long';
 const px = (n) => Math.round(n * k);
 const gradient = (stops) => `linear-gradient(to bottom, ${stops.map(([at, a]) => `rgba(${ink},${a}) ${at}%`).join(', ')})`;
 
@@ -70,20 +76,14 @@ const html = `<!doctype html><meta charset=utf-8>
     for (let i = 0; i < d.length; i += 4) sum += 0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2];
     return sum / (d.length / 4) / 255;
   });
-  const fadeAsk = flag('fade', 'auto');
-  const fadeKind = fadeAsk === 'auto' ? C.fade.toolOwn.default : fadeAsk;
-  const F = C.fade[fadeKind];
-  if (!F || !F.stops) { console.error(`unknown --fade=${fadeAsk}`); process.exit(1); }
-
-  const m = await pg.evaluate(({ fit, k, LH, hookAsk, grad, shadow, handleShadow }) => {
+  const m = await pg.evaluate(({ fit, k, LH, long, grad, shadow, handleShadow }) => {
     document.querySelector('.f').style.background = grad;
     document.querySelector('.t').style.textShadow = shadow;
     document.querySelector('.u').style.textShadow = handleShadow;
     const box = (sel) => document.querySelector(sel + ' span').getBoundingClientRect();
     const e1 = document.querySelector('.l1'), e2 = document.querySelector('.l2');
     const w1 = box('.l1').width, w2 = box('.l2').width;              // both at 100px
-    const long = hookAsk === 'auto' ? w2 > w1 : hookAsk === 'long';
-    let s1, s2, note = '';
+        let s1, s2, note = '';
     if (long) {
       s1 = 100 * fit / w1;
       const min = LH.line2MinPxAt1080 * k;
@@ -96,11 +96,11 @@ const html = `<!doctype html><meta charset=utf-8>
     return { long, note, s1: r(s1), s2: r(s2), w1: r(a.width), w2: r(b.width), left: r(Math.min(a.left, b.left)), right: r(Math.max(a.right, b.right)),
       hookTop: r(a.top), hookBottom: r(b.bottom), handleTop: r(u.top), handleBottom: r(u.bottom), handleW: r(u.width),
       fonts: document.fonts.check(`500 20px Fraunces`) && document.fonts.check(`500 20px 'DM Sans'`) };
-  }, { fit, k, LH: C.longHook, hookAsk: flag('hook', 'auto'), grad: gradient(F.stops), shadow: F.shadow, handleShadow: F.handleShadow });
+  }, { fit, k, LH: C.longHook, long, grad: gradient(F.stops), shadow: F.shadow, handleShadow: F.handleShadow });
 
   console.log(`${path.basename(out)} (${w}x${h}, ${shape})`);
-  console.log(`  photo brightness ${brightness.toFixed(2)} (0 black, 1 white); ${fadeKind} fade${fadeAsk === 'auto' ? '' : ' (set by --fade)'}: whole image, ${F.stops.map(([at, a]) => `${Math.round(a * 100)}% at ${at}%`).join(', ')}  [${F.board}]`);
-  console.log(`  ${m.long ? 'long' : 'short'} hook: line 1 ${m.s1}px, ${m.w1}px wide; line 2 ${m.s2}px (${(m.s2 / m.s1).toFixed(2)} of line 1), ${m.w2}px wide${m.note ? '; ' + m.note : ''}`);
+  console.log(`  photo brightness ${brightness.toFixed(2)} (0 black, 1 white, for the record only); fade over the whole image: ${F.stops.map(([at, a]) => `${Math.round(a * 100)}% at ${at}%`).join(', ')}  [${F.board}]`);
+  console.log(`  ${words} words, ${m.long ? 'long' : 'short'} hook${hookAsk === 'auto' ? '' : ' (set by --hook)'}: line 1 ${m.s1}px, ${m.w1}px wide; line 2 ${m.s2}px (${(m.s2 / m.s1).toFixed(2)} of line 1), ${m.w2}px wide${m.note ? '; ' + m.note : ''}`);
   console.log(`  lettering x ${m.left} to ${m.right}, y ${m.hookTop} to ${m.hookBottom}; handle y ${m.handleTop} to ${m.handleBottom}, ${m.handleW}px wide; both lines ${white}; fonts loaded: ${m.fonts}`);
 
   const x0 = Math.floor((w - fit) / 2) - 2, x1 = Math.ceil((w + fit) / 2) + 2;

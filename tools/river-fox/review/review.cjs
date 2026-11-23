@@ -12,20 +12,20 @@
 // Uses puppeteer-core and the Mac's own Chrome, like the other River Fox tools.
 const puppeteer = (() => { try { return require('puppeteer-core'); } catch (e) { return require(require('path').join(__dirname, '../../photo-grade/node_modules/puppeteer-core')); } })();
 const B = require('../brand-pack.json');
-const R = B.review, LONG = R.toolOwn.longFrom;
+const R = B.review, SHORT_UP_TO = R.shortUpToChars;
 // Straight quote marks and apostrophes are always turned into curly ones (Matt, 2026-11-21); the run prints how many it changed.
 const curly = (s) => String(s)
   .replace(/(^|[\s(\[>-]|&nbsp;)"/g, '$1“').replace(/"/g, '”')
   .replace(/(^|[\s(\[>-]|&nbsp;)'/g, '$1‘').replace(/'/g, '’');
 const cards = JSON.parse(process.argv[2]).map((given) => {
   const size = given.size || (given.w === R.google.w ? 'google' : 'instagram');
-  const kind = String(given.quote).replace(/&nbsp;/g, ' ').length >= LONG ? 'long' : 'short';
+  const kind = String(given.quote).replace(/&nbsp;/g, ' ').length > SHORT_UP_TO ? 'long' : 'short';
   const c = { w: R[size].w, h: R[size].h, ...R[size][kind], ...R.toolOwn[size][kind], ...given };
   console.log(`${c.out}: ${size} ${c.w}x${c.h}, ${kind} review: ${c.fs}px text on ${c.lh}px lines, up to ${c.mw}px wide  [${R.board}]`);
   const straight = ((c.quote + c.name).match(/['"]/g) || []).length;
   console.log(`${c.out}: ${straight} straight quote mark(s) or apostrophe(s) made curly`);
   const length = String(c.quote).replace(/&nbsp;/g, ' ').length;
-  const opsz = c.opsz === undefined ? (length >= LONG ? R.longOpticalSize : 0) : c.opsz;
+  const opsz = c.opsz === undefined ? (length > SHORT_UP_TO ? R.longOpticalSize : 0) : c.opsz;
   console.log(`${c.out}: ${length} characters, ${opsz ? 'finer stroke (optical size ' + opsz + ')' : 'default stroke'}`);
   return { ...c, opsz, quote: curly(c.quote), name: curly(c.name) };
 });

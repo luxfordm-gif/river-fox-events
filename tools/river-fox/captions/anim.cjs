@@ -24,10 +24,12 @@ const CSS = {
   classic: `.g{position:absolute;left:0;right:0;top:290px;text-align:center;color:${WHITE};font-family:${K.classic.font},serif;font-weight:${K.classic.weight};font-size:${K.classic.px}px;line-height:1.04;letter-spacing:-.03em;${SH}}.l{display:block;white-space:nowrap}`,
   box: `.g{position:absolute;left:0;right:0;top:300px;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:${K.box.font},sans-serif;font-weight:${K.box.weight};font-size:${K.box.px}px;line-height:1.1;letter-spacing:-.015em;color:${K.box.text}}.l{display:inline-block;background:${K.box.fill};border-radius:${K.box.radius}px;padding:14px 26px 17px;white-space:nowrap}`,
 };
+// The stressed word: bigger than the rest of the phrase by the canvas's scale ("How captions move"). The top offsets make room for it.
+const S = K.stress.scale, up = (n) => Math.round(n * S);
 const BIG = {
-  wild: '#g1{top:235px}#g1 .l:nth-child(2){font-size:230px;line-height:.95;letter-spacing:-.04em}',
-  classic: '#g1{top:235px}#g1 .l:nth-child(2){font-size:215px;line-height:.95;letter-spacing:-.04em}',
-  box: '#g1{top:250px}#g1 .l:nth-child(2){font-size:130px;padding:18px 36px 24px}',
+  wild: `#g1{top:235px}#g1 .l:nth-child(2){font-size:${up(K.wild.px)}px;line-height:.95;letter-spacing:-.04em}`,
+  classic: `#g1{top:235px}#g1 .l:nth-child(2){font-size:${up(K.classic.px)}px;line-height:.95;letter-spacing:-.04em}`,
+  box: `#g1{top:250px}#g1 .l:nth-child(2){font-size:${up(K.box.px)}px;padding:${up(14)}px ${up(26)}px ${up(17)}px}`,
 };
 const build = () => GROUPS.map((g, gi) => `<div class=g id=g${gi}>${g.lines.map((ln, li) => `<span class=l id=l${gi}_${li}>${ln.map((w, wi) => {
   const chars = Array.isArray(w[1]) ? [...w[0]].map((c, ci) => `<span class=c data-t="${w[1][ci]}" style="display:inline-block;opacity:0">${c}</span>`).join('') : w[0];

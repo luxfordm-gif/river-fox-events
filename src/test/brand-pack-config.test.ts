@@ -37,13 +37,30 @@ describe("River Fox tools read brand values from brand-pack.json", () => {
     expect(missing).toEqual([]);
   });
 
-  it("holds the cover rules from the board Light photos and long hooks", () => {
+  it("holds the cover rules from the boards Covers and thumbnails and Light photos and long hooks", () => {
     const c = pack.cover;
     expect(c.type).toMatchObject({ weight: 500, opticalSize: 144, tracking: "-0.008em", wordSpacing: "0.07em" });
-    expect(c.longHook).toMatchObject({ line2Scale: 0.68, line2MinPxAt1080: 96 });
-    expect(c.fade.light.stops[0]).toEqual([28, 0]);
-    expect(c.fade.light.stops.at(-1)).toEqual([100, 0.58]);
+    expect(c.longHook).toMatchObject({ moreThanWords: 3, line2Scale: 0.68, line2MinPxAt1080: 96 });
+    // one gradient for every photo cover, over the whole image: no light or standard variants, no tool-made threshold
+    expect(c.fade.light).toBeUndefined();
+    expect(c.fade.standard).toBeUndefined();
+    expect(c.fade.toolOwn).toBeUndefined();
+    expect(c.fade.stops[0]).toEqual([28, 0]);
+    expect(c.fade.stops.at(-1)).toEqual([100, 0.58]);
+    expect(c.fade.shadow).toContain("10px rgba(25,28,23,0.45)");
     expect(pack.handle.weight).toBe(500);
-    expect(c.layout["9x16"].handleTopY).toBe(1500);
+    expect(c.layout["9x16"]).toMatchObject({ handleTopY: 1500, handlePx: 28 });
+  });
+
+  it("the cover tool has no light-photo test and no fade option", () => {
+    const src = readFileSync(join(root, "text/thumb.cjs"), "utf8");
+    expect(src).not.toMatch(/lightAbove|fade\[|flag\('fade'/);
+    expect(src).toContain("moreThanWords");
+  });
+
+  it("holds the settled review and caption numbers", () => {
+    expect(pack.review.shortUpToChars).toBe(160);
+    expect(pack.review.toolOwn.longFrom).toBeUndefined();
+    expect(pack.captions.stress.scale).toBe(1.3);
   });
 });
