@@ -4,6 +4,7 @@ import Footer from "@/components/rfx/Footer";
 import PageHeader from "@/components/rfx/PageHeader";
 import TrustLine from "@/components/rfx/TrustLine";
 import Enquire from "@/components/rfx/Enquire";
+import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 import { useNavScroll } from "@/hooks/useRiverFox";
 import { TOWNS } from "@/data/locations/towns";
 import { findRoute } from "@/seo/routes";
@@ -77,7 +78,7 @@ const AreasWeCover = () => {
                 ))}
                 <p className="t-small text-ink-soft text-to-content measure-lead">
                   Don't see your town? Ask. I travel further for the right
-                  event, so <a href="/contact/" className="text-link">send me the details</a>.
+                  event, so <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="text-link">send me the details</a>.
                 </p>
               </div>
 

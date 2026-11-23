@@ -121,7 +121,7 @@ const ChildrensParties = () => {
           alt="Purple and lilac balloon arch with a gold Savanna ticket panel, cocoa-bar plinth, lollipop swirls and a number 5 column"
           hoverImage={imgThemesHover}
           hoverAlt="Close-up of the chocolate-bar prop with lilac balloons, a lollipop foil and mushroom props at Savanna's Wonka party"
-          tone="ph-warm"
+          tone="ph-blush"
           headline={
             <>
               Whatever the theme,{" "}
