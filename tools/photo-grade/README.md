@@ -68,7 +68,7 @@ Several at once: `--for=instagram,facebook,story` (one subfolder each, named as 
 `Instagram post 3x4 (1080x1440)`, `Facebook post 4x5 (1440x1800)`, `Instagram story 9x16 (1080x1920)`).
 Sizes and every overlay, review-post and social layout rule come from the newest Brand book and Brand pack
 in Drive (Brand › Brand book; never the `_Archive` folder). If they change, the targets here follow. The `river-fox`
-skill (`~/.claude/skills/river-fox/`) says how this tool fits into a whole job. `--out=<folder>` writes the images
+skill (`.claude/skills/river-fox/` in this repo) says how this tool fits into a whole job. `--out=<folder>` writes the images
 straight into a folder, e.g. the synced Google Drive one; the check sheet (`sheet.jpg`, one row per target) and the
 receipt data (`export.json`: files, sizes, quality, brightness lifts) always go to `state/exports/<job>/`.
 
