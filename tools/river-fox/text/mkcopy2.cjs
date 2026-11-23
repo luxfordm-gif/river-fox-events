@@ -4,30 +4,35 @@
 //   node mkcopy2.cjs finale   out.png                       "Ta-da." "Your door's sorted." "A GARLAND ARCH AND WREATH"
 //   node mkcopy2.cjs handle   out.png                       (@RIVERFOX_EVENTS, always the same size and place)
 // Text for VIDEO only (covers and thumbnails are thumb.cjs). After drawing, it measures where the lettering really sits and
-// refuses to write a file whose lettering is outside the Instagram safe area: Reels x 70 to 940, y 240 to 1450 on 1080x1920
-// (STORY=1 for Stories, y 250 to 1670). WIDTH is how wide the headline is fitted, 760 unless set: the rule for video is
-// "at most about 800, centred", and 760 leaves room for the letters' own overhang (900, the old default, put the Worplesdon
-// headline 53px past the right line). ALLOW_UNSAFE=1 writes the file anyway and says so.
+// refuses to write a file whose lettering is outside the Instagram safe area (Reels, or Stories with STORY=1; the numbers
+// are the canvas's Safe areas board, held in ../brand-pack.json). WIDTH is how wide the headline is fitted; its default
+// leaves room for the letters' own overhang inside the canvas's width limit for text on video (an older, wider default put
+// the Worplesdon headline past the right line). ALLOW_UNSAFE=1 writes the file anyway and says so.
 // With nothing set, each kind lands inside the safe area at the places used on the Worplesdon reel (HEADTOP 1160, FINBOTTOM 470);
 // the handle needs HANDLETOP=300 for video (without it, it sits at the bottom, for stills).
 const puppeteer = require(require('path').join(__dirname,'../../photo-grade/node_modules/puppeteer-core'));
+// No brand value is written in this file: colours, the font weight, widths, the handle and the safe areas come from
+// ../brand-pack.json, which names the Brand Pack canvas board each one was copied from.
+const B = require('../brand-pack.json');
+const V = B.videoText, WHITE = B.colour.warmWhite, CAPS = V.capsLine;
+const HANDLE = `font-family:"${B.handle.font}",sans-serif;font-weight:${B.handle.weight};font-size:${V.handlePx}px;letter-spacing:${B.handle.tracking}`;
 const [mode, out, a, b, c] = process.argv.slice(2);
-const FONTS = '<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=block" rel="stylesheet">';
+const FONTS = '<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=block" rel="stylesheet">';
 const SHADOW = 'text-shadow:0 2px 26px rgba(0,0,0,.5),0 1px 4px rgba(0,0,0,.42)';
 const HFADE = '.s{position:absolute;bottom:0;left:0;right:0;height:1050px;background:linear-gradient(rgba(20,16,12,0),rgba(20,16,12,.30) 55%,rgba(20,16,12,.40))}';
-const WT = process.env.WEIGHT || 400, WIDTH = Number(process.env.WIDTH || 760);
-const SERIF = `font-family:Fraunces,serif;font-weight:${WT};letter-spacing:-.035em;margin:0;white-space:nowrap`;
+const WT = process.env.WEIGHT || V.weight, WIDTH = Number(process.env.WIDTH || V.toolOwn.fitWidth);
+const SERIF = `font-family:Fraunces,serif;font-weight:${WT};letter-spacing:${V.tracking};margin:0;white-space:nowrap`;
 const CSS = {
-  'hl-two': HFADE + `.t{position:absolute;top:${process.env.HEADTOP||1160}px;left:0;right:0;text-align:center;color:#FCFBF8;${SHADOW}}h1{${SERIF};font-size:124px;line-height:.98}h1 em{font-style:italic;display:block}`,
-  'hl-stack': HFADE + `.t{position:absolute;top:${process.env.HEADTOP||1115}px;left:0;right:0;text-align:center;color:#FCFBF8;${SHADOW}}.l1{${SERIF};font-size:150px;line-height:.9}.l2{${SERIF};font-size:230px;line-height:.9}.l3{${SERIF};font-style:italic;font-size:130px;line-height:.95}`,
-  finale: '.s{position:absolute;bottom:0;left:0;right:0;height:1000px;background:linear-gradient(rgba(20,16,12,0),rgba(20,16,12,.42))}' + `.t{position:absolute;bottom:${process.env.FINBOTTOM||470}px;left:0;right:0;text-align:center;color:#FCFBF8;${SHADOW}}h1{${SERIF};font-size:300px;line-height:.9;letter-spacing:-.04em}h2{${SERIF};font-style:italic;font-size:120px;line-height:.98;margin:8px 0 0}p{font-family:"DM Sans",sans-serif;font-weight:600;font-size:26px;letter-spacing:.18em;margin:34px 0 0}`,
-  handle: `.f{position:absolute;top:0;left:0;right:0;height:520px;background:linear-gradient(rgba(20,16,12,.42),rgba(20,16,12,0))}.u{position:absolute;left:0;right:0;${process.env.HANDLETOP?`top:${process.env.HANDLETOP}px;`:'bottom:120px;'}text-align:center;color:#FCFBF8;font-family:"DM Sans",sans-serif;font-weight:600;font-size:26px;letter-spacing:.18em;${SHADOW}}`,
+  'hl-two': HFADE + `.t{position:absolute;top:${process.env.HEADTOP||1160}px;left:0;right:0;text-align:center;color:${WHITE};${SHADOW}}h1{${SERIF};font-size:124px;line-height:.98}h1 em{font-style:italic;display:block}`,
+  'hl-stack': HFADE + `.t{position:absolute;top:${process.env.HEADTOP||1115}px;left:0;right:0;text-align:center;color:${WHITE};${SHADOW}}.l1{${SERIF};font-size:150px;line-height:.9}.l2{${SERIF};font-size:230px;line-height:.9}.l3{${SERIF};font-style:italic;font-size:130px;line-height:.95}`,
+  finale: '.s{position:absolute;bottom:0;left:0;right:0;height:1000px;background:linear-gradient(rgba(20,16,12,0),rgba(20,16,12,.42))}' + `.t{position:absolute;bottom:${process.env.FINBOTTOM||470}px;left:0;right:0;text-align:center;color:${WHITE};${SHADOW}}h1{${SERIF};font-size:300px;line-height:.9;letter-spacing:-.04em}h2{${SERIF};font-style:italic;font-size:120px;line-height:.98;margin:8px 0 0}p{font-family:"${CAPS.font}",sans-serif;font-weight:${CAPS.weight};font-size:${CAPS.px}px;letter-spacing:${CAPS.tracking};margin:34px 0 0}`,
+  handle: `.f{position:absolute;top:0;left:0;right:0;height:520px;background:linear-gradient(rgba(20,16,12,.42),rgba(20,16,12,0))}.u{position:absolute;left:0;right:0;${process.env.HANDLETOP?`top:${process.env.HANDLETOP}px;`:'bottom:120px;'}text-align:center;color:${WHITE};${HANDLE};${SHADOW}}`,
 };
 const BODY = {
   'hl-two': `<div class=s></div><div class=t><h1>${a}<em>${b}</em></h1></div>`,
   'hl-stack': `<div class=s></div><div class=t><div class=l1>${a}</div><div class=l2>${b}</div><div class=l3>${c}</div></div>`,
   finale: `<div class=s></div><div class=t><h1>${a}</h1><h2>${b}</h2><p>${c}</p></div>`,
-  handle: (process.env.HANDLETOP?'<div class=f></div>':'')+'<div class=u>@RIVERFOX_EVENTS</div>',
+  handle: (process.env.HANDLETOP?'<div class=f></div>':'')+`<div class=u>${B.handle.text}</div>`,
 };
 (async () => {
   const br = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new' });
@@ -57,7 +62,7 @@ const BODY = {
     return { x0, x1, y0, y1 };
   }, Buffer.from(png).toString('base64'));
   await br.close();
-  const SAFE = process.env.STORY ? { x0: 70, x1: 940, y0: 250, y1: 1670 } : { x0: 70, x1: 940, y0: 240, y1: 1450 };
+  const SAFE = process.env.STORY ? B.safeArea.story : B.safeArea.reel;
   const outside = [['left', ink.x0 < SAFE.x0], ['right', ink.x1 > SAFE.x1], ['top', ink.y0 < SAFE.y0], ['bottom', ink.y1 > SAFE.y1]].filter((s) => s[1]).map((s) => s[0]);
   console.log(`lettering x ${ink.x0} to ${ink.x1}, y ${ink.y0} to ${ink.y1}, ${ink.x1 - ink.x0 + 1} wide; safe area x ${SAFE.x0} to ${SAFE.x1}, y ${SAFE.y0} to ${SAFE.y1}`);
   if (outside.length && !process.env.ALLOW_UNSAFE) {

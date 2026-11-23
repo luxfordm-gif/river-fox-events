@@ -1,4 +1,7 @@
 # Lessons (rule and reason)
+
+> **History only (23 Nov 2026).** Any size, font, colour, position or safe area written below is a record of what was done at the time, not a rule. Brand and social rules live in the Brand Pack canvas; the tools' values are in `tools/river-fox/brand-pack.json`.
+
 Each line is a rule that came from a mistake or a decision, with the date. The full diary is in history-story-and-captions.md.
 
 - 20 Nov 2026 Worplesdon: ask for the place and wording first; never invent the final headline. (A made-up line was questioned.)
@@ -37,3 +40,5 @@ Each line is a rule that came from a mistake or a decision, with the date. The f
 - 21 Nov: the Worplesdon Reel cover looked too low on Facebook and in the Instagram grid next to the wreath cover from two days before. Measured: the handle was 84px lower (y 1,584 against about 1,500) and the headline about 20px lower. Earlier the same day I had set the handle 80px inside the grid crop and only checked it was inside, not how it looked in the cropped tile or against the previous cover. `thumb.cjs` now puts it at about y 1,500 with a smaller gap under the headline; both Worplesdon Reel covers were remade. Compare a new cover with the last one posted, in the crops people see.
 - 23 Nov 2026 cover tool: on 3:4 and 4:5 covers the handle sits where the canvas draws it (238px up at 3:4, 297px up at 4:5), not 100px from the bottom. (The tool and the canvas disagreed; Matt compared both on the porch garland photo and picked the canvas. When a tool and the canvas differ, show both and ask.)
 - 23 Nov 2026 overlay command: `npm run overlay` hands covers to `thumb.cjs`, so the cover look lives in one file. (It had kept an older look, Regular 400 with a capitals line, after the rule changed.)
+- 23 Nov 2026: brand and social rules live only in the Brand Pack canvas. The front page lost its copies (cover fonts and positions, safe areas, caption styles, review sizes, Facebook cover size) and now names the board to read; the tools draw from one file, `tools/river-fox/brand-pack.json`. (Matt: the same rule was in the canvas, the skill, CLAUDE.md and the tool, and they had drifted: the cover tool still drew a bottom-only fade, tight tracking and a semibold handle after the canvas had moved on.)
+- 23 Nov 2026 covers: the canvas does not say how light a "light photo" is or how long a "long hook" is, and its own light example measured no brighter than a dark door. The cover tool uses the whole-image eased gradient on every cover and calls a hook long when line 2 would be the wider line; both are printed and can be overridden. Ask Matt to settle them on the canvas rather than tuning the tool.

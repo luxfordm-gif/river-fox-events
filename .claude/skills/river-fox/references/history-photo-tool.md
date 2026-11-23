@@ -3,6 +3,8 @@ name: edit-laura-photos
 description: Colour grade, brighten and sharpen Laura's River Fox Events photos with the project's OpenAI photo tool (tools/photo-grade), check every result, and export them at the right shape and size for where they're going (Google Business, Instagram, Facebook, stories, Pinterest, website gallery, cards, heroes, link previews). Use whenever Matt asks to edit, grade, colour correct, brighten, "boost", resize or crop Laura's photos for social or the website, or tidy them up, whether they're on the website, from her Instagram, or new ones he's dropped in, and as the editing step inside other River Fox skills (google-business-post). Also use when he asks whether the photo tool works or how to use it.
 ---
 
+> **History only (23 Nov 2026).** Any size, font, colour, position or safe area written below is a record of what was done at the time, not a rule. Brand and social rules live in the Brand Pack canvas; the tools' values are in `tools/river-fox/brand-pack.json`.
+
 # Edit Laura's photos
 
 > **For a whole job (a folder of new photos), use `river-fox-photo-job`**: it asks for the location and wording, grades with this tool, makes the website and social sets, puts text on the best photo per format and files everything. This skill stays the reference for the grading tool itself.

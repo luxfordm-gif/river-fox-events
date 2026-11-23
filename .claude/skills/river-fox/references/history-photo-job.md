@@ -3,6 +3,8 @@ name: river-fox-photo-job
 description: Turn a folder of Laura's photos from one job into a finished set for River Fox Events - colour graded, a website set ready to upload, every social size (Instagram post, Story and Reel cover, Facebook, Google Business), a text overlay on the best photo per format, filed in Drive. Use when Matt says "new job", "Laura did a job", "here's a folder of photos", "do the images for ...", or points at a folder of new photos. It asks for the location and any words he wants first, and suggests copy if he gives none. Videos go to the video skill, not this one.
 ---
 
+> **History only (23 Nov 2026).** Any size, font, colour, position or safe area written below is a record of what was done at the time, not a rule. Brand and social rules live in the Brand Pack canvas; the tools' values are in `tools/river-fox/brand-pack.json`.
+
 # River Fox photo job
 
 One folder of Laura's photos in, one finished set out. Matt is on his phone a lot and non-technical: run every command yourself, narrate briefly, and send anything he must review as an image (SendUserFile). Never hand him terminal commands.

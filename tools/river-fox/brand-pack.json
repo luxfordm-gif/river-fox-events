@@ -1,0 +1,135 @@
+{
+  "_about": "Every brand value the River Fox tools draw with, in one place. Each block names the Brand Pack canvas board it was copied from ('board'). The canvas is the source of truth: when a board changes, change the matching block here and nothing else. Values marked 'toolOwn' are not written on the canvas; they are how the tool applies a rule the canvas leaves open. Never write a brand value into a tool or the skill.",
+  "canvas": "https://claude.ai/artifact/RyuZawfyZziQPy6xGJ5hhF",
+  "checkedAgainstCanvas": "2026-11-23 (pack v1.26)",
+
+  "colour": {
+    "board": "Sound and colour",
+    "warmWhite": "#FCFBF8",
+    "logoPink": "#F7EEE9",
+    "ink": "#191C17",
+    "inkRgb": "25,28,23"
+  },
+
+  "handle": {
+    "board": "Covers and thumbnails; Light photos and long hooks; Headline and closing text on video",
+    "text": "@RIVERFOX_EVENTS",
+    "font": "DM Sans",
+    "weight": 500,
+    "tracking": "0.14em"
+  },
+
+  "safeArea": {
+    "board": "Safe areas",
+    "frame": { "w": 1080, "h": 1920 },
+    "reel": { "x0": 70, "x1": 940, "y0": 240, "y1": 1450 },
+    "story": { "x0": 70, "x1": 940, "y0": 250, "y1": 1670 },
+    "coverGrid": { "y0": 240, "y1": 1680 }
+  },
+
+  "cover": {
+    "type": {
+      "board": "Light photos and long hooks (Type and photos)",
+      "font": "Fraunces",
+      "weight": 500,
+      "opticalSize": 144,
+      "tracking": "-0.008em",
+      "wordSpacing": "0.07em",
+      "line1Leading": 1.02,
+      "line2Leading": 1.08
+    },
+    "fit": {
+      "board": "Covers and thumbnails",
+      "widthAt1080": 940
+    },
+    "longHook": {
+      "board": "Light photos and long hooks (Long hooks)",
+      "line2Scale": 0.68,
+      "line2MinPxAt1080": 96,
+      "toolOwn": { "auto": "a hook counts as long when line 2, set at line 1's size, would be wider than line 1" }
+    },
+    "fade": {
+      "light": {
+        "board": "Light photos and long hooks (Light photos)",
+        "stops": [[28, 0], [40, 0.043], [52, 0.15], [64, 0.29], [76, 0.43], [88, 0.537], [100, 0.58]],
+        "shadow": "0 2px 10px rgba(25,28,23,0.45)",
+        "handleShadow": "0 1px 10px rgba(25,28,23,0.45)"
+      },
+      "standard": {
+        "board": "Covers and thumbnails",
+        "stops": [[28, 0], [100, 0.66]],
+        "shadow": "0 2px 28px rgba(25,28,23,0.45)",
+        "handleShadow": "0 1px 12px rgba(25,28,23,0.6)"
+      },
+      "toolOwn": { "default": "light", "note": "the canvas does not say how light a 'light photo' is, and its own light example measures no brighter than a dark door, so the tool uses the newer whole-image eased gradient on every cover; --fade=standard gives the older straight one" }
+    },
+    "layout": {
+      "9x16": {
+        "board": "Light photos and long hooks (Long hooks)",
+        "hookBottomY": 1430,
+        "handleTopY": 1500,
+        "handlePx": 28,
+        "handleLinePx": 32
+      },
+      "3x4": {
+        "board": "Covers and thumbnails (example 3)",
+        "handleFromBottom": 238,
+        "handlePx": 26,
+        "toolOwn": { "hookAboveHandle": 110 }
+      },
+      "4x5": {
+        "board": "Covers and thumbnails (example 4, drawn 1440 wide: 297 and 35)",
+        "handleFromBottom": 223,
+        "handlePx": 26,
+        "toolOwn": { "hookAboveHandle": 110 }
+      }
+    }
+  },
+
+  "videoText": {
+    "board": "Headline and closing text on video; Stories, Reels and posts from video",
+    "font": "Fraunces",
+    "weight": 500,
+    "tracking": "-0.035em",
+    "maxWidth": 800,
+    "handleTopY": 300,
+    "handlePx": 26,
+    "capsLine": { "font": "DM Sans", "weight": 600, "px": 30, "tracking": "0.16em" },
+    "toolOwn": { "fitWidth": 760, "note": "760 leaves room for the letters' own overhang inside the 800 limit" }
+  },
+
+  "captions": {
+    "board": "Video captions, three styles",
+    "box": { "font": "Inter", "weight": 600, "px": 60, "radius": 4, "fill": "#F7EEE9", "text": "#191C17" },
+    "wild": { "font": "Fraunces", "weight": 900, "soft": 100, "px": 110 },
+    "classic": { "font": "Fraunces", "weight": 500, "px": 106 }
+  },
+
+  "review": {
+    "board": "Review post, short and long rules; Google Business review, short and long rules",
+    "font": "Fraunces",
+    "weight": 400,
+    "fill": "#F7EEE9",
+    "text": "#191C17",
+    "longOpticalSize": 78,
+    "edgeClear": 96,
+    "instagram": {
+      "w": 1080, "h": 1440,
+      "short": { "fs": 60, "lh": 70, "mw": 900 },
+      "long": { "fs": 55, "lh": 77, "mw": 890 }
+    },
+    "google": {
+      "w": 1200, "h": 1200,
+      "short": { "fs": 78, "lh": 90, "mw": 850 },
+      "long": { "fs": 59, "lh": 83, "mw": 930 }
+    },
+    "toolOwn": {
+      "longFrom": 160,
+      "note": "the canvas says short is up to about 120 characters and long about 200; 160 is the tool's dividing line. Quote mark, name line and gaps were measured from the cards already in Drive (Lucy, Farnham).",
+      "nameColour": "#494E46",
+      "markColour": "#C69490",
+      "instagram": { "short": { "mark": 233, "gap": 75, "ngap": 102, "dy": -12 }, "long": { "mark": 233, "gap": 78, "ngap": 104, "dy": -12 } },
+      "google": { "short": { "mark": 213, "mh": 52, "markTop": -27, "gap": 84, "ngap": 92, "ns": 29.4, "dy": -8 }, "long": { "mark": 213, "mh": 52, "markTop": -27, "gap": 84, "ngap": 96, "ns": 29.4, "dy": -8 } }
+    }
+  }
+}
