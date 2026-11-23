@@ -2,9 +2,19 @@
 
 Site for **Laura** at River Fox Events (luxury event styling, Surrey). Live at `riverfoxevents.co.uk`. Matt is non-technical and runs the project — favour pragmatic over pure, walk through changes step by step, never assume tooling familiarity.
 
-## Brand book
+## Start here: the Claude Brain (Matt, 2026-11-23)
 
-**The Brand book and the Brand pack live in one place only: Google Drive > River Fox Events > Brand > Brand book** (Matt, 2026-11-21). They are not on the website: the `/brand-book/` page was removed that day because it was a second copy to keep in step. Matt makes new versions himself in Claude chat, which exports the PDFs to that folder ("River Fox Events - Brand book vN.N (date).pdf", "River Fox Events - Brand pack vN.N (date).pdf") and moves the old ones to its `_Archive`. No version number is written here, so this note can't go out of date: the current ones are whichever PDFs sit in that folder (not in `_Archive`). Read them with the Google Drive connector at the start of any session that touches copy, brand facts or social; never from `_Archive`. Don't offer to publish them anywhere.
+At the start of a session read two short files in Google Drive > My Drive > Claude Brain: **`how-i-work.md`** (how Matt likes to work) and **`river-fox.md`** (the project's current state: workstreams, decisions, open items). On Matt's Mac the folder is `~/Library/CloudStorage/GoogleDrive-luxfordm@gmail.com/My Drive/Claude Brain/`.
+
+**"Update the brain" means update `river-fox.md` only**, and only the sections that changed. Never create a wrap-up, status or handover file for this project, and never a second brain file (no `brand-rules.md`).
+
+## Brand pack and brand book
+
+**Read the Brand Pack canvas first, not the PDFs (Matt, 2026-11-23).** The canvas is the "River Fox Brand Pack" artifact (`https://claude.ai/artifact/RyuZawfyZziQPy6xGJ5hhF`, read with the Artifact tool: its index is `project/canvas.json`, one file per board). It is the source of truth for brand and social specs: sizes, fonts, weights, safe areas, review cards, covers. The Brand pack PDF in Drive is an export of it; use the PDF only when the canvas can't be read (a cloud session, say), and say so. The Brand book (voice and colours) has no canvas, so its PDF is still the thing to read for those. Never edit the canvas unless Matt asks; he changes it in Claude chat.
+
+**When the canvas changes, update the matching tool file in the same session** (`tools/river-fox/review/review.cjs` for review cards, `tools/river-fox/text/thumb.cjs` for covers, `tools/river-fox/text/mkcopy2.cjs` for text on video, `tools/river-fox/captions/` for captions), so a rule is never only on the canvas. Don't move or rename tool files to do it.
+
+**The PDFs live in one place only: Google Drive > River Fox Events > Brand > Brand book** (Matt, 2026-11-21). They are not on the website: the `/brand-book/` page was removed that day because it was a second copy to keep in step. Matt makes new versions himself in Claude chat, which exports the PDFs to that folder ("River Fox Events - Brand book vN.N (date).pdf", "River Fox Events - Brand pack vN.N (date).pdf") and moves the old ones to its `_Archive`. No version number is written here, so this note can't go out of date: the current ones are whichever PDFs sit in that folder (not in `_Archive`). Read them with the Google Drive connector at the start of any session that touches copy, brand facts or social; never from `_Archive`. Don't offer to publish them anywhere.
 
 **The website's own reference is `/style-guide/`** (hidden, noindex): every font, colour, spacing token and reusable section, drawn live from the code, so it never needs updating by hand.
 
@@ -12,7 +22,7 @@ Site for **Laura** at River Fox Events (luxury event styling, Surrey). Live at `
 
 ## Social, overlay and brand rules
 
-Don't copy rules here. Before every social, image or review-post task, read the newest Brand book and Brand pack in Drive > River Fox Events > Brand > Brand book (never the `_Archive` folder), and check for newer versions each time. The Automation folder and its build brief were retired on 21 November 2026 (moved to the top-level `_Archive`): Laura uploads photos and Matt edits them with Claude, using the one `river-fox` skill on his Mac, which holds the filing and build steps.
+Don't copy rules here. Before every social, image or review-post task, read the Brand Pack canvas (see "Brand pack and brand book" above) and the newest Brand book PDF in Drive > River Fox Events > Brand > Brand book (never the `_Archive` folder), and check for a newer version each time. The Automation folder and its build brief were retired on 21 November 2026 (moved to the top-level `_Archive`): Laura uploads photos and Matt edits them with Claude, using the one `river-fox` skill on his Mac, which holds the filing and build steps.
 
 If a skill disagrees with the book or the pack, the book and the pack win. Tell me the skill needs updating.
 
@@ -32,13 +42,13 @@ On Matt's Mac the River Fox folder is synced at `~/Library/CloudStorage/GoogleDr
 
 - **Vite + React 18 + TypeScript + Tailwind + shadcn/ui.** Use **npm**, not bun (bun lockfiles were intentionally removed).
 - `npm run build` runs `vite build` → `scripts/prerender.mjs` → `scripts/postbuild.mjs`. The postbuild step is what writes per-route static HTML, the sitemap and robots.txt — never edit those output files directly.
-- Hosting: Netlify (apex `riverfoxevents.co.uk` primary, www redirects). DNS on Cloudflare in DNS-only / grey-cloud mode so Netlify can issue Let's Encrypt SSL.
+- Hosting: Netlify (apex `riverfoxevents.co.uk` primary, www redirects). DNS for `riverfoxevents.co.uk` is on Cloudflare; the old `lollipopballoonssurrey.co.uk` is on GoDaddy, pointing at Netlify (both checked 2026-11-23). This note used to say Cloudflare was in DNS-only / grey-cloud mode so Netlify can issue Let's Encrypt SSL, but on 2026-11-23 the live site was answering through Cloudflare's proxy (orange cloud); if the SSL certificate ever fails to renew, check that setting first.
 - **Each page loads only its own code (speed pass, 2026-11-13).** Before, every page and all 17 articles were one 915KB file (262KB compressed) on every visit; now a page downloads 80-150KB, and adding articles doesn't make other pages heavier. Pages are listed once in `PAGES` in `src/App.tsx` (each a `lazyPage(() => import(...))` from `src/lib/lazyPage.tsx`); add a new page there. Article texts are `lazyPage` too, in `src/data/articles/index.tsx`. `main.tsx` waits for the current page's code before React takes over the prerendered HTML (no blank flash), and a finger or mouse on a link starts fetching that page's code. The footer, area links and router use the light town list `src/data/locations/towns.ts` (slug and name; `src/test/towns.test.ts` keeps it matching `LOCATIONS`), so the full town copy loads only on town pages. One stylesheet for the whole site (`cssCodeSplit: false`: split stylesheets can load in a different order and change which rule wins; one file is ~25KB and cached once). `public/_headers` lets browsers keep `/assets/*` for a year (the build renames a file whenever it changes). The "message sent" note (sonner) loads on the first tap or key press. Unused shadcn/ui parts and 38 unused packages were removed; only `button`, `carousel` and `sonner` remain in `src/components/ui/`.
 - **Old-domain redirects:** `lollipopballoonssurrey.co.uk` (+ www) is a domain alias on the same Netlify site. Its path-level 301s are generated by postbuild from **`scripts/legacy-redirects.mjs`** into the top of `dist/_redirects` (one forced rule per location town, since Netlify placeholders can't sit mid-segment like `balloon-arches-near-:town`); anything unmatched goes to `/`. Edit that file, not `public/_redirects`. When a balloons page exists, repoint `/services/balloons` there.
 
 ## Repo layout — one canonical local copy
 
-The active local repo is **`~/Documents/river-fox-events/`** only. A duplicate Lovable-synced clone at `~/Documents/Claude/lauras site/` was deleted on 2026-05-02 — don't recreate it. If Laura/Matt re-engage Lovable, point Lovable at the same GitHub repo, never let it spin up a parallel folder.
+The active local repo is **`~/Projects/river-fox-events/`** only (it moved from `~/Documents/river-fox-events/`, which no longer exists; checked 2026-11-23). A duplicate Lovable-synced clone at `~/Documents/Claude/lauras site/` was deleted on 2026-05-02 — don't recreate it. If Laura/Matt re-engage Lovable, point Lovable at the same GitHub repo, never let it spin up a parallel folder.
 
 `archive/` (gitignored, local only, tidied 2026-11-14) holds old files that aren't part of the site: the three unreviewed files rescued from the deleted clone (`archive/salvaged-from-old-folder/`), the June `new-images` drop, an old build, and copies of unused images removed from the code. Nothing reads from it. Put anything no longer needed there rather than leaving it at the top level; `README.md` explains every top-level file for Matt.
 

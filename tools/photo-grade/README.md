@@ -12,7 +12,7 @@ Laura's originals in `src/assets/` are never changed. The tool writes graded PNG
 
 1. `npm install` in this folder.
 2. The key ("River Fox automation", from https://platform.openai.com/api-keys) lives in
-   `~/Documents/river-fox-events/tools/photo-grade/.env` as `OPENAI_API_KEY=...`. A worktree reads it from
+   `~/Projects/river-fox-events/tools/photo-grade/.env` as `OPENAI_API_KEY=...`. A worktree reads it from
    there through git, so it is set up once per Mac; a `.env` in the worktree's own `tools/photo-grade/`
    overrides it. If neither has a key, the tool falls back to the Invicta editor's key.
    `.env` and `state/` are git-ignored.
