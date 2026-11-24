@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import "@/styles/christmas.css";
 import { christmasOn } from "@/lib/announcementBar";
+import { trackEvent } from "@/lib/track";
 
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
 import pine160 from "@/assets/christmas/pine-branch-fairy-lights-frosted-cone-160.webp";
@@ -20,6 +21,9 @@ import promoPoster from "@/assets/christmas/video/worplesdon-porch-garland-poste
 const PAGE = "/christmas-door-garlands/";
 const DISMISS_KEY = "rfx-xmas-promo-dismissed";
 const DESKTOP = "(min-width: 768px)";
+
+/** Which version a visitor saw, for the promo_* events: the video card or the phone photo bar. */
+const variant = () => (window.matchMedia(DESKTOP).matches ? "video_card" : "photo_bar");
 
 /* Phone bar only. Decorative: the card's link carries the meaning, so these alts stay empty. */
 const DECK = [imgGeorgian, imgPilates, imgNavy, imgReigate];
@@ -92,6 +96,11 @@ const ChristmasPromo = () => {
     };
   }, []);
 
+  // Counted once per page view, so clicks can be read against views.
+  useEffect(() => {
+    if (show) trackEvent("promo_view", { location: "promo", variant: variant() });
+  }, [show]);
+
   // The video only downloads and plays once the card is on screen, and stays
   // on its poster (the finished door) with reduced motion.
   useEffect(() => {
@@ -118,7 +127,11 @@ const ChristmasPromo = () => {
     return () => window.clearInterval(t);
   }, [show]);
 
+  const onPromoClick = () =>
+    trackEvent("promo_click", { location: "promo", variant: variant(), transport_type: "beacon" });
+
   const dismiss = () => {
+    trackEvent("promo_close", { location: "promo", variant: variant() });
     setShow(false);
     try {
       localStorage.setItem(DISMISS_KEY, "1");
@@ -195,7 +208,7 @@ const ChristmasPromo = () => {
           <em className="t-accent">garlands.</em>
         </h2>
         {/* Opens the top of the Christmas page, not its form (Matt, 2026-11-08). */}
-        <a href={PAGE} className="btn-solid-rf accent xmas-promo__cta" tabIndex={show ? 0 : -1}>
+        <a href={PAGE} className="btn-solid-rf accent xmas-promo__cta" tabIndex={show ? 0 : -1} onClick={onPromoClick}>
           Find out more <span>→</span>
         </a>
       </div>
@@ -204,7 +217,7 @@ const ChristmasPromo = () => {
           2026-11-04). */}
       <div className="xmas-promo__body md:hidden">
         <h2 className="xmas-promo__title t-h5">A little Christmas magic.</h2>
-        <a href={PAGE} className="btn-link-rf xmas-promo__link" tabIndex={show ? 0 : -1}>
+        <a href={PAGE} className="btn-link-rf xmas-promo__link" tabIndex={show ? 0 : -1} onClick={onPromoClick}>
           Explore garlands <span className="arr">→</span>
         </a>
       </div>
