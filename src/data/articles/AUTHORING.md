@@ -50,41 +50,9 @@ When in doubt, swap a personal claim for an industry observation: *"I'm noticing
 
 Laura writes the articles. Claude is ghost-writing *as her*, not about her.
 
-Laura reviewed the journal in mid-2026 and asked for a **warmer tone of voice**. The clipped, insider, trade-craft register the journal launched with read as cool and detached to her. The voice below is the corrected one: warm, flowing, reassuring and host-facing, while staying first-person and specific.
+**The voice rules live in one file: `docs/voice.md`** (Laura's seven voice rules, the warm register she asked for in mid-2026, punctuation, sentence-case bullets and every banned or replaced word). Read it before drafting; don't copy its rules here. Journal articles use the calm website voice from that file.
 
-- **First person, warm and quietly authoritative.** "I want the family to be able to read it in seconds." Always "I", not "we" — Laura speaks as the designer. (The one exception is genuine business-voice pieces such as the rebrand announcement, where "we" reads naturally.)
-- **Warm and flowing, not clipped.** Laura's voice is gentle and welcoming. Favour complete, flowing sentences over staccato fragments. A short sentence is fine for rhythm, but don't make the clipped, fragmentary style ("Beautiful bones, very little atmosphere.") the *default* — that's the cool, detached tone Laura asked us to move away from.
-- **Reassure the host.** Lead sections with the reader's worry and answer it warmly ("Many parents assume they need to hire a venue, but…"). This reassuring, host-facing register is the heart of the new voice.
-- **Warmth is welcome.** Phrases like "celebrations that feel personal", "I'd love to hear from you", "truly unique to each family", "it's always a privilege" are encouraged. An earlier version of this guide treated warmth as off-limits ("never sales", "quiet, never warm"); that was wrong for Laura.
-- **Sensory detail over empty adjectives.** Keep naming the actual thing — "pink scallop-edge plates, a soft zebra-print salad plate on top". Warmth must never *replace* specificity — carry both. Don't let the warmer register slide into generic filler ("truly unforgettable", "bringing the magic to life") with no concrete detail underneath.
-- **Trade-craft language, lightly.** Sightlines, scale, the brief, sourcing, install morning, render board are all welcome, but don't stack them — gloss them so a non-trade reader follows easily.
-- **Hyphens, not em dashes. Exclamation marks and emojis never.** (Laura's own Google-Doc drafts sometimes use these; strip them.)
-- **Bullet points are sentence case.** Every list item starts with a capital letter, even after a lead-in line ending in a colon ("A shimmer wall from me can include:" then "A balloon garland…", never "a balloon garland…"). A test enforces it.
-- **Quiet expertise, gently shared.** Explain *why* a choice was made, and reassure the reader rather than sell to them.
-
-### Banned vocabulary
-
-Hard sales clichés — still never use, even in the warmer register:
-- "If you're looking for…"
-- "Look no further…"
-- "We pride ourselves on…"
-- "Our team of experts…"
-- "The perfect party"
-- "Stunning", "amazing", "wow factor", "show-stopping"
-
-**Now explicitly allowed (warm register).** These were discouraged under the old "never warm" rule and are now welcome, *provided real, specific detail sits underneath them*: "celebrations that feel personal", "I'd love to hear from you / about it", "truly unique to each family", "it's always a privilege", "I always want to reassure parents that…". Warmth is the point; empty warmth ("truly unforgettable" with nothing concrete attached) is not.
-
-Trade / legal jargon — never use when writing about a character or branded theme (Wonka, Bluey, Disney, Encanto, Paw Patrol, etc.):
-- "IP", "the IP"
-- "Licensed", "unlicensed", "licensing", "licensed product"
-- Any framing that contrasts a custom-built prop against a "licensed" alternative
-
-It's industry-side language that pulls the article out of Laura's voice and into stylist-trade-talk, and it raises a legal frame the brand doesn't need to invite. Refer to it as "the theme" or name the specific theme. Custom-built props are "painted in-studio" or "built in-studio" — the design point (palette discipline, personalisation, restraint) lands without needing to name the licensing question at all.
-
-Capped vocabulary (per `CLAUDE.md`):
-- "Bespoke" — **free to use in body copy** (it's Laura's own word), but still banned from titles and capped at once per meta description (an SEO duplicate-content guard, not a tone rule)
-- "Luxury" — max twice across all page titles site-wide
-- "From £300" — appears in max 6 page metas site-wide
+Capped vocabulary for titles and metas ("Bespoke", "Luxury", "From £300") is an SEO rule, in `CLAUDE.md`.
 
 ---
 
@@ -230,7 +198,7 @@ Per `CLAUDE.md`:
 - **Per-page OG image** in `public/og/[article-slug].webp` (1200×630), referenced from `src/seo/routes.ts`.
 
 ### When using AI image generation
-- **Last resort only** (brand book v2). Real photos from Laura's events come first (`src/data/gallery.ts`, then the graded set in Google Drive). AI images are allowed for journal articles only, never for the gallery, service pages or social, and never passed off as a real event.
+- **Last resort only.** Real photos from Laura's events come first (`src/data/gallery.ts`, then the graded set in Google Drive). AI images are allowed for journal articles only, never for the gallery, service pages or social, and never passed off as a real event.
 - **Hero:** 1600×900 landscape. Subject centred so a square or 4:3 crop still leads with the subject.
 - **Thumbnail:** 800×800 (square) — composed independently, not just a hero crop.
 - **OG:** 1200×630 — composed for social preview cards.
@@ -256,7 +224,7 @@ Validate every new entry against [Google Rich Results Test](https://search.googl
 
 ## 8. Pre-flight checklist (Claude runs this before handing the draft to Matt)
 
-- [ ] Voice — re-read; warm and flowing, not clipped/insider? Any stray "we" (outside genuine business-voice), "stunning", "amazing", "perfect", exclamation marks or emojis? Strip them.
+- [ ] Voice — re-read against `docs/voice.md` (the seven rules, punctuation and banned words). Fix anything that breaks it.
 - [ ] Aesthetic gate — does every reference (theme, palette, prop) pass? If not, swap.
 - [ ] Sign-off — closing line reads `Laura x` (not `— Laura`)?
 - [ ] Bullet points — every list item starts with a capital letter?

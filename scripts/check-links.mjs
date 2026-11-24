@@ -74,7 +74,7 @@ for (const [pg, { html, ids }] of pages) {
   const robots = html.match(/<meta name="robots" content="([^"]+)"/)?.[1] || "";
   pages.get(pg).noindex = /noindex/.test(robots);
   pages.get(pg).canon = canon;
-  // Hidden (noindex) pages like the brand book may skip the canonical tag.
+  // Hidden (noindex) pages like the style guide may skip the canonical tag.
   if (!canon) { if (!pages.get(pg).noindex) P(`${pg}: no canonical tag`); }
   else if (canon !== SITE + pg) P(`${pg}: canonical is ${canon} (expected ${SITE + pg})`);
   if (og && og !== canon) P(`${pg}: og:url ${og} differs from canonical`);

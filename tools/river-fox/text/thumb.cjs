@@ -1,118 +1,141 @@
-// Thumbnail / cover: one big two-line headline and the small handle. Nothing else.
-//   node thumb.cjs <photo> <out> <w> <h> "Line1" "Line2" [--hook=auto|long|short]
+// Thumbnail / cover: one big headline (one or two lines), an optional small capitals line, and the small handle.
+//   node thumb.cjs <photo> <out> <w> <h> "Line1" ["Line2"] [--caps="small capitals line"] [--at=middle|top|<y>]
+//                  [--italic] [--tint] [--no-handle]
 //
 // No brand value is written in this file. Every size, colour, font setting and position comes from
-// ../brand-pack.json, which names the Brand Pack canvas board each one was copied from. To change the look,
-// change the canvas, then that file.
+// ../brand-pack.json, which names the Brand Pack board each one was copied from. To change the look, Matt changes
+// the pack; then that file changes to match.
 //
-// What it decides itself, and prints every time:
-//   fade  - every photo cover, light or dark, gets the canvas's one gradient over the whole image. There is no other fade.
-//   hook  - a hook of more words than the canvas allows at one size is long (line 2 smaller than line 1); a shorter
-//           one stays one size. The word count is printed; --hook=long or --hook=short overrides.
-// It then measures the lettering and will not write a cover whose words fall outside the fitted width or, on a
-// 9:16 cover, outside what the profile grid shows (ALLOW_UNSAFE=1 writes it anyway and says so).
+// What it does, and prints every time:
+//   type  - the headline is set in the pack's cover face, line 1 upright and line 2 italic, both the same size. The size
+//           follows the words: the longer line is fitted to the pack's width for this shape, up to the pack's biggest
+//           size. A one-word headline must end with a full stop. A headline that would come out smaller than the
+//           tool's smallest size is refused: shorten it, or move words into --caps. Never shrink it to fit a sentence.
+//   caps  - --caps adds the one small capitals line under the headline, when the headline needs more words.
+//   place - --at=middle (the default, where the pack's examples sit), --at=top, or --at=<y> (the headline's centre,
+//           in pixels at this frame's own size). It measures how busy the photo is under the headline and in the other
+//           spots and says if a calmer one exists: words never sit on the subject if there is a calm spot. Look at it.
+//   fade  - every photo cover gets the pack's one gradient over the whole image. --tint adds the pack's even dark tint
+//           when the words still don't read. --no-handle leaves the handle off a very busy photo.
+// It then measures the lettering and will not write a cover whose words fall outside the fitted width, outside what the
+// profile grid shows (9:16), too close to the handle, or off the frame (ALLOW_UNSAFE=1 writes it anyway and says so).
 const path = require('path');
 const fs = require('fs');
 const puppeteer = require(path.join(__dirname, '../../photo-grade/node_modules/puppeteer-core'));
 const B = require('../brand-pack.json');
 
 const argv = process.argv.slice(2);
-const flag = (n, d) => (argv.find((a) => a.startsWith(`--${n}=`)) || `--${n}=${d}`).split('=')[1];
+const flag = (n) => { const a = argv.find((x) => x === `--${n}` || x.startsWith(`--${n}=`)); return a === undefined ? undefined : a.includes('=') ? a.split('=').slice(1).join('=') : true; };
+for (const old of ['hook', 'fade']) if (flag(old) !== undefined) { console.error(`--${old} was removed: the pack has one headline size rule and one fade.`); process.exit(1); }
 const [photo, out, W, H, raw1, raw2] = argv.filter((a) => !a.startsWith('--'));
-if (!photo || !out || !W || !H || !raw1 || !raw2) {
-  console.log('usage: node thumb.cjs <photo> <out> <w> <h> "Line1" "Line2" [--hook=auto|long|short]');
+if (!photo || !out || !W || !H || !raw1) {
+  console.log('usage: node thumb.cjs <photo> <out> <w> <h> "Line1" ["Line2"] [--caps="..."] [--at=middle|top|<y>] [--italic] [--tint] [--no-handle]');
   process.exit(1);
 }
 const curly = (s) => s.replace(/(^|[\s(])"/g, '$1“').replace(/"/g, '”').replace(/(^|[\s(])'/g, '$1‘').replace(/'/g, '’');
-const l1 = curly(raw1), l2 = curly(raw2);
+const l1 = curly(raw1), l2 = raw2 ? curly(raw2) : '';
+const caps = typeof flag('caps') === 'string' ? curly(flag('caps')) : '';
 const w = +W, h = +H, k = w / 1080;
 const shape = h / w > 1.7 ? '9x16' : Math.abs(h / w - 1.25) < 0.02 ? '4x5' : '3x4';
-const C = B.cover, L = C.layout[shape], T = C.type, ink = B.colour.inkRgb, white = B.colour.warmWhite;
-const fit = C.fit.widthAt1080 * k;
-const F = C.fade;
-const words = `${raw1} ${raw2}`.replace(/&[a-z]+;/g, ' ').trim().split(/\s+/).filter((x) => /[\p{L}\p{N}]/u.test(x)).length;
-const hookAsk = flag('hook', 'auto');
-if (!['auto', 'long', 'short'].includes(hookAsk)) { console.error(`unknown --hook=${hookAsk}`); process.exit(1); }
-if (argv.some((a) => a.startsWith('--fade'))) { console.error('--fade was removed: every photo cover gets the one whole-image gradient (Brand Pack canvas).'); process.exit(1); }
-const long = hookAsk === 'auto' ? words > C.longHook.moreThanWords : hookAsk === 'long';
+const C = B.cover, L = C.layout[shape], T = C.type, S = C.size, CP = C.capsLine, F = C.fade, ink = B.colour.inkRgb, white = B.colour.warmWhite;
 const px = (n) => Math.round(n * k);
-const gradient = (stops) => `linear-gradient(to bottom, ${stops.map(([at, a]) => `rgba(${ink},${a}) ${at}%`).join(', ')})`;
+const fit = S.fitWidth[shape] * k, maxPx = S.maxPx * k, minPx = S.toolOwn.minPx * k;
+const plain = `${raw1} ${raw2 || ''}`.replace(/&[a-z]+;/g, ' ').trim();
+const words = plain.split(/\s+/).filter((x) => /[\p{L}\p{N}]/u.test(x));
+const handle = flag('no-handle') === undefined;
+const at = flag('at') || 'middle';
+const centreY = at === 'middle' ? px(L.middleY) : at === 'top' ? null : Number(at);
+if (at !== 'middle' && at !== 'top' && !Number.isFinite(centreY)) { console.error(`unknown --at=${at}: use middle, top or a number`); process.exit(1); }
+const lowest = Math.min(shape === '9x16' ? px(L.hookBottomMax) : Infinity, handle ? (shape === '9x16' ? px(L.handleTopY) : h - px(L.handleFromBottom) - px(L.handlePx)) - px(L.handleClear) : h - px(B.safeArea.feedEdgeClear));
+const gradient = (stops) => `linear-gradient(to bottom, ${stops.map(([p, a]) => `rgba(${ink},${a}) ${p}%`).join(', ')})`;
+const handleCss = shape === '9x16' ? `top:${px(L.handleTopY)}px;line-height:${px(L.handleLinePx)}px` : `bottom:${px(L.handleFromBottom)}px;line-height:1`;
 
-// 9:16: the hook block ends at hookBottomY and the handle starts at handleTopY, both from the top (as the canvas draws them).
-// 3:4 and 4:5: the handle sits handleFromBottom up, the hook a fixed step above it.
-const hookCss = shape === '9x16'
-  ? `top:0;height:${px(L.hookBottomY)}px`
-  : `top:0;bottom:${px(L.handleFromBottom + L.toolOwn.hookAboveHandle)}px`;
-const handleCss = shape === '9x16'
-  ? `top:${px(L.handleTopY)}px;line-height:${px(L.handleLinePx)}px`
-  : `bottom:${px(L.handleFromBottom)}px;line-height:1`;
+const faults = [];
+if (words.length === 1 && !plain.endsWith(S.singleWordEndsWith)) faults.push(`a one-word headline ends with a full stop (the pack): "${plain}${S.singleWordEndsWith}"`);
 
 const img = 'data:image/jpeg;base64,' + fs.readFileSync(photo).toString('base64');
+const fam = (f) => f.replace(/ /g, '+');
 const html = `<!doctype html><meta charset=utf-8>
-<link href="https://fonts.googleapis.com/css2?family=${B.handle.font.replace(/ /g, '+')}:wght@${B.handle.weight}&family=${T.font}:ital,opsz,wght@0,9..144,${T.weight};1,9..144,${T.weight}&display=block" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=${fam(T.font)}:ital@0;1&family=${fam(B.handle.font)}:wght@${B.handle.weight};${CP.weight}&display=block" rel=stylesheet>
 <style>html,body{margin:0;width:${w}px;height:${h}px;overflow:hidden;background:#000}
 .p{position:relative;width:${w}px;height:${h}px;overflow:hidden}
 .p img{position:absolute;left:0;top:0;width:${w}px;height:${h}px;object-fit:cover}
-.f{position:absolute;left:0;top:0;width:${w}px;height:${h}px}
-.t{position:absolute;left:0;width:${w}px;${hookCss};display:flex;flex-direction:column;justify-content:flex-end;text-align:center;color:${white};
-  font-family:'${T.font}',serif;font-variation-settings:'opsz' ${T.opticalSize};font-weight:${T.weight};letter-spacing:${T.tracking};word-spacing:${T.wordSpacing};white-space:nowrap}
-.l1{font-size:100px;line-height:${T.line1Leading}}
-.l2{font-size:100px;line-height:${T.line2Leading};font-style:italic}
+.f,.g{position:absolute;left:0;top:0;width:${w}px;height:${h}px}
+.t{position:absolute;left:0;width:${w}px;top:0;display:flex;flex-direction:column;align-items:center;text-align:center;color:${white}}
+.hl{font-family:'${T.font}',serif;font-weight:${T.weight};letter-spacing:${T.tracking};line-height:${T.leading};white-space:nowrap;font-size:100px}
+.hl div{display:block}.hl .i{font-style:italic}
+.c{font-family:'${CP.font}',sans-serif;font-weight:${CP.weight};font-size:${px(CP.px)}px;line-height:${CP.leading};letter-spacing:${CP.tracking};text-transform:uppercase;white-space:nowrap;margin-top:${px(CP.gap)}px;text-shadow:${CP.shadow}}
 .u{position:absolute;left:0;width:${w}px;${handleCss};text-align:center;color:${white};font-family:'${B.handle.font}',sans-serif;font-weight:${B.handle.weight};font-size:${px(L.handlePx)}px;letter-spacing:${B.handle.tracking};text-transform:uppercase}</style>
-<div class=p><img src="${img}"><div class=f></div><div class=t><div class=l1><span>${l1}</span></div><div class=l2><span>${l2}</span></div></div><div class=u><span>${B.handle.text}</span></div></div>`;
+<div class=p><img src="${img}"><div class=f></div><div class=g></div>
+<div class=t><div class=hl><div class="${!l2 && flag('italic') ? 'i' : ''}"><span>${l1}</span></div>${l2 ? `<div class=i><span>${l2}</span></div>` : ''}</div>${caps ? `<div class=c><span>${caps}</span></div>` : ''}</div>
+${handle ? `<div class=u><span>${B.handle.text}</span></div>` : ''}</div>`;
 
 (async () => {
   const br = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new' });
   const pg = await br.newPage(); await pg.setViewport({ width: w, height: h });
   await pg.setContent(html, { waitUntil: 'networkidle0', timeout: 90000 }); await pg.evaluate(() => document.fonts.ready);
 
-  // How light is the photo, as it is cropped into this frame? 0 is black, 1 is white.
-  const brightness = await pg.evaluate(async () => {
-    const im = document.querySelector('.p img'); await im.decode();
-    const cw = 108, ch = Math.round(108 * innerHeight / innerWidth), c = document.createElement('canvas'); c.width = cw; c.height = ch;
-    const s = Math.max(cw / im.naturalWidth, ch / im.naturalHeight), dw = im.naturalWidth * s, dh = im.naturalHeight * s;
-    const cx = c.getContext('2d'); cx.drawImage(im, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
-    const d = cx.getImageData(0, 0, cw, ch).data; let sum = 0;
-    for (let i = 0; i < d.length; i += 4) sum += 0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2];
-    return sum / (d.length / 4) / 255;
-  });
-  const m = await pg.evaluate(({ fit, k, LH, long, grad, shadow, handleShadow }) => {
+  const m = await pg.evaluate(({ fit, maxPx, grad, tint, shadow, handleShadow, centreY, topY, lowest }) => {
     document.querySelector('.f').style.background = grad;
-    document.querySelector('.t').style.textShadow = shadow;
-    document.querySelector('.u').style.textShadow = handleShadow;
-    const box = (sel) => document.querySelector(sel + ' span').getBoundingClientRect();
-    const e1 = document.querySelector('.l1'), e2 = document.querySelector('.l2');
-    const w1 = box('.l1').width, w2 = box('.l2').width;              // both at 100px
-        let s1, s2, note = '';
-    if (long) {
-      s1 = 100 * fit / w1;
-      const min = LH.line2MinPxAt1080 * k;
-      s2 = Math.max(min, LH.line2Scale * s1);
-      if (w2 * s2 / 100 > fit) { s2 = Math.max(min, 100 * fit / w2); note = 'line 2 shrunk to fit'; }
-    } else { s1 = s2 = 100 * fit / Math.max(w1, w2); }
-    e1.style.fontSize = s1 + 'px'; e2.style.fontSize = s2 + 'px';
-    const a = box('.l1'), b = box('.l2'), u = box('.u');
-    const r = (n) => Math.round(n);
-    return { long, note, s1: r(s1), s2: r(s2), w1: r(a.width), w2: r(b.width), left: r(Math.min(a.left, b.left)), right: r(Math.max(a.right, b.right)),
-      hookTop: r(a.top), hookBottom: r(b.bottom), handleTop: r(u.top), handleBottom: r(u.bottom), handleW: r(u.width),
-      fonts: document.fonts.check(`500 20px Fraunces`) && document.fonts.check(`500 20px 'DM Sans'`) };
-  }, { fit, k, LH: C.longHook, long, grad: gradient(F.stops), shadow: F.shadow, handleShadow: F.handleShadow });
+    if (tint) document.querySelector('.g').style.background = tint;
+    document.querySelector('.hl').style.textShadow = shadow;
+    const u = document.querySelector('.u'); if (u) u.style.textShadow = handleShadow;
+    const hl = document.querySelector('.hl'), spans = [...hl.querySelectorAll('span')];
+    const widest = Math.max(...spans.map((s) => s.getBoundingClientRect().width));   // at 100px
+    const size = Math.min(maxPx, 100 * fit / widest);
+    hl.style.fontSize = size + 'px';
+    const t = document.querySelector('.t'), th = t.getBoundingClientRect().height;
+    // never lower than the pack allows: if a capitals line makes the block taller, it moves up instead
+    let top = centreY === null ? topY : centreY - th / 2, moved = 0;
+    if (top + th > lowest) { moved = Math.round(top + th - lowest); top = lowest - th; }
+    t.style.top = top + 'px';
+    const r = (n) => Math.round(n), box = (el) => el.getBoundingClientRect();
+    const lines = spans.map((s) => r(box(s).width));
+    const all = [...spans, ...(document.querySelector('.c span') ? [document.querySelector('.c span')] : [])].map(box);
+    const ub = u ? box(u) : null;
+    return { moved, size: r(size), lines, capsW: document.querySelector('.c span') ? r(box(document.querySelector('.c span')).width) : 0,
+      left: r(Math.min(...all.map((b) => b.left))), right: r(Math.max(...all.map((b) => b.right))),
+      top: r(box(t).top), bottom: r(box(t).bottom), handleTop: ub ? r(ub.top) : null, handleBottom: ub ? r(ub.bottom) : null,
+      fonts: document.fonts.check(`20px "${getComputedStyle(hl).fontFamily.split(',')[0].replace(/['"]/g, '')}"`) };
+  }, { fit, maxPx, grad: gradient(F.stops), tint: flag('tint') ? `rgba(${ink},${F.tint})` : '', shadow: F.shadow, handleShadow: F.handleShadow, centreY, topY: px(L.toolOwn.topY), lowest });
+
+  // How busy the photo is (average edge strength, 0 calm) in the band the headline covers and in the other spots.
+  const busy = await pg.evaluate(async (bands) => {
+    const im = document.querySelector('.p img'); await im.decode();
+    const W = 216, H = Math.round(216 * innerHeight / innerWidth), c = document.createElement('canvas'); c.width = W; c.height = H;
+    const s = Math.max(W / im.naturalWidth, H / im.naturalHeight), dw = im.naturalWidth * s, dh = im.naturalHeight * s;
+    const cx = c.getContext('2d'); cx.drawImage(im, (W - dw) / 2, (H - dh) / 2, dw, dh);
+    const d = cx.getImageData(0, 0, W, H).data, Y = (x, y) => { const i = (y * W + x) * 4; return 0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2]; };
+    const f = H / innerHeight;
+    return bands.map(([name, a, b]) => {
+      let sum = 0, n = 0;
+      for (let y = Math.max(1, Math.round(a * f)); y < Math.min(H - 1, Math.round(b * f)); y++) for (let x = 1; x < W - 1; x++) { sum += Math.abs(Y(x + 1, y) - Y(x - 1, y)) + Math.abs(Y(x, y + 1) - Y(x, y - 1)); n++; }
+      return [name, n ? sum / n : 0];
+    });
+  }, (() => {
+    const hgt = m.bottom - m.top, mid = px(L.middleY), top = px(L.toolOwn.topY);
+    const b = [['headline', m.top, m.bottom], ['middle', mid - hgt / 2, mid + hgt / 2], ['top', top, top + hgt]];
+    return b;
+  })());
 
   console.log(`${path.basename(out)} (${w}x${h}, ${shape})`);
-  console.log(`  photo brightness ${brightness.toFixed(2)} (0 black, 1 white, for the record only); fade over the whole image: ${F.stops.map(([at, a]) => `${Math.round(a * 100)}% at ${at}%`).join(', ')}  [${F.board}]`);
-  console.log(`  ${words} words, ${m.long ? 'long' : 'short'} hook${hookAsk === 'auto' ? '' : ' (set by --hook)'}: line 1 ${m.s1}px, ${m.w1}px wide; line 2 ${m.s2}px (${(m.s2 / m.s1).toFixed(2)} of line 1), ${m.w2}px wide${m.note ? '; ' + m.note : ''}`);
-  console.log(`  lettering x ${m.left} to ${m.right}, y ${m.hookTop} to ${m.hookBottom}; handle y ${m.handleTop} to ${m.handleBottom}, ${m.handleW}px wide; both lines ${white}; fonts loaded: ${m.fonts}`);
+  console.log(`  fade over the whole image${flag('tint') ? ` plus an even ${Math.round(F.tint * 100)}% tint` : ''}  [${F.board}]`);
+  console.log(`  ${words.length} word(s) in the headline${words.length > S.words.upTo ? ` - the pack asks for ${S.words.upTo} or fewer; move the rest to --caps if it reads better` : ''}; ${T.font} ${m.size}px, both lines the same size; line widths ${m.lines.join(' / ')}px (fit ${Math.round(fit)}, biggest ${Math.round(maxPx)}px)`);
+  if (caps) console.log(`  capitals line ${CP.font} ${CP.weight} ${px(CP.px)}px, ${m.capsW}px wide`);
+  console.log(`  lettering x ${m.left} to ${m.right}, y ${m.top} to ${m.bottom} (--at=${at}${m.moved ? `, moved up ${m.moved}px to keep the handle clear` : ''})${m.handleTop !== null ? `; handle y ${m.handleTop} to ${m.handleBottom}` : '; no handle'}; fonts loaded: ${m.fonts}`);
+  const calm = busy.slice(1).sort((a, b) => a[1] - b[1])[0];
+  console.log(`  how busy the photo is behind the words (lower is calmer): ${busy.map(([n, v]) => `${n} ${v.toFixed(1)}`).join(', ')}`);
+  if (busy[0][1] > calm[1] * 1.3 && busy[0][1] - calm[1] > 4) console.log(`  CHECK: the ${calm[0]} spot is calmer than where the words are. Words never sit on the subject if there is a calm spot: look, and try --at=${calm[0]} if the subject is under them.`);
 
   const x0 = Math.floor((w - fit) / 2) - 2, x1 = Math.ceil((w + fit) / 2) + 2;
-  const faults = [];
   if (!m.fonts) faults.push('the fonts did not load');
-  if (m.left < x0 || m.right > x1) faults.push(`a line is wider than the ${Math.round(fit)}px fit (x ${x0} to ${x1}): shorten the hook`);
-  if (m.long && m.s2 < Math.round(C.longHook.line2MinPxAt1080 * k)) faults.push('line 2 is under the smallest size allowed');
-  if (shape === '9x16') {
-    const g = B.safeArea.coverGrid;
-    if (m.hookTop < px(g.y0)) faults.push(`the headline starts above what the profile grid shows (y ${px(g.y0)})`);
-    if (m.handleBottom > px(g.y1)) faults.push(`the handle ends below what the profile grid shows (y ${px(g.y1)})`);
-  } else if (m.hookTop < 0) faults.push('the headline runs off the top');
+  if (m.size < minPx) faults.push(`the headline came out at ${m.size}px, under ${Math.round(minPx)}px: shorten it or move words to --caps (never shrink the headline to fit a sentence)`);
+  if (m.left < x0 || m.right > x1) faults.push(`a line is wider than the ${Math.round(fit)}px fit (x ${x0} to ${x1}): shorten the capitals line`);
+  if (m.top < px(L.hookTopMin)) faults.push(`the words start above y ${px(L.hookTopMin)}`);
+  if (shape === '9x16' && m.bottom > px(L.hookBottomMax) + 4) faults.push(`the words end below y ${px(L.hookBottomMax)}`);
+  if (m.handleTop !== null && m.handleTop - m.bottom < px(L.handleClear) - 4) faults.push(`only ${m.handleTop - m.bottom}px between the words and the handle (the pack asks for ${px(L.handleClear)})`);
+  if (m.handleTop === null && m.bottom > h - px(B.safeArea.feedEdgeClear)) faults.push('the words run into the foot of the frame');
+  if (shape === '9x16' && m.handleBottom !== null && m.handleBottom > px(B.safeArea.coverGrid.y1)) faults.push(`the handle ends below what the profile grid shows (y ${px(B.safeArea.coverGrid.y1)})`);
   if (faults.length && !process.env.ALLOW_UNSAFE) { console.error('NOT WRITTEN: ' + faults.join('; ')); await br.close(); process.exit(1); }
 
   await pg.screenshot({ path: out, type: 'jpeg', quality: 92 });

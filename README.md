@@ -9,8 +9,9 @@ The code for riverfoxevents.co.uk. Anything merged into `main` on GitHub goes li
 | Folder | What it holds |
 | --- | --- |
 | `src/` | The site: pages, sections, copy, Laura's photos (`src/assets/`) and the automatic checks (`src/test/`) |
-| `public/` | Files served exactly as they are: the brand book PDFs, social share images, redirects |
+| `public/` | Files served exactly as they are: favicons, social share images, redirects |
 | `scripts/` | The steps that run after a build: page titles, sitemap, redirects, link checker |
+| `docs/` | `voice.md`, the one place the voice rules are written (website, Google Business and social captions) |
 | `tools/photo-grade/` | Matt's photo grading tool (has its own README) |
 | `.github/` | Scheduled jobs on GitHub (publishing dated articles, the Christmas switch-back) |
 

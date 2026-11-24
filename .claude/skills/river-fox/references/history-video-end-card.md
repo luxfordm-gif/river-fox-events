@@ -14,11 +14,10 @@ briefly, and show results as contact sheets and the finished file (SendUserFile)
 He dictates, so "door gun and insulation" means door garland installation and "garden still" means garland still.
 
 First made for the Christmas door garland at TRUE Medispa, 14 November 2026 (Matt approved the grade, cut, end card
-and opening still). The end card is in the River Fox Social Brand Pack canvas (claude.ai/artifact/RyuZawfyZziQPy6xGJ5hhF), page
-"Google Business", artboard "Video · End card"; it isn't in an exported PDF version of the pack yet.
-**The social brand pack in Drive is the authority for social rules** (`Brand › Brand book`, newest
-"Social brand pack vN"). Check it before each job; if it gains a video end card page or changes colours, type or
-logo rules, follow the pack and update `end-card/card.html` to match.
+and opening still). The end card is in the River Fox Brand Pack artifact (claude.ai/artifact/RyuZawfyZziQPy6xGJ5hhF), page
+"Google Business", artboard "Video · End card".
+**The live Brand Pack artifact is the authority for social rules** (there is no brand PDF). Check it before each job;
+if its end card page or its colours, type or logo rules change, follow the pack and update `end-card/card.html` to match.
 
 **Instagram Stories and Reels with Laura's spoken words captioned** have their own skill: `instagram-story` (style approved 18 Nov 2026, transcription, build script). Use it instead of this one for those; this one stays for Google Business and end-card videos.
 

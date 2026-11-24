@@ -39,8 +39,12 @@ describe("River Fox tools read brand values from brand-pack.json", () => {
 
   it("holds the cover rules from the boards Covers and thumbnails and Light photos and long hooks", () => {
     const c = pack.cover;
-    expect(c.type).toMatchObject({ weight: 500, opticalSize: 144, tracking: "-0.008em", wordSpacing: "0.07em" });
-    expect(c.longHook).toMatchObject({ moreThanWords: 3, line2Scale: 0.68, line2MinPxAt1080: 96 });
+    // text on photos is Instrument Serif Regular, both lines the same size, sized to the words (Brand Pack, 24 Nov 2026)
+    expect(c.type).toMatchObject({ font: "Instrument Serif", weight: 400, tracking: "-0.02em" });
+    expect(c.longHook).toBeUndefined();
+    expect(c.size.fitWidth["9x16"]).toBe(980);
+    expect(c.size.maxPx).toBe(310);
+    expect(c.capsLine).toMatchObject({ font: "DM Sans", weight: 700, px: 62 });
     // one gradient for every photo cover, over the whole image: no light or standard variants, no tool-made threshold
     expect(c.fade.light).toBeUndefined();
     expect(c.fade.standard).toBeUndefined();
@@ -50,17 +54,23 @@ describe("River Fox tools read brand values from brand-pack.json", () => {
     expect(c.fade.shadow).toContain("10px rgba(25,28,23,0.45)");
     expect(pack.handle.weight).toBe(500);
     expect(c.layout["9x16"]).toMatchObject({ handleTopY: 1500, handlePx: 28 });
+    expect(pack.videoText).toMatchObject({ font: "Instrument Serif", weight: 400 });
   });
 
-  it("the cover tool has no light-photo test and no fade option", () => {
+  it("the cover tool has no light-photo test, no fade option and no smaller second line", () => {
     const src = readFileSync(join(root, "text/thumb.cjs"), "utf8");
-    expect(src).not.toMatch(/lightAbove|fade\[|flag\('fade'/);
-    expect(src).toContain("moreThanWords");
+    expect(src).not.toMatch(/lightAbove|fade\[|line2Scale|longHook/);
   });
 
   it("holds the settled review and caption numbers", () => {
     expect(pack.review.shortUpToChars).toBe(160);
-    expect(pack.review.toolOwn.longFrom).toBeUndefined();
+    expect(pack.review.toolOwn).toBeUndefined();
+    expect(pack.review.labelText).toBe("Client review");
     expect(pack.captions.stress.scale).toBe(1.3);
+  });
+
+  it("the review tool draws no quote mark", () => {
+    const src = readFileSync(join(root, "review/review.cjs"), "utf8");
+    expect(src).not.toMatch(/markColour|class="m"/);
   });
 });
