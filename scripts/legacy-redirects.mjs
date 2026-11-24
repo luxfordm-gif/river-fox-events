@@ -50,7 +50,7 @@ export const PAGE_REDIRECTS = [
   ["/contact-us", "/contact/"],
   ["/blog", "/journal/"],
   ["/post/*", "/journal/childrens-party-themes-2026/"],
-  ["/services", "/childrens-parties/"],
+  ["/services", "/services/"], // the services hub since 2026-11-24 (was Children's parties)
   ["/services-1", "/childrens-parties/"],
   ["/installations", "/childrens-parties/"],
   ["/portfolio", "/"],
@@ -83,7 +83,7 @@ export const TOWN_FALLBACKS = {
  * page, because Netlify ignores trailing slashes when matching). Only
  * redirected on the old domain.
  */
-const OLD_DOMAIN_ONLY = new Set(["/contact"]);
+const OLD_DOMAIN_ONLY = new Set(["/contact", "/services"]);
 
 const pad = (s, n) => (s.length >= n ? s + " " : s + " ".repeat(n - s.length));
 

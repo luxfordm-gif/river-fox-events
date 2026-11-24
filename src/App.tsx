@@ -14,6 +14,7 @@ import { lazyPage } from "./lib/lazyPage";
    flashes; a finger or mouse landing on a link starts that page's download
    (see preloadOnIntent below). */
 const Index = lazyPage(() => import("./pages/Index.tsx"));
+const Services = lazyPage(() => import("./pages/Services.tsx"));
 const ChildrensParties = lazyPage(() => import("./pages/ChildrensParties.tsx"));
 const Milestones = lazyPage(() => import("./pages/Milestones.tsx"));
 const CorporateAndBrand = lazyPage(() => import("./pages/CorporateAndBrand.tsx"));
@@ -54,6 +55,7 @@ const page = (path: string, Page: { preload: () => Promise<void> }, element: Rea
 
 const PAGES: PageRoute[] = [
   page("/", Index, <Index />),
+  page("/services", Services, <Services />),
   page("/childrens-parties", ChildrensParties, <ChildrensParties />),
   page("/milestone-celebrations", Milestones, <Milestones />),
   page("/corporate-brand-styling", CorporateAndBrand, <CorporateAndBrand />),

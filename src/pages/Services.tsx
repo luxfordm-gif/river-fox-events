@@ -1,0 +1,149 @@
+import { useEffect } from "react";
+import Nav from "@/components/rfx/Nav";
+import Footer from "@/components/rfx/Footer";
+import PageHeader from "@/components/rfx/PageHeader";
+import Experiences, { type ExpItem } from "@/components/rfx/Experiences";
+import { SERVICES_HEADING, SERVICES_INTRO } from "@/data/servicesCopy";
+import Enquire from "@/components/rfx/Enquire";
+import LocationUSP from "@/components/rfx/LocationUSP";
+import LocationTrust from "@/components/rfx/LocationTrust";
+import FaqSection from "@/components/rfx/FaqSection";
+import LocationPhotoGrid from "@/components/rfx/LocationPhotoGrid";
+import { recentWall } from "@/data/recentWork";
+import { SERVICES_FAQS } from "@/data/servicesFaqs";
+import { galleryPhoto } from "@/data/gallery";
+import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
+import { christmasOn } from "@/lib/announcementBar";
+import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
+import { findRoute } from "@/seo/routes";
+import { applyMeta, breadcrumbSchema, removeJsonLd, upsertJsonLd } from "@/seo/headTags";
+
+/**
+ * /services/ - the services hub (Matt, 2026-11-24). Kept small and built only
+ * from existing parts and Laura's existing words:
+ *   - H1 and intro: the home page's services heading and intro.
+ *   - The three main cards: the home page's services section (Experiences),
+ *     with the prices left off (no prices on this page).
+ *   - Three smaller cards: shortened versions of the line under each page's
+ *     own headline (Matt's wording; the pages themselves keep the full lines). The photos (and their alt text)
+ *     come from the Our work gallery. Link labels: "See Christmas door
+ *     garlands" is the Our work page's; "See balloon ideas" and "See business
+ *     garlands" were written to match the three above (Matt to confirm).
+ *   - Then the town pages' Why River Fox Events?, Recent celebrations (their
+ *     heading and intro), Kind words,
+ *     and its own twelve FAQs (src/data/servicesFaqs.tsx, no cost question).
+ *   - The two Christmas cards go with the Christmas switch-off: christmasOn()
+ *     (christmasEndsOn in src/data/announcementBar.ts, 3 January 2027), the
+ *     same switch that takes them out of the menu and footer.
+ */
+
+const photo = (source: string) => {
+  const p = galleryPhoto(source);
+  return { img: p.src, srcSet: p.srcSet, alt: p.alt };
+};
+
+const BALLOONS: ExpItem = {
+  title: "Balloon decorations",
+  // Shortened for this page from the Balloons page hero line (Matt, 2026-11-24).
+  body: "Organic arches, garlands, balloon walls and number stacks, sized and coloured to your room.",
+  href: "/balloon-installations/",
+  cta: "See balloon ideas",
+  ...photo("river-fox-events-pastel-birthday-reeva-entrance-arch.webp"),
+};
+
+const CHRISTMAS: ExpItem[] = [
+  {
+    title: "Christmas door garlands",
+    // Shortened for this page from that page's hero line (Matt, 2026-11-24).
+    body: "Each garland is individually styled for your home or business and installed by hand.",
+    href: "/christmas-door-garlands/",
+    // The Our work page's link to this page.
+    cta: "See Christmas door garlands",
+    ...photo("christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp"),
+  },
+  {
+    title: "Christmas for businesses",
+    // Shortened for this page from that page's hero line (Matt, 2026-11-24).
+    body: "I dress shopfronts, salons, restaurants and offices with garlands matched to your brand.",
+    href: "/commercial-christmas-decorations/",
+    cta: "See business garlands",
+    ...photo("christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp"),
+  },
+];
+
+/* Recent celebrations: Laura's latest work, the same list as every page
+   (src/data/recentWork.ts), leaving out photos already on the cards above. */
+const CARD_SOURCES = [
+  "river-fox-events-pastel-birthday-reeva-entrance-arch.webp",
+  "christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp",
+  "christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp",
+];
+
+const Services = () => {
+  useFadeUp();
+  useNavScroll();
+  const season = christmasOn();
+  // After Christmas the smaller row would hold one card, so Balloon
+  // decorations joins the main row instead (Matt, 2026-11-24).
+  const more = season ? [BALLOONS, ...CHRISTMAS] : [];
+  const recent = recentWall({ exclude: CARD_SOURCES, season });
+
+  useEffect(() => {
+    const route = findRoute("/services")!;
+    applyMeta(route);
+    // Same id as the copy postbuild writes into the page, so they don't double up.
+    const breadcrumbId = "rfx-jsonld-bc-services";
+    const breadcrumbs = breadcrumbSchema(route.path);
+    if (breadcrumbs) upsertJsonLd(breadcrumbId, breadcrumbs);
+    return () => removeJsonLd(breadcrumbId);
+  }, []);
+
+  return (
+    <div className="min-h-screen page-paper text-foreground nav-solid nav-paper">
+      <Nav />
+      <main>
+        {/* Same top as Our work and Contact, line under the intro (Matt, 2026-11-24). */}
+        <PageHeader
+          divider
+          id="services-heading"
+          title={SERVICES_HEADING}
+          intro={SERVICES_INTRO}
+        >
+          <div className="text-to-action flex justify-center">
+            <a href={ENQUIRE_HREF} onClick={handleEnquireClick} className="btn-solid-rf accent">
+              Reserve your date <span className="t-icon">→</span>
+            </a>
+          </div>
+        </PageHeader>
+
+        <Experiences hideHeading labelledBy="services-heading" hidePrices eagerFirst sectionId="services-list" more={more} fourth={season ? undefined : BALLOONS} />
+
+        {/* The town pages' sections, in their order (Matt, 2026-11-24): Why
+            River Fox Events?, Recent celebrations, Kind words with the
+            client logos, FAQs (no Ideas strip, Matt 2026-11-24). */}
+        <LocationUSP noIntro />
+
+        <LocationPhotoGrid
+          id="services-recent"
+          wide
+          items={recent}
+          heading={
+            <>
+              Recent <em className="t-accent">celebrations.</em>
+            </>
+          }
+          intro="Every River Fox Events celebration is completely bespoke and tailored to you."
+        />
+
+        <LocationTrust />
+
+        <FaqSection faqs={SERVICES_FAQS} headingId="services-faq-heading" />
+
+        <Enquire hidePrice />
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default Services;

@@ -1,4 +1,37 @@
 {
+  "unicorn-rainbow-party-ava-name-sign-shimmer-wall-pastel-balloons": {
+    "width": 1000,
+    "height": 1000,
+    "widths": [
+      400,
+      700,
+      1000
+    ],
+    "seen": true,
+    "graded": true
+  },
+  "ottilie-toy-story-second-birthday-gingham-table": {
+    "width": 900,
+    "height": 900,
+    "widths": [
+      400,
+      700,
+      900
+    ],
+    "seen": true,
+    "graded": true
+  },
+  "gaming-party-duke-level-8-tron-fortnite-marshmello-backdrop-blue-black-balloons": {
+    "width": 1000,
+    "height": 1000,
+    "widths": [
+      400,
+      700,
+      1000
+    ],
+    "seen": true,
+    "graded": true
+  },
   "river-fox-events-jungle-theme-fourever-wild-full-setup": {
     "width": 2528,
     "height": 1423,
@@ -44,7 +77,7 @@
       1000,
       1280
     ],
-    "seen": false,
+    "seen": true,
     "graded": true
   },
   "river-fox-events-dinosaur-theme-ayaan-arch-close-up-portrait": {
@@ -251,6 +284,39 @@
     "seen": true,
     "graded": true
   },
+  "berry-first-birthday-strawberry-balloon-backdrop": {
+    "width": 900,
+    "height": 900,
+    "widths": [
+      400,
+      700,
+      900
+    ],
+    "seen": true,
+    "graded": true
+  },
+  "wild-ones-joint-birthday-sage-leopard-balloons": {
+    "width": 900,
+    "height": 900,
+    "widths": [
+      400,
+      700,
+      900
+    ],
+    "seen": true,
+    "graded": true
+  },
+  "two-sweet-second-birthday-sprinkle-backdrop": {
+    "width": 900,
+    "height": 900,
+    "widths": [
+      400,
+      700,
+      900
+    ],
+    "seen": true,
+    "graded": true
+  },
   "peter-rabbit-first-birthday-blue-balloon-backdrop": {
     "width": 1542,
     "height": 2048,
@@ -319,6 +385,17 @@
       700,
       1000,
       1400
+    ],
+    "seen": true,
+    "graded": true
+  },
+  "aurelia-first-birthday-pink-grey-balloon-hoop": {
+    "width": 900,
+    "height": 900,
+    "widths": [
+      400,
+      700,
+      900
     ],
     "seen": true,
     "graded": true
@@ -405,6 +482,29 @@
       1400
     ],
     "seen": false,
+    "graded": true
+  },
+  "valentina-12th-birthday-chanel-black-white-backdrop": {
+    "width": 1440,
+    "height": 1440,
+    "widths": [
+      400,
+      700,
+      1000,
+      1400
+    ],
+    "seen": true,
+    "graded": true
+  },
+  "21st-pastel-balloon-wall-light-up-numbers": {
+    "width": 900,
+    "height": 900,
+    "widths": [
+      400,
+      700,
+      900
+    ],
+    "seen": true,
     "graded": true
   },
   "13th-birthday-pink-light-up-numbers-garland": {
@@ -944,7 +1044,7 @@
       1000,
       1400
     ],
-    "seen": false,
+    "seen": true,
     "graded": true
   },
   "porch-garland-arch-wreath-front-hydrangeas": {
@@ -981,6 +1081,17 @@
       1400
     ],
     "seen": false,
+    "graded": true
+  },
+  "christmas-spruce-door-garland-beauty-salon-entrance-red-berries-white-baubles": {
+    "width": 1000,
+    "height": 1329,
+    "widths": [
+      400,
+      700,
+      1000
+    ],
+    "seen": true,
     "graded": true
   },
   "reigate-restaurant-red-gold-garland-blue-doors": {
@@ -1082,7 +1193,7 @@
       700,
       838
     ],
-    "seen": true,
+    "seen": false,
     "graded": true
   },
   "gold-star-pine-cone-bauble-spruce-detail-838": {
@@ -1093,7 +1204,7 @@
       700,
       838
     ],
-    "seen": true,
+    "seen": false,
     "graded": true
   },
   "glass-salon-true-red-corner-garland": {

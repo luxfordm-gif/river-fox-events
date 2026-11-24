@@ -111,6 +111,7 @@ const Footer = () => {
                 Services
               </div>
               <div className="t-meta link-list">
+                <a href="/services/" className="opacity-85 hover:opacity-100 block">All services</a>
                 <a href="/childrens-parties/" className="opacity-85 hover:opacity-100 block">Children's party styling</a>
                 <a href="/milestone-celebrations/" className="opacity-85 hover:opacity-100 block">Milestone celebration styling</a>
                 <a href="/corporate-brand-styling/" className="opacity-85 hover:opacity-100 block">Corporate event styling</a>

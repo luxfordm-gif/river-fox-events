@@ -3,7 +3,7 @@ import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
 import ShowMoreButton from "@/components/rfx/ShowMoreButton";
 import { Tile, Viewer } from "@/components/rfx/PhotoViewer";
 import type { ViewerItem } from "@/components/rfx/PhotoViewer";
-import { GALLERY, orderedEvents, resolvePhoto } from "@/data/gallery";
+import { mixed, seeded, type RecentItem } from "@/data/recentWork";
 
 /**
  * Town pages' "Recent celebrations": a short, clickable photo grid with
@@ -12,83 +12,34 @@ import { GALLERY, orderedEvents, resolvePhoto } from "@/data/gallery";
  *
  * Each row's photos take widths in proportion to their shape, so every photo
  * in a row has the same height, nothing is cropped, and both edges line up.
- * Three rows on tablet and up, rows of two on phones. `wide` runs the photos almost full width (town pages and the Balloons page, Matt 2026-11-16). Every photo opens
- * the same full-screen viewer as /our-work/.
+ * Three rows at every width: from tablet up all the photos, on phones the
+ * first six in rows of two (Matt, 2026-11-24: "three rows is definitely
+ * enough"). `wide` runs the photos almost full width. Every photo opens the
+ * same full-screen viewer as /our-work/.
  *
- * The town's own picks (by their one canonical alt) come first; the grid is
- * topped up from the children's parties gallery, starting at a point that
- * depends on the town so neighbouring pages don't show the same set.
+ * The photos are Laura's latest work, `recentWall()` from
+ * src/data/recentWork.ts, the one list behind every wall. The order is mixed
+ * on each visit (`mixed()`: shuffled, no two of one service side by side);
+ * the prerendered page has a fixed order.
  */
-
-type Pick = { alt: string };
 
 type Props = {
   eyebrow?: string;
   heading?: ReactNode;
   intro?: ReactNode;
-  /** Town slug, used to vary the top-up photos between towns. */
-  slug: string;
-  /** The town's own chosen photos, matched to the gallery by alt text. */
-  picks: Pick[];
-  /** How many photos in all (10 = three rows of 3 or 4). */
-  count?: number;
+  /** The photos, newest first: recentWall(). */
+  items: RecentItem[];
   id?: string;
   /** Run the photos almost full width, with a small margin each side. */
   wide?: boolean;
-  /** Fill any gap in `count` from the children's parties gallery (town pages). Off where every photo must be chosen. */
-  topUp?: boolean;
-  /** Show this many rows, then a "Show more" button for this many more. The photos are shuffled on every load, and laid out a fixed number of photos per row (2 phone, 3 tablet, 4 laptop and up). Off on town pages. */
+  /** Fixed columns instead of shaped rows (home): 4 per row from 1280px, 3 on tablets, 2 on phones, and only this many whole rows, then "Show more". */
   pageRows?: number;
   /** With `pageRows`: instead of "Show more", end on a "See more" link to this page. */
   moreHref?: string;
-  /** Photos that come first, in this order, ahead of the gallery picks (newest work not in the gallery yet). */
-  lead?: ViewerItem[];
-  /** With `pageRows`: keep the order given instead of shuffling on every load. */
-  keepOrder?: boolean;
 };
 
 const SIZES = "(min-width: 1280px) 30vw, (min-width: 768px) 38vw, 46vw";
 
-
-const allEntries = (): { item: ViewerItem; section: string }[] =>
-  GALLERY.flatMap((s) =>
-    orderedEvents(s).flatMap((e) =>
-      e.photos.map((p) => ({ item: { ...resolvePhoto(p), title: e.title, place: e.place }, section: s.id })),
-    ),
-  );
-
-const hashOf = (s: string) => [...s].reduce((n, c) => n + c.charCodeAt(0), 0);
-
-const choosePhotos = (slug: string, picks: Pick[], count: number, topUp: boolean): ViewerItem[] => {
-  const all = allEntries();
-  const chosen: ViewerItem[] = [];
-  const seen = new Set<string>();
-  for (const pick of picks) {
-    const hit = all.find((e) => e.item.alt === pick.alt);
-    if (hit && !seen.has(hit.item.source)) {
-      chosen.push(hit.item);
-      seen.add(hit.item.source);
-    }
-  }
-  // Top up with each children's party's lead photo, starting somewhere that
-  // depends on the town.
-  // Never Rishi's Summer Party (Matt, 2026-11-08) and no Halloween shots,
-  // which are off house style for a town page.
-  const skip = /rishi-summer-party|halloween/;
-  const pool = all
-    .filter((e) => e.section === "childrens-parties" && !skip.test(e.item.source))
-    .map((e) => e.item);
-  const leads = pool.filter((p, i) => i === pool.findIndex((q) => q.title === p.title));
-  const start = hashOf(slug) % Math.max(leads.length, 1);
-  for (let k = 0; topUp && k < leads.length && chosen.length < count; k++) {
-    const p = leads[(start + k) % leads.length];
-    if (!seen.has(p.source)) {
-      chosen.push(p);
-      seen.add(p.source);
-    }
-  }
-  return chosen.slice(0, count);
-};
 
 const ratio = (p: ViewerItem) => p.width / p.height;
 
@@ -144,26 +95,22 @@ const useColumns = () => {
   return cols;
 };
 
-const shuffled = <T,>(items: T[]): T[] => {
-  const a = [...items];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-};
+/** The prerender (a headless browser) gets one fixed order, so the built
+ *  page is the same on every build; real visits get a fresh mix. */
+const isPrerender = () => typeof navigator !== "undefined" && navigator.webdriver;
 
-const LocationPhotoGrid = ({ eyebrow, heading, intro, slug, picks, count = 10, id = "loc-gallery", wide: fullWidth = false, topUp = true, pageRows, moreHref, lead = [], keepOrder = false }: Props) => {
-  const chosen = useMemo(() => [...lead, ...choosePhotos(slug, picks, count, topUp)], [slug, picks, count, topUp, lead]);
-  // "Show more" mode: a different order on every load (the page is not
-  // hydrated from the prerendered HTML, so this can't mismatch).
-  const [order] = useState(() => (pageRows && !keepOrder ? shuffled(chosen) : chosen));
-  const photos = pageRows ? order : chosen;
+/** Phones: three rows of two. */
+const PHONE_PHOTOS = 6;
+
+const LocationPhotoGrid = ({ eyebrow, heading, intro, items, id = "loc-gallery", wide: fullWidth = false, pageRows, moreHref }: Props) => {
+  // A different order on every visit (the page is not hydrated from the
+  // prerendered HTML, so this can't mismatch).
+  const [photos] = useState(() => mixed(items, isPrerender() ? seeded(2026) : Math.random));
   const wide = useWide();
   const cols = useColumns();
   const [pages, setPages] = useState(1);
   const rows = useMemo(() => {
-    if (!pageRows) return splitRows(photos, wide ? 3 : Math.floor(photos.length / 2));
+    if (!pageRows) return wide ? splitRows(photos, 3) : splitRows(photos.slice(0, PHONE_PHOTOS), 3);
     const all: ViewerItem[][] = [];
     // Only whole rows: a short last row would stretch its photos across the page.
     for (let i = 0; i + cols <= photos.length; i += cols) all.push(photos.slice(i, i + cols));
