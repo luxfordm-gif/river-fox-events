@@ -1,30 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import "@/styles/christmas.css";
 import { christmasOn } from "@/lib/announcementBar";
 
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
-import pine160 from "@/assets/christmas/pine-branch-fairy-lights-frosted-cone-160.webp";
-import pine320 from "@/assets/christmas/pine-branch-fairy-lights-frosted-cone-320.webp";
-import pine480 from "@/assets/christmas/pine-branch-fairy-lights-frosted-cone-480.webp";
-import imgGeorgian from "@/assets/christmas/instagram/georgian-door-gold-champagne-garland.webp";
-import imgPilates from "@/assets/christmas/instagram/pink-pilates-studio-garland-blush-red-baubles.webp";
-import imgNavy from "@/assets/christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp";
-import imgReigate from "@/assets/christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp";
+// MOCK-UP (Matt, 2026-11-24): a stand-in loop made from the Worplesdon porch
+// photos. Swap in a short cut of Laura's Worplesdon time-lapse (2:3, 576x864,
+// no sound, under 1MB) with the same file name pattern.
+import promoVideo from "@/assets/christmas/video/worplesdon-porch-garland-standin-2x3.mp4";
+import promoPoster from "@/assets/christmas/video/worplesdon-porch-garland-poster-2x3.webp";
 
 const PAGE = "/christmas-door-garlands/";
 const DISMISS_KEY = "rfx-xmas-promo-dismissed";
 
-/* Decorative: the card's link carries the meaning, so these alts stay empty. */
-const DECK = [imgGeorgian, imgPilates, imgNavy, imgReigate];
 
 /**
  * Floating "Christmas door garlands" card, pinned bottom-right (a slim bar
- * along the bottom on phones). A small deck of doorway photos shuffles: every
- * few seconds the front photo slides out and tucks in at the back.
+ * along the bottom on phones).
  *
- * Deep pine green with a lit spruce branch on the right edge (Matt,
- * 2026-11-09: the cream version blended into the page).
+ * MOCK-UP (Matt, 2026-11-24): a tall card with a looping video of a garland
+ * going up filling it, the words over the video (like the Black Friday card
+ * Matt shared). On phones the bar keeps its shape with a small video in
+ * place of the old photo deck. Was: a shuffling deck of doorway photos on
+ * deep pine green with a lit spruce branch.
  *
  * Shows about a second after load, once the cookie banner (which uses the
  * same corner) has been answered. Closing it is remembered. Never shows
@@ -34,7 +32,7 @@ const DECK = [imgGeorgian, imgPilates, imgNavy, imgReigate];
  */
 const ChristmasPromo = () => {
   const [show, setShow] = useState(false);
-  const [front, setFront] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     // Gone with the rest of the Christmas campaign (3 January 2027).
@@ -82,11 +80,19 @@ const ChristmasPromo = () => {
     };
   }, []);
 
+  // The video only downloads and plays once the card is on screen, and stays
+  // on its poster (the finished door) with reduced motion.
   useEffect(() => {
-    if (!show) return;
+    const v = videoRef.current;
+    if (!v) return;
+    if (!show) {
+      v.pause();
+      return;
+    }
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = window.setInterval(() => setFront((f) => (f + 1) % DECK.length), 3200);
-    return () => window.clearInterval(t);
+    v.play().catch(() => {
+      /* autoplay refused: the poster stays, which is fine */
+    });
   }, [show]);
 
   const dismiss = () => {
@@ -105,46 +111,27 @@ const ChristmasPromo = () => {
       aria-hidden={show ? undefined : true}
     >
       <img src={bow160} alt="" aria-hidden="true" className="xmas-promo__bow" width={160} height={165} />
-      {/* Decorative branch, clipped by the card's rounded corners. */}
-      <span className="xmas-promo__pine" aria-hidden="true">
-        <img
-          src={pine320}
-          srcSet={`${pine160} 160w, ${pine320} 320w, ${pine480} 480w`}
-          sizes="(max-width: 767px) 150px, 200px"
-          alt=""
-          width={320}
-          height={428}
-          decoding="async"
-        />
-      </span>
       <button type="button" className="xmas-promo__close" onClick={dismiss} aria-label="Close" tabIndex={show ? 0 : -1}>
         <X size={16} strokeWidth={1.8} />
       </button>
 
-      <div className="xmas-promo__deck" aria-hidden="true">
-        {DECK.map((src, i) => {
-          const pos = (i - front + DECK.length) % DECK.length; // 0 = front
-          return (
-            <img
-              key={src}
-              src={src}
-              alt=""
-              className="xmas-promo__card"
-              data-pos={pos}
-              width={560}
-              height={700}
-              // On screen as soon as the card slides in (after about a
-              // second), so fetched straight away but behind the hero.
-              loading="eager"
-              fetchPriority="low"
-              decoding="async"
-            />
-          );
-        })}
+      {/* Decorative: the card's link carries the meaning. */}
+      <div className="xmas-promo__media" aria-hidden="true">
+        <video
+          ref={videoRef}
+          src={promoVideo}
+          poster={promoPoster}
+          muted
+          loop
+          playsInline
+          preload="none"
+          width={576}
+          height={864}
+        />
       </div>
 
       {/* Desktop card: centred, with a solid button. */}
-      <div className="xmas-promo__body hidden md:block">
+      <div className="xmas-promo__body hidden md:flex">
         <p className="t-overline text-ink-soft">Now booking</p>
         <h2 className="xmas-promo__title t-h5">
           Get your Christmas{" "}

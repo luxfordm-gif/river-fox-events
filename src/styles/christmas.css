@@ -215,14 +215,15 @@
 .form-row.form-check > span { min-width: 0; }
 
 /* Floating Christmas card (src/components/rfx/ChristmasPromo.tsx).
-   Bottom-right card on desktop, a slim bar along the bottom on phones. */
+   MOCK-UP (Matt, 2026-11-24): a tall card filled by a looping video of a
+   garland going up, the words over it; a slim bar with a small video on phones. */
 .xmas-promo {
   position: fixed;
   z-index: var(--layer-promo);
   right: 24px;
   bottom: 24px;
-  width: 320px;
-  padding: 30px 20px 20px;
+  width: 272px;
+  aspect-ratio: 2 / 3;
   border-radius: var(--radius-large);
   background: hsl(var(--xmas-pine));
   color: hsl(var(--text-on-dark));
@@ -249,23 +250,27 @@
   z-index: 6;
   filter: var(--xmas-shadow-bow);
 }
-/* Lit spruce branch on the right edge; the wrapper clips it to the card's
-   corners (the bow above still overhangs). Its left edge fades into the green. */
-.xmas-promo__pine {
+/* The video fills the card. A pine fade at the top and foot keeps the words
+   readable over any frame (one soft gradient, never a hard box). */
+.xmas-promo__media {
   position: absolute;
   inset: 0;
   border-radius: inherit;
   overflow: hidden;
-  pointer-events: none;
 }
-.xmas-promo__pine img {
+.xmas-promo__media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.xmas-promo__media::after {
+  content: "";
   position: absolute;
-  top: -10%;
-  right: -18%;
-  width: 200px;
-  height: auto;
-  -webkit-mask-image: linear-gradient(to right, transparent, hsl(0 0% 0%) 35%);
-  mask-image: linear-gradient(to right, transparent, hsl(0 0% 0%) 35%);
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--xmas-pine) / 0.82) 0%,
+    hsl(var(--xmas-pine) / 0.35) 30%,
+    transparent 48%,
+    transparent 60%,
+    hsl(var(--xmas-pine) / 0.75) 100%
+  );
 }
 .xmas-promo .t-overline { color: hsl(var(--xmas-gold)); }
 .xmas-promo .xmas-promo__link { color: hsl(var(--text-on-dark)); border-bottom-color: hsl(var(--xmas-gold)); }
@@ -280,7 +285,7 @@
   height: 30px;
   border-radius: 50%;
   color: hsl(var(--text-on-dark));
-  background: hsl(var(--xmas-pine) / 0.85);
+  background: hsl(var(--xmas-pine) / 0.6);
   transition: color var(--motion-quick) ease, background var(--motion-quick) ease;
 }
 .xmas-promo__close:hover { color: hsl(var(--xmas-pine)); background: hsl(var(--text-on-dark)); }
@@ -297,29 +302,20 @@
   transform: translate(-50%, -50%);
 }
 
-/* The deck: the front photo slides out to the right and tucks in behind. */
-.xmas-promo__deck { position: relative; height: 170px; margin: 8px 0 16px; }
-.xmas-promo__card {
+/* Desktop: words at the top left, the button along the foot. */
+.xmas-promo__body {
   position: absolute;
-  left: 50%;
-  top: 0;
-  width: 130px;
-  height: 163px;
-  object-fit: cover;
-  border-radius: var(--radius-large);
-  border: 4px solid hsl(0 0% 100%);
-  box-shadow: var(--xmas-shadow-card);
-  transition: transform var(--motion-reveal) var(--ease-swing), opacity var(--motion-reveal) ease;
+  inset: 0;
+  z-index: 5;
+  /* display comes from the markup (hidden md:flex / md:hidden) */
+  flex-direction: column;
+  padding: 30px 20px 20px;
+  text-align: left;
+  text-shadow: var(--shadow-text-photo);
 }
-.xmas-promo__card[data-pos="0"] { z-index: 4; transform: translateX(-50%) rotate(-2deg); }
-.xmas-promo__card[data-pos="1"] { z-index: 3; transform: translateX(-50%) translateX(34%) rotate(7deg) scale(0.92); }
-.xmas-promo__card[data-pos="2"] { z-index: 2; transform: translateX(-50%) translateX(-34%) rotate(-9deg) scale(0.88); }
-.xmas-promo__card[data-pos="3"] { z-index: 1; transform: translateX(-50%) translateX(70%) rotate(16deg) scale(0.84); opacity: 0; }
-
-.xmas-promo__body { position: relative; text-align: center; }
 .xmas-promo__title { font-size: var(--fs-h5); line-height: var(--lh-h5); font-weight: var(--fw-regular); letter-spacing: var(--ls-h5); margin-top: 8px; }
 .xmas-promo__text { margin-top: 8px; font-size: var(--fs-meta); line-height: var(--lh-small); color: hsl(var(--text-on-dark)); }
-.xmas-promo__cta { margin-top: 16px; width: 100%; justify-content: center; }
+.xmas-promo__cta { margin-top: auto; width: 100%; justify-content: center; text-shadow: none; }
 
 @media (max-width: 767px) {
   .xmas-promo {
@@ -327,31 +323,34 @@
     right: 12px;
     bottom: 12px;
     width: auto;
-    padding: 14px 14px 14px 12px;
+    aspect-ratio: auto;
+    padding: 12px 14px 12px 12px;
     display: flex;
     align-items: center;
-    gap: 18px; /* photos to text (Matt, 2026-11-09: 4px more) */
+    gap: 16px;
   }
   .xmas-promo__bow { display: none; }
-  .xmas-promo__close { top: 6px; right: 6px; width: 26px; height: 26px; }
-  .xmas-promo__deck { flex: none; width: 74px; height: 92px; margin: 0; }
-  .xmas-promo__deck { margin-left: 6px; }
-  .xmas-promo__card { width: 62px; height: 80px; top: 6px; border-width: 3px; }
-  .xmas-promo__card[data-pos="1"] { transform: translateX(-50%) translateX(14%) rotate(6deg) scale(0.92); }
-  .xmas-promo__card[data-pos="2"] { transform: translateX(-50%) translateX(-14%) rotate(-7deg) scale(0.88); }
-  .xmas-promo__card[data-pos="3"] { transform: translateX(-50%) translateX(30%) rotate(12deg) scale(0.84); }
-  /* Text stops short of the branch so the title wraps before the pine cone. */
-  .xmas-promo__body { text-align: left; padding-right: 64px; }
-  .xmas-promo__pine img { top: -45%; right: -10%; width: 150px; }
+  .xmas-promo__close { top: 6px; right: 6px; width: 26px; height: 26px; background: transparent; }
+  /* A small portrait video in place of the old photo deck. */
+  .xmas-promo__media {
+    position: relative;
+    inset: auto;
+    flex: none;
+    width: 60px;
+    aspect-ratio: 2 / 3;
+    border-radius: var(--radius-small);
+  }
+  .xmas-promo__media::after { display: none; }
+  .xmas-promo__body { position: static; padding: 0 40px 0 0; text-shadow: none; }
   .xmas-promo__title { margin-top: 2px; }
   /* 2px from the title (Matt, 2026-11-09: 8px tighter). */
   .xmas-promo__link { margin-top: 0; padding: 2px 0 4px; }
-  /* Whole bar is tappable: the link's hit area stretches over the card,
-     above the photo deck (z 1-4) and below the close button (z 7). */
+  /* Whole bar is tappable: the link's hit area stretches over the card
+     (the body is static, so the card holds it), below the close button (z 7). */
   .xmas-promo__link::after { content: ""; position: absolute; inset: 0; z-index: 5; border-radius: inherit; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .xmas-promo, .xmas-promo__card { transition: none; }
+  .xmas-promo { transition: none; }
 }
 
 /* Garland options: two equal cards (Matt, 2026-11-07). Most popular has the gold
