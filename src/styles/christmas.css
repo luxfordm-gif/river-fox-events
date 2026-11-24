@@ -310,12 +310,13 @@
   z-index: 5;
   /* display comes from the markup (hidden md:flex / md:hidden) */
   flex-direction: column;
-  padding: 30px 20px 20px;
+  padding: 54px 20px 20px; /* clear of the bow (Matt, 2026-11-24) */
   text-align: left;
   text-shadow: var(--shadow-text-photo-lg);
 }
 .xmas-promo__title { font-size: var(--fs-h5); line-height: var(--lh-h5); font-weight: var(--fw-regular); letter-spacing: var(--ls-h5); margin-top: 8px; }
-.xmas-promo__text { margin-top: 8px; font-size: var(--fs-meta); line-height: var(--lh-small); color: hsl(var(--text-on-dark)); }
+/* Bigger headline on the desktop card, closer to its label (Matt, 2026-11-24). */
+.xmas-promo__title--card { font-size: var(--fs-h4); line-height: var(--lh-h4); letter-spacing: var(--ls-h4); margin-top: 4px; }
 .xmas-promo__cta { margin-top: auto; width: 100%; justify-content: center; text-shadow: none; }
 
 @media (max-width: 767px) {

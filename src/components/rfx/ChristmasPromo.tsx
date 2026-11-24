@@ -133,12 +133,11 @@ const ChristmasPromo = () => {
       {/* Desktop card: centred, with a solid button. */}
       <div className="xmas-promo__body hidden md:flex">
         <p className="t-overline text-ink-soft">Now booking</p>
-        <h2 className="xmas-promo__title t-h5">
+        <h2 className="xmas-promo__title xmas-promo__title--card t-h4">
           Get your Christmas{" "}
           <br />
           <em className="t-accent">garlands.</em>
         </h2>
-        <p className="xmas-promo__text t-meta">Fresh or faux, styled to your door.</p>
         {/* Opens the top of the Christmas page, not its form (Matt, 2026-11-08). */}
         <a href={PAGE} className="btn-solid-rf accent xmas-promo__cta" tabIndex={show ? 0 : -1}>
           Find out more <span>→</span>
