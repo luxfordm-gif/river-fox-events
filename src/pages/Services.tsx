@@ -25,8 +25,8 @@ import { applyMeta, breadcrumbSchema, removeJsonLd, upsertJsonLd } from "@/seo/h
  *   - H1 and intro: the home page's services heading and intro.
  *   - The three main cards: the home page's services section (Experiences),
  *     with the prices left off (no prices on this page).
- *   - Three smaller cards: each card's text is the first line under that
- *     page's own headline, word for word. The photos (and their alt text)
+ *   - Three smaller cards: shortened versions of the line under each page's
+ *     own headline (Matt's wording; the pages themselves keep the full lines). The photos (and their alt text)
  *     come from the Our work gallery. Link labels: "See Christmas door
  *     garlands" is the Our work page's; "See balloon ideas" and "See business
  *     garlands" were written to match the three above (Matt to confirm).
@@ -45,8 +45,8 @@ const photo = (source: string) => {
 
 const BALLOONS: ExpItem = {
   title: "Balloon decorations",
-  // The Balloons page hero line.
-  body: "Organic arches, garlands, balloon walls and number stacks, sized and coloured to your room, with backdrops, props and name boards when you want the whole space styled.",
+  // Shortened for this page from the Balloons page hero line (Matt, 2026-11-24).
+  body: "Organic arches, garlands, balloon walls and number stacks, sized and coloured to your room.",
   href: "/balloon-installations/",
   cta: "See balloon ideas",
   ...photo("river-fox-events-pastel-birthday-reeva-entrance-arch.webp"),
@@ -55,8 +55,8 @@ const BALLOONS: ExpItem = {
 const CHRISTMAS: ExpItem[] = [
   {
     title: "Christmas door garlands",
-    // The Christmas door garlands hero line.
-    body: "Each garland is individually styled for your home or business and installed by hand across Surrey, with optional January takedown.",
+    // Shortened for this page from that page's hero line (Matt, 2026-11-24).
+    body: "Each garland is individually styled for your home or business and installed by hand.",
     href: "/christmas-door-garlands/",
     // The Our work page's link to this page.
     cta: "See Christmas door garlands",
@@ -64,8 +64,8 @@ const CHRISTMAS: ExpItem[] = [
   },
   {
     title: "Christmas for businesses",
-    // The Christmas for businesses hero line.
-    body: "I dress shopfronts, salons, restaurants and offices across Surrey with garlands matched to your brand, installed by hand around your opening hours, with optional January takedown.",
+    // Shortened for this page from that page's hero line (Matt, 2026-11-24).
+    body: "I dress shopfronts, salons, restaurants and offices with garlands matched to your brand.",
     href: "/commercial-christmas-decorations/",
     cta: "See business garlands",
     ...photo("christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp"),
