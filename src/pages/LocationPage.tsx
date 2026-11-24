@@ -4,7 +4,6 @@ import { INSPIRATION_TOWNS } from "@/data/inspiration";
 import { useLocation } from "react-router-dom";
 import Nav from "@/components/rfx/Nav";
 import TrustLine from "@/components/rfx/TrustLine";
-import Breadcrumbs from "@/components/rfx/Breadcrumbs";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
 import { scenarioForTown } from "@/data/howItWorks";
@@ -107,8 +106,6 @@ const LocationPage = () => {
           className="rfx-hero rfx-hero-scale hero-foot"
           aria-labelledby={`loc-${loc.slug}-hero-heading`}
         >
-          {/* Home › Areas I cover › [Town], top left (Matt, 2026-11-24). */}
-          <Breadcrumbs path={`/party-styling-${loc.slug}`} />
           <div className="container-rfx">
             {/* mb tightened (was mb-10/mb-14) so the cards sit closer to
                 the CTA button - about 22px less air on both breakpoints. */}

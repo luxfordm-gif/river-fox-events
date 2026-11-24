@@ -122,9 +122,22 @@ export const SERVICES_FAQS: FaqItem[] = [
   {
     q: "Can Laura design around my theme, colours or venue?",
     a: "Yes, I design every River Fox Events booking around your theme, colours and space. Balloons and backdrops are matched to your palette, and the layout is planned around your room or venue.",
+    aNode: (
+      <>
+        Yes, I design every River Fox Events booking around <L href="/our-work/">your theme, colours and space</L>.
+        Balloons and backdrops are matched to your palette, and the layout is planned around your room or venue.
+      </>
+    ),
   },
   {
     q: "How far in advance should I book River Fox Events?",
     a: "It's best to book River Fox Events six to eight weeks before your event. I take on a small number of events each month, so busy periods fill up sooner. If your date is closer than that, it's still worth asking.",
+    aNode: (
+      <>
+        It's best to book River Fox Events six to eight weeks before your event. I take on a small number of events
+        each month, so busy periods fill up sooner. If your date is closer than that,{" "}
+        <L href="/contact/">it's still worth asking</L>.
+      </>
+    ),
   },
 ];

@@ -3,8 +3,11 @@ import { ChevronRight, House } from "lucide-react";
 import { breadcrumbTrail } from "@/seo/headTags";
 
 /**
- * The small breadcrumb trail at the top left of the service pages, the town
- * pages and /services/ (Matt, 2026-11-24):
+ * A small visible breadcrumb trail. NOT ON ANY PAGE (Matt, 2026-11-24: tried
+ * on the service pages, town pages and /services/ the same day, then taken
+ * off as too much for a small site; the BreadcrumbList JSON-LD stays). To
+ * bring it back, put <Breadcrumbs path="..." /> first in a page's top section.
+ * Shown at /style-guide/ S24. The trails read:
  *   Home › Services › Children's parties
  *   Home › Areas I cover › Cobham
  *

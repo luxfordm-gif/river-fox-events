@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import PageHeader from "@/components/rfx/PageHeader";
-import Breadcrumbs from "@/components/rfx/Breadcrumbs";
 import Experiences, { type ExpItem } from "@/components/rfx/Experiences";
 import { SERVICES_HEADING, SERVICES_INTRO } from "@/data/servicesCopy";
 import Enquire from "@/components/rfx/Enquire";
@@ -107,7 +106,6 @@ const Services = () => {
         <PageHeader
           divider
           id="services-heading"
-          above={<Breadcrumbs path="/services" />}
           title={SERVICES_HEADING}
           intro={SERVICES_INTRO}
         >

@@ -11,7 +11,6 @@ import SnowCap from "@/components/rfx/SnowCap";
 import StoryVideos, { type Story } from "@/components/rfx/StoryVideos";
 import FaqSection from "@/components/rfx/FaqSection";
 import TrustLine from "@/components/rfx/TrustLine";
-import Breadcrumbs from "@/components/rfx/Breadcrumbs";
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
 import bow320 from "@/assets/christmas/burgundy-velvet-bow-320.webp";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
@@ -629,8 +628,6 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
         {/* Hero: garland drapes edge to edge above the headline, then the
             photo fan (scroll strip on phones), as on the location pages. */}
         <section aria-labelledby="xmas-hero-heading" className="rfx-hero hero-under-nav hero-foot">
-          {/* Home › Services › this page, top left (Matt, 2026-11-24). */}
-          <Breadcrumbs path={routePath} />
           {/* Tablet up only: on phones it pushed the buttons below the fold
               (Matt, 2026-11-18). */}
           <div className="hidden md:block">

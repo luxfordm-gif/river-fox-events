@@ -540,7 +540,7 @@ const SECTIONS: Section[] = [
     id: "S24",
     title: "Breadcrumbs",
     component: "Breadcrumbs",
-    note: "Top left on every service page, town page and /services/ (pinned under the nav from tablet up, above the headline on phones). Names and links come from routes.ts, the same as the BreadcrumbList schema",
+    note: "Not on any page (taken off 24 Nov 2026; Google still gets the BreadcrumbList). Pinned top left under the nav when used. Names and links come from routes.ts, the same as the BreadcrumbList schema",
     render: () => (
       <div className="stack-gap flex flex-col">
         <Breadcrumbs path="/childrens-parties" pinned={false} />

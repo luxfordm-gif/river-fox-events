@@ -215,7 +215,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                 onClick={() => setOpen(false)}
                 className={`t-h4 text-ink no-underline ${
                   "seasonal" in l
-                    ? `nav-sheet__seasonal border-hair ${l.href === SEASONAL.href ? "border-y" : "border-b"}`
+                    ? `nav-sheet__seasonal border-hair ${l.href === SEASONAL.href ? "border-t" : "border-b"}`
                     : ""
                 }`}
               >

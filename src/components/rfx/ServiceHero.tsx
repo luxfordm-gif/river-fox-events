@@ -1,6 +1,5 @@
 import { type CSSProperties, ReactNode, useEffect, useRef, Fragment } from "react";
 import TrustLine from "./TrustLine";
-import Breadcrumbs from "./Breadcrumbs";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 
 type ServiceHeroProps = {
@@ -17,9 +16,6 @@ type ServiceHeroProps = {
   /** Pre-filled WhatsApp link. When set, phones (below md) get a
    *  "WhatsApp Laura now" ghost button under Reserve your date. */
   whatsappHref?: string;
-  /** This page's path in routes.ts, for the breadcrumb trail above the
-   *  headline (Home › Services › this page). */
-  path?: string;
 };
 
 const ServiceHero = ({
@@ -31,7 +27,6 @@ const ServiceHero = ({
   sub,
   headingId = "service-hero-heading",
   whatsappHref,
-  path,
 }: ServiceHeroProps) => {
   const imgWrapRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -75,7 +70,6 @@ const ServiceHero = ({
 
   return (
     <section id="top" aria-labelledby={headingId} className="rfx-hero-scale pb-0">
-      {path && <Breadcrumbs path={path} />}
       {/* Text - same position and style as home page H1 */}
       <div className="container-rfx">
         <div className="rfx-hero-intro flex flex-col items-center text-center">
