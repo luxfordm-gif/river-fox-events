@@ -72,7 +72,7 @@ From the Y-tagged themes in Step 1, recommend ONE topic that:
 ## Step 3 — Draft the article
 
 Once Matt approves the topic, follow `AUTHORING.md` in full. Specifically:
-- Voice rules (§1) — Laura, first person
+- Voice rules — `docs/voice.md` (pointed to from §1)
 - Aesthetic gate (§2) — every reference must pass
 - Structure (§3) — TL;DR → prose → image → pull quote → prose → inline CTA → method section → "Why I love this part" → `— Laura`
 - Length (§4) — 900–1300 words of prose

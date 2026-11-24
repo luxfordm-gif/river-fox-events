@@ -14,14 +14,14 @@
 //     run up to 316 KB).
 //   upscale: false = never enlarge (gallery sets, like the site's script). Other targets are made at their exact
 //     sizes, since the site imports those file names; an enlarged file is marked in export.json.
-// The social sizes follow the newest Brand book and Brand pack in Drive (Brand › Brand book) and the newest
-// Automation build brief (Automation). Those documents are the source; if they change a size, change it here too.
+// The social sizes follow the live Brand Pack artifact (https://claude.ai/artifact/RyuZawfyZziQPy6xGJ5hhF). It is the
+// source; if it changes a size, change it here too.
 const TARGETS = {
   // Social. JPG, sRGB, one file per photo.
   // Checked against each platform's own help pages, 14 Nov 2026 (Matt asked for the guidelines to decide):
   // - Google publishes no post size, only 720x720 recommended for Business Profile photos in general (JPG/PNG,
   //   10 KB-5 MB). Posts show in a 4:3 frame, centre-cropped (most guides), so we make the 4:3 crop ourselves and
-  //   choose where it sits. Matches the brand book and the Automation build brief.
+  //   choose where it sits. Matches the Brand Pack's Google Business page.
   // - Instagram keeps 1.91:1 to 3:4 at 1080 wide (help.instagram.com/1631821640426723): 1080x1440 is the tallest,
   //   and the profile grid tile is 3:4, so nothing is lost there.
   // - Facebook Feed: 4:5, 1440x1800 recommended (facebook.com/business/ads-guide, Facebook Feed image).

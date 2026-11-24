@@ -28,12 +28,14 @@ def wrap(t,maxc=26):
     return best[1] if best else t
 def caption(name,text):
     text=wrap(text); return shot(name,'<div class="w">%s</div>'%''.join('<div class="b">%s</div>'%html.escape(l) for l in text.split('|')),CAP_CSS)
-# Headline (top): white Fraunces 124px, line 1 upright, line 2 italic, soft dark fade behind at the top
-TOP_CSS='.s{position:absolute;top:0;left:0;right:0;height:900px;background:linear-gradient(rgba(20,16,12,.42),rgba(20,16,12,0))}.t{position:absolute;top:300px;left:0;right:0;text-align:center;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.35)}h1{font-family:Fraunces,serif;font-weight:400;font-size:124px;line-height:.98;letter-spacing:-.035em;margin:0}h1 em{font-style:italic;display:block}'
-def top(name,l1,l2): return shot(name,'<div class="s"></div><div class="t"><h1>%s<em>%s</em></h1></div>'%(l1,l2),TOP_CSS)
-# Finale: huge Fraunces word at the bottom, italic line under it, caps line with the handle
-FIN_CSS='.s{position:absolute;bottom:0;left:0;right:0;height:1000px;background:linear-gradient(rgba(20,16,12,0),rgba(20,16,12,.5))}.t{position:absolute;bottom:400px;left:0;right:0;text-align:center;color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.4)}h1{font-family:Fraunces,serif;font-weight:400;font-size:260px;line-height:.9;letter-spacing:-.04em;margin:0}h2{font-family:Fraunces,serif;font-weight:400;font-style:italic;font-size:132px;line-height:.98;letter-spacing:-.035em;margin:10px 0 0}p{font-family:"DM Sans",sans-serif;font-weight:600;font-size:28px;letter-spacing:.18em;margin:44px 0 0}'
-def finale(name,l1,l2,caps): return shot(name,'<div class="s"></div><div class="t"><h1>%s</h1><h2>%s</h2><p>%s</p></div>'%(l1,l2,caps),FIN_CSS)
+# Headline and closing text are made by ../text/mkcopy2.cjs, the one tool that follows the Brand Pack's board
+# "Headline and closing text on video" (by way of ../brand-pack.json). No type is set here. It refuses text outside the
+# safe area, so a run stops rather than file one that breaks the pack.
+MK=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','text','mkcopy2.cjs')
+def mk(name,mode,args):
+    out=os.path.join(W,name+'.png'); subprocess.run(['node',MK,mode,out]+args,check=True); return out
+def top(name,l1,l2): return mk(name,'hl-two',[l1,l2])
+def finale(name,l1,l2,caps): return mk(name,'finale',[l1,l2]+([caps] if caps else []))
 # House grade (matches the photo look: bright, airy, true whites). "grade": false keeps the phone's own colour.
 DN="hqdn3d=0.5:0.5:1.5:1.5," if cfg.get("hq") else "hqdn3d=1.5:1.5:3:3,"
 G=DN+"colortemperature=temperature=6100:mix=0.45,curves=master='0/0.03 0.25/0.33 0.5/0.6 0.8/0.87 1/1',eq=contrast=1.05:saturation=1.15:gamma=1.06,"
@@ -404,7 +406,7 @@ for i,s in enumerate(cfg['segments']):
         if first<2.5:
             print('headline skipped in segment %d: with big words there is no intro overlay unless more than 2.5s of silence comes before she speaks (she speaks at %.1fs)'%(i,first)); h=None
     if h:
-        png=finale('h%d'%i,h['line1'],h['line2'],h.get('caps','@RIVERFOX_EVENTS')) if h.get('kind')=='finale' else top('h%d'%i,h['line1'],h['line2'])
+        png=finale('h%d'%i,h['line1'],h['line2'],h.get('caps','')) if h.get('kind')=='finale' else top('h%d'%i,h['line1'],h['line2'])
         ov.append((png,h['from'],h['to']))
     spd=s.get('speed',1); d=s['d']; src=os.path.join(clips,s['clip'])
     cmd=['ffmpeg','-v','error','-y','-ss',str(s['ss']),'-t',str(d*spd),'-i',src]
@@ -495,13 +497,11 @@ if DRAFT: sys.exit(0)  # a draft is for review only: no preview copy, no cover, 
 # small copy for sending to a phone (Remote Control caps uploads at 30 MB); the master above is what goes in Drive and to Instagram
 prev=cfg['out'].replace('.mp4','-preview.mp4')
 subprocess.run(['ffmpeg','-v','error','-y','-i',cfg['out'],'-c:v','libx264','-preset','slow','-b:v','4000k','-maxrate','5000k','-bufsize','8000k','-c:a','aac','-b:a','128k','-movflags','+faststart',prev],check=True); print('preview ->',prev)
-# Cover still (optional): "cover": {"clip":"c03.mp4","t":19.9,"line1":"Making a","line2":"Christmas&nbsp;garland.","out":"cover.jpg"}
+# Cover still (optional): "cover": {"clip":"c03.mp4","t":19.9,"line1":"Making a","line2":"garland.","caps":"...","at":"middle","out":"cover.jpg"}
 c=cfg.get('cover')
 if c:
-    still=os.path.join(W,'cover_still.png')
-    subprocess.run(['ffmpeg','-v','error','-y','-ss',str(c['t']),'-i',os.path.join(clips,c['clip']),'-frames:v','1','-vf',V,still],check=True)
-    css='html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:url(cover_still.png) 0 0/1080px 1920px}.s{position:absolute;bottom:0;left:0;right:0;height:1000px;background:linear-gradient(rgba(20,16,12,0),rgba(20,16,12,.5))}.t{position:absolute;bottom:400px;left:0;right:0;text-align:center;color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.4)}h1{font-family:Fraunces,serif;font-weight:400;font-size:%dpx;line-height:.95;letter-spacing:-.035em;margin:0}h1 em{font-style:italic;display:block}p{font-family:"DM Sans",sans-serif;font-weight:600;font-size:28px;letter-spacing:.18em;margin:40px 0 0}'
-    p=os.path.join(W,'cover.html'); open(p,'w').write('<!doctype html><html><head><meta charset="utf-8">%s<style>%s</style></head><body><div class="s"></div><div class="t"><h1>%s<em>%s</em></h1><p>@RIVERFOX_EVENTS</p></div></body></html>'%(FONTS,css%c.get('size',150),c['line1'],c['line2']))
-    png=os.path.join(W,'cover.png')
-    subprocess.run([CH,'--headless=new','--disable-gpu','--hide-scrollbars','--force-device-scale-factor=1','--window-size=1080,1920','--virtual-time-budget=8000','--screenshot='+png,'file://'+p],stderr=subprocess.DEVNULL)
-    subprocess.run(['ffmpeg','-v','error','-y','-i',png,'-q:v','2',c['out']],check=True); print('cover ->',c['out'])
+    # The cover is made by ../text/thumb.cjs, the one cover tool (it follows the Brand Pack's cover boards).
+    still=os.path.join(W,'cover_still.jpg')
+    subprocess.run(['ffmpeg','-v','error','-y','-ss',str(c['t']),'-i',os.path.join(clips,c['clip']),'-frames:v','1','-vf',V,'-q:v','2',still],check=True)
+    TH=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','text','thumb.cjs')
+    subprocess.run(['node',TH,still,c['out'],'1080','1920',c['line1']]+([c['line2']] if c.get('line2') else [])+(['--caps='+c['caps']] if c.get('caps') else [])+(['--at='+str(c['at'])] if c.get('at') else []),check=True); print('cover ->',c['out'])

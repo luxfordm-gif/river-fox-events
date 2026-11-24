@@ -102,16 +102,12 @@ say so. Then send Matt the before | after sheets (SendUserFile, display render) 
   `npm test`, PR). New photos for the site: export with a `website*` target into `src/assets/`, then the same rules
   apply (one descriptive name and one alt text per image, `src/data/gallery.ts` for the gallery).
 
-## The rules live in Google Drive (Matt, 2026-11-14)
+## Where the rules live (Matt, 2026-11-24; was Drive PDFs until then)
 
-Before any social task (posts, covers, overlays, review posts, where to file things), read the newest file of each
-in Drive › River Fox Events, never one in an `_Archive` folder:
-- `Brand › Brand book`: the newest "Brand book" and "Social brand pack" PDFs (read them with the Google Drive
-  connector's `read_file_content`; search the folder newest first).
-
-They are the only source for overlays, review posts, social layout, sizes and filing. Check for a newer version each
-time, whatever its number. Don't copy their rules into this skill, CLAUDE.md or any other file. If a size in them
-differs from the export targets, the documents win: tell Matt the tool needs updating. Google Business posts are a
+Before any social task (posts, covers, overlays, review posts, where to file things), read the live Brand Pack
+artifact for the look and `docs/voice.md` for the words. There is no brand PDF and no version is quoted anywhere. If
+the artifact can't be read, stop and tell Matt. If a size in the pack differs from the export targets, the pack
+wins: tell Matt the tool needs updating. Google Business posts are a
 plain edited photo, no text on the image, filed in `Social › Google Business › Posts › NN - Images - <short name>` (01 = newest, renumber the others up).
 On Matt's Mac the River Fox folder is synced at
 `~/Library/CloudStorage/GoogleDrive-luxfordm@gmail.com/.shortcut-targets-by-id/15xXTgs2DbOgYjchcf10XYQBGHprCfmOs/River Fox Events/`;
@@ -120,7 +116,7 @@ export straight into the right folder with `--out`, and never make a new top-lev
 ## Don't
 
 - Ask the model to crop, reframe, recentre or "boost" a second time. It redraws the whole image, so reframing
-  invents scenery that wasn't there (the brand book: real events only) and a second pass drifts further from the
+  invents scenery that wasn't there (real events only) and a second pass drifts further from the
   real photo. Crops and brightness are done locally by `export`.
 - Edit Laura's own face, ever.
 - Put inbox or Instagram photos into `src/assets/` unless Matt wants them on the website.

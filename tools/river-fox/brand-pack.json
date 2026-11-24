@@ -1,13 +1,13 @@
 {
-  "_about": "Every brand value the River Fox tools draw with, in one place. Each block names the Brand Pack canvas board it was copied from ('board'). The canvas is the source of truth: when a board changes, change the matching block here and nothing else. Values marked 'toolOwn' are not written on the canvas; they are how the tool applies a rule the canvas leaves open. Never write a brand value into a tool or the skill.",
+  "_about": "Every brand value the River Fox tools draw with, in one place. Each block names the Brand Pack board it was copied from ('board'). The live Brand Pack artifact is the source: at the start of every social job read the boards the job needs and, if one has changed, change the matching block here before building. Never write a version of the pack here or anywhere else. Values marked 'toolOwn' are not written on the pack; they are how the tool applies a rule the pack leaves open. Never write a brand value into a tool or the skill. Pixel values are at a 1080-wide frame unless a block says otherwise.",
   "canvas": "https://claude.ai/artifact/RyuZawfyZziQPy6xGJ5hhF",
-  "checkedAgainstCanvas": "2026-11-23 (pack v1.27)",
   "colour": {
-    "board": "Sound and colour",
+    "board": "Sound and colour; Brand sheet",
     "warmWhite": "#FCFBF8",
     "logoPink": "#F7EEE9",
     "ink": "#191C17",
-    "inkRgb": "25,28,23"
+    "inkRgb": "25,28,23",
+    "inkGrey": "#494E46"
   },
   "handle": {
     "board": "Covers and thumbnails; Light photos and long hooks; Headline and closing text on video",
@@ -18,88 +18,104 @@
   },
   "safeArea": {
     "board": "Safe areas",
-    "frame": {
-      "w": 1080,
-      "h": 1920
-    },
-    "reel": {
-      "x0": 70,
-      "x1": 940,
-      "y0": 240,
-      "y1": 1450
-    },
-    "story": {
-      "x0": 70,
-      "x1": 940,
-      "y0": 250,
-      "y1": 1670
-    },
-    "coverGrid": {
-      "y0": 240,
-      "y1": 1680
-    }
+    "frame": { "w": 1080, "h": 1920 },
+    "reel": { "x0": 70, "x1": 940, "y0": 240, "y1": 1450 },
+    "story": { "x0": 70, "x1": 940, "y0": 250, "y1": 1670 },
+    "coverGrid": { "y0": 240, "y1": 1680 },
+    "feedEdgeClear": 96
   },
   "cover": {
     "type": {
       "board": "Covers and thumbnails; Light photos and long hooks (Type and photos)",
-      "font": "Fraunces",
-      "weight": 500,
-      "opticalSize": 144,
-      "tracking": "-0.008em",
-      "wordSpacing": "0.07em",
-      "line1Leading": 1.02,
-      "line2Leading": 1.08
+      "font": "Instrument Serif",
+      "weight": 400,
+      "tracking": "-0.02em",
+      "leading": 0.9,
+      "line2": "italic, the same size as line 1"
     },
-    "fit": {
-      "board": "Covers and thumbnails",
-      "widthAt1080": 940
+    "size": {
+      "board": "Covers and thumbnails (The rule); Brand sheet (02 Type)",
+      "fitWidth": { "9x16": 980, "3x4": 888, "4x5": 888 },
+      "maxPx": 310,
+      "singleWordEndsWith": ".",
+      "words": { "upTo": 3 },
+      "toolOwn": {
+        "minPx": 150,
+        "note": "fitWidth 888 on feed posts keeps the 96px edge clear (Brand sheet rule 07). minPx: below this the hook is too long to set big; shorten it or move words to the capitals line instead of shrinking the headline."
+      }
     },
-    "longHook": {
-      "board": "Light photos and long hooks (Long hooks)",
-      "moreThanWords": 3,
-      "line2Scale": 0.68,
-      "line2MinPxAt1080": 96
+    "capsLine": {
+      "board": "Covers and thumbnails (The rule); Twenty reel cover ideas",
+      "font": "DM Sans",
+      "weight": 700,
+      "px": 62,
+      "tracking": "0.06em",
+      "leading": 1.2,
+      "gap": 36,
+      "shadow": "0 1px 8px rgba(25,28,23,0.55)"
     },
     "fade": {
       "board": "Light photos and long hooks (Light photos); Covers and thumbnails",
       "stops": [[28, 0], [40, 0.043], [52, 0.15], [64, 0.29], [76, 0.43], [88, 0.537], [100, 0.58]],
+      "tint": 0.25,
       "shadow": "0 2px 10px rgba(25,28,23,0.45)",
       "handleShadow": "0 1px 10px rgba(25,28,23,0.45)"
     },
     "layout": {
       "9x16": {
-        "board": "Covers and thumbnails; Light photos and long hooks (Long hooks)",
-        "hookBottomY": 1430,
+        "board": "Covers and thumbnails (example 1); Light photos and long hooks (Long hooks)",
+        "middleY": 1200,
+        "hookTopMin": 240,
+        "hookBottomMax": 1400,
         "handleTopY": 1500,
         "handlePx": 28,
-        "handleLinePx": 32
+        "handleLinePx": 32,
+        "handleClear": 100,
+        "toolOwn": { "topY": 300 }
       },
       "3x4": {
-        "board": "Covers and thumbnails (example 3)",
+        "board": "Covers and thumbnails (example 3); Carousel cover slide",
+        "middleY": 880,
+        "hookTopMin": 96,
         "handleFromBottom": 238,
         "handlePx": 26,
-        "toolOwn": {
-          "hookAboveHandle": 110
-        }
+        "handleClear": 100,
+        "toolOwn": { "topY": 200 }
       },
       "4x5": {
-        "board": "Covers and thumbnails (example 4, drawn 1440 wide: 297 and 35)",
+        "board": "Covers and thumbnails (example 4, drawn 1440 wide: centre 1100, handle 297 up at 35px)",
+        "middleY": 825,
+        "hookTopMin": 96,
         "handleFromBottom": 223,
         "handlePx": 26,
-        "toolOwn": {
-          "hookAboveHandle": 110
-        }
+        "handleClear": 100,
+        "toolOwn": { "topY": 200 }
       }
     }
   },
   "videoText": {
     "board": "Headline and closing text on video; Stories, Reels and posts from video",
-    "font": "Fraunces",
-    "weight": 500,
-    "tracking": "-0.035em",
+    "font": "Instrument Serif",
+    "weight": 400,
+    "tracking": "-0.02em",
+    "leading": 0.9,
     "maxWidth": 800,
     "handleTopY": 300,
     "handlePx": 26,
+    "headline": {
+      "fade": "linear-gradient(to bottom, rgba(25,28,23,0) 28%, rgba(25,28,23,0.66) 100%)",
+      "shadow": "0 2px 28px rgba(25,28,23,0.45)",
+      "centreY": 1290
+    },
+    "finale": {
+      "fade": "linear-gradient(to bottom, rgba(25,28,23,0.35) 0%, rgba(25,28,23,0) 22%, rgba(25,28,23,0) 45%, rgba(25,28,23,0.62) 80%)",
+      "shadow": "0 3px 28px rgba(25,28,23,0.5)",
+      "topY": 1000,
+      "wordPx": 280,
+      "linePx": 102,
+      "lineGap": 18,
+      "capsGap": 34
+    },
     "capsLine": {
       "font": "DM Sans",
       "weight": 600,
@@ -113,105 +129,37 @@
   },
   "captions": {
     "board": "Video captions, three styles",
-    "box": {
-      "font": "Inter",
-      "weight": 600,
-      "px": 60,
-      "radius": 4,
-      "fill": "#F7EEE9",
-      "text": "#191C17"
-    },
-    "wild": {
-      "font": "Fraunces",
-      "weight": 900,
-      "soft": 100,
-      "px": 110
-    },
-    "classic": {
-      "font": "Fraunces",
-      "weight": 500,
-      "px": 106
-    },
-    "stress": {
-      "board": "How captions move",
-      "scale": 1.3
-    }
+    "box": { "font": "Inter", "weight": 600, "px": 60, "radius": 4, "fill": "#F7EEE9", "text": "#191C17" },
+    "wild": { "font": "Fraunces", "weight": 900, "soft": 100, "px": 110 },
+    "classic": { "font": "Fraunces", "weight": 500, "px": 106 },
+    "stress": { "board": "How captions move", "scale": 1.3 }
   },
   "review": {
     "board": "Review post, short and long rules; Google Business review, short and long rules",
     "font": "Fraunces",
     "weight": 400,
+    "tracking": "-0.015em",
     "fill": "#F7EEE9",
     "text": "#191C17",
-    "longOpticalSize": 78,
-    "edgeClear": 96,
+    "labelText": "Client review",
+    "labelFont": "DM Sans",
+    "labelWeight": 500,
+    "labelTracking": "0.18em",
+    "nameTracking": "0.14em",
+    "smallColour": "#494E46",
+    "shortUpToChars": 160,
+    "excerptUpToWords": 25,
     "instagram": {
-      "w": 1080,
-      "h": 1440,
-      "short": {
-        "fs": 60,
-        "lh": 70,
-        "mw": 900
-      },
-      "long": {
-        "fs": 55,
-        "lh": 77,
-        "mw": 890
-      }
+      "w": 1080, "h": 1440,
+      "quotePx": 76, "quoteLine": 93,
+      "sideClear": 120,
+      "labelTop": 200, "nameTop": 1210, "smallPx": 24, "smallLine": 30
     },
     "google": {
-      "w": 1200,
-      "h": 1200,
-      "short": {
-        "fs": 78,
-        "lh": 90,
-        "mw": 850
-      },
-      "long": {
-        "fs": 59,
-        "lh": 83,
-        "mw": 930
-      }
-    },
-    "toolOwn": {
-      "note": "Not written on the canvas: the quote mark, name line and gaps were measured from the cards already in Drive (Lucy, Farnham).",
-      "nameColour": "#494E46",
-      "markColour": "#C69490",
-      "instagram": {
-        "short": {
-          "mark": 233,
-          "gap": 75,
-          "ngap": 102,
-          "dy": -12
-        },
-        "long": {
-          "mark": 233,
-          "gap": 78,
-          "ngap": 104,
-          "dy": -12
-        }
-      },
-      "google": {
-        "short": {
-          "mark": 213,
-          "mh": 52,
-          "markTop": -27,
-          "gap": 84,
-          "ngap": 92,
-          "ns": 29.4,
-          "dy": -8
-        },
-        "long": {
-          "mark": 213,
-          "mh": 52,
-          "markTop": -27,
-          "gap": 84,
-          "ngap": 96,
-          "ns": 29.4,
-          "dy": -8
-        }
-      }
-    },
-    "shortUpToChars": 160
+      "w": 1200, "h": 1200,
+      "quotePx": 78, "quoteLine": 90,
+      "sideClear": 135, "edgeClear": 96,
+      "labelTop": 150, "nameTop": 1012, "smallPx": 30, "smallLine": 38
+    }
   }
 }

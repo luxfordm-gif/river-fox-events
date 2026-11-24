@@ -13,8 +13,8 @@ publishes it. This skill only reads Instagram and writes to Drive.
 
 ## 0. Read the newest rules
 
-Before anything else, read the newest Brand book and Social brand pack (Drive › River Fox Events › Brand › Brand
-book), never its `_Archive` folder. (The Automation folder was retired on 21 Nov 2026.)
+Before anything else, read the live Brand Pack artifact and `docs/voice.md` (there is no brand PDF). (The Automation
+folder was retired on 21 Nov 2026.)
 They are the only source for sizes and review posts; filing is in the river-fox-photo-job skill. If they say
 something different from this skill, they win: follow them and tell Matt this skill needs updating.
 
@@ -84,7 +84,7 @@ Start from her Instagram caption and keep her phrases, facts and warmth; reshape
   ("Christmas door garland ...", "Balloon arch ...", "50th birthday decorations ..."). One sentence.
 - Then 2 to 3 short paragraphs: what she made (her colours and materials, named exactly), who it's for, and the
   ask. 600 to 1,000 characters; Google's limit is 1,500.
-- **House rules** (CLAUDE.md, brand book): first person "I"; no emojis, no exclamation marks, no hashtags; hyphens,
+- **House rules** (`docs/voice.md`): first person "I"; no emojis, no exclamation marks, no hashtags; hyphens,
   never em dashes; none of "stunning", "amazing", "wow factor", "show-stopping", "the perfect party", "bespoke"
   more than once, "design-led", "from scratch", "planner/planning"; no flowers as the lead. Calm, never salesy.
 - Facts only from her caption or the site: don't invent prices, places, dates or availability. Don't name a client

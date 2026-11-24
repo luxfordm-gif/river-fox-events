@@ -13,7 +13,7 @@ Mechanics of the grading tool (`tools/photo-grade/`, inbox, notes, exports, cost
 
 ## 0. Rules from Drive (every job, before anything else)
 Read the newest of each in Drive > River Fox Events, never an `_Archive` folder, and say which versions you used:
-- Brand > Brand book: the Brand book and the Social brand pack (search the folder newest first; the pack's PDF may have no text layer, so read the pages as images, or the published copy at `public/brand-book/` in the repo if Drive is no newer).
+- The live Brand Pack artifact for the look, and `docs/voice.md` for the words (there is no brand PDF).
 (The Automation folder and its build brief were retired on 21 Nov 2026: Laura uploads photos, Matt edits with Claude, and this skill holds the filing and build steps.)
 If something here disagrees with them, they win: tell Matt this skill needs updating. Never copy their rules into this file.
 
@@ -65,7 +65,7 @@ Send, as images: the before | after sheets (or a short list of anything flagged)
 - **20 Nov 2026, Worplesdon garland and wreath (13 photos + a night shot):**
   - Matt wants one overlay on the best photo per format, not on all of them.
   - Matt asked why the hook was "Christmas at the door": it was invented. Ask for the location and any wording first; suggest copy if none.
-  - Fraunces Light 300 (pack v1.18) was "hard to read"; Regular 400 everywhere. He updated the pack to v1.19.
+  - Fraunces Light 300 was "hard to read"; Regular 400 everywhere. He updated the pack.
   - A busyness score can't tell gravel from garland; choose the text position by eye.
   - On a 9:16 crop of a close shot the arch fills the frame; the wider shot leaves room for text.
   - The hook must not wrap ("A Worplesdon" split onto three lines until the line was set not to wrap and the type shrank to fit).
