@@ -265,11 +265,12 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    hsl(var(--xmas-pine) / 0.82) 0%,
-    hsl(var(--xmas-pine) / 0.35) 30%,
-    transparent 48%,
+    hsl(var(--xmas-pine) / 0.94) 0%,
+    hsl(var(--xmas-pine) / 0.86) 30%,
+    hsl(var(--xmas-pine) / 0.55) 44%,
     transparent 60%,
-    hsl(var(--xmas-pine) / 0.75) 100%
+    transparent 68%,
+    hsl(var(--xmas-pine) / 0.8) 100%
   );
 }
 .xmas-promo .t-overline { color: hsl(var(--xmas-gold)); }
@@ -311,7 +312,7 @@
   flex-direction: column;
   padding: 30px 20px 20px;
   text-align: left;
-  text-shadow: var(--shadow-text-photo);
+  text-shadow: var(--shadow-text-photo-lg);
 }
 .xmas-promo__title { font-size: var(--fs-h5); line-height: var(--lh-h5); font-weight: var(--fw-regular); letter-spacing: var(--ls-h5); margin-top: 8px; }
 .xmas-promo__text { margin-top: 8px; font-size: var(--fs-meta); line-height: var(--lh-small); color: hsl(var(--text-on-dark)); }
