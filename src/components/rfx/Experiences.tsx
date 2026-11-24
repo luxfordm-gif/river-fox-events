@@ -6,6 +6,7 @@ import { useImageParallax } from "@/hooks/useImageParallax";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { galleryPhoto } from "@/data/gallery";
 import { SectionHeading, SectionIntro } from "@/components/rfx/SectionHeading";
+import { SERVICES_HEADING } from "@/data/servicesCopy";
 
 type CardPhoto = { img: string; srcSet?: string; alt: string; position?: string };
 const fromGallery = (source: string, position?: string): CardPhoto => {
@@ -52,7 +53,8 @@ const ITEMS = [
   {
     title: "Children's party decorations",
     body:
-      "Themed backdrops, balloon arches and party tables, set up at home or at your venue. From £300.",
+      "Themed backdrops, balloon arches and party tables, set up at home or at your venue.",
+    price: "From £300.",
     img: expChildren,
     alt: "Sage green dinosaur birthday backdrop with an Ayaan name sign, tropical foliage and dinosaur cutouts",
     href: "/childrens-parties/",
@@ -63,7 +65,8 @@ const ITEMS = [
   {
     title: "Milestone birthday decorations",
     body:
-      "Styling for 18ths, 40ths, 50ths, christenings and baby showers, built on site. From £300.",
+      "Styling for 18ths, 40ths, 50ths, christenings and baby showers, built on site.",
+    price: "From £300.",
     img: expMilestone,
     alt: "Rose gold light-up 40 marquee with a blush and chrome balloon installation in a hall with a wall clock",
     href: "/milestone-celebrations/",
@@ -83,15 +86,19 @@ const ITEMS = [
   },
 ];
 
-interface ExpItem {
+export interface ExpItem {
   title: string;
   body: string;
+  /** Shown after the body, unless the section hides prices (/services/). */
+  price?: string;
   img: string;
   alt: string;
   href: string;
-  /** Button label under the card, e.g. "See the parties". */
-  cta: string;
-  tone: string;
+  /** Button label under the card, e.g. "See the parties". Leave it out for
+   *  a card that shows its title arrow at every width instead (/services/
+   *  smaller cards). */
+  cta?: string;
+  tone?: string;
   extraZoom?: number;
   /** Small label on the photo, e.g. "Most popular" (Matt, 2026-11-08). */
   badge?: string;
@@ -113,7 +120,21 @@ const Arrow = () => (
   </span>
 );
 
-const ExpCard = ({ it, compact }: { it: ExpItem; compact?: boolean }) => {
+const ExpCard = ({
+  it,
+  compact,
+  hidePrice,
+  titleTag: Title = "h3",
+  eager = false,
+}: {
+  it: ExpItem;
+  compact?: boolean;
+  hidePrice?: boolean;
+  titleTag?: "h2" | "h3";
+  /** On the first screen (/services/): load now, not lazily. */
+  eager?: boolean;
+}) => {
+  const arrowAlways = !it.cta;
   const wrap = useRef<HTMLDivElement>(null);
   const img = useRef<HTMLImageElement>(null);
   const baseScale = 1.14 * (it.extraZoom ?? 1);
@@ -132,11 +153,11 @@ const ExpCard = ({ it, compact }: { it: ExpItem; compact?: boolean }) => {
   return (
     <a
       href={it.href}
-      className="exp-card rfx-svc-card flex flex-col"
+      className={`exp-card rfx-svc-card flex flex-col${arrowAlways ? " exp-card--arrow" : ""}`}
     >
       <div
         ref={wrap}
-        className={`exp-img-wrap ph rounded-large ${it.tone} rfx-svc-img ${compact ? "rfx-svc-img--compact" : ""} relative overflow-hidden`}
+        className={`exp-img-wrap ph rounded-large ${it.tone ?? ""} rfx-svc-img ${compact ? "rfx-svc-img--compact" : ""} relative overflow-hidden`}
         style={{ aspectRatio: compact ? "3/2" : "var(--service-photo-ratio)" }}
       >
         {/*
@@ -152,7 +173,8 @@ const ExpCard = ({ it, compact }: { it: ExpItem; compact?: boolean }) => {
           alt={it.alt}
           className="absolute inset-0 w-full h-full object-cover z-[2] will-change-transform"
           style={{ transform: `translate3d(0,0,0) scale(${baseScale})`, objectPosition: it.position }}
-          loading="lazy"
+          loading={eager ? "eager" : "lazy"}
+          fetchPriority={eager ? "high" : undefined}
           decoding="async"
           width={1024}
           height={1280}
@@ -161,20 +183,23 @@ const ExpCard = ({ it, compact }: { it: ExpItem; compact?: boolean }) => {
       </div>
       {/* The last word drops to its own line so the title doesn't run wide
           at this size (Matt, 2026-11-17). */}
-      <div className={PHONE_ARROWS ? "exp-title-row media-to-title" : "contents"}>
-      <h3 className="t-h4 exp-title media-to-title text-pretty">
+      <div className={PHONE_ARROWS || arrowAlways ? "exp-title-row media-to-title" : "contents"}>
+      <Title className="t-h4 exp-title media-to-title text-pretty">
         {it.title.slice(0, it.title.lastIndexOf(" "))}
         <br />
         {it.title.slice(it.title.lastIndexOf(" ") + 1)}
-      </h3>
-      {PHONE_ARROWS && <Arrow />}
+      </Title>
+      {(PHONE_ARROWS || arrowAlways) && <Arrow />}
       </div>
       <p className="t-small text-ink-soft measure-card title-to-text">
         {it.body}
+        {it.price && !hidePrice && <> {it.price}</>}
       </p>
-      <span className={`btn-link-rf t-label self-start mt-auto card-action ${PHONE_ARROWS ? "exp-link-tablet-up" : ""}`}>
-        {it.cta} <span className="arr">→</span>
-      </span>
+      {it.cta && (
+        <span className={`btn-link-rf t-label self-start mt-auto card-action ${PHONE_ARROWS ? "exp-link-tablet-up" : ""}`}>
+          {it.cta} <span className="arr">→</span>
+        </span>
+      )}
     </a>
   );
 };
@@ -199,6 +224,19 @@ type ExperiencesProps = {
   /** One of four photo sets, chosen per page load. On everywhere: this is
    *  the one services section, the same on every page (Matt, 2026-11-08). */
   rotatePhotos?: boolean;
+  /** No heading block: the page's own H1 and intro sit above the cards
+   *  (/services/). `labelledBy` then names that heading, and the card
+   *  titles become h2 (same look) so the outline doesn't skip a level. */
+  hideHeading?: boolean;
+  labelledBy?: string;
+  /** Leave "From £300" off the cards (/services/ has no prices). */
+  hidePrices?: boolean;
+  /** Smaller cards in a row under the three (/services/): shorter photos,
+   *  the title arrow at every width. */
+  more?: ExpItem[];
+  /** The cards are near the top of the page (/services/): the first photo
+   *  loads straight away, as the largest thing on a phone's first screen. */
+  eagerFirst?: boolean;
 };
 
 const Experiences = ({
@@ -208,20 +246,21 @@ const Experiences = ({
   compactImages = false,
   rotatePhotos = true,
   align = "split",
+  hideHeading = false,
+  labelledBy,
+  hidePrices = false,
+  more,
+  eagerFirst = false,
 }: ExperiencesProps = {}) => {
-  const title = heading ?? (
-    <>
-      Party styling for every <em className="t-accent">occasion.</em>
-    </>
-  );
+  const title = heading ?? SERVICES_HEADING;
   const [setIndex] = useState(() => (rotatePhotos ? pickHomeSet() : 0));
   const items = rotatePhotos
     ? ITEMS.map((it, i) => ({ ...it, ...HOME_SETS[setIndex][i], extraZoom: setIndex === 0 ? it.extraZoom : undefined }))
     : ITEMS;
   return (
-    <section id={sectionId} className="rfx-section white" aria-labelledby="exp-heading">
+    <section id={sectionId} className="rfx-section white" aria-labelledby={hideHeading ? labelledBy : "exp-heading"}>
       <div className="container-rfx">
-        {align === "centre" ? (
+        {hideHeading ? null : align === "centre" ? (
           <div className="heading-to-content text-center flex flex-col items-center">
             <SectionHeading id="exp-heading" className="fade-up">
               {title}
@@ -260,10 +299,18 @@ const Experiences = ({
         )}
 
         <div className="exp-grid grid grid-cols-1 md:grid-cols-3">
-          {items.map((it) => (
-            <ExpCard key={it.href} it={it} compact={compactImages} />
+          {items.map((it, i) => (
+            <ExpCard key={it.href} it={it} compact={compactImages} hidePrice={hidePrices} titleTag={hideHeading ? "h2" : "h3"} eager={eagerFirst && i === 0} />
           ))}
         </div>
+
+        {more?.length ? (
+          <div className="exp-grid exp-grid--more grid grid-cols-1 md:grid-cols-3">
+            {more.map((it) => (
+              <ExpCard key={it.href} it={it} compact hidePrice={hidePrices} titleTag={hideHeading ? "h2" : "h3"} />
+            ))}
+          </div>
+        ) : null}
 
       </div>
     </section>

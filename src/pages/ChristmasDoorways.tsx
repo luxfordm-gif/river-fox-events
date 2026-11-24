@@ -11,6 +11,7 @@ import SnowCap from "@/components/rfx/SnowCap";
 import StoryVideos, { type Story } from "@/components/rfx/StoryVideos";
 import FaqSection from "@/components/rfx/FaqSection";
 import TrustLine from "@/components/rfx/TrustLine";
+import Breadcrumbs from "@/components/rfx/Breadcrumbs";
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
 import bow320 from "@/assets/christmas/burgundy-velvet-bow-320.webp";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
@@ -635,6 +636,8 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
           </div>
           <div className="container-rfx">
             <div className="xmas-hero-text mt-2 md:mt-4 hero-gap-below flex flex-col items-center text-center">
+              {/* Home › Services › this page (Matt, 2026-11-24). */}
+              <Breadcrumbs path={routePath} />
               <p className="t-overline text-ink-soft">
                 {inSeason
                   ? `Christmas ${SEASON_YEAR} · ${biz ? "For businesses" : "Now booking"}`

@@ -8,6 +8,9 @@ type PageHeaderProps = {
   /** Optional small label, shown under the H1 (never above it, so the H1
    *  always lands in the same place on every inner page). */
   note?: ReactNode;
+  /** Optional breadcrumb trail above the H1 (/services/). The only thing
+   *  allowed above it. */
+  above?: ReactNode;
   /** Optional extra content under the intro (jump links, buttons). */
   children?: ReactNode;
   id?: string;
@@ -23,7 +26,7 @@ type PageHeaderProps = {
  * so moving between these pages the heading never jumps. Spacing lives in
  * `.page-header*` in index.css.
  */
-const PageHeader = ({ title, intro, note, children, id, tone, divider }: PageHeaderProps) => {
+const PageHeader = ({ title, intro, note, above, children, id, tone, divider }: PageHeaderProps) => {
   const cls = ["page-header", tone === "paper" && "page-paper", divider && "page-header--rule"]
     .filter(Boolean)
     .join(" ");
@@ -32,6 +35,7 @@ const PageHeader = ({ title, intro, note, children, id, tone, divider }: PageHea
   // rules elsewhere reset padding with the shorthand and would undo it.
   <header className={cls}>
     <div className="container-rfx text-center">
+      {above}
       <h1 id={id} className="page-header__title mx-auto">
         {title}
       </h1>

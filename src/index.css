@@ -1180,6 +1180,13 @@
     .exp-card .title-to-text { margin-top: var(--gap-service-title-body); }
     .exp-link-tablet-up { display: none; }
   }
+  /* /services/ smaller cards (Matt, 2026-11-24): no text link, the title
+     arrow at every width, and the row sits one card gap under the three. */
+  .exp-grid--more { margin-top: var(--gap-service-cards); }
+  .exp-card--arrow .exp-title-row { display: flex; align-items: center; justify-content: space-between; gap: var(--gap-stack); }
+  .exp-card--arrow .exp-title-row .exp-title { margin: 0; }
+  .exp-card--arrow .exp-arrow { display: block; flex: none; color: hsl(var(--text-primary)); }
+  .exp-card--arrow .exp-arrow svg { display: block; width: var(--card-arrow-width); height: var(--card-arrow-height); stroke-width: 1; }
   .card-inset { padding-inline: var(--gap-stack); }
   /* Why-us item: icon, title and text sit on three rows shared with its neighbours (subgrid), so the texts
      start level even when one title wraps. The grid's own gap is dropped inside the item. */

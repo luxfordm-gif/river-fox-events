@@ -11,11 +11,15 @@ const ENQUIRE_WHATSAPP = whatsappHref("Hi Laura, I'd like a quote for an event. 
 type EnquireProps = {
   defaultEventType?: "" | "Children's party" | "Milestone celebration" | "Corporate event" | "Other";
   venuePlaceholder?: string;
+  /** Leave out the "from £300" sentence (/services/ shows no prices); the
+   *  rest of the paragraph stays word for word. */
+  hidePrice?: boolean;
 };
 
 const Enquire = ({
   defaultEventType = "",
   venuePlaceholder = "e.g. at home in Cobham",
+  hidePrice = false,
 }: EnquireProps = {}) => {
   const [submitting, setSubmitting] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
@@ -68,8 +72,12 @@ const Enquire = ({
             <p
               className="t-lead measure-lead heading-to-text text-ink-faint"
             >
-              Celebrations start from £300 and every one is quoted to your
-              brief.{" "}
+              {!hidePrice && (
+                <>
+                  Celebrations start from £300 and every one is quoted to your
+                  brief.{" "}
+                </>
+              )}
               <span className="text-on-deep">
                 I take on a limited number each month
               </span>

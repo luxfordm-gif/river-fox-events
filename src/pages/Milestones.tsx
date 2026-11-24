@@ -87,6 +87,7 @@ const Milestones = () => {
       <Nav />
       <main>
         <ServiceHero
+          path="/milestone-celebrations"
           image={imgHero}
           imageAlt="Collage of milestone celebration setups - pink and tangerine birthday board, blue balloon arches, a lit coral 40 number and a neutral styled arch"
           mobileImage={imgHeroMobile}

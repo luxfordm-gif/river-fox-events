@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/rfx/Breadcrumbs";
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import "@/styles/style-guide.css";
 import cssSource from "@/index.css?raw";
@@ -531,6 +532,17 @@ const SECTIONS: Section[] = [
         {[christmasLine, defaultLine, ...Object.values(pageLines).filter((l): l is BarLine => !!l)].map((l) => (
           <AnnouncementBarView key={l.text} line={l} href={l.link} />
         ))}
+      </div>
+    ),
+  },  {
+    id: "S24",
+    title: "Breadcrumbs",
+    component: "Breadcrumbs",
+    note: "Above the headline on every service page, town page and /services/. Names and links come from routes.ts, the same as the BreadcrumbList schema",
+    render: () => (
+      <div className="stack-gap flex flex-col">
+        <Breadcrumbs path="/childrens-parties" className="mb-0" />
+        <Breadcrumbs path="/party-styling-walton-on-thames" className="mb-0" />
       </div>
     ),
   },

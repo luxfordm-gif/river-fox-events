@@ -60,6 +60,7 @@ const ChildrensParties = () => {
       <Nav />
       <main>
         <ServiceHero
+          path="/childrens-parties"
           image={imgHero}
           imageAlt="Fourever Wild jungle party setup with white safari jeep, balloon garland, giraffe, zebra and lion cub by a bamboo backdrop"
           mobileImage={imgHeroMobile}

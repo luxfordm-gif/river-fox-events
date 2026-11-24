@@ -119,6 +119,7 @@ const CorporateAndBrand = () => {
       <Nav />
       <main>
         <ServiceHero
+          path="/corporate-brand-styling"
           image={imgHero}
           imageAlt="Twin balloon arches in a corporate office atrium - blue and yellow left, purple right, framing black leather sofas"
           mobileImage={imgHeroMobile}

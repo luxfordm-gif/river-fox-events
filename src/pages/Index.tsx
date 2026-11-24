@@ -3,6 +3,7 @@ import Nav from "@/components/rfx/Nav";
 import Hero from "@/components/rfx/Hero";
 import InstagramFollow from "@/components/rfx/InstagramFollow";
 import Experiences from "@/components/rfx/Experiences";
+import { SERVICES_INTRO } from "@/data/servicesCopy";
 import Mission from "@/components/rfx/Mission";
 import About from "@/components/rfx/About";
 import Process from "@/components/rfx/Process";
@@ -55,7 +56,7 @@ const Index = () => {
         <Mission asTitle={CHRISTMAS_CAMPAIGN} />
         <Experiences
           align="centre"
-          intro="Tell me what you're celebrating and I'll design around it, from one balloon arch to a full room."
+          intro={SERVICES_INTRO}
         />
         {/* The Balloons page's photo wall, but newest work first and a mix of everything: three rows, then a link to Our work (Matt, 2026-11-17). */}
         <LocationPhotoGrid

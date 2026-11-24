@@ -76,19 +76,28 @@ export const applyMeta = (route: Pick<RouteSEO, "title" | "description" | "ogIma
   upsertCanonical(url);
 };
 
+export type Crumb = { name: string; path: string };
+
+/** The breadcrumb trail for a page, from routes.ts: Home, the parent (Areas I
+ *  cover, Services, Journal) when there is one, then the page. The visible
+ *  trail (Breadcrumbs.tsx) and the BreadcrumbList below both use this, so the
+ *  two always match. Empty for the homepage or a page with no breadcrumbName. */
+export const breadcrumbTrail = (path: string): Crumb[] => {
+  if (path === "/" || path === "") return [];
+  const route = findRoute(path.replace(/\/$/, ""));
+  if (!route?.breadcrumbName) return [];
+  const parent = route.breadcrumbParent ? findRoute(route.breadcrumbParent) : undefined;
+  return [
+    { name: "Home", path: "/" },
+    ...(parent?.breadcrumbName ? [{ name: parent.breadcrumbName, path: canonicalPath(parent.path) }] : []),
+    { name: route.breadcrumbName, path: canonicalPath(route.path) },
+  ];
+};
+
 /** Build a BreadcrumbList from routes.ts. Returns null for the homepage. */
 export const breadcrumbSchema = (path: string): SchemaJson | null => {
-  if (path === "/") return null;
-  const route = findRoute(path);
-  if (!route?.breadcrumbName) return null;
-  const parent = route.breadcrumbParent ? findRoute(route.breadcrumbParent) : undefined;
-  const trail = [
-    { name: "Home", item: SITE.url + "/" },
-    ...(parent?.breadcrumbName
-      ? [{ name: parent.breadcrumbName, item: SITE.url + canonicalPath(parent.path) }]
-      : []),
-    { name: route.breadcrumbName, item: SITE.url + canonicalPath(path) },
-  ];
+  const trail = breadcrumbTrail(path);
+  if (!trail.length) return null;
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -96,7 +105,7 @@ export const breadcrumbSchema = (path: string): SchemaJson | null => {
       "@type": "ListItem",
       position: i + 1,
       name: t.name,
-      item: t.item,
+      item: SITE.url + t.path,
     })),
   };
 };

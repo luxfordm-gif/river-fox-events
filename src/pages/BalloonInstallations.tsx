@@ -139,6 +139,7 @@ const BalloonInstallations = () => {
       <Nav />
       <main>
         <ServiceHero
+          path="/balloon-installations"
           image={imgHero}
           imageAlt="Ballroom long table for a pastel safari second birthday, flanked by pink, sage and gold balloon columns under chandeliers"
           mobileImage={imgHeroMobile}

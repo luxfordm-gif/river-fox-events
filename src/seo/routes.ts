@@ -16,7 +16,9 @@ export type RouteSEO = {
   breadcrumbName?: string;
   /** Path of the page this one sits under in the breadcrumb (Home > Parent >
    *  this page), when that isn't visible in the URL. Town pages sit under
-   *  /areas-we-cover. */
+   *  /areas-we-cover, service pages under /services. The visible trail
+   *  (Breadcrumbs.tsx) and the BreadcrumbList JSON-LD both read these two
+   *  fields, so they always match. */
   breadcrumbParent?: string;
   /** Service schema config. When set, postbuild emits a Service JSON-LD
    *  block with the shared BUSINESS as `provider`. */
@@ -164,11 +166,24 @@ export const ROUTES: RouteSEO[] = [
     changefreq: "monthly",
   },
   {
+    // Services hub (Matt, 2026-11-24). The description is Laura's own wording:
+    // the home mission line joined to the end of the home services intro.
+    // No price on this page.
+    path: "/services",
+    title: "Event Styling Services in Surrey | River Fox Events",
+    description:
+      "Children's parties, milestone celebrations and brand events across Surrey and London, each one individually designed, from one balloon arch to a full room.",
+    breadcrumbName: "Services",
+    priority: 0.8,
+    changefreq: "monthly",
+  },
+  {
     path: "/childrens-parties",
     title: "Children's Party Styling in Surrey | River Fox Events",
     description:
       "Kids party decorations across Surrey, from balloon arches to themed backdrops and character props, set up before guests arrive and cleared away afterwards.",
-    breadcrumbName: "Children's Parties",
+    breadcrumbName: "Children's parties",
+    breadcrumbParent: "/services",
     ogImage: "/og/childrens-parties-surrey.webp",
     service: {
       serviceType: "Children's Party Styling",
@@ -183,7 +198,8 @@ export const ROUTES: RouteSEO[] = [
     title: "Milestone Celebration Styling in Surrey | River Fox Events",
     description:
       "Milestone birthday decorations in Surrey, from light-up numbers and balloon walls for 40ths and 50ths to christening and baby shower backdrops, from £300.",
-    breadcrumbName: "Milestone Celebrations",
+    breadcrumbName: "Milestone celebrations",
+    breadcrumbParent: "/services",
     service: {
       serviceType: "Milestone Celebration Styling",
       areaServed: ["Surrey", "Cobham", "Weybridge", "Esher", "Oxshott", "London"],
@@ -197,7 +213,8 @@ export const ROUTES: RouteSEO[] = [
     title: "Corporate Event Styling in Surrey | River Fox Events",
     description:
       "Corporate event styling in Surrey and London: branded balloon installs, sequin walls and logo backdrops for product launches and award nights, trusted by P&G.",
-    breadcrumbName: "Corporate & Brand Styling",
+    breadcrumbName: "Corporate & brand",
+    breadcrumbParent: "/services",
     service: {
       serviceType: "Corporate Event Styling and Brand Installations",
       areaServed: ["Surrey", "London", "Cobham", "Weybridge"],
@@ -213,7 +230,8 @@ export const ROUTES: RouteSEO[] = [
     // lead the description: SEO Vendor Better Keywords AI, 2026-11-09.
     description:
       "Balloon decorations for parties, weddings and business launches across Surrey: organic arches, garlands, balloon walls and number stacks, installed by Laura.",
-    breadcrumbName: "Balloon Installations",
+    breadcrumbName: "Balloon decorations",
+    breadcrumbParent: "/services",
     service: {
       // "Balloon decorations" is the phrase people search (RankLens, 2026-11-09).
       serviceType: "Balloon Decorations and Installations",
@@ -233,7 +251,8 @@ export const ROUTES: RouteSEO[] = [
     title: "Christmas Door Garlands in Surrey | River Fox Events",
     description:
       "Christmas door garlands in Surrey for homes, porches and shopfronts. Fresh spruce or faux, styled to your paintwork, put up for you and taken down in January.",
-    breadcrumbName: "Christmas Door Garlands",
+    breadcrumbName: "Christmas door garlands",
+    breadcrumbParent: "/services",
     ogImage: "/og/christmas-door-garlands.webp",
     service: {
       serviceType: "Christmas Door Garland Installation",
@@ -253,7 +272,8 @@ export const ROUTES: RouteSEO[] = [
     title: "Commercial Christmas Decorations | River Fox Events",
     description:
       "Commercial Christmas decorations in Surrey: entrance garlands for shops, salons, restaurants and offices, matched to your brand and installed by hand by Laura.",
-    breadcrumbName: "Commercial Christmas Decorations",
+    breadcrumbName: "Christmas for businesses",
+    breadcrumbParent: "/services",
     ogImage: "/og/commercial-christmas-decorations.webp",
     service: {
       serviceType: "Commercial Christmas Decorations",
@@ -272,7 +292,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Planner Oxted | Kids’ Party Styling | River Fox Events",
     description:
       "Party planner in Oxted, Limpsfield and Hurst Green. Balloon arches, painted name boards and themed props, installed and collected by Laura.",
-    breadcrumbName: "Party Styling Oxted",
+    breadcrumbName: "Oxted",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -288,7 +308,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Planner Cobham | Kids’ Party Styling | River Fox Events",
     description:
       "Party planner in Cobham and Stoke d’Abernon. Balloon arches, garlands and photo backdrops, designed by Laura, set up on the morning and taken down after.",
-    breadcrumbName: "Party Styling Cobham",
+    breadcrumbName: "Cobham",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -304,7 +324,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Weybridge | River Fox Events",
     description:
       "Weybridge birthday decorations, from balloon hoops and light-up numbers to painted sailboards, for homes on St George's Hill and Oatlands Park. From £300.",
-    breadcrumbName: "Party Styling Weybridge",
+    breadcrumbName: "Weybridge",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -320,7 +340,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Esher | River Fox Events",
     description:
       "Party balloons and backdrops in Esher, Claygate and Thames Ditton, from first birthdays to Sandown Park events. Everything set up and cleared away by Laura.",
-    breadcrumbName: "Party Styling Esher",
+    breadcrumbName: "Esher",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -336,7 +356,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Planner Reigate | Kids’ Party Styling | River Fox Events",
     description:
       "Party planner in Reigate, fifteen minutes from the studio. Children’s party styling from first birthdays to big themed celebrations, designed by Laura.",
-    breadcrumbName: "Party Styling Reigate",
+    breadcrumbName: "Reigate",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -352,7 +372,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Oxshott | River Fox Events",
     description:
       "Children's party decorators for at-home parties in Oxshott, with balloon installations, themed backdrops and props. Rated 5.0 on Google, takedown included.",
-    breadcrumbName: "Party Styling Oxshott",
+    breadcrumbName: "Oxshott",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -368,7 +388,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Guildford | River Fox Events",
     description:
       "Themed children's parties across Guildford and the GU postcodes - first birthdays to big celebrations, individually designed and installed by Laura.",
-    breadcrumbName: "Party Styling Guildford",
+    breadcrumbName: "Guildford",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -384,7 +404,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Walton-on-Thames | River Fox Events",
     description:
       "Walton-on-Thames kids party decorations, with balloon garlands, soft-seat picnic setups and themed props for homes in Hersham. Rated 5.0 on Google reviews.",
-    breadcrumbName: "Party Styling Walton-on-Thames",
+    breadcrumbName: "Walton-on-Thames",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -400,7 +420,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Dorking | River Fox Events",
     description:
       "Children's parties beneath the Surrey Hills - first birthdays to big themed celebrations in Dorking, individually designed by Laura.",
-    breadcrumbName: "Party Styling Dorking",
+    breadcrumbName: "Dorking",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -416,7 +436,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Epsom | River Fox Events",
     description:
       "Birthday party decorators in Epsom, Ashtead and Ewell. Number balloons, character cutouts and photo backdrops, delivered, set up and collected, from £300.",
-    breadcrumbName: "Party Styling Epsom",
+    breadcrumbName: "Epsom",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -442,7 +462,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in East Grinstead | River Fox Events",
     description:
       "Kids' party styling in East Grinstead and the RH19 area - first birthdays through to big themed celebrations, individually designed and installed by Laura.",
-    breadcrumbName: "Party Styling East Grinstead",
+    breadcrumbName: "East Grinstead",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -466,7 +486,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Lingfield | River Fox Events",
     description:
       "Village children's parties in Lingfield and along the Surrey/Sussex border - first birthdays to themed celebrations, individually designed by Laura.",
-    breadcrumbName: "Party Styling Lingfield",
+    breadcrumbName: "Lingfield",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -489,7 +509,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Crawley | River Fox Events",
     description:
       "Children's birthday styling in Crawley and across West Sussex, from first birthdays to big themed parties - individually designed and installed by Laura.",
-    breadcrumbName: "Party Styling Crawley",
+    breadcrumbName: "Crawley",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -513,7 +533,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Horsham | River Fox Events",
     description:
       "Big themed birthdays and first-birthday styling in Horsham - children's parties individually designed and installed by Laura.",
-    breadcrumbName: "Party Styling Horsham",
+    breadcrumbName: "Horsham",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -537,7 +557,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Haywards Heath | River Fox Events",
     description:
       "Kids' birthday styling across Haywards Heath, Lindfield and Cuckfield - first birthdays to themed parties, individually designed by Laura.",
-    breadcrumbName: "Party Styling Haywards Heath",
+    breadcrumbName: "Haywards Heath",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -561,7 +581,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Tunbridge Wells | River Fox Events",
     description:
       "Kent children's parties in Tunbridge Wells - first birthdays to big themed celebrations, individually designed and installed by Laura.",
-    breadcrumbName: "Party Styling Tunbridge Wells",
+    breadcrumbName: "Tunbridge Wells",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -585,7 +605,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Sevenoaks | River Fox Events",
     description:
       "West Kent children's parties in Sevenoaks - first birthdays to big themed celebrations, individually designed and installed by Laura.",
-    breadcrumbName: "Party Styling Sevenoaks",
+    breadcrumbName: "Sevenoaks",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -609,7 +629,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Forest Row | River Fox Events",
     description:
       "Forest-edge children's parties across the Ashdown Forest - first birthdays to big themed celebrations, individually designed and installed by Laura.",
-    breadcrumbName: "Party Styling Forest Row",
+    breadcrumbName: "Forest Row",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -633,7 +653,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Party Styling in Lewes | River Fox Events",
     description:
       "Themed first birthdays and children's parties in Lewes and the East Sussex villages, individually designed and installed by Laura.",
-    breadcrumbName: "Party Styling Lewes",
+    breadcrumbName: "Lewes",
     breadcrumbParent: "/areas-we-cover",
     service: {
       serviceType: "Event Styling",
@@ -665,7 +685,7 @@ export const ROUTES: RouteSEO[] = [
     title: "Areas We Cover in Surrey & Sussex | River Fox Events",
     description:
       "Every town I style parties and events in, across Surrey, London, Sussex and west Kent, with a map and a page for each. Based in Horley, I travel to you.",
-    breadcrumbName: "Areas We Cover",
+    breadcrumbName: "Areas I cover",
     priority: 0.7,
     changefreq: "monthly",
   },
