@@ -11,7 +11,7 @@ import xmasGeorgianDoor from "@/assets/christmas/instagram/georgian-door-gold-ch
 import xmasPilates from "@/assets/christmas/instagram/pink-pilates-studio-garland-blush-red-baubles.webp";
 import igOttilieToyStory from "@/assets/services/childrens-parties/ottilie-toy-story-second-birthday-gingham-table.webp";
 import igDukeLevel8Gaming from "@/assets/services/childrens-parties/duke-level-8-gaming-birthday-backdrop.webp";
-import igTeddyBearFirstBirthdayPinkGreyBalloonHoop from "@/assets/services/childrens-parties/teddy-bear-first-birthday-pink-grey-balloon-hoop.webp";
+import igAureliaFirstBirthdayPinkGreyBalloonHoop from "@/assets/services/childrens-parties/aurelia-first-birthday-pink-grey-balloon-hoop.webp";
 import igRainbowUnicornPartyPastelSequinBackdrop from "@/assets/services/childrens-parties/rainbow-unicorn-party-pastel-sequin-backdrop.webp";
 import igGraceFifthBirthdayRainbowArchUnicorn from "@/assets/services/childrens-parties/grace-fifth-birthday-rainbow-arch-unicorn.webp";
 import igBerryFirstBirthdayStrawberryBalloonBackdrop from "@/assets/services/childrens-parties/berry-first-birthday-strawberry-balloon-backdrop.webp";
@@ -41,7 +41,7 @@ const fromGallery = (source: string): InstagramStripImage => {
 export const INSPIRATION_CHILDRENS: InstagramStripImage[] = [
   { src: igOttilieToyStory, alt: "Toy Story themed second birthday table for Ottilie with blue gingham, cowboy hats and toy box centrepieces" },
   { src: igDukeLevel8Gaming, alt: "Level 8 gaming birthday backdrop for Duke with blue and black balloons, a neon controller and drop crates" },
-  { src: igTeddyBearFirstBirthdayPinkGreyBalloonHoop, alt: "Pink and grey balloon hoop around a teddy bear first birthday sign, with a light-up 1 and baby blocks" },
+  { src: igAureliaFirstBirthdayPinkGreyBalloonHoop, alt: "Pink, grey and white balloon hoop around a Welcome to Aurelia's 1st Birthday sign, with a Minnie Mouse 1 and ONE blocks" },
   { src: igRainbowUnicornPartyPastelSequinBackdrop, alt: "Pastel rainbow and unicorn party backdrop with a sequin arch, clouds and lilac, pink and lemon balloons" },
   { src: igGraceFifthBirthdayRainbowArchUnicorn, alt: "Rainbow arch and unicorn cutout for Grace's fifth birthday, framed by pastel rainbow balloon garlands" },
   { src: igBerryFirstBirthdayStrawberryBalloonBackdrop, alt: "Berry First birthday arch with red and pink balloons and giant strawberry foils on either side" },
@@ -91,7 +91,7 @@ export const INSPIRATION_BALLOONS: InstagramStripImage[] = [
   INSPIRATION_CHILDRENS[3], // rainbow unicorn sequin backdrop
   INSPIRATION_CORPORATE[1], // gala staircase garland
   INSPIRATION_MILESTONES[5], // Bearly Wait hot air balloon
-  INSPIRATION_CHILDRENS[2], // teddy bear balloon hoop
+  INSPIRATION_CHILDRENS[2], // Aurelia's balloon hoop
   INSPIRATION_MILESTONES[4], // champagne bowling garland
   INSPIRATION_CHILDRENS[8], // Dahlia daisy balloons
   INSPIRATION_MILESTONES[1], // blue 60

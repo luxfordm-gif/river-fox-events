@@ -295,6 +295,28 @@
     "seen": true,
     "graded": true
   },
+  "wild-ones-joint-birthday-sage-leopard-balloons": {
+    "width": 900,
+    "height": 900,
+    "widths": [
+      400,
+      700,
+      900
+    ],
+    "seen": true,
+    "graded": true
+  },
+  "two-sweet-second-birthday-sprinkle-backdrop": {
+    "width": 900,
+    "height": 900,
+    "widths": [
+      400,
+      700,
+      900
+    ],
+    "seen": true,
+    "graded": true
+  },
   "peter-rabbit-first-birthday-blue-balloon-backdrop": {
     "width": 1542,
     "height": 2048,
@@ -363,6 +385,17 @@
       700,
       1000,
       1400
+    ],
+    "seen": true,
+    "graded": true
+  },
+  "aurelia-first-birthday-pink-grey-balloon-hoop": {
+    "width": 900,
+    "height": 900,
+    "widths": [
+      400,
+      700,
+      900
     ],
     "seen": true,
     "graded": true

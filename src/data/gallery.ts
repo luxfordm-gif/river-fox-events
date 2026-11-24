@@ -244,6 +244,25 @@ export const GALLERY: GallerySection[] = [
           },
         ],
       },
+      // Added 2026-11-24 (were only in the inspiration strips)
+      {
+        title: "Wild Ones joint birthday",
+        photos: [
+          {
+            source: "services/childrens-parties/wild-ones-joint-birthday-sage-leopard-balloons.webp",
+            alt: "Wild Ones joint birthday board with photos, framed by sage, terracotta and leopard-print balloons",
+          },
+        ],
+      },
+      {
+        title: "Two Sweet second birthday",
+        photos: [
+          {
+            source: "services/childrens-parties/two-sweet-second-birthday-sprinkle-backdrop.webp",
+            alt: "Two Sweet second birthday backdrop with sprinkle detail and pink, lilac and mint balloons",
+          },
+        ],
+      },
       {
         title: "Peter Rabbit first birthday",
         photos: [
@@ -293,8 +312,12 @@ export const GALLERY: GallerySection[] = [
       },
       {
         title: "Aurelia's first birthday",
-        last: true,
         photos: [
+          // Added 2026-11-24 (was only in the inspiration strips), now the lead photo.
+          {
+            source: "services/childrens-parties/aurelia-first-birthday-pink-grey-balloon-hoop.webp",
+            alt: "Pink, grey and white balloon hoop around a Welcome to Aurelia's 1st Birthday sign, with a Minnie Mouse 1 and ONE blocks",
+          },
           {
             source: "services/childrens-parties/aurelia-first-birthday-welcome-sign-pink.webp",
             alt: "Pale pink and stone balloon garland around a Welcome to Aurelia's 1st Birthday sign on an easel",
