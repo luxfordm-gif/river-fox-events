@@ -4,6 +4,13 @@ import "@/styles/christmas.css";
 import { christmasOn } from "@/lib/announcementBar";
 
 import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
+import pine160 from "@/assets/christmas/pine-branch-fairy-lights-frosted-cone-160.webp";
+import pine320 from "@/assets/christmas/pine-branch-fairy-lights-frosted-cone-320.webp";
+import pine480 from "@/assets/christmas/pine-branch-fairy-lights-frosted-cone-480.webp";
+import imgGeorgian from "@/assets/christmas/instagram/georgian-door-gold-champagne-garland.webp";
+import imgPilates from "@/assets/christmas/instagram/pink-pilates-studio-garland-blush-red-baubles.webp";
+import imgNavy from "@/assets/christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp";
+import imgReigate from "@/assets/christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp";
 // MOCK-UP (Matt, 2026-11-24): a stand-in loop made from the Worplesdon porch
 // photos. Swap in a short cut of Laura's Worplesdon time-lapse (2:3, 576x864,
 // no sound, under 1MB) with the same file name pattern.
@@ -12,17 +19,21 @@ import promoPoster from "@/assets/christmas/video/worplesdon-porch-garland-poste
 
 const PAGE = "/christmas-door-garlands/";
 const DISMISS_KEY = "rfx-xmas-promo-dismissed";
+const DESKTOP = "(min-width: 768px)";
+
+/* Phone bar only. Decorative: the card's link carries the meaning, so these alts stay empty. */
+const DECK = [imgGeorgian, imgPilates, imgNavy, imgReigate];
 
 
 /**
  * Floating "Christmas door garlands" card, pinned bottom-right (a slim bar
  * along the bottom on phones).
  *
- * MOCK-UP (Matt, 2026-11-24): a tall card with a looping video of a garland
- * going up filling it, the words over the video (like the Black Friday card
- * Matt shared). On phones the bar keeps its shape with a small video in
- * place of the old photo deck. Was: a shuffling deck of doorway photos on
- * deep pine green with a lit spruce branch.
+ * MOCK-UP (Matt, 2026-11-24): on desktop, a card filled by a looping video
+ * of a garland going up, the words over the video (like the Black Friday
+ * card Matt shared). Phones keep the bar as it was (Matt, 2026-11-24): a
+ * small deck of doorway photos that shuffles, on deep pine green with a lit
+ * spruce branch on the right edge.
  *
  * Shows about a second after load, once the cookie banner (which uses the
  * same corner) has been answered. Closing it is remembered. Never shows
@@ -32,6 +43,7 @@ const DISMISS_KEY = "rfx-xmas-promo-dismissed";
  */
 const ChristmasPromo = () => {
   const [show, setShow] = useState(false);
+  const [front, setFront] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -89,10 +101,21 @@ const ChristmasPromo = () => {
       v.pause();
       return;
     }
+    // Desktop only: phones show the photo deck and never fetch the video.
+    if (!window.matchMedia(DESKTOP).matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     v.play().catch(() => {
       /* autoplay refused: the poster stays, which is fine */
     });
+  }, [show]);
+
+  // Phone bar: every few seconds the front photo slides out and tucks in at the back.
+  useEffect(() => {
+    if (!show) return;
+    if (window.matchMedia(DESKTOP).matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = window.setInterval(() => setFront((f) => (f + 1) % DECK.length), 3200);
+    return () => window.clearInterval(t);
   }, [show]);
 
   const dismiss = () => {
@@ -115,7 +138,40 @@ const ChristmasPromo = () => {
         <X size={16} strokeWidth={1.8} />
       </button>
 
-      {/* Decorative: the card's link carries the meaning. */}
+      {/* Phone bar: decorative branch, clipped by the card's rounded corners. */}
+      <span className="xmas-promo__pine" aria-hidden="true">
+        <img
+          src={pine320}
+          srcSet={`${pine160} 160w, ${pine320} 320w, ${pine480} 480w`}
+          sizes="150px"
+          alt=""
+          width={320}
+          height={428}
+          loading="lazy"
+          decoding="async"
+        />
+      </span>
+      <div className="xmas-promo__deck" aria-hidden="true">
+        {DECK.map((src, i) => {
+          const pos = (i - front + DECK.length) % DECK.length; // 0 = front
+          return (
+            <img
+              key={src}
+              src={src}
+              alt=""
+              className="xmas-promo__card"
+              data-pos={pos}
+              width={560}
+              height={700}
+              loading="lazy"
+              fetchPriority="low"
+              decoding="async"
+            />
+          );
+        })}
+      </div>
+
+      {/* Desktop card: the video fills it. Decorative: the link carries the meaning. */}
       <div className="xmas-promo__media" aria-hidden="true">
         <video
           ref={videoRef}
