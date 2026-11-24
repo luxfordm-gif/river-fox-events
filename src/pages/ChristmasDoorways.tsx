@@ -629,6 +629,8 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
         {/* Hero: garland drapes edge to edge above the headline, then the
             photo fan (scroll strip on phones), as on the location pages. */}
         <section aria-labelledby="xmas-hero-heading" className="rfx-hero hero-under-nav hero-foot">
+          {/* Home › Services › this page, top left (Matt, 2026-11-24). */}
+          <Breadcrumbs path={routePath} />
           {/* Tablet up only: on phones it pushed the buttons below the fold
               (Matt, 2026-11-18). */}
           <div className="hidden md:block">
@@ -636,8 +638,6 @@ const ChristmasDoorways = ({ variant = "home" }: { variant?: Variant }) => {
           </div>
           <div className="container-rfx">
             <div className="xmas-hero-text mt-2 md:mt-4 hero-gap-below flex flex-col items-center text-center">
-              {/* Home › Services › this page (Matt, 2026-11-24). */}
-              <Breadcrumbs path={routePath} />
               <p className="t-overline text-ink-soft">
                 {inSeason
                   ? `Christmas ${SEASON_YEAR} · ${biz ? "For businesses" : "Now booking"}`

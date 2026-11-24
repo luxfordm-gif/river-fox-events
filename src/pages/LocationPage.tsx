@@ -102,12 +102,12 @@ const LocationPage = () => {
           className="rfx-hero rfx-hero-scale hero-foot"
           aria-labelledby={`loc-${loc.slug}-hero-heading`}
         >
+          {/* Home › Areas I cover › [Town], top left (Matt, 2026-11-24). */}
+          <Breadcrumbs path={`/party-styling-${loc.slug}`} />
           <div className="container-rfx">
             {/* mb tightened (was mb-10/mb-14) so the cards sit closer to
                 the CTA button - about 22px less air on both breakpoints. */}
             <div className="rfx-hero-intro flex flex-col items-center text-center">
-              {/* Home › Areas I cover › [Town] (Matt, 2026-11-24). */}
-              <Breadcrumbs path={`/party-styling-${loc.slug}`} />
               <h1
                 id={`loc-${loc.slug}-hero-heading`}
                 // Display, the same headline style as the home and service

@@ -94,10 +94,8 @@ export interface ExpItem {
   img: string;
   alt: string;
   href: string;
-  /** Button label under the card, e.g. "See the parties". Leave it out for
-   *  a card that shows its title arrow at every width instead (/services/
-   *  smaller cards). */
-  cta?: string;
+  /** Button label under the card, e.g. "See the parties". */
+  cta: string;
   tone?: string;
   extraZoom?: number;
   /** Small label on the photo, e.g. "Most popular" (Matt, 2026-11-08). */
@@ -134,7 +132,6 @@ const ExpCard = ({
   /** On the first screen (/services/): load now, not lazily. */
   eager?: boolean;
 }) => {
-  const arrowAlways = !it.cta;
   const wrap = useRef<HTMLDivElement>(null);
   const img = useRef<HTMLImageElement>(null);
   const baseScale = 1.14 * (it.extraZoom ?? 1);
@@ -153,7 +150,7 @@ const ExpCard = ({
   return (
     <a
       href={it.href}
-      className={`exp-card rfx-svc-card flex flex-col${arrowAlways ? " exp-card--arrow" : ""}`}
+      className="exp-card rfx-svc-card flex flex-col"
     >
       <div
         ref={wrap}
@@ -183,23 +180,21 @@ const ExpCard = ({
       </div>
       {/* The last word drops to its own line so the title doesn't run wide
           at this size (Matt, 2026-11-17). */}
-      <div className={PHONE_ARROWS || arrowAlways ? "exp-title-row media-to-title" : "contents"}>
+      <div className={PHONE_ARROWS ? "exp-title-row media-to-title" : "contents"}>
       <Title className="t-h4 exp-title media-to-title text-pretty">
         {it.title.slice(0, it.title.lastIndexOf(" "))}
         <br />
         {it.title.slice(it.title.lastIndexOf(" ") + 1)}
       </Title>
-      {(PHONE_ARROWS || arrowAlways) && <Arrow />}
+      {PHONE_ARROWS && <Arrow />}
       </div>
       <p className="t-small text-ink-soft measure-card title-to-text">
         {it.body}
         {it.price && !hidePrice && <> {it.price}</>}
       </p>
-      {it.cta && (
-        <span className={`btn-link-rf t-label self-start mt-auto card-action ${PHONE_ARROWS ? "exp-link-tablet-up" : ""}`}>
-          {it.cta} <span className="arr">→</span>
-        </span>
-      )}
+      <span className={`btn-link-rf t-label self-start mt-auto card-action ${PHONE_ARROWS ? "exp-link-tablet-up" : ""}`}>
+        {it.cta} <span className="arr">→</span>
+      </span>
     </a>
   );
 };
@@ -232,7 +227,8 @@ type ExperiencesProps = {
   /** Leave "From £300" off the cards (/services/ has no prices). */
   hidePrices?: boolean;
   /** Smaller cards in a row under the three (/services/): shorter photos,
-   *  the title arrow at every width. */
+   *  otherwise the same as the three (text link from tablet up, arrow on
+   *  phones). */
   more?: ExpItem[];
   /** The cards are near the top of the page (/services/): the first photo
    *  loads straight away, as the largest thing on a phone's first screen. */

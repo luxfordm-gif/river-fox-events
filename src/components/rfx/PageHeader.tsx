@@ -8,8 +8,8 @@ type PageHeaderProps = {
   /** Optional small label, shown under the H1 (never above it, so the H1
    *  always lands in the same place on every inner page). */
   note?: ReactNode;
-  /** Optional breadcrumb trail above the H1 (/services/). The only thing
-   *  allowed above it. */
+  /** Optional breadcrumb trail (/services/): pinned top left, so the H1
+   *  still lands in the same place as on the other inner pages. */
   above?: ReactNode;
   /** Optional extra content under the intro (jump links, buttons). */
   children?: ReactNode;
@@ -34,8 +34,8 @@ const PageHeader = ({ title, intro, note, above, children, id, tone, divider }: 
   // Spacing sits on the outer <header>, not on .container-rfx: container
   // rules elsewhere reset padding with the shorthand and would undo it.
   <header className={cls}>
+    {above}
     <div className="container-rfx text-center">
-      {above}
       <h1 id={id} className="page-header__title mx-auto">
         {title}
       </h1>

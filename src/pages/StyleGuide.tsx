@@ -387,6 +387,8 @@ const SPACING_TOKENS = [
   "--tile-card-width", "--tile-card-pad",
   // Services cards (2026-11-20)
   "--gap-service-cards",
+  // Services hub (2026-11-24)
+  "--gap-service-rows",
 ];
 
 /* A spacing token's value at a width, in px: references to other tokens are
@@ -538,11 +540,11 @@ const SECTIONS: Section[] = [
     id: "S24",
     title: "Breadcrumbs",
     component: "Breadcrumbs",
-    note: "Above the headline on every service page, town page and /services/. Names and links come from routes.ts, the same as the BreadcrumbList schema",
+    note: "Top left on every service page, town page and /services/ (pinned under the nav from tablet up, above the headline on phones). Names and links come from routes.ts, the same as the BreadcrumbList schema",
     render: () => (
       <div className="stack-gap flex flex-col">
-        <Breadcrumbs path="/childrens-parties" className="mb-0" />
-        <Breadcrumbs path="/party-styling-walton-on-thames" className="mb-0" />
+        <Breadcrumbs path="/childrens-parties" pinned={false} />
+        <Breadcrumbs path="/party-styling-walton-on-thames" pinned={false} />
       </div>
     ),
   },
