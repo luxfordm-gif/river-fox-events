@@ -10,8 +10,8 @@ import LocationUSP from "@/components/rfx/LocationUSP";
 import LocationTrust from "@/components/rfx/LocationTrust";
 import FaqSection from "@/components/rfx/FaqSection";
 import LocationPhotoGrid from "@/components/rfx/LocationPhotoGrid";
-import { homeRecentPicks } from "@/data/recentWork";
-import { HOME_FAQS } from "@/data/homeFaqs";
+import { HOME_RECENT_LEAD, recentPicks } from "@/data/recentWork";
+import { SERVICES_FAQS } from "@/data/servicesFaqs";
 import { galleryPhoto } from "@/data/gallery";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
 import { christmasOn } from "@/lib/announcementBar";
@@ -32,7 +32,7 @@ import { applyMeta, breadcrumbSchema, removeJsonLd, upsertJsonLd } from "@/seo/h
  *     garlands" were written to match the three above (Matt to confirm).
  *   - Then the town pages' Why River Fox Events?, Recent celebrations (their
  *     heading and intro), Kind words,
- *     and the home page FAQs without the price question.
+ *     and its own twelve FAQs (src/data/servicesFaqs.tsx, no cost question).
  *   - The two Christmas cards go with the Christmas switch-off: christmasOn()
  *     (christmasEndsOn in src/data/announcementBar.ts, 3 January 2027), the
  *     same switch that takes them out of the menu and footer.
@@ -72,17 +72,34 @@ const CHRISTMAS: ExpItem[] = [
   },
 ];
 
-/* The home page FAQs, without the price question (no prices on this page). */
-const FAQS = HOME_FAQS.filter((f) => !f.a.includes("£"));
-
 /* Recent celebrations: the town pages' photo wall (ten photos, three rows),
-   with a mix of every service, newest first (the home page's picks). */
-const RECENT_PICKS = homeRecentPicks(10);
+   a mix of every service, newest first (Matt, 2026-11-24). It opens with
+   Laura's newest posts (the home page's four, in src/data/recentWork.ts),
+   then the Our work sections take turns. In season the Christmas garlands
+   and wreaths are one of those sections; from christmasEndsOn they drop
+   out, Christmas lead photos included. Photos already on the cards above
+   (and the lead's own events) are skipped. */
+const CARD_SOURCES = [
+  "river-fox-events-pastel-birthday-reeva-entrance-arch.webp",
+  "christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp",
+  "christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp",
+];
+const recentWall = (season: boolean) => {
+  const lead = HOME_RECENT_LEAD.filter((p) => season || !/christmas/i.test(p.source));
+  const picks = recentPicks(10 - lead.length, {
+    sections: season ? ["christmas", "childrens-parties", "milestones", "corporate"] : ["childrens-parties", "milestones", "corporate"],
+    skipEvents: lead.map((p) => p.title ?? ""),
+    skipSources: CARD_SOURCES,
+  });
+  return { lead, picks };
+};
 
 const Services = () => {
   useFadeUp();
   useNavScroll();
-  const more = christmasOn() ? [BALLOONS, ...CHRISTMAS] : [BALLOONS];
+  const season = christmasOn();
+  const more = season ? [BALLOONS, ...CHRISTMAS] : [BALLOONS];
+  const recent = recentWall(season);
 
   useEffect(() => {
     const route = findRoute("/services")!;
@@ -125,8 +142,9 @@ const Services = () => {
           wide
           slug="services"
           topUp={false}
-          count={RECENT_PICKS.length}
-          picks={RECENT_PICKS}
+          lead={recent.lead}
+          count={recent.picks.length}
+          picks={recent.picks}
           heading={
             <>
               Recent <em className="t-accent">celebrations.</em>
@@ -137,7 +155,7 @@ const Services = () => {
 
         <LocationTrust />
 
-        <FaqSection faqs={FAQS} headingId="services-faq-heading" />
+        <FaqSection faqs={SERVICES_FAQS} headingId="services-faq-heading" />
 
         <Enquire hidePrice />
       </main>

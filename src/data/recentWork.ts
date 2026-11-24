@@ -41,11 +41,22 @@ export const HOME_RECENT_LEAD: ViewerItem[] = [
   lead("recent/unicorn-party-ava", "Children's party, unicorns and rainbows", "Painted unicorn cut-out beside a holographic shimmer wall and pastel balloons on a pink party backdrop", [uni400, uni700, uni1000], 1000),
 ];
 
-/** Gallery photos to follow the lead, as `{ alt }` picks, one per event, sections taking turns. */
-export const homeRecentPicks = (count: number): { alt: string }[] => {
+/** Gallery photos to follow the lead, as `{ alt }` picks, one per event,
+ *  sections taking turns. `sections` defaults to the home page's three;
+ *  `skipEvents` leaves out events by title (ones already shown elsewhere on
+ *  the page) and `skipSources` events that contain any of those photos. */
+export const recentPicks = (
+  count: number,
+  {
+    sections = ["childrens-parties", "milestones", "corporate"],
+    skipEvents = [],
+    skipSources = [],
+  }: { sections?: string[]; skipEvents?: string[]; skipSources?: string[] } = {},
+): { alt: string }[] => {
   const skip = /rishi-summer-party|halloween/;
-  const lists = ["childrens-parties", "milestones", "corporate"].map((id) =>
+  const lists = sections.map((id) =>
     orderedEvents(GALLERY.find((s) => s.id === id)!)
+      .filter((e) => !skipEvents.includes(e.title) && !e.photos.some((p) => skipSources.includes(p.source)))
       .map((e) => e.photos[0])
       .filter((p) => !skip.test(p.source)),
   );
@@ -54,3 +65,6 @@ export const homeRecentPicks = (count: number): { alt: string }[] => {
     for (const l of lists) if (i < l.length && out.length < count) out.push({ alt: l[i].alt });
   return out;
 };
+
+/** The home page's picks: children's parties, milestones and corporate. */
+export const homeRecentPicks = (count: number): { alt: string }[] => recentPicks(count);
