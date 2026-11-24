@@ -390,6 +390,16 @@ export const GALLERY: GallerySection[] = [
     titleAccent: "celebrations.",
     link: { href: "/milestone-celebrations/", label: "See milestone styling" },
     events: [
+      // Laura's Instagram, 12 Sep 2026 (added 2026-11-24, colour fixed with tools/photo-grade)
+      {
+        title: "Valentina's black and white 12th",
+        photos: [
+          {
+            source: "services/milestones/valentina-12th-birthday-chanel-black-white-backdrop.webp",
+            alt: "Black and white balloon garland with black bows around a Chanel arch backdrop and plinth for Valentina's 12th in a kitchen",
+          },
+        ],
+      },
       // Laura's Instagram, April 2026, a games room (was only in the inspiration strips; added 2026-11-24)
       {
         title: "Pastel 21st birthday",

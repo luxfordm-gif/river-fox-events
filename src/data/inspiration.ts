@@ -38,6 +38,9 @@ const fromGallery = (source: string): InstagramStripImage => {
   return { src: p.src, alt: p.alt };
 };
 
+/** A Christmas photo: InstagramStrip drops it after the season. */
+const seasonal = (img: InstagramStripImage): InstagramStripImage => ({ ...img, seasonal: true });
+
 export const INSPIRATION_CHILDRENS: InstagramStripImage[] = [
   { src: igOttilieToyStory, alt: "Toy Story themed second birthday table for Ottilie with blue gingham, cowboy hats and toy box centrepieces" },
   { src: igDukeLevel8Gaming, alt: "Level 8 gaming birthday backdrop for Duke with blue and black balloons, a neon controller and drop crates" },
@@ -72,17 +75,17 @@ export const INSPIRATION_MILESTONES: InstagramStripImage[] = [
 /* One business Christmas garland (the Reigate restaurant) among the corporate
    installs - one Christmas photo, not more (Matt, 2026-11-09). */
 export const INSPIRATION_CORPORATE: InstagramStripImage[] = [
-  { src: igOfficeChristmasBlackGoldHalfArchStreamers, alt: "Black and gold balloon half arch with gold streamers and starbursts for an office Christmas party" },
+  { src: igOfficeChristmasBlackGoldHalfArchStreamers, alt: "Black and gold balloon half arch with gold streamers and starbursts for an office Christmas party", seasonal: true },
   { src: igGalaDinnerStaircaseNavyGoldBalloonGarland, alt: "Navy, white and gold balloon garland climbing a staircase entrance for a charity gala dinner" },
   fromGallery("services/corporate/casino-night-balloon-columns-red-black-gold.webp"),
-  fromGallery("christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp"),
+  seasonal(fromGallery("christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp")),
   fromGallery("services/corporate/restaurant-entrance-garland-black-gold-balloons.webp"),
   fromGallery("services/corporate/shop-entrance-arch-green-white-balloons.webp"),
   fromGallery("services/corporate/lakeside-terrace-navy-balloon-arch.webp"),
   fromGallery("services/corporate/enterprise-mobility-branded-backdrop-black-gold-balloons.webp"),
   fromGallery("services/corporate/bocketts-farm-easter-bunny-booth-balloon-garland.webp"),
   fromGallery("services/corporate/125-years-entrance-columns-green-white-gold-stars.webp"),
-  fromGallery("journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp"),
+  seasonal(fromGallery("journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp")),
 ];
 
 /* Balloons page: balloon-led pieces from across the three carousels (no new photos). */
@@ -121,15 +124,15 @@ export const INSPIRATION_TOWNS: InstagramStripImage[] = [
 export const INSPIRATION_HOME: InstagramStripImage[] = [
   INSPIRATION_CHILDRENS[0], // Ottilie's Toy Story table
   INSPIRATION_MILESTONES[2], // pastel 21 balloon wall
-  { src: xmasNavyDoor, alt: "Navy front door beneath a spruce arch crowded with pink, purple, teal and gold baubles" },
+  { src: xmasNavyDoor, alt: "Navy front door beneath a spruce arch crowded with pink, purple, teal and gold baubles", seasonal: true },
   INSPIRATION_CHILDRENS[3], // rainbow unicorn backdrop
   INSPIRATION_CORPORATE[1], // gala staircase garland
   INSPIRATION_CHILDRENS[1], // Duke's Level 8
-  { src: xmasGeorgianDoor, alt: "Georgian black door at number 16 framed in spruce with gold and champagne baubles and stars" },
+  { src: xmasGeorgianDoor, alt: "Georgian black door at number 16 framed in spruce with gold and champagne baubles and stars", seasonal: true },
   INSPIRATION_MILESTONES[5], // Bearly Wait baby shower
   INSPIRATION_CHILDRENS[5], // Berry First
   INSPIRATION_MILESTONES[1], // blue 60
-  { src: xmasPilates, alt: "Pink pilates studio doorway in East Molesey dressed in spruce with blush, white and red baubles" },
+  { src: xmasPilates, alt: "Pink pilates studio doorway in East Molesey dressed in spruce with blush, white and red baubles", seasonal: true },
   INSPIRATION_CHILDRENS[10], // Rudy's Rodeo
   INSPIRATION_MILESTONES[4], // champagne 40 garland
 ];

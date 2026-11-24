@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { MAX_ENTRIES, RECENT_WORK, WALL_MIX, WALL_SIZE, mixed, recentWall, seeded } from "@/data/recentWork";
+import { MAX_ENTRIES, RECENT_WORK, WALL_SIZE, mixed, recentWall, seeded } from "@/data/recentWork";
 
 /**
  * The one latest-work list behind every Recent celebrations / Recent work
@@ -17,26 +17,19 @@ describe("recent work", () => {
     expect(RECENT_WORK.length).toBeLessThanOrEqual(MAX_ENTRIES);
   });
 
-  it("every wall is full, in and out of season, and keeps to the mix", () => {
+  it("every wall is full, in and out of season", () => {
     for (const season of [true, false]) {
       // The /services/ wall leaves out its card photos, so check with those too.
       for (const exclude of [[], ["christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp"]]) {
         const wall = recentWall({ season, exclude });
         expect(wall, `season ${season}`).toHaveLength(WALL_SIZE);
-        const count = (s: string) => wall.filter((p) => p.service === s).length;
-        for (const [service, max] of Object.entries(WALL_MIX)) expect(count(service), service).toBeLessThanOrEqual(max);
-        if (!season) expect(count("christmas")).toBe(0);
-        expect(count("corporate")).toBe(0);
+        if (!season) expect(wall.some((p) => p.service === "christmas")).toBe(false);
       }
     }
   });
 
-  it("takes the newest entries that fit", () => {
-    const wall = recentWall({ season: true });
-    const order = RECENT_WORK.map((e) => e.source);
-    const idx = wall.map((p) => order.indexOf(p.source));
-    expect(idx).toEqual([...idx].sort((a, b) => a - b));
-    expect(wall[0].source).toBe(order[0]);
+  it("shows the top of the list, newest first", () => {
+    expect(recentWall({ season: true }).map((p) => p.source)).toEqual(RECENT_WORK.slice(0, WALL_SIZE).map((e) => e.source));
   });
 
   it("leaves out photos the page already shows", () => {

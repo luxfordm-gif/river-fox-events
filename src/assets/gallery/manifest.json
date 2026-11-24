@@ -233,7 +233,7 @@
       1000,
       1400
     ],
-    "seen": true,
+    "seen": false,
     "graded": true
   },
   "kai-one-o-saurus-dinosaur-cutouts-side-angle": {
@@ -482,6 +482,18 @@
       1400
     ],
     "seen": false,
+    "graded": true
+  },
+  "valentina-12th-birthday-chanel-black-white-backdrop": {
+    "width": 1440,
+    "height": 1440,
+    "widths": [
+      400,
+      700,
+      1000,
+      1400
+    ],
+    "seen": true,
     "graded": true
   },
   "21st-pastel-balloon-wall-light-up-numbers": {
