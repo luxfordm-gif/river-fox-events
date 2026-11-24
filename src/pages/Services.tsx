@@ -84,7 +84,9 @@ const Services = () => {
   useFadeUp();
   useNavScroll();
   const season = christmasOn();
-  const more = season ? [BALLOONS, ...CHRISTMAS] : [BALLOONS];
+  // After Christmas the smaller row would hold one card, so Balloon
+  // decorations joins the main row instead (Matt, 2026-11-24).
+  const more = season ? [BALLOONS, ...CHRISTMAS] : [];
   const recent = recentWall({ exclude: CARD_SOURCES, season });
 
   useEffect(() => {
@@ -116,7 +118,7 @@ const Services = () => {
           </div>
         </PageHeader>
 
-        <Experiences hideHeading labelledBy="services-heading" hidePrices eagerFirst sectionId="services-list" more={more} />
+        <Experiences hideHeading labelledBy="services-heading" hidePrices eagerFirst sectionId="services-list" more={more} fourth={season ? undefined : BALLOONS} />
 
         {/* The town pages' sections, in their order (Matt, 2026-11-24): Why
             River Fox Events?, Recent celebrations, Kind words with the

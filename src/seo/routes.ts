@@ -166,13 +166,12 @@ export const ROUTES: RouteSEO[] = [
     changefreq: "monthly",
   },
   {
-    // Services hub (Matt, 2026-11-24). The description is Laura's own wording:
-    // the home mission line joined to the end of the home services intro.
-    // No price on this page.
+    // Services hub (Matt, 2026-11-24). Title and description are Matt's own
+    // wording. No price on this page.
     path: "/services",
     title: "Event Styling Services in Surrey | River Fox Events",
     description:
-      "Children's parties, milestone celebrations and brand events across Surrey and London, each one individually designed, from one balloon arch to a full room.",
+      "Children's party styling, milestone celebrations and corporate event styling across Surrey and London. Designed by Laura, built on site and cleared away.",
     breadcrumbName: "Services",
     priority: 0.8,
     changefreq: "monthly",

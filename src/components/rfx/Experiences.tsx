@@ -230,6 +230,10 @@ type ExperiencesProps = {
    *  otherwise the same as the three (text link from tablet up, arrow on
    *  phones). */
   more?: ExpItem[];
+  /** A fourth card in the main row (/services/ after Christmas, when its
+   *  smaller row would hold one card: Matt 2026-11-24). Four across on
+   *  laptops, two by two on tablets. */
+  fourth?: ExpItem;
   /** The cards are near the top of the page (/services/): the first photo
    *  loads straight away, as the largest thing on a phone's first screen. */
   eagerFirst?: boolean;
@@ -246,6 +250,7 @@ const Experiences = ({
   labelledBy,
   hidePrices = false,
   more,
+  fourth,
   eagerFirst = false,
 }: ExperiencesProps = {}) => {
   const title = heading ?? SERVICES_HEADING;
@@ -294,8 +299,8 @@ const Experiences = ({
         </div>
         )}
 
-        <div className="exp-grid grid grid-cols-1 md:grid-cols-3">
-          {items.map((it, i) => (
+        <div className={fourth ? "exp-grid exp-grid--four grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" : "exp-grid grid grid-cols-1 md:grid-cols-3"}>
+          {(fourth ? [...items, fourth] : items).map((it, i) => (
             <ExpCard key={it.href} it={it} compact={compactImages} hidePrice={hidePrices} titleTag={hideHeading ? "h2" : "h3"} eager={eagerFirst && i === 0} />
           ))}
         </div>

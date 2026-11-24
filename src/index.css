@@ -1207,6 +1207,12 @@
     .crumbs--pinned { position: absolute; left: 0; right: var(--scroll-lock-gap, 0); top: calc(var(--nav-height) + var(--gap-stack)); margin: 0; z-index: 1; }
   }
 
+  /* /services/ after Christmas: four cards in the main row, two by two on
+     tablets, where a card starting a row has no divider on its left. */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .exp-grid--four > .exp-card:nth-child(odd)::before { display: none; }
+  }
+
   /* /services/ smaller cards, under the three (Matt, 2026-11-24): a wider
      gap from tablet up, one card gap on phones where every card stacks. */
   .exp-grid--more { margin-top: var(--gap-service-cards); }
