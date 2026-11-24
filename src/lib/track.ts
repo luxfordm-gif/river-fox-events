@@ -33,6 +33,11 @@
  *                     data-show-more), with section
  *   tile_swipe        first swipe of a service tile row on a phone (sent once
  *                     per row by ServicesCards), with section
+ *   promo_view, promo_click, promo_close  the floating Christmas card on the
+ *                     home page (sent by ChristmasPromo itself): shown, tapped
+ *                     through to the Christmas page, closed. Each carries
+ *                     variant: "video_card" (desktop) or "photo_bar" (phones)
+ *                     (Matt, 2026-11-24)
  *   generate_lead also carries last_photo and photos_opened when the visitor
  *                     opened any photo before sending the form
  *
