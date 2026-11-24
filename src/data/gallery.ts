@@ -69,6 +69,36 @@ export const GALLERY: GallerySection[] = [
     titleAccent: "parties.",
     link: { href: "/childrens-parties/", label: "See children's party styling" },
     events: [
+      // Laura's Instagram, 5 Oct 2026 (moved here from the home page's own list, 2026-11-24)
+      {
+        title: "Unicorn party",
+        photos: [
+          {
+            source: "services/childrens-parties/unicorn-rainbow-party-ava-name-sign-shimmer-wall-pastel-balloons.webp",
+            alt: "Painted unicorn cut-out beside a holographic shimmer wall and pastel balloons on a pink party backdrop",
+          },
+        ],
+      },
+      // Laura's Instagram, July 2026 (was only in the inspiration strips; added 2026-11-24)
+      {
+        title: "Ottilie's Toy Story second birthday",
+        photos: [
+          {
+            source: "services/childrens-parties/ottilie-toy-story-second-birthday-gingham-table.webp",
+            alt: "Toy Story themed second birthday table for Ottilie with blue gingham, cowboy hats and toy box centrepieces",
+          },
+        ],
+      },
+      // Laura's Instagram, 13 Jul 2026
+      {
+        title: "Gaming party",
+        photos: [
+          {
+            source: "services/childrens-parties/gaming-party-duke-level-8-tron-fortnite-marshmello-backdrop-blue-black-balloons.webp",
+            alt: "Tron, Fortnite and Marshmello party backdrop with a Duke unlocks Level 8 sign and blue and black balloon garlands",
+          },
+        ],
+      },
       {
         title: "Fourever Wild jungle party",
         photos: [
@@ -204,6 +234,35 @@ export const GALLERY: GallerySection[] = [
           },
         ],
       },
+      // Laura's Instagram, March 2026 (was only in the inspiration strips; added 2026-11-24)
+      {
+        title: "Berry First birthday",
+        photos: [
+          {
+            source: "services/childrens-parties/berry-first-birthday-strawberry-balloon-backdrop.webp",
+            alt: "Berry First birthday arch with red and pink balloons and giant strawberry foils on either side",
+          },
+        ],
+      },
+      // Added 2026-11-24 (were only in the inspiration strips)
+      {
+        title: "Wild Ones joint birthday",
+        photos: [
+          {
+            source: "services/childrens-parties/wild-ones-joint-birthday-sage-leopard-balloons.webp",
+            alt: "Wild Ones joint birthday board with photos, framed by sage, terracotta and leopard-print balloons",
+          },
+        ],
+      },
+      {
+        title: "Two Sweet second birthday",
+        photos: [
+          {
+            source: "services/childrens-parties/two-sweet-second-birthday-sprinkle-backdrop.webp",
+            alt: "Two Sweet second birthday backdrop with sprinkle detail and pink, lilac and mint balloons",
+          },
+        ],
+      },
       {
         title: "Peter Rabbit first birthday",
         photos: [
@@ -253,8 +312,12 @@ export const GALLERY: GallerySection[] = [
       },
       {
         title: "Aurelia's first birthday",
-        last: true,
         photos: [
+          // Added 2026-11-24 (was only in the inspiration strips), now the lead photo.
+          {
+            source: "services/childrens-parties/aurelia-first-birthday-pink-grey-balloon-hoop.webp",
+            alt: "Pink, grey and white balloon hoop around a Welcome to Aurelia's 1st Birthday sign, with a Minnie Mouse 1 and ONE blocks",
+          },
           {
             source: "services/childrens-parties/aurelia-first-birthday-welcome-sign-pink.webp",
             alt: "Pale pink and stone balloon garland around a Welcome to Aurelia's 1st Birthday sign on an easel",
@@ -327,6 +390,26 @@ export const GALLERY: GallerySection[] = [
     titleAccent: "celebrations.",
     link: { href: "/milestone-celebrations/", label: "See milestone styling" },
     events: [
+      // Laura's Instagram, 12 Sep 2026 (added 2026-11-24, colour fixed with tools/photo-grade)
+      {
+        title: "Valentina's black and white 12th",
+        photos: [
+          {
+            source: "services/milestones/valentina-12th-birthday-chanel-black-white-backdrop.webp",
+            alt: "Black and white balloon garland with black bows around a Chanel arch backdrop and plinth for Valentina's 12th in a kitchen",
+          },
+        ],
+      },
+      // Laura's Instagram, April 2026, a games room (was only in the inspiration strips; added 2026-11-24)
+      {
+        title: "Pastel 21st birthday",
+        photos: [
+          {
+            source: "services/milestones/21st-pastel-balloon-wall-light-up-numbers.webp",
+            alt: "Giant light-up 21 set into a pastel balloon wall in lilac, sage, peach and lemon",
+          },
+        ],
+      },
       {
         title: "Pink 13th birthday",
         photos: [
@@ -724,6 +807,16 @@ export const GALLERY: GallerySection[] = [
           {
             source: "christmas/porch/porch-garland-arch-left-angle-close-tall.webp",
             alt: "Tall close view of spruce, gold and sage baubles curving around a black timber porch frame",
+          },
+        ],
+      },
+      // Laura's Instagram, 13 Nov 2026 (moved here from the home page's own list, 2026-11-24)
+      {
+        title: "Beauty salon doorway",
+        photos: [
+          {
+            source: "christmas/instagram/christmas-spruce-door-garland-beauty-salon-entrance-red-berries-white-baubles.webp",
+            alt: "Spruce door garland with red berries and white and silver baubles framing a beauty salon entrance",
           },
         ],
       },

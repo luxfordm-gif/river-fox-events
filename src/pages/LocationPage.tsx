@@ -14,6 +14,7 @@ import CPPricing from "@/components/rfx/CPPricing";
 import FaqSection from "@/components/rfx/FaqSection";
 import Experiences from "@/components/rfx/Experiences";
 import LocationPhotoGrid from "@/components/rfx/LocationPhotoGrid";
+import { recentWall } from "@/data/recentWork";
 import LocationUSP from "@/components/rfx/LocationUSP";
 import LocationTrust from "@/components/rfx/LocationTrust";
 import ScrollStrip from "@/components/rfx/ScrollStrip";
@@ -68,6 +69,10 @@ const useLocationSEO = (loc: LocationConfig) => {
     };
   }, [loc]);
 };
+
+/* Recent celebrations: Laura's latest work, the same list on every page
+   (src/data/recentWork.ts, Matt 2026-11-24). */
+const RECENT = recentWall();
 
 const LocationPage = () => {
   useFadeUp();
@@ -180,11 +185,10 @@ const LocationPage = () => {
         <LocationPhotoGrid
           id="loc-gallery"
           wide
-          slug={loc.slug}
           eyebrow={loc.gallery.eyebrow}
           heading={loc.gallery.heading}
           intro={loc.gallery.intro}
-          picks={[{ alt: loc.gallery.mainImageAlt }, ...loc.gallery.images]}
+          items={RECENT}
         />
 
         <Process sectionId="how-it-works" scenario={scenarioForTown(TOWNS.findIndex((t) => t.slug === loc.slug))} />

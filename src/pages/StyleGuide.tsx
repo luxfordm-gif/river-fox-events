@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/rfx/Breadcrumbs";
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import "@/styles/style-guide.css";
 import cssSource from "@/index.css?raw";
@@ -386,6 +387,8 @@ const SPACING_TOKENS = [
   "--tile-card-width", "--tile-card-pad",
   // Services cards (2026-11-20)
   "--gap-service-cards",
+  // Services hub (2026-11-24)
+  "--gap-service-rows",
 ];
 
 /* A spacing token's value at a width, in px: references to other tokens are
@@ -531,6 +534,17 @@ const SECTIONS: Section[] = [
         {[christmasLine, defaultLine, ...Object.values(pageLines).filter((l): l is BarLine => !!l)].map((l) => (
           <AnnouncementBarView key={l.text} line={l} href={l.link} />
         ))}
+      </div>
+    ),
+  },  {
+    id: "S24",
+    title: "Breadcrumbs",
+    component: "Breadcrumbs",
+    note: "Not on any page (taken off 24 Nov 2026; Google still gets the BreadcrumbList). Pinned top left under the nav when used. Names and links come from routes.ts, the same as the BreadcrumbList schema",
+    render: () => (
+      <div className="stack-gap flex flex-col">
+        <Breadcrumbs path="/childrens-parties" pinned={false} />
+        <Breadcrumbs path="/party-styling-walton-on-thames" pinned={false} />
       </div>
     ),
   },

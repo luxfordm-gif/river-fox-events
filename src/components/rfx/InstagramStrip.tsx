@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Instagram } from "lucide-react";
 import "@/styles/instagram-strip.css";
+import { christmasOn } from "@/lib/announcementBar";
 
-export type InstagramStripImage = { src: string; alt: string };
+/** `seasonal`: a Christmas photo, shown only while christmasOn() (it drops
+ *  out of every strip on christmasEndsOn, 3 January 2027; Matt 2026-11-24). */
+export type InstagramStripImage = { src: string; alt: string; seasonal?: boolean };
 
 type InstagramStripProps = {
   images: InstagramStripImage[];
@@ -128,11 +131,14 @@ const useSwipeDrift = (count: number) => {
 
 const MIN_PER_SET = 10;
 const InstagramStrip = ({
-  images,
+  images: all,
   href = "https://www.instagram.com/riverfox_events/",
   handle = "@riverfox_events",
   linked = true,
 }: InstagramStripProps) => {
+  // Christmas photos leave every strip after the season (Matt, 2026-11-24).
+  const season = christmasOn();
+  const images = season ? all : all.filter((img) => !img.seasonal);
   const repeats = images.length ? Math.ceil(MIN_PER_SET / images.length) : 0;
   const set = Array.from({ length: repeats }, () => images).flat();
   const { ref, swipe } = useSwipeDrift(set.length);

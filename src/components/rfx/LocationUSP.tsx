@@ -16,6 +16,9 @@ type LocationUSPProps = {
    *  pass a unique value per town so results don't all look identical.
    *  Falls back to the generic templated copy below when omitted. */
   body?: string;
+  /** No line under the heading, just the four points (/services/: the town
+   *  pages' line is each town's own, Matt 2026-11-24). */
+  noIntro?: boolean;
 };
 
 /**
@@ -51,7 +54,7 @@ const TRUST_POINTS: { icon: { s1: string; s2: string }; label: string; body: str
 
 const firstSentence = (text: string) => text.match(/^.*?[.?!](?=\s|$)/)?.[0] ?? text;
 
-const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
+const LocationUSP = ({ cityName, body, noIntro = false }: LocationUSPProps = {}) => {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [shown, setShown] = useState<boolean[]>(() => TRUST_POINTS.map(() => false));
   // Side by side from 1024px up: stagger them. Stacked on phones and tablets: each fades as it scrolls in.
@@ -90,6 +93,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
             </em>
           </SectionHeading>
         </div>
+        {!noIntro && (
         <SectionIntro className="text-center text-ink-soft fade-up">
           {/* First sentence only: still unique per town, half the words (Matt, 2026-11-07). */}
           {body ? firstSentence(body) : (
@@ -104,6 +108,7 @@ const LocationUSP = ({ cityName, body }: LocationUSPProps = {}) => {
             </>
           )}
         </SectionIntro>
+        )}
 
         <div
           className="text-to-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 cards-gap"

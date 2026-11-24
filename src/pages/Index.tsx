@@ -3,11 +3,12 @@ import Nav from "@/components/rfx/Nav";
 import Hero from "@/components/rfx/Hero";
 import InstagramFollow from "@/components/rfx/InstagramFollow";
 import Experiences from "@/components/rfx/Experiences";
+import { SERVICES_INTRO } from "@/data/servicesCopy";
 import Mission from "@/components/rfx/Mission";
 import About from "@/components/rfx/About";
 import Process from "@/components/rfx/Process";
 import LocationPhotoGrid from "@/components/rfx/LocationPhotoGrid";
-import { HOME_RECENT_LEAD, homeRecentPicks } from "@/data/recentWork";
+import { recentWall } from "@/data/recentWork";
 import Testimonials from "@/components/rfx/Testimonials";
 import FaqSection from "@/components/rfx/FaqSection";
 import { HOME_FAQS } from "@/data/homeFaqs";
@@ -27,7 +28,8 @@ import {
 /** On while the Christmas campaign runs: video hero, no title section. */
 const CHRISTMAS_CAMPAIGN = true;
 
-const RECENT_WORK_PICKS = homeRecentPicks(12);
+/* Laura's latest work, the one list behind every photo wall (src/data/recentWork.ts). */
+const RECENT = recentWall();
 
 const Index = () => {
   useFadeUp();
@@ -55,25 +57,20 @@ const Index = () => {
         <Mission asTitle={CHRISTMAS_CAMPAIGN} />
         <Experiences
           align="centre"
-          intro="Tell me what you're celebrating and I'll design around it, from one balloon arch to a full room."
+          intro={SERVICES_INTRO}
         />
-        {/* The Balloons page's photo wall, but newest work first and a mix of everything: three rows, then a link to Our work (Matt, 2026-11-17). */}
+        {/* Laura's latest work (the one list in src/data/recentWork.ts), mixed on each visit: three rows, then a link to Our work (Matt, 2026-11-24). */}
         <LocationPhotoGrid
           id="recent-work"
           wide
-          topUp={false}
           pageRows={3}
           moreHref="/our-work/"
-          keepOrder
-          lead={HOME_RECENT_LEAD}
-          count={HOME_RECENT_LEAD.length + RECENT_WORK_PICKS.length}
-          slug="home"
+          items={RECENT}
           heading={
             <>
               Recent <em className="t-accent">work.</em>
             </>
           }
-          picks={RECENT_WORK_PICKS}
         />
         <Testimonials noDivider />
         <Process tone="cream" />

@@ -254,6 +254,7 @@
     --measure-step: 560px;             /* Step width · widest a stacked How it works step gets on tablets */
     --gap-cards: 40px;                 /* Card gap · between cards in a grid or row: steps, tiles, related articles (32 phone) */
     --gap-service-cards: 56px;         /* Services card gap · between the three services cards, and where the divider line between them is drawn (it sits at half of this). Was a one-off 56 in the markup while the divider was drawn for 48, so it sat 4px off centre; Matt 2026-11-20 */
+    --gap-service-rows: 88px;          /* Services rows gap · /services/, between the three main cards and the row of smaller cards, tablet up (phones stack every card, so they keep Services card gap; Matt 2026-11-24) */
     --footer-brand-gap: 6px;           /* Footer brand gap · phones: extra space under the brand text, on top of the 48px row gap, before Services (54 in all, was 68; Matt 2026-11-18) */
     --gap-stacked: 24px;               /* Stacked gap · on phones, between the two halves of a .rfx-md-stack layout once they stack (About, reveals, service header, footer); was a hand-set 24 */
     --gap-paragraph: 20px;             /* Paragraph gap · one paragraph to the next (was 16 or 20; Matt 2026-11-13) */
@@ -436,6 +437,11 @@
   @media (min-width: 1024px) and (max-width: 1366px) {
     :root { --nav-pad-x: 32px; --nav-link-gap: 28px; }
   }
+  /* Phones and small tablets (the menu-button nav): 22px, so the breadcrumb
+     trail lines up with the wordmark too (Matt, 2026-11-24). */
+  @media (max-width: 1023px) {
+    :root { --nav-pad-x: 22px; }
+  }
 
 }
 
@@ -509,13 +515,13 @@
      space from one token, --hero-pad-top, at every width, so changing it
      moves every hero together (Matt, 2026-11-08). Components never set it.
      This selector outranks the shared .rfx-hero rules above. */
-  section.rfx-hero-scale { padding-top: var(--hero-pad-top); }
+  section.rfx-hero-scale { padding-top: calc(var(--hero-pad-top) + var(--crumbs-space, 0px)); }
   /* Home, service and town heroes (the big Display headline), tablet up: the space
      above the headline's letters matches the space below the trust line
      (Matt, 2026-11-13). Both come from --hero-gap, so they can't drift apart.
      Phones keep Hero top, so every title starts at the same height. */
   @media (min-width: 768px) {
-    section.rfx-hero-scale:has(.t-display) { padding-top: calc(var(--nav-height) + var(--hero-gap) - var(--hero-ink-trim)); }
+    section.rfx-hero-scale:has(.t-display) { padding-top: calc(var(--nav-height) + var(--hero-gap) - var(--hero-ink-trim) + var(--crumbs-space, 0px)); }
   }
   .rfx-hero-scale .rfx-hero-intro { margin-bottom: var(--hero-gap); }
   /* Home in the Christmas season: the video hero (ChristmasHero.tsx) takes
@@ -1180,6 +1186,39 @@
     .exp-card .title-to-text { margin-top: var(--gap-service-title-body); }
     .exp-link-tablet-up { display: none; }
   }
+  /* Breadcrumbs (Breadcrumbs.tsx), top left (Matt, 2026-11-24). Phones: in
+     the flow above the headline, left-aligned. Tablet up: pinned to the top
+     section's top-left corner, just under the nav, in a strip of its own
+     (Stack gap above and below): --crumbs-space adds that strip to the
+     section's top padding (the hero and Christmas hero rules above), so
+     nothing below runs into it, the Christmas garland included. Inner-page
+     headers (/services/) add no strip: the trail sits in the space already
+     above the H1, so the H1 lands where it does on Our work and Contact. */
+  /* Its left edge is the nav's: Home lines up with the nav's Home (the
+     wordmark on phones), Matt 2026-11-24. */
+  .crumbs--pinned { margin-bottom: var(--gap-eyebrow); text-align: left; padding-inline: var(--nav-pad-x); }
+  .crumbs__home { color: hsl(var(--text-primary)); opacity: 0.75; transition: opacity var(--motion-quick) ease; }
+  .crumbs__home:hover { opacity: 1; }
+  @media (min-width: 768px) {
+    :has(> .crumbs--pinned) {
+      position: relative;
+      --crumbs-space: calc(var(--gap-stack) * 2 + var(--fs-meta) * var(--lh-meta));
+    }
+    .crumbs--pinned { position: absolute; left: 0; right: var(--scroll-lock-gap, 0); top: calc(var(--nav-height) + var(--gap-stack)); margin: 0; z-index: 1; }
+  }
+
+  /* /services/ after Christmas: four cards in the main row, two by two on
+     tablets, where a card starting a row has no divider on its left. */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .exp-grid--four > .exp-card:nth-child(odd)::before { display: none; }
+  }
+
+  /* /services/ smaller cards, under the three (Matt, 2026-11-24): a wider
+     gap from tablet up, one card gap on phones where every card stacks. */
+  .exp-grid--more { margin-top: var(--gap-service-cards); }
+  @media (min-width: 768px) {
+    .exp-grid--more { margin-top: var(--gap-service-rows); }
+  }
   .card-inset { padding-inline: var(--gap-stack); }
   /* Why-us item: icon, title and text sit on three rows shared with its neighbours (subgrid), so the texts
      start level even when one title wraps. The grid's own gap is dropped inside the item. */
@@ -1196,7 +1235,7 @@
   .section-compact { padding-block: var(--gap-heading-content) !important; }
   .after-page-header { padding-top: var(--page-pad-bottom); }
   .hero-foot { padding-bottom: var(--gap-inline); }
-  .hero-under-nav { padding-top: var(--nav-height) !important; }
+  .hero-under-nav { padding-top: calc(var(--nav-height) + var(--crumbs-space, 0px)) !important; }
   .hero-gap-below { margin-bottom: var(--hero-gap); }
 
   .toast-pad { padding: var(--gap-stack) var(--gap-paragraph); }
@@ -1247,7 +1286,7 @@
   }
   .rfx-nav a:not(.btn-solid-rf):not(.no-underline-fx):hover::after { transform: scaleX(1); }
   @media (max-width: 1023px) {
-    .rfx-nav { padding: 0 22px; grid-template-columns: 1fr auto; }
+    .rfx-nav { padding: 0 var(--nav-pad-x); grid-template-columns: 1fr auto; }
     .rfx-nav .nav-left { display: none; }
     .rfx-nav .nav-right { display: none; }
   }
@@ -1756,8 +1795,10 @@
     .rfx-enquire { padding-bottom: var(--gap-text-content); }
     /* Service cards: the photo takes its depth from --service-photo-ratio on
        phones too (it used to be capped at 268px, which read shallow). */
-    /* /balloon-installations/ repeats these cards: about half height. */
-    .rfx-svc-img.rfx-svc-img--compact { aspect-ratio: auto !important; height: 150px !important; }
+    /* /services/ smaller cards: on phones every card is full width in one
+       column, so they take the same photo shape as the main three; the
+       shorter shape is tablet up only (Matt, 2026-11-24). */
+    .rfx-svc-img.rfx-svc-img--compact { aspect-ratio: var(--service-photo-ratio) !important; }
   }
 
   /* Responsive grid stacking helper */

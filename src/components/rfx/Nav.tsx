@@ -4,7 +4,9 @@ import { ChevronDown } from "lucide-react";
 import { ENQUIRE_HREF, handleEnquireClick } from "@/lib/enquire";
 import { christmasOn } from "@/lib/announcementBar";
 
+/* "All services" opens the list: the /services/ hub (Matt, 2026-11-24). */
 const SERVICES = [
+  { href: "/services/", label: "All services" },
   { href: "/childrens-parties/", label: "Children's parties" },
   { href: "/milestone-celebrations/", label: "Milestone celebrations" },
   { href: "/corporate-brand-styling/", label: "Corporate & brand" },
@@ -213,7 +215,7 @@ const Nav = ({ enquireHref = ENQUIRE_HREF }: { enquireHref?: string } = {}) => {
                 onClick={() => setOpen(false)}
                 className={`t-h4 text-ink no-underline ${
                   "seasonal" in l
-                    ? `nav-sheet__seasonal border-hair ${l.href === SEASONAL.href ? "border-y" : "border-b"}`
+                    ? `nav-sheet__seasonal border-hair ${l.href === SEASONAL.href ? "border-t" : "border-b"}`
                     : ""
                 }`}
               >

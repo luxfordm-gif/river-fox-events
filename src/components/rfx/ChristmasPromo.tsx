@@ -4,7 +4,6 @@ import "@/styles/christmas.css";
 import { christmasOn } from "@/lib/announcementBar";
 import { trackEvent } from "@/lib/track";
 
-import bow160 from "@/assets/christmas/burgundy-velvet-bow-160.webp";
 import pine160 from "@/assets/christmas/pine-branch-fairy-lights-frosted-cone-160.webp";
 import pine320 from "@/assets/christmas/pine-branch-fairy-lights-frosted-cone-320.webp";
 import pine480 from "@/assets/christmas/pine-branch-fairy-lights-frosted-cone-480.webp";
@@ -146,7 +145,6 @@ const ChristmasPromo = () => {
       aria-label="Christmas door garlands"
       aria-hidden={show ? undefined : true}
     >
-      <img src={bow160} alt="" aria-hidden="true" className="xmas-promo__bow" width={160} height={165} />
       <button type="button" className="xmas-promo__close" onClick={dismiss} aria-label="Close" tabIndex={show ? 0 : -1}>
         <X size={16} strokeWidth={1.8} />
       </button>

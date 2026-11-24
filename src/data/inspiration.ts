@@ -11,7 +11,7 @@ import xmasGeorgianDoor from "@/assets/christmas/instagram/georgian-door-gold-ch
 import xmasPilates from "@/assets/christmas/instagram/pink-pilates-studio-garland-blush-red-baubles.webp";
 import igOttilieToyStory from "@/assets/services/childrens-parties/ottilie-toy-story-second-birthday-gingham-table.webp";
 import igDukeLevel8Gaming from "@/assets/services/childrens-parties/duke-level-8-gaming-birthday-backdrop.webp";
-import igTeddyBearFirstBirthdayPinkGreyBalloonHoop from "@/assets/services/childrens-parties/teddy-bear-first-birthday-pink-grey-balloon-hoop.webp";
+import igAureliaFirstBirthdayPinkGreyBalloonHoop from "@/assets/services/childrens-parties/aurelia-first-birthday-pink-grey-balloon-hoop.webp";
 import igRainbowUnicornPartyPastelSequinBackdrop from "@/assets/services/childrens-parties/rainbow-unicorn-party-pastel-sequin-backdrop.webp";
 import igGraceFifthBirthdayRainbowArchUnicorn from "@/assets/services/childrens-parties/grace-fifth-birthday-rainbow-arch-unicorn.webp";
 import igBerryFirstBirthdayStrawberryBalloonBackdrop from "@/assets/services/childrens-parties/berry-first-birthday-strawberry-balloon-backdrop.webp";
@@ -38,10 +38,13 @@ const fromGallery = (source: string): InstagramStripImage => {
   return { src: p.src, alt: p.alt };
 };
 
+/** A Christmas photo: InstagramStrip drops it after the season. */
+const seasonal = (img: InstagramStripImage): InstagramStripImage => ({ ...img, seasonal: true });
+
 export const INSPIRATION_CHILDRENS: InstagramStripImage[] = [
   { src: igOttilieToyStory, alt: "Toy Story themed second birthday table for Ottilie with blue gingham, cowboy hats and toy box centrepieces" },
   { src: igDukeLevel8Gaming, alt: "Level 8 gaming birthday backdrop for Duke with blue and black balloons, a neon controller and drop crates" },
-  { src: igTeddyBearFirstBirthdayPinkGreyBalloonHoop, alt: "Pink and grey balloon hoop around a teddy bear first birthday sign, with a light-up 1 and baby blocks" },
+  { src: igAureliaFirstBirthdayPinkGreyBalloonHoop, alt: "Pink, grey and white balloon hoop around a Welcome to Aurelia's 1st Birthday sign, with a Minnie Mouse 1 and ONE blocks" },
   { src: igRainbowUnicornPartyPastelSequinBackdrop, alt: "Pastel rainbow and unicorn party backdrop with a sequin arch, clouds and lilac, pink and lemon balloons" },
   { src: igGraceFifthBirthdayRainbowArchUnicorn, alt: "Rainbow arch and unicorn cutout for Grace's fifth birthday, framed by pastel rainbow balloon garlands" },
   { src: igBerryFirstBirthdayStrawberryBalloonBackdrop, alt: "Berry First birthday arch with red and pink balloons and giant strawberry foils on either side" },
@@ -72,17 +75,17 @@ export const INSPIRATION_MILESTONES: InstagramStripImage[] = [
 /* One business Christmas garland (the Reigate restaurant) among the corporate
    installs - one Christmas photo, not more (Matt, 2026-11-09). */
 export const INSPIRATION_CORPORATE: InstagramStripImage[] = [
-  { src: igOfficeChristmasBlackGoldHalfArchStreamers, alt: "Black and gold balloon half arch with gold streamers and starbursts for an office Christmas party" },
+  { src: igOfficeChristmasBlackGoldHalfArchStreamers, alt: "Black and gold balloon half arch with gold streamers and starbursts for an office Christmas party", seasonal: true },
   { src: igGalaDinnerStaircaseNavyGoldBalloonGarland, alt: "Navy, white and gold balloon garland climbing a staircase entrance for a charity gala dinner" },
   fromGallery("services/corporate/casino-night-balloon-columns-red-black-gold.webp"),
-  fromGallery("christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp"),
+  seasonal(fromGallery("christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp")),
   fromGallery("services/corporate/restaurant-entrance-garland-black-gold-balloons.webp"),
   fromGallery("services/corporate/shop-entrance-arch-green-white-balloons.webp"),
   fromGallery("services/corporate/lakeside-terrace-navy-balloon-arch.webp"),
   fromGallery("services/corporate/enterprise-mobility-branded-backdrop-black-gold-balloons.webp"),
   fromGallery("services/corporate/bocketts-farm-easter-bunny-booth-balloon-garland.webp"),
   fromGallery("services/corporate/125-years-entrance-columns-green-white-gold-stars.webp"),
-  fromGallery("journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp"),
+  seasonal(fromGallery("journal/christmas-decorations-surrey/gold-sequin-wall-black-gold-balloons-office-party.webp")),
 ];
 
 /* Balloons page: balloon-led pieces from across the three carousels (no new photos). */
@@ -91,7 +94,7 @@ export const INSPIRATION_BALLOONS: InstagramStripImage[] = [
   INSPIRATION_CHILDRENS[3], // rainbow unicorn sequin backdrop
   INSPIRATION_CORPORATE[1], // gala staircase garland
   INSPIRATION_MILESTONES[5], // Bearly Wait hot air balloon
-  INSPIRATION_CHILDRENS[2], // teddy bear balloon hoop
+  INSPIRATION_CHILDRENS[2], // Aurelia's balloon hoop
   INSPIRATION_MILESTONES[4], // champagne bowling garland
   INSPIRATION_CHILDRENS[8], // Dahlia daisy balloons
   INSPIRATION_MILESTONES[1], // blue 60
@@ -121,15 +124,15 @@ export const INSPIRATION_TOWNS: InstagramStripImage[] = [
 export const INSPIRATION_HOME: InstagramStripImage[] = [
   INSPIRATION_CHILDRENS[0], // Ottilie's Toy Story table
   INSPIRATION_MILESTONES[2], // pastel 21 balloon wall
-  { src: xmasNavyDoor, alt: "Navy front door beneath a spruce arch crowded with pink, purple, teal and gold baubles" },
+  { src: xmasNavyDoor, alt: "Navy front door beneath a spruce arch crowded with pink, purple, teal and gold baubles", seasonal: true },
   INSPIRATION_CHILDRENS[3], // rainbow unicorn backdrop
   INSPIRATION_CORPORATE[1], // gala staircase garland
   INSPIRATION_CHILDRENS[1], // Duke's Level 8
-  { src: xmasGeorgianDoor, alt: "Georgian black door at number 16 framed in spruce with gold and champagne baubles and stars" },
+  { src: xmasGeorgianDoor, alt: "Georgian black door at number 16 framed in spruce with gold and champagne baubles and stars", seasonal: true },
   INSPIRATION_MILESTONES[5], // Bearly Wait baby shower
   INSPIRATION_CHILDRENS[5], // Berry First
   INSPIRATION_MILESTONES[1], // blue 60
-  { src: xmasPilates, alt: "Pink pilates studio doorway in East Molesey dressed in spruce with blush, white and red baubles" },
+  { src: xmasPilates, alt: "Pink pilates studio doorway in East Molesey dressed in spruce with blush, white and red baubles", seasonal: true },
   INSPIRATION_CHILDRENS[10], // Rudy's Rodeo
   INSPIRATION_MILESTONES[4], // champagne 40 garland
 ];

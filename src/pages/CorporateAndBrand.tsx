@@ -4,7 +4,7 @@ import { INSPIRATION_CORPORATE } from "@/data/inspiration";
 import ServicesCards from "@/components/rfx/ServicesCards";
 import Testimonials from "@/components/rfx/Testimonials";
 import { CORPORATE_REVIEWS } from "@/data/reviewOrder";
-import { CORPORATE_TILES, withoutTilePhotos } from "@/data/serviceTiles";
+import { CORPORATE_TILES } from "@/data/serviceTiles";
 import Nav from "@/components/rfx/Nav";
 import Footer from "@/components/rfx/Footer";
 import Process from "@/components/rfx/Process";
@@ -276,7 +276,10 @@ const CorporateAndBrand = () => {
 
         {/* The office party sequin wall stays in the strip as well as its tile:
             it's the only corporate shimmer wall photo (Matt, 2026-11-09). */}
-        <InspirationStrip id="cb-inspiration" lead="Events I've" accent="already delivered." images={withoutTilePhotos(INSPIRATION_CORPORATE, CORPORATE_TILES.filter((t) => t.title !== "Sequin walls"))} />
+        {/* Every corporate photo, tiles included: without them the strip had
+            four photos and looped them (Matt, 2026-11-24). Its Christmas
+            pieces leave on 3 January. */}
+        <InspirationStrip id="cb-inspiration" lead="Events I've" accent="already delivered." images={INSPIRATION_CORPORATE} />
 
         <FaqSection faqs={FAQS} headingId="cb-faq-heading" />
 
