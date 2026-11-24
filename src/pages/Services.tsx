@@ -10,7 +10,7 @@ import LocationUSP from "@/components/rfx/LocationUSP";
 import LocationTrust from "@/components/rfx/LocationTrust";
 import FaqSection from "@/components/rfx/FaqSection";
 import LocationPhotoGrid from "@/components/rfx/LocationPhotoGrid";
-import { HOME_RECENT_LEAD, recentPicks } from "@/data/recentWork";
+import { recentWall } from "@/data/recentWork";
 import { SERVICES_FAQS } from "@/data/servicesFaqs";
 import { galleryPhoto } from "@/data/gallery";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
@@ -72,34 +72,20 @@ const CHRISTMAS: ExpItem[] = [
   },
 ];
 
-/* Recent celebrations: the town pages' photo wall (ten photos, three rows),
-   a mix of every service, newest first (Matt, 2026-11-24). It opens with
-   Laura's newest posts (the home page's four, in src/data/recentWork.ts),
-   then the Our work sections take turns. In season the Christmas garlands
-   and wreaths are one of those sections; from christmasEndsOn they drop
-   out, Christmas lead photos included. Photos already on the cards above
-   (and the lead's own events) are skipped. */
+/* Recent celebrations: Laura's latest work, the same list as every page
+   (src/data/recentWork.ts), leaving out photos already on the cards above. */
 const CARD_SOURCES = [
   "river-fox-events-pastel-birthday-reeva-entrance-arch.webp",
   "christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp",
   "christmas/instagram/reigate-restaurant-red-gold-garland-blue-doors.webp",
 ];
-const recentWall = (season: boolean) => {
-  const lead = HOME_RECENT_LEAD.filter((p) => season || !/christmas/i.test(p.source));
-  const picks = recentPicks(10 - lead.length, {
-    sections: season ? ["christmas", "childrens-parties", "milestones", "corporate"] : ["childrens-parties", "milestones", "corporate"],
-    skipEvents: lead.map((p) => p.title ?? ""),
-    skipSources: CARD_SOURCES,
-  });
-  return { lead, picks };
-};
 
 const Services = () => {
   useFadeUp();
   useNavScroll();
   const season = christmasOn();
   const more = season ? [BALLOONS, ...CHRISTMAS] : [BALLOONS];
-  const recent = recentWall(season);
+  const recent = recentWall({ exclude: CARD_SOURCES, season });
 
   useEffect(() => {
     const route = findRoute("/services")!;
@@ -140,11 +126,7 @@ const Services = () => {
         <LocationPhotoGrid
           id="services-recent"
           wide
-          slug="services"
-          topUp={false}
-          lead={recent.lead}
-          count={recent.picks.length}
-          picks={recent.picks}
+          items={recent}
           heading={
             <>
               Recent <em className="t-accent">celebrations.</em>

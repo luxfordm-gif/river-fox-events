@@ -1,70 +1,144 @@
-import { GALLERY, orderedEvents } from "@/data/gallery";
+import { GALLERY, resolvePhoto } from "@/data/gallery";
 import type { ViewerItem } from "@/components/rfx/PhotoViewer";
-import xmas400 from "@/assets/home/recent/christmas-spruce-door-garland-beauty-salon-entrance-red-berries-white-baubles-400.webp";
-import xmas700 from "@/assets/home/recent/christmas-spruce-door-garland-beauty-salon-entrance-red-berries-white-baubles-700.webp";
-import xmas1000 from "@/assets/home/recent/christmas-spruce-door-garland-beauty-salon-entrance-red-berries-white-baubles-1000.webp";
-import porch400 from "@/assets/gallery/porch-garland-arch-wreath-front-wide-house-view-400.webp";
-import porch700 from "@/assets/gallery/porch-garland-arch-wreath-front-wide-house-view-700.webp";
-import porch1000 from "@/assets/gallery/porch-garland-arch-wreath-front-wide-house-view-1000.webp";
-import game400 from "@/assets/home/recent/gaming-party-duke-level-8-tron-fortnite-marshmello-backdrop-blue-black-balloons-400.webp";
-import game700 from "@/assets/home/recent/gaming-party-duke-level-8-tron-fortnite-marshmello-backdrop-blue-black-balloons-700.webp";
-import game1000 from "@/assets/home/recent/gaming-party-duke-level-8-tron-fortnite-marshmello-backdrop-blue-black-balloons-1000.webp";
-import uni400 from "@/assets/home/recent/unicorn-rainbow-party-ava-name-sign-shimmer-wall-pastel-balloons-400.webp";
-import uni700 from "@/assets/home/recent/unicorn-rainbow-party-ava-name-sign-shimmer-wall-pastel-balloons-700.webp";
-import uni1000 from "@/assets/home/recent/unicorn-rainbow-party-ava-name-sign-shimmer-wall-pastel-balloons-1000.webp";
+import { christmasOn } from "@/lib/announcementBar";
 
 /**
- * Home page "Recent work" (Matt, 2026-11-17): Laura's latest work, newest
- * first, a mix of everything she does (not only balloons).
+ * Laura's latest work: the one list behind every "Recent celebrations" /
+ * "Recent work" photo wall (home, the 19 town pages, /services/; Matt,
+ * 2026-11-24).
  *
- * The first four are her newest Instagram posts that aren't in the gallery
- * yet (already graded, in src/assets/home/recent/); to refresh, replace one
- * with her next post, newest first. After them come the first events of
- * Children's parties, Milestones and Corporate, taking turns: those sections
- * list their newest work first, so this follows the Our work page.
+ * TO ADD NEW WORK ("add this to Recent celebrations"):
+ *   1. Grade the photo and add it to the Our work gallery (src/data/gallery.ts,
+ *      then `node scripts/gallery-images.mjs`), as the river-fox skill's job
+ *      steps say.
+ *   2. Add one line to the TOP of RECENT_WORK below, with its service and the
+ *      date it was posted.
+ *   3. If the list is now longer than MAX_ENTRIES, delete the last line.
+ * Every wall shows the newest WALL_SIZE (three rows) on the next deploy, so
+ * the new piece pushes the oldest one off. The walls never grow.
+ *
+ * What goes on: Laura's biggest and best children's parties, up to three
+ * milestone celebrations and, in season, up to four garlands or wreaths; no
+ * corporate (WALL_MIX below). Add only work that is genuinely recent: check
+ * the date on her Instagram. Christmas pieces show only in season (christmasOn(), off from
+ * christmasEndsOn in src/data/announcementBar.ts); the spares at the bottom
+ * fill their places after that (src/test/recent-work.test.ts checks every
+ * wall stays full).
+ *
+ * Every wall mixes the order on each visit, so a run of one kind of work
+ * (a month of garlands) doesn't bunch together: see mixed() below.
  */
-const lead = (
-  source: string, title: string, alt: string, [s, m, l]: [string, string, string], height: number,
-): ViewerItem => ({
-  source, title, alt, src: m, srcSet: `${s} 400w, ${m} 700w, ${l} 1000w`, large: l,
-  width: 1000, height, seen: true,
-});
 
-export const HOME_RECENT_LEAD: ViewerItem[] = [
-  // Christmas porch garland, Worplesdon (20 Nov 2026); same file as the Our work photo
-  lead("christmas/porch/porch-garland-arch-wreath-front-wide-house-view.webp", "Timber porch garland", "Wide view of a white house with a spruce and gold bauble garland over its porch and a wreath on the door", [porch400, porch700, porch1000], 1324),
-  // Instagram post of 13 Nov 2026
-  lead("recent/christmas-door-garland-salon", "Christmas door garland", "Spruce door garland with red berries and white and silver baubles framing a beauty salon entrance", [xmas400, xmas700, xmas1000], 1329),
-  // Instagram post of 13 Jul 2026
-  lead("recent/gaming-party-duke", "Children's party, gaming theme", "Tron, Fortnite and Marshmello party backdrop with a Duke unlocks Level 8 sign and blue and black balloon garlands", [game400, game700, game1000], 1000),
-  // Instagram post of 5 Oct 2026
-  lead("recent/unicorn-party-ava", "Children's party, unicorns and rainbows", "Painted unicorn cut-out beside a holographic shimmer wall and pastel balloons on a pink party backdrop", [uni400, uni700, uni1000], 1000),
-];
-
-/** Gallery photos to follow the lead, as `{ alt }` picks, one per event,
- *  sections taking turns. `sections` defaults to the home page's three;
- *  `skipEvents` leaves out events by title (ones already shown elsewhere on
- *  the page) and `skipSources` events that contain any of those photos. */
-export const recentPicks = (
-  count: number,
-  {
-    sections = ["childrens-parties", "milestones", "corporate"],
-    skipEvents = [],
-    skipSources = [],
-  }: { sections?: string[]; skipEvents?: string[]; skipSources?: string[] } = {},
-): { alt: string }[] => {
-  const skip = /rishi-summer-party|halloween/;
-  const lists = sections.map((id) =>
-    orderedEvents(GALLERY.find((s) => s.id === id)!)
-      .filter((e) => !skipEvents.includes(e.title) && !e.photos.some((p) => skipSources.includes(p.source)))
-      .map((e) => e.photos[0])
-      .filter((p) => !skip.test(p.source)),
-  );
-  const out: { alt: string }[] = [];
-  for (let i = 0; out.length < count && lists.some((l) => i < l.length); i++)
-    for (const l of lists) if (i < l.length && out.length < count) out.push({ alt: l[i].alt });
-  return out;
+export type Service = "childrens-parties" | "milestones" | "corporate" | "christmas";
+export type RecentEntry = {
+  /** A photo in the Our work gallery (its path inside src/assets/). Its alt,
+   *  title and place come from the gallery: one file, one alt. */
+  source: string;
+  service: Service;
+  /** When Laura posted it (YYYY-MM-DD, or YYYY-MM from her feed), where
+   *  known. The list's order is what counts: newest first. */
+  added?: string;
 };
 
-/** The home page's picks: children's parties, milestones and corporate. */
-export const homeRecentPicks = (count: number): { alt: string }[] => recentPicks(count);
+/** Three rows: 4 across on laptops (and the town walls' justified rows). */
+export const WALL_SIZE = 12;
+/** On show plus spares for when the Christmas pieces drop out. */
+export const MAX_ENTRIES = 16;
+
+export const RECENT_WORK: RecentEntry[] = [
+  // Christmas (in season only), this season's garlands and wreaths
+  { source: "christmas/porch/porch-garland-arch-wreath-front-wide-house-view.webp", service: "christmas", added: "2026-11-20" },
+  { source: "christmas/instagram/christmas-spruce-door-garland-beauty-salon-entrance-red-berries-white-baubles.webp", service: "christmas", added: "2026-11-13" },
+  { source: "journal/christmas-decorations-surrey/christmas-doorway-garland-pink-studio-east-molesey.webp", service: "christmas", added: "2026-11" },
+  { source: "christmas/instagram/navy-door-jewel-bauble-arch-wreath.webp", service: "christmas", added: "2026-11" },
+  // Children's parties and milestones, newest first
+  { source: "services/childrens-parties/unicorn-rainbow-party-ava-name-sign-shimmer-wall-pastel-balloons.webp", service: "childrens-parties", added: "2026-10-05" },
+  { source: "services/childrens-parties/ottilie-toy-story-second-birthday-gingham-table.webp", service: "childrens-parties", added: "2026-07" },
+  { source: "services/childrens-parties/gaming-party-duke-level-8-tron-fortnite-marshmello-backdrop-blue-black-balloons.webp", service: "childrens-parties", added: "2026-07-13" },
+  { source: "river-fox-events-willy-wonka-savanna-chocolate-bar-arch.webp", service: "childrens-parties", added: "2026-06" },
+  { source: "services/milestones/21st-pastel-balloon-wall-light-up-numbers.webp", service: "milestones", added: "2026-04" },
+  { source: "dinosaur-ayaan-arch-surrey.webp", service: "childrens-parties", added: "2026-04" },
+  { source: "services/childrens-parties/peter-rabbit-first-birthday-blue-balloon-backdrop.webp", service: "childrens-parties", added: "2026-03" },
+  { source: "services/childrens-parties/berry-first-birthday-strawberry-balloon-backdrop.webp", service: "childrens-parties", added: "2026-03" },
+  // Spares: on show once the Christmas pieces drop out
+  { source: "river-fox-events-jungle-theme-fourever-wild-full-setup.webp", service: "childrens-parties" },
+  { source: "river-fox-events-fairy-first-birthday-kayla-arch-marquee-portrait.webp", service: "childrens-parties" },
+  { source: "river-fox-events-pastel-safari-anaya-two-wild-tablescape.webp", service: "childrens-parties" },
+  { source: "services/childrens-parties/kai-one-o-saurus-first-birthday-dinosaur-backdrop.webp", service: "childrens-parties" },
+];
+
+/** What a wall may hold (Matt, 2026-11-24): Laura's biggest and best
+ *  children's parties, up to three milestone celebrations, up to four
+ *  garlands or wreaths in season, and no corporate work ("just don't show
+ *  corporate"). A wall takes the newest entries that fit these limits, so
+ *  the list can't tip a wall over to one kind of work. */
+export const WALL_MIX: Record<Service, number> = {
+  christmas: 4,
+  corporate: 0,
+  milestones: 3,
+  "childrens-parties": WALL_SIZE,
+};
+
+export type RecentItem = ViewerItem & { service: Service };
+
+/** A gallery photo with its event's title and place, ready for the wall. */
+const fromGallery = (e: RecentEntry): RecentItem => {
+  for (const s of GALLERY)
+    for (const ev of s.events)
+      for (const p of ev.photos)
+        if (p.source === e.source) return { ...resolvePhoto(p), title: ev.title, place: ev.place, service: e.service };
+  throw new Error(`Recent work photo is not in the gallery: ${e.source}`);
+};
+
+/** The newest WALL_SIZE photos for a wall, within WALL_MIX. Christmas only
+ *  in season; `exclude` leaves out photos already shown elsewhere on that
+ *  page. */
+export const recentWall = ({
+  exclude = [],
+  season = christmasOn(),
+}: { exclude?: string[]; season?: boolean } = {}): RecentItem[] => {
+  const taken: Record<string, number> = {};
+  const out: RecentEntry[] = [];
+  for (const e of RECENT_WORK) {
+    if (out.length === WALL_SIZE) break;
+    if (exclude.includes(e.source) || (e.service === "christmas" && !season)) continue;
+    if ((taken[e.service] ?? 0) >= WALL_MIX[e.service]) continue;
+    taken[e.service] = (taken[e.service] ?? 0) + 1;
+    out.push(e);
+  }
+  return out.map(fromGallery);
+};
+
+/** A repeatable random number source (mulberry32), for the prerendered order. */
+export const seeded = (seed: number) => () => {
+  seed |= 0;
+  seed = (seed + 0x6d2b79f5) | 0;
+  let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+  t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+  return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+};
+
+/** Shuffle, then reorder so no two photos of the same service sit side by
+ *  side wherever the mix allows it (Matt, 2026-11-24: "so we don't get all
+ *  garland work"). Every photo is kept. */
+export const mixed = <T extends { service: string }>(items: T[], random: () => number = Math.random): T[] => {
+  const pool = [...items];
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  const out: T[] = [];
+  while (pool.length) {
+    const prev = out[out.length - 1]?.service;
+    // Take from the service with the most left (never the one just placed),
+    // so the biggest group is spread out first; ties keep the shuffled order.
+    const left = (s: string) => pool.filter((p) => p.service === s).length;
+    let pick = -1;
+    for (let i = 0; i < pool.length; i++) {
+      if (pool[i].service === prev) continue;
+      if (pick < 0 || left(pool[i].service) > left(pool[pick].service)) pick = i;
+    }
+    out.push(pool.splice(pick < 0 ? 0 : pick, 1)[0]);
+  }
+  return out;
+};
