@@ -8,11 +8,9 @@ import { SERVICES_HEADING, SERVICES_INTRO } from "@/data/servicesCopy";
 import Enquire from "@/components/rfx/Enquire";
 import LocationUSP from "@/components/rfx/LocationUSP";
 import LocationTrust from "@/components/rfx/LocationTrust";
-import InspirationStrip from "@/components/rfx/InspirationStrip";
 import FaqSection from "@/components/rfx/FaqSection";
 import LocationPhotoGrid from "@/components/rfx/LocationPhotoGrid";
 import { homeRecentPicks } from "@/data/recentWork";
-import { INSPIRATION_TOWNS } from "@/data/inspiration";
 import { HOME_FAQS } from "@/data/homeFaqs";
 import { galleryPhoto } from "@/data/gallery";
 import { useFadeUp, useNavScroll } from "@/hooks/useRiverFox";
@@ -33,7 +31,7 @@ import { applyMeta, breadcrumbSchema, removeJsonLd, upsertJsonLd } from "@/seo/h
  *     garlands" is the Our work page's; "See balloon ideas" and "See business
  *     garlands" were written to match the three above (Matt to confirm).
  *   - Then the town pages' Why River Fox Events?, Recent celebrations (their
- *     heading and intro), Kind words, Ideas strip,
+ *     heading and intro), Kind words,
  *     and the home page FAQs without the price question.
  *   - The two Christmas cards go with the Christmas switch-off: christmasOn()
  *     (christmasEndsOn in src/data/announcementBar.ts, 3 January 2027), the
@@ -119,7 +117,7 @@ const Services = () => {
 
         {/* The town pages' sections, in their order (Matt, 2026-11-24): Why
             River Fox Events?, Recent celebrations, Kind words with the
-            client logos, Ideas for your celebration, FAQs. */}
+            client logos, FAQs (no Ideas strip, Matt 2026-11-24). */}
         <LocationUSP noIntro />
 
         <LocationPhotoGrid
@@ -138,8 +136,6 @@ const Services = () => {
         />
 
         <LocationTrust />
-
-        <InspirationStrip id="services-inspiration" accent="your celebration." images={INSPIRATION_TOWNS} />
 
         <FaqSection faqs={FAQS} headingId="services-faq-heading" />
 
