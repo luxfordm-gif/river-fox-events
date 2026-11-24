@@ -1795,8 +1795,10 @@
     .rfx-enquire { padding-bottom: var(--gap-text-content); }
     /* Service cards: the photo takes its depth from --service-photo-ratio on
        phones too (it used to be capped at 268px, which read shallow). */
-    /* /balloon-installations/ repeats these cards: about half height. */
-    .rfx-svc-img.rfx-svc-img--compact { aspect-ratio: auto !important; height: 150px !important; }
+    /* /services/ smaller cards: on phones every card is full width in one
+       column, so they take the same photo shape as the main three; the
+       shorter shape is tablet up only (Matt, 2026-11-24). */
+    .rfx-svc-img.rfx-svc-img--compact { aspect-ratio: var(--service-photo-ratio) !important; }
   }
 
   /* Responsive grid stacking helper */
