@@ -134,7 +134,7 @@ const ChristmasPromo = () => {
       <div className="xmas-promo__body hidden md:flex">
         <p className="t-overline text-ink-soft">Now booking</p>
         <h2 className="xmas-promo__title xmas-promo__title--card t-h4">
-          Get your Christmas{" "}
+          <span className="xmas-promo__line">Get your Christmas</span>
           <br />
           <em className="t-accent">garlands.</em>
         </h2>
