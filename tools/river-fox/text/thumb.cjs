@@ -1,6 +1,8 @@
 // Thumbnail / cover: one big headline (one or two lines), an optional small capitals line, and the small handle.
 //   node thumb.cjs <photo> <out> <w> <h> "Line1" ["Line2"] [--caps="small capitals line"] [--at=middle|top|<y>]
 //                  [--italic] [--tint] [--no-handle]
+//   node thumb.cjs <photo> <out> 1080 1920 "Line1" "Line2" ["Line3"] --blocks [--at=top|lower] [--shift=<px>]
+//                  the colour-block cover, for when the words would land on a face: see blocks.cjs
 //
 // No brand value is written in this file. Every size, colour, font setting and position comes from
 // ../brand-pack.json, which names the Brand Pack board each one was copied from. To change the look, Matt changes
@@ -23,6 +25,9 @@ const path = require('path');
 const fs = require('fs');
 const puppeteer = require(path.join(__dirname, '../../photo-grade/node_modules/puppeteer-core'));
 const B = require('../brand-pack.json');
+
+// The second cover style (board "Covers with colour blocks") lives in blocks.cjs; --blocks hands over to it.
+if (process.argv.includes('--blocks')) { require('./blocks.cjs'); return; }
 
 const argv = process.argv.slice(2);
 const flag = (n) => { const a = argv.find((x) => x === `--${n}` || x.startsWith(`--${n}=`)); return a === undefined ? undefined : a.includes('=') ? a.split('=').slice(1).join('=') : true; };

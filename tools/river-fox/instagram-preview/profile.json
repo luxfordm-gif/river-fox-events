@@ -1,0 +1,16 @@
+{
+  "_about": "Laura's profile header as it reads on Instagram. Instagram's data connection doesn't give the bio or counts, so they are copied by hand from instagram.com/riverfox_events. Update when they change; refresh.cjs puts them into build/feed.json.",
+  "checked": "2026-11-25",
+  "username": "riverfox_events",
+  "name": "River Fox Events | Luxury party stylist",
+  "posts": 567,
+  "followers": 1307,
+  "following": 1024,
+  "bio": [
+    "Luxury children's parties & celebrations",
+    "Bespoke balloon installations & party styling",
+    "🎄 Christmas door garlands for home & businesses",
+    "DM for a quote"
+  ],
+  "link": "riverfoxevents.co.uk and 2 more"
+}

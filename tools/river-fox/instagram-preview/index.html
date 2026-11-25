@@ -1,0 +1,787 @@
+<title>River Fox Instagram preview</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: laptop = a phone frame beside a control panel; phone = the screen fills the page, controls in a sheet. */
+:root {
+  --stage: #ECEAE6;
+  --stage-fg: #2A2C28;
+  --stage-sub: #6A6D66;
+  --panel: #FFFFFF;
+  --panel-line: #DDDAD4;
+  --accent: #5D554B;
+
+  --ig-bg: #FFFFFF;
+  --ig-fg: #0C1014;
+  --ig-sub: #737373;
+  --ig-line: #DBDBDB;
+  --ig-btn: #EFEFEF;
+  --ig-blue: #0095F6;
+  --ig-link: #00376B;
+  --ig-tile: #EFEFEF;
+  --ig-next: #0095F6;
+  --ig-ring-a: #F9CE34;
+  --ig-ring-b: #EE2A7B;
+  --ig-ring-c: #6228D7;
+  --safe: #FF3B6B;
+  --bezel: #1B1C1A;
+
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-ui: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --stage: #161715; --stage-fg: #ECEAE4; --stage-sub: #A3A69E; --panel: #20221F; --panel-line: #34372F; --accent: #CDBFAE;
+    --ig-bg: #000000; --ig-fg: #F5F5F5; --ig-sub: #A8A8A8; --ig-line: #262626; --ig-btn: #262626; --ig-link: #E0F1FF; --ig-tile: #1C1C1C;
+    --bezel: #3A3B38; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --stage: #161715; --stage-fg: #ECEAE4; --stage-sub: #A3A69E; --panel: #20221F; --panel-line: #34372F; --accent: #CDBFAE;
+  --ig-bg: #000000; --ig-fg: #F5F5F5; --ig-sub: #A8A8A8; --ig-line: #262626; --ig-btn: #262626; --ig-link: #E0F1FF; --ig-tile: #1C1C1C;
+  --bezel: #3A3B38; color-scheme: dark;
+}
+/* The app's own light/dark switch in the controls overrides the viewer theme inside the phone only. */
+.phone[data-app="light"] { --ig-bg: #FFFFFF; --ig-fg: #0C1014; --ig-sub: #737373; --ig-line: #DBDBDB; --ig-btn: #EFEFEF; --ig-link: #00376B; --ig-tile: #EFEFEF; color-scheme: light; }
+.phone[data-app="dark"] { --ig-bg: #000000; --ig-fg: #F5F5F5; --ig-sub: #A8A8A8; --ig-line: #262626; --ig-btn: #262626; --ig-link: #E0F1FF; --ig-tile: #1C1C1C; color-scheme: dark; }
+
+html, body { height: 100%; }
+body { background: var(--stage); color: var(--stage-fg); font-family: var(--font-ui); }
+* { box-sizing: border-box; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+button:focus-visible, input:focus-visible, textarea:focus-visible, label:focus-within { outline: 2px solid var(--ig-blue); outline-offset: 2px; }
+svg { display: block; }
+
+/* ---------- stage ---------- */
+.stage { min-height: 100%; display: flex; align-items: flex-start; justify-content: center; gap: 40px; padding-block: 32px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.phone { position: relative; width: 390px; height: 844px; flex: none; border-radius: 54px; padding: 12px; background: var(--bezel); box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); }
+.screen { position: relative; width: 100%; height: 100%; border-radius: 42px; overflow: hidden; background: var(--ig-bg); color: var(--ig-fg); font-family: var(--font); font-size: 14px; line-height: 18px; isolation: isolate; }
+.status { position: absolute; inset: 0 0 auto; height: 47px; display: flex; align-items: center; justify-content: space-between; padding: 0 30px 0 38px; font-weight: 600; font-size: 16px; z-index: 50; pointer-events: none; color: var(--ig-fg); }
+.status.on-dark { color: #fff; }
+.status .island { position: absolute; left: 50%; top: 11px; width: 120px; height: 34px; margin-left: -60px; border-radius: 20px; background: #000; }
+.status .icons { display: flex; gap: 6px; align-items: center; }
+.app { position: absolute; inset: 47px 0 0; display: flex; flex-direction: column; }
+
+/* On a phone the page is the screen. */
+@media (max-width: 699px) {
+  .stage { padding: 0; display: block; height: 100%; }
+  .phone { width: 100%; height: 100%; border-radius: 0; padding: 0; background: none; box-shadow: none; }
+  .screen { border-radius: 0; }
+  .status { display: none; }
+  .app { inset: 0; }
+  .panel-wrap { display: none; }
+}
+
+/* ---------- profile ---------- */
+.view { position: absolute; inset: 0; display: flex; flex-direction: column; background: var(--ig-bg); }
+.scroll { position: relative; flex: 1; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.scroll::-webkit-scrollbar { display: none; }
+.topbar { height: 44px; flex: none; display: flex; align-items: center; justify-content: space-between; padding: 0 12px 0 16px; }
+.topbar .name { display: flex; align-items: center; gap: 4px; font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
+.topbar .acts { display: flex; gap: 20px; }
+.head { display: flex; align-items: center; gap: 24px; padding: 8px 16px 12px; }
+.avatar { position: relative; width: 86px; height: 86px; flex: none; border-radius: 50%; }
+.avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: var(--ig-tile); }
+.avatar.ringed { padding: 4px; background: conic-gradient(from 200deg, var(--ig-ring-a), var(--ig-ring-b), var(--ig-ring-c), var(--ig-ring-a)); }
+.avatar.ringed img { border: 3px solid var(--ig-bg); }
+.avatar .plus { position: absolute; right: 0; bottom: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--ig-fg); color: var(--ig-bg); border: 3px solid var(--ig-bg); display: grid; place-items: center; }
+.stats { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); text-align: left; }
+.stats b { display: block; font-size: 17px; line-height: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stats span { font-size: 14px; }
+.bio { padding: 0 16px; }
+.bio .nm { font-weight: 600; }
+.bio .ln { white-space: pre-wrap; }
+.bio .link { color: var(--ig-link); font-weight: 600; display: flex; gap: 4px; align-items: center; margin-top: 2px; }
+.btns { display: flex; gap: 6px; padding: 14px 16px 4px; }
+.btns .b { flex: 1; height: 32px; border-radius: 8px; background: var(--ig-btn); font-weight: 600; display: grid; place-items: center; }
+.btns .b.sq { flex: none; width: 34px; }
+.hls { display: flex; gap: 16px; overflow-x: auto; padding: 14px 16px 14px; scrollbar-width: none; }
+.hls::-webkit-scrollbar { display: none; }
+.hl { flex: none; width: 64px; text-align: center; font-size: 12px; }
+.hl .c { width: 64px; height: 64px; border-radius: 50%; padding: 2px; border: 1px solid var(--ig-line); }
+.hl img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.hl .t { margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tabs { position: sticky; top: 0; z-index: 3; display: grid; grid-template-columns: repeat(3, 1fr); background: var(--ig-bg); border-bottom: 1px solid var(--ig-line); }
+.tabs button { height: 44px; display: grid; place-items: center; color: var(--ig-sub); position: relative; }
+.tabs button[aria-selected="true"] { color: var(--ig-fg); }
+.tabs button[aria-selected="true"]::after { content: ""; position: absolute; left: 25%; right: 25%; bottom: -1px; height: 1px; background: var(--ig-fg); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.tile { position: relative; aspect-ratio: 3 / 4; max-width: 100%; background: var(--ig-tile); overflow: hidden; }
+.grid.reels .tile { aspect-ratio: 9 / 16; }
+.tile img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
+.tile .badge { position: absolute; top: 6px; right: 6px; color: #fff; filter: drop-shadow(0 0 2px rgba(0,0,0,.5)); }
+.tile .next { position: absolute; top: 6px; left: 6px; background: var(--ig-next); color: #fff; font: 600 10px/1 var(--font); letter-spacing: .04em; text-transform: uppercase; padding: 4px 6px 3px; border-radius: 4px; }
+.hide-next .tile .next, .hide-next .post .next { display: none; }
+.next.redo { background: #2E7D4F; }
+.empty { padding: 48px 32px; text-align: center; color: var(--ig-sub); }
+.empty b { display: block; color: var(--ig-fg); font-size: 20px; line-height: 24px; margin-bottom: 8px; }
+.note { padding: 16px; color: var(--ig-sub); font-size: 13px; text-align: center; }
+.navbar { flex: none; display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; border-top: 1px solid var(--ig-line); background: var(--ig-bg); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.navbar button { display: grid; place-items: center; height: 50px; }
+.navbar.on-dark { background: #000; border-top-color: #262626; color: #fff; }
+.navbar.on-dark .me img { border-color: #fff; }
+.navbar .me img { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--ig-fg); padding: 1px; object-fit: cover; }
+
+/* ---------- feed (Posts) ---------- */
+.slide { transform: translateX(100%); transition: transform 280ms cubic-bezier(.2,.8,.2,1); z-index: 10; }
+.slide.open { transform: none; }
+.post { border-bottom: 0; padding-bottom: 14px; }
+.post .ph { display: flex; align-items: center; gap: 10px; height: 54px; padding: 0 12px 0 14px; }
+.post .ph img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.post .ph .u { flex: 1; font-weight: 600; display: flex; gap: 6px; align-items: center; }
+.post .media { position: relative; width: 100%; max-width: 100%; background: var(--ig-tile); overflow: hidden; }
+.post .media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.post .media .badge { position: absolute; top: 10px; right: 10px; color: #fff; filter: drop-shadow(0 0 2px rgba(0,0,0,.5)); }
+.post .next { position: static; display: inline-block; background: var(--ig-next); color: #fff; font: 600 10px/1 var(--font); letter-spacing: .04em; text-transform: uppercase; padding: 4px 6px 3px; border-radius: 4px; }
+.post .acts { display: flex; align-items: center; gap: 14px; padding: 10px 14px 6px; }
+.post .acts .sp { flex: 1; }
+.post .likes { padding: 0 14px; font-weight: 600; }
+.post .cap { padding: 4px 14px 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.post .cap.clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: normal; }
+.post .cap b { font-weight: 600; }
+.post .more { padding: 0 14px; color: var(--ig-sub); }
+.post .meta { padding: 4px 14px 0; color: var(--ig-sub); font-size: 12px; }
+
+/* ---------- full-screen viewers (Reels, Stories) ---------- */
+.dark { background: #000; color: #fff; z-index: 20; }
+.reels { position: relative; flex: 1; overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none; }
+.reels::-webkit-scrollbar { display: none; }
+.reel { position: relative; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; display: grid; align-items: center; overflow: hidden; }
+.frame { position: relative; width: 100%; max-width: 100%; aspect-ratio: 9 / 16; overflow: hidden; background: #111; }
+.frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.reel .frame { align-self: start; }
+.ui-grad { position: absolute; inset: auto 0 0; height: 40%; background: linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0)); pointer-events: none; }
+.reel .side { position: absolute; right: 10px; bottom: 16px; display: flex; flex-direction: column; align-items: center; gap: 18px; font-size: 12px; font-weight: 600; text-align: center; }
+.reel .side .sq { width: 26px; height: 26px; border-radius: 6px; border: 2px solid #fff; overflow: hidden; }
+.reel .side .sq img { width: 100%; height: 100%; object-fit: cover; }
+.reel .info { position: absolute; left: 14px; right: 72px; bottom: 16px; display: flex; flex-direction: column; gap: 8px; }
+.reel .who { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.reel .who img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.reel .who .fb { border: 1px solid rgba(255,255,255,.7); border-radius: 8px; padding: 4px 10px; font-size: 13px; }
+.reel .rc { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.reel .au { display: flex; gap: 6px; align-items: center; font-size: 13px; }
+.vtop { position: absolute; inset: 0 0 auto; height: 50px; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; z-index: 5; color: #fff; }
+.vtop .tt { font-size: 22px; font-weight: 700; }
+.vtop button, .vback { width: 36px; height: 36px; display: grid; place-items: center; }
+.reel-q { position: absolute; top: 56px; left: 14px; }
+.reel-q .next { background: var(--ig-next); color: #fff; font: 600 10px/1 var(--font); letter-spacing: .04em; text-transform: uppercase; padding: 4px 6px 3px; border-radius: 4px; }
+.hide-next .reel-q { display: none; }
+
+.story { flex: 1; display: flex; flex-direction: column; }
+.story .frame { border-radius: 8px; margin-top: 0; }
+.story .bars { position: absolute; top: 8px; left: 8px; right: 8px; display: flex; gap: 3px; z-index: 3; }
+.story .bars i { flex: 1; height: 2px; border-radius: 2px; background: rgba(255,255,255,.35); overflow: hidden; }
+.story .bars i b { display: block; height: 100%; width: 0; background: #fff; }
+.story .sh { position: absolute; top: 18px; left: 12px; right: 6px; display: flex; align-items: center; gap: 8px; z-index: 3; font-weight: 600; text-shadow: 0 0 4px rgba(0,0,0,.3); }
+.story .sh img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.story .sh .ago { font-weight: 400; opacity: .8; }
+.story .sh .sp { flex: 1; }
+.story .tapzones { position: absolute; inset: 60px 0 0; display: grid; grid-template-columns: 1fr 2fr; z-index: 2; }
+.story .reply { flex: 1; display: flex; align-items: center; gap: 16px; padding: 10px 14px; }
+.story .reply .in { flex: 1; height: 44px; border: 1px solid rgba(255,255,255,.55); border-radius: 22px; display: flex; align-items: center; padding: 0 16px; color: rgba(255,255,255,.85); }
+.story .sq-label { position: absolute; top: 60px; left: 12px; z-index: 3; }
+.story .sq-label .next { background: var(--ig-next); color: #fff; font: 600 10px/1 var(--font); letter-spacing: .04em; text-transform: uppercase; padding: 4px 6px 3px; border-radius: 4px; }
+.hide-next .sq-label { display: none; }
+
+/* Safe-area lines from the River Fox Brand Pack (values copied into the page when it is built). */
+.safe { position: absolute; inset: 0; pointer-events: none; display: none; z-index: 4; }
+.show-safe .safe { display: block; }
+.safe i { position: absolute; border: 1.5px dashed var(--safe); }
+.safe span { position: absolute; left: 4px; top: 2px; font: 600 9px/1 var(--font); color: var(--safe); background: rgba(255,255,255,.85); padding: 2px 3px; border-radius: 2px; letter-spacing: .03em; text-transform: uppercase; }
+
+/* ---------- controls ---------- */
+.panel-wrap { width: 320px; flex: none; position: sticky; top: 32px; }
+.panel { background: var(--panel); border: 1px solid var(--panel-line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 18px; }
+.panel h1 { margin: 0; font: 600 18px/1.2 var(--font-ui); letter-spacing: -.01em; text-wrap: balance; }
+.panel p { margin: 0; color: var(--stage-sub); font-size: 13px; line-height: 1.45; }
+.panel h2 { margin: 0 0 8px; font: 600 11px/1 var(--font-ui); letter-spacing: .1em; text-transform: uppercase; color: var(--stage-sub); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px; min-height: 32px; }
+.sw { position: relative; width: 40px; height: 24px; flex: none; }
+.sw input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.sw span { position: absolute; inset: 0; border-radius: 12px; background: var(--panel-line); transition: background 150ms; pointer-events: none; }
+.sw span::after { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform 150ms; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+.sw input:checked + span { background: var(--accent); }
+.sw input:checked + span::after { transform: translateX(16px); }
+.seg { display: flex; border: 1px solid var(--panel-line); border-radius: 8px; overflow: hidden; }
+.seg button { padding: 6px 10px; font-size: 13px; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--panel); }
+.add { display: flex; flex-direction: column; gap: 10px; }
+.pick { display: flex; align-items: center; justify-content: center; gap: 8px; height: 44px; border-radius: 10px; border: 1.5px dashed var(--panel-line); font-weight: 600; font-size: 14px; cursor: pointer; }
+.pick input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.kinds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.kinds button { border: 1px solid var(--panel-line); border-radius: 8px; padding: 8px 4px; font-size: 13px; line-height: 1.25; }
+.kinds button small { display: block; color: var(--stage-sub); font-size: 11px; }
+.kinds button[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.add textarea { width: 100%; min-height: 64px; resize: vertical; border: 1px solid var(--panel-line); border-radius: 8px; padding: 8px 10px; font: 13px/1.4 var(--font-ui); background: transparent; color: inherit; }
+.go { height: 40px; border-radius: 10px; background: var(--accent); color: var(--panel); font-weight: 600; }
+.go:disabled { opacity: .5; cursor: default; }
+.msg { font-size: 13px; color: var(--stage-sub); }
+.msg.err { color: #C0392B; }
+.qlist { display: flex; flex-direction: column; gap: 8px; }
+.qitem { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.qitem img { width: 36px; height: 48px; object-fit: cover; border-radius: 4px; background: var(--panel-line); }
+.qitem .t { flex: 1; min-width: 0; }
+.qitem .t small { display: block; color: var(--stage-sub); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.qitem button { color: var(--stage-sub); font-size: 13px; text-decoration: underline; text-underline-offset: 2px; }
+.qitem button:disabled { opacity: .4; }
+
+/* phone: a small pill opens the same controls as a sheet */
+.pill { display: none; }
+@media (max-width: 699px) {
+  .pill { display: flex; position: absolute; z-index: 30; left: 50%; transform: translateX(-50%); bottom: calc(60px + env(safe-area-inset-bottom, 0px)); align-items: center; gap: 6px; padding: 8px 14px; border-radius: 20px; background: rgba(28,30,26,.82); color: #fff; font: 600 13px/1 var(--font-ui); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+  .pill[hidden] { display: none; }
+  .sheet { position: absolute; inset: auto 0 0; z-index: 40; max-height: 82%; overflow-y: auto; background: var(--panel); color: var(--stage-fg); border-radius: 16px 16px 0 0; transform: translateY(100%); transition: transform 280ms cubic-bezier(.2,.8,.2,1); padding-bottom: env(safe-area-inset-bottom, 0px); box-shadow: 0 -8px 30px rgba(0,0,0,.2); }
+  .sheet.open { transform: none; }
+  .sheet .panel { border: 0; border-radius: 0; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  .sheet .grab { width: 36px; height: 4px; border-radius: 2px; background: var(--panel-line); margin: 10px auto 0; }
+  .scrim { position: absolute; inset: 0; z-index: 35; background: rgba(0,0,0,.35); opacity: 0; pointer-events: none; transition: opacity 280ms; }
+  .scrim.open { opacity: 1; pointer-events: auto; }
+}
+@media (min-width: 700px) { .sheet, .scrim { display: none; } }
+@media (prefers-reduced-motion: reduce) { .slide, .sheet, .scrim, .sw span, .sw span::after { transition: none; } }
+</style>
+
+<div class="stage">
+  <div class="phone" id="phone">
+    <div class="screen" id="screen">
+      <div class="status" id="status"><span id="clock">09:41</span><div class="island"></div><div class="icons">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor" aria-hidden="true"><path d="M8 2.6c2.2 0 4.2.9 5.7 2.3l1.2-1.3A9.7 9.7 0 0 0 8 .8 9.7 9.7 0 0 0 1.1 3.6l1.2 1.3A8 8 0 0 1 8 2.6Zm0 3.6c1.2 0 2.3.5 3.2 1.2l1.2-1.3A6.4 6.4 0 0 0 8 4.4c-1.7 0-3.2.6-4.4 1.7l1.2 1.3A4.6 4.6 0 0 1 8 6.2Zm0 3.5c.5 0 .9.2 1.2.5L8 11.5l-1.2-1.3c.3-.3.7-.5 1.2-.5Z"/></svg>
+        <svg width="27" height="13" viewBox="0 0 27 13" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="22" height="12" rx="3.5" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="17" height="9" rx="2" fill="currentColor"/><path d="M24.5 4.5v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" fill="currentColor" opacity=".5"/></svg>
+      </div></div>
+
+      <div class="app" id="app">
+        <!-- Profile -->
+        <section class="view" id="profile" aria-label="Profile">
+          <div class="topbar">
+            <div class="name"><span id="pUser">riverfox_events</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></div>
+            <div class="acts">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 8v8M8 12h8"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </div>
+          </div>
+          <div class="scroll" id="pScroll">
+            <div class="head">
+              <button class="avatar" id="pAvatar" aria-label="Open Story"><img id="pAvatarImg" alt=""></button>
+              <div class="stats"><div><b id="sPosts">–</b><span>posts</span></div><div><b id="sFollowers">–</b><span>followers</span></div><div><b id="sFollowing">–</b><span>following</span></div></div>
+            </div>
+            <div class="bio"><div class="nm" id="pName"></div><div class="ln" id="pBio"></div>
+              <div class="link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><span id="pLink"></span></div>
+            </div>
+            <div class="btns"><div class="b">Edit profile</div><div class="b">Share profile</div><div class="b sq"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="8" r="4"/><path d="M3 20c.8-3.5 3.6-5.5 7-5.5 1.3 0 2.5.3 3.5.8M18 14v6M15 17h6"/></svg></div></div>
+            <div class="hls" id="pHighlights"></div>
+            <div class="tabs" role="tablist">
+              <button role="tab" aria-selected="true" data-tab="grid" aria-label="Posts"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></button>
+              <button role="tab" aria-selected="false" data-tab="reels" aria-label="Reels"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8 3l3 5.5M13.5 3l3 5.5"/><path d="M10 12v5l4.5-2.5Z" fill="currentColor" stroke="none"/></svg></button>
+              <button role="tab" aria-selected="false" data-tab="tagged" aria-label="Tagged"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="10" r="3"/><path d="M6.5 21c1-3 3-4.5 5.5-4.5s4.5 1.5 5.5 4.5"/></svg></button>
+            </div>
+            <div class="grid" id="grid"></div>
+            <div class="note" id="feedNote" hidden></div>
+          </div>
+          <nav class="navbar" id="navbar">
+            <button data-nav="home" aria-label="Home"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1Z"/></svg></button>
+            <button data-nav="search" aria-label="Search"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></svg></button>
+            <button data-nav="add" aria-label="New post"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 8v8M8 12h8"/></svg></button>
+            <button data-nav="reels" aria-label="Reels"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8 3l3 5.5M13.5 3l3 5.5"/><path d="M10 12v5l4.5-2.5Z" fill="currentColor" stroke="none"/></svg></button>
+            <button data-nav="me" class="me" aria-label="Profile"><img id="navAvatar" alt=""></button>
+          </nav>
+        </section>
+
+        <!-- Posts feed -->
+        <section class="view slide" id="feed" aria-label="Posts" hidden>
+          <div class="topbar"><button class="vback" id="feedBack" aria-label="Back"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></button><div class="name" style="font-size:16px">Posts</div><span style="width:36px"></span></div>
+          <div class="scroll" id="feedScroll"></div>
+        </section>
+
+        <!-- Reels viewer -->
+        <section class="view dark" id="reelView" aria-label="Reels" hidden>
+          <div class="vtop"><button id="reelBack" aria-label="Back"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></button><span class="tt">Reels</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="3"/><circle cx="12" cy="12.5" r="3.5"/><path d="M8.5 6 10 3.5h4L15.5 6"/></svg></div>
+          <div class="reels" id="reels"></div>
+          <div class="navbar on-dark" id="reelNav" aria-hidden="true"></div>
+        </section>
+
+        <!-- Story viewer -->
+        <section class="view dark" id="storyView" aria-label="Story" hidden>
+          <div class="story">
+            <div class="frame" id="storyFrame">
+              <img id="storyImg" alt="">
+              <div class="bars" id="storyBars"></div>
+              <div class="sh"><img id="storyAv" alt=""><span id="storyUser">riverfox_events</span><span class="ago" id="storyAgo"></span><span class="sp"></span><button id="storyClose" aria-label="Close Story" style="width:36px;height:36px;display:grid;place-items:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+              <div class="sq-label" id="storyQ" hidden><span class="next">Next</span></div>
+              <div id="storySafe"></div>
+              <div class="tapzones"><button id="storyPrev" aria-label="Previous"></button><button id="storyNext" aria-label="Next"></button></div>
+            </div>
+            <div class="reply"><div class="in">Send message</div>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.5 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 3 10 13.5M21 3l-6.5 18-4.5-7.5L2.5 9Z"/></svg>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <button class="pill" id="pill" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Preview</button>
+      <div class="scrim" id="scrim"></div>
+      <div class="sheet" id="sheet" role="dialog" aria-label="Preview controls"><div class="grab"></div><div id="sheetBody"></div></div>
+    </div>
+  </div>
+
+  <aside class="panel-wrap"><div id="panelHome"></div></aside>
+</div>
+
+<template id="panelTpl">
+  <div class="panel">
+    <div>
+      <h1>Laura's grid, with the next post in place</h1>
+      <p style="margin-top:6px">Tap any post to open it. The top-left tiles marked <b>Next</b> are covers waiting to be posted.</p>
+    </div>
+    <div class="add" data-add>
+      <h2>Add a cover</h2>
+      <label class="pick"><input type="file" accept="image/*" data-file><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span data-filename>Choose a picture</span></label>
+      <div class="kinds" data-kinds hidden>
+        <button type="button" data-kind="post" aria-pressed="false">Post<small>3:4 or 4:5</small></button>
+        <button type="button" data-kind="reel" aria-pressed="false">Reel cover<small>9:16</small></button>
+        <button type="button" data-kind="story" aria-pressed="false">Story<small>9:16</small></button>
+      </div>
+      <textarea data-caption placeholder="Caption (optional)" hidden></textarea>
+      <button class="go" type="button" data-upload hidden disabled>Add to the grid</button>
+      <div class="msg" data-addmsg></div>
+    </div>
+    <div>
+      <h2>Waiting to post</h2>
+      <div class="qlist" data-queue></div>
+    </div>
+    <div>
+      <h2>Show</h2>
+      <div class="row"><span>"Next" tags</span><label class="sw"><input type="checkbox" data-opt="next" checked aria-label="Show Next tags"><span></span></label></div>
+      <div class="row"><span>Safe-area lines on Reels and Stories</span><label class="sw"><input type="checkbox" data-opt="safe" aria-label="Show safe-area lines"><span></span></label></div>
+      <div class="row" data-redorow hidden><span>Redone covers</span><div class="seg" data-redoseg><button type="button" data-redo="new" aria-pressed="true">New</button><button type="button" data-redo="original" aria-pressed="false">Original</button></div></div>
+      <div class="row"><span>App theme</span><div class="seg" data-appseg><button type="button" data-app="auto" aria-pressed="true">Match</button><button type="button" data-app="light" aria-pressed="false">Light</button><button type="button" data-app="dark" aria-pressed="false">Dark</button></div></div>
+    </div>
+    <p data-copied></p>
+  </div>
+</template>
+
+<script>
+// Safe areas from tools/river-fox/brand-pack.json (board "Safe areas"), at a 1080 x 1920 frame.
+const SAFE = {
+  reel:  { x0: 70, x1: 940, y0: 240, y1: 1450, label: "Reel safe area" },
+  story: { x0: 70, x1: 940, y0: 250, y1: 1670, label: "Story safe area" },
+};
+
+const S = { feed: null, queue: [], tab: "grid", opts: { next: true, safe: false, app: "auto", redo: "new" }, db: null, assets: null, pendingFile: null, pendingKind: null, story: null };
+const $ = (s, r = document) => r.querySelector(s);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const fmt = (n) => (n == null ? "–" : n >= 10000 ? (n / 1000).toFixed(n >= 100000 ? 0 : 1).replace(/\.0$/, "") + "K" : n.toLocaleString("en-GB"));
+const store = { get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+
+const ICON = {
+  reel: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8 3l3 5.5M13.5 3l3 5.5"/><path d="M10 12v5l4.5-2.5Z" fill="currentColor" stroke="none"/></svg>',
+  carousel: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 3h11a3 3 0 0 1 3 3v11a1 1 0 0 1-1 1V6a2 2 0 0 0-2-2H7a1 1 0 0 1 0-1Z"/><rect x="3" y="7" width="14" height="14" rx="3"/></svg>',
+  heart: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.5 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></svg>',
+  comment: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 1 1-3.4-6.8A8.4 8.4 0 0 1 20.5 12Zm0 0 .5 8.5-4-2"/></svg>',
+  send: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 3 10 13.5M21 3l-6.5 18-4.5-7.5L2.5 9Z"/></svg>',
+  save: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M19 21 12 16l-7 5V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1Z"/></svg>',
+  dots: '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>',
+  music: '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 18a3 3 0 1 1-2-2.8V5l12-2v12a3 3 0 1 1-2-2.8V7.3L9 8.7Z"/></svg>',
+};
+
+/* ---------- data ---------- */
+function queueItem(d) {
+  const kind = ["post", "reel", "story"].includes(d.kind) ? d.kind : "post";
+  const url = d.asset ? "/_blob/" + d.asset : "";
+  return { id: d._id, queued: true, kind, img: url, thumb: url, caption: String(d.caption || ""), order: Number(d.order) || 0, asset: d.asset || "", replaces: String(d.replaces || "") };
+}
+// A redo is a remade cover for a post that is already live: it shows in that post's place, tagged "Redo",
+// and the "Redone covers" switch flips between the new and the original to compare.
+function redoFor(id) { return S.queue.find((x) => x.replaces && x.replaces === id); }
+function gridItems() {
+  const live = (S.feed?.posts || []).filter((p) => p.kind !== "story").map((p) => {
+    const r = S.opts.redo !== "original" ? redoFor(p.id) : null;
+    return r ? { ...p, img: r.img, thumb: r.img, w: 0, h: 0, redo: true } : p;
+  });
+  const q = S.queue.filter((x) => x.kind !== "story" && !x.replaces).sort((a, b) => b.order - a.order);
+  return [...q, ...live];
+}
+function storyItems() {
+  const now = Date.now();
+  const live = (S.feed?.posts || []).filter((p) => p.kind === "story" && now - Date.parse(p.date) < 24 * 3600e3).sort((a, b) => (a.date < b.date ? -1 : 1));
+  const q = S.queue.filter((x) => x.kind === "story" && !x.replaces).sort((a, b) => a.order - b.order);
+  return [...live, ...q];
+}
+function ago(iso) {
+  if (!iso) return "";
+  const h = (Date.now() - Date.parse(iso)) / 3600e3;
+  if (h < 1) return Math.max(1, Math.round(h * 60)) + "m";
+  if (h < 24) return Math.round(h) + "h";
+  const d = Math.round(h / 24);
+  if (d < 7) return d + (d === 1 ? " day ago" : " days ago");
+  return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "long" });
+}
+
+/* ---------- profile ---------- */
+function renderProfile() {
+  const p = S.feed?.profile || {};
+  $("#pUser").textContent = p.username || "riverfox_events";
+  $("#pName").textContent = p.name || "";
+  $("#pBio").textContent = (p.bio || []).join("\n");
+  $("#pLink").textContent = p.link || "";
+  const queuedGrid = S.queue.filter((x) => x.kind !== "story" && !x.replaces).length;
+  $("#sPosts").textContent = p.posts != null ? fmt(p.posts + queuedGrid) : "–";
+  $("#sFollowers").textContent = fmt(p.followers);
+  $("#sFollowing").textContent = fmt(p.following);
+  for (const img of [$("#pAvatarImg"), $("#navAvatar"), $("#storyAv"), ...document.querySelectorAll("#reelNav img")]) if (p.avatar) img.src = p.avatar;
+  $("#pAvatar").classList.toggle("ringed", storyItems().length > 0);
+  const hl = $("#pHighlights");
+  hl.replaceChildren();
+  for (const h of p.highlights || []) {
+    const d = el("div", "hl"), c = el("div", "c"), i = el("img");
+    i.src = h.img; i.alt = ""; i.loading = "lazy";
+    c.append(i); d.append(c, el("div", "t", h.label)); hl.append(d);
+  }
+  renderGrid();
+}
+
+function renderGrid() {
+  const g = $("#grid");
+  g.replaceChildren();
+  g.classList.toggle("reels", S.tab === "reels");
+  const note = $("#feedNote");
+  if (S.tab === "tagged") {
+    const e = el("div", "empty"); e.append(el("b", "", "Photos and videos of you"), document.createTextNode("Tagged posts aren't copied into the preview."));
+    g.append(e); g.style.display = "block"; note.hidden = true; return;
+  }
+  g.style.display = "";
+  let items = gridItems();
+  if (S.tab === "reels") items = items.filter((x) => x.kind === "reel");
+  if (!S.feed) {
+    for (let i = 0; i < 12; i++) g.append(el("div", "tile"));
+    note.hidden = false; note.textContent = S.feedError || "Loading Laura's posts…";
+    return;
+  }
+  items.forEach((it) => {
+    const t = el("button", "tile"); t.type = "button";
+    t.setAttribute("aria-label", (it.queued ? "Next " : "") + it.kind);
+    const img = el("img"); img.src = it.thumb || it.img; img.alt = ""; img.loading = "lazy"; img.decoding = "async";
+    t.append(img);
+    if (it.kind === "reel" && S.tab !== "reels") { const b = el("span", "badge"); b.innerHTML = ICON.reel; t.append(b); }
+    if (it.kind === "carousel") { const b = el("span", "badge"); b.innerHTML = ICON.carousel; t.append(b); }
+    if (it.queued) t.append(el("span", "next", "Next"));
+    if (it.redo) t.append(el("span", "next redo", "Redo"));
+    t.addEventListener("click", () => (it.kind === "reel" ? openReels(it) : openFeed(it)));
+    g.append(t);
+  });
+  note.hidden = false;
+  note.textContent = S.feed.copiedAt ? `Posts copied from Instagram ${new Date(S.feed.copiedAt).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}` : "";
+}
+
+/* ---------- posts feed ---------- */
+function postEl(it, avatar, user) {
+  const a = el("article", "post"); a.dataset.id = it.id;
+  const ph = el("div", "ph"); const av = el("img"); av.src = avatar; av.alt = "";
+  const u = el("div", "u"); u.append(el("span", "", user));
+  if (it.queued) u.append(el("span", "next", "Next"));
+  if (it.redo) u.append(el("span", "next redo", "Redo"));
+  const dots = el("span"); dots.innerHTML = ICON.dots;
+  ph.append(av, u, dots);
+  const m = el("div", "media");
+  // Instagram shows a feed post at its own shape, between square-ish landscape and 3:4; Reels show as 4:5 in the feed.
+  const ratio = it.kind === "reel" ? 4 / 5 : it.w && it.h ? Math.min(Math.max(it.w / it.h, 3 / 4), 1.91) : 3 / 4;
+  m.style.aspectRatio = String(ratio);
+  const img = el("img"); img.src = it.img; img.alt = ""; img.loading = "lazy"; img.decoding = "async";
+  if (!it.w && it.kind !== "reel") img.addEventListener("load", () => { m.style.aspectRatio = String(Math.min(Math.max(img.naturalWidth / img.naturalHeight, 3 / 4), 1.91)); }, { once: true });
+  m.append(img);
+  if (it.kind === "reel") { const b = el("span", "badge"); b.innerHTML = ICON.reel; m.append(b); m.style.cursor = "pointer"; m.addEventListener("click", () => openReels(it)); }
+  if (it.kind === "carousel") { const b = el("span", "badge"); b.innerHTML = ICON.carousel; m.append(b); }
+  const acts = el("div", "acts"); acts.innerHTML = ICON.heart + ICON.comment + ICON.send + '<span class="sp"></span>' + ICON.save;
+  a.append(ph, m, acts);
+  if (it.likes) a.append(el("div", "likes", `${fmt(it.likes)} ${it.likes === 1 ? "like" : "likes"}`));
+  if (it.caption) {
+    const c = el("div", "cap clamp"); const b = el("b", "", user + " "); c.append(b, document.createTextNode(it.caption));
+    c.addEventListener("click", () => c.classList.remove("clamp"));
+    a.append(c);
+  }
+  if (it.comments) a.append(el("div", "more", `View all ${it.comments} comments`));
+  a.append(el("div", "meta", it.queued ? "Not posted yet" : ago(it.date)));
+  return a;
+}
+function openFeed(start) {
+  const p = S.feed?.profile || {};
+  const box = $("#feedScroll"); box.replaceChildren();
+  const items = gridItems();
+  let target = null;
+  for (const it of items) { const a = postEl(it, p.avatar || "", p.username || "riverfox_events"); box.append(a); if (start && it.id === start.id) target = a; }
+  const v = $("#feed"); v.hidden = false;
+  requestAnimationFrame(() => { box.scrollTop = target ? target.offsetTop : 0; requestAnimationFrame(() => v.classList.add("open")); });
+  syncChrome();
+}
+function closeFeed() {
+  const v = $("#feed"); v.classList.remove("open");
+  const done = () => { v.hidden = true; syncChrome(); };
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) done(); else setTimeout(done, 290);
+}
+
+/* ---------- reels ---------- */
+function safeBox(kind) {
+  const s = SAFE[kind]; const box = el("div", "safe"); const i = el("i");
+  i.style.left = (s.x0 / 1080) * 100 + "%"; i.style.right = (1 - s.x1 / 1080) * 100 + "%";
+  i.style.top = (s.y0 / 1920) * 100 + "%"; i.style.bottom = (1 - s.y1 / 1920) * 100 + "%";
+  i.append(el("span", "", s.label)); box.append(i); return box;
+}
+function openReels(start) {
+  const p = S.feed?.profile || {};
+  const box = $("#reels"); box.replaceChildren();
+  const items = gridItems().filter((x) => x.kind === "reel");
+  let target = null;
+  for (const it of items) {
+    const r = el("div", "reel");
+    const f = el("div", "frame"); const img = el("img"); img.src = it.img; img.alt = ""; img.loading = "lazy"; img.decoding = "async";
+    f.append(img, el("div", "ui-grad"), safeBox("reel"));
+    const side = el("div", "side");
+    const stat = (svg, n) => { const d = el("div"); d.innerHTML = svg; if (n != null) d.append(el("div", "", fmt(n))); return d; };
+    side.append(stat(ICON.heart, it.likes ?? (it.queued ? null : 0)), stat(ICON.comment, it.comments ?? (it.queued ? null : 0)), stat(ICON.send, null), stat(ICON.dots, null));
+    const sq = el("div", "sq"); const si = el("img"); si.src = p.avatar || ""; si.alt = ""; sq.append(si); side.append(sq);
+    const info = el("div", "info");
+    const who = el("div", "who"); const av = el("img"); av.src = p.avatar || ""; av.alt = "";
+    who.append(av, el("span", "", p.username || "riverfox_events"), el("span", "fb", "Follow"));
+    info.append(who);
+    if (it.caption) info.append(el("div", "rc", it.caption.split("\n")[0]));
+    const au = el("div", "au"); au.innerHTML = ICON.music; au.append(el("span", "", (p.username || "riverfox_events") + " · Original audio")); info.append(au);
+    f.append(side, info);
+    r.append(f);
+    if (it.queued || it.redo) { const q = el("div", "reel-q"); q.append(el("span", it.redo ? "next redo" : "next", it.redo ? "Redo" : "Next")); r.append(q); }
+    box.append(r);
+    if (start && it.id === start.id) target = r;
+  }
+  if (!items.length) box.append(el("div", "empty", "No Reels yet."));
+  $("#reelView").hidden = false;
+  requestAnimationFrame(() => { box.scrollTop = target ? target.offsetTop : 0; });
+  syncChrome();
+}
+function closeReels() { $("#reelView").hidden = true; syncChrome(); }
+
+/* ---------- stories ---------- */
+let storyTimer = null;
+function openStory() {
+  const items = storyItems();
+  if (!items.length) return;
+  S.story = { items, i: 0 };
+  const bars = $("#storyBars"); bars.replaceChildren();
+  items.forEach(() => { const i = el("i"); i.append(el("b")); bars.append(i); });
+  $("#storyView").hidden = false;
+  showStory();
+  syncChrome();
+}
+function showStory() {
+  const { items, i } = S.story; const it = items[i];
+  $("#storyImg").src = it.img;
+  $("#storyAgo").textContent = it.queued ? "next" : ago(it.date);
+  $("#storyQ").hidden = !it.queued;
+  [...$("#storyBars").children].forEach((bar, j) => {
+    const b = bar.firstChild; b.style.transition = "none"; b.style.width = j < i ? "100%" : "0";
+  });
+  clearTimeout(storyTimer);
+  const cur = $("#storyBars").children[i].firstChild;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    cur.style.transition = reduce ? "none" : "width 6s linear"; cur.style.width = "100%";
+  }));
+  storyTimer = setTimeout(() => stepStory(1), 6000);
+}
+function stepStory(d) {
+  if (!S.story) return;
+  const n = S.story.i + d;
+  if (n < 0) { S.story.i = 0; showStory(); return; }
+  if (n >= S.story.items.length) { closeStory(); return; }
+  S.story.i = n; showStory();
+}
+function closeStory() { clearTimeout(storyTimer); S.story = null; $("#storyView").hidden = true; syncChrome(); }
+
+function syncChrome() {
+  const darkOpen = !$("#reelView").hidden || !$("#storyView").hidden;
+  $("#status").classList.toggle("on-dark", darkOpen);
+  $("#pill").hidden = darkOpen;
+}
+
+/* ---------- controls ---------- */
+function applyOpts() {
+  const sc = $("#screen");
+  sc.classList.toggle("hide-next", !S.opts.next);
+  sc.classList.toggle("show-safe", S.opts.safe);
+  const ph = $("#phone");
+  if (S.opts.app === "auto") ph.removeAttribute("data-app"); else ph.dataset.app = S.opts.app;
+  document.querySelectorAll("[data-opt=next]").forEach((x) => (x.checked = S.opts.next));
+  document.querySelectorAll("[data-opt=safe]").forEach((x) => (x.checked = S.opts.safe));
+  document.querySelectorAll("[data-appseg] button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.app === S.opts.app)));
+  document.querySelectorAll("[data-redoseg] button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.redo === S.opts.redo)));
+  store.set("rf-ig-opts", S.opts);
+}
+
+const panels = [];
+function mountPanel(host) {
+  const node = $("#panelTpl").content.firstElementChild.cloneNode(true);
+  host.replaceChildren(node); panels.push(node);
+  node.querySelector("[data-opt=next]").addEventListener("change", (e) => { S.opts.next = e.target.checked; applyOpts(); });
+  node.querySelector("[data-opt=safe]").addEventListener("change", (e) => { S.opts.safe = e.target.checked; applyOpts(); });
+  node.querySelectorAll("[data-appseg] button").forEach((b) => b.addEventListener("click", () => { S.opts.app = b.dataset.app; applyOpts(); }));
+  node.querySelectorAll("[data-redoseg] button").forEach((b) => b.addEventListener("click", () => { S.opts.redo = b.dataset.redo; applyOpts(); renderGrid(); }));
+  const file = node.querySelector("[data-file]");
+  file.id = "file-" + panels.length;
+  node.querySelector("[data-caption]").id = "caption-" + panels.length;
+  file.addEventListener("change", () => pickFile(node, file.files[0]));
+  node.querySelectorAll("[data-kind]").forEach((b) => b.addEventListener("click", () => { S.pendingKind = b.dataset.kind; syncAdd(); }));
+  node.querySelector("[data-upload]").addEventListener("click", () => upload(node));
+}
+function syncAdd() {
+  for (const n of panels) {
+    const has = !!S.pendingFile;
+    n.querySelector("[data-filename]").textContent = has ? S.pendingFile.name || "Picture chosen" : "Choose a picture";
+    n.querySelector("[data-kinds]").hidden = !has;
+    n.querySelector("[data-caption]").hidden = !has || S.pendingKind === "story";
+    n.querySelector("[data-upload]").hidden = !has;
+    n.querySelector("[data-upload]").disabled = !has || !S.pendingKind;
+    n.querySelector("[data-upload]").textContent = S.pendingKind === "story" ? "Add as the next Story" : "Add to the grid";
+    n.querySelectorAll("[data-kind]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.kind === S.pendingKind)));
+  }
+}
+function addMsg(text, err) { for (const n of panels) { const m = n.querySelector("[data-addmsg]"); m.textContent = text; m.classList.toggle("err", !!err); } }
+
+async function pickFile(node, f) {
+  if (!f) return;
+  S.pendingFile = f; S.pendingKind = null; addMsg("");
+  try {
+    const bmp = await createImageBitmap(f);
+    const r = bmp.height / bmp.width;
+    S.pendingKind = r > 1.6 ? "reel" : "post";
+    bmp.close?.();
+  } catch { S.pendingKind = null; }
+  syncAdd();
+}
+async function toJpeg(f) {
+  // Re-encode to a JPEG no wider than 1440px, so iPhone HEIC photos and huge originals both upload.
+  const bmp = await createImageBitmap(f);
+  const scale = Math.min(1, 1440 / bmp.width);
+  const c = document.createElement("canvas"); c.width = Math.round(bmp.width * scale); c.height = Math.round(bmp.height * scale);
+  c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+  return await new Promise((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error("encode"))), "image/jpeg", 0.9));
+}
+async function upload(node) {
+  if (!S.pendingFile || !S.pendingKind) return;
+  if (!S.assets || !S.db) { addMsg("Adding covers needs you signed in to claude.ai as the page's owner.", true); return; }
+  const btn = node.querySelector("[data-upload]"); btn.disabled = true; addMsg("Uploading…");
+  try {
+    const blob = await toJpeg(S.pendingFile);
+    const up = await S.assets.upload(blob, { type: "image/jpeg" });
+    const caption = S.pendingKind === "story" ? "" : node.querySelector("[data-caption]").value.trim();
+    await S.db.collection("queue").add({ kind: S.pendingKind, asset: up.id, caption, order: Date.now(), name: S.pendingFile.name || "" });
+    S.pendingFile = null; S.pendingKind = null;
+    panels.forEach((n) => { n.querySelector("[data-file]").value = ""; n.querySelector("[data-caption]").value = ""; });
+    syncAdd(); addMsg("Added. It's top-left in the grid.");
+    closeSheet();
+  } catch (e) {
+    const code = e && e.code;
+    addMsg(code === "too_large" ? "That picture is too big. Try a smaller copy." : code === "not_granted" || code === "not_uploader" ? "Only the page's owner can add covers." : "The upload didn't go through. Try again.", true);
+    btn.disabled = false;
+  }
+}
+async function removeItem(it, btn) {
+  if (!S.db) return;
+  btn.disabled = true;
+  try {
+    await S.db.doc("queue/" + it.id).delete();
+    if (it.asset && S.assets) S.assets.delete(it.asset).catch(() => {});
+  } catch { btn.disabled = false; addMsg("Couldn't remove it. Try again.", true); }
+}
+function renderQueue() {
+  for (const n of panels) {
+    const box = n.querySelector("[data-queue]"); box.replaceChildren();
+    const items = [...S.queue].sort((a, b) => a.order - b.order);
+    if (!items.length) box.append(el("div", "msg", S.db ? "Nothing queued. Add a cover above, or Claude adds one when it makes a cover." : "Queued covers show once the page is open in claude.ai."));
+    items.forEach((it, i) => {
+      const r = el("div", "qitem"); const img = el("img"); img.src = it.thumb; img.alt = "";
+      const t = el("div", "t");
+      const kind = it.kind === "reel" ? "Reel" : it.kind === "story" ? "Story" : "Post";
+      const orig = it.replaces && (S.feed?.posts || []).find((p) => p.id === it.replaces);
+      t.append(document.createTextNode(it.replaces ? `Redo: ${kind.toLowerCase()} of ${orig ? new Date(orig.date).toLocaleDateString("en-GB", { day: "numeric", month: "short" }) : "an older post"}` : `${i + 1}. ${kind}`));
+      t.append(el("small", "", it.caption ? it.caption.split("\n")[0] : it.replaces ? "Shown in place of the original" : "No caption"));
+      const b = el("button", "", "Remove"); b.type = "button"; b.addEventListener("click", () => removeItem(it, b));
+      if (!S.db) b.hidden = true;
+      r.append(img, t, b); box.append(r);
+    });
+    n.querySelector("[data-add]").hidden = !S.assets;
+    n.querySelector("[data-redorow]").hidden = !S.queue.some((x) => x.replaces);
+    const c = n.querySelector("[data-copied]");
+    c.textContent = S.feed?.copiedAt ? `Laura's posts were copied from Instagram on ${new Date(S.feed.copiedAt).toLocaleString("en-GB", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}. Ask Claude to refresh the Instagram preview for newer ones.` : "";
+  }
+}
+
+function openSheet() { $("#sheet").classList.add("open"); $("#scrim").classList.add("open"); }
+function closeSheet() { $("#sheet").classList.remove("open"); $("#scrim").classList.remove("open"); }
+
+/* ---------- wiring ---------- */
+function tick() { $("#clock").textContent = new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }); }
+tick(); setInterval(tick, 15000);
+
+document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("click", () => {
+  S.tab = b.dataset.tab;
+  document.querySelectorAll(".tabs button").forEach((x) => x.setAttribute("aria-selected", String(x === b)));
+  renderGrid();
+}));
+$("#navbar").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.nav === "reels") openReels(null);
+  if (b.dataset.nav === "home") openFeed(null);
+  if (b.dataset.nav === "me") $("#pScroll").scrollTo({ top: 0, behavior: "smooth" });
+});
+$("#pAvatar").addEventListener("click", openStory);
+$("#feedBack").addEventListener("click", closeFeed);
+$("#reelBack").addEventListener("click", closeReels);
+$("#storyClose").addEventListener("click", (e) => { e.stopPropagation(); closeStory(); });
+$("#storyPrev").addEventListener("click", () => stepStory(-1));
+$("#storyNext").addEventListener("click", () => stepStory(1));
+// Swipe down closes a Story, swipe right closes the Posts list (as on the phone).
+(() => {
+  let y0 = null, x0 = null;
+  const sv = $("#storyView");
+  sv.addEventListener("touchstart", (e) => { y0 = e.touches[0].clientY; x0 = e.touches[0].clientX; }, { passive: true });
+  sv.addEventListener("touchend", (e) => { if (y0 == null) return; const dy = e.changedTouches[0].clientY - y0, dx = Math.abs(e.changedTouches[0].clientX - x0); if (dy > 80 && dx < 60) closeStory(); y0 = null; });
+  const fv = $("#feed"); let fx = null, fy = null;
+  fv.addEventListener("touchstart", (e) => { fx = e.touches[0].clientX; fy = e.touches[0].clientY; }, { passive: true });
+  fv.addEventListener("touchend", (e) => { if (fx == null) return; const dx = e.changedTouches[0].clientX - fx, dy = Math.abs(e.changedTouches[0].clientY - fy); if (fx < 40 && dx > 80 && dy < 50) closeFeed(); fx = null; });
+})();
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") { if (S.story) closeStory(); else if (!$("#reelView").hidden) closeReels(); else if (!$("#feed").hidden) closeFeed(); else closeSheet(); }
+  if (S.story && e.key === "ArrowRight") stepStory(1);
+  if (S.story && e.key === "ArrowLeft") stepStory(-1);
+});
+$("#pill").addEventListener("click", openSheet);
+$("#scrim").addEventListener("click", closeSheet);
+
+$("#storySafe").replaceWith(safeBox("story"));
+$("#reelNav").innerHTML = $("#navbar").innerHTML;
+$("#reelNav").querySelectorAll("button").forEach((b) => { b.tabIndex = -1; b.disabled = true; });
+mountPanel($("#panelHome"));
+mountPanel($("#sheetBody"));
+S.opts = { ...S.opts, ...(store.get("rf-ig-opts") || {}) };
+applyOpts();
+renderProfile();
+renderQueue();
+
+fetch("feed.json", { cache: "no-cache" })
+  .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then((d) => { S.feed = d; renderProfile(); renderQueue(); })
+  .catch(() => { S.feedError = "Laura's posts didn't load. Pull to reload, or ask Claude to refresh the Instagram preview."; renderGrid(); });
+
+(async () => {
+  const c = window.claude;
+  if (!c || !c.use) { renderQueue(); return; }
+  const [db, assets] = await Promise.all([c.use("db").catch(() => null), c.use("assets").catch(() => null)]);
+  S.db = db; S.assets = assets;
+  renderQueue();
+  if (!db) return;
+  const timer = setTimeout(() => { addMsg("Queued covers are taking a while to load.", true); }, 10000);
+  db.collection("queue").orderBy("order", "asc").onSnapshot((snap) => {
+    clearTimeout(timer);
+    S.queue = snap.docs.map((d) => queueItem({ ...d.data(), _id: d.id }));
+    renderProfile(); renderQueue();
+  }, () => { clearTimeout(timer); addMsg("Queued covers couldn't load.", true); });
+})();
+</script>
