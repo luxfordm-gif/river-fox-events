@@ -37,7 +37,7 @@ describe("River Fox tools read brand values from brand-pack.json", () => {
     expect(missing).toEqual([]);
   });
 
-  it("holds the cover rules from the boards Covers and thumbnails and Light photos and long hooks", () => {
+  it("holds the cover rules from the Covers board (Part 1 the rule, Part 2 photos and the soft fade)", () => {
     const c = pack.cover;
     // text on photos is Instrument Serif Regular, both lines the same size, sized to the words (Brand Pack, 24 Nov 2026)
     expect(c.type).toMatchObject({ font: "Instrument Serif", weight: 400, tracking: "-0.02em" });
@@ -55,6 +55,17 @@ describe("River Fox tools read brand values from brand-pack.json", () => {
     expect(pack.handle.weight).toBe(500);
     expect(c.layout["9x16"]).toMatchObject({ handleTopY: 1500, handlePx: 28 });
     expect(pack.videoText).toMatchObject({ font: "Instrument Serif", weight: 400 });
+  });
+
+  it("names only boards that are on the canvas: the old cover boards were merged into Covers", () => {
+    // "Light photos and long hooks" (Cover-Rule-Photos) and "Covers with colour blocks" (Cover-Blocks) became Parts 2 and 3
+    // of the one Covers board; "Covers and thumbnails" is Part 1. Nothing may send a reader to a board that is gone.
+    const gone = /Light photos and long hooks|Covers with colour blocks|Covers and thumbnails|Cover-Rule-Photos|Cover-Blocks/;
+    const files = ["brand-pack.json", "text/thumb.cjs", "text/blocks.cjs", "instagram-preview/refresh.cjs", "instagram-preview/README.md", "README.md"]
+      .map((f) => join(root, f))
+      .concat(join(__dirname, "../../.claude/skills/river-fox/SKILL.md"));
+    const hits = files.filter((f) => gone.test(readFileSync(f, "utf8")));
+    expect(hits).toEqual([]);
   });
 
   it("the cover tool has no light-photo test, no fade option and no smaller second line", () => {

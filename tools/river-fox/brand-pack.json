@@ -10,7 +10,7 @@
     "inkGrey": "#494E46"
   },
   "handle": {
-    "board": "Covers and thumbnails; Light photos and long hooks; Headline and closing text on video",
+    "board": "Covers (Part 1, Part 2); Headline and closing text on video",
     "text": "@RIVERFOX_EVENTS",
     "font": "DM Sans",
     "weight": 500,
@@ -26,7 +26,7 @@
   },
   "cover": {
     "type": {
-      "board": "Covers and thumbnails; Light photos and long hooks (Type and photos)",
+      "board": "Covers (Part 1, The rule)",
       "font": "Instrument Serif",
       "weight": 400,
       "tracking": "-0.02em",
@@ -34,7 +34,7 @@
       "line2": "italic, the same size as line 1"
     },
     "size": {
-      "board": "Covers and thumbnails (The rule); Brand sheet (02 Type)",
+      "board": "Covers (Part 1, The rule); Brand sheet (02 Type)",
       "fitWidth": { "9x16": 980, "3x4": 888, "4x5": 888 },
       "maxPx": 310,
       "singleWordEndsWith": ".",
@@ -45,7 +45,7 @@
       }
     },
     "capsLine": {
-      "board": "Covers and thumbnails (The rule); Twenty reel cover ideas",
+      "board": "Covers (Part 1, The rule); Twenty reel cover ideas",
       "font": "DM Sans",
       "weight": 700,
       "px": 62,
@@ -55,7 +55,7 @@
       "shadow": "0 1px 8px rgba(25,28,23,0.55)"
     },
     "fade": {
-      "board": "Light photos and long hooks (Light photos); Covers and thumbnails",
+      "board": "Covers (Part 2, Fade and photos)",
       "stops": [[28, 0], [40, 0.043], [52, 0.15], [64, 0.29], [76, 0.43], [88, 0.537], [100, 0.58]],
       "tint": 0.25,
       "shadow": "0 2px 10px rgba(25,28,23,0.45)",
@@ -63,7 +63,7 @@
     },
     "layout": {
       "9x16": {
-        "board": "Covers and thumbnails (example 1); Light photos and long hooks (Long hooks)",
+        "board": "Covers (Part 1, example 1; Part 2, Where the hook goes)",
         "middleY": 1200,
         "hookTopMin": 240,
         "hookBottomMax": 1400,
@@ -74,7 +74,7 @@
         "toolOwn": { "topY": 300 }
       },
       "3x4": {
-        "board": "Covers and thumbnails (example 3); Carousel cover slide",
+        "board": "Covers (Part 1, example 3); Carousel · Cover slide",
         "middleY": 880,
         "hookTopMin": 96,
         "handleFromBottom": 238,
@@ -83,7 +83,7 @@
         "toolOwn": { "topY": 200 }
       },
       "4x5": {
-        "board": "Covers and thumbnails (example 4, drawn 1440 wide: centre 1100, handle 297 up at 35px)",
+        "board": "Covers (Part 1, example 4, drawn 1440 wide: centre 1100, handle 297 up at 35px)",
         "middleY": 825,
         "hookTopMin": 96,
         "handleFromBottom": 223,
@@ -93,7 +93,7 @@
       }
     },
     "blocks": {
-      "board": "Covers with colour blocks",
+      "board": "Covers (Part 3, Colour blocks for faces and busy spots)",
       "when": "Only when the words of a normal cover would land on a face or a busy spot. A one-word hook keeps the normal big headline.",
       "shapes": ["9x16"],
       "font": "Instrument Serif",
@@ -121,7 +121,7 @@
         "shiftFadePx": 340,
         "shiftBlurPx": 18,
         "shiftFillFrom": 0.12,
-        "note": "--shift (moving the photo down so a head clears the stack) comes from the board's first version (25 Nov); the live board no longer shows it, so it is the tool's own option. shiftFadePx and shiftBlurPx: the photo's top fades over 340px into a blurred strip. shiftFillFrom: the top 12% of the photo is what gets stretched into that space, so no ghost of the subject shows. faceMargin widens the face box Apple Vision finds by 15% each way (used for the handle); browMargin: blocks stop 4% of the face's height above the eyebrows. reelIconInGrid: where Instagram's Reel icon sits on a profile-grid tile (measured on the 3:4 crop, 1080 wide), with 16px kept clear around it; the board's 340px line alone does not keep a wide first block off it."
+        "note": "--shift (moving the photo down so a head clears the stack) came from an earlier version of the board; the live board no longer shows it, so it is the tool's own option. shiftFadePx and shiftBlurPx: the photo's top fades over 340px into a blurred strip. shiftFillFrom: the top 12% of the photo is what gets stretched into that space, so no ghost of the subject shows. faceMargin widens the face box Apple Vision finds by 15% each way (used for the handle); browMargin: blocks stop 4% of the face's height above the eyebrows. reelIconInGrid: where Instagram's Reel icon sits on a profile-grid tile (measured on the 3:4 crop, 1080 wide), with 16px kept clear around it; the board's 340px line alone does not keep a wide first block off it."
       }
     }
   },

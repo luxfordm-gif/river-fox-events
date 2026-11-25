@@ -3,7 +3,7 @@
 //   node thumb.cjs <photo> <out> 1080 1920 "Line1" "Line2" ["Line3"] --blocks [--at=top|middle|lower|forehead|<y>] [--between=<y0>,<y1>] [--shift=<px>] [--px=<size>] [--no-handle]
 //
 // No brand value is written in this file: every size, colour and position comes from ../brand-pack.json
-// (cover.blocks, board "Covers with colour blocks"), plus the normal cover handle and fade.
+// (cover.blocks, board "Covers", Part 3), plus the normal cover handle and fade.
 //   look   - one pink block per line, hugging the words; line 1 upright, the rest italic, all the same size.
 //   size   - the widest block is fitted to the pack's width, between its smallest and biggest sizes.
 //   forehead - --at=forehead (a person looking to camera): the stack centred between the top of the grid view and halfway

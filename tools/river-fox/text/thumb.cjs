@@ -26,7 +26,7 @@ const fs = require('fs');
 const puppeteer = require(path.join(__dirname, '../../photo-grade/node_modules/puppeteer-core'));
 const B = require('../brand-pack.json');
 
-// The second cover style (board "Covers with colour blocks") lives in blocks.cjs; --blocks hands over to it.
+// The colour-block cover (board "Covers", Part 3) lives in blocks.cjs; --blocks hands over to it.
 if (process.argv.includes('--blocks')) { require('./blocks.cjs'); return; }
 
 const argv = process.argv.slice(2);
