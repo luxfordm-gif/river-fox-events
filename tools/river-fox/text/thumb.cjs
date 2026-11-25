@@ -19,12 +19,16 @@
 //           spots and says if a calmer one exists: words never sit on the subject if there is a calm spot. Look at it.
 //   fade  - every photo cover gets the pack's one gradient over the whole image. --tint adds the pack's even dark tint
 //           when the words still don't read. --no-handle leaves the handle off a very busy photo.
+//   faces - it looks for faces (Apple Vision, as blocks.cjs does). Words on a face are refused: the pack says put the hook
+//           under the face, or use colour blocks (--blocks, Reel covers only). A handle whose fixed spot would land on a
+//           face is left off, as the pack says (cover.faces).
 // It then measures the lettering and will not write a cover whose words fall outside the fitted width, outside what the
 // profile grid shows (9:16), too close to the handle, or off the frame (ALLOW_UNSAFE=1 writes it anyway and says so).
 const path = require('path');
 const fs = require('fs');
 const puppeteer = require(path.join(__dirname, '../../photo-grade/node_modules/puppeteer-core'));
 const B = require('../brand-pack.json');
+const { faces, photoSize, coverFit, faceBoxes, overlaps, busy: busyIn, calmer } = require('./photo-check.cjs');
 
 // The colour-block cover (the pack's cover rules, for words that would land on a face) lives in blocks.cjs; --blocks hands over to it.
 if (process.argv.includes('--blocks')) { require('./blocks.cjs'); return; }
@@ -56,6 +60,15 @@ const gradient = (stops) => `linear-gradient(to bottom, ${stops.map(([p, a]) => 
 const handleCss = shape === '9x16' ? `top:${px(L.handleTopY)}px;line-height:${px(L.handleLinePx)}px` : `bottom:${px(L.handleFromBottom)}px;line-height:1`;
 
 const faults = [];
+// Faces, with Apple Vision, as boxes in this frame (a little wider than Vision's own box).
+let faceBox = [];
+try {
+  const found = faces(photo);
+  if (found.length) faceBox = faceBoxes(found, coverFit(...photoSize(photo), w, h), B.cover.faces.toolOwn.faceMargin);
+} catch (e) {
+  if (!process.env.ALLOW_UNSAFE) { console.error(`NOT WRITTEN: could not look for faces (Apple Vision, on the Mac): ${String(e.message).split('\n')[0]}`); process.exit(1); }
+  console.log('  faces NOT checked (ALLOW_UNSAFE)');
+}
 if (words.length === 1 && !plain.endsWith(S.singleWordEndsWith)) faults.push(`a one-word headline ends with a full stop (the pack): "${plain}${S.singleWordEndsWith}"`);
 
 const img = 'data:image/jpeg;base64,' + fs.readFileSync(photo).toString('base64');
@@ -97,40 +110,37 @@ ${handle ? `<div class=u><span>${B.handle.text}</span></div>` : ''}</div>`;
     const r = (n) => Math.round(n), box = (el) => el.getBoundingClientRect();
     const lines = spans.map((s) => r(box(s).width));
     const all = [...spans, ...(document.querySelector('.c span') ? [document.querySelector('.c span')] : [])].map(box);
-    const ub = u ? box(u) : null;
-    return { moved, size: r(size), lines, capsW: document.querySelector('.c span') ? r(box(document.querySelector('.c span')).width) : 0,
+    const ub = u ? box(u) : null, us = u ? box(u.querySelector('span')) : null;
+    return { moved, size: r(size), lines, boxes: all.map((b) => [r(b.left), r(b.top), r(b.right), r(b.bottom)]),
+      handleBox: us ? [r(us.left), r(us.top), r(us.right), r(us.bottom)] : null, capsW: document.querySelector('.c span') ? r(box(document.querySelector('.c span')).width) : 0,
       left: r(Math.min(...all.map((b) => b.left))), right: r(Math.max(...all.map((b) => b.right))),
       top: r(box(t).top), bottom: r(box(t).bottom), handleTop: ub ? r(ub.top) : null, handleBottom: ub ? r(ub.bottom) : null,
       fonts: document.fonts.check(`20px "${getComputedStyle(hl).fontFamily.split(',')[0].replace(/['"]/g, '')}"`) };
   }, { fit, maxPx, grad: gradient(F.stops), tint: flag('tint') ? `rgba(${ink},${F.tint})` : '', shadow: F.shadow, handleShadow: F.handleShadow, centreY, topY: px(L.toolOwn.topY), lowest });
 
   // How busy the photo is (average edge strength, 0 calm) in the band the headline covers and in the other spots.
-  const busy = await pg.evaluate(async (bands) => {
-    const im = document.querySelector('.p img'); await im.decode();
-    const W = 216, H = Math.round(216 * innerHeight / innerWidth), c = document.createElement('canvas'); c.width = W; c.height = H;
-    const s = Math.max(W / im.naturalWidth, H / im.naturalHeight), dw = im.naturalWidth * s, dh = im.naturalHeight * s;
-    const cx = c.getContext('2d'); cx.drawImage(im, (W - dw) / 2, (H - dh) / 2, dw, dh);
-    const d = cx.getImageData(0, 0, W, H).data, Y = (x, y) => { const i = (y * W + x) * 4; return 0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2]; };
-    const f = H / innerHeight;
-    return bands.map(([name, a, b]) => {
-      let sum = 0, n = 0;
-      for (let y = Math.max(1, Math.round(a * f)); y < Math.min(H - 1, Math.round(b * f)); y++) for (let x = 1; x < W - 1; x++) { sum += Math.abs(Y(x + 1, y) - Y(x - 1, y)) + Math.abs(Y(x, y + 1) - Y(x, y - 1)); n++; }
-      return [name, n ? sum / n : 0];
-    });
-  }, (() => {
-    const hgt = m.bottom - m.top, mid = px(L.middleY), top = px(L.toolOwn.topY);
-    const b = [['headline', m.top, m.bottom], ['middle', mid - hgt / 2, mid + hgt / 2], ['top', top, top + hgt]];
-    return b;
-  })());
+  const hgt = m.bottom - m.top, mid = px(L.middleY), topY = px(L.toolOwn.topY);
+  const busy = await pg.evaluate(busyIn, { src: img, w, h, bands: [['headline', m.top, m.bottom], ['middle', mid - hgt / 2, mid + hgt / 2], ['top', topY, topY + hgt]] });
+
+  // Faces: words never on one (the pack: under the face, or colour blocks), and the handle left off one.
+  const wordsOnFace = faceBox.filter((f) => m.boxes.some((b) => overlaps(f, b)));
+  if (wordsOnFace.length) faults.push(`the words land on a face (y ${wordsOnFace[0][1]} to ${wordsOnFace[0][3]}). The pack: ${B.cover.faces.words} Move them under the face with --at=<y>${shape === '9x16' ? ', or run with --blocks' : ''}`);
+  const handleOnFace = m.handleBox && faceBox.some((f) => overlaps(f, m.handleBox));
+  if (handleOnFace) {
+    await pg.evaluate(() => document.querySelector('.u').remove());
+    console.log(`  handle left off: at y ${m.handleBox[1]} it would sit on a face (the pack: ${B.cover.faces.handle})`);
+    m.handleTop = m.handleBottom = null;
+  }
 
   console.log(`${path.basename(out)} (${w}x${h}, ${shape})`);
   console.log(`  fade over the whole image${flag('tint') ? ` plus an even ${Math.round(F.tint * 100)}% tint` : ''}  [the pack's ${F.subject}]`);
   console.log(`  ${words.length} word(s) in the headline${words.length > S.words.upTo ? ` - the pack asks for ${S.words.upTo} or fewer; move the rest to --caps if it reads better` : ''}; ${T.font} ${m.size}px, both lines the same size; line widths ${m.lines.join(' / ')}px (fit ${Math.round(fit)}, biggest ${Math.round(maxPx)}px)`);
   if (caps) console.log(`  capitals line ${CP.font} ${CP.weight} ${px(CP.px)}px, ${m.capsW}px wide`);
   console.log(`  lettering x ${m.left} to ${m.right}, y ${m.top} to ${m.bottom} (--at=${at}${m.moved ? `, moved up ${m.moved}px to keep the handle clear` : ''})${m.handleTop !== null ? `; handle y ${m.handleTop} to ${m.handleBottom}` : '; no handle'}; fonts loaded: ${m.fonts}`);
-  const calm = busy.slice(1).sort((a, b) => a[1] - b[1])[0];
+  console.log(`  faces found: ${faceBox.length}${faceBox.length ? ` (${faceBox.map((f) => `y ${f[1]} to ${f[3]}`).join('; ')})` : ''}`);
+  const calm = calmer(busy);
   console.log(`  how busy the photo is behind the words (lower is calmer): ${busy.map(([n, v]) => `${n} ${v.toFixed(1)}`).join(', ')}`);
-  if (busy[0][1] > calm[1] * 1.3 && busy[0][1] - calm[1] > 4) console.log(`  CHECK: the ${calm[0]} spot is calmer than where the words are. Words never sit on the subject if there is a calm spot: look, and try --at=${calm[0]} if the subject is under them.`);
+  if (calm) console.log(`  CHECK: the ${calm} spot is calmer than where the words are. Words never sit on the subject if there is a calm spot: look, and try --at=${calm} if the subject is under them.`);
 
   const x0 = Math.floor((w - fit) / 2) - 2, x1 = Math.ceil((w + fit) / 2) + 2;
   if (!m.fonts) faults.push('the fonts did not load');

@@ -7,7 +7,7 @@ import { join } from "node:path";
 // board it sits on: Matt merges and renames boards often (2026-11-25), so naming them made every file go stale.
 // This fails if a brand colour or font setting is written back into a tool, a group loses its subject, or a board is named.
 const root = join(__dirname, "../../tools/river-fox");
-const TOOLS = ["text/thumb.cjs", "text/mkcopy2.cjs", "review/review.cjs", "captions/anim.cjs"];
+const TOOLS = ["text/thumb.cjs", "text/blocks.cjs", "text/mkcopy2.cjs", "review/review.cjs", "captions/anim.cjs"];
 const pack = JSON.parse(readFileSync(join(root, "brand-pack.json"), "utf8"));
 
 describe("River Fox tools read brand values from brand-pack.json", () => {
@@ -62,7 +62,7 @@ describe("River Fox tools read brand values from brand-pack.json", () => {
     expect(readFileSync(join(root, "brand-pack.json"), "utf8")).not.toContain('"board"');
     const named = /\bboards? "[^"]+"|"[^"]{3,60}" board\b|canvas board|pack['’]s board|\.dc\.html/;
     const files = [
-      "brand-pack.json", "README.md", "text/thumb.cjs", "text/blocks.cjs", "text/mkcopy2.cjs", "review/review.cjs",
+      "brand-pack.json", "README.md", "text/thumb.cjs", "text/blocks.cjs", "text/photo-check.cjs", "text/mkcopy2.cjs", "review/review.cjs",
       "captions/anim.cjs", "reels/check.py", "story-builder/story.py", "story-builder/stills.py",
       "instagram-preview/refresh.cjs", "instagram-preview/index.html", "instagram-preview/README.md",
     ].map((f) => join(root, f))
