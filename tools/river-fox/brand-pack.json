@@ -111,17 +111,16 @@
       "maxPx": 140,
       "minPx": 76,
       "wordsUpTo": 10,
-      "place": { "firstNoHigherThan": 340, "lastEndsBy": 1420, "personToCamera": "centre the stack between the top of the grid view (safeArea.coverGrid.y0) and halfway down the forehead: over hair and the upper forehead, above the eyes", "rule": "anywhere the photo is calmest, placed by eye (not one fixed height every time, or the grid looks too symmetrical), centred across; never on a face, logo or sign. The grid crops 240px off the top and bottom and the reel icon sits top right, so a block at 240px is cut off." },
+      "place": { "firstNoHigherThan": 340, "lastEndsBy": 1420, "onAFace": "never on the eyes, nose or mouth. Above the eyes if the stack fits between the top line and the eyebrows; else below the chin if it fits between the chin and the foot line; else over the forehead, centred between the top of the grid view (safeArea.coverGrid.y0) and halfway down the forehead (Matt, 25 Nov)", "rule": "anywhere the photo is calmest, placed by eye (not one fixed height every time, or the grid looks too symmetrical), centred across; never on a face, logo or sign. The grid crops 240px off the top and bottom and the reel icon sits top right, so a block at 240px is cut off." },
       "handleAndFade": "the normal cover handle (cover.layout.9x16) and the normal fade (cover.fade)",
       "handleOnFace": "leave it off: if the handle at its fixed spot would land on a face (her chin), the cover has no handle",
             "toolOwn": {
         "faceMargin": 0.15,
         "browMargin": 0.04,
         "reelIconInGrid": { "x0": 880, "x1": 1020, "y0": 60, "y1": 200, "clear": 16 },
-        "shiftFadePx": 340,
-        "shiftBlurPx": 18,
-        "shiftFillFrom": 0.12,
-        "note": "--shift (moving the photo down so a head clears the stack) came from an earlier version of the pack, which no longer shows it, so it is the tool's own option. shiftFadePx and shiftBlurPx: the photo's top fades over 340px into a blurred strip. shiftFillFrom: the top 12% of the photo is what gets stretched into that space, so no ghost of the subject shows. faceMargin widens the face box Apple Vision finds by 15% each way (used for the handle); browMargin: blocks stop 4% of the face's height above the eyebrows. reelIconInGrid: where Instagram's Reel icon sits on a profile-grid tile (measured on the 3:4 crop, 1080 wide), with 16px kept clear around it; the board's 340px line alone does not keep a wide first block off it."
+        "chinMargin": 0.04,
+        "sizeStep": 2,
+        "note": "faceMargin widens the face box Apple Vision finds by 15% each way (used for the handle); browMargin and chinMargin: blocks stay 4% of the face's height above the eyebrows and below the chin. sizeStep: when the fitted size doesn't fit the space, the stack steps down 2px at a time towards the pack's smallest size. reelIconInGrid: where Instagram's Reel icon sits on a profile-grid tile (measured on the 3:4 crop, 1080 wide), with 16px kept clear around it; the pack's top line alone does not keep a wide first block off it."
       }
     }
   },

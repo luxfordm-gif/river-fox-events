@@ -1,7 +1,7 @@
 // Thumbnail / cover: one big headline (one or two lines), an optional small capitals line, and the small handle.
 //   node thumb.cjs <photo> <out> <w> <h> "Line1" ["Line2"] [--caps="small capitals line"] [--at=middle|top|<y>]
 //                  [--italic] [--tint] [--no-handle]
-//   node thumb.cjs <photo> <out> 1080 1920 "Line1" "Line2" ["Line3"] --blocks [--at=top|lower] [--shift=<px>]
+//   node thumb.cjs <photo> <out> 1080 1920 "Line1" "Line2" ["Line3"] --blocks [--at=face|top|middle|lower|<y>] [--px=<size>]
 //                  the colour-block cover, for when the words would land on a face: see blocks.cjs
 //
 // No brand value is written in this file. Every size, colour, font setting and position comes from
