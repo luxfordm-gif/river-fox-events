@@ -361,11 +361,9 @@ svg { display: block; }
 </template>
 
 <script>
-// Safe areas from tools/river-fox/brand-pack.json (board "Safe areas"), at a 1080 x 1920 frame.
-const SAFE = {
-  reel:  { x0: 70, x1: 940, y0: 240, y1: 1450, label: "Reel safe area" },
-  story: { x0: 70, x1: 940, y0: 250, y1: 1670, label: "Story safe area" },
-};
+// Safe areas come from tools/river-fox/brand-pack.json (board "Safe areas"): refresh.cjs copies them into feed.json,
+// so this page never holds a brand value of its own. Until the feed loads, no lines are drawn.
+const SAFE_LABEL = { reel: "Reel safe area", story: "Story safe area" };
 
 const S = { feed: null, queue: [], tab: "grid", opts: { next: true, safe: false, app: "auto", redo: "new" }, db: null, assets: null, pendingFile: null, pendingKind: null, story: null };
 const $ = (s, r = document) => r.querySelector(s);
@@ -521,10 +519,15 @@ function closeFeed() {
 
 /* ---------- reels ---------- */
 function safeBox(kind) {
-  const s = SAFE[kind]; const box = el("div", "safe"); const i = el("i");
-  i.style.left = (s.x0 / 1080) * 100 + "%"; i.style.right = (1 - s.x1 / 1080) * 100 + "%";
-  i.style.top = (s.y0 / 1920) * 100 + "%"; i.style.bottom = (1 - s.y1 / 1920) * 100 + "%";
-  i.append(el("span", "", s.label)); box.append(i); return box;
+  const box = el("div", "safe"); box.dataset.safe = kind; fillSafe(box); return box;
+}
+function fillSafe(box) {
+  const sa = S.feed?.safe; const s = sa && sa[box.dataset.safe]; box.replaceChildren();
+  if (!s) return;
+  const i = el("i"), W = sa.frame.w, H = sa.frame.h;
+  i.style.left = (s.x0 / W) * 100 + "%"; i.style.right = (1 - s.x1 / W) * 100 + "%";
+  i.style.top = (s.y0 / H) * 100 + "%"; i.style.bottom = (1 - s.y1 / H) * 100 + "%";
+  i.append(el("span", "", SAFE_LABEL[box.dataset.safe])); box.append(i);
 }
 function openReels(start) {
   const p = S.feed?.profile || {};
@@ -767,7 +770,7 @@ renderQueue();
 
 fetch("feed.json", { cache: "no-cache" })
   .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then((d) => { S.feed = d; renderProfile(); renderQueue(); })
+  .then((d) => { S.feed = d; document.querySelectorAll(".safe[data-safe]").forEach(fillSafe); renderProfile(); renderQueue(); })
   .catch(() => { S.feedError = "Laura's posts didn't load. Pull to reload, or ask Claude to refresh the Instagram preview."; renderGrid(); });
 
 (async () => {
