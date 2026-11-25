@@ -1,9 +1,11 @@
 // Thumbnail / cover: one big headline (one or two lines), an optional small capitals line, and the small handle.
 //   node thumb.cjs <photo> <out> <w> <h> "Line1" ["Line2"] [--caps="small capitals line"] [--at=middle|top|<y>]
 //                  [--italic] [--tint] [--no-handle]
+//   node thumb.cjs <photo> <out> 1080 1920 "Line1" "Line2" ["Line3"] --blocks [--at=face|top|middle|lower|<y>] [--px=<size>]
+//                  the colour-block cover, for when the words would land on a face: see blocks.cjs
 //
 // No brand value is written in this file. Every size, colour, font setting and position comes from
-// ../brand-pack.json, which names the Brand Pack board each one was copied from. To change the look, Matt changes
+// ../brand-pack.json, where each group says what it is about. To change the look, Matt changes
 // the pack; then that file changes to match.
 //
 // What it does, and prints every time:
@@ -23,6 +25,9 @@ const path = require('path');
 const fs = require('fs');
 const puppeteer = require(path.join(__dirname, '../../photo-grade/node_modules/puppeteer-core'));
 const B = require('../brand-pack.json');
+
+// The colour-block cover (the pack's cover rules, for words that would land on a face) lives in blocks.cjs; --blocks hands over to it.
+if (process.argv.includes('--blocks')) { require('./blocks.cjs'); return; }
 
 const argv = process.argv.slice(2);
 const flag = (n) => { const a = argv.find((x) => x === `--${n}` || x.startsWith(`--${n}=`)); return a === undefined ? undefined : a.includes('=') ? a.split('=').slice(1).join('=') : true; };
@@ -119,7 +124,7 @@ ${handle ? `<div class=u><span>${B.handle.text}</span></div>` : ''}</div>`;
   })());
 
   console.log(`${path.basename(out)} (${w}x${h}, ${shape})`);
-  console.log(`  fade over the whole image${flag('tint') ? ` plus an even ${Math.round(F.tint * 100)}% tint` : ''}  [${F.board}]`);
+  console.log(`  fade over the whole image${flag('tint') ? ` plus an even ${Math.round(F.tint * 100)}% tint` : ''}  [the pack's ${F.subject}]`);
   console.log(`  ${words.length} word(s) in the headline${words.length > S.words.upTo ? ` - the pack asks for ${S.words.upTo} or fewer; move the rest to --caps if it reads better` : ''}; ${T.font} ${m.size}px, both lines the same size; line widths ${m.lines.join(' / ')}px (fit ${Math.round(fit)}, biggest ${Math.round(maxPx)}px)`);
   if (caps) console.log(`  capitals line ${CP.font} ${CP.weight} ${px(CP.px)}px, ${m.capsW}px wide`);
   console.log(`  lettering x ${m.left} to ${m.right}, y ${m.top} to ${m.bottom} (--at=${at}${m.moved ? `, moved up ${m.moved}px to keep the handle clear` : ''})${m.handleTop !== null ? `; handle y ${m.handleTop} to ${m.handleBottom}` : '; no handle'}; fonts loaded: ${m.fonts}`);

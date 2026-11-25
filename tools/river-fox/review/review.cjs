@@ -4,8 +4,8 @@
 // Run: node tools/river-fox/review/review.cjs '<JSON list of cards>'
 //   {"size":"instagram","quote":"...","name":"Sarah, Worplesdon","out":"post.png"}
 //   {"size":"google","quote":"...","name":"Sarah, Worplesdon","out":"photo.png"}
-// No brand value is written in this file: sizes, spots, colours and type come from ../brand-pack.json, which names the
-// Brand Pack board each one was copied from.
+// No brand value is written in this file: sizes, spots, colours and type come from ../brand-pack.json (the pack's
+// rules for review cards).
 // The words: a short review is used whole. A long one (over the pack's character count) must be given as an excerpt:
 // whole sentences, word for word, up to the pack's word count, and the SAME excerpt on both cards. The tool refuses a
 // long quote over that word count rather than set it small: every card uses the one quote size.
@@ -27,7 +27,7 @@ const cards = JSON.parse(process.argv[2]).map((given) => {
   const text = String(c.quote).replace(/&nbsp;/g, ' ').trim();
   const words = text.split(/\s+/).length;
   const long = text.length > R.shortUpToChars;
-  console.log(`${c.out}: ${size} ${c.w}x${c.h}, ${text.length} characters, ${words} words: ${long ? 'a long review, so this must be the excerpt' : 'a short review, used whole'}  [${R.board}]`);
+  console.log(`${c.out}: ${size} ${c.w}x${c.h}, ${text.length} characters, ${words} words: ${long ? 'a long review, so this must be the excerpt' : 'a short review, used whole'}  [the pack's ${R.subject}]`);
   if (long && words > R.excerptUpToWords) {
     console.error(`${c.out}: NOT WRITTEN, ${words} words. A long review uses an excerpt of whole sentences, word for word, up to about ${R.excerptUpToWords} words, the same on both cards.`);
     refused = true; return null;

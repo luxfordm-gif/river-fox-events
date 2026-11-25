@@ -4,8 +4,8 @@
 // becomes "looove" and its letters arrive one by one across the hold. Layout is fixed from the first frame, so nothing jumps.
 const puppeteer = require(require('path').join(__dirname,'../../photo-grade/node_modules/puppeteer-core'));
 const fs = require('fs');
-// The caption looks (font, weight, size, box colours, corner) come from ../brand-pack.json, which names the Brand Pack
-// canvas board they were copied from. The timings below are build detail and are not on the canvas.
+// The caption looks (font, weight, size, box colours, corner) come from ../brand-pack.json, under the pack's
+// rules for video captions. The timings below are build detail and are not on the canvas.
 const B = require('../brand-pack.json');
 const K = B.captions, WHITE = B.colour.warmWhite;
 const [style, dir, secs = '6.5'] = process.argv.slice(2);

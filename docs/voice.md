@@ -60,4 +60,4 @@ Laura's own voice, from all 324 of her Instagram posts (Matt, 2026-11-21). In he
 - Never on any channel: florist or planner words, the old business name. (Hashtags are not a voice rule: they come only from the Hashtag bank sheet.)
 - Read her recent captions before writing new ones, and match how she writes. Laura's own copy stays as she wrote it.
 
-Caption layout (line breaks) and hashtags are part of the Brand Pack's "Captions and hashtags" board and the Hashtag bank sheet, not this file.
+Caption layout (line breaks) and hashtags are in the Brand Pack's caption rules and the Hashtag bank sheet, not this file.

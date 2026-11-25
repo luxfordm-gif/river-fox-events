@@ -9,8 +9,8 @@ BASE='html,body{margin:0;width:1080px;height:1920px;background:transparent;overf
 def shot(name,body,css):
     p=os.path.join(W,name+'.html'); open(p,'w').write('<!doctype html><html><head><meta charset="utf-8">%s<style>%s%s</style></head><body>%s</body></html>'%(FONTS,BASE,css,body))
     subprocess.run([CH,'--headless=new','--disable-gpu','--hide-scrollbars','--default-background-color=00000000','--force-device-scale-factor=1','--window-size=1080,1920','--virtual-time-budget=8000','--screenshot=%s/%s.png'%(W,name),'file://'+p],stderr=subprocess.DEVNULL); return os.path.join(W,name+'.png')
-# Headline and closing text are made by ../text/mkcopy2.cjs, the one tool that follows the Brand Pack's board
-# "Headline and closing text on video" (by way of ../brand-pack.json). No type is set here. It refuses text outside the
+# Headline and closing text are made by ../text/mkcopy2.cjs, the one tool that follows the Brand Pack's rules
+# for headline and closing text on video (by way of ../brand-pack.json). No type is set here. It refuses text outside the
 # safe area, so a run stops rather than file one that breaks the pack.
 MK=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','text','mkcopy2.cjs')
 def mk(name,mode,args):
