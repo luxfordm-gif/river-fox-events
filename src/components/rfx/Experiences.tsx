@@ -155,7 +155,7 @@ const ExpCard = ({
       <div
         ref={wrap}
         className={`exp-img-wrap ph rounded-large ${it.tone ?? ""} rfx-svc-img ${compact ? "rfx-svc-img--compact" : ""} relative overflow-hidden`}
-        style={{ aspectRatio: compact ? "3/2" : "var(--service-photo-ratio)" }}
+        style={{ aspectRatio: compact ? "var(--service-photo-ratio-compact)" : "var(--service-photo-ratio)" }}
       >
         {/*
           ALT TEXT: describe what is in the photo (max 125 characters, no

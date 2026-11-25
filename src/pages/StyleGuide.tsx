@@ -389,6 +389,8 @@ const SPACING_TOKENS = [
   "--gap-service-cards",
   // Services hub (2026-11-24)
   "--gap-service-rows",
+  // One photo shape on /services/ (2026-11-25)
+  "--service-photo-ratio-compact",
 ];
 
 /* A spacing token's value at a width, in px: references to other tokens are

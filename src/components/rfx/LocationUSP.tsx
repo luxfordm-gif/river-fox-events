@@ -57,11 +57,11 @@ const firstSentence = (text: string) => text.match(/^.*?[.?!](?=\s|$)/)?.[0] ?? 
 const LocationUSP = ({ cityName, body, noIntro = false }: LocationUSPProps = {}) => {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [shown, setShown] = useState<boolean[]>(() => TRUST_POINTS.map(() => false));
-  // Side by side from 1024px up: stagger them. Stacked on phones and tablets: each fades as it scrolls in.
+  // Four across from 1280px up: stagger them. In two columns or stacked: each fades as it scrolls in.
   const [inRow, setInRow] = useState(false);
 
   useEffect(() => {
-    setInRow(window.matchMedia("(min-width: 1024px)").matches);
+    setInRow(window.matchMedia("(min-width: 1280px)").matches);
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -111,7 +111,7 @@ const LocationUSP = ({ cityName, body, noIntro = false }: LocationUSPProps = {})
         )}
 
         <div
-          className="text-to-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 cards-gap"
+          className="text-to-content grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 cards-gap"
         >
           {TRUST_POINTS.map(({ icon, label, body: pointBody }, i) => {
             return (
