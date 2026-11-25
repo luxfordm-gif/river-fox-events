@@ -46,6 +46,7 @@
     --accent-dark: 12 32% 54%;         /* Accent Dark · italic words in headings, stars, step numbers (#AF7364: darkened from #C39083 so it passes 3:1 contrast on every background, Matt 2026-11-08) */
     --announcement-fill: 155 76% 8%;   /* Announcement Fill · the announcement bar's background, the same deep pine as the floating Christmas card; cream text on it is above 15:1 (Matt 2026-11-17) */
     --service-photo-ratio: 1 / 1;      /* Service photo shape · the photo on each services card: square from tablet up, 20% shallower than the 4 / 5 it was (the section read too deep on tablets; Matt 2026-11-20). Phones have their own, 5 / 4, set below */
+    --service-photo-ratio-compact: 3 / 2; /* Short service photo shape · the smaller cards on /services/ (tablet up), and on tablets (768-1366) the main three there too, so the page has one shape (Matt, 2026-11-25) */
     --announcement-height: 34px;       /* Announcement bar height · the strip pinned to the top of the screen on phones, with the nav directly under it (AnnouncementBar.tsx; was 44, then 40 then 36, Matt 2026-11-17) */
     --announcement-pad-x: var(--gap-stack);   /* Announcement bar padding · space either side of its line, 16px */
 
@@ -1223,6 +1224,15 @@
   /* Why-us item: icon, title and text sit on three rows shared with its neighbours (subgrid), so the texts
      start level even when one title wraps. The grid's own gap is dropped inside the item. */
   .usp-item { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; justify-items: center; align-content: start; }
+  /* Four across (1280px up): no side padding, the card gap already parts them, so
+     every title fits on one line. Below 1280 they sit two by two (Matt, 2026-11-25:
+     on iPads in landscape all four titles wrapped). */
+  @media (min-width: 1280px) { .usp-item { padding-inline: 0; } }
+  /* /services/ on tablets: the main three cards take the shorter shape of the
+     smaller cards below them, so the page has one photo shape (Matt, 2026-11-25). */
+  @media (min-width: 768px) and (max-width: 1366px) {
+    #services-list { --service-photo-ratio: var(--service-photo-ratio-compact); }
+  }
   .button-trust-gap { gap: var(--gap-button-trust); }
   .photos-gap { gap: var(--gap-photos); }
   .photos-gap-top { margin-top: var(--gap-photos); }
