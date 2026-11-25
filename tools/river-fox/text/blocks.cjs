@@ -3,7 +3,7 @@
 //   node thumb.cjs <photo> <out> 1080 1920 "Line1" "Line2" ["Line3"] --blocks [--at=top|middle|lower|forehead|<y>] [--between=<y0>,<y1>] [--shift=<px>] [--px=<size>] [--no-handle]
 //
 // No brand value is written in this file: every size, colour and position comes from ../brand-pack.json
-// (cover.blocks, board "Covers", Part 3), plus the normal cover handle and fade.
+// (cover.blocks: the pack's cover rules for colour blocks), plus the normal cover handle and fade.
 //   look   - one pink block per line, hugging the words; line 1 upright, the rest italic, all the same size.
 //   size   - the widest block is fitted to the pack's width, between its smallest and biggest sizes.
 //   forehead - --at=forehead (a person looking to camera): the stack centred between the top of the grid view and halfway
@@ -14,7 +14,7 @@
 //            centred on the frame), --at=lower (last block ending on the foot line) or --at=<y> (first block's top).
 //   px     - --px=<size> sets the size by hand (Matt's call for one cover); it prints what the pack's fit would give.
 //   shift  - --shift=<px> moves the photo down that far so a head clears the top blocks, the top of the photo fading into
-//            a blurred copy of itself, as the board's first example does.
+//            a blurred copy of itself, as an earlier version of the pack showed.
 //   face   - finds every face with Apple Vision and will not write a cover with a block on a face (ALLOW_UNSAFE=1 to force),
 //            and leaves the handle off when its fixed spot would land on a face, as the pack says.
 // It prints the size, each block's box, the face boxes, and the space to the handle.
@@ -140,7 +140,7 @@ ${handle ? `<div class=u>${B.handle.text}</div>` : ''}</div>`;
 
   const top = Math.min(...r.boxes.map((b) => b[1])), bottom = Math.max(...r.boxes.map((b) => b[3]));
   const left = Math.min(...r.boxes.map((b) => b[0])), right = Math.max(...r.boxes.map((b) => b[2]));
-  console.log(`${path.basename(out)} (${w}x${h}, colour blocks)  [${K.board}]`);
+  console.log(`${path.basename(out)} (${w}x${h}, colour blocks)  [the pack's ${K.subject}]`);
   console.log(`  ${words.length} words, ${lines.length} block(s); ${K.font} ${r.size}px${handSize ? ` set by hand (the pack's fit would give ${r.packSize}px)` : ''} (fit ${px(K.fitWidth)}, ${px(K.minPx)} to ${px(K.maxPx)}px), line 1 upright, the rest italic`);
   r.boxes.forEach((b, i) => console.log(`  block ${i + 1}: x ${b[0]} to ${b[2]} (${b[2] - b[0]}px wide), y ${b[1]} to ${b[3]}`));
   console.log(`  --at=${at}: blocks y ${top} to ${bottom} (the pack: first block no higher than ${minTop}, last ending by ${maxEnd})${shift ? `; photo moved down ${px(shift)}px` : ''}`);

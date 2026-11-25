@@ -1,8 +1,8 @@
 {
-  "_about": "Every brand value the River Fox tools draw with, in one place. Each block names the Brand Pack board it was copied from ('board'). The live Brand Pack artifact is the source: at the start of every social job read the boards the job needs and, if one has changed, change the matching block here before building. Never write a version of the pack here or anywhere else. Values marked 'toolOwn' are not written on the pack; they are how the tool applies a rule the pack leaves open. Never write a brand value into a tool or the skill. Pixel values are at a 1080-wide frame unless a block says otherwise.",
+  "_about": "Every brand value the River Fox tools draw with, in one place. Each block says what it is about ('subject': covers, review cards, safe areas...), never which board it sits on, because Matt reorganises the boards often. The live Brand Pack artifact is the source: at the start of every social job read the pack's rules for what the job makes and, if a value has changed, change the matching block here before building. Never write a version of the pack here or anywhere else. Values marked 'toolOwn' are not written on the pack; they are how the tool applies a rule the pack leaves open. Never write a brand value into a tool or the skill. Pixel values are at a 1080-wide frame unless a block says otherwise.",
   "canvas": "https://claude.ai/artifact/RyuZawfyZziQPy6xGJ5hhF",
   "colour": {
-    "board": "Sound and colour; Brand sheet",
+    "subject": "colour",
     "warmWhite": "#FCFBF8",
     "logoPink": "#F7EEE9",
     "ink": "#191C17",
@@ -10,14 +10,14 @@
     "inkGrey": "#494E46"
   },
   "handle": {
-    "board": "Covers (Part 1, Part 2); Headline and closing text on video",
+    "subject": "the handle on covers and video",
     "text": "@RIVERFOX_EVENTS",
     "font": "DM Sans",
     "weight": 500,
     "tracking": "0.14em"
   },
   "safeArea": {
-    "board": "Safe areas",
+    "subject": "safe areas",
     "frame": { "w": 1080, "h": 1920 },
     "reel": { "x0": 70, "x1": 940, "y0": 240, "y1": 1450 },
     "story": { "x0": 70, "x1": 940, "y0": 250, "y1": 1670 },
@@ -26,7 +26,7 @@
   },
   "cover": {
     "type": {
-      "board": "Covers (Part 1, The rule)",
+      "subject": "covers: the headline type",
       "font": "Instrument Serif",
       "weight": 400,
       "tracking": "-0.02em",
@@ -34,7 +34,7 @@
       "line2": "italic, the same size as line 1"
     },
     "size": {
-      "board": "Covers (Part 1, The rule); Brand sheet (02 Type)",
+      "subject": "covers: the headline size",
       "fitWidth": { "9x16": 980, "3x4": 888, "4x5": 888 },
       "maxPx": 310,
       "singleWordEndsWith": ".",
@@ -45,7 +45,7 @@
       }
     },
     "capsLine": {
-      "board": "Covers (Part 1, The rule); Twenty reel cover ideas",
+      "subject": "covers: the small capitals line",
       "font": "DM Sans",
       "weight": 700,
       "px": 62,
@@ -55,7 +55,7 @@
       "shadow": "0 1px 8px rgba(25,28,23,0.55)"
     },
     "fade": {
-      "board": "Covers (Part 2, Fade and photos)",
+      "subject": "covers: the soft fade",
       "stops": [[28, 0], [40, 0.043], [52, 0.15], [64, 0.29], [76, 0.43], [88, 0.537], [100, 0.58]],
       "tint": 0.25,
       "shadow": "0 2px 10px rgba(25,28,23,0.45)",
@@ -63,7 +63,7 @@
     },
     "layout": {
       "9x16": {
-        "board": "Covers (Part 1, example 1; Part 2, Where the hook goes)",
+        "subject": "covers: Reel cover layout",
         "middleY": 1200,
         "hookTopMin": 240,
         "hookBottomMax": 1400,
@@ -74,7 +74,7 @@
         "toolOwn": { "topY": 300 }
       },
       "3x4": {
-        "board": "Covers (Part 1, example 3); Carousel · Cover slide",
+        "subject": "covers: Instagram post cover layout",
         "middleY": 880,
         "hookTopMin": 96,
         "handleFromBottom": 238,
@@ -83,7 +83,7 @@
         "toolOwn": { "topY": 200 }
       },
       "4x5": {
-        "board": "Covers (Part 1, example 4, drawn 1440 wide: centre 1100, handle 297 up at 35px)",
+        "subject": "covers: Facebook post cover layout (the pack draws it 1440 wide)",
         "middleY": 825,
         "hookTopMin": 96,
         "handleFromBottom": 223,
@@ -93,7 +93,7 @@
       }
     },
     "blocks": {
-      "board": "Covers (Part 3, Colour blocks for faces and busy spots)",
+      "subject": "covers: colour blocks for faces and busy spots",
       "when": "Only when the words of a normal cover would land on a face or a busy spot. A one-word hook keeps the normal big headline.",
       "shapes": ["9x16"],
       "font": "Instrument Serif",
@@ -121,12 +121,12 @@
         "shiftFadePx": 340,
         "shiftBlurPx": 18,
         "shiftFillFrom": 0.12,
-        "note": "--shift (moving the photo down so a head clears the stack) came from an earlier version of the board; the live board no longer shows it, so it is the tool's own option. shiftFadePx and shiftBlurPx: the photo's top fades over 340px into a blurred strip. shiftFillFrom: the top 12% of the photo is what gets stretched into that space, so no ghost of the subject shows. faceMargin widens the face box Apple Vision finds by 15% each way (used for the handle); browMargin: blocks stop 4% of the face's height above the eyebrows. reelIconInGrid: where Instagram's Reel icon sits on a profile-grid tile (measured on the 3:4 crop, 1080 wide), with 16px kept clear around it; the board's 340px line alone does not keep a wide first block off it."
+        "note": "--shift (moving the photo down so a head clears the stack) came from an earlier version of the pack, which no longer shows it, so it is the tool's own option. shiftFadePx and shiftBlurPx: the photo's top fades over 340px into a blurred strip. shiftFillFrom: the top 12% of the photo is what gets stretched into that space, so no ghost of the subject shows. faceMargin widens the face box Apple Vision finds by 15% each way (used for the handle); browMargin: blocks stop 4% of the face's height above the eyebrows. reelIconInGrid: where Instagram's Reel icon sits on a profile-grid tile (measured on the 3:4 crop, 1080 wide), with 16px kept clear around it; the board's 340px line alone does not keep a wide first block off it."
       }
     }
   },
   "videoText": {
-    "board": "Headline and closing text on video; Stories, Reels and posts from video",
+    "subject": "headline and closing text on video",
     "font": "Instrument Serif",
     "weight": 400,
     "tracking": "-0.02em",
@@ -160,14 +160,14 @@
     }
   },
   "captions": {
-    "board": "Video captions, three styles",
+    "subject": "video captions: the three styles",
     "box": { "font": "Inter", "weight": 600, "px": 60, "radius": 4, "fill": "#F7EEE9", "text": "#191C17" },
     "wild": { "font": "Fraunces", "weight": 900, "soft": 100, "px": 110 },
     "classic": { "font": "Fraunces", "weight": 500, "px": 106 },
-    "stress": { "board": "How captions move", "scale": 1.3 }
+    "stress": { "subject": "video captions: how they move", "scale": 1.3 }
   },
   "review": {
-    "board": "Review post, short and long rules; Google Business review, short and long rules",
+    "subject": "review cards",
     "font": "Fraunces",
     "weight": 400,
     "tracking": "-0.015em",

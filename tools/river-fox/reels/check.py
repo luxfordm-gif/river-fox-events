@@ -11,7 +11,7 @@ It prints a report and writes one picture (the sheet) to read before filing:
 --at adds frames at those seconds (use the moments text is on screen). --story uses the Stories safe area.
 Exits 1 if anything failed, so a build script can stop on it. Needs ffmpeg and numpy.
 
-Safe area, on a 1080x1920 frame: read from ../brand-pack.json (the Brand Pack canvas's Safe areas board)."""
+Safe area, on a 1080x1920 frame: read from ../brand-pack.json (the pack's safe areas)."""
 import argparse, json, os, re, subprocess, sys
 import numpy as np
 
@@ -24,7 +24,7 @@ ap.add_argument('--out')
 ap.add_argument('--jump', type=float, default=0.5, help='how much of the picture must change between two frames to count as a cut (0 to 1)')
 a = ap.parse_args()
 
-# The safe area comes from ../brand-pack.json (the Brand Pack canvas's Safe areas board), never from numbers written here.
+# The safe area comes from ../brand-pack.json (the pack's safe areas), never from numbers written here.
 _S = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'brand-pack.json')))['safeArea']['story' if a.story else 'reel']
 X0, X1, Y0, Y1 = _S['x0'], _S['x1'], _S['y0'], _S['y1']
 MIN_SHOT = 15          # frames; anything shorter is a stray frame

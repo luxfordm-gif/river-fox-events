@@ -28,8 +28,8 @@ def wrap(t,maxc=26):
     return best[1] if best else t
 def caption(name,text):
     text=wrap(text); return shot(name,'<div class="w">%s</div>'%''.join('<div class="b">%s</div>'%html.escape(l) for l in text.split('|')),CAP_CSS)
-# Headline and closing text are made by ../text/mkcopy2.cjs, the one tool that follows the Brand Pack's board
-# "Headline and closing text on video" (by way of ../brand-pack.json). No type is set here. It refuses text outside the
+# Headline and closing text are made by ../text/mkcopy2.cjs, the one tool that follows the Brand Pack's rules
+# for headline and closing text on video (by way of ../brand-pack.json). No type is set here. It refuses text outside the
 # safe area, so a run stops rather than file one that breaks the pack.
 MK=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','text','mkcopy2.cjs')
 def mk(name,mode,args):
@@ -500,7 +500,7 @@ subprocess.run(['ffmpeg','-v','error','-y','-i',cfg['out'],'-c:v','libx264','-pr
 # Cover still (optional): "cover": {"clip":"c03.mp4","t":19.9,"line1":"Making a","line2":"garland.","caps":"...","at":"middle","out":"cover.jpg"}
 c=cfg.get('cover')
 if c:
-    # The cover is made by ../text/thumb.cjs, the one cover tool (it follows the Brand Pack's cover boards).
+    # The cover is made by ../text/thumb.cjs, the one cover tool (it follows the Brand Pack's cover rules).
     still=os.path.join(W,'cover_still.jpg')
     subprocess.run(['ffmpeg','-v','error','-y','-ss',str(c['t']),'-i',os.path.join(clips,c['clip']),'-frames:v','1','-vf',V,'-q:v','2',still],check=True)
     TH=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','text','thumb.cjs')

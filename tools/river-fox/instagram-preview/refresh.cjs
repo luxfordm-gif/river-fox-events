@@ -147,9 +147,9 @@ async function download(url, file) {
   const keep = new Set(posts.map((p) => `${p.id}.jpg`));
   for (const dir of [FEED, THUMBS]) for (const f of fs.readdirSync(dir)) if (!keep.has(f)) fs.rmSync(path.join(dir, f));
 
-  // The safe-area lines the page can draw over Reels and Stories, from the one brand config (board "Safe areas").
+  // The safe-area lines the page can draw over Reels and Stories, from the one brand config (the pack's safe areas).
   const pack = JSON.parse(fs.readFileSync(path.join(HERE, "../brand-pack.json"), "utf8")).safeArea;
-  const safe = { board: pack.board, frame: pack.frame, reel: pack.reel, story: pack.story };
+  const safe = { subject: pack.subject, frame: pack.frame, reel: pack.reel, story: pack.story };
   const feed = { copiedAt: new Date().toISOString(), profile, safe, posts };
   fs.writeFileSync(path.join(BUILD, "feed.json"), JSON.stringify(feed));
   console.log(report.join("\n"));

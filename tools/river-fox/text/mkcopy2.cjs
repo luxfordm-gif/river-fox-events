@@ -2,13 +2,13 @@
 //   node mkcopy2.cjs hl-two out.png "A Worplesdon" "welcome."
 //   node mkcopy2.cjs finale out.png "Ta-da." "Christmas has arrived." "A garland arch and wreath"
 //   node mkcopy2.cjs handle out.png                          (HANDLETOP=300 on video: the handle sits at the top)
-// The look follows the pack's board "Headline and closing text on video": the cover face, line 1 upright and line 2
+// The look follows the pack's rules for headline and closing text on video: the cover face, line 1 upright and line 2
 // italic at the same size, fitted to WIDTH (default from ../brand-pack.json, inside the pack's width limit for text on
 // video); the closing text is one large word or short phrase, a smaller italic line and the small capitals line. After
 // drawing, it measures where the lettering really sits and refuses to write a file outside the Instagram safe area
 // (Reels, or Stories with STORY=1). ALLOW_UNSAFE=1 writes it anyway and says so. HEADTOP moves the headline's centre and
 // FINTOP the closing text's top: put words on a calm part of the picture, never on Laura's face or the piece.
-// No brand value is written in this file: everything comes from ../brand-pack.json, which names the board for each.
+// No brand value is written in this file: everything comes from ../brand-pack.json, where each group says what it is about.
 const puppeteer = require(require('path').join(__dirname,'../../photo-grade/node_modules/puppeteer-core'));
 const B = require('../brand-pack.json');
 const V = B.videoText, HL = V.headline, FN = V.finale, WHITE = B.colour.warmWhite, CAPS = V.capsLine;

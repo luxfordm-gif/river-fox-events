@@ -2,7 +2,7 @@
 // cover (9:16), from a job's exports.
 //
 // The look is NOT set here. This hands each photo to tools/river-fox/text/thumb.cjs, the one cover tool, which takes
-// every value from tools/river-fox/brand-pack.json (the Brand Pack's cover boards). If the pack changes, that file
+// every value from tools/river-fox/brand-pack.json (the Brand Pack's cover rules). If the pack changes, that file
 // changes, never this one.
 //
 //   npm run overlay -- --job=<export folder> --hook1="A Worplesdon" [--hook2="welcome."] [--caps="small capitals line"] \
