@@ -92,6 +92,15 @@
         "toolOwn": { "topY": 200 }
       }
     },
+    "faces": {
+      "subject": "covers: faces under the words and the handle",
+      "words": "Words would land on a face? Put the hook under the face, or use colour blocks instead (Reel covers only).",
+      "handle": "Leave the handle off when it would land on a face.",
+      "toolOwn": {
+        "faceMargin": 0.15,
+        "note": "faceMargin widens the face box Apple Vision finds by 15% each way. A normal cover's words and every cover's handle keep out of that box; colour blocks have their own, tighter rule (cover.blocks.place.onAFace)."
+      }
+    },
     "blocks": {
       "subject": "covers: colour blocks for faces and busy spots",
       "when": "Only when the words of a normal cover would land on a face or a busy spot. A one-word hook keeps the normal big headline.",
@@ -113,14 +122,12 @@
       "wordsUpTo": 10,
       "place": { "firstNoHigherThan": 340, "lastEndsBy": 1420, "onAFace": "never on the eyes, nose or mouth. Above the eyes if the stack fits between the top line and the eyebrows; else below the chin if it fits between the chin and the foot line; else over the forehead, centred between the top of the grid view (safeArea.coverGrid.y0) and halfway down the forehead (Matt, 25 Nov)", "rule": "anywhere the photo is calmest, placed by eye (not one fixed height every time, or the grid looks too symmetrical), centred across; never on a face, logo or sign. The grid crops 240px off the top and bottom and the reel icon sits top right, so a block at 240px is cut off." },
       "handleAndFade": "the normal cover handle (cover.layout.9x16) and the normal fade (cover.fade)",
-      "handleOnFace": "leave it off: if the handle at its fixed spot would land on a face (her chin), the cover has no handle",
-            "toolOwn": {
-        "faceMargin": 0.15,
+      "toolOwn": {
         "browMargin": 0.04,
         "reelIconInGrid": { "x0": 880, "x1": 1020, "y0": 60, "y1": 200, "clear": 16 },
         "chinMargin": 0.04,
         "sizeStep": 2,
-        "note": "faceMargin widens the face box Apple Vision finds by 15% each way (used for the handle); browMargin and chinMargin: blocks stay 4% of the face's height above the eyebrows and below the chin. sizeStep: when the fitted size doesn't fit the space, the stack steps down 2px at a time towards the pack's smallest size. reelIconInGrid: where Instagram's Reel icon sits on a profile-grid tile (measured on the 3:4 crop, 1080 wide), with 16px kept clear around it; the pack's top line alone does not keep a wide first block off it."
+        "note": "browMargin and chinMargin: blocks stay 4% of the face's height above the eyebrows and below the chin. sizeStep: when the fitted size doesn't fit the space, the stack steps down 2px at a time towards the pack's smallest size. reelIconInGrid: where Instagram's Reel icon sits on a profile-grid tile (measured on the 3:4 crop, 1080 wide), with 16px kept clear around it; the pack's top line alone does not keep a wide first block off it."
       }
     }
   },

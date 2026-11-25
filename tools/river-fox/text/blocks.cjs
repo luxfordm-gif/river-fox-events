@@ -14,15 +14,18 @@
 //            The eyebrows come from Vision; the hairline is where the skin above them gives way to darker hair.
 //   place  - with no face, anywhere the photo is calm, inside the pack's band (first block no higher than its top line,
 //            last block ending by its foot line): --at=top, --at=middle, --at=lower, --at=<y> (first block's top), or
-//            --between=<y0>,<y1> to centre it between two lines. Place each cover by eye, not one height every time.
+//            --between=<y0>,<y1> to centre it between two lines. There is no default: the pack says place each cover by
+//            eye, not one fixed height every time, so with no face and no spot given it refuses and asks for one.
+//   busy   - prints how busy the photo is under the blocks and in the other spots (lower is calmer), and says when a
+//            clearly calmer spot exists (the pack: wherever the photo is calmest).
 //   px     - --px=<size> sets the size by hand (Matt's call for one cover); it prints what the pack's fit would give.
 // The photo is never moved, extended or blurred (the pack's cover rules: photos stay full bleed).
 // It refuses a block on the eyes, nose or mouth, above the top line, below the foot line or into the Reel icon in the
-// grid (ALLOW_UNSAFE=1 to force), and leaves the handle off when its fixed spot would land on a face, as the pack says.
+// grid (ALLOW_UNSAFE=1 to force), and leaves the handle off when its fixed spot would land on a face (cover.faces).
 // It prints the size, each block's box, the face and the space it found above and below it, and the space to the handle.
 const path = require('path');
 const fs = require('fs');
-const { execFileSync } = require('child_process');
+const { faces, photoSize, coverFit, faceBoxes: toFaceBoxes, overlaps, busy, calmer } = require('./photo-check.cjs');
 const puppeteer = require(path.join(__dirname, '../../photo-grade/node_modules/puppeteer-core'));
 const B = require('../brand-pack.json');
 
@@ -33,7 +36,7 @@ const curly = (s) => s.replace(/(^|[\s(])"/g, '$1“').replace(/"/g, '”').repl
 const lines = rawLines.map(curly);
 const w = +W, h = +H, k = w / 1080, px = (n) => Math.round(n * k);
 const shape = h / w > 1.7 ? '9x16' : Math.abs(h / w - 1.25) < 0.02 ? '4x5' : '3x4';
-const K = B.cover.blocks, L = B.cover.layout['9x16'], F = B.cover.fade, ink = B.colour.inkRgb, T = K.toolOwn;
+const K = B.cover.blocks, L = B.cover.layout['9x16'], F = B.cover.fade, ink = B.colour.inkRgb, T = K.toolOwn, FC = B.cover.faces;
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
 const faults = [];
@@ -44,38 +47,30 @@ const words = lines.join(' ').split(/\s+/).filter((x) => /[\p{L}\p{N}]/u.test(x)
 if (words.length === 1) faults.push('a one-word hook keeps the normal big headline (the pack): run without --blocks');
 if (words.length > K.wordsUpTo) faults.push(`${words.length} words: the pack allows about ${K.wordsUpTo} in blocks`);
 const between = typeof flag('between') === 'string' ? flag('between').split(',').map(Number) : null;
+if (flag('between') !== undefined && (!between || between.length !== 2 || !between.every(Number.isFinite))) { console.error('--between takes two heights: --between=<y0>,<y1>'); process.exit(1); }
 const P = K.place, minTop = px(P.firstNoHigherThan), maxEnd = px(P.lastEndsBy), gridTop = px(B.safeArea.coverGrid.y0);
 const handSize = flag('px') ? Number(flag('px')) : null;
 const handle = flag('no-handle') === undefined;
 
-// Faces, with Apple Vision.
-function faces(file) {
-  const bin = path.join(__dirname, 'faces');
-  const src = path.join(__dirname, 'faces.swift');
-  if (!fs.existsSync(bin) || fs.statSync(bin).mtimeMs < fs.statSync(src).mtimeMs) execFileSync('swiftc', ['-O', src, '-o', bin], { stdio: 'inherit' });
-  const outp = execFileSync(bin, [file], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
-  return outp ? outp.split('\n').filter((l) => /^[\d.-]+( [\d.-]+){4}$/.test(l.trim())).map((l) => l.trim().split(' ').map(Number)) : []; // x y w h browTop, fractions, origin top-left
-}
-const size = (file) => { const o = execFileSync('sips', ['-g', 'pixelWidth', '-g', 'pixelHeight', file], { encoding: 'utf8' }); return [+o.match(/pixelWidth: (\d+)/)[1], +o.match(/pixelHeight: (\d+)/)[1]]; };
-
-const [iw, ih] = size(photo);
-// The photo covers the frame, centred, as on every cover.
-const s = Math.max(w / iw, h / ih), drawW = iw * s, drawH = ih * s, ox = (w - drawW) / 2, oy = (h - drawH) / 2;
-const toFrameY = (f) => Math.round(oy + f * drawH);
+// The photo covers the frame, centred, as on every cover. Faces come from Apple Vision.
+const fit = coverFit(...photoSize(photo), w, h);
+const toFrameY = (f) => Math.round(fit.oy + f * fit.drawH);
 const found = faces(photo);
 // The whole face, a little wider (used for the handle), and the part no block may touch: the eyes, nose and mouth,
 // from just above the eyebrows to just below the chin.
-const faceBoxes = found.map(([fx, fy, fw, fh]) => {
-  const g = T.faceMargin;
-  return [ox + (fx - fw * g) * drawW, oy + (fy - fh * g) * drawH, ox + (fx + fw * (1 + g)) * drawW, oy + (fy + fh * (1 + g)) * drawH].map(Math.round);
-});
+const faceBoxes = toFaceBoxes(found, fit, FC.toolOwn.faceMargin);
 const features = found.map(([fx, fy, fw, fh, brow], i) => {
   const b = faceBoxes[i];
   const yTop = brow >= 0 ? toFrameY(brow - fh * T.browMargin) : b[1];
   return [b[0], yTop, b[2], toFrameY(fy + fh * (1 + T.chinMargin))];
 });
-const at = flag('at') || (found.length ? 'face' : 'top');
-if (!['face', 'top', 'middle', 'lower'].includes(at) && !Number.isFinite(Number(at))) { console.error(`unknown --at=${at}: use face, top, middle, lower or a number`); process.exit(1); }
+if (flag('at') !== undefined && between) { console.error('use --at or --between, not both'); process.exit(1); }
+const at = flag('at') ?? (between ? 'between' : found.length ? 'face' : null);
+if (at === null) {
+  console.error('NOT WRITTEN: no face in this photo, so choose the spot by eye where the photo is calmest: --at=top, --at=middle, --at=lower, --at=<y> or --between=<y0>,<y1>. The pack: not one fixed height every time, or the grid looks too symmetrical.');
+  process.exit(1);
+}
+if (typeof at !== 'string' || (!['face', 'top', 'middle', 'lower', 'between'].includes(at) && !Number.isFinite(Number(at)))) { console.error(`unknown --at=${at}: use face, top, middle, lower or a number`); process.exit(1); }
 if (at === 'face' && !found.length) { console.error('NOT WRITTEN: --at=face, but no face was found. Use --at=top, middle, lower, a number, or --between.'); process.exit(1); }
 
 const img = 'data:image/jpeg;base64,' + fs.readFileSync(photo).toString('base64');
@@ -130,7 +125,7 @@ ${handle ? `<div class=u>${B.handle.text}</div>` : ''}</div>`;
     const f = face.features;
     tries = [['above the eyes', minTop, f[1], 'centre'], ['below the chin', f[3], maxEnd, 'centre']];
     if (face.mid) tries.push(['over the forehead', gridTop, face.mid.y, 'centre']);
-  } else if (between) tries = [['between the given lines', between[0], between[1], 'centre']];
+  } else if (at === 'between') tries = [['between the given lines', between[0], between[1], 'centre']];
   else if (at === 'top') tries = [['top', minTop, null, 'top']];
   else if (at === 'middle') tries = [['middle', 0, h, 'centre']];
   else if (at === 'lower') tries = [['lower', null, maxEnd, 'bottom']];
@@ -186,8 +181,16 @@ ${handle ? `<div class=u>${B.handle.text}</div>` : ''}</div>`;
   r.boxes.forEach((b, i) => console.log(`  block ${i + 1}: x ${b[0]} to ${b[2]} (${b[2] - b[0]}px wide), y ${b[1]} to ${b[3]}`));
   if (r.handle) console.log(`  handle y ${r.handle[0]} to ${r.handle[1]}, x ${r.handle[2]} to ${r.handle[3]}`);
   // The pack: a handle that would land on a face is left off.
-  const handleOnFace = r.handle && faceBoxes.some((f) => f[1] < r.handle[1] && f[3] > r.handle[0] && f[0] < r.handle[3] && f[2] > r.handle[2]);
-  if (handleOnFace) { await pg.evaluate(() => document.querySelector('.u').remove()); console.log(`  handle left off: at y ${r.handle[0]} it would sit on a face (the pack: ${K.handleOnFace.split(':')[0]})`); }
+  const handleOnFace = r.handle && faceBoxes.some((f) => overlaps(f, [r.handle[2], r.handle[0], r.handle[3], r.handle[1]]));
+  if (handleOnFace) { await pg.evaluate(() => document.querySelector('.u').remove()); console.log(`  handle left off: at y ${r.handle[0]} it would sit on a face (the pack: ${FC.handle})`); }
+
+  // How busy the photo is under the blocks and in the other spots the stack could take (same height, same width).
+  const bx0 = Math.min(...r.boxes.map((b) => b[0])), bx1 = Math.max(...r.boxes.map((b) => b[2])), tall = r.bottom - r.top;
+  const spots = [['the blocks', r.top, r.bottom], ['top', minTop, minTop + tall], ['middle', h / 2 - tall / 2, h / 2 + tall / 2], ['lower', maxEnd - tall, maxEnd]];
+  const scores = await pg.evaluate(busy, { src: img, w, h, bands: spots.map(([n, a, b]) => [n, a, b, bx0, bx1]) });
+  console.log(`  how busy the photo is (lower is calmer): ${scores.map(([n, v]) => `${n} ${v.toFixed(1)}`).join(', ')}`);
+  const calm = at === 'face' ? null : calmer(scores);
+  if (calm) console.log(`  CHECK: the ${calm} spot is calmer than where the blocks are. The pack puts them wherever the photo is calmest, never on a face, logo or sign: look, and try --at=${calm} if it is.`);
   console.log(`  in the profile grid (y ${gridTop} to ${px(B.safeArea.coverGrid.y1)} shown): first block ${r.top - gridTop}px below the tile's top edge; Reel icon ${r.why.includes('runs into the Reel icon') ? 'hit' : 'clear'}`);
 
   if (!r.fonts) faults.push('the fonts did not load');
