@@ -1,0 +1,14 @@
+{
+  "name": "river-fox-explainer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node film.mjs",
+    "stills": "node film.mjs --stills"
+  },
+  "dependencies": {
+    "@fontsource/dm-mono": "^5.0.0",
+    "@fontsource/dm-sans": "^5.0.0",
+    "@fontsource/fraunces": "^5.0.0"
+  }
+}
