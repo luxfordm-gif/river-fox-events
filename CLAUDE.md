@@ -4,7 +4,7 @@ Site for **Laura** at River Fox Events (luxury event styling, Surrey). Live at `
 
 ## Start here: the Claude Brain (Matt, 2026-11-23)
 
-At the start of a session read two short files in Google Drive > My Drive > Claude Brain: **`how-i-work.md`** (how Matt likes to work) and **`river-fox.md`** (the project's current state: workstreams, decisions, open items). On Matt's Mac the folder is `~/Library/CloudStorage/GoogleDrive-luxfordm@gmail.com/My Drive/Claude Brain/`.
+At the start of a session read **`river-fox.md`** in Google Drive > My Drive > Claude Brain (the project's current state: workstreams, decisions, open items). On Matt's Mac the folder is `~/Library/CloudStorage/GoogleDrive-luxfordm@gmail.com/My Drive/Claude Brain/`. Everything in its `_Archive` is frozen: never edit it.
 
 **"Update the brain" means update `river-fox.md` only**, and only the sections that changed. Never create a wrap-up, status or handover file for this project, and never a second brain file (no `brand-rules.md`).
 
