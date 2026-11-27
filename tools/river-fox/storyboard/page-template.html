@@ -1,0 +1,201 @@
+<title>Christmas at home storyboard</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&display=swap">
+<style>
+/* Layout: one column. The storyboard (frames on a to-scale timeline), then three plain questions. */
+:root{
+  --bg:#F7EEE9; --surface:#FCFBF8; --fg:#191C17; --muted:#494E46; --line:rgba(25,28,23,.16);
+  --day1:#B9877C; --day2:#4F6B57; --text-mark:#191C17; --pick:#052417; --pick-fg:#F7EEE9; --warn:#8A4B12;
+  --serif:"Fraunces",Georgia,serif; --sans:"DM Sans",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#171A16; --surface:#21251F; --fg:#F2EBE6; --muted:#B9B6AE; --line:rgba(242,235,230,.16);
+  --day1:#C99A8F; --day2:#7FA088; --text-mark:#F2EBE6; --pick:#F7EEE9; --pick-fg:#171A16; --warn:#E8B27A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#171A16; --surface:#21251F; --fg:#F2EBE6; --muted:#B9B6AE; --line:rgba(242,235,230,.16);
+  --day1:#C99A8F; --day2:#7FA088; --text-mark:#F2EBE6; --pick:#F7EEE9; --pick-fg:#171A16; --warn:#E8B27A; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.55 var(--sans)}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px;display:flex;flex-direction:column;gap:48px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(34px,6vw,52px);line-height:1.05}
+h1 em,h2 em{font-style:italic}
+h2{font-size:clamp(26px,4.4vw,36px);line-height:1.1}
+h3{font-size:22px}
+p{margin:0}
+.lede,.why,.note{color:var(--muted);max-width:62ch}
+.note{font-size:14px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+header,section{display:flex;flex-direction:column;gap:16px}
+.sb-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px}
+.tag{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:var(--pick);color:var(--pick-fg)}
+.tl{display:flex;flex-direction:column;gap:6px}
+.bar{display:flex;height:34px;border-radius:6px;overflow:hidden}
+.seg{display:flex;align-items:center;padding-left:8px;font-size:12px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;min-width:0}
+.seg.d1{background:var(--day1)} .seg.d2{background:var(--day2)}
+.seg+.seg{border-left:2px solid var(--bg)}
+.marks{position:relative;height:22px}
+.mark{position:absolute;top:0;height:6px;border-radius:3px;background:var(--text-mark)}
+.mark i{position:absolute;top:8px;left:0;font-style:normal;font-size:12px;color:var(--muted);white-space:nowrap}
+.mark.r i{left:auto;right:0}
+.scale{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.frames{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:22px 16px}
+figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+.ph{position:relative;aspect-ratio:9/16;max-width:100%;border-radius:12px;overflow:hidden;background:var(--surface);box-shadow:0 0 0 1px var(--line)}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.t{position:absolute;left:8px;top:8px;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;background:rgba(25,28,23,.72);color:#FCFBF8;padding:2px 7px;border-radius:4px}
+.cut{position:absolute;right:8px;top:8px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:#FCFBF8;color:#191C17;padding:2px 6px;border-radius:4px}
+figcaption{font-size:14px;line-height:1.45;color:var(--muted)}
+figcaption b{color:var(--fg);font-weight:600}
+details{border-top:1px solid var(--line);padding-top:14px}
+summary{cursor:pointer;font-weight:600}
+details[open] summary{margin-bottom:16px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:16px}
+.qh{display:flex;gap:12px;align-items:baseline}
+.qh .n{font-family:var(--serif);font-size:24px;color:var(--muted)}
+/* the hook preview with its two switches */
+.hook{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:560px){.hook{grid-template-columns:minmax(0,1fr)}.hook .ph{max-width:300px;width:100%;margin:0 auto}}
+.controls{display:flex;flex-direction:column;gap:18px;min-width:0}
+.seglbl{font-size:13px;font-weight:600;margin-bottom:6px}
+.segs{display:flex;flex-wrap:wrap;gap:6px}
+.segs input{position:absolute;opacity:0;pointer-events:none}
+.segs label{padding:9px 14px;border:1px solid var(--line);border-radius:6px;cursor:pointer;font-weight:500;font-size:15px}
+.segs input:checked+label{background:var(--pick);color:var(--pick-fg);border-color:var(--pick)}
+.segs input:focus-visible+label{outline:2px solid var(--fg);outline-offset:2px}
+.status{font-size:14px;line-height:1.45;padding:10px 12px;border-radius:8px;border:1px solid var(--line)}
+.status.warn{border-color:var(--warn);color:var(--warn)}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.opt{display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);border-radius:10px;padding:10px;cursor:pointer;min-width:0}
+.opt:has(input:checked){border-color:var(--fg);box-shadow:0 0 0 1px var(--fg)}
+.opt .row{display:flex;gap:8px;align-items:flex-start;font-size:15px}
+.opt input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--pick);flex:none}
+.opt small{color:var(--muted);font-size:13px}
+.opt .ph{border-radius:8px}
+.opt:focus-within{outline:2px solid var(--fg);outline-offset:2px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+textarea{width:100%;box-sizing:border-box;min-height:70px;border:1px solid var(--line);border-radius:8px;padding:10px;font:inherit;background:var(--bg);color:var(--fg)}
+pre{margin:0;white-space:pre-wrap;font:14px/1.5 var(--sans);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px}
+button{align-self:flex-start;font:600 15px var(--sans);padding:11px 18px;border-radius:6px;border:0;background:var(--pick);color:var(--pick-fg);cursor:pointer}
+button:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Christmas at home · Instagram Story</span>
+  <h1>Finally, <em>my turn.</em></h1>
+  <p class="lede">Storyboard A, the build first. Three things left to choose, at the bottom.</p>
+</header>
+
+<section id="a">
+  <div class="sb-head"><h2>A · <em>Build first</em></h2><span class="tag">22.5s</span></div>
+  <div class="tl" aria-label="Timeline, 22.5 seconds">
+    <div class="bar"><div class="seg d1" style="flex:9.67">Day 1 · 1.5× speed</div><div class="seg d2" style="flex:12.85">Day 2 · 2× speed</div></div>
+    <div class="marks"><span class="mark" style="left:1.8%;width:18.2%"><i>Hook 0.4–4.5s</i></span><span class="mark r" style="left:86.7%;width:13.3%"><i>Closing words 19.5–22.5s</i></span></div>
+    <div class="scale"><span>0s</span><span>Cut 9.7s</span><span>22.5s</span></div>
+  </div>
+  <div class="frames">
+    <figure><div class="ph"><img src="img/A/00.jpg" alt="Day 1 first frame"><span class="t">0.0s</span></div><figcaption><b>Opens on Day 1.</b></figcaption></figure>
+    <figure><div class="ph"><img src="img/A/01.jpg" alt="The hook over the build"><span class="t">1.5s</span></div><figcaption><b>Hook on.</b> Its look is question 1.</figcaption></figure>
+    <figure><div class="ph"><img src="img/A/02.jpg" alt="Laura on the ladder"><span class="t">4.8s</span></div><figcaption>The left side fills out.</figcaption></figure>
+    <figure><div class="ph"><img src="img/A/04.jpg" alt="Dusk, lights on"><span class="t">9.6s</span></div><figcaption>Day 1 ends at dusk, lights on.</figcaption></figure>
+    <figure><div class="ph"><img src="img/A/05.jpg" alt="Next morning"><span class="t">9.7s</span><span class="cut">Cut</span></div><figcaption><b>Cut to Day 2,</b> the next morning.</figcaption></figure>
+    <figure><div class="ph"><img src="img/A/06.jpg" alt="The garland thickens"><span class="t">16.1s</span></div><figcaption>The garland thickens.</figcaption></figure>
+    <figure><div class="ph"><img src="img/A/08.jpg" alt="Closing words over the garland"><span class="t">20.0s</span></div><figcaption><b>Closing words,</b> last 3s. Question 2.</figcaption></figure>
+    <figure><div class="ph"><img src="img/A/09.jpg" alt="Last frame, full garland"><span class="t">22.5s</span></div><figcaption>Ends on the full garland.</figcaption></figure>
+  </div>
+  <details>
+    <summary>Storyboard B, hook first (not chosen)</summary>
+    <div class="frames">
+      <figure><div class="ph"><img src="img/B/01.jpg" alt="B opens on the near-finished garland with the hook"><span class="t">1.5s</span></div><figcaption>Opens on the near-finished garland.</figcaption></figure>
+      <figure><div class="ph"><img src="img/B/04.jpg" alt="Cut back to Day 1"><span class="t">4.0s</span><span class="cut">Cut</span></div><figcaption>Cuts back to the start.</figcaption></figure>
+      <figure><div class="ph"><img src="img/B/08.jpg" alt="Cut to Day 2"><span class="t">13.7s</span><span class="cut">Cut</span></div><figcaption>Then Day 2.</figcaption></figure>
+      <figure><div class="ph"><img src="img/B/12.jpg" alt="B last frame"><span class="t">24.5s</span></div><figcaption>Ends where it began.</figcaption></figure>
+    </div>
+  </details>
+</section>
+
+<section id="decide">
+  <div class="q">
+    <div class="qh"><span class="n">1</span><h3>How should the hook look?</h3></div>
+    <div class="hook">
+      <div class="ph"><img id="hookimg" src="img/hk/blocks-top.jpg" alt="Preview of the hook"></div>
+      <div class="controls">
+        <div><div class="seglbl">Look</div>
+          <div class="segs" role="radiogroup" aria-label="Look">
+            <input type="radio" name="look" id="look-fade" value="fade"><label for="look-fade">Soft fade</label>
+            <input type="radio" name="look" id="look-tint" value="tint"><label for="look-tint">Fade and tint</label>
+            <input type="radio" name="look" id="look-blocks" value="blocks" checked><label for="look-blocks">Pink blocks</label>
+          </div></div>
+        <div><div class="seglbl">Position</div>
+          <div class="segs" role="radiogroup" aria-label="Position">
+            <input type="radio" name="pos" id="pos-top" value="top" checked><label for="pos-top">Top</label>
+            <input type="radio" name="pos" id="pos-middle" value="middle"><label for="pos-middle">Middle</label>
+            <input type="radio" name="pos" id="pos-bottom" value="bottom"><label for="pos-bottom">Bottom</label>
+          </div></div>
+        <p class="status" id="hookstatus"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="qh"><span class="n">2</span><h3>Which closing words?</h3></div>
+    <div class="opts">
+      <label class="opt"><span class="ph"><img src="img/end/fin1.jpg" alt="Nearly."></span><span class="row"><input type="radio" name="fin" id="fin-1" value="Nearly. / The reveal is coming soon." checked><span>Nearly.<br><small>The reveal is coming soon.</small></span></span></label>
+      <label class="opt"><span class="ph"><img src="img/end/fin2.jpg" alt="To be continued."></span><span class="row"><input type="radio" name="fin" id="fin-2" value="To be continued. / Christmas at home."><span>To be continued.<br><small>Christmas at home.</small></span></span></label>
+      <label class="opt"><span class="ph"><img src="img/end/fin3.jpg" alt="Almost there."></span><span class="row"><input type="radio" name="fin" id="fin-3" value="Almost there. / The full reveal is coming."><span>Almost there.<br><small>The full reveal is coming.</small></span></span></label>
+      <label class="opt"><span class="ph"><img src="img/end/fin0.jpg" alt="No words"></span><span class="row"><input type="radio" name="fin" id="fin-0" value="no closing words"><span>No words</span></span></label>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="qh"><span class="n">3</span><h3>Which cover, for the Reel later?</h3></div>
+    <p class="note">A Story has no cover. This is for the full Reel: a daylight and a dusk version, as the pack asks.</p>
+    <div class="opts">
+      <label class="opt"><span class="pair"><span class="ph"><img src="img/opt/cover_day_blocks.jpg" alt="Daylight cover with pink blocks"></span><span class="ph"><img src="img/opt/cover_dusk_blocks.jpg" alt="Dusk cover with pink blocks"></span></span><span class="row"><input type="radio" name="cov" id="cov-blocks" value="pink blocks" checked><span>Pink blocks<br><small>Garland stays clear.</small></span></span></label>
+      <label class="opt"><span class="pair"><span class="ph"><img src="img/opt/cover_day_top.jpg" alt="Daylight cover with big headline"></span><span class="ph"><img src="img/opt/cover_dusk_top.jpg" alt="Dusk cover with big headline"></span></span><span class="row"><input type="radio" name="cov" id="cov-big" value="big headline"><span>Big headline<br><small>Runs into the garland.</small></span></span></label>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="qh"><h3>Send me your answers</h3></div>
+    <textarea id="notes" placeholder="Anything else (optional)"></textarea>
+    <pre id="sum" aria-live="polite"></pre>
+    <button type="button" id="copy">Copy answers</button>
+    <span class="note" id="copied" hidden>Copied.</span>
+  </div>
+</section>
+</div>
+
+<script>
+const NOTES={
+  'blocks-top':['ok','On the windows and porch roof. Laura and the garland stay clear. My pick.'],
+  'blocks-middle':['warn','Over the porch while Laura works at the door. Breaks the pack’s rule: never on her face.'],
+  'blocks-bottom':['warn','Over Laura and the fence. Breaks the pack’s rule: never on her face.'],
+  'fade-top':['ok','On the windows. Easier to read than before, but the white frames still show through.'],
+  'fade-middle':['warn','Over the porch and Laura’s head. Breaks the pack’s rule: never on her face.'],
+  'fade-bottom':['warn','Over Laura and the fence. Breaks the pack’s rule: never on her face.'],
+  'tint-top':['ok','On the windows, the whole frame darker for 4 seconds. Reads better than the fade alone.'],
+  'tint-middle':['warn','Over the porch and Laura’s head. Breaks the pack’s rule: never on her face.'],
+  'tint-bottom':['warn','Over Laura and the fence. Breaks the pack’s rule: never on her face.']
+};
+const LOOK={fade:'soft fade',tint:'fade and tint',blocks:'pink blocks'};
+const $=s=>document.querySelector(s), val=n=>document.querySelector(`input[name="${n}"]:checked`).value;
+function update(){
+  const k=val('look')+'-'+val('pos'), [kind,text]=NOTES[k];
+  $('#hookimg').src='img/hk/'+k+'.jpg';
+  const st=$('#hookstatus'); st.textContent=text; st.className='status'+(kind==='warn'?' warn':'');
+  let lines=['Christmas at home Story: storyboard A',
+    'Hook: '+LOOK[val('look')]+', '+val('pos')+(kind==='warn'?' (I know it breaks the face rule)':''),
+    'Closing words: '+val('fin'),
+    'Reel cover: '+val('cov')];
+  if($('#notes').value.trim()) lines.push('Notes: '+$('#notes').value.trim());
+  $('#sum').textContent=lines.join('\n');
+}
+document.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',update));
+$('#notes').addEventListener('input',update); update();
+$('#copy').addEventListener('click',()=>{
+  const done=()=>{const c=$('#copied');c.hidden=false;setTimeout(()=>c.hidden=true,1800);};
+  const fallback=()=>{const r=document.createRange();r.selectNodeContents($('#sum'));const s=getSelection();s.removeAllRanges();s.addRange(r);};
+  try{navigator.clipboard.writeText($('#sum').textContent).then(done,fallback);}catch(e){fallback();}
+});
+</script>
