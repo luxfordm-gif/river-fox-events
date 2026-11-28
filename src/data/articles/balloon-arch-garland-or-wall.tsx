@@ -23,13 +23,13 @@ import imgHotAirBalloon from "@/assets/services/childrens-parties/hot-air-balloo
 /* One of each kind of balloon piece, seven at most (Matt, 2026-11-28).
    Alt text is the gallery's, word for word (one image, one alt). */
 const balloonKinds = [
-  { src: imgReevaArch, alt: "Blush, peach and cream balloon arch over Reeva's birthday welcome easel at a front door", caption: "A full arch, framing the front door for Reeva's birthday." },
-  { src: imgBabyInBloom, alt: "Dusty blue and white Baby in Bloom balloon arch with floral accents for a baby shower", caption: "A garland climbing a Baby in Bloom backdrop at a baby shower.", position: "50% 35%" },
-  { src: imgPastelWall, alt: "Giant light-up 21 set into a pastel balloon wall in lilac, sage, peach and lemon", caption: "A pastel balloon wall around a light-up 21." },
-  { src: imgAureliaHoop, alt: "Pink, grey and white balloon hoop around a Welcome to Aurelia's 1st Birthday sign, with a Minnie Mouse 1 and ONE blocks", caption: "A pink and grey hoop around Aurelia's first birthday sign." },
-  { src: imgColumns, alt: "Green, white and gold balloon columns with 125 Years star foils either side of a grand entrance", caption: "A pair of balloon columns for a 125th anniversary entrance." },
-  { src: imgBubbles, alt: "Navy bubble balloon centrepieces with gold table numbers on gold stands, with navy and chrome gold bases", caption: "Bubble balloon centrepieces with gold table numbers." },
-  { src: imgHotAirBalloon, alt: "Hot air balloon of stone and cream balloons over a wicker basket with a teddy bear on a lawn", caption: "A hot air balloon sculpture, with a teddy in the basket.", position: "50% 40%" },
+  { src: imgReevaArch, alt: "Blush, peach and cream balloon arch over Reeva's birthday welcome easel at a front door", caption: "A full arch for Reeva's birthday." },
+  { src: imgBabyInBloom, alt: "Dusty blue and white Baby in Bloom balloon arch with floral accents for a baby shower", caption: "A garland for a baby shower.", position: "50% 35%" },
+  { src: imgPastelWall, alt: "Giant light-up 21 set into a pastel balloon wall in lilac, sage, peach and lemon", caption: "A pastel balloon wall for a 21st." },
+  { src: imgAureliaHoop, alt: "Pink, grey and white balloon hoop around a Welcome to Aurelia's 1st Birthday sign, with a Minnie Mouse 1 and ONE blocks", caption: "A hoop for a first birthday." },
+  { src: imgColumns, alt: "Green, white and gold balloon columns with 125 Years star foils either side of a grand entrance", caption: "Balloon columns for an entrance." },
+  { src: imgBubbles, alt: "Navy bubble balloon centrepieces with gold table numbers on gold stands, with navy and chrome gold bases", caption: "Bubble balloon centrepieces." },
+  { src: imgHotAirBalloon, alt: "Hot air balloon of stone and cream balloons over a wicker basket with a teddy bear on a lawn", caption: "A hot air balloon sculpture.", position: "50% 40%" },
 ];
 
 const BalloonArchGarlandOrWallArticle = () => (
