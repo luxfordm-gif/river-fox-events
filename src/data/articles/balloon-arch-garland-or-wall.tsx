@@ -52,7 +52,17 @@ const BalloonArchGarlandOrWallArticle = () => (
         them for your room, your ceiling and your guests, with a few honest
         notes for anyone thinking of building their&nbsp;own.
       </p>
+
+      <h2>Balloon arches, garlands and walls at a glance</h2>
+      <p>
+        Here are the pieces I'm asked for most, side by side: two kinds of
+        arch, eight ways to use a garland, a full balloon wall and a number
+        stack. Every one is built on site at your event and sized to your
+        room, so use these as a starting point rather than a&nbsp;menu.
+      </p>
     </ArticleProse>
+
+    <BalloonPieceGuide />
 
     <ArticleImage
       src={imgHarveyArch}
@@ -71,11 +81,7 @@ const BalloonArchGarlandOrWallArticle = () => (
         photos. Hoops and number stacks suit smaller spaces, where you want a
         focal point without filling the&nbsp;room.
       </p>
-    </ArticleProse>
 
-    <BalloonPieceGuide />
-
-    <ArticleProse>
       <h3>When does a balloon arch work best?</h3>
       <p>
         An arch is a threshold piece. It frames something you walk through or

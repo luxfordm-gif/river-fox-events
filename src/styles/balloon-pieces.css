@@ -42,6 +42,10 @@
 .bp-svg .bp-fill-sage { fill: url(#bp-board-sage); }
 .bp-svg .bp-fill-sequin { fill: hsl(var(--bp-sequin-gap)); }
 .bp-svg .bp-fill-hearth { fill: hsl(var(--bp-hearth)); }
+/* Window glass in the wall garland: a cool pale wash with two faint reflections per pane. */
+.bp-svg .bp-glass { fill: hsl(var(--bp-glass)); }
+.bp-svg .bp-shine-line { stroke: hsl(var(--bp-paper-light)); stroke-opacity: .9; }
+.bp-svg .bp-handle { stroke-width: var(--bp-line-handle); }
 .bp-svg .bp-folds { fill: hsl(var(--bp-shade) / .06); }
 .bp-svg .bp-plinth-top { fill: hsl(var(--bp-board-ivory-light)); }
 

@@ -331,6 +331,8 @@
     --bp-line-fine: .5;                /* Drawing line fine · hairline details */
     --bp-line-bold: 2.2;               /* Drawing line bold · gold hoops, stands, the cake stand, the wall frame */
     --bp-line-candle: 2.4;             /* Drawing line candle · the thin birthday candles on the cake */
+    --bp-glass: 200 28% 93%;           /* Drawing glass · the window panes in the wall garland, a cool pale wash so they read as glass */
+    --bp-line-handle: 2.2;             /* Drawing line handle · the window handle */
     --bp-paper: 28 72% 95%;            /* Drawing paper · the warm cream behind each drawing (lighter in the middle) */
     --bp-paper-light: 27 85% 97.5%;    /* Drawing paper light · the middle of the panel */
     --bp-line-colour: 30 32% 76%;      /* Drawing line colour · faint warm edges on the props */

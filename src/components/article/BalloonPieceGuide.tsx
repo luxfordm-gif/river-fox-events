@@ -386,14 +386,20 @@ const DRAWINGS: { name: string; label: string; draw: () => Drawing }[] = [
   },
   {
     name: "Wall garland",
-    label: "A balloon garland climbing a wall from the floor towards the ceiling",
+    label: "A balloon garland climbing a wall past a window, from the floor towards the ceiling",
     draw: () => ({
       props: (
         <>
           <Floor />
           <Prop d={`M10 196 H230 M10 202 H230`} cls="bp-faint" />
+          {/* a window: frame, glass in two casements under a top light, a sill and a handle */}
           <Prop d={rect(160, 96, 208, 166)} cls="bp-fill" />
-          <Prop d={rect(166, 102, 202, 160)} cls="bp-faint" />
+          <Prop d={rect(165, 101, 203, 161)} cls="bp-glass" />
+          <Prop d="M165 116 H203 M184 116 V161" />
+          <Prop d="M170 128 L177 121 M170 136 L181 125 M189 128 L196 121 M189 136 L200 125" cls="bp-faint bp-shine-line" />
+          <Prop d={rect(155, 166, 213, 171)} cls="bp-fill" />
+          <Prop d="M188 136 V146" cls="bp-gold bp-handle" />
+          <circle className="bp-knob bp-fade" cx="188" cy="136" r="1.8" />
         </>
       ),
       balloons: garland(bezier([[46, 200], [76, 150], [110, 86], [194, 58]]), 15, 3, {
