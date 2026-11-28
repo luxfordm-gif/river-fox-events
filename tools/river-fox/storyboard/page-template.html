@@ -2,10 +2,13 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@500&display=swap">
 <style>
-/* Looks like the website (Matt, 28 Nov 2026): the tokens below carry the website's own names and
+/* Looks like the website and goes one step at a time (Matt, 28 Nov 2026): the tokens below carry the website's own names and
    values from src/index.css, and src/test/storyboard-template.test.ts fails if one drifts.
-   Light only, like the site. Layout: one column. The storyboard (frames on a to-scale timeline),
-   then the questions, each in a white card. */
+   Light only, like the site. Layout: a sticky step bar, then one step on screen at a time:
+   the storyboard (frames on a to-scale timeline), one question per step in a white card, and the
+   copy-answers box last. The step bar is built from the <section class="step"> elements, so a job
+   adds or removes a step by adding or removing a section (data-label is its name in the bar).
+   Without JavaScript every step shows, one under the other. */
 :root{
   /* colours (HSL, as in src/index.css) */
   --background-light:45 36% 98%; --background:47 22% 92%; --background-warm:14 42% 93%;
@@ -30,7 +33,7 @@
   --sb-section-gap:80px; --gap-heading-text:20px; --gap-heading-content:40px; --gap-cards:40px;
   --gap-stack:16px; --gap-field:12px; --gap-photos:12px; --card-pad:40px; --gutter:56px;
   --btn-pad-y:14px; --btn-pad-x:22px; --btn-gap:12px;
-  --motion-quick:250ms; --ease-soft:cubic-bezier(.2,.7,.2,1);
+  --motion-quick:250ms; --motion-base:400ms; --ease-soft:cubic-bezier(.2,.7,.2,1);
   /* storyboard-only: the two days on the timeline */
   --day1:var(--accent); --day2:var(--background-blush);
 }
@@ -46,7 +49,10 @@ body{background:hsl(var(--background-light));color:hsl(var(--text-neutral));
 .bar-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px;
   border-bottom:1px solid hsl(var(--hair))}
 .wordmark{font:var(--fw-medium) var(--fs-wordmark)/1 var(--font-sans);letter-spacing:var(--ls-wordmark);text-transform:uppercase;color:hsl(var(--text-primary))}
-.wrap{max-width:1040px;margin:0 auto;box-sizing:content-box;padding-block:56px var(--sb-section-gap);display:flex;flex-direction:column;gap:var(--sb-section-gap)}
+.wrap{max-width:1040px;margin:0 auto;box-sizing:content-box}
+header.wrap{padding-block:48px 32px}
+main.wrap{padding-block:40px var(--sb-section-gap)}
+.js main.wrap{min-height:70vh}
 h1,h2,h3{font-family:var(--font-serif);font-weight:var(--fw-regular);color:hsl(var(--text-primary));text-wrap:balance;margin:0}
 h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:var(--ls-h1);max-width:18ch}
 h2{font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:var(--ls-h2)}
@@ -57,7 +63,10 @@ p{margin:0}
 .note{font-size:var(--fs-small);max-width:60ch}
 .overline,.eyebrow{font:var(--fw-medium) var(--fs-overline)/1.5 var(--font-mono);letter-spacing:var(--ls-overline);text-transform:uppercase;color:hsl(var(--text-neutral))}
 header{display:flex;flex-direction:column;gap:var(--gap-heading-text)}
+main{display:flex;flex-direction:column;gap:var(--sb-section-gap)}
 section{display:flex;flex-direction:column;gap:var(--gap-heading-content)}
+h2,h3{scroll-margin-top:120px}
+h2:focus,h3:focus{outline:none}
 .sb-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px}
 .tag{font:var(--fw-medium) var(--fs-overline)/1 var(--font-mono);letter-spacing:.06em;
   padding:8px 12px;border-radius:var(--radius-small);border:1px solid hsl(var(--hair-strong));color:hsl(var(--text-primary));font-variant-numeric:tabular-nums}
@@ -93,7 +102,6 @@ details[open] summary::before{transform:rotate(45deg)}
 details[open] summary{margin-bottom:28px}
 
 /* questions: one white card each, as the site's tile cards */
-#decide{gap:var(--gap-cards)}
 .q{background:hsl(var(--tile-card-fill));border:1px solid hsl(var(--hair));box-shadow:var(--shadow-rest);border-radius:var(--radius-large);padding:var(--card-pad);display:flex;flex-direction:column;gap:28px}
 .qh{display:flex;flex-direction:column;gap:12px}
 .qh .n{font:var(--fw-medium) var(--fs-overline)/1.5 var(--font-mono);letter-spacing:var(--ls-overline);text-transform:uppercase;color:hsl(var(--accent-dark))}
@@ -101,7 +109,7 @@ details[open] summary{margin-bottom:28px}
 
 /* the hook preview with its two switches */
 .hook{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:40px;align-items:start}
-@media (max-width:640px){.hook{grid-template-columns:minmax(0,1fr);gap:24px}.hook .ph{max-width:280px;width:100%;margin:0 auto}}
+@media (max-width:640px){.hook{grid-template-columns:minmax(0,1fr);gap:24px}.hook .ph{max-width:220px;width:100%;margin:0 auto}}
 .controls{display:flex;flex-direction:column;gap:24px;min-width:0}
 .seglbl{font:var(--fw-medium) var(--fs-overline)/1.5 var(--font-mono);letter-spacing:var(--ls-overline);text-transform:uppercase;margin-bottom:10px}
 .segs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:420px}
@@ -139,23 +147,53 @@ textarea::placeholder{color:hsl(var(--text-dimmed))}
 textarea:focus{outline:none;border-color:hsl(var(--accent-dark))}
 pre{margin:0;white-space:pre-wrap;font:var(--fs-meta)/1.7 var(--font-mono);color:hsl(var(--text-primary));background:hsl(var(--background-light));border:1px solid hsl(var(--hair));border-radius:var(--radius-small);padding:16px}
 .actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--gap-field)}
-button{display:inline-flex;align-items:center;gap:var(--btn-gap);font:var(--fw-medium) var(--fs-label)/var(--lh-label) var(--font-sans);letter-spacing:var(--ls-label);
+.btn{display:inline-flex;align-items:center;gap:var(--btn-gap);font:var(--fw-medium) var(--fs-label)/var(--lh-label) var(--font-sans);letter-spacing:var(--ls-label);
   padding:var(--btn-pad-y) var(--btn-pad-x);border-radius:var(--radius-small);border:0;background:hsl(var(--text-primary));color:hsl(var(--background));cursor:pointer;
   transition:background var(--motion-quick) var(--ease-soft)}
-button:hover{background:hsl(var(--background-dark))}
+.btn:hover{background:hsl(var(--background-dark))}
+.btn.ghost{background:transparent;color:hsl(var(--text-primary));box-shadow:inset 0 0 0 1px hsl(var(--text-primary) / .3)}
+.btn.ghost:hover{background:hsl(var(--text-primary));color:hsl(var(--background))}
 button:focus-visible{outline:2px solid hsl(var(--accent-dark));outline-offset:2px}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* the step bar: sticky under the top of the screen */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:hsl(var(--background-light))}
+.stepper{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:hsl(var(--background-light) / .94);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-block:1px solid hsl(var(--hair))}
+.stepper ol{list-style:none;margin:0 auto;display:flex;gap:4px;padding-top:0;padding-bottom:0}
+.stepper li{flex:0 1 auto;min-width:0}
+.stp{display:flex;align-items:center;gap:10px;padding:16px 10px 14px;border:0;background:none;cursor:pointer;
+  font:var(--fw-medium) var(--fs-label)/var(--lh-label) var(--font-sans);letter-spacing:var(--ls-label);color:hsl(var(--text-dimmed));
+  border-bottom:2px solid transparent;transition:color var(--motion-quick) var(--ease-soft),border-color var(--motion-quick) var(--ease-soft)}
+.stepper li:first-child .stp{padding-left:0}
+.stp:hover{color:hsl(var(--text-primary))}
+.stp .num{display:grid;place-items:center;flex:none;width:26px;height:26px;border-radius:var(--radius-round);
+  border:1px solid hsl(var(--hair-strong));font:var(--fw-medium) var(--fs-overline)/1 var(--font-mono);font-variant-numeric:tabular-nums;color:hsl(var(--text-primary));
+  transition:background var(--motion-quick) var(--ease-soft),border-color var(--motion-quick) var(--ease-soft)}
+.stp .lbl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stp.done .num{background:hsl(var(--accent));border-color:hsl(var(--accent))}
+.stp[aria-current="step"]{color:hsl(var(--text-primary));border-bottom-color:hsl(var(--text-primary))}
+.stp[aria-current="step"] .num{background:hsl(var(--text-primary));border-color:hsl(var(--text-primary));color:hsl(var(--background))}
+@media (max-width:767px){.stp:not([aria-current="step"]) .lbl{display:none}.stp{padding-inline:6px}}
+.js .step:not(.on){display:none}
+.js .step.on{animation:step-in var(--motion-base) var(--ease-soft)}
+@keyframes step-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.step-nav{display:flex;flex-wrap:wrap;align-items:center;gap:var(--gap-field);border-top:1px solid hsl(var(--hair));padding-top:28px}
+.step-nav .next{margin-left:auto}
+.step-nav:not(:has(.back)) .next{margin-left:0}
+.no-js .step-nav{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 
 <div class="bar-top"><span class="wordmark">River Fox Events</span><span class="overline">Storyboard</span></div>
-<div class="wrap">
-<header>
+<header class="wrap">
   <span class="overline">Christmas at home · Instagram Story</span>
   <h1>Finally, <em>my turn.</em></h1>
-  <p class="lede">Storyboard A, the build first. Three things left to choose, at the bottom.</p>
+  <p class="lede">Storyboard A, the build first, then three choices. Your answers are copied at the end.</p>
 </header>
+<nav class="stepper" aria-label="Steps" hidden><ol class="wrap"></ol></nav>
+<main class="wrap">
 
-<section id="a">
+<section class="step" id="storyboard" data-label="Storyboard">
   <div class="sb-head"><h2>A · <em>Build first</em></h2><span class="tag">22.5s</span></div>
   <div class="tl" aria-label="Timeline, 22.5 seconds">
     <div class="bar"><div class="seg d1" style="flex:9.67">Day 1 · 1.5× speed</div><div class="seg d2" style="flex:12.85">Day 2 · 2× speed</div></div>
@@ -164,12 +202,12 @@ button:focus-visible{outline:2px solid hsl(var(--accent-dark));outline-offset:2p
   </div>
   <div class="frames">
     <figure><div class="ph"><img src="img/A/00.jpg" alt="Day 1 first frame"><span class="t">0.0s</span></div><figcaption><b>Opens on Day 1.</b></figcaption></figure>
-    <figure><div class="ph"><img src="img/A/01.jpg" alt="The hook over the build"><span class="t">1.5s</span></div><figcaption><b>Hook on.</b> Its look is question 1.</figcaption></figure>
+    <figure><div class="ph"><img src="img/A/01.jpg" alt="The hook over the build"><span class="t">1.5s</span></div><figcaption><b>Hook on.</b> Its look is step 2.</figcaption></figure>
     <figure><div class="ph"><img src="img/A/02.jpg" alt="Laura on the ladder"><span class="t">4.8s</span></div><figcaption>The left side fills out.</figcaption></figure>
     <figure><div class="ph"><img src="img/A/04.jpg" alt="Dusk, lights on"><span class="t">9.6s</span></div><figcaption>Day 1 ends at dusk, lights on.</figcaption></figure>
     <figure><div class="ph"><img src="img/A/05.jpg" alt="Next morning"><span class="t">9.7s</span><span class="cut">Cut</span></div><figcaption><b>Cut to Day 2,</b> the next morning.</figcaption></figure>
     <figure><div class="ph"><img src="img/A/06.jpg" alt="The garland thickens"><span class="t">16.1s</span></div><figcaption>The garland thickens.</figcaption></figure>
-    <figure><div class="ph"><img src="img/A/08.jpg" alt="Closing words over the garland"><span class="t">20.0s</span></div><figcaption><b>Closing words,</b> last 3s. Question 2.</figcaption></figure>
+    <figure><div class="ph"><img src="img/A/08.jpg" alt="Closing words over the garland"><span class="t">20.0s</span></div><figcaption><b>Closing words,</b> last 3s. Step 3.</figcaption></figure>
     <figure><div class="ph"><img src="img/A/09.jpg" alt="Last frame, full garland"><span class="t">22.5s</span></div><figcaption>Ends on the full garland.</figcaption></figure>
   </div>
   <details>
@@ -183,7 +221,7 @@ button:focus-visible{outline:2px solid hsl(var(--accent-dark));outline-offset:2p
   </details>
 </section>
 
-<section id="decide">
+<section class="step" id="hook" data-label="Hook">
   <div class="q">
     <div class="qh"><span class="n">Question 1</span><h3>How should the <em>hook</em> look?</h3></div>
     <div class="hook">
@@ -206,6 +244,9 @@ button:focus-visible{outline:2px solid hsl(var(--accent-dark));outline-offset:2p
     </div>
   </div>
 
+</section>
+
+<section class="step" id="closing" data-label="Closing words">
   <div class="q">
     <div class="qh"><span class="n">Question 2</span><h3>Which <em>closing words?</em></h3></div>
     <div class="opts">
@@ -216,6 +257,9 @@ button:focus-visible{outline:2px solid hsl(var(--accent-dark));outline-offset:2p
     </div>
   </div>
 
+</section>
+
+<section class="step" id="cover" data-label="Cover">
   <div class="q">
     <div class="qh"><span class="n">Question 3</span><h3>Which <em>cover,</em> for the Reel later?</h3><p class="note">A Story has no cover. This is for the full Reel: a daylight and a dusk version, as the pack asks.</p></div>
     <div class="opts wide">
@@ -224,15 +268,18 @@ button:focus-visible{outline:2px solid hsl(var(--accent-dark));outline-offset:2p
     </div>
   </div>
 
+</section>
+
+<section class="step" id="send" data-label="Send">
   <div class="q">
     <div class="qh"><span class="n">Last step</span><h3>Send me your <em>answers</em></h3></div>
     <textarea id="notes" placeholder="Anything else (optional)"></textarea>
     <pre id="sum" aria-live="polite"></pre>
-    <div class="actions"><button type="button" id="copy">Copy answers <span aria-hidden="true">→</span></button>
+    <div class="actions"><button type="button" class="btn" id="copy">Copy answers <span aria-hidden="true">→</span></button>
     <span class="note" id="copied" hidden>Copied. Paste it in the chat.</span></div>
   </div>
 </section>
-</div>
+</main>
 
 <script>
 const NOTES={
@@ -266,4 +313,50 @@ $('#copy').addEventListener('click',()=>{
   const fallback=()=>{const r=document.createRange();r.selectNodeContents($('#sum'));const s=getSelection();s.removeAllRanges();s.addRange(r);};
   try{navigator.clipboard.writeText($('#sum').textContent).then(done,fallback);}catch(e){fallback();}
 });
+
+/* One step at a time. The bar and the Back / Next buttons are built from the sections. */
+(()=>{
+  const steps=[...document.querySelectorAll('.step')], n=steps.length;
+  if(n<2) return;
+  document.documentElement.classList.add('js');
+  const nav=$('.stepper'), ol=nav.querySelector('ol'), reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  nav.hidden=false;
+  const tabs=steps.map((st,i)=>{
+    const li=document.createElement('li'), b=document.createElement('button');
+    b.type='button'; b.className='stp'; b.id='stp-'+st.id;
+    b.innerHTML='<span class="num">'+(i+1)+'</span><span class="lbl"></span>';
+    b.querySelector('.lbl').textContent=st.dataset.label;
+    b.setAttribute('aria-label','Step '+(i+1)+' of '+n+': '+st.dataset.label);
+    b.addEventListener('click',()=>go(i,true));
+    li.append(b); ol.append(li);
+    const tag=st.querySelector('.qh .n'); if(tag) tag.textContent='Step '+(i+1)+' of '+n;
+    const bar=document.createElement('div'); bar.className='step-nav';
+    if(i>0){const back=document.createElement('button');back.type='button';back.className='btn ghost back';
+      back.innerHTML='<span aria-hidden="true">←</span><span>Back</span>';back.addEventListener('click',()=>go(i-1,true));bar.append(back);}
+    if(i<n-1){const next=document.createElement('button');next.type='button';next.className='btn next';
+      next.innerHTML='<span></span><span aria-hidden="true">→</span>';
+      next.querySelector('span').textContent=(i===0?'Looks good. Next: ':'Next: ')+steps[i+1].dataset.label;next.addEventListener('click',()=>go(i+1,true));bar.append(next);}
+    st.append(bar);
+    return b;
+  });
+  let cur=-1;
+  function go(i,user){
+    if(i===cur) return;
+    cur=i;
+    steps.forEach((st,k)=>st.classList.toggle('on',k===i));
+    tabs.forEach((b,k)=>{b.classList.toggle('done',k<i);
+      if(k===i) b.setAttribute('aria-current','step'); else b.removeAttribute('aria-current');});
+    tabs[i].scrollIntoView({block:'nearest',inline:'nearest'});
+    if(user){
+      if(location.hash!=='#'+steps[i].id) history.pushState(null,'','#'+steps[i].id);
+      const top=Math.round($('header.wrap').getBoundingClientRect().bottom+scrollY); /* where the bar sits before it sticks */
+      if(scrollY>top) scrollTo({top,behavior:reduce?'auto':'smooth'});
+      const h=steps[i].querySelector('h2,h3'); if(h){h.tabIndex=-1;h.focus({preventScroll:true});}
+    }
+  }
+  const fromHash=()=>Math.max(0,steps.findIndex(st=>'#'+st.id===location.hash));
+  addEventListener('popstate',()=>go(fromHash(),false));
+  addEventListener('hashchange',()=>go(fromHash(),false));
+  go(fromHash(),false);
+})();
 </script>
