@@ -10,7 +10,7 @@
    (data-label is the name in the bar), Back and Next, the phone's back button going back a step.
    Step kinds, each marked KIND in the page: storyboard, watch (the draft plays, "Note at 0:06"),
    look (live preview with switches), choose (picture options), check (finished pieces and what I
-   changed), send (always last). Every step gets "Anything to change here?" with a microphone.
+   changed), grid (this job's covers, and a button to her Instagram grid preview), send (always last). Every step gets "Anything to change here?" with a microphone.
    Answers save as he goes to the page's store (answers/<step id>): publish with
    capabilities {db:{}, dictation:{}} and read them with ArtifactData list on "answers".
    Change only the JOB block of the script; the ENGINE is the same on every page.
@@ -232,6 +232,14 @@ button,label,summary{-webkit-tap-highlight-color:transparent}
 blockquote{margin:0;font:var(--fw-regular) var(--fs-h4)/var(--lh-h4) var(--font-serif);letter-spacing:var(--ls-h4);color:hsl(var(--text-primary));max-width:30ch;text-wrap:pretty}
 blockquote cite{display:block;margin-top:14px;font:var(--fw-medium) var(--fs-overline)/1.5 var(--font-mono);letter-spacing:var(--ls-overline);text-transform:uppercase;font-style:normal;color:hsl(var(--text-neutral))}
 
+/* Grid: this job's pieces, and a button to the Instagram preview (one page, her real grid, every
+   queued cover in posting order). Queue the covers there first: its README says how. */
+.grid-card{display:flex;flex-wrap:wrap;align-items:center;gap:24px 32px}
+.grid-card .thumbs{display:flex;gap:8px}
+.grid-card .thumbs img{display:block;width:120px;height:auto;border-radius:calc(var(--radius-large) - 6px);border:1px solid hsl(var(--hair))}
+.grid-card .go{display:flex;flex-direction:column;gap:16px;min-width:0;flex:1 1 220px}
+a.btn{text-decoration:none;align-self:flex-start}
+
 /* phones: the step bar scrolls sideways rather than wrapping when there are many steps */
 .stepper ol{overflow-x:auto;scrollbar-width:none}
 .stepper ol::-webkit-scrollbar{display:none}
@@ -278,7 +286,7 @@ blockquote cite{display:block;margin-top:14px;font:var(--fw-medium) var(--fs-ove
 </section>
 
 <!-- KIND: watch. The draft plays here; "Note at 0:06" stamps the moment into this step's notes. -->
-<section class="step" id="watch" data-label="Watch">
+<section class="step" id="watch" data-label="Watch" data-hint="0:06 too long, cut a second.">
   <div class="q">
     <div class="qh"><span class="n">Step</span><h3>Watch the <em>draft</em></h3><p class="note">A small, quick version. Pause where something feels too long or wrong and tap the time button.</p></div>
     <div class="watch">
@@ -289,7 +297,7 @@ blockquote cite{display:block;margin-top:14px;font:var(--fw-medium) var(--fs-ove
 </section>
 
 <!-- KIND: look. A live preview with switches (look, position); job script below gives each combination its note. -->
-<section class="step" id="hook" data-label="Hook">
+<section class="step" id="hook" data-label="Hook" data-hint="smaller, a little lower.">
   <div class="q">
     <div class="qh"><span class="n">Step</span><h3>How should the <em>hook</em> look?</h3></div>
     <div class="hook">
@@ -336,6 +344,21 @@ blockquote cite{display:block;margin-top:14px;font:var(--fw-medium) var(--fs-ove
   </div>
 </section>
 
+<!-- KIND: grid. Use on every job with an Instagram post or Reel cover, after the pieces and
+     before any "Ready to post?" question.
+     Queue the covers in the Instagram preview first (tools/river-fox/instagram-preview/README.md).
+<section class="step" id="grid" data-label="In her grid">
+  <div class="q">
+    <div class="qh"><span class="n">Step</span><h3>See it in her <em>grid</em></h3></div>
+    <div class="grid-card">
+      <div class="thumbs"><img src="img/opt/cover_day_blocks.jpg" alt="The Reel cover"></div>
+      <div class="go"><p class="note">Next to her real posts, top left, tagged Next. Tap it to open it full screen.</p>
+        <a class="btn" href="https://claude.ai/artifact/JHcaZhD3hvj2g81TYXdNrR" target="_blank" rel="noopener">Open her grid <span aria-hidden="true">→</span></a></div>
+    </div>
+  </div>
+</section>
+-->
+
 <!-- KIND: send. Always last. Answers already saved; the summary and Copy are the backup. -->
 <section class="step" id="send" data-label="Send" data-notes="off">
   <div class="q">
@@ -371,7 +394,7 @@ function jobUpdate(){
 /* ---------- ENGINE: the same on every page; don't edit per job ----------
    Steps: every <section class="step" id data-label>. Choices: any radio or checkbox inside a
    [data-q] block (data-say overrides the value in the summary). Every step gets a notes box with a
-   microphone unless data-notes="off" (place it with [data-feedback]); a <video> in a step gets a
+   microphone unless data-notes="off" (place it with [data-feedback]; data-hint="..." adds an example); a <video> in a step gets a
    "Note at 0:06" button. Answers save to the page's own store (answers/<step id>) for Claude to
    read, and to this browser as a backup. */
 const $=s=>document.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -385,9 +408,10 @@ steps.forEach(st=>{
   if(st.dataset.notes==='off') return;
   const box=document.createElement('div'); box.className='feedback';
   box.innerHTML='<label class="seglbl" for="note-'+st.id+'">Anything to change here?</label>'+
-    '<div class="note-box"><textarea id="note-'+st.id+'" placeholder="Talk or type, as messy as you like. e.g. too long after the cut, hook higher."></textarea>'+
+    '<div class="note-box"><textarea id="note-'+st.id+'" placeholder=""></textarea>'+
     '<button type="button" class="mic" hidden>'+MIC+'<span>Speak</span></button></div><div class="partial" aria-live="polite"></div><div class="saved" aria-live="polite"></div>';
   (st.querySelector('[data-feedback]')||st.querySelector('.q')||st).append(box);
+  box.querySelector('textarea').placeholder='Talk or type, as messy as you like.'+(st.dataset.hint?' e.g. '+st.dataset.hint:'');
   const v=st.querySelector('video');
   if(v){
     const b=document.createElement('button'); b.type='button'; b.className='btn ghost stamp';
