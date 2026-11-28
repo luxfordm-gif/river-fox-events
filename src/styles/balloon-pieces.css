@@ -20,6 +20,20 @@
 .bp-grid.bp-grid-one { grid-template-columns: 1fr; max-width: var(--bp-single); margin-inline: auto; }
 
 .bp-tile { margin: 0; }
+/* Hover (mouse only): the tile lifts off the page with a soft shadow, like
+   the service tile cards. Nothing to click (Matt, 2026-11-28). */
+@media (hover: hover) and (pointer: fine) {
+  .bp-panel {
+    transition: transform var(--motion-base) var(--ease-soft), box-shadow var(--motion-base) var(--ease-soft);
+  }
+  .bp-tile:hover .bp-panel {
+    transform: translateY(var(--tile-card-lift));
+    box-shadow: var(--shadow-lift);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bp-panel { transition: none; }
+}
 .bp-panel {
   aspect-ratio: 1;
   overflow: hidden;

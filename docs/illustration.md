@@ -44,6 +44,8 @@ The code enforces these, so they can't drift:
 
 As each tile scrolls into view, its props draw on, then its balloons and sprigs inflate one by one along the garland, each with a small overshoot. The page's own scroll drives it (`useScrollProgress`), never a timer, so scrolling back up runs it backwards. It starts when the tile's top reaches 98% of the screen height and is finished by 50%. With reduced motion, or without JavaScript, every drawing shows finished.
 
+On a mouse, a tile lifts off the page when you hover it: it rises by `--tile-card-lift` with `--shadow-lift`, the same as the service tile cards (Matt, 2026-11-28). It's a small interaction only: tiles are never links and open nothing. Phones and reduced motion get no lift.
+
 It needs at least half a screen of page below the last row, or that row can't scroll high enough to finish. In an article that's always true; on another page, don't make the drawings the last thing above the footer.
 
 ## Balloon drawings: using them on a page
