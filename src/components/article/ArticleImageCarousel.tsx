@@ -13,6 +13,8 @@ export type ArticleCarouselImage = {
   src: string;
   alt: string;
   caption?: string;
+  /** Crop focus (CSS object-position), e.g. "50% 30%". Defaults to centre. */
+  position?: string;
 };
 
 type Aspect = "video" | "3/2" | "4/3" | "square" | "4/5";
@@ -82,6 +84,7 @@ const ArticleImageCarousel = ({
                   src={img.src}
                   alt={img.alt}
                   className="w-full h-full object-cover"
+                  style={img.position ? { objectPosition: img.position } : undefined}
                   loading="lazy"
                   decoding="async"
                 />
