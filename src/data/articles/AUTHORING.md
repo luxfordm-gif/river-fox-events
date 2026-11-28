@@ -197,6 +197,9 @@ Per `CLAUDE.md`:
 - **Alt text ≤ 125 chars.** Describes what's in the photo. Never opens with the same 5 words as another image's alt. Never starts with the brand name.
 - **Per-page OG image** in `public/og/[article-slug].webp` (1200×630), referenced from `src/seo/routes.ts`.
 
+### Illustrations
+- **Balloon piece drawings** (arches, garlands, hoops, walls, number stacks) can go in any article that explains what a piece is: `<BalloonPieces pieces={[...]} />`, in sets of 1, 2, 4, 6 or 12. They're drawings, so they never stand in for a real event. How to use them and add a new piece: `docs/illustration.md`.
+
 ### When using AI image generation
 - **Last resort only.** Real photos from Laura's events come first (`src/data/gallery.ts`, then the graded set in Google Drive). AI images are allowed for journal articles only, never for the gallery, service pages or social, and never passed off as a real event.
 - **Hero:** 1600×900 landscape. Subject centred so a square or 4:3 crop still leads with the subject.

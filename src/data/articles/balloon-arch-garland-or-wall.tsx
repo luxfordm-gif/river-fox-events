@@ -3,7 +3,7 @@ import ArticleImage from "@/components/article/ArticleImage";
 import ArticlePullQuote from "@/components/article/ArticlePullQuote";
 import ArticleCta from "@/components/article/ArticleCta";
 import ArticleTLDR from "@/components/article/ArticleTLDR";
-import BalloonPieceGuide from "@/components/article/BalloonPieceGuide";
+import BalloonPieces from "@/components/illustration/BalloonPieces";
 import ArticleImageCarousel from "@/components/article/ArticleImageCarousel";
 
 /* Laura's own balloon work, already on the site. Same files and alt text as
@@ -83,7 +83,7 @@ const BalloonArchGarlandOrWallArticle = () => (
       </p>
     </ArticleProse>
 
-    <BalloonPieceGuide />
+    <BalloonPieces />
 
     <ArticleProse>
       <h2>Arch, garland or balloon wall: which should I choose?</h2>

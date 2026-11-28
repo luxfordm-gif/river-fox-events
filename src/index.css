@@ -325,13 +325,13 @@
     --tile-card-perspective: 900px;    /* Tile card perspective · how deep the lean looks */
     --tile-card-lift: -4px;            /* Tile card lift · how far a tile card rises on hover (mouse only) */
     --tile-card-pad: 12px;            /* Tile card padding · inside a tile card, round the photo */
-    /* Balloon piece drawings (journal, BalloonPieceGuide): Laura's look, read from Matt's reference grid (2026-11-28). Drawing colours only, never website colours. */
+    /* Balloon piece drawings (src/components/illustration/, docs/illustration.md): Laura's look, read from Matt's reference grid (2026-11-28). Drawing colours only, never website colours. */
+    --bp-single: 320px;                /* Drawing single · the width of one balloon drawing shown on its own */
     --bp-line: 1;                      /* Drawing line · the fine prop outline, in drawing units on a 240 square */
     --bp-line-thin: .7;                /* Drawing line thin · faint details, stems, candles */
     --bp-line-fine: .5;                /* Drawing line fine · hairline details */
     --bp-line-bold: 2.2;               /* Drawing line bold · gold hoops, stands, the cake stand, the wall frame */
     --bp-line-candle: 2.4;             /* Drawing line candle · the thin birthday candles on the cake */
-    --bp-glass: 34 24% 91%;            /* Drawing glass · the window panes in the wall garland, a warm pale grey that sits with the rest (not blue, Matt 2026-11-28) */
     --bp-line-handle: 2.2;             /* Drawing line handle · the window handle */
     --bp-paper: 28 72% 95%;            /* Drawing paper · the warm cream behind each drawing (lighter in the middle) */
     --bp-paper-light: 27 85% 97.5%;    /* Drawing paper light · the middle of the panel */
@@ -342,28 +342,29 @@
     --bp-ivory-base: 31 62% 88%;       /* Drawing ivory base · a shade darker than the panel, so ivory balloons read */
     --bp-ivory-deep: 31 55% 79%;       /* Drawing ivory deep · balloon rim */
     --bp-blush-light: 18 90% 93%;      /* Drawing blush light · warm peach-blush */
-    --bp-blush-base: 21 72% 81%;       /* Drawing blush base */
-    --bp-blush-deep: 23 62% 74%;       /* Drawing blush deep */
-    --bp-sage-light: 68 25% 82%;       /* Drawing sage light */
-    --bp-sage-base: 70 18% 64%;        /* Drawing sage base */
-    --bp-sage-deep: 72 16% 54%;        /* Drawing sage deep */
+    --bp-blush-base: 21 72% 81%;       /* Drawing blush base · the body of a blush balloon */
+    --bp-blush-deep: 23 62% 74%;       /* Drawing blush deep · balloon rim */
+    --bp-sage-light: 68 25% 82%;       /* Drawing sage light · balloon top-left */
+    --bp-sage-base: 70 18% 64%;        /* Drawing sage base · the body of a sage balloon, used sparingly */
+    --bp-sage-deep: 72 16% 54%;        /* Drawing sage deep · balloon rim */
     --bp-gold-light: 40 60% 97%;       /* Drawing champagne light · pale champagne gold balloons */
-    --bp-gold-base: 33 60% 85%;        /* Drawing champagne base */
+    --bp-gold-base: 33 60% 85%;        /* Drawing champagne base · the body of a champagne balloon, mostly the small ones */
     --bp-gold-deep: 32 46% 70%;        /* Drawing champagne deep · balloon rim */
     --bp-gold-metal: 33 50% 60%;       /* Drawing gold metal · hoops, stands, knobs, the wall frame */
     --bp-board-ivory-light: 32 80% 97%; /* Drawing board ivory light · doors, tables, ivory boards, lit edge */
     --bp-board-ivory: 30 62% 92%;      /* Drawing board ivory · their right-hand edge */
-    --bp-board-blush-light: 22 85% 92%; /* Drawing board blush light */
-    --bp-board-blush: 24 70% 88%;      /* Drawing board blush */
-    --bp-board-sage-light: 62 24% 84%; /* Drawing board sage light */
-    --bp-board-sage: 64 20% 78%;       /* Drawing board sage */
+    --bp-board-blush-light: 22 85% 92%; /* Drawing board blush light · blush boards, lit edge */
+    --bp-board-blush: 24 70% 88%;      /* Drawing board blush · their right-hand edge */
+    --bp-board-sage-light: 62 24% 84%; /* Drawing board sage light · sage boards, lit edge */
+    --bp-board-sage: 64 20% 78%;       /* Drawing board sage · their right-hand edge */
+    --bp-glass: 34 24% 91%;            /* Drawing glass · the window panes in the wall garland, a warm pale grey that sits with the rest (not blue, Matt 2026-11-28) */
     --bp-sequin: 31 70% 79%;           /* Drawing sequin · shimmer wall squares */
     --bp-sequin-gap: 31 55% 70%;       /* Drawing sequin gap · between the squares */
     --bp-hearth: 28 55% 85%;           /* Drawing hearth · inside the fireplace */
     --bp-glow: 30 90% 85%;             /* Drawing glow · candle glow in the fireplace */
     --bp-flame: 36 85% 70%;            /* Drawing flame · candle flames */
     --bp-leaf: 50 24% 46%;             /* Drawing leaf · olive sprigs */
-    --bp-leaf-light: 52 22% 64%;       /* Drawing leaf light */
+    --bp-leaf-light: 52 22% 64%;       /* Drawing leaf light · the lighter leaves on a sprig */
     --bp-stem: 48 22% 36%;             /* Drawing stem · sprig stems */
     --gap-photos: 12px;                /* Photo gap · between photos in a grid or strip (8 phone; were 8 / 12 / 16) */               /* List indent · how far bullet text sits in from the bullet's edge (In short lists) */             /* Article side padding · inside narrow article blocks */              /* Link list gap · between links in a list, e.g. a footer column */
     --tap-target: 44px;                /* Tap target · the smallest area a finger can reliably tap; small icon buttons (like the × on the Christmas banner) get at least this, invisibly */
