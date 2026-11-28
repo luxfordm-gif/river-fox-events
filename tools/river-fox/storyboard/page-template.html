@@ -2,12 +2,18 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@500&display=swap">
 <style>
-/* Looks like the website and goes one step at a time (Matt, 28 Nov 2026): the tokens below carry the website's own names and
-   values from src/index.css, and src/test/storyboard-template.test.ts fails if one drifts.
-   Light only, like the site. Layout: a sticky step bar, then one step on screen at a time:
-   the storyboard (frames on a to-scale timeline), one question per step in a white card, and the
-   copy-answers box last. The step bar is built from the <section class="step"> elements, so a job
-   adds or removes a step by adding or removing a section (data-label is its name in the bar).
+/* The River Fox check page (Matt, 28 Nov 2026). One page per job for anything Matt must look at or
+   choose: a video storyboard, a draft to watch, covers, review cards, photo picks. It looks like the
+   website: the tokens below carry the website's own names and values from src/index.css, and
+   src/test/storyboard-template.test.ts fails if one drifts. Light only, like the site.
+   It goes one step at a time: a sticky step bar built from the <section class="step"> elements
+   (data-label is the name in the bar), Back and Next, the phone's back button going back a step.
+   Step kinds, each marked KIND in the page: storyboard, watch (the draft plays, "Note at 0:06"),
+   look (live preview with switches), choose (picture options), check (finished pieces and what I
+   changed), send (always last). Every step gets "Anything to change here?" with a microphone.
+   Answers save as he goes to the page's store (answers/<step id>): publish with
+   capabilities {db:{}, dictation:{}} and read them with ArtifactData list on "answers".
+   Change only the JOB block of the script; the ENGINE is the same on every page.
    Without JavaScript every step shows, one under the other. */
 :root{
   /* colours (HSL, as in src/index.css) */
@@ -182,17 +188,67 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .step-nav:not(:has(.back)) .next{margin-left:0}
 .no-js .step-nav{display:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* the version line under the title, as in "Story · draft 2 · 22.5s · not in Drive yet" */
+.meta{display:flex;flex-wrap:wrap;gap:6px 16px;font:var(--fw-medium) var(--fs-overline)/1.5 var(--font-mono);letter-spacing:.06em;color:hsl(var(--text-dimmed))}
+.meta span+span::before{content:"·";margin-right:16px;color:hsl(var(--hair-strong))}
+@media (max-width:767px){.meta{flex-direction:column;gap:2px}.meta span+span::before{content:none}}
+.wordmark,.bar-top .overline{white-space:nowrap}
+
+/* "Anything to change here?" on every step, with a microphone */
+.feedback{display:flex;flex-direction:column;gap:10px}
+.feedback .seglbl{margin:0}
+.note-box{position:relative}
+button,label,summary{-webkit-tap-highlight-color:transparent}
+.note-box textarea{min-height:96px}
+.note-box:has(.mic:not([hidden])) textarea{padding-right:112px}
+.mic{position:absolute;right:8px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:var(--radius-round);
+  border:1px solid hsl(var(--text-primary) / .3);background:hsl(var(--tile-card-fill));cursor:pointer;
+  font:var(--fw-medium) var(--fs-label)/1 var(--font-sans);color:hsl(var(--text-primary));transition:background var(--motion-quick) var(--ease-soft)}
+.mic svg{width:14px;height:14px}
+.mic.on{background:hsl(var(--accent));border-color:hsl(var(--accent))}
+.mic.on svg{animation:pulse 1.2s var(--ease-soft) infinite}
+@keyframes pulse{50%{opacity:.35}}
+.partial{font-size:var(--fs-meta);color:hsl(var(--text-dimmed));min-height:1.5em}
+.saved{font:var(--fw-medium) var(--fs-overline)/1.5 var(--font-mono);letter-spacing:.06em;color:hsl(var(--text-dimmed));min-height:1.5em}
+
+/* Watch: the draft plays on the page; a button stamps the moment into the note */
+.watch{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:40px;align-items:start}
+@media (max-width:640px){.watch{grid-template-columns:minmax(0,1fr);gap:24px}}
+.watch video{display:block;width:100%;max-width:320px;aspect-ratio:9/16;border-radius:var(--radius-large);background:hsl(var(--background-dark));margin:0 auto}
+.watch .side{display:flex;flex-direction:column;gap:20px;min-width:0}
+.stamp{align-self:flex-start}
+
+/* Check: finished pieces to look over (review cards, covers), and what I changed */
+.check{display:flex;flex-wrap:wrap;gap:var(--gap-photos);align-items:flex-end}
+.check figure{flex:1 1 220px;max-width:340px}
+.check img{display:block;width:100%;height:auto;border-radius:calc(var(--radius-large) - 6px);border:1px solid hsl(var(--hair))}
+.changes{display:flex;flex-direction:column;gap:0;margin:0;padding:0;list-style:none;border-top:1px solid hsl(var(--hair))}
+.changes li{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:baseline;padding:14px 0;border-bottom:1px solid hsl(var(--hair));font-size:var(--fs-small)}
+.changes del{text-decoration:line-through;text-decoration-color:hsl(var(--accent-dark));color:hsl(var(--text-neutral))}
+.changes ins{text-decoration:none;color:hsl(var(--text-primary));font-weight:var(--fw-medium)}
+.changes .why{grid-column:1 / -1;font-size:var(--fs-meta);color:hsl(var(--text-dimmed));margin-top:-6px}
+.changes .arrow{color:hsl(var(--text-dimmed))}
+blockquote{margin:0;font:var(--fw-regular) var(--fs-h4)/var(--lh-h4) var(--font-serif);letter-spacing:var(--ls-h4);color:hsl(var(--text-primary));max-width:30ch;text-wrap:pretty}
+blockquote cite{display:block;margin-top:14px;font:var(--fw-medium) var(--fs-overline)/1.5 var(--font-mono);letter-spacing:var(--ls-overline);text-transform:uppercase;font-style:normal;color:hsl(var(--text-neutral))}
+
+/* phones: the step bar scrolls sideways rather than wrapping when there are many steps */
+.stepper ol{overflow-x:auto;scrollbar-width:none}
+.stepper ol::-webkit-scrollbar{display:none}
+@media (max-width:767px){.stp{padding-inline:5px}.stp .num{width:24px;height:24px}}
 </style>
 
-<div class="bar-top"><span class="wordmark">River Fox Events</span><span class="overline">Storyboard</span></div>
+<div class="bar-top"><span class="wordmark">River Fox Events</span><span class="overline">To check</span></div>
 <header class="wrap">
   <span class="overline">Christmas at home · Instagram Story</span>
   <h1>Finally, <em>my turn.</em></h1>
-  <p class="lede">Storyboard A, the build first, then three choices. Your answers are copied at the end.</p>
+  <p class="lede">The storyboard, the draft to watch, then three choices. Your answers save as you go.</p>
+  <p class="meta"><span>Draft 2</span><span>22.5s</span><span>On the Mac, not in Drive yet</span></p>
 </header>
 <nav class="stepper" aria-label="Steps" hidden><ol class="wrap"></ol></nav>
-<main class="wrap">
+<main class="wrap" data-job="Christmas at home Story">
 
+<!-- KIND: storyboard. Frames on a to-scale timeline; the storyboard not chosen folded away. -->
 <section class="step" id="storyboard" data-label="Storyboard">
   <div class="sb-head"><h2>A · <em>Build first</em></h2><span class="tag">22.5s</span></div>
   <div class="tl" aria-label="Timeline, 22.5 seconds">
@@ -202,12 +258,12 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   </div>
   <div class="frames">
     <figure><div class="ph"><img src="img/A/00.jpg" alt="Day 1 first frame"><span class="t">0.0s</span></div><figcaption><b>Opens on Day 1.</b></figcaption></figure>
-    <figure><div class="ph"><img src="img/A/01.jpg" alt="The hook over the build"><span class="t">1.5s</span></div><figcaption><b>Hook on.</b> Its look is step 2.</figcaption></figure>
+    <figure><div class="ph"><img src="img/A/01.jpg" alt="The hook over the build"><span class="t">1.5s</span></div><figcaption><b>Hook on.</b> Its look is step 3.</figcaption></figure>
     <figure><div class="ph"><img src="img/A/02.jpg" alt="Laura on the ladder"><span class="t">4.8s</span></div><figcaption>The left side fills out.</figcaption></figure>
     <figure><div class="ph"><img src="img/A/04.jpg" alt="Dusk, lights on"><span class="t">9.6s</span></div><figcaption>Day 1 ends at dusk, lights on.</figcaption></figure>
     <figure><div class="ph"><img src="img/A/05.jpg" alt="Next morning"><span class="t">9.7s</span><span class="cut">Cut</span></div><figcaption><b>Cut to Day 2,</b> the next morning.</figcaption></figure>
     <figure><div class="ph"><img src="img/A/06.jpg" alt="The garland thickens"><span class="t">16.1s</span></div><figcaption>The garland thickens.</figcaption></figure>
-    <figure><div class="ph"><img src="img/A/08.jpg" alt="Closing words over the garland"><span class="t">20.0s</span></div><figcaption><b>Closing words,</b> last 3s. Step 3.</figcaption></figure>
+    <figure><div class="ph"><img src="img/A/08.jpg" alt="Closing words over the garland"><span class="t">20.0s</span></div><figcaption><b>Closing words,</b> last 3s. Step 4.</figcaption></figure>
     <figure><div class="ph"><img src="img/A/09.jpg" alt="Last frame, full garland"><span class="t">22.5s</span></div><figcaption>Ends on the full garland.</figcaption></figure>
   </div>
   <details>
@@ -221,19 +277,31 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   </details>
 </section>
 
+<!-- KIND: watch. The draft plays here; "Note at 0:06" stamps the moment into this step's notes. -->
+<section class="step" id="watch" data-label="Watch">
+  <div class="q">
+    <div class="qh"><span class="n">Step</span><h3>Watch the <em>draft</em></h3><p class="note">A small, quick version. Pause where something feels too long or wrong and tap the time button.</p></div>
+    <div class="watch">
+      <video src="video/draft.mp4" poster="img/A/00.jpg" controls playsinline preload="metadata"></video>
+      <div class="side" data-feedback></div>
+    </div>
+  </div>
+</section>
+
+<!-- KIND: look. A live preview with switches (look, position); job script below gives each combination its note. -->
 <section class="step" id="hook" data-label="Hook">
   <div class="q">
-    <div class="qh"><span class="n">Question 1</span><h3>How should the <em>hook</em> look?</h3></div>
+    <div class="qh"><span class="n">Step</span><h3>How should the <em>hook</em> look?</h3></div>
     <div class="hook">
       <div class="ph"><img id="hookimg" src="img/hk/blocks-top.jpg" alt="Preview of the hook"></div>
       <div class="controls">
-        <div><div class="seglbl">Look</div>
+        <div data-q="Hook look"><div class="seglbl">Look</div>
           <div class="segs" role="radiogroup" aria-label="Look">
-            <input type="radio" name="look" id="look-fade" value="fade"><label for="look-fade">Soft fade</label>
-            <input type="radio" name="look" id="look-tint" value="tint"><label for="look-tint">Fade and tint</label>
-            <input type="radio" name="look" id="look-blocks" value="blocks" checked><label for="look-blocks">Pink blocks</label>
+            <input type="radio" name="look" id="look-fade" value="fade" data-say="soft fade"><label for="look-fade">Soft fade</label>
+            <input type="radio" name="look" id="look-tint" value="tint" data-say="fade and tint"><label for="look-tint">Fade and tint</label>
+            <input type="radio" name="look" id="look-blocks" value="blocks" data-say="pink blocks" checked><label for="look-blocks">Pink blocks</label>
           </div></div>
-        <div><div class="seglbl">Position</div>
+        <div data-q="Hook position"><div class="seglbl">Position</div>
           <div class="segs" role="radiogroup" aria-label="Position">
             <input type="radio" name="pos" id="pos-top" value="top" checked><label for="pos-top">Top</label>
             <input type="radio" name="pos" id="pos-middle" value="middle"><label for="pos-middle">Middle</label>
@@ -243,45 +311,44 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
       </div>
     </div>
   </div>
-
 </section>
 
+<!-- KIND: choose. Picture options; type="radio" for one, type="checkbox" for several. -->
 <section class="step" id="closing" data-label="Closing words">
   <div class="q">
-    <div class="qh"><span class="n">Question 2</span><h3>Which <em>closing words?</em></h3></div>
-    <div class="opts">
+    <div class="qh"><span class="n">Step</span><h3>Which <em>closing words?</em></h3></div>
+    <div class="opts" data-q="Closing words">
       <label class="opt"><span class="ph"><img src="img/end/fin1.jpg" alt="Nearly."></span><span class="row"><input type="radio" name="fin" id="fin-1" value="Nearly. / The reveal is coming soon." checked><span>Nearly.<small>The reveal is coming soon.</small></span></span></label>
       <label class="opt"><span class="ph"><img src="img/end/fin2.jpg" alt="To be continued."></span><span class="row"><input type="radio" name="fin" id="fin-2" value="To be continued. / Christmas at home."><span>To be continued.<small>Christmas at home.</small></span></span></label>
       <label class="opt"><span class="ph"><img src="img/end/fin3.jpg" alt="Almost there."></span><span class="row"><input type="radio" name="fin" id="fin-3" value="Almost there. / The full reveal is coming."><span>Almost there.<small>The full reveal is coming.</small></span></span></label>
       <label class="opt"><span class="ph"><img src="img/end/fin0.jpg" alt="No words"></span><span class="row"><input type="radio" name="fin" id="fin-0" value="no closing words"><span>No words</span></span></label>
     </div>
   </div>
-
 </section>
 
 <section class="step" id="cover" data-label="Cover">
   <div class="q">
-    <div class="qh"><span class="n">Question 3</span><h3>Which <em>cover,</em> for the Reel later?</h3><p class="note">A Story has no cover. This is for the full Reel: a daylight and a dusk version, as the pack asks.</p></div>
-    <div class="opts wide">
+    <div class="qh"><span class="n">Step</span><h3>Which <em>cover,</em> for the Reel later?</h3><p class="note">A Story has no cover. This is for the full Reel: a daylight and a dusk version, as the pack asks.</p></div>
+    <div class="opts wide" data-q="Reel cover">
       <label class="opt"><span class="pair"><span class="ph"><img src="img/opt/cover_day_blocks.jpg" alt="Daylight cover with pink blocks"></span><span class="ph"><img src="img/opt/cover_dusk_blocks.jpg" alt="Dusk cover with pink blocks"></span></span><span class="row"><input type="radio" name="cov" id="cov-blocks" value="pink blocks" checked><span>Pink blocks<small>Garland stays clear.</small></span></span></label>
       <label class="opt"><span class="pair"><span class="ph"><img src="img/opt/cover_day_top.jpg" alt="Daylight cover with big headline"></span><span class="ph"><img src="img/opt/cover_dusk_top.jpg" alt="Dusk cover with big headline"></span></span><span class="row"><input type="radio" name="cov" id="cov-big" value="big headline"><span>Big headline<small>Runs into the garland.</small></span></span></label>
     </div>
   </div>
-
 </section>
 
-<section class="step" id="send" data-label="Send">
+<!-- KIND: send. Always last. Answers already saved; the summary and Copy are the backup. -->
+<section class="step" id="send" data-label="Send" data-notes="off">
   <div class="q">
-    <div class="qh"><span class="n">Last step</span><h3>Send me your <em>answers</em></h3></div>
-    <textarea id="notes" placeholder="Anything else (optional)"></textarea>
+    <div class="qh"><span class="n">Step</span><h3>That's <em>everything</em></h3><p class="note" id="savestate">Your answers save as you go. Say “done” in the chat and I'll read them.</p></div>
     <pre id="sum" aria-live="polite"></pre>
-    <div class="actions"><button type="button" class="btn" id="copy">Copy answers <span aria-hidden="true">→</span></button>
+    <div class="actions"><button type="button" class="btn ghost" id="copy">Copy answers</button>
     <span class="note" id="copied" hidden>Copied. Paste it in the chat.</span></div>
   </div>
 </section>
 </main>
 
 <script>
+/* ---------- JOB: only this block changes from job to job ---------- */
 const NOTES={
   'blocks-top':['ok','On the windows and porch roof. Laura and the garland stay clear. My pick.'],
   'blocks-middle':['warn','Over the porch while Laura works at the door. The pack says never on her face.'],
@@ -293,21 +360,111 @@ const NOTES={
   'tint-middle':['warn','Over the porch and Laura’s head. The pack says never on her face.'],
   'tint-bottom':['warn','Over Laura and the fence. The pack says never on her face.']
 };
-const LOOK={fade:'soft fade',tint:'fade and tint',blocks:'pink blocks'};
-const $=s=>document.querySelector(s), val=n=>document.querySelector(`input[name="${n}"]:checked`).value;
-function update(){
-  const k=val('look')+'-'+val('pos'), [kind,text]=NOTES[k];
-  $('#hookimg').src='img/hk/'+k+'.jpg';
-  const st=$('#hookstatus'); st.textContent=text; st.className='status'+(kind==='warn'?' warn':'');
-  let lines=['Christmas at home Story: storyboard A',
-    'Hook: '+LOOK[val('look')]+', '+val('pos')+(kind==='warn'?' (I know it breaks the face rule)':''),
-    'Closing words: '+val('fin'),
-    'Reel cover: '+val('cov')];
-  if($('#notes').value.trim()) lines.push('Notes: '+$('#notes').value.trim());
+function jobUpdate(){
+  const look=document.querySelector('input[name="look"]:checked'), pos=document.querySelector('input[name="pos"]:checked');
+  if(!look||!pos) return;
+  const k=look.value+'-'+pos.value, [kind,text]=NOTES[k];
+  document.getElementById('hookimg').src='img/hk/'+k+'.jpg';
+  const st=document.getElementById('hookstatus'); st.textContent=text; st.className='status'+(kind==='warn'?' warn':'');
+}
+
+/* ---------- ENGINE: the same on every page; don't edit per job ----------
+   Steps: every <section class="step" id data-label>. Choices: any radio or checkbox inside a
+   [data-q] block (data-say overrides the value in the summary). Every step gets a notes box with a
+   microphone unless data-notes="off" (place it with [data-feedback]); a <video> in a step gets a
+   "Note at 0:06" button. Answers save to the page's own store (answers/<step id>) for Claude to
+   read, and to this browser as a backup. */
+const $=s=>document.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const steps=$$('.step'), JOB=$('main').dataset.job||document.title;
+const KEY='rfx-answers:'+location.pathname;
+const fmt=t=>{t=Math.floor(t||0);return Math.floor(t/60)+':'+String(t%60).padStart(2,'0');};
+const MIC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
+let db=null, dict=null, dictTarget=null;
+
+steps.forEach(st=>{
+  if(st.dataset.notes==='off') return;
+  const box=document.createElement('div'); box.className='feedback';
+  box.innerHTML='<label class="seglbl" for="note-'+st.id+'">Anything to change here?</label>'+
+    '<div class="note-box"><textarea id="note-'+st.id+'" placeholder="Talk or type, as messy as you like. e.g. too long after the cut, hook higher."></textarea>'+
+    '<button type="button" class="mic" hidden>'+MIC+'<span>Speak</span></button></div><div class="partial" aria-live="polite"></div><div class="saved" aria-live="polite"></div>';
+  (st.querySelector('[data-feedback]')||st.querySelector('.q')||st).append(box);
+  const v=st.querySelector('video');
+  if(v){
+    const b=document.createElement('button'); b.type='button'; b.className='btn ghost stamp';
+    const lab=()=>b.textContent='Note at '+fmt(v.currentTime);
+    lab(); v.addEventListener('timeupdate',lab); v.addEventListener('seeked',lab);
+    b.addEventListener('click',()=>{const ta=box.querySelector('textarea');v.pause();
+      ta.value=(ta.value.trim()?ta.value.replace(/\s*$/,'\n'):'')+fmt(v.currentTime)+' ';ta.focus();ta.setSelectionRange(ta.value.length,ta.value.length);save(st);});
+    box.before(b);
+  }
+});
+
+function answers(st){
+  const picks={};
+  $$('[data-q]',st).forEach(g=>{const on=$$('input:checked',g).map(i=>i.dataset.say||i.value); if(on.length) picks[g.dataset.q]=on.join(', ');});
+  const ta=st.querySelector('.feedback textarea');
+  return {step:st.dataset.label, picks, note:ta?ta.value.trim():''};
+}
+function summary(){
+  const lines=[JOB];
+  steps.forEach(st=>{const a=answers(st);
+    Object.entries(a.picks).forEach(([q,v])=>lines.push(q+': '+v));
+    if(a.note) lines.push(a.step+' notes: '+a.note.replace(/\n+/g,' / '));});
   $('#sum').textContent=lines.join('\n');
 }
-document.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',update));
-$('#notes').addEventListener('input',update); update();
+const timers={}, chains={};
+function save(st){
+  try{const all=JSON.parse(localStorage.getItem(KEY)||'{}');all[st.id]=answers(st);localStorage.setItem(KEY,JSON.stringify(all));}catch(e){}
+  summary(); window.jobUpdate&&jobUpdate();
+  if(!db) return;
+  clearTimeout(timers[st.id]);
+  timers[st.id]=setTimeout(()=>{
+    const data={...answers(st),updatedAt:new Date().toISOString()}, mark=st.querySelector('.saved');
+    chains[st.id]=(chains[st.id]||Promise.resolve()).then(()=>db.doc('answers/'+st.id).set(data))
+      .then(()=>{if(mark) mark.textContent='Saved';})
+      .catch(()=>{if(mark) mark.textContent='Not saved. Copy your answers at the end.';});
+  },700);
+}
+function apply(st,a){
+  if(!a) return;
+  $$('[data-q]',st).forEach(g=>{const want=(a.picks||{})[g.dataset.q]; if(want==null) return;
+    const vals=want.split(', '); $$('input',g).forEach(i=>i.checked=vals.includes(i.dataset.say||i.value));});
+  const ta=st.querySelector('.feedback textarea'); if(ta&&a.note&&!ta.value) ta.value=a.note;
+}
+steps.forEach(st=>{
+  st.addEventListener('change',()=>save(st));
+  st.addEventListener('input',e=>{if(e.target.tagName==='TEXTAREA') save(st);});
+});
+try{const all=JSON.parse(localStorage.getItem(KEY)||'{}');steps.forEach(st=>apply(st,all[st.id]));}catch(e){}
+summary(); window.jobUpdate&&jobUpdate();
+
+/* the store and the microphone light up when the viewer offers them */
+(async()=>{
+  if(!window.claude?.use) return noStore();
+  const [d,m]=await Promise.all([claude.use('db').catch(()=>null),claude.use('dictation').catch(()=>null)]);
+  if(d){db=d;
+    try{const snaps=await Promise.all(steps.map(st=>db.doc('answers/'+st.id).get()));
+      snaps.forEach((s,i)=>{if(s.exists) apply(steps[i],s.data());}); summary(); window.jobUpdate&&jobUpdate();}catch(e){}
+  } else noStore();
+  if(m){dict=m;
+    m.onPartial(({text})=>{if(dictTarget) dictTarget.closest('.feedback').querySelector('.partial').textContent=text;});
+    m.onFinal(({text})=>{if(!dictTarget) return; const ta=dictTarget; ta.value=ta.value?ta.value+text:text.replace(/^\s+/,'');
+      ta.closest('.feedback').querySelector('.partial').textContent=''; save(ta.closest('.step'));});
+    m.onState(({state,reason})=>{
+      $$('.mic').forEach(b=>{const on=state!=='idle'&&b.parentElement.querySelector('textarea')===dictTarget;
+        b.classList.toggle('on',on); b.querySelector('span').textContent=on?'Stop':'Speak';});
+      if(state==='idle'&&(reason==='not_granted'||reason==='unavailable')) $$('.mic').forEach(b=>b.hidden=true);
+    });
+    $$('.mic').forEach(b=>{b.hidden=false; b.addEventListener('click',()=>{
+      const ta=b.parentElement.querySelector('textarea');
+      if(dict.active()&&dictTarget===ta){dict.stop();return;}
+      dictTarget=ta; dict.start().catch(()=>{});
+    });});
+  }
+})();
+function noStore(){const s=$('#savestate'); if(s) s.textContent='This view can’t save answers for me. Copy them and paste them in the chat.';
+  const c=$('#copy'); if(c) c.classList.remove('ghost');}
+
 $('#copy').addEventListener('click',()=>{
   const done=()=>{const c=$('#copied');c.hidden=false;setTimeout(()=>c.hidden=true,2400);};
   const fallback=()=>{const r=document.createRange();r.selectNodeContents($('#sum'));const s=getSelection();s.removeAllRanges();s.addRange(r);};
@@ -316,7 +473,7 @@ $('#copy').addEventListener('click',()=>{
 
 /* One step at a time. The bar and the Back / Next buttons are built from the sections. */
 (()=>{
-  const steps=[...document.querySelectorAll('.step')], n=steps.length;
+  const n=steps.length;
   if(n<2) return;
   document.documentElement.classList.add('js');
   const nav=$('.stepper'), ol=nav.querySelector('ol'), reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -342,11 +499,14 @@ $('#copy').addEventListener('click',()=>{
   let cur=-1;
   function go(i,user){
     if(i===cur) return;
+    $$('video').forEach(v=>v.pause());
+    if(dict&&dict.active()) dict.stop();
     cur=i;
     steps.forEach((st,k)=>st.classList.toggle('on',k===i));
     tabs.forEach((b,k)=>{b.classList.toggle('done',k<i);
       if(k===i) b.setAttribute('aria-current','step'); else b.removeAttribute('aria-current');});
-    tabs[i].scrollIntoView({block:'nearest',inline:'nearest'});
+    const r=tabs[i].getBoundingClientRect(), o=ol.getBoundingClientRect();
+    if(r.left<o.left||r.right>o.right) ol.scrollLeft+=r.left-o.left-24;
     if(user){
       if(location.hash!=='#'+steps[i].id) history.pushState(null,'','#'+steps[i].id);
       const top=Math.round($('header.wrap').getBoundingClientRect().bottom+scrollY); /* where the bar sits before it sticks */
