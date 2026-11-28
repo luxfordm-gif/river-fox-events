@@ -1,8 +1,10 @@
-/* Balloon piece guide (src/components/article/BalloonPieceGuide.tsx): twelve
-   square drawings in Laura's look (warm blush, ivory, a little sage and pale
-   champagne balloons, short olive sprigs, softly shaded boards on warm
-   cream). Two across on phones, three from tablets up, kept to the reading
-   column. Every colour is a --bp-* token in index.css. */
+/* Balloon piece drawings (src/components/illustration/): square drawings in
+   Laura's look (warm blush, ivory, a little sage and pale champagne
+   balloons, short olive sprigs, softly shaded boards on warm cream). Two
+   across on phones, three from tablets up, kept to the reading column; a set
+   of 2 or 4 stays two across, a single one sits alone at --bp-single. Every
+   colour is a --bp-* token in index.css. How it all works:
+   docs/illustration.md. */
 
 .bp-guide { max-width: var(--measure-reading); }
 
@@ -13,7 +15,9 @@
 }
 @media (min-width: 768px) {
   .bp-grid { grid-template-columns: repeat(3, 1fr); }
+  .bp-grid.bp-grid-two { grid-template-columns: repeat(2, 1fr); }
 }
+.bp-grid.bp-grid-one { grid-template-columns: 1fr; max-width: var(--bp-single); margin-inline: auto; }
 
 .bp-tile { margin: 0; }
 .bp-panel {

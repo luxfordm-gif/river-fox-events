@@ -50,6 +50,7 @@ import { HOME_FAQS } from "@/data/homeFaqs";
 import FaqSection from "@/components/rfx/FaqSection";
 import CPLocations from "@/components/rfx/CPLocations";
 import Enquire from "@/components/rfx/Enquire";
+import BalloonPieces from "@/components/illustration/BalloonPieces";
 
 import imgHero from "@/assets/river-fox-events-jungle-theme-fourever-wild-full-setup.webp";
 import imgHeroMobile from "@/assets/river-fox-events-jungle-theme-safari-tablescape-elephant.webp";
@@ -85,6 +86,7 @@ const fmt = (n: number | null) => (n === null ? "-" : `${Math.round(n * 10) / 10
 
 const PAGE_SRC = import.meta.glob("/src/pages/*.tsx", { query: "?raw", import: "default", eager: true }) as Record<string, string>;
 const COMPONENT_SRC = import.meta.glob("/src/components/rfx/*.tsx", { query: "?raw", import: "default", eager: true }) as Record<string, string>;
+const ARTICLE_SRC = import.meta.glob("/src/data/articles/*.tsx", { query: "?raw", import: "default", eager: true }) as Record<string, string>;
 const PAGE_NAMES: Record<string, string> = {
   Index: "Home",
   ChildrensParties: "Children's parties",
@@ -103,14 +105,17 @@ const PAGE_NAMES: Record<string, string> = {
 };
 const baseName = (path: string) => path.split("/").pop()!.replace(".tsx", "");
 const usedOn = (component: string) => {
-  const re = new RegExp(`rfx/${component}"`);
+  const re = new RegExp(`/(?:rfx|illustration|article)/${component}"`);
   const pages = Object.entries(PAGE_SRC)
     .filter(([p, src]) => baseName(p) !== "StyleGuide" && re.test(src))
     .map(([p]) => PAGE_NAMES[baseName(p)] ?? baseName(p));
   const inside = Object.entries(COMPONENT_SRC)
     .filter(([, src]) => re.test(src))
     .map(([p]) => `inside ${baseName(p)}`);
-  return [...pages, ...inside].join(", ") || "not used on any page";
+  const articles = Object.entries(ARTICLE_SRC)
+    .filter(([, src]) => re.test(src))
+    .map(([p]) => `the ${baseName(p)} article`);
+  return [...pages, ...inside, ...articles].join(", ") || "not used on any page";
 };
 
 /* ---------- colours ---------- */
@@ -192,6 +197,11 @@ const COLOUR_GROUPS: { title: string; intro: string; colours: Colour[] }[] = [
     title: "Christmas edition (Frost & gold)",
     intro: "Christmas door garlands page only.",
     colours: numbered(xmasShown),
+  },
+  {
+    title: "Balloon drawings",
+    intro: "Only inside the balloon drawings (S25), never on the website itself. Read from Matt's reference grid; docs/illustration.md explains them.",
+    colours: numbered(brandOwn.filter((c) => c.name.startsWith("--bp-"))),
   },
 ];
 
@@ -524,6 +534,17 @@ const SECTIONS: Section[] = [
   { id: "S17", title: "FAQ (homepage)", component: "FaqSection", note: "Home page questions", render: () => <FaqSection faqs={HOME_FAQS} headingId="sg-home-faq-heading" /> },
   { id: "S18", title: "FAQ (service and town pages)", component: "FaqSection", note: "Children's parties questions", render: () => <FaqSection headingId="sg-faq-heading" /> },
   { id: "S19", title: "Areas we cover", component: "CPLocations", render: () => <CPLocations /> },
+  {
+    id: "S25",
+    title: "Balloon drawings",
+    component: "BalloonPieces",
+    note: "Balloons inflate as each tile scrolls in; scroll back up and down to replay. Any set of 1, 2, 4, 6 or 12 by id; how to use and add one: docs/illustration.md",
+    render: () => (
+      <section className="rfx-section">
+        <BalloonPieces className="article-pad mx-auto" />
+      </section>
+    ),
+  },
   { id: "S20", title: "Enquiry form", component: "Enquire", render: () => <Enquire /> },
   { id: "S21", title: "Footer", component: "Footer", render: () => <Footer /> },
   {
