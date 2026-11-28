@@ -559,16 +559,17 @@ const DRAWINGS: { name: string; label: string; draw: () => Drawing }[] = [
   },
   {
     name: "Full hoop garland",
-    label: "A gold hoop on a stand, with balloons most of the way round",
+    label: "A gold hoop on a stand, with balloons all the way round",
     draw: () => ({
       props: <Hoop cx={130} cy={128} r={78} />,
-      balloons: garland(arc(130, 128, 78, 78, 62, 292), 13, 13, {
+      // all the way round (Matt, 2026-11-28: the gap on the right read as half done)
+      balloons: garland(arc(130, 128, 78, 78, 62, 422), 13, 13, {
         swell: [[0, 0.8], [0.12, 0.95], [0.4, 1.15], [0.64, 1.35], [0.85, 1.1], [1, 0.85]],
       }),
       sprigs: [
         [118, 46, -100, 0.9, 0.12], [170, 60, -30, 0.85, 0.02],
         [50, 100, 200, 0.9, 0.3], [46, 140, 180, 0.9, 0.45], [62, 180, 150, 0.9, 0.6],
-        [158, 196, -40, 0.85, 0.95],
+        [158, 196, -40, 0.85, 0.95], [210, 160, 20, 0.85, 0.85],
       ],
       shadow: [130, 70],
     }),

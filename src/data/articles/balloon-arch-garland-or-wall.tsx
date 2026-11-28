@@ -7,13 +7,14 @@ import BalloonPieceGuide from "@/components/article/BalloonPieceGuide";
 import ArticleImageCarousel from "@/components/article/ArticleImageCarousel";
 
 /* Laura's own balloon work, already on the site. Same files and alt text as
-   Our work (one image, one alt). No balloon wall photo yet: the only one
-   stored (Halloween) is off house style, so it was left out (2026-11-09). */
-import imgHarveyArch from "@/assets/river-fox-events-naming-ceremony-harvey-arch-side-angle.webp";
+   Our work (one image, one alt). The arch section shows a full arch over a
+   front door, not a half arch on a panel (Matt, 2026-11-28). */
 import imgGarland40th from "@/assets/services/milestones/40th-birthday-champagne-gold-garland-restaurant.webp";
 import imgBlushHoop from "@/assets/services/milestones/blush-rose-hoop-garland-living-room.webp";
 import imgReevaArch from "@/assets/river-fox-events-pastel-birthday-reeva-entrance-arch.webp";
+import imgLakesideArch from "@/assets/services/corporate/lakeside-terrace-navy-balloon-arch.webp";
 import imgBabyInBloom from "@/assets/river-fox-events-baby-shower-baby-in-bloom-arch-portrait.webp";
+import imgShimmerWall from "@/assets/services/milestones/50th-birthday-gold-sequin-wall-navy-garland.webp";
 import imgPastelWall from "@/assets/services/milestones/21st-pastel-balloon-wall-light-up-numbers.webp";
 import imgAureliaHoop from "@/assets/services/childrens-parties/aurelia-first-birthday-pink-grey-balloon-hoop.webp";
 import imgColumns from "@/assets/services/corporate/125-years-entrance-columns-green-white-gold-stars.webp";
@@ -23,9 +24,9 @@ import imgHotAirBalloon from "@/assets/services/childrens-parties/hot-air-balloo
 /* One of each kind of balloon piece, seven at most (Matt, 2026-11-28).
    Alt text is the gallery's, word for word (one image, one alt). */
 const balloonKinds = [
-  { src: imgReevaArch, alt: "Blush, peach and cream balloon arch over Reeva's birthday welcome easel at a front door", caption: "A full arch for Reeva's birthday." },
+  { src: imgLakesideArch, alt: "Navy, cobalt and chrome balloon arch framing a lakeside terrace with tables and parasols", caption: "An arch framing a lakeside terrace.", position: "70% 50%" },
   { src: imgBabyInBloom, alt: "Dusty blue and white Baby in Bloom balloon arch with floral accents for a baby shower", caption: "A garland for a baby shower.", position: "50% 35%" },
-  { src: imgPastelWall, alt: "Giant light-up 21 set into a pastel balloon wall in lilac, sage, peach and lemon", caption: "A pastel balloon wall for a 21st." },
+  { src: imgShimmerWall, alt: "Gold sequin wall framed by navy and gold balloons beside blue light-up 50 numbers in a panelled room", caption: "A shimmer wall framed with a garland." },
   { src: imgAureliaHoop, alt: "Pink, grey and white balloon hoop around a Welcome to Aurelia's 1st Birthday sign, with a Minnie Mouse 1 and ONE blocks", caption: "A hoop for a first birthday." },
   { src: imgColumns, alt: "Green, white and gold balloon columns with 125 Years star foils either side of a grand entrance", caption: "Balloon columns for an entrance." },
   { src: imgBubbles, alt: "Navy bubble balloon centrepieces with gold table numbers on gold stands, with navy and chrome gold bases", caption: "Bubble balloon centrepieces." },
@@ -106,17 +107,17 @@ const BalloonArchGarlandOrWallArticle = () => (
         Arches need height and a little space on either side, so they're
         happiest in doorways, porches, garden paths and venues with generous
         ceilings. An organic arch doesn't have to be a full semicircle, either.
-        Curving up one side of a panel, like Harvey's below, gives the same
-        sense of a frame in a fraction of the floor&nbsp;space.
+        Curving up one side of a panel gives the same sense of a frame in a
+        fraction of the floor&nbsp;space.
       </p>
     </ArticleProse>
 
     <ArticleImage
-      src={imgHarveyArch}
-      aspect="video"
+      src={imgReevaArch}
+      aspect="natural"
       width={720}
-      alt="Pale blue, white and gold balloon arch around a white panel on a garden lawn for Harvey's naming ceremony"
-      caption="Harvey's naming ceremony arch, curving up one side of a white name panel, so it frames the moment without needing a doorway to&nbsp;span."
+      alt="Blush, peach and cream balloon arch over Reeva's birthday welcome easel at a front door"
+      caption="Reeva's birthday arch around the front door, so the party starts before anyone steps&nbsp;inside."
     />
 
     <ArticleProse>
@@ -162,7 +163,17 @@ const BalloonArchGarlandOrWallArticle = () => (
         with a garland gives a similar focal point that catches the light
         instead.
       </p>
+    </ArticleProse>
 
+    <ArticleImage
+      src={imgPastelWall}
+      aspect="square"
+      width={560}
+      alt="Giant light-up 21 set into a pastel balloon wall in lilac, sage, peach and lemon"
+      caption="A pastel balloon wall in lilac, sage, peach and lemon, built around a light-up 21 for a&nbsp;21st."
+    />
+
+    <ArticleProse>
       <h3>Where do hoops and number stacks fit?</h3>
       <p>
         These are the smaller-scale options. A metal hoop dressed with a
@@ -172,12 +183,15 @@ const BalloonArchGarlandOrWallArticle = () => (
         decoration. Both are a good answer when you want a focal point without
         filling the&nbsp;room.
       </p>
-      <p>
-        Here are a few of the pieces I make, one of each kind, from real&nbsp;celebrations.
-      </p>
     </ArticleProse>
 
-    <ArticleImageCarousel images={balloonKinds} aspect="square" width={720} />
+    <ArticleImage
+      src={imgBlushHoop}
+      aspect="natural"
+      width={560}
+      alt="Gold hoop wrapped in blush, rose gold and cream balloons in front of a sheer-curtained window"
+      caption="A blush, rose gold and cream hoop in front of a living room window, a lovely size for a celebration at&nbsp;home."
+    />
 
     <ArticlePullQuote>
       Choose the piece for the room, not the room for the&nbsp;piece.
@@ -224,14 +238,6 @@ const BalloonArchGarlandOrWallArticle = () => (
       </p>
     </ArticleProse>
 
-    <ArticleImage
-      src={imgBlushHoop}
-      aspect="natural"
-      width={560}
-      alt="Gold hoop wrapped in blush, rose gold and cream balloons in front of a sheer-curtained window"
-      caption="A blush, rose gold and cream hoop in front of a living room window, a lovely size for a celebration at&nbsp;home."
-    />
-
     <ArticleCta variant="inline" label="Reserve your date" />
 
     <ArticleProse>
@@ -273,7 +279,12 @@ const BalloonArchGarlandOrWallArticle = () => (
         make on my{" "}
         <a href="/balloon-installations/">balloon decorations</a>&nbsp;page.
       </p>
+      <p>
+        Here are a few of the pieces I make, one of each kind, from real&nbsp;celebrations.
+      </p>
     </ArticleProse>
+
+    <ArticleImageCarousel images={balloonKinds} aspect="square" width={720} />
 
     <ArticleProse>
       <h2>Why I love this part</h2>
