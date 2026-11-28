@@ -1,0 +1,89 @@
+/* Balloon piece guide (src/components/article/BalloonPieceGuide.tsx): twelve
+   square drawings in Laura's look (warm blush, ivory, a little sage and pale
+   champagne balloons, short olive sprigs, softly shaded boards on warm
+   cream). Two across on phones, three from tablets up, kept to the reading
+   column. Every colour is a --bp-* token in index.css. */
+
+.bp-guide { max-width: var(--measure-reading); }
+
+.bp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-stacked) var(--gap-stack);
+}
+@media (min-width: 768px) {
+  .bp-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.bp-tile { margin: 0; }
+.bp-panel {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 42%, hsl(var(--bp-paper-light)), hsl(var(--bp-paper)) 72%);
+}
+.bp-svg { display: block; width: 100%; height: 100%; }
+/* Holds the shared paints; takes no space. */
+.bp-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* Fine warm lines, round ends: light, so the shading does the work. */
+.bp-svg .bp-prop {
+  fill: none;
+  stroke: hsl(var(--bp-line-colour));
+  stroke-width: var(--bp-line);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1; /* pathLength 1: finished by default, the scroll moves the offset */
+}
+.bp-svg .bp-faint { stroke-opacity: .55; stroke-width: var(--bp-line-thin); }
+
+/* Prop fills: softly shaded boards (lit from the left). */
+.bp-svg .bp-fill { fill: url(#bp-board-ivory); }
+.bp-svg .bp-fill-blush { fill: url(#bp-board-blush); }
+.bp-svg .bp-fill-sage { fill: url(#bp-board-sage); }
+.bp-svg .bp-fill-sequin { fill: hsl(var(--bp-sequin-gap)); }
+.bp-svg .bp-fill-hearth { fill: hsl(var(--bp-hearth)); }
+.bp-svg .bp-folds { fill: hsl(var(--bp-shade) / .06); }
+.bp-svg .bp-plinth-top { fill: hsl(var(--bp-board-ivory-light)); }
+
+/* Gold hoops, stands, the cake stand and the wall frame. */
+.bp-svg .bp-gold { stroke: hsl(var(--bp-gold-metal)); stroke-width: var(--bp-line-bold); }
+.bp-svg .bp-plate, .bp-svg .bp-knob { fill: hsl(var(--bp-gold-metal)); }
+.bp-svg .bp-plate-top { fill: hsl(var(--bp-gold-base)); }
+.bp-svg .bp-candle { fill: hsl(var(--bp-ivory-light)); stroke: hsl(var(--bp-line-colour)); stroke-width: var(--bp-line-thin); }
+.bp-svg .bp-candle-wick { stroke: hsl(var(--bp-ivory-deep)); stroke-width: var(--bp-line-candle); }
+.bp-svg .bp-flame { fill: hsl(var(--bp-flame)); }
+
+/* Olive sprigs tucked into the garlands. */
+.bp-svg .bp-stem { fill: none; stroke: hsl(var(--bp-stem)); stroke-width: var(--bp-line-thin); stroke-linecap: round; }
+.bp-svg .bp-leaf { fill: hsl(var(--bp-leaf)); }
+.bp-svg .bp-leaf-light { fill: hsl(var(--bp-leaf-light)); }
+
+/* Paints (in the shared defs, so not scoped to .bp-svg). */
+.bp-stop-ivory-light { stop-color: hsl(var(--bp-ivory-light)); }
+.bp-stop-ivory-base { stop-color: hsl(var(--bp-ivory-base)); }
+.bp-stop-ivory-deep { stop-color: hsl(var(--bp-ivory-deep)); }
+.bp-stop-blush-light { stop-color: hsl(var(--bp-blush-light)); }
+.bp-stop-blush-base { stop-color: hsl(var(--bp-blush-base)); }
+.bp-stop-blush-deep { stop-color: hsl(var(--bp-blush-deep)); }
+.bp-stop-sage-light { stop-color: hsl(var(--bp-sage-light)); }
+.bp-stop-sage-base { stop-color: hsl(var(--bp-sage-base)); }
+.bp-stop-sage-deep { stop-color: hsl(var(--bp-sage-deep)); }
+.bp-stop-gold-light { stop-color: hsl(var(--bp-gold-light)); }
+.bp-stop-gold-base { stop-color: hsl(var(--bp-gold-base)); }
+.bp-stop-gold-deep { stop-color: hsl(var(--bp-gold-deep)); }
+.bp-stop-board-ivory-light { stop-color: hsl(var(--bp-board-ivory-light)); }
+.bp-stop-board-ivory { stop-color: hsl(var(--bp-board-ivory)); }
+.bp-stop-board-blush-light { stop-color: hsl(var(--bp-board-blush-light)); }
+.bp-stop-board-blush { stop-color: hsl(var(--bp-board-blush)); }
+.bp-stop-board-sage-light { stop-color: hsl(var(--bp-board-sage-light)); }
+.bp-stop-board-sage { stop-color: hsl(var(--bp-board-sage)); }
+.bp-stop-shade { stop-color: hsl(var(--bp-shade)); }
+.bp-stop-gloss { stop-color: hsl(var(--bp-gloss)); }
+.bp-stop-glow { stop-color: hsl(var(--bp-glow)); }
+.bp-sequin-cell { fill: hsl(var(--bp-sequin)); }
+
+/* Balloons and sprigs grow from their own centre. */
+.bp-svg .bp-b {
+  transform-box: fill-box;
+  transform-origin: center;
+}

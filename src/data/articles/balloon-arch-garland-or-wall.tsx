@@ -3,6 +3,7 @@ import ArticleImage from "@/components/article/ArticleImage";
 import ArticlePullQuote from "@/components/article/ArticlePullQuote";
 import ArticleCta from "@/components/article/ArticleCta";
 import ArticleTLDR from "@/components/article/ArticleTLDR";
+import BalloonPieceGuide from "@/components/article/BalloonPieceGuide";
 
 /* Laura's own balloon work, already on the site. Same files and alt text as
    Our work (one image, one alt). No balloon wall photo yet: the only one
@@ -70,7 +71,11 @@ const BalloonArchGarlandOrWallArticle = () => (
         photos. Hoops and number stacks suit smaller spaces, where you want a
         focal point without filling the&nbsp;room.
       </p>
+    </ArticleProse>
 
+    <BalloonPieceGuide />
+
+    <ArticleProse>
       <h3>When does a balloon arch work best?</h3>
       <p>
         An arch is a threshold piece. It frames something you walk through or
