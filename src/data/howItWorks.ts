@@ -5,6 +5,7 @@
  * photo and the chat all describe the same party, so a scenario is one record.
  *
  * - Sketches: src/assets/how-it-works/<name>-600.webp and -1100.webp (3:2).
+ *   How they're made, and their rules: docs/illustration.md (Concept sketches).
  * - Photos: gallery photos where they exist (one image, one alt), otherwise
  *   the service photo with the alt it already has in inspiration.ts.
  * - Chat: placeholder enquiry text. No weekdays, so dates never go stale.
